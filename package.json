@@ -1,0 +1,90 @@
+{
+  "name": "@common-origin/design-system",
+  "version": "1.0.0",
+  "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
+  "private": false,
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./tokens": {
+      "import": "./dist/tokens/index.js",
+      "require": "./dist/tokens/index.js",
+      "types": "./dist/tokens/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "build:package": "rollup -c",
+    "build:tokens": "node config/style-dictionary.config.js",
+    "start": "next start",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "typecheck": "tsc --noEmit",
+    "docs:generate": "node lib/docgen/generate.js",
+    "docs:dev": "npm run build:tokens && npm run dev",
+    "prepublishOnly": "npm run build:tokens && npm run build:package"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "styled-components": "^6.0.0"
+  },
+  "dependencies": {
+    "next": "latest",
+    "typescript": "^4.7.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.27.2",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/jest": "^30.0.0",
+    "@types/jest-axe": "^3.5.9",
+    "@types/node": "^18.0.3",
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
+    "babel-jest": "^30.0.2",
+    "babel-plugin-styled-components": "^2.1.4",
+    "jest": "^30.0.2",
+    "jest-axe": "^9.0.0",
+    "jest-environment-jsdom": "^30.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rollup": "^3.20.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "style-dictionary": "^3.8.0",
+    "styled-components": "^6.1.1"
+  },
+  "keywords": [
+    "design-system",
+    "react",
+    "styled-components",
+    "accessibility",
+    "atomic-design",
+    "tokens",
+    "components"
+  ],
+  "author": "Common Origin",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/common-origin/design-system.git"
+  }
+}

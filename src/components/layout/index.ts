@@ -1,0 +1,1 @@
+// Layout index - components will be extracted here

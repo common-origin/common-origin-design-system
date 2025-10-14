@@ -1,0 +1,442 @@
+{
+  "semantic": {    
+		"border": {
+			"default": {
+				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
+				"type": "border"
+			},
+			"subtle": {
+				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
+				"type": "border"
+			},
+			"strong": {
+				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
+				"type": "border"
+			},
+			"focus": {
+				"value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
+				"type": "border"
+			},
+			"tooltip": {
+				"value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
+				"type": "border"
+			}
+    },
+    "size": {
+      "icon": {
+        "xs": {
+          "value": "{base.size.3}",
+          "type": "size"
+        },
+        "sm": {
+          "value": "{base.size.4}",
+          "type": "size"
+        },
+        "md": {
+          "value": "{base.size.5}",
+          "type": "size"
+        },
+        "lg": {
+          "value": "{base.size.6}",
+          "type": "size"
+        },
+        "xl": {
+          "value": "{base.size.8}",
+          "type": "size"
+        },
+        "2xl": {
+          "value": "{base.size.10}",
+          "type": "size"
+        }
+      },
+      "avatar": {
+        "xs": {
+          "value": "{base.size.6}",
+          "type": "size"
+        },
+        "sm": {
+          "value": "{base.size.8}",
+          "type": "size"
+        },
+        "md": {
+          "value": "{base.size.10}",
+          "type": "size"
+        },
+        "lg": {
+          "value": "{base.size.12}",
+          "type": "size"
+        },
+        "xl": {
+          "value": "{base.size.16}",
+          "type": "size"
+        }
+      }
+    },
+    "spacing": {
+      "separator": {
+        "sm": {
+          "value": "{base.spacing.4}",
+          "type": "spacing"
+        },
+        "md": {
+          "value": "{base.spacing.6}",
+          "type": "spacing"
+        },
+        "lg": {
+          "value": "{base.spacing.8}",
+          "type": "spacing"
+        },
+        "xl": {
+          "value": "{base.spacing.12}",
+          "type": "spacing"
+        }
+      },
+      "layout": {
+        "none": {
+          "value": "{base.spacing.0}",
+          "type": "spacing"
+        },
+        "xs": {
+          "value": "{base.spacing.1}",
+          "type": "spacing"
+        },
+        "sm": {
+          "value": "{base.spacing.2}",
+          "type": "spacing"
+        },
+        "md": {
+          "value": "{base.spacing.3}",
+          "type": "spacing"
+        },
+        "lg": {
+          "value": "{base.spacing.4}",
+          "type": "spacing"
+        },
+        "xl": {
+          "value": "{base.spacing.5}",
+          "type": "spacing"
+        },
+        "2xl": {
+          "value": "{base.spacing.6}",
+          "type": "spacing"
+        },
+        "3xl": {
+          "value": "{base.spacing.7}",
+          "type": "spacing"
+        },
+        "4xl": {
+          "value": "{base.spacing.8}",
+          "type": "spacing"
+        },
+        "5xl": {
+          "value": "{base.spacing.9}",
+          "type": "spacing"
+        },
+        "6xl": {
+          "value": "{base.spacing.10}",
+          "type": "spacing"
+        },
+        "7xl": {
+          "value": "{base.spacing.12}",
+          "type": "spacing"
+        },
+        "8xl": {
+          "value": "{base.spacing.14}",
+          "type": "spacing"
+        },
+        "9xl": {
+          "value": "{base.spacing.16}",
+          "type": "spacing"
+        },
+        "10xl": {
+          "value": "{base.spacing.20}",
+          "type": "spacing"
+        },
+        "auto": {
+          "value": "{base.spacing.auto}",
+          "type": "spacing"
+        }
+      }
+    },
+    "color": {
+      "text": {
+        "default": {
+          "value": "{base.color.neutral.900}",
+          "type": "color"
+        },
+        "emphasis": {
+          "value": "{base.color.neutral.800}",
+          "type": "color"
+        },
+        "subdued": {
+          "value": "{base.color.neutral.700}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{base.color.neutral.000}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{base.color.neutral.500}",
+          "type": "color"
+        },
+        "interactive": {
+          "value": "{base.color.blue.900}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{base.color.red.900}",
+          "type": "color"
+        },
+        "success": {
+          "value": "{base.color.green.900}",
+          "type": "color"
+        },
+        "warning": {
+          "value": "{base.color.orange.900}",
+          "type": "color"
+        }
+      },
+      "background": {
+        "default": {
+          "value": "{base.color.neutral.100}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{base.color.neutral.000}",
+          "type": "color"
+        },
+        "emphasis": {
+          "value": "{base.color.neutral.900}",
+          "type": "color"
+        },
+        "surface": {
+          "value": "{base.color.neutral.200}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{base.color.neutral.800}",
+          "type": "color"
+        },
+        "interactive": {
+          "value": "{base.color.blue.900}",
+          "type": "color"
+        },
+				"interactive-subtle": {
+          "value": "{base.color.blue.100}",
+          "type": "color"
+        },
+        "interactive-hover": {
+          "value": "{base.color.blue.1000}",
+          "type": "color"
+        },
+        "interactive-active": {
+          "value": "{base.color.blue.1100}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{base.color.red.900}",
+          "type": "color"
+        },
+        "error-subtle": {
+          "value": "{base.color.red.100}",
+          "type": "color"
+        },
+        "success": {
+          "value": "{base.color.green.900}",
+          "type": "color"
+        },
+        "success-subtle": {
+          "value": "{base.color.green.100}",
+          "type": "color"
+        },
+        "warning": {
+          "value": "{base.color.orange.900}",
+          "type": "color"
+        },
+        "warning-subtle": {
+          "value": "{base.color.orange.100}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{base.color.neutral.300}",
+          "type": "color"
+        }
+      },
+      "border": {
+        "default": {
+          "value": "{base.color.neutral.200}",
+          "type": "color"
+        },
+        "subtle": {
+          "value": "{base.color.neutral.300}",
+          "type": "color"
+        },
+        "strong": {
+          "value": "{base.color.neutral.800}",
+          "type": "color"
+        },
+        "interactive": {
+          "value": "{base.color.blue.900}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{base.color.red.900}",
+          "type": "color"
+        },
+        "success": {
+          "value": "{base.color.green.900}",
+          "type": "color"
+        },
+        "warning": {
+          "value": "{base.color.orange.900}",
+          "type": "color"
+        }
+      },
+      "icon": {
+        "default": {
+          "value": "{base.color.neutral.900}",
+          "type": "color"
+        },
+        "emphasis": {
+          "value": "{base.color.neutral.800}",
+          "type": "color"
+        },
+        "subdued": {
+          "value": "{base.color.neutral.600}",
+          "type": "color"
+        },
+        "disabled": {
+          "value": "{base.color.neutral.500}",
+          "type": "color"
+        },
+        "inverse": {
+          "value": "{base.color.neutral.000}",
+          "type": "color"
+        },
+        "interactive": {
+          "value": "{base.color.blue.900}",
+          "type": "color"
+        },
+        "interactive-hover": {
+          "value": "{base.color.blue.1000}",
+          "type": "color"
+        },
+        "interactive-active": {
+          "value": "{base.color.blue.1100}",
+          "type": "color"
+        },
+        "error": {
+          "value": "{base.color.red.900}",
+          "type": "color"
+        },
+        "success": {
+          "value": "{base.color.green.900}",
+          "type": "color"
+        },
+        "warning": {
+          "value": "{base.color.orange.900}",
+          "type": "color"
+        }
+      }
+    },
+    "typography": {
+      "display": {
+        "value": "{base.fontWeight.5} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h1": {
+        "value": "{base.fontWeight.5} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h2": {
+        "value": "{base.fontWeight.5} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h3": {
+        "value": "{base.fontWeight.5} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h4": {
+        "value": "{base.fontWeight.3} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h5": {
+        "value": "{base.fontWeight.3} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "h6": {
+        "value": "{base.fontWeight.3} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
+        "type": "typography"
+      },
+      "subtitle": {
+        "value": "{base.fontWeight.3} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "body": {
+        "value": "{base.fontWeight.2} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "small": {
+        "value": "{base.fontWeight.2} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "overline": {
+        "value": "{base.fontWeight.5} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "caption": {
+        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "button1": {
+        "value": "{base.fontWeight.3} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "button2": {
+        "value": "{base.fontWeight.3} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "button3": {
+        "value": "{base.fontWeight.3} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "label": {
+        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "type": "typography"
+      },
+      "breadcrumb": {
+        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
+        "type": "typography"
+      }
+    },
+    "motion": {
+      "transition": {
+        "fast": {
+          "value": "all {base.duration.fast} {base.easing.easeOut}",
+          "type": "transition"
+        },
+        "normal": {
+          "value": "all {base.duration.normal} {base.easing.easeInOut}",
+          "type": "transition"
+        },
+        "slow": {
+          "value": "all {base.duration.moderate} {base.easing.easeInOut}",
+          "type": "transition"
+        }
+      },
+      "hover": {
+        "value": "background-color {base.duration.fast} {base.easing.easeOut}, color {base.duration.fast} {base.easing.easeOut}",
+        "type": "transition"
+      },
+      "focus": {
+        "value": "outline {base.duration.fast} {base.easing.easeOut}, outline-offset {base.duration.fast} {base.easing.easeOut}",
+        "type": "transition"
+      },
+      "interactive": {
+        "value": "transform {base.duration.fast} {base.easing.easeOut}, opacity {base.duration.fast} {base.easing.easeOut}",
+        "type": "transition"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "base": {
+    "$ref": "./base/index.json"
+  },
+  "semantic": {
+    "$ref": "./semantic/index.json"
+  },
+  "component": {
+    "$ref": "./component/index.json"
+  }
+}

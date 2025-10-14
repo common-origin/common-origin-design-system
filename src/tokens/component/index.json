@@ -1,0 +1,207 @@
+{
+  "component": {
+    "button": {
+      "primary": {
+        "backgroundColor": "{base.color.neutral.900}",
+        "textColor": "{base.color.neutral.000}",
+        "borderRadius": "{base.border.radius.2}",
+        "padding": "{base.spacing.3} {base.spacing.4}",
+        "font": "{semantic.typography.button1}"
+      },
+      "hover": {
+        "backgroundColor": "{base.color.neutral.800}"
+      },
+      "active": {
+        "backgroundColor": "{base.color.neutral.1000}"
+      },
+      "focus": {
+        "outline": "{semantic.border.focus}",
+        "outlineOffset": "2px"
+      },
+      "disabled": {
+        "backgroundColor": "{semantic.color.background.disabled}",
+        "textColor": "{semantic.color.text.disabled}"
+      },
+      "variants": {
+        "secondary": {
+          "backgroundColor": "{base.color.neutral.200}",
+          "textColor": "{base.color.neutral.900}",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.300}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.100}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
+        },
+        "naked": {
+          "backgroundColor": "transparent",
+          "textColor": "{base.color.neutral.900}",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.200}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.300}"
+          },
+          "disabled": {
+            "backgroundColor": "transparent",
+            "textColor": "{semantic.color.text.disabled}"
+          }
+        }
+      },
+      "sizes": {
+        "small": {
+          "padding": "{base.spacing.2} {base.spacing.3}",
+          "font": "{semantic.typography.button3}"
+        },
+        "medium": {
+          "padding": "{base.spacing.2} {base.spacing.4}",
+          "font": "{semantic.typography.button2}"
+        },
+        "large": {
+          "padding": "{base.spacing.3} {base.spacing.4}",
+          "font": "{semantic.typography.button1}"
+        }
+      }
+    },
+    "chip": {
+      "default": {
+        "backgroundColor": "{semantic.color.background.surface}",
+        "textColor": "{semantic.color.text.default}",
+        "borderRadius": "{base.border.radius.2}",
+        "padding": "{base.spacing.1} {base.spacing.2}",
+        "font": "{semantic.typography.label}"
+      },
+      "variants": {
+        "emphasis": {
+          "backgroundColor": "{semantic.color.background.emphasis}",
+          "textColor": "{semantic.color.text.inverse}"
+        },
+        "subtle": {
+          "backgroundColor": "{semantic.color.background.subtle}",
+          "textColor": "{semantic.color.text.default}"
+        },
+        "interactive": {
+          "backgroundColor": "{semantic.color.background.interactive}",
+          "textColor": "{semantic.color.text.inverse}"
+        }
+      },
+      "sizes": {
+        "small": {
+          "padding": "{base.spacing.0} {base.spacing.1}",
+          "font": "{semantic.typography.caption}"
+        },
+        "medium": {
+          "padding": "{base.spacing.1} {base.spacing.2}",
+          "font": "{semantic.typography.label}"
+        },
+        "large": {
+          "padding": "{base.spacing.2} {base.spacing.3}",
+          "font": "{semantic.typography.small}"
+        }
+      }
+    },
+    "iconButton": {
+      "primary": {
+        "backgroundColor": "{base.color.neutral.900}",
+        "borderRadius": "{base.border.radius.2}",
+        "minWidth": "40px",
+        "minHeight": "40px",
+        "display": "flex",
+        "alignItems": "center",
+        "justifyContent": "center"
+      },
+      "hover": {
+        "backgroundColor": "{base.color.neutral.800}"
+      },
+      "active": {
+        "backgroundColor": "{base.color.neutral.1000}"
+      },
+      "focus": {
+        "outline": "{semantic.border.focus}",
+        "outlineOffset": "2px"
+      },
+      "disabled": {
+        "backgroundColor": "{semantic.color.background.disabled}"
+      },
+      "variants": {
+        "secondary": {
+          "backgroundColor": "{base.color.neutral.200}",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.300}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.100}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}"
+          }
+        },
+        "naked": {
+          "backgroundColor": "transparent",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.200}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.300}"
+          },
+          "disabled": {
+            "backgroundColor": "transparent"
+          }
+        }
+      },
+      "sizes": {
+        "small": {
+          "minWidth": "32px",
+          "minHeight": "32px",
+          "padding": "{base.spacing.1}"
+        },
+        "medium": {
+          "minWidth": "40px",
+          "minHeight": "40px",
+          "padding": "{base.spacing.2}"
+        },
+        "large": {
+          "minWidth": "48px",
+          "minHeight": "48px",
+          "padding": "{base.spacing.3}"
+        }
+      }
+    },
+    "separator": {
+      "border": "{semantic.border.subtle}",
+      "margin": "{semantic.spacing.separator.lg} 0",
+      "variants": {
+        "default": {
+          "border": "{semantic.border.subtle}",
+          "margin": "{semantic.spacing.separator.lg} 0"
+        },
+        "strong": {
+          "border": "{semantic.border.strong}",
+          "margin": "{semantic.spacing.separator.lg} 0"
+        },
+        "minimal": {
+          "border": "{semantic.border.subtle}",
+          "margin": "{semantic.spacing.separator.md} 0"
+        }
+      },
+      "sizes": {
+        "small": {
+          "margin": "{semantic.spacing.separator.sm} 0"
+        },
+        "medium": {
+          "margin": "{semantic.spacing.separator.md} 0"
+        },
+        "large": {
+          "margin": "{semantic.spacing.separator.lg} 0"
+        },
+        "xlarge": {
+          "margin": "{semantic.spacing.separator.xl} 0"
+        }
+      }
+    }
+  }
+}

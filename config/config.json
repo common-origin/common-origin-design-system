@@ -1,0 +1,55 @@
+{
+  "source": ["src/tokens/**/*.json"],
+  "platforms": {
+    "tokens": {
+      "transformGroup": "js",
+      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
+      "buildPath": "src/styles/",
+      "files": [
+        {
+          "format": "json/nested",
+          "destination": "tokens.json"
+        }
+      ]
+    },
+    "custom": {
+      "transformGroup": "css",
+      "transforms": [
+        "baseToken",
+        "nameFormatter",
+        "pxToRemConverter",
+        "calculationFormatter",
+        "boxShadowValueFormatter"
+      ],
+      "buildPath": "src/styles/",
+      "files": [
+        {
+          "format": "css/variables",
+          "destination": "tokens.css"
+        }
+      ]
+    },
+    "typescript": {
+      "transformGroup": "js",
+      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
+      "buildPath": "src/styles/",
+      "files": [
+        {
+          "format": "typescript/nested-interface",
+          "destination": "tokens.d.ts"
+        }
+      ]
+    },
+    "styled-components": {
+      "transformGroup": "js",
+      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
+      "buildPath": "lib/",
+      "files": [
+        {
+          "format": "javascript/styled-components",
+          "destination": "tokens.js"
+        }
+      ]
+    }
+  }
+}
