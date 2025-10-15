@@ -1,0 +1,118 @@
+import React from 'react'
+import styled from 'styled-components'
+import { Chip, Button, CoverImage, DateFormatter, SectionSeparator, Stack, Typography } from '@/components'
+import tokens from '@/styles/tokens.json'
+
+const { base: { spacing, border } } = tokens
+
+export type DesignCardProps = {
+  title: string
+  excerpt: string
+  labels: string[]
+  tag: string
+  coverImage: string
+  date: string
+  slug?: string
+}
+
+const DesignCardStyled = styled.div`
+  @media (min-width: ${tokens.base.breakpoint.md}) {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @media (min-width: ${tokens.base.breakpoint.lg}) {
+    gap: ${spacing[12]};
+  }
+
+  img {
+    border-radius: ${border.radius[6]};
+    transition: ease opacity 0.2s;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  a {
+    text-decoration: none;
+  }
+`
+
+const ImageWrapper = styled.div`
+  grid-column: span 12;
+
+  @media (min-width: ${tokens.base.breakpoint.lg}) {
+    grid-column: span 6;
+  }
+`
+
+const ContentSection = styled.div`
+  grid-column: span 12;
+  margin-top: ${spacing[6]};
+
+  @media (min-width: ${tokens.base.breakpoint.lg}) {
+    grid-column: span 6;
+    margin-top: 0;
+    padding-right: ${spacing[8]};
+  }
+
+  @media (min-width: ${tokens.base.breakpoint.xl}) {
+    padding-right: ${spacing[24]};
+  }
+`
+
+const ButtonWrapper = styled.div`
+  button {
+    margin-top: ${spacing[4]};
+  }
+`
+
+const ContentWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+`
+
+export const DesignCard: React.FC<DesignCardProps> = ({
+  title,
+  excerpt,
+  labels = [],
+  tag,
+  coverImage,
+  date,
+  slug,
+}) => {
+  if (tag === 'design') {
+    return (
+      <>
+        <DesignCardStyled>
+          <ImageWrapper>
+            <CoverImage title={title} src={coverImage} slug={slug} />
+          </ImageWrapper>
+          <ContentSection>
+            <ContentWrapper>
+              <Stack direction="column" gap="md">
+                <Typography variant="h3">{title}</Typography>
+                <DateFormatter dateString={date} />
+                <Typography variant="small">{excerpt}</Typography>
+                <Stack direction="row" gap="xs">
+                  {Array.isArray(labels) && labels.map((label, index) => (
+                    <Chip key={index} title={label} variant="default" />
+                  ))}
+                </Stack>
+                <ButtonWrapper>
+                  <Button url={`/posts/${slug}`}>Read more</Button>
+                </ButtonWrapper>
+              </Stack>
+            </ContentWrapper>
+          </ContentSection>
+        </DesignCardStyled>
+        <SectionSeparator />
+      </>
+    )
+  }
+
+  return null
+}

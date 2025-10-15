@@ -1,10 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: false
-  },
   reactStrictMode: true,
-  swcMinify: true,
   compiler: {
     styledComponents: true
   },

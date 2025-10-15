@@ -5,17 +5,33 @@ export * from './atoms'
 export * from './molecules'
 export * from './layout'
 
-// Export individual components for direct import
-export { Icon } from './atoms/Icon'
-export { Typography } from './atoms/Typography'
-export { Stack } from './atoms/Stack'
+// Utility components
+export { DateFormatter } from './dateFormatter'
+
+// Individual component exports for convenience
+// Atoms
+export { Alert } from './atoms/Alert'
+export { Avatar } from './atoms/Avatar'
+export { Box } from './atoms/Box'
 export { Button } from './atoms/Button'
+export { Chip } from './atoms/Chip'
+export { Container } from './atoms/Container'
+export { CoverImage } from './atoms/CoverImage'
+export { Icon } from './atoms/Icon'
+export { IconButton } from './atoms/IconButton'
+export { SectionSeparator } from './atoms/SectionSeparator'
+export { Stack } from './atoms/Stack'
+export { Typography } from './atoms/Typography'
 
-// Component exports will be added as more components are extractedcomponents export - will be populated as we extract components
+// Layout
+export { ResponsiveGrid, GridCol, Grid } from './layout/GridSystem'
 
-// Re-export everything for now
-export * from './atoms'
-export * from './molecules'
-export * from './layout'
-
-// Component exports will be added as they are extracted
+// Molecules
+export { ArtCard } from './molecules/ArtCard'
+export { Breadcrumbs } from './molecules/Breadcrumbs'
+export { ChipGroup } from './molecules/ChipGroup'
+export { CodeBlock } from './molecules/CodeBlock'
+export { DesignCard } from './molecules/DesignCard'
+export { Dropdown } from './molecules/Dropdown'
+export { PageTitle } from './molecules/PageTitle'
+export { ReleaseCard } from './molecules/ReleaseCard'
