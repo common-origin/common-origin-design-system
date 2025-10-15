@@ -16,7 +16,7 @@ import {
   Navigation,
   Stack,
   Typography,
-} from '../../src/components'
+} from '../src/components'
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/styles/tokens.json'
@@ -301,7 +301,7 @@ export default function Components() {
           <title>Components - Common Origin</title>
         </Head>
         <Navigation />
-        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Design', url: '/design' }, { label: 'Components', url: '/design/components' }]} />
+        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Components', url: '/components' }]} />
         
         <section>
           <Container>

@@ -51,7 +51,7 @@ export default function Design({ allPosts }: Props) {
           <title>{`Common Origin website`}</title>
         </Head>
         <Navigation/>
-        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Design', url: '/design' }]} />
+        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }]} />
         <section>
           <Container>
             <Box my="4xl">

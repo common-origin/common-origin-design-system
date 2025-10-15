@@ -1080,7 +1080,7 @@ export default function Tokens() {
           <title>Design Tokens - Common Origin</title>
         </Head>
         <Navigation />
-        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Design', url: '/design' }, { label: 'Tokens', url: '/design/tokens' }]} />
+        <Breadcrumbs breadcrumbs={[{ label: 'Home', url: '/' }, { label: 'Tokens', url: '/tokens' }]} />
         
         <section>
           <Container>
