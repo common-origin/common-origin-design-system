@@ -1,12 +1,12 @@
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { LayoutErrorBoundary } from '../components'
-import { performanceMonitor } from '../lib/performance'
-import { initializeCriticalImagePreloading } from '../lib/imagePreloader'
+import { LayoutErrorBoundary } from '../src/components'
+import { performanceMonitor } from '../src/lib/performance'
+import { initializeCriticalImagePreloading } from '../src/lib/imagePreloader'
 import '../styles/index.css'
-import '../styles/tokens.css'
-import '../components/markdown-styles.css'
+import '../src/styles/tokens.css'
+import '../src/components/markdown-styles.css'
 
 // TypeScript declaration for Hotjar
 declare global {

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
+  "type": "module",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
@@ -42,15 +43,20 @@
     "styled-components": "^6.0.0"
   },
   "dependencies": {
+    "@hotjar/browser": "^1.0.9",
     "date-fns": "^4.1.0",
+    "gray-matter": "^4.0.3",
     "next": "latest",
     "typescript": "^4.7.4"
   },
   "devDependencies": {
+    "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^24.0.0",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@testing-library/jest-dom": "^6.6.3",

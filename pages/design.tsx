@@ -1,4 +1,4 @@
-import { getAllPosts } from '../lib/api'
+import { getAllPosts } from '../src/lib/api'
 import Head from 'next/head'
 import Post from '../interfaces/post'
 import styled from 'styled-components'
@@ -16,7 +16,7 @@ import {
   SectionSeparator,
   Stack,
   Typography,
-} from '../components'
+} from '../src/components'
 import tokens from '@/styles/tokens.json'
 
 const { base: { breakpoint }, semantic: { color, spacing } } = tokens

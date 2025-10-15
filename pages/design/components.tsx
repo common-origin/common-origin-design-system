@@ -8,12 +8,15 @@ import {
   Chip,
   CodeBlock,
   Container,
+  CoverImage,
+  DesignCard,
   Dropdown,
+  Icon,
   Layout,
   Navigation,
   Stack,
   Typography,
-} from '../../components'
+} from '../../src/components'
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/styles/tokens.json'

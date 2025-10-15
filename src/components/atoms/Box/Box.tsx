@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '../../../styles/tokens.json'
 
 // Public props interface (without $ prefix, following atomic pattern)
 export interface BoxProps {
