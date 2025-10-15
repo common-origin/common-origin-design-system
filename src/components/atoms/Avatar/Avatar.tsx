@@ -13,7 +13,9 @@ interface StyledAvatarProps {
   $size: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 }
 
-const AvatarContainer = styled.div<StyledAvatarProps>`
+const AvatarContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['$size'].includes(prop),
+})<StyledAvatarProps>`
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -26,7 +28,9 @@ const AvatarContainer = styled.div<StyledAvatarProps>`
   flex-shrink: 0;
 `
 
-const AvatarImage = styled.img<StyledAvatarProps>`
+const AvatarImage = styled.img.withConfig({
+  shouldForwardProp: (prop) => !['$size'].includes(prop),
+})<StyledAvatarProps>`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -34,7 +38,9 @@ const AvatarImage = styled.img<StyledAvatarProps>`
   /* Remove the img role since the container already has role="img" */
 `
 
-const AvatarInitials = styled.span<StyledAvatarProps>`
+const AvatarInitials = styled.span.withConfig({
+  shouldForwardProp: (prop) => !['$size'].includes(prop),
+})<StyledAvatarProps>`
   font-family: ${tokens.base.fontFamily.body};
   font-weight: ${tokens.base.fontWeight[3]};
   font-size: ${({ $size }) => {

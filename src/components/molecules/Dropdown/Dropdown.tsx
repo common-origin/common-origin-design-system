@@ -27,7 +27,9 @@ const DropdownContainer = styled.div`
   width: 100%;
 `
 
-const DropdownTrigger = styled.button<{ $isOpen: boolean }>`
+const DropdownTrigger = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+})<{ $isOpen: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
@@ -64,7 +66,9 @@ const DropdownTrigger = styled.button<{ $isOpen: boolean }>`
   `}
 `
 
-const DropdownIcon = styled.div<{ $isOpen: boolean }>`
+const DropdownIcon = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+})<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
   margin-left: ${spacing[2]};
@@ -75,7 +79,9 @@ const DropdownIcon = styled.div<{ $isOpen: boolean }>`
   `}
 `
 
-const DropdownMenu = styled.div<{ $isOpen: boolean }>`
+const DropdownMenu = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+})<{ $isOpen: boolean }>`
   position: absolute;
   top: 100%;
   left: 0;
@@ -95,7 +101,9 @@ const DropdownMenu = styled.div<{ $isOpen: boolean }>`
   overflow-y: auto;
 `
 
-const DropdownOption = styled.button<{ $isSelected: boolean; $isFocused: boolean }>`
+const DropdownOption = styled.button.withConfig({
+  shouldForwardProp: (prop) => !['$isSelected', '$isFocused'].includes(prop),
+})<{ $isSelected: boolean; $isFocused: boolean }>`
   width: 100%;
   display: block;
   padding: ${spacing[3]} ${spacing[4]};

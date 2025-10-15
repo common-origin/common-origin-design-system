@@ -11,7 +11,9 @@ export type Props = {
   'data-testid'?: string
 }
 
-const AlertWrapper = styled.div<{ $preview: boolean }>`
+const AlertWrapper = styled.div.withConfig({
+  shouldForwardProp: (prop) => !['$preview'].includes(prop),
+})<{ $preview: boolean }>`
   border-bottom: ${semantic.border.default};
   background-color: ${({ $preview }) => 
     $preview ? semantic.color.background.emphasis : semantic.color.background.default};
@@ -27,7 +29,9 @@ const AlertContent = styled.div`
   font: ${semantic.typography.small};
 `
 
-const AlertLink = styled.a<{ $preview: boolean }>`
+const AlertLink = styled.a.withConfig({
+  shouldForwardProp: (prop) => !['$preview'].includes(prop),
+})<{ $preview: boolean }>`
   text-decoration: underline;
   color: inherit;
   transition: color ${base.duration.fast} ${base.easing.ease};
