@@ -12,7 +12,7 @@ import {
   Typography,
   Stack,
   Chip,
-} from '@/components'
+} from '../src/components/pageComponents'
 import tokens from '@/styles/tokens.json'
 
 const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
