@@ -1,12 +1,12 @@
-// Design System Components - Core atomic design exports
+// Design System Components - Pure reusable components for NPM package
+// No Next.js dependencies - these are the actual design system exports
+// Core atomic design components
 export * from './atoms/';
 export * from './molecules/';
+// export * from './organisms/' // temporarily disabled for testing
 export * from './layout/';
-// Individual utility exports that work
+// Utility components
 export * from './dateFormatter';
-// Layout Components - export GridSystem components specifically
+// Layout grid system (explicit exports for better tree-shaking)
 export { ResponsiveGrid, GridCol, Grid } from './layout/GridSystem';
-// Note: Navigation, Layout, Meta, etc. components are temporarily disabled
-// due to Next.js dependencies that don't work in package builds.
-// These will be available in development/Next.js context but not in the NPM package.
 //# sourceMappingURL=index.js.map

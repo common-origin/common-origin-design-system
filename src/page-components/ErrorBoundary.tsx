@@ -1,9 +1,9 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react'
 import styled from 'styled-components'
-import { Container } from './atoms/Container'
-import { Stack } from './atoms/Stack'
-import { Typography } from './atoms/Typography'
-import { Button } from './atoms/Button'
+import { Container } from '../components/atoms/Container'
+import { Stack } from '../components/atoms/Stack'
+import { Typography } from '../components/atoms/Typography'
+import { Button } from '../components/atoms/Button'
 import { captureException } from '../lib/errorReporting'
 import tokens from '@/styles/tokens.json'
 

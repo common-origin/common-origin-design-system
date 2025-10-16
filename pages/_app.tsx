@@ -1,7 +1,7 @@
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { LayoutErrorBoundary } from '../src/components/pageComponents'
+import { LayoutErrorBoundary } from '../src/page-components'
 import { performanceMonitor } from '../src/lib/performance'
 import { initializeCriticalImagePreloading } from '../src/lib/imagePreloader'
 import '../styles/index.css'

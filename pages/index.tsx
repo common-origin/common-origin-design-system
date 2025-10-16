@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Button, Stack, Typography } from '../src/components/pageComponents'
+import { Button, Stack, Typography } from '../src/page-components'
 import tokens from '../src/styles/tokens.json'
 
 const { semantic: { color, spacing } } = tokens

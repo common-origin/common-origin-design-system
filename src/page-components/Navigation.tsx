@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import Link from 'next/link'
-import { Container } from './atoms/Container'
-import { IconButton } from './atoms/IconButton'
-import { Typography } from './atoms/Typography'
+import { Container } from '../components/atoms/Container'
+import { IconButton } from '../components/atoms/IconButton'
+import { Typography } from '../components/atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
 const { base: { spacing }, semantic: { border, color } } = tokens
