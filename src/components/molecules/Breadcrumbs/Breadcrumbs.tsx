@@ -1,7 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Container, Typography } from '@/components'
+import { Container } from '../../atoms/Container'
+import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
 

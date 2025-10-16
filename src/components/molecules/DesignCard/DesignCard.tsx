@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Chip, Button, CoverImage, DateFormatter, SectionSeparator, Stack, Typography } from '@/components'
+import { Chip } from '../../atoms/Chip'
+import { Button } from '../../atoms/Button'
+import { CoverImage } from '../../atoms/CoverImage'
+import { SectionSeparator } from '../../atoms/SectionSeparator'
+import { Stack } from '../../atoms/Stack'
+import { Typography } from '../../atoms/Typography'
+import { DateFormatter } from '../../dateFormatter'
 import tokens from '@/styles/tokens.json'
 
 const { base: { spacing, border } } = tokens

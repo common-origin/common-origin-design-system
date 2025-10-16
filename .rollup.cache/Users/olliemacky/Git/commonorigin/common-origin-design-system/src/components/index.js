@@ -1,6 +1,6 @@
-// Design System Components - Core atomic design exports only
-// Note: Some components temporarily excluded due to circular import dependencies
+// Design System Components - Core atomic design exports
 export * from './atoms/';
+export * from './molecules/';
 export * from './layout/';
 // Individual utility exports that work
 export * from './dateFormatter';

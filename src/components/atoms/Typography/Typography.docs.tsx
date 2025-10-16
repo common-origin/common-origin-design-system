@@ -1,5 +1,6 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
-import { Stack, Typography } from '@/components'
+import { Stack } from '../Stack'
+import { Typography } from './Typography'
 
 /**
  * Typography component documentation

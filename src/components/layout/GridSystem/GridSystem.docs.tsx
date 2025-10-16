@@ -1,7 +1,7 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import React from 'react'
 import { Grid, GridCol, ResponsiveGrid } from './GridSystem'
-import { Typography } from '@/components'
+import { Typography } from '../../atoms/Typography'
 
 export const gridSystemDocs: ComponentDocumentation = {
   id: 'grid-system',

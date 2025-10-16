@@ -1,6 +1,9 @@
 import { __makeTemplateObject } from "tslib";
 import styled from 'styled-components';
-import { Chip, CoverImage, Stack, Typography } from '@/components';
+import { Chip } from '../../atoms/Chip';
+import { CoverImage } from '../../atoms/CoverImage';
+import { Stack } from '../../atoms/Stack';
+import { Typography } from '../../atoms/Typography';
 import tokens from '@/styles/tokens.json';
 var border = tokens.base.border;
 var ArtCardStyled = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  max-width: 768px;\n\n  a {\n    text-decoration: none;\n  }\n\n  &:hover {\n    img {\n      opacity: 0.8;\n    }\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n    width: 100%;\n  }\n"], ["\n  max-width: 768px;\n\n  a {\n    text-decoration: none;\n  }\n\n  &:hover {\n    img {\n      opacity: 0.8;\n    }\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n    width: 100%;\n  }\n"])), border.radius[6]);

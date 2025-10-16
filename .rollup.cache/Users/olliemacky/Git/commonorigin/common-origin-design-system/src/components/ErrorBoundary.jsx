@@ -1,7 +1,10 @@
 import { __extends, __makeTemplateObject } from "tslib";
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Container, Stack, Typography, Button } from '@/components';
+import { Container } from './atoms/Container';
+import { Stack } from './atoms/Stack';
+import { Typography } from './atoms/Typography';
+import { Button } from './atoms/Button';
 import { captureException } from '../lib/errorReporting';
 import tokens from '@/styles/tokens.json';
 var semantic = tokens.semantic;

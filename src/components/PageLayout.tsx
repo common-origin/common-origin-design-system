@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Meta, ComponentErrorBoundary } from '@/components'
-import { Footer } from '@/components/organisms'
+import { Meta } from './meta'
+import { ComponentErrorBoundary } from './ErrorBoundaries'
+import { Footer } from './organisms/Footer'
 
 type Props = {
   preview?: boolean

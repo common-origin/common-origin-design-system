@@ -1,5 +1,8 @@
 import styled from 'styled-components'
-import { Chip, CoverImage, Stack, Typography } from '@/components'
+import { Chip } from '../../atoms/Chip'
+import { CoverImage } from '../../atoms/CoverImage'
+import { Stack } from '../../atoms/Stack'
+import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
 const { base: { border } } = tokens

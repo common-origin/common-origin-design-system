@@ -3,7 +3,7 @@ import React from 'react';
 import { useRouter } from 'next/router';
 import styled from "styled-components";
 import Link from 'next/link';
-import { Container } from '@/components';
+import { Container } from '../../atoms/Container';
 import tokens from '@/styles/tokens.json';
 var _a = tokens.semantic, color = _a.color, spacing = _a.spacing;
 var FooterStyled = styled.footer(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  background-color: ", ";\n  color: ", ";\n  width: 100%;\n"], ["\n  background-color: ", ";\n  color: ", ";\n  width: 100%;\n"])), color.background.emphasis, color.text.inverse);

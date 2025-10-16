@@ -1,7 +1,10 @@
 import { __makeTemplateObject } from "tslib";
 import React from 'react';
 import styled from 'styled-components';
-import { Button, Container, Stack, Typography } from '@/components';
+import { Button } from '../../atoms/Button';
+import { Container } from '../../atoms/Container';
+import { Stack } from '../../atoms/Stack';
+import { Typography } from '../../atoms/Typography';
 import tokens from '@/styles/tokens.json';
 var spacing = tokens.semantic.spacing, _a = tokens.base, border = _a.border, breakpoint = _a.breakpoint;
 var HeroGrid = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: ", ";\n  margin-bottom: ", ";\n\n  @media (min-width: ", ") {\n    margin-bottom: ", ";\n  }\n"], ["\n  display: grid;\n  grid-template-columns: repeat(12, 1fr);\n  gap: ", ";\n  margin-bottom: ", ";\n\n  @media (min-width: ", ") {\n    margin-bottom: ", ";\n  }\n"])), spacing.layout.lg, spacing.layout['4xl'], breakpoint.xl, spacing.layout['10xl']);

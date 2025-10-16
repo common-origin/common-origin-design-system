@@ -1,7 +1,13 @@
 import { __makeTemplateObject } from "tslib";
 import React from 'react';
 import styled from 'styled-components';
-import { Chip, Button, CoverImage, DateFormatter, SectionSeparator, Stack, Typography } from '@/components';
+import { Chip } from '../../atoms/Chip';
+import { Button } from '../../atoms/Button';
+import { CoverImage } from '../../atoms/CoverImage';
+import { SectionSeparator } from '../../atoms/SectionSeparator';
+import { Stack } from '../../atoms/Stack';
+import { Typography } from '../../atoms/Typography';
+import { DateFormatter } from '../../dateFormatter';
 import tokens from '@/styles/tokens.json';
 var _a = tokens.base, spacing = _a.spacing, border = _a.border;
 var DesignCardStyled = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  @media (min-width: ", ") {\n    display: grid;\n    grid-template-columns: repeat(12, 1fr);\n  }\n\n  @media (min-width: ", ") {\n    gap: ", ";\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n\n    &:hover {\n      opacity: 0.8;\n    }\n  }\n\n  a {\n    text-decoration: none;\n  }\n"], ["\n  @media (min-width: ", ") {\n    display: grid;\n    grid-template-columns: repeat(12, 1fr);\n  }\n\n  @media (min-width: ", ") {\n    gap: ", ";\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n\n    &:hover {\n      opacity: 0.8;\n    }\n  }\n\n  a {\n    text-decoration: none;\n  }\n"])), tokens.base.breakpoint.md, tokens.base.breakpoint.lg, spacing[12], border.radius[6]);

@@ -1,6 +1,7 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Stack } from './Stack'
-import { Box, Typography } from '@/components'
+import { Box } from '../Box'
+import { Typography } from '../Typography'
 
 export const stackDocs: ComponentDocumentation = {
   id: 'stack',

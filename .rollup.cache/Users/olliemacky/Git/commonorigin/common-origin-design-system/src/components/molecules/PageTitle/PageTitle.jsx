@@ -1,7 +1,9 @@
 import { __makeTemplateObject } from "tslib";
 import React from 'react';
 import styled from 'styled-components';
-import { IconButton, Stack, Typography } from '../../';
+import { IconButton } from '../../atoms/IconButton';
+import { Stack } from '../../atoms/Stack';
+import { Typography } from '../../atoms/Typography';
 import tokens from '@/styles/tokens.json';
 var PageTitleStyled = styled.div.withConfig({
     shouldForwardProp: function (prop) { return !['$hasBackButton'].includes(prop); },
