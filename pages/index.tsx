@@ -29,7 +29,8 @@ export default function Home() {
     <>
       <Head>
         <title>Common Origin Design System</title>
-        <meta name="description" content="A comprehensive design system with atomic components and WCAG 2.2 AA accessibility compliance" />
+        <meta name="description" content="A production-ready design system with atomic components and WCAG 2.2 AA accessibility compliance" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <CenteredContainer>
         <ContentCard>

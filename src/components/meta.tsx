@@ -1,6 +1,5 @@
 import React from 'react'
 import Head from 'next/head'
-import { HOME_OG_IMAGE_URL } from '../lib/constants'
 
 export const Meta: React.FC = () => {
   return (
@@ -36,28 +35,19 @@ export const Meta: React.FC = () => {
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
       <meta name="theme-color" content="#000000" />
       
-      {/* RSS feed */}
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      
-      {/* SEO meta tags */}
-      <meta
-        name="description"
-        content="Common Origin is a creativity studio that specializes in music, design, and technology."
-      />
-      <meta name="keywords" content="music, design, technology, creativity studio, electronic music, creative agency" />
-      <meta name="author" content="Common Origin" />
+      {/* Basic viewport and SEO */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="author" content="Common Origin" />
       
-      {/* Open Graph meta tags */}
+      {/* Design system specific meta */}
+      <meta 
+        name="keywords" 
+        content="design system, react components, atomic design, accessibility, WCAG, design tokens, component library" 
+      />
+      
+      {/* Open Graph defaults for design system */}
       <meta property="og:type" content="website" />
-      <meta property="og:site_name" content="Common Origin" />
-      <meta property="og:image" content={HOME_OG_IMAGE_URL} />
-      <meta property="og:image:alt" content="Common Origin - Creativity Studio" />
-      
-      {/* Twitter Card meta tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:image" content={HOME_OG_IMAGE_URL} />
-      <meta name="twitter:image:alt" content="Common Origin - Creativity Studio" />
+      <meta property="og:site_name" content="Common Origin Design System" />
     </Head>
   )
 }
