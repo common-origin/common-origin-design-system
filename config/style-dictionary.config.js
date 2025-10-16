@@ -1,6 +1,16 @@
-const StyleDictionary = require('style-dictionary').extend('./config/config.json')
+import StyleDictionary from 'style-dictionary'
+import { readFileSync } from 'fs'
+import { fileURLToPath } from 'url'
+import { dirname, join } from 'path'
 
-StyleDictionary.registerTransform({
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
+
+// Read the config file
+const config = JSON.parse(readFileSync(join(__dirname, 'config.json'), 'utf8'))
+const sd = StyleDictionary.extend(config)
+
+sd.registerTransform({
   type: 'name',
   transitive: true,
   name: 'nameFormatter',
@@ -9,7 +19,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'name',
   transitive: true,
   name: 'valueKeyFormatter',
@@ -18,7 +28,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'pxToRemConverter',
@@ -37,7 +47,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: `value`,
   transitive: true,
   name: `baseToken`,
@@ -52,7 +62,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'calculationFormatter',
@@ -86,7 +96,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'boxShadowValueFormatter',
@@ -134,7 +144,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'typographyFormatter',
@@ -157,7 +167,7 @@ StyleDictionary.registerTransform({
   },
 })
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'name',
   transitive: true,
   name: 'typographyNameFormatter',
@@ -203,7 +213,7 @@ const calculateExpressionToRem = (expression) => {
   return `${result}rem`
 }
 
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'jsCalculationFormatter',
@@ -222,7 +232,7 @@ StyleDictionary.registerTransform({
 })
 
 // Enhanced transform for responsive values
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'responsiveFormatter',
@@ -248,7 +258,7 @@ StyleDictionary.registerTransform({
 });
 
 // Enhanced color transform with opacity support
-StyleDictionary.registerTransform({
+sd.registerTransform({
   type: 'value',
   transitive: true,
   name: 'colorWithOpacity',
@@ -277,7 +287,7 @@ StyleDictionary.registerTransform({
 });
 
 // Custom format for styled-components utilities
-StyleDictionary.registerFormat({
+sd.registerFormat({
   name: 'javascript/styled-components',
   formatter: function(dictionary) {
     // Clean up the tokens object to only include values
@@ -345,7 +355,7 @@ export default tokens;
 });
 
 // Custom format for CSS utilities
-StyleDictionary.registerFormat({
+sd.registerFormat({
   name: 'css/utilities',
   formatter: function(dictionary) {
     let css = `/* Auto-generated CSS utilities */\n\n`;
@@ -391,7 +401,7 @@ StyleDictionary.registerFormat({
 });
 
 // Custom TypeScript format for nested tokens
-StyleDictionary.registerFormat({
+sd.registerFormat({
   name: 'typescript/nested-interface',
   formatter: function(dictionary) {
     const buildInterface = (obj, interfaceName = 'Tokens') => {
@@ -460,4 +470,4 @@ export default tokens;
   }
 });
 
-StyleDictionary.buildAllPlatforms()
+sd.buildAllPlatforms()

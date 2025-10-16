@@ -1,5 +1,5 @@
 // Atoms index - components extracted from main project
-export * from './Alert'
+// Note: Alert temporarily removed due to hardcoded content - will recreate later
 export * from './Avatar'
 export * from './Box'
 export * from './Button'

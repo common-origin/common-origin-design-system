@@ -2,7 +2,7 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import styled from "styled-components"
 import Link from 'next/link'
-import { Container } from '@/components'
+import { Container } from '../../atoms/Container'
 import tokens from '@/styles/tokens.json'
 
 const { semantic: { color, spacing } } = tokens

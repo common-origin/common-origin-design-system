@@ -1,0 +1,1 @@
+{"version":3,"file":"author.js","sourceRoot":"","sources":["author.ts"],"names":[],"mappings":"","sourcesContent":["type Author = {\n  name: string\n  picture: string\n}\n\nexport default Author\n"]}

@@ -1,0 +1,50 @@
+# Development files
+.next/
+.swc/
+.rollup.cache/
+node_modules/
+coverage/
+
+# Source files (we only publish dist/)
+src/
+pages/
+public/
+styles/
+lib/
+interfaces/
+
+# Configuration files
+*.config.js
+*.config.ts
+tsconfig.json
+jest.setup.js
+.eslintrc.json
+
+# Documentation and development
+docs/
+.github/
+.vscode/
+*.md
+!README.md
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.env*
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Test files
+**/*.test.*
+**/*.spec.*
+**/__tests__/
+**/__mocks__/
+
+# Documentation files
+**/*.docs.*

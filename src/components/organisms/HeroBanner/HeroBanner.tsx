@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button, Container, Stack, Typography } from '@/components'
+import { Button } from '../../atoms/Button'
+import { Container } from '../../atoms/Container'
+import { Stack } from '../../atoms/Stack'
+import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
 const { semantic: { spacing }, base: { border, breakpoint } } = tokens

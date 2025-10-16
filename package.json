@@ -1,5 +1,5 @@
 {
-  "name": "@common-origin/design-system",
+  "name": "common-origin-design-system",
   "version": "1.0.0",
   "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
@@ -35,7 +35,8 @@
     "typecheck": "tsc --noEmit",
     "docs:generate": "node lib/docgen/generate.js",
     "docs:dev": "npm run build:tokens && npm run dev",
-    "prepublishOnly": "npm run build:tokens && npm run build:package"
+    "prepublishOnly": "npm run build:tokens && npm run build:package",
+    "release": "npm publish --provenance --access public"
   },
   "peerDependencies": {
     "react": "^18.0.0",
