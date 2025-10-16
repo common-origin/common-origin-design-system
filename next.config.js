@@ -4,6 +4,14 @@ const nextConfig = {
   compiler: {
     styledComponents: true
   },
+  
+  typescript: {
+    // Ignore build errors during development
+    ignoreBuildErrors: false,
+    // Custom tsconfig path
+    tsconfigPath: './tsconfig.json'
+  },
+  
   // Configure the base path if this will be deployed as a subdirectory
   // basePath: '/design-system',
   

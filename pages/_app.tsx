@@ -6,7 +6,6 @@ import { performanceMonitor } from '../src/lib/performance'
 import { initializeCriticalImagePreloading } from '../src/lib/imagePreloader'
 import '../styles/index.css'
 import '../src/styles/tokens.css'
-import '../src/components/markdown-styles.css'
 
 // TypeScript declaration for Hotjar
 declare global {

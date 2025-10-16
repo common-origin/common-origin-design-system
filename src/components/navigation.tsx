@@ -165,14 +165,11 @@ export const Navigation: React.FC = () => {
             <LogoLink href="/" $isActive={asPath === '/'}>
               <LogoImage src="/assets/logo/co-logo.svg" alt="Common Origin Logo" />
             </LogoLink>
-            <MobileNavLink href="/music" $isActive={asPath === '/music'}>
-              <Typography variant="h6" color="default">Music</Typography>
+            <MobileNavLink href="/components" $isActive={asPath === '/components'}>
+              <Typography variant="h6" color="default">Components</Typography>
             </MobileNavLink>
-            <MobileNavLink href="/art" $isActive={asPath === '/art'}>
-              <Typography variant="h6" color="default">Art</Typography>
-            </MobileNavLink>
-            <MobileNavLink href="/design" $isActive={asPath === '/design'}>
-              <Typography variant="h6" color="default">Design</Typography>
+            <MobileNavLink href="/tokens" $isActive={asPath === '/tokens'}>
+              <Typography variant="h6" color="default">Tokens</Typography>
             </MobileNavLink>
           </MobileMenuItems>
         </Container>
@@ -184,14 +181,11 @@ export const Navigation: React.FC = () => {
               <LogoImage src="/assets/logo/co-logo.svg" alt="Common Origin Logo" />
             </LogoLink>
             <DesktopNavMenu>
-              <DesktopNavLink href="/music" $isActive={asPath === '/music'}>
-                <Typography variant="subtitle" color={asPath === '/music' ? 'default' : 'subdued'}>Music</Typography>
+              <DesktopNavLink href="/components" $isActive={asPath === '/components'}>
+                <Typography variant="subtitle" color={asPath === '/components' ? 'default' : 'subdued'}>Components</Typography>
               </DesktopNavLink>
-              <DesktopNavLink href="/art" $isActive={asPath === '/art'}>
-                <Typography variant="subtitle" color={asPath === '/art' ? 'default' : 'subdued'}>Art</Typography>
-              </DesktopNavLink>
-              <DesktopNavLink href="/design" $isActive={asPath === '/design'}>
-                <Typography variant="subtitle" color={asPath === '/design' ? 'default' : 'subdued'}>Design</Typography>
+              <DesktopNavLink href="/tokens" $isActive={asPath === '/tokens'}>
+                <Typography variant="subtitle" color={asPath === '/tokens' ? 'default' : 'subdued'}>Tokens</Typography>
               </DesktopNavLink>
             </DesktopNavMenu>
           </DesktopNav>

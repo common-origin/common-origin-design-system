@@ -11,7 +11,6 @@ const CenteredContainer = styled.div`
   align-items: center;
   min-height: 100vh;
   padding: ${spacing.layout.xl};
-  font-family: system-ui, -apple-system, sans-serif;
   background-color: ${color.background.default};
 `
 
