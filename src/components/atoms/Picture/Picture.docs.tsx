@@ -1,13 +1,13 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import React from 'react'
-import { CoverImage } from './CoverImage'
+import { Picture } from './Picture'
 import { Stack } from '../Stack'
 import { Box } from '../Box'
 
-export const coverImageDocs: ComponentDocumentation = {
-  id: 'coverimage',
-  name: 'CoverImage',
-  description: 'Responsive cover image component for displaying images with optional click interactions. Framework-agnostic and suitable for any React application. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
+export const pictureDocs: ComponentDocumentation = {
+  id: 'picture',
+  name: 'Picture',
+  description: 'Responsive image component for displaying images with optional click interactions. Framework-agnostic and suitable for any React application. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
   category: 'Atoms',
   
   props: [
@@ -59,15 +59,15 @@ export const coverImageDocs: ComponentDocumentation = {
 
   examples: [
     {
-      name: 'Basic Cover Image',
-      description: 'Static cover image without linking functionality',
-      code: `<CoverImage
+      name: 'Basic Picture',
+      description: 'Static picture without linking functionality',
+      code: `<Picture
   title="Beautiful Landscape"
   src="/assets/art/art-1.jpg"
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
-          <CoverImage
+          <Picture
             title="Beautiful Landscape"
             src="/assets/art/art-1.jpg"
           />
@@ -75,16 +75,16 @@ export const coverImageDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Clickable Cover Image with Callback',
-      description: 'Cover image that triggers a callback when clicked',
-      code: `<CoverImage
+      name: 'Clickable Picture with Callback',
+      description: 'Picture that triggers a callback when clicked',
+      code: `<Picture
   title="Interactive Art"
   src="/assets/art/art-2.jpg"
   onClick={() => alert('Image clicked!')}
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
-          <CoverImage
+          <Picture
             title="Interactive Art"
             src="/assets/art/art-2.jpg"
             onClick={() => alert('Image clicked!')}
@@ -93,16 +93,16 @@ export const coverImageDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Linked Cover Image',
-      description: 'Cover image that links to an external URL',
-      code: `<CoverImage
+      name: 'Linked Picture',
+      description: 'Picture that links to an external URL',
+      code: `<Picture
   title="Linked Art"
   src="/assets/art/art-3.jpg"
   href="/gallery/art-3"
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
-          <CoverImage
+          <Picture
             title="Linked Art"
             src="/assets/art/art-3.jpg"
             href="/gallery/art-3"
@@ -112,8 +112,8 @@ export const coverImageDocs: ComponentDocumentation = {
     },
     {
       name: 'Custom Dimensions',
-      description: 'Cover image with custom width and height for optimization',
-      code: `<CoverImage
+      description: 'Picture with custom width and height for optimization',
+      code: `<Picture
   title="Custom Size Image"
   src="/assets/art/art-4.jpg"
   width={800}
@@ -121,7 +121,7 @@ export const coverImageDocs: ComponentDocumentation = {
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
-          <CoverImage
+          <Picture
             title="Custom Size Image"
             src="/assets/art/art-4.jpg"
             width={800}
@@ -131,15 +131,15 @@ export const coverImageDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Multiple Cover Images',
-      description: 'Demonstration of multiple cover images in a layout',
+      name: 'Multiple Pictures',
+      description: 'Demonstration of multiple pictures in a layout',
       code: `<Stack direction="column" gap="lg">
-  <CoverImage
+  <Picture
     title="Desire Path Art"
     src="/assets/art/art-desire-path_1.jpg"
     href="/gallery/desire-path-1"
   />
-  <CoverImage
+  <Picture
     title="Fabric Art"
     src="/assets/art/art-fabric_1.jpg"
     onClick={() => console.log('Fabric art clicked')}
@@ -148,14 +148,14 @@ export const coverImageDocs: ComponentDocumentation = {
       renderComponent: () => (
         <Stack direction="column" gap="lg">
           <Box style={{ maxWidth: '300px' }}>
-            <CoverImage
+            <Picture
               title="Desire Path Art"
               src="/assets/art/art-desire-path_1.jpg"
               href="/gallery/desire-path-1"
             />
           </Box>
           <Box style={{ maxWidth: '300px' }}>
-            <CoverImage
+            <Picture
               title="Fabric Art"
               src="/assets/art/art-fabric_1.jpg"
               onClick={() => console.log('Fabric art clicked')}
@@ -178,7 +178,7 @@ export const coverImageDocs: ComponentDocumentation = {
       'Automated jest-axe testing ensures ongoing accessibility compliance'
     ],
     keyboardNavigation: 'When interactive, supports Enter and Space key activation',
-    screenReader: 'Alt text follows pattern "Cover Image for [title]" for clarity',
+    screenReader: 'Alt text follows pattern "Picture for [title]" for clarity',
     focusManagement: 'Linked images receive focus outline and proper tab order'
   },
 
@@ -188,7 +188,7 @@ export const coverImageDocs: ComponentDocumentation = {
     'Priority loading is enabled for linked images (likely above-the-fold)',
     'Responsive design adapts margin for mobile vs desktop layouts',
     'Hover effects provide visual feedback for interactive images',
-    'Default aspect ratio optimized for blog post cover images (1300x630)',
+    'Default aspect ratio optimized for blog post pictures (1300x630)',
     'Border radius applied for consistent visual design'
   ]
 }

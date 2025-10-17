@@ -5,7 +5,7 @@ import { media } from '../../../lib/styleUtils'
 
 const { base } = tokens
 
-type CoverImageProps = {
+type PictureProps = {
   title: string
   src: string
   width?: number
@@ -15,7 +15,7 @@ type CoverImageProps = {
   'data-testid'?: string
 }
 
-const CoverImageWrapper = styled.div`
+const PictureWrapper = styled.div`
   margin: 0 auto;
   
   ${media.sm} {
@@ -55,7 +55,7 @@ const StyledImage = styled.img`
   display: block;
 `
 
-export const CoverImage: React.FC<CoverImageProps> = ({ 
+export const Picture: React.FC<PictureProps> = ({ 
   title, 
   src, 
   width = 1300, 
@@ -74,7 +74,7 @@ export const CoverImage: React.FC<CoverImageProps> = ({
   )
 
   return (
-    <CoverImageWrapper data-testid={dataTestId}>
+    <PictureWrapper data-testid={dataTestId}>
       {href ? (
         <ImageLink href={href} aria-label={`Read more about ${title}`}>
           {image}
@@ -86,6 +86,6 @@ export const CoverImage: React.FC<CoverImageProps> = ({
       ) : (
         image
       )}
-    </CoverImageWrapper>
+    </PictureWrapper>
   )
 }

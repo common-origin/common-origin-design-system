@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import { CoverImage } from './CoverImage'
+import { Picture } from './Picture'
 
-type CoverImageProps = {
+type PictureProps = {
   title: string
   src: string
   onClick?: () => void
@@ -13,58 +13,58 @@ type CoverImageProps = {
   'data-testid'?: string
 }
 
-describe('CoverImage', () => {
-  const defaultProps: Omit<CoverImageProps, 'title' | 'src'> = {}
+describe('Picture', () => {
+  const defaultProps: Omit<PictureProps, 'title' | 'src'> = {}
   
-  const renderCoverImage = (props: Partial<CoverImageProps> = {}) => {
+  const renderPicture = (props: Partial<PictureProps> = {}) => {
     const finalProps = { 
       title: 'Test Image Title',
       src: '/test-image.jpg',
       ...defaultProps,
       ...props 
     }
-    return render(<CoverImage {...finalProps} />)
+    return render(<Picture {...finalProps} />)
   }
 
   describe('Basic Rendering', () => {
     it('renders image with correct alt text', () => {
-      renderCoverImage({ title: 'My Test Image' })
+      renderPicture({ title: 'My Test Image' })
       expect(screen.getByAltText('Cover Image for My Test Image')).toBeInTheDocument()
     })
 
     it('renders with default props when minimal props provided', () => {
-      renderCoverImage()
+      renderPicture()
       expect(screen.getByAltText('Cover Image for Test Image Title')).toBeInTheDocument()
     })
 
     it('applies custom data-testid', () => {
-      renderCoverImage({ 'data-testid': 'custom-cover-image' })
-      const wrapper = screen.getByTestId('custom-cover-image')
+      renderPicture({ 'data-testid': 'custom-picture' })
+      const wrapper = screen.getByTestId('custom-picture')
       expect(wrapper).toBeInTheDocument()
     })
 
     it('supports data-testid prop correctly', () => {
-      renderCoverImage({ 'data-testid': 'test-cover' })
-      expect(screen.getByTestId('test-cover')).toBeInTheDocument()
+      renderPicture({ 'data-testid': 'test-picture' })
+      expect(screen.getByTestId('test-picture')).toBeInTheDocument()
     })
   })
 
   describe('Image Properties', () => {
     it('uses provided src attribute', () => {
-      renderCoverImage({ src: '/custom-image.png' })
+      renderPicture({ src: '/custom-image.png' })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('src', '/custom-image.png')
     })
 
     it('uses default width and height when not specified', () => {
-      renderCoverImage()
+      renderPicture()
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('width', '1300')
       expect(image).toHaveAttribute('height', '630')
     })
 
     it('uses custom width and height when provided', () => {
-      renderCoverImage({ width: 800, height: 400 })
+      renderPicture({ width: 800, height: 400 })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('width', '800')
       expect(image).toHaveAttribute('height', '400')
@@ -73,7 +73,7 @@ describe('CoverImage', () => {
 
   describe('Link Behavior', () => {
     it('renders as link when href is provided', () => {
-      renderCoverImage({ href: '/gallery/my-image' })
+      renderPicture({ href: '/gallery/my-image' })
       const link = screen.getByRole('link')
       expect(link).toHaveAttribute('href', '/gallery/my-image')
       expect(link).toHaveAttribute('aria-label', 'Read more about Test Image Title')
@@ -81,7 +81,7 @@ describe('CoverImage', () => {
 
     it('renders as button when onClick is provided', () => {
       const handleClick = jest.fn()
-      renderCoverImage({ onClick: handleClick })
+      renderPicture({ onClick: handleClick })
       const button = screen.getByRole('button')
       expect(button).toHaveAttribute('aria-label', 'Read more about Test Image Title')
       
@@ -90,14 +90,14 @@ describe('CoverImage', () => {
     })
 
     it('does not render interactive element when neither href nor onClick provided', () => {
-      renderCoverImage()
+      renderPicture()
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
       expect(screen.getByRole('img')).toBeInTheDocument()
     })
 
     it('link has proper accessibility label with custom title', () => {
-      renderCoverImage({ 
+      renderPicture({ 
         title: 'Amazing Article', 
         href: '/articles/amazing-article' 
       })
@@ -108,37 +108,37 @@ describe('CoverImage', () => {
 
   describe('Accessibility', () => {
     it('should have no accessibility violations in default state', async () => {
-      const { container } = renderCoverImage()
+      const { container } = renderPicture()
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
 
     it('should have no accessibility violations with link variant', async () => {
-      const { container } = renderCoverImage({ href: '/test-link' })
+      const { container } = renderPicture({ href: '/test-link' })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
 
     it('should have no accessibility violations with button variant', async () => {
-      const { container } = renderCoverImage({ onClick: jest.fn() })
+      const { container } = renderPicture({ onClick: jest.fn() })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
 
     it('should have no accessibility violations with custom dimensions', async () => {
-      const { container } = renderCoverImage({ width: 600, height: 300 })
+      const { container } = renderPicture({ width: 600, height: 300 })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
 
     it('image has proper alt text for screen readers', () => {
-      renderCoverImage({ title: 'Accessible Image' })
+      renderPicture({ title: 'Accessible Image' })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('alt', 'Cover Image for Accessible Image')
     })
 
     it('maintains proper focus order with link', () => {
-      renderCoverImage({ href: '/focus-test' })
+      renderPicture({ href: '/focus-test' })
       const link = screen.getByRole('link')
       expect(link).toBeVisible()
       expect(link).toHaveAttribute('href', '/focus-test')
@@ -146,7 +146,7 @@ describe('CoverImage', () => {
 
     it('maintains proper focus order with button', () => {
       const handleClick = jest.fn()
-      renderCoverImage({ onClick: handleClick })
+      renderPicture({ onClick: handleClick })
       const button = screen.getByRole('button')
       expect(button).toBeVisible()
     })
@@ -154,7 +154,7 @@ describe('CoverImage', () => {
 
   describe('TypeScript Props', () => {
     it('accepts all required props', () => {
-      renderCoverImage({ 
+      renderPicture({ 
         title: 'TypeScript Test',
         src: '/typescript.jpg'
       })
@@ -162,17 +162,17 @@ describe('CoverImage', () => {
     })
 
     it('handles optional href prop', () => {
-      renderCoverImage({ href: undefined })
+      renderPicture({ href: undefined })
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
     })
 
     it('handles optional onClick prop', () => {
-      renderCoverImage({ onClick: undefined })
+      renderPicture({ onClick: undefined })
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
     it('handles optional dimensions props', () => {
-      renderCoverImage({ width: undefined, height: undefined })
+      renderPicture({ width: undefined, height: undefined })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('width', '1300')
       expect(image).toHaveAttribute('height', '630')
@@ -183,7 +183,7 @@ describe('CoverImage', () => {
     it('works with different file extensions', () => {
       const extensions = ['.jpg', '.png', '.webp', '.svg']
       extensions.forEach(ext => {
-        const { unmount } = renderCoverImage({ src: `/image${ext}` })
+        const { unmount } = renderPicture({ src: `/image${ext}` })
         expect(screen.getByRole('img')).toHaveAttribute('src', `/image${ext}`)
         unmount()
       })
@@ -191,7 +191,7 @@ describe('CoverImage', () => {
 
     it('handles long titles gracefully', () => {
       const longTitle = 'This is a very long title that might wrap multiple lines and should still work correctly'
-      renderCoverImage({ title: longTitle })
+      renderPicture({ title: longTitle })
       expect(screen.getByAltText(`Cover Image for ${longTitle}`)).toBeInTheDocument()
     })
   })
@@ -199,38 +199,38 @@ describe('CoverImage', () => {
   describe('Edge Cases', () => {
     it('handles special characters in title', () => {
       const specialTitle = 'Title with "quotes" & <tags> and symbols!'
-      renderCoverImage({ title: specialTitle })
+      renderPicture({ title: specialTitle })
       expect(screen.getByAltText(`Cover Image for ${specialTitle}`)).toBeInTheDocument()
     })
 
     it('handles empty string href gracefully', () => {
-      renderCoverImage({ href: '' })
+      renderPicture({ href: '' })
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
     })
 
     it('prioritizes href over onClick when both provided', () => {
       const handleClick = jest.fn()
-      renderCoverImage({ href: '/test-link', onClick: handleClick })
+      renderPicture({ href: '/test-link', onClick: handleClick })
       expect(screen.getByRole('link')).toBeInTheDocument()
       expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
     it('handles zero dimensions', () => {
-      renderCoverImage({ width: 0, height: 0 })
+      renderPicture({ width: 0, height: 0 })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('width', '0')
       expect(image).toHaveAttribute('height', '0')
     })
 
     it('handles very large dimensions', () => {
-      renderCoverImage({ width: 9999, height: 9999 })
+      renderPicture({ width: 9999, height: 9999 })
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('width', '9999')
       expect(image).toHaveAttribute('height', '9999')
     })
 
     it('maintains proper HTML structure with nested elements', () => {
-      renderCoverImage({ 
+      renderPicture({ 
         title: 'Complex Title',
         href: '/complex-link',
         'data-testid': 'complex-test'
@@ -244,7 +244,7 @@ describe('CoverImage', () => {
     })
 
     it('preserves image attributes when no link wrapper', () => {
-      renderCoverImage({ 
+      renderPicture({ 
         title: 'No Link Image',
         width: 500,
         height: 250

@@ -8,7 +8,7 @@ import {
   Chip,
   CodeBlock,
   Container,
-  CoverImage,
+  Picture,
   DesignCard,
   Dropdown,
   Icon,

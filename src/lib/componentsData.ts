@@ -11,7 +11,7 @@ import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
 import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
 import { containerDocs } from '@/components/atoms/Container/Container.docs'
-import { coverImageDocs } from '@/components/atoms/CoverImage/CoverImage.docs'
+import { pictureDocs } from '@/components/atoms/Picture/Picture.docs'
 import { designCardDocs } from '@/components/molecules/DesignCard/DesignCard.docs'
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { footerDocs } from '@/components/organisms/Footer/Footer.docs'
@@ -92,7 +92,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(chipGroupDocs),
   convertDocumentationToLegacyFormat(codeBlockDocs),
   convertDocumentationToLegacyFormat(containerDocs),
-  convertDocumentationToLegacyFormat(coverImageDocs),
+  convertDocumentationToLegacyFormat(pictureDocs),
   convertDocumentationToLegacyFormat(designCardDocs),
   convertDocumentationToLegacyFormat(dropdownDocs),
   convertDocumentationToLegacyFormat(footerDocs),

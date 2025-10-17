@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Chip } from '../../atoms/Chip'
 import { Button } from '../../atoms/Button'
-import { CoverImage } from '../../atoms/CoverImage'
+import { Picture } from '../../atoms/Picture'
 import { SectionSeparator } from '../../atoms/SectionSeparator'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
@@ -99,7 +99,7 @@ export const DesignCard: React.FC<DesignCardProps> = ({
       <>
         <DesignCardStyled>
           <ImageWrapper>
-            <CoverImage title={title} src={coverImage} />
+            <Picture title={title} src={coverImage} />
           </ImageWrapper>
           <ContentSection>
             <ContentWrapper>

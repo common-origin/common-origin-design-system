@@ -103,7 +103,7 @@ function MyApp() {
 
 **✅ Atoms (12 components)**:
 - Alert, Avatar, Box, Button, Chip, Container
-- CoverImage, Icon, IconButton, SectionSeparator
+- Picture, Icon, IconButton, SectionSeparator
 - Stack, Typography
 
 **✅ Molecules (8 components)**:

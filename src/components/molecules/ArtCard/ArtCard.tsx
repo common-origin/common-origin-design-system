@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { Chip } from '../../atoms/Chip'
-import { CoverImage } from '../../atoms/CoverImage'
+import { Picture } from '../../atoms/Picture'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
@@ -53,7 +53,7 @@ export const ArtCard = ({
       <>
         <ArtCardStyled>
           <Stack direction="column" gap="md">
-            <CoverImage 
+            <Picture 
               title={title} 
               src={coverImage} 
               onClick={onImageClick}
