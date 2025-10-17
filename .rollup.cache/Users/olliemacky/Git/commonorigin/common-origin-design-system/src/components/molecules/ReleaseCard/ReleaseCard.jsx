@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Stack } from '../../atoms/Stack';
 import { Typography } from '../../atoms/Typography';
-import { DateFormatter } from '../../../components/dateFormatter';
+import { DateFormatter } from '../../atoms/DateFormatter';
 import tokens from '@/styles/tokens.json';
 var ReleaseCardStyled = styled.div(templateObject_1 || (templateObject_1 = __makeTemplateObject(["\n  a {\n    text-decoration: none;\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n    width: 100%;\n    height: auto;\n    display: block;\n  }\n\n  &:hover {\n    img {\n      opacity: 0.8;\n    }\n  }\n\n  &:focus-within {\n    outline: none;\n    box-shadow: 0 0 0 2px ", ";\n  }\n"], ["\n  a {\n    text-decoration: none;\n  }\n\n  img {\n    border-radius: ", ";\n    transition: ease opacity 0.2s;\n    width: 100%;\n    height: auto;\n    display: block;\n  }\n\n  &:hover {\n    img {\n      opacity: 0.8;\n    }\n  }\n\n  &:focus-within {\n    outline: none;\n    box-shadow: 0 0 0 2px ", ";\n  }\n"])), tokens.base.border.radius[2], tokens.semantic.color.border.strong);
 export var ReleaseCard = function (_a) {

@@ -4,7 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
-import { DateFormatter } from '../../../components/dateFormatter'
+import { DateFormatter } from '../../atoms/DateFormatter'
 import tokens from '@/styles/tokens.json'
 
 export type ReleaseCardProps = {

@@ -5,8 +5,6 @@ export * from './atoms/';
 export * from './molecules/';
 export * from './layout/';
 // Note: Organisms removed - too project-specific for reusable design system
-// Utility components
-export * from './dateFormatter';
 // Layout grid system (explicit exports for better tree-shaking)
 export { ResponsiveGrid, GridCol, Grid } from './layout/GridSystem';
 //# sourceMappingURL=index.js.map

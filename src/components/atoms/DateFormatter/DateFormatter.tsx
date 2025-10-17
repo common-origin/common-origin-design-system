@@ -5,9 +5,13 @@ import tokens from '@/styles/tokens.json'
 
 const { semantic: { typography, color } } = tokens
 
-type DateFormatterProps = {
+export interface DateFormatterProps {
+  /** ISO date string to format */
   dateString: string
+  /** Format pattern (defaults to 'yyyy') */
   formatString?: string
+  /** Optional data-testid for testing */
+  'data-testid'?: string
 }
 
 const TimeStyled = styled.time`
@@ -17,11 +21,12 @@ const TimeStyled = styled.time`
 
 export const DateFormatter: React.FC<DateFormatterProps> = ({ 
   dateString, 
-  formatString = 'yyyy' 
+  formatString = 'yyyy',
+  'data-testid': dataTestId
 }) => {
   const date = parseISO(dateString)
   return (
-    <TimeStyled dateTime={dateString}>
+    <TimeStyled dateTime={dateString} data-testid={dataTestId}>
       {format(date, formatString)}
     </TimeStyled>
   )

@@ -6,7 +6,7 @@ import { CoverImage } from '../../atoms/CoverImage'
 import { SectionSeparator } from '../../atoms/SectionSeparator'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
-import { DateFormatter } from '../../dateFormatter'
+import { DateFormatter } from '../../atoms/DateFormatter'
 import tokens from '@/styles/tokens.json'
 
 const { base: { spacing, border } } = tokens
