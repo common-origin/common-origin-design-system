@@ -4,8 +4,8 @@
 // Core atomic design components
 export * from './atoms/'
 export * from './molecules/'
-// export * from './organisms/' // temporarily disabled for testing
 export * from './layout/'
+// Note: Organisms removed - too project-specific for reusable design system
 
 // Utility components
 export * from './dateFormatter'

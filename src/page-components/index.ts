@@ -7,6 +7,9 @@ export { Navigation } from './Navigation'
 export { Layout } from './PageLayout'
 export { Footer } from './Footer'
 
+// Project-specific components (moved from organisms)
+export { HeroBanner } from './HeroBanner'
+
 // Error boundaries
 export { ErrorBoundary } from './ErrorBoundary'
 export { ComponentErrorBoundary, LayoutErrorBoundary, PageErrorBoundary } from './ErrorBoundaries'
