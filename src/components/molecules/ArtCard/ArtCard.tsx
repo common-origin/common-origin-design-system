@@ -14,10 +14,11 @@ export type ArtCardProps = {
   artist: string
   labels: string[]
   coverImage: string
-  slug?: string
+  onImageClick?: () => void
+  imageHref?: string
 }
 
-const ArtCardStyled = styled.div<ArtCardProps>`
+const ArtCardStyled = styled.div`
   max-width: 768px;
 
   a {
@@ -44,21 +45,20 @@ export const ArtCard = ({
   artist,
   labels,
   coverImage,
-  slug,
+  onImageClick,
+  imageHref,
 }: ArtCardProps) => {
   if (tag === 'art') {
     return (
       <>
-        <ArtCardStyled
-          title={title}
-          excerpt={excerpt}
-          tag={tag}
-          labels={labels}
-          artist={artist}
-          coverImage={coverImage}
-        >
+        <ArtCardStyled>
           <Stack direction="column" gap="md">
-            <CoverImage title={title} src={coverImage} slug={slug} />
+            <CoverImage 
+              title={title} 
+              src={coverImage} 
+              onClick={onImageClick}
+              href={imageHref}
+            />
             <Stack direction="row" alignItems="flex-start" justifyContent="space-between" gap="xs">
               <Stack direction="column" gap="xs">
                 <Typography variant="h6">{title}</Typography>

@@ -4,8 +4,8 @@ import { ArtCard } from './ArtCard'
 export const artCardDocs: ComponentDocumentation = {
   id: 'artcard',
   name: 'ArtCard',
-  description: 'Displays art-related content with title, excerpt, labels, and cover image.',
-  category: 'Atoms',
+  description: 'Displays art-related content with title, artist, labels, and cover image.',
+  category: 'Molecules',
   props: [
     {
       name: 'title',
@@ -18,6 +18,12 @@ export const artCardDocs: ComponentDocumentation = {
       type: 'string',
       required: true,
       description: 'Short description or excerpt of the art'
+    },
+    {
+      name: 'artist',
+      type: 'string',
+      required: true,
+      description: 'Name of the artist associated with the art piece'
     },
     {
       name: 'labels',
@@ -38,15 +44,16 @@ export const artCardDocs: ComponentDocumentation = {
       description: 'URL of the cover image for the art card'
     },
     {
-      name: 'slug',
-      type: 'string',
-      required: true,
-      description: 'Unique identifier for the art, used in URLs'
+      name: 'onImageClick',
+      type: '() => void',
+      required: false,
+      description: 'Callback function when the cover image is clicked'
     },
-    { name: 'artist',
+    {
+      name: 'imageHref',
       type: 'string',
       required: false,
-      description: 'Name of the artist associated with the art piece'
+      description: 'URL for the cover image when used as a link'
     }
   ],
 
@@ -61,27 +68,75 @@ export const artCardDocs: ComponentDocumentation = {
 
   examples: [
     {
-      name: 'Default Art Card',
+      name: 'Basic Art Card',
       description:
-        'Basic art card with title, excerpt, labels, and cover image.',
+        'Basic art card with title, artist, labels, and cover image.',
       code: `<ArtCard
-  title="Starry Night"
-  excerpt="A beautiful depiction of a starry night sky."
-  labels={['Impressionism', 'Vincent van Gogh']}
+  title="Digital Fabric"
+  excerpt="An exploration of digital textile patterns."
+  artist="Common Origin"
+  labels={['Digital Art', 'Generative']}
   tag="art"
-  coverImage="/assets/cover/co-cover-2.jpg"
-  date="1889-06-01"
-  slug="starry-night"
+  coverImage="/assets/art/art-fabric_1.jpg"
 />`,
       renderComponent: () => (
         <ArtCard
-          title="Starry Night"
-          excerpt="A beautiful depiction of a starry night sky."
-          labels={['Impressionism', 'Vincent van Gogh']}
+          title="Digital Fabric"
+          excerpt="An exploration of digital textile patterns."
+          artist="Common Origin"
+          labels={['Digital Art', 'Generative']}
           tag="art"
-          coverImage="/assets/cover/co-cover-2.jpg"
-          slug="starry-night"
-          artist="Vincent van Gogh"
+          coverImage="/assets/art/art-fabric_1.jpg"
+        />
+      )
+    },
+    {
+      name: 'Clickable Art Card',
+      description:
+        'Art card with click interaction for viewing details.',
+      code: `<ArtCard
+  title="Desire Path"
+  excerpt="A study of emergent pathways in digital space."
+  artist="Common Origin"
+  labels={['Conceptual', 'Interactive']}
+  tag="art"
+  coverImage="/assets/art/art-desire-path_2.jpg"
+  onImageClick={() => alert('View art details')}
+/>`,
+      renderComponent: () => (
+        <ArtCard
+          title="Desire Path"
+          excerpt="A study of emergent pathways in digital space."
+          artist="Common Origin"
+          labels={['Conceptual', 'Interactive']}
+          tag="art"
+          coverImage="/assets/art/art-desire-path_2.jpg"
+          onImageClick={() => alert('View art details')}
+        />
+      )
+    },
+    {
+      name: 'Linked Art Card',
+      description:
+        'Art card that links to a gallery page.',
+      code: `<ArtCard
+  title="Residual Simulation"
+  excerpt="Traces of computational processes in visual form."
+  artist="Common Origin"
+  labels={['Simulation', 'Abstract']}
+  tag="art"
+  coverImage="/assets/art/art-residual-simulation_1.jpg"
+  imageHref="/gallery/residual-simulation"
+/>`,
+      renderComponent: () => (
+        <ArtCard
+          title="Residual Simulation"
+          excerpt="Traces of computational processes in visual form."
+          artist="Common Origin"
+          labels={['Simulation', 'Abstract']}
+          tag="art"
+          coverImage="/assets/art/art-residual-simulation_1.jpg"
+          imageHref="/gallery/residual-simulation"
         />
       )
     }
