@@ -46,9 +46,27 @@ export const designCardDocs: ComponentDocumentation = {
 		{
 				name: 'slug',
 				type: 'string',
-				required: true,
-				description: 'Unique identifier for the design, used in URLs'
-			}
+				required: false,
+				description: 'Unique identifier for the design, passed to CoverImage component'
+		},
+		{
+				name: 'onReadMore',
+				type: '() => void',
+				required: false,
+				description: 'Callback function when Read More button is clicked'
+		},
+		{
+				name: 'readMoreHref',
+				type: 'string',
+				required: false,
+				description: 'URL for Read More button when used as a link'
+		},
+		{
+				name: 'readMoreText',
+				type: 'string',
+				required: false,
+				description: 'Custom text for the Read More button (defaults to "Read more")'
+		}
 	],
 
 	tokens: [
@@ -73,7 +91,7 @@ export const designCardDocs: ComponentDocumentation = {
 					tag="design"
 					coverImage="/assets/art/art-5.jpg"
 					date="2025-07-24"
-					slug="sample-design"
+					onReadMore={() => alert('Read more clicked!')}
 				/>`,
 				renderComponent: () => (
 					<DesignCard
@@ -83,7 +101,7 @@ export const designCardDocs: ComponentDocumentation = {
 						tag="design"
 						coverImage="/assets/art/art-5.jpg"
 						date="2025-07-24"
-						slug="sample-design"
+						onReadMore={() => alert('Read more clicked!')}
 					/>
 				)
 			},
@@ -97,7 +115,7 @@ export const designCardDocs: ComponentDocumentation = {
 					tag="design"
 					coverImage="/assets/art/art-5.jpg"
 					date="2025-08-01"
-					slug="advanced-design"
+					readMoreHref="/designs/advanced-design"
 				/>`,
 				renderComponent: () => (
 					<DesignCard
@@ -107,7 +125,33 @@ export const designCardDocs: ComponentDocumentation = {
 						tag="design"
 						coverImage="/assets/art/art-5.jpg"
 						date="2025-08-01"
-						slug="advanced-design"
+						readMoreHref="/designs/advanced-design"
+					/>
+				)
+			},
+			{
+				name: 'Design Card with Custom Read More Text',
+				description: 'Shows how to customize the Read More button text.',
+				code: `<DesignCard
+					title="Explore This Design"
+					excerpt="A design that invites exploration with custom button text."
+					labels={['Interactive', 'Experimental']}
+					tag="design"
+					coverImage="/assets/art/art-5.jpg"
+					date="2025-08-15"
+					readMoreHref="/designs/explore-design"
+					readMoreText="Explore Now"
+				/>`,
+				renderComponent: () => (
+					<DesignCard
+						title="Explore This Design"
+						excerpt="A design that invites exploration with custom button text."
+						labels={['Interactive', 'Experimental']}
+						tag="design"
+						coverImage="/assets/art/art-5.jpg"
+						date="2025-08-15"
+						readMoreHref="/designs/explore-design"
+						readMoreText="Explore Now"
 					/>
 				)
 			}

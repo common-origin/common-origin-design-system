@@ -18,7 +18,9 @@ export type DesignCardProps = {
   tag: string
   coverImage: string
   date: string
-  slug?: string
+  onReadMore?: () => void
+  readMoreHref?: string
+  readMoreText?: string
 }
 
 const DesignCardStyled = styled.div`
@@ -88,14 +90,16 @@ export const DesignCard: React.FC<DesignCardProps> = ({
   tag,
   coverImage,
   date,
-  slug,
+  onReadMore,
+  readMoreHref,
+  readMoreText = "Read more",
 }) => {
   if (tag === 'design') {
     return (
       <>
         <DesignCardStyled>
           <ImageWrapper>
-            <CoverImage title={title} src={coverImage} slug={slug} />
+            <CoverImage title={title} src={coverImage} />
           </ImageWrapper>
           <ContentSection>
             <ContentWrapper>
@@ -108,9 +112,19 @@ export const DesignCard: React.FC<DesignCardProps> = ({
                     <Chip key={index} title={label} variant="default" />
                   ))}
                 </Stack>
-                <ButtonWrapper>
-                  <Button url={`/posts/${slug}`}>Read more</Button>
-                </ButtonWrapper>
+                {(onReadMore || readMoreHref) && (
+                  <ButtonWrapper>
+                    {readMoreHref ? (
+                      <Button purpose="link" url={readMoreHref}>
+                        {readMoreText}
+                      </Button>
+                    ) : (
+                      <Button onClick={onReadMore}>
+                        {readMoreText}
+                      </Button>
+                    )}
+                  </ButtonWrapper>
+                )}
               </Stack>
             </ContentWrapper>
           </ContentSection>
