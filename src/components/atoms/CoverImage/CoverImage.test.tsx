@@ -1,12 +1,13 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { CoverImage } from './CoverImage'
 
 type CoverImageProps = {
   title: string
   src: string
-  slug?: string
+  onClick?: () => void
+  href?: string
   width?: number
   height?: number
   'data-testid'?: string
@@ -68,32 +69,37 @@ describe('CoverImage', () => {
       expect(image).toHaveAttribute('width', '800')
       expect(image).toHaveAttribute('height', '400')
     })
-
-    it('applies Next.js Image optimization attributes', () => {
-      renderCoverImage()
-      const image = screen.getByRole('img')
-      expect(image).toHaveAttribute('data-placeholder', 'blur')
-    })
   })
 
   describe('Link Behavior', () => {
-    it('renders as link when slug is provided', () => {
-      renderCoverImage({ slug: 'my-post-slug' })
+    it('renders as link when href is provided', () => {
+      renderCoverImage({ href: '/gallery/my-image' })
       const link = screen.getByRole('link')
-      expect(link).toHaveAttribute('href', '/posts/my-post-slug')
+      expect(link).toHaveAttribute('href', '/gallery/my-image')
       expect(link).toHaveAttribute('aria-label', 'Read more about Test Image Title')
     })
 
-    it('does not render link when slug is not provided', () => {
+    it('renders as button when onClick is provided', () => {
+      const handleClick = jest.fn()
+      renderCoverImage({ onClick: handleClick })
+      const button = screen.getByRole('button')
+      expect(button).toHaveAttribute('aria-label', 'Read more about Test Image Title')
+      
+      fireEvent.click(button)
+      expect(handleClick).toHaveBeenCalledTimes(1)
+    })
+
+    it('does not render interactive element when neither href nor onClick provided', () => {
       renderCoverImage()
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
       expect(screen.getByRole('img')).toBeInTheDocument()
     })
 
     it('link has proper accessibility label with custom title', () => {
       renderCoverImage({ 
         title: 'Amazing Article', 
-        slug: 'amazing-article' 
+        href: '/articles/amazing-article' 
       })
       const link = screen.getByRole('link')
       expect(link).toHaveAttribute('aria-label', 'Read more about Amazing Article')
@@ -108,7 +114,13 @@ describe('CoverImage', () => {
     })
 
     it('should have no accessibility violations with link variant', async () => {
-      const { container } = renderCoverImage({ slug: 'test-slug' })
+      const { container } = renderCoverImage({ href: '/test-link' })
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should have no accessibility violations with button variant', async () => {
+      const { container } = renderCoverImage({ onClick: jest.fn() })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
@@ -126,10 +138,17 @@ describe('CoverImage', () => {
     })
 
     it('maintains proper focus order with link', () => {
-      renderCoverImage({ slug: 'focus-test' })
+      renderCoverImage({ href: '/focus-test' })
       const link = screen.getByRole('link')
       expect(link).toBeVisible()
-      expect(link).toHaveAttribute('href', '/posts/focus-test')
+      expect(link).toHaveAttribute('href', '/focus-test')
+    })
+
+    it('maintains proper focus order with button', () => {
+      const handleClick = jest.fn()
+      renderCoverImage({ onClick: handleClick })
+      const button = screen.getByRole('button')
+      expect(button).toBeVisible()
     })
   })
 
@@ -142,9 +161,14 @@ describe('CoverImage', () => {
       expect(screen.getByAltText('Cover Image for TypeScript Test')).toBeInTheDocument()
     })
 
-    it('handles optional slug prop', () => {
-      renderCoverImage({ slug: undefined })
+    it('handles optional href prop', () => {
+      renderCoverImage({ href: undefined })
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
+    })
+
+    it('handles optional onClick prop', () => {
+      renderCoverImage({ onClick: undefined })
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
     it('handles optional dimensions props', () => {
@@ -179,9 +203,16 @@ describe('CoverImage', () => {
       expect(screen.getByAltText(`Cover Image for ${specialTitle}`)).toBeInTheDocument()
     })
 
-    it('handles empty string slug gracefully', () => {
-      renderCoverImage({ slug: '' })
+    it('handles empty string href gracefully', () => {
+      renderCoverImage({ href: '' })
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
+    })
+
+    it('prioritizes href over onClick when both provided', () => {
+      const handleClick = jest.fn()
+      renderCoverImage({ href: '/test-link', onClick: handleClick })
+      expect(screen.getByRole('link')).toBeInTheDocument()
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
     it('handles zero dimensions', () => {
@@ -201,7 +232,7 @@ describe('CoverImage', () => {
     it('maintains proper HTML structure with nested elements', () => {
       renderCoverImage({ 
         title: 'Complex Title',
-        slug: 'complex-slug',
+        href: '/complex-link',
         'data-testid': 'complex-test'
       })
       const wrapper = screen.getByTestId('complex-test')

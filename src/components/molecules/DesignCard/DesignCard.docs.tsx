@@ -44,12 +44,6 @@ export const designCardDocs: ComponentDocumentation = {
 				description: 'Publication date of the design'
 		},
 		{
-				name: 'slug',
-				type: 'string',
-				required: false,
-				description: 'Unique identifier for the design, passed to CoverImage component'
-		},
-		{
 				name: 'onReadMore',
 				type: '() => void',
 				required: false,
@@ -89,7 +83,7 @@ export const designCardDocs: ComponentDocumentation = {
 				excerpt="This is a sample design excerpt."    
 					labels={['UI', 'UX']}
 					tag="design"
-					coverImage="/assets/art/art-5.jpg"
+					coverImage="/assets/art/art-1.jpg"
 					date="2025-07-24"
 					onReadMore={() => alert('Read more clicked!')}
 				/>`,
@@ -99,7 +93,7 @@ export const designCardDocs: ComponentDocumentation = {
 						excerpt="This is a sample design excerpt."
 						labels={['UI', 'UX']}
 						tag="design"
-						coverImage="/assets/art/art-5.jpg"
+						coverImage="/assets/art/art-1.jpg"
 						date="2025-07-24"
 						onReadMore={() => alert('Read more clicked!')}
 					/>
@@ -113,7 +107,7 @@ export const designCardDocs: ComponentDocumentation = {
 					excerpt="An advanced design example with multiple labels."
 					labels={['Accessibility', 'Responsive', 'Modern']}
 					tag="design"
-					coverImage="/assets/art/art-5.jpg"
+					coverImage="/assets/art/art-desire-path_1.jpg"
 					date="2025-08-01"
 					readMoreHref="/designs/advanced-design"
 				/>`,
@@ -123,7 +117,7 @@ export const designCardDocs: ComponentDocumentation = {
 						excerpt="An advanced design example with multiple labels."
 						labels={['Accessibility', 'Responsive', 'Modern']}
 						tag="design"
-						coverImage="/assets/art/art-5.jpg"
+						coverImage="/assets/art/art-desire-path_1.jpg"
 						date="2025-08-01"
 						readMoreHref="/designs/advanced-design"
 					/>
@@ -137,7 +131,7 @@ export const designCardDocs: ComponentDocumentation = {
 					excerpt="A design that invites exploration with custom button text."
 					labels={['Interactive', 'Experimental']}
 					tag="design"
-					coverImage="/assets/art/art-5.jpg"
+					coverImage="/assets/art/art-fabric_2.jpg"
 					date="2025-08-15"
 					readMoreHref="/designs/explore-design"
 					readMoreText="Explore Now"
@@ -148,7 +142,7 @@ export const designCardDocs: ComponentDocumentation = {
 						excerpt="A design that invites exploration with custom button text."
 						labels={['Interactive', 'Experimental']}
 						tag="design"
-						coverImage="/assets/art/art-5.jpg"
+						coverImage="/assets/art/art-fabric_2.jpg"
 						date="2025-08-15"
 						readMoreHref="/designs/explore-design"
 						readMoreText="Explore Now"

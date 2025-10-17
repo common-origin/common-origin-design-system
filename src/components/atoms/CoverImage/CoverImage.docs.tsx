@@ -7,7 +7,7 @@ import { Box } from '../Box'
 export const coverImageDocs: ComponentDocumentation = {
   id: 'coverimage',
   name: 'CoverImage',
-  description: 'Responsive cover image component optimized for blog posts and articles. Features Next.js Image optimization, blur placeholder, and optional linking functionality. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
+  description: 'Responsive cover image component for displaying images with optional click interactions. Framework-agnostic and suitable for any React application. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
   category: 'Atoms',
   
   props: [
@@ -24,10 +24,16 @@ export const coverImageDocs: ComponentDocumentation = {
       description: 'Image source URL or path'
     },
     {
-      name: 'slug',
+      name: 'onClick',
+      type: '() => void',
+      required: false,
+      description: 'Callback function when image is clicked (renders as button)'
+    },
+    {
+      name: 'href',
       type: 'string',
       required: false,
-      description: 'URL slug - when provided, makes image clickable linking to /posts/[slug]'
+      description: 'URL for image link (renders as anchor tag)'
     },
     {
       name: 'width',
@@ -57,31 +63,49 @@ export const coverImageDocs: ComponentDocumentation = {
       description: 'Static cover image without linking functionality',
       code: `<CoverImage
   title="Beautiful Landscape"
-  src="/assets/cover/co-cover-2.jpg"
+  src="/assets/art/art-1.jpg"
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
           <CoverImage
             title="Beautiful Landscape"
-            src="/assets/cover/co-cover-2.jpg"
+            src="/assets/art/art-1.jpg"
+          />
+        </Box>
+      )
+    },
+    {
+      name: 'Clickable Cover Image with Callback',
+      description: 'Cover image that triggers a callback when clicked',
+      code: `<CoverImage
+  title="Interactive Art"
+  src="/assets/art/art-2.jpg"
+  onClick={() => alert('Image clicked!')}
+/>`,
+      renderComponent: () => (
+        <Box style={{ maxWidth: '400px' }}>
+          <CoverImage
+            title="Interactive Art"
+            src="/assets/art/art-2.jpg"
+            onClick={() => alert('Image clicked!')}
           />
         </Box>
       )
     },
     {
       name: 'Linked Cover Image',
-      description: 'Cover image that links to a blog post when clicked',
+      description: 'Cover image that links to an external URL',
       code: `<CoverImage
-  title="My Blog Post"
-  src="/assets/cover/co-cover-2.jpg"
-  slug="my-blog-post"
+  title="Linked Art"
+  src="/assets/art/art-3.jpg"
+  href="/gallery/art-3"
 />`,
       renderComponent: () => (
         <Box style={{ maxWidth: '400px' }}>
           <CoverImage
-            title="My Blog Post"
-            src="/assets/cover/co-cover-2.jpg"
-            slug="example-post"
+            title="Linked Art"
+            src="/assets/art/art-3.jpg"
+            href="/gallery/art-3"
           />
         </Box>
       )
@@ -91,7 +115,7 @@ export const coverImageDocs: ComponentDocumentation = {
       description: 'Cover image with custom width and height for optimization',
       code: `<CoverImage
   title="Custom Size Image"
-  src="/assets/cover/co-cover-2.jpg"
+  src="/assets/art/art-4.jpg"
   width={800}
   height={400}
 />`,
@@ -99,7 +123,7 @@ export const coverImageDocs: ComponentDocumentation = {
         <Box style={{ maxWidth: '400px' }}>
           <CoverImage
             title="Custom Size Image"
-            src="/assets/cover/co-cover-2.jpg"
+            src="/assets/art/art-4.jpg"
             width={800}
             height={400}
           />
@@ -111,30 +135,30 @@ export const coverImageDocs: ComponentDocumentation = {
       description: 'Demonstration of multiple cover images in a layout',
       code: `<Stack direction="column" gap="lg">
   <CoverImage
-    title="Article One"
-    src="/assets/cover/co-cover-2.jpg"
-    slug="article-one"
+    title="Desire Path Art"
+    src="/assets/art/art-desire-path_1.jpg"
+    href="/gallery/desire-path-1"
   />
   <CoverImage
-    title="Article Two"
-    src="/assets/cover/co-cover-2.jpg"
-    slug="article-two"
+    title="Fabric Art"
+    src="/assets/art/art-fabric_1.jpg"
+    onClick={() => console.log('Fabric art clicked')}
   />
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="lg">
           <Box style={{ maxWidth: '300px' }}>
             <CoverImage
-              title="Article One"
-              src="/assets/cover/co-cover-2.jpg"
-              slug="article-one"
+              title="Desire Path Art"
+              src="/assets/art/art-desire-path_1.jpg"
+              href="/gallery/desire-path-1"
             />
           </Box>
           <Box style={{ maxWidth: '300px' }}>
             <CoverImage
-              title="Article Two"
-              src="/assets/cover/co-cover-2.jpg"
-              slug="article-two"
+              title="Fabric Art"
+              src="/assets/art/art-fabric_1.jpg"
+              onClick={() => console.log('Fabric art clicked')}
             />
           </Box>
         </Stack>
@@ -145,14 +169,15 @@ export const coverImageDocs: ComponentDocumentation = {
   accessibility: {
     notes: [
       'Automatically generates descriptive alt text using the title prop',
-      'Uses semantic link elements when slug is provided for proper navigation',
-      'Includes aria-label on links for enhanced screen reader support',
+      'Uses semantic link elements when href is provided for proper navigation',
+      'Uses semantic button elements when onClick is provided for interactions',
+      'Includes aria-label on interactive elements for enhanced screen reader support',
       'Maintains proper focus states for keyboard navigation',
       'WCAG 2.2 AA compliant with comprehensive accessibility testing',
       'Images include meaningful alt text for screen reader users',
       'Automated jest-axe testing ensures ongoing accessibility compliance'
     ],
-    keyboardNavigation: 'When linked, supports Enter and Space key activation',
+    keyboardNavigation: 'When interactive, supports Enter and Space key activation',
     screenReader: 'Alt text follows pattern "Cover Image for [title]" for clarity',
     focusManagement: 'Linked images receive focus outline and proper tab order'
   },
