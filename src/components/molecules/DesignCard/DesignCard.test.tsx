@@ -1,6 +1,10 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import { DesignCard } from './DesignCard'
+
+// Extend Jest matchers for accessibility testing
+expect.extend(toHaveNoViolations)
 
 const mockProps = {
   title: 'Test Design',
@@ -49,5 +53,31 @@ describe('DesignCard', () => {
   it('returns null if tag is not "design"', () => {
     render(<DesignCard {...mockProps} tag="other" />)
     expect(screen.queryByText('Test Design')).not.toBeInTheDocument()
+  })
+
+  describe('Accessibility Testing', () => {
+    it('should not have accessibility violations with default props', async () => {
+      const { container } = render(<DesignCard {...mockProps} />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with read more callback', async () => {
+      const { container } = render(<DesignCard {...mockProps} onReadMore={jest.fn()} />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with read more link', async () => {
+      const { container } = render(<DesignCard {...mockProps} readMoreHref="/design/test" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with custom read more text', async () => {
+      const { container } = render(<DesignCard {...mockProps} onReadMore={jest.fn()} readMoreText="View Details" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 })

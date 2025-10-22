@@ -26,7 +26,7 @@ interface StyledButtonProps {
 }
 
 const IconButtonStyled = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['$variant', '$size'].includes(prop)
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledButtonProps>`
   background-color: ${({ $variant }) => {
     switch ($variant) {

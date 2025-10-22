@@ -26,14 +26,14 @@ interface StyledStackProps {
 }
 
 const StyledStack = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$direction', '$gap', '$alignItems', '$justifyContent', '$wrap'].includes(prop),
-})<StyledStackProps>`
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})`
   display: flex;
-  flex-direction: ${({ $direction }) => $direction};
-  align-items: ${({ $alignItems }) => $alignItems || 'initial'};
-  justify-content: ${({ $justifyContent }) => $justifyContent || 'initial'};
-  gap: ${({ $gap }) => $gap};
-  flex-wrap: ${({ $wrap }) => $wrap ? 'wrap' : 'nowrap'};
+  flex-direction: var(--stack-direction);
+  align-items: var(--stack-align-items);
+  justify-content: var(--stack-justify-content);
+  gap: var(--stack-gap);
+  flex-wrap: var(--stack-wrap);
 `
 
 // Helper function to convert gap prop to CSS value
@@ -60,13 +60,18 @@ export const Stack: React.FC<StackProps> = ({
 }) => {
   const gapValue = getGapValue(gap)
   
+  // Create CSS custom properties object with proper typing
+  const cssProps: React.CSSProperties = {
+    '--stack-direction': direction,
+    '--stack-align-items': alignItems || 'initial',
+    '--stack-justify-content': justifyContent || 'initial',
+    '--stack-gap': gapValue,
+    '--stack-wrap': wrap ? 'wrap' : 'nowrap'
+  } as React.CSSProperties
+  
   return (
     <StyledStack 
-      $direction={direction} 
-      $gap={gapValue} 
-      $alignItems={alignItems} 
-      $justifyContent={justifyContent}
-      $wrap={wrap}
+      style={cssProps}
       data-testid={dataTestId}
     >
       {children}

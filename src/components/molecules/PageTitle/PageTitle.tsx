@@ -16,7 +16,7 @@ interface StyledPageTitleProps {
 }
 
 const PageTitleStyled = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$hasBackButton'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledPageTitleProps>`
   margin-bottom: ${tokens.base.spacing[6]};
   margin-top: ${({ $hasBackButton }) => $hasBackButton ? tokens.base.spacing[0] : tokens.base.spacing[12]};

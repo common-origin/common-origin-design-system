@@ -17,7 +17,7 @@ interface StyledSeparatorProps {
 }
 
 const StyledSeparator = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$variant', '$size'].includes(prop)
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledSeparatorProps>`
   border: none;
   border-top: 1px solid;

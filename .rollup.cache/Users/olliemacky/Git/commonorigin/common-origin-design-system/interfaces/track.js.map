@@ -1,1 +1,0 @@
-{"version":3,"file":"track.js","sourceRoot":"","sources":["track.ts"],"names":[],"mappings":"","sourcesContent":["type Track = {\n  id: string\n  title: string\n  duration: string\n  audioUrl: string\n}\n\nexport default Track"]}

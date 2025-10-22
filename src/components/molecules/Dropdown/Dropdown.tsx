@@ -28,7 +28,7 @@ const DropdownContainer = styled.div`
 `
 
 const DropdownTrigger = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isOpen: boolean }>`
   width: 100%;
   display: flex;
@@ -67,7 +67,7 @@ const DropdownTrigger = styled.button.withConfig({
 `
 
 const DropdownIcon = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
@@ -80,7 +80,7 @@ const DropdownIcon = styled.div.withConfig({
 `
 
 const DropdownMenu = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$isOpen'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isOpen: boolean }>`
   position: absolute;
   top: 100%;
@@ -102,7 +102,7 @@ const DropdownMenu = styled.div.withConfig({
 `
 
 const DropdownOption = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['$isSelected', '$isFocused'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isSelected: boolean; $isFocused: boolean }>`
   width: 100%;
   display: block;
@@ -264,7 +264,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </DropdownIcon>
       </DropdownTrigger>
       
-      <DropdownMenu $isOpen={isOpen} role="listbox">{options.map((option, index) => (
+      <DropdownMenu $isOpen={isOpen} role="listbox" aria-labelledby={dropdownId}>{options.map((option, index) => (
           <DropdownOption
             key={option.id}
             $isSelected={option.id === value}

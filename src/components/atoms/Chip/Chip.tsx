@@ -21,71 +21,66 @@ export interface ChipProps {
   title?: string
 }
 
-// Internal props for styled components - no $ prefix needed
+// Internal props for styled components with $ prefix for proper filtering
 interface InternalStyledProps {
-  variant: 'default' | 'emphasis' | 'subtle' | 'interactive'
-  size: ChipProps['size']
-  disabled?: boolean
-  clickable?: boolean
+  $variant: 'default' | 'emphasis' | 'subtle' | 'interactive'
+  $size: ChipProps['size']
+  $disabled?: boolean
+  $clickable?: boolean
 }
 
-// Dynamic variant styles using component tokens
-const getVariantStyles = ({ variant }: InternalStyledProps) => {
+// Helper functions to get styles as objects for CSS custom properties
+const getVariantStylesAsObject = (variant: 'default' | 'emphasis' | 'subtle' | 'interactive') => {
   switch (variant) {
     case 'emphasis':
-      return `
-        background-color: ${chip.variants.emphasis.backgroundColor};
-        color: ${chip.variants.emphasis.textColor};
-      `
+      return {
+        backgroundColor: chip.variants.emphasis.backgroundColor,
+        color: chip.variants.emphasis.textColor
+      }
     case 'subtle':
-      return `
-        background-color: ${chip.variants.subtle.backgroundColor};
-        color: ${chip.variants.subtle.textColor};
-      `
+      return {
+        backgroundColor: chip.variants.subtle.backgroundColor,
+        color: chip.variants.subtle.textColor
+      }
     case 'interactive':
-      return `
-        background-color: ${chip.variants.interactive.backgroundColor};
-        color: ${chip.variants.interactive.textColor};
-      `
+      return {
+        backgroundColor: chip.variants.interactive.backgroundColor,
+        color: chip.variants.interactive.textColor
+      }
     case 'default':
     default:
-      return `
-        background-color: ${chip.default.backgroundColor};
-        color: ${chip.default.textColor};
-      `
+      return {
+        backgroundColor: chip.default.backgroundColor,
+        color: chip.default.textColor
+      }
   }
 }
 
-// Dynamic size styles using component tokens
-const getSizeStyles = ({ size }: InternalStyledProps) => {
+const getSizeStylesAsObject = (size: ChipProps['size']) => {
   switch (size) {
     case 'small':
-      return `
-        font: ${chip.sizes.small.font};
-        padding: ${chip.sizes.small.padding};
-      `
+      return {
+        font: chip.sizes.small.font,
+        padding: chip.sizes.small.padding
+      }
     case 'large':
-      return `
-        font: ${chip.sizes.large.font};
-        padding: ${chip.sizes.large.padding};
-      `
+      return {
+        font: chip.sizes.large.font,
+        padding: chip.sizes.large.padding
+      }
     case 'medium':
     default:
-      return `
-        font: ${chip.sizes.medium.font};
-        padding: ${chip.sizes.medium.padding};
-      `
+      return {
+        font: chip.sizes.medium.font,
+        padding: chip.sizes.medium.padding
+      }
   }
 }
 
-// Base styled component that only receives styling props
+// Base styled component using CSS variables to avoid prop leaking
 const BaseChip = styled.span.withConfig({
-  shouldForwardProp: (prop) => {
-    // Explicitly list props that should NOT be forwarded to the DOM
-    const excludedProps = ['variant', 'size', 'disabled', 'clickable']
-    return !excludedProps.includes(prop as string)
-  }
-})<InternalStyledProps>`
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -97,31 +92,21 @@ const BaseChip = styled.span.withConfig({
   white-space: nowrap;
   transition: ${tokens.semantic.motion.interactive};
   
-  ${getVariantStyles}
-  ${getSizeStyles}
+  /* Use CSS custom properties set by wrapper */
+  background-color: var(--chip-bg-color);
+  color: var(--chip-text-color);
+  font: var(--chip-font);
+  padding: var(--chip-padding);
+  opacity: var(--chip-opacity, 1);
+  cursor: var(--chip-cursor, default);
   
-  ${({ clickable, disabled }) => {
-    if (disabled) {
-      return `
-        opacity: 0.6;
-        cursor: not-allowed;
-      `
-    }
-    if (clickable) {
-      return `
-        cursor: pointer;
-        
-        &:hover {
-          opacity: 0.8;
-        }
-        
-        &:active {
-          opacity: 0.9;
-        }
-      `
-    }
-    return ''
-  }}
+  &:hover {
+    opacity: var(--chip-hover-opacity, var(--chip-opacity, 1));
+  }
+  
+  &:active {
+    opacity: var(--chip-active-opacity, var(--chip-opacity, 1));
+  }
   
   &:focus-visible {
     outline: 2px solid ${chip.variants.interactive.backgroundColor};
@@ -129,25 +114,36 @@ const BaseChip = styled.span.withConfig({
   }
 `
 
-// Wrapper component that handles prop filtering
+// Wrapper component that applies styles via CSS custom properties
 const StyledChip: React.FC<React.PropsWithChildren<InternalStyledProps & React.HTMLAttributes<HTMLSpanElement>>> = ({
-  variant,
-  size,
-  disabled,
-  clickable,
+  $variant,
+  $size,
+  $disabled,
+  $clickable,
   children,
+  style,
   ...htmlProps
 }) => {
-  // Filter out any remaining non-HTML props to ensure they don't reach the DOM
-  const { ...cleanHtmlProps } = htmlProps
+  // Get styles for variant and size
+  const variantStyles = getVariantStylesAsObject($variant)
+  const sizeStyles = getSizeStylesAsObject($size)
+  
+  // Create CSS custom properties object
+  const cssProps = {
+    '--chip-bg-color': variantStyles.backgroundColor,
+    '--chip-text-color': variantStyles.color,
+    '--chip-font': sizeStyles.font,
+    '--chip-padding': sizeStyles.padding,
+    '--chip-opacity': $disabled ? '0.6' : '1',
+    '--chip-cursor': $disabled ? 'not-allowed' : ($clickable ? 'pointer' : 'default'),
+    '--chip-hover-opacity': $disabled ? '0.6' : ($clickable ? '0.8' : '1'),
+    '--chip-active-opacity': $disabled ? '0.6' : ($clickable ? '0.9' : '1')
+  }
   
   return (
     <BaseChip
-      variant={variant}
-      size={size}
-      disabled={disabled}
-      clickable={clickable}
-      {...cleanHtmlProps}
+      style={{ ...cssProps, ...style }}
+      {...htmlProps}
     >
       {children}
     </BaseChip>
@@ -195,10 +191,10 @@ export const Chip: React.FC<ChipProps> = ({
   
   return (
     <StyledChip
-      variant={normalizedVariant}
-      size={size}
-      disabled={disabled}
-      clickable={isClickable}
+      $variant={normalizedVariant}
+      $size={size}
+      $disabled={disabled || undefined}
+      $clickable={isClickable || undefined}
       onClick={isClickable ? handleClick : undefined}
       onKeyDown={isClickable ? handleKeyDown : undefined}
       tabIndex={isClickable ? 0 : undefined}

@@ -32,7 +32,9 @@ interface GridProps {
   children: React.ReactNode
 }
 
-const GridContainer = styled.div<{
+const GridContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{
   $cols: number
   $gap?: string
   $gapX?: string
@@ -81,7 +83,9 @@ interface GridColProps {
   children: React.ReactNode
 }
 
-const GridColContainer = styled.div<{
+const GridColContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{
   $span?: number
   $spanSm?: number
   $spanMd?: number
@@ -202,7 +206,9 @@ interface ResponsiveGridProps {
   children: React.ReactNode
 }
 
-const ResponsiveGridContainer = styled.div<{
+const ResponsiveGridContainer = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{
   $cols: number
   $colsSm?: number
   $colsMd?: number

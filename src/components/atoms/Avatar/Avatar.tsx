@@ -14,7 +14,7 @@ interface StyledAvatarProps {
 }
 
 const AvatarContainer = styled.div.withConfig({
-  shouldForwardProp: (prop) => !['$size'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledAvatarProps>`
   position: relative;
   display: inline-flex;
@@ -29,7 +29,7 @@ const AvatarContainer = styled.div.withConfig({
 `
 
 const AvatarImage = styled.img.withConfig({
-  shouldForwardProp: (prop) => !['$size'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledAvatarProps>`
   width: 100%;
   height: 100%;
@@ -39,7 +39,7 @@ const AvatarImage = styled.img.withConfig({
 `
 
 const AvatarInitials = styled.span.withConfig({
-  shouldForwardProp: (prop) => !['$size'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledAvatarProps>`
   font-family: ${tokens.base.fontFamily.body};
   font-weight: ${tokens.base.fontWeight[3]};

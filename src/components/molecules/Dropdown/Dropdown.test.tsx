@@ -1,8 +1,12 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import '@testing-library/jest-dom'
 import { Dropdown } from './Dropdown'
+
+// Extend Jest matchers for accessibility testing
+expect.extend(toHaveNoViolations)
 
 // Mock the Icon component
 jest.mock('../../atoms/Icon', () => ({
@@ -466,6 +470,35 @@ describe('Dropdown Component', () => {
       
       // Should render without crashing
       expect(screen.getByRole('listbox')).toBeInTheDocument()
+    })
+  })
+
+  describe('Accessibility Testing', () => {
+    it('should not have accessibility violations when closed', async () => {
+      const { container } = render(<Dropdown {...defaultProps} />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations when opened', async () => {
+      const user = userEvent.setup()
+      const { container } = render(<Dropdown {...defaultProps} />)
+      
+      await user.click(screen.getByRole('button'))
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with custom placeholder', async () => {
+      const { container } = render(<Dropdown {...defaultProps} placeholder="Choose an item" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with selected value', async () => {
+      const { container } = render(<Dropdown {...defaultProps} value="option1" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })

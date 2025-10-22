@@ -145,7 +145,7 @@ const getSizeStyles = ({ $size }: StyledButtonProps) => {
 }
 
 const StyledButton = styled.button.withConfig({
-  shouldForwardProp: (prop) => !['$variant', '$size'].includes(prop as string),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledButtonProps>`
   ${baseButtonStyles}
   border-radius: ${button.primary.borderRadius};
@@ -155,7 +155,7 @@ const StyledButton = styled.button.withConfig({
 `
 
 const StyledLink = styled.a.withConfig({
-  shouldForwardProp: (prop) => !['$variant', '$size'].includes(prop as string),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledButtonProps>`
   ${baseButtonStyles}
   border-radius: ${button.primary.borderRadius};

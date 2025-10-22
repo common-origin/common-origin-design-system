@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":"AAAA,6BAA6B;AAC7B,cAAc,cAAc,CAAA;AAE5B,kCAAkC;AAClC,OAAO,EAAE,OAAO,IAAI,MAAM,EAAE,MAAM,sBAAsB,CAAA","sourcesContent":["// Main design system exports\nexport * from './components'\n\n// Export tokens for direct access\nexport { default as tokens } from './styles/tokens.json'"]}

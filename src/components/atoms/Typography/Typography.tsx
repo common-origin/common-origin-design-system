@@ -105,7 +105,7 @@ const getDefaultElement = (variant: TypographyVariant): React.ElementType => {
 }
 
 const StyledTypography = styled.span.withConfig({
-  shouldForwardProp: (prop) => !['$variant', '$color'].includes(prop),
+  shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledTypographyProps>`
   ${({ $variant }) => getTypographyStyles($variant)}
   color: ${({ $color }) => getTextColor($color)};

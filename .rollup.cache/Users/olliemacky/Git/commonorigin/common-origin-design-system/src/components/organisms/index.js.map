@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":"AAAA,iCAAiC;AACjC,oEAAoE;AACpE,cAAc,cAAc,CAAA","sourcesContent":["// Export all organism components\n// Note: Footer moved to page-components due to Next.js dependencies\nexport * from './HeroBanner'\n"]}

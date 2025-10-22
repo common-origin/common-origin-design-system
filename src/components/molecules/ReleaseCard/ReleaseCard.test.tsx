@@ -1,7 +1,11 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import { ReleaseCard } from '../ReleaseCard'
+
+// Extend Jest matchers
+expect.extend(toHaveNoViolations)
 
 // Mock Next.js Image component
 jest.mock('next/image', () => {
@@ -189,6 +193,41 @@ describe('ReleaseCard Component', () => {
       // Image should be within the link
       const image = screen.getByRole('img')
       expect(link).toContainElement(image)
+    })
+  })
+
+  describe('Accessibility Testing', () => {
+    it('should not have accessibility violations with default props', async () => {
+      const { container } = renderReleaseCard()
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with custom title', async () => {
+      const { container } = renderReleaseCard({
+        title: 'Custom Release Title',
+        url: 'https://example.com/custom'
+      })
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with long title', async () => {
+      const { container } = renderReleaseCard({
+        title: 'This is a very long release title that might wrap to multiple lines and should still be accessible',
+        url: 'https://example.com/long-title'
+      })
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with different image dimensions', async () => {
+      const { container } = renderReleaseCard({
+        title: 'Different Size Release',
+        imageUrl: 'https://example.com/different-image.jpg'
+      })
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })
