@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 16 Oct 2025 11:55:33 GMT
+ * Generated on Wed, 22 Oct 2025 21:18:52 GMT
  */
 
 export interface TokensBaseBorderRadius {

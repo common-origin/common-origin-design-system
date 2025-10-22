@@ -1,4 +1,4 @@
-import { ComponentDocumentation } from '../../../lib/docgen/types'
+import { ComponentDocumentation } from '../../lib/docgen/types'
 import { HeroBanner } from './HeroBanner'
 
 export const heroBannerDocs: ComponentDocumentation = {

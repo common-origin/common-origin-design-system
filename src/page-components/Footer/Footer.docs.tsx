@@ -1,4 +1,4 @@
-import { ComponentDocumentation } from '../../../lib/docgen/types'
+import { ComponentDocumentation } from '../../lib/docgen/types'
 import { Footer } from './Footer'
 
 export const footerDocs: ComponentDocumentation = {

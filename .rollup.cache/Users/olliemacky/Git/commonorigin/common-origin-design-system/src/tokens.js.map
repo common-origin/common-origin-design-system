@@ -1,0 +1,1 @@
+{"version":3,"file":"tokens.js","sourceRoot":"","sources":["tokens.ts"],"names":[],"mappings":"AAAA,0CAA0C;AAC1C,OAAO,UAAU,MAAM,sBAAsB,CAAA;AAE7C,MAAM,CAAC,IAAM,MAAM,GAAG,UAAU,CAAA;AAChC,eAAe,UAAU,CAAA","sourcesContent":["// Tokens-only export for standalone usage\nimport tokensJson from './styles/tokens.json'\n\nexport const tokens = tokensJson\nexport default tokensJson"]}
