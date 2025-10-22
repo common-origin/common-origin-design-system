@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../atoms/Button'
 import tokens from '@/styles/tokens.json'
@@ -40,17 +40,37 @@ const CopyButtonWrapper = styled.div`
 
 const CopyButton: React.FC<{ text: string; onCopy?: () => void }> = ({ text, onCopy }) => {
   const [copied, setCopied] = useState(false)
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null)
   
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(text)
       setCopied(true)
       onCopy?.()
-      setTimeout(() => setCopied(false), 2000)
+      
+      // Clear any existing timeout
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+      
+      // Set new timeout
+      timeoutRef.current = setTimeout(() => {
+        setCopied(false)
+        timeoutRef.current = null
+      }, 2000)
     } catch (err) {
       console.error('Failed to copy text: ', err)
     }
   }
+  
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current)
+      }
+    }
+  }, [])
   
   return (
     <CopyButtonWrapper>

@@ -28,7 +28,16 @@ const customJestConfig = {
     '<rootDir>/dist/',
   ],
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { presets: ['next/babel'] }],
+    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { 
+      presets: ['next/babel'],
+      plugins: [
+        ['babel-plugin-styled-components', {
+          ssr: true,
+          displayName: true,
+          preprocess: false
+        }]
+      ]
+    }],
   },
   transformIgnorePatterns: [
     '/node_modules/',

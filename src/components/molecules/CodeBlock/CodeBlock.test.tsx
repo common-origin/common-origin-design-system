@@ -1,7 +1,11 @@
 import React from 'react'
 import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import '@testing-library/jest-dom'
 import { CodeBlock } from '../CodeBlock'
+
+// Extend Jest matchers for accessibility testing
+expect.extend(toHaveNoViolations)
 
 // Mock clipboard API
 const mockClipboard = {
@@ -28,7 +32,9 @@ describe('CodeBlock Component', () => {
   })
 
   afterEach(() => {
-    jest.runOnlyPendingTimers()
+    act(() => {
+      jest.runOnlyPendingTimers()
+    })
     jest.useRealTimers()
   })
 
@@ -175,6 +181,46 @@ console.log(greeting + " " + name);`
       // Button should be focusable
       copyButton.focus()
       expect(copyButton).toHaveFocus()
+    })
+
+
+  })
+
+  // Separate describe block for accessibility tests with real timers
+  describe('Accessibility Testing', () => {
+    beforeEach(() => {
+      jest.useRealTimers()
+      jest.clearAllMocks()
+    })
+
+    afterEach(() => {
+      jest.useFakeTimers()
+    })
+
+    it('should not have accessibility violations with default props', async () => {
+      const { container } = render(<CodeBlock>const hello = "world";</CodeBlock>)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with copy button hidden', async () => {
+      const { container } = render(
+        <CodeBlock showCopyButton={false}>const test = "accessibility";</CodeBlock>
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with custom code content', async () => {
+      const { container } = render(
+        <CodeBlock>
+          {`function customCode() {
+  return "accessible code";
+}`}
+        </CodeBlock>
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
     })
   })
 })

@@ -1,6 +1,10 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { axe, toHaveNoViolations } from 'jest-axe'
 import { ArtCard } from './ArtCard'
+
+// Extend Jest matchers for accessibility testing
+expect.extend(toHaveNoViolations)
 
 describe('ArtCard', () => {
   const baseProps = {
@@ -43,5 +47,31 @@ describe('ArtCard', () => {
   it('returns null if tag is not art', () => {
     const { container } = render(<ArtCard {...baseProps} tag="not-art" />)
     expect(container.firstChild).toBeNull()
+  })
+
+  describe('Accessibility Testing', () => {
+    it('should not have accessibility violations with default props', async () => {
+      const { container } = render(<ArtCard {...baseProps} />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with image link', async () => {
+      const { container } = render(<ArtCard {...baseProps} imageHref="/gallery/test-art" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with all props', async () => {
+      const { container } = render(
+        <ArtCard 
+          {...baseProps}
+          imageHref="/gallery/test-art"
+          data-testid="art-card-accessibility-test"
+        />
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
   })
 })

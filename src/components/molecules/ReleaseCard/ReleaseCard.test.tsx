@@ -5,9 +5,26 @@ import { ReleaseCard } from '../ReleaseCard'
 
 // Mock Next.js Image component
 jest.mock('next/image', () => {
-  return ({ alt, src, ...props }: any) => {
+  return ({ alt, src, style, className, width, height, sizes, ...props }: any) => {
+    // Filter out Next.js specific props that shouldn't be passed to img element
+    const { 
+      placeholder, blurDataURL, priority, quality, fill, loader, 
+      unoptimized, onLoad, onError, ...imgProps 
+    } = props
+    
     // eslint-disable-next-line @next/next/no-img-element
-    return <img alt={alt} src={src} {...props} />
+    return (
+      <img 
+        alt={alt} 
+        src={src} 
+        style={style} 
+        className={className}
+        width={width}
+        height={height}
+        sizes={sizes}
+        {...imgProps} 
+      />
+    )
   }
 })
 
@@ -19,7 +36,7 @@ jest.mock('next/link', () => {
 })
 
 // Mock DateFormatter component
-jest.mock('../../../components/dateFormatter', () => ({
+jest.mock('../../atoms/DateFormatter', () => ({
   DateFormatter: ({ dateString }: { dateString: string }) => (
     <span data-testid="date-formatter">{dateString}</span>
   )
