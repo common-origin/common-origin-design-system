@@ -10,22 +10,24 @@ import { dirname } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-export default {
-  input: 'src/index.ts',
-  output: [
-    {
-      file: 'dist/index.js',
-      format: 'cjs',
-      exports: 'auto',
-      sourcemap: true,
-    },
-    {
-      file: 'dist/index.esm.js',
-      format: 'esm',
-      exports: 'auto',
-      sourcemap: true,
-    },
-  ],
+export default [
+  // Main package build
+  {
+    input: 'src/index.ts',
+    output: [
+      {
+        file: 'dist/index.js',
+        format: 'cjs',
+        exports: 'auto',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/index.esm.js',
+        format: 'esm',
+        exports: 'auto',
+        sourcemap: true,
+      },
+    ],
   external: [
     'react',
     'react-dom',
@@ -76,4 +78,38 @@ export default {
       ],
     }),
   ],
-}
+  },
+  // Tokens-only build
+  {
+    input: 'src/tokens.ts',
+    output: [
+      {
+        file: 'dist/tokens/index.js',
+        format: 'cjs',
+        exports: 'named',
+        sourcemap: true,
+      },
+      {
+        file: 'dist/tokens/index.esm.js',
+        format: 'esm',
+        exports: 'named',
+        sourcemap: true,
+      },
+    ],
+    external: [],
+    plugins: [
+      json(),
+      resolve({
+        browser: false,
+        preferBuiltins: false,
+      }),
+      typescript({
+        tsconfig: './tsconfig.json',
+        declaration: true,
+        declarationDir: 'dist/tokens',
+        include: ['src/tokens.ts', 'src/styles/**/*'],
+        exclude: ['**/*.test.*', '**/*.docs.*'],
+      }),
+    ],
+  },
+]

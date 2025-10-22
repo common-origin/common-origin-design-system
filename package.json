@@ -18,7 +18,7 @@
       "types": "./dist/index.d.ts"
     },
     "./tokens": {
-      "import": "./dist/tokens/index.js",
+      "import": "./dist/tokens/index.esm.js",
       "require": "./dist/tokens/index.js",
       "types": "./dist/tokens/index.d.ts"
     }
