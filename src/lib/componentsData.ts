@@ -2,7 +2,6 @@ import * as React from 'react'
 import { ComponentDocumentation } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
-import { alertDocs } from '@/components/atoms/Alert/Alert.docs'
 import { artCardDocs } from '@/components/molecules/ArtCard/ArtCard.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
@@ -14,7 +13,6 @@ import { containerDocs } from '@/components/atoms/Container/Container.docs'
 import { pictureDocs } from '@/components/atoms/Picture/Picture.docs'
 import { designCardDocs } from '@/components/molecules/DesignCard/DesignCard.docs'
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
-import { footerDocs } from '@/components/organisms/Footer/Footer.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
 import { releaseCardDocs } from '@/components/molecules/ReleaseCard/ReleaseCard.docs'
@@ -83,7 +81,6 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
-  convertDocumentationToLegacyFormat(alertDocs),
   convertDocumentationToLegacyFormat(artCardDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(boxDocs),
@@ -95,7 +92,6 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(pictureDocs),
   convertDocumentationToLegacyFormat(designCardDocs),
   convertDocumentationToLegacyFormat(dropdownDocs),
-  convertDocumentationToLegacyFormat(footerDocs),
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),
   convertDocumentationToLegacyFormat(releaseCardDocs),
