@@ -2,6 +2,7 @@ import { ComponentDocumentation } from '../../../lib/docgen/types'
 import React from 'react'
 import { Button } from './Button'
 import { Stack } from '../Stack'
+import { Typography } from '../Typography'
 
 /**
  * Button component documentation
@@ -19,49 +20,72 @@ export const buttonDocs: ComponentDocumentation = {
       name: 'variant',
       type: "'primary' | 'secondary' | 'naked'",
       required: false,
-      description: 'Visual style variant of the button'
+      default: 'primary',
+      description: 'Visual style variant: primary (high emphasis), secondary (medium emphasis), naked (minimal styling)'
     },
     {
       name: 'size',
       type: "'small' | 'medium' | 'large'",
       required: false,
-      description: 'Size variant affecting padding and font size'
+      default: 'medium',
+      description: 'Size variant affecting padding, font size, and icon size. Small for compact spaces, large for prominence'
     },
     {
       name: 'iconName',
       type: 'keyof typeof iconsData',
       required: false,
-      description: 'Name of the icon to display before the button text. Icon automatically inherits button text color and scales with button size.'
+      description: 'Icon displayed before button text. Automatically inherits text color and scales with size (small→xs, medium→sm, large→md icons)'
     },
     {
       name: 'url',
       type: 'string',
       required: false,
-      description: 'URL for link purpose buttons'
+      description: 'Navigation URL when purpose="link". Uses Next.js Link component for client-side navigation'
     },
     {
       name: 'purpose',
       type: "'button' | 'link'",
       required: false,
-      description: 'Semantic purpose determining HTML element (button vs anchor)'
+      default: 'button',
+      description: 'Semantic purpose: "button" renders <button> element, "link" renders <a> element with Next.js Link'
     },
     {
       name: 'target',
       type: 'string',
       required: false,
-      description: 'Target attribute for link purpose (_blank, _self, etc.)'
+      description: 'Link target attribute for link purpose buttons (_blank for new tab, _self for same tab)'
     },
     {
       name: 'children',
       type: 'React.ReactNode',
       required: true,
-      description: 'Button content (text, icons, etc.)'
+      description: 'Button content - typically text, but can include additional elements'
+    },
+    {
+      name: 'disabled',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+      description: 'Disables button interaction and applies disabled styling. Communicated to assistive technologies'
+    },
+    {
+      name: 'onClick',
+      type: '() => void',
+      required: false,
+      description: 'Click handler for button purpose. Not used for link purpose buttons'
+    },
+    {
+      name: 'type',
+      type: "'button' | 'submit' | 'reset'",
+      required: false,
+      default: 'button',
+      description: 'HTML button type for form interactions when purpose="button"'
     },
     {
       name: 'data-testid',
       type: 'string',
       required: false,
-      description: 'Data test id for testing'
+      description: 'Data test id for automated testing'
     }
   ],
   
@@ -205,35 +229,133 @@ export const buttonDocs: ComponentDocumentation = {
           </Stack>
         </Stack>
       )
+    },
+    {
+      name: 'Form Integration',
+      description: 'Buttons in form contexts with proper types and states',
+      code: `<Stack direction="column" gap="lg">
+  {/* Form with submit button */}
+  <Stack direction="column" gap="md">
+    <Typography variant="h4">User Registration</Typography>
+    <Stack direction="row" gap="md">
+      <Button type="submit" variant="primary">
+        Create Account
+      </Button>
+      <Button type="button" variant="secondary" onClick={() => console.log('Cancel')}>
+        Cancel
+      </Button>
+    </Stack>
+  </Stack>
+
+  {/* Action buttons with icons */}
+  <Stack direction="column" gap="md">
+    <Typography variant="h4">Document Actions</Typography>
+    <Stack direction="row" gap="sm">
+      <Button iconName="add" size="small" variant="primary">
+        New Document
+      </Button>
+      <Button iconName="copy" size="small" variant="secondary">
+        Duplicate
+      </Button>
+      <Button iconName="lineOut" size="small" variant="naked">
+        Export
+      </Button>
+    </Stack>
+  </Stack>
+
+  {/* Navigation buttons */}
+  <Stack direction="column" gap="md">
+    <Typography variant="h4">Navigation</Typography>
+    <Stack direction="row" gap="md">
+      <Button purpose="link" url="/dashboard" variant="primary">
+        Go to Dashboard
+      </Button>
+      <Button purpose="link" url="/docs" target="_blank" variant="secondary" iconName="directionRight">
+        View Documentation
+      </Button>
+    </Stack>
+  </Stack>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="lg">
+          {/* Form with submit button */}
+          <Stack direction="column" gap="md">
+            <Typography variant="h4">User Registration</Typography>
+            <Stack direction="row" gap="md">
+              <Button type="submit" variant="primary">
+                Create Account
+              </Button>
+              <Button type="button" variant="secondary" onClick={() => console.log('Cancel')}>
+                Cancel
+              </Button>
+            </Stack>
+          </Stack>
+
+          {/* Action buttons with icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="h4">Document Actions</Typography>
+            <Stack direction="row" gap="sm">
+              <Button iconName="add" size="small" variant="primary">
+                New Document
+              </Button>
+              <Button iconName="copy" size="small" variant="secondary">
+                Duplicate
+              </Button>
+              <Button iconName="lineOut" size="small" variant="naked">
+                Export
+              </Button>
+            </Stack>
+          </Stack>
+
+          {/* Navigation buttons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="h4">Navigation</Typography>
+            <Stack direction="row" gap="md">
+              <Button purpose="link" url="/dashboard" variant="primary">
+                Go to Dashboard
+              </Button>
+              <Button purpose="link" url="/docs" target="_blank" variant="secondary" iconName="directionRight">
+                View Documentation
+              </Button>
+            </Stack>
+          </Stack>
+        </Stack>
+      )
     }
   ],
   
   accessibility: {
     notes: [
-      'Proper semantic HTML (button/a) based on purpose prop',
-      'Keyboard navigation support (Tab, Enter, Space)',
-      'Screen reader friendly with proper roles',
-      'Focus management with visible focus indicators',
-      'Disabled state properly communicated to assistive technology',
-      'WCAG 2.2 AA compliant with comprehensive accessibility testing',
-      'All variants meet interactive element contrast requirements',
-      'Automated jest-axe testing ensures ongoing accessibility compliance'
+      'Semantic HTML: Uses proper <button> or <a> elements based on purpose prop ensuring correct assistive technology behavior',
+      'Keyboard Navigation: Full keyboard support - Tab to focus, Enter/Space to activate, works in all navigation contexts',
+      'Focus Management: Clear focus indicators with proper focus-visible styling, focus outline meets WCAG contrast requirements',
+      'Screen Reader Support: Announced with correct role (button/link), includes button text and icon descriptions',
+      'Disabled State: Properly communicated via aria-disabled and disabled attributes, prevents keyboard and mouse interaction',
+      'Interactive States: Hover, active, and focus states provide clear feedback with sufficient color contrast ratios',
+      'Form Integration: Submit/reset button types work correctly with form validation and submission flows',
+      'Link Navigation: Next.js Link integration preserves client-side routing while maintaining accessibility',
+      'Icon Accessibility: Icons inherit proper color contrast and are announced as part of button content',
+      'Touch Accessibility: Minimum 44px touch target size maintained across all variants and sizes',
+      'High Contrast Mode: All variants remain visible and functional in Windows High Contrast and similar modes',
+      'WCAG 2.2 AA Compliance: Comprehensive testing ensures all interactive guidelines are met'
     ],
-    keyboardNavigation: 'Tab to focus, Enter/Space to activate',
-    screenReader: 'Announced as "button" or "link" based on purpose',
-    focusManagement: 'Receives focus outline, respects focus-visible'
+    keyboardNavigation: 'Tab: Focus button | Enter/Space: Activate button or follow link | Standard form navigation for submit/reset types',
+    screenReader: 'Announced as "button" or "link" with content. Disabled state announced. Icon content integrated with button text.',
+    focusManagement: 'Focus outline visible on keyboard navigation, respects focus-visible. Focus moves to next logical element after activation.',
+    colorContrast: 'All variants exceed WCAG AA requirements (4.5:1 for text, 3:1 for non-text). Interactive states maintain contrast ratios.'
   },
-  
+
   notes: [
-    'Use purpose="button" for actions, purpose="link" for navigation',
-    'Primary variant for main actions, secondary for supporting actions',
-    'Naked variant for minimal visual weight or custom styling',
-    'Disabled state prevents interaction and updates visual appearance',
-    'Size variants maintain consistent vertical rhythm across interfaces',
-    'Icons automatically inherit button text color using CSS currentColor',
-    'Icon size automatically scales with button size (small→xs, medium→sm, large→md)',
-    'Icons are positioned before text content with semantic spacing',
-    'All available icons can be found in the icon system documentation'
-  ]
-  
-}
+    'Semantic Purpose: Use purpose="button" for actions (forms, modals, state changes), purpose="link" for navigation',
+    'Variant Hierarchy: Primary for main CTAs, secondary for supporting actions, naked for minimal emphasis or custom contexts',
+    'Size Guidelines: Small for compact interfaces, medium for standard use, large for prominent CTAs or touch interfaces',
+    'Polymorphic Rendering: Automatically renders semantic HTML (<button> or <a>) with proper attributes based on purpose',
+    'Icon Integration: Icons automatically inherit button text color and scale with size - no manual color/size management needed',
+    'Form Integration: Type prop supports submit/reset functionality, onClick handler for custom button actions',
+    'Link Behavior: Uses Next.js Link for client-side routing performance, supports target attribute for external links',
+    'Disabled State: Prevents all interaction (click, keyboard, form submission) and provides visual/ARIA feedback',
+    'Design Token Usage: All styling derives from component tokens ensuring consistency and theme support',
+    'Performance: Efficient rendering with proper prop forwarding and styled-components optimization',
+    'Browser Support: Works across all modern browsers with graceful degradation for older environments',
+    'Custom Styling: Naked variant provides base structure for custom styling while maintaining accessibility'
+  ]}

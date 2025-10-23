@@ -1,6 +1,7 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Icon } from '../Icon'
 import { Stack } from '../Stack'
+import { Typography } from '../Typography'
 
 export const iconDocs: ComponentDocumentation = {
   id: 'icon',
@@ -14,29 +15,39 @@ export const iconDocs: ComponentDocumentation = {
       name: 'name',
       type: 'keyof typeof iconsData',
       required: true,
-      description: 'Name of the icon from the icons.json file (e.g., "arrowDown", "star", "heart")'
+      description: 'Icon name from icons.json (add, arrowDown, menu, play, etc.). Must match exact key in icon data file'
     },
     {
       name: 'size',
       type: "'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'",
       required: false,
-      description: 'Size variant affecting width and height dimensions'
+      default: 'lg',
+      description: 'Size variant from 12px (xs) to 48px (2xl). Uses semantic.size.icon tokens for consistent scaling'
     },
     {
       name: 'iconColor',
-      type: "'default' | 'emphasis' | 'subdued' | 'disabled' | 'inverse' | 'interactive' | 'error' | 'success' | 'warning'",
+      type: "'default' | 'emphasis' | 'subdued' | 'disabled' | 'inverse' | 'interactive' | 'error' | 'success' | 'warning' | 'inherit'",
       required: false,
-      description: 'Semantic color variant applied via CSS color property'
+      default: 'default',
+      description: 'Semantic color variant. Use "inherit" to inherit color from parent text context'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      description: 'Data test id for testing purposes'
     }
   ],
   
   tokens: [
-    'semantic.size.icon.xs',
-    'semantic.size.icon.sm',
-    'semantic.size.icon.md',
-    'semantic.size.icon.lg',
-    'semantic.size.icon.xl',
-    'semantic.size.icon.2xl',
+    // Size tokens
+    'semantic.size.icon.xs',    // 12px
+    'semantic.size.icon.sm',    // 16px
+    'semantic.size.icon.md',    // 20px
+    'semantic.size.icon.lg',    // 24px (default)
+    'semantic.size.icon.xl',    // 32px
+    'semantic.size.icon.2xl',   // 48px
+    // Color tokens
     'semantic.color.icon.default',
     'semantic.color.icon.emphasis',
     'semantic.color.icon.subdued',
@@ -45,23 +56,29 @@ export const iconDocs: ComponentDocumentation = {
     'semantic.color.icon.interactive',
     'semantic.color.icon.error',
     'semantic.color.icon.success',
-    'semantic.color.icon.warning'
+    'semantic.color.icon.warning',
+    // Note: 'inherit' uses currentColor (no token)
   ],
   
   accessibility: {
     notes: [
-      'Includes aria-label for screen readers based on icon name',
-      'Inline SVG display maintains text flow',
-      'Semantic color variants provide visual hierarchy',
-      'Icons have descriptive names for better accessibility',
-      'SVG role="img" makes icons accessible to assistive technologies',
-      'WCAG 2.2 AA compliant with comprehensive accessibility testing',
-      'All color variants meet contrast requirements for enhanced usability',
-      'Automated jest-axe testing ensures ongoing accessibility compliance'
+      'Semantic Labeling: Automatically generates aria-label from icon name in JSON data for screen reader accessibility',
+      'SVG Accessibility: Uses role="img" and proper ARIA attributes to ensure assistive technology compatibility',
+      'Decorative vs Semantic: When used decoratively (within buttons/links), parent elements should handle accessibility context',
+      'Color Independence: Never rely solely on color to convey information - always pair with text or other indicators',
+      'Text Integration: Icons integrate naturally with text flow using inline-flex display and proper alignment',
+      'Contrast Compliance: All color variants meet WCAG AA contrast requirements against standard backgrounds',
+      'High Contrast Mode: Icons remain visible and functional in Windows High Contrast and similar accessibility modes',
+      'Screen Magnification: Vector SVG format ensures crisp rendering at all zoom levels up to 200% text scaling',
+      'Reduced Motion: Static icons respect user motion preferences - no animated or moving elements',
+      'Keyboard Navigation: Non-interactive by default - keyboard behavior handled by containing interactive elements',
+      'Focus Management: Does not interfere with focus flow - focus moves through parent interactive elements',
+      'Automated Testing: Comprehensive jest-axe testing validates accessibility compliance across all variants'
     ],
-    keyboardNavigation: 'Not interactive - no keyboard navigation',
-    screenReader: 'Aria-label based on icon name from JSON data',
-    colorContrast: 'Color variants use semantic token colors for proper contrast'
+    keyboardNavigation: 'Non-interactive element - keyboard navigation handled by parent components (buttons, links, etc.)',
+    screenReader: 'Announced as image with aria-label derived from icon name. Context provided by surrounding content or parent interactive elements',
+    colorContrast: 'All semantic color variants exceed WCAG AA contrast requirements. Use high-contrast variants (emphasis, inverse) for critical visual information',
+    focusManagement: 'Not focusable - icon content is announced when parent interactive elements receive focus'
   },
   
   examples: [
@@ -95,79 +112,302 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Color Variants',
-      description: 'Semantic color variations for different states',
-      code: `<Icon name="userBox" iconColor="default" />
-<Icon name="userBox" iconColor="emphasis" />
-<Icon name="userBox" iconColor="subdued" />
-<Icon name="userBox" iconColor="interactive" />
-<Icon name="userBox" iconColor="error" />
-<Icon name="userBox" iconColor="success" />
-<Icon name="userBox" iconColor="warning" />`,
+      description: 'Semantic color variations for different states and contexts',
+      code: `<Stack direction="column" gap="md">
+  {/* Standard colors */}
+  <Stack direction="row" gap="md" alignItems="center">
+    <Icon name="userBox" iconColor="default" />
+    <Icon name="userBox" iconColor="emphasis" />
+    <Icon name="userBox" iconColor="subdued" />
+    <Icon name="userBox" iconColor="disabled" />
+  </Stack>
+  
+  {/* Interactive and state colors */}
+  <Stack direction="row" gap="md" alignItems="center">
+    <Icon name="userBox" iconColor="interactive" />
+    <Icon name="userBox" iconColor="error" />
+    <Icon name="userBox" iconColor="success" />
+    <Icon name="userBox" iconColor="warning" />
+  </Stack>
+</Stack>`,
       renderComponent: () => (
-        <Stack direction="row" gap="md" alignItems="center">
-          <Icon name="userBox" iconColor="default" />
-          <Icon name="userBox" iconColor="emphasis" />
-          <Icon name="userBox" iconColor="subdued" />
-          <Icon name="userBox" iconColor="interactive" />
-          <Icon name="userBox" iconColor="error" />
-          <Icon name="userBox" iconColor="success" />
-          <Icon name="userBox" iconColor="warning" />
+        <Stack direction="column" gap="md">
+          {/* Standard colors */}
+          <Stack direction="row" gap="md" alignItems="center">
+            <Icon name="userBox" iconColor="default" />
+            <Icon name="userBox" iconColor="emphasis" />
+            <Icon name="userBox" iconColor="subdued" />
+            <Icon name="userBox" iconColor="disabled" />
+          </Stack>
+          
+          {/* Interactive and state colors */}
+          <Stack direction="row" gap="md" alignItems="center">
+            <Icon name="userBox" iconColor="interactive" />
+            <Icon name="userBox" iconColor="error" />
+            <Icon name="userBox" iconColor="success" />
+            <Icon name="userBox" iconColor="warning" />
+          </Stack>
         </Stack>
       )
     },
     {
-      name: 'Available Icons',
-      description: 'All available icons in the system',
-      code: `<Icon name="add" />
-<Icon name="arrowDown" />
-<Icon name="arrowUp" />
-<Icon name="arrowLeft" />
-<Icon name="arrowRight" />
-<Icon name="back" />
-<Icon name="caret" />
-<Icon name="close" />
-<Icon name="copy" />
-<Icon name="directionRight" />
-<Icon name="lineOut" />
-<Icon name="link" />
-<Icon name="menu" />
-<Icon name="message" />
-<Icon name="pause" />
-<Icon name="play" />
-<Icon name="playBack" />
-<Icon name="userBox" />`,
+      name: 'Contextual Color Inheritance',
+      description: 'Using "inherit" to match parent text color',
+      code: `<Stack direction="column" gap="md">
+  <Typography variant="body" color="interactive">
+    <Icon name="link" iconColor="inherit" /> Interactive link text
+  </Typography>
+  <Typography variant="body" color="error">
+    <Icon name="close" iconColor="inherit" /> Error message text
+  </Typography>
+  <Typography variant="body" color="success">
+    <Icon name="userBox" iconColor="inherit" /> Success status text
+  </Typography>
+</Stack>`,
       renderComponent: () => (
-        <Stack direction="row" gap="md" alignItems="center">
-          <Icon name="add" />
-          <Icon name="arrowDown" />
-          <Icon name="arrowUp" />
-          <Icon name="arrowLeft" />
-          <Icon name="arrowRight" />
-          <Icon name="back" />
-          <Icon name="caret" />
-          <Icon name="close" />
-          <Icon name="copy" />
-          <Icon name="directionRight" />
-          <Icon name="lineOut" />
-          <Icon name="link" />
-          <Icon name="menu" />
-          <Icon name="message" />
-          <Icon name="pause" />
-          <Icon name="play" />
-          <Icon name="playBack" />
-          <Icon name="userBox" />
+        <Stack direction="column" gap="md">
+          <Typography variant="body" color="interactive">
+            <Icon name="link" iconColor="inherit" /> Interactive link text
+          </Typography>
+          <Typography variant="body" color="error">
+            <Icon name="close" iconColor="inherit" /> Error message text
+          </Typography>
+          <Typography variant="body" color="success">
+            <Icon name="userBox" iconColor="inherit" /> Success status text
+          </Typography>
+        </Stack>
+      )
+    },
+    {
+      name: 'Available Icons Grid',
+      description: 'Complete icon library organized by category with names',
+      code: `{/* Action Icons */}
+<Stack direction="row" gap="lg" wrap>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="add" />
+    <Typography variant="caption">add</Typography>
+  </Stack>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="close" />
+    <Typography variant="caption">close</Typography>
+  </Stack>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="copy" />
+    <Typography variant="caption">copy</Typography>
+  </Stack>
+</Stack>
+
+{/* Navigation Icons */}
+<Stack direction="row" gap="lg" wrap>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="arrowUp" />
+    <Typography variant="caption">arrowUp</Typography>
+  </Stack>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="arrowDown" />
+    <Typography variant="caption">arrowDown</Typography>
+  </Stack>
+  <Stack direction="column" gap="sm" alignItems="center">
+    <Icon name="back" />
+    <Typography variant="caption">back</Typography>
+  </Stack>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="xl">
+          {/* Action Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">ACTION ICONS</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="add" />
+                <Typography variant="caption">add</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="close" />
+                <Typography variant="caption">close</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="copy" />
+                <Typography variant="caption">copy</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="menu" />
+                <Typography variant="caption">menu</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+          
+          {/* Navigation Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">NAVIGATION ICONS</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="arrowUp" />
+                <Typography variant="caption">arrowUp</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="arrowDown" />
+                <Typography variant="caption">arrowDown</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="arrowLeft" />
+                <Typography variant="caption">arrowLeft</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="arrowRight" />
+                <Typography variant="caption">arrowRight</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="back" />
+                <Typography variant="caption">back</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="caret" />
+                <Typography variant="caption">caret</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+          
+          {/* Media & Communication Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="play" />
+                <Typography variant="caption">play</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="pause" />
+                <Typography variant="caption">pause</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="playBack" />
+                <Typography variant="caption">playBack</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="message" />
+                <Typography variant="caption">message</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="link" />
+                <Typography variant="caption">link</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+          
+          {/* Other Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">OTHER ICONS</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="userBox" />
+                <Typography variant="caption">userBox</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="directionRight" />
+                <Typography variant="caption">directionRight</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="lineOut" />
+                <Typography variant="caption">lineOut</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+        </Stack>
+      )
+    },
+    {
+      name: 'Real-world Usage Patterns',
+      description: 'Common patterns showing icons in context with buttons, lists, and navigation',
+      code: `{/* Button with icon */}
+<Stack direction="row" gap="sm" alignItems="center">
+  <Icon name="add" size="sm" iconColor="inherit" />
+  <Typography variant="button2">Add Item</Typography>
+</Stack>
+
+{/* Status message with icon */}
+<Stack direction="row" gap="sm" alignItems="center">
+  <Icon name="userBox" size="md" iconColor="success" />
+  <Typography variant="body" color="success">
+    Profile updated successfully
+  </Typography>
+</Stack>
+
+{/* Navigation item */}
+<Stack direction="row" gap="md" alignItems="center" justifyContent="space-between">
+  <Stack direction="row" gap="sm" alignItems="center">
+    <Icon name="message" iconColor="subdued" />
+    <Typography variant="body">Messages</Typography>
+  </Stack>
+  <Icon name="arrowRight" iconColor="subdued" size="sm" />
+</Stack>
+
+{/* Media controls */}
+<Stack direction="row" gap="sm" alignItems="center">
+  <Icon name="playBack" iconColor="interactive" />
+  <Icon name="play" iconColor="interactive" size="xl" />
+  <Icon name="pause" iconColor="subdued" />
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="xl">
+          {/* Button with icon */}
+          <Stack direction="column" gap="sm">
+            <Typography variant="label" color="subdued">BUTTON WITH ICON</Typography>
+            <Stack direction="row" gap="sm" alignItems="center">
+              <Icon name="add" size="sm" iconColor="inherit" />
+              <Typography variant="button2">Add Item</Typography>
+            </Stack>
+          </Stack>
+          
+          {/* Status message with icon */}
+          <Stack direction="column" gap="sm">
+            <Typography variant="label" color="subdued">STATUS MESSAGE</Typography>
+            <Stack direction="row" gap="sm" alignItems="center">
+              <Icon name="userBox" size="md" iconColor="success" />
+              <Typography variant="body" color="success">
+                Profile updated successfully
+              </Typography>
+            </Stack>
+          </Stack>
+          
+          {/* Navigation item */}
+          <Stack direction="column" gap="sm">
+            <Typography variant="label" color="subdued">NAVIGATION ITEM</Typography>
+            <Stack direction="row" gap="md" alignItems="center" justifyContent="space-between">
+              <Stack direction="row" gap="sm" alignItems="center">
+                <Icon name="message" iconColor="subdued" />
+                <Typography variant="body">Messages</Typography>
+              </Stack>
+              <Icon name="arrowRight" iconColor="subdued" size="sm" />
+            </Stack>
+          </Stack>
+          
+          {/* Media controls */}
+          <Stack direction="column" gap="sm">
+            <Typography variant="label" color="subdued">MEDIA CONTROLS</Typography>
+            <Stack direction="row" gap="sm" alignItems="center">
+              <Icon name="playBack" iconColor="interactive" />
+              <Icon name="play" iconColor="interactive" size="xl" />
+              <Icon name="pause" iconColor="subdued" />
+            </Stack>
+          </Stack>
         </Stack>
       )
     }
   ],
   
   notes: [
-    'Icons are loaded from styles/icons.json with SVG path data',
-    'Renders inline SVG elements for optimal performance and styling control',
-    'Color variants use semantic token colors via CSS color property',
-    'Icon names must match keys in the icons.json file (e.g., "arrowDown", "back")',
-    'Aria-label is automatically set to the icon name for accessibility',
-    'SVG viewBox is set to "0 0 24 24" for consistent icon proportions',
-    'Missing icons are handled gracefully with console warnings'
+    'Icon Library: Icons loaded from styles/icons.json with SVG path data - add new icons by extending this JSON file',
+    'Size Guidelines: xs/sm for inline text, md/lg for buttons and UI elements, xl/2xl for feature graphics and headers',
+    'Color Semantics: Use semantic colors (error, success, warning) consistently with their meaning, not just for visual variety',
+    'Inherit Color: Use iconColor="inherit" to match parent text color for seamless text integration',
+    'Performance: Renders inline SVG for optimal loading, caching, and style control compared to icon fonts or external images',
+    'Accessibility First: Automatically provides proper ARIA labels - for decorative use, ensure parent elements handle context',
+    'Consistent Proportions: All icons use 24x24 viewBox for uniform visual weight and predictable spacing',
+    'Missing Icon Handling: Component gracefully handles missing icons with console warnings for development debugging',
+    'Browser Support: SVG and CSS currentColor supported in all modern browsers with consistent rendering',
+    'Design Token Integration: All sizing and colors derive from semantic design tokens ensuring system consistency',
+    'Responsive Design: Vector format scales cleanly at all screen densities and zoom levels without pixelation',
+    'Theme Support: Color variants work automatically with light/dark theme switching through semantic tokens'
   ]
 }

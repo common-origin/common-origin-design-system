@@ -2,6 +2,7 @@ import { ComponentDocumentation } from '../../../lib/docgen/types'
 import React, { useState } from 'react'
 import { Dropdown } from './Dropdown'
 import { Stack } from '../../atoms/Stack'
+import { Typography } from '../../atoms/Typography'
 
 /**
  * Dropdown component documentation
@@ -19,43 +20,45 @@ export const dropdownDocs: ComponentDocumentation = {
       name: 'options',
       type: 'DropdownOption[]',
       required: true,
-      description: 'Array of selectable options. Each option must have a unique id and label. Optional value property for additional data.'
+      description: 'Array of selectable options. Each option requires: id (unique identifier), label (display text), and optional value (additional data). Interface: { id: string, label: string, value?: any }'
     },
     {
       name: 'value',
       type: 'string',
       required: true,
-      description: 'The ID of the currently selected option. Use empty string for no selection.'
+      description: 'Currently selected option ID (controlled component). Use empty string for no selection. Must match an option.id or be empty'
     },
     {
       name: 'onChange',
       type: '(value: string) => void',
       required: true,
-      description: 'Callback function fired when the user selects an option. Receives the selected option ID.'
+      description: 'Selection change handler. Called with selected option.id when user makes selection. Required for controlled component behavior'
     },
     {
       name: 'placeholder',
       type: 'string',
       required: false,
-      description: 'Text displayed when no option is selected. Defaults to "Select an option".'
+      default: 'Select an option',
+      description: 'Text displayed when no option is selected (value is empty string). Should be descriptive of the expected selection'
     },
     {
       name: 'disabled',
       type: 'boolean',
       required: false,
-      description: 'When true, prevents all user interaction and applies disabled styling.'
+      default: 'false',
+      description: 'Disables all user interaction, applies disabled styling, and communicates disabled state to assistive technologies'
     },
     {
       name: 'className',
       type: 'string',
       required: false,
-      description: 'Additional CSS class names to apply to the dropdown container.'
+      description: 'Additional CSS class names applied to the dropdown container for custom styling extensions'
     },
     {
       name: 'label',
       type: 'string',
       required: false,
-      description: 'Optional label text displayed above the dropdown for improved accessibility and form structure.'
+      description: 'Label text displayed above dropdown. Creates proper form structure with htmlFor association. Recommended for accessibility and UX'
     }
   ],
 
@@ -280,98 +283,202 @@ export const dropdownDocs: ComponentDocumentation = {
       }
     },
     {
-      name: 'Multiple Dropdowns',
-      description: 'Multiple dropdowns working independently in a form layout with proper labels',
-      code: `<Stack direction="column" gap="md">
-  <Dropdown
-    label="Color"
-    options={[
-      { id: 'red', label: 'Red' },
-      { id: 'blue', label: 'Blue' },
-      { id: 'green', label: 'Green' }
-    ]}
-    value={color}
-    onChange={setColor}
-    placeholder="Choose color..."
-  />
-  <Dropdown
-    label="Shape"
-    options={[
-      { id: 'circle', label: 'Circle' },
-      { id: 'square', label: 'Square' },
-      { id: 'triangle', label: 'Triangle' }
-    ]}
-    value={shape}
-    onChange={setShape}
-    placeholder="Choose shape..."
-  />
+      name: 'Keyboard Navigation Demo',
+      description: 'Interactive example demonstrating comprehensive keyboard navigation support',
+      code: `{/* Try these keyboard interactions:
+- Tab: Focus the dropdown trigger
+- Space/Enter: Open dropdown menu  
+- Arrow Up/Down: Navigate through options
+- Home: Jump to first option
+- End: Jump to last option
+- Escape: Close dropdown without selecting
+- Enter/Space: Select focused option */}
+
+<Dropdown
+  label="Keyboard Navigation Test"
+  options={[
+    { id: 'option1', label: '1. First Option (Home key jumps here)' },
+    { id: 'option2', label: '2. Second Option' },
+    { id: 'option3', label: '3. Third Option' },
+    { id: 'option4', label: '4. Fourth Option' },
+    { id: 'option5', label: '5. Last Option (End key jumps here)' }
+  ]}
+  value={selectedOption}
+  onChange={setSelectedOption}
+  placeholder="Try keyboard navigation..."
+/>`,
+      renderComponent: () => {
+        const KeyboardNavExample = () => {
+          const [selectedOption, setSelectedOption] = useState('')
+          return (
+            <Stack direction="column" gap="md">
+              <div style={{ maxWidth: '400px' }}>
+                <Dropdown
+                  label="Keyboard Navigation Test"
+                  options={[
+                    { id: 'option1', label: '1. First Option (Home key jumps here)' },
+                    { id: 'option2', label: '2. Second Option' },
+                    { id: 'option3', label: '3. Third Option' },
+                    { id: 'option4', label: '4. Fourth Option' },
+                    { id: 'option5', label: '5. Last Option (End key jumps here)' }
+                  ]}
+                  value={selectedOption}
+                  onChange={setSelectedOption}
+                  placeholder="Try keyboard navigation..."
+                />
+              </div>
+              <Stack direction="column" gap="xs">
+                <Typography variant="label" color="subdued">KEYBOARD SHORTCUTS:</Typography>
+                <Typography variant="small" color="subdued">Tab: Focus • Space/Enter: Open • ↑↓: Navigate • Home/End: Jump • Escape: Close</Typography>
+                {selectedOption && (
+                  <Typography variant="small" color="success">✓ Selected: {selectedOption}</Typography>
+                )}
+              </Stack>
+            </Stack>
+          )
+        }
+        return <KeyboardNavExample />
+      }
+    },
+    {
+      name: 'Form Layout Example',
+      description: 'Multiple dropdowns in a realistic form context with proper spacing and labels',
+      code: `<Stack direction="column" gap="lg">
+  <Typography variant="h3">User Preferences</Typography>
+  
+  <Stack direction="column" gap="md">
+    <Dropdown
+      label="Preferred Language"
+      options={[
+        { id: 'en', label: 'English' },
+        { id: 'es', label: 'Español' },
+        { id: 'fr', label: 'Français' },
+        { id: 'de', label: 'Deutsch' }
+      ]}
+      value={language}
+      onChange={setLanguage}
+      placeholder="Select your language..."
+    />
+    
+    <Dropdown
+      label="Time Zone"
+      options={[
+        { id: 'pst', label: 'Pacific Standard Time (PST)' },
+        { id: 'mst', label: 'Mountain Standard Time (MST)' },
+        { id: 'cst', label: 'Central Standard Time (CST)' },
+        { id: 'est', label: 'Eastern Standard Time (EST)' }
+      ]}
+      value={timezone}
+      onChange={setTimezone}
+      placeholder="Select your timezone..."
+    />
+    
+    <Dropdown
+      label="Theme Preference"
+      options={[
+        { id: 'light', label: 'Light Mode' },
+        { id: 'dark', label: 'Dark Mode' },
+        { id: 'auto', label: 'Auto (Follow System)' }
+      ]}
+      value={theme}
+      onChange={setTheme}
+      placeholder="Choose theme..."
+    />
+  </Stack>
 </Stack>`,
       renderComponent: () => {
-        const MultipleDropdownsExample = () => {
-          const [color, setColor] = useState('')
-          const [shape, setShape] = useState('')
+        const FormLayoutExample = () => {
+          const [language, setLanguage] = useState('')
+          const [timezone, setTimezone] = useState('')
+          const [theme, setTheme] = useState('')
           return (
-            <div style={{ maxWidth: '300px' }}>
-              <Stack direction="column" gap="md">
-                <Dropdown
-                  label="Color"
-                  options={[
-                    { id: 'red', label: 'Red' },
-                    { id: 'blue', label: 'Blue' },
-                    { id: 'green', label: 'Green' }
-                  ]}
-                  value={color}
-                  onChange={setColor}
-                  placeholder="Choose color..."
-                />
-                <Dropdown
-                  label="Shape"
-                  options={[
-                    { id: 'circle', label: 'Circle' },
-                    { id: 'square', label: 'Square' },
-                    { id: 'triangle', label: 'Triangle' }
-                  ]}
-                  value={shape}
-                  onChange={setShape}
-                  placeholder="Choose shape..."
-                />
+            <div style={{ maxWidth: '400px' }}>
+              <Stack direction="column" gap="lg">
+                <Typography variant="h3">User Preferences</Typography>
+                
+                <Stack direction="column" gap="md">
+                  <Dropdown
+                    label="Preferred Language"
+                    options={[
+                      { id: 'en', label: 'English' },
+                      { id: 'es', label: 'Español' },
+                      { id: 'fr', label: 'Français' },
+                      { id: 'de', label: 'Deutsch' }
+                    ]}
+                    value={language}
+                    onChange={setLanguage}
+                    placeholder="Select your language..."
+                  />
+                  
+                  <Dropdown
+                    label="Time Zone"
+                    options={[
+                      { id: 'pst', label: 'Pacific Standard Time (PST)' },
+                      { id: 'mst', label: 'Mountain Standard Time (MST)' },
+                      { id: 'cst', label: 'Central Standard Time (CST)' },
+                      { id: 'est', label: 'Eastern Standard Time (EST)' }
+                    ]}
+                    value={timezone}
+                    onChange={setTimezone}
+                    placeholder="Select your timezone..."
+                  />
+                  
+                  <Dropdown
+                    label="Theme Preference"
+                    options={[
+                      { id: 'light', label: 'Light Mode' },
+                      { id: 'dark', label: 'Dark Mode' },
+                      { id: 'auto', label: 'Auto (Follow System)' }
+                    ]}
+                    value={theme}
+                    onChange={setTheme}
+                    placeholder="Choose theme..."
+                  />
+                </Stack>
               </Stack>
             </div>
           )
         }
-        return <MultipleDropdownsExample />
+        return <FormLayoutExample />
       }
     }
   ],
 
   accessibility: {
     notes: [
-      'Fully keyboard accessible with Tab, Space, Enter, and Escape keys',
-      'ARIA attributes include expanded, haspopup, selected, and role properties',
-      'Screen readers announce the dropdown state and selected options',
-      'Focus is properly managed and returns to trigger after selection',
-      'Disabled state is communicated to assistive technologies',
-      'High contrast mode compatible with proper border and focus styles',
-      'Optional label provides proper form structure and improves accessibility',
-      'Label is properly associated with the dropdown trigger using htmlFor and id attributes'
+      'WCAG 2.2 AA Compliant: Full keyboard accessibility and proper ARIA implementation for form controls',
+      'Comprehensive Keyboard Support: Tab (focus), Space/Enter (toggle), Arrow keys (navigate), Home/End (jump to first/last), Escape (close)',
+      'ARIA Implementation: Uses role="listbox" for menu, role="option" for items, aria-expanded, aria-haspopup, and aria-selected attributes',
+      'Screen Reader Integration: Announced as combobox with current selection state, option count, and clear selection feedback',
+      'Focus Management: Focus preserved on trigger during interaction, returns after selection, visual focus indicators on all interactive elements',
+      'Label Association: Proper htmlFor/id relationship when label provided, creating accessible form structure',
+      'Disabled State: Communicated through aria-disabled, disabled attribute, and visual styling changes',
+      'High Contrast Support: Focus outlines, borders, and hover states work in Windows High Contrast and similar modes',
+      'Motion Sensitivity: Smooth animations respect user motion preferences and can be disabled via prefers-reduced-motion',
+      'Touch Accessibility: Adequate touch targets (44px minimum) and touch-friendly interaction patterns',
+      'Error Prevention: Validates option selection and provides clear feedback for invalid states',
+      'Cognitive Accessibility: Clear visual hierarchy, predictable behavior, and optional labels for context'
     ],
-    keyboardNavigation: 'Tab to focus trigger, Space/Enter to toggle dropdown, Escape to close dropdown, click or Enter on options to select',
-    screenReader: 'Announced as "combobox" with current selection state and option count. Selected option is clearly identified. Label is announced before the dropdown.',
-    focusManagement: 'Focus remains on trigger when dropdown opens/closes. Focus returns to trigger after option selection.'
+    keyboardNavigation: 'Tab: Focus trigger | Space/Enter: Open/close dropdown | Arrow Up/Down: Navigate options | Home: First option | End: Last option | Escape: Close without selection | Enter/Space on option: Select',
+    screenReader: 'Announced as "combobox, expanded/collapsed" with current selection. Options announced as "option X of Y" with selection state. Label provides context when present.',
+    focusManagement: 'Focus remains on trigger when dropdown opens/closes. Visual focus indicator shows current option during keyboard navigation. Focus returns to trigger after selection or Escape.',
+    colorContrast: 'All interactive states meet WCAG AA contrast requirements. Focus indicators, hover states, and text maintain 4.5:1 contrast ratio minimum.'
   },
 
   notes: [
-    'Each option in the options array must have a unique ID for proper functionality',
-    'The value prop should match an option ID or be an empty string for no selection',
-    'Use the label prop for better accessibility and form structure - it follows WCAG 2.1 AA guidelines',
-    'Consider using this component for 5+ options; use radio buttons or toggle groups for fewer options',
-    'The dropdown menu has a max-height of 300px and becomes scrollable for long lists',
-    'Click outside the dropdown or press Escape to close without selecting',
-    'Component supports both controlled and uncontrolled usage patterns',
-    'The dropdown menu is positioned absolutely and uses z-index for proper layering',
-    'Smooth animations enhance the user experience during open/close transitions',
-    'Icon rotation provides visual feedback for the dropdown state',
-    'All styling respects the design system tokens for consistency',
-    'When label is provided, it is properly associated with the dropdown for screen readers'
+    'Controlled Component: Always controlled via value/onChange props - no uncontrolled mode. Value must match option.id or be empty string',
+    'Option Data Structure: Each option requires unique id (string), label (display text), and optional value (any additional data)',
+    'Selection Scenarios: Use for 5+ options with single selection. Consider Radio buttons (<5 options) or Multi-select for multiple selections',
+    'Label Accessibility: Always provide label prop for form accessibility. Creates proper association and improves screen reader experience',
+    'Keyboard Navigation: Full WASD-style navigation plus Home/End keys. Follows ARIA Authoring Practices Guide patterns',
+    'Performance Optimization: Dropdown menu rendered on mount but hidden via CSS for smooth animations and keyboard navigation',
+    'Scroll Behavior: Menu max-height of 300px with auto-scroll. Large option lists become scrollable with proper focus management',
+    'Click Outside Handling: Automatic click-outside detection closes dropdown. Escape key also closes without selection',
+    'Visual Feedback: Smooth animations (0.15s ease), icon rotation, and focus indicators provide clear interaction feedback',
+    'Design Token Integration: All spacing, colors, borders, shadows derive from semantic design tokens ensuring theme consistency',
+    'Browser Support: Works in all modern browsers. Fallbacks ensure functionality even without CSS custom property support',
+    'Form Integration: Works with form libraries (Formik, React Hook Form) via standard controlled component patterns',
+    'Error Handling: Gracefully handles missing options, invalid values, and provides console warnings in development',
+    'Mobile Responsiveness: Touch-friendly interaction with appropriate tap targets and mobile-optimized spacing'
   ]
 }
