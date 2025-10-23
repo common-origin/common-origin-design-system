@@ -3,6 +3,46 @@
 ## Project Overview
 This is a **pure design system package** built with **atomic design principles**, **design tokens**, and **styled-components**. It provides reusable React components and design tokens that can be consumed by other projects, including the main Common Origin website. The design system emphasizes comprehensive testing, accessibility compliance, and token-driven styling.
 
+## 📋 Maintaining These Instructions
+
+**CRITICAL**: These instructions must be kept up-to-date as a living document.
+
+**When to Update** (Required):
+- ✅ **Architectural Changes**: New patterns, file structure modifications, build system changes
+- ✅ **New Features**: Significant additions like the releases system, new component categories
+- ✅ **Process Changes**: Updated testing approach, new build scripts, deployment workflow
+- ✅ **Breaking Changes**: API modifications, token structure changes, dependency updates
+- ✅ **Best Practices**: New conventions adopted, deprecated patterns identified
+- ✅ **Integration Points**: New libraries, external systems, or tooling added
+
+**Update Protocol**:
+1. **Document the Change**: Add/update relevant section in this file
+2. **Update Status Section**: Reflect completion in "Current Development Status"
+3. **Cross-Reference**: Add links to detailed READMEs where applicable
+4. **Keep Concise**: Instructions overview, detailed docs go in component/lib READMEs
+5. **Commit Together**: Update instructions in the same commit as the architectural change
+
+**Structure to Maintain**:
+- **Overview sections**: What exists and why (architecture, patterns, conventions)
+- **How-to guidance**: Key workflows and examples Copilot needs to follow
+- **Current status**: What's done, what's in progress, what's broken
+- **Decision log**: Why significant choices were made (context for future changes)
+
+**Example Good Update**:
+```markdown
+### New Feature: Releases System
+**Added**: Automated changelog generation from git history
+**Files**: lib/releases/, pages/releases.tsx
+**Build Integration**: npm run build:releases (runs before next build)
+**See**: lib/releases/README.md for detailed documentation
+```
+
+**Why This Matters**:
+- Copilot provides better assistance when context is current
+- New team members onboard faster with accurate documentation
+- Prevents duplicate or conflicting implementations
+- Maintains institutional knowledge as project evolves
+
 ## Core Architecture Patterns
 
 ### 1. Atomic Design Structure
@@ -415,6 +455,7 @@ When making changes, consult the appropriate specialized guide:
 - **Infrastructure Setup**: Dependencies, build configuration, and import paths working correctly
 - **Test Coverage**: 500+ comprehensive tests passing with accessibility compliance
 - **Component Semantic Improvements**: CoverImage → Picture for better design system naming
+- **Releases System**: Automated changelog generation from git history with filterable UI
 
 **⚠️ Current Focus Areas:**
 - **Styled-Components Prop Leaking**: Need shouldForwardProp filtering for $ prefixed props
@@ -427,3 +468,45 @@ When making changes, consult the appropriate specialized guide:
 - Ensure accessibility compliance (WCAG 2.2 AA) across all components  
 - Enable seamless consumption by main project and future projects
 - Maintain comprehensive test coverage and TypeScript support
+
+## Documentation Site Features
+
+### Releases & Changelog System
+**Location**: `/releases` page, `lib/releases/`
+
+**Purpose**: Automated changelog generation from git commit history
+
+**How It Works**:
+1. **Build-time generation**: `npm run build:releases` parses git tags and commits
+2. **Conventional commits**: Categorizes changes by type (feat, fix, chore, etc.)
+3. **Static data**: Generates `public/data/releases.json` consumed by Next.js page
+4. **Filterable UI**: Users can filter by version type (major, minor, patch)
+
+**Key Files**:
+- `lib/releases/build.cjs` - Generator script (CommonJS for Node compatibility)
+- `pages/releases.tsx` - Releases page with Grid layout and filtering
+- `public/data/releases.json` - Generated release data (git-ignored, auto-created)
+
+**Adding New Releases**:
+```bash
+git commit -m "feat: add new component"  # Use conventional format
+git tag v1.4.0                          # Create semantic version tag
+git push --tags                          # Push tag to remote
+npm run build                            # Regenerates releases automatically
+```
+
+**Conventional Commit Types Supported**:
+- `feat:` ✨ Features
+- `fix:` 🐛 Bug Fixes  
+- `chore:` 🔧 Chores
+- `docs:` 📚 Documentation
+- `style:` 💎 Styles
+- `refactor:` ♻️ Refactoring
+- `perf:` ⚡ Performance
+- `test:` ✅ Tests
+- `build:` 📦 Build
+- `ci:` 👷 CI/CD
+
+**Design Pattern**: Uses design system components (Grid, Typography, Chip, Stack) to showcase the library while providing functionality.
+
+See `lib/releases/README.md` for detailed documentation.
