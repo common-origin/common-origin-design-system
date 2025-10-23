@@ -9,11 +9,9 @@ expect.extend(toHaveNoViolations)
 describe('PageTitle', () => {
   it('renders the title as h1', () => {
     render(<PageTitle title="Test Title" />)
-    // Note: Due to styled-components prop leaking issue (parked), 
-    // Typography currently renders as span with as="h1" instead of actual h1 element
-    // TODO: Fix when styled-components migration is complete
-    expect(screen.getByText('Test Title')).toBeInTheDocument()
-    expect(screen.getByText('Test Title')).toHaveAttribute('as', 'h1')
+    // Typography with variant="h1" renders as semantic h1 element
+    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument()
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent('Test Title')
   })
 
   it('renders the subtitle if provided', () => {
