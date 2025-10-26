@@ -72,7 +72,13 @@ npm run typecheck        # Type checking
 npm run docs:generate    # Generate component docs
 ```
 
-## 📦 Package Usage
+## � Requirements
+
+This design system supports:
+- **React**: 18.x or 19.x
+- **TypeScript**: 4.x or higher (recommended)
+
+## �📦 Package Usage
 
 Install the design system in your project:
 
