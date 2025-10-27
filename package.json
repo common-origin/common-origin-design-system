@@ -36,7 +36,8 @@
     "typecheck": "tsc --noEmit",
     "docs:generate": "node lib/docgen/generate.js",
     "docs:dev": "npm run build:tokens && npm run build:releases && npm run dev",
-    "prepublishOnly": "npm run build:tokens && npm run build:package",
+    "verify:types": "node scripts/verify-types.cjs",
+    "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:types",
     "release": "npm publish --provenance --access public"
   },
   "peerDependencies": {

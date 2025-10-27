@@ -1,4 +1,4 @@
-import tokens from '@/styles/tokens.json'
+import tokens from '../styles/tokens.json'
 
 // Breakpoints using base tokens
 export const breakpoints = {
