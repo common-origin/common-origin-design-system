@@ -24,6 +24,18 @@ export interface AccessibilityInfo {
   focusManagement?: string
 }
 
+export interface AnatomyPart {
+  name: string
+  description: string
+  tokens?: string[]
+}
+
+export interface AnatomyInfo {
+  description: string
+  diagram?: string
+  parts: AnatomyPart[]
+}
+
 export interface ComponentDocumentation {
   id: string
   name: string
@@ -39,6 +51,7 @@ export interface ComponentDocumentation {
   
   // Optional extended documentation
   accessibility?: AccessibilityInfo
+  anatomy?: AnatomyInfo
   notes?: string[]
   deprecatedProps?: string[]
   migrationGuide?: string

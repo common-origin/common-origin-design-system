@@ -94,10 +94,31 @@ export type { ComponentNameProps } from './ComponentName'
 - Test accessibility with aria-label checks
 - Test variants and states
 
-## Documentation
+## Documentation Requirements
 
-- All components should have `.docs.tsx` for Storybook
-- Document all props with JSDoc comments
+**IMPORTANT:** Refer to [DOCUMENTATION_STANDARDS.md](./DOCUMENTATION_STANDARDS.md) for complete documentation guidelines.
+
+### Quick Reference for `.docs.tsx` Files
+
+**This project uses a CUSTOM documentation system, NOT Storybook.**
+
+Key requirements for component documentation:
+- Export a `ComponentDocumentation` object from `lib/docgen/types`
+- Include all required fields: `id`, `name`, `description`, `category`, `props`, `tokens`, `examples`, `accessibility`, `anatomy`
+- Each example needs both `code` (string) and `renderComponent` (function)
+- Stack and Typography components do NOT support `style` prop - use plain HTML elements when inline styles are needed
+- Check existing `.docs.tsx` files (Chip, Button, ProgressBar) for reference patterns
+- **CRITICAL:** Add new component docs to `src/lib/componentsData.ts` (see DOCUMENTATION_STANDARDS.md for steps)
+
+For complete standards including:
+- Anatomy diagrams (required for all components)
+- Accessibility documentation requirements
+- Token documentation standards
+- Example quality guidelines
+- README creation guidelines
+- **How to add documentation to the docs site**
+
+**See [DOCUMENTATION_STANDARDS.md](./DOCUMENTATION_STANDARDS.md)**
 - Include usage examples
 
 ## Additional Context

@@ -202,6 +202,24 @@
           "margin": "{semantic.spacing.separator.xl} 0"
         }
       }
+    },
+    "progressBar": {
+      "backgroundColor": "{semantic.color.background.progressTrack}",
+      "borderRadius": "{base.border.radius.2}",
+      "sizes": {
+        "sm": {
+          "height": "{base.size.1}"
+        },
+        "md": {
+          "height": "{base.size.2}"
+        },
+        "lg": {
+          "height": "{base.size.4}"
+        },
+        "xl": {
+          "height": "{base.size.5}"
+        }
+      }
     }
   }
 }

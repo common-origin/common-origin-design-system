@@ -15,6 +15,7 @@ import { designCardDocs } from '@/components/molecules/DesignCard/DesignCard.doc
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
+import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
 import { releaseCardDocs } from '@/components/molecules/ReleaseCard/ReleaseCard.docs'
 import { sectionSeparatorDocs } from '@/components/atoms/SectionSeparator/SectionSeparator.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
@@ -94,9 +95,10 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(dropdownDocs),
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),
+  convertDocumentationToLegacyFormat(progressBarDocs),
   convertDocumentationToLegacyFormat(releaseCardDocs),
   convertDocumentationToLegacyFormat(sectionSeparatorDocs),
   convertDocumentationToLegacyFormat(stackDocs),
-  convertDocumentationToLegacyFormat(typographyDocs)
-  ,convertDocumentationToLegacyFormat(gridSystemDocs)
+  convertDocumentationToLegacyFormat(typographyDocs),
+  convertDocumentationToLegacyFormat(gridSystemDocs)
 ]

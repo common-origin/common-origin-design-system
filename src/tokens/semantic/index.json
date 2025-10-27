@@ -261,6 +261,10 @@
         "disabled": {
           "value": "{base.color.neutral.300}",
           "type": "color"
+        },
+        "progressTrack": {
+          "value": "{base.color.neutral.300}",
+          "type": "color"
         }
       },
       "border": {

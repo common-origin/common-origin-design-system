@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 26 Oct 2025 11:58:55 GMT
+ * Generated on Mon, 27 Oct 2025 10:50:24 GMT
  */
 
 :root {
@@ -287,6 +287,7 @@
   --semantic-color-background-warning: #B14C00;
   --semantic-color-background-warning-subtle: #FFECCC;
   --semantic-color-background-disabled: #dee2e6;
+  --semantic-color-background-progress-track: #dee2e6;
   --semantic-color-border-default: #e9ecef;
   --semantic-color-border-subtle: #dee2e6;
   --semantic-color-border-strong: #343a40;

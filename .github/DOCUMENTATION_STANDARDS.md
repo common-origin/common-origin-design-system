@@ -28,6 +28,28 @@ export const componentNameDocs: ComponentDocumentation = {
 }
 ```
 
+#### Adding Documentation to the Docs Site
+
+After creating a component's `.docs.tsx` file, you must add it to the documentation site:
+
+1. **Add import to `src/lib/componentsData.ts`:**
+   ```typescript
+   import { yourComponentDocs } from '@/components/path/to/YourComponent/YourComponent.docs'
+   ```
+
+2. **Add to the `staticComponentsData` array:**
+   ```typescript
+   export const staticComponentsData: ComponentData[] = [
+     // ... existing components
+     convertDocumentationToLegacyFormat(yourComponentDocs),
+   ]
+   ```
+
+This makes the component appear in the documentation site automatically. The component will be:
+- Listed in the component category navigation
+- Searchable in the docs
+- Accessible with all examples and documentation rendered
+
 #### Props Documentation Standards
 
 **Required for Every Prop:**

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 26 Oct 2025 11:58:55 GMT
+ * Generated on Mon, 27 Oct 2025 10:50:24 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -548,11 +548,35 @@ export interface TokensComponentSeparator {
   sizes: TokensComponentSeparatorSizes;
 }
 
+export interface TokensComponentProgressBarSizesSm {
+}
+
+export interface TokensComponentProgressBarSizesMd {
+}
+
+export interface TokensComponentProgressBarSizesLg {
+}
+
+export interface TokensComponentProgressBarSizesXl {
+}
+
+export interface TokensComponentProgressBarSizes {
+  sm: TokensComponentProgressBarSizesSm;
+  md: TokensComponentProgressBarSizesMd;
+  lg: TokensComponentProgressBarSizesLg;
+  xl: TokensComponentProgressBarSizesXl;
+}
+
+export interface TokensComponentProgressBar {
+  sizes: TokensComponentProgressBarSizes;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
   iconButton: TokensComponentIconButton;
   separator: TokensComponentSeparator;
+  progressBar: TokensComponentProgressBar;
 }
 
 export interface TokensSemanticBorder {
@@ -645,6 +669,7 @@ export interface TokensSemanticColorBackground {
   warning: string;
   'warning-subtle': string;
   disabled: string;
+  progressTrack: string;
 }
 
 export interface TokensSemanticColorBorder {
