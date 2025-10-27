@@ -26,6 +26,7 @@
       "@/components/*": ["./src/components/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/lib/*": ["./src/lib/*"],
+      "@/types/*": ["./src/types/*"],
       "@/tokens": ["./src/styles/tokens.json"]
     }
   },

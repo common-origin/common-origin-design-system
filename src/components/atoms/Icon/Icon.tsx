@@ -2,9 +2,12 @@ import React, { FC, ReactElement } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import iconsData from '@/styles/icons.json'
+import { type IconName } from '@/types/icons'
+
+export type { IconName }
 
 export interface IconProps {
-  name: keyof typeof iconsData
+  name: IconName
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   iconColor?: 'default' | 'emphasis' | 'subdued' | 'disabled' | 'inverse' | 'interactive' | 'error' | 'success' | 'warning' | 'inherit'
   'data-testid'?: string

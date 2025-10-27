@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Icon } from '../Icon'
+import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
-import iconsData from '@/styles/icons.json'
 
 const { semantic: { motion }, component: { iconButton } } = tokens
 
 export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
   variant: 'primary' | 'secondary' | 'naked'
   size?: 'small' | 'medium' | 'large'
-  iconName: keyof typeof iconsData
+  iconName: IconName
   url?: string
   onClick?: () => void
   // Accessibility props

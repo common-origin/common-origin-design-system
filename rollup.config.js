@@ -53,6 +53,7 @@ export default [
       declarationDir: 'dist',
       include: [
         'src/index.ts',
+        'src/types/**/*',
         'src/styles/**/*',
         'src/lib/styleUtils.ts',
         'src/components/index.ts',
