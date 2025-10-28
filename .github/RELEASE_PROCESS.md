@@ -140,6 +140,17 @@ The releases page (`/releases`) automatically updates when the site is deployed:
 4. **Next.js** pre-renders the static `/releases` page
 5. **Page displays** all releases with categorized commits
 
+### Vercel Deployment Configuration
+
+**Important:** The documentation site is deployed on Vercel, which requires special configuration to access git history and tags.
+
+The `vercel.json` file configures the build to:
+- Fetch full git history with `git fetch --unshallow`
+- Fetch all git tags with `git fetch --tags`
+- Then run the normal build process
+
+Without this configuration, the releases page will be empty because Vercel's default shallow clone doesn't include git tags or full history needed to generate the changelog.
+
 ### Manual Changelog Update (if needed)
 
 ```bash
