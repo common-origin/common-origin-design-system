@@ -56,6 +56,15 @@ export default function Home() {
               
               <Button 
                 purpose="link" 
+                url="/patterns" 
+                variant="secondary" 
+                size="large"
+              >
+                Design Patterns
+              </Button>
+              
+              <Button 
+                purpose="link" 
                 url="/tokens" 
                 variant="secondary" 
                 size="large"

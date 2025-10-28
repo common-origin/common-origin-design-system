@@ -170,6 +170,9 @@ export const Navigation: React.FC = () => {
             <MobileNavLink href="/components" $isActive={asPath === '/components'}>
               <Typography variant="h6" color="default">Components</Typography>
             </MobileNavLink>
+            <MobileNavLink href="/patterns" $isActive={asPath === '/patterns'}>
+              <Typography variant="h6" color="default">Patterns</Typography>
+            </MobileNavLink>
             <MobileNavLink href="/tokens" $isActive={asPath === '/tokens'}>
               <Typography variant="h6" color="default">Tokens</Typography>
             </MobileNavLink>
@@ -188,6 +191,9 @@ export const Navigation: React.FC = () => {
             <DesktopNavMenu>
               <DesktopNavLink href="/components" $isActive={asPath === '/components'}>
                 <Typography variant="subtitle" color={asPath === '/components' ? 'default' : 'subdued'}>Components</Typography>
+              </DesktopNavLink>
+              <DesktopNavLink href="/patterns" $isActive={asPath === '/patterns'}>
+                <Typography variant="subtitle" color={asPath === '/patterns' ? 'default' : 'subdued'}>Patterns</Typography>
               </DesktopNavLink>
               <DesktopNavLink href="/tokens" $isActive={asPath === '/tokens'}>
                 <Typography variant="subtitle" color={asPath === '/tokens' ? 'default' : 'subdued'}>Tokens</Typography>
