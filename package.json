@@ -38,7 +38,8 @@
     "docs:dev": "npm run build:tokens && npm run build:releases && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
     "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:types",
-    "release": "npm publish --provenance --access public"
+    "release": "npm publish --provenance --access public",
+    "release:create": "./scripts/release.sh"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

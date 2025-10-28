@@ -134,16 +134,48 @@ This design system is production-ready with:
 
 ## 🤝 Contributing
 
-This design system follows established patterns:
-- **Comprehensive testing** with jest-axe for accessibility compliance
-- **Token-driven styling** - all components use semantic design tokens
-- **TypeScript interfaces** with complete props documentation  
-- **Atomic design principles** for scalable component organization
-- **Component documentation** with interactive examples and usage patterns
+We welcome contributions! Please follow our established standards:
 
-### Development Workflow
+### Quick Start
+```bash
+# Fork and clone
+git clone <your-fork>
+cd common-origin-design-system
+npm install
+
+# Start development
+npm run docs:dev  # Starts dev server with docs
+npm test          # Run tests
+```
+
+### Commit Convention
+We use [Conventional Commits](https://www.conventionalcommits.org/) for automatic changelog generation:
+
+```bash
+feat(Component): add new feature
+fix(Component): fix bug
+docs: update documentation
+chore: bump version to X.Y.Z
+```
+
+### Release Process
+```bash
+# Automated release (recommended)
+npm run release:create
+
+# Manual release - see .github/RELEASE_PROCESS.md
+```
+
+### Documentation
+- **Contributing Guide**: [CONTRIBUTING.md](./CONTRIBUTING.md)
+- **Release Process**: [.github/RELEASE_PROCESS.md](./.github/RELEASE_PROCESS.md)
+- **Documentation Standards**: [.github/DOCUMENTATION_STANDARDS.md](./.github/DOCUMENTATION_STANDARDS.md)
+- **Quick Reference**: [.github/RELEASE_CHEATSHEET.md](./.github/RELEASE_CHEATSHEET.md)
+
+### Development Standards
 1. Components follow the atomic design hierarchy
 2. All styling uses design tokens from `src/styles/tokens.json`
 3. Each component includes `.test.tsx`, `.docs.tsx`, and implementation files
 4. Tests must include accessibility validation with jest-axe
 5. Documentation includes live examples and prop descriptions
+6. Use conventional commit messages for all commits
