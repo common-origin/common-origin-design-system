@@ -124,3 +124,8 @@ temp/
 .Trashes
 ehthumbs.db
 Thumbs.db.rollup.cache/
+
+# Generated files
+src/styles/tokens.css
+src/styles/tokens.d.ts
+public/data/releases.json
