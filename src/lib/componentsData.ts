@@ -4,6 +4,7 @@ import { ComponentDocumentation } from './docgen/types'
 // Import all documentation files (mix of default and named exports)
 import { artCardDocs } from '@/components/molecules/ArtCard/ArtCard.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
+import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
 import { buttonDocs } from '@/components/atoms/Button/Button.docs'
 import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
@@ -84,6 +85,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(artCardDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
+  convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),
   convertDocumentationToLegacyFormat(buttonDocs),
   convertDocumentationToLegacyFormat(chipDocs),

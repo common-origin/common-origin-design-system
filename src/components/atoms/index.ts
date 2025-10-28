@@ -1,6 +1,7 @@
 // Atoms index - components extracted from main project
 // Note: Alert temporarily removed due to hardcoded content - will recreate later
 export * from './Avatar'
+export * from './Badge'
 export * from './Box'
 export * from './Button'
 export * from './Chip'
