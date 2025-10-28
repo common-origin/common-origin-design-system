@@ -10,6 +10,7 @@ export type IconName =
   | 'arrowRight'
   | 'back'
   | 'caret'
+	| 'check'
   | 'close'
   | 'directionRight'
   | 'menu'
