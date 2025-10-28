@@ -2,23 +2,23 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { SectionSeparator } from './SectionSeparator'
-import type { SectionSeparatorProps } from './SectionSeparator'
+import { Divider } from './Divider'
+import type { DividerProps } from './Divider'
 
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
 
-describe('SectionSeparator', () => {
-  const defaultProps: SectionSeparatorProps = {
+describe('Divider', () => {
+  const defaultProps: DividerProps = {
     'data-testid': 'separator'
   }
 
-  const renderSeparator = (props: Partial<SectionSeparatorProps> = {}) => {
+  const renderSeparator = (props: Partial<DividerProps> = {}) => {
     const finalProps = {
       ...defaultProps,
       ...props
     }
-    return render(<SectionSeparator {...finalProps} />)
+    return render(<Divider {...finalProps} />)
   }
 
   const getSeparator = () => screen.getByTestId('separator')
@@ -83,7 +83,7 @@ describe('SectionSeparator', () => {
     })
 
     it('handles all variant options correctly', () => {
-      const variants: SectionSeparatorProps['variant'][] = ['default', 'strong', 'minimal']
+      const variants: DividerProps['variant'][] = ['default', 'strong', 'minimal']
       
       variants.forEach((variant) => {
         const { unmount } = renderSeparator({ variant })
@@ -120,7 +120,7 @@ describe('SectionSeparator', () => {
     })
 
     it('handles all size variants correctly', () => {
-      const sizes: SectionSeparatorProps['size'][] = ['small', 'medium', 'large', 'xlarge']
+      const sizes: DividerProps['size'][] = ['small', 'medium', 'large', 'xlarge']
       
       sizes.forEach((size) => {
         const { unmount } = renderSeparator({ size })
@@ -130,9 +130,41 @@ describe('SectionSeparator', () => {
     })
   })
 
+  describe('Orientation Support', () => {
+    it('renders horizontal orientation by default', () => {
+      renderSeparator()
+      const separator = getSeparator()
+      expect(separator).toHaveAttribute('aria-orientation', 'horizontal')
+    })
+
+    it('renders horizontal orientation when specified', () => {
+      renderSeparator({ orientation: 'horizontal' })
+      const separator = getSeparator()
+      expect(separator).toHaveAttribute('aria-orientation', 'horizontal')
+    })
+
+    it('renders vertical orientation', () => {
+      renderSeparator({ orientation: 'vertical' })
+      const separator = getSeparator()
+      expect(separator).toHaveAttribute('aria-orientation', 'vertical')
+    })
+
+    it('handles all orientation options correctly', () => {
+      const orientations: DividerProps['orientation'][] = ['horizontal', 'vertical']
+      
+      orientations.forEach((orientation) => {
+        const { unmount } = renderSeparator({ orientation })
+        const separator = getSeparator()
+        expect(separator).toBeInTheDocument()
+        expect(separator).toHaveAttribute('aria-orientation', orientation)
+        unmount()
+      })
+    })
+  })
+
   describe('Variant and Size Interactions', () => {
     it('minimal variant works with all sizes', () => {
-      const sizes: SectionSeparatorProps['size'][] = ['small', 'medium', 'large', 'xlarge']
+      const sizes: DividerProps['size'][] = ['small', 'medium', 'large', 'xlarge']
       
       sizes.forEach((size) => {
         const { unmount } = renderSeparator({ variant: 'minimal', size })
@@ -160,7 +192,7 @@ describe('SectionSeparator', () => {
     })
 
     it('handles complex variant-size combinations', () => {
-      const combinations: Array<{ variant: SectionSeparatorProps['variant']; size: SectionSeparatorProps['size'] }> = [
+      const combinations: Array<{ variant: DividerProps['variant']; size: DividerProps['size'] }> = [
         { variant: 'default', size: 'small' },
         { variant: 'strong', size: 'medium' },
         { variant: 'minimal', size: 'large' },
@@ -212,7 +244,7 @@ describe('SectionSeparator', () => {
     })
 
     it('maintains accessibility across all variants', () => {
-      const variants: SectionSeparatorProps['variant'][] = ['default', 'strong', 'minimal']
+      const variants: DividerProps['variant'][] = ['default', 'strong', 'minimal']
       
       variants.forEach((variant) => {
         const { unmount } = renderSeparator({ variant })
@@ -224,7 +256,7 @@ describe('SectionSeparator', () => {
     })
 
     it('maintains accessibility across all sizes', () => {
-      const sizes: SectionSeparatorProps['size'][] = ['small', 'medium', 'large', 'xlarge']
+      const sizes: DividerProps['size'][] = ['small', 'medium', 'large', 'xlarge']
       
       sizes.forEach((size) => {
         const { unmount } = renderSeparator({ size })
@@ -245,7 +277,7 @@ describe('SectionSeparator', () => {
     })
 
     it('applies consistent styling across variants', () => {
-      const variants: SectionSeparatorProps['variant'][] = ['default', 'strong', 'minimal']
+      const variants: DividerProps['variant'][] = ['default', 'strong', 'minimal']
       
       variants.forEach((variant) => {
         const { unmount } = renderSeparator({ variant })
@@ -255,7 +287,7 @@ describe('SectionSeparator', () => {
     })
 
     it('applies consistent spacing across sizes', () => {
-      const sizes: SectionSeparatorProps['size'][] = ['small', 'medium', 'large', 'xlarge']
+      const sizes: DividerProps['size'][] = ['small', 'medium', 'large', 'xlarge']
       
       sizes.forEach((size) => {
         const { unmount } = renderSeparator({ size })
@@ -282,7 +314,7 @@ describe('SectionSeparator', () => {
     })
 
     it('renders without any props', () => {
-      render(<SectionSeparator />)
+      render(<Divider />)
       // Should still work without data-testid, using role selector
       expect(screen.getByRole('separator')).toBeInTheDocument()
     })
@@ -304,7 +336,7 @@ describe('SectionSeparator', () => {
     })
 
     it('should have no accessibility violations with different variants', async () => {
-      const variants: SectionSeparatorProps['variant'][] = ['default', 'strong', 'minimal']
+      const variants: DividerProps['variant'][] = ['default', 'strong', 'minimal']
       
       for (const variant of variants) {
         const { container, unmount } = renderSeparator({ variant })
@@ -315,7 +347,7 @@ describe('SectionSeparator', () => {
     })
 
     it('should have no accessibility violations with different sizes', async () => {
-      const sizes: SectionSeparatorProps['size'][] = ['small', 'medium', 'large', 'xlarge']
+      const sizes: DividerProps['size'][] = ['small', 'medium', 'large', 'xlarge']
       
       for (const size of sizes) {
         const { container, unmount } = renderSeparator({ size })

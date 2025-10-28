@@ -13,6 +13,7 @@ export type IconName =
 	| 'check'
   | 'close'
   | 'directionRight'
+	| 'export'
   | 'menu'
   | 'pause'
   | 'play'
@@ -21,6 +22,7 @@ export type IconName =
   | 'message'
   | 'copy'
   | 'link'
+	|'table'
   | 'userBox'
 
 // Also export icons data for runtime use

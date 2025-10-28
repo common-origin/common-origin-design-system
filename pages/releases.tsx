@@ -12,7 +12,7 @@ import {
   Chip,
   Layout,
   Navigation,
-	SectionSeparator,
+	Divider,
 	Button,
 } from '../src/page-components'
 import { Grid, GridCol } from '../src/components/layout/GridSystem'
@@ -233,7 +233,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 										</Stack>
 									</Stack>
 								</Box>
-								<SectionSeparator size="small" />
+								<Divider size="small" />
 							</Box>							
 						
 						<FiltersBar>
@@ -270,7 +270,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 							>
 								Patch ({versionTypeCounts.patch})
 							</Button>
-							<SectionSeparator size="small" />
+							<Divider size="small" />
 						</FiltersBar>
 						
 						<Grid cols={1}>
@@ -292,7 +292,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 													{format(new Date(release.date), 'MMMM d, yyyy')}
 												</Typography>
 											</VersionHeader>
-											<SectionSeparator size="small" />
+											<Divider size="small" />
 											
 											{release.commits.length === 0 ? (
 												<Typography variant="body" color="subdued">
@@ -327,7 +327,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 																	</CommitItem>
 																))}
 															</CommitList>
-															{index < array.length - 1 && <SectionSeparator size="small" />}
+															{index < array.length - 1 && <Divider size="small" />}
 														</div>
 													))}
 												</Stack>

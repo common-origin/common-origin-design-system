@@ -1,16 +1,16 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
-import { SectionSeparator } from './SectionSeparator'
+import { Divider } from './Divider'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
 import { Box } from '../Box'
 
-export const sectionSeparatorDocs: ComponentDocumentation = {
-  id: 'sectionseparator',
-  name: 'SectionSeparator',
-  description: 'Semantic content separator using HR elements with customizable visual styling. Provides clear visual breaks between content sections while maintaining screen reader compatibility. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
+export const dividerDocs: ComponentDocumentation = {
+  id: 'divider',
+  name: 'Divider',
+  description: 'Semantic content divider with customizable visual styling and orientation. Provides clear visual breaks between content sections both horizontally and vertically while maintaining screen reader compatibility. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
   category: 'Atoms',
   
-  // Props extracted with full type safety from SectionSeparatorProps interface
+  // Props extracted with full type safety from DividerProps interface
   props: [
     {
       name: 'variant',
@@ -22,7 +22,14 @@ export const sectionSeparatorDocs: ComponentDocumentation = {
       name: 'size',
       type: "'small' | 'medium' | 'large' | 'xlarge'",
       required: false,
-      description: 'Size variation affecting vertical spacing around separator'
+      description: 'Size variation affecting spacing around divider'
+    },
+    {
+      name: 'orientation',
+      type: "'horizontal' | 'vertical'",
+      required: false,
+      default: 'horizontal',
+      description: 'Orientation of the divider - horizontal for top/bottom spacing, vertical for left/right spacing'
     },
     {
       name: 'data-testid',
@@ -44,61 +51,79 @@ export const sectionSeparatorDocs: ComponentDocumentation = {
 
   examples: [
     {
-      name: 'Separator Variants',
+      name: 'Divider Variants',
       description: 'Different visual weights for various contexts',
-      code: `<SectionSeparator variant="default" />
-<SectionSeparator variant="strong" />
-<SectionSeparator variant="minimal" />`,
+      code: `<Divider variant="default" />
+<Divider variant="strong" />
+<Divider variant="minimal" />`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
           <Stack direction="column" gap="none">
             <Typography>Default</Typography>
-            <SectionSeparator variant="default" size="small" />
+            <Divider variant="default" size="small" />
           </Stack>
           <Stack direction="column" gap="none">
             <Typography>Strong</Typography>
-            <SectionSeparator variant="strong" size="small" />
+            <Divider variant="strong" size="small" />
           </Stack>
           <Stack direction="column" gap="none">
             <Typography>Minimal</Typography>
-            <SectionSeparator variant="minimal" size="small" />
+            <Divider variant="minimal" size="small" />
           </Stack>
         </Stack>
       )
     },
     {
-      name: 'Separator Sizes',
+      name: 'Divider Sizes',
       description: 'Different spacing amounts for content hierarchy',
-      code: `<SectionSeparator size="small" />
-<SectionSeparator size="medium" />
-<SectionSeparator size="large" />
-<SectionSeparator size="xlarge" />`,
+      code: `<Divider size="small" />
+<Divider size="medium" />
+<Divider size="large" />
+<Divider size="xlarge" />`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
           <Stack direction="column" gap="md">
             <Typography>Small spacing</Typography>
             <Box bg="subtle">
-              <SectionSeparator size="small" />
+              <Divider size="small" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Medium spacing</Typography>
             <Box bg="subtle">
-              <SectionSeparator size="medium" />
+              <Divider size="medium" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Large spacing</Typography>
             <Box bg="subtle">
-              <SectionSeparator size="large" />
+              <Divider size="large" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Extra large spacing</Typography>
             <Box bg="subtle">
-              <SectionSeparator size="xlarge" />
+              <Divider size="xlarge" />
             </Box>
           </Stack>
+        </Stack>
+      )
+    },
+    {
+      name: 'Vertical Orientation',
+      description: 'Vertical dividers for inline content separation',
+      code: `<Stack direction="row" gap="md">
+  <Typography>Left</Typography>
+  <Divider orientation="vertical" size="small" />
+  <Typography>Right</Typography>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="row" gap="md">
+          <Typography>Section 1</Typography>
+          <Divider orientation="vertical" size="small" />
+          <Typography>Section 2</Typography>
+          <Divider orientation="vertical" size="medium" />
+          <Typography>Section 3</Typography>
         </Stack>
       )
     }
@@ -121,8 +146,9 @@ export const sectionSeparatorDocs: ComponentDocumentation = {
   notes: [
     'Use to separate major content sections',
     'Choose variant based on visual hierarchy needs',
-    'Size affects vertical spacing, not line appearance',
-    'Consistent with page rhythm and typography scale',
-    'Works well between article sections or form groups'
+    'Horizontal orientation: size affects vertical spacing (top/bottom)',
+    'Vertical orientation: size affects horizontal spacing (left/right)',
+    'Vertical dividers require parent with flex or inline-block layout',
+    'Works well between article sections, form groups, or inline elements'
   ]
 }

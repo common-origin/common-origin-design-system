@@ -13,7 +13,7 @@ export const BaseChipStyled = styled.span.withConfig({
   justify-content: center;
   width: fit-content;
   height: max-content;
-  border-radius: ${chipTokens.default.borderRadius};
+  border-radius: 12px;
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;

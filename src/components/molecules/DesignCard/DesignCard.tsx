@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Chip } from '../../atoms/Chip'
 import { Button } from '../../atoms/Button'
 import { Picture } from '../../atoms/Picture'
-import { SectionSeparator } from '../../atoms/SectionSeparator'
+import { Divider } from '../../atoms/Divider'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 import { DateFormatter } from '../../atoms/DateFormatter'
@@ -129,7 +129,7 @@ export const DesignCard: React.FC<DesignCardProps> = ({
             </ContentWrapper>
           </ContentSection>
         </DesignCardStyled>
-        <SectionSeparator />
+        <Divider />
       </>
     )
   }
