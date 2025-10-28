@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import {
   Box,
@@ -14,7 +14,7 @@ import {
 } from '../page-components'
 import tokens from '@/styles/tokens.json'
 
-const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
+const { base: { breakpoint, zIndex }, semantic: { color, border, spacing } } = tokens
 
 // Styled Components
 const SearchRow = styled.div`
@@ -58,22 +58,21 @@ const MobileActionButton = styled.div`
 const FilterRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.md};
+  gap: ${spacing.layout['6xl']};
   margin-bottom: ${spacing.layout.lg};
   flex-wrap: wrap;
-`
-
-const ClearAllButton = styled.button`
-  background: none;
-  border: none;
-  color: ${color.text.interactive};
-  font-size: ${tokens.base.fontSize[1]};
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
   
-  &:hover {
-    color: ${color.text.emphasis};
+  @media (max-width: ${breakpoint.md}) {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    
+    /* Hide scrollbar but keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    
+    &::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
   }
 `
 
@@ -82,6 +81,13 @@ const FilterGroup = styled.div`
   align-items: center;
   gap: ${spacing.layout.sm};
   flex: 1;
+  min-width: 0;
+  position: relative;
+  
+  @media (max-width: ${breakpoint.md}) {
+    flex-wrap: nowrap;
+    overflow-x: visible;
+  }
 `
 
 const QuickFilters = styled.div`
@@ -89,6 +95,50 @@ const QuickFilters = styled.div`
 	display: flex;
 	align-items: center;
 	gap: ${spacing.layout.sm};
+  flex-shrink: 0;
+  
+  @media (max-width: ${breakpoint.md}) {
+    flex-wrap: nowrap;
+  }
+`
+
+const AppliedFiltersContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.layout.sm};
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  
+  @media (max-width: ${breakpoint.md}) {
+    overflow: visible;
+  }
+`
+
+const FilterChipsWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${spacing.layout.sm};
+  flex-wrap: nowrap;
+  overflow: hidden;
+  min-width: 0;
+  flex: 1;
+  
+  @media (max-width: ${breakpoint.md}) {
+    overflow: visible;
+    flex-wrap: nowrap;
+  }
+`
+
+const OverflowIndicator = styled.div`
+	display: flex;
+	align-items: center;
+  flex-shrink: 0;
+  margin-left: ${spacing.layout.sm};
+  
+  @media (max-width: ${breakpoint.md}) {
+    display: none;
+  }
 `
 
 const ActionsGroup = styled.div`
@@ -207,7 +257,7 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
   border-left: ${border.default};
   box-shadow: ${tokens.base.shadow[4]};
   transition: right 0.3s ease-in-out;
-  z-index: 1000;
+  z-index: ${zIndex[8]};
   overflow-y: auto;
   
   @media (max-width: ${breakpoint.md}) {
@@ -231,7 +281,7 @@ const DrawerOverlay = styled.div<{ $isOpen: boolean }>`
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
+  z-index: ${zIndex[7]};
   opacity: ${props => props.$isOpen ? '1' : '0'};
   pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
   transition: opacity 0.3s ease-in-out;
@@ -270,6 +320,59 @@ export const DataViewPattern: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState('')
   const [statusFilter, setStatusFilter] = useState('')
   const [priorityFilter, setPriorityFilter] = useState('')
+  
+  // Dynamic overflow detection
+  const filterChipsRef = useRef<HTMLDivElement>(null)
+  const [hasOverflow, setHasOverflow] = useState(false)
+  const [hiddenCount, setHiddenCount] = useState(0)
+  
+  // Detect if filter chips are overflowing
+  useEffect(() => {
+    if (!filterChipsRef.current || appliedFilters.length === 0) {
+      setHasOverflow(false)
+      setHiddenCount(0)
+      return
+    }
+    
+    const checkOverflow = () => {
+      const container = filterChipsRef.current
+      if (!container) return
+      
+      const isOverflowing = container.scrollWidth > container.clientWidth
+      setHasOverflow(isOverflowing)
+      
+      if (isOverflowing) {
+        // Calculate approximately how many chips are hidden
+        const chips = Array.from(container.children) as HTMLElement[]
+        let visibleWidth = 0
+        let hiddenChips = 0
+        
+        chips.forEach((chip, index) => {
+          const chipRect = chip.getBoundingClientRect()
+          const containerRect = container.getBoundingClientRect()
+          
+          // Check if chip is fully visible within container
+          if (chipRect.right > containerRect.right) {
+            hiddenChips = appliedFilters.length - index
+          }
+        })
+        
+        setHiddenCount(Math.max(1, hiddenChips))
+      } else {
+        setHiddenCount(0)
+      }
+    }
+    
+    // Check initially and on changes
+    setTimeout(checkOverflow, 0)
+    
+    const resizeObserver = new ResizeObserver(checkOverflow)
+    if (filterChipsRef.current) {
+      resizeObserver.observe(filterChipsRef.current)
+    }
+    
+    return () => resizeObserver.disconnect()
+  }, [appliedFilters])
   
   // Dropdown options
   const categoryOptions = [
@@ -432,26 +535,27 @@ export const DataViewPattern: React.FC = () => {
             
             {/* Applied Filters from Dropdowns */}
             {appliedFilters.length > 0 && (
-              <>
-                {appliedFilters.map(filter => (
-                  <FilterChip
-                    key={filter.id}
-                    selected
-                    onDismiss={() => removeAppliedFilter(filter.id)}
-                    aria-label={`Remove ${filter.label} filter`}
-                  >
-                    {filter.label}
-                  </FilterChip>
-                ))}
-              </>
-            )}
-            
-            {(appliedFilters.length > 0 || activeFilters.length > 0) && (
-              <>
-                <ClearAllButton onClick={clearAllFilters}>
-                  Clear all
-                </ClearAllButton>
-              </>
+              <AppliedFiltersContainer>
+                <FilterChipsWrapper ref={filterChipsRef}>
+                  {appliedFilters.map(filter => (
+                    <FilterChip
+                      key={filter.id}
+                      selected
+                      onDismiss={() => removeAppliedFilter(filter.id)}
+                      aria-label={`Remove ${filter.label} filter`}
+                    >
+                      {filter.label}
+                    </FilterChip>
+                  ))}
+                </FilterChipsWrapper>
+                {hasOverflow && hiddenCount > 0 && (
+                  <OverflowIndicator>
+                    <Typography variant="label" color="subdued">
+                      +{hiddenCount} more
+                    </Typography>
+                  </OverflowIndicator>
+                )}
+              </AppliedFiltersContainer>
             )}
           </FilterGroup>
           
@@ -570,7 +674,7 @@ export const DataViewPattern: React.FC = () => {
       {/* Side Drawer */}
       <SideDrawer $isOpen={isDrawerOpen}>
         <DrawerHeader>
-          <Typography variant="h4">All Filters</Typography>
+          <Typography variant="h4">Filters</Typography>
           <IconButton 
             iconName="close" 
             variant="naked" 
@@ -582,10 +686,8 @@ export const DataViewPattern: React.FC = () => {
         <DrawerContent>
           <Stack direction="column" gap="lg">
             <Box>
-              <Box mb="sm">
-                <Typography variant="subtitle">Category</Typography>
-              </Box>
               <Dropdown
+                label="Category"
                 options={categoryOptions}
                 value={categoryFilter}
                 onChange={setCategoryFilter}
@@ -594,10 +696,8 @@ export const DataViewPattern: React.FC = () => {
             </Box>
             
             <Box>
-              <Box mb="sm">
-                <Typography variant="subtitle">Status</Typography>
-              </Box>
               <Dropdown
+                label="Status"
                 options={statusOptions}
                 value={statusFilter}
                 onChange={setStatusFilter}
@@ -606,10 +706,8 @@ export const DataViewPattern: React.FC = () => {
             </Box>
             
             <Box>
-              <Box mb="sm">
-                <Typography variant="subtitle">Priority</Typography>
-              </Box>
               <Dropdown
+                label="Priority"
                 options={priorityOptions}
                 value={priorityFilter}
                 onChange={setPriorityFilter}

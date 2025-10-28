@@ -17,7 +17,7 @@ export const BaseChipStyled = styled.span.withConfig({
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  transition: ${tokens.semantic.motion.interactive};
+  transition: width ${tokens.semantic.motion.interactive};
   
   /* Use CSS custom properties set by wrapper */
   background-color: var(--chip-bg-color);
