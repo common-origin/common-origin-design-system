@@ -129,3 +129,4 @@ Thumbs.db.rollup.cache/
 src/styles/tokens.css
 src/styles/tokens.d.ts
 public/data/releases.json
+.vercel
