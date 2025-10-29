@@ -498,7 +498,7 @@ export const DataViewPattern: React.FC = () => {
             </Button>
 						<Divider orientation="vertical" size="small" />
 						<Typography variant="label" color="subdued">Active filters:</Typography>
-						<Chip>Category: Default value</Chip>
+						<Chip>Date range: Last 30 days</Chip>
             
             {/* Applied Filters from Dropdowns */}
             {appliedFilters.length > 0 && (
