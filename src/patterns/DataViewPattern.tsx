@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {
   Box,
   Button,
-  BooleanChip,
   Chip,
   FilterChip,
   Stack,
@@ -87,18 +86,6 @@ const FilterGroup = styled.div`
   @media (max-width: ${breakpoint.md}) {
     flex-wrap: nowrap;
     overflow-x: visible;
-  }
-`
-
-const QuickFilters = styled.div`
- 	margin-left: ${spacing.layout.md};
-	display: flex;
-	align-items: center;
-	gap: ${spacing.layout.sm};
-  flex-shrink: 0;
-  
-  @media (max-width: ${breakpoint.md}) {
-    flex-wrap: nowrap;
   }
 `
 
@@ -509,29 +496,9 @@ export const DataViewPattern: React.FC = () => {
             >
               All filters
             </Button>
-						<QuickFilters>
-							<Typography variant="label" color="subdued">Quick filters:</Typography>
-							<BooleanChip
-								selected={activeFilters.includes('Active')}
-								onClick={() => toggleFilter('Active')}
-							>
-								Macro 1
-							</BooleanChip>
-							
-							<BooleanChip
-								selected={activeFilters.includes('Pending')}
-								onClick={() => toggleFilter('Pending')}
-							>
-								Macro 2
-							</BooleanChip>
-							
-							<BooleanChip
-								selected={activeFilters.includes('Completed')}
-								onClick={() => toggleFilter('Completed')}
-							>
-								Macro 3
-							</BooleanChip>
-						</QuickFilters>
+						<Divider orientation="vertical" size="small" />
+						<Typography variant="label" color="subdued">Active filters:</Typography>
+						<Chip>Category: Default value</Chip>
             
             {/* Applied Filters from Dropdowns */}
             {appliedFilters.length > 0 && (
