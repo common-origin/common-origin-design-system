@@ -1,8 +1,9 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { Typography } from '../Typography'
 
-const { semantic: { color, typography }, base: { fontSize, shadow } } = tokens
+const { semantic: { color }, base: { shadow } } = tokens
 
 export interface BadgeProps {
   /** Content to wrap with the badge */
@@ -49,13 +50,10 @@ const BadgeIndicator = styled.span.withConfig({
   display: ${props => props.$isVisible ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
-  min-width: ${props => props.$isDot ? '8px' : '20px'};
-  height: ${props => props.$isDot ? '8px' : '20px'};
-  padding: ${props => props.$isDot ? '0' : '0 6px'};
+  min-width: ${props => props.$isDot ? '8px' : '16px'};
+  height: ${props => props.$isDot ? '8px' : '16px'};
+  padding: ${props => props.$isDot ? '0' : '0 4px'};
   border-radius: ${tokens.base.border.radius.circle};
-  font: ${typography.caption};
-  font-size: ${fontSize[1]};
-  font-weight: 600;
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 0 0 2px ${color.background.default};
@@ -135,7 +133,11 @@ export const Badge: React.FC<BadgeProps> = ({
         role="status"
         aria-live="polite"
       >
-        {!dot && displayCount}
+        {!dot && (
+          <Typography variant="caption" color="inverse">
+            {displayCount}
+          </Typography>
+        )}
         <ScreenReaderOnly>{label}</ScreenReaderOnly>
       </BadgeIndicator>
     </BadgeWrapper>

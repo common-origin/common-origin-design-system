@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import {
+  Badge,
   Box,
   Button,
   Chip,
@@ -25,11 +26,11 @@ const SearchRow = styled.div`
 const SearchInput = styled.input`
   width: 100%;
   max-width: 400px;
-  padding: ${spacing.layout.md};
-  border: ${border.default};
-  border-radius: ${tokens.base.border.radius[2]};
+  padding: ${spacing.layout.md} ${spacing.layout.lg};
+  border: ${border.subtle};
+  border-radius: ${tokens.base.border.radius[6]};
   font-size: ${tokens.base.fontSize[2]};
-  background-color: ${color.background.default};
+  background-color: ${color.background.subtle};
   color: ${color.text.default};
   
   &::placeholder {
@@ -37,8 +38,8 @@ const SearchInput = styled.input`
   }
   
   &:focus {
-    outline: none;
-    border-color: ${color.border.interactive};
+    outline: ${tokens.component.button.focus.outline};
+    outline-offset: ${tokens.component.button.focus.outlineOffset};
   }
   
   @media (max-width: ${breakpoint.md}) {
@@ -63,29 +64,33 @@ const FilterRow = styled.div`
   
   @media (max-width: ${breakpoint.md}) {
     flex-wrap: nowrap;
-    overflow-x: auto;
-    
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    
-    &::-webkit-scrollbar {
-      display: none; /* Chrome/Safari/Opera */
-    }
+    gap: ${spacing.layout.sm};
   }
 `
 
 const FilterGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${spacing.layout.md};
   flex: 1;
   min-width: 0;
   position: relative;
   
   @media (max-width: ${breakpoint.md}) {
-    flex-wrap: nowrap;
-    overflow-x: visible;
+    flex: 0;
+    min-width: auto;
+  }
+`
+
+const ActiveFiltersLabel = styled.div`
+	display:flex;
+	align-items: center;
+	padding-left: ${spacing.layout.md};
+	border-left: ${border.subtle};
+	height: 2rem;
+
+  @media (max-width: ${breakpoint.md}) {
+    display: none;
   }
 `
 
@@ -98,7 +103,7 @@ const AppliedFiltersContainer = styled.div`
   overflow: hidden;
   
   @media (max-width: ${breakpoint.md}) {
-    overflow: visible;
+    display: none;
   }
 `
 
@@ -110,11 +115,6 @@ const FilterChipsWrapper = styled.div`
   overflow: hidden;
   min-width: 0;
   flex: 1;
-  
-  @media (max-width: ${breakpoint.md}) {
-    overflow: visible;
-    flex-wrap: nowrap;
-  }
 `
 
 const OverflowIndicator = styled.div`
@@ -126,6 +126,33 @@ const OverflowIndicator = styled.div`
   @media (max-width: ${breakpoint.md}) {
     display: none;
   }
+`
+
+const MobileFilterToggle = styled.div`
+  display: none;
+  
+  @media (max-width: ${breakpoint.md}) {
+    display: block;
+    margin-left: auto;
+  }
+`
+
+const MobileFiltersContainer = styled.div<{ $isExpanded: boolean }>`
+  display: none;
+  
+  @media (max-width: ${breakpoint.md}) {
+    display: block;
+    overflow: hidden;
+    max-height: ${props => props.$isExpanded ? '500px' : '0'};
+    transition: max-height 0.3s ease-in-out;
+  }
+`
+
+const MobileFiltersContent = styled.div`
+  padding: 0 0 ${spacing.layout.xl} 0;
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.layout.sm};
 `
 
 const ActionsGroup = styled.div`
@@ -172,7 +199,7 @@ const TableHeaderCell = styled.th`
   text-align: left;
   font-weight: 600;
   color: ${color.text.emphasis};
-	font: ${tokens.semantic.typography.label};
+	font: ${tokens.semantic.typography.overline};
 `
 
 const TableRow = styled.tr`
@@ -299,6 +326,7 @@ export const DataViewPattern: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
   const [activeFilters, setActiveFilters] = useState<string[]>(['Active', 'Pending'])
+  const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   
   // Applied filter chips from dropdowns
   const [appliedFilters, setAppliedFilters] = useState<Array<{ id: string; label: string; value: string }>>([])
@@ -474,8 +502,8 @@ export const DataViewPattern: React.FC = () => {
             />
             <MobileActionButton>
               <IconButton 
-                iconName="menu" 
-                variant="secondary" 
+                iconName="filter" 
+                variant="naked" 
                 size="medium"
                 onClick={() => setIsDrawerOpen(true)}
                 aria-label="Open actions menu"
@@ -487,22 +515,24 @@ export const DataViewPattern: React.FC = () => {
         {/* Filter Row */}
         <FilterRow>
           <FilterGroup>
-            <Button 
-              variant="primary" 
-              size="small"
-              onClick={() => setIsDrawerOpen(true)}
-              aria-label="Open filters"
-            	iconName="menu"
-            >
-              All filters
-            </Button>
-						<Divider orientation="vertical" size="small" />
-						<Typography variant="label" color="subdued">Active filters:</Typography>
-						<Chip>Date range: Last 30 days</Chip>
+						<Badge count={appliedFilters.length} variant="primary">
+							<Button 
+								variant="primary" 
+								size="small"
+								onClick={() => setIsDrawerOpen(true)}
+								aria-label="Open filters"
+								iconName="menu"
+							>
+								All filters
+							</Button>
+						</Badge>
             
-            {/* Applied Filters from Dropdowns */}
+            {/* Applied Filters from Dropdowns - Desktop Only */}
             {appliedFilters.length > 0 && (
               <AppliedFiltersContainer>
+								<ActiveFiltersLabel>
+									<Typography variant="label" color="subdued">Active filters:</Typography>
+								</ActiveFiltersLabel>
                 <FilterChipsWrapper ref={filterChipsRef}>
                   {appliedFilters.map(filter => (
                     <FilterChip
@@ -526,6 +556,22 @@ export const DataViewPattern: React.FC = () => {
             )}
           </FilterGroup>
           
+          {/* Mobile Filter Toggle */}
+          {appliedFilters.length > 0 && (
+            <MobileFilterToggle>
+              <Button
+                variant="secondary"
+                size="small"
+                onClick={() => setIsFiltersExpanded(!isFiltersExpanded)}
+                iconName={isFiltersExpanded ? "arrowUp" : "arrowDown"}
+                aria-label={isFiltersExpanded ? "Collapse active filters" : "Expand active filters"}
+                aria-expanded={isFiltersExpanded}
+              >
+                {isFiltersExpanded ? "Collapse" : "Expand"} active filters
+              </Button>
+            </MobileFilterToggle>
+          )}
+          
           <ActionsGroup>
             <Button 
               iconName="export" 
@@ -545,6 +591,25 @@ export const DataViewPattern: React.FC = () => {
             </Button>
           </ActionsGroup>
         </FilterRow>
+        
+        {/* Mobile Expandable Filters */}
+        {appliedFilters.length > 0 && (
+          <MobileFiltersContainer $isExpanded={isFiltersExpanded}>
+            <MobileFiltersContent>
+							<Typography variant="label" color="subdued">Active filters:</Typography>
+              {appliedFilters.map(filter => (
+                <FilterChip
+                  key={filter.id}
+                  selected
+                  onDismiss={() => removeAppliedFilter(filter.id)}
+                  aria-label={`Remove ${filter.label} filter`}
+                >
+                  {filter.label}
+                </FilterChip>
+              ))}
+            </MobileFiltersContent>
+          </MobileFiltersContainer>
+        )}
         
         {/* Items Count */}
         <ItemsCount>
@@ -684,22 +749,20 @@ export const DataViewPattern: React.FC = () => {
             
             <Divider size="small" />
             
-            <Stack direction="row" gap="sm">
-              <Button 
-                variant="primary" 
-                size="medium"
-                onClick={applyFilters}
-                style={{ flex: 1 }}
-              >
-                Apply Filters
-              </Button>
+            <Stack direction="row" gap="sm" justifyContent="flex-end">
               <Button 
                 variant="secondary" 
                 size="medium"
                 onClick={clearAllFilters}
-                style={{ flex: 1 }}
               >
                 Clear All
+              </Button>
+							<Button 
+                variant="primary" 
+                size="medium"
+                onClick={applyFilters}
+              >
+                Apply Filters
               </Button>
             </Stack>
           </Stack>
