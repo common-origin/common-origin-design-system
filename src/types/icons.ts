@@ -14,6 +14,7 @@ export type IconName =
   | 'close'
   | 'directionRight'
 	| 'export'
+	| 'filter'
   | 'menu'
   | 'pause'
   | 'play'
