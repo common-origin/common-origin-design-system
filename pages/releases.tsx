@@ -349,15 +349,60 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
       </Layout>
     </>
   )
-}export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
+}
+
+// --- Next.js data fetching ---
+export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
   const fs = await import('fs')
   const path = await import('path')
-  
-  const releasesPath = path.join(process.cwd(), 'public', 'data', 'releases.json')
-  const releasesData: ReleasesData = JSON.parse(
-    fs.readFileSync(releasesPath, 'utf-8')
-  )
-  
+
+  const changelogPath = path.join(process.cwd(), 'CHANGELOG.md')
+  const changelog = fs.readFileSync(changelogPath, 'utf-8')
+
+  // Working parser for auto-changelog format
+  // Matches: #### [v1.8.5](...)\n> 30 October 2025\n- commit ...
+  const releaseRegex = /#### \[v([\d.]+)\][^]*?> ([^\n]+)\n([^]*?)(?=#### \[v|$)/g
+  const commitRegex = /- ([^\[]+?) \[`([a-f0-9]+)`\]\(.*?commit\/([a-f0-9]+)\)/g
+  const releases: Release[] = []
+  let match
+  while ((match = releaseRegex.exec(changelog))) {
+    const [, version, date, commitsBlock] = match
+    const commits: Commit[] = []
+    let commitMatch
+    while ((commitMatch = commitRegex.exec(commitsBlock))) {
+      const [ , message, hash ] = commitMatch
+      // Infer type from message prefix
+      const typeMatch = message.match(/^(\w+):/)
+      const type = (typeMatch ? typeMatch[1] : 'other') as CommitType
+      commits.push({
+        hash,
+        author: '', // Not available in markdown
+        email: '', // Not available in markdown
+        date,
+        message: message.trim(),
+        body: '',
+        type,
+      })
+    }
+    // Infer versionType
+    let versionType: 'patch' | 'minor' | 'major' = 'patch'
+    const [major, minor, patch] = version.split('.').map(Number)
+    if (minor === 0 && patch === 0) versionType = 'major'
+    else if (patch === 0) versionType = 'minor'
+    releases.push({
+      version,
+      tag: `v${version}`,
+      date,
+      commits,
+      versionType,
+    })
+  }
+
+  const releasesData: ReleasesData = {
+    releases,
+    generatedAt: new Date().toISOString(),
+  }
+
   return {
     props: {
       releasesData,
