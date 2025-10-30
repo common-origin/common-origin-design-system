@@ -797,7 +797,25 @@
       "date": "2025-10-16T22:50:14+11:00",
       "commits": [
         {
-          "hash": "b479ebfef49d49fbe8fbdfb5a9c1b7087aefd6e2",
+          "hash": "998c2b5f355e65f3027f90eb7ae1ae620c1449a5",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:46:54+11:00",
+          "message": "chore(ci): track releases.json and add changelog automation workflow",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\ne9581976c1492cb2467693f86628b5d971a1b750",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:45:27+11:00",
+          "message": "chore(changelog): update releases.json with all releases",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\nb479ebfef49d49fbe8fbdfb5a9c1b7087aefd6e2",
           "author": "Common Origin",
           "email": "ollie@commonorigin.studio",
           "date": "2025-10-30T13:33:40+11:00",
@@ -1439,5 +1457,5 @@
       "versionType": "major"
     }
   ],
-  "generatedAt": "2025-10-30T02:44:51.997Z"
+  "generatedAt": "2025-10-30T03:08:48.825Z"
 }
