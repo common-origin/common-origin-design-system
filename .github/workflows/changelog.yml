@@ -23,15 +23,15 @@ jobs:
       - name: 📦 Install dependencies
         run: npm ci
 
-      - name: 📝 Generate releases.json
-        run: npm run build:releases
+      - name: Generate changelog
+        run: npx auto-changelog -o CHANGELOG.md
 
       - name: 🔧 Commit and push changelog
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add public/data/releases.json
-          git commit -m "chore(changelog): update releases.json after release"
+          git add CHANGELOG.md
+          git commit -m "chore(changelog): update CHANGELOG.md after release"
           git push origin HEAD:main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

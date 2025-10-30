@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing & Validation Tools - Common Origin</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .tool-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #e1e8ed;
+            border-radius: 6px;
+            background-color: #f8f9fa;
+        }
+        .tool-link {
+            display: inline-block;
+            margin: 8px 10px 8px 0;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .tool-link:hover {
+            background: #0056b3;
+            color: white;
+        }
+        .tool-link.secondary {
+            background: #6c757d;
+        }
+        .tool-link.secondary:hover {
+            background: #5a6268;
+        }
+        .description {
+            color: #6c757d;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .status.active { background: #d4edda; color: #155724; }
+        .status.test { background: #fff3cd; color: #856404; }
+        .back-link {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #e1e8ed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Testing & Validation Tools</h1>
+        <p>Welcome to the Common Origin testing suite. Use these tools to verify website functionality during development.</p>
+
+        <div class="tool-section">
+            <h3>🔍 Hotjar Integration Testing <span class="status active">Active</span></h3>
+            <p>Verify that Hotjar analytics and user tracking is working correctly across all pages.</p>
+            
+            <a href="hotjar-verification.html" class="tool-link">
+                📊 Comprehensive Verification
+            </a>
+            <a href="hotjar-direct-test.html" class="tool-link secondary">
+                🔬 Direct Script Test
+            </a>
+            
+            <div class="description">
+                <strong>Comprehensive Verification:</strong> Full-featured testing tool with status checks, event testing, and page navigation.<br>
+                <strong>Direct Script Test:</strong> Simple test using traditional Hotjar implementation for comparison.
+            </div>
+        </div>
+
+        <div class="tool-section">
+            <h3>🌐 Website Navigation <span class="status test">Quick Access</span></h3>
+            <p>Quick links to main website pages for testing and verification.</p>
+            
+            <a href="/" class="tool-link">🏠 Home</a>
+            <a href="/tokens" class="tool-link">🎨 Tokens</a>
+            <a href="/art" class="tool-link">🖼️ Art</a>
+            <a href="/design" class="tool-link">📐 Design</a>
+            <a href="/music" class="tool-link">🎵 Music</a>
+            <a href="/portfolio" class="tool-link">💼 Portfolio</a>
+            
+            <div class="description">
+                Use these links to navigate between pages while testing. Check browser console for debug messages.
+            </div>
+        </div>
+
+        <div class="tool-section">
+            <h3>🛠️ Development Tips</h3>
+            <ul>
+                <li><strong>Browser Console:</strong> Press F12 and check Console tab for debug messages</li>
+                <li><strong>Network Tab:</strong> Monitor requests to external services (Hotjar, etc.)</li>
+                <li><strong>Disable Extensions:</strong> Turn off ad blockers for accurate testing</li>
+                <li><strong>Mobile Testing:</strong> Use browser dev tools to simulate mobile devices</li>
+            </ul>
+        </div>
+
+        <div class="back-link">
+            <a href="/" class="tool-link secondary">← Back to Main Site</a>
+        </div>
+    </div>
+
+    <script>
+        // Add some basic functionality
+        console.log('🧪 Testing tools loaded');
+        console.log('📍 Current location:', window.location.href);
+        
+        // Check if we're in development
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('🔧 Development environment detected');
+        } else {
+            console.log('🌍 Production environment detected');
+        }
+    </script>
+</body>
+</html>

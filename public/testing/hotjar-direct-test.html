@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Direct Hotjar Test</title>
+</head>
+<body>
+    <h1>Direct Hotjar Test</h1>
+    <p>This page tests Hotjar with the traditional script tag method.</p>
+    
+    <button onclick="testHotjar()">Test Hotjar</button>
+    <div id="output"></div>
+
+    <!-- Traditional Hotjar installation -->
+    <script>
+        (function(h,o,t,j,a,r){
+            h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+            h._hjSettings={hjid:3789301,hjsv:6};
+            a=o.getElementsByTagName('head')[0];
+            r=o.createElement('script');r.async=1;
+            r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+            a.appendChild(r);
+        })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+        
+        function testHotjar() {
+            const output = document.getElementById('output');
+            output.innerHTML = '<h3>Test Results:</h3>';
+            
+            if (typeof window.hj !== 'undefined') {
+                output.innerHTML += '<p>✅ Hotjar is loaded!</p>';
+                
+                try {
+                    window.hj('event', 'direct_test_clicked');
+                    output.innerHTML += '<p>✅ Test event sent successfully</p>';
+                } catch (error) {
+                    output.innerHTML += '<p>❌ Error sending event: ' + error.message + '</p>';
+                }
+            } else {
+                output.innerHTML += '<p>❌ Hotjar is not loaded</p>';
+            }
+        }
+        
+        // Auto-check after page load
+        setTimeout(() => {
+            console.log('Traditional Hotjar check:');
+            console.log('window.hj exists:', !!window.hj);
+            console.log('typeof window.hj:', typeof window.hj);
+            
+            if (window.hj) {
+                console.log('✅ Traditional Hotjar method works!');
+                window.hj('event', 'traditional_method_loaded');
+            } else {
+                console.log('❌ Traditional Hotjar method failed');
+            }
+        }, 2000);
+    </script>
+</body>
+</html>

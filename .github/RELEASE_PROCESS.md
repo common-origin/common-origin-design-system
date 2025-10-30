@@ -11,7 +11,8 @@ This document outlines the standardized process for creating releases, ensuring 
 3. Commit the version bump
 4. Create and push git tag
 5. GitHub Actions automatically publishes to npm
-6. Releases page auto-updates on next deployment
+6. GitHub Actions automatically generates and commits the changelog file (public/data/releases.json or CHANGELOG.md) on each release/tag
+7. Releases page auto-updates on next deployment
 
 ## Conventional Commit Messages
 
@@ -130,38 +131,29 @@ Once the tag is pushed, GitHub Actions will:
 2. Check GitHub releases page
 3. Verify changelog will update on next site deployment
 
-## Site Deployment and Changelog
 
-The releases page (`/releases`) automatically updates when the site is deployed:
+## Changelog Automation (GitHub Actions)
 
-1. **Build process** runs `npm run build:releases`
-2. **Script scans** all git tags (e.g., v1.6.0, v1.5.0, etc.)
-3. **Generates** `public/data/releases.json` with all commits grouped by tag
-4. **Next.js** pre-renders the static `/releases` page
-5. **Page displays** all releases with categorized commits
+The releases page (`/releases`) now updates automatically via a GitHub Actions workflow:
 
-### Vercel Deployment Configuration
+1. **Workflow triggers** on push of a new tag (e.g., v1.8.6)
+2. **Checks out repo** with full history/tags
+3. **Generates changelog** using auto-changelog
+4. **Commits and pushes** the changelog file (CHANGELOG.md) to the repo
+5. **Site deployment** always uses the latest changelog file
 
-**Important:** The documentation site is deployed on Vercel, which requires special configuration to access git history and tags.
-
-The `vercel.json` file configures the build to:
-- Fetch full git history with `git fetch --unshallow`
-- Fetch all git tags with `git fetch --tags`
-- Then run the normal build process
-
-Without this configuration, the releases page will be empty because Vercel's default shallow clone doesn't include git tags or full history needed to generate the changelog.
+No Vercel-specific configuration is required. The changelog is always available for any static host.
 
 ### Manual Changelog Update (if needed)
 
 ```bash
-# Regenerate releases data locally
-npm run build:releases
+# Regenerate changelog locally
+npx auto-changelog -o CHANGELOG.md
 
-# Rebuild the site
-npm run build
-
-# Or just run the dev server (auto-generates)
-npm run docs:dev
+# Commit and push
+git add CHANGELOG.md
+git commit -m "chore: update changelog manually"
+git push
 ```
 
 ## Complete Release Example

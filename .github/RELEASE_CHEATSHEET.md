@@ -87,7 +87,7 @@ git push origin vX.Y.Z
 ```bash
 npm run build:package   # Build npm package
 npm run build:tokens    # Generate design tokens
-npm run build:releases  # Generate changelog
+npx auto-changelog -o CHANGELOG.md  # Generate changelog
 npm run build           # Build docs site (includes releases)
 npm run docs:dev        # Dev server with releases
 ```
@@ -114,7 +114,7 @@ git add . && git commit -m "fix: commit pending changes"
 git tag -l | grep vX.Y.Z
 
 # Regenerate
-npm run build:releases
+npx auto-changelog -o CHANGELOG.md
 ```
 
 ### "Wrong version published"

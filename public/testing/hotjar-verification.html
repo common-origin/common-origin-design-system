@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotjar Verification Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .test-section {
+            margin: 30px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .success { border-color: #28a745; background-color: #f8fff9; }
+        .warning { border-color: #ffc107; background-color: #fffbf0; }
+        .error { border-color: #dc3545; background-color: #fff5f5; }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover { background: #0056b3; }
+        .console-output {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            margin-top: 10px;
+        }
+        .page-link {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: #6c757d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .page-link:hover { background: #5a6268; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Hotjar Verification Tool</h1>
+    <p>Use this tool to verify that Hotjar is working correctly across your website.</p>
+
+    <div class="test-section" id="detection-status">
+        <h2>1. Hotjar Detection Status</h2>
+        <p>Checking if Hotjar is loaded...</p>
+        <div id="detection-result"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Test Custom Events</h2>
+        <p>Click these buttons to send test events to Hotjar:</p>
+        <button onclick="sendTestEvent('button_test_clicked')">Test Button Click</button>
+        <button onclick="sendTestEvent('verification_test')">Verification Test</button>
+        <button onclick="sendTestEvent('page_interaction')">Page Interaction</button>
+        <div class="console-output" id="event-log"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test All Pages</h2>
+        <p>Visit these pages to verify Hotjar loads on each:</p>
+        <a href="/" class="page-link">Home</a>
+        <a href="/tokens" class="page-link">Tokens</a>
+        <a href="/art" class="page-link">Art</a>
+        <a href="/design" class="page-link">Design</a>
+        <a href="/music" class="page-link">Music</a>
+        <a href="/portfolio" class="page-link">Portfolio</a>
+        <p><strong>Instructions:</strong> Open browser dev tools (F12) and check the Console tab for Hotjar initialization messages on each page.</p>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Verification Checklist</h2>
+        <p>✅ Look for these signs that Hotjar is working:</p>
+        <ul>
+            <li><strong>Console Messages:</strong> "✅ Hotjar initialized successfully" in browser console</li>
+            <li><strong>Network Tab:</strong> Requests to hotjar.com domains</li>
+            <li><strong>Custom Events:</strong> Events sent when clicking test buttons above</li>
+            <li><strong>Hotjar Dashboard:</strong> Visit your Hotjar dashboard to see real-time visitors</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>5. Hotjar Dashboard Access</h2>
+        <p>📊 To verify data collection, log into your Hotjar dashboard:</p>
+        <ol>
+            <li>Go to <a href="https://insights.hotjar.com" target="_blank">https://insights.hotjar.com</a></li>
+            <li>Navigate to your site (ID: 3789301)</li>
+            <li>Check the "Visitors" or "Recordings" section</li>
+            <li>Look for recent activity from your testing</li>
+        </ol>
+    </div>
+
+    <script>
+        // Check if Hotjar is loaded
+        function checkHotjarStatus() {
+            const statusEl = document.getElementById('detection-result');
+            const sectionEl = document.getElementById('detection-status');
+            
+            if (typeof window.hj !== 'undefined') {
+                statusEl.innerHTML = '<strong>✅ Hotjar Detected!</strong><br>Hotjar is loaded and ready to track user interactions.';
+                sectionEl.className = 'test-section success';
+                
+                // Test if we can call Hotjar
+                try {
+                    window.hj('event', 'verification_page_loaded');
+                    statusEl.innerHTML += '<br><small>✅ Successfully sent verification event</small>';
+                } catch (error) {
+                    statusEl.innerHTML += '<br><small>⚠️ Could not send test event: ' + error.message + '</small>';
+                }
+            } else {
+                statusEl.innerHTML = '<strong>❌ Hotjar Not Detected</strong><br>Hotjar may not be loaded yet, or there may be an issue with initialization.';
+                sectionEl.className = 'test-section error';
+                
+                // Retry after delay
+                setTimeout(() => {
+                    if (typeof window.hj !== 'undefined') {
+                        checkHotjarStatus();
+                    } else {
+                        statusEl.innerHTML += '<br><small>Rechecked after delay - still not detected.</small>';
+                    }
+                }, 2000);
+            }
+        }
+
+        // Send test events
+        function sendTestEvent(eventName) {
+            const logEl = document.getElementById('event-log');
+            const timestamp = new Date().toLocaleTimeString();
+            
+            if (typeof window.hj !== 'undefined') {
+                try {
+                    window.hj('event', eventName);
+                    logEl.textContent += `[${timestamp}] ✅ Sent event: ${eventName}\n`;
+                } catch (error) {
+                    logEl.textContent += `[${timestamp}] ❌ Failed to send event: ${error.message}\n`;
+                }
+            } else {
+                logEl.textContent += `[${timestamp}] ❌ Hotjar not available\n`;
+            }
+        }
+
+        // Monitor console for Hotjar messages
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+        
+        function logToVerification(level, message) {
+            if (typeof message === 'string' && message.includes('Hotjar')) {
+                const logEl = document.getElementById('event-log');
+                const timestamp = new Date().toLocaleTimeString();
+                logEl.textContent += `[${timestamp}] ${level}: ${message}\n`;
+            }
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            logToVerification('LOG', args.join(' '));
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            logToVerification('WARN', args.join(' '));
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            logToVerification('ERROR', args.join(' '));
+        };
+
+        // Run initial check
+        setTimeout(checkHotjarStatus, 1000);
+        
+        // Also check periodically
+        setInterval(checkHotjarStatus, 5000);
+    </script>
+</body>
+</html>
