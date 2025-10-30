@@ -9,7 +9,7 @@ import {
   CodeBlock,
   Container,
   Picture,
-  DesignCard,
+  FeatureBlock,
   Dropdown,
   Icon,
   Layout,

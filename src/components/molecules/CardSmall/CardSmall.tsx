@@ -61,10 +61,12 @@ export const CardSmall: React.FC<CardSmallProps> = ({
             width={300}
             height={300}
           />
-          <Stack direction="column" gap='none'>
+          <Stack direction="column" gap='xs'>
             <Typography variant="small">{title}</Typography>
-            {subtitle && <Typography variant="label" color="subdued">{subtitle}</Typography>}
-            {meta && <Typography variant="label" color="subdued">{meta}</Typography>}
+            <Stack direction="column" gap='none'>
+              {subtitle && <Typography variant="label" color="subdued">{subtitle}</Typography>}
+              {meta && <Typography variant="label" color="subdued">{meta}</Typography>}
+            </Stack>
           </Stack>
         </Stack>
       </Link>

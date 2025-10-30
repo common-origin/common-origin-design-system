@@ -22,6 +22,7 @@ import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
 import { gridSystemDocs } from '@/components/layout/GridSystem/GridSystem.docs'
+import { featureBlockDocs } from '@/components/molecules/FeatureBlock/FeatureBlock.docs'
 
 // Legacy ComponentData interface for compatibility
 export interface ComponentData {
@@ -93,7 +94,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(codeBlockDocs),
   convertDocumentationToLegacyFormat(containerDocs),
   convertDocumentationToLegacyFormat(pictureDocs),
-  convertDocumentationToLegacyFormat(designCardDocs),
+  convertDocumentationToLegacyFormat(featureBlockDocs),
   convertDocumentationToLegacyFormat(dropdownDocs),
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),

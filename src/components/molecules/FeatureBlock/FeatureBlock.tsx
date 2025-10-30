@@ -11,11 +11,10 @@ import tokens from '@/styles/tokens.json'
 
 const { base: { spacing, border } } = tokens
 
-export type DesignCardProps = {
+export type FeatureBlockProps = {
   title: string
   excerpt: string
   labels: string[]
-  tag: string
   coverImage: string
   date: string
   onReadMore?: () => void
@@ -23,7 +22,7 @@ export type DesignCardProps = {
   readMoreText?: string
 }
 
-const DesignCardStyled = styled.div`
+const FeatureBlockStyled = styled.div`
   @media (min-width: ${tokens.base.breakpoint.md}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -83,56 +82,53 @@ const ContentWrapper = styled.div`
   height: 100%;
 `
 
-export const DesignCard: React.FC<DesignCardProps> = ({
+
+
+export const FeatureBlock: React.FC<FeatureBlockProps> = ({
   title,
   excerpt,
   labels = [],
-  tag,
   coverImage,
   date,
   onReadMore,
   readMoreHref,
   readMoreText = "Read more",
 }) => {
-  if (tag === 'design') {
-    return (
-      <>
-        <DesignCardStyled>
-          <ImageWrapper>
-            <Picture title={title} src={coverImage} />
-          </ImageWrapper>
-          <ContentSection>
-            <ContentWrapper>
-              <Stack direction="column" gap="md">
-                <Typography variant="h3">{title}</Typography>
-                <DateFormatter dateString={date} />
-                <Typography variant="small">{excerpt}</Typography>
-                <Stack direction="row" gap="xs">
-                  {Array.isArray(labels) && labels.map((label, index) => (
-                    <Chip key={index} title={label} variant="default" />
-                  ))}
-                </Stack>
-                {(onReadMore || readMoreHref) && (
-                  <ButtonWrapper>
-                    {readMoreHref ? (
-                      <Button purpose="link" url={readMoreHref}>
-                        {readMoreText}
-                      </Button>
-                    ) : (
-                      <Button onClick={onReadMore}>
-                        {readMoreText}
-                      </Button>
-                    )}
-                  </ButtonWrapper>
-                )}
+  return (
+    <>
+      <FeatureBlockStyled>
+        <ImageWrapper>
+          <Picture title={title} src={coverImage} />
+        </ImageWrapper>
+        <ContentSection>
+          <ContentWrapper>
+            <Stack direction="column" gap="md">
+              <Typography variant="h3">{title}</Typography>
+              <DateFormatter dateString={date} />
+              <Typography variant="small">{excerpt}</Typography>
+              <Stack direction="row" gap="xs">
+                {Array.isArray(labels) && labels.map((label, index) => (
+                  <Chip key={index} title={label} variant="default" />
+                ))}
               </Stack>
-            </ContentWrapper>
-          </ContentSection>
-        </DesignCardStyled>
-        <Divider />
-      </>
-    )
-  }
-
-  return null
+              {(onReadMore || readMoreHref) && (
+                <ButtonWrapper>
+                  {readMoreHref ? (
+                    <Button purpose="link" url={readMoreHref}>
+                      {readMoreText}
+                    </Button>
+                  ) : (
+                    <Button onClick={onReadMore}>
+                      {readMoreText}
+                    </Button>
+                  )}
+                </ButtonWrapper>
+              )}
+            </Stack>
+          </ContentWrapper>
+        </ContentSection>
+      </FeatureBlockStyled>
+      <Divider />
+    </>
+  )
 }
