@@ -143,7 +143,7 @@ const MobileFiltersContainer = styled.div<{ $isExpanded: boolean }>`
   @media (max-width: ${breakpoint.md}) {
     display: block;
     overflow: hidden;
-    max-height: ${props => props.$isExpanded ? spacing.layout['6xl'] : spacing.layout.none};
+		max-height: ${props => props.$isExpanded ? '500px' : '0'};
     transition: ${tokens.semantic.motion.transition.normal};
   }
 `
@@ -265,12 +265,12 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
   top: 0;
   right: ${props => props.$isOpen ? '0' : '-100%'};
   width: 100%;
-  max-width: ${spacing.layout['6xl']};
+  max-width: 360px;
   height: 100vh;
   background-color: ${color.background.default};
   border-left: ${border.default};
   box-shadow: ${tokens.base.shadow[4]};
-  transition: ${tokens.semantic.motion.transition.normal};
+  transition: right 0.3s ease-in-out;
   z-index: ${zIndex[8]};
   overflow-y: auto;
   
@@ -284,7 +284,7 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
     border-left: none;
     border-top: ${border.default};
     border-radius: ${tokens.base.border.radius[4]} ${tokens.base.border.radius[4]} 0 0;
-    transition: ${tokens.semantic.motion.transition.normal};
+    transition: bottom 0.3s ease-in-out;
   }
 `
 
