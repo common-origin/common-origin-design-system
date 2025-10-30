@@ -2,11 +2,13 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import { useState } from 'react'
 import {
+  Avatar,
   Box,
   Breadcrumbs,
   Button,
   Container,
   Dropdown,
+  Icon,
   Layout,
   Navigation,
   Typography,
@@ -227,7 +229,7 @@ const AvatarSizeSample = styled.div<{ $size: string }>`
   font: ${tokens.semantic.typography.caption};
   
   &::after {
-    content: '👤';
+    content: 'CO';
     font-size: calc(${props => props.$size} * 0.5);
   }
 `
@@ -393,7 +395,7 @@ const renderIconSizeTokensTable = (iconSizeTokens: any) => {
                 <TokenValue>{getIconSizeUsageDescription(key)}</TokenValue>
               </TableCell>
               <TableCell>
-                <IconSizeSwatch $size={value as string} />
+                <Icon size={key as 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'} name="message" iconColor="default" />
               </TableCell>
             </TableRow>
           ))}
@@ -557,7 +559,7 @@ const renderShadowTokensTable = (shadowTokens: any) => {
 const renderMotionTokensTable = (motionTokens: any) => {
   return (
     <Box mb="7xl">
-      <Typography variant="h3" color="default">Motion</Typography>
+      <Typography variant="h3" color="default">Speed</Typography>
       <TokenTable>
         <thead>
           <tr>
@@ -619,7 +621,7 @@ const renderAvatarSizeTokensTable = (avatarSizeTokens: any) => {
                 <TokenValue>{getAvatarSizeUsageDescription(key)}</TokenValue>
               </TableCell>
               <TableCell>
-                <AvatarSizeSample $size={value as string} />
+                <Avatar size={key as 'xs' | 'sm' | 'md' | 'lg' | 'xl'} name="C O" />
               </TableCell>
             </TableRow>
           ))}
@@ -937,99 +939,60 @@ const getGenericUsageDescription = (prefix: string, _key: string): string => {
 export default function Tokens() {
   const [activeTab, setActiveTab] = useState('border')
 
-  // Navigation items organized as tabs (alphabetically ordered)
+  // Only semantic category tokens are displayed
   const navigationTabs = [
-    { 
-      id: 'border', 
-      label: 'Border', 
+    {
+      id: 'border',
+      label: 'Border',
       isHeader: true,
       content: [
         { id: 'border-styles', type: 'border', data: tokens.semantic.border, title: 'Border Style' },
-        { id: 'border-radius', type: 'generic', data: tokens.base.border.radius, title: 'Border Radius', prefix: 'border.radius' },
-        { id: 'border-width', type: 'generic', data: tokens.base.border.width, title: 'Border Width', prefix: 'border.width' },
       ]
     },
-    { 
-      id: 'color', 
-      label: 'Color', 
+    {
+      id: 'color',
+      label: 'Color',
       isHeader: true,
       content: [
         { id: 'color-text', type: 'color', data: tokens.semantic.color.text, title: 'Text' },
         { id: 'color-background', type: 'color', data: tokens.semantic.color.background, title: 'Background' },
         { id: 'color-border', type: 'color', data: tokens.semantic.color.border, title: 'Border' },
         { id: 'color-icon', type: 'color', data: tokens.semantic.color.icon, title: 'Icon' },
-        { id: 'color-blue', type: 'base-color', data: tokens.base.color.blue, title: 'Blue' },
-        { id: 'color-neutral', type: 'base-color', data: tokens.base.color.neutral, title: 'Neutral' },
-        { id: 'color-green', type: 'base-color', data: tokens.base.color.green, title: 'Green' },
-        { id: 'color-orange', type: 'base-color', data: tokens.base.color.orange, title: 'Orange' },
-        { id: 'color-red', type: 'base-color', data: tokens.base.color.red, title: 'Red' },
       ]
     },
-    { 
-      id: 'motion', 
-      label: 'Motion', 
+    {
+      id: 'motion',
+      label: 'Motion',
       isHeader: true,
       content: [
         { id: 'motion-transition', type: 'motion', data: tokens.semantic.motion.transition, title: 'Transition' },
-        { id: 'motion-special', type: 'generic', data: { hover: tokens.semantic.motion.hover, focus: tokens.semantic.motion.focus, interactive: tokens.semantic.motion.interactive }, title: 'Special Motion', prefix: 'motion' },
-        { id: 'duration', type: 'generic', data: tokens.base.duration, title: 'Duration', prefix: 'duration' },
-        { id: 'easing', type: 'generic', data: tokens.base.easing, title: 'Easing', prefix: 'easing' },
+        { id: 'motion-special', type: 'generic', data: { hover: tokens.semantic.motion.hover, focus: tokens.semantic.motion.focus, interactive: tokens.semantic.motion.interactive }, title: 'Motion', prefix: 'motion' },
       ]
     },
-    { 
-      id: 'opacity', 
-      label: 'Opacity', 
-      isHeader: true,
-      content: [
-        { id: 'opacity', type: 'opacity', data: tokens.base.opacity, title: 'Opacity' },
-      ]
-    },
-    { 
-      id: 'shadow', 
-      label: 'Shadow', 
-      isHeader: true,
-      content: [
-        { id: 'shadow', type: 'shadow', data: tokens.base.shadow, title: 'Shadow' },
-      ]
-    },
-    { 
-      id: 'size', 
-      label: 'Size', 
+    {
+      id: 'size',
+      label: 'Size',
       isHeader: true,
       content: [
         { id: 'icon-sizes', type: 'icon-size', data: tokens.semantic.size.icon, title: 'Icon Sizes' },
         { id: 'avatar-sizes', type: 'avatar-size', data: tokens.semantic.size.avatar, title: 'Avatar Sizes' },
-        { id: 'base-sizes', type: 'generic', data: tokens.base.size, title: 'Base Sizes', prefix: 'size' },
       ]
     },
-    { 
-      id: 'spacing', 
-      label: 'Spacing', 
+    {
+      id: 'spacing',
+      label: 'Spacing',
       isHeader: true,
       content: [
         { id: 'layout-spacing', type: 'spacing', data: tokens.semantic.spacing.layout, title: 'Layout Spacing' },
         { id: 'separator-spacing', type: 'spacing', data: tokens.semantic.spacing.separator, title: 'Separator Spacing' },
       ]
     },
-    { 
-      id: 'system', 
-      label: 'System', 
-      isHeader: true,
-      content: [
-        { id: 'z-index', type: 'z-index', data: tokens.base.zIndex, title: 'Z-Index' },
-        { id: 'breakpoint', type: 'generic', data: tokens.base.breakpoint, title: 'Breakpoints', prefix: 'breakpoint' },
-      ]
-    },
-    { 
-      id: 'typography', 
-      label: 'Typography', 
+    {
+      id: 'typography',
+      label: 'Typography',
       isHeader: true,
       content: [
         { id: 'semantic-typography', type: 'typography', data: tokens.semantic.typography, title: 'Typography Style' },
-        { id: 'font-size', type: 'generic', data: tokens.base.fontSize, title: 'Font Size', prefix: 'fontSize' },
-        { id: 'font-weight', type: 'generic', data: tokens.base.fontWeight, title: 'Font Weight', prefix: 'fontWeight' },
-        { id: 'line-height', type: 'generic', data: tokens.base.lineHeight, title: 'Line Height', prefix: 'lineHeight' },
-        { id: 'letter-spacing', type: 'generic', data: tokens.base.letterSpacing, title: 'Letter Spacing', prefix: 'letterSpacing' },
       ]
     },
   ]
