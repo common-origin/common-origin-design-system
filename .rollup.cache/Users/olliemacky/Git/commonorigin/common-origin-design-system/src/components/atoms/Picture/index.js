@@ -1,2 +1,0 @@
-export * from './Picture';
-//# sourceMappingURL=index.js.map

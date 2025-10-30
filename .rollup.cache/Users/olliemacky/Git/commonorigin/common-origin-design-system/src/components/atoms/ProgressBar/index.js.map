@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","sourceRoot":"","sources":["index.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,WAAW,EAAE,MAAM,eAAe,CAAA","sourcesContent":["export { ProgressBar } from './ProgressBar'\nexport type { ProgressBarProps } from './ProgressBar'\n"]}

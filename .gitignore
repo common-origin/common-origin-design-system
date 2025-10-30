@@ -24,6 +24,12 @@ public/data/releases.json
 build/
 dist/
 
+# Rollup cache
+.rollup.cache/
+
+# Source maps
+*.map
+
 # Environment variables
 .env
 .env.local
