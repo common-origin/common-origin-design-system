@@ -4,6 +4,6 @@
       "main": true
     }
   },
-  "buildCommand": "npm run build",
+  "buildCommand": "git fetch --unshallow && git fetch --tags && npm run build",
   "installCommand": "npm install"
 }
