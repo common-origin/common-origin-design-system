@@ -13,6 +13,18 @@ This repository uses GitHub Actions to automatically publish new versions to NPM
 
 2. **Organization Permissions**: Your NPM account must have publish permissions to `@common-origin` organization
 
+
+### Changelog Automation
+
+After each release/tag is pushed, GitHub Actions automatically generates and commits the latest `CHANGELOG.md` to the repository. The releases page and documentation site will always display up-to-date release information from this file. Manual changelog updates can be performed with:
+
+```bash
+npx auto-changelog -o CHANGELOG.md
+git add CHANGELOG.md
+git commit -m "chore: update changelog manually"
+git push
+```
+
 ### Release Process
 
 1. **Update version** in `package.json`:

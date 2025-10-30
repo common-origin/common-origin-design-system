@@ -2,7 +2,7 @@ import * as React from 'react'
 import { ComponentDocumentation } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
-import { artCardDocs } from '@/components/molecules/ArtCard/ArtCard.docs'
+import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
@@ -83,7 +83,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
-  convertDocumentationToLegacyFormat(artCardDocs),
+  convertDocumentationToLegacyFormat(cardLargeDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),
