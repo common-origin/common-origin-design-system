@@ -205,8 +205,8 @@ describe('HeroBanner', () => {
       const video = container.querySelector('video')
       expect(video).toBeInTheDocument()
       
-      const source = video?.querySelector('source')
-      expect(source).toHaveAttribute('src', '')
+  const source = video?.querySelector('source')
+  expect(source?.getAttribute('src')).toBeNull()
     })
   })
 

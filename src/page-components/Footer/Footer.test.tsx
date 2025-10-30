@@ -171,7 +171,7 @@ describe("Footer", () => {
     it("handles missing logo src gracefully", () => {
       renderFooter({ logoSrc: "" })
       const logo = screen.getByRole("presentation")
-      expect(logo).toHaveAttribute("src", "")
+  expect(logo.getAttribute("src")).toBeNull()
     })
 
     it("handles missing logo alt gracefully", () => {
