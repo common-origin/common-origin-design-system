@@ -4,18 +4,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
+import { Picture } from '../../atoms/Picture/Picture'
 import { DateFormatter } from '../../atoms/DateFormatter'
 import tokens from '@/styles/tokens.json'
 
-export type ReleaseCardProps = {
+export type CardSmallProps = {
   title: string
-  coverImage?: string
-  artist?: string
-  date?: string
-  slug?: string
+  picture?: string
+  subtitle?: string
+  meta?: string
+  href?: string
 }
 
-const ReleaseCardStyled = styled.div`
+const CardSmallStyled = styled.div`
   a {
     text-decoration: none;
   }
@@ -40,44 +41,33 @@ const ReleaseCardStyled = styled.div`
   }
 `
 
-export const ReleaseCard: React.FC<ReleaseCardProps> = ({
+export const CardSmall: React.FC<CardSmallProps> = ({
   title,
-  coverImage,
-  artist,
-  date,
-  slug,
+  picture,
+  subtitle,
+  meta,
+  href,
 }) => {
-  if (!coverImage || !date) {
+  if (!picture || !meta) {
     return null
   }
-  
   return (
-    <ReleaseCardStyled>
-      <Link
-        href={`/releases/${slug}`}
-        aria-label={title}
-      >
+    <CardSmallStyled>
+      <Link href={href || '#'} aria-label={title}>
         <Stack direction="column" gap='sm'>
-          <Image 
-            alt={title} 
-            src={coverImage}
+          <Picture
+            title={title}
+            src={picture}
             width={300}
             height={300}
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) 16.66vw, 14.28vw"
-            placeholder="blur"
-            blurDataURL={coverImage}
-            style={{
-              width: '100%',
-              height: 'auto',
-            }}
           />
           <Stack direction="column" gap='none'>
             <Typography variant="small">{title}</Typography>
-            <Typography variant="label" color="subdued">{artist}</Typography>
-            <DateFormatter dateString={date} />
+            {subtitle && <Typography variant="label" color="subdued">{subtitle}</Typography>}
+            {meta && <Typography variant="label" color="subdued">{meta}</Typography>}
           </Stack>
         </Stack>
       </Link>
-    </ReleaseCardStyled>
+    </CardSmallStyled>
   )
 }

@@ -67,7 +67,7 @@ export const Picture: React.FC<PictureProps> = ({
   const image = (
     <StyledImage
       src={src}
-      alt={`Cover Image for ${title}`}
+      alt={title}
       width={width}
       height={height}
     />

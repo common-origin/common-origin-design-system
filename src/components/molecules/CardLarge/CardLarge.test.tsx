@@ -25,7 +25,7 @@ describe('CardLarge', () => {
 
   it('renders the cover image', () => {
     render(<CardLarge {...baseProps} />)
-  expect(screen.getByAltText('Cover Image for Test Card')).toBeInTheDocument()
+  expect(screen.getByAltText('Test Card')).toBeInTheDocument()
   })
 
   it('handles image click callback', () => {

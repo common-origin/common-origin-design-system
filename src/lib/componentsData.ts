@@ -17,7 +17,7 @@ import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
-import { releaseCardDocs } from '@/components/molecules/ReleaseCard/ReleaseCard.docs'
+import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
@@ -98,7 +98,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),
   convertDocumentationToLegacyFormat(progressBarDocs),
-  convertDocumentationToLegacyFormat(releaseCardDocs),
+  convertDocumentationToLegacyFormat(cardSmallDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
   convertDocumentationToLegacyFormat(stackDocs),
   convertDocumentationToLegacyFormat(typographyDocs),

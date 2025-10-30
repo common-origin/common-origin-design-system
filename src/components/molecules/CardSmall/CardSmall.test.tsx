@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { ReleaseCard } from '../ReleaseCard'
+import { CardSmall } from '.'
 
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
@@ -46,43 +46,42 @@ jest.mock('../../atoms/DateFormatter', () => ({
   )
 }))
 
-describe('ReleaseCard Component', () => {
+describe('CardSmall Component', () => {
   const defaultProps = {
     title: 'Test Release',
-    artist: 'Test Artist',
-    coverImage: '/test-cover.jpg',
-    date: '2023-12-01',
-    slug: 'test-release'
+  subtitle: 'Test Subtitle',
+  picture: '/test-cover.jpg',
+  meta: 'Test Meta',
+  href: '/test-link'
   }
 
-  const renderReleaseCard = (props: any = {}) => {
-    return render(<ReleaseCard {...defaultProps} {...props} />)
+  const renderCardSmall = (props: any = {}) => {
+    return render(<CardSmall {...defaultProps} {...props} />)
   }
 
   describe('Basic Rendering', () => {
     it('renders without crashing', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const link = screen.getByRole('link')
       expect(link).toBeInTheDocument()
     })
 
     it('renders with required props', () => {
-      renderReleaseCard()
-      
+      renderCardSmall()
       expect(screen.getByRole('img')).toBeInTheDocument()
       expect(screen.getByText('Test Release')).toBeInTheDocument()
-      expect(screen.getByText('Test Artist')).toBeInTheDocument()
-      expect(screen.getByTestId('date-formatter')).toBeInTheDocument()
+      expect(screen.getByText('Test Subtitle')).toBeInTheDocument()
+      expect(screen.getByText('Test Meta')).toBeInTheDocument()
     })
 
     it('renders correct link href', () => {
-      renderReleaseCard()
-      const link = screen.getByRole('link')
-      expect(link).toHaveAttribute('href', '/releases/test-release')
+    renderCardSmall()
+    const link = screen.getByRole('link')
+    expect(link).toHaveAttribute('href', '/test-link')
     })
 
     it('renders correct aria-label', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const link = screen.getByRole('link')
       expect(link).toHaveAttribute('aria-label', 'Test Release')
     })
@@ -90,7 +89,7 @@ describe('ReleaseCard Component', () => {
 
   describe('Image Rendering', () => {
     it('renders image with correct attributes', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const image = screen.getByRole('img')
       
       expect(image).toHaveAttribute('alt', 'Test Release')
@@ -99,74 +98,65 @@ describe('ReleaseCard Component', () => {
       expect(image).toHaveAttribute('height', '300')
     })
 
-    it('renders image with responsive sizes attribute', () => {
-      renderReleaseCard()
-      const image = screen.getByRole('img')
-      
-      expect(image).toHaveAttribute('sizes', '(max-width: 640px) 50vw, (max-width: 1024px) 25vw, (max-width: 1280px) 16.66vw, 14.28vw')
-    })
+    // Responsive sizes attribute is not supported by Picture component
   })
 
   describe('Content Rendering', () => {
     it('displays title correctly', () => {
-      renderReleaseCard({ title: 'Amazing Album' })
+  renderCardSmall({ title: 'Amazing Album' })
       expect(screen.getByText('Amazing Album')).toBeInTheDocument()
     })
 
     it('displays artist correctly', () => {
-      renderReleaseCard({ artist: 'Famous Artist' })
+  renderCardSmall({ subtitle: 'Famous Artist' })
       expect(screen.getByText('Famous Artist')).toBeInTheDocument()
     })
 
     it('passes date to DateFormatter', () => {
-      renderReleaseCard({ date: '2024-01-15' })
-      const dateFormatter = screen.getByTestId('date-formatter')
-      expect(dateFormatter).toHaveTextContent('2024-01-15')
+      renderCardSmall({ meta: '2024-01-15' })
+      expect(screen.getByText('2024-01-15')).toBeInTheDocument()
     })
   })
 
   describe('Conditional Rendering', () => {
     it('returns null when coverImage is missing', () => {
-      const { container } = renderReleaseCard({ coverImage: undefined })
-      expect(container.firstChild).toBeNull()
+        const { container } = renderCardSmall({ picture: undefined })
+        expect(container.firstChild).toBeNull()
     })
 
-    it('returns null when date is missing', () => {
-      const { container } = renderReleaseCard({ date: undefined })
-      expect(container.firstChild).toBeNull()
-    })
-
-    it('returns null when coverImage is empty string', () => {
-      const { container } = renderReleaseCard({ coverImage: '' })
-      expect(container.firstChild).toBeNull()
-    })
-
-    it('returns null when date is empty string', () => {
-      const { container } = renderReleaseCard({ date: '' })
-      expect(container.firstChild).toBeNull()
-    })
+      it('returns null when picture is empty string', () => {
+        const { container } = renderCardSmall({ picture: '' })
+        expect(container.firstChild).toBeNull()
+      })
+      it('returns null when meta is missing', () => {
+        const { container } = renderCardSmall({ meta: undefined })
+        expect(container.firstChild).toBeNull()
+      })
+      it('returns null when meta is empty string', () => {
+        const { container } = renderCardSmall({ meta: '' })
+        expect(container.firstChild).toBeNull()
+      })
 
     it('renders when both coverImage and date are provided', () => {
-      renderReleaseCard()
+  renderCardSmall()
       expect(screen.getByRole('link')).toBeInTheDocument()
     })
   })
 
   describe('Optional Props', () => {
     it('renders without optional props', () => {
-      const minimalProps = {
-        title: 'Minimal Release',
-        coverImage: '/minimal.jpg',
-        date: '2023-01-01',
-        slug: 'minimal'
-      }
-      
-      render(<ReleaseCard {...minimalProps} />)
-      expect(screen.getByText('Minimal Release')).toBeInTheDocument()
+        const minimalProps = {
+          title: 'Minimal Release',
+          picture: '/minimal.jpg',
+          meta: '2023-01-01',
+          href: '/minimal'
+        }
+        render(<CardSmall {...minimalProps} />)
+        expect(screen.getByText('Minimal Release')).toBeInTheDocument()
     })
 
     it('handles missing artist gracefully', () => {
-      renderReleaseCard({ artist: undefined })
+  renderCardSmall({ subtitle: undefined })
       expect(screen.getByText('Test Release')).toBeInTheDocument()
       // Artist should render as empty or undefined, but component should still work
     })
@@ -174,19 +164,19 @@ describe('ReleaseCard Component', () => {
 
   describe('Accessibility', () => {
     it('provides accessible link with aria-label', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const link = screen.getByRole('link')
       expect(link).toHaveAttribute('aria-label', 'Test Release')
     })
 
     it('provides alt text for image', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const image = screen.getByRole('img')
       expect(image).toHaveAttribute('alt', 'Test Release')
     })
 
     it('maintains semantic link structure', () => {
-      renderReleaseCard()
+  renderCardSmall()
       const link = screen.getByRole('link')
       expect(link).toBeInTheDocument()
       
@@ -198,13 +188,13 @@ describe('ReleaseCard Component', () => {
 
   describe('Accessibility Testing', () => {
     it('should not have accessibility violations with default props', async () => {
-      const { container } = renderReleaseCard()
+  const { container } = renderCardSmall()
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
 
     it('should not have accessibility violations with custom title', async () => {
-      const { container } = renderReleaseCard({
+  const { container } = renderCardSmall({
         title: 'Custom Release Title',
         url: 'https://example.com/custom'
       })
@@ -213,7 +203,7 @@ describe('ReleaseCard Component', () => {
     })
 
     it('should not have accessibility violations with long title', async () => {
-      const { container } = renderReleaseCard({
+  const { container } = renderCardSmall({
         title: 'This is a very long release title that might wrap to multiple lines and should still be accessible',
         url: 'https://example.com/long-title'
       })
@@ -222,12 +212,14 @@ describe('ReleaseCard Component', () => {
     })
 
     it('should not have accessibility violations with different image dimensions', async () => {
-      const { container } = renderReleaseCard({
-        title: 'Different Size Release',
-        imageUrl: 'https://example.com/different-image.jpg'
-      })
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
+        const { container } = render(<CardSmall
+          title="Different Size Release"
+          picture="https://example.com/different-image.jpg"
+          meta="2023-01-01"
+          href="/different-size"
+        />)
+        const results = await axe(container)
+        expect(results).toHaveNoViolations()
     })
   })
 })

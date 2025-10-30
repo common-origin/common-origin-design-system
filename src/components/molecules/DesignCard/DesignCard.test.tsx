@@ -26,7 +26,7 @@ describe('DesignCard', () => {
 
   it('renders the cover image', () => {
     render(<DesignCard {...mockProps} />)
-    expect(screen.getByAltText('Cover Image for Test Design')).toBeInTheDocument()
+  expect(screen.getByAltText('Test Design')).toBeInTheDocument()
   })
 
   it('does not render read more button by default', () => {

@@ -29,12 +29,12 @@ describe('Picture', () => {
   describe('Basic Rendering', () => {
     it('renders image with correct alt text', () => {
       renderPicture({ title: 'My Test Image' })
-      expect(screen.getByAltText('Cover Image for My Test Image')).toBeInTheDocument()
+  expect(screen.getByAltText('My Test Image')).toBeInTheDocument()
     })
 
     it('renders with default props when minimal props provided', () => {
       renderPicture()
-      expect(screen.getByAltText('Cover Image for Test Image Title')).toBeInTheDocument()
+  expect(screen.getByAltText('Test Image Title')).toBeInTheDocument()
     })
 
     it('applies custom data-testid', () => {
@@ -134,7 +134,7 @@ describe('Picture', () => {
     it('image has proper alt text for screen readers', () => {
       renderPicture({ title: 'Accessible Image' })
       const image = screen.getByRole('img')
-      expect(image).toHaveAttribute('alt', 'Cover Image for Accessible Image')
+  expect(image).toHaveAttribute('alt', 'Accessible Image')
     })
 
     it('maintains proper focus order with link', () => {
@@ -158,7 +158,7 @@ describe('Picture', () => {
         title: 'TypeScript Test',
         src: '/typescript.jpg'
       })
-      expect(screen.getByAltText('Cover Image for TypeScript Test')).toBeInTheDocument()
+  expect(screen.getByAltText('TypeScript Test')).toBeInTheDocument()
     })
 
     it('handles optional href prop', () => {
@@ -192,7 +192,7 @@ describe('Picture', () => {
     it('handles long titles gracefully', () => {
       const longTitle = 'This is a very long title that might wrap multiple lines and should still work correctly'
       renderPicture({ title: longTitle })
-      expect(screen.getByAltText(`Cover Image for ${longTitle}`)).toBeInTheDocument()
+  expect(screen.getByAltText(longTitle)).toBeInTheDocument()
     })
   })
 
@@ -200,7 +200,7 @@ describe('Picture', () => {
     it('handles special characters in title', () => {
       const specialTitle = 'Title with "quotes" & <tags> and symbols!'
       renderPicture({ title: specialTitle })
-      expect(screen.getByAltText(`Cover Image for ${specialTitle}`)).toBeInTheDocument()
+  expect(screen.getByAltText(specialTitle)).toBeInTheDocument()
     })
 
     it('handles empty string href gracefully', () => {
@@ -250,7 +250,7 @@ describe('Picture', () => {
         height: 250
       })
       const image = screen.getByRole('img')
-      expect(image).toHaveAttribute('alt', 'Cover Image for No Link Image')
+  expect(image).toHaveAttribute('alt', 'No Link Image')
       expect(image).toHaveAttribute('width', '500')
       expect(image).toHaveAttribute('height', '250')
     })
