@@ -1,0 +1,1443 @@
+{
+  "releases": [
+    {
+      "version": "1.8.5",
+      "tag": "v1.8.5",
+      "date": "2025-10-30T13:33:40+11:00",
+      "commits": [
+        {
+          "hash": "b479ebfef49d49fbe8fbdfb5a9c1b7087aefd6e2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:33:40+11:00",
+          "message": "chore(release): bump version to 1.8.5 and update edge case tests for WCAG compliance",
+          "body": "",
+          "type": "chore"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.8.4",
+      "tag": "v1.8.4",
+      "date": "2025-10-30T13:01:47+11:00",
+      "commits": [
+        {
+          "hash": "8edf1c7e00c9417fbc8d2b4fa43cb149cae66208",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:01:47+11:00",
+          "message": "chore(release): bump version to 1.8.4",
+          "body": "",
+          "type": "chore"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.8.3",
+      "tag": "v1.8.3",
+      "date": "2025-10-30T12:40:06+11:00",
+      "commits": [
+        {
+          "hash": "62a9763f4b81dfe53e9f64ceebc72467fbf83717",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:40:06+11:00",
+          "message": "chore(release): bump version to 1.8.3",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n97cd267febf786a8bd3d0f82675cdec1ba79d5e7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:37:31+11:00",
+          "message": "chore(ci): regenerate releases.json before publish in workflow",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\ndd92001a1f45bac7ca44b83e505d45cb03e51e2c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:30:37+11:00",
+          "message": "fix: always track public/data/releases.json and revert vercel.json to standard build",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\n32554e0decd20a5a9274c96dc1f939f90122b85c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:26:56+11:00",
+          "message": "fix: ensure Vercel build fetches full git history and tags for releases generation",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\nb2b928dbafb65505cc46eec01f40c97db6f8d4c9",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:44:52+11:00",
+          "message": "feat: update patterns page and Data View pattern refinements",
+          "body": "",
+          "type": "feat"
+        },
+        {
+          "hash": "\n58276494f4de6ac71a5c33a6cb57ddc2983371b1",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:25:20+11:00",
+          "message": "feat: improve drawer and expandable container UX in Data View pattern",
+          "body": "- Adjusted drawer styling and behavior\n- Enhanced expandable filter container animations\n- Improved mobile responsive interactions",
+          "type": "feat"
+        },
+        {
+          "hash": "\n9a4257d014cb48b0bf25812241f61a7a36f2aa75",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:04:34+11:00",
+          "message": "refactor: clean up DataViewPattern and replace hard-coded values with tokens",
+          "body": "- Removed unused activeFilters state and toggleFilter function\n- Replaced all hard-coded CSS values with design tokens\n- Standardized transitions to use semantic motion tokens\n- Improved code consistency and maintainability",
+          "type": "refactor"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.8.2",
+      "tag": "v1.8.2",
+      "date": "2025-10-30T00:20:17+11:00",
+      "commits": [
+        {
+          "hash": "b28519f5f879fd3f55e5aea9de20687c39ef0954",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:20:17+11:00",
+          "message": "chore: bump version to 1.8.2 - mobile filter UX improvements",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n63720c070d0e640427f1ca7bc4c08e3e13697d5b",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:19:48+11:00",
+          "message": "chore: update generated token and icon files",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n085095555eca173390ebfac501437f70fe6cfc4a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:19:31+11:00",
+          "message": "chore: update gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n0149a79df3998cc4cff247d7877f2fae60ffa252",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:18:50+11:00",
+          "message": "feat: refactor mobile filter display in Data View pattern",
+          "body": "- Updated Badge component to use Typography component for consistent styling\n- Refactored mobile filter UI with expandable/collapsible container\n- Added expand/collapse button with chevron icons for mobile\n- Hidden divider and \"Active filters:\" label on mobile\n- Improved mobile UX with smooth transition animations\n- Desktop view remains unchanged with horizontal filter display",
+          "type": "feat"
+        },
+        {
+          "hash": "\n2d156bcd9d3ee1679f682b9404d42b0bddd09b07",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:51:07+11:00",
+          "message": "fix: Handle missing git in releases build for Vercel deployment",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\n96e74dcfdbd116ea60e8389f649639c178650392",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:49:43+11:00",
+          "message": "fix: Update Vercel build command for deployment compatibility",
+          "body": "",
+          "type": "fix"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.8.1",
+      "tag": "v1.8.1",
+      "date": "2025-10-29T13:23:17+11:00",
+      "commits": [
+        {
+          "hash": "a69d24ca5b7740d44a6c8c394b2056dd79310a7c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:23:17+11:00",
+          "message": "Release v1.8.1 - Update Data View pattern text",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\nd31c6d39d3b301eafa9133a57b0c1f6e30d7e1e8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:22:44+11:00",
+          "message": "docs: Update Data View pattern text",
+          "body": "",
+          "type": "docs"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.8.0",
+      "tag": "v1.8.0",
+      "date": "2025-10-29T13:12:59+11:00",
+      "commits": [
+        {
+          "hash": "c4e6910b7406fa0658014e55d681caa2c2260534",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:12:59+11:00",
+          "message": "Release v1.8.0 - Add Badge component and refine Data View pattern",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n031f7f0b51ea436c4f4ff8d1dc1c9a3b4c644cd2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:11:18+11:00",
+          "message": "refactor: Remove quick filters from Data View pattern",
+          "body": "- Remove BooleanChip quick filters section\n- Simplify filter row to focus on dropdown-based filtering\n- Keep code for future second pattern example\n- Clean up unused imports",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n6c6457232ba462bec9d13e1707a839363f0f9218",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T10:50:06+11:00",
+          "message": "feat: Add Badge notification indicator component",
+          "body": "- Create Badge component with dot and count display modes\n- Support 5 variants: default, primary, error, warning, success\n- Auto-hide when count is 0 (except dot variant)\n- Max count display (99+ format)\n- Scale-in animation on appearance\n- Full accessibility with role=\"status\" and aria-live=\"polite\"\n- Comprehensive test coverage (21 passing tests)\n- Complete documentation with 7 examples\n- Wraps Button, IconButton, Avatar, Chip, and other components",
+          "type": "feat"
+        },
+        {
+          "hash": "\n33f2928c35d8fb9954373b88d4c48c5a7c937137",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T09:10:20+11:00",
+          "message": "feat(patterns): enhance Data View pattern with dynamic filter overflow and UI improvements",
+          "body": "- Fixed filter chip application logic (Dropdown onChange passes ID, not value)\n- Added dynamic overflow detection for filter chips\n  - Uses ResizeObserver and getBoundingClientRect for accurate overflow calculation\n  - Shows \"+X more\" indicator only when chips actually overflow\n  - All filter chips render, CSS handles overflow naturally\n- Updated z-index to use tokens (zIndex[7] for overlay, zIndex[8] for drawer)\n  - Ensures drawer appears above navigation\n- Improved filter row layout\n  - Increased gap spacing to 6xl for better visual separation\n  - Filter chips container takes full available width\n  - Horizontal scroll on mobile with hidden scrollbar\n- Removed \"Clear all\" button from filter row (still available in drawer)\n- Updated quick filter labels to \"Macro 1, 2, 3\" for demonstration\n- Simplified drawer header to just \"Filters\"\n\nTechnical improvements:\n- Two-container approach: AppliedFiltersContainer + FilterChipsWrapper\n- Flex-based layout with overflow: hidden for natural clipping\n- ResizeObserver tracks container width changes\n- Mobile-responsive with overflow: visible and horizontal scroll",
+          "type": "feat"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.7.0",
+      "tag": "v1.7.0",
+      "date": "2025-10-29T00:17:52+11:00",
+      "commits": [
+        {
+          "hash": "499ee35873acd7c542a89b2a974359e6588c19eb",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T00:17:52+11:00",
+          "message": "chore: bump version to 1.7.0",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n2b6a5022d3c1e9d24d4f803aa3330f9fb2c8a900",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T00:17:19+11:00",
+          "message": "feat: add Patterns page with Data View pattern and rename SectionSeparator to Divider",
+          "body": "- Created Patterns page (/patterns) for UI pattern documentation\n- Added Data View pattern with interactive filtering, search, and pagination\n- Renamed SectionSeparator component to Divider with orientation support\n  - Added 'orientation' prop: 'horizontal' | 'vertical' (default: horizontal)\n  - Updated all component usages across codebase\n  - Maintained full test coverage (44 tests passing)\n- Pattern features:\n  - Responsive table/list view (desktop/mobile)\n  - Quick filters using BooleanChip component\n  - Advanced filters via side drawer with dropdowns\n  - Staged filter application (Apply Filters button)\n  - FilterChip components for dismissible filter display\n  - Unified filter row with vertical dividers\n  - Mobile-optimized drawer and hidden actions\n  - Pagination using design system Button components\n- Added new icons: menu, export, table\n- Patterns excluded from npm package (docs-only feature)",
+          "type": "feat"
+        },
+        {
+          "hash": "\n0e1703befcec7923e38ebe5991a48b90372f6137",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:32:23+11:00",
+          "message": "feat(patterns): implement interactive Data View pattern demo",
+          "body": "- Added fully functional table-to-list responsive layout\n- Search input for filtering data\n- BooleanChip filters for Active, Pending, Completed states\n- 'All filters' button opens side drawer (right side, bottom sheet on mobile)\n- Export and column visibility action buttons (placeholders)\n- Pagination with page numbers and prev/next buttons\n- Items count display showing current range\n- 6-column table with grey box placeholders\n- List view with stacked grey boxes for mobile\n- Side drawer with filter group placeholders\n- Responsive at md breakpoint (768px)\n- Interactive state management for filters, pagination, and drawer",
+          "type": "feat"
+        },
+        {
+          "hash": "\nb4dd861a7ba0c4b30681845a82701a4260f3ff1e",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:13:24+11:00",
+          "message": "feat(patterns): add new Patterns page with Data View pattern placeholder",
+          "body": "- Created /patterns page with sidebar navigation matching components/tokens layout\n- Added Data View pattern as first design pattern (documentation only)\n- Pattern includes overview, key features, use cases, and implementation notes\n- Updated Navigation component to include Patterns link\n- Updated home page to include Design Patterns button\n- Pattern structure ready for interactive demo implementation",
+          "type": "feat"
+        },
+        {
+          "hash": "\n630e2eaf3ccba759b12218df0471277fbfc6bda3",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:03:15+11:00",
+          "message": "fix(releases): configure Vercel to fetch git tags for changelog generation",
+          "body": "- Added vercel.json to fetch full git history and tags during build\n- Enhanced build.cjs logging to show tag count and warnings\n- Updated RELEASE_PROCESS.md to document Vercel configuration\n- Fixes empty releases page on live site (shallow clone issue)",
+          "type": "fix"
+        },
+        {
+          "hash": "\n77adb1f04dfba058fb69319536b87cf94227b99c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:55:14+11:00",
+          "message": "chore: add generated files to .gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\nacb0e28f3a08f5d93ae95cce7bb179a910d56cf2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:52:31+11:00",
+          "message": "docs: add comprehensive release process documentation and automation",
+          "body": "- Added RELEASE_PROCESS.md with detailed release workflow\n- Added RELEASE_CHEATSHEET.md for quick reference\n- Created release.sh script to automate version bumping and tagging\n- Consolidated CONTRIBUTING.md with type safety guidelines\n- Updated README.md with links to new documentation\n- Added release:create npm script for easy releases",
+          "type": "docs"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.6.0",
+      "tag": "v1.6.0",
+      "date": "2025-10-28T21:29:04+11:00",
+      "commits": [
+        {
+          "hash": "890b85c098dd9ee3f82ad0570bb64d0345edea41",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:29:04+11:00",
+          "message": "chore: bump version to 1.6.0 and add check icon",
+          "body": "- Bump package version to 1.6.0\n- Add check icon type for FilterChip and BooleanChip selected states\n- Update generated token files",
+          "type": "chore"
+        },
+        {
+          "hash": "\n133e0172a8aecfaaf044b43d6326cfa62d522e7a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:27:34+11:00",
+          "message": "feat(Chip): Split into specialized components and add FilterChip selected state",
+          "body": "- Split Chip component into three specialized components:\n  * Chip: Base component for static/interactive variants\n  * FilterChip: Displays filters with selected state (checkmark + light blue) and optional dismissal\n  * BooleanChip: Toggleable chips for quick filter controls\n\n- FilterChip enhancements:\n  * Added optional `selected` prop to show checkmark icon and light blue background\n  * Made `onDismiss` optional - close button only appears when provided\n  * Keyboard dismissal (Delete/Backspace) only when dismissible\n\n- Architecture improvements:\n  * Created shared/ folder with ChipBase, types, and utils for code reuse\n  * Removed backward compatibility for filter/boolean variants (never published)\n  * Removed large size variant to reduce bloat\n\n- All 85 tests passing\n- Clean type definitions exported\n- Documentation updated with new usage patterns",
+          "type": "feat"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.5.0",
+      "tag": "v1.5.0",
+      "date": "2025-10-27T21:53:25+11:00",
+      "commits": [
+        {
+          "hash": "4549ca4fdd5e426af5b3b468145c0c19b381fcfc",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T21:53:25+11:00",
+          "message": "v1.5.0 - Add ProgressBar component with token-based sizing",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n5cfb67124662c07a4fff38d75cdd4827683a77cd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T21:52:18+11:00",
+          "message": "feat: Add ProgressBar component with token-based sizing",
+          "body": "- Add new ProgressBar atom component with horizontal/vertical variants\n- Add component tokens for progressBar sizes (sm, md, lg, xl)\n- Add semantic.color.background.progressTrack token\n- Update documentation standards with anatomy requirements\n- Comprehensive test coverage with 21 passing tests\n- Full accessibility support with ARIA attributes\n- Complete component documentation with examples",
+          "type": "feat"
+        },
+        {
+          "hash": "\n7f5f33f33c10ec6f3b98d167a6ef61547da119a9",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:32:07+11:00",
+          "message": "docs: Add comprehensive type definition guidelines and verification",
+          "body": "Added documentation and tooling to prevent path alias issues in\ntype definitions:\n\nDocumentation:\n- .github/CONTRIBUTING.md: Full guidelines for type definitions\n- .github/copilot-instructions.md: AI coding assistant rules\n- docs/TYPE_DEFINITIONS.md: Quick reference guide\n\nTooling:\n- scripts/verify-types.cjs: Pre-publish verification script\n- package.json: Added verify:types to prepublishOnly hook\n\nFixes:\n- src/lib/styleUtils.ts: Changed @/ to relative import\n\nThe verification script automatically checks for path aliases (@/)\nin generated .d.ts files and fails the build if found. This prevents\npublishing broken type definitions that don't work in consuming\nprojects.\n\nAll future contributions must follow the \"relative imports for types\"\npattern to ensure proper TypeScript support in external projects.",
+          "type": "docs"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.4.2",
+      "tag": "v1.4.2",
+      "date": "2025-10-27T18:19:40+11:00",
+      "commits": [
+        {
+          "hash": "5e9c944dad358bd3c5bf2ac31c47ec0a7c437112",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:19:40+11:00",
+          "message": "chore: Bump version to 1.4.2 - Fix path alias in Icon type definitions",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n91c7ff957ba2b41a84ac578291dd9ba472ada149",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:18:40+11:00",
+          "message": "fix: Use relative imports instead of path aliases in Icon component",
+          "body": "Changed Icon.tsx to import IconName from '../../../types/icons'\ninstead of '@/types/icons' to ensure the generated .d.ts files\nuse relative paths that can be resolved in consuming projects.\n\nThe @/ path alias works internally but doesn't resolve in the\ngenerated type definitions for consuming projects, causing\nTypeScript to fail when trying to resolve the IconName type.",
+          "type": "fix"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.4.1",
+      "tag": "v1.4.1",
+      "date": "2025-10-27T18:09:56+11:00",
+      "commits": [
+        {
+          "hash": "9890aa51b15ddd39e7260486e977453a68f0f944",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:56+11:00",
+          "message": "chore: Bump version to 1.4.1 - Fix IconName type for external use",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n690be3ff0e7cf8ef3e9be7d865082d686a4da32d",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:49+11:00",
+          "message": "chore: Add .rollup.cache to gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n23d6864f29205e9da8612eb8b0e11b5caf7c04b7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:05+11:00",
+          "message": "fix: IconName type now works in consuming projects",
+          "body": "- Created self-contained IconName type as string literal union\n- Removed dependency on path aliases in type definitions\n- Exported IconName and iconsData from main package\n- Fixed TypeScript error where iconName resolved to 'never'\n\nThe previous implementation used `keyof typeof iconsData` which\nreferenced @/styles/icons.json via path alias. This worked internally\nbut failed in consuming projects because they couldn't resolve the\n@/ path alias, causing IconName to evaluate as 'never'.\n\nNow IconName is a proper string literal union type that provides\nfull autocomplete and type safety without any JSON imports.",
+          "type": "fix"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.4.0",
+      "tag": "v1.4.0",
+      "date": "2025-10-26T23:09:12+11:00",
+      "commits": [
+        {
+          "hash": "dbb9f56d69423b819bdafc130744e0b472615ff8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-26T23:09:12+11:00",
+          "message": "chore: Bump version to 1.4.0 for React 19 support",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n9d66e82a0f26bd80bf3ec58addfce3181c19c93a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-26T23:09:07+11:00",
+          "message": "feat: Add React 19 support",
+          "body": "- Update React dependencies to 19.2.0\n- Maintain backward compatibility with React 18.x via peer dependencies\n- Update TypeScript types to @types/react 19.2.2\n- Add React version requirements to README\n- All 657 core tests passing with React 19\n- No component code changes required (already compatible)",
+          "type": "feat"
+        },
+        {
+          "hash": "\n066cfd3b80e3b2c0dd9a722604b484e2eaa0cba4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-25T23:53:12+11:00",
+          "message": "fix: remove changesets workflow causing publish errors",
+          "body": "Remove release.yml workflow that requires .changeset directory.\n\nThe project uses manual version management with git tags, which is\nhandled by the publish.yml workflow that triggers on version tags.\n\nCurrent workflow:\n1. Update version in package.json manually\n2. Commit and create git tag (e.g., v1.3.1)\n3. Push tag to trigger publish.yml workflow\n4. Workflow runs tests, builds, and publishes to npm\n\nThis approach is simpler and provides more control over versioning.",
+          "type": "fix"
+        },
+        {
+          "hash": "\nd391f8766c3c8d491b6409de05a51ff13f3443df",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-25T23:48:32+11:00",
+          "message": "chore: remove test-consumption folder",
+          "body": "Remove internal test-consumption environment as it has been replaced by\nthe comprehensive external testing playground (common-origin-playground).\n\nThe playground provides:\n- Real-world npm package consumption testing\n- Next.js 15 integration validation\n- Comprehensive E2E and accessibility testing\n- Better separation of concerns\n\nChanges:\n- Deleted test-consumption/ directory and all contents\n- Removed test-consumption from tsconfig.json exclude list\n- Verified build still succeeds\n\nThe design system repo now focuses on component development and unit\ntesting, while consumption/integration testing is handled in the\ndedicated playground environment.",
+          "type": "chore"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.3.1",
+      "tag": "v1.3.1",
+      "date": "2025-10-24T16:33:02+11:00",
+      "commits": [
+        {
+          "hash": "157718dc59df9c16d3ebef9190f69fe3414099c8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-24T16:33:02+11:00",
+          "message": "chore: bump version to 1.3.1",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n12a4f4b6905f77468b1fd3e9a30ab7fd2ceaf7a7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-24T16:32:36+11:00",
+          "message": "docs: add comprehensive documentation standards guide",
+          "body": "Add DOCUMENTATION_STANDARDS.md with complete standards for:\n- Component documentation (.docs.tsx) requirements\n- Props, examples, accessibility, and anatomy sections\n- ASCII diagram approach for component anatomy visualization\n- README file standards and when to create them\n- Code comments and JSDoc best practices\n- Markdown formatting conventions\n- Documentation site page structure\n- Maintenance protocols and quality standards\n\nKey Features:\n- Practical ASCII diagram patterns for anatomy section\n- Three diagram styles: box drawings, tree structures, parts-only\n- Complete examples for simple, complex, and compound components\n- Quality checklists and completeness metrics\n- Update triggers and review protocols\n\nComplements existing standards files (COMPONENT_PATTERNS,\nTESTING_STANDARDS, ACCESSIBILITY_GUIDELINES) with focus on\ndocumentation quality and consistency.",
+          "type": "docs"
+        },
+        {
+          "hash": "\n03ae6c8e1379a0e6027a69df8e4162a144e56398",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T22:32:16+11:00",
+          "message": "feat: add automated releases and changelog system",
+          "body": "Implemented comprehensive releases tracking with automated changelog generation from git history.\n\n**New Features:**\n- Automated changelog generator parsing git tags and commits\n- Beautiful /releases page with filterable releases (All, Major, Minor, Patch)\n- Conventional commits support with categorization (feat, fix, chore, etc.)\n- Build-time static generation for fast page loads\n- Navigation integration with releases link\n\n**Technical Implementation:**\n- lib/releases/build.cjs - Git history parser and JSON generator\n- lib/releases/types.ts - TypeScript type definitions\n- lib/releases/generator.ts - Core generation logic\n- lib/releases/README.md - Comprehensive documentation\n- pages/releases.tsx - Releases page with Grid layout and filtering\n- public/data/releases.json - Generated release data (auto-created at build)\n\n**UI/UX:**\n- 800px max-width for optimal readability\n- Version badges with color-coded gradients (major/minor/patch)\n- Commit grouping by type with emoji labels\n- GitHub commit links for detailed viewing\n- Filter buttons for version type selection\n- Section separators between commit types\n- Responsive design using design system components\n\n**Build Integration:**\n- npm run build:releases - Manual generation\n- Automatic execution during npm run build and npm run dev\n- Updated package.json scripts\n\n**Documentation:**\n- Updated .github/MAIN_INSTRUCTIONS.md with releases system overview\n- Added protocol for maintaining instructions on architectural changes\n- Comprehensive README in lib/releases/ for developer reference\n\n**Design System Usage:**\n- Showcases Grid, Typography, Chip, Button, Stack, Box components\n- Follows atomic design principles\n- Uses semantic design tokens throughout\n\nGenerates changelog for 7 releases with 52 commits from git history.",
+          "type": "feat"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.3.0",
+      "tag": "v1.3.0",
+      "date": "2025-10-23T16:51:07+11:00",
+      "commits": [
+        {
+          "hash": "7f9416541cfca136728da54a8d955f21dbf11006",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T16:51:07+11:00",
+          "message": "chore: bump version to 1.3.0 for documentation enhancements and npm fix",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n2eb0b637a4a795329aef84c93f4289b82d985568",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T16:49:55+11:00",
+          "message": "fix(npm): correct repository URL for provenance validation",
+          "body": "Fix NPM publishing error by updating repository URL in package.json to match\nthe actual GitHub repository name.\n\n**Issue:**\nNPM provenance validation was failing with:\n\"Error verifying sigstore provenance bundle: Failed to validate repository\ninformation: package.json: 'repository.url' is 'git+https://github.com/\ncommon-origin/design-system.git', expected to match 'https://github.com/\ncommon-origin/common-origin-design-system' from provenance\"\n\n**Root Cause:**\n- Package.json had outdated repository URL: design-system.git\n- Actual GitHub repository: common-origin-design-system.git\n- NPM provenance attestations require exact match for security verification\n\n**Solution:**\nUpdated repository URL from:\n- https://github.com/common-origin/design-system.git\nTo:\n- https://github.com/common-origin/common-origin-design-system.git\n\nThis ensures NPM can verify the package provenance and authenticate the\nsource of the published package through GitHub Actions attestations.\n\nResolves: NPM publish 422 Unprocessable Entity error",
+          "type": "fix"
+        },
+        {
+          "hash": "\n32537c0006d1e0eb999825746bd2f943e68e5511",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T14:59:15+11:00",
+          "message": "feat: Comprehensive component documentation enhancement",
+          "body": "Enhanced documentation for all 12 design system components with professional-grade content:\n\n**Atoms Enhanced (8):**\n- Typography: Complete variant system, accessibility patterns, semantic HTML\n- Stack: Layout patterns, responsive behavior, comprehensive spacing examples\n- Icon: Size variants, accessibility guidelines, semantic usage patterns\n- Button: Interaction states, comprehensive variants, accessibility compliance\n- Avatar: Fallback handling, accessibility patterns, size optimization\n- Container: Responsive layouts, mobile-first design, semantic landmarks\n- IconButton: Action patterns, accessibility for icon-only buttons, state management\n- Chip: Interaction states, selection patterns, categorization examples\n\n**Molecules Enhanced (4):**\n- Dropdown: Keyboard navigation, accessibility compliance, selection patterns\n- Breadcrumbs: Navigation patterns, accessibility landmarks, hierarchy display\n- ChipGroup: Selection management, accessibility coordination, group interactions\n- CodeBlock: Developer experience, syntax preservation, clipboard integration\n\n**Key Improvements:**\n- ✅ WCAG 2.2 AA compliance with comprehensive accessibility testing\n- ✅ Real-world usage examples with practical implementation patterns\n- ✅ Enhanced prop documentation with defaults and detailed descriptions\n- ✅ Implementation notes covering best practices and performance\n- ✅ Design token integration with comprehensive token mapping\n- ✅ Consistent documentation structure across all components\n- ✅ Professional enterprise-grade documentation standards\n\n**Quality Metrics:**\n- 100% component coverage (12/12 enhanced)\n- Comprehensive accessibility guidelines for all components\n- Real-world examples demonstrating practical usage patterns\n- Complete prop documentation with TypeScript safety\n- Professional documentation suitable for enterprise adoption\n\nAll changes maintain backward compatibility and pass existing test suites.",
+          "type": "feat"
+        },
+        {
+          "hash": "\n68a70019d0467f235c183f56c2ee30fab25ab4a4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T14:06:52+11:00",
+          "message": "fix(test): Correct PageTitle test assertion to use semantic heading role",
+          "body": "The PageTitle component uses Typography with variant=\"h1\" which renders as a\nsemantic <h1> element, not a span with an 'as' attribute. Updated the test to\nproperly check for heading role and text content instead of DOM attribute.\n\nThis resolves the last failing test in the core design system test suite,\nachieving 100% test success rate (659/659 tests passing).\"",
+          "type": "fix"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.2.0",
+      "tag": "v1.2.0",
+      "date": "2025-10-23T08:24:36+11:00",
+      "commits": [
+        {
+          "hash": "83cbef211a76cf1d65e31ab83615c1b3fc6552ca",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T08:24:36+11:00",
+          "message": "chore: Bump version to 1.2.0 for production release",
+          "body": "Version 1.2.0 includes:\n- Comprehensive accessibility testing with axe for WCAG 2.2 AA compliance\n- Fixed critical styled-components prop leaking issues\n- Resolved React act warnings in async components\n- Enhanced testing infrastructure with proper babel configuration\n- Production-ready build process for both package distribution and documentation\n\nThis release represents a major enhancement in code quality, accessibility,\nand developer experience with robust testing patterns established.\"",
+          "type": "chore"
+        },
+        {
+          "hash": "\nc418baa0e6493c2b9ea7e202fd36d61af15e84f7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T08:22:01+11:00",
+          "message": "fix(build): Resolve build configuration issues for production deployment",
+          "body": "- Fixed babel configuration in rollup.config.js to use 'runtime' helpers\n- Corrected import paths in Footer and HeroBanner docs files\n- Excluded test-consumption folder from TypeScript compilation\n- Successfully built both package distribution and Next.js documentation site\n\nBuild outputs:\n- Package: dist/index.js, dist/index.esm.js (main components)\n- Tokens: dist/tokens/index.js, dist/tokens/index.esm.js (design tokens)\n- Documentation: .next/ (Next.js static site ready for deployment)\n\nReady for production deployment via GitHub workflows.",
+          "type": "fix"
+        },
+        {
+          "hash": "\n75cd415bf6dc032660e990b2090ad73ede9c0af4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:46:24+11:00",
+          "message": "feat(testing): Add comprehensive accessibility testing and fix critical testing issues",
+          "body": "- Fixed styled-components prop leaking by removing faulty Jest mock\n- Added comprehensive axe accessibility testing to all molecule components:\n  * CodeBlock: Fixed React act warnings and separated accessibility tests\n  * ArtCard, Breadcrumbs, DesignCard, PageTitle: Added full accessibility coverage\n  * Dropdown: Fixed accessibility violations with aria-labelledby\n  * ReleaseCard: Added comprehensive accessibility test scenarios\n  * ChipGroup: Already had accessibility testing in place\n\n- Enhanced testing infrastructure:\n  * Used real styled-components in tests with proper shouldForwardProp filtering\n  * Implemented proper async state management with useRef cleanup\n  * Added consistent accessibility testing patterns across components\n\n- Test suite improvements:\n  * 21/26 test suites now passing (up from previous failing state)\n  * 658/659 tests passing\n  * All accessibility tests pass with no violations\n  * Consistent testing patterns following TESTING_STANDARDS.md\n\nThis brings the design system significantly closer to full WCAG 2.2 AA compliance\nand establishes robust testing patterns for future component development.",
+          "type": "feat"
+        },
+        {
+          "hash": "\n98e58c4c4422d2b55d5fd2f4b63eee532478ffcd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:35:57+11:00",
+          "message": "fix(testing): resolve critical testing issues and add accessibility coverage",
+          "body": "## Major Testing Fixes\n\n### 🔧 Fixed Styled Components Prop Leaking\n- **Root cause**: Faulty styled-components mock in jest.setup.js was not respecting shouldForwardProp\n- **Solution**: Removed mock to use real styled-components in tests\n- **Impact**: Eliminated all $variant, $color, $size, $iconColor warnings across all components\n- **Result**: Clean test output with proper prop filtering\n\n### 🔧 Fixed React Act Warnings\n- **CodeBlock**: Fixed setTimeout state updates not wrapped in act()\n- **Solution**: Added proper useRef cleanup and separated accessibility tests with real timers\n- **ReleaseCard**: Fixed Next.js Image mock to filter out blurDataURL and other Next-specific props\n- **Result**: No more \"not wrapped in act(...)\" warnings\n\n### ✅ Added Comprehensive Accessibility Testing\n- **CodeBlock**: Added axe testing for default, copy-hidden, and custom content scenarios\n- **ArtCard**: Added axe testing for default props, image links, and full prop scenarios\n- **Pattern**: Established accessibility testing pattern for molecules (atoms already covered)\n- **Coverage**: Enhanced WCAG 2.2 AA compliance validation\n\n### 🛠️ Improved Test Infrastructure\n- **Babel Config**: Added .babelrc with styled-components plugin for proper SSR handling\n- **Jest Config**: Enhanced babel-jest configuration for styled-components support\n- **Real Timers**: Separated accessibility tests to avoid fake timer conflicts with axe\n\n## Test Results\n- **Before**: Multiple failing tests with prop leaking and act warnings\n- **After**: 21 passing test suites, clean output, comprehensive accessibility coverage\n- **Remaining**: Only 1 legitimate test failure (PageTitle as attribute) + 4 Vitest config issues\n\n## Testing Standards Compliance\n- All critical styled-components warnings resolved ✅\n- React testing best practices implemented ✅\n- Accessibility testing expanded to molecules ✅\n- Clean, maintainable test patterns established ✅",
+          "type": "fix"
+        },
+        {
+          "hash": "\nb7ae10411d54a5d27b2b2a9c1c18a1f24496f111",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:19:44+11:00",
+          "message": "feat: Add standalone tokens export and improve package consumption",
+          "body": "- Added separate /tokens entry point for standalone token usage\n- Updated rollup config to build tokens separately from components\n- Updated package.json exports to support both main and tokens imports\n- Verified package is ready for external consumption\n- Fixed build configuration for proper externalization\n- Tokens can now be imported via '@common-origin/design-system/tokens'\n\nThis resolves React context issues in package consumption testing\nwhile maintaining full functionality for real-world usage.\"",
+          "type": "feat"
+        },
+        {
+          "hash": "\nd03af6889063347daa6809c5ede35076ca2806fe",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T22:05:10+11:00",
+          "message": "feat(docs): comprehensive AI instruction system enhancement",
+          "body": "- Add specialized instruction files for focused guidance:\n  - MAIN_INSTRUCTIONS.md: Core project patterns and decision framework\n  - TESTING_STANDARDS.md: Comprehensive testing strategies with accessibility compliance\n  - COMPONENT_PATTERNS.md: Advanced component creation and TypeScript patterns\n  - TOKEN_MANAGEMENT.md: Design token hierarchy and validation strategies\n  - BUNDLE_OPTIMIZATION.md: Multi-target builds and distribution optimization\n  - ACCESSIBILITY_GUIDELINES.md: WCAG 2.2 AA compliance and inclusive design\n\n- Establish architectural decision framework with clear boundaries\n- Include comprehensive examples, anti-patterns, and best practices\n- Add problem-solving protocols and current issue resolution patterns\n- Enhance AI accuracy and speed for design system development tasks\n\nThis enhancement provides specialized, scenario-specific documentation\nto improve AI assistance quality across all design system workflows.\"",
+          "type": "feat"
+        },
+        {
+          "hash": "\n19b8f42960631323507ab28c6fbab15a5c03db0c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:43:37+11:00",
+          "message": "refactor(atoms): rename CoverImage component to Picture for better semantics",
+          "body": "- Rename CoverImage → Picture for clearer design system naming\n- Update component files: Picture.tsx, Picture.test.tsx, Picture.docs.tsx\n- Update type definitions: CoverImageProps → PictureProps\n- Update styled components: CoverImageWrapper → PictureWrapper\n- Update all consuming components (DesignCard, ArtCard) to use Picture\n- Update component exports and documentation references\n- Update README.md to reflect new component name\n- Maintain all framework-agnostic functionality (onClick, href interactions)\n- All 31 Picture component tests passing\n- All consuming component tests verified working\n\nBREAKING CHANGE: CoverImage component renamed to Picture.\nUpdate imports from './CoverImage' to './Picture'",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n11ea7554c1fd092cba45d3e550f81d796d1ac427",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:28:45+11:00",
+          "message": "refactor(ArtCard): modernize component with flexible interaction API",
+          "body": "- Remove slug prop dependency, add onImageClick and imageHref props for flexible interactions\n- Fix styled component prop leaking by removing unnecessary prop forwarding\n- Update to use new framework-agnostic CoverImage API\n- Use real art images from assets folder in documentation examples\n- Add comprehensive test coverage for new interaction patterns (5 tests passing)\n- Improve component category classification from Atoms to Molecules\n- Enhance documentation with callback vs. link usage examples\n\nBenefits:\n- Framework-agnostic component suitable for any React application\n- Clean separation of concerns with dedicated image interaction props\n- Better performance with reduced DOM attribute pollution\n- Consistent API pattern matching DesignCard component",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n8bd3ae80489c0152160d0d4cb9d8b6e35c520441",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:24:35+11:00",
+          "message": "refactor(CoverImage): make framework-agnostic by removing Next.js dependencies",
+          "body": "BREAKING CHANGE: CoverImage API has changed for better reusability\n\n- Replace Next.js Image component with standard HTML img element\n- Replace Next.js Link component with standard HTML anchor/button elements\n- Remove slug prop, add onClick and href props for flexible interaction patterns\n- Remove Next.js-specific props: placeholder, blurDataURL, priority\n- Update component to use semantic button/link elements based on interaction type\n- Use real art images from assets folder in documentation examples\n- Update comprehensive test suite to cover new API (31 tests passing)\n\nMigration guide:\n- Replace `slug=\"post-slug\"` with `href=\"/posts/post-slug\"` or `onClick={handleClick}`\n- Remove any Next.js Image optimization props\n- Component now works in any React application, not just Next.js",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n497c0b29675d9bb8a69e6387e7c54c0cd520c558",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:07:52+11:00",
+          "message": "refactor(DesignCard): remove slug dependency and fix nested link issue",
+          "body": "- Remove slug prop from DesignCard interface to eliminate hardcoded URL assumptions\n- Fix nested <a> tag DOM validation warnings by removing slug from CoverImage usage\n- Update component documentation and test mocks to reflect new slug-less API\n- DesignCard now uses flexible onReadMore/readMoreHref props for navigation\n- Eliminates framework-specific routing dependencies for better reusability",
+          "type": "refactor"
+        },
+        {
+          "hash": "\nf90404099eec67669a3c7dbd911476cfb76f834a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:00:00+11:00",
+          "message": "refactor: move DateFormatter into atoms with proper structure",
+          "body": "- Create atoms/DateFormatter/ folder with complete atomic structure:\n  - DateFormatter.tsx (enhanced with proper props interface)\n  - DateFormatter.test.tsx (comprehensive test coverage with accessibility)\n  - DateFormatter.docs.tsx (complete component documentation)\n  - index.ts (export file)\n\n- Add data-testid prop support for testing consistency\n- Update atoms/index.ts to export DateFormatter\n- Fix imports in DesignCard and ReleaseCard molecules\n- Remove old dateFormatter.tsx from components root\n- Clean up main components index exports\n\n- Package builds successfully with proper atomic structure\n- DateFormatter now follows same pattern as other atoms\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n831779aa66e04f6f94978f81eab569e854d07dc8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T20:50:10+11:00",
+          "message": "refactor: remove organisms from design system",
+          "body": "- Remove organisms/ directory as components are too project-specific\n- Move HeroBanner to page-components/ for development use only\n- Clean design system now contains only reusable components:\n  - atoms/ (foundational components)\n  - molecules/ (simple combinations)\n  - layout/ (grid systems)\n  - dateFormatter utility\n\n- Package builds successfully without organisms\n- Proper separation: design system vs project-specific components\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\naa09affdcb2f49897657a7cbe428e98a5ecb00a5",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:59:11+11:00",
+          "message": "refactor: separate design system from page components",
+          "body": "BREAKING ARCHITECTURAL CHANGE:\n\nCreated clear separation between:\n- src/components/ = Pure design system components (NPM package)\n- src/page-components/ = Next.js page utilities (dev environment only)\n\nChanges:\n- Moved Navigation, Meta, PageLayout, ErrorBoundaries, Footer to page-components/\n- Removed page-specific components from design system\n- Updated all page imports to use page-components/\n- Clean components/ index exports only design system\n- Package builds successfully with core atoms, molecules, layout\n- Organisms temporarily disabled (HeroBanner needs investigation)\n\nBenefits:\n- No circular dependencies between package and pages\n- Clear NPM package exports without Next.js deps\n- Better separation of concerns\n- Easier maintenance and understanding\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\nbbe6937da3ac532ea05bb08b01bec46f163633aa",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:50:38+11:00",
+          "message": "feat(pages): create pageComponents for Next.js context",
+          "body": "- Add pageComponents.ts with all components including Next.js deps\n- Update pages to import from pageComponents instead of main index\n- NPM package (1.1.3) contains core components without Next.js deps\n- Still need to fix componentsData.ts imports for full Next.js build\"",
+          "type": "feat"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.1.3",
+      "tag": "v1.1.3",
+      "date": "2025-10-16T23:47:47+11:00",
+      "commits": [
+        {
+          "hash": "3ac887558371689e79d0bc48917c1d95917eafcd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:47:47+11:00",
+          "message": "1.1.3",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n4ab77d258a7c84aeb657602f7b17bc92d667e312",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:47:35+11:00",
+          "message": "fix(navigation): resolve circular dependency and Next.js imports",
+          "body": "- Fix navigation component using relative imports to atoms\n- Package builds successfully with core components (atoms, molecules, layout)\n- Next.js-specific components (Navigation, Meta, Layout) temporarily disabled in package exports\n- These components will need separate solution for pages vs package contexts\"",
+          "type": "fix"
+        },
+        {
+          "hash": "\nfd5d7534ebb3511fcda127b6444505303f28be70",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:46:06+11:00",
+          "message": "fix(build): resolve circular dependencies in components",
+          "body": "- Fix PageTitle using relative imports instead of main index\n- Fix molecules using direct imports to atoms to prevent cycles\n- Fix docs components to use relative imports\n- Package now builds successfully without circular dependencies\n- Temporarily disabled organisms, ErrorBoundaries, PageLayout, meta, navigation exports to isolate and fix core build issues\n- Need to re-enable these components with proper imports for pages\"",
+          "type": "fix"
+        },
+        {
+          "hash": "\n189dfa9eccfc769b9478a7db9c8766bac2b547c6",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:41:09+11:00",
+          "message": "fix(components): export missing components for build",
+          "body": "- Export molecules, organisms, and utility components\n- Add Navigation, Layout, Meta, ComponentErrorBoundary exports\n- Resolve import errors in pages that reference these components\n- Remove duplicate LayoutErrorBoundary export to avoid conflicts",
+          "type": "fix"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.1.2",
+      "tag": "v1.1.2",
+      "date": "2025-10-16T23:34:37+11:00",
+      "commits": [
+        {
+          "hash": "1a74bf4a4420f513ed184ee21f0ef1c3c120c683",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:34:37+11:00",
+          "message": "1.1.2",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\nf403aef8b57cd89490c1634f5fcd68aaeaa7aa6e",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:34:31+11:00",
+          "message": "fix: temporarily skip tests in GitHub Actions workflow",
+          "body": "- GitHub Actions failing due to styled-components prop leaking issues\n- Tests fail with invalid attribute warnings ($direction, $gap, $wrap, etc.)\n- Two specific test failures (PageTitle h1 role, DesignCard alt text)\n- Temporarily skip tests to verify NPM publishing automation\n- Added RELEASE.md documentation for maintainers\n\nNext: Fix styled-components shouldForwardProp filtering",
+          "type": "fix"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.1.1",
+      "tag": "v1.1.1",
+      "date": "2025-10-16T23:28:22+11:00",
+      "commits": [
+        {
+          "hash": "3bf4114453062b51b199839e6c4b70c210132b64",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:28:22+11:00",
+          "message": "1.1.1",
+          "body": "",
+          "type": "other"
+        }
+      ],
+      "versionType": "patch"
+    },
+    {
+      "version": "1.1.0",
+      "tag": "v1.1.0",
+      "date": "2025-10-16T22:56:14+11:00",
+      "commits": [
+        {
+          "hash": "122200e2e065f859c644147d8a77dd6ddc2129d1",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T22:56:14+11:00",
+          "message": "feat: migrate to scoped package @common-origin/design-system v1.1.0",
+          "body": "- Updated package name from unscoped to @common-origin/design-system\n- Bumped version to 1.1.0 for scoped package transition\n- Successfully published to @common-origin NPM organization\n- Maintained all existing functionality and features\n\nNew installation command:\nnpm install @common-origin/design-system",
+          "type": "feat"
+        }
+      ],
+      "versionType": "minor"
+    },
+    {
+      "version": "1.0.0",
+      "tag": "v1.0.0",
+      "date": "2025-10-16T22:50:14+11:00",
+      "commits": [
+        {
+          "hash": "b479ebfef49d49fbe8fbdfb5a9c1b7087aefd6e2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:33:40+11:00",
+          "message": "chore(release): bump version to 1.8.5 and update edge case tests for WCAG compliance",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n8edf1c7e00c9417fbc8d2b4fa43cb149cae66208",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T13:01:47+11:00",
+          "message": "chore(release): bump version to 1.8.4",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n62a9763f4b81dfe53e9f64ceebc72467fbf83717",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:40:06+11:00",
+          "message": "chore(release): bump version to 1.8.3",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n97cd267febf786a8bd3d0f82675cdec1ba79d5e7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:37:31+11:00",
+          "message": "chore(ci): regenerate releases.json before publish in workflow",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\ndd92001a1f45bac7ca44b83e505d45cb03e51e2c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:30:37+11:00",
+          "message": "fix: always track public/data/releases.json and revert vercel.json to standard build",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\n32554e0decd20a5a9274c96dc1f939f90122b85c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T12:26:56+11:00",
+          "message": "fix: ensure Vercel build fetches full git history and tags for releases generation",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\nb2b928dbafb65505cc46eec01f40c97db6f8d4c9",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:44:52+11:00",
+          "message": "feat: update patterns page and Data View pattern refinements",
+          "body": "",
+          "type": "feat"
+        },
+        {
+          "hash": "\n58276494f4de6ac71a5c33a6cb57ddc2983371b1",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:25:20+11:00",
+          "message": "feat: improve drawer and expandable container UX in Data View pattern",
+          "body": "- Adjusted drawer styling and behavior\n- Enhanced expandable filter container animations\n- Improved mobile responsive interactions",
+          "type": "feat"
+        },
+        {
+          "hash": "\n9a4257d014cb48b0bf25812241f61a7a36f2aa75",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T11:04:34+11:00",
+          "message": "refactor: clean up DataViewPattern and replace hard-coded values with tokens",
+          "body": "- Removed unused activeFilters state and toggleFilter function\n- Replaced all hard-coded CSS values with design tokens\n- Standardized transitions to use semantic motion tokens\n- Improved code consistency and maintainability",
+          "type": "refactor"
+        },
+        {
+          "hash": "\nb28519f5f879fd3f55e5aea9de20687c39ef0954",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:20:17+11:00",
+          "message": "chore: bump version to 1.8.2 - mobile filter UX improvements",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n63720c070d0e640427f1ca7bc4c08e3e13697d5b",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:19:48+11:00",
+          "message": "chore: update generated token and icon files",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n085095555eca173390ebfac501437f70fe6cfc4a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:19:31+11:00",
+          "message": "chore: update gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n0149a79df3998cc4cff247d7877f2fae60ffa252",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-30T00:18:50+11:00",
+          "message": "feat: refactor mobile filter display in Data View pattern",
+          "body": "- Updated Badge component to use Typography component for consistent styling\n- Refactored mobile filter UI with expandable/collapsible container\n- Added expand/collapse button with chevron icons for mobile\n- Hidden divider and \"Active filters:\" label on mobile\n- Improved mobile UX with smooth transition animations\n- Desktop view remains unchanged with horizontal filter display",
+          "type": "feat"
+        },
+        {
+          "hash": "\n2d156bcd9d3ee1679f682b9404d42b0bddd09b07",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:51:07+11:00",
+          "message": "fix: Handle missing git in releases build for Vercel deployment",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\n96e74dcfdbd116ea60e8389f649639c178650392",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:49:43+11:00",
+          "message": "fix: Update Vercel build command for deployment compatibility",
+          "body": "",
+          "type": "fix"
+        },
+        {
+          "hash": "\na69d24ca5b7740d44a6c8c394b2056dd79310a7c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:23:17+11:00",
+          "message": "Release v1.8.1 - Update Data View pattern text",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\nd31c6d39d3b301eafa9133a57b0c1f6e30d7e1e8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:22:44+11:00",
+          "message": "docs: Update Data View pattern text",
+          "body": "",
+          "type": "docs"
+        },
+        {
+          "hash": "\nc4e6910b7406fa0658014e55d681caa2c2260534",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:12:59+11:00",
+          "message": "Release v1.8.0 - Add Badge component and refine Data View pattern",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n031f7f0b51ea436c4f4ff8d1dc1c9a3b4c644cd2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T13:11:18+11:00",
+          "message": "refactor: Remove quick filters from Data View pattern",
+          "body": "- Remove BooleanChip quick filters section\n- Simplify filter row to focus on dropdown-based filtering\n- Keep code for future second pattern example\n- Clean up unused imports",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n6c6457232ba462bec9d13e1707a839363f0f9218",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T10:50:06+11:00",
+          "message": "feat: Add Badge notification indicator component",
+          "body": "- Create Badge component with dot and count display modes\n- Support 5 variants: default, primary, error, warning, success\n- Auto-hide when count is 0 (except dot variant)\n- Max count display (99+ format)\n- Scale-in animation on appearance\n- Full accessibility with role=\"status\" and aria-live=\"polite\"\n- Comprehensive test coverage (21 passing tests)\n- Complete documentation with 7 examples\n- Wraps Button, IconButton, Avatar, Chip, and other components",
+          "type": "feat"
+        },
+        {
+          "hash": "\n33f2928c35d8fb9954373b88d4c48c5a7c937137",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T09:10:20+11:00",
+          "message": "feat(patterns): enhance Data View pattern with dynamic filter overflow and UI improvements",
+          "body": "- Fixed filter chip application logic (Dropdown onChange passes ID, not value)\n- Added dynamic overflow detection for filter chips\n  - Uses ResizeObserver and getBoundingClientRect for accurate overflow calculation\n  - Shows \"+X more\" indicator only when chips actually overflow\n  - All filter chips render, CSS handles overflow naturally\n- Updated z-index to use tokens (zIndex[7] for overlay, zIndex[8] for drawer)\n  - Ensures drawer appears above navigation\n- Improved filter row layout\n  - Increased gap spacing to 6xl for better visual separation\n  - Filter chips container takes full available width\n  - Horizontal scroll on mobile with hidden scrollbar\n- Removed \"Clear all\" button from filter row (still available in drawer)\n- Updated quick filter labels to \"Macro 1, 2, 3\" for demonstration\n- Simplified drawer header to just \"Filters\"\n\nTechnical improvements:\n- Two-container approach: AppliedFiltersContainer + FilterChipsWrapper\n- Flex-based layout with overflow: hidden for natural clipping\n- ResizeObserver tracks container width changes\n- Mobile-responsive with overflow: visible and horizontal scroll",
+          "type": "feat"
+        },
+        {
+          "hash": "\n499ee35873acd7c542a89b2a974359e6588c19eb",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T00:17:52+11:00",
+          "message": "chore: bump version to 1.7.0",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n2b6a5022d3c1e9d24d4f803aa3330f9fb2c8a900",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-29T00:17:19+11:00",
+          "message": "feat: add Patterns page with Data View pattern and rename SectionSeparator to Divider",
+          "body": "- Created Patterns page (/patterns) for UI pattern documentation\n- Added Data View pattern with interactive filtering, search, and pagination\n- Renamed SectionSeparator component to Divider with orientation support\n  - Added 'orientation' prop: 'horizontal' | 'vertical' (default: horizontal)\n  - Updated all component usages across codebase\n  - Maintained full test coverage (44 tests passing)\n- Pattern features:\n  - Responsive table/list view (desktop/mobile)\n  - Quick filters using BooleanChip component\n  - Advanced filters via side drawer with dropdowns\n  - Staged filter application (Apply Filters button)\n  - FilterChip components for dismissible filter display\n  - Unified filter row with vertical dividers\n  - Mobile-optimized drawer and hidden actions\n  - Pagination using design system Button components\n- Added new icons: menu, export, table\n- Patterns excluded from npm package (docs-only feature)",
+          "type": "feat"
+        },
+        {
+          "hash": "\n0e1703befcec7923e38ebe5991a48b90372f6137",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:32:23+11:00",
+          "message": "feat(patterns): implement interactive Data View pattern demo",
+          "body": "- Added fully functional table-to-list responsive layout\n- Search input for filtering data\n- BooleanChip filters for Active, Pending, Completed states\n- 'All filters' button opens side drawer (right side, bottom sheet on mobile)\n- Export and column visibility action buttons (placeholders)\n- Pagination with page numbers and prev/next buttons\n- Items count display showing current range\n- 6-column table with grey box placeholders\n- List view with stacked grey boxes for mobile\n- Side drawer with filter group placeholders\n- Responsive at md breakpoint (768px)\n- Interactive state management for filters, pagination, and drawer",
+          "type": "feat"
+        },
+        {
+          "hash": "\nb4dd861a7ba0c4b30681845a82701a4260f3ff1e",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:13:24+11:00",
+          "message": "feat(patterns): add new Patterns page with Data View pattern placeholder",
+          "body": "- Created /patterns page with sidebar navigation matching components/tokens layout\n- Added Data View pattern as first design pattern (documentation only)\n- Pattern includes overview, key features, use cases, and implementation notes\n- Updated Navigation component to include Patterns link\n- Updated home page to include Design Patterns button\n- Pattern structure ready for interactive demo implementation",
+          "type": "feat"
+        },
+        {
+          "hash": "\n630e2eaf3ccba759b12218df0471277fbfc6bda3",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T22:03:15+11:00",
+          "message": "fix(releases): configure Vercel to fetch git tags for changelog generation",
+          "body": "- Added vercel.json to fetch full git history and tags during build\n- Enhanced build.cjs logging to show tag count and warnings\n- Updated RELEASE_PROCESS.md to document Vercel configuration\n- Fixes empty releases page on live site (shallow clone issue)",
+          "type": "fix"
+        },
+        {
+          "hash": "\n77adb1f04dfba058fb69319536b87cf94227b99c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:55:14+11:00",
+          "message": "chore: add generated files to .gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\nacb0e28f3a08f5d93ae95cce7bb179a910d56cf2",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:52:31+11:00",
+          "message": "docs: add comprehensive release process documentation and automation",
+          "body": "- Added RELEASE_PROCESS.md with detailed release workflow\n- Added RELEASE_CHEATSHEET.md for quick reference\n- Created release.sh script to automate version bumping and tagging\n- Consolidated CONTRIBUTING.md with type safety guidelines\n- Updated README.md with links to new documentation\n- Added release:create npm script for easy releases",
+          "type": "docs"
+        },
+        {
+          "hash": "\n890b85c098dd9ee3f82ad0570bb64d0345edea41",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:29:04+11:00",
+          "message": "chore: bump version to 1.6.0 and add check icon",
+          "body": "- Bump package version to 1.6.0\n- Add check icon type for FilterChip and BooleanChip selected states\n- Update generated token files",
+          "type": "chore"
+        },
+        {
+          "hash": "\n133e0172a8aecfaaf044b43d6326cfa62d522e7a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-28T21:27:34+11:00",
+          "message": "feat(Chip): Split into specialized components and add FilterChip selected state",
+          "body": "- Split Chip component into three specialized components:\n  * Chip: Base component for static/interactive variants\n  * FilterChip: Displays filters with selected state (checkmark + light blue) and optional dismissal\n  * BooleanChip: Toggleable chips for quick filter controls\n\n- FilterChip enhancements:\n  * Added optional `selected` prop to show checkmark icon and light blue background\n  * Made `onDismiss` optional - close button only appears when provided\n  * Keyboard dismissal (Delete/Backspace) only when dismissible\n\n- Architecture improvements:\n  * Created shared/ folder with ChipBase, types, and utils for code reuse\n  * Removed backward compatibility for filter/boolean variants (never published)\n  * Removed large size variant to reduce bloat\n\n- All 85 tests passing\n- Clean type definitions exported\n- Documentation updated with new usage patterns",
+          "type": "feat"
+        },
+        {
+          "hash": "\n4549ca4fdd5e426af5b3b468145c0c19b381fcfc",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T21:53:25+11:00",
+          "message": "v1.5.0 - Add ProgressBar component with token-based sizing",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n5cfb67124662c07a4fff38d75cdd4827683a77cd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T21:52:18+11:00",
+          "message": "feat: Add ProgressBar component with token-based sizing",
+          "body": "- Add new ProgressBar atom component with horizontal/vertical variants\n- Add component tokens for progressBar sizes (sm, md, lg, xl)\n- Add semantic.color.background.progressTrack token\n- Update documentation standards with anatomy requirements\n- Comprehensive test coverage with 21 passing tests\n- Full accessibility support with ARIA attributes\n- Complete component documentation with examples",
+          "type": "feat"
+        },
+        {
+          "hash": "\n7f5f33f33c10ec6f3b98d167a6ef61547da119a9",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:32:07+11:00",
+          "message": "docs: Add comprehensive type definition guidelines and verification",
+          "body": "Added documentation and tooling to prevent path alias issues in\ntype definitions:\n\nDocumentation:\n- .github/CONTRIBUTING.md: Full guidelines for type definitions\n- .github/copilot-instructions.md: AI coding assistant rules\n- docs/TYPE_DEFINITIONS.md: Quick reference guide\n\nTooling:\n- scripts/verify-types.cjs: Pre-publish verification script\n- package.json: Added verify:types to prepublishOnly hook\n\nFixes:\n- src/lib/styleUtils.ts: Changed @/ to relative import\n\nThe verification script automatically checks for path aliases (@/)\nin generated .d.ts files and fails the build if found. This prevents\npublishing broken type definitions that don't work in consuming\nprojects.\n\nAll future contributions must follow the \"relative imports for types\"\npattern to ensure proper TypeScript support in external projects.",
+          "type": "docs"
+        },
+        {
+          "hash": "\n5e9c944dad358bd3c5bf2ac31c47ec0a7c437112",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:19:40+11:00",
+          "message": "chore: Bump version to 1.4.2 - Fix path alias in Icon type definitions",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n91c7ff957ba2b41a84ac578291dd9ba472ada149",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:18:40+11:00",
+          "message": "fix: Use relative imports instead of path aliases in Icon component",
+          "body": "Changed Icon.tsx to import IconName from '../../../types/icons'\ninstead of '@/types/icons' to ensure the generated .d.ts files\nuse relative paths that can be resolved in consuming projects.\n\nThe @/ path alias works internally but doesn't resolve in the\ngenerated type definitions for consuming projects, causing\nTypeScript to fail when trying to resolve the IconName type.",
+          "type": "fix"
+        },
+        {
+          "hash": "\n9890aa51b15ddd39e7260486e977453a68f0f944",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:56+11:00",
+          "message": "chore: Bump version to 1.4.1 - Fix IconName type for external use",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n690be3ff0e7cf8ef3e9be7d865082d686a4da32d",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:49+11:00",
+          "message": "chore: Add .rollup.cache to gitignore",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n23d6864f29205e9da8612eb8b0e11b5caf7c04b7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-27T18:09:05+11:00",
+          "message": "fix: IconName type now works in consuming projects",
+          "body": "- Created self-contained IconName type as string literal union\n- Removed dependency on path aliases in type definitions\n- Exported IconName and iconsData from main package\n- Fixed TypeScript error where iconName resolved to 'never'\n\nThe previous implementation used `keyof typeof iconsData` which\nreferenced @/styles/icons.json via path alias. This worked internally\nbut failed in consuming projects because they couldn't resolve the\n@/ path alias, causing IconName to evaluate as 'never'.\n\nNow IconName is a proper string literal union type that provides\nfull autocomplete and type safety without any JSON imports.",
+          "type": "fix"
+        },
+        {
+          "hash": "\ndbb9f56d69423b819bdafc130744e0b472615ff8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-26T23:09:12+11:00",
+          "message": "chore: Bump version to 1.4.0 for React 19 support",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n9d66e82a0f26bd80bf3ec58addfce3181c19c93a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-26T23:09:07+11:00",
+          "message": "feat: Add React 19 support",
+          "body": "- Update React dependencies to 19.2.0\n- Maintain backward compatibility with React 18.x via peer dependencies\n- Update TypeScript types to @types/react 19.2.2\n- Add React version requirements to README\n- All 657 core tests passing with React 19\n- No component code changes required (already compatible)",
+          "type": "feat"
+        },
+        {
+          "hash": "\n066cfd3b80e3b2c0dd9a722604b484e2eaa0cba4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-25T23:53:12+11:00",
+          "message": "fix: remove changesets workflow causing publish errors",
+          "body": "Remove release.yml workflow that requires .changeset directory.\n\nThe project uses manual version management with git tags, which is\nhandled by the publish.yml workflow that triggers on version tags.\n\nCurrent workflow:\n1. Update version in package.json manually\n2. Commit and create git tag (e.g., v1.3.1)\n3. Push tag to trigger publish.yml workflow\n4. Workflow runs tests, builds, and publishes to npm\n\nThis approach is simpler and provides more control over versioning.",
+          "type": "fix"
+        },
+        {
+          "hash": "\nd391f8766c3c8d491b6409de05a51ff13f3443df",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-25T23:48:32+11:00",
+          "message": "chore: remove test-consumption folder",
+          "body": "Remove internal test-consumption environment as it has been replaced by\nthe comprehensive external testing playground (common-origin-playground).\n\nThe playground provides:\n- Real-world npm package consumption testing\n- Next.js 15 integration validation\n- Comprehensive E2E and accessibility testing\n- Better separation of concerns\n\nChanges:\n- Deleted test-consumption/ directory and all contents\n- Removed test-consumption from tsconfig.json exclude list\n- Verified build still succeeds\n\nThe design system repo now focuses on component development and unit\ntesting, while consumption/integration testing is handled in the\ndedicated playground environment.",
+          "type": "chore"
+        },
+        {
+          "hash": "\n157718dc59df9c16d3ebef9190f69fe3414099c8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-24T16:33:02+11:00",
+          "message": "chore: bump version to 1.3.1",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n12a4f4b6905f77468b1fd3e9a30ab7fd2ceaf7a7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-24T16:32:36+11:00",
+          "message": "docs: add comprehensive documentation standards guide",
+          "body": "Add DOCUMENTATION_STANDARDS.md with complete standards for:\n- Component documentation (.docs.tsx) requirements\n- Props, examples, accessibility, and anatomy sections\n- ASCII diagram approach for component anatomy visualization\n- README file standards and when to create them\n- Code comments and JSDoc best practices\n- Markdown formatting conventions\n- Documentation site page structure\n- Maintenance protocols and quality standards\n\nKey Features:\n- Practical ASCII diagram patterns for anatomy section\n- Three diagram styles: box drawings, tree structures, parts-only\n- Complete examples for simple, complex, and compound components\n- Quality checklists and completeness metrics\n- Update triggers and review protocols\n\nComplements existing standards files (COMPONENT_PATTERNS,\nTESTING_STANDARDS, ACCESSIBILITY_GUIDELINES) with focus on\ndocumentation quality and consistency.",
+          "type": "docs"
+        },
+        {
+          "hash": "\n03ae6c8e1379a0e6027a69df8e4162a144e56398",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T22:32:16+11:00",
+          "message": "feat: add automated releases and changelog system",
+          "body": "Implemented comprehensive releases tracking with automated changelog generation from git history.\n\n**New Features:**\n- Automated changelog generator parsing git tags and commits\n- Beautiful /releases page with filterable releases (All, Major, Minor, Patch)\n- Conventional commits support with categorization (feat, fix, chore, etc.)\n- Build-time static generation for fast page loads\n- Navigation integration with releases link\n\n**Technical Implementation:**\n- lib/releases/build.cjs - Git history parser and JSON generator\n- lib/releases/types.ts - TypeScript type definitions\n- lib/releases/generator.ts - Core generation logic\n- lib/releases/README.md - Comprehensive documentation\n- pages/releases.tsx - Releases page with Grid layout and filtering\n- public/data/releases.json - Generated release data (auto-created at build)\n\n**UI/UX:**\n- 800px max-width for optimal readability\n- Version badges with color-coded gradients (major/minor/patch)\n- Commit grouping by type with emoji labels\n- GitHub commit links for detailed viewing\n- Filter buttons for version type selection\n- Section separators between commit types\n- Responsive design using design system components\n\n**Build Integration:**\n- npm run build:releases - Manual generation\n- Automatic execution during npm run build and npm run dev\n- Updated package.json scripts\n\n**Documentation:**\n- Updated .github/MAIN_INSTRUCTIONS.md with releases system overview\n- Added protocol for maintaining instructions on architectural changes\n- Comprehensive README in lib/releases/ for developer reference\n\n**Design System Usage:**\n- Showcases Grid, Typography, Chip, Button, Stack, Box components\n- Follows atomic design principles\n- Uses semantic design tokens throughout\n\nGenerates changelog for 7 releases with 52 commits from git history.",
+          "type": "feat"
+        },
+        {
+          "hash": "\n7f9416541cfca136728da54a8d955f21dbf11006",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T16:51:07+11:00",
+          "message": "chore: bump version to 1.3.0 for documentation enhancements and npm fix",
+          "body": "",
+          "type": "chore"
+        },
+        {
+          "hash": "\n2eb0b637a4a795329aef84c93f4289b82d985568",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T16:49:55+11:00",
+          "message": "fix(npm): correct repository URL for provenance validation",
+          "body": "Fix NPM publishing error by updating repository URL in package.json to match\nthe actual GitHub repository name.\n\n**Issue:**\nNPM provenance validation was failing with:\n\"Error verifying sigstore provenance bundle: Failed to validate repository\ninformation: package.json: 'repository.url' is 'git+https://github.com/\ncommon-origin/design-system.git', expected to match 'https://github.com/\ncommon-origin/common-origin-design-system' from provenance\"\n\n**Root Cause:**\n- Package.json had outdated repository URL: design-system.git\n- Actual GitHub repository: common-origin-design-system.git\n- NPM provenance attestations require exact match for security verification\n\n**Solution:**\nUpdated repository URL from:\n- https://github.com/common-origin/design-system.git\nTo:\n- https://github.com/common-origin/common-origin-design-system.git\n\nThis ensures NPM can verify the package provenance and authenticate the\nsource of the published package through GitHub Actions attestations.\n\nResolves: NPM publish 422 Unprocessable Entity error",
+          "type": "fix"
+        },
+        {
+          "hash": "\n32537c0006d1e0eb999825746bd2f943e68e5511",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T14:59:15+11:00",
+          "message": "feat: Comprehensive component documentation enhancement",
+          "body": "Enhanced documentation for all 12 design system components with professional-grade content:\n\n**Atoms Enhanced (8):**\n- Typography: Complete variant system, accessibility patterns, semantic HTML\n- Stack: Layout patterns, responsive behavior, comprehensive spacing examples\n- Icon: Size variants, accessibility guidelines, semantic usage patterns\n- Button: Interaction states, comprehensive variants, accessibility compliance\n- Avatar: Fallback handling, accessibility patterns, size optimization\n- Container: Responsive layouts, mobile-first design, semantic landmarks\n- IconButton: Action patterns, accessibility for icon-only buttons, state management\n- Chip: Interaction states, selection patterns, categorization examples\n\n**Molecules Enhanced (4):**\n- Dropdown: Keyboard navigation, accessibility compliance, selection patterns\n- Breadcrumbs: Navigation patterns, accessibility landmarks, hierarchy display\n- ChipGroup: Selection management, accessibility coordination, group interactions\n- CodeBlock: Developer experience, syntax preservation, clipboard integration\n\n**Key Improvements:**\n- ✅ WCAG 2.2 AA compliance with comprehensive accessibility testing\n- ✅ Real-world usage examples with practical implementation patterns\n- ✅ Enhanced prop documentation with defaults and detailed descriptions\n- ✅ Implementation notes covering best practices and performance\n- ✅ Design token integration with comprehensive token mapping\n- ✅ Consistent documentation structure across all components\n- ✅ Professional enterprise-grade documentation standards\n\n**Quality Metrics:**\n- 100% component coverage (12/12 enhanced)\n- Comprehensive accessibility guidelines for all components\n- Real-world examples demonstrating practical usage patterns\n- Complete prop documentation with TypeScript safety\n- Professional documentation suitable for enterprise adoption\n\nAll changes maintain backward compatibility and pass existing test suites.",
+          "type": "feat"
+        },
+        {
+          "hash": "\n68a70019d0467f235c183f56c2ee30fab25ab4a4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T14:06:52+11:00",
+          "message": "fix(test): Correct PageTitle test assertion to use semantic heading role",
+          "body": "The PageTitle component uses Typography with variant=\"h1\" which renders as a\nsemantic <h1> element, not a span with an 'as' attribute. Updated the test to\nproperly check for heading role and text content instead of DOM attribute.\n\nThis resolves the last failing test in the core design system test suite,\nachieving 100% test success rate (659/659 tests passing).\"",
+          "type": "fix"
+        },
+        {
+          "hash": "\n83cbef211a76cf1d65e31ab83615c1b3fc6552ca",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T08:24:36+11:00",
+          "message": "chore: Bump version to 1.2.0 for production release",
+          "body": "Version 1.2.0 includes:\n- Comprehensive accessibility testing with axe for WCAG 2.2 AA compliance\n- Fixed critical styled-components prop leaking issues\n- Resolved React act warnings in async components\n- Enhanced testing infrastructure with proper babel configuration\n- Production-ready build process for both package distribution and documentation\n\nThis release represents a major enhancement in code quality, accessibility,\nand developer experience with robust testing patterns established.\"",
+          "type": "chore"
+        },
+        {
+          "hash": "\nc418baa0e6493c2b9ea7e202fd36d61af15e84f7",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-23T08:22:01+11:00",
+          "message": "fix(build): Resolve build configuration issues for production deployment",
+          "body": "- Fixed babel configuration in rollup.config.js to use 'runtime' helpers\n- Corrected import paths in Footer and HeroBanner docs files\n- Excluded test-consumption folder from TypeScript compilation\n- Successfully built both package distribution and Next.js documentation site\n\nBuild outputs:\n- Package: dist/index.js, dist/index.esm.js (main components)\n- Tokens: dist/tokens/index.js, dist/tokens/index.esm.js (design tokens)\n- Documentation: .next/ (Next.js static site ready for deployment)\n\nReady for production deployment via GitHub workflows.",
+          "type": "fix"
+        },
+        {
+          "hash": "\n75cd415bf6dc032660e990b2090ad73ede9c0af4",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:46:24+11:00",
+          "message": "feat(testing): Add comprehensive accessibility testing and fix critical testing issues",
+          "body": "- Fixed styled-components prop leaking by removing faulty Jest mock\n- Added comprehensive axe accessibility testing to all molecule components:\n  * CodeBlock: Fixed React act warnings and separated accessibility tests\n  * ArtCard, Breadcrumbs, DesignCard, PageTitle: Added full accessibility coverage\n  * Dropdown: Fixed accessibility violations with aria-labelledby\n  * ReleaseCard: Added comprehensive accessibility test scenarios\n  * ChipGroup: Already had accessibility testing in place\n\n- Enhanced testing infrastructure:\n  * Used real styled-components in tests with proper shouldForwardProp filtering\n  * Implemented proper async state management with useRef cleanup\n  * Added consistent accessibility testing patterns across components\n\n- Test suite improvements:\n  * 21/26 test suites now passing (up from previous failing state)\n  * 658/659 tests passing\n  * All accessibility tests pass with no violations\n  * Consistent testing patterns following TESTING_STANDARDS.md\n\nThis brings the design system significantly closer to full WCAG 2.2 AA compliance\nand establishes robust testing patterns for future component development.",
+          "type": "feat"
+        },
+        {
+          "hash": "\n98e58c4c4422d2b55d5fd2f4b63eee532478ffcd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:35:57+11:00",
+          "message": "fix(testing): resolve critical testing issues and add accessibility coverage",
+          "body": "## Major Testing Fixes\n\n### 🔧 Fixed Styled Components Prop Leaking\n- **Root cause**: Faulty styled-components mock in jest.setup.js was not respecting shouldForwardProp\n- **Solution**: Removed mock to use real styled-components in tests\n- **Impact**: Eliminated all $variant, $color, $size, $iconColor warnings across all components\n- **Result**: Clean test output with proper prop filtering\n\n### 🔧 Fixed React Act Warnings\n- **CodeBlock**: Fixed setTimeout state updates not wrapped in act()\n- **Solution**: Added proper useRef cleanup and separated accessibility tests with real timers\n- **ReleaseCard**: Fixed Next.js Image mock to filter out blurDataURL and other Next-specific props\n- **Result**: No more \"not wrapped in act(...)\" warnings\n\n### ✅ Added Comprehensive Accessibility Testing\n- **CodeBlock**: Added axe testing for default, copy-hidden, and custom content scenarios\n- **ArtCard**: Added axe testing for default props, image links, and full prop scenarios\n- **Pattern**: Established accessibility testing pattern for molecules (atoms already covered)\n- **Coverage**: Enhanced WCAG 2.2 AA compliance validation\n\n### 🛠️ Improved Test Infrastructure\n- **Babel Config**: Added .babelrc with styled-components plugin for proper SSR handling\n- **Jest Config**: Enhanced babel-jest configuration for styled-components support\n- **Real Timers**: Separated accessibility tests to avoid fake timer conflicts with axe\n\n## Test Results\n- **Before**: Multiple failing tests with prop leaking and act warnings\n- **After**: 21 passing test suites, clean output, comprehensive accessibility coverage\n- **Remaining**: Only 1 legitimate test failure (PageTitle as attribute) + 4 Vitest config issues\n\n## Testing Standards Compliance\n- All critical styled-components warnings resolved ✅\n- React testing best practices implemented ✅\n- Accessibility testing expanded to molecules ✅\n- Clean, maintainable test patterns established ✅",
+          "type": "fix"
+        },
+        {
+          "hash": "\nb7ae10411d54a5d27b2b2a9c1c18a1f24496f111",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T23:19:44+11:00",
+          "message": "feat: Add standalone tokens export and improve package consumption",
+          "body": "- Added separate /tokens entry point for standalone token usage\n- Updated rollup config to build tokens separately from components\n- Updated package.json exports to support both main and tokens imports\n- Verified package is ready for external consumption\n- Fixed build configuration for proper externalization\n- Tokens can now be imported via '@common-origin/design-system/tokens'\n\nThis resolves React context issues in package consumption testing\nwhile maintaining full functionality for real-world usage.\"",
+          "type": "feat"
+        },
+        {
+          "hash": "\nd03af6889063347daa6809c5ede35076ca2806fe",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-22T22:05:10+11:00",
+          "message": "feat(docs): comprehensive AI instruction system enhancement",
+          "body": "- Add specialized instruction files for focused guidance:\n  - MAIN_INSTRUCTIONS.md: Core project patterns and decision framework\n  - TESTING_STANDARDS.md: Comprehensive testing strategies with accessibility compliance\n  - COMPONENT_PATTERNS.md: Advanced component creation and TypeScript patterns\n  - TOKEN_MANAGEMENT.md: Design token hierarchy and validation strategies\n  - BUNDLE_OPTIMIZATION.md: Multi-target builds and distribution optimization\n  - ACCESSIBILITY_GUIDELINES.md: WCAG 2.2 AA compliance and inclusive design\n\n- Establish architectural decision framework with clear boundaries\n- Include comprehensive examples, anti-patterns, and best practices\n- Add problem-solving protocols and current issue resolution patterns\n- Enhance AI accuracy and speed for design system development tasks\n\nThis enhancement provides specialized, scenario-specific documentation\nto improve AI assistance quality across all design system workflows.\"",
+          "type": "feat"
+        },
+        {
+          "hash": "\n19b8f42960631323507ab28c6fbab15a5c03db0c",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:43:37+11:00",
+          "message": "refactor(atoms): rename CoverImage component to Picture for better semantics",
+          "body": "- Rename CoverImage → Picture for clearer design system naming\n- Update component files: Picture.tsx, Picture.test.tsx, Picture.docs.tsx\n- Update type definitions: CoverImageProps → PictureProps\n- Update styled components: CoverImageWrapper → PictureWrapper\n- Update all consuming components (DesignCard, ArtCard) to use Picture\n- Update component exports and documentation references\n- Update README.md to reflect new component name\n- Maintain all framework-agnostic functionality (onClick, href interactions)\n- All 31 Picture component tests passing\n- All consuming component tests verified working\n\nBREAKING CHANGE: CoverImage component renamed to Picture.\nUpdate imports from './CoverImage' to './Picture'",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n11ea7554c1fd092cba45d3e550f81d796d1ac427",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:28:45+11:00",
+          "message": "refactor(ArtCard): modernize component with flexible interaction API",
+          "body": "- Remove slug prop dependency, add onImageClick and imageHref props for flexible interactions\n- Fix styled component prop leaking by removing unnecessary prop forwarding\n- Update to use new framework-agnostic CoverImage API\n- Use real art images from assets folder in documentation examples\n- Add comprehensive test coverage for new interaction patterns (5 tests passing)\n- Improve component category classification from Atoms to Molecules\n- Enhance documentation with callback vs. link usage examples\n\nBenefits:\n- Framework-agnostic component suitable for any React application\n- Clean separation of concerns with dedicated image interaction props\n- Better performance with reduced DOM attribute pollution\n- Consistent API pattern matching DesignCard component",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n8bd3ae80489c0152160d0d4cb9d8b6e35c520441",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:24:35+11:00",
+          "message": "refactor(CoverImage): make framework-agnostic by removing Next.js dependencies",
+          "body": "BREAKING CHANGE: CoverImage API has changed for better reusability\n\n- Replace Next.js Image component with standard HTML img element\n- Replace Next.js Link component with standard HTML anchor/button elements\n- Remove slug prop, add onClick and href props for flexible interaction patterns\n- Remove Next.js-specific props: placeholder, blurDataURL, priority\n- Update component to use semantic button/link elements based on interaction type\n- Use real art images from assets folder in documentation examples\n- Update comprehensive test suite to cover new API (31 tests passing)\n\nMigration guide:\n- Replace `slug=\"post-slug\"` with `href=\"/posts/post-slug\"` or `onClick={handleClick}`\n- Remove any Next.js Image optimization props\n- Component now works in any React application, not just Next.js",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n497c0b29675d9bb8a69e6387e7c54c0cd520c558",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:07:52+11:00",
+          "message": "refactor(DesignCard): remove slug dependency and fix nested link issue",
+          "body": "- Remove slug prop from DesignCard interface to eliminate hardcoded URL assumptions\n- Fix nested <a> tag DOM validation warnings by removing slug from CoverImage usage\n- Update component documentation and test mocks to reflect new slug-less API\n- DesignCard now uses flexible onReadMore/readMoreHref props for navigation\n- Eliminates framework-specific routing dependencies for better reusability",
+          "type": "refactor"
+        },
+        {
+          "hash": "\nf90404099eec67669a3c7dbd911476cfb76f834a",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T21:00:00+11:00",
+          "message": "refactor: move DateFormatter into atoms with proper structure",
+          "body": "- Create atoms/DateFormatter/ folder with complete atomic structure:\n  - DateFormatter.tsx (enhanced with proper props interface)\n  - DateFormatter.test.tsx (comprehensive test coverage with accessibility)\n  - DateFormatter.docs.tsx (complete component documentation)\n  - index.ts (export file)\n\n- Add data-testid prop support for testing consistency\n- Update atoms/index.ts to export DateFormatter\n- Fix imports in DesignCard and ReleaseCard molecules\n- Remove old dateFormatter.tsx from components root\n- Clean up main components index exports\n\n- Package builds successfully with proper atomic structure\n- DateFormatter now follows same pattern as other atoms\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\n831779aa66e04f6f94978f81eab569e854d07dc8",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-17T20:50:10+11:00",
+          "message": "refactor: remove organisms from design system",
+          "body": "- Remove organisms/ directory as components are too project-specific\n- Move HeroBanner to page-components/ for development use only\n- Clean design system now contains only reusable components:\n  - atoms/ (foundational components)\n  - molecules/ (simple combinations)\n  - layout/ (grid systems)\n  - dateFormatter utility\n\n- Package builds successfully without organisms\n- Proper separation: design system vs project-specific components\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\naa09affdcb2f49897657a7cbe428e98a5ecb00a5",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:59:11+11:00",
+          "message": "refactor: separate design system from page components",
+          "body": "BREAKING ARCHITECTURAL CHANGE:\n\nCreated clear separation between:\n- src/components/ = Pure design system components (NPM package)\n- src/page-components/ = Next.js page utilities (dev environment only)\n\nChanges:\n- Moved Navigation, Meta, PageLayout, ErrorBoundaries, Footer to page-components/\n- Removed page-specific components from design system\n- Updated all page imports to use page-components/\n- Clean components/ index exports only design system\n- Package builds successfully with core atoms, molecules, layout\n- Organisms temporarily disabled (HeroBanner needs investigation)\n\nBenefits:\n- No circular dependencies between package and pages\n- Clear NPM package exports without Next.js deps\n- Better separation of concerns\n- Easier maintenance and understanding\"",
+          "type": "refactor"
+        },
+        {
+          "hash": "\nbbe6937da3ac532ea05bb08b01bec46f163633aa",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:50:38+11:00",
+          "message": "feat(pages): create pageComponents for Next.js context",
+          "body": "- Add pageComponents.ts with all components including Next.js deps\n- Update pages to import from pageComponents instead of main index\n- NPM package (1.1.3) contains core components without Next.js deps\n- Still need to fix componentsData.ts imports for full Next.js build\"",
+          "type": "feat"
+        },
+        {
+          "hash": "\n3ac887558371689e79d0bc48917c1d95917eafcd",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:47:47+11:00",
+          "message": "1.1.3",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n4ab77d258a7c84aeb657602f7b17bc92d667e312",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:47:35+11:00",
+          "message": "fix(navigation): resolve circular dependency and Next.js imports",
+          "body": "- Fix navigation component using relative imports to atoms\n- Package builds successfully with core components (atoms, molecules, layout)\n- Next.js-specific components (Navigation, Meta, Layout) temporarily disabled in package exports\n- These components will need separate solution for pages vs package contexts\"",
+          "type": "fix"
+        },
+        {
+          "hash": "\nfd5d7534ebb3511fcda127b6444505303f28be70",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:46:06+11:00",
+          "message": "fix(build): resolve circular dependencies in components",
+          "body": "- Fix PageTitle using relative imports instead of main index\n- Fix molecules using direct imports to atoms to prevent cycles\n- Fix docs components to use relative imports\n- Package now builds successfully without circular dependencies\n- Temporarily disabled organisms, ErrorBoundaries, PageLayout, meta, navigation exports to isolate and fix core build issues\n- Need to re-enable these components with proper imports for pages\"",
+          "type": "fix"
+        },
+        {
+          "hash": "\n189dfa9eccfc769b9478a7db9c8766bac2b547c6",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:41:09+11:00",
+          "message": "fix(components): export missing components for build",
+          "body": "- Export molecules, organisms, and utility components\n- Add Navigation, Layout, Meta, ComponentErrorBoundary exports\n- Resolve import errors in pages that reference these components\n- Remove duplicate LayoutErrorBoundary export to avoid conflicts",
+          "type": "fix"
+        },
+        {
+          "hash": "\n1a74bf4a4420f513ed184ee21f0ef1c3c120c683",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:34:37+11:00",
+          "message": "1.1.2",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\nf403aef8b57cd89490c1634f5fcd68aaeaa7aa6e",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:34:31+11:00",
+          "message": "fix: temporarily skip tests in GitHub Actions workflow",
+          "body": "- GitHub Actions failing due to styled-components prop leaking issues\n- Tests fail with invalid attribute warnings ($direction, $gap, $wrap, etc.)\n- Two specific test failures (PageTitle h1 role, DesignCard alt text)\n- Temporarily skip tests to verify NPM publishing automation\n- Added RELEASE.md documentation for maintainers\n\nNext: Fix styled-components shouldForwardProp filtering",
+          "type": "fix"
+        },
+        {
+          "hash": "\n3bf4114453062b51b199839e6c4b70c210132b64",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T23:28:22+11:00",
+          "message": "1.1.1",
+          "body": "",
+          "type": "other"
+        },
+        {
+          "hash": "\n122200e2e065f859c644147d8a77dd6ddc2129d1",
+          "author": "Common Origin",
+          "email": "ollie@commonorigin.studio",
+          "date": "2025-10-16T22:56:14+11:00",
+          "message": "feat: migrate to scoped package @common-origin/design-system v1.1.0",
+          "body": "- Updated package name from unscoped to @common-origin/design-system\n- Bumped version to 1.1.0 for scoped package transition\n- Successfully published to @common-origin NPM organization\n- Maintained all existing functionality and features\n\nNew installation command:\nnpm install @common-origin/design-system",
+          "type": "feat"
+        }
+      ],
+      "versionType": "major"
+    }
+  ],
+  "generatedAt": "2025-10-30T02:44:51.997Z"
+}
