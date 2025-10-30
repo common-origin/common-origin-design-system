@@ -83,11 +83,11 @@ const FilterGroup = styled.div`
 `
 
 const ActiveFiltersLabel = styled.div`
-	display:flex;
-	align-items: center;
-	padding-left: ${spacing.layout.md};
-	border-left: ${border.subtle};
-	height: 2rem;
+  display: flex;
+  align-items: center;
+  padding-left: ${spacing.layout.md};
+  border-left: ${border.subtle};
+  height: ${spacing.layout['2xl']};
 
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -143,8 +143,8 @@ const MobileFiltersContainer = styled.div<{ $isExpanded: boolean }>`
   @media (max-width: ${breakpoint.md}) {
     display: block;
     overflow: hidden;
-    max-height: ${props => props.$isExpanded ? '500px' : '0'};
-    transition: max-height 0.3s ease-in-out;
+    max-height: ${props => props.$isExpanded ? spacing.layout['6xl'] : spacing.layout.none};
+    transition: ${tokens.semantic.motion.transition.normal};
   }
 `
 
@@ -234,13 +234,13 @@ const ListItem = styled.div`
   border: ${border.subtle};
   border-radius: ${tokens.base.border.radius[3]};
   padding: ${spacing.layout.md};
-  margin-bottom: 1rem;
+  margin-bottom: ${spacing.layout.lg};
 `
 
 const ListItemContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: ${spacing.layout.lg};
 `
 
 const PaginationContainer = styled.div`
@@ -265,12 +265,12 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
   top: 0;
   right: ${props => props.$isOpen ? '0' : '-100%'};
   width: 100%;
-  max-width: 360px;
+  max-width: ${spacing.layout['6xl']};
   height: 100vh;
   background-color: ${color.background.default};
   border-left: ${border.default};
   box-shadow: ${tokens.base.shadow[4]};
-  transition: right 0.3s ease-in-out;
+  transition: ${tokens.semantic.motion.transition.normal};
   z-index: ${zIndex[8]};
   overflow-y: auto;
   
@@ -284,7 +284,7 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
     border-left: none;
     border-top: ${border.default};
     border-radius: ${tokens.base.border.radius[4]} ${tokens.base.border.radius[4]} 0 0;
-    transition: bottom 0.3s ease-in-out;
+    transition: ${tokens.semantic.motion.transition.normal};
   }
 `
 
@@ -294,11 +294,11 @@ const DrawerOverlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, ${tokens.base.opacity[40]});
   z-index: ${zIndex[7]};
-  opacity: ${props => props.$isOpen ? '1' : '0'};
+  opacity: ${props => props.$isOpen ? tokens.base.opacity[100] : tokens.base.opacity[0]};
   pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
-  transition: opacity 0.3s ease-in-out;
+  transition: ${tokens.semantic.motion.transition.normal};
 `
 
 const DrawerHeader = styled.div`
@@ -325,7 +325,6 @@ export const DataViewPattern: React.FC = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [searchQuery, setSearchQuery] = useState('')
-  const [activeFilters, setActiveFilters] = useState<string[]>(['Active', 'Pending'])
   const [isFiltersExpanded, setIsFiltersExpanded] = useState(false)
   
   // Applied filter chips from dropdowns
@@ -420,14 +419,6 @@ export const DataViewPattern: React.FC = () => {
   const startItem = (currentPage - 1) * itemsPerPage + 1
   const endItem = Math.min(currentPage * itemsPerPage, totalItems)
   
-  const toggleFilter = (filter: string) => {
-    setActiveFilters(prev => 
-      prev.includes(filter) 
-        ? prev.filter(f => f !== filter)
-        : [...prev, filter]
-    )
-  }
-  
   const applyFilters = () => {
     const newFilters: Array<{ id: string; label: string; value: string }> = []
     
@@ -485,7 +476,6 @@ export const DataViewPattern: React.FC = () => {
     setCategoryFilter('')
     setStatusFilter('')
     setPriorityFilter('')
-    setActiveFilters([])
   }
   
   return (
