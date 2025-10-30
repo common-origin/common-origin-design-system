@@ -18,7 +18,7 @@ dist/
 
 # Gatsby files
 .cache/
-public/
+public/data/releases.json
 
 # Build outputs
 build/
