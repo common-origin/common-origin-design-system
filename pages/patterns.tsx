@@ -55,18 +55,6 @@ const PatternSection = styled.div`
   background-color: ${color.background.subtle};
 `
 
-const CategoryBadge = styled.div`
-  display: inline-flex;
-  align-items: center;
-  gap: ${spacing.layout.xs};
-  padding: ${spacing.layout.xs} ${spacing.layout.sm};
-  background-color: ${color.background.emphasis};
-  color: ${color.text.inverse};
-  border-radius: ${tokens.base.border.radius[2]};
-  font-size: ${tokens.base.fontSize[1]};
-  font-weight: 600;
-`
-
 export default function Patterns() {
   const [activePattern, setActivePattern] = useState('data-view')
   
@@ -130,11 +118,6 @@ export default function Patterns() {
             <PatternsLayout>
               <Sidebar>
                 <Box px="lg">
-                  <Box mb="lg">
-                    <Typography variant="label" color="subdued">
-                      DESIGN PATTERNS
-                    </Typography>
-                  </Box>
                   <Stack direction="column" gap="sm">
                     {patternsData
                       .sort((a, b) => a.name.localeCompare(b.name))
@@ -157,17 +140,22 @@ export default function Patterns() {
                 <Box my="4xl">
                   <Stack gap="md" direction="column">
                     <Typography variant="h1">{activePatternData.name}</Typography>
-                    <Stack gap="sm" direction="row" wrap>
-                      <CategoryBadge>{activePatternData.category}</CategoryBadge>
+                    <Stack gap="sm" direction="row" alignItems="center" wrap>
+											<Chip 
+                        variant="dark" 
+                        size="medium"
+                      >
+                        {activePatternData.category}
+                      </Chip>
                       <Chip 
                         variant={getComplexityColor(activePatternData.complexity)} 
-                        size="small"
+                        size="medium"
                       >
                         {activePatternData.complexity}
                       </Chip>
                       <Chip 
                         variant={getStatusColor(activePatternData.status)} 
-                        size="small"
+                        size="medium"
                       >
                         {activePatternData.status}
                       </Chip>

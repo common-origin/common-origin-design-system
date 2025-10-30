@@ -4,7 +4,6 @@ import {
   Badge,
   Box,
   Button,
-  Chip,
   FilterChip,
   Stack,
   Typography,
@@ -174,6 +173,10 @@ const ItemsCount = styled.div`
   font-size: ${tokens.base.fontSize[1]};
   padding-bottom: ${spacing.layout.md};
 	border-bottom: ${border.subtle};
+
+	@media (max-width: ${breakpoint.md}) {
+    border-bottom: none;
+  }
 `
 
 const TableContainer = styled.div`
@@ -495,7 +498,6 @@ export const DataViewPattern: React.FC = () => {
                 iconName="filter" 
                 variant="naked" 
                 size="medium"
-                onClick={() => setIsDrawerOpen(true)}
                 aria-label="Open actions menu"
               />
             </MobileActionButton>
