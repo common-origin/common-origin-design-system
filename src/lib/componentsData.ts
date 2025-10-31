@@ -2,22 +2,21 @@ import * as React from 'react'
 import { ComponentDocumentation } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
-import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
 import { buttonDocs } from '@/components/atoms/Button/Button.docs'
+import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
+import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
 import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
 import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
 import { containerDocs } from '@/components/atoms/Container/Container.docs'
 import { pictureDocs } from '@/components/atoms/Picture/Picture.docs'
-import { designCardDocs } from '@/components/molecules/DesignCard/DesignCard.docs'
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
-import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
@@ -84,11 +83,12 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
-  convertDocumentationToLegacyFormat(cardLargeDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),
   convertDocumentationToLegacyFormat(buttonDocs),
+  convertDocumentationToLegacyFormat(cardLargeDocs),
+  convertDocumentationToLegacyFormat(cardSmallDocs),
   convertDocumentationToLegacyFormat(chipDocs),
   convertDocumentationToLegacyFormat(chipGroupDocs),
   convertDocumentationToLegacyFormat(codeBlockDocs),
@@ -99,7 +99,6 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),
   convertDocumentationToLegacyFormat(progressBarDocs),
-  convertDocumentationToLegacyFormat(cardSmallDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
   convertDocumentationToLegacyFormat(stackDocs),
   convertDocumentationToLegacyFormat(typographyDocs),
