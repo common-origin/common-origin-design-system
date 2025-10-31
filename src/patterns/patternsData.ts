@@ -1,4 +1,5 @@
 import { DataViewPattern } from './DataViewPattern'
+import { DataViewQuickFiltersPattern } from './DataViewQuickFiltersPattern'
 
 export interface PatternMetadata {
   id: string
@@ -73,6 +74,61 @@ export const patternsData: PatternMetadata[] = [
       {
         title: 'Responsive Behavior',
         description: 'Desktop shows table view with export/column controls. Mobile switches to card-based list view with horizontal-scrolling filter chips. The "All filters" button opens a drawer on all screen sizes, positioned as a side panel on desktop and bottom sheet on mobile.',
+      },
+    ],
+  },
+  {
+    id: 'data-view-quick-filters',
+    name: 'Data View with Quick Filters',
+    description: 'Responsive data display with boolean chip quick filters for instant, simple filtering without advanced controls.',
+    category: 'Data Display',
+    complexity: 'Moderate',
+    status: 'Draft',
+    component: DataViewQuickFiltersPattern,
+    overview: 'The Data View with Quick Filters pattern provides a streamlined approach to data filtering using boolean chips that toggle on/off instantly. Unlike dropdown-based filtering, quick filters immediately affect the displayed data without requiring a drawer or "Apply" action. This creates a simpler, more immediate user experience ideal for straightforward filtering needs.',
+    keyFeatures: [
+      'Boolean Quick Filters: Toggle filters on/off with BooleanChip components',
+      'Instant Filtering: Data updates immediately when filters are toggled',
+      'No Drawer Required: All filters visible inline, no side drawer or bottom sheet',
+      'Active Filter Count: Items count displays number of active filters',
+      'Responsive Layout: Table view on desktop, card list on mobile',
+      'Search Functionality: Text-based search with real-time filtering',
+      'Export & Column Controls: Desktop-only action buttons for data export and column visibility',
+      'Pagination: Page-based navigation with visual indicators and item counts',
+      'Accessibility: Full keyboard navigation, screen reader support, and ARIA labels',
+    ],
+    useCases: [
+      'Simple datasets with 3-5 common filter criteria',
+      'Quick status toggles (Active/Inactive, Complete/Incomplete)',
+      'Dashboard views where users need rapid filter changes',
+      'Mobile-first applications requiring simple filtering',
+      'Any interface where filter simplicity is prioritized over advanced options',
+    ],
+    componentsUsed: [
+      'Container',
+      'Stack',
+      'Typography',
+      'Button',
+      'BooleanChip',
+      'IconButton',
+      'Box',
+    ],
+    implementationNotes: [
+      {
+        title: 'Instant Filter Application',
+        description: 'Unlike dropdown-based filters, boolean chips apply immediately when toggled. Each chip maintains its own state (on/off) and triggers data filtering directly without requiring an "Apply" button. This creates a more responsive feel but is best suited for simpler filtering scenarios.',
+      },
+      {
+        title: 'When to Use Quick Filters vs. Dropdowns',
+        description: 'Use quick filters when you have 3-5 common filter criteria that users toggle frequently. Use dropdown filters (side drawer pattern) when you have complex filtering needs, many filter options, or mutually exclusive choices. Quick filters excel at speed and simplicity; dropdowns excel at power and flexibility.',
+      },
+      {
+        title: 'Filter State Management',
+        description: 'Each boolean chip maintains independent state. Multiple filters can be active simultaneously, creating AND conditions. The active filter count is displayed in the items count to help users understand what filters are applied without visual clutter.',
+      },
+      {
+        title: 'Responsive Behavior',
+        description: 'Desktop shows all quick filters inline with the filter row. Mobile wraps filters naturally to the next line, maintaining visibility without collapsing into a drawer. Table view switches to card-based list view on smaller screens for optimal mobile readability.',
       },
     ],
   },

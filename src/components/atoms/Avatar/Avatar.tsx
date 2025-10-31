@@ -23,7 +23,7 @@ const AvatarContainer = styled.div.withConfig({
   width: ${({ $size }) => tokens.semantic.size.avatar[$size]};
   height: ${({ $size }) => tokens.semantic.size.avatar[$size]};
   border-radius: ${tokens.base.border.radius.circle};
-  background-color: ${tokens.semantic.color.background.subtle};
+  background-color: ${tokens.semantic.color.background.surface};
   overflow: hidden;
   flex-shrink: 0;
 `
