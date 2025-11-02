@@ -32,9 +32,6 @@ jobs:
         
       - name: 🔍 Type check
         run: npm run typecheck
-      
-      - name: 📝 Generate releases.json
-        run: npm run build:releases
         
       - name: 🏗️ Build package
         run: npm run build:package
