@@ -1,8 +1,9 @@
 // Main design system exports
 export * from './components'
 
-// Export tokens for direct access
-export { default as tokens } from './styles/tokens.json'
+// Export tokens with proper types
+import tokensData from './styles/tokens.json'
+export const tokens = tokensData
 
 // Export token types
 export type {
