@@ -20,7 +20,7 @@
     "./tokens": {
       "import": "./dist/tokens/index.esm.js",
       "require": "./dist/tokens/index.js",
-      "types": "./dist/tokens/index.d.ts"
+      "types": "./dist/tokens/tokens.d.ts"
     }
   },
   "scripts": {

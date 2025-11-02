@@ -3,3 +3,11 @@ import tokensJson from './styles/tokens.json'
 
 export const tokens = tokensJson
 export default tokensJson
+
+// Export token types
+export type {
+  Tokens,
+  TokensBase,
+  TokensSemantic,
+  TokensComponent
+} from './styles/tokens.d'
