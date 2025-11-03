@@ -1,6 +1,6 @@
 {
   "name": "@common-origin/design-system",
-  "version": "1.9.8",
+  "version": "1.9.9",
   "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
   "type": "module",
@@ -84,6 +84,7 @@
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rollup": "^3.20.0",
+    "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "style-dictionary": "^3.8.0",
     "styled-components": "^6.1.1"

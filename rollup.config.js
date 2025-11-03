@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript'
 import babel from '@rollup/plugin-babel'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import copy from 'rollup-plugin-copy'
 import { fileURLToPath } from 'url'
 import { dirname } from 'path'
 
@@ -39,6 +40,12 @@ export default [
   plugins: [
     peerDepsExternal(),
     json(),
+    copy({
+      targets: [
+        { src: 'src/styles/icons.json', dest: 'dist/styles' },
+        { src: 'src/styles/tokens.json', dest: 'dist/styles' }
+      ]
+    }),
     resolve({
       browser: true,
       preferBuiltins: false,
