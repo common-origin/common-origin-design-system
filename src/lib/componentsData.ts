@@ -19,6 +19,7 @@ import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
+import { tagDocs } from '@/components/atoms/Tag/Tag.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
 import { gridSystemDocs } from '@/components/layout/GridSystem/GridSystem.docs'
 import { featureBlockDocs } from '@/components/molecules/FeatureBlock/FeatureBlock.docs'
@@ -101,6 +102,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(progressBarDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
   convertDocumentationToLegacyFormat(stackDocs),
+  convertDocumentationToLegacyFormat(tagDocs),
   convertDocumentationToLegacyFormat(typographyDocs),
   convertDocumentationToLegacyFormat(gridSystemDocs)
 ]
