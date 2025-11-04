@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 31 Oct 2025 03:57:29 GMT
+ * Generated on Tue, 04 Nov 2025 06:02:23 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -571,12 +571,48 @@ export interface TokensComponentProgressBar {
   sizes: TokensComponentProgressBarSizes;
 }
 
+export interface TokensComponentInputDefault {
+}
+
+export interface TokensComponentInputPlaceholder {
+}
+
+export interface TokensComponentInputHover {
+}
+
+export interface TokensComponentInputFocus {
+}
+
+export interface TokensComponentInputErrorFocus {
+}
+
+export interface TokensComponentInputErrorHover {
+}
+
+export interface TokensComponentInputError {
+  focus: TokensComponentInputErrorFocus;
+  hover: TokensComponentInputErrorHover;
+}
+
+export interface TokensComponentInputDisabled {
+}
+
+export interface TokensComponentInput {
+  default: TokensComponentInputDefault;
+  placeholder: TokensComponentInputPlaceholder;
+  hover: TokensComponentInputHover;
+  focus: TokensComponentInputFocus;
+  error: TokensComponentInputError;
+  disabled: TokensComponentInputDisabled;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
   iconButton: TokensComponentIconButton;
   separator: TokensComponentSeparator;
   progressBar: TokensComponentProgressBar;
+  input: TokensComponentInput;
 }
 
 export interface TokensSemanticBorder {
