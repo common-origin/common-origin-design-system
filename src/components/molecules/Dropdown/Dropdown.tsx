@@ -4,7 +4,7 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 
-const { base: { spacing, shadow, zIndex }, semantic: { color, typography, border } } = tokens
+const { base: { spacing, shadow, zIndex }, semantic: { color, typography, border }, component: { input } } = tokens
 
 interface DropdownOption {
   id: string
@@ -34,35 +34,35 @@ const DropdownTrigger = styled.button.withConfig({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${spacing[3]} ${spacing[4]};
-  background-color: ${color.background.default};
-  border: ${border.default};
-  border-radius: ${tokens.base.border.radius[2]};
-  font: ${typography.body};
-  color: ${color.text.default};
+  padding: ${input.default.paddingY} ${input.default.paddingX};
+  background-color: ${input.default.backgroundColor};
+  border: ${input.default.borderWidth} solid ${input.default.borderColor};
+  border-radius: ${input.default.borderRadius};
+  font: ${input.default.font};
+  color: ${input.default.textColor};
   cursor: pointer;
-  transition: all 0.15s ease;
+  transition: border-color 200ms ease-in-out, 
+              outline 200ms ease-in-out;
   
-  &:hover {
-    background-color: ${color.background.surface};
-    border-color: ${color.border.strong};
+  &:hover:not(:disabled) {
+    border-color: ${input.hover.borderColor};
   }
   
   &:focus {
-    outline: ${tokens.semantic.border.focus};
-    outline-offset: 2px;
+    border-color: ${input.focus.borderColor};
+    outline: ${input.focus.outline};
+    outline-offset: ${input.focus.outlineOffset};
   }
   
   &:disabled {
-    background-color: ${color.background.disabled};
-    color: ${color.text.disabled};
-    cursor: not-allowed;
-    border-color: ${color.border.subtle};
+    background-color: ${input.disabled.backgroundColor};
+    color: ${input.disabled.textColor};
+    border-color: ${input.disabled.borderColor};
+    cursor: ${input.disabled.cursor};
   }
   
   ${({ $isOpen }) => $isOpen && `
-    background-color: ${color.background.surface};
-    border-color: ${color.border.strong};
+    border-color: ${input.focus.borderColor};
   `}
 `
 
@@ -87,9 +87,9 @@ const DropdownMenu = styled.div.withConfig({
   left: 0;
   right: 0;
   z-index: ${zIndex[3]};
-  background-color: ${color.background.default};
-  border: ${border.default};
-  border-radius: ${tokens.base.border.radius[2]};
+  background-color: ${input.default.backgroundColor};
+  border: ${input.default.borderWidth} solid ${input.default.borderColor};
+  border-radius: ${input.default.borderRadius};
   box-shadow: ${shadow[3]};
   margin-top: ${spacing[1]};
   overflow: hidden;
@@ -106,15 +106,15 @@ const DropdownOption = styled.button.withConfig({
 })<{ $isSelected: boolean; $isFocused: boolean }>`
   width: 100%;
   display: block;
-  padding: ${spacing[3]} ${spacing[4]};
+  padding: ${input.default.paddingY} ${input.default.paddingX};
   background-color: ${({ $isSelected, $isFocused }) => {
     if ($isFocused) return color.background.surface
     if ($isSelected) return color.background.surface
     return 'transparent'
   }};
   border: none;
-  font: ${typography.body};
-  color: ${color.text.default};
+  font: ${input.default.font};
+  color: ${input.default.textColor};
   text-align: left;
   cursor: pointer;
   transition: background-color 0.15s ease;

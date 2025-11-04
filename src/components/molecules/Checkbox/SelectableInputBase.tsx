@@ -88,8 +88,8 @@ export const StyledCheckbox = styled.span.withConfig({
     content: '';
     position: absolute;
     display: ${(props) => (props.$checked ? 'block' : 'none')};
-    left: 4px;
-    top: 2px;
+    left: 6px;
+    top: 3px;
     width: 4px;
     height: 8px;
     border: solid ${tokens.semantic.color.text.inverse};
