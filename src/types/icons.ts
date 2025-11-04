@@ -10,6 +10,8 @@ export type IconName =
   | 'arrowUp'
   | 'back'
   | 'caret'
+  | 'caretDown'
+  | 'caretUp'
   | 'check'
   | 'close'
   | 'copy'
