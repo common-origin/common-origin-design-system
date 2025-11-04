@@ -81,7 +81,6 @@ export const StyledCheckbox = styled.span.withConfig({
     `
     background-color: ${tokens.component.input.disabled.backgroundColor};
     border-color: ${tokens.component.input.disabled.borderColor};
-    opacity: 0.6;
   `}
 
   /* Checkmark icon */

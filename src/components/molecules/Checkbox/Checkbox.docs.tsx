@@ -108,85 +108,44 @@ export const checkboxDocs: ComponentDocumentation = {
     {
       name: 'Basic Usage',
       description: 'Simple checkbox with label for binary selection',
-      code: `const [accepted, setAccepted] = React.useState(false)
-
-<Checkbox
+      code: `<Checkbox
   label="I accept the terms and conditions"
-  checked={accepted}
-  onChange={(e) => setAccepted(e.target.checked)}
 />`,
-      renderComponent: () => {
-        const [accepted, setAccepted] = React.useState(false)
-        return (
-          <Checkbox
-            label="I accept the terms and conditions"
-            checked={accepted}
-            onChange={(e) => setAccepted(e.target.checked)}
-          />
-        )
-      },
+      renderComponent: () => (
+        <Checkbox
+          label="I accept the terms and conditions"
+        />
+      ),
     },
     {
       name: 'With Helper Text',
       description: 'Checkbox with additional context provided via helper text',
-      code: `const [subscribe, setSubscribe] = React.useState(false)
-
-<Checkbox
+      code: `<Checkbox
   label="Subscribe to newsletter"
   helperText="Get weekly updates about new features and content"
-  checked={subscribe}
-  onChange={(e) => setSubscribe(e.target.checked)}
 />`,
-      renderComponent: () => {
-        const [subscribe, setSubscribe] = React.useState(false)
-        return (
-          <Checkbox
-            label="Subscribe to newsletter"
-            helperText="Get weekly updates about new features and content"
-            checked={subscribe}
-            onChange={(e) => setSubscribe(e.target.checked)}
-          />
-        )
-      },
+      renderComponent: () => (
+        <Checkbox
+          label="Subscribe to newsletter"
+          helperText="Get weekly updates about new features and content"
+        />
+      ),
     },
     {
       name: 'Error State',
       description: 'Checkbox in error state with validation message',
-      code: `const [agreed, setAgreed] = React.useState(false)
-const [showError, setShowError] = React.useState(false)
-
-const handleSubmit = () => {
-  if (!agreed) {
-    setShowError(true)
-  }
-}
-
-<Checkbox
+      code: `<Checkbox
   label="I agree to the privacy policy"
-  checked={agreed}
-  onChange={(e) => {
-    setAgreed(e.target.checked)
-    setShowError(false)
-  }}
-  error={showError ? "You must agree to continue" : undefined}
+  error="You must agree to continue"
   required
 />`,
-      renderComponent: () => {
-        const [agreed, setAgreed] = React.useState(false)
-        const [showError, setShowError] = React.useState(true)
-        return (
-          <Checkbox
-            label="I agree to the privacy policy"
-            checked={agreed}
-            onChange={(e) => {
-              setAgreed(e.target.checked)
-              setShowError(false)
-            }}
-            error={showError ? 'You must agree to continue' : undefined}
-            required
-          />
-        )
-      },
+      renderComponent: () => (
+        <Checkbox
+          label="I agree to the privacy policy"
+          error="You must agree to continue"
+          required
+        />
+      ),
     },
     {
       name: 'Disabled State',
@@ -204,75 +163,30 @@ const handleSubmit = () => {
       name: 'Indeterminate State',
       description:
         'Checkbox in indeterminate state, typically used for "select all" when some items are selected',
-      code: `const [items, setItems] = React.useState([
-  { id: 1, checked: true },
-  { id: 2, checked: false },
-  { id: 3, checked: true },
-])
-
-const allChecked = items.every(item => item.checked)
-const someChecked = items.some(item => item.checked)
-const indeterminate = someChecked && !allChecked
-
-const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
-  setItems(items.map(item => ({ ...item, checked: e.target.checked })))
-}
-
-<div>
-  <Checkbox
-    label="Select all items"
-    checked={allChecked}
-    indeterminate={indeterminate}
-    onChange={handleSelectAll}
-  />
-</div>`,
-      renderComponent: () => {
-        const [items, setItems] = React.useState([
-          { id: 1, checked: true },
-          { id: 2, checked: false },
-          { id: 3, checked: true },
-        ])
-
-        const allChecked = items.every((item) => item.checked)
-        const someChecked = items.some((item) => item.checked)
-        const indeterminate = someChecked && !allChecked
-
-        const handleSelectAll = (e: React.ChangeEvent<HTMLInputElement>) => {
-          setItems(items.map((item) => ({ ...item, checked: e.target.checked })))
-        }
-
-        return (
-          <Checkbox
-            label="Select all items"
-            checked={allChecked}
-            indeterminate={indeterminate}
-            onChange={handleSelectAll}
-          />
-        )
-      },
+      code: `<Checkbox
+  label="Select all items"
+  indeterminate
+/>`,
+      renderComponent: () => (
+        <Checkbox
+          label="Select all items"
+          indeterminate
+        />
+      ),
     },
     {
       name: 'Label Positioning',
       description: 'Checkbox with label on the left side instead of default right',
-      code: `const [enabled, setEnabled] = React.useState(false)
-
-<Checkbox
+      code: `<Checkbox
   label="Enable feature"
   labelPosition="left"
-  checked={enabled}
-  onChange={(e) => setEnabled(e.target.checked)}
 />`,
-      renderComponent: () => {
-        const [enabled, setEnabled] = React.useState(false)
-        return (
-          <Checkbox
-            label="Enable feature"
-            labelPosition="left"
-            checked={enabled}
-            onChange={(e) => setEnabled(e.target.checked)}
-          />
-        )
-      },
+      renderComponent: () => (
+        <Checkbox
+          label="Enable feature"
+          labelPosition="left"
+        />
+      ),
     },
   ],
 
