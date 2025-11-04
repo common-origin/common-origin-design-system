@@ -2,6 +2,7 @@
 export * from './Breadcrumbs'
 export * from './CardSmall'
 export * from './CardLarge'
+export * from './Checkbox'
 export * from './ChipGroup'
 export * from './CodeBlock'
 export * from './FeatureBlock'

@@ -8,6 +8,7 @@ import { boxDocs } from '@/components/atoms/Box/Box.docs'
 import { buttonDocs } from '@/components/atoms/Button/Button.docs'
 import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
 import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
+import { checkboxDocs } from '@/components/molecules/Checkbox/Checkbox.docs'
 import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
 import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
@@ -91,6 +92,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(buttonDocs),
   convertDocumentationToLegacyFormat(cardLargeDocs),
   convertDocumentationToLegacyFormat(cardSmallDocs),
+  convertDocumentationToLegacyFormat(checkboxDocs),
   convertDocumentationToLegacyFormat(chipDocs),
   convertDocumentationToLegacyFormat(chipGroupDocs),
   convertDocumentationToLegacyFormat(codeBlockDocs),
