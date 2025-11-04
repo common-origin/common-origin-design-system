@@ -35,10 +35,10 @@ export const StyledCheckbox = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
-  min-width: 24px;
-  min-height: 24px;
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  min-height: 20px;
   border-radius: ${tokens.component.input.default.borderRadius};
   border: ${tokens.component.input.default.borderWidth} solid;
   background-color: ${(props) =>
@@ -88,10 +88,10 @@ export const StyledCheckbox = styled.span.withConfig({
     content: '';
     position: absolute;
     display: ${(props) => (props.$checked ? 'block' : 'none')};
-    left: 7px;
-    top: 3px;
-    width: 6px;
-    height: 11px;
+    left: 4px;
+    top: 2px;
+    width: 4px;
+    height: 8px;
     border: solid ${tokens.semantic.color.text.inverse};
     border-width: 0 2px 2px 0;
     transform: rotate(45deg);
@@ -103,8 +103,8 @@ export const StyledCheckbox = styled.span.withConfig({
     position: absolute;
     display: ${(props) => (props.$indeterminate ? 'block' : 'none')};
     left: 4px;
-    top: 10px;
-    width: 14px;
+    top: 8px;
+    width: 10px;
     height: 2px;
     background-color: ${tokens.semantic.color.text.inverse};
   }
@@ -121,7 +121,7 @@ export const StyledCheckboxContainer = styled.label.withConfig({
   align-items: center;
   gap: ${tokens.base.spacing[3]};
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
-  min-height: 48px;
+  min-height: 32px;
   flex-direction: ${(props) => (props.$labelPosition === 'left' ? 'row-reverse' : 'row')};
   user-select: none;
 `
