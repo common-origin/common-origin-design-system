@@ -220,6 +220,46 @@
           "height": "{base.size.5}"
         }
       }
+    },
+    "input": {
+      "default": {
+        "backgroundColor": "{semantic.color.background.subtle}",
+        "textColor": "{semantic.color.text.default}",
+        "borderColor": "{semantic.color.border.subtle}",
+        "borderRadius": "{base.border.radius.2}",
+        "borderWidth": "{base.border.width.1}",
+        "paddingY": "11px",
+        "paddingX": "{base.spacing.4}",
+        "font": "{semantic.typography.body}"
+      },
+      "placeholder": {
+        "textColor": "{semantic.color.text.disabled}"
+      },
+      "hover": {
+        "borderColor": "{semantic.color.border.strong}"
+      },
+      "focus": {
+        "borderColor": "{semantic.color.border.strong}",
+        "outline": "{semantic.border.focus}",
+        "outlineOffset": "2px"
+      },
+      "error": {
+        "borderColor": "{semantic.color.border.error}",
+        "focus": {
+          "borderColor": "{semantic.color.border.error}",
+          "outline": "{semantic.border.focus}",
+          "outlineOffset": "2px"
+        },
+        "hover": {
+          "borderColor": "{semantic.color.border.error}"
+        }
+      },
+      "disabled": {
+        "backgroundColor": "{semantic.color.background.disabled}",
+        "textColor": "{semantic.color.text.disabled}",
+        "borderColor": "{semantic.color.border.subtle}",
+        "cursor": "not-allowed"
+      }
     }
   }
 }

@@ -406,7 +406,7 @@
         "type": "typography"
       },
       "label": {
-        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "value": "{base.fontWeight.3} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
         "type": "typography"
       },
       "breadcrumb": {

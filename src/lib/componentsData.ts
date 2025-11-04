@@ -23,6 +23,7 @@ import { tagDocs } from '@/components/atoms/Tag/Tag.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
 import { gridSystemDocs } from '@/components/layout/GridSystem/GridSystem.docs'
 import { featureBlockDocs } from '@/components/molecules/FeatureBlock/FeatureBlock.docs'
+import { textFieldDocs } from '@/components/molecules/TextField/TextField.docs'
 
 // Legacy ComponentData interface for compatibility
 export interface ComponentData {
@@ -104,5 +105,6 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(stackDocs),
   convertDocumentationToLegacyFormat(tagDocs),
   convertDocumentationToLegacyFormat(typographyDocs),
-  convertDocumentationToLegacyFormat(gridSystemDocs)
+  convertDocumentationToLegacyFormat(gridSystemDocs),
+  convertDocumentationToLegacyFormat(textFieldDocs)
 ]

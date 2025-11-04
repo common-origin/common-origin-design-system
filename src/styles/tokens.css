@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 31 Oct 2025 03:57:29 GMT
+ * Generated on Tue, 04 Nov 2025 06:02:23 GMT
  */
 
 :root {
@@ -321,7 +321,7 @@
   --semantic-typography-button1: 500 1rem/1.5rem 'Inter', sans-serif;
   --semantic-typography-button2: 500 0.875rem/1.5rem 'Inter', sans-serif;
   --semantic-typography-button3: 500 0.75rem/1rem 'Inter', sans-serif;
-  --semantic-typography-label: 400 0.75rem/1rem 'Inter', sans-serif;
+  --semantic-typography-label: 500 0.875rem/1.25rem 'Inter', sans-serif;
   --semantic-typography-breadcrumb: 400 0.75rem/1.125rem 'Inter', sans-serif;
   --semantic-motion-transition-fast: all 150ms ease-out;
   --semantic-motion-transition-normal: all 200ms ease-in-out;
