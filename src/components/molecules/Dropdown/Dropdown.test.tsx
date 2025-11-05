@@ -500,5 +500,87 @@ describe('Dropdown Component', () => {
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
+
+    it('should not have accessibility violations with helperText', async () => {
+      const { container } = render(<Dropdown {...defaultProps} helperText="Please select an option" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations with error', async () => {
+      const { container } = render(<Dropdown {...defaultProps} error="This field is required" />)
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+  })
+
+  describe('Helper Text and Error States', () => {
+    it('renders helper text when provided', () => {
+      render(<Dropdown {...defaultProps} helperText="Please select an option" />)
+      expect(screen.getByText('Please select an option')).toBeInTheDocument()
+    })
+
+    it('does not render helper text when not provided', () => {
+      const { container } = render(<Dropdown {...defaultProps} />)
+      // Look for any helper text element by its styled component class pattern
+      const helperTextElements = container.querySelectorAll('[id*="-helper"]')
+      expect(helperTextElements).toHaveLength(0)
+    })
+
+    it('renders error message when provided', () => {
+      render(<Dropdown {...defaultProps} error="This field is required" />)
+      expect(screen.getByText('This field is required')).toBeInTheDocument()
+    })
+
+    it('shows error instead of helper text when both are provided', () => {
+      render(
+        <Dropdown 
+          {...defaultProps} 
+          helperText="Please select an option"
+          error="This field is required"
+        />
+      )
+      expect(screen.getByText('This field is required')).toBeInTheDocument()
+      expect(screen.queryByText('Please select an option')).not.toBeInTheDocument()
+    })
+
+    it('applies error styling to trigger when error is provided', () => {
+      render(<Dropdown {...defaultProps} error="This field is required" />)
+      const trigger = screen.getByRole('button')
+      expect(trigger).toHaveAttribute('aria-invalid', 'true')
+    })
+
+    it('associates error message with trigger using aria-describedby', () => {
+      render(<Dropdown {...defaultProps} error="This field is required" />)
+      const trigger = screen.getByRole('button')
+      const describedBy = trigger.getAttribute('aria-describedby')
+      expect(describedBy).toBeTruthy()
+      
+      const errorElement = document.getElementById(describedBy!)
+      expect(errorElement).toHaveTextContent('This field is required')
+    })
+
+    it('associates helper text with trigger using aria-describedby', () => {
+      render(<Dropdown {...defaultProps} helperText="Please select an option" />)
+      const trigger = screen.getByRole('button')
+      const describedBy = trigger.getAttribute('aria-describedby')
+      expect(describedBy).toBeTruthy()
+      
+      const helperElement = document.getElementById(describedBy!)
+      expect(helperElement).toHaveTextContent('Please select an option')
+    })
+
+    it('error message has role="alert" and aria-live="polite"', () => {
+      render(<Dropdown {...defaultProps} error="This field is required" />)
+      const errorElement = screen.getByText('This field is required')
+      expect(errorElement).toHaveAttribute('role', 'alert')
+      expect(errorElement).toHaveAttribute('aria-live', 'polite')
+    })
+
+    it('does not have aria-invalid when no error is present', () => {
+      render(<Dropdown {...defaultProps} helperText="Please select an option" />)
+      const trigger = screen.getByRole('button')
+      expect(trigger).toHaveAttribute('aria-invalid', 'false')
+    })
   })
 })

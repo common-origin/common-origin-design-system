@@ -20,6 +20,8 @@ export interface DropdownProps {
   disabled?: boolean
   className?: string
   label?: string
+  helperText?: string
+  error?: string
 }
 
 const DropdownContainer = styled.div`
@@ -29,14 +31,16 @@ const DropdownContainer = styled.div`
 
 const DropdownTrigger = styled.button.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $isOpen: boolean }>`
+})<{ $isOpen: boolean; $hasError?: boolean }>`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: ${input.default.paddingY} ${input.default.paddingX};
   background-color: ${input.default.backgroundColor};
-  border: ${input.default.borderWidth} solid ${input.default.borderColor};
+  border: ${input.default.borderWidth} solid ${({ $hasError }) =>
+    $hasError ? input.error.borderColor : input.default.borderColor
+  };
   border-radius: ${input.default.borderRadius};
   font: ${input.default.font};
   color: ${input.default.textColor};
@@ -45,11 +49,15 @@ const DropdownTrigger = styled.button.withConfig({
               outline 200ms ease-in-out;
   
   &:hover:not(:disabled) {
-    border-color: ${input.hover.borderColor};
+    border-color: ${({ $hasError }) =>
+      $hasError ? input.error.hover.borderColor : input.hover.borderColor
+    };
   }
   
   &:focus {
-    border-color: ${input.focus.borderColor};
+    border-color: ${({ $hasError }) =>
+      $hasError ? input.error.focus.borderColor : input.focus.borderColor
+    };
     outline: ${input.focus.outline};
     outline-offset: ${input.focus.outlineOffset};
   }
@@ -61,8 +69,8 @@ const DropdownTrigger = styled.button.withConfig({
     cursor: ${input.disabled.cursor};
   }
   
-  ${({ $isOpen }) => $isOpen && `
-    border-color: ${input.focus.borderColor};
+  ${({ $isOpen, $hasError }) => $isOpen && `
+    border-color: ${$hasError ? input.error.focus.borderColor : input.focus.borderColor};
   `}
 `
 
@@ -133,6 +141,17 @@ const DropdownOption = styled.button.withConfig({
   }
 `
 
+const StyledHelperText = styled.div<{ $hasError?: boolean }>`
+  font: ${typography.caption};
+  color: ${({ $hasError }) => 
+    $hasError 
+      ? color.text.error 
+      : color.text.subdued
+  };
+  margin-top: ${spacing[2]};
+`
+
+
 export const Dropdown: React.FC<DropdownProps> = ({
   options,
   value,
@@ -140,7 +159,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
   placeholder = 'Select an option',
   disabled = false,
   className,
-  label
+  label,
+  helperText,
+  error
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [focusedIndex, setFocusedIndex] = useState(-1)
@@ -150,6 +171,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const dropdownId = useRef(`dropdown-${Math.random().toString(36).substr(2, 9)}`).current
   
   const selectedOption = options.find(option => option.id === value)
+  
+  const hasError = Boolean(error)
+  const errorId = error ? `${dropdownId}-error` : undefined
+  const helperId = helperText && !error ? `${dropdownId}-helper` : undefined
+  const describedBy = [errorId, helperId].filter(Boolean).join(' ') || undefined
+
   
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -253,10 +280,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
       <DropdownTrigger
         id={dropdownId}
         $isOpen={isOpen}
+        $hasError={hasError}
         onClick={handleTriggerClick}
         disabled={disabled}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
+        aria-invalid={hasError}
+        aria-describedby={describedBy}
       >
         <span>{selectedOption ? selectedOption.label : placeholder}</span>
         <DropdownIcon $isOpen={isOpen}>
@@ -277,6 +307,23 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </DropdownOption>
         ))}
       </DropdownMenu>
+      
+      {error && (
+        <StyledHelperText
+          id={errorId}
+          role="alert"
+          aria-live="polite"
+          $hasError={true}
+        >
+          {error}
+        </StyledHelperText>
+      )}
+      
+      {helperText && !error && (
+        <StyledHelperText id={helperId}>
+          {helperText}
+        </StyledHelperText>
+      )}
     </DropdownContainer>
   )
 }

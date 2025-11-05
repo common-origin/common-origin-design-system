@@ -59,29 +59,54 @@ export const dropdownDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       description: 'Label text displayed above dropdown. Creates proper form structure with htmlFor association. Recommended for accessibility and UX'
+    },
+    {
+      name: 'helperText',
+      type: 'string',
+      required: false,
+      description: 'Helper text displayed below the dropdown to provide additional context or instructions. Hidden when error is present'
+    },
+    {
+      name: 'error',
+      type: 'string',
+      required: false,
+      description: 'Error message displayed below the dropdown. When present, applies error styling to the dropdown border and takes precedence over helperText'
     }
   ],
 
   tokens: [
-    'base.spacing.3',
-    'base.spacing.4', 
+    // Input component tokens
+    'component.input.default.paddingY',
+    'component.input.default.paddingX',
+    'component.input.default.backgroundColor',
+    'component.input.default.borderWidth',
+    'component.input.default.borderColor',
+    'component.input.default.borderRadius',
+    'component.input.default.font',
+    'component.input.default.textColor',
+    'component.input.hover.borderColor',
+    'component.input.focus.borderColor',
+    'component.input.focus.outline',
+    'component.input.focus.outlineOffset',
+    'component.input.disabled.backgroundColor',
+    'component.input.disabled.textColor',
+    'component.input.disabled.borderColor',
+    'component.input.disabled.cursor',
+    'component.input.error.borderColor',
+    'component.input.error.hover.borderColor',
+    'component.input.error.focus.borderColor',
+    
+    // Base tokens
     'base.spacing.2',
     'base.spacing.1',
     'base.shadow.3',
     'base.zIndex.3',
-    'base.border.radius.2',
-    'semantic.color.background.default',
+    
+    // Semantic tokens
     'semantic.color.background.surface',
-    'semantic.color.background.disabled',
-    'semantic.color.text.default',
+    'semantic.color.text.error',
     'semantic.color.text.subdued',
-    'semantic.color.text.disabled',
-    'semantic.color.border.default',
-    'semantic.color.border.strong',
-    'semantic.color.border.subtle',
-    'semantic.typography.body',
-    'semantic.border.focus',
-    'semantic.border.default',
+    'semantic.typography.caption',
     'semantic.border.subtle'
   ],
 
@@ -441,6 +466,153 @@ export const dropdownDocs: ComponentDocumentation = {
         }
         return <FormLayoutExample />
       }
+    },
+    {
+      name: 'With Helper Text',
+      description: 'Dropdown with helper text providing additional context below the input',
+      code: `<Dropdown
+  label="Notification Frequency"
+  options={[
+    { id: 'instant', label: 'Instant' },
+    { id: 'hourly', label: 'Hourly Digest' },
+    { id: 'daily', label: 'Daily Digest' },
+    { id: 'weekly', label: 'Weekly Digest' }
+  ]}
+  value=""
+  onChange={(value) => console.log('Frequency:', value)}
+  placeholder="Select frequency..."
+  helperText="Choose how often you'd like to receive email notifications"
+/>`,
+      renderComponent: () => {
+        const HelperTextExample = () => {
+          const [frequency, setFrequency] = useState('')
+          return (
+            <div style={{ maxWidth: '400px' }}>
+              <Dropdown
+                label="Notification Frequency"
+                options={[
+                  { id: 'instant', label: 'Instant' },
+                  { id: 'hourly', label: 'Hourly Digest' },
+                  { id: 'daily', label: 'Daily Digest' },
+                  { id: 'weekly', label: 'Weekly Digest' }
+                ]}
+                value={frequency}
+                onChange={setFrequency}
+                placeholder="Select frequency..."
+                helperText="Choose how often you'd like to receive email notifications"
+              />
+            </div>
+          )
+        }
+        return <HelperTextExample />
+      }
+    },
+    {
+      name: 'With Error State',
+      description: 'Dropdown with error message showing validation feedback',
+      code: `<Dropdown
+  label="Project Status"
+  options={[
+    { id: 'active', label: 'Active' },
+    { id: 'pending', label: 'Pending' },
+    { id: 'completed', label: 'Completed' },
+    { id: 'archived', label: 'Archived' }
+  ]}
+  value=""
+  onChange={(value) => console.log('Status:', value)}
+  placeholder="Select status..."
+  error="Please select a project status"
+/>`,
+      renderComponent: () => {
+        const ErrorStateExample = () => {
+          const [status, setStatus] = useState('')
+          return (
+            <div style={{ maxWidth: '400px' }}>
+              <Dropdown
+                label="Project Status"
+                options={[
+                  { id: 'active', label: 'Active' },
+                  { id: 'pending', label: 'Pending' },
+                  { id: 'completed', label: 'Completed' },
+                  { id: 'archived', label: 'Archived' }
+                ]}
+                value={status}
+                onChange={setStatus}
+                placeholder="Select status..."
+                error={status === '' ? 'Please select a project status' : undefined}
+              />
+            </div>
+          )
+        }
+        return <ErrorStateExample />
+      }
+    },
+    {
+      name: 'Helper Text vs Error Priority',
+      description: 'Demonstrates how error messages take precedence over helper text',
+      code: `<Stack direction="column" gap="lg">
+  <Dropdown
+    label="Account Type (Valid)"
+    options={[
+      { id: 'free', label: 'Free Account' },
+      { id: 'pro', label: 'Pro Account' },
+      { id: 'enterprise', label: 'Enterprise Account' }
+    ]}
+    value="pro"
+    onChange={(value) => console.log('Account:', value)}
+    helperText="Select your preferred account tier"
+  />
+  
+  <Dropdown
+    label="Account Type (Invalid)"
+    options={[
+      { id: 'free', label: 'Free Account' },
+      { id: 'pro', label: 'Pro Account' },
+      { id: 'enterprise', label: 'Enterprise Account' }
+    ]}
+    value=""
+    onChange={(value) => console.log('Account:', value)}
+    helperText="Select your preferred account tier"
+    error="Account type is required to continue"
+  />
+</Stack>`,
+      renderComponent: () => {
+        const HelperVsErrorExample = () => {
+          const [validAccount, setValidAccount] = useState('pro')
+          const [invalidAccount, setInvalidAccount] = useState('')
+          return (
+            <div style={{ maxWidth: '400px' }}>
+              <Stack direction="column" gap="lg">
+                <Dropdown
+                  label="Account Type (Valid)"
+                  options={[
+                    { id: 'free', label: 'Free Account' },
+                    { id: 'pro', label: 'Pro Account' },
+                    { id: 'enterprise', label: 'Enterprise Account' }
+                  ]}
+                  value={validAccount}
+                  onChange={setValidAccount}
+                  helperText="Select your preferred account tier"
+                />
+                
+                <Dropdown
+                  label="Account Type (Invalid)"
+                  options={[
+                    { id: 'free', label: 'Free Account' },
+                    { id: 'pro', label: 'Pro Account' },
+                    { id: 'enterprise', label: 'Enterprise Account' }
+                  ]}
+                  value={invalidAccount}
+                  onChange={setInvalidAccount}
+                  helperText="Select your preferred account tier"
+                  error={invalidAccount === '' ? 'Account type is required to continue' : undefined}
+                />
+              </Stack>
+            </div>
+          )
+        }
+        return <HelperVsErrorExample />
+      }
     }
   ],
 
@@ -448,21 +620,24 @@ export const dropdownDocs: ComponentDocumentation = {
     notes: [
       'WCAG 2.2 AA Compliant: Full keyboard accessibility and proper ARIA implementation for form controls',
       'Comprehensive Keyboard Support: Tab (focus), Space/Enter (toggle), Arrow keys (navigate), Home/End (jump to first/last), Escape (close)',
-      'ARIA Implementation: Uses role="listbox" for menu, role="option" for items, aria-expanded, aria-haspopup, and aria-selected attributes',
+      'ARIA Implementation: Uses role="listbox" for menu, role="option" for items, aria-expanded, aria-haspopup, aria-selected, and aria-invalid attributes',
       'Screen Reader Integration: Announced as combobox with current selection state, option count, and clear selection feedback',
+      'Error Announcement: Error messages use role="alert" and aria-live="polite" for immediate screen reader announcement',
+      'Helper Text Association: Helper text and error messages properly associated with dropdown using aria-describedby',
       'Focus Management: Focus preserved on trigger during interaction, returns after selection, visual focus indicators on all interactive elements',
       'Label Association: Proper htmlFor/id relationship when label provided, creating accessible form structure',
       'Disabled State: Communicated through aria-disabled, disabled attribute, and visual styling changes',
-      'High Contrast Support: Focus outlines, borders, and hover states work in Windows High Contrast and similar modes',
+      'Error State Visibility: Error state communicated through border color (visual), aria-invalid attribute (programmatic), and error text (both)',
+      'High Contrast Support: Focus outlines, borders, error indicators, and hover states work in Windows High Contrast and similar modes',
       'Motion Sensitivity: Smooth animations respect user motion preferences and can be disabled via prefers-reduced-motion',
       'Touch Accessibility: Adequate touch targets (44px minimum) and touch-friendly interaction patterns',
       'Error Prevention: Validates option selection and provides clear feedback for invalid states',
-      'Cognitive Accessibility: Clear visual hierarchy, predictable behavior, and optional labels for context'
+      'Cognitive Accessibility: Clear visual hierarchy, predictable behavior, optional labels for context, and helpful error messages'
     ],
     keyboardNavigation: 'Tab: Focus trigger | Space/Enter: Open/close dropdown | Arrow Up/Down: Navigate options | Home: First option | End: Last option | Escape: Close without selection | Enter/Space on option: Select',
-    screenReader: 'Announced as "combobox, expanded/collapsed" with current selection. Options announced as "option X of Y" with selection state. Label provides context when present.',
+    screenReader: 'Announced as "combobox, expanded/collapsed" with current selection. Options announced as "option X of Y" with selection state. Label provides context when present. Helper text and errors are announced via aria-describedby association.',
     focusManagement: 'Focus remains on trigger when dropdown opens/closes. Visual focus indicator shows current option during keyboard navigation. Focus returns to trigger after selection or Escape.',
-    colorContrast: 'All interactive states meet WCAG AA contrast requirements. Focus indicators, hover states, and text maintain 4.5:1 contrast ratio minimum.'
+    colorContrast: 'All interactive states meet WCAG AA contrast requirements. Focus indicators, hover states, error borders, and text maintain 4.5:1 contrast ratio minimum.'
   },
 
   notes: [
