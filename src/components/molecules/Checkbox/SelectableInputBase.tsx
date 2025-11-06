@@ -43,12 +43,12 @@ export const StyledCheckbox = styled.span.withConfig({
   border: ${tokens.component.input.default.borderWidth} solid;
   background-color: ${(props) =>
     props.$checked || props.$indeterminate
-      ? tokens.semantic.color.background.interactive
+      ? tokens.semantic.color.background.inverse
       : tokens.component.input.default.backgroundColor};
   border-color: ${(props) => {
     if (props.$state === 'error') return tokens.component.input.error.borderColor
     if (props.$checked || props.$indeterminate)
-      return tokens.semantic.color.background.interactive
+      return tokens.semantic.border.strong
     return tokens.component.input.default.borderColor
   }};
   cursor: ${(props) => (props.$state === 'disabled' ? 'not-allowed' : 'pointer')};
@@ -61,7 +61,7 @@ export const StyledCheckbox = styled.span.withConfig({
       props.$state === 'error'
         ? tokens.component.input.error.hover.borderColor
         : props.$checked || props.$indeterminate
-          ? tokens.semantic.color.background.interactive
+          ? tokens.semantic.border.strong
           : tokens.component.input.hover.borderColor};
   }
 
