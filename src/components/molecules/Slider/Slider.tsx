@@ -97,7 +97,7 @@ export interface SliderProps {
 const StyledSliderContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${base.spacing[2]};
+  gap:0;
   width: 100%;
 `
 
@@ -106,6 +106,7 @@ const StyledLabel = styled.label<{ $disabled?: boolean }>`
   color: ${({ $disabled }) => 
     $disabled ? semantic.color.text.disabled : semantic.color.text.default
   };
+  margin-bottom: ${semantic.spacing.layout.lg};
 `
 
 const StyledSliderTrackContainer = styled.div`
@@ -135,7 +136,7 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.border.default
-      : semantic.color.background.interactive
+      : semantic.color.background.emphasis
   };
   border-radius: ${base.border.radius.circle};
   pointer-events: none;
@@ -148,6 +149,7 @@ const StyledThumb = styled.div<{
   position: absolute;
   width: ${base.spacing[5]};
   height: ${base.spacing[5]};
+  top: -${semantic.spacing.layout.sm};
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.background.disabled
@@ -156,7 +158,7 @@ const StyledThumb = styled.div<{
   border: ${base.border.width[2]} solid ${({ $disabled }) =>
     $disabled
       ? semantic.color.border.default
-      : semantic.color.background.interactive
+      : semantic.color.background.emphasis
   };
   border-radius: ${base.border.radius.circle};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
@@ -188,6 +190,7 @@ const StyledThumb = styled.div<{
 const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
   position: absolute;
   top: -${base.spacing[8]};
+  left: ${semantic.spacing.layout.sm};
   transform: translateX(-50%);
   padding: ${base.spacing[1]} ${base.spacing[2]};
   background-color: ${semantic.color.background.emphasis};
@@ -215,7 +218,7 @@ const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
 const StyledMinMaxLabels = styled.div`
   display: flex;
   justify-content: space-between;
-  font: ${semantic.typography.caption};
+  font: ${semantic.typography.body};
   color: ${semantic.color.text.subdued};
   margin-top: ${base.spacing[1]};
 `
