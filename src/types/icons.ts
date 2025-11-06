@@ -17,6 +17,8 @@ export type IconName =
   | 'copy'
   | 'directionRight'
   | 'export'
+  | 'eye'
+  | 'eyeSlash'
   | 'filter'
   | 'lineOut'
   | 'link'
