@@ -26,6 +26,7 @@ import { gridSystemDocs } from '@/components/layout/GridSystem/GridSystem.docs'
 import { featureBlockDocs } from '@/components/molecules/FeatureBlock/FeatureBlock.docs'
 import { numberInputDocs } from '@/components/molecules/NumberInput/NumberInput.docs'
 import { passwordFieldDocs } from '@/components/molecules/PasswordField/PasswordField.docs'
+import { sliderDocs } from '@/components/molecules/Slider/Slider.docs'
 import { textFieldDocs } from '@/components/molecules/TextField/TextField.docs'
 
 // Legacy ComponentData interface for compatibility
@@ -112,5 +113,6 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(gridSystemDocs),
   convertDocumentationToLegacyFormat(numberInputDocs),
   convertDocumentationToLegacyFormat(passwordFieldDocs),
+  convertDocumentationToLegacyFormat(sliderDocs),
   convertDocumentationToLegacyFormat(textFieldDocs)
 ]
