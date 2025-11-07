@@ -102,14 +102,14 @@ describe('PasswordField', () => {
       expect(toggleButton).toHaveAttribute('aria-pressed', 'false')
     })
 
-    it('displays eye icon when password is hidden', () => {
+    it('displays view icon when password is hidden', () => {
       renderPasswordField()
       const toggleButton = screen.getByLabelText('Show password')
       // Icon component renders SVG
       expect(toggleButton.querySelector('svg')).toBeInTheDocument()
     })
 
-    it('displays eyeSlash icon when password is visible', async () => {
+    it('displays viewHide icon when password is visible', async () => {
       const user = userEvent.setup()
       renderPasswordField()
       

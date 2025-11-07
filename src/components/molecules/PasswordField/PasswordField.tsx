@@ -184,7 +184,7 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
               <IconButton
                 variant="naked"
                 size="small"
-                iconName={showPassword ? 'eyeSlash' : 'eye'}
+                iconName={showPassword ? 'viewHide' : 'view'}
                 onClick={togglePasswordVisibility}
                 disabled={disabled}
                 aria-label={showPassword ? 'Hide password' : 'Show password'}
