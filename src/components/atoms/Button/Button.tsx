@@ -164,6 +164,17 @@ const StyledLink = styled.a.withConfig({
   ${getSizeStyles}
 `
 
+// Styled Next.js Link component (modern API without legacyBehavior)
+const StyledNextLink = styled(Link).withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<StyledButtonProps & { href: string }>`
+  ${baseButtonStyles}
+  border-radius: ${button.primary.borderRadius};
+  
+  ${getVariantStyles}
+  ${getSizeStyles}
+`
+
 // Helper function to get icon size based on button size
 const getIconSize = (buttonSize?: 'small' | 'medium' | 'large'): 'xs' | 'sm' | 'md' => {
   switch (buttonSize) {
@@ -203,20 +214,17 @@ export const Button: React.FC<CustomButtonProps> = ({
   'data-testid': dataTestId,
   ...rest 
 }) => {
-  // For internal links, use Next.js Link
+  // For internal links, use Next.js Link (modern API without legacyBehavior)
   if (purpose === 'link' && url && !url.startsWith('http') && !target) {
-    const linkProps = rest as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps>
     return (
-      <Link href={url} passHref legacyBehavior>
-        <StyledLink 
-          $variant={variant} 
-          $size={size} 
-          data-testid={dataTestId}
-          {...linkProps}
-        >
-          {renderButtonContent(children, iconName, size)}
-        </StyledLink>
-      </Link>
+      <StyledNextLink
+        href={url}
+        $variant={variant} 
+        $size={size} 
+        data-testid={dataTestId}
+      >
+        {renderButtonContent(children, iconName, size)}
+      </StyledNextLink>
     )
   }
   

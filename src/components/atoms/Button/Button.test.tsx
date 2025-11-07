@@ -6,10 +6,13 @@ import { Button } from '../Button'
 
 expect.extend(toHaveNoViolations)
 
-// Mock Next.js router
+// Mock Next.js Link for modern API (no legacyBehavior)
 jest.mock('next/link', () => {
-  return ({ children, href }: any) => {
-    return React.cloneElement(children, { href })
+  return {
+    __esModule: true,
+    default: ({ children, href, ...props }: any) => {
+      return <a href={href} {...props}>{children}</a>
+    }
   }
 })
 
