@@ -2,6 +2,7 @@ import * as React from 'react'
 import { ComponentDocumentation } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
+import { alertDocs } from '@/components/molecules/Alert/Alert.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
@@ -17,6 +18,7 @@ import { pictureDocs } from '@/components/atoms/Picture/Picture.docs'
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
+import { listDocs } from '@/components/molecules/List/List.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
 import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
@@ -90,6 +92,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
+  convertDocumentationToLegacyFormat(alertDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),
@@ -106,6 +109,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(dropdownDocs),
   convertDocumentationToLegacyFormat(iconDocs),
   convertDocumentationToLegacyFormat(iconButtonDocs),
+  convertDocumentationToLegacyFormat(listDocs),
   convertDocumentationToLegacyFormat(progressBarDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
   convertDocumentationToLegacyFormat(stackDocs),
