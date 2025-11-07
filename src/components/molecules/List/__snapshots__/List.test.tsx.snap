@@ -1,0 +1,303 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`List Dividers Prop hides dividers when dividers={false} 1`] = `
+<ul
+  class="sc-982a862b-0 gjkFcG"
+  role="list"
+>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 gCkMUG"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 1
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 gCkMUG"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 2
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`List Dividers Prop shows dividers by default 1`] = `
+<ul
+  class="sc-982a862b-0 ruzxr"
+  role="list"
+>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 gCkMUG"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 1
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 gCkMUG"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 2
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`List Spacing Prop applies compact spacing correctly 1`] = `
+<ul
+  class="sc-982a862b-0 ruzxr"
+  role="list"
+>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 cQedxM"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 1
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`List Spacing Prop uses comfortable spacing by default 1`] = `
+<ul
+  class="sc-982a862b-0 ruzxr"
+  role="list"
+>
+  <li
+    class="sc-3c5f034-0 ekgPLX"
+    role="listitem"
+  >
+    <div
+      class="sc-3c5f034-1 gCkMUG"
+    >
+      <div
+        class="sc-3c5f034-3 cvDcWA"
+      >
+        <p
+          class="sc-f58eb622-0 dCrlBX"
+        >
+          Item 1
+        </p>
+      </div>
+      <div
+        class="sc-3c5f034-4 kuYMUC"
+      />
+    </div>
+  </li>
+</ul>
+`;
+
+exports[`ListItem Expandable Functionality chevron icon rotates based on state 1`] = `
+<li
+  class="sc-3c5f034-0 fPslwY"
+  role="listitem"
+>
+  <div
+    aria-expanded="false"
+    class="sc-3c5f034-1 gWQIRA"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="sc-3c5f034-3 cvDcWA"
+    >
+      <p
+        class="sc-f58eb622-0 dCrlBX"
+      >
+        Item
+      </p>
+    </div>
+    <div
+      class="sc-3c5f034-4 kuYMUC"
+    >
+      <div
+        aria-hidden="true"
+        class="sc-3c5f034-5 iPVVGN"
+      >
+        <span
+          class="sc-b3647ff8-0 bXTZFh"
+        >
+          <svg
+            aria-label="caretDown"
+            fill="currentColor"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.8079 14.7695L8.09345 10.3121C7.65923 9.79109 8.02975 9 8.70802 9L15.292 9C15.9702 9 16.3408 9.79109 15.9065 10.3121L12.192 14.7695C12.0921 14.8895 11.9079 14.8895 11.8079 14.7695Z"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+`;
+
+exports[`ListItem Expandable Functionality chevron icon rotates based on state 2`] = `
+<li
+  class="sc-3c5f034-0 fPslwY"
+  role="listitem"
+>
+  <div
+    aria-expanded="true"
+    class="sc-3c5f034-1 gWQIRA"
+    role="button"
+    tabindex="0"
+  >
+    <div
+      class="sc-3c5f034-3 cvDcWA"
+    >
+      <p
+        class="sc-f58eb622-0 dCrlBX"
+      >
+        Item
+      </p>
+    </div>
+    <div
+      class="sc-3c5f034-4 kuYMUC"
+    >
+      <div
+        aria-hidden="true"
+        class="sc-3c5f034-5 gtXrDQ"
+      >
+        <span
+          class="sc-b3647ff8-0 bXTZFh"
+        >
+          <svg
+            aria-label="caretDown"
+            fill="currentColor"
+            role="img"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M11.8079 14.7695L8.09345 10.3121C7.65923 9.79109 8.02975 9 8.70802 9L15.292 9C15.9702 9 16.3408 9.79109 15.9065 10.3121L12.192 14.7695C12.0921 14.8895 11.9079 14.8895 11.8079 14.7695Z"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</li>
+`;
+
+exports[`ListItem Spacing Variants applies compact spacing correctly 1`] = `
+<li
+  class="sc-3c5f034-0 ekgPLX"
+  role="listitem"
+>
+  <div
+    class="sc-3c5f034-1 cQedxM"
+  >
+    <div
+      class="sc-3c5f034-3 cvDcWA"
+    >
+      <p
+        class="sc-f58eb622-0 dCrlBX"
+      >
+        Compact
+      </p>
+    </div>
+    <div
+      class="sc-3c5f034-4 kuYMUC"
+    />
+  </div>
+</li>
+`;
+
+exports[`ListItem Spacing Variants uses comfortable spacing by default 1`] = `
+<li
+  class="sc-3c5f034-0 ekgPLX"
+  role="listitem"
+>
+  <div
+    class="sc-3c5f034-1 gCkMUG"
+  >
+    <div
+      class="sc-3c5f034-3 cvDcWA"
+    >
+      <p
+        class="sc-f58eb622-0 dCrlBX"
+      >
+        Default spacing
+      </p>
+    </div>
+    <div
+      class="sc-3c5f034-4 kuYMUC"
+    />
+  </div>
+</li>
+`;
