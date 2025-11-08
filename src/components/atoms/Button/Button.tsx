@@ -2,8 +2,7 @@ import React from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { Icon } from '../Icon'
-import iconsData from '@/styles/icons.json'
+import { Icon, type IconName } from '../Icon'
 
 const { component: { button }, semantic } = tokens
 
@@ -15,7 +14,7 @@ export interface BaseButtonProps {
   purpose?: 'button' | 'link'
   target?: string
   children: React.ReactNode
-  iconName?: keyof typeof iconsData
+  iconName?: IconName
   id?: string
   'data-testid'?: string
 }
@@ -190,7 +189,7 @@ const getIconSize = (buttonSize?: 'small' | 'medium' | 'large'): 'xs' | 'sm' | '
 }
 
 // Helper function to render button content with optional icon
-const renderButtonContent = (children: React.ReactNode, iconName?: keyof typeof iconsData, size?: 'small' | 'medium' | 'large') => {
+const renderButtonContent = (children: React.ReactNode, iconName?: IconName, size?: 'small' | 'medium' | 'large') => {
   if (!iconName) return children
   
   const iconSize = getIconSize(size)
