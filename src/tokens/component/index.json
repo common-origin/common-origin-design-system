@@ -24,13 +24,13 @@
       },
       "variants": {
         "secondary": {
-          "backgroundColor": "{base.color.neutral.200}",
+          "backgroundColor": "{base.color.neutral.300}",
           "textColor": "{base.color.neutral.900}",
           "hover": {
-            "backgroundColor": "{base.color.neutral.300}"
+            "backgroundColor": "{base.color.neutral.400}"
           },
           "active": {
-            "backgroundColor": "{base.color.neutral.100}"
+            "backgroundColor": "{base.color.neutral.500}"
           },
           "disabled": {
             "backgroundColor": "{semantic.color.background.disabled}",
