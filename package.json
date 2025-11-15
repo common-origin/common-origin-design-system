@@ -1,6 +1,6 @@
 {
   "name": "@common-origin/design-system",
-  "version": "1.16.0",
+  "version": "1.16.1",
   "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
   "type": "module",
