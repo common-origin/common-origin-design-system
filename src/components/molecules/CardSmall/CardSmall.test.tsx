@@ -7,44 +7,8 @@ import { CardSmall } from '.'
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
 
-// Mock Next.js Image component
-jest.mock('next/image', () => {
-  return ({ alt, src, style, className, width, height, sizes, ...props }: any) => {
-    // Filter out Next.js specific props that shouldn't be passed to img element
-    const { 
-      placeholder, blurDataURL, priority, quality, fill, loader, 
-      unoptimized, onLoad, onError, ...imgProps 
-    } = props
-    
-    // eslint-disable-next-line @next/next/no-img-element
-    return (
-      <img 
-        alt={alt} 
-        src={src} 
-        style={style} 
-        className={className}
-        width={width}
-        height={height}
-        sizes={sizes}
-        {...imgProps} 
-      />
-    )
-  }
-})
-
-// Mock Next.js components
-jest.mock('next/link', () => {
-  return function MockLink({ children, href, ...props }: any) {
-    return <a href={href} {...props}>{children}</a>
-  }
-})
-
-// Mock DateFormatter component
-jest.mock('../../atoms/DateFormatter', () => ({
-  DateFormatter: ({ dateString }: { dateString: string }) => (
-    <span data-testid="date-formatter">{dateString}</span>
-  )
-}))
+// Mock Link component for testing linkComponent prop
+const MockLink = ({ children, href }: any) => <a href={href}>{children}</a>
 
 describe('CardSmall Component', () => {
   const defaultProps = {

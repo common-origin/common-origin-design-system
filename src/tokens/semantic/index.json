@@ -362,7 +362,7 @@
         "type": "typography"
       },
       "h4": {
-        "value": "{base.fontWeight.3} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
+        "value": "{base.fontWeight.5} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h5": {

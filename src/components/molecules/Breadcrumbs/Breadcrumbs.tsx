@@ -1,11 +1,8 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
 import { Container } from '../../atoms/Container'
 import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
-
-
 
 interface Breadcrumb {
   label: string
@@ -15,6 +12,11 @@ interface Breadcrumb {
 interface BreadcrumbsProps {
   breadcrumbs: Breadcrumb[]
   'data-testid'?: string
+  /**
+   * Custom link component (e.g., Next.js Link)
+   * @example linkComponent={NextLink}
+   */
+  linkComponent?: React.ComponentType<any>
 }
 
 const BreadcrumbNavStyled = styled.nav`
@@ -73,7 +75,10 @@ const isInternalUrl = (url: string) => {
   return url.startsWith('/') && !url.startsWith('http')
 }
 
-export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
+export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ 
+  breadcrumbs, 
+  linkComponent: LinkComponent 
+}) => {
   return (
     <Container>
       <BreadcrumbNavStyled aria-label="breadcrumb">
@@ -82,12 +87,18 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ breadcrumbs }) => {
             <BreadcrumbStyled key={index}>
               {index === breadcrumbs.length - 1 ? (
                 <Typography variant="caption">{breadcrumb.label}</Typography>
-              ) : isInternalUrl(breadcrumb.url) ? (
-                <Link href={breadcrumb.url}>
+              ) : LinkComponent && isInternalUrl(breadcrumb.url) ? (
+                <LinkComponent href={breadcrumb.url}>
                   <Typography variant="caption">{breadcrumb.label}</Typography>
-                </Link>
+                </LinkComponent>
               ) : (
-                <a href={breadcrumb.url} target="_blank" rel="noopener noreferrer">
+                <a 
+                  href={breadcrumb.url} 
+                  {...(!isInternalUrl(breadcrumb.url) && { 
+                    target: "_blank", 
+                    rel: "noopener noreferrer" 
+                  })}
+                >
                   <Typography variant="caption">{breadcrumb.label}</Typography>
                 </a>
               )}

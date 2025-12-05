@@ -23,6 +23,12 @@ export const breadcrumbsDocs: ComponentDocumentation = {
       description: 'Array of breadcrumb items defining the navigation path. Each item requires: label (display text) and url (navigation link). Interface: { label: string, url: string }'
     },
     {
+      name: 'linkComponent',
+      type: 'React.ComponentType<any>',
+      required: false,
+      description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). When provided, internal URLs will use this component. External URLs always use standard <a> tags. When not provided, all URLs use standard <a> tags'
+    },
+    {
       name: 'data-testid',
       type: 'string',
       required: false,

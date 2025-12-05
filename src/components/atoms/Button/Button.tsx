@@ -1,5 +1,4 @@
 import React from 'react'
-import Link from 'next/link'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon, type IconName } from '../Icon'
@@ -17,6 +16,12 @@ export interface BaseButtonProps {
   iconName?: IconName
   id?: string
   'data-testid'?: string
+  /**
+   * Custom link component (e.g., Next.js Link, React Router Link)
+   * Receives href, children, and other props
+   * @example linkComponent={NextLink} or linkComponent={ReactRouterLink}
+   */
+  linkComponent?: React.ComponentType<any>
 }
 
 // Button-specific props
@@ -163,17 +168,6 @@ const StyledLink = styled.a.withConfig({
   ${getSizeStyles}
 `
 
-// Styled Next.js Link component (modern API without legacyBehavior)
-const StyledNextLink = styled(Link).withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$')
-})<StyledButtonProps & { href: string }>`
-  ${baseButtonStyles}
-  border-radius: ${button.primary.borderRadius};
-  
-  ${getVariantStyles}
-  ${getSizeStyles}
-`
-
 // Helper function to get icon size based on button size
 const getIconSize = (buttonSize?: 'small' | 'medium' | 'large'): 'xs' | 'sm' | 'md' => {
   switch (buttonSize) {
@@ -210,24 +204,27 @@ export const Button: React.FC<CustomButtonProps> = ({
   children, 
   target,
   iconName,
+  linkComponent: LinkComponent,
   'data-testid': dataTestId,
   ...rest 
 }) => {
-  // For internal links, use Next.js Link (modern API without legacyBehavior)
-  if (purpose === 'link' && url && !url.startsWith('http') && !target) {
+  // For links with custom link component (e.g., Next.js Link, React Router Link)
+  if (purpose === 'link' && url && LinkComponent) {
     return (
-      <StyledNextLink
-        href={url}
-        $variant={variant} 
-        $size={size} 
-        data-testid={dataTestId}
-      >
-        {renderButtonContent(children, iconName, size)}
-      </StyledNextLink>
+      <LinkComponent href={url}>
+        <StyledLink 
+          as="span"
+          $variant={variant} 
+          $size={size} 
+          data-testid={dataTestId}
+        >
+          {renderButtonContent(children, iconName, size)}
+        </StyledLink>
+      </LinkComponent>
     )
   }
   
-  // For external links or links with target
+  // For standard links (external or without custom component)
   if (purpose === 'link' && url) {
     const linkProps = rest as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps>
     return (

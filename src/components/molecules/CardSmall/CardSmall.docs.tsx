@@ -42,7 +42,13 @@ export const cardSmallDocs: ComponentDocumentation = {
       name: 'href',
       type: 'string',
       required: false,
-      description: 'Link for the card'
+      description: 'Link URL for the card. Uses standard <a> tag by default, or custom linkComponent if provided'
+    },
+    {
+      name: 'linkComponent',
+      type: 'React.ComponentType<any>',
+      required: false,
+      description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). Receives href and children props. When not provided, uses standard <a> tag'
     }
   ],
   

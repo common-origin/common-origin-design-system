@@ -6,21 +6,14 @@ import { Button } from '../Button'
 
 expect.extend(toHaveNoViolations)
 
-// Mock Next.js Link for modern API (no legacyBehavior)
-jest.mock('next/link', () => {
-  return {
-    __esModule: true,
-    default: ({ children, href, ...props }: any) => {
-      return <a href={href} {...props}>{children}</a>
-    }
-  }
-})
-
 // Mock window.open to prevent jsdom errors
 Object.defineProperty(window, 'open', {
   value: jest.fn(),
   writable: true,
 })
+
+// Mock Link component for testing linkComponent prop
+const MockLink = ({ children, href }: any) => <a href={href}>{children}</a>
 
 describe('Button Component', () => {
   const defaultProps = {
@@ -131,8 +124,15 @@ describe('Button Component', () => {
   })
 
   describe('Link Functionality', () => {
-    it('renders as internal link when purpose is link', () => {
+    it('renders as link with standard <a> tag by default', () => {
       renderButton({ purpose: 'link', url: '/test-page' })
+      const link = screen.getByRole('link')
+      expect(link).toBeInTheDocument()
+      expect(link).toHaveAttribute('href', '/test-page')
+    })
+
+    it('renders with custom linkComponent', () => {
+      renderButton({ purpose: 'link', url: '/test-page', linkComponent: MockLink })
       const link = screen.getByRole('link')
       expect(link).toBeInTheDocument()
       expect(link).toHaveAttribute('href', '/test-page')

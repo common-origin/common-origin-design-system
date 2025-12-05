@@ -1,7 +1,7 @@
 {
   "name": "@common-origin/design-system",
-  "version": "1.16.1",
-  "description": "Common Origin Design System - Atomic design components with comprehensive WCAG 2.2 AA testing",
+  "version": "2.0.0",
+  "description": "Common Origin Design System - Framework-agnostic atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
   "type": "module",
   "main": "dist/index.js",
@@ -36,7 +36,8 @@
     "docs:generate": "node lib/docgen/generate.js",
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
-    "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:types",
+    "verify:no-nextjs": "node scripts/verify-no-nextjs-deps.cjs",
+    "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:types && npm run verify:no-nextjs",
     "release": "npm publish --provenance --access public",
     "release:create": "./scripts/release.sh"
   },

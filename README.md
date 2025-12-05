@@ -1,10 +1,49 @@
 # Common Origin Design System
 
-A production-ready design system built with atomic design principles, design tokens, and WCAG 2.2 AA accessibility compliance. This package provides reusable React components and design tokens for building consistent user interfaces.
+A production-ready, **framework-agnostic** design system built with atomic design principles, design tokens, and WCAG 2.2 AA accessibility compliance. This package provides reusable React components and design tokens for building consistent user interfaces.
+
+## ⚠️ Version 2.0 Breaking Changes
+
+**Version 2.0.0** removes Next.js dependencies, making the design system work in **any React application** (Next.js, Create React App, Vite, etc.).
+
+If you're upgrading from v1.x, see **[MIGRATION-V2.md](./MIGRATION-V2.md)** for the complete migration guide.
+
+**Quick summary:** Components like `Button`, `Breadcrumbs`, and `CardSmall` now accept an optional `linkComponent` prop. Pass your framework's Link component (e.g., Next.js Link, React Router Link) for client-side navigation, or omit it to use standard HTML links.
 
 ## 🚀 Getting Started
 
+### Installation
+
+```bash
+npm install @common-origin/design-system styled-components
+```
+
+### Usage
+
+```tsx
+import { Button, Typography, Stack } from '@common-origin/design-system'
+
+// For Next.js apps, pass Link component for client-side routing
+import Link from 'next/link'
+
+function App() {
+  return (
+    <Stack direction="column" gap="md">
+      <Typography variant="h1">Welcome</Typography>
+      <Button 
+        purpose="link" 
+        url="/about" 
+        linkComponent={Link}
+      >
+        Learn More
+      </Button>
+    </Stack>
+  )
+}
+```
+
 ### Development
+
 ```bash
 # Install dependencies
 npm install

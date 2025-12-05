@@ -6,6 +6,9 @@ import { Breadcrumbs } from './Breadcrumbs'
 // Extend Jest matchers for accessibility testing
 expect.extend(toHaveNoViolations)
 
+// Mock Link component for testing linkComponent prop
+const MockLink = ({ children, href }: any) => <a href={href}>{children}</a>
+
 describe('Breadcrumbs', () => {
   it('renders all breadcrumb items', () => {
     const breadcrumbs = [

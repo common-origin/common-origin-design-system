@@ -40,14 +40,20 @@ export const buttonDocs: ComponentDocumentation = {
       name: 'url',
       type: 'string',
       required: false,
-      description: 'Navigation URL when purpose="link". Uses Next.js Link component for client-side navigation'
+      description: 'Navigation URL when purpose="link". Uses standard <a> tag by default, or custom linkComponent if provided'
+    },
+    {
+      name: 'linkComponent',
+      type: 'React.ComponentType<any>',
+      required: false,
+      description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). Receives href and children props. When not provided, uses standard <a> tag'
     },
     {
       name: 'purpose',
       type: "'button' | 'link'",
       required: false,
       default: 'button',
-      description: 'Semantic purpose: "button" renders <button> element, "link" renders <a> element with Next.js Link'
+      description: 'Semantic purpose: "button" renders <button> element, "link" renders <a> element (or custom linkComponent wrapper)'
     },
     {
       name: 'target',
