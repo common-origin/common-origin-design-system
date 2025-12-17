@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 17 Dec 2025 01:09:39 GMT
+ * Generated on Wed, 17 Dec 2025 03:44:58 GMT
  */
 
 :root {
@@ -145,6 +145,45 @@
   --base-color-blue-1100: #004491;
   --base-color-blue-1200: #003571;
   --base-color-blue-1300: #002754;
+  --base-color-purple-100: #F9F0FF;
+  --base-color-purple-200: #F4E1FF;
+  --base-color-purple-300: #EDD0FF;
+  --base-color-purple-400: #E3B8FF;
+  --base-color-purple-500: #D59DFF;
+  --base-color-purple-600: #C27EF7;
+  --base-color-purple-700: #AD5FE8;
+  --base-color-purple-800: #9644D4;
+  --base-color-purple-900: #7E2EBD;
+  --base-color-purple-1000: #67229F;
+  --base-color-purple-1100: #511882;
+  --base-color-purple-1200: #3D1066;
+  --base-color-purple-1300: #2B0A4D;
+  --base-color-pink-100: #FFEFF9;
+  --base-color-pink-200: #FFDFF4;
+  --base-color-pink-300: #FFCBED;
+  --base-color-pink-400: #FFB0E3;
+  --base-color-pink-500: #FF8ED4;
+  --base-color-pink-600: #FF69C1;
+  --base-color-pink-700: #FF42AB;
+  --base-color-pink-800: #F31A93;
+  --base-color-pink-900: #DC007B;
+  --base-color-pink-1000: #B90064;
+  --base-color-pink-1100: #97004E;
+  --base-color-pink-1200: #78003A;
+  --base-color-pink-1300: #5C0029;
+  --base-color-yellow-100: #FFF3D6;
+  --base-color-yellow-200: #FFE9B3;
+  --base-color-yellow-300: #FFDE8F;
+  --base-color-yellow-400: #FFD162;
+  --base-color-yellow-500: #FFC233;
+  --base-color-yellow-600: #EDAD0A;
+  --base-color-yellow-700: #D39700;
+  --base-color-yellow-800: #B88100;
+  --base-color-yellow-900: #9D6C00;
+  --base-color-yellow-1000: #825800;
+  --base-color-yellow-1100: #694600;
+  --base-color-yellow-1200: #523600;
+  --base-color-yellow-1300: #3D2800;
   --base-spacing-0: 0;
   --base-spacing-1: 0.25rem;
   --base-spacing-2: 0.5rem;
@@ -312,6 +351,42 @@
   --semantic-color-financial-debit-hover: #B40000;
   --semantic-color-financial-pending: #F68511;
   --semantic-color-financial-neutral: #6c757d;
+  --semantic-color-category-blue: #3892F3;
+  --semantic-color-category-blue-emphasis: #0265DC;
+  --semantic-color-category-blue-subtle: #E0F2FF;
+  --semantic-color-category-purple: #AD5FE8;
+  --semantic-color-category-purple-emphasis: #7E2EBD;
+  --semantic-color-category-purple-subtle: #F9F0FF;
+  --semantic-color-category-pink: #FF42AB;
+  --semantic-color-category-pink-emphasis: #DC007B;
+  --semantic-color-category-pink-subtle: #FFEFF9;
+  --semantic-color-category-yellow: #D39700;
+  --semantic-color-category-yellow-emphasis: #9D6C00;
+  --semantic-color-category-yellow-subtle: #FFF3D6;
+  --semantic-color-category-green: #15A46E;
+  --semantic-color-category-green-emphasis: #007A4D;
+  --semantic-color-category-green-subtle: #CEF8E0;
+  --semantic-color-category-red: #F75C46;
+  --semantic-color-category-red-emphasis: #D31510;
+  --semantic-color-category-red-subtle: #FFEBE7;
+  --semantic-color-category-orange: #E46F00;
+  --semantic-color-category-orange-emphasis: #B14C00;
+  --semantic-color-category-orange-subtle: #FFECCC;
+  --semantic-color-category-gray: #495057;
+  --semantic-color-category-gray-emphasis: #212529;
+  --semantic-color-category-gray-subtle: #e9ecef;
+  --semantic-color-status-pending: #D39700;
+  --semantic-color-status-pending-bg: #FFF3D6;
+  --semantic-color-status-completed: #007A4D;
+  --semantic-color-status-completed-bg: #CEF8E0;
+  --semantic-color-status-failed: #D31510;
+  --semantic-color-status-failed-bg: #FFEBE7;
+  --semantic-color-status-cancelled: #495057;
+  --semantic-color-status-cancelled-bg: #e9ecef;
+  --semantic-color-status-processing: #0265DC;
+  --semantic-color-status-processing-bg: #E0F2FF;
+  --semantic-color-status-scheduled: #7E2EBD;
+  --semantic-color-status-scheduled-bg: #F9F0FF;
   --semantic-typography-display: 700 5rem/4.5rem 'Inter', sans-serif;
   --semantic-typography-h1: 700 3rem/3rem 'Inter', sans-serif;
   --semantic-typography-h2: 700 2rem/2.5rem 'Inter', sans-serif;

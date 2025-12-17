@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 17 Dec 2025 01:09:39 GMT
+ * Generated on Wed, 17 Dec 2025 03:44:58 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -186,12 +186,63 @@ export interface TokensBaseColorBlue {
   '1300': string;
 }
 
+export interface TokensBaseColorPurple {
+  '100': string;
+  '200': string;
+  '300': string;
+  '400': string;
+  '500': string;
+  '600': string;
+  '700': string;
+  '800': string;
+  '900': string;
+  '1000': string;
+  '1100': string;
+  '1200': string;
+  '1300': string;
+}
+
+export interface TokensBaseColorPink {
+  '100': string;
+  '200': string;
+  '300': string;
+  '400': string;
+  '500': string;
+  '600': string;
+  '700': string;
+  '800': string;
+  '900': string;
+  '1000': string;
+  '1100': string;
+  '1200': string;
+  '1300': string;
+}
+
+export interface TokensBaseColorYellow {
+  '100': string;
+  '200': string;
+  '300': string;
+  '400': string;
+  '500': string;
+  '600': string;
+  '700': string;
+  '800': string;
+  '900': string;
+  '1000': string;
+  '1100': string;
+  '1200': string;
+  '1300': string;
+}
+
 export interface TokensBaseColor {
   neutral: TokensBaseColorNeutral;
   green: TokensBaseColorGreen;
   orange: TokensBaseColorOrange;
   red: TokensBaseColorRed;
   blue: TokensBaseColorBlue;
+  purple: TokensBaseColorPurple;
+  pink: TokensBaseColorPink;
+  yellow: TokensBaseColorYellow;
 }
 
 export interface TokensBaseSpacing {
@@ -741,12 +792,56 @@ export interface TokensSemanticColorFinancial {
   neutral: string;
 }
 
+export interface TokensSemanticColorCategory {
+  blue: string;
+  'blue-emphasis': string;
+  'blue-subtle': string;
+  purple: string;
+  'purple-emphasis': string;
+  'purple-subtle': string;
+  pink: string;
+  'pink-emphasis': string;
+  'pink-subtle': string;
+  yellow: string;
+  'yellow-emphasis': string;
+  'yellow-subtle': string;
+  green: string;
+  'green-emphasis': string;
+  'green-subtle': string;
+  red: string;
+  'red-emphasis': string;
+  'red-subtle': string;
+  orange: string;
+  'orange-emphasis': string;
+  'orange-subtle': string;
+  gray: string;
+  'gray-emphasis': string;
+  'gray-subtle': string;
+}
+
+export interface TokensSemanticColorStatus {
+  pending: string;
+  'pending-bg': string;
+  completed: string;
+  'completed-bg': string;
+  failed: string;
+  'failed-bg': string;
+  cancelled: string;
+  'cancelled-bg': string;
+  processing: string;
+  'processing-bg': string;
+  scheduled: string;
+  'scheduled-bg': string;
+}
+
 export interface TokensSemanticColor {
   text: TokensSemanticColorText;
   background: TokensSemanticColorBackground;
   border: TokensSemanticColorBorder;
   icon: TokensSemanticColorIcon;
   financial: TokensSemanticColorFinancial;
+  category: TokensSemanticColorCategory;
+  status: TokensSemanticColorStatus;
 }
 
 export interface TokensSemanticTypography {

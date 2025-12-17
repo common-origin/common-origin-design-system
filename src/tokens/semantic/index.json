@@ -374,6 +374,190 @@
           "type": "color",
           "description": "Neutral color for informational monetary amounts"
         }
+      },
+      "category": {
+        "blue": {
+          "value": "{base.color.blue.700}",
+          "type": "color",
+          "description": "Blue category color for general/miscellaneous"
+        },
+        "blue-emphasis": {
+          "value": "{base.color.blue.900}",
+          "type": "color",
+          "description": "Emphasized blue for filled variants"
+        },
+        "blue-subtle": {
+          "value": "{base.color.blue.100}",
+          "type": "color",
+          "description": "Subtle blue background"
+        },
+        "purple": {
+          "value": "{base.color.purple.700}",
+          "type": "color",
+          "description": "Purple category color for entertainment"
+        },
+        "purple-emphasis": {
+          "value": "{base.color.purple.900}",
+          "type": "color",
+          "description": "Emphasized purple for filled variants"
+        },
+        "purple-subtle": {
+          "value": "{base.color.purple.100}",
+          "type": "color",
+          "description": "Subtle purple background"
+        },
+        "pink": {
+          "value": "{base.color.pink.700}",
+          "type": "color",
+          "description": "Pink category color for health/wellness"
+        },
+        "pink-emphasis": {
+          "value": "{base.color.pink.900}",
+          "type": "color",
+          "description": "Emphasized pink for filled variants"
+        },
+        "pink-subtle": {
+          "value": "{base.color.pink.100}",
+          "type": "color",
+          "description": "Subtle pink background"
+        },
+        "yellow": {
+          "value": "{base.color.yellow.700}",
+          "type": "color",
+          "description": "Yellow category color for utilities"
+        },
+        "yellow-emphasis": {
+          "value": "{base.color.yellow.900}",
+          "type": "color",
+          "description": "Emphasized yellow for filled variants"
+        },
+        "yellow-subtle": {
+          "value": "{base.color.yellow.100}",
+          "type": "color",
+          "description": "Subtle yellow background"
+        },
+        "green": {
+          "value": "{base.color.green.700}",
+          "type": "color",
+          "description": "Green category color for income"
+        },
+        "green-emphasis": {
+          "value": "{base.color.green.900}",
+          "type": "color",
+          "description": "Emphasized green for filled variants"
+        },
+        "green-subtle": {
+          "value": "{base.color.green.100}",
+          "type": "color",
+          "description": "Subtle green background"
+        },
+        "red": {
+          "value": "{base.color.red.700}",
+          "type": "color",
+          "description": "Red category color for expenses"
+        },
+        "red-emphasis": {
+          "value": "{base.color.red.900}",
+          "type": "color",
+          "description": "Emphasized red for filled variants"
+        },
+        "red-subtle": {
+          "value": "{base.color.red.100}",
+          "type": "color",
+          "description": "Subtle red background"
+        },
+        "orange": {
+          "value": "{base.color.orange.700}",
+          "type": "color",
+          "description": "Orange category color for food & dining"
+        },
+        "orange-emphasis": {
+          "value": "{base.color.orange.900}",
+          "type": "color",
+          "description": "Emphasized orange for filled variants"
+        },
+        "orange-subtle": {
+          "value": "{base.color.orange.100}",
+          "type": "color",
+          "description": "Subtle orange background"
+        },
+        "gray": {
+          "value": "{base.color.neutral.700}",
+          "type": "color",
+          "description": "Gray category color for uncategorized"
+        },
+        "gray-emphasis": {
+          "value": "{base.color.neutral.900}",
+          "type": "color",
+          "description": "Emphasized gray for filled variants"
+        },
+        "gray-subtle": {
+          "value": "{base.color.neutral.200}",
+          "type": "color",
+          "description": "Subtle gray background"
+        }
+      },
+      "status": {
+        "pending": {
+          "value": "{base.color.yellow.700}",
+          "type": "color",
+          "description": "Yellow color for pending status"
+        },
+        "pending-bg": {
+          "value": "{base.color.yellow.100}",
+          "type": "color",
+          "description": "Background for pending status"
+        },
+        "completed": {
+          "value": "{base.color.green.900}",
+          "type": "color",
+          "description": "Green color for completed status"
+        },
+        "completed-bg": {
+          "value": "{base.color.green.100}",
+          "type": "color",
+          "description": "Background for completed status"
+        },
+        "failed": {
+          "value": "{base.color.red.900}",
+          "type": "color",
+          "description": "Red color for failed/error status"
+        },
+        "failed-bg": {
+          "value": "{base.color.red.100}",
+          "type": "color",
+          "description": "Background for failed status"
+        },
+        "cancelled": {
+          "value": "{base.color.neutral.700}",
+          "type": "color",
+          "description": "Gray color for cancelled status"
+        },
+        "cancelled-bg": {
+          "value": "{base.color.neutral.200}",
+          "type": "color",
+          "description": "Background for cancelled status"
+        },
+        "processing": {
+          "value": "{base.color.blue.900}",
+          "type": "color",
+          "description": "Blue color for processing status"
+        },
+        "processing-bg": {
+          "value": "{base.color.blue.100}",
+          "type": "color",
+          "description": "Background for processing status"
+        },
+        "scheduled": {
+          "value": "{base.color.purple.900}",
+          "type": "color",
+          "description": "Purple color for scheduled status"
+        },
+        "scheduled-bg": {
+          "value": "{base.color.purple.100}",
+          "type": "color",
+          "description": "Background for scheduled status"
+        }
       }
     },
     "typography": {
