@@ -31,6 +31,11 @@ import { passwordFieldDocs } from '@/components/molecules/PasswordField/Password
 import { sheetDocs } from '@/components/molecules/Sheet/Sheet.docs'
 import { sliderDocs } from '@/components/molecules/Slider/Slider.docs'
 import { textFieldDocs } from '@/components/molecules/TextField/TextField.docs'
+import { moneyDisplayDocs } from '@/components/atoms/MoneyDisplay/MoneyDisplay.docs'
+import { emptyStateDocs } from '@/components/molecules/EmptyState/EmptyState.docs'
+import { dateGroupDocs } from '@/components/molecules/DateGroup/DateGroup.docs'
+import { transactionListItemDocs } from '@/components/molecules/TransactionListItem/TransactionListItem.docs'
+import { accountCardDocs } from '@/components/molecules/AccountCard/AccountCard.docs'
 
 // Legacy ComponentData interface for compatibility
 export interface ComponentData {
@@ -120,5 +125,10 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(passwordFieldDocs),
   convertDocumentationToLegacyFormat(sheetDocs),
   convertDocumentationToLegacyFormat(sliderDocs),
-  convertDocumentationToLegacyFormat(textFieldDocs)
+  convertDocumentationToLegacyFormat(textFieldDocs),
+  convertDocumentationToLegacyFormat(moneyDisplayDocs),
+  convertDocumentationToLegacyFormat(emptyStateDocs),
+  convertDocumentationToLegacyFormat(dateGroupDocs),
+  convertDocumentationToLegacyFormat(transactionListItemDocs),
+  convertDocumentationToLegacyFormat(accountCardDocs)
 ]

@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 05 Dec 2025 13:07:02 GMT
+ * Generated on Tue, 16 Dec 2025 23:13:26 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -732,11 +732,21 @@ export interface TokensSemanticColorIcon {
   warning: string;
 }
 
+export interface TokensSemanticColorFinancial {
+  credit: string;
+  'credit-hover': string;
+  debit: string;
+  'debit-hover': string;
+  pending: string;
+  neutral: string;
+}
+
 export interface TokensSemanticColor {
   text: TokensSemanticColorText;
   background: TokensSemanticColorBackground;
   border: TokensSemanticColorBorder;
   icon: TokensSemanticColorIcon;
+  financial: TokensSemanticColorFinancial;
 }
 
 export interface TokensSemanticTypography {

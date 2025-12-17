@@ -20,7 +20,14 @@ export const dateFormatterDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: "'yyyy'",
-      description: 'Date-fns format pattern string (e.g., "MMM dd, yyyy", "HH:mm", "yyyy-MM-dd")'
+      description: 'Date-fns format pattern string (e.g., "MMM dd, yyyy", "HH:mm", "yyyy-MM-dd"). Used in absolute mode or as fallback in smart mode.'
+    },
+    {
+      name: 'mode',
+      type: "'absolute' | 'relative' | 'smart'",
+      required: false,
+      default: "'absolute'",
+      description: 'Date formatting mode: "absolute" always uses formatString, "relative" shows "Today"/"Yesterday"/day names for recent dates, "smart" uses relative for recent dates and absolute for older dates'
     },
     {
       name: 'data-testid',
@@ -87,7 +94,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Relative Format',
+      name: 'Relative Date Format',
       description: 'Using date-fns relative format tokens.',
       code: `<DateFormatter 
   dateString="2023-12-25T10:30:00.000Z" 
@@ -97,6 +104,48 @@ export const dateFormatterDocs: ComponentDocumentation = {
         <DateFormatter 
           dateString="2023-12-25T10:30:00.000Z" 
           formatString="EEEE, MMMM do, yyyy" 
+        />
+      )
+    },
+    {
+      name: 'Smart Mode - Recent Date',
+      description: 'Smart mode shows "Today" for current date.',
+      code: `<DateFormatter 
+  dateString={new Date().toISOString()} 
+  mode="smart" 
+/>`,
+      renderComponent: () => (
+        <DateFormatter 
+          dateString={new Date().toISOString()} 
+          mode="smart" 
+        />
+      )
+    },
+    {
+      name: 'Smart Mode - Old Date',
+      description: 'Smart mode uses formatted date for older dates.',
+      code: `<DateFormatter 
+  dateString="2023-06-15T10:30:00.000Z" 
+  mode="smart" 
+/>`,
+      renderComponent: () => (
+        <DateFormatter 
+          dateString="2023-06-15T10:30:00.000Z" 
+          mode="smart" 
+        />
+      )
+    },
+    {
+      name: 'Relative Mode',
+      description: 'Relative mode always shows contextual labels when possible.',
+      code: `<DateFormatter 
+  dateString={new Date().toISOString()} 
+  mode="relative" 
+/>`,
+      renderComponent: () => (
+        <DateFormatter 
+          dateString={new Date().toISOString()} 
+          mode="relative" 
         />
       )
     }
@@ -115,6 +164,23 @@ export const dateFormatterDocs: ComponentDocumentation = {
     'Accepts any valid date-fns format pattern string',
     'Always includes datetime attribute for semantic markup',
     'Uses design system typography and color tokens for consistency',
-    'Handles timezone information from ISO date strings appropriately'
-  ]
+    'Handles timezone information from ISO date strings appropriately',
+    'Smart mode: Shows "Today"/"Yesterday" for recent dates, day names for this week, formatted dates for older dates',
+    'Relative mode: Always attempts to show contextual labels (Today/Yesterday/day name) before falling back to formatted dates',
+    'Absolute mode: Always uses the formatString regardless of date recency'
+  ],
+
+  anatomy: {
+    description: 'Simple text formatting component that wraps a semantic HTML time element.',
+    parts: [
+      {
+        name: 'TimeStyled',
+        description: 'Semantic HTML <time> element with design system typography and color tokens',
+        tokens: [
+          'semantic.typography.label',
+          'semantic.color.text.subdued'
+        ]
+      }
+    ]
+  }
 }

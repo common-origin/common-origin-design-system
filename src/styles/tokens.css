@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Fri, 05 Dec 2025 13:07:02 GMT
+ * Generated on Tue, 16 Dec 2025 23:13:26 GMT
  */
 
 :root {
@@ -306,6 +306,12 @@
   --semantic-color-icon-error: #D31510;
   --semantic-color-icon-success: #007A4D;
   --semantic-color-icon-warning: #B14C00;
+  --semantic-color-financial-credit: #15A46E;
+  --semantic-color-financial-credit-hover: #008F5D;
+  --semantic-color-financial-debit: #D31510;
+  --semantic-color-financial-debit-hover: #B40000;
+  --semantic-color-financial-pending: #F68511;
+  --semantic-color-financial-neutral: #6c757d;
   --semantic-typography-display: 700 5rem/4.5rem 'Inter', sans-serif;
   --semantic-typography-h1: 700 3rem/3rem 'Inter', sans-serif;
   --semantic-typography-h2: 700 2rem/2.5rem 'Inter', sans-serif;

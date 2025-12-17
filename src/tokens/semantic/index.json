@@ -342,6 +342,38 @@
           "value": "{base.color.orange.900}",
           "type": "color"
         }
+      },
+      "financial": {
+        "credit": {
+          "value": "{base.color.green.700}",
+          "type": "color",
+          "description": "Color for positive monetary values, credits, income"
+        },
+        "credit-hover": {
+          "value": "{base.color.green.800}",
+          "type": "color",
+          "description": "Hover state for credit-colored interactive elements"
+        },
+        "debit": {
+          "value": "{base.color.red.900}",
+          "type": "color",
+          "description": "Color for negative monetary values, debits, expenses"
+        },
+        "debit-hover": {
+          "value": "{base.color.red.1000}",
+          "type": "color",
+          "description": "Hover state for debit-colored interactive elements"
+        },
+        "pending": {
+          "value": "{base.color.orange.600}",
+          "type": "color",
+          "description": "Color for pending or processing financial transactions"
+        },
+        "neutral": {
+          "value": "{base.color.neutral.600}",
+          "type": "color",
+          "description": "Neutral color for informational monetary amounts"
+        }
       }
     },
     "typography": {
