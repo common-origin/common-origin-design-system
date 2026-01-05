@@ -11,11 +11,13 @@ import {
 } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../../atoms/Icon/Icon'
+import { IconButton } from '../../atoms/IconButton/IconButton'
 import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
+import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic, base, component } = tokens
 
 /**
  * Suggestion item for autocomplete
@@ -137,23 +139,25 @@ const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   align-items: center;
   gap: ${base.spacing[2]};
   padding: ${base.spacing[2]} ${base.spacing[3]};
-  background-color: ${semantic.color.background.subtle};
-  border: ${base.border.width[1]} solid ${semantic.color.border.default};
-  border-radius: ${base.border.radius[3]};
-  transition: ${semantic.motion.hover};
+  background-color: ${component.input.default.backgroundColor};
+  border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
+  border-radius: ${component.input.default.borderRadius};
+  transition: border-color 200ms ease-in-out, outline 200ms ease-in-out;
   
   ${props => props.$isFocused && `
-    border-color: ${semantic.color.border.interactive};
-    box-shadow: 0 0 0 ${base.border.width[2]} ${semantic.color.background['interactive-subtle']};
+    border-color: ${component.input.focus.borderColor};
+    outline: ${component.input.focus.outline};
+    outline-offset: ${component.input.focus.outlineOffset};
   `}
   
   ${props => props.$disabled && `
-    background-color: ${semantic.color.background.disabled};
+    background-color: ${component.input.disabled.backgroundColor};
+    border-color: ${component.input.disabled.borderColor};
     cursor: not-allowed;
   `}
   
-  &:hover:not(:disabled) {
-    border-color: ${semantic.color.border.strong};
+  &:hover:not([data-disabled='true']) {
+    border-color: ${component.input.hover.borderColor};
   }
 `
 
@@ -175,29 +179,6 @@ const StyledInput = styled.input`
   }
 `
 
-const StyledClearButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: ${base.spacing[1]};
-  border: none;
-  background: transparent;
-  color: ${semantic.color.icon.subdued};
-  cursor: pointer;
-  border-radius: ${base.border.radius[2]};
-  transition: ${semantic.motion.hover};
-  
-  &:hover {
-    color: ${semantic.color.icon.default};
-    background-color: ${semantic.color.background.surface};
-  }
-  
-  &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.strong};
-    outline-offset: ${base.spacing[1]};
-  }
-`
-
 const StyledSuggestionsList = styled.ul`
   position: absolute;
   top: calc(100% + ${base.spacing[1]});
@@ -215,54 +196,12 @@ const StyledSuggestionsList = styled.ul`
   z-index: 1000;
 `
 
-const StyledSuggestionItem = styled.li<StyledSuggestionItemProps>`
-  display: flex;
-  align-items: center;
-  gap: ${base.spacing[2]};
-  padding: ${base.spacing[2]} ${base.spacing[3]};
-  cursor: pointer;
-  transition: ${semantic.motion.hover};
-  
-  ${props => props.$isHighlighted && `
-    background-color: ${semantic.color.background['interactive-subtle']};
-  `}
-  
-  &:hover {
-    background-color: ${semantic.color.background['interactive-subtle']};
-  }
-  
-  ${props => props.$isRecent && `
-    color: ${semantic.color.text.subdued};
-  `}
-`
-
 const StyledSectionHeader = styled.div`
   padding: ${base.spacing[2]} ${base.spacing[3]};
   font: ${semantic.typography.caption};
   color: ${semantic.color.text.subdued};
   text-transform: uppercase;
   letter-spacing: ${base.letterSpacing[4]};
-`
-
-const StyledClearRecent = styled.button`
-  padding: ${base.spacing[2]} ${base.spacing[3]};
-  border: none;
-  background: transparent;
-  font: ${semantic.typography.small};
-  color: ${semantic.color.text.interactive};
-  cursor: pointer;
-  width: 100%;
-  text-align: left;
-  transition: ${semantic.motion.hover};
-  
-  &:hover {
-    background-color: ${semantic.color.background['interactive-subtle']};
-  }
-  
-  &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.strong};
-    outline-offset: -${base.spacing[1]};
-  }
 `
 
 const debounce = <T extends (...args: any[]) => any>(
@@ -466,7 +405,11 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
         $disabled={disabled}
         data-testid={dataTestId}
       >
-        <StyledInputWrapper $isFocused={isFocused} $disabled={disabled}>
+        <StyledInputWrapper 
+          $isFocused={isFocused} 
+          $disabled={disabled}
+          data-disabled={disabled}
+        >
           <Icon
             name="search"
             size="sm"
@@ -505,14 +448,14 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
           )}
           
           {showClearButton && (
-            <StyledClearButton
-              type="button"
+            <IconButton
+              iconName="close"
+              size="small"
+              variant="naked"
               onClick={handleClear}
               aria-label="Clear search"
               tabIndex={-1}
-            >
-              <Icon name="close" size="xs" />
-            </StyledClearButton>
+            />
           )}
         </StyledInputWrapper>
         
@@ -529,13 +472,20 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
             {displayItems.map((item, index) => {
               if (item.type === 'clear') {
                 return (
-                  <StyledClearRecent
+                  <ListItem
                     key="clear"
-                    type="button"
+                    role="option"
+                    primary="Clear recent searches"
+                    interactive
+                    spacing="compact"
                     onClick={() => handleSuggestionClick(item)}
-                  >
-                    Clear recent searches
-                  </StyledClearRecent>
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        handleSuggestionClick(item)
+                      }
+                    }}
+                  />
                 )
               }
               
@@ -545,27 +495,19 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
               const description = !isString ? suggestion.description : undefined
               
               return (
-                <StyledSuggestionItem
+                <ListItem
                   key={isString ? suggestion : suggestion.id}
                   id={`suggestion-${index}`}
                   role="option"
                   aria-selected={index === highlightedIndex}
-                  $isHighlighted={index === highlightedIndex}
-                  $isRecent={item.type === 'recent'}
+                  primary={label}
+                  secondary={description}
+                  icon={item.type === 'recent' ? <Icon name="refresh" size="xs" aria-hidden="true" /> : undefined}
+                  interactive
+                  selected={index === highlightedIndex}
+                  spacing="compact"
                   onClick={() => handleSuggestionClick(item)}
-                >
-                  {item.type === 'recent' && (
-                    <Icon name="refresh" size="xs" aria-hidden="true" />
-                  )}
-                  <Stack direction="column" gap="none">
-                    <Typography variant="body">{label}</Typography>
-                    {description && (
-                      <Typography variant="caption" color="subdued">
-                        {description}
-                      </Typography>
-                    )}
-                  </Stack>
-                </StyledSuggestionItem>
+                />
               )
             })}
           </StyledSuggestionsList>

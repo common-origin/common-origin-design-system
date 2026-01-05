@@ -268,6 +268,7 @@ export const CategoryBadge: React.FC<CategoryBadgeProps> = ({
         <Icon 
           name={icon} 
           size={sizeStyles.iconSize}
+          iconColor={variant === 'filled' ? 'inverse' : 'inherit'}
           aria-hidden="true"
         />
       )}

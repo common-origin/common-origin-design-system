@@ -36,6 +36,11 @@ import { emptyStateDocs } from '@/components/molecules/EmptyState/EmptyState.doc
 import { dateGroupDocs } from '@/components/molecules/DateGroup/DateGroup.docs'
 import { transactionListItemDocs } from '@/components/molecules/TransactionListItem/TransactionListItem.docs'
 import { accountCardDocs } from '@/components/molecules/AccountCard/AccountCard.docs'
+import { categoryBadgeDocs } from '@/components/atoms/CategoryBadge/CategoryBadge.docs'
+import { statusBadgeDocs } from '@/components/atoms/StatusBadge/StatusBadge.docs'
+import { tabBarDocs } from '@/components/molecules/TabBar/TabBar.docs'
+import { searchFieldDocs } from '@/components/molecules/SearchField/SearchField.docs'
+import { actionSheetDocs } from '@/components/molecules/ActionSheet/ActionSheet.docs'
 
 // Legacy ComponentData interface for compatibility
 export interface ComponentData {
@@ -130,5 +135,10 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(emptyStateDocs),
   convertDocumentationToLegacyFormat(dateGroupDocs),
   convertDocumentationToLegacyFormat(transactionListItemDocs),
-  convertDocumentationToLegacyFormat(accountCardDocs)
+  convertDocumentationToLegacyFormat(accountCardDocs),
+  convertDocumentationToLegacyFormat(categoryBadgeDocs),
+  convertDocumentationToLegacyFormat(statusBadgeDocs),
+  convertDocumentationToLegacyFormat(tabBarDocs),
+  convertDocumentationToLegacyFormat(searchFieldDocs),
+  convertDocumentationToLegacyFormat(actionSheetDocs)
 ]

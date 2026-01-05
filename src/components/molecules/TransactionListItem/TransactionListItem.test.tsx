@@ -104,15 +104,21 @@ describe('TransactionListItem', () => {
   })
 
   describe('Category Display', () => {
-    const categories: Array<'shopping' | 'dining' | 'transport' | 'entertainment' | 'bills' | 'other'> = [
-      'shopping', 'dining', 'transport', 'entertainment', 'bills', 'other'
+    const categories: Array<{ key: 'shopping' | 'dining' | 'transport' | 'entertainment' | 'bills' | 'other', label: string }> = [
+      { key: 'shopping', label: 'Shopping' },
+      { key: 'dining', label: 'Dining' },
+      { key: 'transport', label: 'Transport' },
+      { key: 'entertainment', label: 'Entertainment' },
+      { key: 'bills', label: 'Bills' },
+      { key: 'other', label: 'Other' }
     ]
 
-    categories.forEach(category => {
-      it(`displays ${category} category icon`, () => {
-        render(<TransactionListItem {...defaultProps} category={category} />)
+    categories.forEach(({ key, label }) => {
+      it(`displays ${key} category badge`, () => {
+        render(<TransactionListItem {...defaultProps} category={key} />)
         
-        expect(screen.getByLabelText(`Category: ${category}`)).toBeInTheDocument()
+        expect(screen.getByLabelText(`Category: ${label}`)).toBeInTheDocument()
+        expect(screen.getByText(label)).toBeInTheDocument()
       })
     })
 
@@ -340,7 +346,8 @@ describe('TransactionListItem', () => {
     it('category icons have descriptive labels', () => {
       render(<TransactionListItem {...defaultProps} category="shopping" />)
       
-      expect(screen.getByLabelText('Category: shopping')).toBeInTheDocument()
+      expect(screen.getByLabelText('Category: Shopping')).toBeInTheDocument()
+      expect(screen.getByText('Shopping')).toBeInTheDocument()
     })
 
     it('metadata icons have descriptive labels', () => {
@@ -401,7 +408,9 @@ describe('TransactionListItem', () => {
       expect(screen.getByTestId('full-transaction')).toBeInTheDocument()
       expect(screen.getByText('Test Merchant')).toBeInTheDocument()
       expect(screen.getByText('Pending transaction')).toBeInTheDocument()
-      expect(screen.getByLabelText('Category: shopping')).toBeInTheDocument()
+      expect(screen.getByLabelText('Category: Shopping')).toBeInTheDocument()
+      expect(screen.getByText('Shopping')).toBeInTheDocument()
+      expect(screen.getByText(/Test description/)).toBeInTheDocument()
       expect(screen.getByText(/Test description/)).toBeInTheDocument()
       expect(screen.getByLabelText('Has receipt')).toBeInTheDocument()
       expect(screen.getByLabelText('Has note')).toBeInTheDocument()

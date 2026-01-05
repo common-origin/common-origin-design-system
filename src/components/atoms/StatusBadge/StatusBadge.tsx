@@ -138,7 +138,7 @@ const getSizeStyles = (size: StatusSize) => {
   // medium
   return {
     height: '24px',
-    padding: `${base.spacing[1]} ${base.spacing[3]}`,
+    padding: `${base.spacing[1]} ${base.spacing[2]}`,
     font: semantic.typography.small,
     gap: base.spacing[1],
     iconSize: 'sm' as const
@@ -238,6 +238,7 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
         <Icon 
           name={statusConfig.icon} 
           size={sizeStyles.iconSize}
+          iconColor="inherit"
           aria-hidden="true"
         />
       )}

@@ -6,14 +6,14 @@ exports[`List Dividers Prop hides dividers when dividers={false} 1`] = `
   role="list"
 >
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 jqDjck"
+      class="sc-a1a6ba6b-1 ctzzha"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -22,19 +22,19 @@ exports[`List Dividers Prop hides dividers when dividers={false} 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 jqDjck"
+      class="sc-a1a6ba6b-1 ctzzha"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -43,7 +43,7 @@ exports[`List Dividers Prop hides dividers when dividers={false} 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
@@ -56,14 +56,14 @@ exports[`List Dividers Prop shows dividers by default 1`] = `
   role="list"
 >
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 jqDjck"
+      class="sc-a1a6ba6b-1 ctzzha"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -72,19 +72,19 @@ exports[`List Dividers Prop shows dividers by default 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 jqDjck"
+      class="sc-a1a6ba6b-1 ctzzha"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -93,7 +93,7 @@ exports[`List Dividers Prop shows dividers by default 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
@@ -106,14 +106,14 @@ exports[`List Spacing Prop applies compact spacing correctly 1`] = `
   role="list"
 >
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 ehUNEq"
+      class="sc-a1a6ba6b-1 bGxsGg"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -122,7 +122,7 @@ exports[`List Spacing Prop applies compact spacing correctly 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
@@ -135,14 +135,14 @@ exports[`List Spacing Prop uses comfortable spacing by default 1`] = `
   role="list"
 >
   <li
-    class="sc-3c5826e2-0 joXohZ"
+    class="sc-a1a6ba6b-0 gDkHir"
     role="listitem"
   >
     <div
-      class="sc-3c5826e2-1 jqDjck"
+      class="sc-a1a6ba6b-1 ctzzha"
     >
       <div
-        class="sc-3c5826e2-3 oyEIy"
+        class="sc-a1a6ba6b-3 LMPOU"
       >
         <p
           class="sc-f58eb622-0 dCrlBX"
@@ -151,7 +151,7 @@ exports[`List Spacing Prop uses comfortable spacing by default 1`] = `
         </p>
       </div>
       <div
-        class="sc-3c5826e2-4 hLrwmE"
+        class="sc-a1a6ba6b-4 jLsoIi"
       />
     </div>
   </li>
@@ -160,17 +160,17 @@ exports[`List Spacing Prop uses comfortable spacing by default 1`] = `
 
 exports[`ListItem Expandable Functionality chevron icon rotates based on state 1`] = `
 <li
-  class="sc-3c5826e2-0 bhHSEi"
+  class="sc-a1a6ba6b-0 coPiNY"
   role="listitem"
 >
   <div
     aria-expanded="false"
-    class="sc-3c5826e2-1 gewkkW"
+    class="sc-a1a6ba6b-1 cRZQbs"
     role="button"
     tabindex="0"
   >
     <div
-      class="sc-3c5826e2-3 oyEIy"
+      class="sc-a1a6ba6b-3 LMPOU"
     >
       <p
         class="sc-f58eb622-0 dCrlBX"
@@ -179,11 +179,11 @@ exports[`ListItem Expandable Functionality chevron icon rotates based on state 1
       </p>
     </div>
     <div
-      class="sc-3c5826e2-4 hLrwmE"
+      class="sc-a1a6ba6b-4 jLsoIi"
     >
       <div
         aria-hidden="true"
-        class="sc-3c5826e2-5 hLYVen"
+        class="sc-a1a6ba6b-5 hfCnPp"
       >
         <span
           class="sc-b3647ff8-0 bXTZFh"
@@ -208,17 +208,17 @@ exports[`ListItem Expandable Functionality chevron icon rotates based on state 1
 
 exports[`ListItem Expandable Functionality chevron icon rotates based on state 2`] = `
 <li
-  class="sc-3c5826e2-0 bhHSEi"
+  class="sc-a1a6ba6b-0 coPiNY"
   role="listitem"
 >
   <div
     aria-expanded="true"
-    class="sc-3c5826e2-1 gewkkW"
+    class="sc-a1a6ba6b-1 cRZQbs"
     role="button"
     tabindex="0"
   >
     <div
-      class="sc-3c5826e2-3 oyEIy"
+      class="sc-a1a6ba6b-3 LMPOU"
     >
       <p
         class="sc-f58eb622-0 dCrlBX"
@@ -227,11 +227,11 @@ exports[`ListItem Expandable Functionality chevron icon rotates based on state 2
       </p>
     </div>
     <div
-      class="sc-3c5826e2-4 hLrwmE"
+      class="sc-a1a6ba6b-4 jLsoIi"
     >
       <div
         aria-hidden="true"
-        class="sc-3c5826e2-5 NrDdy"
+        class="sc-a1a6ba6b-5 hIzErM"
       >
         <span
           class="sc-b3647ff8-0 bXTZFh"
@@ -256,14 +256,14 @@ exports[`ListItem Expandable Functionality chevron icon rotates based on state 2
 
 exports[`ListItem Spacing Variants applies compact spacing correctly 1`] = `
 <li
-  class="sc-3c5826e2-0 joXohZ"
+  class="sc-a1a6ba6b-0 gDkHir"
   role="listitem"
 >
   <div
-    class="sc-3c5826e2-1 ehUNEq"
+    class="sc-a1a6ba6b-1 bGxsGg"
   >
     <div
-      class="sc-3c5826e2-3 oyEIy"
+      class="sc-a1a6ba6b-3 LMPOU"
     >
       <p
         class="sc-f58eb622-0 dCrlBX"
@@ -272,7 +272,7 @@ exports[`ListItem Spacing Variants applies compact spacing correctly 1`] = `
       </p>
     </div>
     <div
-      class="sc-3c5826e2-4 hLrwmE"
+      class="sc-a1a6ba6b-4 jLsoIi"
     />
   </div>
 </li>
@@ -280,14 +280,14 @@ exports[`ListItem Spacing Variants applies compact spacing correctly 1`] = `
 
 exports[`ListItem Spacing Variants uses comfortable spacing by default 1`] = `
 <li
-  class="sc-3c5826e2-0 joXohZ"
+  class="sc-a1a6ba6b-0 gDkHir"
   role="listitem"
 >
   <div
-    class="sc-3c5826e2-1 jqDjck"
+    class="sc-a1a6ba6b-1 ctzzha"
   >
     <div
-      class="sc-3c5826e2-3 oyEIy"
+      class="sc-a1a6ba6b-3 LMPOU"
     >
       <p
         class="sc-f58eb622-0 dCrlBX"
@@ -296,7 +296,7 @@ exports[`ListItem Spacing Variants uses comfortable spacing by default 1`] = `
       </p>
     </div>
     <div
-      class="sc-3c5826e2-4 hLrwmE"
+      class="sc-a1a6ba6b-4 jLsoIi"
     />
   </div>
 </li>

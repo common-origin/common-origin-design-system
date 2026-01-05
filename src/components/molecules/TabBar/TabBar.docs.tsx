@@ -117,49 +117,52 @@ return (
   </div>
 )`,
       renderComponent: () => {
-        const [activeDefault, setActiveDefault] = React.useState('overview')
-        const [activePills, setActivePills] = React.useState('overview')
-        const [activeUnderline, setActiveUnderline] = React.useState('overview')
+        const TabVariantsExample = () => {
+          const [activeDefault, setActiveDefault] = React.useState('overview')
+          const [activePills, setActivePills] = React.useState('overview')
+          const [activeUnderline, setActiveUnderline] = React.useState('overview')
 
-        const tabs = [
-          { id: 'overview', label: 'Overview' },
-          { id: 'details', label: 'Details' },
-          { id: 'settings', label: 'Settings' }
-        ]
+          const tabs = [
+            { id: 'overview', label: 'Overview' },
+            { id: 'details', label: 'Details' },
+            { id: 'settings', label: 'Settings' }
+          ]
 
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <div>
-              <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Default Variant</p>
-              <TabBar 
-                tabs={tabs}
-                activeTab={activeDefault}
-                onTabChange={setActiveDefault}
-                variant="default"
-              />
+          return (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+              <div>
+                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Default Variant</p>
+                <TabBar 
+                  tabs={tabs}
+                  activeTab={activeDefault}
+                  onTabChange={setActiveDefault}
+                  variant="default"
+                />
+              </div>
+              
+              <div>
+                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Pills Variant</p>
+                <TabBar 
+                  tabs={tabs}
+                  activeTab={activePills}
+                  onTabChange={setActivePills}
+                  variant="pills"
+                />
+              </div>
+              
+              <div>
+                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Underline Variant</p>
+                <TabBar 
+                  tabs={tabs}
+                  activeTab={activeUnderline}
+                  onTabChange={setActiveUnderline}
+                  variant="underline"
+                />
+              </div>
             </div>
-            
-            <div>
-              <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Pills Variant</p>
-              <TabBar 
-                tabs={tabs}
-                activeTab={activePills}
-                onTabChange={setActivePills}
-                variant="pills"
-              />
-            </div>
-            
-            <div>
-              <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Underline Variant</p>
-              <TabBar 
-                tabs={tabs}
-                activeTab={activeUnderline}
-                onTabChange={setActiveUnderline}
-                variant="underline"
-              />
-            </div>
-          </div>
-        )
+          )
+        }
+        return <TabVariantsExample />
       }
     },
     {
@@ -183,23 +186,26 @@ return (
   />
 )`,
       renderComponent: () => {
-        const [activeTab, setActiveTab] = React.useState('all')
+        const BadgeExample = () => {
+          const [activeTab, setActiveTab] = React.useState('all')
 
-        const tabs = [
-          { id: 'all', label: 'All Items', badge: 127 },
-          { id: 'pending', label: 'Pending', badge: 5 },
-          { id: 'completed', label: 'Completed', badge: 122 },
-          { id: 'archived', label: 'Archived' }
-        ]
+          const tabs = [
+            { id: 'all', label: 'All Items', badge: 127 },
+            { id: 'pending', label: 'Pending', badge: 5 },
+            { id: 'completed', label: 'Completed', badge: 122 },
+            { id: 'archived', label: 'Archived' }
+          ]
 
-        return (
-          <TabBar 
-            tabs={tabs}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-            variant="pills"
-          />
-        )
+          return (
+            <TabBar 
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+              variant="pills"
+            />
+          )
+        }
+        return <BadgeExample />
       }
     },
     {
@@ -222,22 +228,25 @@ return (
   />
 )`,
       renderComponent: () => {
-        const [activeTab, setActiveTab] = React.useState('overview')
+        const DisabledTabsExample = () => {
+          const [activeTab, setActiveTab] = React.useState('overview')
 
-        const tabs = [
-          { id: 'overview', label: 'Overview' },
-          { id: 'transactions', label: 'Transactions', badge: 12 },
-          { id: 'analytics', label: 'Analytics', disabled: true },
-          { id: 'settings', label: 'Settings', disabled: true }
-        ]
+          const tabs = [
+            { id: 'overview', label: 'Overview' },
+            { id: 'transactions', label: 'Transactions', badge: 12 },
+            { id: 'analytics', label: 'Analytics', disabled: true },
+            { id: 'settings', label: 'Settings', disabled: true }
+          ]
 
-        return (
-          <TabBar 
-            tabs={tabs}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-        )
+          return (
+            <TabBar 
+              tabs={tabs}
+              activeTab={activeTab}
+              onTabChange={setActiveTab}
+            />
+          )
+        }
+        return <DisabledTabsExample />
       }
     },
     {
@@ -267,29 +276,32 @@ return (
   </div>
 )`,
       renderComponent: () => {
-        const [activeTab, setActiveTab] = React.useState('dashboard')
+        const ScrollingTabsExample = () => {
+          const [activeTab, setActiveTab] = React.useState('dashboard')
 
-        const tabs = [
-          { id: 'dashboard', label: 'Dashboard' },
-          { id: 'transactions', label: 'Transactions', badge: 45 },
-          { id: 'accounts', label: 'Accounts' },
-          { id: 'cards', label: 'Cards' },
-          { id: 'investments', label: 'Investments', badge: 3 },
-          { id: 'reports', label: 'Reports' },
-          { id: 'analytics', label: 'Analytics' },
-          { id: 'settings', label: 'Settings' }
-        ]
+          const tabs = [
+            { id: 'dashboard', label: 'Dashboard' },
+            { id: 'transactions', label: 'Transactions', badge: 45 },
+            { id: 'accounts', label: 'Accounts' },
+            { id: 'cards', label: 'Cards' },
+            { id: 'investments', label: 'Investments', badge: 3 },
+            { id: 'reports', label: 'Reports' },
+            { id: 'analytics', label: 'Analytics' },
+            { id: 'settings', label: 'Settings' }
+          ]
 
-        return (
-          <div style={{ maxWidth: '600px' }}>
-            <TabBar 
-              tabs={tabs}
-              activeTab={activeTab}
-              onTabChange={setActiveTab}
-              variant="underline"
-            />
-          </div>
-        )
+          return (
+            <div style={{ maxWidth: '600px' }}>
+              <TabBar 
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={setActiveTab}
+                variant="underline"
+              />
+            </div>
+          )
+        }
+        return <ScrollingTabsExample />
       }
     },
     {
@@ -330,39 +342,42 @@ return (
   </div>
 )`,
       renderComponent: () => {
-        const [activeTab, setActiveTab] = React.useState('account')
-        const [changeCount, setChangeCount] = React.useState(0)
+        const ControlledStateExample = () => {
+          const [activeTab, setActiveTab] = React.useState('account')
+          const [changeCount, setChangeCount] = React.useState(0)
 
-        const tabs = [
-          { id: 'account', label: 'Account' },
-          { id: 'security', label: 'Security' },
-          { id: 'notifications', label: 'Notifications' },
-          { id: 'billing', label: 'Billing' }
-        ]
+          const tabs = [
+            { id: 'account', label: 'Account' },
+            { id: 'security', label: 'Security' },
+            { id: 'notifications', label: 'Notifications' },
+            { id: 'billing', label: 'Billing' }
+          ]
 
-        const handleTabChange = (tabId: string) => {
-          setActiveTab(tabId)
-          setChangeCount(prev => prev + 1)
-        }
+          const handleTabChange = (tabId: string) => {
+            setActiveTab(tabId)
+            setChangeCount(prev => prev + 1)
+          }
 
-        return (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <TabBar 
-              tabs={tabs}
-              activeTab={activeTab}
-              onTabChange={handleTabChange}
-              variant="pills"
-            />
-            <div style={{ 
-              padding: '16px', 
-              backgroundColor: '#f5f5f5', 
-              borderRadius: '8px',
-              fontSize: '14px'
-            }}>
-              <strong>Active Tab:</strong> {activeTab} | <strong>Tab Changes:</strong> {changeCount}
+          return (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              <TabBar 
+                tabs={tabs}
+                activeTab={activeTab}
+                onTabChange={handleTabChange}
+                variant="pills"
+              />
+              <div style={{ 
+                padding: '16px', 
+                backgroundColor: '#f5f5f5', 
+                borderRadius: '8px',
+                fontSize: '14px'
+              }}>
+                <strong>Active Tab:</strong> {activeTab} | <strong>Tab Changes:</strong> {changeCount}
+              </div>
             </div>
-          </div>
-        )
+          )
+        }
+        return <ControlledStateExample />
       }
     }
   ],

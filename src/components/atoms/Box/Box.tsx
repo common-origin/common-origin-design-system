@@ -57,6 +57,19 @@ export interface BoxProps {
   bg?: keyof typeof tokens.semantic.color.background
   color?: keyof typeof tokens.semantic.color.text
   
+  // Shadow
+  shadow?: keyof typeof tokens.base.shadow
+  
+  // Cursor
+  cursor?: 'auto' | 'default' | 'pointer' | 'wait' | 'text' | 'move' | 'help' | 'not-allowed'
+  
+  // Transition
+  transition?: string
+  
+  // Hover states
+  hoverShadow?: keyof typeof tokens.base.shadow
+  hoverTransform?: string
+  
   // Overflow
   overflow?: 'visible' | 'hidden' | 'scroll' | 'auto'
   overflowX?: 'visible' | 'hidden' | 'scroll' | 'auto'
@@ -69,6 +82,11 @@ export interface BoxProps {
   children?: React.ReactNode
   id?: string
   style?: React.CSSProperties
+  onClick?: (event: React.MouseEvent) => void
+  onKeyDown?: (event: React.KeyboardEvent) => void
+  tabIndex?: number
+  role?: string
+  'aria-label'?: string
   'data-testid'?: string
 }
 
@@ -113,6 +131,11 @@ interface StyledBoxProps {
   $borderLeft?: BoxProps['borderLeft']
   $bg?: BoxProps['bg']
   $color?: BoxProps['color']
+  $shadow?: BoxProps['shadow']
+  $cursor?: BoxProps['cursor']
+  $transition?: BoxProps['transition']
+  $hoverShadow?: BoxProps['hoverShadow']
+  $hoverTransform?: BoxProps['hoverTransform']
   $overflow?: BoxProps['overflow']
   $overflowX?: BoxProps['overflowX']
   $overflowY?: BoxProps['overflowY']
@@ -187,6 +210,32 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$bg && css`background-color: ${tokens.semantic.color.background[props.$bg]};`}
   ${props => props.$color && css`color: ${tokens.semantic.color.text[props.$color]};`}
   
+  // Shadow
+  ${props => props.$shadow && css`box-shadow: ${tokens.base.shadow[props.$shadow]};`}
+  
+  // Cursor
+  ${props => props.$cursor && css`cursor: ${props.$cursor};`}
+  
+  // Transition
+  ${props => props.$transition && css`transition: ${props.$transition};`}
+  
+  // Hover states
+  ${props => (props.$hoverShadow || props.$hoverTransform) && css`
+    &:hover {
+      ${props.$hoverShadow && css`box-shadow: ${tokens.base.shadow[props.$hoverShadow]};`}
+      ${props.$hoverTransform && css`transform: ${props.$hoverTransform};`}
+    }
+    
+    &:active {
+      transform: translateY(0);
+    }
+    
+    &:focus-visible {
+      outline: 2px solid ${tokens.semantic.color.border.interactive};
+      outline-offset: 2px;
+    }
+  `}
+  
   // Overflow
   ${props => props.$overflow && css`overflow: ${props.$overflow};`}
   ${props => props.$overflowX && css`overflow-x: ${props.$overflowX};`}
@@ -249,6 +298,19 @@ const BoxTransform: React.FC<BoxProps> = (props) => {
     bg,
     color,
     
+    // Shadow
+    shadow,
+    
+    // Cursor
+    cursor,
+    
+    // Transition
+    transition,
+    
+    // Hover states
+    hoverShadow,
+    hoverTransform,
+    
     // Overflow
     overflow,
     overflowX,
@@ -257,6 +319,11 @@ const BoxTransform: React.FC<BoxProps> = (props) => {
     // Standard props
     as,
     children,
+    onClick,
+    onKeyDown,
+    tabIndex,
+    role,
+    'aria-label': ariaLabel,
     'data-testid': dataTestId,
     ...rest
   } = props
@@ -304,9 +371,19 @@ const BoxTransform: React.FC<BoxProps> = (props) => {
       $borderLeft={borderLeft}
       $bg={bg}
       $color={color}
+      $shadow={shadow}
+      $cursor={cursor}
+      $transition={transition}
+      $hoverShadow={hoverShadow}
+      $hoverTransform={hoverTransform}
       $overflow={overflow}
       $overflowX={overflowX}
       $overflowY={overflowY}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+      tabIndex={tabIndex}
+      role={role}
+      aria-label={ariaLabel}
       {...rest}
     >
       {children}

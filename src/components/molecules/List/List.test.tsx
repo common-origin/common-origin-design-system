@@ -487,4 +487,112 @@ describe('ListItem', () => {
       expect(button).toHaveFocus()
     })
   })
+
+  describe('Combobox Pattern Support', () => {
+    it('supports custom role="option"', () => {
+      render(<ListItem primary="Option 1" role="option" />)
+      expect(screen.getByRole('option')).toBeInTheDocument()
+    })
+
+    it('applies aria-selected for options', () => {
+      render(
+        <ul role="listbox" aria-label="Options">
+          <ListItem 
+            primary="Selected Option" 
+            role="option" 
+            aria-selected={true}
+            interactive
+          />
+          <ListItem 
+            primary="Unselected Option" 
+            role="option" 
+            aria-selected={false}
+            interactive
+          />
+        </ul>
+      )
+      
+      const options = screen.getAllByRole('option')
+      expect(options[0]).toHaveAttribute('aria-selected', 'true')
+      expect(options[1]).toHaveAttribute('aria-selected', 'false')
+    })
+
+    it('applies custom id for ARIA references', () => {
+      render(<ListItem primary="Item" role="option" id="option-1" />)
+      expect(screen.getByRole('option')).toHaveAttribute('id', 'option-1')
+    })
+
+    it('supports custom tabIndex', () => {
+      render(<ListItem primary="Item" role="option" tabIndex={-1} interactive />)
+      const item = screen.getByRole('option').querySelector('[tabindex="-1"]')
+      expect(item).toBeInTheDocument()
+    })
+
+    it('calls custom onKeyDown handler', async () => {
+      const handleKeyDown = jest.fn()
+      render(
+        <ListItem 
+          primary="Item" 
+          role="option" 
+          interactive
+          onKeyDown={handleKeyDown}
+        />
+      )
+      
+      const item = screen.getByRole('option')
+      const content = item.querySelector('[tabindex]') as HTMLElement
+      content?.focus()
+      await userEvent.keyboard('{Enter}')
+      
+      expect(handleKeyDown).toHaveBeenCalled()
+    })
+
+    it('custom onKeyDown overrides default Enter/Space behavior', async () => {
+      const handleClick = jest.fn()
+      const handleKeyDown = jest.fn()
+      
+      render(
+        <ListItem 
+          primary="Item" 
+          role="option" 
+          interactive
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
+        />
+      )
+      
+      const item = screen.getByRole('option')
+      const content = item.querySelector('[tabindex]') as HTMLElement
+      content?.focus()
+      await userEvent.keyboard('{Enter}')
+      
+      expect(handleKeyDown).toHaveBeenCalled()
+      // onClick should not be called because custom handler took over
+      expect(handleClick).not.toHaveBeenCalled()
+    })
+
+    it('should have no accessibility violations with combobox pattern', async () => {
+      const { container } = render(
+        <ul role="listbox" aria-label="Fruit options">
+          <ListItem 
+            primary="Option 1" 
+            role="option" 
+            aria-selected={true}
+            id="option-1"
+            interactive
+            selected
+          />
+          <ListItem 
+            primary="Option 2" 
+            role="option" 
+            aria-selected={false}
+            id="option-2"
+            interactive
+          />
+        </ul>
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+  })
 })

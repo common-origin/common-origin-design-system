@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '../../atoms/Avatar'
 import { Badge } from '../../atoms/Badge'
+import { CategoryBadge, CategoryColor } from '../../atoms/CategoryBadge'
 import { MoneyDisplay, MoneyDisplayVariant } from '../../atoms/MoneyDisplay'
 import { Icon, IconName } from '../../atoms/Icon'
 import { DateFormatter } from '../../atoms/DateFormatter'
@@ -68,7 +69,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
     cursor: pointer;
     
     &:hover {
-      background-color: ${tokens.semantic.color.background['interactive-hover']};
+      background-color: ${tokens.semantic.color.background.subtle};
     }
     
     &:active {
@@ -91,7 +92,7 @@ const StyledMainContent = styled.div`
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: ${tokens.semantic.spacing.layout.xs};
+  gap: none;
 `
 
 const StyledTopRow = styled.div`
@@ -104,7 +105,7 @@ const StyledTopRow = styled.div`
 const StyledMerchantSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.xs};
+  gap: ${tokens.semantic.spacing.layout.sm};
   min-width: 0;
   flex: 1;
 `
@@ -135,14 +136,14 @@ const StyledTruncatedText = styled.span`
   white-space: nowrap;
 `
 
-// Map categories to icon names (using placeholders until custom icons available)
-const categoryToIcon: Record<TransactionCategory, IconName> = {
-  shopping: 'paper',      // Will use shopping bag icon
-  dining: 'paper',        // Will use restaurant icon
-  transport: 'paper',     // Will use car icon
-  entertainment: 'star',  // Will use ticket icon
-  bills: 'paper',         // Will use document icon
-  other: 'paper'
+// Map categories to CategoryBadge configurations
+const categoryConfig: Record<TransactionCategory, { color: CategoryColor; icon: IconName; label: string }> = {
+  shopping: { color: 'purple', icon: 'paper', label: 'Shopping' },
+  dining: { color: 'orange', icon: 'paper', label: 'Dining' },
+  transport: { color: 'blue', icon: 'paper', label: 'Transport' },
+  entertainment: { color: 'pink', icon: 'star', label: 'Entertainment' },
+  bills: { color: 'red', icon: 'paper', label: 'Bills' },
+  other: { color: 'gray', icon: 'paper', label: 'Other' }
 }
 
 // Map status to badge variant
@@ -180,8 +181,8 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
   // Determine amount variant
   const amountVariant: MoneyDisplayVariant = amount > 0 ? 'positive' : amount < 0 ? 'negative' : 'default'
   
-  // Get category icon
-  const categoryIcon = category ? categoryToIcon[category] : undefined
+  // Get category configuration
+  const categoryData = category ? categoryConfig[category] : undefined
   
   // Get badge variant from status
   const badgeVariant = statusToBadgeVariant[status]
@@ -230,20 +231,22 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
       <StyledMainContent>
         <StyledTopRow>
           <StyledMerchantSection>
-            {categoryIcon && (
-              <span aria-label={`Category: ${category}`} role="img">
-                <Icon 
-                  name={categoryIcon} 
-                  size="sm" 
-                  iconColor="subdued"
-                />
-              </span>
-            )}
             <StyledTruncatedText>
               <Typography variant="body">
                 {merchant}
               </Typography>
             </StyledTruncatedText>
+            {categoryData && (
+              <CategoryBadge
+                color={categoryData.color}
+                icon={categoryData.icon}
+                size="small"
+                variant="minimal"
+                aria-label={`Category: ${categoryData.label}`}
+              >
+                {categoryData.label}
+              </CategoryBadge>
+            )}
             {status === 'failed' && (
               <Badge variant="error" dot aria-label="Failed transaction">
                 <span />
@@ -272,7 +275,7 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
             {description && (
               <StyledTruncatedText>
                 <Typography 
-                  variant="caption" 
+                  variant="small" 
                   color="subdued"
                 >
                   • {description}

@@ -144,27 +144,30 @@ const suggestions = [
   }}
 />`,
       renderComponent: () => {
-        const [search, setSearch] = useState('')
-        const suggestions: Suggestion[] = [
-          { id: '1', label: 'Apple', description: 'A sweet fruit', category: 'Fruit' },
-          { id: '2', label: 'Banana', description: 'A yellow fruit', category: 'Fruit' },
-          { id: '3', label: 'Carrot', description: 'A root vegetable', category: 'Vegetable' }
-        ]
-        
-        return (
-          <SearchField
-            value={search}
-            onChange={setSearch}
-            suggestions={suggestions}
-            onSuggestionSelect={(item) => {
-              if (typeof item === 'string') {
-                setSearch(item)
-              } else {
-                setSearch(item.label)
-              }
-            }}
-          />
-        )
+        const BasicUsageExample = () => {
+          const [search, setSearch] = useState('')
+          const suggestions: Suggestion[] = [
+            { id: '1', label: 'Apple', description: 'A sweet fruit', category: 'Fruit' },
+            { id: '2', label: 'Banana', description: 'A yellow fruit', category: 'Fruit' },
+            { id: '3', label: 'Carrot', description: 'A root vegetable', category: 'Vegetable' }
+          ]
+          
+          return (
+            <SearchField
+              value={search}
+              onChange={setSearch}
+              suggestions={suggestions}
+              onSuggestionSelect={(item) => {
+                if (typeof item === 'string') {
+                  setSearch(item)
+                } else {
+                  setSearch(item.label)
+                }
+              }}
+            />
+          )
+        }
+        return <BasicUsageExample />
       }
     },
     {
@@ -183,28 +186,31 @@ const recentSearches = ['coffee', 'tea', 'chocolate']
   }}
 />`,
       renderComponent: () => {
-        const [search, setSearch] = useState('')
-        const [recent, setRecent] = useState(['coffee', 'tea', 'chocolate'])
-        
-        return (
-          <div>
-            <Stack direction="column" gap="sm">
-              <Typography variant="body">
-                Clear the search to see recent searches
-              </Typography>
-            </Stack>
-            <SearchField
-              value={search}
-              onChange={setSearch}
-              recentSearches={recent}
-              showRecentSearches={true}
-              onClearRecentSearches={() => setRecent([])}
-              onSuggestionSelect={(item) => {
-                setSearch(typeof item === 'string' ? item : item.label)
-              }}
-            />
-          </div>
-        )
+        const RecentSearchesExample = () => {
+          const [search, setSearch] = useState('')
+          const [recent, setRecent] = useState(['coffee', 'tea', 'chocolate'])
+          
+          return (
+            <div>
+              <Stack direction="column" gap="sm">
+                <Typography variant="body">
+                  Clear the search to see recent searches
+                </Typography>
+              </Stack>
+              <SearchField
+                value={search}
+                onChange={setSearch}
+                recentSearches={recent}
+                showRecentSearches={true}
+                onClearRecentSearches={() => setRecent([])}
+                onSuggestionSelect={(item) => {
+                  setSearch(typeof item === 'string' ? item : item.label)
+                }}
+              />
+            </div>
+          )
+        }
+        return <RecentSearchesExample />
       }
     },
     {
@@ -236,43 +242,46 @@ useEffect(() => {
   debounceMs={300}
 />`,
       renderComponent: () => {
-        const [search, setSearch] = useState('')
-        const [loading, setLoading] = useState(false)
-        const [suggestions, setSuggestions] = useState<Suggestion[]>([])
-        
-        // Simulate API call
-        const handleSearch = (value: string) => {
-          setSearch(value)
-          if (value.length >= 2) {
-            setLoading(true)
-            setTimeout(() => {
-              setSuggestions([
-                { id: '1', label: `Result for "${value}"`, description: 'Search result' }
-              ])
-              setLoading(false)
-            }, 500)
-          } else {
-            setSuggestions([])
+        const DebouncedSearchExample = () => {
+          const [search, setSearch] = useState('')
+          const [loading, setLoading] = useState(false)
+          const [suggestions, setSuggestions] = useState<Suggestion[]>([])
+          
+          // Simulate API call
+          const handleSearch = (value: string) => {
+            setSearch(value)
+            if (value.length >= 2) {
+              setLoading(true)
+              setTimeout(() => {
+                setSuggestions([
+                  { id: '1', label: `Result for "${value}"`, description: 'Search result' }
+                ])
+                setLoading(false)
+              }, 500)
+            } else {
+              setSuggestions([])
+            }
           }
-        }
-        
-        return (
-          <div>
-            <div style={{ marginBottom: '8px' }}>
-              <Typography variant="caption" color="subdued">
-                Type at least 2 characters to see results
-              </Typography>
+          
+          return (
+            <div>
+              <div style={{ marginBottom: '8px' }}>
+                <Typography variant="caption" color="subdued">
+                  Type at least 2 characters to see results
+                </Typography>
+              </div>
+              <SearchField
+                value={search}
+                onChange={handleSearch}
+                suggestions={suggestions}
+                loading={loading}
+                debounceMs={300}
+                placeholder="Search products..."
+              />
             </div>
-            <SearchField
-              value={search}
-              onChange={handleSearch}
-              suggestions={suggestions}
-              loading={loading}
-              debounceMs={300}
-              placeholder="Search products..."
-            />
-          </div>
-        )
+          )
+        }
+        return <DebouncedSearchExample />
       }
     },
     {
@@ -293,33 +302,36 @@ useEffect(() => {
 // - Enter: Select highlighted suggestion
 // - Escape: Close suggestions dropdown`,
       renderComponent: () => {
-        const [search, setSearch] = useState('')
-        const fruits: Suggestion[] = [
-          { id: '1', label: 'Apple', description: 'Use arrows to navigate' },
-          { id: '2', label: 'Banana', description: 'Press Enter to select' },
-          { id: '3', label: 'Cherry', description: 'Press Escape to close' },
-          { id: '4', label: 'Date', description: 'Fully accessible' }
-        ]
-        
-        return (
-          <div>
-            <div style={{ marginBottom: '8px' }}>
-              <Typography variant="caption" color="subdued">
-                Focus and use arrow keys, Enter, or Escape
-              </Typography>
+        const KeyboardNavigationExample = () => {
+          const [search, setSearch] = useState('')
+          const fruits: Suggestion[] = [
+            { id: '1', label: 'Apple', description: 'Use arrows to navigate' },
+            { id: '2', label: 'Banana', description: 'Press Enter to select' },
+            { id: '3', label: 'Cherry', description: 'Press Escape to close' },
+            { id: '4', label: 'Date', description: 'Fully accessible' }
+          ]
+          
+          return (
+            <div>
+              <div style={{ marginBottom: '8px' }}>
+                <Typography variant="caption" color="subdued">
+                  Focus and use arrow keys, Enter, or Escape
+                </Typography>
+              </div>
+              <SearchField
+                value={search}
+                onChange={setSearch}
+                suggestions={fruits}
+                onSuggestionSelect={(item) => {
+                  if (typeof item !== 'string') {
+                    setSearch(item.label)
+                  }
+                }}
+              />
             </div>
-            <SearchField
-              value={search}
-              onChange={setSearch}
-              suggestions={fruits}
-              onSuggestionSelect={(item) => {
-                if (typeof item !== 'string') {
-                  setSearch(item.label)
-                }
-              }}
-            />
-          </div>
-        )
+          )
+        }
+        return <KeyboardNavigationExample />
       }
     },
     {
@@ -344,10 +356,11 @@ useEffect(() => {
     notes: [
       'Implements WAI-ARIA combobox pattern with role="combobox"',
       'Suggestions listbox has role="listbox" with individual role="option" items',
+      'Suggestion items rendered using ListItem component with role="option" for consistent accessibility',
       'Uses aria-activedescendant to announce highlighted suggestion',
       'aria-expanded indicates when suggestions dropdown is open',
       'aria-autocomplete="list" indicates autocomplete behavior',
-      'Clear button has aria-label="Clear search" for screen readers',
+      'Clear button uses IconButton component with aria-label="Clear search" for screen readers',
       'Loading indicator announced with aria-label="Loading"',
       'Full keyboard navigation with arrow keys, Enter, and Escape',
       'Focus remains on input during keyboard navigation (aria-activedescendant pattern)',
@@ -396,11 +409,8 @@ useEffect(() => {
       },
       {
         name: 'Clear Button',
-        description: 'Close icon button to clear search value',
-        tokens: [
-          'semantic.color.icon.subdued',
-          'base.border.radius.2'
-        ]
+        description: 'IconButton component with "naked" variant to clear search value',
+        tokens: []
       },
       {
         name: 'Suggestions Listbox',
@@ -414,12 +424,8 @@ useEffect(() => {
       },
       {
         name: 'Suggestion Item',
-        description: 'Individual option with label, optional description, and hover state',
-        tokens: [
-          'semantic.color.background.interactive-subtle',
-          'semantic.typography.body',
-          'semantic.typography.caption'
-        ]
+        description: 'ListItem component with role="option", spacing="compact", showing primary text and optional secondary description. Includes hover and selected states.',
+        tokens: []
       },
       {
         name: 'Recent Searches Section',

@@ -190,6 +190,41 @@ export const listDocs: ComponentDocumentation = {
       required: false,
       default: 'undefined',
       description: '[ListItem] Content revealed when item is expanded. Rendered with indented padding and subtle background.'
+    },
+    {
+      name: 'role',
+      type: 'string',
+      required: false,
+      default: '"listitem"',
+      description: '[ListItem] Custom ARIA role. Useful for combobox patterns where role="option" is required.'
+    },
+    {
+      name: 'aria-selected',
+      type: 'boolean',
+      required: false,
+      default: 'undefined',
+      description: '[ListItem] ARIA selected state, used with role="option" for combobox/listbox patterns.'
+    },
+    {
+      name: 'id',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: '[ListItem] Custom element ID for ARIA references like aria-activedescendant.'
+    },
+    {
+      name: 'tabIndex',
+      type: 'number',
+      required: false,
+      default: 'undefined',
+      description: '[ListItem] Custom tab index for focus management. Overrides default behavior.'
+    },
+    {
+      name: 'onKeyDown',
+      type: '(e: React.KeyboardEvent) => void',
+      required: false,
+      default: 'undefined',
+      description: '[ListItem] Custom keyboard event handler. When provided, overrides default Enter/Space behavior.'
     }
   ],
   
@@ -551,6 +586,71 @@ return (
           />
         </List>
       )
+    },
+    {
+      name: 'Combobox Pattern',
+      description: 'ListItem can be used for autocomplete/combobox with role="option"',
+      code: `const ComboboxExample = () => {
+  const [selected, setSelected] = React.useState(1)
+  const options = [
+    { id: 1, label: 'Apple', description: 'Fresh fruit' },
+    { id: 2, label: 'Banana', description: 'Rich in potassium' },
+    { id: 3, label: 'Orange', description: 'Vitamin C' }
+  ]
+  
+  return (
+    <div style={{ position: 'relative' }}>
+      <ul role="listbox" style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {options.map((opt) => (
+          <ListItem
+            key={opt.id}
+            id={\`option-\${opt.id}\`}
+            role="option"
+            aria-selected={selected === opt.id}
+            primary={opt.label}
+            secondary={opt.description}
+            interactive
+            selected={selected === opt.id}
+            spacing="compact"
+            onClick={() => setSelected(opt.id)}
+          />
+        ))}
+      </ul>
+    </div>
+  )
+}`,
+      renderComponent: () => {
+        const ComboboxExample = () => {
+          const [selected, setSelected] = React.useState(1)
+          const options = [
+            { id: 1, label: 'Apple', description: 'Fresh fruit' },
+            { id: 2, label: 'Banana', description: 'Rich in potassium' },
+            { id: 3, label: 'Orange', description: 'Vitamin C' }
+          ]
+          
+          return (
+            <div style={{ position: 'relative' }}>
+              <ul role="listbox" style={{ listStyle: 'none', padding: 0, margin: 0, border: '1px solid #dee2e6', borderRadius: '4px' }}>
+                {options.map((opt) => (
+                  <ListItem
+                    key={opt.id}
+                    id={`option-${opt.id}`}
+                    role="option"
+                    aria-selected={selected === opt.id}
+                    primary={opt.label}
+                    secondary={opt.description}
+                    interactive
+                    selected={selected === opt.id}
+                    spacing="compact"
+                    onClick={() => setSelected(opt.id)}
+                  />
+                ))}
+              </ul>
+            </div>
+          )
+        }
+        return <ComboboxExample />
+      }
     }
   ],
   
@@ -559,16 +659,18 @@ return (
       'All interactive and expandable items meet minimum 44px touch target size (WCAG 2.2 AA)',
       'Proper semantic HTML with role="list" and role="listitem"',
       'Interactive items use role="button" with proper ARIA attributes',
+      'Supports custom roles like role="option" for combobox/listbox patterns with aria-selected',
       'Expandable items include aria-expanded to communicate state',
       'Selected items use aria-current for proper state indication on button role',
       'Disabled items include aria-disabled attribute',
       'Full keyboard support: Tab for focus, Enter/Space for activation',
+      'Custom keyboard handlers supported via onKeyDown prop for specialized interaction patterns',
       'Chevron indicator is decorative only with aria-hidden="true"',
       'Screen readers announce all item content, state, and available actions',
       'Focus indicators visible for keyboard navigation',
       'Color is not the only means of conveying information (icons + text + ARIA)',
     ],
-    screenReader: 'List items are announced as "Button [primary text] [secondary text] [expanded/collapsed if expandable]". Selected state is communicated via aria-current. Disabled state is communicated via aria-disabled.',
+    screenReader: 'List items are announced as "Button [primary text] [secondary text] [expanded/collapsed if expandable]". When using role="option", items are announced as "Option [primary text] [secondary text] [selected/not selected]". Selected state is communicated via aria-current for buttons or aria-selected for options. Disabled state is communicated via aria-disabled.',
   },
   
   anatomy: {

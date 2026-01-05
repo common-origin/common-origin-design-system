@@ -53,39 +53,6 @@ export interface AccountCardProps {
   'data-testid'?: string
 }
 
-interface StyledCardProps {
-  $clickable?: boolean
-}
-
-const StyledCard = styled.div<StyledCardProps>`
-  min-width: 300px;
-  min-height: 200px;
-  padding: ${tokens.semantic.spacing.layout.lg};
-  background-color: ${tokens.semantic.color.background.surface};
-  border: 1px solid ${tokens.semantic.color.border.default};
-  border-radius: ${tokens.base.border.radius[5]};
-  box-shadow: ${tokens.base.shadow[3]};
-  transition: all 0.2s ease;
-  
-  ${({ $clickable }) => $clickable && `
-    cursor: pointer;
-    
-    &:hover {
-      box-shadow: ${tokens.base.shadow[4]};
-      transform: translateY(-2px);
-    }
-    
-    &:active {
-      transform: translateY(0);
-    }
-    
-    &:focus-visible {
-      outline: 2px solid ${tokens.semantic.color.border.interactive};
-      outline-offset: 2px;
-    }
-  `}
-`
-
 const StyledHeader = styled.div`
   display: flex;
   align-items: flex-start;
@@ -99,7 +66,7 @@ const StyledIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${tokens.semantic.color.background.interactive};
+  background-color: ${tokens.semantic.color.background.inverse};
   border-radius: ${tokens.base.border.radius[3]};
   color: ${tokens.semantic.color.icon.interactive};
 `
@@ -191,8 +158,18 @@ export const AccountCard: React.FC<AccountCardProps> = ({
   }
   
   return (
-    <StyledCard
-      $clickable={isClickable}
+    <Box
+      minWidth="300px"
+      minHeight="200px"
+      p="lg"
+      bg="surface"
+      border="default"
+      borderRadius="5"
+      shadow="3"
+      transition="all 0.2s ease"
+      cursor={isClickable ? 'pointer' : 'default'}
+      hoverShadow={isClickable ? '4' : undefined}
+      hoverTransform={isClickable ? 'translateY(-2px)' : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       tabIndex={isClickable ? 0 : undefined}
@@ -207,6 +184,7 @@ export const AccountCard: React.FC<AccountCardProps> = ({
             <StyledIconWrapper aria-label={`${accountType} account`} role="img">
               <Icon 
                 name={accountIcon} 
+                iconColor="inverse"
                 size="md" 
               />
             </StyledIconWrapper>
@@ -283,6 +261,6 @@ export const AccountCard: React.FC<AccountCardProps> = ({
         )}
         </Stack>
       </StyledStackWrapper>
-    </StyledCard>
+    </Box>
   )
 }

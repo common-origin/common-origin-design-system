@@ -88,6 +88,32 @@ export interface ListItemProps {
    * Test identifier for automated testing
    */
   'data-testid'?: string
+  
+  /**
+   * Custom ARIA role (e.g., 'option' for combobox)
+   * @default 'listitem'
+   */
+  role?: string
+  
+  /**
+   * ARIA selected state (for role="option")
+   */
+  'aria-selected'?: boolean
+  
+  /**
+   * Custom ID for ARIA references
+   */
+  id?: string
+  
+  /**
+   * Custom tabIndex for focus management
+   */
+  tabIndex?: number
+  
+  /**
+   * Keyboard event handler
+   */
+  onKeyDown?: (e: React.KeyboardEvent) => void
 }
 
 const StyledListItem = styled.li.withConfig({
@@ -248,10 +274,15 @@ export const ListItem = ({
   children,
   className,
   'data-testid': dataTestId,
+  role: customRole,
+  'aria-selected': ariaSelected,
+  id,
+  tabIndex: customTabIndex,
+  onKeyDown: customOnKeyDown,
   ...props
 }: ListItemProps) => {
-  const isInteractive = interactive || expandable
-  const role = isInteractive ? 'button' : undefined
+  const isInteractive = interactive || expandable || customRole === 'option'
+  const contentRole = customRole === 'option' ? undefined : (isInteractive ? 'button' : undefined)
   const ariaExpanded = expandable ? expanded : undefined
   const ariaDisabled = disabled ? true : undefined
   const ariaCurrent = selected ? 'true' : undefined
@@ -267,6 +298,11 @@ export const ListItem = ({
   }
   
   const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (customOnKeyDown) {
+      customOnKeyDown(event)
+      return
+    }
+    
     if (disabled) return
     
     if (event.key === 'Enter' || event.key === ' ') {
@@ -283,7 +319,9 @@ export const ListItem = ({
       $spacing={spacing}
       className={className}
       data-testid={dataTestId}
-      role="listitem"
+      role={customRole || 'listitem'}
+      id={id}
+      aria-selected={ariaSelected}
       {...props}
     >
       <StyledItemContent
@@ -291,11 +329,11 @@ export const ListItem = ({
         $disabled={disabled}
         $selected={selected}
         $spacing={spacing}
-        role={role}
+        role={contentRole}
         aria-expanded={ariaExpanded}
         aria-disabled={ariaDisabled}
         aria-current={ariaCurrent}
-        tabIndex={isInteractive && !disabled ? 0 : undefined}
+        tabIndex={customTabIndex !== undefined ? customTabIndex : (isInteractive && !disabled ? 0 : undefined)}
         onClick={handleClick}
         onKeyDown={handleKeyDown}
       >
