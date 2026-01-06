@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../atoms/Container'
 import { Typography } from '../../atoms/Typography'
+import { Icon } from '../../atoms/Icon'
 import tokens from '@/styles/tokens.json'
 
 interface Breadcrumb {
@@ -33,25 +34,10 @@ const BreadcrumbNavStyled = styled.nav`
 
 const BreadcrumbStyled = styled.li`
   text-transform: uppercase;
-  display: inline-block;
-  margin-right: ${tokens.base?.spacing?.['2'] || '0.5rem'};
+  display: inline-flex;
+  align-items: center;
+  gap: ${tokens.base?.spacing?.['2'] || '0.5rem'};
   padding: ${tokens.base?.spacing?.['2'] || '0.5rem'};
-  position: relative;
-
-  &:not(:last-of-type)::before {
-    content: '';
-    background-image: url('/assets/icons/caret.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: transparent;
-    opacity: 0.5;
-    display: inline-block;
-    width: ${tokens.base?.spacing?.['4'] || '1rem'};
-    height: ${tokens.base?.spacing?.['4'] || '1rem'};
-    right: -${tokens.base?.spacing?.['3'] || '0.75rem'};
-    position: absolute;
-  }
 
   &:last-of-type a {
     text-decoration: none;
@@ -66,9 +52,17 @@ const BreadcrumbStyled = styled.li`
   }
 
   > a {
+    display: inline-flex;
+    align-items: center;
     text-decoration: underline;
     color: ${tokens.semantic.color.text.default};
   }
+`
+
+const BreadcrumbSeparator = styled.span`
+  display: inline-flex;
+  align-items: center;
+  opacity: 0.5;
 `
 
 const isInternalUrl = (url: string) => {
@@ -84,25 +78,32 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       <BreadcrumbNavStyled aria-label="breadcrumb">
         <ol>
           {breadcrumbs.map((breadcrumb, index) => (
-            <BreadcrumbStyled key={index}>
-              {index === breadcrumbs.length - 1 ? (
-                <Typography variant="caption">{breadcrumb.label}</Typography>
-              ) : LinkComponent && isInternalUrl(breadcrumb.url) ? (
-                <LinkComponent href={breadcrumb.url}>
+            <React.Fragment key={index}>
+              <BreadcrumbStyled>
+                {index === breadcrumbs.length - 1 ? (
                   <Typography variant="caption">{breadcrumb.label}</Typography>
-                </LinkComponent>
-              ) : (
-                <a 
-                  href={breadcrumb.url} 
-                  {...(!isInternalUrl(breadcrumb.url) && { 
-                    target: "_blank", 
-                    rel: "noopener noreferrer" 
-                  })}
-                >
-                  <Typography variant="caption">{breadcrumb.label}</Typography>
-                </a>
+                ) : LinkComponent && isInternalUrl(breadcrumb.url) ? (
+                  <LinkComponent href={breadcrumb.url}>
+                    <Typography variant="caption">{breadcrumb.label}</Typography>
+                  </LinkComponent>
+                ) : (
+                  <a 
+                    href={breadcrumb.url} 
+                    {...(!isInternalUrl(breadcrumb.url) && { 
+                      target: "_blank", 
+                      rel: "noopener noreferrer" 
+                    })}
+                  >
+                    <Typography variant="caption">{breadcrumb.label}</Typography>
+                  </a>
+                )}
+              </BreadcrumbStyled>
+              {index < breadcrumbs.length - 1 && (
+                <BreadcrumbSeparator aria-hidden="true">
+                  <Icon name="arrowRight" size="xs" iconColor="subdued" />
+                </BreadcrumbSeparator>
               )}
-            </BreadcrumbStyled>
+            </React.Fragment>
           ))}
         </ol>
       </BreadcrumbNavStyled>

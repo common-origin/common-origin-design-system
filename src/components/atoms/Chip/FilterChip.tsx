@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '../Icon'
 import { BaseChipProps } from './shared/types'
-import { StyledChipWrapper, IconContainer, CloseButton } from './shared/ChipBase'
+import { StyledChip, IconContainer, CloseButton } from './shared/ChipBase'
 
 export interface FilterChipProps extends BaseChipProps {
   /** Whether the filter is in selected/applied state */
@@ -68,7 +68,7 @@ export const FilterChip: React.FC<FilterChipProps> = ({
   const closeButtonLabel = typeof children === 'string' ? `Remove ${children}` : 'Remove filter'
   
   return (
-    <StyledChipWrapper
+    <StyledChip
       $variant="subtle"
       $size={size}
       $disabled={disabled || undefined}
@@ -106,6 +106,6 @@ export const FilterChip: React.FC<FilterChipProps> = ({
           <Icon name="close" size="sm" />
         </CloseButton>
       )}
-    </StyledChipWrapper>
+    </StyledChip>
   )
 }

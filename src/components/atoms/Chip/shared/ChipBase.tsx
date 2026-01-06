@@ -1,13 +1,12 @@
-import React from 'react'
 import styled from 'styled-components'
 import tokens from '../../../../styles/tokens.json'
 import { InternalStyledProps } from './types'
-import { getVariantStylesAsObject, getSizeStylesAsObject, chipTokens } from './utils'
+import { getVariantStyles, getSizeStyles, chipTokens } from './utils'
 
-// Base styled component using CSS variables to avoid prop leaking
-export const BaseChipStyled = styled.span.withConfig({
+// Base styled component using direct prop interpolation like Button
+export const StyledChip = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})`
+})<InternalStyledProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -17,22 +16,19 @@ export const BaseChipStyled = styled.span.withConfig({
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  transition: width ${tokens.semantic.motion.interactive};
+  transition: width ${tokens.semantic.motion.interactive}, background-color ${tokens.semantic.motion.hover};
+  cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
+  opacity: ${props => props.$disabled ? '0.6' : '1'};
   
-  /* Use CSS custom properties set by wrapper */
-  background-color: var(--chip-bg-color);
-  color: var(--chip-text-color);
-  font: var(--chip-font);
-  padding: var(--chip-padding);
-  opacity: var(--chip-opacity, 1);
-  cursor: var(--chip-cursor, default);
+  ${getVariantStyles}
+  ${getSizeStyles}
   
   &:hover {
-    opacity: var(--chip-hover-opacity, var(--chip-opacity, 1));
+    opacity: ${props => props.$disabled ? '0.6' : (props.$clickable ? '0.8' : '1')};
   }
   
   &:active {
-    opacity: var(--chip-active-opacity, var(--chip-opacity, 1));
+    opacity: ${props => props.$disabled ? '0.6' : (props.$clickable ? '0.9' : '1')};
   }
   
   &:focus-visible {
@@ -78,40 +74,3 @@ export const CloseButton = styled.button.withConfig({
     border-radius: 2px;
   }
 `
-
-// Wrapper component that applies styles via CSS custom properties
-export const StyledChipWrapper: React.FC<React.PropsWithChildren<InternalStyledProps & React.HTMLAttributes<HTMLSpanElement>>> = ({
-  $variant,
-  $size,
-  $disabled,
-  $clickable,
-  $selected,
-  children,
-  style,
-  ...htmlProps
-}) => {
-  // Get styles for variant and size
-  const variantStyles = getVariantStylesAsObject($variant, $selected)
-  const sizeStyles = getSizeStylesAsObject($size)
-  
-  // Create CSS custom properties object
-  const cssProps = {
-    '--chip-bg-color': variantStyles.backgroundColor,
-    '--chip-text-color': variantStyles.color,
-    '--chip-font': sizeStyles.font,
-    '--chip-padding': sizeStyles.padding,
-    '--chip-opacity': $disabled ? '0.6' : '1',
-    '--chip-cursor': $disabled ? 'not-allowed' : ($clickable ? 'pointer' : 'default'),
-    '--chip-hover-opacity': $disabled ? '0.6' : ($clickable ? '0.8' : '1'),
-    '--chip-active-opacity': $disabled ? '0.6' : ($clickable ? '0.9' : '1')
-  }
-  
-  return (
-    <BaseChipStyled
-      style={{ ...cssProps, ...style }}
-      {...htmlProps}
-    >
-      {children}
-    </BaseChipStyled>
-  )
-}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Icon } from '../Icon'
 import { BaseChipProps } from './shared/types'
-import { StyledChipWrapper, IconContainer } from './shared/ChipBase'
+import { StyledChip, IconContainer } from './shared/ChipBase'
 
 export interface BooleanChipProps extends BaseChipProps {
   /** Whether the chip is in selected state */
@@ -50,7 +50,7 @@ export const BooleanChip: React.FC<BooleanChipProps> = ({
   }
   
   return (
-    <StyledChipWrapper
+    <StyledChip
       $variant="subtle"
       $size={size}
       $disabled={disabled || undefined}
@@ -75,6 +75,6 @@ export const BooleanChip: React.FC<BooleanChipProps> = ({
       )}
       
       {children}
-    </StyledChipWrapper>
+    </StyledChip>
   )
 }

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useId } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
@@ -167,8 +167,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const [focusedIndex, setFocusedIndex] = useState(-1)
   const dropdownRef = useRef<HTMLDivElement>(null)
   
-  // Generate unique ID for accessibility
-  const dropdownId = useRef(`dropdown-${Math.random().toString(36).substr(2, 9)}`).current
+  // Generate unique ID for accessibility (SSR-safe)
+  const dropdownId = useId()
   
   const selectedOption = options.find(option => option.id === value)
   

@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import {
   Box,
   Breadcrumbs,
@@ -33,7 +33,6 @@ const Sidebar = styled.nav`
   border-right: ${border.default};
   position: sticky;
   top: 0;
-  margin-top: ${spacing.layout['xs']};
   height: 100vh;
   overflow-y: auto;
   padding: ${spacing.layout['8xl']} 0;
@@ -130,9 +129,14 @@ const TokenChip = styled(Chip)`
 
 const componentsData: ComponentData[] = staticComponentsData
 export default function Components() {
-  const [activeComponent, setActiveComponent] = useState('avatar')
+  // Sort components and default to the first one alphabetically
+  const sortedComponents = useMemo(
+    () => componentsData.sort((a, b) => a.name.localeCompare(b.name)),
+    []
+  )
+  const [activeComponent, setActiveComponent] = useState(sortedComponents[0]?.id || 'alert')
   
-  const activeComponentData = componentsData.find(comp => comp.id === activeComponent)
+  const activeComponentData = sortedComponents.find(comp => comp.id === activeComponent)
 
   const handleComponentClick = (componentId: string) => {
     setActiveComponent(componentId)
@@ -307,7 +311,7 @@ export default function Components() {
           <Container>
             <MobileNavigation>
               <Dropdown 
-                options={componentsData.map(comp => ({ id: comp.id, label: comp.name }))}
+                options={sortedComponents.map(comp => ({ id: comp.id, label: comp.name }))}
                 value={activeComponent}
                 onChange={handleComponentClick}
                 placeholder="Select a component"
@@ -318,7 +322,7 @@ export default function Components() {
               <Sidebar>
                 <Box px="lg">
                   <Stack direction="column" gap="sm">
-                    {componentsData.sort((a, b) => a.name.localeCompare(b.name)).map((comp) => (
+                    {sortedComponents.map((comp) => (
                       <Button
                         key={comp.id}
                         variant={activeComponent === comp.id ? 'primary' : 'secondary'}

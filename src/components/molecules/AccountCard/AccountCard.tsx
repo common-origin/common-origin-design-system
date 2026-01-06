@@ -188,7 +188,7 @@ export const AccountCard: React.FC<AccountCardProps> = ({
                 size="md" 
               />
             </StyledIconWrapper>
-            <Stack direction="column" gap="xs">
+            <Stack direction="column" gap="none">
               <Typography variant="h4">
                 {accountName}
               </Typography>

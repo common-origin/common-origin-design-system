@@ -3,55 +3,63 @@ import { ChipVariant, BaseChipProps } from './types'
 
 const { component: { chip } } = tokens
 
-// Helper function to get variant styles as objects for CSS custom properties
-export const getVariantStylesAsObject = (variant: ChipVariant, selected?: boolean) => {
+interface StyledChipProps {
+  $variant: ChipVariant
+  $size: BaseChipProps['size']
+  $disabled?: boolean
+  $clickable?: boolean
+  $selected?: boolean
+}
+
+// Helper function to get variant styles matching Button's approach
+export const getVariantStyles = ({ $variant, $selected }: StyledChipProps) => {
   // Boolean chips with selected state get special background
-  if (selected) {
-    return {
-      backgroundColor: tokens.semantic.color.background['interactive-subtle'],
-      color: chip.default.textColor
-    }
+  if ($selected) {
+    return `
+      background-color: ${tokens.semantic.color.background['interactive-subtle']};
+      color: ${chip.default.textColor};
+    `
   }
   
-  switch (variant) {
+  switch ($variant) {
     case 'emphasis':
-      return {
-        backgroundColor: chip.variants.emphasis.backgroundColor,
-        color: chip.variants.emphasis.textColor
-      }
+      return `
+        background-color: ${chip.variants.emphasis.backgroundColor};
+        color: ${chip.variants.emphasis.textColor};
+      `
     case 'subtle':
-      return {
-        backgroundColor: chip.variants.subtle.backgroundColor,
-        color: chip.variants.subtle.textColor
-      }
+      return `
+        background-color: ${chip.variants.subtle.backgroundColor};
+        color: ${chip.variants.subtle.textColor};
+      `
     case 'interactive':
-      return {
-        backgroundColor: chip.variants.interactive.backgroundColor,
-        color: chip.variants.interactive.textColor
-      }
+      return `
+        background-color: ${chip.variants.interactive.backgroundColor};
+        color: ${chip.variants.interactive.textColor};
+      `
     case 'default':
     default:
-      return {
-        backgroundColor: chip.default.backgroundColor,
-        color: chip.default.textColor
-      }
+      return `
+        background-color: ${chip.default.backgroundColor};
+        color: ${chip.default.textColor};
+      `
   }
 }
 
-// Helper function to get size styles as objects for CSS custom properties
-export const getSizeStylesAsObject = (size: BaseChipProps['size']) => {
-  switch (size) {
+// Helper function to get size styles matching Button's approach
+export const getSizeStyles = ({ $size }: StyledChipProps) => {
+  switch ($size) {
     case 'small':
-      return {
-        font: chip.sizes.small.font,
-        padding: chip.sizes.small.padding
-      }
+      return `
+        font: ${chip.sizes.small.font};
+        padding: ${chip.sizes.small.padding};
+      `
     case 'medium':
     default:
-      return {
-        font: chip.sizes.medium.font,
-        padding: chip.sizes.medium.padding
-      }
+      return `
+        font: ${chip.sizes.medium.font};
+        padding: ${chip.sizes.medium.padding};
+      `
   }
 }
 

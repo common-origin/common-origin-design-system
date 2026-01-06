@@ -1,6 +1,6 @@
 import React from 'react'
 import { BaseChipProps, ChipVariant, LegacyVariant } from './shared/types'
-import { StyledChipWrapper } from './shared/ChipBase'
+import { StyledChip } from './shared/ChipBase'
 
 export interface ChipProps extends BaseChipProps {
   /** Visual style variant */
@@ -65,7 +65,7 @@ export const Chip: React.FC<ChipProps> = ({
   }
   
   return (
-    <StyledChipWrapper
+    <StyledChip
       $variant={normalizedVariant}
       $size={size}
       $disabled={disabled || undefined}
@@ -81,7 +81,7 @@ export const Chip: React.FC<ChipProps> = ({
       {...props}
     >
       {content}
-    </StyledChipWrapper>
+    </StyledChip>
   )
 }
 

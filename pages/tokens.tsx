@@ -29,7 +29,6 @@ const Sidebar = styled.nav`
   border-right: ${border.default};
   position: sticky;
   top: 0;
-  margin-top: ${spacing.layout['xs']};
   height: 100vh;
   overflow-y: auto;
   padding: ${spacing.layout['8xl']} 0;

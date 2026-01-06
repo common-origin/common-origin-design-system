@@ -6,6 +6,7 @@ import { alertDocs } from '@/components/molecules/Alert/Alert.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
+import { breadcrumbsDocs } from '@/components/molecules/Breadcrumbs/Breadcrumbs.docs'
 import { buttonDocs } from '@/components/atoms/Button/Button.docs'
 import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
 import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
@@ -106,6 +107,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),
+  convertDocumentationToLegacyFormat(breadcrumbsDocs),
   convertDocumentationToLegacyFormat(buttonDocs),
   convertDocumentationToLegacyFormat(cardLargeDocs),
   convertDocumentationToLegacyFormat(cardSmallDocs),
