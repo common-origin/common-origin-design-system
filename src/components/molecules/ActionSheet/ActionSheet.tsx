@@ -1,21 +1,27 @@
-import { 
-  useState, 
+import React, { 
   useEffect, 
   useRef, 
-  ReactNode, 
-  KeyboardEvent,
-  MouseEvent,
-  ButtonHTMLAttributes
+  MouseEvent
 } from 'react'
 import { createPortal } from 'react-dom'
 import styled, { keyframes } from 'styled-components'
+import { Divider } from '../../atoms/Divider/Divider'
 import { Icon } from '../../atoms/Icon/Icon'
 import { type IconName } from '../../../types/icons'
 import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
+import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { 
+  semantic: { 
+    color, 
+    border, 
+    spacing: { layout }, 
+    motion,
+    elevation
+  }
+} = tokens
 
 /**
  * Action item for the action sheet
@@ -138,10 +144,10 @@ const StyledActionSheet = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${semantic.color.background.subtle};
-  border-top-left-radius: ${base.border.radius[4]};
-  border-top-right-radius: ${base.border.radius[4]};
-  box-shadow: ${base.shadow[4]};
+  background-color: ${color.background.subtle};
+  border-top-left-radius: ${border.radius.lg};
+  border-top-right-radius: ${border.radius.lg};
+  box-shadow: ${elevation.overlay};
   max-height: 90vh;
   overflow-y: auto;
   z-index: 10000;
@@ -152,8 +158,8 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: ${base.spacing[4]} ${base.spacing[4]} ${base.spacing[3]};
-  border-bottom: ${base.border.width[1]} solid ${semantic.color.border.default};
+  padding: ${layout.lg} ${layout.lg} ${layout.md};
+  border-bottom: ${border.default};
 `
 
 const StyledHeaderContent = styled.div`
@@ -164,75 +170,30 @@ const StyledCloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${base.spacing[2]};
+  padding: ${layout.sm};
   border: none;
   background: transparent;
-  color: ${semantic.color.icon.subdued};
+  color: ${color.icon.subdued};
   cursor: pointer;
-  border-radius: ${base.border.radius[2]};
-  transition: ${semantic.motion.hover};
-  margin-left: ${base.spacing[2]};
+  border-radius: ${border.radius.sm};
+  transition: ${motion.hover};
+  margin-left: ${layout.sm};
   
   &:hover {
-    color: ${semantic.color.icon.default};
-    background-color: ${semantic.color.background.surface};
+    color: ${color.icon.default};
+    background-color: ${color.background.surface};
   }
   
   &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.strong};
-    outline-offset: ${base.spacing[1]};
+    outline: ${border.focus};
+    outline-offset: ${layout.xs};
   }
 `
 
-const StyledActionsList = styled.div`
-  padding: ${base.spacing[2]} 0;
-`
-
-interface StyledActionButtonProps {
-  $destructive: boolean
-  $disabled: boolean
-}
-
-const StyledActionButton = styled.button<StyledActionButtonProps>`
-  display: flex;
-  align-items: center;
-  gap: ${base.spacing[3]};
-  width: 100%;
-  padding: ${base.spacing[3]} ${base.spacing[4]};
-  border: none;
-  background: transparent;
-  font: ${semantic.typography.body};
-  text-align: left;
-  cursor: pointer;
-  transition: ${semantic.motion.hover};
-  
-  ${props => props.$destructive && `
-    color: ${semantic.color.text.error};
-  `}
-  
-  ${props => props.$disabled && `
-    color: ${semantic.color.text.disabled};
-    cursor: not-allowed;
-  `}
-  
-  &:hover:not(:disabled) {
-    background-color: ${semantic.color.background['interactive-subtle']};
-  }
-  
-  &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.strong};
-    outline-offset: -${base.spacing[1]};
-  }
-  
-  &:active:not(:disabled) {
-    background-color: ${semantic.color.background.surface};
-  }
-`
-
-const StyledDivider = styled.div`
-  height: ${base.border.width[1]};
-  background-color: ${semantic.color.border.default};
-  margin: ${base.spacing[2]} ${base.spacing[4]};
+const StyledActionsList = styled.ul`
+  padding: ${layout.sm} ${layout.md};
+  margin: 0;
+  list-style: none;
 `
 
 /**
@@ -320,10 +281,12 @@ export const ActionSheet = ({
     
     document.addEventListener('keydown', handleKeyDown)
     
-    // Focus first focusable element
+    // Focus first focusable element (button or element with role="button")
     requestAnimationFrame(() => {
-      const firstButton = sheetRef.current?.querySelector<HTMLElement>('button:not(:disabled)')
-      firstButton?.focus()
+      const firstFocusable = sheetRef.current?.querySelector<HTMLElement>(
+        'button:not(:disabled), [role="button"][tabindex]:not([aria-disabled="true"])'
+      )
+      firstFocusable?.focus()
     })
     
     // Prevent body scroll
@@ -405,19 +368,13 @@ export const ActionSheet = ({
         
         <StyledActionsList>
           {actions.map((action, index) => (
-            <div key={action.id}>
+            <React.Fragment key={action.id}>
               {hasDestructive && index === destructiveIndex && index > 0 && (
-                <StyledDivider />
+                <Divider size="small" />
               )}
-              <StyledActionButton
-                type="button"
-                onClick={() => handleActionClick(action)}
-                disabled={action.disabled}
-                $destructive={action.destructive || false}
-                $disabled={action.disabled || false}
-                aria-label={action.label}
-              >
-                {action.icon && (
+              <ListItem
+                primary={action.label}
+                icon={action.icon && (
                   <Icon
                     name={action.icon}
                     size="md"
@@ -430,9 +387,13 @@ export const ActionSheet = ({
                     }
                   />
                 )}
-                <Typography variant="body">{action.label}</Typography>
-              </StyledActionButton>
-            </div>
+                interactive
+                onClick={() => handleActionClick(action)}
+                disabled={action.disabled}
+                destructive={action.destructive}
+                spacing="compact"
+              />
+            </React.Fragment>
           ))}
         </StyledActionsList>
       </StyledActionSheet>

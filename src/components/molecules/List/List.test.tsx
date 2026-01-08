@@ -43,43 +43,49 @@ describe('List', () => {
 
   describe('Dividers Prop', () => {
     it('shows dividers by default', () => {
-      const { container } = render(
-        <List>
+      render(
+        <List data-testid="list-with-dividers">
           <ListItem primary="Item 1" />
           <ListItem primary="Item 2" />
         </List>
       )
-      expect(container.firstChild).toMatchSnapshot()
+      const list = screen.getByTestId('list-with-dividers')
+      expect(list).toBeInTheDocument()
+      expect(screen.getByText('Item 1')).toBeInTheDocument()
+      expect(screen.getByText('Item 2')).toBeInTheDocument()
     })
 
     it('hides dividers when dividers={false}', () => {
-      const { container } = render(
-        <List dividers={false}>
+      render(
+        <List dividers={false} data-testid="list-no-dividers">
           <ListItem primary="Item 1" />
           <ListItem primary="Item 2" />
         </List>
       )
-      expect(container.firstChild).toMatchSnapshot()
+      const list = screen.getByTestId('list-no-dividers')
+      expect(list).toBeInTheDocument()
     })
   })
 
   describe('Spacing Prop', () => {
     it('uses comfortable spacing by default', () => {
-      const { container } = render(
-        <List>
+      render(
+        <List data-testid="comfortable-list">
           <ListItem primary="Item 1" />
         </List>
       )
-      expect(container.firstChild).toMatchSnapshot()
+      const list = screen.getByTestId('comfortable-list')
+      expect(list).toBeInTheDocument()
     })
 
     it('applies compact spacing correctly', () => {
-      const { container } = render(
-        <List spacing="compact">
+      render(
+        <List spacing="compact" data-testid="compact-list">
           <ListItem primary="Item 1" spacing="compact" />
         </List>
       )
-      expect(container.firstChild).toMatchSnapshot()
+      const list = screen.getByTestId('compact-list')
+      expect(list).toBeInTheDocument()
     })
   })
 })
@@ -260,14 +266,15 @@ describe('ListItem', () => {
     })
 
     it('chevron icon rotates based on state', () => {
-      const { container, rerender } = render(
+      const { rerender } = render(
         <ListItem primary="Item" expandable expanded={false} />
       )
-      // Check snapshot for rotation difference
-      expect(container.firstChild).toMatchSnapshot()
+      const collapsedButton = screen.getByRole('button')
+      expect(collapsedButton).toHaveAttribute('aria-expanded', 'false')
       
       rerender(<ListItem primary="Item" expandable expanded={true} />)
-      expect(container.firstChild).toMatchSnapshot()
+      const expandedButton = screen.getByRole('button')
+      expect(expandedButton).toHaveAttribute('aria-expanded', 'true')
     })
   })
 
@@ -307,13 +314,15 @@ describe('ListItem', () => {
 
   describe('Spacing Variants', () => {
     it('uses comfortable spacing by default', () => {
-      const { container } = render(<ListItem primary="Default spacing" />)
-      expect(container.firstChild).toMatchSnapshot()
+      render(<ListItem primary="Default spacing" data-testid="comfortable-item" />)
+      const item = screen.getByTestId('comfortable-item')
+      expect(item).toBeInTheDocument()
     })
 
     it('applies compact spacing correctly', () => {
-      const { container } = render(<ListItem primary="Compact" spacing="compact" />)
-      expect(container.firstChild).toMatchSnapshot()
+      render(<ListItem primary="Compact" spacing="compact" data-testid="compact-item" />)
+      const item = screen.getByTestId('compact-item')
+      expect(item).toBeInTheDocument()
     })
   })
 

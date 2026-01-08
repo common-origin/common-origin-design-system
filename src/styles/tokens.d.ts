@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Tue, 06 Jan 2026 11:15:57 GMT
+ * Generated on Thu, 08 Jan 2026 12:45:22 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -449,6 +449,9 @@ export interface TokensComponentButton {
 export interface TokensComponentChipDefault {
 }
 
+export interface TokensComponentChipFocus {
+}
+
 export interface TokensComponentChipVariantsEmphasis {
 }
 
@@ -481,6 +484,7 @@ export interface TokensComponentChipSizes {
 
 export interface TokensComponentChip {
   default: TokensComponentChipDefault;
+  focus: TokensComponentChipFocus;
   variants: TokensComponentChipVariants;
   sizes: TokensComponentChipSizes;
 }
@@ -666,12 +670,34 @@ export interface TokensComponent {
   input: TokensComponentInput;
 }
 
+export interface TokensSemanticElevation {
+  none: string;
+  inset: string;
+  raised: string;
+  floating: string;
+  overlay: string;
+  sticky: string;
+}
+
+export interface TokensSemanticBorderRadius {
+  none: string;
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  '2xl': string;
+  '3xl': string;
+  circle: string;
+}
+
 export interface TokensSemanticBorder {
   default: string;
   subtle: string;
   strong: string;
   focus: string;
   tooltip: string;
+  radius: TokensSemanticBorderRadius;
 }
 
 export interface TokensSemanticSizeIcon {
@@ -878,6 +904,7 @@ export interface TokensSemanticMotion {
 }
 
 export interface TokensSemantic {
+  elevation: TokensSemanticElevation;
   border: TokensSemanticBorder;
   size: TokensSemanticSize;
   spacing: TokensSemanticSpacing;

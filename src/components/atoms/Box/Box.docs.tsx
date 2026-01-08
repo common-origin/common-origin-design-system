@@ -320,25 +320,25 @@ export const boxDocs: ComponentDocumentation = {
       description: 'Using Box for flexible layouts with gap and alignment',
       code: `<Box display="flex" flexDirection="column" gap="md" p="lg" bg="subtle">
   <Typography variant="h3">Flex Column Layout</Typography>
-  <Box display="flex" justifyContent="space-between" alignItems="center" p="sm" bg="default" borderRadius="2">
+  <Box display="flex" justifyContent="space-between" alignItems="center" p="sm" bg="default" borderRadius="sm">
     <Typography>Left content</Typography>
     <Typography>Right content</Typography>
   </Box>
   <Box display="flex" gap="sm">
-    <Box p="sm" bg="emphasis" color="inverse" borderRadius="1" flex="1">Box 1</Box>
-    <Box p="sm" bg="emphasis" color="inverse" borderRadius="1" flex="1">Box 2</Box>
+    <Box p="sm" bg="emphasis" color="inverse" borderRadius="xs" flex="1">Box 1</Box>
+    <Box p="sm" bg="emphasis" color="inverse" borderRadius="xs" flex="1">Box 2</Box>
   </Box>
 </Box>`,
       renderComponent: () => (
-        <Box display="flex" flexDirection="column" gap="md" p="lg" bg="surface" border="subtle" borderRadius="2">
+        <Box display="flex" flexDirection="column" gap="md" p="lg" bg="surface" border="subtle" borderRadius="sm">
           <Typography variant="h3">Flex Column Layout</Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="center" bg="surface" border="strong" p="md" borderRadius="2">
+          <Box display="flex" justifyContent="space-between" alignItems="center" bg="surface" border="strong" p="md" borderRadius="sm">
             <Typography>Left content</Typography>
             <Typography>Right content</Typography>
           </Box>
-          <Box display="flex" gap="sm" bg="surface" border="strong" p="md" borderRadius="2">
-            <Box p="sm" bg="default" border="strong" borderRadius="2" style={{flex: 1}}><Typography>Box 1</Typography></Box>
-            <Box p="sm" bg="default" border="strong" borderRadius="2" style={{flex: 1}}><Typography>Box 2</Typography></Box>
+          <Box display="flex" gap="sm" bg="surface" border="strong" p="md" borderRadius="sm">
+            <Box p="sm" bg="default" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 1</Typography></Box>
+            <Box p="sm" bg="default" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 2</Typography></Box>
           </Box>
         </Box>
       )
@@ -347,19 +347,19 @@ export const boxDocs: ComponentDocumentation = {
       name: 'Spacing System',
       description: 'Demonstrating margin and padding using design tokens',
       code: `<Box>
-  <Box mb="lg" p="md" bg="subtle" borderRadius="2">
+  <Box mb="lg" p="md" bg="subtle" borderRadius="sm">
     <Typography>Medium padding, large bottom margin</Typography>
   </Box>
-  <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="3" maxWidth="400px">
+  <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="md" maxWidth="400px">
     <Typography>Centered with horizontal auto margin, custom padding</Typography>
   </Box>
 </Box>`,
       renderComponent: () => (
         <Box>
-          <Box mb="lg" p="md" bg="subtle" borderRadius="2" border="strong">
+          <Box mb="lg" p="md" bg="subtle" borderRadius="sm" border="strong">
             <Typography>Medium padding, large bottom margin</Typography>
           </Box>
-          <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="3" border="strong" maxWidth="400px">
+          <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="md" border="strong" maxWidth="400px">
             <Typography>Centered with horizontal auto margin, custom padding</Typography>
           </Box>
         </Box>
@@ -369,34 +369,34 @@ export const boxDocs: ComponentDocumentation = {
       name: 'Borders and Colors',
       description: 'Using border and background color tokens',
       code: `<Stack direction="row" gap="md">
-  <Box p="md" border="default" borderRadius="2" bg="default">
+  <Box p="md" border="default" borderRadius="sm" bg="default">
     <Typography>Default border</Typography>
   </Box>
-  <Box p="md" border="strong" borderRadius="3" bg="subtle">
+  <Box p="md" border="strong" borderRadius="md" bg="subtle">
     <Typography>Strong border</Typography>
   </Box>
-  <Box p="md" borderTop="strong" borderRadius="1" bg="emphasis" color="inverse">
+  <Box p="md" borderTop="strong" borderRadius="xs" bg="emphasis" color="inverse">
     <Typography>Top border only</Typography>
   </Box>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="md">
-          <Box p="md" border="default" borderRadius="2" bg="default">
+          <Box p="md" border="default" borderRadius="sm" bg="default">
             <Typography>Default border</Typography>
           </Box>
-          <Box p="md" border="strong" borderRadius="3" bg="subtle">
+          <Box p="md" border="strong" borderRadius="md" bg="subtle">
             <Typography>Strong border</Typography>
           </Box>
-          <Box p="md" borderTop="strong" borderRadius="1" bg="default">
+          <Box p="md" borderTop="strong" borderRadius="xs" bg="default">
             <Typography>Top border only</Typography>
           </Box>
-          <Box p="md" borderRadius="2" bg="interactive">
+          <Box p="md" borderRadius="sm" bg="interactive">
             <Typography color="inverse">Info background</Typography>
           </Box>
-          <Box p="md" borderRadius="2" bg="interactive-subtle">
+          <Box p="md" borderRadius="sm" bg="interactive-subtle">
             <Typography>Info surface background</Typography>
           </Box>
-          <Box p="md" borderRadius="2" bg="inverse">
+          <Box p="md" borderRadius="sm" bg="inverse">
             <Typography color="inverse">Inverse background</Typography>
           </Box>
         </Stack>

@@ -2,6 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
+// Destructure tokens for cleaner access
+const { separator: separatorTokens } = tokens.component
+const { separator: separatorSpacing } = tokens.semantic.spacing
+
 export interface DividerProps {
   /** Variant style of the divider */
   variant?: 'default' | 'strong' | 'minimal'
@@ -43,12 +47,12 @@ const StyledDivider = styled.div.withConfig({
     const borderProperty = $orientation === 'vertical' ? 'border-left' : 'border-top'
     switch ($variant) {
       case 'strong':
-        return `${borderProperty}: ${tokens.component.separator.variants.strong.border};`
+        return `${borderProperty}: ${separatorTokens.variants.strong.border};`
       case 'minimal':
-        return `${borderProperty}: ${tokens.component.separator.variants.minimal.border};`
+        return `${borderProperty}: ${separatorTokens.variants.minimal.border};`
       case 'default':
       default:
-        return `${borderProperty}: ${tokens.component.separator.variants.default.border};`
+        return `${borderProperty}: ${separatorTokens.variants.default.border};`
     }
   }}
   
@@ -56,35 +60,35 @@ const StyledDivider = styled.div.withConfig({
   ${({ $size = 'large', $variant = 'default', $orientation = 'horizontal' }) => {
     if ($variant === 'minimal' && $orientation === 'horizontal') {
       // Minimal variant always uses its predefined spacing for horizontal
-      return `margin: ${tokens.component.separator.variants.minimal.margin};`
+      return `margin: ${separatorTokens.variants.minimal.margin};`
     }
     
     if ($orientation === 'vertical') {
       // Vertical orientation uses horizontal margins (left/right)
       switch ($size) {
         case 'small':
-          return `margin: 0 ${tokens.semantic.spacing.separator.sm};`
+          return `margin: 0 ${separatorSpacing.sm};`
         case 'medium':
-          return `margin: 0 ${tokens.semantic.spacing.separator.md};`
+          return `margin: 0 ${separatorSpacing.md};`
         case 'xlarge':
-          return `margin: 0 ${tokens.semantic.spacing.separator.xl};`
+          return `margin: 0 ${separatorSpacing.xl};`
         case 'large':
         default:
-          return `margin: 0 ${tokens.semantic.spacing.separator.lg};`
+          return `margin: 0 ${separatorSpacing.lg};`
       }
     }
     
     // Horizontal orientation uses vertical margins (top/bottom)
     switch ($size) {
       case 'small':
-        return `margin: ${tokens.component.separator.sizes.small.margin};`
+        return `margin: ${separatorTokens.sizes.small.margin};`
       case 'medium':
-        return `margin: ${tokens.component.separator.sizes.medium.margin};`
+        return `margin: ${separatorTokens.sizes.medium.margin};`
       case 'xlarge':
-        return `margin: ${tokens.component.separator.sizes.xlarge.margin};`
+        return `margin: ${separatorTokens.sizes.xlarge.margin};`
       case 'large':
       default:
-        return `margin: ${tokens.component.separator.sizes.large.margin};`
+        return `margin: ${separatorTokens.sizes.large.margin};`
     }
   }}
 `

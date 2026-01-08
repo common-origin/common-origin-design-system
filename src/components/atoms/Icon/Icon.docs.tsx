@@ -180,74 +180,128 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names',
+      description: 'Complete icon library organized by category with names (36 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="add" />
-    <Typography variant="caption">add</Typography>
-  </Stack>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="close" />
-    <Typography variant="caption">close</Typography>
-  </Stack>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="copy" />
-    <Typography variant="caption">copy</Typography>
-  </Stack>
+  <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
+  <Icon name="check" /> <Icon name="checkRing" /> <Icon name="close" />
+  <Icon name="crossCircle" /> <Icon name="copy" /> <Icon name="edit" />
+  <Icon name="export" /> <Icon name="filter" /> <Icon name="order" />
+  <Icon name="refresh" /> <Icon name="remove" /> <Icon name="search" />
+  <Icon name="trash" />
 </Stack>
 
 {/* Navigation Icons */}
 <Stack direction="row" gap="lg" wrap>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="arrowUp" />
-    <Typography variant="caption">arrowUp</Typography>
-  </Stack>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="arrowDown" />
-    <Typography variant="caption">arrowDown</Typography>
-  </Stack>
-  <Stack direction="column" gap="sm" alignItems="center">
-    <Icon name="back" />
-    <Typography variant="caption">back</Typography>
-  </Stack>
+  <Icon name="arrowDown" /> <Icon name="arrowUp" />
+  <Icon name="arrowLeft" /> <Icon name="arrowRight" />
+  <Icon name="back" /> <Icon name="caret" />
+  <Icon name="caretDown" /> <Icon name="caretUp" />
+  <Icon name="directionRight" />
+</Stack>
+
+{/* Interface Icons */}
+<Stack direction="row" gap="lg" wrap>
+  <Icon name="bell" /> <Icon name="fileDocSearch" /> <Icon name="info" />
+  <Icon name="lamp" /> <Icon name="menu" /> <Icon name="paper" />
+  <Icon name="table" /> <Icon name="view" /> <Icon name="viewHide" />
+</Stack>
+
+{/* Media & Communication */}
+<Stack direction="row" gap="lg" wrap>
+  <Icon name="play" /> <Icon name="pause" /> <Icon name="playBack" />
+  <Icon name="message" /> <Icon name="link" />
+</Stack>
+
+{/* Other Icons */}
+<Stack direction="row" gap="lg" wrap>
+  <Icon name="userBox" /> <Icon name="lineOut" />
+  <Icon name="star" /> <Icon name="starFilled" />
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
           {/* Action Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">ACTION ICONS</Typography>
+            <Typography variant="label" color="subdued">ACTION ICONS (16)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="add" />
                 <Typography variant="caption">add</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="addRing" />
+                <Typography variant="caption">addRing</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="cancel" />
+                <Typography variant="caption">cancel</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="check" />
+                <Typography variant="caption">check</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="checkRing" />
+                <Typography variant="caption">checkRing</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="close" />
                 <Typography variant="caption">close</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="crossCircle" />
+                <Typography variant="caption">crossCircle</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="copy" />
                 <Typography variant="caption">copy</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="menu" />
-                <Typography variant="caption">menu</Typography>
+                <Icon name="edit" />
+                <Typography variant="caption">edit</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="export" />
+                <Typography variant="caption">export</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="filter" />
+                <Typography variant="caption">filter</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="order" />
+                <Typography variant="caption">order</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="refresh" />
+                <Typography variant="caption">refresh</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="remove" />
+                <Typography variant="caption">remove</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="search" />
+                <Typography variant="caption">search</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="trash" />
+                <Typography variant="caption">trash</Typography>
               </Stack>
             </Stack>
           </Stack>
           
           {/* Navigation Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">NAVIGATION ICONS</Typography>
+            <Typography variant="label" color="subdued">NAVIGATION ICONS (9)</Typography>
             <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="arrowUp" />
-                <Typography variant="caption">arrowUp</Typography>
-              </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="arrowDown" />
                 <Typography variant="caption">arrowDown</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="arrowUp" />
+                <Typography variant="caption">arrowUp</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="arrowLeft" />
@@ -265,12 +319,67 @@ export const iconDocs: ComponentDocumentation = {
                 <Icon name="caret" />
                 <Typography variant="caption">caret</Typography>
               </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="caretDown" />
+                <Typography variant="caption">caretDown</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="caretUp" />
+                <Typography variant="caption">caretUp</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="directionRight" />
+                <Typography variant="caption">directionRight</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+          
+          {/* Interface Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">INTERFACE ICONS (9)</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="bell" />
+                <Typography variant="caption">bell</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="fileDocSearch" />
+                <Typography variant="caption">fileDocSearch</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="info" />
+                <Typography variant="caption">info</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="lamp" />
+                <Typography variant="caption">lamp</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="menu" />
+                <Typography variant="caption">menu</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="paper" />
+                <Typography variant="caption">paper</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="table" />
+                <Typography variant="caption">table</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="view" />
+                <Typography variant="caption">view</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="viewHide" />
+                <Typography variant="caption">viewHide</Typography>
+              </Stack>
             </Stack>
           </Stack>
           
           {/* Media & Communication Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION</Typography>
+            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (5)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="play" />
@@ -297,19 +406,23 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Other Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">OTHER ICONS</Typography>
+            <Typography variant="label" color="subdued">OTHER ICONS (4)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="userBox" />
                 <Typography variant="caption">userBox</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="directionRight" />
-                <Typography variant="caption">directionRight</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="lineOut" />
                 <Typography variant="caption">lineOut</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="star" />
+                <Typography variant="caption">star</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="starFilled" />
+                <Typography variant="caption">starFilled</Typography>
               </Stack>
             </Stack>
           </Stack>

@@ -85,14 +85,14 @@ export const accountCardDocs: ComponentDocumentation = {
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.xs',
     'semantic.color.background.surface',
-    'semantic.color.background.interactive',
+    'semantic.color.background.inverse',
     'semantic.color.border.default',
-    'semantic.color.border.interactive',
-    'semantic.border.radius.lg',
     'semantic.border.radius.md',
-    'semantic.shadow.card',
-    'semantic.shadow.card-hover',
     'semantic.color.icon.interactive',
+    'semantic.color.icon.inverse',
+    'semantic.color.text.subdued',
+    'semantic.color.text.success',
+    'semantic.color.text.error',
     'semantic.typography.h4',
     'semantic.typography.caption'
   ],
@@ -326,7 +326,7 @@ export const accountCardDocs: ComponentDocumentation = {
     description: 'Card container with header section, balance display, optional trend, and action buttons',
     diagram: `
 ┌──────────────────────────────────────┐
-│ StyledCard (300x200 min)             │
+│ Box (300x200 min)                    │
 │ ┌──────────────────────────────────┐ │
 │ │ StyledHeader                     │ │
 │ │  ┌────┐  Account Name            │ │
@@ -349,16 +349,12 @@ export const accountCardDocs: ComponentDocumentation = {
     `,
     parts: [
       {
-        name: 'StyledCard',
-        description: 'Root container with min dimensions, padding, elevation shadow, and optional interactive states',
+        name: 'Box (Card Container)',
+        description: 'Root Box component with min dimensions, padding, border, and shadow',
         tokens: [
           'semantic.spacing.layout.lg',
           'semantic.color.background.surface',
-          'semantic.color.border.default',
-          'semantic.color.border.interactive',
-          'semantic.border.radius.lg',
-          'semantic.shadow.card',
-          'semantic.shadow.card-hover'
+          'semantic.color.border.default'
         ]
       },
       {
@@ -368,17 +364,17 @@ export const accountCardDocs: ComponentDocumentation = {
       },
       {
         name: 'StyledIconWrapper',
-        description: 'Icon container with background color, rounded corners, and fixed dimensions (40x40px)',
+        description: 'Icon container with inverse background color, rounded corners, and fixed dimensions (40x40px)',
         tokens: [
-          'semantic.color.background.interactive',
+          'semantic.color.background.inverse',
           'semantic.border.radius.md',
           'semantic.color.icon.interactive'
         ]
       },
       {
         name: 'Account Type Icon',
-        description: 'Medium-sized icon indicating account type (checking, savings, credit, etc.)',
-        tokens: []
+        description: 'Medium-sized icon indicating account type with inverse color',
+        tokens: ['semantic.color.icon.inverse']
       },
       {
         name: 'Account Name',
@@ -388,7 +384,7 @@ export const accountCardDocs: ComponentDocumentation = {
       {
         name: 'Account Number',
         description: 'Optional last 4 digits in subdued caption text with bullet prefix',
-        tokens: ['semantic.typography.caption']
+        tokens: ['semantic.typography.caption', 'semantic.color.text.subdued']
       },
       {
         name: 'StyledBalanceSection',
@@ -398,7 +394,7 @@ export const accountCardDocs: ComponentDocumentation = {
       {
         name: 'Balance Label',
         description: 'Caption text reading "Balance" in subdued color',
-        tokens: ['semantic.typography.caption']
+        tokens: ['semantic.typography.caption', 'semantic.color.text.subdued']
       },
       {
         name: 'MoneyDisplay',
@@ -412,8 +408,8 @@ export const accountCardDocs: ComponentDocumentation = {
       },
       {
         name: 'Trend Icon',
-        description: 'Small directional arrow (up/down/right) with color matching trend direction',
-        tokens: []
+        description: 'Small directional arrow (up/down/right) with semantic color',
+        tokens: ['semantic.color.text.success', 'semantic.color.text.error', 'semantic.color.text.subdued']
       },
       {
         name: 'Trend Value',

@@ -60,19 +60,17 @@ export const tagDocs: ComponentDocumentation = {
     'semantic.color.border.error',
     
     // Typography
-    'base.fontSize.1',
-    'base.fontSize.2',
-    'base.fontSize.3',
-    'base.fontWeight.3',
+    'semantic.typography.button3',
     
     // Spacing
-    'base.spacing.1',
-    'base.spacing.2',
-    'base.spacing.3',
-    'base.spacing.4',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
     
     // Border
-    'base.border.radius.2'
+    'semantic.border.radius.sm',
+    
+    // Size
+    'semantic.size.icon.lg'
   ],
   
   examples: [

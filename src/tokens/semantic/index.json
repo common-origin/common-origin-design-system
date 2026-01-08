@@ -1,5 +1,37 @@
 {
-  "semantic": {    
+  "semantic": {
+    "elevation": {
+      "none": {
+        "value": "{base.shadow.none}",
+        "type": "boxShadow",
+        "description": "No elevation - flat surfaces, default state"
+      },
+      "inset": {
+        "value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "type": "boxShadow",
+        "description": "Sunken/pressed states, input fields, wells"
+      },
+      "raised": {
+        "value": "{base.shadow.2}",
+        "type": "boxShadow",
+        "description": "Subtle lift - cards, buttons with depth"
+      },
+      "floating": {
+        "value": "{base.shadow.4}",
+        "type": "boxShadow",
+        "description": "Moderate lift - tooltips, popovers, dropdowns"
+      },
+      "overlay": {
+        "value": "{base.shadow.5}",
+        "type": "boxShadow",
+        "description": "High lift - modals, dialogs, action sheets"
+      },
+      "sticky": {
+        "value": "{base.shadow.3}",
+        "type": "boxShadow",
+        "description": "Fixed headers, sticky navigation, bottom bars"
+      }
+    },
 		"border": {
 			"default": {
 				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
@@ -20,6 +52,53 @@
 			"tooltip": {
 				"value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
 				"type": "border"
+			},
+			"radius": {
+				"none": {
+					"value": "0",
+					"type": "borderRadius",
+					"description": "No rounding - tables, dividers, inline code blocks, sharp-edged containers"
+				},
+				"xs": {
+					"value": "{base.border.radius.1}",
+					"type": "borderRadius",
+					"description": "Minimal rounding - small badges, compact tags, inline buttons, checkboxes"
+				},
+				"sm": {
+					"value": "{base.border.radius.2}",
+					"type": "borderRadius",
+					"description": "Subtle rounding - buttons, inputs, chips, form controls, list items"
+				},
+				"md": {
+					"value": "{base.border.radius.3}",
+					"type": "borderRadius",
+					"description": "Standard rounding - cards, containers, dropdowns, popovers, menus"
+				},
+				"lg": {
+					"value": "{base.border.radius.4}",
+					"type": "borderRadius",
+					"description": "Generous rounding - modals, action sheets, dialogs, feature cards, panels"
+				},
+				"xl": {
+					"value": "{base.border.radius.5}",
+					"type": "borderRadius",
+					"description": "Large rounding - pills, pill buttons, prominent CTAs, search bars"
+				},
+				"2xl": {
+					"value": "{base.border.radius.6}",
+					"type": "borderRadius",
+					"description": "Extra large rounding - hero elements, decorative containers, large pills"
+				},
+				"3xl": {
+					"value": "{base.border.radius.7}",
+					"type": "borderRadius",
+					"description": "Maximum rounding - decorative elements, marketing components, large decorative cards"
+				},
+				"circle": {
+					"value": "{base.border.radius.circle}",
+					"type": "borderRadius",
+					"description": "Fully circular - avatars, round icon buttons, status indicators, FABs"
+				}
 			}
     },
     "size": {

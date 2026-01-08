@@ -2,6 +2,11 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
 
+// Destructure tokens
+const { semantic } = tokens
+const { color, border, motion, component } = { ...semantic, component: tokens.component }
+const { radius } = border
+
 export interface ProgressBarProps {
   /** Progress value from 0 to 100 */
   value: number
@@ -32,17 +37,17 @@ interface StyledProgressBarFillProps {
 const ProgressBarContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledProgressBarContainerProps>`
-  background-color: ${tokens.semantic.color.background.disabled};
-  border-radius: ${tokens.base.border.radius[1]};
+  background-color: ${color.background.disabled};
+  border-radius: ${radius.xs};
   overflow: hidden;
 
   ${props => props.$variant === 'horizontal' && css`
     width: 100%;
-    height: ${props.$height ? tokens.component.progressBar.sizes[props.$height].height : tokens.component.progressBar.sizes.md.height};
+    height: ${props.$height ? component.progressBar.sizes[props.$height].height : component.progressBar.sizes.md.height};
   `}
 
   ${props => props.$variant === 'vertical' && css`
-    width: ${props.$width ? tokens.component.progressBar.sizes[props.$width].height : tokens.component.progressBar.sizes.md.height};
+    width: ${props.$width ? component.progressBar.sizes[props.$width].height : component.progressBar.sizes.md.height};
     height: 100%;
   `}
 `
@@ -51,20 +56,20 @@ const ProgressBarFill = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledProgressBarFillProps>`
   height: 100%;
-  transition: ${tokens.semantic.motion.transition.normal};
+  transition: ${motion.transition.normal};
 
   ${props => {
     let backgroundColor
     switch (props.$color) {
       case 'success':
-        backgroundColor = tokens.semantic.color.background.success
+        backgroundColor = color.background.success
         break
       case 'error':
-        backgroundColor = tokens.semantic.color.background.error
+        backgroundColor = color.background.error
         break
       case 'default':
       default:
-        backgroundColor = tokens.semantic.color.background.interactive
+        backgroundColor = color.background.interactive
         break
     }
     return css`background-color: ${backgroundColor};`

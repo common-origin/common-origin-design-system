@@ -40,13 +40,18 @@ export const dividerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.border.default',
-    'semantic.color.border.strong',
-    'semantic.color.border.subtle',
-    'semantic.spacing.section.small',
-    'semantic.spacing.section.medium',
-    'semantic.spacing.section.large',
-    'semantic.spacing.section.xlarge'
+    'component.separator.variants.default.border',
+    'component.separator.variants.strong.border',
+    'component.separator.variants.minimal.border',
+    'component.separator.variants.minimal.margin',
+    'component.separator.sizes.small.margin',
+    'component.separator.sizes.medium.margin',
+    'component.separator.sizes.large.margin',
+    'component.separator.sizes.xlarge.margin',
+    'semantic.spacing.separator.sm',
+    'semantic.spacing.separator.md',
+    'semantic.spacing.separator.lg',
+    'semantic.spacing.separator.xl'
   ],
 
   examples: [

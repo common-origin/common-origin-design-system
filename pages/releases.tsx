@@ -285,7 +285,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 							) : (
 								filteredReleases.map(release => (
 									<GridCol key={release.tag} span={1}>
-										<Box p="2xl" border="default" borderRadius="3" mb="7xl">
+										<Box p="2xl" border="default" borderRadius="md" mb="7xl">
 											<VersionHeader>
 												<Typography variant="h3">{release.version}</Typography>
 												<Typography variant="label" color="subdued">

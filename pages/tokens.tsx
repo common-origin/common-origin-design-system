@@ -183,6 +183,23 @@ const BorderSample = styled.div<{ $border: string }>`
   color: ${color.text.subdued};
 `
 
+const BorderRadiusSample = styled.div<{ $radius: string }>`
+  border: ${border.default};
+  padding: ${spacing.layout.sm};
+  border-radius: ${props => props.$radius};
+  background-color: ${color.background.subtle};
+  display: inline-block;
+  margin-right: ${spacing.layout.sm};
+  min-width: 60px;
+  min-height: 60px;
+  text-align: center;
+  font: ${tokens.semantic.typography.caption};
+  color: ${color.text.subdued};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const ShadowSample = styled.div<{ $shadow: string }>`
   box-shadow: ${props => props.$shadow};
   padding: ${spacing.layout.md};
@@ -194,6 +211,23 @@ const ShadowSample = styled.div<{ $shadow: string }>`
   text-align: center;
   font: ${tokens.semantic.typography.caption};
   color: ${color.text.subdued};
+`
+
+const ElevationSample = styled.div<{ $elevation: string }>`
+  box-shadow: ${props => props.$elevation};
+  padding: ${spacing.layout.lg};
+  border-radius: ${tokens.semantic.border.radius.md};
+  background-color: ${color.background.subtle};
+  display: inline-block;
+  margin-right: ${spacing.layout.sm};
+  min-width: 80px;
+  min-height: 60px;
+  text-align: center;
+  font: ${tokens.semantic.typography.caption};
+  color: ${color.text.subdued};
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
 
 const MotionSample = styled.div<{ $transition: string }>`
@@ -445,40 +479,78 @@ const renderTypographyTokensTable = (typographyTokens: any) => {
 
 // Helper function to render border tokens as table
 const renderBorderTokensTable = (borderTokens: any) => {
+  // Separate string tokens from nested objects like radius
+  const stringTokens = Object.entries(borderTokens).filter(([, value]) => typeof value === 'string')
+  const radiusTokens = borderTokens.radius as Record<string, string> | undefined
+  
   return (
-    <Box mb="7xl">
-      <Typography variant="h3" color="default">Border</Typography>
-      <TokenTable>
-        <thead>
-          <tr>
-            <TableHeader>Token Name</TableHeader>
-            <TableHeader>Value</TableHeader>
-            <TableHeader>Usage</TableHeader>
-            <TableHeader style={{ width: '150px' }}>Example</TableHeader>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(borderTokens).map(([key, value]) => (
-            <TableRow key={key}>
-              <TableCell>
-                <Chip title={`border.${key}`} variant="default" />
-              </TableCell>
-              <TableCell>
-                <TokenValue>{value as string}</TokenValue>
-              </TableCell>
-              <TableCell>
-                <TokenValue>{getBorderUsageDescription(key)}</TokenValue>
-              </TableCell>
-              <TableCell>
-                <BorderSample $border={value as string}>
-                  Sample
-                </BorderSample>
-              </TableCell>
-            </TableRow>
-          ))}
-        </tbody>
-      </TokenTable>
-    </Box>
+    <>
+      <Box mb="7xl">
+        <Typography variant="h3" color="default">Border</Typography>
+        <TokenTable>
+          <thead>
+            <tr>
+              <TableHeader>Token Name</TableHeader>
+              <TableHeader>Value</TableHeader>
+              <TableHeader>Usage</TableHeader>
+              <TableHeader style={{ width: '150px' }}>Example</TableHeader>
+            </tr>
+          </thead>
+          <tbody>
+            {stringTokens.map(([key, value]) => (
+              <TableRow key={key}>
+                <TableCell>
+                  <Chip title={`border.${key}`} variant="default" />
+                </TableCell>
+                <TableCell>
+                  <TokenValue>{value as string}</TokenValue>
+                </TableCell>
+                <TableCell>
+                  <TokenValue>{getBorderUsageDescription(key)}</TokenValue>
+                </TableCell>
+                <TableCell>
+                  <BorderSample $border={value as string}>
+                    Sample
+                  </BorderSample>
+                </TableCell>
+              </TableRow>
+            ))}
+          </tbody>
+        </TokenTable>
+      </Box>
+      
+      {radiusTokens && (
+        <Box mb="7xl">
+          <Typography variant="h3" color="default">Border Radius</Typography>
+          <TokenTable>
+            <thead>
+              <tr>
+                <TableHeader>Token Name</TableHeader>
+                <TableHeader>Value</TableHeader>
+                <TableHeader style={{ width: '150px' }}>Example</TableHeader>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.entries(radiusTokens).map(([key, value]) => (
+                <TableRow key={key}>
+                  <TableCell>
+                    <Chip title={`border.radius.${key}`} variant="default" />
+                  </TableCell>
+                  <TableCell>
+                    <TokenValue>{value}</TokenValue>
+                  </TableCell>
+                  <TableCell>
+                    <BorderRadiusSample $radius={value}>
+                      Sample
+                    </BorderRadiusSample>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </tbody>
+          </TokenTable>
+        </Box>
+      )}
+    </>
   )
 }
 
@@ -545,6 +617,57 @@ const renderShadowTokensTable = (shadowTokens: any) => {
                 <ShadowSample $shadow={value as string}>
                   Shadow
                 </ShadowSample>
+              </TableCell>
+            </TableRow>
+          ))}
+        </tbody>
+      </TokenTable>
+    </Box>
+  )
+}
+
+// Helper function to render elevation tokens as table
+const renderElevationTokensTable = (elevationTokens: any) => {
+  const getElevationDescription = (key: string): string => {
+    const descriptions: Record<string, string> = {
+      'none': 'Flat surfaces, default state',
+      'inset': 'Sunken/pressed states, input fields, wells',
+      'raised': 'Cards, buttons with subtle depth',
+      'floating': 'Tooltips, popovers, dropdowns',
+      'overlay': 'Modals, dialogs, action sheets',
+      'sticky': 'Fixed headers, sticky navigation'
+    }
+    return descriptions[key] || 'Elevation level'
+  }
+
+  return (
+    <Box mb="7xl">
+      <Typography variant="h3" color="default">Elevation</Typography>
+      <TokenTable>
+        <thead>
+          <tr>
+            <TableHeader>Token Name</TableHeader>
+            <TableHeader>Value</TableHeader>
+            <TableHeader>Usage</TableHeader>
+            <TableHeader style={{ width: '150px' }}>Example</TableHeader>
+          </tr>
+        </thead>
+        <tbody>
+          {Object.entries(elevationTokens).map(([key, value]) => (
+            <TableRow key={key}>
+              <TableCell>
+                <Chip title={`elevation.${key}`} variant="default" />
+              </TableCell>
+              <TableCell>
+                <TokenValue>{value as string}</TokenValue>
+              </TableCell>
+              <TableCell>
+                <TokenValue>{getElevationDescription(key)}</TokenValue>
+              </TableCell>
+              <TableCell>
+                <ElevationSample $elevation={value as string}>
+                  {key}
+                </ElevationSample>
               </TableCell>
             </TableRow>
           ))}
@@ -949,6 +1072,14 @@ export default function Tokens() {
       ]
     },
     {
+      id: 'elevation',
+      label: 'Elevation',
+      isHeader: true,
+      content: [
+        { id: 'elevation-levels', type: 'elevation', data: tokens.semantic.elevation, title: 'Elevation' },
+      ]
+    },
+    {
       id: 'color',
       label: 'Color',
       isHeader: true,
@@ -1013,6 +1144,8 @@ export default function Tokens() {
           return renderTypographyTokensTable(item.data)
         case 'border':
           return renderBorderTokensTable(item.data)
+        case 'elevation':
+          return renderElevationTokensTable(item.data)
         case 'spacing':
           return renderSpacingTokensTable(item.data, item.title)
         case 'icon-size':
