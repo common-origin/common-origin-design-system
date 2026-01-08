@@ -12,11 +12,11 @@ export const StyledChip = styled.span.withConfig({
   justify-content: center;
   width: fit-content;
   height: max-content;
-  border-radius: 12px;
+  border-radius: ${chipTokens.default.borderRadius};
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  transition: width ${tokens.semantic.motion.interactive}, background-color ${tokens.semantic.motion.hover};
+  transition: ${tokens.semantic.motion.hover};
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
   opacity: ${props => props.$disabled ? '0.6' : '1'};
   
@@ -32,8 +32,8 @@ export const StyledChip = styled.span.withConfig({
   }
   
   &:focus-visible {
-    outline: 2px solid ${chipTokens.variants.interactive.backgroundColor};
-    outline-offset: 2px;
+    outline: ${chipTokens.focus.outline};
+    outline-offset: ${chipTokens.focus.outlineOffset};
   }
 `
 
@@ -41,7 +41,7 @@ export const StyledChip = styled.span.withConfig({
 export const IconContainer = styled.span`
   display: inline-flex;
   align-items: center;
-  margin-right: ${tokens.semantic.spacing.layout.sm};
+  margin-right: ${tokens.semantic.spacing.layout.xs};
 `
 
 // Close button for dismissible chips
@@ -58,7 +58,7 @@ export const CloseButton = styled.button.withConfig({
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   opacity: ${props => props.$disabled ? '0.6' : '1'};
   color: inherit;
-  transition: ${tokens.semantic.motion.transition.fast};
+  transition: ${tokens.semantic.motion.hover};
   
   &:hover:not(:disabled) {
     opacity: 0.7;
@@ -69,8 +69,8 @@ export const CloseButton = styled.button.withConfig({
   }
   
   &:focus-visible {
-    outline: 2px solid ${chipTokens.variants.interactive.backgroundColor};
-    outline-offset: 2px;
-    border-radius: 2px;
+    outline: ${chipTokens.focus.outline};
+    outline-offset: ${chipTokens.focus.outlineOffset};
+    border-radius: ${chipTokens.default.borderRadius};
   }
 `

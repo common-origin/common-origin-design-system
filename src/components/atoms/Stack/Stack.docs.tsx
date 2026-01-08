@@ -95,14 +95,14 @@ export const stackDocs: ComponentDocumentation = {
       renderComponent: () => (
         <Stack direction="column" gap="xl">
           <Stack direction="row" gap="md">
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item 1</Typography></Box>
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item 2</Typography></Box>
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item 3</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item 1</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item 2</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item 3</Typography></Box>
           </Stack>
           <Stack direction="column" gap="sm">
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item A</Typography></Box>
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item B</Typography></Box>
-            <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Item C</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item A</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item B</Typography></Box>
+            <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Item C</Typography></Box>
           </Stack>
         </Stack>
       )
@@ -133,28 +133,28 @@ export const stackDocs: ComponentDocumentation = {
       renderComponent: () => (
         <Stack direction="column" gap="lg">
           <Stack direction="row" gap="none">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">None</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">None</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
           <Stack direction="row" gap="xs">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">XS</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">XS</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
           <Stack direction="row" gap="sm">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">SM</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">SM</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
           <Stack direction="row" gap="md">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">MD</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">MD</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
           <Stack direction="row" gap="lg">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">LG</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">LG</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
           <Stack direction="row" gap="xl">
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">XL</Typography></Box>
-            <Box bg="surface" border="subtle" p="sm" borderRadius="1"><Typography variant="small">Gap</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">XL</Typography></Box>
+            <Box bg="surface" border="subtle" p="sm" borderRadius="xs"><Typography variant="small">Gap</Typography></Box>
           </Stack>
         </Stack>
       )
@@ -185,24 +185,24 @@ export const stackDocs: ComponentDocumentation = {
           <Box>
             <Typography variant="label" color="subdued">Center alignment</Typography>
             <Stack direction="row" gap="md" alignItems="center" justifyContent="center">
-              <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Centered</Typography></Box>
-              <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Content</Typography></Box>
+              <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Centered</Typography></Box>
+              <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Content</Typography></Box>
             </Stack>
           </Box>
           <Box>
             <Typography variant="label" color="subdued">Space between distribution</Typography>
             <Stack direction="row" gap="sm" justifyContent="space-between">
-              <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Start</Typography></Box>
-              <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Middle</Typography></Box>
-              <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>End</Typography></Box>
+              <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Start</Typography></Box>
+              <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Middle</Typography></Box>
+              <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>End</Typography></Box>
             </Stack>
           </Box>
           <Box>
             <Typography variant="label" color="subdued">Stretch alignment</Typography>
             <Box style={{height: '80px'}}>
               <Stack direction="row" gap="md" alignItems="stretch">
-                <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Stretched</Typography></Box>
-                <Box bg="surface" border="subtle" p="md" borderRadius="2"><Typography>Height</Typography></Box>
+                <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Stretched</Typography></Box>
+                <Box bg="surface" border="subtle" p="md" borderRadius="sm"><Typography>Height</Typography></Box>
               </Stack>
             </Box>
           </Box>
@@ -222,12 +222,12 @@ export const stackDocs: ComponentDocumentation = {
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="md" wrap={true}>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 1</Typography></Box>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 2</Typography></Box>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 3</Typography></Box>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 4</Typography></Box>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 5</Typography></Box>
-          <Box bg="surface" border="subtle" p="md" borderRadius="2" style={{minWidth: '120px'}}><Typography>Item 6</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 1</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 2</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 3</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 4</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 5</Typography></Box>
+          <Box bg="surface" border="subtle" p="md" borderRadius="sm" style={{minWidth: '120px'}}><Typography>Item 6</Typography></Box>
         </Stack>
       )
     },
@@ -259,7 +259,7 @@ export const stackDocs: ComponentDocumentation = {
   </Stack>
 </Stack>`,
       renderComponent: () => (
-        <Box bg="surface" border="subtle" p="lg" borderRadius="2">
+        <Box bg="surface" border="subtle" p="lg" borderRadius="sm">
           <Stack direction="column" gap="lg">
             {/* Header */}
             <Stack direction="row" gap="md" justifyContent="space-between" alignItems="center">
@@ -279,10 +279,10 @@ export const stackDocs: ComponentDocumentation = {
             
             {/* Actions */}
             <Stack direction="row" gap="sm" justifyContent="flex-end">
-              <Box bg="subtle" border="subtle" p="sm" borderRadius="1">
+              <Box bg="subtle" border="subtle" p="sm" borderRadius="xs">
                 <Typography variant="button2">Cancel</Typography>
               </Box>
-              <Box bg="interactive" p="sm" borderRadius="1">
+              <Box bg="interactive" p="sm" borderRadius="xs">
                 <Typography variant="button2" color="inverse">Save</Typography>
               </Box>
             </Stack>

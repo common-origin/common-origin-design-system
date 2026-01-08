@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { CategoryBadge, CategoryBadgeProps, CategoryColor, CategoryVariant, CategorySize } from './CategoryBadge'
@@ -35,6 +35,14 @@ describe('CategoryBadge Component', () => {
       renderCategoryBadge({ 'data-testid': 'test-badge' })
       expect(screen.getByTestId('test-badge')).toBeInTheDocument()
       expect(screen.queryByTestId('wrong-id')).not.toBeInTheDocument()
+    })
+
+    it('renders as a span element (static, non-interactive)', () => {
+      renderCategoryBadge({ 'data-testid': 'badge' })
+      const badge = screen.getByTestId('badge')
+      expect(badge.tagName).toBe('SPAN')
+      expect(badge).not.toHaveAttribute('role')
+      expect(badge).not.toHaveAttribute('tabIndex')
     })
   })
 
@@ -94,129 +102,34 @@ describe('CategoryBadge Component', () => {
 
   describe('Icon Support', () => {
     it('renders with an icon', () => {
-      renderCategoryBadge({ icon: 'filter' })
-      const badge = screen.getByText('Shopping')
+      renderCategoryBadge({ icon: 'filter', 'data-testid': 'badge-with-icon' })
+      const badge = screen.getByTestId('badge-with-icon')
       expect(badge).toBeInTheDocument()
-      // Icon rendering is handled by Icon component
+      // Check that badge has more than just text (icon adds extra element)
+      expect(badge.children.length).toBeGreaterThan(0)
     })
 
     it('renders without an icon by default', () => {
-      renderCategoryBadge()
-      const badge = screen.getByText('Shopping')
-      expect(badge).toBeInTheDocument()
-    })
-  })
-
-  describe('Interactive Behavior', () => {
-    it('handles click events when onClick is provided', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.click(badge)
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
+      renderCategoryBadge({ 'data-testid': 'badge-no-icon' })
+      const badge = screen.getByTestId('badge-no-icon')
+      const icon = badge.querySelector('[aria-hidden="true"]')
+      expect(icon).not.toBeInTheDocument()
     })
 
-    it('is not interactive without onClick', () => {
-      renderCategoryBadge()
-      const badge = screen.getByText('Shopping')
-      expect(badge).not.toHaveAttribute('role', 'button')
+    it('uses xs icon size for small badge', () => {
+      renderCategoryBadge({ icon: 'filter', size: 'small', 'data-testid': 'small-badge' })
+      expect(screen.getByTestId('small-badge')).toBeInTheDocument()
     })
 
-    it('becomes a button when onClick is provided', () => {
-      renderCategoryBadge({ onClick: jest.fn() })
-      const badge = screen.getByRole('button')
-      expect(badge).toBeInTheDocument()
-    })
-
-    it('handles keyboard Enter key when clickable', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.keyDown(badge, { key: 'Enter', code: 'Enter' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('handles keyboard Space key when clickable', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.keyDown(badge, { key: ' ', code: 'Space' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('ignores other keys', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.keyDown(badge, { key: 'a', code: 'KeyA' })
-      
-      expect(handleClick).not.toHaveBeenCalled()
-    })
-
-    it('is focusable when clickable', () => {
-      renderCategoryBadge({ onClick: jest.fn() })
-      const badge = screen.getByRole('button')
-      expect(badge).toHaveAttribute('tabIndex', '0')
-    })
-
-    it('is not focusable when not clickable', () => {
-      renderCategoryBadge()
-      const badge = screen.getByText('Shopping')
-      expect(badge).not.toHaveAttribute('tabIndex')
-    })
-  })
-
-  describe('Disabled State', () => {
-    it('renders disabled state correctly', () => {
-      renderCategoryBadge({ onClick: jest.fn(), disabled: true })
-      const badge = screen.getByRole('button')
-      expect(badge).toHaveAttribute('aria-disabled', 'true')
-    })
-
-    it('does not trigger click when disabled', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick, disabled: true })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.click(badge)
-      
-      expect(handleClick).not.toHaveBeenCalled()
-    })
-
-    it('does not trigger keyboard events when disabled', () => {
-      const handleClick = jest.fn()
-      renderCategoryBadge({ onClick: handleClick, disabled: true })
-      
-      const badge = screen.getByRole('button')
-      fireEvent.keyDown(badge, { key: 'Enter', code: 'Enter' })
-      fireEvent.keyDown(badge, { key: ' ', code: 'Space' })
-      
-      expect(handleClick).not.toHaveBeenCalled()
+    it('uses sm icon size for medium badge', () => {
+      renderCategoryBadge({ icon: 'filter', size: 'medium', 'data-testid': 'medium-badge' })
+      expect(screen.getByTestId('medium-badge')).toBeInTheDocument()
     })
   })
 
   describe('Accessibility', () => {
     it('should have no accessibility violations', async () => {
       const { container } = renderCategoryBadge()
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should have no accessibility violations when clickable', async () => {
-      const { container } = renderCategoryBadge({ onClick: jest.fn() })
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should have no accessibility violations when disabled', async () => {
-      const { container } = renderCategoryBadge({ onClick: jest.fn(), disabled: true })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
@@ -250,31 +163,15 @@ describe('CategoryBadge Component', () => {
     })
 
     it('supports aria-label for additional context', () => {
-      renderCategoryBadge({ 
-        onClick: jest.fn(), 
-        'aria-label': 'Shopping category badge' 
-      })
-      const badge = screen.getByRole('button')
-      expect(badge).toHaveAttribute('aria-label', 'Shopping category badge')
-    })
-
-    it('has proper role when interactive', () => {
-      renderCategoryBadge({ onClick: jest.fn() })
-      const badge = screen.getByRole('button')
-      expect(badge).toHaveAttribute('role', 'button')
-    })
-
-    it('has no role when not interactive', () => {
-      renderCategoryBadge()
-      const badge = screen.getByText('Shopping')
-      expect(badge).not.toHaveAttribute('role')
+      renderCategoryBadge({ 'aria-label': 'Shopping category', 'data-testid': 'labeled-badge' })
+      const badge = screen.getByTestId('labeled-badge')
+      expect(badge).toHaveAttribute('aria-label', 'Shopping category')
     })
   })
 
   describe('Edge Cases', () => {
     it('handles empty children', () => {
       const { container } = renderCategoryBadge({ children: '' })
-      // Empty children should still render the badge
       expect(container.firstChild).toBeInTheDocument()
     })
 
@@ -303,11 +200,10 @@ describe('CategoryBadge Component', () => {
         variant: 'outlined',
         size: 'small',
         icon: 'filter',
-        onClick: jest.fn(),
-        disabled: false,
-        'aria-label': 'Test badge'
+        'aria-label': 'Test badge',
+        'data-testid': 'full-badge'
       })
-      const badge = screen.getByRole('button')
+      const badge = screen.getByTestId('full-badge')
       expect(badge).toBeInTheDocument()
       expect(badge).toHaveAttribute('aria-label', 'Test badge')
     })

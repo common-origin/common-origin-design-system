@@ -185,6 +185,13 @@ export const listDocs: ComponentDocumentation = {
       description: '[ListItem] Marks the item as currently selected with subtle background highlight and aria-current.'
     },
     {
+      name: 'destructive',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+      description: '[ListItem] Applies destructive/danger styling with error color text. Used for delete or remove actions in action sheets and menus.'
+    },
+    {
       name: 'children',
       type: 'React.ReactNode',
       required: false,
@@ -583,6 +590,42 @@ return (
             secondary="This item is clickable"
             interactive
             onClick={() => console.log('Clicked')}
+          />
+        </List>
+      )
+    },
+    {
+      name: 'Destructive Actions',
+      description: 'Items styled as destructive/danger actions (used in ActionSheet)',
+      code: `<List>
+  <ListItem 
+    icon={<Icon name="edit" iconColor="default" size="md" />}
+    primary="Edit Item"
+    interactive
+    onClick={() => console.log('Edit')}
+  />
+  <ListItem 
+    icon={<Icon name="trash" iconColor="error" size="md" />}
+    primary="Delete Item"
+    interactive
+    onClick={() => console.log('Delete')}
+    destructive
+  />
+</List>`,
+      renderComponent: () => (
+        <List>
+          <ListItem 
+            icon={<Icon name="edit" iconColor="default" size="md" />}
+            primary="Edit Item"
+            interactive
+            onClick={() => console.log('Edit')}
+          />
+          <ListItem 
+            icon={<Icon name="trash" iconColor="error" size="md" />}
+            primary="Delete Item"
+            interactive
+            onClick={() => console.log('Delete')}
+            destructive
           />
         </List>
       )

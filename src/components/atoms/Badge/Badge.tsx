@@ -3,7 +3,9 @@ import styled, { keyframes } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Typography } from '../Typography'
 
-const { semantic: { color }, base: { shadow } } = tokens
+const { semantic } = tokens
+const { color, border } = semantic
+const { radius } = border
 
 export interface BadgeProps {
   /** Content to wrap with the badge */
@@ -53,7 +55,7 @@ const BadgeIndicator = styled.span.withConfig({
   min-width: ${props => props.$isDot ? '8px' : '16px'};
   height: ${props => props.$isDot ? '8px' : '16px'};
   padding: ${props => props.$isDot ? '0' : '0 4px'};
-  border-radius: ${tokens.base.border.radius.circle};
+  border-radius: ${radius.circle};
   line-height: 1;
   white-space: nowrap;
   box-shadow: 0 0 0 2px ${color.background.default};

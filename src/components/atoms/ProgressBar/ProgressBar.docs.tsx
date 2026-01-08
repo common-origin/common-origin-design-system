@@ -56,16 +56,16 @@ export const progressBarDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.core.primary - Default progress bar fill color',
-    'semantic.color.core.success - Success state fill color',
-    'semantic.color.core.error - Error state fill color',
-    'semantic.color.background.progressTrack - Container background color',
-    'semantic.border.radius.small - Rounded corners for smooth appearance',
-    'semantic.motion.transition.normal - Smooth progress fill animation',
-    'component.progressBar.sizes.sm.height - Small size (0.25rem/4px)',
-    'component.progressBar.sizes.md.height - Medium size (0.5rem/8px)',
-    'component.progressBar.sizes.lg.height - Large size (1rem/16px)',
-    'component.progressBar.sizes.xl.height - Extra large size (1.25rem/20px)'
+    'semantic.color.background.disabled',
+    'semantic.color.background.interactive',
+    'semantic.color.background.success',
+    'semantic.color.background.error',
+    'semantic.border.radius.xs',
+    'semantic.motion.transition.normal',
+    'component.progressBar.sizes.sm.height',
+    'component.progressBar.sizes.md.height',
+    'component.progressBar.sizes.lg.height',
+    'component.progressBar.sizes.xl.height'
   ],
 
   examples: [

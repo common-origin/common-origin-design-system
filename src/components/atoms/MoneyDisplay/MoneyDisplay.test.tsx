@@ -67,25 +67,25 @@ describe('MoneyDisplay', () => {
   })
 
   describe('Sign Display', () => {
-    it('shows positive sign when showSign is true and amount is positive', () => {
+    it('shows positive icon when showSign is true and amount is positive', () => {
       renderComponent({ amount: 100, showSign: true })
-      expect(screen.getByText(/\+/)).toBeInTheDocument()
+      expect(screen.getByRole('img', { name: 'addRing' })).toBeInTheDocument()
     })
 
-    it('shows negative sign when showSign is true and amount is negative', () => {
+    it('shows negative icon when showSign is true and amount is negative', () => {
       renderComponent({ amount: -100, showSign: true })
-      expect(screen.getByText(/−/)).toBeInTheDocument()
+      expect(screen.getByRole('img', { name: 'remove' })).toBeInTheDocument()
     })
 
-    it('shows negative sign for negative amounts even without showSign', () => {
+    it('shows negative icon for negative amounts even without showSign', () => {
       renderComponent({ amount: -50 })
-      expect(screen.getByText(/−/)).toBeInTheDocument()
+      expect(screen.getByRole('img', { name: 'remove' })).toBeInTheDocument()
     })
 
-    it('does not show sign for zero amount', () => {
+    it('does not show sign icon for zero amount', () => {
       renderComponent({ amount: 0, showSign: true })
-      const text = screen.getByText(/0\.00/)
-      expect(text.textContent).not.toMatch(/[+−]/)
+      expect(screen.queryByRole('img', { name: 'addRing' })).not.toBeInTheDocument()
+      expect(screen.queryByRole('img', { name: 'remove' })).not.toBeInTheDocument()
     })
   })
 

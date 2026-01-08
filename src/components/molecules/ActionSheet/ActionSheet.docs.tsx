@@ -5,6 +5,242 @@ import { Typography } from '../../atoms/Typography/Typography'
 import { useState } from 'react'
 import type { Action } from './ActionSheet'
 
+// Example Components (must be defined outside to use hooks)
+const BasicExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    {
+      id: 'edit',
+      label: 'Edit',
+      icon: 'edit',
+      onSelect: () => {
+        alert('Edit clicked')
+        setIsOpen(false)
+      }
+    },
+    {
+      id: 'share',
+      label: 'Share',
+      icon: 'export',
+      onSelect: () => {
+        alert('Share clicked')
+        setIsOpen(false)
+      }
+    }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open Actions
+      </Button>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        actions={actions}
+      />
+    </>
+  )
+}
+
+const WithHeaderExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    {
+      id: 'download',
+      label: 'Download',
+      icon: 'export',
+      onSelect: () => setIsOpen(false)
+    },
+    {
+      id: 'print',
+      label: 'Print',
+      onSelect: () => setIsOpen(false)
+    }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open with Header
+      </Button>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Choose an action"
+        description="Select one of the following options to continue"
+        actions={actions}
+      />
+    </>
+  )
+}
+
+const DestructiveExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    {
+      id: 'edit',
+      label: 'Edit Item',
+      icon: 'edit',
+      onSelect: () => setIsOpen(false)
+    },
+    {
+      id: 'duplicate',
+      label: 'Duplicate',
+      onSelect: () => setIsOpen(false)
+    },
+    {
+      id: 'delete',
+      label: 'Delete',
+      icon: 'trash',
+      destructive: true,
+      onSelect: () => {
+        alert('Delete clicked')
+        setIsOpen(false)
+      }
+    }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open with Destructive Action
+      </Button>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Manage Item"
+        actions={actions}
+      />
+    </>
+  )
+}
+
+const DisabledExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    {
+      id: 'view',
+      label: 'View Details',
+      icon: 'search',
+      onSelect: () => setIsOpen(false)
+    },
+    {
+      id: 'edit',
+      label: 'Edit (No Permission)',
+      icon: 'edit',
+      disabled: true,
+      onSelect: () => setIsOpen(false)
+    },
+    {
+      id: 'download',
+      label: 'Download',
+      icon: 'export',
+      onSelect: () => setIsOpen(false)
+    }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open with Disabled Action
+      </Button>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Item Actions"
+        actions={actions}
+      />
+    </>
+  )
+}
+
+const ManyActionsExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    { id: 'view', label: 'View', icon: 'search', onSelect: () => setIsOpen(false) },
+    { id: 'edit', label: 'Edit', icon: 'edit', onSelect: () => setIsOpen(false) },
+    { id: 'duplicate', label: 'Duplicate', onSelect: () => setIsOpen(false) },
+    { id: 'move', label: 'Move', onSelect: () => setIsOpen(false) },
+    { id: 'rename', label: 'Rename', onSelect: () => setIsOpen(false) },
+    { id: 'share', label: 'Share', icon: 'export', onSelect: () => setIsOpen(false) },
+    { id: 'download', label: 'Download', icon: 'export', onSelect: () => setIsOpen(false) },
+    { id: 'archive', label: 'Archive', onSelect: () => setIsOpen(false) },
+    { id: 'delete', label: 'Delete', icon: 'trash', destructive: true, onSelect: () => setIsOpen(false) }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Open with Many Actions
+      </Button>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="File Actions"
+        description="Choose what you'd like to do with this file"
+        actions={actions}
+      />
+    </>
+  )
+}
+
+const CustomCloseExample = () => {
+  const [isOpen, setIsOpen] = useState(false)
+  
+  const actions: Action[] = [
+    {
+      id: 'save',
+      label: 'Save',
+      icon: 'check',
+      onSelect: () => {
+        alert('Saved!')
+        setIsOpen(false)
+      }
+    },
+    {
+      id: 'cancel',
+      label: 'Cancel',
+      onSelect: () => setIsOpen(false)
+    }
+  ]
+  
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>
+        Custom Close Behavior
+      </Button>
+      
+      <div style={{ marginTop: '8px' }}>
+        <Typography variant="caption" color="subdued">
+          Clicking overlay won't close (must use button or action)
+        </Typography>
+      </div>
+      
+      <ActionSheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Confirm Action"
+        description="Click outside won't close this sheet"
+        closeOnOverlayClick={false}
+        closeOnEscape={true}
+        showCloseButton={true}
+        actions={actions}
+      />
+    </>
+  )
+}
+
 export const actionSheetDocs: ComponentDocumentation = {
   id: 'action-sheet',
   name: 'ActionSheet',
@@ -74,26 +310,25 @@ export const actionSheetDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.background.subtle',
     'semantic.color.background.surface',
-    'semantic.color.background.interactive-subtle',
     'semantic.color.border.default',
-    'semantic.color.border.strong',
     'semantic.color.text.default',
     'semantic.color.text.subdued',
     'semantic.color.text.error',
     'semantic.color.text.disabled',
     'semantic.color.icon.subdued',
     'semantic.color.icon.default',
-    'base.spacing.2',
-    'base.spacing.3',
-    'base.spacing.4',
-    'base.border.width.1',
-    'base.border.width.2',
-    'base.border.radius.2',
-    'base.border.radius.4',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.lg',
+    'semantic.border.default',
+    'semantic.border.focus',
+    'semantic.border.radius.sm',
+    'semantic.border.radius.lg',
     'semantic.typography.h3',
     'semantic.typography.body',
     'semantic.motion.hover',
-    'base.shadow.4'
+    'semantic.elevation.overlay'
   ],
   
   examples: [
@@ -126,44 +361,7 @@ const actions = [
   onClose={() => setIsOpen(false)}
   actions={actions}
 />`,
-      renderComponent: () => {
-        const [isOpen, setIsOpen] = useState(false)
-        
-        const actions: Action[] = [
-          {
-            id: 'edit',
-            label: 'Edit',
-            icon: 'edit',
-            onSelect: () => {
-              alert('Edit clicked')
-              setIsOpen(false)
-            }
-          },
-          {
-            id: 'share',
-            label: 'Share',
-            icon: 'export',
-            onSelect: () => {
-              alert('Share clicked')
-              setIsOpen(false)
-            }
-          }
-        ]
-        
-        return (
-          <>
-            <Button onClick={() => setIsOpen(true)}>
-              Open Actions
-            </Button>
-            
-            <ActionSheet
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              actions={actions}
-            />
-          </>
-        )
-      }
+      renderComponent: () => <BasicExample />
     },
     {
       name: 'With Title and Description',
@@ -175,39 +373,7 @@ const actions = [
   description="Select one of the following options to continue"
   actions={actions}
 />`,
-      renderComponent: () => {
-        const [isOpen, setIsOpen] = useState(false)
-        
-        const actions: Action[] = [
-          {
-            id: 'download',
-            label: 'Download',
-            icon: 'export',
-            onSelect: () => setIsOpen(false)
-          },
-          {
-            id: 'print',
-            label: 'Print',
-            onSelect: () => setIsOpen(false)
-          }
-        ]
-        
-        return (
-          <>
-            <Button onClick={() => setIsOpen(true)}>
-              Open with Header
-            </Button>
-            
-            <ActionSheet
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              title="Choose an action"
-              description="Select one of the following options to continue"
-              actions={actions}
-            />
-          </>
-        )
-      }
+      renderComponent: () => <WithHeaderExample />
     },
     {
       name: 'Destructive Action',
@@ -234,55 +400,7 @@ const actions = [
   title="Document Actions"
   actions={actions}
 />`,
-      renderComponent: () => {
-        const [isOpen, setIsOpen] = useState(false)
-        
-        const actions: Action[] = [
-          {
-            id: 'edit',
-            label: 'Edit',
-            icon: 'edit',
-            onSelect: () => {
-              alert('Edit clicked')
-              setIsOpen(false)
-            }
-          },
-          {
-            id: 'duplicate',
-            label: 'Duplicate',
-            icon: 'copy',
-            onSelect: () => {
-              alert('Duplicate clicked')
-              setIsOpen(false)
-            }
-          },
-          {
-            id: 'delete',
-            label: 'Delete',
-            icon: 'trash',
-            destructive: true,
-            onSelect: () => {
-              alert('Delete clicked')
-              setIsOpen(false)
-            }
-          }
-        ]
-        
-        return (
-          <>
-            <Button onClick={() => setIsOpen(true)}>
-              Open with Destructive Action
-            </Button>
-            
-            <ActionSheet
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              title="Document Actions"
-              actions={actions}
-            />
-          </>
-        )
-      }
+      renderComponent: () => <DestructiveExample />
     },
     {
       name: 'Disabled Actions',
@@ -308,50 +426,7 @@ const actions = [
     onSelect: () => console.log('Cut')
   }
 ]`,
-      renderComponent: () => {
-        const [isOpen, setIsOpen] = useState(false)
-        
-        const actions: Action[] = [
-          {
-            id: 'copy',
-            label: 'Copy',
-            icon: 'copy',
-            onSelect: () => {
-              alert('Copied!')
-              setIsOpen(false)
-            }
-          },
-          {
-            id: 'paste',
-            label: 'Paste (Disabled)',
-            disabled: true,
-            onSelect: () => {}
-          },
-          {
-            id: 'cut',
-            label: 'Cut',
-            onSelect: () => {
-              alert('Cut!')
-              setIsOpen(false)
-            }
-          }
-        ]
-        
-        return (
-          <>
-            <Button onClick={() => setIsOpen(true)}>
-              Open with Disabled Actions
-            </Button>
-            
-            <ActionSheet
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              title="Edit Actions"
-              actions={actions}
-            />
-          </>
-        )
-      }
+      renderComponent: () => <DisabledExample />
     },
     {
       name: 'Custom Close Behavior',
@@ -364,51 +439,7 @@ const actions = [
   showCloseButton={true}
   actions={actions}
 />`,
-      renderComponent: () => {
-        const [isOpen, setIsOpen] = useState(false)
-        
-        const actions: Action[] = [
-          {
-            id: 'save',
-            label: 'Save',
-            icon: 'check',
-            onSelect: () => {
-              alert('Saved!')
-              setIsOpen(false)
-            }
-          },
-          {
-            id: 'cancel',
-            label: 'Cancel',
-            onSelect: () => setIsOpen(false)
-          }
-        ]
-        
-        return (
-          <>
-            <Button onClick={() => setIsOpen(true)}>
-              Custom Close Behavior
-            </Button>
-            
-            <div style={{ marginTop: '8px' }}>
-              <Typography variant="caption" color="subdued">
-                Clicking overlay won't close (must use button or action)
-              </Typography>
-            </div>
-            
-            <ActionSheet
-              isOpen={isOpen}
-              onClose={() => setIsOpen(false)}
-              title="Confirm Action"
-              description="Click outside won't close this sheet"
-              closeOnOverlayClick={false}
-              closeOnEscape={true}
-              showCloseButton={true}
-              actions={actions}
-            />
-          </>
-        )
-      }
+      renderComponent: () => <CustomCloseExample />
     }
   ],
   
@@ -445,16 +476,17 @@ const actions = [
         description: 'Bottom-aligned container with slide-up animation',
         tokens: [
           'semantic.color.background.subtle',
-          'base.border.radius.4',
-          'base.shadow.4'
+          'semantic.border.radius.lg',
+          'semantic.elevation.overlay'
         ]
       },
       {
         name: 'Header',
         description: 'Optional header with title, description, and close button',
         tokens: [
-          'semantic.color.border.default',
-          'base.spacing.4',
+          'semantic.border.default',
+          'semantic.spacing.layout.lg',
+          'semantic.spacing.layout.md',
           'semantic.typography.h3'
         ]
       },
@@ -463,29 +495,28 @@ const actions = [
         description: 'Icon button to dismiss the sheet',
         tokens: [
           'semantic.color.icon.subdued',
-          'base.border.radius.2'
+          'semantic.border.radius.sm',
+          'semantic.border.focus'
         ]
       },
       {
         name: 'Actions List',
-        description: 'Scrollable list of action buttons',
-        tokens: ['base.spacing.2']
+        description: 'Scrollable list of action buttons using ListItem components',
+        tokens: ['semantic.spacing.layout.sm', 'semantic.spacing.layout.md']
       },
       {
-        name: 'Action Button',
-        description: 'Individual action with optional icon, label, and hover state',
+        name: 'Action Item (ListItem)',
+        description: 'Individual action using ListItem with optional icon and interactive states',
         tokens: [
-          'semantic.color.background.interactive-subtle',
-          'semantic.typography.body',
-          'base.spacing.3'
+          'semantic.color.background.surface',
+          'semantic.typography.body'
         ]
       },
       {
         name: 'Destructive Action',
-        description: 'Action styled in error color with divider above',
+        description: 'Action styled in error color using ListItem destructive prop',
         tokens: [
-          'semantic.color.text.error',
-          'semantic.color.border.default'
+          'semantic.color.text.error'
         ]
       },
       {

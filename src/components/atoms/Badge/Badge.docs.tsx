@@ -73,10 +73,9 @@ export const badgeDocs: ComponentDocumentation = {
     
     // Typography
     'semantic.typography.caption',
-    'base.fontSize.1',
     
     // Border
-    'base.border.radius.circle'
+    'semantic.border.radius.circle'
   ],
   
   examples: [

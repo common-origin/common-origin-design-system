@@ -46,7 +46,7 @@ export interface BoxProps {
   left?: string
   
   // Borders
-  borderRadius?: keyof typeof tokens.base.border.radius
+  borderRadius?: keyof typeof tokens.semantic.border.radius
   border?: keyof typeof tokens.semantic.color.border
   borderTop?: keyof typeof tokens.semantic.color.border
   borderRight?: keyof typeof tokens.semantic.color.border
@@ -57,8 +57,8 @@ export interface BoxProps {
   bg?: keyof typeof tokens.semantic.color.background
   color?: keyof typeof tokens.semantic.color.text
   
-  // Shadow
-  shadow?: keyof typeof tokens.base.shadow
+  // Elevation (shadow)
+  shadow?: keyof typeof tokens.semantic.elevation
   
   // Cursor
   cursor?: 'auto' | 'default' | 'pointer' | 'wait' | 'text' | 'move' | 'help' | 'not-allowed'
@@ -67,7 +67,7 @@ export interface BoxProps {
   transition?: string
   
   // Hover states
-  hoverShadow?: keyof typeof tokens.base.shadow
+  hoverShadow?: keyof typeof tokens.semantic.elevation
   hoverTransform?: string
   
   // Overflow
@@ -199,7 +199,7 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$left && css`left: ${props.$left};`}
   
   // Borders
-  ${props => props.$borderRadius && css`border-radius: ${tokens.base.border.radius[props.$borderRadius]};`}
+  ${props => props.$borderRadius && css`border-radius: ${tokens.semantic.border.radius[props.$borderRadius]};`}
   ${props => props.$border && css`border: 1px solid ${tokens.semantic.color.border[props.$border]};`}
   ${props => props.$borderTop && css`border-top: 1px solid ${tokens.semantic.color.border[props.$borderTop]};`}
   ${props => props.$borderRight && css`border-right: 1px solid ${tokens.semantic.color.border[props.$borderRight]};`}
@@ -210,8 +210,8 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$bg && css`background-color: ${tokens.semantic.color.background[props.$bg]};`}
   ${props => props.$color && css`color: ${tokens.semantic.color.text[props.$color]};`}
   
-  // Shadow
-  ${props => props.$shadow && css`box-shadow: ${tokens.base.shadow[props.$shadow]};`}
+  // Elevation (shadow)
+  ${props => props.$shadow && css`box-shadow: ${tokens.semantic.elevation[props.$shadow]};`}
   
   // Cursor
   ${props => props.$cursor && css`cursor: ${props.$cursor};`}
@@ -222,7 +222,7 @@ const StyledBox = styled.div.withConfig({
   // Hover states
   ${props => (props.$hoverShadow || props.$hoverTransform) && css`
     &:hover {
-      ${props.$hoverShadow && css`box-shadow: ${tokens.base.shadow[props.$hoverShadow]};`}
+      ${props.$hoverShadow && css`box-shadow: ${tokens.semantic.elevation[props.$hoverShadow]};`}
       ${props.$hoverTransform && css`transform: ${props.$hoverTransform};`}
     }
     

@@ -143,8 +143,10 @@ export const chipDocs: ComponentDocumentation = {
     'semantic.spacing.layout.md - 8px spacing between icons and content in filter/boolean chips',
     'component.chip.sizes.small.font - Compact font sizing for dense layouts',
     'component.chip.sizes.medium.font - Standard font sizing for most interfaces',
-    'component.chip.default.borderRadius - Consistent rounded corners across variants',
-    'semantic.motion.interactive - Smooth transitions for hover and focus states'
+    'component.chip.default.borderRadius - Consistent rounded corners (0.75rem via semantic.border.radius.lg)',
+    'component.chip.focus.outline - Focus ring styling matching button component (2px solid)',
+    'component.chip.focus.outlineOffset - Focus ring offset for visibility (2px)',
+    'semantic.motion.hover - Smooth transitions for hover and focus state changes'
   ],
 
   examples: [
@@ -718,7 +720,7 @@ return (
       'Filter chips support keyboard dismiss with Delete or Backspace keys in addition to clicking the close button',
       'Boolean chips can be toggled via keyboard using Space or Enter keys when focused',
       'Close buttons in filter chips have descriptive aria-label attributes (e.g., "Remove filter") for clear screen reader announcements',
-      'Focus indicators are highly visible with 2px outline and offset, ensuring clear visual feedback for keyboard users across all color themes and high contrast modes',
+      'Focus indicators are highly visible with 2px outline and offset using component.chip.focus tokens (matching Button component), ensuring clear visual feedback for keyboard users across all color themes and high contrast modes',
       'Disabled state is properly communicated through aria-disabled attribute, preventing interaction while maintaining semantic context for assistive technology users',
       'Content accessibility preserved through natural DOM structure - screen readers announce chip content exactly as provided in the children prop',
       'aria-label support for cases where visible text needs additional context or clarification for screen reader users, particularly useful for abbreviated or symbolic content',
@@ -731,7 +733,7 @@ return (
     ],
     keyboardNavigation: 'Tab key moves focus to interactive chips with visible focus outline. Enter or Space key activates the chip\'s onClick handler or toggles boolean chips. Delete or Backspace keys dismiss filter chips. Disabled chips are excluded from tab order and do not respond to activation keys.',
     screenReader: 'Static chips announced as their text content. Interactive chips announced as "button" followed by content. Filter chips announced with status role and filter content. Boolean chips announced as "checkbox" with checked/unchecked state. Custom aria-label content takes precedence when provided.',
-    focusManagement: 'Interactive chips receive focus with 2px outline and 2px offset for clear visibility. Focus moves in logical DOM order. Disabled chips cannot receive focus and are excluded from tab navigation sequence. Close buttons in filter chips are independently focusable for precise keyboard control.'
+    focusManagement: 'Interactive chips receive focus with outline styling from component.chip.focus tokens (2px solid with 2px offset) for clear visibility, matching Button component behavior. Focus moves in logical DOM order. Disabled chips cannot receive focus and are excluded from tab navigation sequence. Close buttons in filter chips are independently focusable for precise keyboard control.'
   },
 
   notes: [
@@ -744,8 +746,8 @@ return (
     'State Management: For filter chips, use selected prop to show checkmark and light blue background. Optionally provide onDismiss callback to make them dismissible. For boolean chips, use the selected prop to control toggle state with onClick handler.',
     'Icon Usage: Filter chips display a checkmark icon on the left when selected, and optionally a close (×) icon on the right when dismissible. Boolean chips display a checkmark icon on the left when selected. Icons use semantic spacing token (8px) for consistent positioning.',
     'Legacy Compatibility: Component supports legacy title prop and light/dark variants for backward compatibility, but new implementations should use children prop and current variant system for better flexibility.',
-    'Performance Optimization: Component uses CSS custom properties to avoid prop drilling and styled-component re-renders. Styles are applied efficiently through CSS variables set at the component wrapper level.',
-    'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states provide smooth transitions that enhance user feedback without being distracting or overwhelming.',
+    'Performance Optimization: Component uses styled-components with direct token imports for efficient styling. Transitions and focus states leverage component tokens aligned with Button for consistent behavior across the design system.',
+    'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states use semantic.motion.hover for smooth transitions that enhance user feedback without being distracting or overwhelming. Focus states use component.chip.focus tokens aligned with Button component for consistent keyboard navigation experience.',
     'Testing Support: data-testid prop enables consistent automated testing across chip variants and states. Component includes comprehensive test coverage for interaction patterns, accessibility compliance, and state management scenarios.'
   ]
 }

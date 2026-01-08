@@ -1,10 +1,15 @@
-import { ReactNode } from 'react'
+import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+// Destructure tokens for cleaner access
+const { status: statusColors } = tokens.semantic.color
+const { layout: spacing } = tokens.semantic.spacing
+const { radius } = tokens.semantic.border
+const { transition } = tokens.semantic.motion
+const typography = tokens.semantic.typography
 
 /**
  * Status type options for StatusBadge
@@ -84,38 +89,38 @@ const scaleIn = keyframes`
 const getStatusConfig = (status: StatusType) => {
   const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; label: string }> = {
     pending: {
-      color: semantic.color.status.pending,
-      bgColor: semantic.color.status['pending-bg'],
+      color: statusColors.pending,
+      bgColor: statusColors['pending-bg'],
       icon: 'refresh', // Fallback until 'clock' icon is added
       label: 'Pending'
     },
     completed: {
-      color: semantic.color.status.completed,
-      bgColor: semantic.color.status['completed-bg'],
+      color: statusColors.completed,
+      bgColor: statusColors['completed-bg'],
       icon: 'check',
       label: 'Completed'
     },
     failed: {
-      color: semantic.color.status.failed,
-      bgColor: semantic.color.status['failed-bg'],
+      color: statusColors.failed,
+      bgColor: statusColors['failed-bg'],
       icon: 'close',
       label: 'Failed'
     },
     cancelled: {
-      color: semantic.color.status.cancelled,
-      bgColor: semantic.color.status['cancelled-bg'],
+      color: statusColors.cancelled,
+      bgColor: statusColors['cancelled-bg'],
       icon: 'cancel',
       label: 'Cancelled'
     },
     processing: {
-      color: semantic.color.status.processing,
-      bgColor: semantic.color.status['processing-bg'],
+      color: statusColors.processing,
+      bgColor: statusColors['processing-bg'],
       icon: 'refresh',
       label: 'Processing'
     },
     scheduled: {
-      color: semantic.color.status.scheduled,
-      bgColor: semantic.color.status['scheduled-bg'],
+      color: statusColors.scheduled,
+      bgColor: statusColors['scheduled-bg'],
       icon: 'bell', // Fallback until 'calendar' icon is added
       label: 'Scheduled'
     }
@@ -124,23 +129,20 @@ const getStatusConfig = (status: StatusType) => {
   return configs[status]
 }
 
-const getSizeStyles = (size: StatusSize) => {
-  if (size === 'small') {
-    return {
-      height: '20px',
-      padding: `${base.spacing[1]} ${base.spacing[2]}`,
-      font: semantic.typography.caption,
-      gap: base.spacing[1],
-      iconSize: 'xs' as const
-    }
-  }
-  
-  // medium
-  return {
+// Size configuration
+const sizeConfig = {
+  small: {
+    height: '20px',
+    padding: `${spacing.xs} ${spacing.sm}`,
+    font: typography.caption,
+    gap: spacing.xs,
+    iconSize: 'xs' as const
+  },
+  medium: {
     height: '24px',
-    padding: `${base.spacing[1]} ${base.spacing[2]}`,
-    font: semantic.typography.small,
-    gap: base.spacing[1],
+    padding: `${spacing.xs} ${spacing.sm}`,
+    font: typography.small,
+    gap: spacing.xs,
     iconSize: 'sm' as const
   }
 }
@@ -151,19 +153,32 @@ const StyledStatusBadge = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${base.border.radius.circle};
-  font-weight: ${base.fontWeight[3]};
+  border-radius: ${radius.circle};
+  font-weight: 500;
   white-space: nowrap;
   user-select: none;
   animation: ${scaleIn} 0.2s ease-out;
+  transition: ${transition.fast};
   
-  /* Apply CSS custom properties */
-  background-color: var(--status-badge-bg);
-  color: var(--status-badge-color);
-  height: var(--status-badge-height);
-  padding: var(--status-badge-padding);
-  font: var(--status-badge-font);
-  gap: var(--status-badge-gap);
+  /* Size styles */
+  ${({ $size }) => {
+    const size = sizeConfig[$size]
+    return `
+      height: ${size.height};
+      padding: ${size.padding};
+      font: ${size.font};
+      gap: ${size.gap};
+    `
+  }}
+  
+  /* Status color styles */
+  ${({ $status }) => {
+    const config = getStatusConfig($status)
+    return `
+      background-color: ${config.bgColor};
+      color: ${config.color};
+    `
+  }}
 `
 
 const ScreenReaderOnly = styled.span`
@@ -211,17 +226,8 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
   'aria-label': ariaLabel
 }) => {
   const statusConfig = getStatusConfig(status)
-  const sizeStyles = getSizeStyles(size)
+  const sizeStyles = sizeConfig[size]
   const displayLabel = label || statusConfig.label
-  
-  const cssProps = {
-    '--status-badge-bg': statusConfig.bgColor,
-    '--status-badge-color': statusConfig.color,
-    '--status-badge-height': sizeStyles.height,
-    '--status-badge-padding': sizeStyles.padding,
-    '--status-badge-font': sizeStyles.font,
-    '--status-badge-gap': sizeStyles.gap
-  } as React.CSSProperties
   
   return (
     <StyledStatusBadge
@@ -232,7 +238,6 @@ export const StatusBadge: React.FC<StatusBadgeProps> = ({
       aria-live={liveRegion ? 'polite' : undefined}
       aria-atomic={liveRegion ? 'true' : undefined}
       data-testid={dataTestId}
-      style={cssProps}
     >
       {showIcon && (
         <Icon 

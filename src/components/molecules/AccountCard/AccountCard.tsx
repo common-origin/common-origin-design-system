@@ -8,6 +8,13 @@ import { MoneyDisplay } from '../../atoms/MoneyDisplay'
 import { Button } from '../../atoms/Button'
 import tokens from '../../../styles/tokens.json'
 
+// Destructure tokens for cleaner access
+const { semantic } = tokens
+const { color, spacing, border } = semantic
+const { layout } = spacing
+const { background, icon } = color
+const { radius } = border
+
 export type AccountType = 'checking' | 'savings' | 'credit' | 'investment' | 'loan'
 export type TrendDirection = 'up' | 'down' | 'neutral'
 
@@ -57,7 +64,7 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: ${tokens.semantic.spacing.layout.md};
+  margin-bottom: ${layout.md};
 `
 
 const StyledIconWrapper = styled.div`
@@ -66,25 +73,25 @@ const StyledIconWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${tokens.semantic.color.background.inverse};
-  border-radius: ${tokens.base.border.radius[3]};
-  color: ${tokens.semantic.color.icon.interactive};
+  background-color: ${background.inverse};
+  border-radius: ${radius.md};
+  color: ${icon.interactive};
 `
 
 const StyledBalanceSection = styled.div`
-  margin-bottom: ${tokens.semantic.spacing.layout.lg};
+  margin-bottom: ${layout.lg};
 `
 
 const StyledTrendSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.xs};
-  margin-top: ${tokens.semantic.spacing.layout.sm};
+  gap: ${layout.xs};
+  margin-top: ${layout.sm};
 `
 
 const StyledActions = styled.div`
   display: flex;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${layout.sm};
   margin-top: auto;
   
   & > * {
@@ -164,11 +171,10 @@ export const AccountCard: React.FC<AccountCardProps> = ({
       p="lg"
       bg="surface"
       border="default"
-      borderRadius="5"
-      shadow="3"
+      borderRadius="xl"
       transition="all 0.2s ease"
       cursor={isClickable ? 'pointer' : 'default'}
-      hoverShadow={isClickable ? '4' : undefined}
+      hoverShadow={isClickable ? 'floating' : undefined}
       hoverTransform={isClickable ? 'translateY(-2px)' : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}

@@ -44,9 +44,16 @@ export const avatarDocs: ComponentDocumentation = {
     'semantic.size.avatar.md',
     'semantic.size.avatar.lg',
     'semantic.size.avatar.xl',
-    'semantic.color.avatar.background',
-    'semantic.color.avatar.text',
-    'semantic.typography.avatar'
+    'semantic.border.radius.circle',
+    'semantic.color.background.surface',
+    'semantic.color.text.default',
+    'base.fontFamily.body',
+    'base.fontWeight.3',
+    'base.fontSize.1',
+    'base.fontSize.2',
+    'base.fontSize.3',
+    'base.fontSize.4',
+    'base.fontSize.5'
   ],
 
   examples: [

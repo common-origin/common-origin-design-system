@@ -6,7 +6,7 @@ import { Stack } from '../Stack'
 export const moneyDisplayDocs: ComponentDocumentation = {
   id: 'money-display',
   name: 'MoneyDisplay',
-  description: 'Displays monetary amounts with consistent formatting, currency symbols, and semantic color coding. Uses Intl.NumberFormat for proper locale-based currency formatting with comprehensive accessibility support.',
+  description: 'Displays monetary amounts with consistent formatting, currency symbols, and semantic color coding. Uses icons (addRing/remove) for positive/negative indicators with colored styling. Uses Intl.NumberFormat for proper locale-based currency formatting with comprehensive accessibility support.',
   category: 'Atoms',
   
   props: [
@@ -28,14 +28,14 @@ export const moneyDisplayDocs: ComponentDocumentation = {
       type: "'default' | 'positive' | 'negative' | 'neutral'",
       required: false,
       default: "'default'",
-      description: 'Visual variant: default (neutral text color), positive (green for credits/income), negative (red for debits/expenses), neutral (gray for informational)'
+      description: 'Visual variant affecting icon color: default (no icon), positive (green addRing icon for credits/income), negative (red remove icon for debits/expenses), neutral (gray text for informational)'
     },
     {
       name: 'showSign',
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Show +/− sign prefix for positive/negative amounts. Negative amounts always show sign regardless.'
+      description: 'Show icon indicator for positive/negative amounts. Positive shows green addRing icon, negative shows red remove icon. Negative amounts always show icon regardless.'
     },
     {
       name: 'size',
@@ -75,9 +75,13 @@ export const moneyDisplayDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.color.text.default',
-    'semantic.color.financial.credit',
-    'semantic.color.financial.debit',
-    'semantic.color.financial.neutral',
+    'semantic.color.text.subdued',
+    'semantic.color.icon.success - Green color for positive/addRing icon',
+    'semantic.color.icon.error - Red color for negative/remove icon',
+    'semantic.size.icon.xs - Icon size for small amounts',
+    'semantic.size.icon.sm - Icon size for medium amounts',
+    'semantic.size.icon.md - Icon size for large amounts',
+    'semantic.size.icon.lg - Icon size for xlarge amounts',
     'semantic.typography.caption',
     'semantic.typography.body',
     'semantic.typography.h3',
@@ -217,10 +221,10 @@ export const moneyDisplayDocs: ComponentDocumentation = {
     notes: [
       'Uses semantic HTML with Typography component for proper text rendering',
       'Provides comprehensive aria-label with spelled out amounts (e.g., "negative forty-five dollars and fifty cents")',
-      'Color is not the only indicator - sign symbols (+ −) provide additional context',
+      'Color is not the only indicator - icons (addRing/remove) provide additional visual context',
+      'Icons have their own aria-labels for screen reader accessibility',
       'Sufficient color contrast for all variants meeting WCAG 2.2 AA requirements',
-      'Works correctly with screen readers announcing full amount with currency',
-      'Proper use of minus sign character (−) instead of hyphen for negative amounts'
+      'Works correctly with screen readers announcing full amount with currency'
     ],
     keyboardNavigation: 'Not interactive - display component only',
     screenReader: 'Announces full amount with spelled out currency: "negative forty-five dollars and fifty cents"',
@@ -229,34 +233,44 @@ export const moneyDisplayDocs: ComponentDocumentation = {
   },
 
   anatomy: {
-    description: 'A wrapper component that uses Typography for text rendering with dynamic color and weight styling.',
+    description: 'A flex wrapper that displays an optional sign icon followed by Typography for the amount.',
     diagram: `
-┌─────────────────────────┐
-│ StyledWrapper (span)    │
-│  ┌───────────────────┐  │
-│  │ Typography        │  │
-│  │  $5,280.42        │  │
-│  └───────────────────┘  │
-└─────────────────────────┘
+┌───────────────────────────────────┐
+│ StyledWrapper (inline-flex)       │
+│  ┌────────┐  ┌─────────────────┐  │
+│  │ Icon   │  │ Typography      │  │
+│  │ +/−    │  │  $5,280.42      │  │
+│  └────────┘  └─────────────────┘  │
+└───────────────────────────────────┘
     `,
     parts: [
       {
         name: 'StyledWrapper',
-        description: 'Outer span element providing text alignment control',
+        description: 'Outer span with inline-flex display for vertical centering of icon and text',
         tokens: []
       },
       {
+        name: 'Icon (optional)',
+        description: 'addRing icon for positive amounts, remove icon for negative amounts, with semantic colors',
+        tokens: [
+          'semantic.size.icon.xs',
+          'semantic.size.icon.sm',
+          'semantic.size.icon.md',
+          'semantic.size.icon.lg',
+          'semantic.color.icon.success',
+          'semantic.color.icon.error'
+        ]
+      },
+      {
         name: 'Typography',
-        description: 'Inner Typography component with dynamic variant, color, and font weight',
+        description: 'Inner Typography component with dynamic variant and font weight for the amount',
         tokens: [
           'semantic.typography.caption',
           'semantic.typography.body',
           'semantic.typography.h3',
           'semantic.typography.h2',
           'semantic.color.text.default',
-          'semantic.color.financial.credit',
-          'semantic.color.financial.debit',
-          'semantic.color.financial.neutral'
+          'semantic.color.text.subdued'
         ]
       }
     ]
@@ -267,8 +281,8 @@ export const moneyDisplayDocs: ComponentDocumentation = {
     'Defaults to AUD currency with en-AU locale for Australian market',
     'Automatically handles thousands separators based on locale',
     'Always displays two decimal places for monetary amounts',
-    'Negative amounts always show minus sign, even without showSign prop',
-    'Sign symbols: + for positive, − (minus sign character) for negative',
+    'Negative amounts always show remove icon, even without showSign prop',
+    'Sign icons: addRing (circle with plus) for positive, remove (circle with minus) for negative',
     'Size prop maps to Typography variants: small→caption, medium→body, large→h3, xlarge→h2',
     'Variant colors use semantic financial tokens for consistency',
     'Composes from existing Typography component for reliable text rendering',

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography, type TypographyVariant, type TypographyColor } from '../Typography'
+import { Icon, type IconProps } from '../Icon'
 
 export type MoneyDisplayVariant = 'default' | 'positive' | 'negative' | 'neutral'
 export type MoneyDisplaySize = 'small' | 'medium' | 'large' | 'xlarge'
@@ -36,7 +37,9 @@ interface StyledWrapperProps {
 const StyledWrapper = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledWrapperProps>`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
   text-align: ${({ $align }) => $align};
   font-weight: ${({ $weight }) => 
     $weight === 'regular' ? 400 : 
@@ -53,12 +56,12 @@ const sizeToTypographyVariant: Record<MoneyDisplaySize, TypographyVariant> = {
   xlarge: 'h2'
 }
 
-// Map MoneyDisplay variant to Typography color
-const variantToTypographyColor: Record<MoneyDisplayVariant, TypographyColor> = {
-  default: 'default',
-  positive: 'success',    // Green color for credits/income
-  negative: 'error',      // Red color for debits/expenses
-  neutral: 'subdued'      // Gray color for informational
+// Map size to Icon size for consistent visual alignment
+const sizeToIconSize: Record<MoneyDisplaySize, IconProps['size']> = {
+  small: 'xs',
+  medium: 'sm',
+  large: 'md',
+  xlarge: 'lg'
 }
 
 /**
@@ -102,22 +105,26 @@ export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
   
   const formattedAmount = formatter.format(Math.abs(amount))
   
-  // Add sign if needed
-  let displayText = formattedAmount
-  if (showSign && amount !== 0) {
-    const signSymbol = amount > 0 ? '+' : '−' // Using minus sign character, not hyphen
-    displayText = signSymbol + formattedAmount
-  } else if (amount < 0 && !showSign) {
-    // Still show negative sign even without showSign
-    displayText = '−' + formattedAmount
-  }
+  // Determine if we need to show a sign icon
+  const showPositiveIcon = (showSign && amount > 0) || variant === 'positive'
+  const showNegativeIcon = amount < 0 || variant === 'negative'
   
   // Generate accessibility label
   const ariaLabel = generateAriaLabel(amount, currency, locale)
   
-  // Get typography variant and color
+  // Get typography variant and icon size
   const typographyVariant = sizeToTypographyVariant[size]
-  const typographyColor = variantToTypographyColor[variant]
+  const iconSize = sizeToIconSize[size]
+  
+  // Determine icon color based on variant
+  const iconColor: IconProps['iconColor'] = 
+    variant === 'positive' || showPositiveIcon ? 'success' :
+    variant === 'negative' || showNegativeIcon ? 'error' :
+    variant === 'neutral' ? 'subdued' :
+    'default'
+  
+  // Amount always uses default color (except neutral which stays subdued)
+  const amountColor: TypographyColor = variant === 'neutral' ? 'subdued' : 'default'
   
   return (
     <StyledWrapper 
@@ -126,12 +133,18 @@ export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
       aria-label={ariaLabel}
       data-testid={dataTestId}
     >
+      {showPositiveIcon && !showNegativeIcon && (
+        <Icon name="addRing" size={iconSize} iconColor={iconColor} />
+      )}
+      {showNegativeIcon && (
+        <Icon name="remove" size={iconSize} iconColor={iconColor} />
+      )}
       <Typography
         variant={typographyVariant}
-        color={typographyColor}
+        color={amountColor}
         as="span"
       >
-        {displayText}
+        {formattedAmount}
       </Typography>
     </StyledWrapper>
   )

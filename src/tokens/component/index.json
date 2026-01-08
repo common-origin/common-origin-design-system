@@ -71,9 +71,13 @@
       "default": {
         "backgroundColor": "{semantic.color.background.surface}",
         "textColor": "{semantic.color.text.default}",
-        "borderRadius": "{base.border.radius.2}",
+        "borderRadius": "{semantic.border.radius.lg}",
         "padding": "2px {base.spacing.2}",
         "font": "{semantic.typography.label}"
+      },
+      "focus": {
+        "outline": "{semantic.border.focus}",
+        "outlineOffset": "2px"
       },
       "variants": {
         "emphasis": {

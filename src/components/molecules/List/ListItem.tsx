@@ -69,6 +69,13 @@ export interface ListItemProps {
   selected?: boolean
   
   /**
+   * Destructive/danger state (e.g., delete actions)
+   * Displays text and icon in error color
+   * @default false
+   */
+  destructive?: boolean
+  
+  /**
    * Spacing variant from parent List
    * @default 'comfortable'
    */
@@ -122,6 +129,7 @@ const StyledListItem = styled.li.withConfig({
   $interactive: boolean
   $disabled: boolean
   $selected: boolean
+  $destructive: boolean
   $spacing: 'compact' | 'comfortable'
 }>`
   display: flex;
@@ -138,6 +146,11 @@ const StyledListItem = styled.li.withConfig({
     cursor: not-allowed;
     pointer-events: none;
   `}
+  
+  /* Destructive state - apply error color to text */
+  ${({ $destructive, $disabled }) => $destructive && !$disabled && `
+    color: ${semantic.color.text.error};
+  `}
 `
 
 const StyledItemContent = styled.div.withConfig({
@@ -146,6 +159,7 @@ const StyledItemContent = styled.div.withConfig({
   $interactive: boolean
   $disabled: boolean
   $selected: boolean
+  $destructive: boolean
   $spacing: 'compact' | 'comfortable'
 }>`
   display: flex;
@@ -270,6 +284,7 @@ export const ListItem = ({
   onClick,
   disabled = false,
   selected = false,
+  destructive = false,
   spacing = 'comfortable',
   children,
   className,
@@ -316,6 +331,7 @@ export const ListItem = ({
       $interactive={isInteractive}
       $disabled={disabled}
       $selected={selected}
+      $destructive={destructive}
       $spacing={spacing}
       className={className}
       data-testid={dataTestId}
@@ -328,6 +344,7 @@ export const ListItem = ({
         $interactive={isInteractive}
         $disabled={disabled}
         $selected={selected}
+        $destructive={destructive}
         $spacing={spacing}
         role={contentRole}
         aria-expanded={ariaExpanded}
@@ -344,7 +361,7 @@ export const ListItem = ({
         )}
         
         <StyledTextContent>
-          <Typography variant="body" color="default">
+          <Typography variant="body" color={destructive ? 'error' : 'default'}>
             {primary}
           </Typography>
           {secondary && (

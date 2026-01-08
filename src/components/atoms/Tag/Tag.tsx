@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
+const { color, spacing, border, typography, size } = semantic
+const { layout } = spacing
+const { radius } = border
 
 export interface TagProps {
   /**
@@ -39,47 +42,47 @@ const StyledTag = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${tokens.base.border.radius[2]};
+  border-radius: ${radius.sm};
   user-select: none;
   white-space: nowrap;
-  max-height: ${tokens.semantic.size.icon.lg || '2rem'};
+  max-height: ${size.icon.lg || '2rem'};
   
   /* Size - fixed to small */
-  padding: ${tokens.base.spacing[1]} ${tokens.base.spacing[2]};
-  font: ${tokens.semantic.typography.button3};
+  padding: ${layout.xs} ${layout.sm};
+  font: ${typography.button3};
   
   /* Variant styles */
   background-color: ${({ $variant }) => {
     switch ($variant) {
       case 'interactive':
-        return semantic.color.background['interactive-subtle']
+        return color.background['interactive-subtle']
       case 'success':
-        return semantic.color.background['success-subtle']
+        return color.background['success-subtle']
       case 'warning':
-        return semantic.color.background['warning-subtle']
+        return color.background['warning-subtle']
       case 'error':
-        return semantic.color.background['error-subtle']
+        return color.background['error-subtle']
       case 'emphasis':
-        return semantic.color.background.emphasis
+        return color.background.emphasis
       default:
-        return semantic.color.background.surface
+        return color.background.surface
     }
   }};
   
   color: ${({ $variant }) => {
     switch ($variant) {
       case 'interactive':
-        return semantic.color.text.interactive
+        return color.text.interactive
       case 'success':
-        return semantic.color.text.success
+        return color.text.success
       case 'warning':
-        return semantic.color.text.warning
+        return color.text.warning
       case 'error':
-        return semantic.color.text.error
+        return color.text.error
       case 'emphasis':
-        return semantic.color.text.inverse
+        return color.text.inverse
       default:
-        return semantic.color.text.default
+        return color.text.default
     }
   }};
   
@@ -88,17 +91,17 @@ const StyledTag = styled.span.withConfig({
     
     switch ($variant) {
       case 'interactive':
-        return `1px solid ${semantic.color.border.interactive}`
+        return `1px solid ${color.border.interactive}`
       case 'success':
-        return `1px solid ${semantic.color.border.success}`
+        return `1px solid ${color.border.success}`
       case 'warning':
-        return `1px solid ${semantic.color.border.warning}`
+        return `1px solid ${color.border.warning}`
       case 'error':
-        return `1px solid ${semantic.color.border.error}`
+        return `1px solid ${color.border.error}`
       case 'emphasis':
-        return `1px solid ${semantic.color.background.emphasis}`
+        return `1px solid ${color.background.emphasis}`
       default:
-        return `1px solid ${semantic.color.border.default}`
+        return `1px solid ${color.border.default}`
     }
   }};
 `

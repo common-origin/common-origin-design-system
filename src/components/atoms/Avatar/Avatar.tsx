@@ -2,6 +2,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
+// Destructure tokens
+const { semantic } = tokens
+const { color, size, border } = semantic
+const { radius } = border
+
 export interface AvatarProps {
   name: string
   picture?: string
@@ -20,10 +25,10 @@ const AvatarContainer = styled.div.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: ${({ $size }) => tokens.semantic.size.avatar[$size]};
-  height: ${({ $size }) => tokens.semantic.size.avatar[$size]};
-  border-radius: ${tokens.base.border.radius.circle};
-  background-color: ${tokens.semantic.color.background.surface};
+  width: ${({ $size }) => size.avatar[$size]};
+  height: ${({ $size }) => size.avatar[$size]};
+  border-radius: ${radius.circle};
+  background-color: ${color.background.surface};
   overflow: hidden;
   flex-shrink: 0;
 `
@@ -34,7 +39,7 @@ const AvatarImage = styled.img.withConfig({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: ${tokens.base.border.radius.circle};
+  border-radius: ${radius.circle};
   /* Remove the img role since the container already has role="img" */
 `
 
@@ -53,7 +58,7 @@ const AvatarInitials = styled.span.withConfig({
     }
     return sizeMap[$size]
   }};
-  color: ${tokens.semantic.color.text.default};
+  color: ${color.text.default};
   line-height: 1;
   text-transform: uppercase;
   user-select: none;
