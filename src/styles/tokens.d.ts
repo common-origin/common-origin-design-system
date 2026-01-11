@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Thu, 08 Jan 2026 12:45:22 GMT
+ * Generated on Sun, 11 Jan 2026 10:54:32 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -416,9 +416,41 @@ export interface TokensComponentButtonVariantsNaked {
   disabled: TokensComponentButtonVariantsNakedDisabled;
 }
 
+export interface TokensComponentButtonVariantsEmphasisHover {
+}
+
+export interface TokensComponentButtonVariantsEmphasisActive {
+}
+
+export interface TokensComponentButtonVariantsEmphasisDisabled {
+}
+
+export interface TokensComponentButtonVariantsEmphasis {
+  hover: TokensComponentButtonVariantsEmphasisHover;
+  active: TokensComponentButtonVariantsEmphasisActive;
+  disabled: TokensComponentButtonVariantsEmphasisDisabled;
+}
+
+export interface TokensComponentButtonVariantsDangerHover {
+}
+
+export interface TokensComponentButtonVariantsDangerActive {
+}
+
+export interface TokensComponentButtonVariantsDangerDisabled {
+}
+
+export interface TokensComponentButtonVariantsDanger {
+  hover: TokensComponentButtonVariantsDangerHover;
+  active: TokensComponentButtonVariantsDangerActive;
+  disabled: TokensComponentButtonVariantsDangerDisabled;
+}
+
 export interface TokensComponentButtonVariants {
   secondary: TokensComponentButtonVariantsSecondary;
   naked: TokensComponentButtonVariantsNaked;
+  emphasis: TokensComponentButtonVariantsEmphasis;
+  danger: TokensComponentButtonVariantsDanger;
 }
 
 export interface TokensComponentButtonSizesSmall {
@@ -449,16 +481,61 @@ export interface TokensComponentButton {
 export interface TokensComponentChipDefault {
 }
 
+export interface TokensComponentChipHover {
+}
+
+export interface TokensComponentChipActive {
+}
+
 export interface TokensComponentChipFocus {
 }
 
+export interface TokensComponentChipDisabled {
+}
+
+export interface TokensComponentChipVariantsEmphasisHover {
+}
+
+export interface TokensComponentChipVariantsEmphasisActive {
+}
+
+export interface TokensComponentChipVariantsEmphasisDisabled {
+}
+
 export interface TokensComponentChipVariantsEmphasis {
+  hover: TokensComponentChipVariantsEmphasisHover;
+  active: TokensComponentChipVariantsEmphasisActive;
+  disabled: TokensComponentChipVariantsEmphasisDisabled;
+}
+
+export interface TokensComponentChipVariantsSubtleHover {
+}
+
+export interface TokensComponentChipVariantsSubtleActive {
+}
+
+export interface TokensComponentChipVariantsSubtleDisabled {
 }
 
 export interface TokensComponentChipVariantsSubtle {
+  hover: TokensComponentChipVariantsSubtleHover;
+  active: TokensComponentChipVariantsSubtleActive;
+  disabled: TokensComponentChipVariantsSubtleDisabled;
+}
+
+export interface TokensComponentChipVariantsInteractiveHover {
+}
+
+export interface TokensComponentChipVariantsInteractiveActive {
+}
+
+export interface TokensComponentChipVariantsInteractiveDisabled {
 }
 
 export interface TokensComponentChipVariantsInteractive {
+  hover: TokensComponentChipVariantsInteractiveHover;
+  active: TokensComponentChipVariantsInteractiveActive;
+  disabled: TokensComponentChipVariantsInteractiveDisabled;
 }
 
 export interface TokensComponentChipVariants {
@@ -484,7 +561,10 @@ export interface TokensComponentChipSizes {
 
 export interface TokensComponentChip {
   default: TokensComponentChipDefault;
+  hover: TokensComponentChipHover;
+  active: TokensComponentChipActive;
   focus: TokensComponentChipFocus;
+  disabled: TokensComponentChipDisabled;
   variants: TokensComponentChipVariants;
   sizes: TokensComponentChipSizes;
 }

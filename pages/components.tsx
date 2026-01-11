@@ -272,6 +272,52 @@ export default function Components() {
     )
   }
 
+  const renderAnatomy = (anatomy: ComponentData['anatomy']) => {
+    if (!anatomy) {
+      return <Typography color="subdued" variant="caption">No anatomy information available</Typography>
+    }
+
+    return (
+      <Stack direction="column" gap="xl">
+        <Typography variant="body" color="subdued">{anatomy.description}</Typography>
+        
+        {anatomy.diagram && (
+          <Box>
+            <Box mb="xs">
+              <Typography variant="subtitle">Structure Diagram:</Typography>
+            </Box>
+            <CodeBlock>{anatomy.diagram}</CodeBlock>
+          </Box>
+        )}
+        
+        {anatomy.parts && anatomy.parts.length > 0 && (
+          <Box>
+            <Box mb="md">
+              <Typography variant="subtitle">Component Parts:</Typography>
+            </Box>
+            <Stack direction="column" gap="lg">
+              {anatomy.parts.map((part, index) => (
+                <Box key={index}>
+                  <Typography variant="label">{part.name}</Typography>
+                  <Typography variant="small" color="subdued">{part.description}</Typography>
+                  {part.tokens && part.tokens.length > 0 && (
+                    <Box mt="xs">
+                      <Stack direction="row" gap="xs" wrap>
+                        {part.tokens.map((token, tokenIndex) => (
+                          <TokenChip key={tokenIndex} title={token} variant="default" />
+                        ))}
+                      </Stack>
+                    </Box>
+                  )}
+                </Box>
+              ))}
+            </Stack>
+          </Box>
+        )}
+      </Stack>
+    )
+  }
+
   const renderExamples = (examples: ComponentData['examples']) => {
     return (
       <Stack direction="column" gap="4xl">
@@ -390,6 +436,17 @@ export default function Components() {
                         {renderAccessibilityInfo(activeComponentData.accessibility)}
                       </Stack>
                     </ComponentSection>
+
+                    {activeComponentData.anatomy && (
+                      <ComponentSection>
+                        <Stack gap="md" direction="column">
+                          <Typography variant="h3" color="default">
+                            Anatomy
+                          </Typography>
+                          {renderAnatomy(activeComponentData.anatomy)}
+                        </Stack>
+                      </ComponentSection>
+                    )}
 
                     {activeComponentData.notes && activeComponentData.notes.length > 0 && (
                       <ComponentSection>

@@ -50,6 +50,34 @@
             "backgroundColor": "transparent",
             "textColor": "{semantic.color.text.disabled}"
           }
+        },
+        "emphasis": {
+          "backgroundColor": "{semantic.color.background.interactive}",
+          "textColor": "{semantic.color.text.inverse}",
+          "hover": {
+            "backgroundColor": "{semantic.color.background.interactive-hover}"
+          },
+          "active": {
+            "backgroundColor": "{semantic.color.background.interactive-active}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
+        },
+        "danger": {
+          "backgroundColor": "{semantic.color.background.error}",
+          "textColor": "{semantic.color.text.inverse}",
+          "hover": {
+            "backgroundColor": "{base.color.red.1000}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.red.1100}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
         }
       },
       "sizes": {
@@ -75,22 +103,62 @@
         "padding": "2px {base.spacing.2}",
         "font": "{semantic.typography.label}"
       },
+      "hover": {
+        "backgroundColor": "{base.color.neutral.300}"
+      },
+      "active": {
+        "backgroundColor": "{base.color.neutral.400}"
+      },
       "focus": {
         "outline": "{semantic.border.focus}",
         "outlineOffset": "2px"
       },
+      "disabled": {
+        "backgroundColor": "{semantic.color.background.surface}",
+        "textColor": "{semantic.color.text.disabled}"
+      },
       "variants": {
         "emphasis": {
           "backgroundColor": "{semantic.color.background.emphasis}",
-          "textColor": "{semantic.color.text.inverse}"
+          "textColor": "{semantic.color.text.inverse}",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.800}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.1000}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
         },
         "subtle": {
           "backgroundColor": "{semantic.color.background.subtle}",
-          "textColor": "{semantic.color.text.default}"
+          "textColor": "{semantic.color.text.default}",
+          "hover": {
+            "backgroundColor": "{base.color.neutral.100}"
+          },
+          "active": {
+            "backgroundColor": "{base.color.neutral.200}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.subtle}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
         },
         "interactive": {
           "backgroundColor": "{semantic.color.background.interactive}",
-          "textColor": "{semantic.color.text.inverse}"
+          "textColor": "{semantic.color.text.inverse}",
+          "hover": {
+            "backgroundColor": "{semantic.color.background.interactive-hover}"
+          },
+          "active": {
+            "backgroundColor": "{semantic.color.background.interactive-active}"
+          },
+          "disabled": {
+            "backgroundColor": "{semantic.color.background.disabled}",
+            "textColor": "{semantic.color.text.disabled}"
+          }
         }
       },
       "sizes": {

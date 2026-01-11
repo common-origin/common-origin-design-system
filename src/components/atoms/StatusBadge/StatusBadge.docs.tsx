@@ -61,26 +61,32 @@ export const statusBadgeDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.status.pending - Yellow color for awaiting states',
-    'semantic.color.status.pending-bg - Light yellow background',
-    'semantic.color.status.completed - Green color for successful states',
-    'semantic.color.status.completed-bg - Light green background',
-    'semantic.color.status.failed - Red color for error states',
-    'semantic.color.status.failed-bg - Light red background',
-    'semantic.color.status.cancelled - Gray color for cancelled states',
-    'semantic.color.status.cancelled-bg - Light gray background',
-    'semantic.color.status.processing - Blue color for active processing',
-    'semantic.color.status.processing-bg - Light blue background',
-    'semantic.color.status.scheduled - Purple color for future scheduled states',
-    'semantic.color.status.scheduled-bg - Light purple background',
-    'base.spacing.1 - 2px padding (vertical for small)',
-    'base.spacing.2 - 4px padding (vertical for medium)',
-    'base.spacing.3 - 6px padding (horizontal)',
-    'semantic.typography.caption - Typography for small size',
-    'semantic.typography.small - Typography for medium size',
-    'base.border.radius.pill - Fully rounded corners',
-    'semantic.size.icon.xs - 12px icon for small badges',
-    'semantic.size.icon.sm - 16px icon for medium badges'
+    // Status colors
+    'semantic.color.status.pending',
+    'semantic.color.status.pending-bg',
+    'semantic.color.status.completed',
+    'semantic.color.status.completed-bg',
+    'semantic.color.status.failed',
+    'semantic.color.status.failed-bg',
+    'semantic.color.status.cancelled',
+    'semantic.color.status.cancelled-bg',
+    'semantic.color.status.processing',
+    'semantic.color.status.processing-bg',
+    'semantic.color.status.scheduled',
+    'semantic.color.status.scheduled-bg',
+    // Spacing
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    // Typography
+    'semantic.typography.caption',
+    'semantic.typography.small',
+    // Border
+    'semantic.border.radius.circle',
+    // Motion
+    'semantic.motion.transition.fast',
+    // Icon sizes
+    'semantic.size.icon.xs',
+    'semantic.size.icon.sm'
   ],
 
   examples: [

@@ -18,10 +18,10 @@ export const buttonDocs: ComponentDocumentation = {
   props: [
     {
       name: 'variant',
-      type: "'primary' | 'secondary' | 'naked'",
+      type: "'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'",
       required: false,
       default: 'primary',
-      description: 'Visual style variant: primary (high emphasis), secondary (medium emphasis), naked (minimal styling)'
+      description: 'Visual style variant: primary (high emphasis, dark), secondary (medium emphasis, gray), naked (minimal styling, transparent), emphasis (blue interactive, prominent CTAs), danger (red, destructive actions)'
     },
     {
       name: 'size',
@@ -98,35 +98,87 @@ export const buttonDocs: ComponentDocumentation = {
   // Props will be auto-extracted from ButtonProps/LinkProps interfaces
   // We can enhance with better descriptions and examples
   tokens: [
+    // Primary variant
     'component.button.primary.backgroundColor',
     'component.button.primary.textColor',
+    'component.button.primary.borderRadius',
+    'component.button.primary.padding',
+    'component.button.primary.font',
+    // Hover/Active states (primary)
     'component.button.hover.backgroundColor',
     'component.button.active.backgroundColor',
+    // Disabled state
     'component.button.disabled.backgroundColor',
-    'component.button.variants.secondary.*',
-    'component.button.variants.naked.*',
-    'semantic.color.interactive.primary',
-    'semantic.color.interactive.secondary',
-    'semantic.spacing.button.padding.*',
+    'component.button.disabled.textColor',
+    // Focus state
+    'component.button.focus.outline',
+    'component.button.focus.outlineOffset',
+    // Secondary variant
+    'component.button.variants.secondary.backgroundColor',
+    'component.button.variants.secondary.textColor',
+    'component.button.variants.secondary.hover.backgroundColor',
+    'component.button.variants.secondary.active.backgroundColor',
+    'component.button.variants.secondary.disabled.backgroundColor',
+    'component.button.variants.secondary.disabled.textColor',
+    // Naked variant
+    'component.button.variants.naked.backgroundColor',
+    'component.button.variants.naked.textColor',
+    'component.button.variants.naked.hover.backgroundColor',
+    'component.button.variants.naked.active.backgroundColor',
+    'component.button.variants.naked.disabled.backgroundColor',
+    'component.button.variants.naked.disabled.textColor',
+    // Emphasis variant (blue interactive)
+    'component.button.variants.emphasis.backgroundColor',
+    'component.button.variants.emphasis.textColor',
+    'component.button.variants.emphasis.hover.backgroundColor',
+    'component.button.variants.emphasis.active.backgroundColor',
+    'component.button.variants.emphasis.disabled.backgroundColor',
+    'component.button.variants.emphasis.disabled.textColor',
+    // Danger variant (red destructive)
+    'component.button.variants.danger.backgroundColor',
+    'component.button.variants.danger.textColor',
+    'component.button.variants.danger.hover.backgroundColor',
+    'component.button.variants.danger.active.backgroundColor',
+    'component.button.variants.danger.disabled.backgroundColor',
+    'component.button.variants.danger.disabled.textColor',
+    // Size variants
+    'component.button.sizes.small.padding',
+    'component.button.sizes.small.font',
+    'component.button.sizes.medium.padding',
+    'component.button.sizes.medium.font',
+    'component.button.sizes.large.padding',
+    'component.button.sizes.large.font',
+    // Spacing and motion
     'semantic.spacing.layout.xs',
-    'semantic.typography.button',
-    'semantic.size.icon.*'
+    'semantic.motion.hover'
   ],
   
   examples: [
     {
       name: 'Button Variants',
-      description: 'Different visual styles for various contexts',
-      code: `<Stack direction="row" gap="md">
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="naked">Naked</Button>
+      description: 'Five visual styles for different contexts: primary (dark, high emphasis), secondary (gray, medium emphasis), naked (transparent, minimal), emphasis (blue, prominent CTAs), danger (red, destructive actions)',
+      code: `<Stack direction="column" gap="md">
+  <Stack direction="row" gap="md">
+    <Button variant="primary">Primary</Button>
+    <Button variant="secondary">Secondary</Button>
+    <Button variant="naked">Naked</Button>
+  </Stack>
+  <Stack direction="row" gap="md">
+    <Button variant="emphasis">Emphasis</Button>
+    <Button variant="danger">Danger</Button>
+  </Stack>
 </Stack>`,
       renderComponent: () => (
-        <Stack direction="row" gap="md">
-          <Button variant="primary">Primary</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="naked">Naked</Button>
+        <Stack direction="column" gap="md">
+          <Stack direction="row" gap="md">
+            <Button variant="primary">Primary</Button>
+            <Button variant="secondary">Secondary</Button>
+            <Button variant="naked">Naked</Button>
+          </Stack>
+          <Stack direction="row" gap="md">
+            <Button variant="emphasis">Emphasis</Button>
+            <Button variant="danger">Danger</Button>
+          </Stack>
         </Stack>
       )
     },
@@ -148,19 +200,35 @@ export const buttonDocs: ComponentDocumentation = {
     },
     {
       name: 'Button States',
-      description: 'Interactive states including disabled',
-      code: `<Stack direction="row" gap="md">
-  <Button>Enabled</Button>
-  <Button disabled>Disabled</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="secondary" disabled>Secondary Disabled</Button>
+      description: 'Interactive states including disabled. All variants share consistent disabled styling.',
+      code: `<Stack direction="column" gap="md">
+  <Stack direction="row" gap="md">
+    <Button>Enabled</Button>
+    <Button disabled>Disabled</Button>
+  </Stack>
+  <Stack direction="row" gap="md">
+    <Button variant="emphasis">Emphasis</Button>
+    <Button variant="emphasis" disabled>Emphasis Disabled</Button>
+  </Stack>
+  <Stack direction="row" gap="md">
+    <Button variant="danger">Danger</Button>
+    <Button variant="danger" disabled>Danger Disabled</Button>
+  </Stack>
 </Stack>`,
       renderComponent: () => (
-        <Stack direction="row" gap="md">
-          <Button>Enabled</Button>
-          <Button disabled>Disabled</Button>
-          <Button variant="secondary">Secondary</Button>
-          <Button variant="secondary" disabled>Secondary Disabled</Button>
+        <Stack direction="column" gap="md">
+          <Stack direction="row" gap="md">
+            <Button>Enabled</Button>
+            <Button disabled>Disabled</Button>
+          </Stack>
+          <Stack direction="row" gap="md">
+            <Button variant="emphasis">Emphasis</Button>
+            <Button variant="emphasis" disabled>Emphasis Disabled</Button>
+          </Stack>
+          <Stack direction="row" gap="md">
+            <Button variant="danger">Danger</Button>
+            <Button variant="danger" disabled>Danger Disabled</Button>
+          </Stack>
         </Stack>
       )
     },
@@ -210,7 +278,7 @@ export const buttonDocs: ComponentDocumentation = {
     },
     {
       name: 'Icon Color Inheritance',
-      description: 'Icons automatically inherit the button text color across all variants',
+      description: 'Icons automatically inherit the button text color across all variants including emphasis and danger',
       code: `<Stack direction="column" gap="sm">
   <Stack direction="row" gap="md">
     <Button iconName="message" variant="primary">Primary</Button>
@@ -218,8 +286,8 @@ export const buttonDocs: ComponentDocumentation = {
     <Button iconName="message" variant="naked">Naked</Button>
   </Stack>
   <Stack direction="row" gap="md">
-    <Button iconName="copy" variant="primary" disabled>Disabled</Button>
-    <Button iconName="link" variant="secondary" purpose="link" url="/link">Link Button</Button>
+    <Button iconName="add" variant="emphasis">Add New</Button>
+    <Button iconName="trash" variant="danger">Delete</Button>
   </Stack>
 </Stack>`,
       renderComponent: () => (
@@ -230,8 +298,8 @@ export const buttonDocs: ComponentDocumentation = {
             <Button iconName="message" variant="naked">Naked</Button>
           </Stack>
           <Stack direction="row" gap="md">
-            <Button iconName="copy" variant="primary" disabled>Disabled</Button>
-            <Button iconName="link" variant="secondary" purpose="link" url="/link">Link Button</Button>
+            <Button iconName="add" variant="emphasis">Add New</Button>
+            <Button iconName="trash" variant="danger">Delete</Button>
           </Stack>
         </Stack>
       )
@@ -353,15 +421,70 @@ export const buttonDocs: ComponentDocumentation = {
 
   notes: [
     'Semantic Purpose: Use purpose="button" for actions (forms, modals, state changes), purpose="link" for navigation',
-    'Variant Hierarchy: Primary for main CTAs, secondary for supporting actions, naked for minimal emphasis or custom contexts',
+    'Variant Hierarchy: Primary for main actions, secondary for supporting actions, naked for minimal emphasis, emphasis for prominent blue CTAs, danger for destructive/irreversible actions',
+    'Emphasis Variant: Use for sign-up flows, primary CTAs that need to stand out, and actions you want to encourage users to take',
+    'Danger Variant: Reserve for destructive actions like delete, remove, or cancel subscription. Always pair with confirmation dialogs for irreversible actions',
     'Size Guidelines: Small for compact interfaces, medium for standard use, large for prominent CTAs or touch interfaces',
     'Polymorphic Rendering: Automatically renders semantic HTML (<button> or <a>) with proper attributes based on purpose',
     'Icon Integration: Icons automatically inherit button text color and scale with size - no manual color/size management needed',
     'Form Integration: Type prop supports submit/reset functionality, onClick handler for custom button actions',
     'Link Behavior: Uses Next.js Link for client-side routing performance, supports target attribute for external links',
-    'Disabled State: Prevents all interaction (click, keyboard, form submission) and provides visual/ARIA feedback',
+    'Disabled State: Prevents all interaction (click, keyboard, form submission) and provides visual/ARIA feedback. All variants share consistent disabled styling.',
+    'Hover/Active States: All variants use background-color changes (not opacity) for consistent behavior matching Chip and IconButton components',
     'Design Token Usage: All styling derives from component tokens ensuring consistency and theme support',
     'Performance: Efficient rendering with proper prop forwarding and styled-components optimization',
-    'Browser Support: Works across all modern browsers with graceful degradation for older environments',
-    'Custom Styling: Naked variant provides base structure for custom styling while maintaining accessibility'
-  ]}
+    'Browser Support: Works across all modern browsers with graceful degradation for older environments'
+  ],
+
+  anatomy: {
+    description: 'A button element with variant-specific styling, optional leading icon, and text content. Hover and active states use background-color transitions for visual feedback.',
+    diagram: `
+┌─────────────────────────────────┐
+│  Button Container               │
+│  ┌──────┐  ┌────────────────┐  │
+│  │ Icon │  │  Text Content  │  │
+│  │(opt) │  │                │  │
+│  └──────┘  └────────────────┘  │
+└─────────────────────────────────┘
+
+Variant Colors:
+┌─────────┐ ┌─────────┐ ┌─────────┐
+│ Primary │ │Secondary│ │  Naked  │
+│ #212529 │ │ #dee2e6 │ │ transp. │
+└─────────┘ └─────────┘ └─────────┘
+┌─────────┐ ┌─────────┐
+│Emphasis │ │ Danger  │
+│ #0265DC │ │ #D31510 │
+└─────────┘ └─────────┘
+    `,
+    parts: [
+      {
+        name: 'Container',
+        description: 'Root button or anchor element with variant-specific background, text color, and hover/active/disabled states using background-color transitions.',
+        tokens: [
+          'component.button.primary.backgroundColor',
+          'component.button.hover.backgroundColor',
+          'component.button.active.backgroundColor',
+          'component.button.primary.borderRadius',
+          'semantic.motion.hover'
+        ]
+      },
+      {
+        name: 'Icon (optional)',
+        description: 'Leading icon that automatically inherits text color and scales with button size (small→xs, medium→sm, large→md).',
+        tokens: [
+          'semantic.spacing.layout.xs'
+        ]
+      },
+      {
+        name: 'Text Content',
+        description: 'Button label using size-specific typography. Color inherited from variant.',
+        tokens: [
+          'component.button.sizes.small.font',
+          'component.button.sizes.medium.font',
+          'component.button.sizes.large.font'
+        ]
+      }
+    ]
+  }
+}

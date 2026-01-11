@@ -18,18 +18,9 @@ export const StyledChip = styled.span.withConfig({
   white-space: nowrap;
   transition: ${tokens.semantic.motion.hover};
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
-  opacity: ${props => props.$disabled ? '0.6' : '1'};
   
   ${getVariantStyles}
   ${getSizeStyles}
-  
-  &:hover {
-    opacity: ${props => props.$disabled ? '0.6' : (props.$clickable ? '0.8' : '1')};
-  }
-  
-  &:active {
-    opacity: ${props => props.$disabled ? '0.6' : (props.$clickable ? '0.9' : '1')};
-  }
   
   &:focus-visible {
     outline: ${chipTokens.focus.outline};
@@ -54,18 +45,22 @@ export const CloseButton = styled.button.withConfig({
   margin-left: ${tokens.semantic.spacing.layout.sm};
   background: transparent;
   border: none;
-  padding: 0;
+  padding: 2px;
+  border-radius: ${tokens.semantic.border.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
-  opacity: ${props => props.$disabled ? '0.6' : '1'};
   color: inherit;
   transition: ${tokens.semantic.motion.hover};
   
   &:hover:not(:disabled) {
-    opacity: 0.7;
+    background-color: rgba(0, 0, 0, 0.1);
   }
   
   &:active:not(:disabled) {
-    opacity: 0.9;
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+  
+  &:disabled {
+    color: ${tokens.semantic.color.text.disabled};
   }
   
   &:focus-visible {

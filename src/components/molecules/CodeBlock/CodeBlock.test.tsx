@@ -222,5 +222,119 @@ console.log(greeting + " " + name);`
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })
+
+    it('should not have accessibility violations when collapsed with maxHeight', async () => {
+      const longCode = Array(50).fill('const line = "code";').join('\n')
+      const { container } = render(
+        <CodeBlock maxHeight={100}>{longCode}</CodeBlock>
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have accessibility violations when expanded', async () => {
+      const longCode = Array(50).fill('const line = "code";').join('\n')
+      const { container } = render(
+        <CodeBlock maxHeight={100} defaultExpanded>{longCode}</CodeBlock>
+      )
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+  })
+
+  describe('Expand/Collapse Functionality', () => {
+    const longCode = Array(50).fill('const line = "code";').join('\n')
+    const shortCode = 'const x = 1;'
+
+    beforeEach(() => {
+      jest.useRealTimers()
+      // Mock scrollHeight to simulate content height
+      Object.defineProperty(HTMLElement.prototype, 'scrollHeight', {
+        configurable: true,
+        get: function() {
+          // Return a large value for long code, small for short
+          if (this.textContent?.includes('const line')) {
+            return 500
+          }
+          return 20
+        }
+      })
+    })
+
+    it('does not show expand button when maxHeight is not set', () => {
+      render(<CodeBlock>{longCode}</CodeBlock>)
+      expect(screen.queryByTestId('expand-button')).not.toBeInTheDocument()
+    })
+
+    it('does not show expand button when content fits within maxHeight', () => {
+      render(<CodeBlock maxHeight={100}>{shortCode}</CodeBlock>)
+      expect(screen.queryByTestId('expand-button')).not.toBeInTheDocument()
+    })
+
+    it('shows expand button when content exceeds maxHeight', () => {
+      render(<CodeBlock maxHeight={100}>{longCode}</CodeBlock>)
+      const expandButton = screen.getByTestId('expand-button')
+      expect(expandButton).toBeInTheDocument()
+      expect(expandButton).toHaveTextContent('Show more')
+    })
+
+    it('starts collapsed by default when maxHeight is set', () => {
+      render(<CodeBlock maxHeight={100} data-testid="code-block">{longCode}</CodeBlock>)
+      const codeBlock = screen.getByTestId('code-block')
+      expect(codeBlock).toHaveAttribute('aria-expanded', 'false')
+    })
+
+    it('starts expanded when defaultExpanded is true', () => {
+      render(<CodeBlock maxHeight={100} defaultExpanded data-testid="code-block">{longCode}</CodeBlock>)
+      const codeBlock = screen.getByTestId('code-block')
+      expect(codeBlock).toHaveAttribute('aria-expanded', 'true')
+      expect(screen.getByTestId('expand-button')).toHaveTextContent('Show less')
+    })
+
+    it('toggles expand state when button is clicked', () => {
+      render(<CodeBlock maxHeight={100} data-testid="code-block">{longCode}</CodeBlock>)
+      const expandButton = screen.getByTestId('expand-button')
+      
+      // Initially collapsed
+      expect(screen.getByTestId('code-block')).toHaveAttribute('aria-expanded', 'false')
+      expect(expandButton).toHaveTextContent('Show more')
+      
+      // Click to expand
+      fireEvent.click(expandButton)
+      expect(screen.getByTestId('code-block')).toHaveAttribute('aria-expanded', 'true')
+      expect(expandButton).toHaveTextContent('Show less')
+      
+      // Click to collapse
+      fireEvent.click(expandButton)
+      expect(screen.getByTestId('code-block')).toHaveAttribute('aria-expanded', 'false')
+      expect(expandButton).toHaveTextContent('Show more')
+    })
+
+    it('expand button has aria-expanded attribute', () => {
+      render(<CodeBlock maxHeight={100}>{longCode}</CodeBlock>)
+      const expandButton = screen.getByTestId('expand-button')
+      expect(expandButton).toHaveAttribute('aria-expanded', 'false')
+      
+      fireEvent.click(expandButton)
+      expect(expandButton).toHaveAttribute('aria-expanded', 'true')
+    })
+
+    it('code block is keyboard focusable when expandable', () => {
+      render(<CodeBlock maxHeight={100} data-testid="code-block">{longCode}</CodeBlock>)
+      const codeBlock = screen.getByTestId('code-block')
+      expect(codeBlock).toHaveAttribute('tabIndex', '0')
+    })
+
+    it('shows both copy and expand buttons when applicable', () => {
+      render(<CodeBlock maxHeight={100} showCopyButton>{longCode}</CodeBlock>)
+      expect(screen.getByTestId('copy-button')).toBeInTheDocument()
+      expect(screen.getByTestId('expand-button')).toBeInTheDocument()
+    })
+
+    it('can hide copy button while showing expand button', () => {
+      render(<CodeBlock maxHeight={100} showCopyButton={false}>{longCode}</CodeBlock>)
+      expect(screen.queryByTestId('copy-button')).not.toBeInTheDocument()
+      expect(screen.getByTestId('expand-button')).toBeInTheDocument()
+    })
   })
 })

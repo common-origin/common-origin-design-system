@@ -7,7 +7,7 @@ const { component: { button }, semantic } = tokens
 
 // Base props shared between button and link
 export interface BaseButtonProps {
-  variant?: 'primary' | 'secondary' | 'naked'
+  variant?: 'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'
   size?: 'small' | 'medium' | 'large'
   url?: string
   purpose?: 'button' | 'link'
@@ -38,7 +38,7 @@ export interface LinkProps extends BaseButtonProps, Omit<React.AnchorHTMLAttribu
 type CustomButtonProps = ButtonProps | LinkProps
 
 interface StyledButtonProps {
-  $variant: 'primary' | 'secondary' | 'naked'
+  $variant: 'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'
   $size: 'small' | 'medium' | 'large'
 }
 
@@ -68,59 +68,70 @@ const baseButtonStyles = `
 `
 
 // Dynamic variant styles using component tokens
-const getVariantStyles = ({ $variant }: StyledButtonProps) => `
-  background-color: ${
-    $variant === 'primary' 
-    ? button.primary.backgroundColor 
-    : $variant === 'secondary'
-    ? button.variants.secondary.backgroundColor
-    : button.variants.naked.backgroundColor
-  };
-  color: ${
-    $variant === 'primary' 
-    ? button.primary.textColor 
-    : $variant === 'secondary'
-    ? button.variants.secondary.textColor
-    : button.variants.naked.textColor
-  };
+const getVariantStyles = ({ $variant }: StyledButtonProps) => {
+  const variantConfig = {
+    primary: {
+      bg: button.primary.backgroundColor,
+      text: button.primary.textColor,
+      hoverBg: button.hover.backgroundColor,
+      activeBg: button.active.backgroundColor,
+      disabledBg: button.disabled.backgroundColor,
+      disabledText: button.disabled.textColor
+    },
+    secondary: {
+      bg: button.variants.secondary.backgroundColor,
+      text: button.variants.secondary.textColor,
+      hoverBg: button.variants.secondary.hover.backgroundColor,
+      activeBg: button.variants.secondary.active.backgroundColor,
+      disabledBg: button.variants.secondary.disabled.backgroundColor,
+      disabledText: button.variants.secondary.disabled.textColor
+    },
+    naked: {
+      bg: button.variants.naked.backgroundColor,
+      text: button.variants.naked.textColor,
+      hoverBg: button.variants.naked.hover.backgroundColor,
+      activeBg: button.variants.naked.active.backgroundColor,
+      disabledBg: button.variants.naked.disabled.backgroundColor,
+      disabledText: button.variants.naked.disabled.textColor
+    },
+    emphasis: {
+      bg: button.variants.emphasis.backgroundColor,
+      text: button.variants.emphasis.textColor,
+      hoverBg: button.variants.emphasis.hover.backgroundColor,
+      activeBg: button.variants.emphasis.active.backgroundColor,
+      disabledBg: button.variants.emphasis.disabled.backgroundColor,
+      disabledText: button.variants.emphasis.disabled.textColor
+    },
+    danger: {
+      bg: button.variants.danger.backgroundColor,
+      text: button.variants.danger.textColor,
+      hoverBg: button.variants.danger.hover.backgroundColor,
+      activeBg: button.variants.danger.active.backgroundColor,
+      disabledBg: button.variants.danger.disabled.backgroundColor,
+      disabledText: button.variants.danger.disabled.textColor
+    }
+  }
   
-  &:hover:not(:disabled) {
-    background-color: ${
-      $variant === 'primary' 
-      ? button.hover.backgroundColor 
-      : $variant === 'secondary'
-      ? button.variants.secondary.hover.backgroundColor
-      : button.variants.naked.hover.backgroundColor
-    };
-  }
+  const config = variantConfig[$variant]
+  
+  return `
+    background-color: ${config.bg};
+    color: ${config.text};
+    
+    &:hover:not(:disabled) {
+      background-color: ${config.hoverBg};
+    }
 
-  &:active:not(:disabled) {
-    background-color: ${
-      $variant === 'primary' 
-      ? button.active.backgroundColor 
-      : $variant === 'secondary'
-      ? button.variants.secondary.active.backgroundColor
-      : button.variants.naked.active.backgroundColor
-    };
-  }
+    &:active:not(:disabled) {
+      background-color: ${config.activeBg};
+    }
 
-  &:disabled {
-    background-color: ${
-      $variant === 'primary' 
-      ? button.disabled.backgroundColor 
-      : $variant === 'secondary'
-      ? button.variants.secondary.disabled.backgroundColor
-      : button.variants.naked.disabled.backgroundColor
-    };
-    color: ${
-      $variant === 'primary' 
-      ? button.disabled.textColor 
-      : $variant === 'secondary'
-      ? button.variants.secondary.disabled.textColor
-      : button.variants.naked.disabled.textColor
-    };
-  }
-`
+    &:disabled {
+      background-color: ${config.disabledBg};
+      color: ${config.disabledText};
+    }
+  `
+}
 
 // Dynamic size styles using component tokens
 const getSizeStyles = ({ $size }: StyledButtonProps) => {

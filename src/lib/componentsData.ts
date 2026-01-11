@@ -71,6 +71,15 @@ export interface ComponentData {
     colorContrast?: string
     focusManagement?: string
   }
+  anatomy?: {
+    description: string
+    diagram?: string
+    parts: Array<{
+      name: string
+      description: string
+      tokens?: string[]
+    }>
+  }
   notes?: string[]
 }
 
@@ -97,6 +106,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
       renderComponent: example.renderComponent
     })),
     accessibility: docs.accessibility,
+    anatomy: docs.anatomy,
     notes: docs.notes
   }
 }

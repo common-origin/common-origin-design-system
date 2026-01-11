@@ -135,18 +135,54 @@ export const chipDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.chip.default.backgroundColor - Standard chip background for general categorization',
-    'component.chip.emphasis.backgroundColor - High-contrast background for important categorization',
-    'component.chip.subtle.backgroundColor - Low-contrast background for supporting information',
-    'component.chip.interactive.backgroundColor - Interactive chip styling with hover states',
-    'semantic.color.background.interactive-subtle - Background for selected boolean chips',
-    'semantic.spacing.layout.md - 8px spacing between icons and content in filter/boolean chips',
-    'component.chip.sizes.small.font - Compact font sizing for dense layouts',
-    'component.chip.sizes.medium.font - Standard font sizing for most interfaces',
-    'component.chip.default.borderRadius - Consistent rounded corners (0.75rem via semantic.border.radius.lg)',
-    'component.chip.focus.outline - Focus ring styling matching button component (2px solid)',
-    'component.chip.focus.outlineOffset - Focus ring offset for visibility (2px)',
-    'semantic.motion.hover - Smooth transitions for hover and focus state changes'
+    // Default variant
+    'component.chip.default.backgroundColor',
+    'component.chip.default.textColor',
+    'component.chip.default.borderRadius',
+    'component.chip.default.padding',
+    'component.chip.default.font',
+    // Hover/Active states
+    'component.chip.hover.backgroundColor',
+    'component.chip.active.backgroundColor',
+    // Disabled state
+    'component.chip.disabled.backgroundColor',
+    'component.chip.disabled.textColor',
+    // Focus state
+    'component.chip.focus.outline',
+    'component.chip.focus.outlineOffset',
+    // Emphasis variant
+    'component.chip.variants.emphasis.backgroundColor',
+    'component.chip.variants.emphasis.textColor',
+    'component.chip.variants.emphasis.hover.backgroundColor',
+    'component.chip.variants.emphasis.active.backgroundColor',
+    'component.chip.variants.emphasis.disabled.backgroundColor',
+    'component.chip.variants.emphasis.disabled.textColor',
+    // Subtle variant
+    'component.chip.variants.subtle.backgroundColor',
+    'component.chip.variants.subtle.textColor',
+    'component.chip.variants.subtle.hover.backgroundColor',
+    'component.chip.variants.subtle.active.backgroundColor',
+    'component.chip.variants.subtle.disabled.backgroundColor',
+    'component.chip.variants.subtle.disabled.textColor',
+    // Interactive variant
+    'component.chip.variants.interactive.backgroundColor',
+    'component.chip.variants.interactive.textColor',
+    'component.chip.variants.interactive.hover.backgroundColor',
+    'component.chip.variants.interactive.active.backgroundColor',
+    'component.chip.variants.interactive.disabled.backgroundColor',
+    'component.chip.variants.interactive.disabled.textColor',
+    // Size variants
+    'component.chip.sizes.small.padding',
+    'component.chip.sizes.small.font',
+    'component.chip.sizes.medium.padding',
+    'component.chip.sizes.medium.font',
+    // Selected state (boolean chips)
+    'semantic.color.background.interactive-subtle',
+    // Spacing
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    // Motion
+    'semantic.motion.hover'
   ],
 
   examples: [
@@ -749,5 +785,62 @@ return (
     'Performance Optimization: Component uses styled-components with direct token imports for efficient styling. Transitions and focus states leverage component tokens aligned with Button for consistent behavior across the design system.',
     'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states use semantic.motion.hover for smooth transitions that enhance user feedback without being distracting or overwhelming. Focus states use component.chip.focus tokens aligned with Button component for consistent keyboard navigation experience.',
     'Testing Support: data-testid prop enables consistent automated testing across chip variants and states. Component includes comprehensive test coverage for interaction patterns, accessibility compliance, and state management scenarios.'
-  ]
+  ],
+
+  anatomy: {
+    description: 'A compact inline element with variant-specific styling, optional icons, and interactive states. Hover and active states use background-color changes (not opacity) for consistency with Button and IconButton components.',
+    diagram: `
+┌────────────────────────────────────┐
+│  Chip Container                    │
+│  ┌──────┐  ┌─────────┐  ┌───────┐ │
+│  │ Icon │  │  Label  │  │ Close │ │
+│  │(opt) │  │ (text)  │  │ (opt) │ │
+│  └──────┘  └─────────┘  └───────┘ │
+└────────────────────────────────────┘
+
+States:
+┌─────────┐  ┌─────────┐  ┌─────────┐
+│ Default │  │  Hover  │  │ Active  │
+│   bg    │→ │ bg-hover│→ │bg-active│
+└─────────┘  └─────────┘  └─────────┘
+    `,
+    parts: [
+      {
+        name: 'Container',
+        description: 'Root element with rounded corners, variant-specific background color, and color-based hover/active states. Uses background-color transitions matching Button component pattern.',
+        tokens: [
+          'component.chip.default.backgroundColor',
+          'component.chip.hover.backgroundColor',
+          'component.chip.active.backgroundColor',
+          'component.chip.default.borderRadius',
+          'semantic.motion.hover'
+        ]
+      },
+      {
+        name: 'Icon (optional)',
+        description: 'Leading icon slot. Shows checkmark for selected filter/boolean chips. Uses inherited color from container.',
+        tokens: [
+          'semantic.spacing.layout.xs'
+        ]
+      },
+      {
+        name: 'Label',
+        description: 'Text content using variant-specific color and size-based typography.',
+        tokens: [
+          'component.chip.default.textColor',
+          'component.chip.sizes.medium.font',
+          'component.chip.sizes.small.font'
+        ]
+      },
+      {
+        name: 'Close Button (optional)',
+        description: 'Dismissible filter chips include a close button with its own hover state using subtle background-color change.',
+        tokens: [
+          'semantic.spacing.layout.sm',
+          'semantic.border.radius.xs',
+          'semantic.motion.hover'
+        ]
+      }
+    ]
+  }
 }
