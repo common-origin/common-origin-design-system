@@ -230,7 +230,7 @@ describe('Box Component', () => {
   describe('Border and Background Properties', () => {
     it('applies border radius', () => {
       renderBox({ 
-        borderRadius: '3',
+        borderRadius: 'md',
         'data-testid': 'box-border-radius' 
       })
       expect(screen.getByTestId('box-border-radius')).toBeInTheDocument()
@@ -316,7 +316,7 @@ describe('Box Component', () => {
         gap: 'md',
         p: 'lg',
         bg: 'subtle',
-        borderRadius: '3',
+        borderRadius: 'md',
         'data-testid': 'styled-box',
         children: 'Styled content'
       })
@@ -384,7 +384,7 @@ describe('Box Component', () => {
         p: 'lg',
         m: 'md',
         bg: 'subtle',
-        borderRadius: '5',
+        borderRadius: 'xl',
         position: 'relative',
         width: '300px',
         height: '200px',
