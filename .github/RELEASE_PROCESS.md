@@ -11,8 +11,8 @@ This document outlines the standardized process for creating releases, ensuring 
 3. Commit the version bump
 4. Create and push git tag
 5. GitHub Actions automatically publishes to npm
-6. GitHub Actions automatically generates and commits the changelog file (public/data/releases.json or CHANGELOG.md) on each release/tag
-7. Releases page auto-updates on next deployment
+6. GitHub Actions automatically generates and commits `CHANGELOG.md` on each release tag
+7. Verify publish + changelog workflows completed successfully
 
 ## Conventional Commit Messages
 
@@ -84,10 +84,10 @@ Follow [Semantic Versioning](https://semver.org/):
 ### 2. Update Version in package.json
 
 ```bash
-# Manually edit package.json or use npm version
-npm version patch   # 1.0.0 -> 1.0.1
-npm version minor   # 1.0.0 -> 1.1.0
-npm version major   # 1.0.0 -> 2.0.0
+# Use --no-git-tag-version to avoid npm auto-creating commit/tag
+npm version patch --no-git-tag-version   # 1.0.0 -> 1.0.1
+npm version minor --no-git-tag-version   # 1.0.0 -> 1.1.0
+npm version major --no-git-tag-version   # 1.0.0 -> 2.0.0
 ```
 
 **Or manually:**
@@ -100,7 +100,7 @@ npm version major   # 1.0.0 -> 2.0.0
 ### 3. Commit Version Bump
 
 ```bash
-git add package.json
+git add package.json package-lock.json
 git commit -m "chore: bump version to 1.6.0"
 ```
 
@@ -120,16 +120,18 @@ git push origin v1.6.0
 ### 5. Automatic Publishing
 
 Once the tag is pushed, GitHub Actions will:
-1. ✅ Run type checking
-2. 🏗️ Build the package
-3. 📢 Publish to npm with provenance
-4. 🎉 Release is live!
+1. ✅ Install dependencies
+2. 🔍 Run type checking
+3. 🏗️ Build the package
+4. 📢 Publish to npm with provenance
+
+Note: the current publish workflow skips tests.
 
 ### 6. Verify Release
 
 1. Check npm: `npm view @common-origin/design-system version`
-2. Check GitHub releases page
-3. Verify changelog will update on next site deployment
+2. Check GitHub Actions runs for `📦 Publish Package` and `🚀 Update Changelog After Release`
+3. Check `CHANGELOG.md` was updated on `main`
 
 
 ## Changelog Automation (GitHub Actions)
@@ -140,7 +142,7 @@ The releases page (`/releases`) now updates automatically via a GitHub Actions w
 2. **Checks out repo** with full history/tags
 3. **Generates changelog** using auto-changelog
 4. **Commits and pushes** the changelog file (CHANGELOG.md) to the repo
-5. **Site deployment** always uses the latest changelog file
+5. **Pushes** the changelog commit to `main`
 
 No Vercel-specific configuration is required. The changelog is always available for any static host.
 
@@ -211,11 +213,13 @@ git push origin v1.6.0
 
 ### Changelog missing a release
 ```bash
-# Regenerate releases data
-npm run build:releases
+# Regenerate changelog
+npx auto-changelog -o CHANGELOG.md
 
-# Commit if needed for local preview, but public/ is gitignored
-# It auto-generates during deployment
+# Commit and push the updated changelog if needed
+git add CHANGELOG.md
+git commit -m "chore(changelog): regenerate changelog"
+git push
 ```
 
 ### Wrong version published
@@ -224,7 +228,7 @@ npm run build:releases
 npm deprecate @common-origin/design-system@1.6.0 "Accidental publish, use 1.6.1"
 
 # Release correct version
-npm version patch
+npm version patch --no-git-tag-version
 # ... follow normal release process
 ```
 
@@ -234,7 +238,7 @@ npm version patch
 - 📦 NPM publishing when tag is pushed
 - 🧪 Type checking before publish
 - 🏗️ Package building
-- 📊 Changelog generation during site build
+- 📊 Changelog generation on tag push (`CHANGELOG.md` commit)
 
 ### 🔄 Manual Steps Required
 - 📝 Writing commit messages (must be conventional)
@@ -278,7 +282,7 @@ git tag -l
 git log $(git describe --tags --abbrev=0)..HEAD --oneline
 
 # Regenerate changelog
-npm run build:releases
+npx auto-changelog -o CHANGELOG.md
 
 # Test build locally
 npm run build

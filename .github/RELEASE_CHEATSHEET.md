@@ -13,7 +13,7 @@ npm run release:create
 ### Manual
 ```bash
 # 1. Bump version
-npm version patch  # or minor/major
+npm version patch --no-git-tag-version  # or minor/major
 
 # 2. Commit
 git add package.json package-lock.json
@@ -52,7 +52,20 @@ git tag -l
 git log $(git describe --tags --abbrev=0)..HEAD --oneline
 
 # Regenerate changelog
-npm run build:releases
+npx auto-changelog -o CHANGELOG.md
+```
+
+## ⬆️ Upgrade Package (Consumers)
+
+```bash
+# npm
+npm install @common-origin/design-system@latest
+
+# yarn
+yarn add @common-origin/design-system@latest
+
+# pnpm
+pnpm add @common-origin/design-system@latest
 ```
 
 ## 🧪 Testing Before Release
@@ -135,8 +148,8 @@ New component requires:
 
 ## 🔗 Quick Links
 
-- [Full Release Process](./.github/RELEASE_PROCESS.md)
-- [Contributing Guide](./CONTRIBUTING.md)
-- [Documentation Standards](./.github/DOCUMENTATION_STANDARDS.md)
+- [Full Release Process](./RELEASE_PROCESS.md)
+- [Contributing Guide](../CONTRIBUTING.md)
+- [Documentation Standards](./DOCUMENTATION_STANDARDS.md)
 - [GitHub Actions](https://github.com/common-origin/common-origin-design-system/actions)
 - [npm Package](https://www.npmjs.com/package/@common-origin/design-system)
