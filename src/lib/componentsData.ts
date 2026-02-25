@@ -42,6 +42,7 @@ import { statusBadgeDocs } from '@/components/atoms/StatusBadge/StatusBadge.docs
 import { tabBarDocs } from '@/components/molecules/TabBar/TabBar.docs'
 import { searchFieldDocs } from '@/components/molecules/SearchField/SearchField.docs'
 import { actionSheetDocs } from '@/components/molecules/ActionSheet/ActionSheet.docs'
+import { agentInputDocs } from '@/components/molecules/AgentInput/AgentInput.docs'
 
 // Legacy ComponentData interface for compatibility
 export interface ComponentData {
@@ -152,5 +153,6 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(statusBadgeDocs),
   convertDocumentationToLegacyFormat(tabBarDocs),
   convertDocumentationToLegacyFormat(searchFieldDocs),
-  convertDocumentationToLegacyFormat(actionSheetDocs)
+  convertDocumentationToLegacyFormat(actionSheetDocs),
+  convertDocumentationToLegacyFormat(agentInputDocs)
 ]

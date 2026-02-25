@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
@@ -66,7 +66,6 @@ describe('IconButton', () => {
       renderIconButton()
       const button = getButton()
       expect(button).toHaveAttribute('type', 'button')
-      expect(button).toHaveAttribute('role', 'button')
       expect(button).not.toBeDisabled()
     })
 
@@ -85,19 +84,19 @@ describe('IconButton', () => {
     it('renders primary variant', () => {
       renderIconButton({ variant: 'primary' })
       expect(getButton()).toBeInTheDocument()
-      expect(getIcon('close')).toHaveAttribute('data-color', 'inverse')
+      expect(getIcon('close')).toHaveAttribute('data-color', 'inherit')
     })
 
     it('renders secondary variant', () => {
       renderIconButton({ variant: 'secondary' })
       expect(getButton()).toBeInTheDocument()
-      expect(getIcon('close')).toHaveAttribute('data-color', 'default')
+      expect(getIcon('close')).toHaveAttribute('data-color', 'inherit')
     })
 
     it('renders naked variant', () => {
       renderIconButton({ variant: 'naked' })
       expect(getButton()).toBeInTheDocument()
-      expect(getIcon('close')).toHaveAttribute('data-color', 'default')
+      expect(getIcon('close')).toHaveAttribute('data-color', 'inherit')
     })
 
     it('handles all variants correctly', () => {
@@ -176,38 +175,36 @@ describe('IconButton', () => {
   })
 
   describe('Keyboard Interactions', () => {
-    it('handles Enter key press', () => {
+    it('handles Enter key press', async () => {
+      const user = userEvent.setup()
       const handleClick = jest.fn()
       renderIconButton({ onClick: handleClick })
-      
-      fireEvent.keyDown(getButton(), { key: 'Enter' })
+
+      getButton().focus()
+      await user.keyboard('{Enter}')
       expect(handleClick).toHaveBeenCalledTimes(1)
     })
 
-    it('handles Space key press', () => {
+    it('ignores other keys', async () => {
+      const user = userEvent.setup()
       const handleClick = jest.fn()
       renderIconButton({ onClick: handleClick })
-      
-      fireEvent.keyDown(getButton(), { key: ' ' })
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
 
-    it('ignores other keys', () => {
-      const handleClick = jest.fn()
-      renderIconButton({ onClick: handleClick })
-      
-      fireEvent.keyDown(getButton(), { key: 'a' })
-      fireEvent.keyDown(getButton(), { key: 'Escape' })
-      fireEvent.keyDown(getButton(), { key: 'Tab' })
+      getButton().focus()
+      await user.keyboard('a')
+      await user.keyboard('{Escape}')
+      await user.keyboard('{Tab}')
       expect(handleClick).not.toHaveBeenCalled()
     })
 
-    it('does not handle keyboard events when disabled', () => {
+    it('does not handle keyboard events when disabled', async () => {
+      const user = userEvent.setup()
       const handleClick = jest.fn()
       renderIconButton({ onClick: handleClick, disabled: true })
-      
-      fireEvent.keyDown(getButton(), { key: 'Enter' })
-      fireEvent.keyDown(getButton(), { key: ' ' })
+
+      await user.tab()
+      await user.keyboard('{Enter}')
+      await user.keyboard('{Space}')
       expect(handleClick).not.toHaveBeenCalled()
     })
   })
@@ -218,14 +215,9 @@ describe('IconButton', () => {
       expect(getButton()).toBeDisabled()
     })
 
-    it('has correct aria-disabled when disabled', () => {
+    it('uses native disabled semantics without aria-disabled', () => {
       renderIconButton({ disabled: true })
-      expect(getButton()).toHaveAttribute('aria-disabled', 'true')
-    })
-
-    it('has tabIndex -1 when disabled', () => {
-      renderIconButton({ disabled: true })
-      expect(getButton()).toHaveAttribute('tabIndex', '-1')
+      expect(getButton()).not.toHaveAttribute('aria-disabled')
     })
 
     it('has correct cursor when disabled', () => {
@@ -262,14 +254,17 @@ describe('IconButton', () => {
       expect(getIcon('close')).toHaveAttribute('aria-hidden', 'true')
     })
 
-    it('has correct button role', () => {
+    it('is exposed as a button element', () => {
       renderIconButton()
-      expect(getButton()).toHaveAttribute('role', 'button')
+      expect(getButton().tagName).toBe('BUTTON')
     })
 
-    it('is focusable by default', () => {
+    it('is keyboard focusable by default', async () => {
+      const user = userEvent.setup()
       renderIconButton()
-      expect(getButton()).toHaveAttribute('tabIndex', '0')
+
+      await user.tab()
+      expect(getButton()).toHaveFocus()
     })
   })
 
@@ -286,11 +281,11 @@ describe('IconButton', () => {
 
     it('passes correct icon color based on variant', () => {
       const { unmount } = renderIconButton({ variant: 'primary' })
-      expect(getIcon('close')).toHaveAttribute('data-color', 'inverse')
+      expect(getIcon('close')).toHaveAttribute('data-color', 'inherit')
       unmount()
       
       renderIconButton({ variant: 'secondary' })
-      expect(getIcon('close')).toHaveAttribute('data-color', 'default')
+      expect(getIcon('close')).toHaveAttribute('data-color', 'inherit')
     })
 
     it('passes correct icon size based on button size', () => {
@@ -366,7 +361,6 @@ describe('IconButton', () => {
       const button = getButton()
       expect(button.tagName).toBe('BUTTON')
       expect(button).toHaveAttribute('type', 'button')
-      expect(button).toHaveAttribute('role', 'button')
     })
   })
 

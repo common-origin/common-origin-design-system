@@ -180,7 +180,7 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (36 icons total)',
+      description: 'Complete icon library organized by category with names (45 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
@@ -197,7 +197,7 @@ export const iconDocs: ComponentDocumentation = {
   <Icon name="arrowLeft" /> <Icon name="arrowRight" />
   <Icon name="back" /> <Icon name="caret" />
   <Icon name="caretDown" /> <Icon name="caretUp" />
-  <Icon name="directionRight" />
+  <Icon name="directionRight" /> <Icon name="directionUp" />
 </Stack>
 
 {/* Interface Icons */}
@@ -210,7 +210,7 @@ export const iconDocs: ComponentDocumentation = {
 {/* Media & Communication */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="play" /> <Icon name="pause" /> <Icon name="playBack" />
-  <Icon name="message" /> <Icon name="link" />
+  <Icon name="message" /> <Icon name="link" /> <Icon name="mic" />
 </Stack>
 
 {/* Other Icons */}
@@ -293,7 +293,7 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Navigation Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">NAVIGATION ICONS (9)</Typography>
+            <Typography variant="label" color="subdued">NAVIGATION ICONS (10)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="arrowDown" />
@@ -330,6 +330,10 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="directionRight" />
                 <Typography variant="caption">directionRight</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="directionUp" />
+                <Typography variant="caption">directionUp</Typography>
               </Stack>
             </Stack>
           </Stack>
@@ -379,7 +383,7 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Media & Communication Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (5)</Typography>
+            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (6)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="play" />
@@ -400,6 +404,10 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="link" />
                 <Typography variant="caption">link</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="mic" />
+                <Typography variant="caption">mic</Typography>
               </Stack>
             </Stack>
           </Stack>

@@ -1,6 +1,7 @@
 // Molecules index - components extracted from main project
 export * from './AccountCard'
 export * from './ActionSheet'
+export * from './AgentInput'
 export * from './Alert'
 export * from './Breadcrumbs'
 export * from './CardSmall'

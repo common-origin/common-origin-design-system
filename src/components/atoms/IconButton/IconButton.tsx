@@ -3,14 +3,13 @@ import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { motion }, component: { iconButton } } = tokens
+const { semantic: { motion }, component: { iconButton, button } } = tokens
 
-export interface IconButtonProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onClick'> {
+export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary' | 'naked'
   size?: 'small' | 'medium' | 'large'
   iconName: IconName
   url?: string
-  onClick?: () => void
   // Accessibility props
   'aria-label': string // Required for screen readers
   'aria-describedby'?: string
@@ -39,6 +38,18 @@ const IconButtonStyled = styled.button.withConfig({
         return iconButton.primary.backgroundColor
     }
   }};
+  color: ${({ $variant }) => {
+    switch ($variant) {
+      case 'primary':
+        return button.primary.textColor
+      case 'secondary':
+        return button.variants.secondary.textColor
+      case 'naked':
+        return button.variants.naked.textColor
+      default:
+        return button.primary.textColor
+    }
+  }};
   border: none;
   border-radius: ${iconButton.primary.borderRadius};
   transition: ${motion.transition.normal};
@@ -55,7 +66,7 @@ const IconButtonStyled = styled.button.withConfig({
   min-height: ${({ $size }) => iconButton.sizes[$size].minHeight};
   padding: ${({ $size }) => iconButton.sizes[$size].padding};
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: ${({ $variant }) => {
       switch ($variant) {
         case 'primary':
@@ -70,7 +81,7 @@ const IconButtonStyled = styled.button.withConfig({
     }};
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background-color: ${iconButton.active.backgroundColor};
   }
 
@@ -81,6 +92,18 @@ const IconButtonStyled = styled.button.withConfig({
 
   &:disabled {
     background-color: ${iconButton.disabled.backgroundColor};
+    color: ${({ $variant }) => {
+      switch ($variant) {
+        case 'primary':
+          return button.disabled.textColor
+        case 'secondary':
+          return button.variants.secondary.disabled.textColor
+        case 'naked':
+          return button.variants.naked.disabled.textColor
+        default:
+          return button.disabled.textColor
+      }
+    }};
     cursor: not-allowed;
   }
 
@@ -111,14 +134,8 @@ export const IconButton: React.FC<IconButtonProps> = ({
   ...htmlProps 
 }) => {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // Prevent default if disabled
-    if (disabled) {
-      event.preventDefault()
-      return
-    }
-
     if (onClick) {
-      onClick()
+      onClick(event)
     } else if (url && url.trim() !== '') {
       // Use proper navigation instead of direct href assignment
       if (url.startsWith('http') || url.startsWith('//')) {
@@ -129,53 +146,26 @@ export const IconButton: React.FC<IconButtonProps> = ({
     }
   }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
-    // Handle keyboard activation (Enter and Space)
-    if (disabled) return
-    
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault()
-      handleClick(event as any)
-    }
-  }
-
   const iconSize = size === 'large' ? 'lg' : size === 'small' ? 'sm' : 'md'
   
-  const getIconColor = (variant: 'primary' | 'secondary' | 'naked') => {
-    switch (variant) {
-      case 'primary':
-        return 'inverse'
-      case 'secondary':
-        return 'default'
-      case 'naked':
-        return 'default'
-      default:
-        return 'default'
-    }
-  }
-
   return (
     <IconButtonStyled 
       $variant={variant} 
       $size={size} 
       onClick={handleClick}
-      onKeyDown={handleKeyDown}
       disabled={disabled}
       type={type}
-      role="button"
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
       aria-expanded={ariaExpanded}
       aria-pressed={ariaPressed}
-      aria-disabled={disabled}
-      tabIndex={disabled ? -1 : 0}
       data-testid={dataTestId}
       {...htmlProps}
     >
       <Icon 
         name={iconName} 
         size={iconSize} 
-        iconColor={getIconColor(variant)}
+        iconColor="inherit"
         aria-hidden="true" // Hide icon from screen readers since button has aria-label
       />
     </IconButtonStyled>

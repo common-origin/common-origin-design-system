@@ -26,7 +26,7 @@ export const iconButtonDocs: ComponentDocumentation = {
     },
     {
       name: 'iconName',
-      type: 'keyof typeof iconsData',
+      type: 'IconName',
       required: true,
       description: 'Name of the icon to display from the design system icon library. Must be a valid icon identifier that exists in the icon data registry for proper rendering and accessibility.'
     },
@@ -39,7 +39,7 @@ export const iconButtonDocs: ComponentDocumentation = {
     },
     {
       name: 'onClick',
-      type: '() => void',
+      type: '(event: React.MouseEvent<HTMLButtonElement>) => void',
       required: false,
       default: 'undefined',
       description: 'Click handler function executed when the button is activated via mouse click, keyboard interaction, or assistive technology. Provides programmatic control over button behavior.'
@@ -76,7 +76,7 @@ export const iconButtonDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Disables button interaction and applies appropriate visual styling. When true, prevents click handlers and keyboard activation while maintaining accessibility attributes for screen reader context.'
+      description: 'Disables button interaction and applies appropriate visual styling. Uses native button disabled semantics so pointer and keyboard activation are automatically blocked.'
     },
     {
       name: 'data-testid',
@@ -502,7 +502,7 @@ export const iconButtonDocs: ComponentDocumentation = {
       'Dynamic ARIA state management through aria-pressed for toggle buttons and aria-expanded for collapsible content controllers',
       'Focus indicators are highly visible and consistent with design system standards, supporting focus-visible for enhanced keyboard navigation',
       'Icon elements marked with aria-hidden="true" to prevent duplicate announcements while preserving button semantic meaning',
-      'Disabled state properly communicated through aria-disabled attribute and tabIndex management for assistive technology compatibility',
+      'Disabled state uses native button semantics for assistive technology compatibility without requiring manual aria-disabled or tabIndex management',
       'High contrast mode support with adaptive border styling ensuring visibility across all user preference settings',
       'Color contrast ratios exceed WCAG 2.2 AA requirements (3:1 minimum) for all interactive states and variant combinations',
       'Touch target sizes meet accessibility guidelines with minimum 44px interaction areas on medium and large size variants',
@@ -510,7 +510,7 @@ export const iconButtonDocs: ComponentDocumentation = {
       'Screen reader testing validates proper announcement patterns: "aria-label text, button" with appropriate state information',
       'Reduced motion preference support disables animations for users with vestibular sensitivity or motion preferences'
     ],
-    keyboardNavigation: 'Tab key moves focus to button with visible focus indicator. Enter or Space key activates the button. Disabled buttons are excluded from tab order via tabIndex=-1.',
+    keyboardNavigation: 'Tab key moves focus to button with visible focus indicator. Enter or Space key activates the button. Disabled buttons are excluded from keyboard interaction by native button semantics.',
     screenReader: 'Announced as "aria-label text, button" with additional state information (pressed, expanded, disabled) when applicable. Icon content hidden from screen readers to prevent confusion.',
     focusManagement: 'Receives standard focus outline with enhanced visibility. Supports focus-visible for keyboard vs mouse interaction distinction. Focus is properly removed when disabled and restored when re-enabled.'
   },
