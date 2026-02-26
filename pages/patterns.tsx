@@ -117,13 +117,13 @@ export default function Patterns() {
             <PatternsLayout>
               <Sidebar>
                 <Box px="lg">
-                  <Stack direction="column" gap="sm">
+                  <Stack direction="column" gap="xs">
                     {patternsData
                       .sort((a, b) => a.name.localeCompare(b.name))
                       .map((pattern) => (
                         <Button
                           key={pattern.id}
-                          variant={activePattern === pattern.id ? 'primary' : 'secondary'}
+                          variant={activePattern === pattern.id ? 'primary' : 'naked'}
                           size="medium"
                           onClick={() => handlePatternClick(pattern.id)}
                           style={{ justifyContent: 'flex-start', width: '100%' }}

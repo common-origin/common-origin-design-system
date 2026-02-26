@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useCallback } from 'react'
 import {
   Box,
   Breadcrumbs,
@@ -126,6 +126,59 @@ const TokenChip = styled(Chip)`
   margin: ${spacing.layout.xs} ${spacing.layout.xs} 0 0;
 `
 
+const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: ${spacing.layout.xs};
+  width: 100%;
+  font: ${tokens.component.button.sizes.medium.font};
+  padding: ${tokens.component.button.sizes.medium.padding};
+  background-color: ${tokens.component.button.variants.secondary.backgroundColor};
+  color: ${tokens.component.button.variants.secondary.textColor};
+  border: none;
+  border-radius: ${tokens.component.button.primary.borderRadius};
+  cursor: pointer;
+  transition: ${tokens.semantic.motion.hover};
+  white-space: nowrap;
+  user-select: none;
+
+  &:hover {
+    background-color: ${tokens.component.button.variants.secondary.hover.backgroundColor};
+  }
+
+  &:active {
+    background-color: ${tokens.component.button.variants.secondary.active.backgroundColor};
+  }
+
+  &:focus {
+    outline: ${tokens.component.button.focus.outline};
+    outline-offset: ${tokens.component.button.focus.outlineOffset};
+  }
+`
+
+const CategoryIcon = styled.span<{ $isExpanded: boolean }>`
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+  transform: ${({ $isExpanded }) => $isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)'};
+`
+
+const CategoryGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${spacing.layout.xs};
+`
+
+const CategoryChildren = styled.div<{ $isExpanded: boolean }>`
+  display: ${({ $isExpanded }) => $isExpanded ? 'flex' : 'none'};
+  flex-direction: column;
+  padding-left: ${spacing.layout.sm};
+`
+
+const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Layout', 'Components']
+
 
 const componentsData: ComponentData[] = staticComponentsData
 export default function Components() {
@@ -135,11 +188,52 @@ export default function Components() {
     []
   )
   const [activeComponent, setActiveComponent] = useState(sortedComponents[0]?.id || 'alert')
+
+  // Group components by category
+  const groupedComponents = useMemo(() => {
+    const groups: Record<string, ComponentData[]> = {}
+    for (const comp of sortedComponents) {
+      const cat = comp.category || 'Components'
+      if (!groups[cat]) groups[cat] = []
+      groups[cat].push(comp)
+    }
+    // Return in defined order, filtering out empty categories
+    return CATEGORY_ORDER
+      .filter(cat => groups[cat] && groups[cat].length > 0)
+      .map(cat => ({ category: cat, components: groups[cat] }))
+  }, [sortedComponents])
+
+  // Determine which category the active component belongs to
+  const activeCategory = useMemo(() => {
+    const comp = sortedComponents.find(c => c.id === activeComponent)
+    return comp?.category || 'Atoms'
+  }, [sortedComponents, activeComponent])
+
+  // Track expanded categories — default to expanding the active component's category
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => {
+    const initial: Record<string, boolean> = {}
+    CATEGORY_ORDER.forEach(cat => {
+      initial[cat] = cat === activeCategory
+    })
+    return initial
+  })
+
+  const toggleCategory = useCallback((category: string) => {
+    setExpandedCategories(prev => ({
+      ...prev,
+      [category]: !prev[category]
+    }))
+  }, [])
   
   const activeComponentData = sortedComponents.find(comp => comp.id === activeComponent)
 
   const handleComponentClick = (componentId: string) => {
     setActiveComponent(componentId)
+    // Auto-expand the category of the clicked component
+    const comp = sortedComponents.find(c => c.id === componentId)
+    if (comp && !expandedCategories[comp.category]) {
+      setExpandedCategories(prev => ({ ...prev, [comp.category]: true }))
+    }
   }
 
   const renderPropsTable = (props: ComponentData['props']) => {
@@ -357,7 +451,9 @@ export default function Components() {
           <Container>
             <MobileNavigation>
               <Dropdown 
-                options={sortedComponents.map(comp => ({ id: comp.id, label: comp.name }))}
+                options={groupedComponents.flatMap(({ category, components }) =>
+                  components.map(comp => ({ id: comp.id, label: `${category} / ${comp.name}` }))
+                )}
                 value={activeComponent}
                 onChange={handleComponentClick}
                 placeholder="Select a component"
@@ -367,17 +463,39 @@ export default function Components() {
             <ComponentsLayout>
               <Sidebar>
                 <Box px="lg">
-                  <Stack direction="column" gap="sm">
-                    {sortedComponents.map((comp) => (
-                      <Button
-                        key={comp.id}
-                        variant={activeComponent === comp.id ? 'primary' : 'secondary'}
-                        size="medium"
-                        onClick={() => handleComponentClick(comp.id)}
-                        style={{ justifyContent: 'flex-start', width: '100%' }}
-                      >
-                        {comp.name}
-                      </Button>
+                  <Stack direction="column" gap="xs">
+                    {groupedComponents.map(({ category, components }) => (
+                      <CategoryGroup key={category}>
+                        <CategoryHeader
+                          $isExpanded={!!expandedCategories[category]}
+                          onClick={() => toggleCategory(category)}
+                          aria-expanded={!!expandedCategories[category]}
+                          aria-controls={`category-${category}`}
+                        >
+                          <CategoryIcon $isExpanded={!!expandedCategories[category]}>
+                            <Icon name="arrowDown" size="sm" />
+                          </CategoryIcon>
+                          {category}
+                        </CategoryHeader>
+                        <CategoryChildren
+                          $isExpanded={!!expandedCategories[category]}
+                          id={`category-${category}`}
+                          role="group"
+                          aria-label={`${category} components`}
+                        >
+                          {components.map((comp) => (
+                            <Button
+                              key={comp.id}
+                              variant={activeComponent === comp.id ? 'primary' : 'naked'}
+                              size="medium"
+                              onClick={() => handleComponentClick(comp.id)}
+                              style={{ justifyContent: 'flex-start', width: '100%' }}
+                            >
+                              {comp.name}
+                            </Button>
+                          ))}
+                        </CategoryChildren>
+                      </CategoryGroup>
                     ))}
                   </Stack>
                 </Box>

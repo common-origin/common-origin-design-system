@@ -1191,11 +1191,11 @@ export default function Tokens() {
             <TokensLayout>
               <Sidebar>
                 <Box px="lg">
-                  <Stack direction="column" gap="sm">
+                  <Stack direction="column" gap="xs">
                     {navigationTabs.map((tab) => (
                       <Button
                         key={tab.id}
-                        variant={activeTab === tab.id ? 'primary' : 'secondary'}
+                        variant={activeTab === tab.id ? 'primary' : 'naked'}
                         size="medium"
                         onClick={() => handleTabClick(tab.id)}
                         style={{ justifyContent: 'flex-start', width: '100%' }}
