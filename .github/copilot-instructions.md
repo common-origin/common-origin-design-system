@@ -127,3 +127,18 @@ For complete standards including:
 - Types must work in external consuming projects
 - Path aliases (`@/`) only work internally, not in published `.d.ts` files
 - Focus on developer experience: autocomplete, type safety, clear errors
+
+## Agentic Enhancements (Explore)
+
+We are actively exploring ways to make this design system easier for AI agents to use correctly. The icon metadata enrichment (v2.8.0) was the first step. Areas to investigate next:
+
+### Completed
+- **Icon metadata** (v2.8.0): Every icon in `src/styles/icons.json` has `description`, `category`, `aliases`, `intent`, `decorativeDefault`, and `ariaLabelDefault` fields. Types: `IconCategory`, `IconMetadata`, `IconRegistry`.
+
+### To Explore
+- **Component intent metadata**: Add `intent`, `whenToUse`, `whenNotToUse` fields to component documentation so agents can choose the right component for a task
+- **Token selection hints**: Annotate design tokens with usage context (e.g. "use for card padding, not inline spacing") so agents pick semantically correct tokens
+- **Prop constraint descriptions**: Add human-readable descriptions to complex prop combinations and validation rules so agents avoid invalid prop states
+- **Pattern recipes**: Machine-readable composition patterns (e.g. "confirmation dialog = Modal + Typography + Stack + Button[variant=primary] + Button[variant=secondary]") that agents can follow
+- **Accessibility decision trees**: Structured rules for when to use `aria-label`, `aria-hidden`, roles, etc., keyed to component + context, replacing guesswork
+- **Relationship metadata**: Icon `statePair` (star/starFilled), `variants` (caret/caretDown/caretUp), component `relatedComponents` fields to help agents understand the full design vocabulary
