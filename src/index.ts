@@ -14,4 +14,10 @@ export type {
 } from './styles/tokens.d'
 
 // Export icons data and types for external use
-export { iconsData, type IconName } from './types/icons'
+export {
+  iconsData,
+  type IconName,
+  type IconCategory,
+  type IconMetadata,
+  type IconRegistry,
+} from './types/icons'
