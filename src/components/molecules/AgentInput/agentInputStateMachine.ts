@@ -56,7 +56,7 @@ export function agentInputStateTransition(
       return currentState
 
     case 'MIC_STOP':
-      if (currentState === 'listening') {
+      if (currentState === 'listening' || currentState === 'processingFinalTranscript') {
         return textDrivenState(event.hasText)
       }
       return currentState

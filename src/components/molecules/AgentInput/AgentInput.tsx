@@ -64,18 +64,12 @@ export interface AgentInputProps {
   'data-testid'?: string
 }
 
-const pulseRing = keyframes`
-  0% {
-    transform: scale(1);
-    opacity: 0.4;
+const rotateRing = keyframes`
+  from {
+    transform: rotate(0deg);
   }
-  70% {
-    transform: scale(1.08);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1.08);
-    opacity: 0;
+  to {
+    transform: rotate(360deg);
   }
 `
 
@@ -137,7 +131,7 @@ const Input = styled.input`
 const InputActions = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.xs};
+  gap: ${semantic.spacing.layout.sm};
 `
 
 const CircularActionIconButton = styled(IconButton)`
@@ -154,26 +148,50 @@ const MicButtonWrapper = styled.div.withConfig({
 })<{ $isListening: boolean; $reducedMotion: boolean }>`
   position: relative;
   display: inline-flex;
+  border-radius: ${semantic.border.radius.circle};
 
-  ${({ $isListening, $reducedMotion }) =>
-    $isListening &&
+  & > button {
+    position: relative;
+    z-index: 1;
+  }
+`
+
+const MicListeningRing = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{ $reducedMotion: boolean }>`
+  --ring-thickness: ${base.border.width[2]};
+  position: absolute;
+  inset: calc(-${base.spacing[1]} - ${component.iconButton.focus.outlineOffset});
+  border-radius: ${semantic.border.radius.circle};
+  pointer-events: none;
+  z-index: 0;
+  background: conic-gradient(
+    from 0deg,
+    ${semantic.color.background['interactive-subtle']} 0deg,
+    ${semantic.color.background.interactive} 110deg,
+    ${semantic.color.background['interactive-hover']} 210deg,
+    ${semantic.color.background.interactive} 300deg,
+    ${semantic.color.background['interactive-subtle']} 360deg
+  );
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--ring-thickness)),
+    #000 calc(100% - var(--ring-thickness))
+  );
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - var(--ring-thickness)),
+    #000 calc(100% - var(--ring-thickness))
+  );
+
+  ${({ $reducedMotion }) =>
     !$reducedMotion &&
     css`
-      &::before {
-        content: '';
-        position: absolute;
-        inset: -${base.spacing[1]};
-        border: ${base.border.width[1]} solid ${semantic.color.border.interactive};
-        border-radius: ${base.border.radius[4]};
-        animation: ${pulseRing} 1400ms ease-out infinite;
-        pointer-events: none;
-      }
+      animation: ${rotateRing} 1300ms linear infinite;
     `}
 
   @media (prefers-reduced-motion: reduce) {
-    &::before {
-      animation: none;
-    }
+    animation: none;
   }
 `
 
@@ -188,8 +206,7 @@ const StatusRow = styled.div`
 const StatusText = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isError: boolean }>`
-padding-left: ${semantic.spacing.layout.xl};
-  color: ${({ $isError }) => ($isError ? semantic.color.text.error : semantic.color.text.subdued)};
+  padding-left: ${semantic.spacing.layout.xl};
 `
 
 const StatusAnnouncement = styled.div``
@@ -536,6 +553,7 @@ export const AgentInput = ({
         await submitPayload(normalizedFinal, 'voice-final')
       } else {
         updateValue(normalizedFinal)
+        updateMachineState({ type: 'MIC_STOP', hasText: true })
       }
     }
 
@@ -681,6 +699,14 @@ export const AgentInput = ({
             <InputActions>
               {hasVoice && (
                 <MicButtonWrapper $isListening={isListening} $reducedMotion={prefersReducedMotion}>
+                  {isListening && (
+                    <MicListeningRing
+                      $reducedMotion={prefersReducedMotion}
+                      aria-hidden="true"
+                      data-testid="agent-input-listening-ring"
+                      data-animated={prefersReducedMotion ? 'false' : 'true'}
+                    />
+                  )}
                   <CircularActionIconButton
                     variant="naked"
                     size="medium"
@@ -711,7 +737,9 @@ export const AgentInput = ({
       <StatusRow>
         <StatusText $isError={isStatusError}>
           <StatusAnnouncement id={statusId} role="status" aria-live="polite" aria-atomic="true">
-            <Typography variant="small">{resolvedStatus}</Typography>
+            <Typography variant="small" color={isStatusError ? 'error' : 'subdued'}>
+              {resolvedStatus}
+            </Typography>
           </StatusAnnouncement>
         </StatusText>
 

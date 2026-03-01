@@ -166,6 +166,23 @@ describe('AgentInput', () => {
       await waitFor(() => {
         expect(screen.getByText(/listening… speak now/i)).toBeInTheDocument()
         expect(screen.getByRole('button', { name: /stop voice input/i })).toHaveAttribute('aria-pressed', 'true')
+        expect(screen.getByTestId('agent-input-listening-ring')).toBeInTheDocument()
+      })
+    })
+
+    it('removes listening ring immediately on manual stop', async () => {
+      renderComponent()
+
+      fireEvent.click(screen.getByRole('button', { name: /start voice input/i }))
+
+      await waitFor(() => {
+        expect(screen.getByTestId('agent-input-listening-ring')).toBeInTheDocument()
+      })
+
+      fireEvent.click(screen.getByRole('button', { name: /stop voice input/i }))
+
+      await waitFor(() => {
+        expect(screen.queryByTestId('agent-input-listening-ring')).not.toBeInTheDocument()
       })
     })
 
@@ -206,6 +223,58 @@ describe('AgentInput', () => {
           expect.objectContaining({
             text: 'send 100 dollars to savings',
             source: 'voice-final',
+          })
+        )
+        expect(screen.queryByTestId('agent-input-listening-ring')).not.toBeInTheDocument()
+      })
+    })
+
+    it('stores final transcript without auto-submit when autoSubmitOnVoiceFinal is false', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ onSubmit, autoSubmitOnVoiceFinal: false })
+
+      fireEvent.click(screen.getByRole('button', { name: /start voice input/i }))
+
+      await waitFor(() => {
+        expect(MockSpeechRecognition.instance).toBeTruthy()
+      })
+
+      act(() => {
+        MockSpeechRecognition.instance?.emitResult([{ transcript: 'review this transfer request', isFinal: true }])
+      })
+
+      await waitFor(() => {
+        expect(onSubmit).not.toHaveBeenCalled()
+        expect(screen.getByDisplayValue('review this transfer request')).toBeInTheDocument()
+        expect(screen.queryByText(/finishing voice input/i)).not.toBeInTheDocument()
+      })
+    })
+
+    it('allows manual submit after final transcript is stored when autoSubmitOnVoiceFinal is false', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ onSubmit, autoSubmitOnVoiceFinal: false })
+
+      fireEvent.click(screen.getByRole('button', { name: /start voice input/i }))
+
+      await waitFor(() => {
+        expect(MockSpeechRecognition.instance).toBeTruthy()
+      })
+
+      act(() => {
+        MockSpeechRecognition.instance?.emitResult([{ transcript: 'queue transfer for review', isFinal: true }])
+      })
+
+      await waitFor(() => {
+        expect(screen.getByDisplayValue('queue transfer for review')).toBeInTheDocument()
+      })
+
+      fireEvent.click(screen.getByRole('button', { name: /send message/i }))
+
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith(
+          expect.objectContaining({
+            text: 'queue transfer for review',
+            source: 'text',
           })
         )
       })
@@ -277,6 +346,28 @@ describe('AgentInput', () => {
 
       await waitFor(() => {
         expect(screen.getByText(/microphone permission denied/i)).toBeInTheDocument()
+        expect(screen.queryByTestId('agent-input-listening-ring')).not.toBeInTheDocument()
+      })
+    })
+
+    it('uses a static listening ring when reduced motion is enabled', async () => {
+      ;(window.matchMedia as jest.Mock).mockImplementation(() => ({
+        matches: true,
+        media: '(prefers-reduced-motion: reduce)',
+        onchange: null,
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+        addListener: jest.fn(),
+        removeListener: jest.fn(),
+        dispatchEvent: jest.fn(),
+      }))
+
+      renderComponent()
+
+      fireEvent.click(screen.getByRole('button', { name: /start voice input/i }))
+
+      await waitFor(() => {
+        expect(screen.getByTestId('agent-input-listening-ring')).toHaveAttribute('data-animated', 'false')
       })
     })
 
