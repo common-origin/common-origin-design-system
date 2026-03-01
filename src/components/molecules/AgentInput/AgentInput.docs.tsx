@@ -1,12 +1,11 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { AgentInput } from './AgentInput'
-import { Stack } from '@/components/atoms/Stack'
 
 export const agentInputDocs: ComponentDocumentation = {
   id: 'agent-input',
   name: 'AgentInput',
   description:
-    'A chat-style single-line input with right-aligned in-field icon controls for voice capture and send, plus live status feedback and auto-submit on final transcripts.',
+    'A chat-style single-line input with right-aligned in-field icon controls for voice capture and send, plus live status feedback, an active listening ring around the mic button, and auto-submit on final transcripts.',
   category: 'Molecules',
 
   props: [
@@ -156,6 +155,8 @@ export const agentInputDocs: ComponentDocumentation = {
     'semantic.color.text.subdued',
     'semantic.color.text.error',
     'semantic.color.background.interactive',
+    'semantic.color.background.interactive-subtle',
+    'semantic.color.background.interactive-hover',
     'semantic.color.border.interactive',
     'component.input.default.paddingY',
     'component.input.default.paddingX',
@@ -189,8 +190,24 @@ export const agentInputDocs: ComponentDocumentation = {
       renderComponent: () => <AgentInput onSubmit={async () => {}} />,
     },
     {
-      name: 'Listening State Guidance',
-      description: 'Listening copy shown while voice capture is active.',
+      name: 'Listening (Animated Ring)',
+      description: 'Start voice input to show the animated circular blue gradient ring around the mic button while listening.',
+      code: `<AgentInput
+  statusMessage="Listening… speak now"
+  onSubmit={async ({ text, source }) => {
+    console.log(text, source)
+  }}
+/>`,
+      renderComponent: () => (
+        <AgentInput
+          statusMessage="Listening… speak now"
+          onSubmit={async () => {}}
+        />
+      ),
+    },
+    {
+      name: 'Listening (Reduced Motion)',
+      description: 'With prefers-reduced-motion enabled, listening uses a static blue ring instead of animation.',
       code: `<AgentInput
   statusMessage="Listening… speak now"
   onSubmit={async ({ text, source }) => {
@@ -238,36 +255,18 @@ export const agentInputDocs: ComponentDocumentation = {
         />
       ),
     },
-    {
-      name: 'Voice Disabled',
-      description: 'Text-only mode when voice input is disabled by product configuration.',
-      code: `<AgentInput
-  enableVoice={false}
-  placeholder="Type a transfer command"
-  onSubmit={async ({ text, source }) => {
-    console.log(text, source)
-  }}
-/>`,
-      renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <AgentInput
-            enableVoice={false}
-            placeholder="Type a transfer command"
-            onSubmit={async () => {}}
-          />
-        </Stack>
-      ),
-    },
   ],
 
   accessibility: {
     notes: [
       'Input has an explicit accessible label via the label prop and aria-label.',
       'Voice toggle uses aria-pressed to communicate active listening state.',
+      'While listening, the mic control shows a circular blue ring and remains visually distinct from idle state even without motion.',
       'Voice and send controls are icon-only buttons with explicit aria-labels for screen readers.',
       'Status line is exposed as a polite live region for listening/submitting/error announcements.',
       'Escape stops active listening and returns to idle or typing flow.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',
+      'When reduced motion is enabled, the listening ring remains visible as a static blue ring.',
     ],
     keyboardNavigation: 'Tab order is input → voice toggle (when available) → send. Enter submits text, Escape stops listening.',
     screenReader:
@@ -295,8 +294,14 @@ export const agentInputDocs: ComponentDocumentation = {
       },
       {
         name: 'Voice Toggle',
-        description: 'In-field start/stop icon control for microphone capture with active pressed semantics.',
-        tokens: ['semantic.color.border.interactive'],
+        description:
+          'In-field start/stop icon control for microphone capture with active pressed semantics and a circular listening ring during active voice capture.',
+        tokens: [
+          'semantic.color.border.interactive',
+          'semantic.color.background.interactive',
+          'semantic.color.background.interactive-subtle',
+          'semantic.color.background.interactive-hover',
+        ],
       },
       {
         name: 'Send Button',

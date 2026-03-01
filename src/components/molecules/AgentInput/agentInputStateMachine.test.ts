@@ -21,6 +21,10 @@ describe('agentInputStateTransition', () => {
     expect(agentInputStateTransition('listening', { type: 'MIC_STOP', hasText: false })).toBe('idle')
   })
 
+  it('returns to typing from processingFinalTranscript on MIC_STOP when text exists', () => {
+    expect(agentInputStateTransition('processingFinalTranscript', { type: 'MIC_STOP', hasText: true })).toBe('typing')
+  })
+
   it('transitions to submitting on SUBMIT', () => {
     expect(agentInputStateTransition('typing', { type: 'SUBMIT' })).toBe('submitting')
   })
