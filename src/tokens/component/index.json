@@ -101,7 +101,7 @@
         "textColor": "{semantic.color.text.default}",
         "borderRadius": "{semantic.border.radius.lg}",
         "padding": "2px {base.spacing.2}",
-        "font": "{semantic.typography.label}"
+        "font": "{semantic.typography.body}"
       },
       "hover": {
         "backgroundColor": "{base.color.neutral.300}"
@@ -168,11 +168,11 @@
         },
         "medium": {
           "padding": "2px {base.spacing.2}",
-          "font": "{semantic.typography.label}"
+          "font": "{semantic.typography.small}"
         },
         "large": {
           "padding": "{base.spacing.2} {base.spacing.3}",
-          "font": "{semantic.typography.small}"
+          "font": "{semantic.typography.body}"
         }
       }
     },
