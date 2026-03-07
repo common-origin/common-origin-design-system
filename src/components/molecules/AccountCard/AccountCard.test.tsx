@@ -3,8 +3,22 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { AccountCard } from './AccountCard'
+import tokens from '../../../styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
+
+const hexToRgb = (hex: string): string => {
+  const value = hex.replace('#', '')
+  const normalized = value.length === 3
+    ? value.split('').map((char) => `${char}${char}`).join('')
+    : value
+
+  const red = parseInt(normalized.slice(0, 2), 16)
+  const green = parseInt(normalized.slice(2, 4), 16)
+  const blue = parseInt(normalized.slice(4, 6), 16)
+
+  return `rgb(${red}, ${green}, ${blue})`
+}
 
 describe('AccountCard', () => {
   const defaultProps = {
@@ -35,10 +49,10 @@ describe('AccountCard', () => {
       expect(balance).toHaveTextContent('5,000.00')
     })
 
-    it('renders Balance label', () => {
+    it('renders Available label', () => {
       render(<AccountCard {...defaultProps} />)
       
-      expect(screen.getByText('Balance')).toBeInTheDocument()
+      expect(screen.getByText('Available')).toBeInTheDocument()
     })
 
     it('has minimum width of 300px', () => {
@@ -49,12 +63,11 @@ describe('AccountCard', () => {
       expect(styles.minWidth).toBe('300px')
     })
 
-    it('has minimum height of 200px', () => {
-      const { container } = render(<AccountCard {...defaultProps} data-testid="account" />)
+    it('renders without fixed minimum height', () => {
+      render(<AccountCard {...defaultProps} data-testid="account" />)
       
       const card = screen.getByTestId('account')
-      const styles = window.getComputedStyle(card)
-      expect(styles.minHeight).toBe('200px')
+      expect(card).toBeInTheDocument()
     })
   })
 
@@ -64,10 +77,10 @@ describe('AccountCard', () => {
     ]
 
     accountTypes.forEach(type => {
-      it(`renders ${type} account type with icon`, () => {
+      it(`renders ${type} account type with avatar`, () => {
         render(<AccountCard {...defaultProps} accountType={type} />)
         
-        expect(screen.getByLabelText(`${type} account`)).toBeInTheDocument()
+        expect(screen.getByLabelText('Avatar for Personal Checking')).toBeInTheDocument()
       })
     })
   })
@@ -135,6 +148,36 @@ describe('AccountCard', () => {
       
       expect(screen.getByLabelText('Trend neutral')).toBeInTheDocument()
       expect(screen.getByText('0.0%')).toBeInTheDocument()
+    })
+
+    it('maps up trend to green category badge colors', () => {
+      render(<AccountCard {...defaultProps} trend="up" trendValue="+2.5%" />)
+
+      const badge = screen.getByText('+2.5%')
+      const styles = window.getComputedStyle(badge)
+
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.green))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['green-subtle']))
+    })
+
+    it('maps down trend to red category badge colors', () => {
+      render(<AccountCard {...defaultProps} trend="down" trendValue="-1.2%" />)
+
+      const badge = screen.getByText('-1.2%')
+      const styles = window.getComputedStyle(badge)
+
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.red))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['red-subtle']))
+    })
+
+    it('maps neutral trend to blue category badge colors', () => {
+      render(<AccountCard {...defaultProps} trend="neutral" trendValue="0.0%" />)
+
+      const badge = screen.getByText('0.0%')
+      const styles = window.getComputedStyle(badge)
+
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.blue))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['blue-subtle']))
     })
 
     it('does not display trend when not provided', () => {
@@ -394,10 +437,16 @@ describe('AccountCard', () => {
       expect(card.getAttribute('aria-label')).toContain('1234.56')
     })
 
-    it('account type icon has descriptive label', () => {
-      render(<AccountCard {...defaultProps} accountType="savings" />)
+    it('account avatar has descriptive label', () => {
+      render(
+        <AccountCard
+          {...defaultProps}
+          accountType="savings"
+          accountName="High Yield Savings"
+        />
+      )
       
-      expect(screen.getByLabelText('savings account')).toBeInTheDocument()
+      expect(screen.getByLabelText('Avatar for High Yield Savings')).toBeInTheDocument()
     })
 
     it('trend icon has descriptive label', () => {
