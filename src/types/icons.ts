@@ -35,6 +35,7 @@ export type IconName =
   | 'meatballs'
   | 'menu'
   | 'message'
+  | 'move'
   | 'mic'
   | 'order'
   | 'paper'

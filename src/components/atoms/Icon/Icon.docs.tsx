@@ -180,15 +180,15 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (49 icons total)',
+      description: 'Complete icon library organized by category with names (50 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
   <Icon name="check" /> <Icon name="checkRing" /> <Icon name="close" />
   <Icon name="crossCircle" /> <Icon name="copy" /> <Icon name="edit" />
   <Icon name="export" /> <Icon name="filter" /> <Icon name="order" />
-  <Icon name="refresh" /> <Icon name="remove" /> <Icon name="search" />
-  <Icon name="trash" />
+  <Icon name="move" /> <Icon name="refresh" /> <Icon name="remove" />
+  <Icon name="search" /> <Icon name="trash" />
 </Stack>
 
 {/* Navigation Icons */}
@@ -229,7 +229,7 @@ export const iconDocs: ComponentDocumentation = {
         <Stack direction="column" gap="xl">
           {/* Action Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">ACTION ICONS (16)</Typography>
+            <Typography variant="label" color="subdued">ACTION ICONS (17)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="add" />
@@ -290,6 +290,10 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="search" />
                 <Typography variant="caption">search</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="move" />
+                <Typography variant="caption">move</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="trash" />

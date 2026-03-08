@@ -723,5 +723,20 @@
 		"intent": "Use to indicate a wallet, stored funds, account balance, or financial overview",
 		"decorativeDefault": false,
 		"ariaLabelDefault": "Wallet"
+	},
+	"move": {
+		"path": "M11 9V5.52832L9.72949 6.88379L8.27051 5.51562L12 1.53809L15.7295 5.51562L14.2705 6.88379L13 5.52832V9C13 9.55228 12.5523 10 12 10C11.4477 10 11 9.55228 11 9Z M15 11H18.4717L17.1162 9.72949L18.4844 8.27051L22.4619 12L18.4844 15.7295L17.1162 14.2705L18.4717 13H15C14.4477 13 14 12.5523 14 12C14 11.4477 14.4477 11 15 11Z M11 15V18.4717L9.72949 17.1162L8.27051 18.4844L12 22.4619L15.7295 18.4844L14.2705 17.1162L13 18.4717V15C13 14.4477 12.5523 14 12 14C11.4477 14 11 14.4477 11 15Z M9 11H5.52832L6.88379 9.72949L5.51563 8.27051L1.53809 12L5.51562 15.7295L6.88379 14.2705L5.52832 13H9C9.55228 13 10 12.5523 10 12C10 11.4477 9.55228 11 9 11Z",
+		"name": "move",
+		"description": "Four arrows pointing outward from centre",
+		"category": "action",
+		"aliases": [
+			"drag",
+			"reorder",
+			"reposition",
+			"grab"
+		],
+		"intent": "Use to indicate that an element can be moved, dragged, or repositioned",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Move"
 	}
 }
