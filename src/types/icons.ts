@@ -19,6 +19,7 @@ export type IconName =
   | 'checkRing'
   | 'close'
   | 'copy'
+  | 'creditCard'
   | 'crossCircle'
   | 'directionRight'
   | 'directionUp'
@@ -27,9 +28,11 @@ export type IconName =
   | 'fileDocSearch'
   | 'filter'
   | 'info'
+  | 'kebab'
   | 'lamp'
   | 'lineOut'
   | 'link'
+  | 'meatballs'
   | 'menu'
   | 'message'
   | 'mic'
@@ -48,6 +51,7 @@ export type IconName =
   | 'userBox'
   | 'view'
   | 'viewHide'
+  | 'wallet'
 
 /** Semantic category for grouping icons by purpose */
 export type IconCategory =

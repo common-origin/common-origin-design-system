@@ -180,7 +180,7 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (45 icons total)',
+      description: 'Complete icon library organized by category with names (49 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
@@ -198,6 +198,7 @@ export const iconDocs: ComponentDocumentation = {
   <Icon name="back" /> <Icon name="caret" />
   <Icon name="caretDown" /> <Icon name="caretUp" />
   <Icon name="directionRight" /> <Icon name="directionUp" />
+  <Icon name="kebab" /> <Icon name="meatballs" />
 </Stack>
 
 {/* Interface Icons */}
@@ -213,10 +214,16 @@ export const iconDocs: ComponentDocumentation = {
   <Icon name="message" /> <Icon name="link" /> <Icon name="mic" />
 </Stack>
 
-{/* Other Icons */}
+{/* Object Icons */}
 <Stack direction="row" gap="lg" wrap>
-  <Icon name="userBox" /> <Icon name="lineOut" />
+  <Icon name="creditCard" /> <Icon name="wallet" />
   <Icon name="star" /> <Icon name="starFilled" />
+  <Icon name="lineOut" />
+</Stack>
+
+{/* User Icons */}
+<Stack direction="row" gap="lg" wrap>
+  <Icon name="userBox" />
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
@@ -293,7 +300,7 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Navigation Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">NAVIGATION ICONS (10)</Typography>
+            <Typography variant="label" color="subdued">NAVIGATION ICONS (12)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="arrowDown" />
@@ -334,6 +341,14 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="directionUp" />
                 <Typography variant="caption">directionUp</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="kebab" />
+                <Typography variant="caption">kebab</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="meatballs" />
+                <Typography variant="caption">meatballs</Typography>
               </Stack>
             </Stack>
           </Stack>
@@ -412,17 +427,17 @@ export const iconDocs: ComponentDocumentation = {
             </Stack>
           </Stack>
           
-          {/* Other Icons */}
+          {/* Object Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">OTHER ICONS (4)</Typography>
+            <Typography variant="label" color="subdued">OBJECT ICONS (5)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="userBox" />
-                <Typography variant="caption">userBox</Typography>
+                <Icon name="creditCard" />
+                <Typography variant="caption">creditCard</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="lineOut" />
-                <Typography variant="caption">lineOut</Typography>
+                <Icon name="wallet" />
+                <Typography variant="caption">wallet</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="star" />
@@ -431,6 +446,21 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="starFilled" />
                 <Typography variant="caption">starFilled</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="lineOut" />
+                <Typography variant="caption">lineOut</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+          
+          {/* User Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">USER ICONS (1)</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="userBox" />
+                <Typography variant="caption">userBox</Typography>
               </Stack>
             </Stack>
           </Stack>
