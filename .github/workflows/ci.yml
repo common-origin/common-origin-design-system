@@ -7,41 +7,74 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  typecheck:
+    name: typecheck
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [20, 22]
-        
     steps:
       - name: 🛒 Checkout code
         uses: actions/checkout@v4
-        
-      - name: 🟢 Setup Node.js ${{ matrix.node-version }}
+
+      - name: 🟢 Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20
           cache: 'npm'
-          
+
       - name: 📦 Install dependencies
         run: npm ci
-        
+
       - name: 🏗️ Build tokens
         run: npm run build:tokens
-        
-      - name: 🧪 Run tests
-        run: npm run test:coverage
-        
+
       - name: 🔍 Type check
         run: npm run typecheck
-        
-      - name: 📦 Build package
-        run: npm run build:package
-        
+
+  test:
+    name: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build tokens
+        run: npm run build:tokens
+
+      - name: 🧪 Run tests
+        run: npm run test:coverage
+
       - name: 📊 Upload coverage reports
-        if: matrix.node-version == 20
         uses: codecov/codecov-action@v3
         with:
           file: ./coverage/lcov.info
           fail_ci_if_error: false
+
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🟢 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: npm ci
+
+      - name: 🏗️ Build tokens
+        run: npm run build:tokens
+
+      - name: 📦 Build package
+        run: npm run build:package
