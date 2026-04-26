@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   changelog:
@@ -32,12 +33,23 @@ jobs:
       - name: Generate changelog
         run: npx auto-changelog -o CHANGELOG.md
 
-      - name: 🔧 Commit and push changelog
+      - name: 🔧 Commit changelog on new branch
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          BRANCH="chore/changelog-${{ github.run_id }}"
+          git checkout -b "$BRANCH"
           git add CHANGELOG.md
-          git commit -m "chore(changelog): update CHANGELOG.md after release"
-          git push origin HEAD:main
+          git commit -m "chore(changelog): update CHANGELOG.md after release" || echo "No changes to commit"
+          git push --set-upstream origin "$BRANCH"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📬 Open PR to merge changelog
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: chore/changelog-${{ github.run_id }}
+          base: main
+          title: "chore(changelog): update CHANGELOG.md after release"
+          body: "Automated changelog update after a successful release. Safe to merge once CI passes."
