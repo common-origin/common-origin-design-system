@@ -113,7 +113,8 @@ describe('DateGroup', () => {
       
       const total = screen.getByTestId('date-group-total')
       expect(total).toBeInTheDocument()
-      expect(total).toHaveTextContent('+$100.00')
+      // MoneyDisplay renders the sign as an SVG icon, not a text character
+      expect(total).toHaveTextContent('$100.00')
     })
 
     it('displays negative amount with negative variant', () => {
@@ -128,7 +129,8 @@ describe('DateGroup', () => {
       
       const total = screen.getByTestId('date-group-total')
       expect(total).toBeInTheDocument()
-      expect(total).toHaveTextContent('−$75.25')
+      // MoneyDisplay renders the sign as an SVG icon, not a text character
+      expect(total).toHaveTextContent('$75.25')
     })
 
     it('displays zero amount with default variant', () => {

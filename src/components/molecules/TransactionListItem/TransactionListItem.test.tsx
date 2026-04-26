@@ -57,14 +57,16 @@ describe('TransactionListItem', () => {
       render(<TransactionListItem {...defaultProps} amount={-50.00} data-testid="transaction" />)
       
       const amount = screen.getByTestId('transaction-amount')
-      expect(amount).toHaveTextContent('−$50.00')
+      // MoneyDisplay renders the sign as an SVG icon, not a text character
+      expect(amount).toHaveTextContent('$50.00')
     })
 
     it('displays positive amount (income) with positive variant', () => {
       render(<TransactionListItem {...defaultProps} amount={1000.00} data-testid="transaction" />)
       
       const amount = screen.getByTestId('transaction-amount')
-      expect(amount).toHaveTextContent('+$1,000.00')
+      // MoneyDisplay renders the sign as an SVG icon, not a text character
+      expect(amount).toHaveTextContent('$1,000.00')
     })
 
     it('displays zero amount with default variant', () => {
