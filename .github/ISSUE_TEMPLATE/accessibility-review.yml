@@ -1,0 +1,59 @@
+name: Accessibility Review
+description: Request a WCAG 2.2 AA accessibility review of a component or set of components
+title: '[Accessibility] ComponentName'
+labels:
+  - copilot
+  - accessibility
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue will be picked up by the `accessibility-specialist` Copilot agent. The agent will audit ARIA attributes, keyboard navigation, focus management, and `jest-axe` coverage.
+
+        **Important:** The accessibility specialist does not make visual changes. If a visual change is needed for accessibility (e.g. insufficient colour contrast), it will be flagged as an open question in the PR.
+
+  - type: input
+    id: component-name
+    attributes:
+      label: Component name(s)
+      description: One or more component names, comma-separated. For a full audit of all interactive components, write "all interactive".
+      placeholder: Button, IconButton, Chip
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: accessibility-areas
+    attributes:
+      label: Areas to review (check all that apply)
+      options:
+        - label: ARIA attributes — roles, labels, states
+          required: false
+        - label: Keyboard navigation — Tab order, Enter/Space activation, Escape
+          required: false
+        - label: Focus management — focus ring visibility, focus after interaction
+          required: false
+        - label: Screen reader support — announced text, live regions
+          required: false
+        - label: jest-axe test coverage
+          required: false
+
+  - type: textarea
+    id: known-issues
+    attributes:
+      label: Known accessibility issues (optional)
+      description: If you already know of specific problems, describe them here
+      placeholder: e.g. The dropdown doesn't trap focus, pressing Escape doesn't close it
+
+  - type: textarea
+    id: wcag-criteria
+    attributes:
+      label: Specific WCAG criteria (optional)
+      description: If this is in response to a specific WCAG failure, note the criterion here
+      placeholder: e.g. WCAG 2.1.1 Keyboard, WCAG 4.1.2 Name, Role, Value
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Agent instructions:** Use the `accessibility-specialist` agent. Read `.github/ACCESSIBILITY_GUIDELINES.md` and all agent context files before starting. Do not make visual changes — flag any visual accessibility concerns as open questions.

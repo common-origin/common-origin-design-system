@@ -1,5 +1,25 @@
 # GitHub Copilot Instructions for Common Origin Design System
 
+## Brand Identity & Design Context
+
+**Before making any visual, token, or component decision, read these files:**
+
+1. [`.github/BRAND_IDENTITY.md`](.github/BRAND_IDENTITY.md) — Who Common Origin is, origin story, brand voice, logo rules
+2. [`.github/VISUAL_DESIGN_LANGUAGE.md`](.github/VISUAL_DESIGN_LANGUAGE.md) — Colour system, typography, interactive states, visual rules
+3. [`.github/PRODUCT_ECOSYSTEM.md`](.github/PRODUCT_ECOSYSTEM.md) — Products served by this design system, accessibility + performance requirements
+4. [`.github/DESIGN_NORTH_STAR.md`](.github/DESIGN_NORTH_STAR.md) — Quality vision, benchmarks (Stripe + Shopify), phase roadmap
+5. [`.github/AGENT_CONSTITUTION.md`](.github/AGENT_CONSTITUTION.md) — Hard rules: the Ten Nevers, validation requirements, PR protocol
+6. [`.github/AGENT_WAYS_OF_WORKING.md`](.github/AGENT_WAYS_OF_WORKING.md) — Process principles: read before write, one PR one problem, evidence-based decisions
+
+**The five most important visual rules:**
+- Active/selected state = solid black (#212529) fill + white text — no exceptions
+- Button system = binary only: solid black OR outlined
+- Display headings = weight 700–900 — no medium-weight display headings
+- No decorative colour — colour for status semantics only
+- Background = ~#F8F8F8 (off-white), never pure white; Text = #212529, never pure #000000 (logo only)
+
+---
+
 ## Code Generation Guidelines
 
 ### TypeScript Component Props

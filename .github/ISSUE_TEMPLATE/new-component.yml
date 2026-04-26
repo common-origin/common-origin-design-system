@@ -1,0 +1,76 @@
+name: New Component Request
+description: Request a new component for the design system
+title: '[New Component] ComponentName'
+labels:
+  - copilot
+  - new-component
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        New components should follow the Atomic Design structure and Common Origin visual identity. This request will be reviewed before implementation begins.
+
+        **Before submitting:** Check that the component doesn't already exist in `src/components/`. Also confirm this isn't a variant of an existing component that could be added as a prop.
+
+  - type: input
+    id: component-name
+    attributes:
+      label: Component name
+      description: PascalCase name (e.g. `StatusBadge`, `NavigationMenu`)
+      placeholder: ComponentName
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component-category
+    attributes:
+      label: Atomic Design category
+      description: See the design system's atomic design structure
+      options:
+        - atoms — basic building blocks (no dependencies on other components)
+        - molecules — simple combinations of atoms
+        - layout — structural/spacing components
+    validations:
+      required: true
+
+  - type: textarea
+    id: purpose
+    attributes:
+      label: What does this component do?
+      description: Describe the component's purpose and the user problem it solves
+      placeholder: e.g. Displays a user's status with an icon and label. Used in profile cards and activity feeds.
+    validations:
+      required: true
+
+  - type: textarea
+    id: where-used
+    attributes:
+      label: Where will this be used?
+      description: Which products or pages need this component?
+      placeholder: e.g. Common Origin personal site (track pages), A2UI dashboard (user status column)
+    validations:
+      required: true
+
+  - type: textarea
+    id: variants
+    attributes:
+      label: Expected variants and props
+      description: List the variants, states, and props you expect this component to need
+      placeholder: |
+        Variants: default, success, warning, error
+        States: default, disabled
+        Props: label (string), variant, icon (optional)
+
+  - type: textarea
+    id: reference
+    attributes:
+      label: Visual reference (optional)
+      description: Link to a design file, screenshot, or description of how it should look
+      placeholder: Paste a URL or describe the visual design
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Note for the agent:** A new component must follow the full component file structure: `ComponentName.tsx`, `ComponentName.test.tsx`, `ComponentName.docs.tsx`, `index.ts`. Read `.github/COMPONENT_PATTERNS.md`, `.github/TESTING_STANDARDS.md`, and `.github/DOCUMENTATION_STANDARDS.md` before implementing. Register the component in `src/components/index.ts`, `src/components/atoms/index.ts` (or appropriate category), and `src/lib/componentsData.ts`. Export from `src/index.ts`.

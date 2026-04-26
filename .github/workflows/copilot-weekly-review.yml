@@ -1,0 +1,175 @@
+name: Copilot Weekly Design System Review
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      focus:
+        description: 'Review focus area'
+        required: false
+        default: 'auto'
+        type: choice
+        options:
+          - auto
+          - brand-alignment
+          - accessibility
+          - token-consistency
+          - documentation
+
+permissions:
+  issues: write
+  contents: write
+
+jobs:
+  create-review-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Determine weekly focus
+        id: focus
+        run: |
+          if [ "${{ github.event.inputs.focus }}" != "" ] && [ "${{ github.event.inputs.focus }}" != "auto" ]; then
+            echo "area=${{ github.event.inputs.focus }}" >> "$GITHUB_OUTPUT"
+          else
+            # Rotate weekly: week-of-year mod 4
+            WEEK=$(date +%V)
+            ROTATION=$((10#$WEEK % 4))
+            case $ROTATION in
+              0) echo "area=brand-alignment" >> "$GITHUB_OUTPUT" ;;
+              1) echo "area=accessibility" >> "$GITHUB_OUTPUT" ;;
+              2) echo "area=token-consistency" >> "$GITHUB_OUTPUT" ;;
+              3) echo "area=documentation" >> "$GITHUB_OUTPUT" ;;
+            esac
+          fi
+
+      - name: Set issue content
+        id: content
+        run: |
+          AREA="${{ steps.focus.outputs.area }}"
+          DATE=$(date +"%Y-%m-%d")
+          WEEK=$(date +%V)
+
+          case $AREA in
+            brand-alignment)
+              TITLE="[Copilot] Weekly Design System Review — Brand Alignment (Week $WEEK, $DATE)"
+              BODY="## Weekly Design System Review — Brand Alignment
+
+          **Focus:** Ensure components align with the Common Origin visual identity.
+
+          **Specific areas to review:**
+          - Active/selected state pattern: every interactive component (buttons, chips, tabs, nav items) should use solid black (#212529) fill + white text for the active state
+          - Button system: binary only — solid black OR outlined, no other variants
+          - Heading weights: all display headings at weight 700+ throughout
+          - Colour discipline: no decorative colour use anywhere in the system
+          - Any component that uses pure #000000 in styles (logo-only colour, must be #212529 in components)
+
+          **Agent:** Use the \`design-system-reviewer\` agent.
+
+          **Instructions:**
+          Before beginning, read all context files listed in the agent profile. Survey the above areas, identify the 1–3 highest-value improvements, implement them, pass all validation checks, and raise a PR.
+          "
+              ;;
+            accessibility)
+              TITLE="[Copilot] Weekly Design System Review — Accessibility (Week $WEEK, $DATE)"
+              BODY="## Weekly Design System Review — Accessibility
+
+          **Focus:** WCAG 2.2 AA compliance across components.
+
+          **Specific areas to review:**
+          - Icon-only buttons: every one must have \`aria-label\`
+          - Decorative icons: every one must have \`aria-hidden=\"true\"\`
+          - Interactive components: keyboard navigation completeness (Tab, Enter, Space, Escape, Arrow keys)
+          - \`jest-axe\` coverage: any component variant not yet tested with axe
+          - ARIA state attributes: \`aria-expanded\`, \`aria-selected\`, \`aria-disabled\` where applicable
+
+          **Agent:** Use the \`accessibility-specialist\` agent.
+
+          **Instructions:**
+          Before beginning, read all context files listed in the agent profile. Survey components for the above issues, implement fixes, and raise a PR. Any visual change needed for accessibility should be flagged as an open question, not implemented.
+          "
+              ;;
+            token-consistency)
+              TITLE="[Copilot] Weekly Design System Review — Token Consistency (Week $WEEK, $DATE)"
+              BODY="## Weekly Design System Review — Token Consistency
+
+          **Focus:** Ensure all components use design tokens correctly.
+
+          **Specific areas to review:**
+          - Hardcoded hex values in component files (search for \`\"#\"\` in \`.tsx\` files)
+          - Hardcoded pixel values that should use spacing tokens
+          - Missing semantic tokens for roles described in the visual design language
+          - Component tokens that reference base tokens directly (should go through semantic layer)
+          - Any token values misaligned with the visual design language (e.g. background that is pure white)
+
+          **Agent:** Use the \`token-architect\` agent.
+
+          **Instructions:**
+          Before beginning, read all context files listed in the agent profile. All changes are additive — never remove or rename existing tokens. Raise a PR for the token additions only; if component files need updating to use new tokens, document that as a separate recommendation.
+          "
+              ;;
+            documentation)
+              TITLE="[Copilot] Weekly Design System Review — Documentation (Week $WEEK, $DATE)"
+              BODY="## Weekly Design System Review — Documentation
+
+          **Focus:** Improve component documentation quality.
+
+          **Specific areas to review:**
+          - Components missing \`.docs.tsx\` files entirely
+          - Components with \`.docs.tsx\` files missing required fields (anatomy, accessibility section, examples)
+          - Components not registered in \`src/lib/componentsData.ts\`
+          - Examples that show prop permutations rather than real-world use cases
+          - Prop descriptions that say what type a prop is rather than what it does
+
+          To find components missing docs:
+          \`\`\`bash
+          find src/components -name '*.tsx' ! -name '*.docs.tsx' ! -name '*.test.tsx' | sed 's|.*/||' | sed 's|\.tsx||' | sort -u
+          find src/components -name '*.docs.tsx' | sed 's|.*/||' | sed 's|\.docs\.tsx||' | sort -u
+          \`\`\`
+
+          **Agent:** Use the \`documentation-specialist\` agent.
+
+          **Instructions:**
+          Before beginning, read all context files listed in the agent profile. Select 1–2 components with the most significant documentation gaps and bring them to north star quality. Never modify component implementation.
+          "
+              ;;
+          esac
+
+          # Write to output — escape for GitHub Actions
+          {
+            echo "title<<EOF"
+            echo "$TITLE"
+            echo "EOF"
+            echo "body<<EOF"
+            echo "$BODY"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create issue and assign to Copilot
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const title = `${{ steps.content.outputs.title }}`;
+            const body = `${{ steps.content.outputs.body }}`;
+
+            // Create the issue
+            const issue = await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: title,
+              body: body,
+              labels: ['copilot'],
+            });
+
+            console.log(`Created issue #${issue.data.number}: ${issue.data.html_url}`);
+
+            // Assign to Copilot SWE agent
+            await github.rest.issues.addAssignees({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issue.data.number,
+              assignees: ['copilot'],
+            });
+
+            console.log(`Assigned issue #${issue.data.number} to Copilot`);

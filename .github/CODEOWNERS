@@ -1,0 +1,5 @@
+# CODEOWNERS
+# Every PR requires review from @olliemacky — including all Copilot agent PRs.
+# This ensures no agent change merges without human approval.
+
+* @olliemacky

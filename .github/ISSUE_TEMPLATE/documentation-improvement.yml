@@ -1,0 +1,55 @@
+name: Documentation Improvement
+description: Request documentation improvements for a component — better examples, anatomy diagrams, prop descriptions, or accessibility notes
+title: '[Docs] ComponentName'
+labels:
+  - copilot
+  - documentation
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue will be picked up by the `documentation-specialist` Copilot agent. The agent improves `.docs.tsx` files only — it does not modify component implementation, tests, or tokens.
+
+  - type: input
+    id: component-name
+    attributes:
+      label: Component name(s)
+      description: One or more component names, comma-separated
+      placeholder: Avatar, DateFormatter
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: documentation-gaps
+    attributes:
+      label: Documentation gaps (check all that apply)
+      options:
+        - label: Missing .docs.tsx file entirely
+          required: false
+        - label: Missing anatomy diagram
+          required: false
+        - label: Missing or incomplete accessibility section
+          required: false
+        - label: Examples show prop permutations not real-world use cases
+          required: false
+        - label: Prop descriptions are missing or unhelpful
+          required: false
+        - label: Used tokens are not documented
+          required: false
+        - label: Component not registered in componentsData.ts
+          required: false
+
+  - type: textarea
+    id: specific-improvements
+    attributes:
+      label: Specific improvements needed (optional)
+      description: If you have specific examples or improvements in mind, describe them here
+      placeholder: |
+        e.g. The Avatar component needs an example showing it in a comment thread context (with a name and timestamp alongside), and the accessibility section should explain what screen readers announce for decorative avatars vs. named avatars.
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Agent instructions:** Use the `documentation-specialist` agent. Read all context files listed in the agent profile, plus the Button, Chip, and ProgressBar `.docs.tsx` files as reference implementations. Do not modify component implementation files.

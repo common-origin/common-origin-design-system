@@ -1,0 +1,60 @@
+name: Component Audit
+description: Request a deep quality audit of a specific component
+title: '[Audit] ComponentName'
+labels:
+  - copilot
+  - component-audit
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This issue will be picked up by the `component-quality-specialist` Copilot agent, which will perform a thorough quality pass on the named component — brand alignment, interaction states, token usage, test coverage, and documentation.
+
+  - type: input
+    id: component-name
+    attributes:
+      label: Component name
+      description: The exact component name (e.g. `Button`, `Chip`, `ProgressBar`)
+      placeholder: ComponentName
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component-category
+    attributes:
+      label: Atomic Design category
+      options:
+        - atoms
+        - molecules
+        - layout
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: audit-focus
+    attributes:
+      label: Audit focus (check all that apply)
+      description: Leave all checked for a full audit
+      options:
+        - label: Visual quality — interactive states, token usage, brand alignment
+          required: false
+        - label: API quality — props typing, JSDoc, exports
+          required: false
+        - label: Test coverage — variants, states, keyboard, jest-axe
+          required: false
+        - label: Documentation — examples, anatomy, accessibility section
+          required: false
+
+  - type: textarea
+    id: known-issues
+    attributes:
+      label: Known issues (optional)
+      description: If you already know of specific problems, describe them here. The agent will investigate these first.
+      placeholder: e.g. The active state doesn't use the correct inverse pattern, hover transition is missing
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        **Agent instructions:** Use the `component-quality-specialist` agent. Read all 9 context files listed in the agent profile before starting. Scope strictly to the named component only.
