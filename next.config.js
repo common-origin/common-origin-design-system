@@ -27,15 +27,6 @@ const nextConfig = {
   // output: 'export',
   // trailingSlash: true,
   
-  webpack: (config) => {
-    // Handle SVG imports
-    config.module.rules.push({
-      test: /\.svg$/,
-      use: ['@svgr/webpack']
-    })
-    
-    return config
-  }
 }
 
 export default nextConfig

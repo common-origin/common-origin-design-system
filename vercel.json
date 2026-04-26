@@ -5,5 +5,5 @@
     }
   },
   "buildCommand": "git fetch --unshallow || true && git fetch --tags || true && npm run build",
-  "installCommand": "npm install"
+  "installCommand": "npm ci"
 }

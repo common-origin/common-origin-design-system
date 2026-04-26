@@ -8,8 +8,16 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
+  "engines": {
+    "node": ">=20"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
@@ -46,10 +54,10 @@
     "styled-components": "^6.0.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.0.0",
     "@hotjar/browser": "^1.0.9",
     "date-fns": "^4.1.0",
     "gray-matter": "^4.0.3",
-    "next": "^16.0.10",
     "remark": "^15.0.1",
     "remark-html": "^16.0.1",
     "ts-morph": "^27.0.2",
@@ -87,7 +95,8 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "style-dictionary": "^3.8.0",
-    "styled-components": "^6.1.1"
+    "styled-components": "^6.1.1",
+    "next": "^16.0.10"
   },
   "keywords": [
     "design-system",

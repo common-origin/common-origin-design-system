@@ -1,9 +1,9 @@
 name: 🚀 Update Changelog After Release
 
 on:
-  push:
-    tags:
-      - 'v*.*.*'
+  workflow_run:
+    workflows: ['📦 Publish Package']
+    types: [completed]
 
 permissions:
   contents: write
@@ -11,6 +11,9 @@ permissions:
 jobs:
   changelog:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    # Only run when publish succeeded
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
       - name: 🛒 Checkout code
         uses: actions/checkout@v4

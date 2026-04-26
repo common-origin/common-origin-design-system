@@ -94,8 +94,8 @@ main() {
     read -p "Enter new version (X.Y.Z): " NEW_VERSION
     validate_version "$NEW_VERSION"
   else
-    # Use npm version to calculate new version (dry run)
-    NEW_VERSION=$(npm version $RELEASE_TYPE --no-git-tag-version 2>/dev/null || error "Failed to calculate new version")
+    # Use npm version to calculate new version (dry run), then revert
+    npm version $RELEASE_TYPE --no-git-tag-version 2>/dev/null || error "Failed to calculate new version"
     NEW_VERSION=$(get_current_version)
     info "New version will be: v$NEW_VERSION"
     
