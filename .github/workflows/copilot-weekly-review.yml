@@ -147,11 +147,14 @@ jobs:
 
       - name: Create issue and assign to Copilot
         uses: actions/github-script@v7
+        env:
+          ISSUE_TITLE: ${{ steps.content.outputs.title }}
+          ISSUE_BODY: ${{ steps.content.outputs.body }}
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const title = `${{ steps.content.outputs.title }}`;
-            const body = `${{ steps.content.outputs.body }}`;
+            const title = process.env.ISSUE_TITLE;
+            const body = process.env.ISSUE_BODY;
 
             // Create the issue
             const issue = await github.rest.issues.create({
