@@ -37,7 +37,12 @@ jobs:
       - name: 🏗️ Build package
         run: npm run build:package
         
-      - name: 📢 Publish to NPM
+      - name: � Verify npm auth
+        run: npm whoami
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: �📢 Publish to NPM
         run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
