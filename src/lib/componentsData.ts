@@ -12,6 +12,8 @@ import { cardLargeDocs } from '@/components/molecules/CardLarge/CardLarge.docs'
 import { cardSmallDocs } from '@/components/molecules/CardSmall/CardSmall.docs'
 import { checkboxDocs } from '@/components/molecules/Checkbox/Checkbox.docs'
 import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
+import { booleanChipDocs } from '@/components/atoms/Chip/BooleanChip.docs'
+import { filterChipDocs } from '@/components/atoms/Chip/FilterChip.docs'
 import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
 import { containerDocs } from '@/components/atoms/Container/Container.docs'
@@ -51,6 +53,7 @@ export interface ComponentData {
   name: string
   description: string
   category: 'Atoms' | 'Molecules' | 'Layout' | 'Components'
+  parentId?: string
   props: Array<{
     name: string
     type: string
@@ -92,6 +95,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
     name: docs.name,
     description: docs.description,
     category: docs.category as 'Atoms' | 'Molecules' | 'Layout' | 'Components',
+    parentId: docs.parentId,
     props: (docs.props || []).map(prop => ({
       name: prop.name,
       type: prop.type,
@@ -125,6 +129,8 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(cardSmallDocs),
   convertDocumentationToLegacyFormat(checkboxDocs),
   convertDocumentationToLegacyFormat(chipDocs),
+  convertDocumentationToLegacyFormat(booleanChipDocs),
+  convertDocumentationToLegacyFormat(filterChipDocs),
   convertDocumentationToLegacyFormat(chipGroupDocs),
   convertDocumentationToLegacyFormat(codeBlockDocs),
   convertDocumentationToLegacyFormat(containerDocs),

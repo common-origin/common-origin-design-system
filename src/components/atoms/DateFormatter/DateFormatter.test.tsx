@@ -82,6 +82,18 @@ describe('DateFormatter', () => {
     })
 
     it('shows day name for dates within this week in relative mode', () => {
+      const today = new Date()
+      const dayOfWeek = today.getDay() // 0=Sun, 1=Mon, 2=Tue, ..., 6=Sat
+      // With weekStartsOn: 1 (Monday), "this week" spans Mon–Sun.
+      // We need a date that is in the current week but is neither today nor yesterday.
+      // Two days ago is the earliest such candidate. When today is Monday (dayOfWeek=1)
+      // or Tuesday (dayOfWeek=2), two days ago falls in the previous week, so there is
+      // no qualifying date to test — skip in that case.
+      const daysSinceMonday = dayOfWeek === 0 ? 6 : dayOfWeek - 1
+      if (daysSinceMonday < 2) {
+        return
+      }
+
       const twoDaysAgo = new Date()
       twoDaysAgo.setDate(twoDaysAgo.getDate() - 2)
       const { container } = renderComponent({

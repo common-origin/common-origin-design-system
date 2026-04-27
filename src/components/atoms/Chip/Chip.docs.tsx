@@ -1,63 +1,13 @@
 import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Chip } from './Chip'
-import { FilterChip } from './FilterChip'
-import { BooleanChip } from './BooleanChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
-
-// Example component for stateful boolean chips
-const BooleanChipsExample: React.FC = () => {
-  const [filters, setFilters] = React.useState({
-    articles: false,
-    videos: true,
-    images: false,
-    documents: false
-  })
-  
-  const toggleFilter = (key: keyof typeof filters) => {
-    setFilters(prev => ({ ...prev, [key]: !prev[key] }))
-  }
-  
-  return (
-    <Stack direction="column" gap="md">
-      <div>
-        <Typography variant="small">Content Type Filters (Click to toggle)</Typography>
-        <Stack direction="row" gap="sm" wrap>
-          <BooleanChip 
-            selected={filters.articles}
-            onClick={() => toggleFilter('articles')}
-          >
-            Articles
-          </BooleanChip>
-          <BooleanChip 
-            selected={filters.videos}
-            onClick={() => toggleFilter('videos')}
-          >
-            Videos
-          </BooleanChip>
-          <BooleanChip 
-            selected={filters.images}
-            onClick={() => toggleFilter('images')}
-          >
-            Images
-          </BooleanChip>
-          <BooleanChip 
-            selected={filters.documents}
-            onClick={() => toggleFilter('documents')}
-          >
-            Documents
-          </BooleanChip>
-        </Stack>
-      </div>
-    </Stack>
-  )
-}
 
 export const chipDocs: ComponentDocumentation = {
   id: 'chip',
   name: 'Chip',
-  description: 'A versatile compact element for displaying categorical information, tags, filters, or interactive actions. Designed for efficient content organization with multiple visual variants supporting both static display and interactive functionality. Features comprehensive accessibility support, keyboard navigation, and WCAG 2.2 AA compliance with automated testing integration.',
+  description: 'The base Chip component for displaying categorical information, tags, and actionable labels. Supports multiple visual variants (default, emphasis, subtle, interactive) and two sizes. For toggleable multi-select filters, see BooleanChip. For dismissible applied-filter displays, see FilterChip.',
   category: 'Atoms',
   
   // Props extracted with full type safety from ChipProps interface
@@ -186,184 +136,6 @@ export const chipDocs: ComponentDocumentation = {
   ],
 
   examples: [
-    {
-      name: 'Filter Chips - Selected State with Optional Dismissal',
-      description: 'Filter chips with selected state showing a checkmark and light blue background. Optionally dismissible when onDismiss is provided. Perfect for showing which filters are currently active.',
-      code: `<Stack direction="column" gap="md">
-  <div>
-    <Typography variant="small">Selected Filters (with checkmark)</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <FilterChip selected>
-        Status: Active
-      </FilterChip>
-      <FilterChip selected>
-        Date: Last 30 days
-      </FilterChip>
-      <FilterChip selected={false}>
-        Category: All
-      </FilterChip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Selected & Dismissible (with × button)</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <FilterChip 
-        selected
-        onDismiss={() => console.log('Remove status filter')}
-      >
-        Status: Active
-      </FilterChip>
-      <FilterChip 
-        selected
-        onDismiss={() => console.log('Remove date filter')}
-      >
-        Date: Last 30 days
-      </FilterChip>
-      <FilterChip 
-        selected
-        onDismiss={() => console.log('Remove category filter')}
-      >
-        Category: Design
-      </FilterChip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Different Sizes</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <FilterChip 
-        selected
-        size="small"
-      >
-        Small Filter
-      </FilterChip>
-      <FilterChip 
-        selected
-        size="medium"
-        onDismiss={() => console.log('Remove')}
-      >
-        Medium Dismissible
-      </FilterChip>
-    </Stack>
-  </div>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <div>
-            <Typography variant="small">Selected Filters (with checkmark)</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <FilterChip selected>
-                Status: Active
-              </FilterChip>
-              <FilterChip selected>
-                Date: Last 30 days
-              </FilterChip>
-              <FilterChip selected={false}>
-                Category: All
-              </FilterChip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Selected & Dismissible (with × button)</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <FilterChip 
-                selected
-                onDismiss={() => console.log('Remove status filter')}
-              >
-                Status: Active
-              </FilterChip>
-              <FilterChip 
-                selected
-                onDismiss={() => console.log('Remove date filter')}
-              >
-                Date: Last 30 days
-              </FilterChip>
-              <FilterChip 
-                selected
-                onDismiss={() => console.log('Remove category filter')}
-              >
-                Category: Design
-              </FilterChip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Different Sizes</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <FilterChip 
-                selected
-                size="small"
-              >
-                Small Filter
-              </FilterChip>
-              <FilterChip 
-                selected
-                size="medium"
-                onDismiss={() => console.log('Remove')}
-              >
-                Medium Dismissible
-              </FilterChip>
-            </Stack>
-          </div>
-        </Stack>
-      )
-    },
-    {
-      name: 'Boolean Chips - Toggleable Quick Filters',
-      description: 'Toggle chips for quick filtering with visual selected state. Perfect for multi-select filter controls where users can see which filters are active.',
-      code: `// Example with state management
-const [filters, setFilters] = React.useState({
-  articles: false,
-  videos: true,
-  images: false,
-  documents: false
-})
-
-const toggleFilter = (key: string) => {
-  setFilters(prev => ({ ...prev, [key]: !prev[key] }))
-}
-
-return (
-  <Stack direction="column" gap="md">
-    <div>
-      <Typography variant="small">Content Type Filters</Typography>
-      <Stack direction="row" gap="sm" wrap>
-        <Chip 
-          variant="boolean" 
-          selected={filters.articles}
-          onClick={() => toggleFilter('articles')}
-        >
-          Articles
-        </Chip>
-        <Chip 
-          variant="boolean" 
-          selected={filters.videos}
-          onClick={() => toggleFilter('videos')}
-        >
-          Videos
-        </Chip>
-        <Chip 
-          variant="boolean" 
-          selected={filters.images}
-          onClick={() => toggleFilter('images')}
-        >
-          Images
-        </Chip>
-        <Chip 
-          variant="boolean" 
-          selected={filters.documents}
-          onClick={() => toggleFilter('documents')}
-        >
-          Documents
-        </Chip>
-      </Stack>
-    </div>
-  </Stack>
-)`,
-      renderComponent: () => <BooleanChipsExample />
-    },
     {
       name: 'Content Categorization Chips',
       description: 'Static chips for organizing and labeling content with appropriate visual hierarchy',
@@ -748,43 +520,29 @@ return (
 
   accessibility: {
     notes: [
-      'Interactive chips automatically receive button semantics and announce as "button" elements to screen readers with appropriate role and state information',
-      'Filter variant chips use role="status" to announce applied filters as status information without requiring parent list containers',
-      'Boolean variant chips use role="checkbox" with aria-checked attribute to communicate toggle state to screen readers',
-      'Non-interactive chips are treated as static text content, preserving natural reading flow without interrupting screen reader navigation patterns',
-      'Comprehensive keyboard navigation support: Tab key moves focus to interactive chips, Enter and Space keys activate them following standard web interaction patterns',
-      'Filter chips support keyboard dismiss with Delete or Backspace keys in addition to clicking the close button',
-      'Boolean chips can be toggled via keyboard using Space or Enter keys when focused',
-      'Close buttons in filter chips have descriptive aria-label attributes (e.g., "Remove filter") for clear screen reader announcements',
-      'Focus indicators are highly visible with 2px outline and offset using component.chip.focus tokens (matching Button component), ensuring clear visual feedback for keyboard users across all color themes and high contrast modes',
-      'Disabled state is properly communicated through aria-disabled attribute, preventing interaction while maintaining semantic context for assistive technology users',
-      'Content accessibility preserved through natural DOM structure - screen readers announce chip content exactly as provided in the children prop',
-      'aria-label support for cases where visible text needs additional context or clarification for screen reader users, particularly useful for abbreviated or symbolic content',
-      'Color contrast ratios exceed WCAG 2.2 AA requirements (4.5:1 for normal text) across all variant combinations and interaction states',
-      'Selected state in boolean chips uses both visual indicators (icon) and ARIA attributes (aria-checked) for redundant accessibility',
-      'Touch target sizes meet accessibility guidelines with adequate spacing for finger interaction, especially important for mobile interfaces and users with motor impairments',
-      'Automated accessibility testing integration with jest-axe ensures ongoing compliance throughout component development and prevents regression issues',
-      'High contrast mode support maintains visibility and usability across all user preference settings and assistive technology configurations',
-      'Screen reader testing validates announcement patterns: static chips read as content, interactive chips announce as "button", filter chips announce with status role, boolean chips announce as "checkbox" with checked state'
+      'Interactive chips (variant="interactive" or when onClick is provided) automatically receive button semantics and announce as "button" elements to screen readers.',
+      'Non-interactive chips are treated as static text content, preserving natural reading flow without interrupting screen reader navigation patterns.',
+      'Tab key moves focus to interactive chips. Enter and Space keys activate the onClick handler following standard web interaction patterns.',
+      'Focus indicators are highly visible with 2px outline and offset using component.chip.focus tokens (matching Button component), ensuring clear visual feedback for keyboard users.',
+      'Disabled state is communicated through aria-disabled, preventing interaction while maintaining semantic context for assistive technology users.',
+      'aria-label support for cases where visible text needs additional context — particularly useful for abbreviated or symbolic content.',
+      'Color contrast ratios exceed WCAG 2.2 AA requirements (4.5:1 for normal text) across all variant combinations and interaction states.',
+      'For toggleable filter controls, use BooleanChip (role="checkbox"). For dismissible applied filters, use FilterChip (role="status"). See the child pages for their specific accessibility contracts.'
     ],
-    keyboardNavigation: 'Tab key moves focus to interactive chips with visible focus outline. Enter or Space key activates the chip\'s onClick handler or toggles boolean chips. Delete or Backspace keys dismiss filter chips. Disabled chips are excluded from tab order and do not respond to activation keys.',
-    screenReader: 'Static chips announced as their text content. Interactive chips announced as "button" followed by content. Filter chips announced with status role and filter content. Boolean chips announced as "checkbox" with checked/unchecked state. Custom aria-label content takes precedence when provided.',
-    focusManagement: 'Interactive chips receive focus with outline styling from component.chip.focus tokens (2px solid with 2px offset) for clear visibility, matching Button component behavior. Focus moves in logical DOM order. Disabled chips cannot receive focus and are excluded from tab navigation sequence. Close buttons in filter chips are independently focusable for precise keyboard control.'
+    keyboardNavigation: 'Tab key moves focus to interactive chips with visible focus outline. Enter or Space key activates the chip\'s onClick handler. Disabled chips are excluded from tab order and do not respond to activation keys.',
+    screenReader: 'Static chips announced as their text content. Interactive chips announced as "button" followed by content. Custom aria-label content takes precedence when provided.',
+    focusManagement: 'Interactive chips receive focus with outline styling from component.chip.focus tokens (2px solid with 2px offset), matching Button component behavior. Focus moves in logical DOM order. Disabled chips cannot receive focus.'
   },
 
   notes: [
-    'Content Strategy: Use chips for categorical information, content tagging, filtering interfaces, and quick actions. Choose variant based on information hierarchy - emphasis for important categories, subtle for metadata, interactive for user actions, filter for applied filters with visual selected state, boolean for toggleable quick filters.',
-    'Filter vs Boolean Variants: Use filter chips to show applied filters with a checkmark when selected and light blue background. Optionally add onDismiss to make them removable with × button. Use boolean chips for multi-select quick filter controls that toggle on/off with click interaction.',
-    'Table Filtering Pattern: Use filter chips to display which filters are currently active (selected state with checkmark). When user needs to remove filters, provide the onDismiss prop to show the × button. Boolean chips are for interactive toggles that control filter state.',
+    'Content Strategy: Use chips for categorical information, content tagging, filtering interfaces, and quick actions. Choose variant based on information hierarchy — emphasis for important categories, subtle for metadata, interactive for user actions.',
+    'Sub-variants: For toggleable multi-select filters use BooleanChip (a controlled checkbox-style toggle). For displaying applied filters that can optionally be dismissed use FilterChip. Both appear as child pages under Chip in the docs.',
     'Size Selection Guidelines: Small size for dense interfaces like toolbars and metadata displays. Medium size for standard content categorization and general purpose use.',
-    'Interactive Behavior: Filter chips are NOT clickable on the body - only the close button (when present) is interactive. Boolean chips are fully clickable to toggle selection state. When onClick is provided on base Chip, it automatically becomes focusable with button semantics.',
-    'Keyboard Accessibility: Filter chips support Delete/Backspace keys for dismissal (when onDismiss provided) in addition to clicking the close button. Boolean chips can be toggled with Space or Enter keys. All interactive elements receive clear focus indicators.',
-    'State Management: For filter chips, use selected prop to show checkmark and light blue background. Optionally provide onDismiss callback to make them dismissible. For boolean chips, use the selected prop to control toggle state with onClick handler.',
-    'Icon Usage: Filter chips display a checkmark icon on the left when selected, and optionally a close (×) icon on the right when dismissible. Boolean chips display a checkmark icon on the left when selected. Icons use semantic spacing token (8px) for consistent positioning.',
-    'Legacy Compatibility: Component supports legacy title prop and light/dark variants for backward compatibility, but new implementations should use children prop and current variant system for better flexibility.',
-    'Performance Optimization: Component uses styled-components with direct token imports for efficient styling. Transitions and focus states leverage component tokens aligned with Button for consistent behavior across the design system.',
-    'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states use semantic.motion.hover for smooth transitions that enhance user feedback without being distracting or overwhelming. Focus states use component.chip.focus tokens aligned with Button component for consistent keyboard navigation experience.',
-    'Testing Support: data-testid prop enables consistent automated testing across chip variants and states. Component includes comprehensive test coverage for interaction patterns, accessibility compliance, and state management scenarios.'
+    'Interactive Behavior: When onClick is provided on Chip, it automatically becomes focusable with button semantics and keyboard support (Enter/Space to activate).',
+    'Legacy Compatibility: Component supports legacy title prop and light/dark variants for backward compatibility, but new implementations should use children prop and current variant system.',
+    'Performance Optimization: Component uses styled-components with direct token imports for efficient styling. Transitions and focus states leverage component tokens aligned with Button for consistent behavior.',
+    'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states use semantic.motion.hover for smooth transitions.',
+    'Testing Support: data-testid prop enables consistent automated testing across chip variants and states.'
   ],
 
   anatomy: {
