@@ -53,6 +53,7 @@ export interface ComponentData {
   name: string
   description: string
   category: 'Atoms' | 'Molecules' | 'Layout' | 'Components'
+  parentId?: string
   props: Array<{
     name: string
     type: string
@@ -94,6 +95,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
     name: docs.name,
     description: docs.description,
     category: docs.category as 'Atoms' | 'Molecules' | 'Layout' | 'Components',
+    parentId: docs.parentId,
     props: (docs.props || []).map(prop => ({
       name: prop.name,
       type: prop.type,

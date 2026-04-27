@@ -83,6 +83,7 @@ export const booleanChipDocs: ComponentDocumentation = {
   description:
     'A toggleable chip for multi-select filter controls. The entire chip body is clickable — clicking or pressing Space/Enter toggles between selected and unselected states. Shows a checkmark icon when selected. Announces as a checkbox to assistive technologies.',
   category: 'Atoms',
+  parentId: 'chip',
 
   props: [
     {

@@ -47,6 +47,7 @@ export const filterChipDocs: ComponentDocumentation = {
   description:
     'Displays an applied filter with an optional selected state and dismissal action. The chip body is non-interactive — it communicates what filter is active. When onDismiss is provided, a close button appears that lets the user remove the filter. Announces as a status element to screen readers.',
   category: 'Atoms',
+  parentId: 'chip',
 
   props: [
     {

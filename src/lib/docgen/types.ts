@@ -41,6 +41,7 @@ export interface ComponentDocumentation {
   name: string
   description: string
   category: 'Atoms' | 'Molecules' | 'Organisms' | 'Templates' | 'Layout' | 'Components'
+  parentId?: string
   
   // Props can be auto-extracted or manually specified
   props?: PropInfo[]

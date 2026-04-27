@@ -177,6 +177,12 @@ const CategoryChildren = styled.div<{ $isExpanded: boolean }>`
   padding-left: ${spacing.layout.sm};
 `
 
+const SubComponentGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-left: ${spacing.layout.md};
+`
+
 const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Layout', 'Components']
 
 
@@ -483,17 +489,43 @@ export default function Components() {
                           role="group"
                           aria-label={`${category} components`}
                         >
-                          {components.map((comp) => (
-                            <Button
-                              key={comp.id}
-                              variant={activeComponent === comp.id ? 'primary' : 'naked'}
-                              size="medium"
-                              onClick={() => handleComponentClick(comp.id)}
-                              style={{ justifyContent: 'flex-start', width: '100%' }}
-                            >
-                              {comp.name}
-                            </Button>
-                          ))}
+                          {(() => {
+                            const topLevel = components.filter(c => !c.parentId)
+                            const childMap: Record<string, ComponentData[]> = {}
+                            components
+                              .filter(c => c.parentId)
+                              .forEach(c => {
+                                if (!childMap[c.parentId!]) childMap[c.parentId!] = []
+                                childMap[c.parentId!].push(c)
+                              })
+                            return topLevel.map((comp) => (
+                              <div key={comp.id}>
+                                <Button
+                                  variant={activeComponent === comp.id ? 'primary' : 'naked'}
+                                  size="medium"
+                                  onClick={() => handleComponentClick(comp.id)}
+                                  style={{ justifyContent: 'flex-start', width: '100%' }}
+                                >
+                                  {comp.name}
+                                </Button>
+                                {childMap[comp.id] && (
+                                  <SubComponentGroup>
+                                    {childMap[comp.id].map(child => (
+                                      <Button
+                                        key={child.id}
+                                        variant={activeComponent === child.id ? 'primary' : 'naked'}
+                                        size="medium"
+                                        onClick={() => handleComponentClick(child.id)}
+                                        style={{ justifyContent: 'flex-start', width: '100%' }}
+                                      >
+                                        {child.name}
+                                      </Button>
+                                    ))}
+                                  </SubComponentGroup>
+                                )}
+                              </div>
+                            ))
+                          })()}
                         </CategoryChildren>
                       </CategoryGroup>
                     ))}
