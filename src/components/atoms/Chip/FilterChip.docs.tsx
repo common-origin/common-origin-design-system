@@ -56,7 +56,7 @@ export const filterChipDocs: ComponentDocumentation = {
       required: false,
       default: 'undefined',
       description:
-        'Label describing the applied filter, typically a short key-value string such as "Status: Active" or "Date: Last 30 days". Used to generate the close button\'s accessible label when aria-label is not provided (e.g. "Remove Status: Active").'
+        'Label describing the applied filter, typically a short key-value string such as "Status: Active" or "Date: Last 30 days". When children is a string and onDismiss is provided, it is used to generate the close button\'s accessible label (e.g. "Remove Status: Active"). If children is not a string, the close button label falls back to "Remove filter".'
     },
     {
       name: 'selected',
@@ -72,7 +72,7 @@ export const filterChipDocs: ComponentDocumentation = {
       required: false,
       default: 'undefined',
       description:
-        'Callback fired when the user removes the filter. When provided, a close (×) button is rendered on the right. Also allows dismissal via Delete or Backspace keys when the chip container is focused. Not called when the chip is disabled.'
+        'Callback fired when the user removes the filter. When provided, a close (×) button is rendered on the right. Not called when the chip is disabled.'
     },
     {
       name: 'size',
@@ -273,17 +273,17 @@ return (
       'FilterChip uses role="status" by default. This causes screen readers to announce the chip as live status information when it appears or changes, without requiring the user to navigate to it. This is appropriate for filter chips that appear above search results as filters are applied.',
       'The close button has an auto-generated aria-label derived from the chip\'s children text (e.g. "Remove Status: Active"). If children is not a string, the label falls back to "Remove filter". Always use string children with FilterChip when dismissal is needed to ensure meaningful close button labels.',
       'The checkmark icon rendered when selected is wrapped in aria-hidden="true" — it is decorative and does not produce duplicate announcements.',
-      'When the chip container itself is focused (e.g. after Tab navigation), pressing Delete or Backspace fires onDismiss. This mirrors the keyboard interaction expected for removable tags and filters.',
-      'The close button is independently focusable (tabIndex=0) and responds to Enter and Space. This allows keyboard users to navigate directly to the close button without first focusing the chip body.',
-      'When disabled, aria-disabled="true" is set on both the container and the close button. Interaction is prevented at the handler level rather than the HTML disabled attribute to preserve focus visibility if needed.',
+      'The chip container itself is not part of the Tab sequence. The chip body remains non-interactive; when onDismiss is provided, keyboard interaction is available on the trailing close button only.',
+      'The close button is independently focusable when present and responds to Enter and Space. This allows keyboard users to navigate directly to the dismiss action without first focusing the chip body.',
+      'When disabled, the chip remains non-interactive and the close button uses the native HTML disabled attribute, so it is not focusable or clickable.',
       'For filter bars with multiple FilterChips, wrap the group in a landmark or add a visible heading so screen reader users can navigate to the active filter region efficiently.'
     ],
     keyboardNavigation:
-      'Tab: Focus the chip container | Delete or Backspace (when focused on container): Dismiss the filter | Tab again: Focus the close button (if present) | Enter or Space (on close button): Dismiss the filter | Shift+Tab: Move focus backward.',
+      'Tab: Focus the close button (if present and not disabled) | Enter or Space (on close button): Dismiss the filter | Shift+Tab: Move focus backward. The chip container itself is not keyboard-focusable.',
     screenReader:
-      'Chip container announced with role="status" and aria-label (or visible text). Close button announced as "Remove [filter label], button". Disabled state announced via aria-disabled. Custom role prop overrides the default "status" role when provided.',
+      'Chip container announced with role="status" and aria-label (or visible text). Close button announced as "Remove [filter label], button". When the close button is disabled, its unavailable state is conveyed by native disabled button semantics. Custom role prop overrides the default "status" role when provided.',
     focusManagement:
-      'Both the chip container (when keyboard-dismissible) and the close button use component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. Disabled chips and disabled close buttons do not receive focus.',
+      'The close button uses component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
       'Text and icon colours exceed WCAG AA requirements (4.5:1) in both selected and unselected states. The interactive-subtle background used for selected state maintains sufficient contrast with chip text.'
   },
