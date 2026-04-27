@@ -352,7 +352,43 @@ tokens: [
 - Tokens must exist in actual `tokens.json`
 - Use semantic tokens, not base tokens (unless defining new semantics)
 
-### 2. README Files
+### 2. Component Hierarchy and Sub-variant Documentation
+
+Some components in this system are **sub-variants or specialisations of a parent component**, not independent top-level components. Understanding this distinction is critical for correct documentation structure.
+
+#### Parent Components and Their Sub-variants
+
+| Parent Component | Sub-variants |
+|-----------------|--------------|
+| `Chip` | `BooleanChip`, `FilterChip` |
+
+This list should be kept up to date as new components are added.
+
+#### Rule: Sub-variants are documented as children of their parent
+
+Sub-variant `.docs.tsx` files must be **registered as child entries under the parent component** in `src/lib/componentsData.ts`, not as standalone top-level entries alongside the parent.
+
+**Correct:** `BooleanChip` and `FilterChip` appear as child pages under `Chip` in the docs nav.
+
+**Wrong:** `BooleanChip`, `Chip`, and `FilterChip` all appear as separate top-level entries at the same level.
+
+#### How to register a sub-variant
+
+When adding a sub-variant to `src/lib/componentsData.ts`, look for the parent component's entry and nest the sub-variant within it using the `subComponents` or `variants` field (check the existing structure of `componentsData.ts` for the exact field name before assuming). Do not add it as a new top-level entry in `staticComponentsData`.
+
+#### How to identify whether a component is a sub-variant
+
+A component is a sub-variant (not a standalone component) when:
+- It shares the core visual identity of a parent (same base element, same token family)
+- It is a specialisation with a constrained interaction model (e.g. BooleanChip = Chip + toggle behaviour)
+- It would never appear in a design system nav independently — a developer would look for it under the parent
+- Its name is a compound of the parent's name (e.g. `BooleanChip` ⊂ `Chip`)
+
+When in doubt, check how the component is exported from `src/index.ts` and how it is described in `src/components/atoms/Chip/` (or the relevant parent directory) before deciding.
+
+---
+
+### 3. README Files
 
 #### When to Create READMEs
 
