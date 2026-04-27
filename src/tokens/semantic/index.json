@@ -170,6 +170,38 @@
           "type": "spacing"
         }
       },
+      "component": {
+        "xs": {
+          "value": "{base.spacing.1}",
+          "type": "spacing",
+          "description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips."
+        },
+        "sm": {
+          "value": "{base.spacing.2}",
+          "type": "spacing",
+          "description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing."
+        },
+        "md": {
+          "value": "{base.spacing.3}",
+          "type": "spacing",
+          "description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding."
+        },
+        "lg": {
+          "value": "{base.spacing.4}",
+          "type": "spacing",
+          "description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing."
+        },
+        "xl": {
+          "value": "{base.spacing.5}",
+          "type": "spacing",
+          "description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs."
+        },
+        "2xl": {
+          "value": "{base.spacing.6}",
+          "type": "spacing",
+          "description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections."
+        }
+      },
       "layout": {
         "none": {
           "value": "{base.spacing.0}",
@@ -344,6 +376,26 @@
         "progressTrack": {
           "value": "{base.color.neutral.300}",
           "type": "color"
+        },
+        "page": {
+          "value": "{base.color.neutral.100}",
+          "type": "color",
+          "description": "Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'."
+        },
+        "overlay": {
+          "value": "rgba(0, 0, 0, 0.5)",
+          "type": "color",
+          "description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Sits below the overlay surface and above page content."
+        },
+        "hover-overlay": {
+          "value": "rgba(0, 0, 0, 0.1)",
+          "type": "color",
+          "description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Colour-agnostic — works on any background."
+        },
+        "active-overlay": {
+          "value": "rgba(0, 0, 0, 0.15)",
+          "type": "color",
+          "description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Pair with hover-overlay for consistent press depth."
         }
       },
       "border": {

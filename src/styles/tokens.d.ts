@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 26 Apr 2026 11:26:44 GMT
+ * Generated on Mon, 27 Apr 2026 11:32:51 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -296,6 +296,8 @@ export interface TokensBaseFontWeight {
   '3': string;
   '4': string;
   '5': string;
+  '6': string;
+  '7': string;
 }
 
 export interface TokensBaseLineHeight {
@@ -741,6 +743,27 @@ export interface TokensComponentInput {
   disabled: TokensComponentInputDisabled;
 }
 
+export interface TokensComponentBadgeDot {
+  size: string;
+}
+
+export interface TokensComponentBadgeCount {
+  minWidth: string;
+  height: string;
+  paddingX: string;
+}
+
+export interface TokensComponentBadgeRing {
+  width: string;
+}
+
+export interface TokensComponentBadge {
+  dot: TokensComponentBadgeDot;
+  count: TokensComponentBadgeCount;
+  ring: TokensComponentBadgeRing;
+  borderRadius: string;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
@@ -748,6 +771,7 @@ export interface TokensComponent {
   separator: TokensComponentSeparator;
   progressBar: TokensComponentProgressBar;
   input: TokensComponentInput;
+  badge: TokensComponentBadge;
 }
 
 export interface TokensSemanticElevation {
@@ -809,6 +833,15 @@ export interface TokensSemanticSpacingSeparator {
   xl: string;
 }
 
+export interface TokensSemanticSpacingComponent {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  '2xl': string;
+}
+
 export interface TokensSemanticSpacingLayout {
   none: string;
   xs: string;
@@ -830,6 +863,7 @@ export interface TokensSemanticSpacingLayout {
 
 export interface TokensSemanticSpacing {
   separator: TokensSemanticSpacingSeparator;
+  component: TokensSemanticSpacingComponent;
   layout: TokensSemanticSpacingLayout;
 }
 
@@ -863,6 +897,10 @@ export interface TokensSemanticColorBackground {
   'warning-subtle': string;
   disabled: string;
   progressTrack: string;
+  page: string;
+  overlay: string;
+  'hover-overlay': string;
+  'active-overlay': string;
 }
 
 export interface TokensSemanticColorBorder {

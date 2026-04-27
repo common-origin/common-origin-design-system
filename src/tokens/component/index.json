@@ -332,6 +332,38 @@
         "borderColor": "{semantic.color.border.subtle}",
         "cursor": "not-allowed"
       }
+    },
+    "badge": {
+      "dot": {
+        "size": {
+          "value": "{base.size.2}",
+          "description": "Width and height of the dot variant badge indicator (0.5rem / 8px)"
+        }
+      },
+      "count": {
+        "minWidth": {
+          "value": "{base.size.4}",
+          "description": "Minimum width of the count badge indicator (1rem / 16px)"
+        },
+        "height": {
+          "value": "{base.size.4}",
+          "description": "Height of the count badge indicator (1rem / 16px)"
+        },
+        "paddingX": {
+          "value": "{base.spacing.1}",
+          "description": "Horizontal padding inside the count badge (0.25rem / 4px)"
+        }
+      },
+      "ring": {
+        "width": {
+          "value": "{base.border.width.2}",
+          "description": "Width of the ring shadow separating the badge indicator from its host element (0.125rem / 2px)"
+        }
+      },
+      "borderRadius": {
+        "value": "{semantic.border.radius.circle}",
+        "description": "Badge indicators are always fully circular"
+      }
     }
   }
 }

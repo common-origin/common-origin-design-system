@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Sun, 26 Apr 2026 11:26:44 GMT
+ * Generated on Mon, 27 Apr 2026 11:32:51 GMT
  */
 
 :root {
@@ -225,6 +225,8 @@
   --base-font-weight-3: 500;
   --base-font-weight-4: 600;
   --base-font-weight-5: 700;
+  --base-font-weight-6: 800;
+  --base-font-weight-7: 900;
   --base-line-height-1: 1rem;
   --base-line-height-2: 1.125rem;
   --base-line-height-3: 1.25rem;
@@ -265,6 +267,12 @@
   --base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --component-badge-dot-size: 0.5rem;
+  --component-badge-count-min-width: 1rem;
+  --component-badge-count-height: 1rem;
+  --component-badge-count-padding-x: 0.25rem;
+  --component-badge-ring-width: 0.125rem;
+  --component-badge-border-radius: 10rem;
   --semantic-elevation-none: none;
   --semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --semantic-elevation-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -300,6 +308,12 @@
   --semantic-spacing-separator-md: 1.5rem;
   --semantic-spacing-separator-lg: 2rem;
   --semantic-spacing-separator-xl: 3rem;
+  --semantic-spacing-component-xs: 0.25rem;
+  --semantic-spacing-component-sm: 0.5rem;
+  --semantic-spacing-component-md: 0.75rem;
+  --semantic-spacing-component-lg: 1rem;
+  --semantic-spacing-component-xl: 1.25rem;
+  --semantic-spacing-component-2xl: 1.5rem;
   --semantic-spacing-layout-none: 0;
   --semantic-spacing-layout-xs: 0.25rem;
   --semantic-spacing-layout-sm: 0.5rem;
@@ -342,6 +356,10 @@
   --semantic-color-background-warning-subtle: #FFECCC;
   --semantic-color-background-disabled: #dee2e6;
   --semantic-color-background-progress-track: #dee2e6;
+  --semantic-color-background-page: #f8f9fa;
+  --semantic-color-background-overlay: rgba(0, 0, 0, 0.5);
+  --semantic-color-background-hover-overlay: rgba(0, 0, 0, 0.1);
+  --semantic-color-background-active-overlay: rgba(0, 0, 0, 0.15);
   --semantic-color-border-default: #e9ecef;
   --semantic-color-border-subtle: #dee2e6;
   --semantic-color-border-strong: #343a40;

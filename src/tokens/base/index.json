@@ -924,6 +924,16 @@
     "5": {
       "value": "700",
       "type": "font-weight"
+    },
+    "6": {
+      "value": "800",
+      "type": "font-weight",
+      "description": "Extra Bold — for page titles and primary display headings per VDL (800–900 weight range)"
+    },
+    "7": {
+      "value": "900",
+      "type": "font-weight",
+      "description": "Black/Ultra Bold — maximum heading weight for the most dominant display headings per VDL"
     }
   },
   "lineHeight": {
