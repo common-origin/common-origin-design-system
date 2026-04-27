@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Apr 2026 11:32:51 GMT
+ * Generated on Mon, 27 Apr 2026 11:40:20 GMT
  */
 
 :root {
@@ -357,9 +357,9 @@
   --semantic-color-background-disabled: #dee2e6;
   --semantic-color-background-progress-track: #dee2e6;
   --semantic-color-background-page: #f8f9fa;
-  --semantic-color-background-overlay: rgba(0, 0, 0, 0.5);
-  --semantic-color-background-hover-overlay: rgba(0, 0, 0, 0.1);
-  --semantic-color-background-active-overlay: rgba(0, 0, 0, 0.15);
+  --semantic-color-background-overlay: rgba(33, 37, 41, 0.5);
+  --semantic-color-background-hover-overlay: rgba(33, 37, 41, 0.1);
+  --semantic-color-background-active-overlay: rgba(33, 37, 41, 0.15);
   --semantic-color-border-default: #e9ecef;
   --semantic-color-border-subtle: #dee2e6;
   --semantic-color-border-strong: #343a40;
