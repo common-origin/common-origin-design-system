@@ -35,7 +35,7 @@ const problems = []
 
 for (const path of paths) {
   const rel = relative(DIST, path)
-  if (SITE_ONLY_DIRS.some((dir) => rel.split('/').includes(dir))) {
+  if (SITE_ONLY_DIRS.some((dir) => rel.split(/[\\/]/).includes(dir))) {
     if (statSync(path).isDirectory()) problems.push(`dist/${rel}/: docs-site code in the package`)
   }
 }
