@@ -19,7 +19,3 @@ export const media = {
   xl: `@media (min-width: ${breakpoints.xl})`,
   '2xl': `@media (min-width: ${breakpoints['2xl']})`,
 }
-
-// Re-export tokens for convenience
-export { tokens }
-export default tokens

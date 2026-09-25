@@ -115,7 +115,7 @@ export default [
         tsconfig: './tsconfig.json',
         declaration: true,
         declarationDir: 'dist/tokens',
-        include: ['src/tokens.ts', 'src/styles/**/*'],
+        include: ['src/tokens.ts', 'src/types/tokens.ts', 'src/styles/**/*'],
         exclude: ['**/*.test.*', '**/*.docs.*'],
       }),
     ],

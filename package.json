@@ -20,14 +20,21 @@
   },
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./tokens": {
+      "types": "./dist/tokens/tokens.d.ts",
       "import": "./dist/tokens/index.esm.js",
-      "require": "./dist/tokens/index.js",
-      "types": "./dist/tokens/tokens.d.ts"
+      "require": "./dist/tokens/index.js"
+    }
+  },
+  "typesVersions": {
+    "*": {
+      "tokens": [
+        "./dist/tokens/tokens.d.ts"
+      ]
     }
   },
   "scripts": {
@@ -44,7 +51,9 @@
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
     "verify:no-nextjs": "node scripts/verify-no-nextjs-deps.cjs",
-    "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:types && npm run verify:no-nextjs",
+    "verify:consumer": "node scripts/verify-consumer-types.cjs",
+    "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:consumer && publint && attw --pack . --ignore-rules unexpected-module-syntax",
+    "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:package",
     "release": "npm publish --provenance --access public",
     "release:create": "./scripts/release.sh"
   },
@@ -64,6 +73,7 @@
     "typescript": "^5.7.3"
   },
   "devDependencies": {
+    "@arethetypeswrong/cli": "^0.18.5",
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
@@ -89,14 +99,15 @@
     "jest": "^30.0.2",
     "jest-axe": "^9.0.0",
     "jest-environment-jsdom": "^30.0.2",
+    "next": "^16.3.6",
+    "publint": "^0.3.24",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "rollup": "^3.20.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "style-dictionary": "^3.8.0",
-    "styled-components": "^6.1.1",
-    "next": "^16.3.6"
+    "styled-components": "^6.1.1"
   },
   "keywords": [
     "design-system",
