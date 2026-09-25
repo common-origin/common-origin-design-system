@@ -4,7 +4,7 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
-import { Typography } from '@/page-components'
+import { Typography } from '../../atoms/Typography'
 
 const { semantic, base } = tokens
 
