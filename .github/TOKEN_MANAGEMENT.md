@@ -1,5 +1,7 @@
 # Design Token Management Guide
 
+> **Accuracy warning:** much of this guide describes patterns this repository doesn't use: a ThemeProvider, runtime token validation, a CommonJS Style Dictionary config, and example tokens in a different structure. For how tokens and Style Dictionary actually work here, use [`docs/tokens/pipeline.md`](../docs/tokens/pipeline.md). Where the two disagree, the pipeline doc is correct.
+
 ## Overview
 This guide provides comprehensive strategies for managing design tokens in the Common Origin Design System, including creation, evolution, validation, and runtime management.
 
