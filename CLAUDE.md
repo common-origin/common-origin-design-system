@@ -11,6 +11,7 @@ Read these as needed:
 - `docs/foundation/visual-language.md` — before any visual, token, or motion change
 - `docs/foundation/decisions/` — why things are the way they are
 - `docs/foundation/users.md`, `purpose.md`, `brand.md`, `usage.md`
+- `docs/tokens/pipeline.md` — before changing tokens or the Style Dictionary config (don't trust `.github/TOKEN_MANAGEMENT.md` for this)
 
 The guidance in `.github/*.md` predates the foundation and is partly inaccurate. Where it conflicts with `docs/foundation/`, the foundation wins.
 
