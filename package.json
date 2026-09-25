@@ -54,8 +54,10 @@
     "verify:consumer": "node scripts/verify-consumer-types.cjs",
     "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:consumer && publint && attw --pack . --ignore-rules unexpected-module-syntax",
     "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:package",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
     "release": "npm publish --provenance --access public",
-    "release:create": "./scripts/release.sh"
+    "release:create": "./scripts/release.sh",
+    "release:tag": "./scripts/release.sh tag"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

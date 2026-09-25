@@ -15,23 +15,34 @@ Publishing uses **npm Trusted Publishing** — the publish workflow uses no npm 
 
 ### Changelog Automation
 
-After each release/tag is pushed, GitHub Actions automatically generates and commits the latest `CHANGELOG.md` to the repository. The releases page and documentation site will always display up-to-date release information from this file. Manual changelog updates can be performed with:
+`CHANGELOG.md` is updated **in the version-bump PR**, before the tag exists: `npm version` runs the `version` script (`auto-changelog -p`), which adds an entry for the new version with today's date (UTC). The changelog is reviewed with the bump and ships with the tagged release. The docs site's `/releases` page reads this file.
+
+The template is `scripts/changelog-template.hbs` (auto-changelog's compact template, changed to print the date for the not-yet-tagged release), configured in `.auto-changelog`.
+
+To regenerate the whole file from tags (e.g. to backfill), open a PR with the output of:
 
 ```bash
 npx auto-changelog -o CHANGELOG.md
-git add CHANGELOG.md
-git commit -m "chore: update changelog manually"
-git push
 ```
 
 ### Release Process
 
-`main` is protected, so the version bump goes through a pull request.
+`main` is protected, so the version bump goes through a pull request. Two scripts do the work:
+
+```bash
+git switch main && git pull
+npm run release:create patch   # or minor / major / X.Y.Z — branch, bump, CHANGELOG entry, push, open PR
+# merge the PR once CI is green and Copilot review comments are addressed
+git switch main && git pull
+npm run release:tag            # tag main as vX.Y.Z and push the tag → publish workflow
+```
+
+The manual equivalent:
 
 1. **Bump the version on a branch and open a PR**:
    ```bash
    git switch -c chore/release-X.Y.Z main
-   npm version patch --no-git-tag-version  # or minor / major
+   npm version patch --no-git-tag-version  # or minor / major; also updates CHANGELOG.md
    git commit -am "chore: bump version to X.Y.Z"
    git push -u origin chore/release-X.Y.Z
    ```
