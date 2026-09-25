@@ -6,7 +6,7 @@ This repository uses GitHub Actions to automatically publish new versions to NPM
 
 ### Prerequisites
 
-Publishing uses **npm Trusted Publishing** — no npm token is stored anywhere. npm trusts `.github/workflows/publish.yml` in this repository and authenticates each run with a short-lived GitHub OIDC token; provenance attestations are generated automatically.
+Publishing uses **npm Trusted Publishing** — the publish workflow uses no npm token. npm trusts `.github/workflows/publish.yml` in this repository and authenticates each run with a short-lived GitHub OIDC token; provenance attestations are generated automatically.
 
 - Configured on npmjs.com: `@common-origin/design-system` → Settings → Trusted Publisher → GitHub Actions (`common-origin` / `common-origin-design-system` / `publish.yml`).
 - The workflow needs `permissions: id-token: write` and npm ≥ 11.5.1 (it upgrades npm itself).
@@ -51,7 +51,7 @@ git push
 
 ### Manual Publishing (Fallback)
 
-If automated publishing fails, a maintainer can publish manually from a logged-in npm session (`npm login`; two-factor authentication is required, and tokens are disallowed for this package):
+If automated publishing fails, a maintainer can publish manually from a logged-in npm session (`npm login` with two-factor authentication). Once the package's **Publishing access** is set to "Require two-factor authentication and disallow tokens" — planned after the first successful Trusted Publishing release (#40) — publishing with a token no longer works:
 
 ```bash
 npm run build:tokens
