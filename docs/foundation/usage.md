@@ -62,7 +62,7 @@ Components are styled with styled-components, which needs server-side style coll
 
 | Issue | Workaround |
 |---|---|
-| Some published types are broken: the `Tokens*` types, the `./tokens` entry's types, and `GridSystem`'s `gap` props resolve to `any` or fail under `node16` resolution | Use `moduleResolution: "bundler"`; types are loose until fixed |
+| Under Node-native ESM resolution (`module`/`moduleResolution: node16` or `nodenext` in an ESM project, no bundler), the **default** import of `@common-origin/design-system/tokens` is typed as the whole module | Use the named export: `import { tokens } from '@common-origin/design-system/tokens'`. Bundler and CommonJS setups are unaffected. Tracked in [#41](https://github.com/common-origin/common-origin-design-system/issues/41) |
 | The package doesn't mark its components `'use client'` | Import from Client Components in the App Router |
 | Everything ships as a single bundle, including all icon data | None yet |
 | Site-only dependencies (TypeScript, ts-morph, remark, Hotjar) install as runtime dependencies | None yet |

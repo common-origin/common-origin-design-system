@@ -88,3 +88,6 @@ jobs:
 
       - name: 📦 Build package
         run: npm run build:package
+
+      - name: 🔎 Verify published package (types, consumer type-check, publint, attw)
+        run: npm run verify:package

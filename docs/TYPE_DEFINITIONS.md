@@ -42,11 +42,24 @@ export interface IconProps {
 }
 ```
 
+### ✅ Token-based props
+
+```typescript
+import tokens from '../../../styles/tokens.json'      // runtime values
+import type { Tokens } from '../../../types/tokens'    // prop types
+
+export interface BoxProps {
+  gap?: keyof Tokens['semantic']['spacing']['layout']
+}
+```
+
+Never `keyof typeof` an imported JSON file in an exported type: the `.d.ts` then imports the JSON, which consumers can't resolve without `resolveJsonModule`.
+
 ## Verification
 
 ```bash
 npm run build:package
-grep -r "@/" dist/**/*.d.ts  # Should return NO results
+npm run verify:package   # declarations, consumer type-check (4 resolution modes), publint, attw
 ```
 
 See `.github/CONTRIBUTING.md` for full guidelines.

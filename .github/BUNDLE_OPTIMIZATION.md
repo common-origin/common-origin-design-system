@@ -15,16 +15,17 @@ The package currently publishes from `dist/` with these `package.json` fields:
   "types": "dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./tokens": {
+      "types": "./dist/tokens/tokens.d.ts",
       "import": "./dist/tokens/index.esm.js",
-      "require": "./dist/tokens/index.js",
-      "types": "./dist/tokens/tokens.d.ts"
+      "require": "./dist/tokens/index.js"
     }
   },
+  "typesVersions": { "*": { "tokens": ["./dist/tokens/tokens.d.ts"] } },
   "files": ["dist/", "README.md"]
 }
 ```
@@ -39,6 +40,8 @@ npm run build:package  # Build distributable package (rollup)
 npm run typecheck      # Type check source
 npm run verify:types   # Validate generated type output
 npm run verify:no-nextjs
+npm run verify:consumer  # consumer type-check across module-resolution modes
+npm run verify:package   # all of the above plus publint and attw
 ```
 
 ### Publish checks
@@ -46,7 +49,7 @@ npm run verify:no-nextjs
 `prepublishOnly` runs:
 
 ```bash
-npm run build:tokens && npm run build:package && npm run verify:types && npm run verify:no-nextjs
+npm run build:tokens && npm run build:package && npm run verify:package
 ```
 
 That means local `npm publish` and CI publishing both validate package artifacts before publishing.
