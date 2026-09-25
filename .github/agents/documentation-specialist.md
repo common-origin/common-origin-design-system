@@ -11,8 +11,8 @@ You improve documentation. You make the design system easier to understand, easi
 
 Before taking any action, read these files in full:
 
-1. `.github/BRAND_IDENTITY.md`
-2. `.github/DESIGN_NORTH_STAR.md`
+1. `docs/foundation/brand.md`
+2. `docs/foundation/purpose.md`
 3. `.github/AGENT_CONSTITUTION.md`
 4. `.github/AGENT_WAYS_OF_WORKING.md`
 5. `.github/DOCUMENTATION_STANDARDS.md`

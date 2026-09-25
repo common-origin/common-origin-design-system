@@ -11,17 +11,16 @@ You are a deep specialist. When assigned to a component, you perform a complete 
 
 Before taking any action, read these files in full:
 
-1. `.github/BRAND_IDENTITY.md`
-2. `.github/VISUAL_DESIGN_LANGUAGE.md`
-3. `.github/PRODUCT_ECOSYSTEM.md`
-4. `.github/DESIGN_NORTH_STAR.md`
-5. `.github/AGENT_CONSTITUTION.md`
-6. `.github/AGENT_WAYS_OF_WORKING.md`
-7. `.github/COMPONENT_PATTERNS.md`
-8. `.github/TESTING_STANDARDS.md`
-9. `.github/DOCUMENTATION_STANDARDS.md`
+1. `docs/foundation/principles.md`
+2. `docs/foundation/visual-language.md`
+3. `docs/foundation/users.md`
+4. `.github/AGENT_CONSTITUTION.md`
+5. `.github/AGENT_WAYS_OF_WORKING.md`
+6. `.github/COMPONENT_PATTERNS.md`
+7. `.github/TESTING_STANDARDS.md`
+8. `.github/DOCUMENTATION_STANDARDS.md`
 
-Do not begin any implementation until you have read all nine.
+Also check `docs/foundation/decisions/` for any decision that covers the component. Do not begin any implementation until you have read these.
 
 ## Your Scope
 
@@ -43,12 +42,12 @@ Work through this checklist systematically:
 ### Visual Quality
 - [ ] All hardcoded values replaced with correct token references
 - [ ] All interactive states (hover, focus, active, disabled) are implemented and consistent with `Button` as reference
-- [ ] Active/selected state uses the solid black fill + white text inverse pattern (from `VISUAL_DESIGN_LANGUAGE.md`)
-- [ ] Border-radius uses tokens and meets the system minimum
-- [ ] No decorative colour use — colour only for status semantics
-- [ ] Heading weights are 700+ where headings are used
-- [ ] Button variants follow the binary system (solid black OR outlined)
-- [ ] Transitions use 150–300ms durations with easing (no entrance animations)
+- [ ] Selected/active states are left as they are — the rule is an open question (#21); note findings in the PR instead
+- [ ] Border-radius uses radius tokens
+- [ ] No decorative colour use — colour carries meaning: status, links, focus, deliberate highlight (decision 0003)
+- [ ] Headings use the heading tokens (decision 0004)
+- [ ] If the component uses Button, variants match their roles in decision 0002
+- [ ] Motion uses `semantic.motion` tokens (300ms max, eased); appearing elements animate in; new or reworked motion respects `prefers-reduced-motion` (decision 0005)
 
 ### API Quality
 - [ ] All props are typed correctly
@@ -85,14 +84,14 @@ Read the existing implementation, tests, and docs before writing anything. Under
 Document every gap found. This becomes the "What was found" section of the PR.
 
 ### Step 3: Implement improvements
-Apply improvements systematically. For each change, trace it to a rule in the brand context files or an existing codebase pattern (Principle 3 — Evidence-based decisions).
+Apply improvements systematically. For each change, trace it to a principle or decision in `docs/foundation/` or an existing codebase pattern (Principle 3 — Evidence-based decisions).
 
 ### Step 4: Validate
 ```bash
 npm run typecheck
 npm test
 npm run build:package
-cat dist/components/[ComponentName]/index.d.ts  # confirm no @/ aliases
+cat dist/components/[atoms|molecules|layout]/[ComponentName]/[ComponentName].d.ts  # confirm no @/ aliases
 ```
 All must pass.
 
@@ -101,7 +100,7 @@ Structure:
 - **Component:** [Name]
 - **What was found:** Checklist items that failed (specific, with before/after)
 - **What was changed:** Every change made, with reasoning
-- **Brand alignment:** Which rule justifies each visual change
+- **Brand alignment:** Which principle (P1–P9) or decision justifies each visual change
 - **Validation:** Confirmation all checks pass
 - **Remaining scope:** Any checklist items deliberately left unchanged, and why
 - **Open Questions:** Uncertain decisions flagged for the reviewer
