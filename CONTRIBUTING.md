@@ -252,7 +252,7 @@ npm run verify:package
 
 `verify:package` runs:
 - `verify:types` — every import in every `dist/**/*.d.ts` must resolve for consumers: no `@/` aliases, no JSON imports, no relative imports to unshipped files, no undeclared packages
-- `verify:no-nextjs` — no Next.js imports in the bundle
+- `verify:no-nextjs` — no Next.js imports, no docs-site code (`page-components`, `patterns`) in `dist/`, and every package the bundle imports is a declared dependency
 - `verify:consumer` — type-checks a throwaway consumer project under `node10`, `node16` (CJS and ESM) and `bundler` resolution with `skipLibCheck` and `resolveJsonModule` off; `@ts-expect-error` lines catch types that have silently become `any`
 - `publint` and `attw` — package.json and exports correctness
 

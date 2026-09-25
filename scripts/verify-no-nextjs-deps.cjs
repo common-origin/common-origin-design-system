@@ -1,74 +1,64 @@
 #!/usr/bin/env node
 
-const { execSync } = require('child_process')
-const { existsSync } = require('fs')
+/**
+ * Pre-publish check that the package is framework-agnostic and contains no docs-site code:
+ * - no Next.js imports in any built JS file
+ * - no docs-site folders (page-components, patterns) anywhere in dist/
+ * - every package the built JS imports is a declared dependency or peer dependency
+ */
 
-console.log('🔍 Verifying no Next.js imports in dist...\n')
+const { existsSync, readdirSync, readFileSync, statSync } = require('fs')
+const { join, relative } = require('path')
 
-if (!existsSync('./dist')) {
-  console.error('❌ Error: dist/ directory not found. Run npm run build:package first.')
+const ROOT = join(__dirname, '..')
+const DIST = join(ROOT, 'dist')
+const pkg = require(join(ROOT, 'package.json'))
+const declaredPackages = new Set([
+  ...Object.keys(pkg.dependencies || {}),
+  ...Object.keys(pkg.peerDependencies || {}),
+])
+const SITE_ONLY_DIRS = ['page-components', 'patterns']
+
+if (!existsSync(join(DIST, 'index.js'))) {
+  console.error('❌ dist/index.js not found. Run npm run build:package first.')
   process.exit(1)
 }
 
-let hasErrors = false
+const walk = (dir) =>
+  readdirSync(dir).flatMap((name) => {
+    const path = join(dir, name)
+    return statSync(path).isDirectory() ? [path, ...walk(path)] : [path]
+  })
 
-// Check for Next.js imports in JS files
-try {
-  const grepResult = execSync(
-    `grep -r "from 'next" dist/*.js dist/**/*.js 2>/dev/null || true`,
-    { encoding: 'utf-8' }
-  )
+const paths = walk(DIST)
+const problems = []
 
-  if (grepResult.trim()) {
-    console.error('❌ VERIFICATION FAILED!\n')
-    console.error('Found Next.js imports in dist files:\n')
-    console.error(grepResult)
-    hasErrors = true
+for (const path of paths) {
+  const rel = relative(DIST, path)
+  if (SITE_ONLY_DIRS.some((dir) => rel.split('/').includes(dir))) {
+    if (statSync(path).isDirectory()) problems.push(`dist/${rel}/: docs-site code in the package`)
   }
-} catch (error) {
-  // Grep returns non-zero when no matches, which is what we want
 }
 
-// Check for Next.js imports with double quotes
-try {
-  const grepResult2 = execSync(
-    `grep -r 'from "next' dist/*.js dist/**/*.js 2>/dev/null || true`,
-    { encoding: 'utf-8' }
-  )
+const IMPORT = /(?:\bfrom\s+|\brequire\(\s*|\bimport\(\s*)['"]([^'"]+)['"]/g
+const packageName = (spec) => (spec.startsWith('@') ? spec.split('/').slice(0, 2).join('/') : spec.split('/')[0])
 
-  if (grepResult2.trim()) {
-    console.error('❌ VERIFICATION FAILED!\n')
-    console.error('Found Next.js imports in dist files:\n')
-    console.error(grepResult2)
-    hasErrors = true
+for (const path of paths.filter((p) => /\.(c|m)?js$/.test(p))) {
+  const source = readFileSync(path, 'utf8')
+  for (const [, spec] of source.matchAll(IMPORT)) {
+    if (spec.startsWith('.')) continue
+    const name = packageName(spec)
+    const where = `dist/${relative(DIST, path)}`
+    if (name === 'next') problems.push(`${where}: imports "${spec}" (components must be framework-agnostic)`)
+    else if (!declaredPackages.has(name)) problems.push(`${where}: imports "${spec}", which is not a dependency or peer dependency`)
   }
-} catch (error) {
-  // Grep returns non-zero when no matches, which is what we want
 }
 
-// Check for next/ references in general
-try {
-  const grepResult3 = execSync(
-    `grep -r "next/" dist/*.js dist/**/*.js 2>/dev/null || true`,
-    { encoding: 'utf-8' }
-  )
-
-  if (grepResult3.trim()) {
-    console.error('❌ VERIFICATION FAILED!\n')
-    console.error('Found next/ references in dist files:\n')
-    console.error(grepResult3)
-    hasErrors = true
-  }
-} catch (error) {
-  // Grep returns non-zero when no matches, which is what we want
-}
-
-if (hasErrors) {
-  console.error('\n❌ Next.js imports should be externalized in rollup.config.js')
-  console.error('Components should be framework-agnostic.')
+if (problems.length) {
+  console.error(`❌ Package content verification failed (${problems.length} problem${problems.length === 1 ? '' : 's'}):\n`)
+  ;[...new Set(problems)].forEach((p) => console.error(`  - ${p}`))
+  console.error('\nPackage components must not import Next.js or docs-site code (src/page-components, src/patterns).\n')
   process.exit(1)
 }
 
-console.log('✅ No Next.js imports found in dist files')
-console.log('✅ Package is framework-agnostic')
-console.log('\n📦 Package is ready for publishing!')
+console.log('✅ No Next.js imports, no docs-site code, and every imported package is declared')
