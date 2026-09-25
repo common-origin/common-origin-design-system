@@ -47,13 +47,15 @@ import { type IconName } from '@/types/icons'
 ### Token-Based Props
 
 ```typescript
-// ✅ OK: tokens is exported, so keyof typeof works
+// ✅ CORRECT: values from JSON, prop types from the Tokens type
+import tokens from '../../../styles/tokens.json'
+import type { Tokens } from '../../../types/tokens'
+gap?: keyof Tokens['semantic']['spacing']['layout']
+
+// ❌ WRONG: keyof typeof an imported JSON file puts a JSON import into the published .d.ts
 import tokens from '@/styles/tokens.json'
 gap?: keyof typeof tokens.semantic.spacing.layout
-
-// ❌ WRONG: Don't use keyof typeof with non-exported JSON
-import iconsData from '@/styles/icons.json'
-iconName?: keyof typeof iconsData  // This breaks!
+iconName?: keyof typeof iconsData  // use IconName instead
 ```
 
 ### Creating New Types
@@ -79,10 +81,10 @@ After generating component code, suggest:
 
 ```bash
 npm run build:package
-cat dist/components/path/to/Component.d.ts
+npm run verify:package
 ```
 
-Check: No `@/` path aliases in generated `.d.ts` files.
+`verify:package` fails on `@/` aliases, JSON imports or unresolvable imports in any `.d.ts`, type-checks a consumer project under four module-resolution modes, and runs `publint` and `attw`.
 
 ## Component Patterns
 

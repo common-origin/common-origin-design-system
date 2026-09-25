@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
+import type { Tokens } from '../../../types/tokens'
 
 // Public props interface (without $ prefix, following atomic pattern)
 export interface BoxProps {
@@ -12,23 +13,23 @@ export interface BoxProps {
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
   flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
-  gap?: keyof typeof tokens.semantic.spacing.layout
+  gap?: keyof Tokens['semantic']['spacing']['layout']
   
   // Spacing (using semantic layout tokens)
-  m?: keyof typeof tokens.semantic.spacing.layout
-  mt?: keyof typeof tokens.semantic.spacing.layout
-  mr?: keyof typeof tokens.semantic.spacing.layout
-  mb?: keyof typeof tokens.semantic.spacing.layout
-  ml?: keyof typeof tokens.semantic.spacing.layout
-  mx?: keyof typeof tokens.semantic.spacing.layout
-  my?: keyof typeof tokens.semantic.spacing.layout
-  p?: keyof typeof tokens.semantic.spacing.layout
-  pt?: keyof typeof tokens.semantic.spacing.layout
-  pr?: keyof typeof tokens.semantic.spacing.layout
-  pb?: keyof typeof tokens.semantic.spacing.layout
-  pl?: keyof typeof tokens.semantic.spacing.layout
-  px?: keyof typeof tokens.semantic.spacing.layout
-  py?: keyof typeof tokens.semantic.spacing.layout
+  m?: keyof Tokens['semantic']['spacing']['layout']
+  mt?: keyof Tokens['semantic']['spacing']['layout']
+  mr?: keyof Tokens['semantic']['spacing']['layout']
+  mb?: keyof Tokens['semantic']['spacing']['layout']
+  ml?: keyof Tokens['semantic']['spacing']['layout']
+  mx?: keyof Tokens['semantic']['spacing']['layout']
+  my?: keyof Tokens['semantic']['spacing']['layout']
+  p?: keyof Tokens['semantic']['spacing']['layout']
+  pt?: keyof Tokens['semantic']['spacing']['layout']
+  pr?: keyof Tokens['semantic']['spacing']['layout']
+  pb?: keyof Tokens['semantic']['spacing']['layout']
+  pl?: keyof Tokens['semantic']['spacing']['layout']
+  px?: keyof Tokens['semantic']['spacing']['layout']
+  py?: keyof Tokens['semantic']['spacing']['layout']
   
   // Size
   width?: string
@@ -46,19 +47,19 @@ export interface BoxProps {
   left?: string
   
   // Borders
-  borderRadius?: keyof typeof tokens.semantic.border.radius
-  border?: keyof typeof tokens.semantic.color.border
-  borderTop?: keyof typeof tokens.semantic.color.border
-  borderRight?: keyof typeof tokens.semantic.color.border
-  borderBottom?: keyof typeof tokens.semantic.color.border
-  borderLeft?: keyof typeof tokens.semantic.color.border
+  borderRadius?: keyof Tokens['semantic']['border']['radius']
+  border?: keyof Tokens['semantic']['color']['border']
+  borderTop?: keyof Tokens['semantic']['color']['border']
+  borderRight?: keyof Tokens['semantic']['color']['border']
+  borderBottom?: keyof Tokens['semantic']['color']['border']
+  borderLeft?: keyof Tokens['semantic']['color']['border']
   
   // Background & Color
-  bg?: keyof typeof tokens.semantic.color.background
-  color?: keyof typeof tokens.semantic.color.text
+  bg?: keyof Tokens['semantic']['color']['background']
+  color?: keyof Tokens['semantic']['color']['text']
   
   // Elevation (shadow)
-  shadow?: keyof typeof tokens.semantic.elevation
+  shadow?: keyof Tokens['semantic']['elevation']
   
   // Cursor
   cursor?: 'auto' | 'default' | 'pointer' | 'wait' | 'text' | 'move' | 'help' | 'not-allowed'
@@ -67,7 +68,7 @@ export interface BoxProps {
   transition?: string
   
   // Hover states
-  hoverShadow?: keyof typeof tokens.semantic.elevation
+  hoverShadow?: keyof Tokens['semantic']['elevation']
   hoverTransform?: string
   
   // Overflow

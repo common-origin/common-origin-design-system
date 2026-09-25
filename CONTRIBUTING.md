@@ -237,26 +237,26 @@ import { type IconName } from '@/types/icons'
 
 ### Checklist for New Components
 
-- [ ] If component uses token values, verify `tokens` is exported from main package
+- [ ] Token-based props use the `Tokens` type from `src/types/tokens.ts` (Pattern 2), never `keyof typeof` an imported JSON file
 - [ ] If component uses JSON data for types (like icons), create a type file in `src/types/`
 - [ ] Use **relative imports** for type dependencies, not path aliases
 - [ ] Export the type from `src/index.ts` for external use
-- [ ] Test that types work by checking generated `.d.ts` files in `dist/`
-- [ ] Verify no `@/` path aliases appear in `dist/**/*.d.ts` files
+- [ ] `npm run build:package && npm run verify:package` passes
 
 ### Testing Type Definitions
 
-After building, verify the generated types:
-
 ```bash
 npm run build:package
-cat dist/components/atoms/YourComponent/YourComponent.d.ts
+npm run verify:package
 ```
 
-Check for:
-- ✅ No `@/` path aliases
-- ✅ Relative paths like `../../../types/...`
-- ✅ Self-contained types that don't require JSON imports
+`verify:package` runs:
+- `verify:types` — every import in every `dist/**/*.d.ts` must resolve for consumers: no `@/` aliases, no JSON imports, no relative imports to unshipped files, no undeclared packages
+- `verify:no-nextjs` — no Next.js imports in the bundle
+- `verify:consumer` — type-checks a throwaway consumer project under `node10`, `node16` (CJS and ESM) and `bundler` resolution with `skipLibCheck` and `resolveJsonModule` off; `@ts-expect-error` lines catch types that have silently become `any`
+- `publint` and `attw` — package.json and exports correctness
+
+CI runs it on every PR, and `prepublishOnly` runs it before every publish.
 
 ### Common Type Patterns
 
@@ -270,17 +270,17 @@ When you have a JSON file with fixed values (like icons):
 
 **Pattern 2: Token-Based Props**
 
-When using design tokens (already exported):
+Import token **values** from the JSON for styling, but take prop **types** from `Tokens`:
 ```typescript
-// ✅ This works because tokens is exported
-import tokens from '@/styles/tokens.json'
+import tokens from '../../../styles/tokens.json'          // runtime values (bundled)
+import type { Tokens } from '../../../types/tokens'        // types
 
 export interface BoxProps {
-  gap?: keyof typeof tokens.semantic.spacing.layout  // ✅ OK
+  gap?: keyof Tokens['semantic']['spacing']['layout']     // ✅ OK
 }
 ```
 
-**Why it works**: `tokens` is exported from the main package, so consuming projects can resolve it.
+**Why:** `keyof typeof tokens…` on an imported JSON file makes the generated `.d.ts` import that JSON, which consumers can only resolve with `resolveJsonModule` (and not at all through an `@/` alias). `Tokens` is declared as a const type in `src/types/tokens.ts`, so it's inlined into the published declarations.
 
 ## Pull Request Process
 

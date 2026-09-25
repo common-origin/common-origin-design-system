@@ -2,6 +2,8 @@
 // This is a self-contained type that doesn't depend on JSON imports
 // to ensure it works correctly in consuming projects
 
+import iconsJson from '../styles/icons.json'
+
 export type IconName =
   | 'add'
   | 'addRing'
@@ -89,5 +91,5 @@ export interface IconMetadata {
 /** The full icon registry keyed by IconName */
 export type IconRegistry = Record<IconName, IconMetadata>
 
-// Also export icons data for runtime use
-export { default as iconsData } from '../styles/icons.json'
+// Typed as IconRegistry so emitted .d.ts files don't import JSON (needs `resolveJsonModule` in consumers).
+export const iconsData = iconsJson as IconRegistry

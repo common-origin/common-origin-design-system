@@ -28,14 +28,13 @@ The guidance in `.github/*.md` predates the foundation and is partly inaccurate.
 npm run typecheck        # tsc --noEmit
 npm test                 # jest (includes jest-axe)
 npm run build:package    # rollup → dist/
-npm run verify:types     # checks dist .d.ts for @/ aliases (currently misses nested dirs)
-npm run verify:no-nextjs
+npm run verify:package   # after build:package: .d.ts imports resolvable, consumer type-check, publint, attw
 npm run build            # docs site
 ```
 
-Run typecheck, tests, and `build:package` before proposing any change as done.
+Run typecheck, tests, `build:package` and `verify:package` before proposing any change as done.
 
 ## Gotchas
 
-- `@/` path aliases must never reach a published type. Component props must not reference types via `@/` imports — use relative imports.
+- Published `.d.ts` files must not contain `@/` aliases or JSON imports. For token-based prop types use `import type { Tokens } from '../../../types/tokens'` and `keyof Tokens['semantic'][…]`, never `keyof typeof` an imported JSON file.
 - `npm run build` rewrites `tsconfig.json` and `next-env.d.ts`, and `build:tokens` rewrites the generated token files' timestamps. Don't commit those incidental changes.

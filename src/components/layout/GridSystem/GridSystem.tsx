@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '../../../styles/tokens.json'
+import type { Tokens } from '../../../types/tokens'
 
 // Breakpoints using base tokens
 const breakpoints = {
@@ -25,9 +26,9 @@ const media = {
 // Base Grid Container
 interface GridProps {
   cols?: number
-  gap?: keyof typeof tokens.base.spacing
-  gapX?: keyof typeof tokens.base.spacing
-  gapY?: keyof typeof tokens.base.spacing
+  gap?: keyof Tokens['base']['spacing']
+  gapX?: keyof Tokens['base']['spacing']
+  gapY?: keyof Tokens['base']['spacing']
   className?: string
   children: React.ReactNode
 }
@@ -187,21 +188,21 @@ interface ResponsiveGridProps {
   colsMd?: number
   colsLg?: number
   colsXl?: number
-  gap?: keyof typeof tokens.base.spacing
-  gapSm?: keyof typeof tokens.base.spacing
-  gapMd?: keyof typeof tokens.base.spacing
-  gapLg?: keyof typeof tokens.base.spacing
-  gapXl?: keyof typeof tokens.base.spacing
-  gapX?: keyof typeof tokens.base.spacing
-  gapXSm?: keyof typeof tokens.base.spacing
-  gapXMd?: keyof typeof tokens.base.spacing
-  gapXLg?: keyof typeof tokens.base.spacing
-  gapXXl?: keyof typeof tokens.base.spacing
-  gapY?: keyof typeof tokens.base.spacing
-  gapYSm?: keyof typeof tokens.base.spacing
-  gapYMd?: keyof typeof tokens.base.spacing
-  gapYLg?: keyof typeof tokens.base.spacing
-  gapYXl?: keyof typeof tokens.base.spacing
+  gap?: keyof Tokens['base']['spacing']
+  gapSm?: keyof Tokens['base']['spacing']
+  gapMd?: keyof Tokens['base']['spacing']
+  gapLg?: keyof Tokens['base']['spacing']
+  gapXl?: keyof Tokens['base']['spacing']
+  gapX?: keyof Tokens['base']['spacing']
+  gapXSm?: keyof Tokens['base']['spacing']
+  gapXMd?: keyof Tokens['base']['spacing']
+  gapXLg?: keyof Tokens['base']['spacing']
+  gapXXl?: keyof Tokens['base']['spacing']
+  gapY?: keyof Tokens['base']['spacing']
+  gapYSm?: keyof Tokens['base']['spacing']
+  gapYMd?: keyof Tokens['base']['spacing']
+  gapYLg?: keyof Tokens['base']['spacing']
+  gapYXl?: keyof Tokens['base']['spacing']
   className?: string
   children: React.ReactNode
 }

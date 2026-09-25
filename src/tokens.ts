@@ -1,13 +1,12 @@
 // Tokens-only export for standalone usage
-import tokensJson from './styles/tokens.json'
+import { tokens } from './types/tokens'
 
-export const tokens = tokensJson
-export default tokensJson
+export { tokens }
+export default tokens
 
-// Export token types
 export type {
   Tokens,
   TokensBase,
   TokensSemantic,
   TokensComponent
-} from './styles/tokens.d'
+} from './types/tokens'
