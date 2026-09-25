@@ -1,22 +1,26 @@
 # GitHub Copilot Instructions for Common Origin Design System
 
-## Brand Identity & Design Context
+## Foundation: Purpose, Users, Brand & Principles
 
-**Before making any visual, token, or component decision, read these files:**
+**The source of truth is [`docs/foundation/`](../docs/foundation/README.md).** If anything in `.github/` conflicts with it, the foundation wins.
 
-1. [`.github/BRAND_IDENTITY.md`](.github/BRAND_IDENTITY.md) — Who Common Origin is, origin story, brand voice, logo rules
-2. [`.github/VISUAL_DESIGN_LANGUAGE.md`](.github/VISUAL_DESIGN_LANGUAGE.md) — Colour system, typography, interactive states, visual rules
-3. [`.github/PRODUCT_ECOSYSTEM.md`](.github/PRODUCT_ECOSYSTEM.md) — Products served by this design system, accessibility + performance requirements
-4. [`.github/DESIGN_NORTH_STAR.md`](.github/DESIGN_NORTH_STAR.md) — Quality vision, benchmarks (Stripe + Shopify), phase roadmap
-5. [`.github/AGENT_CONSTITUTION.md`](.github/AGENT_CONSTITUTION.md) — Hard rules: the Ten Nevers, validation requirements, PR protocol
-6. [`.github/AGENT_WAYS_OF_WORKING.md`](.github/AGENT_WAYS_OF_WORKING.md) — Process principles: read before write, one PR one problem, evidence-based decisions
+Before making any visual, token, or component decision, read:
 
-**The five most important visual rules:**
-- Active/selected state = solid black (#212529) fill + white text — no exceptions
-- Button system = binary only: solid black OR outlined
-- Display headings = weight 700–900 — no medium-weight display headings
-- No decorative colour — colour for status semantics only
-- Background = ~#F8F8F8 (off-white), never pure white; Text = #212529, never pure #000000 (logo only)
+1. [`docs/foundation/principles.md`](../docs/foundation/principles.md) — principles P1–P9 and the decision hierarchy
+2. [`docs/foundation/visual-language.md`](../docs/foundation/visual-language.md) — visual rules, each marked Enforced, Target, Exception, or Open question
+3. [`docs/foundation/decisions/`](../docs/foundation/decisions/README.md) — why things are the way they are
+4. [`.github/AGENT_CONSTITUTION.md`](AGENT_CONSTITUTION.md) — hard rules, validation requirements, PR protocol
+5. [`.github/AGENT_WAYS_OF_WORKING.md`](AGENT_WAYS_OF_WORKING.md) — read before write, one PR one problem, evidence-based decisions
+
+Also available: [purpose](../docs/foundation/purpose.md), [users](../docs/foundation/users.md), [brand](../docs/foundation/brand.md), [usage](../docs/foundation/usage.md).
+
+**Key visual rules:**
+- Colour belongs to content; UI chrome is near-monochrome. Colour carries meaning (status, links, focus, deliberate highlight) — never decoration.
+- Button has five variants: `emphasis` (blue, a CTA above primary), `primary`, `secondary`, `naked`, `danger` (decision 0002).
+- Headings use the heading tokens (weight 700); body is 400.
+- Motion is part of the system: appearing elements (modals, sheets, dialogs) animate in, using motion tokens, 300ms max (decision 0005).
+- Use tokens for every value. Text is `#212529`; pure `#000000` is for the logo only.
+- Selected/active states are an open question ([#21](https://github.com/common-origin/common-origin-design-system/issues/21)) — don't change them without a decision.
 
 ---
 

@@ -75,8 +75,8 @@ A PR that solves one problem can be reviewed, approved, and reverted cleanly. A 
 ### The three acceptable sources of evidence:
 
 1. **An existing pattern in this codebase** — if Button does it this way, another interactive component should do it the same way
-2. **A rule explicitly stated in a brand context file** — BRAND_IDENTITY.md, VISUAL_DESIGN_LANGUAGE.md, DESIGN_NORTH_STAR.md, or AGENT_CONSTITUTION.md
-3. **A clear parallel in the live Common Origin site** — the site is ground truth; if it does it, the system should align with it
+2. **A principle, rule, or decision in `docs/foundation/`** — principles.md, visual-language.md (check the rule's status), or a decision record — or a hard rule in AGENT_CONSTITUTION.md
+3. **A clear parallel on the docs site** (https://common-origin-design-system.vercel.app/) — the reference for look and feel. Products built on the system may make site-specific choices; they are not the authority for system values (decision 0007)
 
 ### When none of the three apply:
 Do not make the decision. Apply Principle 5 (uncertainty protocol).
@@ -107,7 +107,7 @@ npm run build:package
 # Expected: successful build, dist/ updated
 
 # Step 4: Path alias check (for any modified component)
-cat dist/components/[ModifiedComponentName]/index.d.ts
+cat dist/components/[atoms|molecules|layout]/[ModifiedComponentName]/[ModifiedComponentName].d.ts
 # Expected: no @/ path aliases in the output
 ```
 
@@ -179,12 +179,12 @@ The reviewer (the repository owner) has context that the agent does not have. An
 
 **Step 3 (Principle 3 — Evidence-based):**
 - Check: what does Button's hover state do? Match that pattern.
-- Check: is there a rule in VISUAL_DESIGN_LANGUAGE.md about hover states? (Yes: subtle, no new colours, consistent radius)
-- Check: does the live site Chip behaviour show a specific hover pattern? If yes, match it.
+- Check: is there a rule in `docs/foundation/visual-language.md` about hover states? (Yes: never invent new colours for hover or active; use tokens.) Is the rule Enforced, Target, or an Open question? Chip's selected and emphasis states are an open question (#21) — don't change them in this PR.
+- Check: does the docs site's Chip page show a specific hover pattern? If yes, match it.
 
 **Step 4 (Principle 4 — Validation gate):**
 - After implementing: `npm run typecheck && npm test && npm run build:package`
-- Check `dist/components/Chip/index.d.ts` — no `@/` aliases
+- Check `dist/components/atoms/Chip/Chip.d.ts` — no `@/` aliases
 
 **Step 5 (Principle 5 — Uncertainty protocol):**
 - If the exact hover opacity/colour is unclear: add a `// TODO:` comment and an open question in the PR
