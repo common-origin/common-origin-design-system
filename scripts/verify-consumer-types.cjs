@@ -30,8 +30,27 @@ tokensOnly.semantic.color.text.doesNotExist
 `
 
 const consumerSource = `
-import { Box, Button, Icon, ResponsiveGrid, iconsData, tokens, type IconName, type Tokens } from '@common-origin/design-system'
+import {
+  Box, Button, Icon, ResponsiveGrid, iconsData, tokens,
+  type IconName, type Tokens, type TokensBase, type TokensComponent,
+} from '@common-origin/design-system'
 import { tokens as namedTokens, type TokensSemantic } from '@common-origin/design-system/tokens'
+
+// Each exported type must be a real type, not any: invalid accesses must error.
+export function exportedTypesAreNotAny(t: Tokens, b: TokensBase, s: TokensSemantic, c: TokensComponent) {
+  // @ts-expect-error Tokens has no such key
+  t.notATier
+  // @ts-expect-error TokensBase has no such key
+  b.notABaseGroup
+  // @ts-expect-error TokensSemantic has no such key
+  s.notASemanticGroup
+  // @ts-expect-error TokensComponent has no such key
+  c.notAComponent
+  // @ts-expect-error iconsData is keyed by IconName
+  iconsData.notAnIcon
+  // @ts-expect-error icon metadata has no such field
+  iconsData.add.notAField
+}
 
 const text: string = tokens.semantic.color.text.default
 const standalone: string = namedTokens.semantic.color.text.default
