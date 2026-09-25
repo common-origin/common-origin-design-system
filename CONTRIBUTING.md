@@ -85,45 +85,25 @@ git commit -m "feat(Modal): add dismissible modal variant
 
 ## Creating a Release
 
-### Option 1: Automated Script (Recommended)
+`main` is protected, so a release is a version-bump PR followed by a tag:
 
 ```bash
-# Interactive release (prompts for version type)
-npm run release:create
-
-# Or specify release type
-npm run release:create patch  # 1.0.0 -> 1.0.1
-npm run release:create minor  # 1.0.0 -> 1.1.0
-npm run release:create major  # 1.0.0 -> 2.0.0
+git switch main && git pull
+npm run release:create patch   # or minor / major / X.Y.Z
 ```
 
-The script will:
-1. ✅ Check working directory is clean
-2. 📝 Show commits since last release
-3. 🔢 Update package.json version
-4. 💾 Commit version bump
-5. 🏷️ Create git tag
-6. 🚀 Push to GitHub
-7. 🤖 Trigger GitHub Actions to publish to npm
+This checks you're on a clean, up-to-date `main`, previews the version, then creates `chore/release-X.Y.Z`, bumps `package.json`, adds the `CHANGELOG.md` entry, commits, pushes and opens the PR.
 
-### Option 2: Manual Process
+Once the PR is merged (CI green, Copilot review comments addressed):
 
-See [RELEASE_PROCESS.md](./.github/RELEASE_PROCESS.md) for detailed manual steps.
-
-Quick version:
 ```bash
-# 1. Update package.json version
-npm version patch  # or minor/major
-
-# 2. Commit version bump
-git add package.json package-lock.json
-git commit -m "chore: bump version to 1.7.0"
-
-# 3. Create and push tag
-git tag v1.7.0
-git push origin main
-git push origin v1.7.0
+git switch main && git pull
+npm run release:tag
 ```
+
+This tags `main` as `vX.Y.Z` and pushes the tag, which triggers the publish workflow (npm Trusted Publishing).
+
+See [RELEASE.md](./RELEASE.md) and [RELEASE_PROCESS.md](./.github/RELEASE_PROCESS.md) for details.
 
 ## Component Development
 

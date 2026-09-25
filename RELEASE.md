@@ -27,7 +27,17 @@ npx auto-changelog -o CHANGELOG.md
 
 ### Release Process
 
-`main` is protected, so the version bump goes through a pull request.
+`main` is protected, so the version bump goes through a pull request. Two scripts do the work:
+
+```bash
+git switch main && git pull
+npm run release:create patch   # or minor / major / X.Y.Z — branch, bump, CHANGELOG entry, push, open PR
+# merge the PR once CI is green and Copilot review comments are addressed
+git switch main && git pull
+npm run release:tag            # tag main as vX.Y.Z and push the tag → publish workflow
+```
+
+The manual equivalent:
 
 1. **Bump the version on a branch and open a PR**:
    ```bash

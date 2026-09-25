@@ -4,25 +4,17 @@ Quick reference for common tasks.
 
 ## 🚀 Creating a Release
 
-### Automated (Recommended)
+`main` is protected: a release is a version-bump PR, then a tag.
+
 ```bash
-npm run release:create
-# Follow prompts to select patch/minor/major
+git switch main && git pull
+npm run release:create          # prompts for patch/minor/major; opens the PR (includes the CHANGELOG.md entry)
+# wait for CI, address Copilot review comments, merge the PR
+git switch main && git pull
+npm run release:tag             # tags main and pushes the tag → publishes to npm
 ```
 
-### Manual
-```bash
-# 1. Bump version
-npm version patch --no-git-tag-version  # or minor/major
-
-# 2. Commit
-git add package.json package-lock.json
-git commit -m "chore: bump version to X.Y.Z"
-
-# 3. Tag and push
-git tag vX.Y.Z
-git push origin main && git push origin vX.Y.Z
-```
+Details: [RELEASE.md](../RELEASE.md) and [RELEASE_PROCESS.md](./RELEASE_PROCESS.md).
 
 ## 📝 Commit Messages
 
