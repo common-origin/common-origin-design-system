@@ -75,7 +75,7 @@ Pure black (`#000000`) is reserved exclusively for the Common Origin logo. All c
 Rounded corners are part of the brand's human quality. Border-radius comes from the radius tokens; never introduce a flat/sharp-cornered variant of a component that currently uses rounded corners. Whether controls should share a radius (Button 4px vs Chip 12px) is an open question (#21) — don't change either without a decision.
 
 ### 10. Never lighten headings below the heading tokens
-The typographic signature is the contrast between heavy headings and regular body text (400). Headings use the typography tokens as they are (`display`–`h4` at 700, `h5`–`h6` at 500; decision 0004). Products may go heavier as a site-specific choice; the system does not go lighter than its tokens. If a use case needs a different weight, raise it as an open question.
+The typographic signature is the contrast between heavy headings and regular body text (400). Headings use the typography tokens as they are (`display`–`h4` at 700, `h5`–`h6` at 500; decision 0011). Products may go heavier as a site-specific choice; the system does not go lighter than its tokens. If a use case needs a different weight, raise it as an open question.
 
 ---
 
