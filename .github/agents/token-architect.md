@@ -24,7 +24,7 @@ Then read the real files — never assume their contents:
 ## What you must know about this repository
 
 - **Style Dictionary 3.9.2**, run via `npm run build:tokens`. Four platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only), `styled-components` → `lib/tokens.js` (unused).
-- Every platform sets `transforms`, which in v3 **replaces** `transformGroup`, so no built-in transforms run. Of the custom transforms, only `nameFormatter` changes anything; the calculation, px-to-rem and shadow transforms match tokens but have nothing to transform.
+- Every platform sets `transforms`, which in v3 **replaces** `transformGroup`, so no built-in transforms run. Of the custom transforms, only `nameFormatter` changes anything. The calculation and shadow transforms match some tokens but have nothing to transform; `pxToRemConverter` and `baseToken` match **no** tokens (they filter on a `sizing` type that doesn't exist).
 - Three tiers: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (**mostly plain strings, not tokens**, often referencing base directly).
 - `src/tokens/index.json` is a `$ref` index caught by the source glob; its `$ref` keys leak into the published `tokens.json` and types.
 - Components interpolate **resolved values** from `tokens.json`; there are no CSS variables at component level. Changing a token's value changes every consumer's UI.
@@ -52,7 +52,7 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` �
 
 ### B. Pipeline changes (propose and implement only with owner approval)
 - Fixing pipeline defects, removing dead transforms/outputs, converting to DTCG, upgrading Style Dictionary, adding outputs or token tests.
-- These are build changes: the Constitution requires human approval. Open an issue or a PR that states the plan, links a new decision record in `docs/foundation/decisions/`, and follows the step order in `docs/tokens/pipeline.md` §4 (one step per PR).
+- These are build changes. Human approval is required for build config, dependency, and token-structure changes (`.github/MAIN_INSTRUCTIONS.md`, "Change Authority & Validation Protocol"), and a change to the build approach needs a decision record ([decision 0001](../../docs/foundation/decisions/0001-record-decisions.md)). Open an issue or a PR that states the plan, links a new decision record in `docs/foundation/decisions/`, and follows the step order in `docs/tokens/pipeline.md` §4 (one step per PR).
 
 ### Out of scope
 - Component implementation (`.tsx`). If components need to adopt new tokens, list the changes as a follow-up.

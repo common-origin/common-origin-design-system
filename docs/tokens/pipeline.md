@@ -35,7 +35,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 |---|---|---|
 | Base | `src/tokens/base/index.json` | Raw values, `{ "value", "type" }`. 17 types, kebab-case (`border-radius`, `font-size`, `box-shadow`, `z-index`, …) |
 | Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 8 types, **camelCase** (`boxShadow`, `borderRadius`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
-| Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 22 lines hard-code `px` |
+| Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 17 values hard-code `px` (focus outline offsets, chip padding, icon-button sizes, input padding) |
 
 Values are strings. There are no object-valued (composite) tokens and no arithmetic expressions. Typography is a CSS `font` shorthand string (`"700 3rem/3rem 'Inter', sans-serif"`); shadows are CSS strings.
 
@@ -130,7 +130,7 @@ await sd.buildAllPlatforms()
 
 ## 4. Target architecture (proposed — needs a decision record and owner approval)
 
-Build and distribution changes need human approval (Constitution). This is the recommended direction, not current fact.
+Build config, dependency, and token-structure changes need human approval (`.github/MAIN_INSTRUCTIONS.md`, "Change Authority & Validation Protocol"), and a change to the build and distribution approach needs a decision record ([decision 0001](../foundation/decisions/0001-record-decisions.md)). This is the recommended direction, not current fact.
 
 1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`.
 2. **DTCG source**: `$value` / `$type` / `$description`, DTCG type names, `$type` on groups where uniform. Delete `src/tokens/index.json`.
