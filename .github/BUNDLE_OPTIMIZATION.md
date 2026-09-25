@@ -58,7 +58,7 @@ That means local `npm publish` and CI publishing both validate package artifacts
 
 - Tag push matching `v*.*.*` triggers `.github/workflows/publish.yml`
 - Publish workflow installs deps, type checks, builds package, then publishes with provenance
-- Changelog workflow (`.github/workflows/changelog.yml`) regenerates `CHANGELOG.md` and commits it back to `main`
+- `CHANGELOG.md` is updated in the version-bump PR by the `version` script (`auto-changelog -p`); there is no post-release changelog workflow
 
 ## Peer Dependencies
 

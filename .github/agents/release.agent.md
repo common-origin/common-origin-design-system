@@ -46,7 +46,7 @@ The script will:
 Once the tag is pushed, tell the user:
 - The exact tag that was created
 - That `📦 Publish Package` workflow has been triggered on GitHub Actions
-- That `🚀 Update Changelog After Release` will run automatically after publish succeeds
+- That the `CHANGELOG.md` entry was already added in the version-bump PR (there is no post-release changelog workflow)
 - Link: `https://github.com/common-origin/common-origin-design-system/actions`
 
 ### 5. Post-release check
