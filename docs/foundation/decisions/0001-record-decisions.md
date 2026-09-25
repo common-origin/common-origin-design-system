@@ -16,7 +16,7 @@ Without a record of why things are the way they are, neither people nor agents c
 - The `docs/foundation/` directory is the source of truth for purpose, users, brand, principles, and visual rules.
 - Significant decisions are recorded here, one file per decision, using the template in the [index](README.md).
 - A decision is significant if it changes a principle or visual rule, a public API, the token structure, or the build and distribution approach.
-- Visual rules carry a status (Enforced, Target, Exception) so aspiration is never mistaken for fact.
+- Visual rules carry one of five statuses so aspiration is never mistaken for fact: **Enforced**, **Target**, **Exception** (must link to a decision), **Guideline**, and **Open question** (must link to an issue; don't act on it). Definitions are in the [foundation README](../README.md#rule-status).
 
 ## Consequences
 

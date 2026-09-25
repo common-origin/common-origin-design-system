@@ -12,9 +12,9 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Text uses `semantic.color.text.*`: `default` `#212529`, `subdued` `#495057`, `disabled` `#adb5bd`, `inverse` `#ffffff`. | Enforced |
 | Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens. | Target — overlays and chip hover states still use `rgba(0, 0, 0, …)`; overlay tokens exist but aren't wired in |
 | Status colours (`success`, `error`, `warning`, info) communicate status only. | Enforced |
-| Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `emphasis` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Enforced (guideline, not an absolute) |
+| Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `emphasis` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |
-| AgentInput's animated blue "working" ring uses a conic gradient. | Exception, for now — pending the agentic components work ([#22](https://github.com/common-origin/common-origin-design-system/issues/22)) |
+| AgentInput's animated blue "working" ring uses a conic gradient. | Exception ([0010](decisions/0010-agentinput-working-ring.md)) — temporary, pending [#22](https://github.com/common-origin/common-origin-design-system/issues/22) |
 | Hierarchy comes from weight and scale, not colour. | Enforced |
 
 ## Typography
@@ -22,7 +22,7 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Rule | Status |
 |---|---|
 | Inter for all UI text; monospace stack for code. | Enforced in tokens. The package doesn't load fonts — consumers must ([usage](usage.md#fonts)). The docs site currently loads no web fonts. |
-| Headings (`display`, `h1`–`h6`) use weight 700; body uses 400. The contrast between them is the typographic signature. ([0004](decisions/0004-heading-weights.md)) | Enforced |
+| Headings use the typography tokens: `display`–`h4` at 700, `h5`–`h6` at 500; body at 400. The contrast between heavy display-level headings and regular body is the typographic signature. ([0004](decisions/0004-heading-weights.md)) | Enforced |
 | Products may use heavier heading weights as a site-specific choice. | Exception ([0004](decisions/0004-heading-weights.md)) |
 | Code and token labels: monospace, small, on a light pill background. | Guideline |
 
