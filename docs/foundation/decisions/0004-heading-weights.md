@@ -1,7 +1,9 @@
 # 0004. System headings are weight 700; products may go heavier
 
-- **Status:** Accepted
+- **Status:** Superseded by [0011](0011-heading-weights-follow-tokens.md)
 - **Date:** 2026-09-25
+
+> **Superseded.** This record's premise was wrong: `h5` and `h6` are weight 500, not 700. The owner's ruling was to follow what's live, so [0011](0011-heading-weights-follow-tokens.md) records the actual token values. This record is kept unchanged as history.
 - **Decided by:** Ollie (owner)
 - **Principles:** P5
 

@@ -7,7 +7,7 @@
 
 ## Context
 
-The April 2026 guidance told agents to treat "the live Common Origin site" as ground truth for visual decisions, without saying which site or giving a URL. Products built on the system can make their own choices (for example, heavier headings, per [0004](0004-heading-weights.md)), so a product can't be the authority for system values.
+The April 2026 guidance told agents to treat "the live Common Origin site" as ground truth for visual decisions, without saying which site or giving a URL. Products built on the system can make their own choices (for example, heavier headings, per [0011](0011-heading-weights-follow-tokens.md)), so a product can't be the authority for system values.
 
 ## Decision
 

@@ -45,7 +45,7 @@ Work through this checklist systematically:
 - [ ] Selected/active states are left as they are — the rule is an open question (#21); note findings in the PR instead
 - [ ] Border-radius uses radius tokens
 - [ ] No decorative colour use — colour carries meaning: status, links, focus, deliberate highlight (decision 0003)
-- [ ] Headings use the heading tokens (decision 0004)
+- [ ] Headings use the heading tokens (decision 0011)
 - [ ] If the component uses Button, variants match their roles in decision 0002
 - [ ] Motion uses `semantic.motion` tokens (300ms max, eased); appearing elements animate in; new or reworked motion respects `prefers-reduced-motion` (decision 0005)
 

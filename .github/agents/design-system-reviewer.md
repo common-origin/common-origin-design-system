@@ -44,7 +44,7 @@ You are a broad-scope auditor. Your job is to survey the system and identify 1�
 Review the highest-priority areas from `docs/foundation/purpose.md` ("Current focus") and the **Target** rules in `docs/foundation/visual-language.md`:
 1. Interactive states — are hover, focus, active, disabled consistent across all interactive components?
 2. Motion — do appearing elements animate in, using motion tokens, and respect reduced motion (decision 0005)?
-3. Typography — do headings use the heading tokens (decision 0004)?
+3. Typography — do headings use the heading tokens (decision 0011)?
 4. Colour discipline — is any colour used decoratively rather than for status, links, focus, or deliberate highlight (decision 0003)?
 5. Token usage — are there hard-coded values (colours, spacing, z-index, durations) that should reference tokens?
 

@@ -17,7 +17,7 @@ Also available: [purpose](../docs/foundation/purpose.md), [users](../docs/founda
 **Key visual rules:**
 - Colour belongs to content; UI chrome is near-monochrome. Colour carries meaning (status, links, focus, deliberate highlight) — never decoration.
 - Button has five variants: `emphasis` (blue, a CTA above primary), `primary`, `secondary`, `naked`, `danger` (decision 0002).
-- Headings use the heading tokens (weight 700); body is 400.
+- Headings use the typography tokens (`display`–`h4` at 700, `h5`–`h6` at 500); body is 400 (decision 0011).
 - Motion is part of the system: appearing elements (modals, sheets, dialogs) animate in, using motion tokens, 300ms max (decision 0005).
 - Use tokens for every value. Text is `#212529`; pure `#000000` is for the logo only.
 - Selected/active states are an open question ([#21](https://github.com/common-origin/common-origin-design-system/issues/21)) — don't change them without a decision.

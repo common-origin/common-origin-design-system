@@ -36,6 +36,8 @@ Rules in [visual-language.md](visual-language.md) carry a status:
 - **Enforced** — true in the code today. Keep it true.
 - **Target** — the agreed direction, not yet fully true. Move towards it; don't regress.
 - **Exception** — a deliberate departure from a general rule, linked to the decision that allows it.
+- **Guideline** — recommended practice, applied with judgement. Not a hard requirement, and not a reason to change existing code on its own.
+- **Open question** — not yet decided; linked to the issue where it will be decided. **Don't act on it**: preserve current behaviour and report findings instead of changing it.
 
 ## Changing the foundation
 
