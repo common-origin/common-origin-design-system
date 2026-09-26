@@ -78,8 +78,9 @@ export const statusBadgeDocs: ComponentDocumentation = {
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.sm',
     // Typography
-    'semantic.typography.caption',
-    'semantic.typography.small',
+    'component.badge.label.typography.small',
+    'component.badge.label.typography.medium',
+    'component.badge.label.fontWeight',
     // Border
     'semantic.border.radius.circle',
     // Motion
@@ -270,8 +271,9 @@ export const statusBadgeDocs: ComponentDocumentation = {
         name: 'Label',
         description: 'Status text using status-specific color. Default labels provided but can be overridden. Typography scales with badge size.',
         tokens: [
-          'semantic.typography.caption',
-          'semantic.typography.small'
+          'component.badge.label.typography.small',
+          'component.badge.label.typography.medium',
+          'component.badge.label.fontWeight'
         ]
       },
       {

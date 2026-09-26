@@ -757,11 +757,22 @@ export interface TokensComponentBadgeRing {
   width: string;
 }
 
+export interface TokensComponentBadgeLabelTypography {
+  small: string;
+  medium: string;
+}
+
+export interface TokensComponentBadgeLabel {
+  fontWeight: string;
+  typography: TokensComponentBadgeLabelTypography;
+}
+
 export interface TokensComponentBadge {
   dot: TokensComponentBadgeDot;
   count: TokensComponentBadgeCount;
   ring: TokensComponentBadgeRing;
   borderRadius: string;
+  label: TokensComponentBadgeLabel;
 }
 
 export interface TokensComponent {

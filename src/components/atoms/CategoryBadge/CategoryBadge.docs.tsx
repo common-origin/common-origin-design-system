@@ -103,8 +103,9 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     'base.spacing.1 - 2px padding for small size (horizontal)',
     'base.spacing.2 - 4px padding for small size (vertical)',
     'base.spacing.3 - 6px padding for medium size',
-    'semantic.typography.caption - Typography for small size badges',
-    'semantic.typography.small - Typography for medium size badges',
+    'component.badge.label.typography.small - Typography for small size badges',
+    'component.badge.label.typography.medium - Typography for medium size badges',
+    'component.badge.label.fontWeight - Label weight shared by the badge-like family',
     'base.border.radius.pill - Fully rounded corners for badge shape',
     'base.border.width.1 - 1px border for outlined variant',
     'semantic.size.icon.xs - 12px icon size for small badges',
@@ -359,8 +360,9 @@ export const categoryBadgeDocs: ComponentDocumentation = {
         name: 'Label',
         description: 'Text content displaying the category name. Typography scales with badge size. Color adapts based on variant (inverse for filled, color for outlined/minimal).',
         tokens: [
-          'semantic.typography.caption',
-          'semantic.typography.small',
+          'component.badge.label.typography.small',
+          'component.badge.label.typography.medium',
+          'component.badge.label.fontWeight',
           'semantic.color.text.inverse'
         ]
       }

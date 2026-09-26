@@ -3,6 +3,8 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { CategoryBadge, CategoryBadgeProps, CategoryColor, CategoryVariant, CategorySize } from './CategoryBadge'
+import tokens from '@/styles/tokens.json'
+import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 
 expect.extend(toHaveNoViolations)
 
@@ -16,6 +18,11 @@ describe('CategoryBadge Component', () => {
   }
 
   describe('Basic Rendering', () => {
+    it.each(['small', 'medium'] as const)('renders %s labels at the badge-family weight', (size) => {
+      const { container } = renderCategoryBadge({ size })
+      expect(effectiveFontWeight(container.firstElementChild!)).toBe(tokens.component.badge.label.fontWeight)
+    })
+
     it('renders without crashing', () => {
       renderCategoryBadge()
       expect(screen.getByText('Shopping')).toBeInTheDocument()

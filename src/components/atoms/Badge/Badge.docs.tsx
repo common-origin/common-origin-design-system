@@ -71,8 +71,15 @@ export const badgeDocs: ComponentDocumentation = {
     'semantic.color.text.inverse',
     'semantic.color.background.default',
     
-    // Typography
+    // Typography (count text)
     'semantic.typography.caption',
+
+    // Indicator size
+    'component.badge.dot.size',
+    'component.badge.count.minWidth',
+    'component.badge.count.height',
+    'component.badge.count.paddingX',
+    'component.badge.ring.width',
     
     // Border
     'semantic.border.radius.circle'
@@ -294,7 +301,12 @@ export const badgeDocs: ComponentDocumentation = {
         tokens: [
           'semantic.color.background.emphasis',
           'semantic.color.text.inverse',
-          'base.border.radius.circle',
+          'semantic.border.radius.circle',
+          'component.badge.dot.size',
+          'component.badge.count.minWidth',
+          'component.badge.count.height',
+          'component.badge.count.paddingX',
+          'component.badge.ring.width',
           'semantic.typography.caption'
         ]
       },
