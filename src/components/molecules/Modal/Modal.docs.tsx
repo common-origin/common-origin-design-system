@@ -176,6 +176,9 @@ export const modalDocs: ComponentDocumentation = {
   // Tokens
   // ---------------------------------------------------------------------------
   tokens: [
+    'semantic.size.overlay.lg',
+    'semantic.size.overlay.md',
+    'semantic.size.overlay.sm',
     'semantic.zIndex.modal',
     // Elevation
     'semantic.elevation.overlay',

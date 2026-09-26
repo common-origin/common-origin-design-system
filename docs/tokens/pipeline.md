@@ -42,6 +42,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 - Components use semantic tokens by default.
 - Component tokens exist only for departures from the semantic tier, decisions shared by a family (for example `component.badge`, `component.input`), and variant or state matrices.
 - Component tokens reference semantic tokens, never base tokens, and hold design decisions only, never layout mechanics.
+- Sizes: roles that several components share are semantic (`size.touchTarget`, `size.overlay.sm/md/lg`, `size.menu.maxHeight`). A size unique to one component is a component token (for example `component.emptyState.illustration.small`) that references `semantic.size.dimension.<step>`, a scale keyed like `base.size` (0.25rem steps) with only the steps in use.
 - Typography parts come from small named semantic scales, which hold only the steps components use: `fontFamily` (body, monospace), `fontSize` (xs–xl), `lineHeight` (none, tight, normal), `letterSpacing` (wide) and `fontWeight`. A component that departs from a typography style, such as Alert's title, combines the style with these parts through its component tokens.
 
 An ESLint rule (`no-restricted-syntax` in `eslint.config.mjs`) fails the lint if a component in `src/components` uses `tokens.base` or destructures `base` from `tokens`. The one exception is `GridSystem`: its `gap*` props are typed as base spacing keys (public API), so it looks them up in `base.spacing` until those props accept semantic keys.

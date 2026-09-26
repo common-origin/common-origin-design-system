@@ -134,7 +134,7 @@ const StyledListItem = styled.li.withConfig({
 }>`
   display: flex;
   flex-direction: column;
-  min-height: 44px; /* Touch target minimum */
+  min-height: ${semantic.size.touchTarget};
   position: relative;
   
   /* Disable user selection for interactive items */
@@ -255,8 +255,8 @@ const StyledExpandedContent = styled.div.withConfig({
   ${({ $expanded, $spacing }) => $expanded && `
     padding: ${
       $spacing === 'compact'
-        ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md} ${semantic.spacing.layout.sm} 48px`
-        : `${semantic.spacing.layout.sm} ${semantic.spacing.layout.lg} ${semantic.spacing.layout.md} 60px`
+        ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md} ${semantic.spacing.layout.sm} ${tokens.component.listItem.expandedIndent.compact}`
+        : `${semantic.spacing.layout.sm} ${semantic.spacing.layout.lg} ${semantic.spacing.layout.md} ${tokens.component.listItem.expandedIndent.comfortable}`
     };
     background-color: ${semantic.color.background['subtle']};
     border-radius: ${semantic.border.radius.sm};

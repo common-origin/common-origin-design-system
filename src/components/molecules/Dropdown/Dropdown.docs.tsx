@@ -75,6 +75,7 @@ export const dropdownDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.size.menu.maxHeight',
     'component.field.gap',
     'component.field.helperText.typography',
     'component.field.helperText.color',

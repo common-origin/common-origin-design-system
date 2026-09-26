@@ -99,6 +99,7 @@ export const searchFieldDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.size.menu.maxHeight',
     'semantic.zIndex.dropdown',
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.md',

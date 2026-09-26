@@ -105,7 +105,7 @@ const DropdownMenu = styled.div.withConfig({
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
   transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-8px)')};
   transition: all 0.15s ease;
-  max-height: 300px;
+  max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
 `
 

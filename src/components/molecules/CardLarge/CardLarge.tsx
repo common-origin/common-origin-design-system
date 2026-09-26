@@ -18,7 +18,7 @@ export type CardLargeProps = {
 }
 
 const CardLargeStyled = styled.div`
-  max-width: 768px;
+  max-width: ${tokens.component.cardLarge.maxWidth};
 
   a {
     text-decoration: none;

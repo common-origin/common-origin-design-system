@@ -52,6 +52,7 @@ export const cardLargeDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.cardLarge.maxWidth',
     'semantic.color.background.subtle',
     'semantic.border.subtle',
     'semantic.border.radius.2xl',

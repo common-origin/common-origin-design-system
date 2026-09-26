@@ -70,6 +70,12 @@ export const emptyStateDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.emptyState.actions.maxWidth',
+    'component.emptyState.illustration.large',
+    'component.emptyState.illustration.medium',
+    'component.emptyState.illustration.small',
+    'component.emptyState.maxWidth',
+    'component.emptyState.text.maxWidth',
     'semantic.spacing.layout.4xl',
     'semantic.spacing.layout.6xl',
     'semantic.spacing.layout.8xl',

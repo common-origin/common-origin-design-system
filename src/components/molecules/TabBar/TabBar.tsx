@@ -98,7 +98,7 @@ const StyledTabList = styled.div.withConfig({
   scrollbar-width: thin;
   
   &::-webkit-scrollbar {
-    height: 4px;
+    height: ${tokens.component.tabBar.scrollbar.height};
   }
   
   &::-webkit-scrollbar-track {
@@ -220,8 +220,8 @@ const StyledBadge = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 20px;
-  height: 20px;
+  min-width: ${tokens.component.tabBar.badge.size};
+  height: ${tokens.component.tabBar.badge.size};
   padding: 0 ${semantic.spacing.layout.xs};
   font: ${tokens.component.tabBar.badge.typography};
   font-weight: ${tokens.component.tabBar.badge.fontWeight};

@@ -186,7 +186,7 @@ const StyledDismissButton = styled(IconButton)`
   margin-left: ${semantic.spacing.layout.xs};
 	position: absolute;
 	right: ${semantic.spacing.layout.sm};
-	top: 10px;
+	top: ${semantic.spacing.layout.sm};
 `
 
 export const Alert = ({

@@ -35,10 +35,10 @@ export const StyledCheckbox = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
-  min-width: 20px;
-  min-height: 20px;
+  width: ${tokens.component.checkbox.box.size};
+  height: ${tokens.component.checkbox.box.size};
+  min-width: ${tokens.component.checkbox.box.size};
+  min-height: ${tokens.component.checkbox.box.size};
   border-radius: ${tokens.component.input.default.borderRadius};
   border: ${tokens.component.input.default.borderWidth} solid;
   background-color: ${(props) =>
@@ -121,7 +121,7 @@ export const StyledCheckboxContainer = styled.label.withConfig({
   align-items: center;
   gap: ${tokens.semantic.spacing.layout.md};
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
-  min-height: 32px;
+  min-height: ${tokens.component.checkbox.row.minHeight};
   flex-direction: ${(props) => (props.$labelPosition === 'left' ? 'row-reverse' : 'row')};
   user-select: none;
 `

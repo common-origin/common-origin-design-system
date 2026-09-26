@@ -54,6 +54,8 @@ export const tabBarDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.tabBar.badge.size',
+    'component.tabBar.scrollbar.height',
     'semantic.color.background.default - Container background',
     'semantic.color.background.interactive - Active tab background (default variant)',
     'semantic.color.background.interactive-subtle - Hover state background',

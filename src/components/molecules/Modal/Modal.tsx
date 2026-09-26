@@ -83,9 +83,9 @@ export interface ModalProps {
 // ---------------------------------------------------------------------------
 
 const sizeToWidth: Record<ModalSize, string> = {
-  small: '400px',
-  medium: '560px',
-  large: '720px',
+  small: tokens.semantic.size.overlay.sm,
+  medium: tokens.semantic.size.overlay.md,
+  large: tokens.semantic.size.overlay.lg,
 }
 
 // ---------------------------------------------------------------------------

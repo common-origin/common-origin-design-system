@@ -34,13 +34,13 @@ export interface SheetProps {
   
   /**
    * Width of the sheet (for left/right positions)
-   * @default '400px'
+   * @default semantic.size.overlay.sm (25rem, 400px)
    */
   width?: string
   
   /**
    * Height of the sheet (for top/bottom positions)
-   * @default '400px'
+   * @default semantic.size.overlay.sm (25rem, 400px)
    */
   height?: string
   
@@ -268,8 +268,8 @@ export const Sheet = ({
   onClose,
   position = 'right',
   variant = 'sheet',
-  width = '400px',
-  height = '400px',
+  width = tokens.semantic.size.overlay.sm,
+  height = tokens.semantic.size.overlay.sm,
   children,
   closeOnOverlayClick = true,
   closeOnEscape = true,

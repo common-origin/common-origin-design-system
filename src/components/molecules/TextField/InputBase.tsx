@@ -108,7 +108,7 @@ export const StyledTextAreaBase = styled.textarea.withConfig({
   ${StyledInputBase}
   
   /* TextArea specific */
-  min-height: 120px;
+  min-height: ${tokens.component.input.textarea.minHeight};
   resize: vertical;
   font-family: inherit;
   line-height: ${tokens.semantic.lineHeight.normal};
