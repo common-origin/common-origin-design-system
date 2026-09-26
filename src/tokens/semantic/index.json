@@ -294,7 +294,7 @@
           "sm": {
             "value": "{base.size.100}",
             "type": "size",
-            "description": "25rem (400px): small overlay panel width (Modal small, Sheet default)."
+            "description": "25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets)."
           },
           "md": {
             "value": "{base.size.140}",
@@ -317,59 +317,73 @@
         "dimension": {
           "1": {
             "value": "{base.size.1}",
-            "type": "size"
+            "type": "size",
+            "description": "0.25rem (4px): TabBar scrollbar height (via component tokens)."
           },
           "5": {
             "value": "{base.size.5}",
-            "type": "size"
+            "type": "size",
+            "description": "1.25rem (20px): checkbox box; TabBar count badge (via component tokens)."
           },
           "8": {
             "value": "{base.size.8}",
-            "type": "size"
+            "type": "size",
+            "description": "2rem (32px): checkbox row minimum height (via component tokens)."
           },
           "12": {
             "value": "{base.size.12}",
-            "type": "size"
+            "type": "size",
+            "description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens)."
           },
           "15": {
             "value": "{base.size.15}",
-            "type": "size"
+            "type": "size",
+            "description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens)."
           },
           "18": {
             "value": "{base.size.18}",
-            "type": "size"
+            "type": "size",
+            "description": "4.5rem (72px): TransactionListItem minimum height (via component tokens)."
           },
           "20": {
             "value": "{base.size.20}",
-            "type": "size"
+            "type": "size",
+            "description": "5rem (80px): small EmptyState illustration (via component tokens)."
           },
           "30": {
             "value": "{base.size.30}",
-            "type": "size"
+            "type": "size",
+            "description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens)."
           },
           "45": {
             "value": "{base.size.45}",
-            "type": "size"
+            "type": "size",
+            "description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens)."
           },
           "50": {
             "value": "{base.size.50}",
-            "type": "size"
+            "type": "size",
+            "description": "12.5rem (200px): large EmptyState illustration (via component tokens)."
           },
           "75": {
             "value": "{base.size.75}",
-            "type": "size"
+            "type": "size",
+            "description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens)."
           },
           "90": {
             "value": "{base.size.90}",
-            "type": "size"
+            "type": "size",
+            "description": "22.5rem (360px): EmptyState text maximum width (via component tokens)."
           },
           "100": {
             "value": "{base.size.100}",
-            "type": "size"
+            "type": "size",
+            "description": "25rem (400px): EmptyState maximum width (via component tokens)."
           },
           "192": {
             "value": "{base.size.192}",
-            "type": "size"
+            "type": "size",
+            "description": "48rem (768px): CardLarge maximum width (via component tokens)."
           }
         },
       "icon": {

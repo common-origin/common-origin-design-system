@@ -40,14 +40,14 @@ export const sheetDocs: ComponentDocumentation = {
       name: 'width',
       type: 'string',
       required: false,
-      default: "'400px'",
+      default: "semantic.size.overlay.sm ('25rem', 400px)",
       description: 'Width of the sheet (applies to left and right positions). Can be px, rem, %, or any valid CSS width.',
     },
     {
       name: 'height',
       type: 'string',
       required: false,
-      default: "'400px'",
+      default: "semantic.size.overlay.sm ('25rem', 400px)",
       description: 'Height of the sheet (applies to top and bottom positions). Can be px, rem, %, or any valid CSS height.',
     },
     {
