@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography, type TypographyVariant, type TypographyColor } from '../Typography'
 import { Icon, type IconProps } from '../Icon'
+import tokens from '@/styles/tokens.json'
 
 export type MoneyDisplayVariant = 'default' | 'positive' | 'negative' | 'neutral'
 export type MoneyDisplaySize = 'small' | 'medium' | 'large' | 'xlarge'
@@ -41,11 +42,7 @@ const StyledWrapper = styled.span.withConfig({
   align-items: center;
   gap: 0.25rem;
   text-align: ${({ $align }) => $align};
-  font-weight: ${({ $weight }) => 
-    $weight === 'regular' ? 400 : 
-    $weight === 'medium' ? 500 : 
-    700
-  };
+  font-weight: ${({ $weight }) => tokens.semantic.fontWeight[$weight]};
 `
 
 // Map size to Typography variant

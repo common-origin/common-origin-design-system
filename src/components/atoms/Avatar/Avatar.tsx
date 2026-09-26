@@ -47,7 +47,7 @@ const AvatarInitials = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledAvatarProps>`
   font-family: ${tokens.base.fontFamily.body};
-  font-weight: ${tokens.base.fontWeight[3]};
+  font-weight: ${semantic.fontWeight.medium};
   font-size: ${({ $size }) => {
     const sizeMap = {
       xs: tokens.base.fontSize[1],

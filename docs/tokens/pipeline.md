@@ -34,7 +34,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 | Tier | File | Convention today |
 |---|---|---|
 | Base | `src/tokens/base/index.json` | Raw values, `{ "value", "type" }`. 17 types, kebab-case (`border-radius`, `font-size`, `box-shadow`, `z-index`, …) |
-| Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 9 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
+| Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 10 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
 | Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 17 values hard-code `px` (focus outline offsets, chip padding, icon-button sizes, input padding) |
 
 Values are strings. There are no object-valued (composite) tokens and no arithmetic expressions. Typography is a CSS `font` shorthand string (`"700 3rem/3rem 'Inter', sans-serif"`); shadows are CSS strings.

@@ -48,7 +48,7 @@ export const avatarDocs: ComponentDocumentation = {
     'semantic.color.background.surface',
     'semantic.color.text.default',
     'base.fontFamily.body',
-    'base.fontWeight.3',
+    'semantic.fontWeight.medium',
     'base.fontSize.1',
     'base.fontSize.2',
     'base.fontSize.3',

@@ -233,7 +233,7 @@ The NumberInput component uses the following design tokens from the Common Origi
 - `semantic.typography.label` - Label text style
 - `semantic.typography.small` - Helper text style
 - `base.spacing.*` - Spacing tokens
-- `base.fontWeight.5` - Required indicator weight
+- `semantic.fontWeight.bold` - Required indicator weight
 
 ### Colors
 - `semantic.color.text.default` - Default text
