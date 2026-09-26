@@ -12,7 +12,8 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { usePresence } from '../../../lib/usePresence'
 
 const { 
   semantic: { 
@@ -132,15 +133,16 @@ const fadeIn = keyframes`
   }
 `
 
-const StyledOverlay = styled.div`
+const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${tokens.semantic.zIndex.modal};
   animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
+  ${({ $isExiting }) => $isExiting && exitFade}
 `
 
-const StyledActionSheet = styled.div`
+const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -157,6 +159,8 @@ const StyledActionSheet = styled.div`
   ${reducedMotion} {
     animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut};
   }
+
+  ${({ $isExiting }) => $isExiting && exitFade}
 `
 
 const StyledHeader = styled.div`
@@ -247,6 +251,7 @@ export const ActionSheet = ({
 }: ActionSheetProps) => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousActiveElement = useRef<HTMLElement | null>(null)
+  const { isPresent, isExiting } = usePresence(isOpen)
   
   // Store the element that had focus when sheet opened
   useEffect(() => {
@@ -322,7 +327,8 @@ export const ActionSheet = ({
     }
   }
   
-  if (!isOpen) return null
+  // Stays mounted while the exit fade runs, hidden from assistive technology
+  if (!isPresent) return null
   
   // Find if there are any destructive actions to add divider
   const destructiveIndex = actions.findIndex(a => a.destructive)
@@ -330,11 +336,13 @@ export const ActionSheet = ({
   
   return createPortal(
     <>
-      <StyledOverlay onClick={handleOverlayClick} />
+      <StyledOverlay onClick={handleOverlayClick} $isExiting={isExiting} />
       <StyledActionSheet
         ref={sheetRef}
         role="dialog"
         aria-modal="true"
+        aria-hidden={isExiting || undefined}
+        $isExiting={isExiting}
         aria-labelledby={title ? 'action-sheet-title' : undefined}
         aria-describedby={description ? 'action-sheet-description' : undefined}
         data-testid={dataTestId}

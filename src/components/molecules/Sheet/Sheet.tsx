@@ -1,7 +1,8 @@
 import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 
@@ -132,7 +133,7 @@ const slideInBottom = keyframes`
 
 const StyledOverlay = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $isOpen: boolean }>`
+})<{ $isExiting: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -141,7 +142,7 @@ const StyledOverlay = styled.div.withConfig({
   background-color: ${semantic.color.background.overlay};
   z-index: ${semantic.zIndex.overlay};
   ${css`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};`}
-  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+  ${({ $isExiting }) => $isExiting && exitFade}
 `
 
 const StyledSheet = styled.div.withConfig({
@@ -151,7 +152,7 @@ const StyledSheet = styled.div.withConfig({
   $variant: 'sheet' | 'drawer'
   $width: string
   $height: string
-  $isOpen: boolean
+  $isExiting: boolean
 }>`
   position: fixed;
   background-color: ${semantic.color.background.default};
@@ -217,6 +218,8 @@ const StyledSheet = styled.div.withConfig({
   &:focus {
     outline: none;
   }
+
+  ${({ $isExiting }) => $isExiting && exitFade}
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {
@@ -285,6 +288,7 @@ export const Sheet = ({
 }: SheetProps) => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
+  const { isPresent, isExiting } = usePresence(isOpen)
   
   // Focus management
   useEffect(() => {
@@ -349,12 +353,13 @@ export const Sheet = ({
     }
   }
   
-  if (!isOpen) return null
+  // Stays mounted while the exit fade runs, hidden from assistive technology
+  if (!isPresent) return null
   
   return (
     <>
       <StyledOverlay
-        $isOpen={isOpen}
+        $isExiting={isExiting}
         onClick={handleOverlayClick}
         data-testid={dataTestId ? `${dataTestId}-overlay` : 'sheet-overlay'}
       />
@@ -365,12 +370,13 @@ export const Sheet = ({
         aria-modal="true"
         aria-label={ariaLabel || title || 'Sheet dialog'}
         aria-describedby={ariaDescribedBy}
+        aria-hidden={isExiting || undefined}
         tabIndex={-1}
         $position={position}
         $variant={variant}
         $width={width}
         $height={height}
-        $isOpen={isOpen}
+        $isExiting={isExiting}
         onKeyDown={handleKeyDown}
         data-testid={dataTestId}
       >

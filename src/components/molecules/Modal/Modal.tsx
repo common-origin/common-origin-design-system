@@ -8,7 +8,8 @@ import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 const { spacing: { layout }, color, border, elevation, motion } = semantic
@@ -113,17 +114,18 @@ const scaleIn = keyframes`
 // Styled components
 // ---------------------------------------------------------------------------
 
-const StyledOverlay = styled.div`
+const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${semantic.zIndex.modal};
   ${css`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};`}
+  ${({ $isExiting }) => $isExiting && exitFade}
 `
 
 const StyledDialog = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{ $width: string }>`
+})<{ $width: string; $isExiting: boolean }>`
   position: fixed;
   top: 50%;
   left: 50%;
@@ -164,6 +166,8 @@ const StyledDialog = styled.div.withConfig({
   &:focus {
     outline: none;
   }
+
+  ${({ $isExiting }) => $isExiting && exitFade}
 `
 
 const StyledHeader = styled.div`
@@ -235,6 +239,7 @@ export const Modal: React.FC<ModalProps> = ({
 }) => {
   const dialogRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
+  const { isPresent, isExiting } = usePresence(isOpen)
 
   // -----------------------------------------------------------------------
   // Focus & scroll-lock management
@@ -297,7 +302,8 @@ export const Modal: React.FC<ModalProps> = ({
   // -----------------------------------------------------------------------
   // Render
   // -----------------------------------------------------------------------
-  if (!isOpen) return null
+  // Stays mounted while the exit fade runs, hidden from assistive technology
+  if (!isPresent) return null
 
   const titleId = dataTestId ? `${dataTestId}-title` : 'modal-title'
   const width = sizeToWidth[size]
@@ -306,6 +312,7 @@ export const Modal: React.FC<ModalProps> = ({
     <>
       <StyledOverlay
         onClick={handleOverlayClick}
+        $isExiting={isExiting}
         data-testid={dataTestId ? `${dataTestId}-overlay` : 'modal-overlay'}
       />
 
@@ -316,8 +323,10 @@ export const Modal: React.FC<ModalProps> = ({
         aria-label={ariaLabel || title}
         aria-labelledby={titleId}
         aria-describedby={ariaDescribedBy}
+        aria-hidden={isExiting || undefined}
         tabIndex={-1}
         $width={width}
+        $isExiting={isExiting}
         onKeyDown={handleKeyDown}
         data-testid={dataTestId}
       >

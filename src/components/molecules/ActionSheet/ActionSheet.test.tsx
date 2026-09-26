@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor, act, cleanup } from '@testing-libra
 import { axe } from 'jest-axe'
 import { ActionSheet, type ActionSheetProps, type Action } from './ActionSheet'
 import tokens from '@/styles/tokens.json'
+import { EXIT_DURATION_MS } from '../../../lib/usePresence'
 
 describe('ActionSheet', () => {
   const mockActions: Action[] = [
@@ -363,5 +364,31 @@ describe('ActionSheet', () => {
       expect(container.querySelector('[role="dialog"]')).not.toBeInTheDocument()
       expect(document.body.querySelector('[role="dialog"]')).toBeInTheDocument()
     })
+  })
+})
+
+describe('ActionSheet exit', () => {
+  beforeEach(() => jest.useFakeTimers())
+  afterEach(() => jest.useRealTimers())
+
+  const ui = (isOpen: boolean) => <ActionSheet isOpen={isOpen} onClose={() => {}} actions={[{ id: 'a', label: 'A', onSelect: () => {} }]} data-testid="exit-action-sheet" />
+
+  it('stays mounted, faded and hidden from assistive technology while it exits', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    const exiting = screen.getByTestId('exit-action-sheet')
+    expect(exiting).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.queryByTestId('exit-action-sheet')).not.toBeInTheDocument()
+  })
+
+  it('stays open when reopened during the exit', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    rerender(ui(true))
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('aria-hidden')
   })
 })

@@ -335,6 +335,7 @@ export const actionSheetDocs: ComponentDocumentation = {
     'semantic.motion.duration.normal',
     'semantic.motion.duration.slow',
     'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.fast',
   ],
   
   examples: [
@@ -479,7 +480,7 @@ const actions = [
       },
       {
         name: 'Sheet Container',
-        description: 'Bottom-aligned container with slide-up animation',
+        description: 'Bottom-aligned container that slides up on open and fades out on close',
         tokens: [
           'semantic.color.background.subtle',
           'semantic.border.radius.lg',

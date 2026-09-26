@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css, keyframes } from 'styled-components'
 import tokens from '../styles/tokens.json'
 
 // Breakpoints from the semantic tokens (decision 0014)
@@ -24,6 +24,20 @@ export const media = {
 // Wrap fallbacks for people who ask for less motion (decision 0005): movement becomes
 // an instant change or a simple fade. Colour and opacity transitions need no fallback.
 export const reducedMotion = '@media (prefers-reduced-motion: reduce)'
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to   { opacity: 0; }
+`
+
+// Exit for overlays that unmount (use with usePresence): a quick fade, which is already
+// reduced motion. `&&` outranks the element's own entrance and media-query animations.
+export const exitFade = css`
+  && {
+    animation: ${fadeOut} ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.easeOut} forwards;
+    pointer-events: none;
+  }
+`
 
 // Content for screen readers only. The 1px size and -1px margin are part of the standard
 // visually-hidden technique, not design values, so they aren't tokens.

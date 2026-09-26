@@ -120,6 +120,8 @@ export const sheetDocs: ComponentDocumentation = {
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.fast',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [
@@ -746,6 +748,8 @@ Position Variants:
 - right: slides left from right edge (default)
 - bottom: slides up from bottom edge
 - left: slides right from left edge
+
+On close, the sheet and overlay fade out (semantic.motion.duration.fast) before unmounting.
 
 Visual Variants:
 - sheet: edge-to-edge, no margin

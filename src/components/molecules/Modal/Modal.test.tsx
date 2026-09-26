@@ -1,7 +1,8 @@
-import { render, screen, fireEvent, cleanup } from '@testing-library/react'
+import { render, screen, fireEvent, cleanup, act } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Modal, type ModalProps, type ModalAction } from './Modal'
 import tokens from '@/styles/tokens.json'
+import { EXIT_DURATION_MS } from '../../../lib/usePresence'
 
 expect.extend(toHaveNoViolations)
 
@@ -233,5 +234,31 @@ describe('Modal', () => {
       expect(screen.getByTestId('dt-action-0')).toBeInTheDocument()
       expect(screen.getByTestId('dt-action-1')).toBeInTheDocument()
     })
+  })
+})
+
+describe('Modal exit', () => {
+  beforeEach(() => jest.useFakeTimers())
+  afterEach(() => jest.useRealTimers())
+
+  const ui = (isOpen: boolean) => <Modal isOpen={isOpen} onClose={() => {}} title="Exit" data-testid="exit-modal">Body</Modal>
+
+  it('stays mounted, faded and hidden from assistive technology while it exits', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    const exiting = screen.getByTestId('exit-modal')
+    expect(exiting).toHaveAttribute('aria-hidden', 'true')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.queryByTestId('exit-modal')).not.toBeInTheDocument()
+  })
+
+  it('stays open when reopened during the exit', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    rerender(ui(true))
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('aria-hidden')
   })
 })
