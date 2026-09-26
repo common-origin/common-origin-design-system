@@ -88,11 +88,6 @@ export default tseslint.config(
     },
   },
   {
-    // Hotjar snippet — being removed or gated in #33
-    files: ['pages/_app.tsx'],
-    rules: { '@typescript-eslint/ban-ts-comment': 'warn', 'prefer-rest-params': 'warn' },
-  },
-  {
     // Latent bugs in dead custom transforms — removed in the Style Dictionary migration (#24, step 2)
     files: ['config/style-dictionary.config.js'],
     rules: { 'no-undef': 'warn', 'no-useless-escape': 'warn', 'no-constant-binary-expression': 'warn' },
