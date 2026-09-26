@@ -11,24 +11,41 @@ import { dirname } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
+// React Server Components (Next.js App Router) support.
+// Components use hooks and styled-components, so they must be Client Components.
+// Rollup strips module-level directives, so the build splits the main entry into:
+// - the entry (index.js / index.esm.js): no directive, only re-exports
+// - a "client" chunk with every component, which starts with 'use client'
+// - a "data" chunk with tokens and icon data, with no directive
+// A Server Component can then render components (as client references) and still
+// read `tokens` and `iconsData` from the main entry as plain data. The separate
+// tokens entry below stays directive-free too.
+const USE_CLIENT = "'use client';"
+const DATA_MODULES = /[\\/]src[\\/](styles[\\/][^\\/]+\.json|types[\\/](tokens|icons)\.ts)$/
+
+const mainChunks = (id) => {
+  if (id.includes('node_modules') || id.startsWith('\0')) return undefined
+  if (DATA_MODULES.test(id)) return 'data'
+  if (id.endsWith('/src/index.ts')) return undefined
+  return 'client'
+}
+
+const mainOutput = (format, suffix) => ({
+  dir: 'dist',
+  format,
+  exports: 'auto',
+  sourcemap: true,
+  entryFileNames: `index${suffix}.js`,
+  chunkFileNames: `[name]${suffix}.js`,
+  manualChunks: mainChunks,
+  banner: (chunk) => (chunk.name === 'client' ? USE_CLIENT : ''),
+})
+
 export default [
   // Main package build
   {
     input: 'src/index.ts',
-    output: [
-      {
-        file: 'dist/index.js',
-        format: 'cjs',
-        exports: 'auto',
-        sourcemap: true,
-      },
-      {
-        file: 'dist/index.esm.js',
-        format: 'esm',
-        exports: 'auto',
-        sourcemap: true,
-      },
-    ],
+    output: [mainOutput('cjs', ''), mainOutput('esm', '.esm')],
   external: [
     'react',
     'react-dom',
