@@ -153,9 +153,9 @@ export const sliderDocs: ComponentDocumentation = {
     'semantic.typography.caption',
     
     // Effects
-    'semantic.elevation.raised',
-    'semantic.elevation.sticky',
-    'semantic.elevation.floating',
+    'component.slider.thumb.shadow.default',
+    'component.slider.thumb.shadow.hover',
+    'component.slider.thumb.shadow.active',
     
     // Motion
     'semantic.motion.transition.fast',
@@ -415,9 +415,9 @@ export const sliderDocs: ComponentDocumentation = {
           'semantic.color.background.subtle',
           'semantic.color.background.interactive',
           'semantic.motion.transition.fast',
-          'semantic.elevation.raised',
-          'semantic.elevation.sticky',
-          'semantic.elevation.floating'
+          'component.slider.thumb.shadow.default',
+          'component.slider.thumb.shadow.hover',
+          'component.slider.thumb.shadow.active'
         ]
       },
       {

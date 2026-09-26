@@ -54,7 +54,7 @@ export const cardLargeDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.background.subtle',
     'semantic.border.subtle',
-    'semantic.border.radius.sm',
+    'semantic.border.radius.2xl',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.lg',
   ],

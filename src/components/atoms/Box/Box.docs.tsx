@@ -210,7 +210,7 @@ export const boxDocs: ComponentDocumentation = {
     // Borders
     {
       name: 'borderRadius',
-      type: 'keyof typeof tokens.base.border.radius',
+      type: "keyof Tokens['semantic']['border']['radius']",
       required: false,
       description: 'Border radius using design tokens'
     },

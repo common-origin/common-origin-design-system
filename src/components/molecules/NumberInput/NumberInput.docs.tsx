@@ -329,7 +329,7 @@ export const numberInputDocs: ComponentDocumentation = {
       {
         name: 'Stepper Container',
         description: 'Absolute positioned container on right side of input holding increment/decrement buttons',
-        tokens: ['semantic.spacing.layout.xs'],
+        tokens: ['semantic.spacing.layout.sm'],
       },
       {
         name: 'Stepper Buttons',

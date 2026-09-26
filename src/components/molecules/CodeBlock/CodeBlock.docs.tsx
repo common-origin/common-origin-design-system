@@ -316,7 +316,7 @@ import tokens from '@/styles/tokens.json'
 const StyledCard = styled.div\`
   background: \${tokens.semantic.color.background.default};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.base.border.radius[2]};
+  border-radius: \${tokens.semantic.border.radius.sm};
   padding: \${tokens.semantic.spacing.layout.md};
   box-shadow: \${tokens.semantic.elevation.low};
   
@@ -370,7 +370,7 @@ import tokens from '@/styles/tokens.json'
 const StyledCard = styled.div\`
   background: \${tokens.semantic.color.background.default};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.base.border.radius[2]};
+  border-radius: \${tokens.semantic.border.radius.sm};
   padding: \${tokens.semantic.spacing.layout.md};
   box-shadow: \${tokens.semantic.elevation.low};
   
@@ -621,7 +621,7 @@ interface UserProfile {
 
 const StyledProfileCard = styled.div\`
   background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.base.border.radius[3]};
+  border-radius: \${tokens.semantic.border.radius.md};
   padding: \${tokens.semantic.spacing.layout.lg};
   box-shadow: \${tokens.semantic.elevation.low};
 \`
@@ -708,7 +708,7 @@ interface UserProfile {
 
 const StyledProfileCard = styled.div\`
   background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.base.border.radius[3]};
+  border-radius: \${tokens.semantic.border.radius.md};
   padding: \${tokens.semantic.spacing.layout.lg};
   box-shadow: \${tokens.semantic.elevation.low};
 \`

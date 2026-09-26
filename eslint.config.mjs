@@ -89,7 +89,8 @@ export default tseslint.config(
   },
   {
     // Decision 0014: components never use base tokens; they use semantic or component tokens.
-    files: ['src/components/**/*.{ts,tsx}'],
+    // Also covers src/lib/styleUtils.ts, which ships in the package and styles components.
+    files: ['src/components/**/*.{ts,tsx}', 'src/lib/styleUtils.ts'],
     ignores: ['**/*.docs.tsx', '**/*.test.{ts,tsx}'],
     rules: {
       'no-restricted-syntax': [
@@ -104,12 +105,6 @@ export default tseslint.config(
         },
       ],
     },
-  },
-  {
-    // Exception to the rule above: GridSystem's gap props are typed as base spacing keys
-    // (public API), so it looks them up in base.spacing until those props gain semantic keys.
-    files: ['src/components/layout/GridSystem/GridSystem.tsx'],
-    rules: { 'no-restricted-syntax': 'off' },
   },
   {
     // Latent bugs in dead custom transforms — removed in the Style Dictionary migration (#24, step 2)

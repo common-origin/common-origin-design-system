@@ -29,9 +29,9 @@ export const pageTitleDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.background.subtle',
     'semantic.border.subtle',
-    'semantic.border.radius.sm',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
+    'semantic.spacing.layout.none',
+    'semantic.spacing.layout.2xl',
+    'semantic.spacing.layout.7xl',
     'semantic.typography.heading.3',
     'semantic.typography.body'
   ],

@@ -346,7 +346,7 @@ export const textFieldDocs: ComponentDocumentation = {
       'Error messages use role="alert" and aria-live="polite" for immediate screen reader announcements',
       'Focus ring visible with 2px border using semantic.color.border.interactive',
       'Maintains 4.5:1 color contrast ratio in all states (WCAG 2.2 AA)',
-      'Disabled state uses base.opacity[60] maintaining readability',
+      'Disabled state uses the component.input.disabled colour tokens (no opacity change), keeping the label and value readable',
       'Auto-generates unique IDs using React.useId() when not provided',
     ],
     keyboardNavigation: 'Tab to focus input, Shift+Tab to move backwards. All standard text editing keyboard shortcuts supported (Cmd+A, Cmd+C, Cmd+V, etc.)',
