@@ -37,6 +37,14 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 | Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 10 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
 | Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 17 values hard-code `px` (focus outline offsets, chip padding, icon-button sizes, input padding) |
 
+**Which tier a component uses** ([decision 0014](../foundation/decisions/0014-token-tiers.md)):
+- Components never use base tokens.
+- Components use semantic tokens by default.
+- Component tokens exist only for departures from the semantic tier, decisions shared by a family (for example `component.badge`, `component.input`), and variant or state matrices.
+- Component tokens reference semantic tokens, never base tokens, and hold design decisions only, never layout mechanics.
+
+The table above describes today's state, which predates 0014 and is being migrated.
+
 Values are strings. There are no object-valued (composite) tokens and no arithmetic expressions. Typography is a CSS `font` shorthand string (`"700 3rem/3rem 'Inter', sans-serif"`); shadows are CSS strings.
 
 ### How the config actually behaves
@@ -160,8 +168,8 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 ## 5. Recipes
 
 ### Add a token (today, v3)
-1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` (semantic tier).
-2. Reference the tier below: semantic → base. For the component tier, prefer semantic references even though existing entries often use base.
+1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
+2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
 3. `npm run build:tokens`, then check `src/styles/tokens.json` for the resolved value.
 4. Commit the source change and regenerated outputs, but not unrelated timestamp-only changes.
 

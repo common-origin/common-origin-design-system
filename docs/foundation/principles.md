@@ -9,7 +9,7 @@ Colour and attention belong to content — photography, artwork, data. UI chrome
 WCAG 2.2 AA is the minimum for every component, in every product. Semantic HTML, correct ARIA, full keyboard support, visible focus, screen reader support, contrast of at least 4.5:1 for normal text and 3:1 for large text and UI elements, and a passing `jest-axe` test. When accessibility conflicts with anything else, accessibility wins.
 
 ## P3. Tokens, not values
-Every colour, spacing, radius, shadow, font, z-index, and duration comes from a design token. Components use semantic tokens; base tokens exist to build semantic and component tokens. If the right token doesn't exist, add one — don't hard-code.
+Every colour, spacing, radius, shadow, font, z-index, and duration comes from a design token. Components use semantic tokens, or component tokens in three cases: a component departs from the semantic tier, a family of components shares a decision, or a variant or state matrix (such as Button's) needs its own values ([0014](decisions/0014-token-tiers.md)). Base tokens exist only to build semantic tokens. If the right token doesn't exist, add one — don't hard-code.
 
 ## P4. Earn its place
 Every component, prop, and variant solves a real need in a real product. No speculative variants, no prop bloat, no two components solving the same problem.
