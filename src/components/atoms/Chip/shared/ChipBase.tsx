@@ -52,11 +52,11 @@ export const CloseButton = styled.button.withConfig({
   transition: ${tokens.semantic.motion.hover};
   
   &:hover:not(:disabled) {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: ${tokens.semantic.color.background['hover-overlay']};
   }
   
   &:active:not(:disabled) {
-    background-color: rgba(0, 0, 0, 0.15);
+    background-color: ${tokens.semantic.color.background['active-overlay']};
   }
   
   &:disabled {

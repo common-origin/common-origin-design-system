@@ -10,7 +10,8 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 |---|---|
 | Page background uses `semantic.color.background.default` (`#f8f9fa`). Never hard-code a background. ([0006](decisions/0006-page-background.md)) | Enforced |
 | Text uses `semantic.color.text.*`: `default` `#212529`, `subdued` `#495057`, `disabled` `#adb5bd`, `inverse` `#ffffff`. | Enforced |
-| Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens. | Target — overlays and chip hover states still use `rgba(0, 0, 0, …)`; overlay tokens exist but aren't wired in |
+| Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens; overlays use `background.overlay`, `hover-overlay` and `active-overlay`. | Enforced |
+| Shadows (`base.shadow.*`, `semantic.elevation.*`) may use pure-black alpha. | Exception ([0012](decisions/0012-shadows-use-black.md)) |
 | Status colours (`success`, `error`, `warning`, info) communicate status only. | Enforced |
 | Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `emphasis` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |

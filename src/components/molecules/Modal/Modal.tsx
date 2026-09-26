@@ -115,7 +115,7 @@ const scaleIn = keyframes`
 const StyledOverlay = styled.div`
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${color.background.overlay};
   z-index: 9999;
   ${css`animation: ${fadeIn} 200ms ease-out;`}
 `

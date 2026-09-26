@@ -137,7 +137,7 @@ const StyledOverlay = styled.div.withConfig({
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${semantic.color.background.overlay};
   z-index: 1000;
   ${css`animation: ${fadeIn} 200ms ease-in-out;`}
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};

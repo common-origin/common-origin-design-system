@@ -2,6 +2,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import userEvent from '@testing-library/user-event'
 import { Sheet } from './Sheet'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -49,6 +50,18 @@ describe('Sheet', () => {
       )
       
       expect(screen.getByTestId('sheet-overlay')).toBeInTheDocument()
+    })
+
+    it('uses the overlay token for the backdrop', () => {
+      render(
+        <Sheet isOpen={true} onClose={mockOnClose} data-testid="sheet">
+          Content
+        </Sheet>
+      )
+
+      expect(screen.getByTestId('sheet-overlay')).toHaveStyle({
+        backgroundColor: tokens.semantic.color.background.overlay,
+      })
     })
     
     it('should apply data-testid correctly', () => {

@@ -5,6 +5,7 @@ import { axe, toHaveNoViolations } from 'jest-axe'
 import { Chip, ChipProps } from '../Chip'
 import { FilterChip, FilterChipProps } from '../Chip/FilterChip'
 import { BooleanChip, BooleanChipProps } from '../Chip/BooleanChip'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -461,6 +462,24 @@ describe('Chip Component', () => {
       const chip = screen.getByTestId('filter-chip')
       const icons = container.querySelectorAll('svg')
       expect(icons.length).toBe(0) // No icons when not selected and not dismissible
+    })
+
+    it('uses the overlay tokens for the close button hover and active states', () => {
+      renderFilterChip({ onDismiss: jest.fn(), 'data-testid': 'filter-chip' })
+      const closeButton = screen.getByTestId('filter-chip-close')
+      // jsdom can't apply :hover/:active, so read the rules styled-components injected
+      const css = Array.from(document.querySelectorAll('style'))
+        .map((style) => style.textContent)
+        .join('')
+        .replace(/\s+/g, '')
+      const ruleFor = (state: string) =>
+        Array.from(closeButton.classList)
+          .map((cls) => css.match(new RegExp(`\\.${cls}:${state}:not\\(:disabled\\)\\{background-color:([^;}]+)`)))
+          .find(Boolean)?.[1]
+      const { background } = tokens.semantic.color
+
+      expect(ruleFor('hover')).toBe(background['hover-overlay'].replace(/\s+/g, ''))
+      expect(ruleFor('active')).toBe(background['active-overlay'].replace(/\s+/g, ''))
     })
 
     it('calls onDismiss when close button is clicked', () => {

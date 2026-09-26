@@ -99,6 +99,7 @@ export const sheetDocs: ComponentDocumentation = {
   tokens: [
     // Colors
     'semantic.color.background.default',
+    'semantic.color.background.overlay',
     
     // Shadows
     'base.shadow[4]',
@@ -711,7 +712,7 @@ export const sheetDocs: ComponentDocumentation = {
       'Body scroll is prevented while sheet is open to maintain context',
       'Proper ARIA labeling via title prop or aria-label prop',
       'Support for aria-describedby for additional context',
-      'Overlay has sufficient color contrast (rgba(0,0,0,0.5))',
+      'Overlay dims the page with a 50% near-black backdrop (semantic.color.background.overlay)',
     ],
     keyboardNavigation: 'Tab to move forward through focusable elements, Shift+Tab to move backward. Focus wraps from last to first element and vice versa. Press ESC to close the sheet (if closeOnEscape is true).',
     screenReader: 'Announces as "dialog" with the provided label. Screen readers are informed this is a modal dialog via aria-modal="true". Focus management ensures users stay within the sheet context.',
@@ -748,8 +749,8 @@ Visual Variants:
     parts: [
       {
         name: 'Overlay',
-        description: 'Fixed-position backdrop that covers the entire viewport with semi-transparent black background. Fades in with 200ms animation. Clicking it closes the sheet by default.',
-        tokens: ['semantic.color.background (via rgba)'],
+        description: 'Fixed-position backdrop that covers the entire viewport with a semi-transparent near-black background. Fades in with 200ms animation. Clicking it closes the sheet by default.',
+        tokens: ['semantic.color.background.overlay'],
       },
       {
         name: 'Sheet Panel',
