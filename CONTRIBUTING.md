@@ -16,6 +16,7 @@ Thank you for contributing! This guide will help you follow our standards for co
    npm run docs:dev  # Start documentation site
    npm test          # Run tests
    npm run typecheck # Type checking
+   npm run lint      # ESLint (warnings are a ratchet: never add new ones)
    ```
 
 3. **Before committing:**
@@ -278,6 +279,7 @@ export interface BoxProps {
    ```bash
    npm test           # All tests pass
    npm run typecheck  # No type errors
+   npm run lint       # No lint errors, no new warnings
    npm run build:package  # Package builds
    ```
 

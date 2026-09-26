@@ -47,6 +47,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint . --max-warnings 157",
     "docs:generate": "node lib/docgen/generate.js",
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
@@ -74,6 +75,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@eslint/js": "^9.39.5",
     "@hotjar/browser": "^1.0.9",
     "@rollup/plugin-babel": "^6.1.0",
     "@rollup/plugin-commonjs": "^24.0.0",
@@ -93,6 +95,11 @@
     "babel-plugin-styled-components": "^2.1.4",
     "conventional-changelog-angular": "^8.1.0",
     "conventional-changelog-conventionalcommits": "^9.1.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
     "jest": "^30.0.2",
     "jest-axe": "^9.0.0",
     "jest-environment-jsdom": "^30.0.2",
@@ -106,7 +113,8 @@
     "style-dictionary": "^3.8.0",
     "styled-components": "^6.1.1",
     "ts-morph": "^27.0.2",
-    "typescript": "^5.7.3"
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.70.1"
   },
   "keywords": [
     "design-system",

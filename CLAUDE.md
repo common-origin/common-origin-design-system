@@ -26,13 +26,14 @@ The guidance in `.github/*.md` predates the foundation and is partly inaccurate.
 
 ```bash
 npm run typecheck        # tsc --noEmit
+npm run lint             # eslint; --max-warnings ratchet — never raise the number, lower it when you fix warnings
 npm test                 # jest (includes jest-axe)
 npm run build:package    # rollup → dist/
 npm run verify:package   # after build:package: .d.ts imports resolvable, consumer type-check, publint, attw
 npm run build            # docs site
 ```
 
-Run typecheck, tests, `build:package` and `verify:package` before proposing any change as done.
+Run typecheck, lint, tests, `build:package` and `verify:package` before proposing any change as done.
 
 ## Gotchas
 
