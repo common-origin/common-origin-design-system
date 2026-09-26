@@ -77,7 +77,7 @@ export default function Page() {
 }
 ```
 
-- `tokens` and `iconsData` are plain data and can be read in Server Components, from either entry point.
+- `tokens` and `iconsData` are plain data and can be read in Server Components. `tokens` is exported by both `@common-origin/design-system` and `@common-origin/design-system/tokens`; `iconsData` only by the main entry.
 - Server Components can't pass functions to Client Components. Props such as `onClick`, `onChange` and `linkComponent` have to be set inside a Client Component (a file starting with `'use client'`).
 
 The styled-components registry, from the [Next.js guide](https://nextjs.org/docs/app/guides/css-in-js#styled-components):
