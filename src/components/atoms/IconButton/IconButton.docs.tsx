@@ -95,6 +95,7 @@ export const iconButtonDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.width.thin',
     'component.iconButton.primary.backgroundColor - Primary variant background color and visual hierarchy',
     'component.iconButton.secondary.backgroundColor - Secondary variant styling for supporting actions',
     'component.iconButton.naked.backgroundColor - Minimal variant with transparent background styling',

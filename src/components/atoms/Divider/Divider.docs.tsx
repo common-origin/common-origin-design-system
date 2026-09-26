@@ -40,6 +40,7 @@ export const dividerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.width.thin',
     'component.separator.variants.default.border',
     'component.separator.variants.strong.border',
     'component.separator.variants.minimal.border',

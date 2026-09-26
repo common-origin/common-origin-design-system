@@ -47,7 +47,7 @@ const StyledList = styled.ul.withConfig({
   /* Divider styles */
   ${({ $dividers }) => $dividers && `
     > li:not(:last-child) {
-      border-bottom: 1px solid ${semantic.color.border.default};
+      border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.default};
     }
   `}
 `

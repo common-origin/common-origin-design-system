@@ -11,6 +11,7 @@ import {
 import styled, { css, keyframes } from 'styled-components'
 import { IconButton } from '../../atoms/IconButton'
 import { Typography } from '../../atoms/Typography'
+import { visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 import {
   AgentInputSubmitSource,
@@ -229,15 +230,7 @@ const MeterBar = styled.div.withConfig({
 `
 
 const VisuallyHiddenLabel = styled.label`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
+  ${visuallyHidden}
 `
 
 function getInitialState(hasText: boolean): AgentInputMachineState {

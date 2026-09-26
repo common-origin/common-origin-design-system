@@ -79,6 +79,7 @@ export const alertDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.width.thin',
     // Colors - Background
     'semantic.color.background.error-subtle',
     'semantic.color.background.warning-subtle',

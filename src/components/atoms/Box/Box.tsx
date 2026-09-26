@@ -201,11 +201,11 @@ const StyledBox = styled.div.withConfig({
   
   // Borders
   ${props => props.$borderRadius && css`border-radius: ${tokens.semantic.border.radius[props.$borderRadius]};`}
-  ${props => props.$border && css`border: 1px solid ${tokens.semantic.color.border[props.$border]};`}
-  ${props => props.$borderTop && css`border-top: 1px solid ${tokens.semantic.color.border[props.$borderTop]};`}
-  ${props => props.$borderRight && css`border-right: 1px solid ${tokens.semantic.color.border[props.$borderRight]};`}
-  ${props => props.$borderBottom && css`border-bottom: 1px solid ${tokens.semantic.color.border[props.$borderBottom]};`}
-  ${props => props.$borderLeft && css`border-left: 1px solid ${tokens.semantic.color.border[props.$borderLeft]};`}
+  ${props => props.$border && css`border: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$border]};`}
+  ${props => props.$borderTop && css`border-top: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderTop]};`}
+  ${props => props.$borderRight && css`border-right: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderRight]};`}
+  ${props => props.$borderBottom && css`border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderBottom]};`}
+  ${props => props.$borderLeft && css`border-left: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderLeft]};`}
   
   // Background & Color
   ${props => props.$bg && css`background-color: ${tokens.semantic.color.background[props.$bg]};`}
@@ -232,8 +232,8 @@ const StyledBox = styled.div.withConfig({
     }
     
     &:focus-visible {
-      outline: 2px solid ${tokens.semantic.color.border.interactive};
-      outline-offset: 2px;
+      outline: ${tokens.semantic.border.width.thick} solid ${tokens.semantic.color.border.interactive};
+      outline-offset: ${tokens.semantic.border.focusOffset};
     }
   `}
   

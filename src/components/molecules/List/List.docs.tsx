@@ -236,6 +236,11 @@ export const listDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.border.focusOffset',
+    'semantic.border.width.thick',
+    'semantic.color.border.interactive',
+    'semantic.size.icon.lg',
+    'semantic.border.width.thin',
     'semantic.spacing.layout.xs (4px)',
     'semantic.spacing.layout.sm (8px)',
     'semantic.spacing.layout.md (12px)',

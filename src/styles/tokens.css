@@ -354,6 +354,7 @@
   --semantic-border-tooltip: 0.125rem dotted #dee2e6;
   --semantic-border-width-thin: 0.0625rem;
   --semantic-border-width-thick: 0.125rem;
+  --semantic-border-focus-offset: 0.125rem;
   --semantic-border-radius-none: 0;
   --semantic-border-radius-xs: 0.125rem;
   --semantic-border-radius-sm: 0.25rem;

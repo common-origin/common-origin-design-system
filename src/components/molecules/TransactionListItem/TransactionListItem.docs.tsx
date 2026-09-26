@@ -89,6 +89,9 @@ export const transactionListItemDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.focusOffset',
+    'semantic.border.width.thick',
+    'semantic.border.width.thin',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.xs',
