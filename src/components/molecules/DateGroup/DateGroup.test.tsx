@@ -50,7 +50,7 @@ describe('DateGroup', () => {
   describe('Date Formatting', () => {
     it('uses smart format by default', () => {
       const today = new Date()
-      render(<DateGroup date={today} children={<div>Content</div>} data-testid="date-group" />)
+      render(<DateGroup date={today} data-testid="date-group"><div>Content</div></DateGroup>)
       
       const dateElement = screen.getByTestId('date-group-date')
       expect(dateElement).toHaveTextContent('Today')
@@ -61,9 +61,10 @@ describe('DateGroup', () => {
         <DateGroup 
           date={mockDate} 
           format="absolute"
-          children={<div>Content</div>}
           data-testid="date-group"
-        />
+        >
+          <div>Content</div>
+        </DateGroup>
       )
       
       expect(screen.getByTestId('date-group-date')).toBeInTheDocument()
@@ -77,9 +78,10 @@ describe('DateGroup', () => {
         <DateGroup 
           date={yesterday} 
           format="relative"
-          children={<div>Content</div>}
           data-testid="date-group"
-        />
+        >
+          <div>Content</div>
+        </DateGroup>
       )
       
       const dateElement = screen.getByTestId('date-group-date')
@@ -319,9 +321,10 @@ describe('DateGroup', () => {
     it('handles string date prop', () => {
       render(
         <DateGroup 
-          date="2024-01-15" 
-          children={<div>Content</div>}
-        />
+          date="2024-01-15"
+        >
+          <div>Content</div>
+        </DateGroup>
       )
       
       expect(screen.getByRole('group')).toBeInTheDocument()
@@ -357,7 +360,7 @@ describe('DateGroup', () => {
     })
 
     it('has descriptive aria-label on group', () => {
-      render(<DateGroup date={mockDate} children={<div>Content</div>} />)
+      render(<DateGroup date={mockDate}><div>Content</div></DateGroup>)
       
       const group = screen.getByRole('group')
       expect(group).toHaveAttribute('aria-label')
@@ -391,7 +394,7 @@ describe('DateGroup', () => {
     })
 
     it('renders empty children', () => {
-      render(<DateGroup date={mockDate} children={null} />)
+      render(<DateGroup date={mockDate}>{null}</DateGroup>)
       
       expect(screen.getByRole('group')).toBeInTheDocument()
     })

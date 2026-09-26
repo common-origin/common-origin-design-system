@@ -21,15 +21,31 @@ export default tseslint.config(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  // Separate entries: spreading both presets into one object would let jsx-runtime's `rules` replace recommended's.
   {
     files: ['**/*.{ts,tsx,js,jsx,mjs}'],
     ...react.configs.flat.recommended,
-    ...react.configs.flat['jsx-runtime'],
     settings: { react: { version: 'detect' } },
     languageOptions: {
       ...react.configs.flat.recommended.languageOptions,
       globals: { ...globals.browser, ...globals.node },
     },
+  },
+  {
+    files: ['**/*.{ts,tsx,js,jsx,mjs}'],
+    ...react.configs.flat['jsx-runtime'],
+  },
+  {
+    files: ['**/*.{ts,tsx,js,jsx,mjs}'],
+    rules: {
+      // Quotes and apostrophes in JSX text render fine; still catch the characters that signal JSX typos.
+      'react/no-unescaped-entities': ['error', { forbid: ['>', '}'] }],
+    },
+  },
+  {
+    // TypeScript already checks props
+    files: ['**/*.{ts,tsx}'],
+    rules: { 'react/prop-types': 'off' },
   },
   reactHooks.configs.flat['recommended-latest'] ?? reactHooks.configs['recommended-latest'],
   jsxA11y.flatConfigs.recommended,
@@ -46,9 +62,9 @@ export default tseslint.config(
     languageOptions: { globals: { ...globals.jest } },
   },
   {
-    // jest.mock factories are hoisted, so they must use require()
+    // jest.mock factories are hoisted, so they must use require(); the mocked components aren't typed
     files: ['jest.setup.js'],
-    rules: { '@typescript-eslint/no-require-imports': 'off' },
+    rules: { '@typescript-eslint/no-require-imports': 'off', 'react/prop-types': 'off' },
   },
   {
     files: ['**/*.cjs'],
