@@ -71,6 +71,9 @@ export const badgeDocs: ComponentDocumentation = {
     'semantic.color.text.inverse',
     'semantic.color.background.default',
     
+    // Typography (count text)
+    'semantic.typography.caption',
+
     // Indicator size
     'component.badge.dot.size',
     'component.badge.count.minWidth',
@@ -303,7 +306,8 @@ export const badgeDocs: ComponentDocumentation = {
           'component.badge.count.minWidth',
           'component.badge.count.height',
           'component.badge.count.paddingX',
-          'component.badge.ring.width'
+          'component.badge.ring.width',
+          'semantic.typography.caption'
         ]
       },
       {
