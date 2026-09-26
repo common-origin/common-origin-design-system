@@ -79,6 +79,7 @@ export const badgeDocs: ComponentDocumentation = {
     'component.badge.count.minWidth',
     'component.badge.count.height',
     'component.badge.count.paddingX',
+    'component.badge.count.lineHeight',
     'component.badge.ring.width',
     
     // Border
@@ -306,6 +307,7 @@ export const badgeDocs: ComponentDocumentation = {
           'component.badge.count.minWidth',
           'component.badge.count.height',
           'component.badge.count.paddingX',
+          'component.badge.count.lineHeight',
           'component.badge.ring.width',
           'semantic.typography.caption'
         ]

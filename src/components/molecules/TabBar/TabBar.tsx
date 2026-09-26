@@ -223,8 +223,8 @@ const StyledBadge = styled.span.withConfig({
   min-width: 20px;
   height: 20px;
   padding: 0 ${base.spacing[1]};
-  font: ${semantic.typography.caption};
-  font-weight: ${semantic.fontWeight.bold};
+  font: ${tokens.component.tabBar.badge.typography};
+  font-weight: ${tokens.component.tabBar.badge.fontWeight};
   border-radius: ${base.border.radius.circle};
   background-color: ${props => {
     if (props.$variant === 'pills') {

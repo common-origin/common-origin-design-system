@@ -62,10 +62,10 @@ export const codeBlockDocs: ComponentDocumentation = {
     'semantic.spacing.layout.sm - Vertical margin, expand button wrapper padding, and bottom positioning',
     'semantic.spacing.layout.lg - Copy button positioning from bottom edge',
     'semantic.spacing.layout.4xl - Gradient overlay height for collapsed state fade effect',
-    'base.fontFamily.monospace - Monospace font family ensuring proper code alignment and character spacing',
+    'component.codeBlock.fontFamily - Monospace font family ensuring proper code alignment and character spacing',
     'semantic.color.text.default - Standard text color optimized for code readability across themes',
-    'base.fontSize.1 - Appropriate font size for code content balancing readability and space efficiency',
-    'base.lineHeight.3 - Optimal line height for multi-line code preventing cramped or spread-out appearance'
+    'component.codeBlock.fontSize - Appropriate font size for code content balancing readability and space efficiency',
+    'component.codeBlock.lineHeight - Optimal line height for multi-line code preventing cramped or spread-out appearance'
   ],
 
   examples: [
@@ -834,10 +834,10 @@ export default config`}
           'semantic.border.subtle',
           'base.border.radius.2',
           'semantic.spacing.layout.md',
-          'base.fontFamily.monospace',
+          'component.codeBlock.fontFamily',
           'semantic.color.text.default',
-          'base.fontSize.1',
-          'base.lineHeight.3',
+          'component.codeBlock.fontSize',
+          'component.codeBlock.lineHeight',
           'semantic.motion.transition.normal'
         ]
       },

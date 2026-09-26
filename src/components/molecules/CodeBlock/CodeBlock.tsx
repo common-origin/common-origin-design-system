@@ -33,9 +33,9 @@ const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
   border: ${border.subtle};
   border-radius: ${tokens.base.border.radius[2]};
   padding: ${spacing.layout.md};
-  font-family: ${tokens.base.fontFamily.monospace};
-  font-size: ${tokens.base.fontSize[1]};
-  line-height: ${tokens.base.lineHeight[3]};
+  font-family: ${tokens.component.codeBlock.fontFamily};
+  font-size: ${tokens.component.codeBlock.fontSize};
+  line-height: ${tokens.component.codeBlock.lineHeight};
   color: ${color.text.default};
   overflow-x: auto;
   overflow-y: ${({ $isExpanded, $needsExpansion }) => 

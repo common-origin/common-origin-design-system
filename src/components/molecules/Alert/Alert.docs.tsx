@@ -113,9 +113,11 @@ export const alertDocs: ComponentDocumentation = {
     'base.border.radius.2',
 
     // Typography
-    'semantic.typography.h6',
-    'semantic.fontWeight.semibold',
-    'semantic.typography.body',
+    'component.alert.title.typography',
+    'component.alert.title.fontWeight',
+    'component.alert.title.lineHeight',
+    'component.alert.message.typography',
+    'component.alert.message.lineHeight',
 
     // Breakpoint
     'base.breakpoint.md'
@@ -492,9 +494,11 @@ export const alertDocs: ComponentDocumentation = {
         description:
           'Flexible content area with optional title and required message. Title uses h6 typography at semibold weight. Message uses body typography. Grows to fill available space.',
         tokens: [
-          'semantic.typography.h6',
-          'semantic.fontWeight.semibold',
-          'semantic.typography.body',
+          'component.alert.title.typography',
+          'component.alert.title.fontWeight',
+          'component.alert.title.lineHeight',
+          'component.alert.message.typography',
+          'component.alert.message.lineHeight',
           'semantic.spacing.layout.xs'
         ]
       },

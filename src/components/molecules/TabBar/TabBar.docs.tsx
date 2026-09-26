@@ -64,7 +64,8 @@ export const tabBarDocs: ComponentDocumentation = {
     'base.spacing.2 - 4px vertical padding for tabs',
     'base.spacing.4 - 8px horizontal padding for tabs',
     'semantic.typography.body2 - Tab label typography',
-    'semantic.fontWeight.bold - Badge count weight',
+    'component.tabBar.badge.typography - Badge count text',
+    'component.tabBar.badge.fontWeight - Badge count weight',
     'base.border.radius.md - Rounded corners for pills variant',
     'base.border.width.1 - 1px border width',
     'semantic.motion.interactive - Smooth transitions for hover/active states'
@@ -442,8 +443,8 @@ return (
           'semantic.color.background.interactive',
           'semantic.color.text.inverse',
           'base.border.radius.circle',
-          'semantic.typography.caption',
-          'semantic.fontWeight.bold'
+          'component.tabBar.badge.typography',
+          'component.tabBar.badge.fontWeight'
         ]
       },
       {

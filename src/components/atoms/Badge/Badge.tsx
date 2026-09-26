@@ -57,7 +57,7 @@ const BadgeIndicator = styled.span.withConfig({
   height: ${props => props.$isDot ? dot.size : count.height};
   padding: ${props => props.$isDot ? '0' : `0 ${count.paddingX}`};
   border-radius: ${radius.circle};
-  line-height: 1;
+  line-height: ${count.lineHeight};
   white-space: nowrap;
   box-shadow: 0 0 0 ${ring.width} ${color.background.default};
   animation: ${scaleIn} 0.2s ease-out;
