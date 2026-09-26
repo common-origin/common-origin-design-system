@@ -48,7 +48,7 @@ const MobileNavigation = styled.div`
     border-bottom: ${border.default};
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: ${tokens.semantic.zIndex.sticky};
   }
 `
 
@@ -793,10 +793,10 @@ const renderOpacityTokensTable = (opacityTokens: any) => {
 }
 
 // Helper function to render z-index tokens as table
-const renderZIndexTokensTable = (zIndexTokens: any) => {
+const renderZIndexTokensTable = (zIndexTokens: any, title = 'Z-Index', prefix = 'zIndex') => {
   return (
     <Box mb="7xl">
-      <Typography variant="h3" color="default">Z-Index</Typography>
+      <Typography variant="h3" color="default">{title}</Typography>
       <TokenTable>
         <thead>
           <tr>
@@ -810,7 +810,7 @@ const renderZIndexTokensTable = (zIndexTokens: any) => {
           {Object.entries(zIndexTokens).map(([key, value]) => (
             <TableRow key={key}>
               <TableCell>
-                <Chip title={`zIndex.${key}`} variant="default" />
+                <Chip title={`${prefix}.${key}`} variant="default" />
               </TableCell>
               <TableCell>
                 <TokenValue>{value as string}</TokenValue>
@@ -1029,19 +1029,15 @@ const getOpacityUsageDescription = (key: string): string => {
 }
 
 const getZIndexUsageDescription = (key: string): string => {
+  // Semantic layers, in stacking order (decision 0013). Each pairs with an elevation token.
   const descriptions: Record<string, string> = {
-    '0': 'Base layer (default)',
-    '1': 'Slightly elevated content',
-    '2': 'Elevated content (cards)',
-    '3': 'Floating content (dropdowns)',
-    '4': 'Overlay content (modals)',
-    '5': 'High priority overlays',
-    '6': 'Notifications and alerts',
-    '7': 'Tooltips and popovers',
-    '8': 'Maximum elevation (system UI)'
+    sticky: 'Sticky and fixed chrome: sticky headers, navigation bars. Pairs with elevation.sticky',
+    dropdown: 'Floating menus: Dropdown, SearchField suggestions. Pairs with elevation.floating',
+    overlay: 'Panels over the page and their backdrop: Sheet. Pairs with elevation.overlay',
+    modal: 'Blocking dialogs and their backdrop: Modal, ActionSheet. Pairs with elevation.overlay',
   }
-  
-  return descriptions[key] || 'Z-index layering'
+
+  return descriptions[key] || 'Base z-index step: use a semantic layer instead'
 }
 
 const getGenericUsageDescription = (prefix: string, _key: string): string => {
@@ -1077,6 +1073,7 @@ export default function Tokens() {
       isHeader: true,
       content: [
         { id: 'elevation-levels', type: 'elevation', data: tokens.semantic.elevation, title: 'Elevation' },
+        { id: 'z-index-layers', type: 'z-index', data: tokens.semantic.zIndex, title: 'Z-index layers', prefix: 'semantic.zIndex' },
       ]
     },
     {
@@ -1159,7 +1156,7 @@ export default function Tokens() {
         case 'opacity':
           return renderOpacityTokensTable(item.data)
         case 'z-index':
-          return renderZIndexTokensTable(item.data)
+          return renderZIndexTokensTable(item.data, item.title, item.prefix)
         case 'generic':
           return renderGenericTokensTable(item.data, item.title, item.prefix, item.id)
         default:

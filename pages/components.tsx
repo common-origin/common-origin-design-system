@@ -52,7 +52,7 @@ const MobileNavigation = styled.div`
     border-bottom: ${border.default};
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: ${tokens.semantic.zIndex.sticky};
   }
 `
 

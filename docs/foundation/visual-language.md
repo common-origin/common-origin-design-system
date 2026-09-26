@@ -68,7 +68,7 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Spacing comes from spacing tokens (base unit 0.25rem). | Target — several components hard-code pixel values |
 | Whitespace is generous by default; dense products (A2UI) set density per component. No global density mode. ([P9](principles.md#p9-serve-the-full-range)) | Enforced |
 | Signature editorial layout: narrow content column (~25–30%) beside a large image (~65–70%). | Guideline |
-| Layering uses the semantic z-index layers, in order `sticky` < `dropdown` < `overlay` < `modal`, each paired with an elevation token. Backdrops share their surface's layer. ([0013](decisions/0013-z-index-layers.md)) | Enforced in components; the docs site follows in a follow-up |
+| Layering uses the semantic z-index layers, in order `sticky` < `dropdown` < `overlay` < `modal`, each paired with an elevation token. Backdrops share their surface's layer. ([0013](decisions/0013-z-index-layers.md)) | Enforced (components and docs site) |
 | Stacking inside a single component (`-1`, `0`, `1`) may use literals. | Exception ([0013](decisions/0013-z-index-layers.md)) |
 
 ## Motion
