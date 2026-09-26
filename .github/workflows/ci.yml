@@ -37,6 +37,10 @@ jobs:
       - name: 🔍 Type check
         run: npm run typecheck
 
+      # In the required "typecheck" job so lint is enforced by branch protection without new settings
+      - name: 🧹 Lint
+        run: npm run lint
+
   test:
     name: test
     runs-on: ubuntu-latest
@@ -91,3 +95,6 @@ jobs:
 
       - name: 🔎 Verify published package (types, consumer type-check, publint, attw)
         run: npm run verify:package
+
+      - name: 🌐 Build docs site
+        run: npm run build

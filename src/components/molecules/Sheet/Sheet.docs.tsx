@@ -440,10 +440,10 @@ export const sheetDocs: ComponentDocumentation = {
           <h2 style={{ margin: '0 0 24px 0' }}>Filters</h2>
           
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '8px' }}>
+            <label htmlFor="sheet-filter-category" style={{ display: 'block', marginBottom: '8px' }}>
               Category
             </label>
-            <select style={{ width: '100%', padding: '8px' }}>
+            <select id="sheet-filter-category" style={{ width: '100%', padding: '8px' }}>
               <option>All</option>
               <option>Electronics</option>
               <option>Clothing</option>
@@ -452,10 +452,10 @@ export const sheetDocs: ComponentDocumentation = {
           </div>
           
           <div style={{ marginBottom: '16px' }}>
-            <label style={{ display: 'block', marginBottom: '8px' }}>
+            <label htmlFor="sheet-filter-price" style={{ display: 'block', marginBottom: '8px' }}>
               Price Range
             </label>
-            <input type="range" style={{ width: '100%' }} />
+            <input id="sheet-filter-price" type="range" style={{ width: '100%' }} />
           </div>
           
           <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }}>
@@ -487,10 +487,10 @@ export const sheetDocs: ComponentDocumentation = {
                   <h2 style={{ margin: '0 0 24px 0' }}>Filters</h2>
                   
                   <div style={{ marginBottom: '16px' }}>
-                    <label style={{ display: 'block', marginBottom: '8px' }}>
+                    <label htmlFor="sheet-filter-category" style={{ display: 'block', marginBottom: '8px' }}>
                       Category
                     </label>
-                    <select style={{ width: '100%', padding: '8px' }}>
+                    <select id="sheet-filter-category" style={{ width: '100%', padding: '8px' }}>
                       <option>All</option>
                       <option>Electronics</option>
                       <option>Clothing</option>
@@ -499,10 +499,10 @@ export const sheetDocs: ComponentDocumentation = {
                   </div>
                   
                   <div style={{ marginBottom: '16px' }}>
-                    <label style={{ display: 'block', marginBottom: '8px' }}>
+                    <label htmlFor="sheet-filter-price" style={{ display: 'block', marginBottom: '8px' }}>
                       Price Range
                     </label>
-                    <input type="range" style={{ width: '100%' }} />
+                    <input id="sheet-filter-price" type="range" style={{ width: '100%' }} />
                   </div>
                   
                   <div style={{ marginTop: '24px', display: 'flex', gap: '8px' }}>
@@ -598,10 +598,11 @@ export const sheetDocs: ComponentDocumentation = {
           
           <form onSubmit={(e) => { e.preventDefault(); setIsOpen(false); }}>
             <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', marginBottom: '8px' }}>
+              <label htmlFor="sheet-item-name" style={{ display: 'block', marginBottom: '8px' }}>
                 Name
               </label>
               <input 
+                id="sheet-item-name" 
                 type="text" 
                 style={{ width: '100%', padding: '8px' }}
                 placeholder="Enter item name"
@@ -609,10 +610,11 @@ export const sheetDocs: ComponentDocumentation = {
             </div>
             
             <div style={{ marginBottom: '16px' }}>
-              <label style={{ display: 'block', marginBottom: '8px' }}>
+              <label htmlFor="sheet-item-description" style={{ display: 'block', marginBottom: '8px' }}>
                 Description
               </label>
               <textarea 
+                id="sheet-item-description" 
                 style={{ width: '100%', padding: '8px', minHeight: '100px' }}
                 placeholder="Enter description"
               />
@@ -654,10 +656,11 @@ export const sheetDocs: ComponentDocumentation = {
                   
                   <form onSubmit={(e) => { e.preventDefault(); setIsOpen(false); }}>
                     <div style={{ marginBottom: '16px' }}>
-                      <label style={{ display: 'block', marginBottom: '8px' }}>
+                      <label htmlFor="sheet-item-name" style={{ display: 'block', marginBottom: '8px' }}>
                         Name
                       </label>
                       <input 
+                        id="sheet-item-name" 
                         type="text" 
                         style={{ width: '100%', padding: '8px' }}
                         placeholder="Enter item name"
@@ -665,10 +668,11 @@ export const sheetDocs: ComponentDocumentation = {
                     </div>
                     
                     <div style={{ marginBottom: '16px' }}>
-                      <label style={{ display: 'block', marginBottom: '8px' }}>
+                      <label htmlFor="sheet-item-description" style={{ display: 'block', marginBottom: '8px' }}>
                         Description
                       </label>
                       <textarea 
+                        id="sheet-item-description" 
                         style={{ width: '100%', padding: '8px', minHeight: '100px' }}
                         placeholder="Enter description"
                       />

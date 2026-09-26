@@ -319,7 +319,7 @@ describe('SearchField', () => {
       })
       
       fireEvent.keyDown(input, { key: 'ArrowDown' })
-      let firstOption = screen.getByText('Apple').closest('[role="option"]')
+      const firstOption = screen.getByText('Apple').closest('[role="option"]')
       expect(firstOption).toHaveAttribute('aria-selected', 'true')
       
       fireEvent.keyDown(input, { key: 'ArrowDown' })

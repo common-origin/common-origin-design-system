@@ -588,6 +588,7 @@ describe('Chip Component', () => {
       const handleParentClick = jest.fn()
       
       const { container } = render(
+        // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- test harness: parent click listener to assert stopPropagation
         <div onClick={handleParentClick}>
           <FilterChip 
             onDismiss={handleDismiss}

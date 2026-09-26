@@ -362,7 +362,7 @@ export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
   // Working parser for auto-changelog format
   // Matches: #### [v1.8.5](...)\n> 30 October 2025\n- commit ...
   const releaseRegex = /#### \[v([\d.]+)\][^]*?> ([^\n]+)\n([^]*?)(?=#### \[v|$)/g
-  const commitRegex = /- ([^\[]+?) \[`([a-f0-9]+)`\]\(.*?commit\/([a-f0-9]+)\)/g
+  const commitRegex = /- ([^[]+?) \[`([a-f0-9]+)`\]\(.*?commit\/([a-f0-9]+)\)/g
   const releases: Release[] = []
   let match
   while ((match = releaseRegex.exec(changelog))) {

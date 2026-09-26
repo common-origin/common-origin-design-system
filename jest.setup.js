@@ -64,7 +64,6 @@ jest.mock('next/image', () => {
       ...imgProps 
     } = props
     
-    // eslint-disable-next-line jsx-a11y/alt-text, @next/next/no-img-element
     return React.createElement('img', { 
       ...imgProps, 
       ref,

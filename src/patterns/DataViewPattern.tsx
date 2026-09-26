@@ -361,7 +361,6 @@ export const DataViewPattern: React.FC = () => {
       if (isOverflowing) {
         // Calculate approximately how many chips are hidden
         const chips = Array.from(container.children) as HTMLElement[]
-        let visibleWidth = 0
         let hiddenChips = 0
         
         chips.forEach((chip, index) => {
