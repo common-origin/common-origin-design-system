@@ -285,6 +285,93 @@
 			}
     },
     "size": {
+        "touchTarget": {
+          "value": "{base.size.11}",
+          "type": "size",
+          "description": "2.75rem (44px): minimum height of a tappable row or control."
+        },
+        "overlay": {
+          "sm": {
+            "value": "{base.size.100}",
+            "type": "size",
+            "description": "25rem (400px): small overlay panel width (Modal small, Sheet default)."
+          },
+          "md": {
+            "value": "{base.size.140}",
+            "type": "size",
+            "description": "35rem (560px): medium overlay panel width (Modal medium)."
+          },
+          "lg": {
+            "value": "{base.size.180}",
+            "type": "size",
+            "description": "45rem (720px): large overlay panel width (Modal large)."
+          }
+        },
+        "menu": {
+          "maxHeight": {
+            "value": "{base.size.75}",
+            "type": "size",
+            "description": "18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField)."
+          }
+        },
+        "dimension": {
+          "1": {
+            "value": "{base.size.1}",
+            "type": "size"
+          },
+          "5": {
+            "value": "{base.size.5}",
+            "type": "size"
+          },
+          "8": {
+            "value": "{base.size.8}",
+            "type": "size"
+          },
+          "12": {
+            "value": "{base.size.12}",
+            "type": "size"
+          },
+          "15": {
+            "value": "{base.size.15}",
+            "type": "size"
+          },
+          "18": {
+            "value": "{base.size.18}",
+            "type": "size"
+          },
+          "20": {
+            "value": "{base.size.20}",
+            "type": "size"
+          },
+          "30": {
+            "value": "{base.size.30}",
+            "type": "size"
+          },
+          "45": {
+            "value": "{base.size.45}",
+            "type": "size"
+          },
+          "50": {
+            "value": "{base.size.50}",
+            "type": "size"
+          },
+          "75": {
+            "value": "{base.size.75}",
+            "type": "size"
+          },
+          "90": {
+            "value": "{base.size.90}",
+            "type": "size"
+          },
+          "100": {
+            "value": "{base.size.100}",
+            "type": "size"
+          },
+          "192": {
+            "value": "{base.size.192}",
+            "type": "size"
+          }
+        },
       "icon": {
         "xs": {
           "value": "{base.size.3}",

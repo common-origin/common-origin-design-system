@@ -89,17 +89,29 @@ export interface TokensBaseSize {
   '8': string;
   '9': string;
   '10': string;
+  '11': string;
   '12': string;
   '14': string;
+  '15': string;
   '16': string;
+  '18': string;
   '20': string;
   '24': string;
   '28': string;
+  '30': string;
   '32': string;
   '40': string;
+  '45': string;
   '48': string;
+  '50': string;
   '56': string;
   '64': string;
+  '75': string;
+  '90': string;
+  '100': string;
+  '140': string;
+  '180': string;
+  '192': string;
   auto: string;
   full: string;
   screen: string;
@@ -735,6 +747,10 @@ export interface TokensComponentInputError {
 export interface TokensComponentInputDisabled {
 }
 
+export interface TokensComponentInputTextarea {
+  minHeight: string;
+}
+
 export interface TokensComponentInput {
   default: TokensComponentInputDefault;
   placeholder: TokensComponentInputPlaceholder;
@@ -742,6 +758,7 @@ export interface TokensComponentInput {
   focus: TokensComponentInputFocus;
   error: TokensComponentInputError;
   disabled: TokensComponentInputDisabled;
+  textarea: TokensComponentInputTextarea;
 }
 
 export interface TokensComponentBadgeDot {
@@ -821,10 +838,16 @@ export interface TokensComponentAlert {
 export interface TokensComponentTabBarBadge {
   typography: string;
   fontWeight: string;
+  size: string;
+}
+
+export interface TokensComponentTabBarScrollbar {
+  height: string;
 }
 
 export interface TokensComponentTabBar {
   badge: TokensComponentTabBarBadge;
+  scrollbar: TokensComponentTabBarScrollbar;
 }
 
 export interface TokensComponentSearchFieldSectionHeader {
@@ -875,6 +898,74 @@ export interface TokensComponentSlider {
   thumb: TokensComponentSliderThumb;
 }
 
+export interface TokensComponentAccountCardHeader {
+  minHeight: string;
+}
+
+export interface TokensComponentAccountCard {
+  header: TokensComponentAccountCardHeader;
+  minWidth: string;
+}
+
+export interface TokensComponentBreadcrumbsItem {
+  maxWidth: string;
+}
+
+export interface TokensComponentBreadcrumbs {
+  item: TokensComponentBreadcrumbsItem;
+}
+
+export interface TokensComponentCardLarge {
+  maxWidth: string;
+}
+
+export interface TokensComponentCheckboxBox {
+  size: string;
+}
+
+export interface TokensComponentCheckboxRow {
+  minHeight: string;
+}
+
+export interface TokensComponentCheckbox {
+  box: TokensComponentCheckboxBox;
+  row: TokensComponentCheckboxRow;
+}
+
+export interface TokensComponentEmptyStateIllustration {
+  small: string;
+  medium: string;
+  large: string;
+}
+
+export interface TokensComponentEmptyStateText {
+  maxWidth: string;
+}
+
+export interface TokensComponentEmptyStateActions {
+  maxWidth: string;
+}
+
+export interface TokensComponentEmptyState {
+  illustration: TokensComponentEmptyStateIllustration;
+  maxWidth: string;
+  text: TokensComponentEmptyStateText;
+  actions: TokensComponentEmptyStateActions;
+}
+
+export interface TokensComponentListItemExpandedIndent {
+  compact: string;
+  comfortable: string;
+}
+
+export interface TokensComponentListItem {
+  expandedIndent: TokensComponentListItemExpandedIndent;
+}
+
+export interface TokensComponentTransactionListItem {
+  minHeight: string;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
@@ -890,6 +981,13 @@ export interface TokensComponent {
   avatar: TokensComponentAvatar;
   codeBlock: TokensComponentCodeBlock;
   slider: TokensComponentSlider;
+  accountCard: TokensComponentAccountCard;
+  breadcrumbs: TokensComponentBreadcrumbs;
+  cardLarge: TokensComponentCardLarge;
+  checkbox: TokensComponentCheckbox;
+  emptyState: TokensComponentEmptyState;
+  listItem: TokensComponentListItem;
+  transactionListItem: TokensComponentTransactionListItem;
 }
 
 export interface TokensSemanticElevation {
@@ -983,6 +1081,33 @@ export interface TokensSemanticBorder {
   radius: TokensSemanticBorderRadius;
 }
 
+export interface TokensSemanticSizeOverlay {
+  sm: string;
+  md: string;
+  lg: string;
+}
+
+export interface TokensSemanticSizeMenu {
+  maxHeight: string;
+}
+
+export interface TokensSemanticSizeDimension {
+  '1': string;
+  '5': string;
+  '8': string;
+  '12': string;
+  '15': string;
+  '18': string;
+  '20': string;
+  '30': string;
+  '45': string;
+  '50': string;
+  '75': string;
+  '90': string;
+  '100': string;
+  '192': string;
+}
+
 export interface TokensSemanticSizeIcon {
   xs: string;
   sm: string;
@@ -1001,6 +1126,10 @@ export interface TokensSemanticSizeAvatar {
 }
 
 export interface TokensSemanticSize {
+  touchTarget: string;
+  overlay: TokensSemanticSizeOverlay;
+  menu: TokensSemanticSizeMenu;
+  dimension: TokensSemanticSizeDimension;
   icon: TokensSemanticSizeIcon;
   avatar: TokensSemanticSizeAvatar;
 }

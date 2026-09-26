@@ -58,7 +58,7 @@ interface StyledContainerProps {
 const StyledContainer = styled.div<StyledContainerProps>`
   display: flex;
   align-items: center;
-  min-height: 72px;
+  min-height: ${tokens.component.transactionListItem.minHeight};
   padding: ${tokens.semantic.spacing.layout.md} ${tokens.semantic.spacing.layout.md};
   background-color: ${tokens.semantic.color.background.default};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};

@@ -331,6 +331,13 @@
         "textColor": "{semantic.color.text.disabled}",
         "borderColor": "{semantic.color.border.subtle}",
         "cursor": "not-allowed"
+      },
+      "textarea": {
+        "minHeight": {
+          "value": "{semantic.size.dimension.30}",
+          "type": "size",
+          "description": "Minimum height of a multi-line text input (120px)."
+        }
       }
     },
     "badge": {
@@ -489,6 +496,18 @@
           "value": "{semantic.fontWeight.bold}",
           "type": "fontWeight",
           "description": "Tab count badges are bold, heavier than caption."
+        },
+        "size": {
+          "value": "{semantic.size.dimension.5}",
+          "type": "size",
+          "description": "Tab count badge height and minimum width (20px)."
+        }
+      },
+      "scrollbar": {
+        "height": {
+          "value": "{semantic.size.dimension.1}",
+          "type": "size",
+          "description": "Height of the horizontal scrollbar when tabs overflow (4px)."
         }
       }
     },
@@ -588,6 +607,111 @@
             "description": "Slider thumb while dragging: deepest."
           }
         }
+      }
+    },
+    "accountCard": {
+      "header": {
+        "minHeight": {
+          "value": "{semantic.size.dimension.12}",
+          "type": "size",
+          "description": "Minimum height of the card header row (48px)."
+        }
+      },
+      "minWidth": {
+        "value": "{semantic.size.dimension.75}",
+        "type": "size",
+        "description": "Minimum card width (300px)."
+      }
+    },
+    "breadcrumbs": {
+      "item": {
+        "maxWidth": {
+          "value": "{semantic.size.dimension.45}",
+          "type": "size",
+          "description": "Width at which a breadcrumb label truncates (180px)."
+        }
+      }
+    },
+    "cardLarge": {
+      "maxWidth": {
+        "value": "{semantic.size.dimension.192}",
+        "type": "size",
+        "description": "Maximum card width (768px)."
+      }
+    },
+    "checkbox": {
+      "box": {
+        "size": {
+          "value": "{semantic.size.dimension.5}",
+          "type": "size",
+          "description": "Width and height of the checkbox square (20px)."
+        }
+      },
+      "row": {
+        "minHeight": {
+          "value": "{semantic.size.dimension.8}",
+          "type": "size",
+          "description": "Minimum height of a checkbox or radio row (32px)."
+        }
+      }
+    },
+    "emptyState": {
+      "illustration": {
+        "small": {
+          "value": "{semantic.size.dimension.20}",
+          "type": "size",
+          "description": "Small illustration size (80px)."
+        },
+        "medium": {
+          "value": "{semantic.size.dimension.30}",
+          "type": "size",
+          "description": "Medium illustration size (120px)."
+        },
+        "large": {
+          "value": "{semantic.size.dimension.50}",
+          "type": "size",
+          "description": "Large illustration size (200px)."
+        }
+      },
+      "maxWidth": {
+        "value": "{semantic.size.dimension.100}",
+        "type": "size",
+        "description": "Maximum width of the empty state (400px)."
+      },
+      "text": {
+        "maxWidth": {
+          "value": "{semantic.size.dimension.90}",
+          "type": "size",
+          "description": "Maximum width of the title and description (360px)."
+        }
+      },
+      "actions": {
+        "maxWidth": {
+          "value": "{semantic.size.dimension.75}",
+          "type": "size",
+          "description": "Maximum width of the actions area (300px)."
+        }
+      }
+    },
+    "listItem": {
+      "expandedIndent": {
+        "compact": {
+          "value": "{semantic.size.dimension.12}",
+          "type": "size",
+          "description": "Left indent of expanded content in compact rows, aligning it with the label (48px)."
+        },
+        "comfortable": {
+          "value": "{semantic.size.dimension.15}",
+          "type": "size",
+          "description": "Left indent of expanded content in comfortable rows (60px)."
+        }
+      }
+    },
+    "transactionListItem": {
+      "minHeight": {
+        "value": "{semantic.size.dimension.18}",
+        "type": "size",
+        "description": "Minimum row height (72px)."
       }
     }
   }

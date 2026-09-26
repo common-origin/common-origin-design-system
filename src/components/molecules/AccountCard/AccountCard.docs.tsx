@@ -80,6 +80,8 @@ export const accountCardDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.accountCard.header.minHeight',
+    'component.accountCard.minWidth',
     'semantic.spacing.layout.lg',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.sm',

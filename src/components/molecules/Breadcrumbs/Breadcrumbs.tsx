@@ -48,7 +48,7 @@ const BreadcrumbStyled = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 180px;
+    max-width: ${tokens.component.breadcrumbs.item.maxWidth};
   }
 
   > a {

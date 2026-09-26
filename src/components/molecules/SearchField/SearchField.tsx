@@ -184,7 +184,7 @@ const StyledSuggestionsList = styled.ul`
   top: calc(100% + ${semantic.spacing.layout.xs});
   left: 0;
   right: 0;
-  max-height: 300px;
+  max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
   background-color: ${semantic.color.background.subtle};
   border: ${semantic.border.width.thin} solid ${semantic.color.border.default};

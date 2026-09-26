@@ -236,6 +236,9 @@ export const listDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'component.listItem.expandedIndent.comfortable',
+    'component.listItem.expandedIndent.compact',
+    'semantic.size.touchTarget',
     'semantic.border.focusOffset',
     'semantic.border.width.thick',
     'semantic.color.border.interactive',

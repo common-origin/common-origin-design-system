@@ -71,10 +71,10 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   justify-content: center;
   padding: ${spacing.layout.sm} 0;
   position: absolute;
-  bottom: 1px;
-  left: 1px;
-  right: 1px;
-  width: calc(100% - 2px);
+  bottom: ${tokens.semantic.border.width.thin};
+  left: ${tokens.semantic.border.width.thin};
+  right: ${tokens.semantic.border.width.thin};
+  width: calc(100% - 2 * ${tokens.semantic.border.width.thin});
   margin-bottom: ${spacing.layout.sm};
   border-radius: ${tokens.semantic.border.radius.sm};
   transition: opacity 300ms ease-in-out, background 300ms ease-in-out;

@@ -37,6 +37,7 @@ export const breadcrumbsDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.breadcrumbs.item.maxWidth',
     // Spacing tokens
     'semantic.spacing.layout.sm',  // Item padding and margin
     'semantic.spacing.layout.md',  // Right margin for separator

@@ -67,8 +67,8 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 
 | Rule | Status |
 |---|---|
-| Spacing comes from spacing tokens (base unit 0.25rem). | Target — ListItem's indents (48/60px) and Alert's close-button offset (10px) still use px; being tokenised in [#34](https://github.com/common-origin/common-origin-design-system/issues/34) |
-| Pixel values in components come from tokens: border widths (`border.width.thin`/`thick`), focus offsets (`border.focusOffset`), sizes and breakpoints. | Target — component dimensions (touch targets, overlay widths, row heights, menu max-height) still use px; being tokenised in [#34](https://github.com/common-origin/common-origin-design-system/issues/34) |
+| Spacing comes from spacing tokens (base unit 0.25rem). | Target — Alert's close-button offset (`top: 10px`) is off the 4px grid; how to tokenise it is open on [#34](https://github.com/common-origin/common-origin-design-system/issues/34) |
+| Pixel values in components come from tokens: border widths (`border.width.thin`/`thick`), focus offsets (`border.focusOffset`), sizes and breakpoints. | Target — shared sizes are semantic (`size.touchTarget`, `size.overlay`, `size.menu`) and one-off sizes are component tokens on `size.dimension`. Still px: badge heights (pending [#62](https://github.com/common-origin/common-origin-design-system/issues/62)), motion transforms (pending [#35](https://github.com/common-origin/common-origin-design-system/issues/35)) and Alert's 10px offset |
 | Px literals that aren't design values may stay: the visually-hidden technique (`visuallyHidden` in `src/lib/styleUtils.ts`), drawn glyph geometry (the Checkbox tick), 1px overlaps that seat an active tab over its border, and "no limit" max-heights used to animate collapse. | Exception |
 | Whitespace is generous by default; dense products (A2UI) set density per component. No global density mode. ([P9](principles.md#p9-serve-the-full-range)) | Enforced |
 | Signature editorial layout: narrow content column (~25–30%) beside a large image (~65–70%). | Guideline |

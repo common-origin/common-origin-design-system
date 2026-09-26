@@ -53,7 +53,7 @@ const StyledContainer = styled.div.withConfig({
   flex-direction: column;
   align-items: center;
   text-align: center;
-  max-width: 400px;
+  max-width: ${tokens.component.emptyState.maxWidth};
   margin: 0 auto;
   padding: ${({ $size }) => 
     $size === 'small' ? semantic.spacing.layout['4xl'] :
@@ -71,14 +71,14 @@ const StyledIllustration = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledIllustrationProps>`
   width: ${({ $size }) =>
-    $size === 'small' ? '80px' :
-    $size === 'large' ? '200px' :
-    '120px'
+    $size === 'small' ? tokens.component.emptyState.illustration.small :
+    $size === 'large' ? tokens.component.emptyState.illustration.large :
+    tokens.component.emptyState.illustration.medium
   };
   height: ${({ $size }) =>
-    $size === 'small' ? '80px' :
-    $size === 'large' ? '200px' :
-    '120px'
+    $size === 'small' ? tokens.component.emptyState.illustration.small :
+    $size === 'large' ? tokens.component.emptyState.illustration.large :
+    tokens.component.emptyState.illustration.medium
   };
   display: flex;
   align-items: center;
@@ -92,7 +92,7 @@ const StyledIllustration = styled.div.withConfig({
 `
 
 const StyledTextContainer = styled.div`
-  max-width: 360px;
+  max-width: ${tokens.component.emptyState.text.maxWidth};
   margin-bottom: ${semantic.spacing.layout['2xl']};
 `
 
@@ -158,7 +158,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
       </StyledTextContainer>
 
       {(action || secondaryAction) && (
-        <Box width="100%" maxWidth="300px">
+        <Box width="100%" maxWidth={tokens.component.emptyState.actions.maxWidth}>
           <Stack direction="column" gap="sm">
             {action && (
               <Button

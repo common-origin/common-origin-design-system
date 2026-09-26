@@ -97,6 +97,7 @@ export const sheetDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.size.overlay.sm',
     'semantic.zIndex.overlay',
     // Colors
     'semantic.color.background.default',

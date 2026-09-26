@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { TransactionListItem } from './TransactionListItem'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -43,12 +44,12 @@ describe('TransactionListItem', () => {
       expect(screen.getByTestId('transaction-date')).toBeInTheDocument()
     })
 
-    it('has minimum height of 72px', () => {
+    it('has the row minimum height token (72px)', () => {
       render(<TransactionListItem {...defaultProps} data-testid="transaction" />)
       
       const container = screen.getByTestId('transaction')
       const styles = window.getComputedStyle(container)
-      expect(styles.minHeight).toBe('72px')
+      expect(styles.minHeight).toBe(tokens.component.transactionListItem.minHeight)
     })
   })
 

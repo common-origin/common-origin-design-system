@@ -81,7 +81,7 @@ const StyledStackWrapper = styled.div`
 `
 
 const StyledHeaderWrapper = styled.div`
-  min-height: 48px;
+  min-height: ${tokens.component.accountCard.header.minHeight};
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,7 +147,7 @@ export const AccountCard: React.FC<AccountCardProps> = ({
   
   return (
     <Box
-      minWidth="300px"
+      minWidth={tokens.component.accountCard.minWidth}
       p="lg"
       bg="subtle"
       border="default"

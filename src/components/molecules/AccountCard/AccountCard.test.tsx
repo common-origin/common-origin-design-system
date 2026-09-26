@@ -55,12 +55,12 @@ describe('AccountCard', () => {
       expect(screen.getByText('Available')).toBeInTheDocument()
     })
 
-    it('has minimum width of 300px', () => {
+    it('has the account card minimum width token (300px)', () => {
       const { container } = render(<AccountCard {...defaultProps} data-testid="account" />)
       
       const card = screen.getByTestId('account')
       const styles = window.getComputedStyle(card)
-      expect(styles.minWidth).toBe('300px')
+      expect(styles.minWidth).toBe(tokens.component.accountCard.minWidth)
     })
 
     it('renders without fixed minimum height', () => {

@@ -191,6 +191,8 @@ export const checkboxDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.checkbox.box.size',
+    'component.checkbox.row.minHeight',
     'component.field.helperText.typography',
     'component.field.helperText.color',
     'component.field.helperText.colorError',

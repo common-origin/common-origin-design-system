@@ -55,6 +55,7 @@ export const codeBlockDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.width.thin',
     'semantic.color.background.subtle - Subtle background color providing clear code container definition and gradient overlay when collapsed',
     'semantic.border.subtle - Subtle border styling for visual separation from surrounding content',
     'semantic.border.radius.sm - Consistent rounded corners matching design system patterns for both container and expand button wrapper',
