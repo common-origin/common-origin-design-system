@@ -140,7 +140,7 @@ export const numberInputDocs: ComponentDocumentation = {
     'base.spacing.1',
     'base.spacing.2',
     'base.spacing.10',
-    'base.fontWeight.5',
+    'semantic.fontWeight.bold',
   ],
   
   examples: [

@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Alert, type AlertProps } from './Alert'
+import tokens from '@/styles/tokens.json'
 import { Button } from '../../atoms/Button'
 
 expect.extend(toHaveNoViolations)
@@ -34,6 +35,21 @@ describe('Alert', () => {
     it('renders title when provided', () => {
       renderAlert({ title: 'Alert Title' })
       expect(screen.getByText('Alert Title')).toBeInTheDocument()
+    })
+
+    it('renders the title at the semibold weight', () => {
+      renderAlert({ title: 'Alert Title' })
+      const title = screen.getByText('Alert Title')
+      // jsdom mis-resolves a font-weight declared after the \`font\` shorthand, so read the
+      // injected rule and take the last weight it sets, as a browser would.
+      const css = Array.from(document.querySelectorAll('style')).map((style) => style.textContent).join('')
+      const rule = Array.from(title.classList)
+        .map((cls) => css.match(new RegExp(`\\.${cls}\\{([^}]*)\\}`))?.[1])
+        .find(Boolean) ?? ''
+      const weights = Array.from(rule.matchAll(/(?:^|;)\s*(font-weight|font)\s*:\s*([^;]+)/g)).map(([, prop, value]) =>
+        prop === 'font-weight' ? value.trim() : value.trim().split(/\s+/)[0]
+      )
+      expect(weights[weights.length - 1]).toBe(tokens.semantic.fontWeight.semibold)
     })
 
     it('renders both title and message', () => {

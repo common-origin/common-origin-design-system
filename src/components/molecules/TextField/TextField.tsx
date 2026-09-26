@@ -77,7 +77,7 @@ const StyledLabel = styled.label`
 
 const StyledRequiredIndicator = styled.span`
   color: ${semantic.color.text.error};
-  font-weight: ${base.fontWeight[5]};
+  font-weight: ${semantic.fontWeight.bold};
 `
 
 const StyledHelperText = styled.div<{ $hasError?: boolean }>`

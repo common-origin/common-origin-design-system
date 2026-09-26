@@ -224,7 +224,7 @@ const StyledBadge = styled.span.withConfig({
   height: 20px;
   padding: 0 ${base.spacing[1]};
   font: ${semantic.typography.caption};
-  font-weight: ${base.fontWeight[5]};
+  font-weight: ${semantic.fontWeight.bold};
   border-radius: ${base.border.radius.circle};
   background-color: ${props => {
     if (props.$variant === 'pills') {

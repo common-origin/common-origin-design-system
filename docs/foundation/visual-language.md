@@ -25,6 +25,7 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Inter for all UI text; monospace stack for code. | Enforced in tokens. The package doesn't load fonts — consumers must ([usage](usage.md#fonts)). The docs site self-hosts Inter (400–700) via `styles/fonts.css`. |
 | Headings use the typography tokens: `display`–`h4` at 700, `h5`–`h6` at 500; body at 400. The contrast between heavy display-level headings and regular body is the typographic signature. ([0011](decisions/0011-heading-weights-follow-tokens.md)) | Enforced |
 | Products may use heavier heading weights as a site-specific choice. | Exception ([0011](decisions/0011-heading-weights-follow-tokens.md)) |
+| Font weights come from `semantic.fontWeight`: `regular` 400, `medium` 500, `semibold` 600, `bold` 700. The typography tokens reference them; components never use base weight keys or literal weights ([P3](principles.md#p3-tokens-not-values)). | Enforced |
 | Code and token labels: monospace, small, on a light pill background. | Guideline |
 
 ## Buttons and actions

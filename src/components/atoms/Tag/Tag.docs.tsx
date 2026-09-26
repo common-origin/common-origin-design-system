@@ -219,8 +219,7 @@ export const tagDocs: ComponentDocumentation = {
         name: 'Text Label',
         description: 'Text content with appropriate sizing and color contrast',
         tokens: [
-          'base.fontSize.[1|2|3]',
-          'base.fontWeight.3',
+          'semantic.typography.button3',
           'semantic.color.text.[variant]'
         ]
       }

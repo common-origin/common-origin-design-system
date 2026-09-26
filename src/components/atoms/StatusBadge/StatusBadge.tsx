@@ -154,7 +154,6 @@ const StyledStatusBadge = styled.span.withConfig({
   align-items: center;
   justify-content: center;
   border-radius: ${radius.circle};
-  font-weight: 500;
   white-space: nowrap;
   user-select: none;
   animation: ${scaleIn} 0.2s ease-out;

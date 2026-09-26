@@ -783,6 +783,13 @@ export interface TokensSemanticElevation {
   sticky: string;
 }
 
+export interface TokensSemanticFontWeight {
+  regular: string;
+  medium: string;
+  semibold: string;
+  bold: string;
+}
+
 export interface TokensSemanticZIndex {
   sticky: string;
   dropdown: string;
@@ -1030,6 +1037,7 @@ export interface TokensSemanticMotion {
 
 export interface TokensSemantic {
   elevation: TokensSemanticElevation;
+  fontWeight: TokensSemanticFontWeight;
   zIndex: TokensSemanticZIndex;
   border: TokensSemanticBorder;
   size: TokensSemanticSize;

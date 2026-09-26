@@ -53,7 +53,7 @@ const ErrorDetails = styled.details`
   
   summary {
     cursor: pointer;
-    font-weight: ${tokens.base.fontWeight[3]};
+    font-weight: ${tokens.semantic.fontWeight.medium};
     color: ${semantic.color.text.subdued};
     margin-bottom: ${tokens.base.spacing[2]};
     

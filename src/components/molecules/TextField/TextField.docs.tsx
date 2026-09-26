@@ -128,6 +128,7 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.typography.body',
     'semantic.typography.label',
     'semantic.typography.caption',
+    'semantic.fontWeight.bold',
     
     // Colors - Text
     'semantic.color.text.default',
@@ -383,7 +384,7 @@ export const textFieldDocs: ComponentDocumentation = {
       {
         name: 'Required Indicator',
         description: 'Red asterisk (*) displayed when required prop is true. Has aria-label="required" for screen readers',
-        tokens: ['semantic.color.text.error'],
+        tokens: ['semantic.color.text.error', 'semantic.fontWeight.bold'],
       },
       {
         name: 'Input Field',

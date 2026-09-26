@@ -32,6 +32,28 @@
         "description": "Fixed headers, sticky navigation, bottom bars"
       }
     },
+    "fontWeight": {
+      "regular": {
+        "value": "{base.fontWeight.2}",
+        "type": "fontWeight",
+        "description": "400. Body text, captions, most UI text."
+      },
+      "medium": {
+        "value": "{base.fontWeight.3}",
+        "type": "fontWeight",
+        "description": "500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text."
+      },
+      "semibold": {
+        "value": "{base.fontWeight.4}",
+        "type": "fontWeight",
+        "description": "600. Labels and short titles that need more weight than medium (label, Alert title)."
+      },
+      "bold": {
+        "value": "{base.fontWeight.5}",
+        "type": "fontWeight",
+        "description": "700. Headings (display to h4), overline, strong indicators such as the required-field asterisk."
+      }
+    },
     "zIndex": {
       "sticky": {
         "value": "{base.zIndex.1}",
@@ -715,71 +737,71 @@
     },
     "typography": {
       "display": {
-        "value": "{base.fontWeight.5} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h1": {
-        "value": "{base.fontWeight.5} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h2": {
-        "value": "{base.fontWeight.5} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h3": {
-        "value": "{base.fontWeight.5} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h4": {
-        "value": "{base.fontWeight.5} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h5": {
-        "value": "{base.fontWeight.3} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
         "type": "typography"
       },
       "h6": {
-        "value": "{base.fontWeight.3} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
         "type": "typography"
       },
       "subtitle": {
-        "value": "{base.fontWeight.3} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
         "type": "typography"
       },
       "body": {
-        "value": "{base.fontWeight.2} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.regular} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
         "type": "typography"
       },
       "small": {
-        "value": "{base.fontWeight.2} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.regular} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
         "type": "typography"
       },
       "overline": {
-        "value": "{base.fontWeight.5} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.bold} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
         "type": "typography"
       },
       "caption": {
-        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
         "type": "typography"
       },
       "button1": {
-        "value": "{base.fontWeight.3} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
         "type": "typography"
       },
       "button2": {
-        "value": "{base.fontWeight.3} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
         "type": "typography"
       },
       "button3": {
-        "value": "{base.fontWeight.3} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
         "type": "typography"
       },
       "label": {
-        "value": "{base.fontWeight.4} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
         "type": "typography"
       },
       "breadcrumb": {
-        "value": "{base.fontWeight.2} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
+        "value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
         "type": "typography"
       }
     },

@@ -114,6 +114,7 @@ export const alertDocs: ComponentDocumentation = {
 
     // Typography
     'semantic.typography.h6',
+    'semantic.fontWeight.semibold',
     'semantic.typography.body',
 
     // Breakpoint
@@ -489,9 +490,10 @@ export const alertDocs: ComponentDocumentation = {
       {
         name: 'Content',
         description:
-          'Flexible content area with optional title and required message. Title uses h6 typography with bold weight. Message uses body typography. Grows to fill available space.',
+          'Flexible content area with optional title and required message. Title uses h6 typography at semibold weight. Message uses body typography. Grows to fill available space.',
         tokens: [
           'semantic.typography.h6',
+          'semantic.fontWeight.semibold',
           'semantic.typography.body',
           'semantic.spacing.layout.xs'
         ]

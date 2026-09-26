@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { MoneyDisplay, MoneyDisplayProps } from './MoneyDisplay'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -130,6 +131,11 @@ describe('MoneyDisplay', () => {
     it('renders with bold weight', () => {
       renderComponent({ weight: 'bold' })
       expect(screen.getByText(/100\.50/)).toBeInTheDocument()
+    })
+
+    it.each(['regular', 'medium', 'bold'] as const)('maps the %s weight to its font-weight token', (weight) => {
+      const { container } = renderComponent({ weight })
+      expect(container.firstChild).toHaveStyle({ fontWeight: tokens.semantic.fontWeight[weight] })
     })
   })
 

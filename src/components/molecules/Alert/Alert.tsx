@@ -163,7 +163,7 @@ const StyledContent = styled.div`
 
 const StyledTitle = styled.span`
   font: ${semantic.typography.h6};
-  font-weight: 600 !important;
+  font-weight: ${semantic.fontWeight.semibold};
   margin: 0;
 	line-height: 1.125;
 `
