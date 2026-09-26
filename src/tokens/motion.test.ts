@@ -46,7 +46,7 @@ describe('component motion', () => {
   // Token interpolations (`${…}`) are dropped so only literal text is left to check.
   const motionValues = (source: string): string[] => {
     const css = [...source.matchAll(/\b(?:transition|animation)(?:-[a-z-]+)?\s*:\s*([^;`{}]*(?:\$\{[^}]*\}[^;`{}]*)*)/g)]
-    const props = [...source.matchAll(/\b(?:transition|animation)=\{?\s*["'`]([^"'`]*)["'`]/g)]
+    const props = Array.from(source.matchAll(/\b(?:transition|animation)=\{?\s*["'`]([^"'`]*)["'`]/g))
     return [...css, ...props].map((match) => match[1].replace(/\s+/g, ' ').trim())
   }
   const literal = (value: string) => value.replace(/\$\{[^}]*\}/g, '')
@@ -68,7 +68,7 @@ describe('component motion', () => {
     // Moves = keyframes that transform, or a transition on transform, size, or `all`
     // (including the composite tokens, which are `all`, and motion.interactive, which transforms)
     const moves = (source: string) =>
-      [...source.matchAll(/keyframes`([^`]*)`/g)].some((m) => /transform/.test(m[1])) ||
+      Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /transform/.test(m[1])) ||
       motionValues(source).some((value) =>
         /\b(transform|max-height|height|width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
       )
