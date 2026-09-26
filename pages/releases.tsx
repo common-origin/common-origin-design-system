@@ -19,6 +19,7 @@ import { Grid, GridCol } from '../src/components/layout/GridSystem'
 import tokens from '@/styles/tokens.json'
 interface Commit {
   hash: string
+  url: string
   author: string
   email: string
   date: string
@@ -315,11 +316,11 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 																		<Typography variant="small">{commit.message}</Typography>
 																		<CommitMeta>
 																			<CommitHash
-																				href={`https://github.com/common-origin/common-origin-design-system/commit/${commit.hash.trim()}`}
+																				href={commit.url}
 																				target="_blank"
 																				rel="noopener noreferrer"
 																			>
-																				{commit.hash.trim().substring(0, 7)}
+																				{commit.hash}
 																			</CommitHash>
 																			<Typography variant="small" color="subdued">by {commit.author}</Typography>
 																			<Typography variant="small" color="subdued">{format(new Date(commit.date), 'MMM d, yyyy')}</Typography>
@@ -362,7 +363,10 @@ export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
   // Working parser for auto-changelog format
   // Matches: #### [v1.8.5](...)\n> 30 October 2025\n- commit ...
   const releaseRegex = /#### \[v([\d.]+)\][^]*?> ([^\n]+)\n([^]*?)(?=#### \[v|$)/g
-  const commitRegex = /- ([^[]+?) \[`([a-f0-9]+)`\]\(.*?commit\/([a-f0-9]+)\)/g
+  // Each entry links to either a commit (`abc1234`) or, for changes merged
+  // through a pull request, the PR (`#47`). Messages may themselves contain
+  // brackets (e.g. "[WIP] ..."), so match up to the last link on the line.
+  const commitRegex = /^- (.+) \[`([^`]+)`\]\((https:\/\/github\.com\/[^)]+\/(?:commit|pull)\/[^)]+)\)\s*$/gm
   const releases: Release[] = []
   let match
   while ((match = releaseRegex.exec(changelog))) {
@@ -370,12 +374,16 @@ export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
     const commits: Commit[] = []
     let commitMatch
     while ((commitMatch = commitRegex.exec(commitsBlock))) {
-      const [ , message, hash ] = commitMatch
-      // Infer type from message prefix
-      const typeMatch = message.match(/^(\w+):/)
-      const type = (typeMatch ? typeMatch[1] : 'other') as CommitType
+      const [ , message, hash, url ] = commitMatch
+      // Infer type from the conventional-commit prefix, e.g. "fix:", "ci(publish):"
+      const typeMatch = message.match(/^(\w+)(?:\([^)]*\))?!?:/)
+      const type: CommitType =
+        typeMatch && (COMMIT_TYPE_ORDER as string[]).includes(typeMatch[1])
+          ? (typeMatch[1] as CommitType)
+          : 'other'
       commits.push({
         hash,
+        url,
         author: '', // Not available in markdown
         email: '', // Not available in markdown
         date,

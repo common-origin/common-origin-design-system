@@ -5,11 +5,22 @@
   box-sizing: border-box;
 }
 
+/* The docs site has no dark theme: declare light so browsers with auto/forced
+   dark mode don't render dark backgrounds under near-black text. */
+html {
+  color-scheme: light;
+}
+
 html, body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: var(--base-font-family-body);
+}
+
+/* Page background is the background.default token (decision 0006). */
+body {
+  background: var(--semantic-color-background-default);
+  color: var(--semantic-color-text-default);
 }
 
 a {
