@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { LayoutErrorBoundary } from '../src/page-components'
 import { performanceMonitor } from '../src/lib/performance'
 import { initializeCriticalImagePreloading } from '../src/lib/imagePreloader'
+import '../styles/fonts.css'
 import '../styles/index.css'
 import '../src/styles/tokens.css'
 

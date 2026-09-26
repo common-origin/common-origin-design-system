@@ -1,47 +1,36 @@
-@font-face {
-  font-family: 'Helvetica Now';
-  src: url('/fonts/HelveticaNowText-Light.otf') format('opentype');
-  font-weight: 300; 
-}
+/*
+ * Inter, the typeface the design tokens specify (--base-font-family-*: 'Inter').
+ * The family name must be exactly 'Inter' so the tokens resolve to these files.
+ */
 
 @font-face {
-  font-family: 'Helvetica Now';
-  src: url('/fonts/HelveticaNowText-Regular.otf') format('opentype');
-  font-weight: 400; 
-}
-
-@font-face {
-  font-family: 'Helvetica Now';
-  src: url('/fonts/HelveticaNowText-Medium.otf') format('opentype');
-  font-weight: 600; 
-}
-
-@font-face {
-  font-family: 'Helvetica Now';
-  src: url('/fonts/HelveticaNowText-Bold.otf') format('opentype');
-  font-weight: 700; 
-}
-
-@font-face {
-  font-family: 'Inter-Regular';
+  font-family: 'Inter';
   src: url('/fonts/Inter-Regular.ttf') format('truetype');
-  font-weight: 400; 
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter-Medium';
+  font-family: 'Inter';
   src: url('/fonts/Inter-Medium.ttf') format('truetype');
-  font-weight: 500; 
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter-SemiBold';
+  font-family: 'Inter';
   src: url('/fonts/Inter-SemiBold.ttf') format('truetype');
-  font-weight: 600; 
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-  font-family: 'Inter-Bold';
+  font-family: 'Inter';
   src: url('/fonts/Inter-Bold.ttf') format('truetype');
-  font-weight: 700; 
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
 }
