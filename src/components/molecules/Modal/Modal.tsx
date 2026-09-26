@@ -8,6 +8,7 @@ import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 const { spacing: { layout }, color, border, elevation, motion } = semantic
@@ -117,7 +118,7 @@ const StyledOverlay = styled.div`
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${semantic.zIndex.modal};
-  ${css`animation: ${fadeIn} 200ms ease-out;`}
+  ${css`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};`}
 `
 
 const StyledDialog = styled.div.withConfig({
@@ -141,7 +142,11 @@ const StyledDialog = styled.div.withConfig({
   box-shadow: ${elevation.overlay};
   overflow: hidden;
 
-  ${css`animation: ${scaleIn} 200ms ease-out;`}
+  ${css`animation: ${scaleIn} ${motion.duration.normal} ${motion.easing.easeOut};`}
+
+  ${reducedMotion} {
+    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
+  }
 
   /* Auto-fullscreen below md breakpoint (768px) */
   @media (max-width: ${semantic.breakpoint.md}) {
@@ -153,7 +158,7 @@ const StyledDialog = styled.div.withConfig({
     top: 0;
     left: 0;
     transform: none;
-    animation: ${fadeIn} 200ms ease-out;
+    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
   }
 
   &:focus {

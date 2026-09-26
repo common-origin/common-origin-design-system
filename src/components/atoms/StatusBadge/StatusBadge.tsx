@@ -2,14 +2,14 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
-import { visuallyHidden } from '../../../lib/styleUtils'
+import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
 const { status: statusColors } = tokens.semantic.color
 const { layout: spacing } = tokens.semantic.spacing
 const { radius } = tokens.semantic.border
-const { transition } = tokens.semantic.motion
+const { transition, duration, easing } = tokens.semantic.motion
 const { label } = tokens.component.badge
 
 /**
@@ -157,8 +157,12 @@ const StyledStatusBadge = styled.span.withConfig({
   border-radius: ${radius.circle};
   white-space: nowrap;
   user-select: none;
-  animation: ${scaleIn} 0.2s ease-out;
+  animation: ${scaleIn} ${duration.normal} ${easing.easeOut};
   transition: ${transition.fast};
+
+  ${reducedMotion} {
+    animation: none;
+  }
   
   /* Size styles */
   ${({ $size }) => {

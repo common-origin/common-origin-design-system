@@ -58,6 +58,9 @@ export const cardLargeDocs: ComponentDocumentation = {
     'semantic.border.radius.2xl',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.lg',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
 
   examples: [

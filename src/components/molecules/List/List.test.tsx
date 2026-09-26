@@ -254,6 +254,24 @@ describe('ListItem', () => {
       expect(button).toHaveAttribute('aria-expanded', 'false')
     })
 
+    it('removes collapsed content from the tab order and keeps expanded content reachable', () => {
+      const { rerender } = render(
+        <ListItem primary="Item" expandable expanded={false}>
+          <a href="#details">Details</a>
+        </ListItem>
+      )
+      // visibility: hidden (applied once the collapse finishes) keeps focusable children out of
+      // reach; opacity 0 alone would leave the link in the tab order
+      expect(getComputedStyle(screen.getByText('Details')).visibility).toBe('hidden')
+
+      rerender(
+        <ListItem primary="Item" expandable expanded={true}>
+          <a href="#details">Details</a>
+        </ListItem>
+      )
+      expect(getComputedStyle(screen.getByText('Details')).visibility).toBe('visible')
+    })
+
     it('updates aria-expanded attribute correctly', () => {
       const { rerender } = render(
         <ListItem primary="Item" expandable expanded={false} />

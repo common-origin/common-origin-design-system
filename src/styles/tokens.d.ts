@@ -1319,10 +1319,13 @@ export interface TokensSemanticTypography {
 
 export interface TokensSemanticMotionDuration {
   normal: string;
+  fast: string;
+  slow: string;
 }
 
 export interface TokensSemanticMotionEasing {
   easeInOut: string;
+  easeOut: string;
 }
 
 export interface TokensSemanticMotionTransition {

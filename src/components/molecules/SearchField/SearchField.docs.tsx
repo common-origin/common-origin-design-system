@@ -124,8 +124,11 @@ export const searchFieldDocs: ComponentDocumentation = {
     'component.searchField.sectionHeader.typography',
     'component.searchField.sectionHeader.letterSpacing',
     'semantic.typography.small',
+    'semantic.elevation.floating',
+    // Motion
     'semantic.motion.hover',
-    'semantic.elevation.floating'
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
   ],
   
   examples: [

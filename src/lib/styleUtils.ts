@@ -21,6 +21,10 @@ export const media = {
   '2xl': `@media (min-width: ${breakpoints['2xl']})`,
 }
 
+// Wrap fallbacks for people who ask for less motion (decision 0005): movement becomes
+// an instant change or a simple fade. Colour and opacity transitions need no fallback.
+export const reducedMotion = '@media (prefers-reduced-motion: reduce)'
+
 // Content for screen readers only. The 1px size and -1px margin are part of the standard
 // visually-hidden technique, not design values, so they aren't tokens.
 export const visuallyHidden = css`

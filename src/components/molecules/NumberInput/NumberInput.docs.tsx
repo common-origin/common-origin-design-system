@@ -150,6 +150,9 @@ export const numberInputDocs: ComponentDocumentation = {
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.6xl',
     'semantic.fontWeight.bold',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
   ],
   
   examples: [

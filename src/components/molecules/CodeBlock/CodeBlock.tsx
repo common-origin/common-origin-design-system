@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../atoms/Button'
 import tokens from '@/styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic: { color, border, spacing, motion } } = tokens
 
@@ -42,7 +43,11 @@ const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
     $needsExpansion && !$isExpanded ? 'hidden' : 'auto'};
   margin: ${spacing.layout.sm} 0;
   position: relative;
-  transition: max-height 300ms ease-in-out;
+  transition: max-height ${motion.duration.slow} ${motion.easing.easeInOut};
+
+  ${reducedMotion} {
+    transition: none;
+  }
   
   ${({ $maxHeight, $isExpanded, $needsExpansion }) => {
     if (!$maxHeight || !$needsExpansion) return ''
@@ -77,7 +82,7 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   width: calc(100% - 2 * ${tokens.semantic.border.width.thin});
   margin-bottom: ${spacing.layout.sm};
   border-radius: ${tokens.semantic.border.radius.sm};
-  transition: opacity 300ms ease-in-out, background 300ms ease-in-out;
+  transition: opacity ${motion.duration.slow} ${motion.easing.easeInOut}, background ${motion.duration.slow} ${motion.easing.easeInOut};
   
   ${({ $hasGradient }) => $hasGradient ? `
     margin-top: -${spacing.layout['4xl']};

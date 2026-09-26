@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
+import { reducedMotion } from '../../../lib/styleUtils'
 
-const { semantic: { color, border, zIndex, elevation, spacing: { layout: spacing } }, component: { input, field } } = tokens
+const { semantic: { color, border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
+const { duration, easing } = motion
 
 interface DropdownOption {
   id: string
@@ -45,8 +47,8 @@ const DropdownTrigger = styled.button.withConfig({
   font: ${input.default.font};
   color: ${input.default.textColor};
   cursor: pointer;
-  transition: border-color 200ms ease-in-out, 
-              outline 200ms ease-in-out;
+  transition: border-color ${duration.normal} ${easing.easeInOut},
+              outline ${duration.normal} ${easing.easeInOut};
   
   &:hover:not(:disabled) {
     border-color: ${({ $hasError }) =>
@@ -80,11 +82,15 @@ const DropdownIcon = styled.div.withConfig({
   display: flex;
   align-items: center;
   margin-left: ${spacing.sm};
-  transition: transform 0.15s ease;
+  transition: transform ${duration.fast} ${easing.easeOut};
   
   ${({ $isOpen }) => $isOpen && `
     transform: rotate(180deg);
   `}
+
+  ${reducedMotion} {
+    transition: none;
+  }
 `
 
 const DropdownMenu = styled.div.withConfig({
@@ -103,10 +109,14 @@ const DropdownMenu = styled.div.withConfig({
   overflow: hidden;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-8px)')};
-  transition: all 0.15s ease;
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${spacing.sm})`)};
+  transition: all ${duration.fast} ${easing.easeOut};
   max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
+
+  ${reducedMotion} {
+    transform: none;
+  }
 `
 
 const DropdownOption = styled.button.withConfig({
@@ -125,7 +135,7 @@ const DropdownOption = styled.button.withConfig({
   color: ${input.default.textColor};
   text-align: left;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: background-color ${duration.fast} ${easing.easeOut};
   
   &:hover {
     background-color: ${color.background.surface};

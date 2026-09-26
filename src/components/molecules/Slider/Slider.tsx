@@ -1,6 +1,7 @@
 import { useRef, useState, useEffect, useId, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 
@@ -165,6 +166,10 @@ const StyledThumb = styled.div<{
   transform: translateX(-50%);
   transition: ${semantic.motion.transition.fast};
   box-shadow: ${tokens.component.slider.thumb.shadow.default};
+
+  ${reducedMotion} {
+    transition: none;
+  }
   
   &:hover:not([aria-disabled="true"]) {
     transform: translateX(-50%) scale(1.1);

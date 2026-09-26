@@ -63,7 +63,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
   background-color: ${tokens.semantic.color.background.default};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   gap: ${tokens.semantic.spacing.layout.md};
-  transition: background-color 0.2s ease;
+  transition: background-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
   
   ${({ $clickable }) => $clickable && `
     cursor: pointer;

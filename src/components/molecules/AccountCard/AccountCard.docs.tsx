@@ -96,7 +96,10 @@ export const accountCardDocs: ComponentDocumentation = {
     'semantic.color.text.success',
     'semantic.color.text.error',
     'semantic.typography.h4',
-    'semantic.typography.caption'
+    'semantic.typography.caption',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
 
   examples: [
@@ -430,7 +433,7 @@ export const accountCardDocs: ComponentDocumentation = {
     'Composes from Stack, Box, Icon, Typography, MoneyDisplay, and Button atoms',
     'Minimum dimensions 300x200px ensure consistent card sizes in grids',
     'Elevation shadow provides depth and hierarchy',
-    'Interactive cards have enhanced hover shadow and slight lift transform',
+    'Interactive cards raise their shadow on hover',
     'Account type icons use placeholder icons until custom financial icons added',
     'Trend indicators use directional arrows with semantic colors (green=up, red=down, gray=neutral)',
     'Action buttons expand to fill available width with equal distribution',
