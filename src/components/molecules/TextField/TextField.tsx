@@ -1,11 +1,11 @@
-import { ReactNode, InputHTMLAttributes, forwardRef, useId } from 'react'
+import { InputHTMLAttributes, forwardRef, useId } from 'react'
 import styled from 'styled-components'
 import { StyledInputBase } from './InputBase'
-import { Typography } from '../../atoms/Typography/Typography'
 import { Stack } from '../../atoms/Stack/Stack'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { base } = tokens
+const { field } = tokens.component
 
 /**
  * Props for the TextField component
@@ -59,33 +59,33 @@ export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElemen
 const StyledFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${base.spacing[2]};
+  gap: ${field.gap};
   width: 100%;
 `
 
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
-  gap: ${base.spacing[1]};
-  font: ${semantic.typography.label};
-  color: ${semantic.color.text.default};
-  
+  gap: ${field.label.gap};
+  font: ${field.label.typography};
+  color: ${field.label.color};
+
   &[data-disabled='true'] {
-    color: ${semantic.color.text.disabled};
+    color: ${field.label.colorDisabled};
   }
 `
 
 const StyledRequiredIndicator = styled.span`
-  color: ${semantic.color.text.error};
-  font-weight: ${semantic.fontWeight.bold};
+  color: ${field.requiredIndicator.color};
+  font-weight: ${field.requiredIndicator.fontWeight};
 `
 
 const StyledHelperText = styled.div<{ $hasError?: boolean }>`
-  font: ${semantic.typography.caption};
-  color: ${({ $hasError }) => 
-    $hasError 
-      ? semantic.color.text.error 
-      : semantic.color.text.subdued
+  font: ${field.helperText.typography};
+  color: ${({ $hasError }) =>
+    $hasError
+      ? field.helperText.colorError
+      : field.helperText.color
   };
 `
 

@@ -109,6 +109,16 @@ export const numberInputDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'component.field.gap',
+    'component.field.label.typography',
+    'component.field.label.color',
+    'component.field.label.colorDisabled',
+    'component.field.label.gap',
+    'component.field.requiredIndicator.color',
+    'component.field.requiredIndicator.fontWeight',
+    'component.field.helperText.typography',
+    'component.field.helperText.color',
+    'component.field.helperText.colorError',
     // InputBase tokens
     'component.input.default.font',
     'component.input.default.textColor',
@@ -132,7 +142,6 @@ export const numberInputDocs: ComponentDocumentation = {
     
     // Typography & spacing
     'semantic.typography.label',
-    'semantic.typography.small',
     'semantic.color.text.default',
     'semantic.color.text.subdued',
     'semantic.color.text.error',
@@ -302,7 +311,7 @@ export const numberInputDocs: ComponentDocumentation = {
       {
         name: 'Label',
         description: 'Optional label text with required indicator if needed. Uses semantic typography token.',
-        tokens: ['semantic.typography.label', 'semantic.color.text.default'],
+        tokens: ['component.field.label.typography', 'component.field.label.color', 'component.field.label.colorDisabled', 'component.field.label.gap', 'component.field.requiredIndicator.color', 'component.field.requiredIndicator.fontWeight'],
       },
       {
         name: 'Input Field',
@@ -330,7 +339,7 @@ export const numberInputDocs: ComponentDocumentation = {
       {
         name: 'Helper Text / Error',
         description: 'Optional helper text or error message below input. Error has role="alert" for screen reader announcements.',
-        tokens: ['semantic.typography.small', 'semantic.color.text.subdued', 'semantic.color.text.error'],
+        tokens: ['component.field.helperText.typography', 'component.field.helperText.color', 'component.field.helperText.colorError'],
       },
     ],
   },

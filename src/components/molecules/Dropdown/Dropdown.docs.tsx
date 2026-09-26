@@ -75,6 +75,10 @@ export const dropdownDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.field.gap',
+    'component.field.helperText.typography',
+    'component.field.helperText.color',
+    'component.field.helperText.colorError',
     // Input component tokens
     'component.input.default.paddingY',
     'component.input.default.paddingX',

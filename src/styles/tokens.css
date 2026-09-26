@@ -276,6 +276,16 @@
   --component-badge-label-font-weight: 500;
   --component-badge-label-typography-small: 400 0.75rem/1rem 'Inter', sans-serif;
   --component-badge-label-typography-medium: 400 0.875rem/1.25rem 'Inter', sans-serif;
+  --component-field-gap: 0.5rem;
+  --component-field-label-typography: 600 0.875rem/1.25rem 'Inter', sans-serif;
+  --component-field-label-color: #212529;
+  --component-field-label-color-disabled: #adb5bd;
+  --component-field-label-gap: 0.25rem;
+  --component-field-required-indicator-color: #D31510;
+  --component-field-required-indicator-font-weight: 700;
+  --component-field-helper-text-typography: 400 0.75rem/1rem 'Inter', sans-serif;
+  --component-field-helper-text-color: #495057;
+  --component-field-helper-text-color-error: #D31510;
   --semantic-elevation-none: none;
   --semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --semantic-elevation-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);

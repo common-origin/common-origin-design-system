@@ -229,17 +229,17 @@ The NumberInput component uses the following design tokens from the Common Origi
 - `component.input.disabled.*` - Disabled state styling
 - `component.input.placeholder.*` - Placeholder text styling
 
-### Typography & Spacing
-- `semantic.typography.label` - Label text style
-- `semantic.typography.small` - Helper text style
-- `base.spacing.*` - Spacing tokens
-- `semantic.fontWeight.bold` - Required indicator weight
+### Field (label, required indicator, helper text)
+- `component.field.gap` - Spacing between label, input and helper text
+- `component.field.label.typography` - Label text style
+- `component.field.label.color` / `component.field.label.colorDisabled` - Label colour, and when disabled
+- `component.field.label.gap` - Spacing between the label and the required indicator
+- `component.field.requiredIndicator.color` / `component.field.requiredIndicator.fontWeight` - Required indicator
+- `component.field.helperText.typography` - Helper text style (caption)
+- `component.field.helperText.color` / `component.field.helperText.colorError` - Helper text colour, and for errors
 
-### Colors
-- `semantic.color.text.default` - Default text
-- `semantic.color.text.subdued` - Helper text
-- `semantic.color.text.error` - Error messages
-- `semantic.color.text.disabled` - Disabled state
+### Stepper and input internals
+- `base.spacing.*` - Stepper position and gap, and room for the stepper inside the input
 
 ## Architecture
 

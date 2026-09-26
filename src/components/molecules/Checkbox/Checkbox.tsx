@@ -57,11 +57,11 @@ const StyledFieldContainer = styled.div`
 `
 
 const StyledHelperText = styled.span<{ $error?: boolean }>`
-  font: ${tokens.semantic.typography.small};
+  font: ${tokens.component.field.helperText.typography};
   color: ${(props) =>
     props.$error
-      ? tokens.semantic.color.text.error
-      : tokens.semantic.color.text.subdued};
+      ? tokens.component.field.helperText.colorError
+      : tokens.component.field.helperText.color};
   margin-left: ${tokens.base.spacing[9]}; /* Align with label text after checkbox */
   display: block;
 `

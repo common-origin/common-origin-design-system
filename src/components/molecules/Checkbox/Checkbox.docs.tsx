@@ -191,6 +191,9 @@ export const checkboxDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.field.helperText.typography',
+    'component.field.helperText.color',
+    'component.field.helperText.colorError',
     // Input tokens used
     'component.input.default.backgroundColor',
     'component.input.default.textColor',
@@ -218,7 +221,6 @@ export const checkboxDocs: ComponentDocumentation = {
     'semantic.color.text.inverse',
     'semantic.color.text.error',
     'semantic.color.text.subdued',
-    'semantic.typography.small',
 
     // Base tokens
     'base.spacing.1',
@@ -298,8 +300,8 @@ export const checkboxDocs: ComponentDocumentation = {
         name: 'Helper Text',
         description: 'Optional helper text displayed below checkbox to provide additional context',
         tokens: [
-          'semantic.typography.small',
-          'semantic.color.text.subdued',
+          'component.field.helperText.typography',
+          'component.field.helperText.color',
           'base.spacing.9',
           'base.spacing.1',
         ],
@@ -309,8 +311,8 @@ export const checkboxDocs: ComponentDocumentation = {
         description:
           'Error message with role="alert" and aria-live="polite", replaces helper text when present',
         tokens: [
-          'semantic.typography.small',
-          'semantic.color.text.error',
+          'component.field.helperText.typography',
+          'component.field.helperText.colorError',
           'base.spacing.9',
           'base.spacing.1',
         ],
