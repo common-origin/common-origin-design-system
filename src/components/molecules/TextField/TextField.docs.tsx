@@ -124,6 +124,16 @@ export const textFieldDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.field.gap',
+    'component.field.label.typography',
+    'component.field.label.color',
+    'component.field.label.colorDisabled',
+    'component.field.label.gap',
+    'component.field.requiredIndicator.color',
+    'component.field.requiredIndicator.fontWeight',
+    'component.field.helperText.typography',
+    'component.field.helperText.color',
+    'component.field.helperText.colorError',
     // Typography
     'semantic.typography.body',
     'semantic.typography.label',
@@ -370,21 +380,21 @@ export const textFieldDocs: ComponentDocumentation = {
     parts: [
       {
         name: 'Field Container',
-        description: 'Root wrapper providing vertical spacing between label, input, and help text using Stack component',
-        tokens: ['base.spacing[1]'],
+        description: 'Root wrapper providing vertical spacing between label, input, and help text',
+        tokens: ['component.field.gap'],
       },
       {
         name: 'Label',
         description: 'Typography component displaying field label with optional required indicator. Associated with input via htmlFor',
         tokens: [
-          'semantic.typography.label',
-          'semantic.color.text.default',
+          'component.field.label.typography',
+          'component.field.label.color',
         ],
       },
       {
         name: 'Required Indicator',
         description: 'Red asterisk (*) displayed when required prop is true. Has aria-label="required" for screen readers',
-        tokens: ['semantic.color.text.error', 'semantic.fontWeight.bold'],
+        tokens: ['component.field.requiredIndicator.color', 'component.field.requiredIndicator.fontWeight'],
       },
       {
         name: 'Input Field',
@@ -408,16 +418,16 @@ export const textFieldDocs: ComponentDocumentation = {
         name: 'Helper Text',
         description: 'Optional supplementary text displayed below input. Hidden when error is present. Uses Typography caption variant',
         tokens: [
-          'semantic.typography.caption',
-          'semantic.color.text.subdued',
+          'component.field.helperText.typography',
+          'component.field.helperText.color',
         ],
       },
       {
         name: 'Error Message',
         description: 'Error text displayed below input with role="alert" for screen reader announcements. Replaces helper text when present',
         tokens: [
-          'semantic.typography.caption',
-          'semantic.color.text.error',
+          'component.field.helperText.typography',
+          'component.field.helperText.colorError',
         ],
       },
     ],

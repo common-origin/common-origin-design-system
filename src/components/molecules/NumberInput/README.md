@@ -230,10 +230,10 @@ The NumberInput component uses the following design tokens from the Common Origi
 - `component.input.placeholder.*` - Placeholder text styling
 
 ### Typography & Spacing
-- `semantic.typography.label` - Label text style
-- `semantic.typography.small` - Helper text style
+- `component.field.label.typography` - Label text style
+- `component.field.helperText.typography` - Helper text style (caption)
 - `base.spacing.*` - Spacing tokens
-- `semantic.fontWeight.bold` - Required indicator weight
+- `component.field.requiredIndicator.fontWeight` - Required indicator weight
 
 ### Colors
 - `semantic.color.text.default` - Default text

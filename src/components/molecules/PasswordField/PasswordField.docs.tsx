@@ -131,6 +131,16 @@ export const passwordFieldDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'component.field.gap',
+    'component.field.label.typography',
+    'component.field.label.color',
+    'component.field.label.colorDisabled',
+    'component.field.label.gap',
+    'component.field.requiredIndicator.color',
+    'component.field.requiredIndicator.fontWeight',
+    'component.field.helperText.typography',
+    'component.field.helperText.color',
+    'component.field.helperText.colorError',
     // Typography
     'semantic.typography.body1',
     'semantic.typography.label',
@@ -358,17 +368,17 @@ export const passwordFieldDocs: ComponentDocumentation = {
       {
         name: 'PasswordField Container',
         description: 'Root flex container organizing label, input wrapper, and helper text vertically with consistent spacing',
-        tokens: ['base.spacing[2]'],
+        tokens: ['component.field.gap'],
       },
       {
         name: 'Label',
         description: 'Optional text label with required indicator (*) using semantic typography and associated with input via htmlFor',
         tokens: [
-          'semantic.typography.label',
-          'semantic.color.text.default',
-          'semantic.color.text.disabled',
-          'semantic.color.text.error',
-          'semantic.fontWeight.bold',
+          'component.field.label.typography',
+          'component.field.label.color',
+          'component.field.label.colorDisabled',
+          'component.field.requiredIndicator.color',
+          'component.field.requiredIndicator.fontWeight',
           'base.spacing[1]',
         ],
       },
@@ -405,9 +415,9 @@ export const passwordFieldDocs: ComponentDocumentation = {
         name: 'Helper Text / Error Message',
         description: 'Caption text providing guidance or showing errors. Error takes priority and uses role="alert" for announcements',
         tokens: [
-          'semantic.typography.caption',
-          'semantic.color.text.subdued',
-          'semantic.color.text.error',
+          'component.field.helperText.typography',
+          'component.field.helperText.color',
+          'component.field.helperText.colorError',
         ],
       },
     ],

@@ -383,6 +383,64 @@
           }
         }
       }
+    },
+    "field": {
+      "gap": {
+        "value": "{semantic.spacing.layout.sm}",
+        "type": "spacing",
+        "description": "Vertical gap between a field's label, control and helper text (TextField, PasswordField, NumberInput, Dropdown)."
+      },
+      "label": {
+        "typography": {
+          "value": "{semantic.typography.label}",
+          "type": "typography",
+          "description": "Field label text."
+        },
+        "color": {
+          "value": "{semantic.color.text.default}",
+          "type": "color",
+          "description": "Field label colour."
+        },
+        "colorDisabled": {
+          "value": "{semantic.color.text.disabled}",
+          "type": "color",
+          "description": "Field label colour when the field is disabled."
+        },
+        "gap": {
+          "value": "{semantic.spacing.layout.xs}",
+          "type": "spacing",
+          "description": "Gap between the label text and the required indicator."
+        }
+      },
+      "requiredIndicator": {
+        "color": {
+          "value": "{semantic.color.text.error}",
+          "type": "color",
+          "description": "Colour of the required-field asterisk."
+        },
+        "fontWeight": {
+          "value": "{semantic.fontWeight.bold}",
+          "type": "fontWeight",
+          "description": "Weight of the required-field asterisk."
+        }
+      },
+      "helperText": {
+        "typography": {
+          "value": "{semantic.typography.caption}",
+          "type": "typography",
+          "description": "Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label."
+        },
+        "color": {
+          "value": "{semantic.color.text.subdued}",
+          "type": "color",
+          "description": "Helper text colour."
+        },
+        "colorError": {
+          "value": "{semantic.color.text.error}",
+          "type": "color",
+          "description": "Helper text colour when it describes an error."
+        }
+      }
     }
   }
 }

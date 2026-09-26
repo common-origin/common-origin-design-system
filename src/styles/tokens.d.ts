@@ -775,6 +775,31 @@ export interface TokensComponentBadge {
   label: TokensComponentBadgeLabel;
 }
 
+export interface TokensComponentFieldLabel {
+  typography: string;
+  color: string;
+  colorDisabled: string;
+  gap: string;
+}
+
+export interface TokensComponentFieldRequiredIndicator {
+  color: string;
+  fontWeight: string;
+}
+
+export interface TokensComponentFieldHelperText {
+  typography: string;
+  color: string;
+  colorError: string;
+}
+
+export interface TokensComponentField {
+  gap: string;
+  label: TokensComponentFieldLabel;
+  requiredIndicator: TokensComponentFieldRequiredIndicator;
+  helperText: TokensComponentFieldHelperText;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
@@ -783,6 +808,7 @@ export interface TokensComponent {
   progressBar: TokensComponentProgressBar;
   input: TokensComponentInput;
   badge: TokensComponentBadge;
+  field: TokensComponentField;
 }
 
 export interface TokensSemanticElevation {

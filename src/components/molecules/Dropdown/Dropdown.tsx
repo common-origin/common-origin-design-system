@@ -4,7 +4,7 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 
-const { base: { spacing }, semantic: { color, typography, border, zIndex, elevation }, component: { input } } = tokens
+const { base: { spacing }, semantic: { color, border, zIndex, elevation }, component: { input, field } } = tokens
 
 interface DropdownOption {
   id: string
@@ -142,13 +142,13 @@ const DropdownOption = styled.button.withConfig({
 `
 
 const StyledHelperText = styled.div<{ $hasError?: boolean }>`
-  font: ${typography.caption};
-  color: ${({ $hasError }) => 
-    $hasError 
-      ? color.text.error 
-      : color.text.subdued
+  font: ${field.helperText.typography};
+  color: ${({ $hasError }) =>
+    $hasError
+      ? field.helperText.colorError
+      : field.helperText.color
   };
-  margin-top: ${spacing[2]};
+  margin-top: ${field.gap};
 `
 
 
@@ -273,7 +273,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownContainer ref={dropdownRef} className={className}>
       {label && (
-        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: spacing[2] }}>
+        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: field.gap }}>
           <Typography variant="label">{label}</Typography>
         </label>
       )}
