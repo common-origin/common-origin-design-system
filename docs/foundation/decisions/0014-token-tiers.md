@@ -28,7 +28,7 @@ Use the **hybrid** model:
    - **it departs from the semantic tier.** The component needs a value the semantic tier doesn't give it. Example: Alert's title uses the h6 style (500) but is semibold, so it gets `component.alert.title.fontWeight → {semantic.fontWeight.semibold}`.
    - **it's shared by a family.** Several components share the decision, so they get one shared group rather than a copy per component. Examples: `component.badge` for the pill-label family (radius, height, padding and typography per size), `component.input` (already exists), and a field group for the required indicator.
    - **it's a variant or state matrix.** Colours or sizes per variant and state, as Button has.
-4. **Component tokens reference semantic tokens**, and fall back to base only if no suitable semantic token exists. That fallback is a signal that a semantic token is missing.
+4. **Component tokens reference semantic tokens, never base tokens.** If no suitable semantic token exists, add one first, as in rule 1.
 5. **Tokens hold design decisions only:** colour, typography, spacing, size, radius, border, shadow, motion and layer. Layout mechanics (`display`, flex and grid alignment) stay in component code.
 6. **Every token has `value`, `type` and a `description`** saying what it's for. That includes component tokens, so they can be typed, documented and validated.
 7. **The aim is component styles that only map tokens to CSS properties**, with no design decisions left in component code.
@@ -41,6 +41,6 @@ Use the **hybrid** model:
   2. **Field family:** the required indicator and label treatments shared by TextField, PasswordField and NumberInput.
   3. **Departures:** decisions such as the Alert title's weight move from component code into component tokens.
   4. **Remaining base references** in components are replaced, adding semantic tokens where the tier is missing them (breakpoints, letter spacing).
-- The existing component tier is cleaned up as part of the DTCG / Style Dictionary 5 migration ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)): semantic references instead of base, layout properties removed, real `value` and `type` everywhere, unused groups removed or used.
+- The existing component tier is cleaned up as part of the DTCG / Style Dictionary 5 migration ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)): every component token references a semantic token (adding any missing semantic tokens first, never keeping a base reference), layout properties removed, real `value` and `type` everywhere, unused groups removed or used.
 - Component token names are published, so renaming or removing one is a breaking change (P7). New groups are additive.
 - Lint or a test should eventually block `base.*` imports in `src/components` (see #34's "Done when").

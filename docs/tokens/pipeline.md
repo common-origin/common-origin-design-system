@@ -41,7 +41,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 - Components never use base tokens.
 - Components use semantic tokens by default.
 - Component tokens exist only for departures from the semantic tier, decisions shared by a family (for example `component.badge`, `component.input`), and variant or state matrices.
-- Component tokens reference semantic tokens and hold design decisions only, never layout mechanics.
+- Component tokens reference semantic tokens, never base tokens, and hold design decisions only, never layout mechanics.
 
 The table above describes today's state, which predates 0014 and is being migrated.
 
@@ -168,8 +168,8 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 ## 5. Recipes
 
 ### Add a token (today, v3)
-1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` (semantic tier).
-2. Reference the tier below: semantic → base, component → semantic. Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
+1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
+2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
 3. `npm run build:tokens`, then check `src/styles/tokens.json` for the resolved value.
 4. Commit the source change and regenerated outputs, but not unrelated timestamp-only changes.
 
