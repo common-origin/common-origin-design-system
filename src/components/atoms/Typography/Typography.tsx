@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { typography, color } } = tokens
+const { semantic: { typography, color, letterSpacing } } = tokens
 
 export type TypographyVariant = 
   | 'display' 
@@ -44,13 +44,13 @@ interface StyledTypographyProps {
 
 const getTypographyStyles = (variant: TypographyVariant) => {
   const styles = {
-    display: `font: ${typography.display}; letter-spacing: ${tokens.base.letterSpacing[0]};`,
-    h1: `font: ${typography.h1}; letter-spacing: ${tokens.base.letterSpacing[0]};`,
-    h2: `font: ${typography.h2}; letter-spacing: ${tokens.base.letterSpacing[1]};`,
-    h3: `font: ${typography.h3}; letter-spacing: ${tokens.base.letterSpacing[1]};`,
-    h4: `font: ${typography.h4}; letter-spacing: ${tokens.base.letterSpacing[1]};`,
-    h5: `font: ${typography.h5}; letter-spacing: ${tokens.base.letterSpacing[2]};`,
-    h6: `font: ${typography.h6}; letter-spacing: ${tokens.base.letterSpacing[2]};`,
+    display: `font: ${typography.display}; letter-spacing: ${letterSpacing.tighter};`,
+    h1: `font: ${typography.h1}; letter-spacing: ${letterSpacing.tighter};`,
+    h2: `font: ${typography.h2}; letter-spacing: ${letterSpacing.tight};`,
+    h3: `font: ${typography.h3}; letter-spacing: ${letterSpacing.tight};`,
+    h4: `font: ${typography.h4}; letter-spacing: ${letterSpacing.tight};`,
+    h5: `font: ${typography.h5}; letter-spacing: ${letterSpacing.normal};`,
+    h6: `font: ${typography.h6}; letter-spacing: ${letterSpacing.normal};`,
     subtitle: `font: ${typography.subtitle};`,
     body: `font: ${typography.body};`,
     small: `font: ${typography.small};`,
@@ -110,14 +110,6 @@ const StyledTypography = styled.span.withConfig({
   ${({ $variant }) => getTypographyStyles($variant)}
   color: ${({ $color }) => getTextColor($color)};
   margin: 0;
-  
-  /* Ensure proper line height for readability */
-  ${({ $variant }) => {
-    if (['body', 'subtitle', 'small'].includes($variant)) {
-      return 'line-height: 1.5;'
-    }
-    return ''
-  }}
 `
 
 /**

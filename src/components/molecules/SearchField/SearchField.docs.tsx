@@ -120,6 +120,8 @@ export const searchFieldDocs: ComponentDocumentation = {
     'base.border.radius.3',
     'semantic.typography.body',
     'semantic.typography.caption',
+    'component.searchField.sectionHeader.typography',
+    'component.searchField.sectionHeader.letterSpacing',
     'semantic.typography.small',
     'semantic.motion.hover',
     'semantic.elevation.floating'
@@ -433,7 +435,8 @@ useEffect(() => {
         description: 'Header and items for recent search history',
         tokens: [
           'semantic.color.text.subdued',
-          'semantic.typography.caption'
+          'component.searchField.sectionHeader.typography',
+          'component.searchField.sectionHeader.letterSpacing'
         ]
       }
     ]

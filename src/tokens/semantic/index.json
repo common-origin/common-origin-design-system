@@ -32,6 +32,84 @@
         "description": "Fixed headers, sticky navigation, bottom bars"
       }
     },
+    "fontFamily": {
+      "body": {
+        "value": "{base.fontFamily.body}",
+        "type": "fontFamily",
+        "description": "UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own."
+      },
+      "monospace": {
+        "value": "{base.fontFamily.monospace}",
+        "type": "fontFamily",
+        "description": "Code and other fixed-width text (CodeBlock)."
+      }
+    },
+    "fontSize": {
+      "xs": {
+        "value": "{base.fontSize.1}",
+        "type": "fontSize",
+        "description": "0.75rem."
+      },
+      "sm": {
+        "value": "{base.fontSize.2}",
+        "type": "fontSize",
+        "description": "0.875rem."
+      },
+      "md": {
+        "value": "{base.fontSize.3}",
+        "type": "fontSize",
+        "description": "1rem."
+      },
+      "lg": {
+        "value": "{base.fontSize.4}",
+        "type": "fontSize",
+        "description": "1.125rem."
+      },
+      "xl": {
+        "value": "{base.fontSize.5}",
+        "type": "fontSize",
+        "description": "1.25rem."
+      }
+    },
+    "lineHeight": {
+      "none": {
+        "value": "{base.lineHeight.none}",
+        "type": "lineHeight",
+        "description": "1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators."
+      },
+      "tight": {
+        "value": "{base.lineHeight.3}",
+        "type": "lineHeight",
+        "description": "1.25rem: compact multi-line text (Alert, CodeBlock)."
+      },
+      "normal": {
+        "value": "{base.lineHeight.4}",
+        "type": "lineHeight",
+        "description": "1.5rem: body-text line height (TextArea)."
+      }
+    },
+    "letterSpacing": {
+      "tighter": {
+        "value": "{base.letterSpacing.0}",
+        "type": "letterSpacing",
+        "description": "-0.125rem: tracking for the largest headings (display, h1)."
+      },
+      "tight": {
+        "value": "{base.letterSpacing.1}",
+        "type": "letterSpacing",
+        "description": "-0.0625rem: tracking for h2 to h4."
+      },
+      "normal": {
+        "value": "{base.letterSpacing.2}",
+        "type": "letterSpacing",
+        "description": "0: default tracking (h5, h6 and text)."
+      },
+      "wide": {
+        "value": "{base.letterSpacing.4}",
+        "type": "letterSpacing",
+        "description": "0.125rem: tracking for small uppercase labels (SearchField section headers)."
+      }
+    },
     "fontWeight": {
       "regular": {
         "value": "{base.fontWeight.2}",

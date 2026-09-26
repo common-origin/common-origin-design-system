@@ -198,10 +198,10 @@ const StyledSuggestionsList = styled.ul`
 
 const StyledSectionHeader = styled.div`
   padding: ${base.spacing[2]} ${base.spacing[3]};
-  font: ${semantic.typography.caption};
+  font: ${tokens.component.searchField.sectionHeader.typography};
   color: ${semantic.color.text.subdued};
   text-transform: uppercase;
-  letter-spacing: ${base.letterSpacing[4]};
+  letter-spacing: ${tokens.component.searchField.sectionHeader.letterSpacing};
 `
 
 const debounce = <T extends (...args: any[]) => any>(

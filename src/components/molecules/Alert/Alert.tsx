@@ -7,6 +7,7 @@ import type { IconName } from '../../../types/icons'
 import { Typography } from '../../atoms/Typography'
 
 const { semantic, base } = tokens
+const { alert } = tokens.component
 
 export interface AlertProps {
   /**
@@ -162,15 +163,15 @@ const StyledContent = styled.div`
 `
 
 const StyledTitle = styled.span`
-  font: ${semantic.typography.h6};
-  font-weight: ${semantic.fontWeight.semibold};
+  font: ${alert.title.typography};
+  font-weight: ${alert.title.fontWeight};
+  line-height: ${alert.title.lineHeight};
   margin: 0;
-	line-height: 1.125;
 `
 
 const StyledMessage = styled.span`
-  font: ${semantic.typography.body};
-	line-height: 1.25;
+  font: ${alert.message.typography};
+  line-height: ${alert.message.lineHeight};
 `
 
 const StyledActions = styled.div`

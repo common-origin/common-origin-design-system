@@ -34,7 +34,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 | Tier | File | Convention today |
 |---|---|---|
 | Base | `src/tokens/base/index.json` | Raw values, `{ "value", "type" }`. 17 types, kebab-case (`border-radius`, `font-size`, `box-shadow`, `z-index`, …) |
-| Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 10 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
+| Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 14 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`, `fontFamily`, `fontSize`, `lineHeight`, `letterSpacing`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
 | Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 17 values hard-code `px` (focus outline offsets, chip padding, icon-button sizes, input padding) |
 
 **Which tier a component uses** ([decision 0014](../foundation/decisions/0014-token-tiers.md)):
@@ -42,6 +42,7 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 - Components use semantic tokens by default.
 - Component tokens exist only for departures from the semantic tier, decisions shared by a family (for example `component.badge`, `component.input`), and variant or state matrices.
 - Component tokens reference semantic tokens, never base tokens, and hold design decisions only, never layout mechanics.
+- Typography parts come from small named semantic scales, which hold only the steps components use: `fontFamily` (body, monospace), `fontSize` (xs–xl), `lineHeight` (none, tight, normal), `letterSpacing` (wide) and `fontWeight`. A component that departs from a typography style, such as Alert's title, combines the style with these parts through its component tokens.
 
 The table above describes today's state, which predates 0014 and is being migrated.
 

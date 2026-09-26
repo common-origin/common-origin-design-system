@@ -47,13 +47,14 @@ export const avatarDocs: ComponentDocumentation = {
     'semantic.border.radius.circle',
     'semantic.color.background.surface',
     'semantic.color.text.default',
-    'base.fontFamily.body',
-    'semantic.fontWeight.medium',
-    'base.fontSize.1',
-    'base.fontSize.2',
-    'base.fontSize.3',
-    'base.fontSize.4',
-    'base.fontSize.5'
+    'component.avatar.initials.fontFamily',
+    'component.avatar.initials.fontWeight',
+    'component.avatar.initials.lineHeight',
+    'component.avatar.initials.fontSize.xs',
+    'component.avatar.initials.fontSize.sm',
+    'component.avatar.initials.fontSize.md',
+    'component.avatar.initials.fontSize.lg',
+    'component.avatar.initials.fontSize.xl'
   ],
 
   examples: [

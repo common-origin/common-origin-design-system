@@ -937,6 +937,10 @@
     }
   },
   "lineHeight": {
+    "none": {
+      "value": "1",
+      "type": "line-height"
+    },
     "1": {
       "value": "1rem",
       "type": "line-height"

@@ -312,6 +312,7 @@ export interface TokensBaseLineHeight {
   '9': string;
   '10': string;
   '11': string;
+  none: string;
 }
 
 export interface TokensBaseLetterSpacing {
@@ -751,6 +752,7 @@ export interface TokensComponentBadgeCount {
   minWidth: string;
   height: string;
   paddingX: string;
+  lineHeight: string;
 }
 
 export interface TokensComponentBadgeRing {
@@ -800,6 +802,65 @@ export interface TokensComponentField {
   helperText: TokensComponentFieldHelperText;
 }
 
+export interface TokensComponentAlertTitle {
+  typography: string;
+  fontWeight: string;
+  lineHeight: string;
+}
+
+export interface TokensComponentAlertMessage {
+  typography: string;
+  lineHeight: string;
+}
+
+export interface TokensComponentAlert {
+  title: TokensComponentAlertTitle;
+  message: TokensComponentAlertMessage;
+}
+
+export interface TokensComponentTabBarBadge {
+  typography: string;
+  fontWeight: string;
+}
+
+export interface TokensComponentTabBar {
+  badge: TokensComponentTabBarBadge;
+}
+
+export interface TokensComponentSearchFieldSectionHeader {
+  typography: string;
+  letterSpacing: string;
+}
+
+export interface TokensComponentSearchField {
+  sectionHeader: TokensComponentSearchFieldSectionHeader;
+}
+
+export interface TokensComponentAvatarInitialsFontSize {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+}
+
+export interface TokensComponentAvatarInitials {
+  fontFamily: string;
+  fontWeight: string;
+  lineHeight: string;
+  fontSize: TokensComponentAvatarInitialsFontSize;
+}
+
+export interface TokensComponentAvatar {
+  initials: TokensComponentAvatarInitials;
+}
+
+export interface TokensComponentCodeBlock {
+  fontFamily: string;
+  fontSize: string;
+  lineHeight: string;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
@@ -809,6 +870,11 @@ export interface TokensComponent {
   input: TokensComponentInput;
   badge: TokensComponentBadge;
   field: TokensComponentField;
+  alert: TokensComponentAlert;
+  tabBar: TokensComponentTabBar;
+  searchField: TokensComponentSearchField;
+  avatar: TokensComponentAvatar;
+  codeBlock: TokensComponentCodeBlock;
 }
 
 export interface TokensSemanticElevation {
@@ -818,6 +884,32 @@ export interface TokensSemanticElevation {
   floating: string;
   overlay: string;
   sticky: string;
+}
+
+export interface TokensSemanticFontFamily {
+  body: string;
+  monospace: string;
+}
+
+export interface TokensSemanticFontSize {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+}
+
+export interface TokensSemanticLineHeight {
+  none: string;
+  tight: string;
+  normal: string;
+}
+
+export interface TokensSemanticLetterSpacing {
+  tighter: string;
+  tight: string;
+  normal: string;
+  wide: string;
 }
 
 export interface TokensSemanticFontWeight {
@@ -1074,6 +1166,10 @@ export interface TokensSemanticMotion {
 
 export interface TokensSemantic {
   elevation: TokensSemanticElevation;
+  fontFamily: TokensSemanticFontFamily;
+  fontSize: TokensSemanticFontSize;
+  lineHeight: TokensSemanticLineHeight;
+  letterSpacing: TokensSemanticLetterSpacing;
   fontWeight: TokensSemanticFontWeight;
   zIndex: TokensSemanticZIndex;
   border: TokensSemanticBorder;

@@ -4,6 +4,7 @@ import tokens from '@/styles/tokens.json'
 
 // Destructure tokens
 const { semantic } = tokens
+const { initials } = tokens.component.avatar
 const { color, size, border } = semantic
 const { radius } = border
 
@@ -46,20 +47,11 @@ const AvatarImage = styled.img.withConfig({
 const AvatarInitials = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledAvatarProps>`
-  font-family: ${tokens.base.fontFamily.body};
-  font-weight: ${semantic.fontWeight.medium};
-  font-size: ${({ $size }) => {
-    const sizeMap = {
-      xs: tokens.base.fontSize[1],
-      sm: tokens.base.fontSize[2],
-      md: tokens.base.fontSize[3],
-      lg: tokens.base.fontSize[4],
-      xl: tokens.base.fontSize[5]
-    }
-    return sizeMap[$size]
-  }};
+  font-family: ${initials.fontFamily};
+  font-weight: ${initials.fontWeight};
+  font-size: ${({ $size }) => initials.fontSize[$size]};
   color: ${color.text.default};
-  line-height: 1;
+  line-height: ${initials.lineHeight};
   text-transform: uppercase;
   user-select: none;
 `

@@ -352,6 +352,11 @@
         "paddingX": {
           "value": "{base.spacing.1}",
           "description": "Horizontal padding inside the count badge (0.25rem / 4px)"
+        },
+        "lineHeight": {
+          "value": "{semantic.lineHeight.none}",
+          "type": "lineHeight",
+          "description": "Line height of the count text, so the digits centre in the indicator."
         }
       },
       "ring": {
@@ -440,6 +445,128 @@
           "type": "color",
           "description": "Helper text colour when it describes an error."
         }
+      }
+    },
+    "alert": {
+      "title": {
+        "typography": {
+          "value": "{semantic.typography.h6}",
+          "type": "typography",
+          "description": "Alert title style (h6), adjusted by title.fontWeight and title.lineHeight."
+        },
+        "fontWeight": {
+          "value": "{semantic.fontWeight.semibold}",
+          "type": "fontWeight",
+          "description": "Alert titles are semibold, heavier than h6's medium."
+        },
+        "lineHeight": {
+          "value": "{semantic.lineHeight.tight}",
+          "type": "lineHeight",
+          "description": "Alert titles use a tighter line height than h6."
+        }
+      },
+      "message": {
+        "typography": {
+          "value": "{semantic.typography.body}",
+          "type": "typography",
+          "description": "Alert message style (body), adjusted by message.lineHeight."
+        },
+        "lineHeight": {
+          "value": "{semantic.lineHeight.tight}",
+          "type": "lineHeight",
+          "description": "Alert messages use a tighter line height than body."
+        }
+      }
+    },
+    "tabBar": {
+      "badge": {
+        "typography": {
+          "value": "{semantic.typography.caption}",
+          "type": "typography",
+          "description": "Tab count badge text."
+        },
+        "fontWeight": {
+          "value": "{semantic.fontWeight.bold}",
+          "type": "fontWeight",
+          "description": "Tab count badges are bold, heavier than caption."
+        }
+      }
+    },
+    "searchField": {
+      "sectionHeader": {
+        "typography": {
+          "value": "{semantic.typography.caption}",
+          "type": "typography",
+          "description": "Suggestion-list section header text (shown uppercase)."
+        },
+        "letterSpacing": {
+          "value": "{semantic.letterSpacing.wide}",
+          "type": "letterSpacing",
+          "description": "Tracking for the uppercase section header."
+        }
+      }
+    },
+    "avatar": {
+      "initials": {
+        "fontFamily": {
+          "value": "{semantic.fontFamily.body}",
+          "type": "fontFamily",
+          "description": "Initials font."
+        },
+        "fontWeight": {
+          "value": "{semantic.fontWeight.medium}",
+          "type": "fontWeight",
+          "description": "Initials weight."
+        },
+        "lineHeight": {
+          "value": "{semantic.lineHeight.none}",
+          "type": "lineHeight",
+          "description": "Initials sit on a single line equal to their size."
+        },
+        "fontSize": {
+          "xs": {
+            "value": "{semantic.fontSize.xs}",
+            "type": "fontSize",
+            "description": "Initials in an xs avatar."
+          },
+          "sm": {
+            "value": "{semantic.fontSize.sm}",
+            "type": "fontSize",
+            "description": "Initials in an sm avatar."
+          },
+          "md": {
+            "value": "{semantic.fontSize.md}",
+            "type": "fontSize",
+            "description": "Initials in an md avatar."
+          },
+          "lg": {
+            "value": "{semantic.fontSize.lg}",
+            "type": "fontSize",
+            "description": "Initials in an lg avatar."
+          },
+          "xl": {
+            "value": "{semantic.fontSize.xl}",
+            "type": "fontSize",
+            "description": "Initials in an xl avatar."
+          }
+        }
+      }
+    },
+    "codeBlock": {
+      "fontFamily": {
+        "value": "{semantic.fontFamily.monospace}",
+        "type": "fontFamily",
+        "description": "Code font."
+      },
+      "fontSize": {
+        "value": "{semantic.fontSize.xs}",
+        "type": "fontSize",
+        "description": "Code text size."
+      },
+      "lineHeight": {
+        "value": "{semantic.lineHeight.tight}",
+        "type": "lineHeight",
+        "description": "Code line height."
       }
     }
   }
