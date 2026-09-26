@@ -280,6 +280,12 @@ const OpacitySample = styled.div<{ $opacity: string }>`
   font: ${tokens.semantic.typography.caption};
 `
 
+// Contains the z-index examples in their own stacking context, so a sample at
+// e.g. 1020 can't paint over the page's sticky bar or the mobile menu.
+const ZIndexExamples = styled.div`
+  isolation: isolate;
+`
+
 const ZIndexSample = styled.div<{ $zIndex: string }>`
   position: relative;
   z-index: ${props => props.$zIndex};
@@ -797,6 +803,7 @@ const renderZIndexTokensTable = (zIndexTokens: any, title = 'Z-Index', prefix = 
   return (
     <Box mb="7xl">
       <Typography variant="h3" color="default">{title}</Typography>
+      <ZIndexExamples>
       <TokenTable>
         <thead>
           <tr>
@@ -827,6 +834,7 @@ const renderZIndexTokensTable = (zIndexTokens: any, title = 'Z-Index', prefix = 
           ))}
         </tbody>
       </TokenTable>
+      </ZIndexExamples>
     </Box>
   )
 }
