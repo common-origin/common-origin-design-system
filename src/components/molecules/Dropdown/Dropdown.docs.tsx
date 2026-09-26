@@ -100,7 +100,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'base.spacing.2',
     'base.spacing.1',
     'base.shadow.3',
-    'base.zIndex.3',
+    'semantic.zIndex.dropdown',
     
     // Semantic tokens
     'semantic.color.background.surface',

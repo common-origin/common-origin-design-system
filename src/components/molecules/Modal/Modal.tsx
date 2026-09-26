@@ -116,7 +116,7 @@ const StyledOverlay = styled.div`
   position: fixed;
   inset: 0;
   background-color: ${color.background.overlay};
-  z-index: 9999;
+  z-index: ${semantic.zIndex.modal};
   ${css`animation: ${fadeIn} 200ms ease-out;`}
 `
 
@@ -127,7 +127,7 @@ const StyledDialog = styled.div.withConfig({
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  z-index: 10000;
+  z-index: ${semantic.zIndex.modal};
 
   width: ${({ $width }) => $width};
   max-width: calc(100vw - ${layout.lg} * 2);

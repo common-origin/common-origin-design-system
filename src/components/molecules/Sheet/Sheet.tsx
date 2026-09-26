@@ -138,7 +138,7 @@ const StyledOverlay = styled.div.withConfig({
   right: 0;
   bottom: 0;
   background-color: ${semantic.color.background.overlay};
-  z-index: 1000;
+  z-index: ${semantic.zIndex.overlay};
   ${css`animation: ${fadeIn} 200ms ease-in-out;`}
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 `
@@ -155,7 +155,7 @@ const StyledSheet = styled.div.withConfig({
   position: fixed;
   background-color: ${semantic.color.background.default};
   box-shadow: ${base.shadow[4]};
-  z-index: 1001;
+  z-index: ${semantic.zIndex.overlay};
   overflow-y: auto;
   
   /* Position-specific styles */

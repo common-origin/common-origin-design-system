@@ -97,6 +97,7 @@ export const sheetDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.zIndex.overlay',
     // Colors
     'semantic.color.background.default',
     'semantic.color.background.overlay',
@@ -750,7 +751,7 @@ Visual Variants:
       {
         name: 'Overlay',
         description: 'Fixed-position backdrop that covers the entire viewport with a semi-transparent near-black background. Fades in with 200ms animation. Clicking it closes the sheet by default.',
-        tokens: ['semantic.color.background.overlay'],
+        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.overlay'],
       },
       {
         name: 'Sheet Panel',

@@ -193,7 +193,7 @@ const StyledSuggestionsList = styled.ul`
   list-style: none;
   padding: ${base.spacing[1]} 0;
   margin: 0;
-  z-index: 1000;
+  z-index: ${semantic.zIndex.dropdown};
 `
 
 const StyledSectionHeader = styled.div`

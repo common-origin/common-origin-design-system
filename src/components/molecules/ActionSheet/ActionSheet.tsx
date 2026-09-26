@@ -135,7 +135,7 @@ const StyledOverlay = styled.div`
   position: fixed;
   inset: 0;
   background-color: ${color.background.overlay};
-  z-index: 9999;
+  z-index: ${tokens.semantic.zIndex.modal};
   animation: ${fadeIn} 0.2s ease-out;
 `
 
@@ -150,7 +150,7 @@ const StyledActionSheet = styled.div`
   box-shadow: ${elevation.overlay};
   max-height: 90vh;
   overflow-y: auto;
-  z-index: 10000;
+  z-index: ${tokens.semantic.zIndex.modal};
   animation: ${slideUp} 0.3s ease-out;
 `
 

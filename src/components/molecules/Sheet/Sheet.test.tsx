@@ -52,6 +52,20 @@ describe('Sheet', () => {
       expect(screen.getByTestId('sheet-overlay')).toBeInTheDocument()
     })
 
+    it('puts the backdrop and panel on the overlay layer, backdrop first', () => {
+      render(
+        <Sheet isOpen={true} onClose={mockOnClose} data-testid="sheet">
+          Content
+        </Sheet>
+      )
+      const backdrop = screen.getByTestId('sheet-overlay')
+      const panel = screen.getByRole('dialog')
+      const { overlay } = tokens.semantic.zIndex
+      expect(backdrop).toHaveStyle({ zIndex: overlay })
+      expect(panel).toHaveStyle({ zIndex: overlay })
+      expect(backdrop.compareDocumentPosition(panel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    })
+
     it('uses the overlay token for the backdrop', () => {
       render(
         <Sheet isOpen={true} onClose={mockOnClose} data-testid="sheet">

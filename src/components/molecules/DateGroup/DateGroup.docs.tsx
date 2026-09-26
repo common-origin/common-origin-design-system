@@ -79,6 +79,7 @@ export const dateGroupDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.zIndex.sticky',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.sm',
     'semantic.color.background.default',

@@ -32,6 +32,28 @@
         "description": "Fixed headers, sticky navigation, bottom bars"
       }
     },
+    "zIndex": {
+      "sticky": {
+        "value": "{base.zIndex.1}",
+        "type": "zIndex",
+        "description": "Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals."
+      },
+      "dropdown": {
+        "value": "{base.zIndex.6}",
+        "type": "zIndex",
+        "description": "Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays."
+      },
+      "overlay": {
+        "value": "{base.zIndex.7}",
+        "type": "zIndex",
+        "description": "Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals."
+      },
+      "modal": {
+        "value": "{base.zIndex.8}",
+        "type": "zIndex",
+        "description": "Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system."
+      }
+    },
 		"border": {
 			"default": {
 				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",

@@ -96,6 +96,15 @@ describe('ActionSheet', () => {
       expect(screen.getByTestId('action-sheet-test')).toBeInTheDocument()
     })
 
+    it('puts the backdrop and sheet on the modal layer, backdrop first', () => {
+      renderActionSheet({ 'data-testid': 'action-sheet-test' })
+      const sheet = screen.getByTestId('action-sheet-test')
+      const backdrop = sheet.previousElementSibling
+      const { modal } = tokens.semantic.zIndex
+      expect(backdrop).toHaveStyle({ zIndex: modal })
+      expect(sheet).toHaveStyle({ zIndex: modal })
+    })
+
     it('uses the overlay token for the backdrop', () => {
       renderActionSheet({ 'data-testid': 'action-sheet-test' })
       // The backdrop is rendered as the sheet's preceding sibling
