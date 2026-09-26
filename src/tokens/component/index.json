@@ -568,6 +568,27 @@
         "type": "lineHeight",
         "description": "Code line height."
       }
+    },
+    "slider": {
+      "thumb": {
+        "shadow": {
+          "default": {
+            "value": "{semantic.elevation.raised}",
+            "type": "boxShadow",
+            "description": "Slider thumb at rest."
+          },
+          "hover": {
+            "value": "{semantic.elevation.sticky}",
+            "type": "boxShadow",
+            "description": "Slider thumb on hover: one step deeper."
+          },
+          "active": {
+            "value": "{semantic.elevation.floating}",
+            "type": "boxShadow",
+            "description": "Slider thumb while dragging: deepest."
+          }
+        }
+      }
     }
   }
 }

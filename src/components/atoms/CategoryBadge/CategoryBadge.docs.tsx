@@ -100,17 +100,17 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     'semantic.color.category.gray-emphasis - Filled gray badge background',
     'semantic.color.category.gray-subtle - Minimal gray badge background',
     'semantic.color.text.inverse - White text for filled variant badges',
-    'base.spacing.1 - 2px padding for small size (horizontal)',
-    'base.spacing.2 - 4px padding for small size (vertical)',
-    'base.spacing.3 - 6px padding for medium size',
+    'semantic.spacing.layout.xs - 2px padding for small size (horizontal)',
+    'semantic.spacing.layout.sm - 4px padding for small size (vertical)',
+    'semantic.spacing.layout.md - 6px padding for medium size',
     'component.badge.label.typography.small - Typography for small size badges',
     'component.badge.label.typography.medium - Typography for medium size badges',
     'component.badge.label.fontWeight - Label weight shared by the badge-like family',
-    'base.border.radius.pill - Fully rounded corners for badge shape',
-    'base.border.width.1 - 1px border for outlined variant',
+    'semantic.border.radius.circle - Fully rounded corners for badge shape',
+    'semantic.border.width.thin - 1px border for outlined variant',
     'semantic.size.icon.xs - 12px icon size for small badges',
     'semantic.size.icon.sm - 16px icon size for medium badges',
-    'base.spacing.1 - 2px gap between icon and label'
+    'semantic.spacing.layout.xs - 2px gap between icon and label'
   ],
 
   examples: [
@@ -344,8 +344,8 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           'semantic.color.category.[color]',
           'semantic.color.category.[color]-emphasis',
           'semantic.color.category.[color]-subtle',
-          'base.border.radius.pill',
-          'base.border.width.1'
+          'semantic.border.radius.circle',
+          'semantic.border.width.thin'
         ]
       },
       {

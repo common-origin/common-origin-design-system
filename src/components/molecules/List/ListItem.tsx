@@ -5,7 +5,7 @@ import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 
 export interface ListItemProps {
   /**
@@ -142,7 +142,7 @@ const StyledListItem = styled.li.withConfig({
   
   /* Disabled state */
   ${({ $disabled }) => $disabled && `
-    opacity: ${base.opacity[50]};
+    opacity: ${semantic.opacity.disabled};
     cursor: not-allowed;
     pointer-events: none;
   `}
@@ -169,7 +169,7 @@ const StyledItemContent = styled.div.withConfig({
     $spacing === 'compact'
       ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md}`
       : `${semantic.spacing.layout.md} ${semantic.spacing.layout.lg}`};
-  border-radius: ${base.border.radius[2]};
+  border-radius: ${semantic.border.radius.sm};
   background-color: ${({ $selected }) =>
     $selected ? semantic.color.background['interactive-subtle'] : 'transparent'};
   transition: background-color 150ms ease;
@@ -259,7 +259,7 @@ const StyledExpandedContent = styled.div.withConfig({
         : `${semantic.spacing.layout.sm} ${semantic.spacing.layout.lg} ${semantic.spacing.layout.md} 60px`
     };
     background-color: ${semantic.color.background['subtle']};
-    border-radius: ${base.border.radius[2]};
+    border-radius: ${semantic.border.radius.sm};
     margin: 0 ${
       $spacing === 'compact' 
         ? semantic.spacing.layout.md 

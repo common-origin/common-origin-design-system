@@ -311,7 +311,7 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.color.background.*',
     'semantic.color.text.*',
     'semantic.color.border.*',
-    'base.border.radius.*'
+    'semantic.border.radius.*'
   ],
 
   examples: [

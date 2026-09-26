@@ -44,7 +44,9 @@ src/tokens/{base,semantic,component}/index.json   (+ src/tokens/index.json)
 - Component tokens reference semantic tokens, never base tokens, and hold design decisions only, never layout mechanics.
 - Typography parts come from small named semantic scales, which hold only the steps components use: `fontFamily` (body, monospace), `fontSize` (xs–xl), `lineHeight` (none, tight, normal), `letterSpacing` (wide) and `fontWeight`. A component that departs from a typography style, such as Alert's title, combines the style with these parts through its component tokens.
 
-The table above describes today's state, which predates 0014 and is being migrated.
+An ESLint rule (`no-restricted-syntax` in `eslint.config.mjs`) fails the lint if a component in `src/components` uses `tokens.base` or destructures `base` from `tokens`. The one exception is `GridSystem`: its `gap*` props are typed as base spacing keys (public API), so it looks them up in `base.spacing` until those props accept semantic keys.
+
+The table above describes the component tier's state before 0014; it is being cleaned up with #24.
 
 Values are strings. There are no object-valued (composite) tokens and no arithmetic expressions. Typography is a CSS `font` shorthand string (`"700 3rem/3rem 'Inter', sans-serif"`); shadows are CSS strings.
 

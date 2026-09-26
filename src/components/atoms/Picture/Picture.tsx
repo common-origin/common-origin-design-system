@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { media } from '../../../lib/styleUtils'
 
-const { base } = tokens
 
 type PictureProps = {
   title: string
@@ -27,7 +26,7 @@ const PictureWrapper = styled.div`
 const ImageLink = styled.a`
   display: block;
   cursor: pointer;
-  transition: opacity ${base.duration.normal} ${base.easing.easeInOut};
+  transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
   
   &:hover {
     opacity: 0.8;
@@ -41,7 +40,7 @@ const ImageButton = styled.button`
   cursor: pointer;
   display: block;
   width: 100%;
-  transition: opacity ${base.duration.normal} ${base.easing.easeInOut};
+  transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
   
   &:hover {
     opacity: 0.8;
@@ -51,7 +50,7 @@ const ImageButton = styled.button`
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
-  border-radius: ${base.border.radius[2]};
+  border-radius: ${tokens.semantic.border.radius.sm};
   display: block;
 `
 

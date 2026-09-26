@@ -146,9 +146,9 @@ export const numberInputDocs: ComponentDocumentation = {
     'semantic.color.text.subdued',
     'semantic.color.text.error',
     'semantic.color.text.disabled',
-    'base.spacing.1',
-    'base.spacing.2',
-    'base.spacing.10',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.6xl',
     'semantic.fontWeight.bold',
   ],
   
@@ -323,13 +323,13 @@ export const numberInputDocs: ComponentDocumentation = {
           'component.input.default.backgroundColor',
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
-          'base.spacing.10',
+          'semantic.spacing.layout.6xl',
         ],
       },
       {
         name: 'Stepper Container',
         description: 'Absolute positioned container on right side of input holding increment/decrement buttons',
-        tokens: ['base.spacing.1'],
+        tokens: ['semantic.spacing.layout.xs'],
       },
       {
         name: 'Stepper Buttons',

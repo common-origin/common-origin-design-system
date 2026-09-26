@@ -256,7 +256,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
         tokens: [
           'semantic.color.status.[type]',
           'semantic.color.status.[type]-bg',
-          'base.border.radius.pill'
+          'semantic.border.radius.circle'
         ]
       },
       {

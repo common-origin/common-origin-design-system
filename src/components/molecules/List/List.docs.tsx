@@ -249,9 +249,9 @@ export const listDocs: ComponentDocumentation = {
     'semantic.color.icon.default',
     'semantic.color.icon.subdued',
     'semantic.color.border.default',
-    'base.border.radius[1] (2px)',
-    'base.border.radius[2] (4px)',
-    'base.opacity[50] (0.5)',
+    'semantic.border.radius.xs (2px)',
+    'semantic.border.radius.sm (4px)',
+    'semantic.opacity.disabled (0.5)',
   ],
   
   examples: [

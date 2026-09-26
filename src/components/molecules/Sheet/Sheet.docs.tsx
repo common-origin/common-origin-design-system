@@ -106,12 +106,12 @@ export const sheetDocs: ComponentDocumentation = {
     'semantic.elevation.overlay',
     
     // Spacing
-    'base.spacing[2]',
-    'base.spacing[4]',
-    'base.spacing[6]',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.lg',
+    'semantic.spacing.layout.2xl',
     
     // Border
-    'base.border.radius[3]',
+    'semantic.border.radius.md',
     
     // Colors for scrollbar
     'semantic.color.border.default',
@@ -759,16 +759,16 @@ Visual Variants:
         tokens: [
           'semantic.color.background.default',
           'semantic.elevation.overlay',
-          'base.border.radius[3]',
-          'base.spacing[2]',
-          'base.spacing[4]',
-          'base.spacing[6]',
+          'semantic.border.radius.md',
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.lg',
+          'semantic.spacing.layout.2xl',
         ],
       },
       {
         name: 'Content Area',
         description: 'Inner wrapper for children with padding. Inherits sheet dimensions and can scroll if content exceeds available space.',
-        tokens: ['base.spacing[6]'],
+        tokens: ['semantic.spacing.layout.2xl'],
       },
     ],
   },

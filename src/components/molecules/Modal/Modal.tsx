@@ -9,7 +9,7 @@ import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 const { spacing: { layout }, color, border, elevation, motion } = semantic
 
 // ---------------------------------------------------------------------------
@@ -144,7 +144,7 @@ const StyledDialog = styled.div.withConfig({
   ${css`animation: ${scaleIn} 200ms ease-out;`}
 
   /* Auto-fullscreen below md breakpoint (768px) */
-  @media (max-width: ${base.breakpoint.md}) {
+  @media (max-width: ${semantic.breakpoint.md}) {
     width: 100vw;
     height: 100vh;
     max-width: 100vw;
@@ -176,7 +176,7 @@ const StyledBody = styled.div`
 
   /* Scrollbar styling */
   &::-webkit-scrollbar {
-    width: ${base.spacing[2]};
+    width: ${semantic.spacing.layout.sm};
   }
   &::-webkit-scrollbar-track {
     background: ${color.background.surface};

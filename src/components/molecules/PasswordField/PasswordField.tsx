@@ -4,7 +4,6 @@ import { StyledInputBase } from '../TextField/InputBase'
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import tokens from '@/styles/tokens.json'
 
-const { base } = tokens
 const { field } = tokens.component
 
 /**
@@ -96,7 +95,7 @@ const StyledInputWrapper = styled.div`
 
 const StyledToggleButton = styled.div`
   position: absolute;
-  right: ${base.spacing[2]};
+  right: ${tokens.semantic.spacing.layout.sm};
   top: 50%;
   transform: translateY(-50%);
 `

@@ -52,7 +52,7 @@ export const pictureDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'base.border.radius.2',
+    'semantic.border.radius.sm',
     'semantic.spacing.layout.md',
     'semantic.color.interactive.hover'
   ],

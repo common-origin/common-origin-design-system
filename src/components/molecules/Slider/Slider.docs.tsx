@@ -137,32 +137,32 @@ export const sliderDocs: ComponentDocumentation = {
     'semantic.color.text.inverse',
     
     // Spacing
-    'base.spacing[1]',
-    'base.spacing[2]',
-    'base.spacing[5]',
-    'base.spacing[8]',
-    'base.spacing[10]',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.xl',
+    'semantic.spacing.layout.4xl',
+    'semantic.spacing.layout.6xl',
     
     // Border
-    'base.border.radius[2]',
-    'base.border.radius.circle',
-    'base.border.width[2]',
+    'semantic.border.radius.sm',
+    'semantic.border.radius.circle',
+    'semantic.border.width.thick',
     
     // Typography
     'semantic.typography.label',
     'semantic.typography.caption',
     
     // Effects
-    'base.shadow[2]',
-    'base.shadow[3]',
-    'base.shadow[4]',
+    'semantic.elevation.raised',
+    'semantic.elevation.sticky',
+    'semantic.elevation.floating',
     
     // Motion
     'semantic.motion.transition.fast',
     
     // Opacity
-    'base.opacity[50]',
-    'base.opacity[100]'
+    'semantic.opacity.disabled',
+    'semantic.opacity.full'
   ],
   
   examples: [
@@ -371,7 +371,7 @@ export const sliderDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'Root wrapper organizing label, track, and range labels',
-        tokens: ['base.spacing[2]']
+        tokens: ['semantic.spacing.layout.sm']
       },
       {
         name: 'Label',
@@ -385,14 +385,14 @@ export const sliderDocs: ComponentDocumentation = {
       {
         name: 'Track Container',
         description: 'Wrapper for track and thumbs with relative positioning',
-        tokens: ['base.spacing[10]']
+        tokens: ['semantic.spacing.layout.6xl']
       },
       {
         name: 'Track',
         description: 'Background track showing the full slider range',
         tokens: [
-          'base.spacing[1]',
-          'base.border.radius.circle',
+          'semantic.spacing.layout.xs',
+          'semantic.border.radius.circle',
           'semantic.color.border.default',
           'semantic.color.background.disabled'
         ]
@@ -402,37 +402,37 @@ export const sliderDocs: ComponentDocumentation = {
         description: 'Filled portion of track indicating selected value or range',
         tokens: [
           'semantic.color.background.interactive',
-          'base.border.radius.circle'
+          'semantic.border.radius.circle'
         ]
       },
       {
         name: 'Thumb',
         description: 'Draggable circular control for adjusting values with focus and hover states',
         tokens: [
-          'base.spacing[5]',
-          'base.border.radius.circle',
-          'base.border.width[2]',
+          'semantic.spacing.layout.xl',
+          'semantic.border.radius.circle',
+          'semantic.border.width.thick',
           'semantic.color.background.subtle',
           'semantic.color.background.interactive',
           'semantic.motion.transition.fast',
-          'base.shadow[2]',
-          'base.shadow[3]',
-          'base.shadow[4]'
+          'semantic.elevation.raised',
+          'semantic.elevation.sticky',
+          'semantic.elevation.floating'
         ]
       },
       {
         name: 'Value Label',
         description: 'Tooltip-style label showing current value above thumb',
         tokens: [
-          'base.spacing[1]',
-          'base.spacing[2]',
-          'base.spacing[8]',
+          'semantic.spacing.layout.xs',
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.4xl',
           'semantic.color.background.emphasis',
           'semantic.color.text.inverse',
           'semantic.typography.caption',
-          'base.border.radius[2]',
-          'base.opacity[50]',
-          'base.opacity[100]'
+          'semantic.border.radius.sm',
+          'semantic.opacity.disabled',
+          'semantic.opacity.full'
         ]
       },
       {
@@ -441,7 +441,7 @@ export const sliderDocs: ComponentDocumentation = {
         tokens: [
           'semantic.typography.caption',
           'semantic.color.text.subdued',
-          'base.spacing[1]'
+          'semantic.spacing.layout.xs'
         ]
       }
     ]

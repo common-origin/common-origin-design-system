@@ -2,7 +2,7 @@ import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 
 /**
  * Props for the Sheet component
@@ -161,8 +161,8 @@ const StyledSheet = styled.div.withConfig({
   /* Position-specific styles */
   ${({ $position, $variant, $width, $height }) => {
     const isDrawer = $variant === 'drawer'
-    const margin = isDrawer ? base.spacing[4] : '0'
-    const borderRadius = isDrawer ? base.border.radius[3] : '0'
+    const margin = isDrawer ? semantic.spacing.layout.lg : '0'
+    const borderRadius = isDrawer ? semantic.border.radius.md : '0'
     
     switch ($position) {
       case 'right':
@@ -171,7 +171,7 @@ const StyledSheet = styled.div.withConfig({
           right: ${margin};
           bottom: ${margin};
           width: ${$width};
-          max-width: calc(100vw - ${isDrawer ? `${base.spacing[4]} * 2` : '0px'});
+          max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
           animation: ${slideInRight} 200ms ease-in-out;
         `
@@ -181,7 +181,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           bottom: ${margin};
           width: ${$width};
-          max-width: calc(100vw - ${isDrawer ? `${base.spacing[4]} * 2` : '0px'});
+          max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
           animation: ${slideInLeft} 200ms ease-in-out;
         `
@@ -191,7 +191,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           right: ${margin};
           height: ${$height};
-          max-height: calc(100vh - ${isDrawer ? `${base.spacing[4]} * 2` : '0px'});
+          max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
           animation: ${slideInTop} 200ms ease-in-out;
         `
@@ -201,7 +201,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           right: ${margin};
           height: ${$height};
-          max-height: calc(100vh - ${isDrawer ? `${base.spacing[4]} * 2` : '0px'});
+          max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
           animation: ${slideInBottom} 200ms ease-in-out;
         `
@@ -215,7 +215,7 @@ const StyledSheet = styled.div.withConfig({
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {
-    width: ${base.spacing[2]};
+    width: ${semantic.spacing.layout.sm};
   }
   
   &::-webkit-scrollbar-track {
@@ -224,7 +224,7 @@ const StyledSheet = styled.div.withConfig({
   
   &::-webkit-scrollbar-thumb {
     background: ${semantic.color.border.default};
-    border-radius: ${base.border.radius.circle};
+    border-radius: ${semantic.border.radius.circle};
   }
   
   &::-webkit-scrollbar-thumb:hover {
@@ -233,7 +233,7 @@ const StyledSheet = styled.div.withConfig({
 `
 
 const StyledSheetContent = styled.div`
-  padding: ${base.spacing[6]};
+  padding: ${semantic.spacing.layout['2xl']};
   min-height: 100%;
 `
 

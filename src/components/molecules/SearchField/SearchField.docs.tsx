@@ -100,8 +100,8 @@ export const searchFieldDocs: ComponentDocumentation = {
   
   tokens: [
     'semantic.zIndex.dropdown',
-    'base.spacing.2',
-    'base.spacing.3',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
     'semantic.color.background.subtle',
     'semantic.color.background.surface',
     'semantic.color.background.interactive-subtle',
@@ -114,10 +114,10 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.color.text.interactive',
     'semantic.color.icon.subdued',
     'semantic.color.icon.default',
-    'base.border.width.1',
-    'base.border.width.2',
-    'base.border.radius.2',
-    'base.border.radius.3',
+    'semantic.border.width.thin',
+    'semantic.border.width.thick',
+    'semantic.border.radius.sm',
+    'semantic.border.radius.md',
     'semantic.typography.body',
     'semantic.typography.caption',
     'component.searchField.sectionHeader.typography',
@@ -387,9 +387,9 @@ useEffect(() => {
         tokens: [
           'semantic.color.background.subtle',
           'semantic.color.border.default',
-          'base.border.radius.3',
-          'base.spacing.2',
-          'base.spacing.3'
+          'semantic.border.radius.md',
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.md'
         ]
       },
       {
@@ -421,7 +421,7 @@ useEffect(() => {
         tokens: [
           'semantic.color.background.subtle',
           'semantic.color.border.default',
-          'base.border.radius.3',
+          'semantic.border.radius.md',
           'semantic.elevation.floating'
         ]
       },

@@ -223,9 +223,9 @@ export const checkboxDocs: ComponentDocumentation = {
     'semantic.color.text.subdued',
 
     // Base tokens
-    'base.spacing.1',
-    'base.spacing.3',
-    'base.spacing.9',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.5xl',
   ],
 
   accessibility: {
@@ -289,7 +289,7 @@ export const checkboxDocs: ComponentDocumentation = {
         name: 'Label Container',
         description:
           'Container element that wraps checkbox and label, provides 48px touch target and handles label positioning',
-        tokens: ['base.spacing.3'],
+        tokens: ['semantic.spacing.layout.md'],
       },
       {
         name: 'Label Text',
@@ -302,8 +302,8 @@ export const checkboxDocs: ComponentDocumentation = {
         tokens: [
           'component.field.helperText.typography',
           'component.field.helperText.color',
-          'base.spacing.9',
-          'base.spacing.1',
+          'semantic.spacing.layout.5xl',
+          'semantic.spacing.layout.xs',
         ],
       },
       {
@@ -313,8 +313,8 @@ export const checkboxDocs: ComponentDocumentation = {
         tokens: [
           'component.field.helperText.typography',
           'component.field.helperText.colorError',
-          'base.spacing.9',
-          'base.spacing.1',
+          'semantic.spacing.layout.5xl',
+          'semantic.spacing.layout.xs',
         ],
       },
     ],

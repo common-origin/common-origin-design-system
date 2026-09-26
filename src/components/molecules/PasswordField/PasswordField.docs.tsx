@@ -166,9 +166,9 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.iconButton.variants.naked.hover.backgroundColor',
     
     // Spacing
-    'base.spacing[1]',
-    'base.spacing[2]',
-    'base.spacing[3]',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
     
     // Effects
     'semantic.shadow.sm',
@@ -398,7 +398,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.input.error.borderColor',
           'component.input.disabled.backgroundColor',
           'semantic.typography.body1',
-          'base.spacing[3]',
+          'semantic.spacing.layout.md',
           'semantic.shadow.sm',
         ],
       },
@@ -408,7 +408,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
         tokens: [
           'component.iconButton.variants.naked.backgroundColor',
           'component.iconButton.variants.naked.hover.backgroundColor',
-          'base.spacing[2]',
+          'semantic.spacing.layout.sm',
         ],
       },
       {

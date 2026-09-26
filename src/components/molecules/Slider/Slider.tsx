@@ -2,7 +2,7 @@ import { useRef, useState, useEffect, useId, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 
 /**
  * Props for the Slider component
@@ -112,7 +112,7 @@ const StyledLabel = styled.label<{ $disabled?: boolean }>`
 const StyledSliderTrackContainer = styled.div`
   position: relative;
   width: 100%;
-  height: ${base.spacing[10]};
+  height: ${semantic.spacing.layout['6xl']};
   display: flex;
   align-items: center;
 `
@@ -120,13 +120,13 @@ const StyledSliderTrackContainer = styled.div`
 const StyledTrack = styled.div<{ $disabled?: boolean }>`
   position: relative;
   width: 100%;
-  height: ${base.spacing[1]};
+  height: ${semantic.spacing.layout.xs};
   background-color: ${({ $disabled }) =>
     $disabled 
       ? semantic.color.background.disabled
       : semantic.color.border.default
   };
-  border-radius: ${base.border.radius.circle};
+  border-radius: ${semantic.border.radius.circle};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
 `
 
@@ -138,7 +138,7 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
       ? semantic.color.border.default
       : semantic.color.background.emphasis
   };
-  border-radius: ${base.border.radius.circle};
+  border-radius: ${semantic.border.radius.circle};
   pointer-events: none;
 `
 
@@ -147,33 +147,33 @@ const StyledThumb = styled.div<{
   $active?: boolean
 }>`
   position: absolute;
-  width: ${base.spacing[5]};
-  height: ${base.spacing[5]};
+  width: ${semantic.spacing.layout.xl};
+  height: ${semantic.spacing.layout.xl};
   top: -${semantic.spacing.layout.sm};
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.background.disabled
       : semantic.color.background.subtle
   };
-  border: ${base.border.width[2]} solid ${({ $disabled }) =>
+  border: ${semantic.border.width.thick} solid ${({ $disabled }) =>
     $disabled
       ? semantic.color.border.default
       : semantic.color.background.emphasis
   };
-  border-radius: ${base.border.radius.circle};
+  border-radius: ${semantic.border.radius.circle};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
   transform: translateX(-50%);
   transition: ${semantic.motion.transition.fast};
-  box-shadow: ${base.shadow[2]};
+  box-shadow: ${tokens.component.slider.thumb.shadow.default};
   
   &:hover:not([aria-disabled="true"]) {
     transform: translateX(-50%) scale(1.1);
-    box-shadow: ${base.shadow[3]};
+    box-shadow: ${tokens.component.slider.thumb.shadow.hover};
   }
   
   &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.interactive};
-    outline-offset: ${base.spacing[1]};
+    outline: ${semantic.border.width.thick} solid ${semantic.color.border.interactive};
+    outline-offset: ${semantic.spacing.layout.xs};
   }
   
   &:active:not([aria-disabled="true"]) {
@@ -183,23 +183,23 @@ const StyledThumb = styled.div<{
   
   ${({ $active }) => $active && `
     transform: translateX(-50%) scale(1.1);
-    box-shadow: ${base.shadow[4]};
+    box-shadow: ${tokens.component.slider.thumb.shadow.active};
   `}
 `
 
 const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
   position: absolute;
-  top: -${base.spacing[8]};
+  top: -${semantic.spacing.layout['4xl']};
   left: ${semantic.spacing.layout.sm};
   transform: translateX(-50%);
-  padding: ${base.spacing[1]} ${base.spacing[2]};
+  padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm};
   background-color: ${semantic.color.background.emphasis};
   color: ${semantic.color.text.inverse};
   font: ${semantic.typography.caption};
-  border-radius: ${base.border.radius[2]};
+  border-radius: ${semantic.border.radius.sm};
   white-space: nowrap;
   pointer-events: none;
-  opacity: ${({ $disabled }) => $disabled ? base.opacity[50] : base.opacity[100]};
+  opacity: ${({ $disabled }) => $disabled ? semantic.opacity.disabled : semantic.opacity.full};
   
   &::after {
     content: '';
@@ -209,9 +209,9 @@ const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: ${base.spacing[1]} solid transparent;
-    border-right: ${base.spacing[1]} solid transparent;
-    border-top: ${base.spacing[1]} solid ${semantic.color.background.emphasis};
+    border-left: ${semantic.spacing.layout.xs} solid transparent;
+    border-right: ${semantic.spacing.layout.xs} solid transparent;
+    border-top: ${semantic.spacing.layout.xs} solid ${semantic.color.background.emphasis};
   }
 `
 
@@ -220,7 +220,7 @@ const StyledMinMaxLabels = styled.div`
   justify-content: space-between;
   font: ${semantic.typography.body};
   color: ${semantic.color.text.subdued};
-  margin-top: ${base.spacing[1]};
+  margin-top: ${semantic.spacing.layout.xs};
 `
 
 /**

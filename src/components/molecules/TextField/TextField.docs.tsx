@@ -156,20 +156,19 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.color.border.error',
     
     // Spacing
-    'base.spacing[2]',
-    'base.spacing[3]',
-    'base.spacing[1]',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.xs',
     
     // Border
-    'base.border.width[1]',
-    'base.border.radius[2]',
+    'semantic.border.width.thin',
+    'semantic.border.radius.sm',
     
     // Motion
-    'base.duration.normal',
-    'base.easing.easeInOut',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
     
     // Opacity
-    'base.opacity[60]',
   ],
 
   examples: [
@@ -408,12 +407,12 @@ export const textFieldDocs: ComponentDocumentation = {
           'semantic.color.border.interactive',
           'semantic.color.border.strong',
           'semantic.color.border.error',
-          'base.spacing[2]',
-          'base.spacing[3]',
-          'base.border.width[1]',
-          'base.border.radius[2]',
-          'base.duration.normal',
-          'base.easing.easeInOut',
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.md',
+          'semantic.border.width.thin',
+          'semantic.border.radius.sm',
+          'semantic.motion.duration.normal',
+          'semantic.motion.easing.easeInOut',
         ],
       },
       {

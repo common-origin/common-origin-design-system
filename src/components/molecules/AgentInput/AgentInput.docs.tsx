@@ -169,15 +169,15 @@ export const agentInputDocs: ComponentDocumentation = {
     'component.input.focus.outlineOffset',
     'component.input.disabled.backgroundColor',
     'component.input.disabled.borderColor',
-    'base.spacing[1]',
-    'base.spacing[2]',
-    'base.spacing[3]',
-    'base.spacing[4]',
-    'base.spacing[6]',
-    'base.spacing[12]',
-    'base.border.width[1]',
-    'base.border.radius[1]',
-    'base.border.radius[4]',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.lg',
+    'semantic.spacing.layout.2xl',
+    'semantic.spacing.layout.7xl',
+    'semantic.border.width.thin',
+    'semantic.border.radius.xs',
+    'semantic.border.radius.lg',
   ],
 
   examples: [
@@ -290,7 +290,7 @@ export const agentInputDocs: ComponentDocumentation = {
       {
         name: 'Text Input',
         description: 'Primary single-line entry point for typed and interim voice transcript text.',
-        tokens: ['base.spacing[12]'],
+        tokens: ['semantic.spacing.layout.7xl'],
       },
       {
         name: 'Voice Toggle',

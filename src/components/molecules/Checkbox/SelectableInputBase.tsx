@@ -119,7 +119,7 @@ export const StyledCheckboxContainer = styled.label.withConfig({
 })<{ $disabled: boolean; $labelPosition: 'left' | 'right' }>`
   display: inline-flex;
   align-items: center;
-  gap: ${tokens.base.spacing[3]};
+  gap: ${tokens.semantic.spacing.layout.md};
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   min-height: 32px;
   flex-direction: ${(props) => (props.$labelPosition === 'left' ? 'row-reverse' : 'row')};

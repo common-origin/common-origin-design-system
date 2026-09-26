@@ -36,8 +36,8 @@ const BreadcrumbStyled = styled.li`
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: ${tokens.base?.spacing?.['2'] || '0.5rem'};
-  padding: ${tokens.base?.spacing?.['2'] || '0.5rem'};
+  gap: ${tokens.semantic.spacing.layout.sm};
+  padding: ${tokens.semantic.spacing.layout.sm};
 
   &:last-of-type a {
     text-decoration: none;
