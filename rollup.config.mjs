@@ -34,6 +34,9 @@ const mainOutput = (format, suffix) => ({
   dir: 'dist',
   format,
   exports: 'auto',
+  // Externals like styled-components ship CJS as { __esModule, default }. 'auto'
+  // makes require() consumers use .default for those instead of the whole module.
+  interop: 'auto',
   sourcemap: true,
   entryFileNames: `index${suffix}.js`,
   chunkFileNames: `[name]${suffix}.js`,
