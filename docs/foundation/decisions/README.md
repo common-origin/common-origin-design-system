@@ -15,6 +15,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0009](0009-styling-architecture.md) | styled-components with tokens imported as values | Accepted, under review | Recorded 2026-09-25 |
 | [0010](0010-agentinput-working-ring.md) | AgentInput's working ring is a temporary exception | Accepted (temporary) | 2026-09-25 |
 | [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted | 2026-09-25 |
+| [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
 
 ## Template
 
