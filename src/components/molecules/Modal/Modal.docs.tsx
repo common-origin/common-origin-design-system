@@ -176,6 +176,7 @@ export const modalDocs: ComponentDocumentation = {
   // Tokens
   // ---------------------------------------------------------------------------
   tokens: [
+    'semantic.zIndex.modal',
     // Elevation
     'semantic.elevation.overlay',
     // Background
@@ -331,7 +332,7 @@ export const modalDocs: ComponentDocumentation = {
       {
         name: 'Overlay',
         description: 'Fixed fullscreen backdrop that dims the page. Clicking it can close the modal.',
-        tokens: ['semantic.color.background.overlay'],
+        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.modal'],
       },
       {
         name: 'Dialog',

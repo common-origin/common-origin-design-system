@@ -120,6 +120,17 @@ describe('Modal', () => {
       })
     })
 
+    it('puts the backdrop and dialog on the modal layer, backdrop first', () => {
+      renderModal({ 'data-testid': 'modal' })
+      const backdrop = screen.getByTestId('modal-overlay')
+      const dialog = screen.getByRole('dialog')
+      const { modal } = tokens.semantic.zIndex
+      expect(backdrop).toHaveStyle({ zIndex: modal })
+      expect(dialog).toHaveStyle({ zIndex: modal })
+      // Same z-index: the dialog paints above the backdrop because it comes later in the DOM
+      expect(backdrop.compareDocumentPosition(dialog) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+    })
+
     it('does not call onClose on overlay click when closeOnOverlayClick is false', () => {
       renderModal({ closeOnOverlayClick: false, 'data-testid': 'modal' })
       fireEvent.click(screen.getByTestId('modal-overlay'))

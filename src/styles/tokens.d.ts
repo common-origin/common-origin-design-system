@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Mon, 27 Apr 2026 11:40:20 GMT
+ * Generated on Sat, 26 Sep 2026 04:20:55 GMT
  */
 
 export interface TokensBaseBorderRadius {
@@ -783,6 +783,13 @@ export interface TokensSemanticElevation {
   sticky: string;
 }
 
+export interface TokensSemanticZIndex {
+  sticky: string;
+  dropdown: string;
+  overlay: string;
+  modal: string;
+}
+
 export interface TokensSemanticBorderRadius {
   none: string;
   xs: string;
@@ -1023,6 +1030,7 @@ export interface TokensSemanticMotion {
 
 export interface TokensSemantic {
   elevation: TokensSemanticElevation;
+  zIndex: TokensSemanticZIndex;
   border: TokensSemanticBorder;
   size: TokensSemanticSize;
   spacing: TokensSemanticSpacing;

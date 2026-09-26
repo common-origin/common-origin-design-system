@@ -53,8 +53,8 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   ${({ $sticky }) => $sticky && `
     position: sticky;
     top: 0;
-    z-index: 10;
-    box-shadow: ${tokens.base.shadow[2]};
+    z-index: ${tokens.semantic.zIndex.sticky};
+    box-shadow: ${tokens.semantic.elevation.sticky};
   `}
 `
 

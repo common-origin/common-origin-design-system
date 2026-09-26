@@ -308,6 +308,7 @@ export const actionSheetDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.zIndex.modal',
     'semantic.color.background.subtle',
     'semantic.color.background.surface',
     'semantic.color.border.default',
@@ -470,7 +471,7 @@ const actions = [
       {
         name: 'Overlay',
         description: 'Full-screen semi-transparent backdrop',
-        tokens: ['semantic.color.background.overlay']
+        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.modal']
       },
       {
         name: 'Sheet Container',

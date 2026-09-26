@@ -4,7 +4,7 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 
-const { base: { spacing, shadow, zIndex }, semantic: { color, typography, border }, component: { input } } = tokens
+const { base: { spacing }, semantic: { color, typography, border, zIndex, elevation }, component: { input } } = tokens
 
 interface DropdownOption {
   id: string
@@ -94,11 +94,11 @@ const DropdownMenu = styled.div.withConfig({
   top: 100%;
   left: 0;
   right: 0;
-  z-index: ${zIndex[3]};
+  z-index: ${zIndex.dropdown};
   background-color: ${input.default.backgroundColor};
   border: ${input.default.borderWidth} solid ${input.default.borderColor};
   border-radius: ${input.default.borderRadius};
-  box-shadow: ${shadow[3]};
+  box-shadow: ${elevation.floating};
   margin-top: ${spacing[1]};
   overflow: hidden;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
