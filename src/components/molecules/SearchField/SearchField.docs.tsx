@@ -122,7 +122,7 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.typography.caption',
     'semantic.typography.small',
     'semantic.motion.hover',
-    'base.shadow.3'
+    'semantic.elevation.floating'
   ],
   
   examples: [
@@ -420,7 +420,7 @@ useEffect(() => {
           'semantic.color.background.subtle',
           'semantic.color.border.default',
           'base.border.radius.3',
-          'base.shadow.3'
+          'semantic.elevation.floating'
         ]
       },
       {

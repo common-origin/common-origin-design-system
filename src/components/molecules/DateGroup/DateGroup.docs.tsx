@@ -84,7 +84,7 @@ export const dateGroupDocs: ComponentDocumentation = {
     'semantic.spacing.layout.sm',
     'semantic.color.background.default',
     'semantic.color.border.default',
-    'semantic.shadow.sm',
+    'semantic.elevation.sticky',
     'semantic.typography.body',
     'semantic.typography.caption'
   ],
@@ -319,7 +319,7 @@ export const dateGroupDocs: ComponentDocumentation = {
           'semantic.spacing.layout.sm',
           'semantic.color.background.default',
           'semantic.color.border.default',
-          'semantic.shadow.sm'
+          'semantic.elevation.sticky'
         ]
       },
       {

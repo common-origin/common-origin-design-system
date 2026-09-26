@@ -32,5 +32,11 @@ Other systems (reviewed on [#34](https://github.com/common-origin/common-origin-
 - **Modal and ActionSheet drop from 9999/10000 to 1020.** Within the system the order is unchanged. In a consuming product, anything with a z-index between 1021 and 9999 now renders above modals. Release notes must say so.
 - **Dropdown's menu rises from 30 to 1000**, level with SearchField's suggestions, so it now appears above sticky content.
 - Sheet's panel moves from 1001 to 1010, and its backdrop from 1000 to 1010, still below modals.
+- **Components take the shadow paired with their layer** from `semantic.elevation`, not `base.shadow`. Four shadows get one step deeper:
+  - DateGroup header: `base.shadow.2` → `elevation.sticky` (`base.shadow.3`)
+  - Dropdown and SearchField menus: `base.shadow.3` → `elevation.floating` (`base.shadow.4`)
+  - Sheet panel: `base.shadow.4` → `elevation.overlay` (`base.shadow.5`)
+  
+  Modal and ActionSheet already used `elevation.overlay`.
 - Tests pin each overlay component's layer, and a token test pins the layer order.
 - The docs site's own layers (Navigation, DataViewPattern, sticky page bars) move onto the semantic layers in a follow-up.

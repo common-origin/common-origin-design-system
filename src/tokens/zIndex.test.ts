@@ -10,7 +10,9 @@ describe('semantic z-index layers', () => {
     expect(Object.keys(zIndex).sort()).toEqual([...order].sort())
   })
 
-  it('are integers in strictly ascending order', () => {
+  it('are non-empty integers in strictly ascending order', () => {
+    // Number('') is 0, so check the raw value first
+    order.forEach((layer) => expect(String(zIndex[layer]).trim()).toMatch(/^-?\d+$/))
     const values = order.map((layer) => Number(zIndex[layer]))
     values.forEach((value) => expect(Number.isInteger(value)).toBe(true))
     values.slice(1).forEach((value, i) => expect(value).toBeGreaterThan(values[i]))

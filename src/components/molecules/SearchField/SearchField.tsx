@@ -189,7 +189,7 @@ const StyledSuggestionsList = styled.ul`
   background-color: ${semantic.color.background.subtle};
   border: ${base.border.width[1]} solid ${semantic.color.border.default};
   border-radius: ${base.border.radius[3]};
-  box-shadow: ${base.shadow[3]};
+  box-shadow: ${semantic.elevation.floating};
   list-style: none;
   padding: ${base.spacing[1]} 0;
   margin: 0;

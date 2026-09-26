@@ -154,7 +154,7 @@ const StyledSheet = styled.div.withConfig({
 }>`
   position: fixed;
   background-color: ${semantic.color.background.default};
-  box-shadow: ${base.shadow[4]};
+  box-shadow: ${semantic.elevation.overlay};
   z-index: ${semantic.zIndex.overlay};
   overflow-y: auto;
   

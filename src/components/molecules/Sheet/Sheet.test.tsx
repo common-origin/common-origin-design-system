@@ -64,6 +64,17 @@ describe('Sheet', () => {
       expect(backdrop).toHaveStyle({ zIndex: overlay })
       expect(panel).toHaveStyle({ zIndex: overlay })
       expect(backdrop.compareDocumentPosition(panel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+      // The overlay layer pairs with the overlay elevation (decision 0013). jsdom can't
+      // compute multi-part box-shadows, so read the rule styled-components injected.
+      const css = Array.from(document.querySelectorAll('style'))
+        .map((style) => style.textContent)
+        .join('')
+        .replace(/\s+/g, '')
+      const shadow = tokens.semantic.elevation.overlay.replace(/\s+/g, '')
+      const panelHasShadow = Array.from(panel.classList).some((cls) =>
+        new RegExp(`\\.${cls}\\{[^}]*box-shadow:${shadow.replace(/[().,-]/g, '\\$&')}`).test(css)
+      )
+      expect(panelHasShadow).toBe(true)
     })
 
     it('uses the overlay token for the backdrop', () => {
