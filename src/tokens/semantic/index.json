@@ -41,7 +41,7 @@
       "medium": {
         "value": "{base.fontWeight.3}",
         "type": "fontWeight",
-        "description": "500. Subheadings (h5, h6, subtitle), buttons, badges, emphasis within UI text."
+        "description": "500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text."
       },
       "semibold": {
         "value": "{base.fontWeight.4}",

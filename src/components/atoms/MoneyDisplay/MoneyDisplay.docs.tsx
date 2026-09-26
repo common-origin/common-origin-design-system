@@ -85,7 +85,10 @@ export const moneyDisplayDocs: ComponentDocumentation = {
     'semantic.typography.caption',
     'semantic.typography.body',
     'semantic.typography.h3',
-    'semantic.typography.h2'
+    'semantic.typography.h2',
+    'semantic.fontWeight.regular',
+    'semantic.fontWeight.medium',
+    'semantic.fontWeight.bold'
   ],
 
   examples: [
@@ -269,6 +272,9 @@ export const moneyDisplayDocs: ComponentDocumentation = {
           'semantic.typography.body',
           'semantic.typography.h3',
           'semantic.typography.h2',
+          'semantic.fontWeight.regular',
+          'semantic.fontWeight.medium',
+          'semantic.fontWeight.bold',
           'semantic.color.text.default',
           'semantic.color.text.subdued'
         ]

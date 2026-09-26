@@ -135,6 +135,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'semantic.typography.body1',
     'semantic.typography.label',
     'semantic.typography.caption',
+    'semantic.fontWeight.bold',
     
     // Component Input Tokens
     'component.input.default.backgroundColor',
@@ -367,6 +368,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'semantic.color.text.default',
           'semantic.color.text.disabled',
           'semantic.color.text.error',
+          'semantic.fontWeight.bold',
           'base.spacing[1]',
         ],
       },

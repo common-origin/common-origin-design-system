@@ -89,7 +89,6 @@ const StyledCategoryBadge = styled.span.withConfig({
   align-items: center;
   justify-content: center;
   border-radius: ${radius.circle};
-  font-weight: ${semantic.fontWeight.medium};
   white-space: nowrap;
   user-select: none;
   border-style: solid;
