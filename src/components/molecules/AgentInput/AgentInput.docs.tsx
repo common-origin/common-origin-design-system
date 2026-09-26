@@ -178,6 +178,11 @@ export const agentInputDocs: ComponentDocumentation = {
     'semantic.border.width.thin',
     'semantic.border.radius.xs',
     'semantic.border.radius.lg',
+    // Motion
+    'semantic.motion.duration.fast',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.easeInOut',
   ],
 
   examples: [

@@ -32,7 +32,7 @@ const CardLargeStyled = styled.div`
 
   img {
     border-radius: ${border.radius['2xl']};
-    transition: ease opacity 0.2s;
+    transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
     width: 100%;
   }
 `

@@ -103,7 +103,10 @@ export const transactionListItemDocs: ComponentDocumentation = {
     'semantic.color.border.interactive',
     'semantic.color.icon.subdued',
     'semantic.typography.body',
-    'semantic.typography.caption'
+    'semantic.typography.caption',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
 
   examples: [

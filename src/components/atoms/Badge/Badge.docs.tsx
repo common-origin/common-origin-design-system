@@ -83,7 +83,10 @@ export const badgeDocs: ComponentDocumentation = {
     'component.badge.ring.width',
     
     // Border
-    'semantic.border.radius.circle'
+    'semantic.border.radius.circle',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [

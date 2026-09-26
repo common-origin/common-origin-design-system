@@ -260,6 +260,10 @@ export const listDocs: ComponentDocumentation = {
     'semantic.border.radius.xs (2px)',
     'semantic.border.radius.sm (4px)',
     'semantic.opacity.disabled (0.5)',
+    // Motion
+    'semantic.motion.duration.fast',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [
@@ -769,7 +773,7 @@ return (
       },
       {
         name: 'Expanded Content',
-        description: 'Collapsible content area revealed when expanded. Features 200ms ease-out animation, indented padding, and subtle background color.'
+        description: 'Collapsible content area revealed when expanded. Height, padding and opacity animate over semantic.motion.duration.normal (easeOut); collapsed content is hidden from keyboard and screen readers. With prefers-reduced-motion set, it fades without the height change. Indented padding and subtle background color.'
       },
       {
         name: 'Divider',

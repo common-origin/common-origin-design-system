@@ -95,7 +95,7 @@ const InputShell = styled.div`
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${semantic.border.radius['3xl']};
   box-shadow: ${semantic.elevation.raised};
-  transition: border-color 200ms ease-in-out, outline 200ms ease-in-out;
+  transition: border-color ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}, outline ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
 
   &:focus-within {
     border-color: ${component.input.focus.borderColor};
@@ -226,7 +226,7 @@ const MeterBar = styled.div.withConfig({
   border-radius: ${semantic.border.radius.xs};
   background-color: ${semantic.color.background.interactive};
   height: ${({ $height }) => `${$height * 100}%`};
-  transition: height 120ms linear;
+  transition: height ${semantic.motion.duration.fast} ${semantic.motion.easing.easeOut};
 `
 
 const VisuallyHiddenLabel = styled.label`

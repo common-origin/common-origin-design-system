@@ -328,9 +328,13 @@ export const actionSheetDocs: ComponentDocumentation = {
     'semantic.border.radius.lg',
     'semantic.typography.h3',
     'semantic.typography.body',
-    'semantic.motion.hover',
     'semantic.elevation.overlay',
-    'semantic.color.background.overlay'
+    'semantic.color.background.overlay',
+    // Motion
+    'semantic.motion.hover',
+    'semantic.motion.duration.normal',
+    'semantic.motion.duration.slow',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [

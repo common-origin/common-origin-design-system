@@ -228,6 +228,9 @@ export const checkboxDocs: ComponentDocumentation = {
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.5xl',
+    // Motion
+    'semantic.motion.duration.fast',
+    'semantic.motion.easing.easeOut',
   ],
 
   accessibility: {
