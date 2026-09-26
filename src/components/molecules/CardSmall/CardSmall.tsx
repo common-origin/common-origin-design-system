@@ -39,7 +39,7 @@ const CardSmallStyled = styled.div`
 
   &:focus-within {
     outline: none;
-    box-shadow: 0 0 0 2px ${tokens.semantic.color.border.strong};
+    box-shadow: 0 0 0 ${tokens.semantic.border.width.thick} ${tokens.semantic.color.border.strong};
   }
 `
 

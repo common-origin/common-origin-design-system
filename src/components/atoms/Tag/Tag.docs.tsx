@@ -40,6 +40,7 @@ export const tagDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.border.width.thin',
     // Colors
     'semantic.color.background.surface',
     'semantic.color.background.interactive-subtle',

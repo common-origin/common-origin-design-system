@@ -93,17 +93,17 @@ const StyledTag = styled.span.withConfig({
     
     switch ($variant) {
       case 'interactive':
-        return `1px solid ${color.border.interactive}`
+        return `${semantic.border.width.thin} solid ${color.border.interactive}`
       case 'success':
-        return `1px solid ${color.border.success}`
+        return `${semantic.border.width.thin} solid ${color.border.success}`
       case 'warning':
-        return `1px solid ${color.border.warning}`
+        return `${semantic.border.width.thin} solid ${color.border.warning}`
       case 'error':
-        return `1px solid ${color.border.error}`
+        return `${semantic.border.width.thin} solid ${color.border.error}`
       case 'emphasis':
-        return `1px solid ${color.background.emphasis}`
+        return `${semantic.border.width.thin} solid ${color.background.emphasis}`
       default:
-        return `1px solid ${color.border.default}`
+        return `${semantic.border.width.thin} solid ${color.border.default}`
     }
   }};
 `

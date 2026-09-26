@@ -53,6 +53,7 @@ export const cardSmallDocs: ComponentDocumentation = {
   ],
   
   tokens: [
+    'semantic.border.width.thick',
     'semantic.border.radius.sm',
     'semantic.color.border.strong',
     'semantic.spacing.sm',

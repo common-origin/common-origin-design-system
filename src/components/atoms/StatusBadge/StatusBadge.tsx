@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
+import { visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
@@ -182,15 +183,7 @@ const StyledStatusBadge = styled.span.withConfig({
 `
 
 const ScreenReaderOnly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  ${visuallyHidden}
 `
 
 /**

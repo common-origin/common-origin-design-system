@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 import { Typography } from '../Typography'
 
@@ -94,15 +95,7 @@ const BadgeIndicator = styled.span.withConfig({
 `
 
 const ScreenReaderOnly = styled.span`
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  ${visuallyHidden}
 `
 
 export const Badge: React.FC<BadgeProps> = ({

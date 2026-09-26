@@ -48,7 +48,7 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   justify-content: space-between;
   padding: ${tokens.semantic.spacing.layout.md} ${tokens.semantic.spacing.layout.sm};
   background-color: ${tokens.semantic.color.background.default};
-  border-bottom: 1px solid ${tokens.semantic.color.border.default};
+  border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   
   ${({ $sticky }) => $sticky && `
     position: sticky;

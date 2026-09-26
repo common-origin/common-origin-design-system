@@ -1,3 +1,4 @@
+import { css } from 'styled-components'
 import tokens from '../styles/tokens.json'
 
 // Breakpoints from the semantic tokens (decision 0014)
@@ -19,3 +20,17 @@ export const media = {
   xl: `@media (min-width: ${breakpoints.xl})`,
   '2xl': `@media (min-width: ${breakpoints['2xl']})`,
 }
+
+// Content for screen readers only. The 1px size and -1px margin are part of the standard
+// visually-hidden technique, not design values, so they aren't tokens.
+export const visuallyHidden = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`

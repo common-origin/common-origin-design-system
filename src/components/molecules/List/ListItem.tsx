@@ -196,8 +196,8 @@ const StyledItemContent = styled.div.withConfig({
   
   /* Focus visible */
   &:focus-visible {
-    outline: 2px solid ${semantic.color.border.interactive};
-    outline-offset: 2px;
+    outline: ${semantic.border.width.thick} solid ${semantic.color.border.interactive};
+    outline-offset: ${semantic.border.focusOffset};
   }
 `
 
@@ -205,8 +205,8 @@ const StyledIconContainer = styled.div`
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  width: 24px;
-  height: 24px;
+  width: ${semantic.size.icon.lg};
+  height: ${semantic.size.icon.lg};
 `
 
 const StyledTextContent = styled.div`
@@ -233,8 +233,8 @@ const StyledChevronIcon = styled.div.withConfig({
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: ${semantic.size.icon.lg};
+  height: ${semantic.size.icon.lg};
   color: ${semantic.color.icon.subdued};
   transition: transform 200ms ease;
   transform: rotate(${({ $expanded }) => ($expanded ? '180deg' : '0deg')});

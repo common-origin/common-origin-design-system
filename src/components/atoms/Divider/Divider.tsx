@@ -35,11 +35,11 @@ const StyledDivider = styled.div.withConfig({
         display: inline-block;
         height: auto;
         align-self: stretch;
-        border-left: 1px solid;
+        border-left: ${tokens.semantic.border.width.thin} solid;
         border-top: none;
       `
     }
-    return `border-top: 1px solid;`
+    return `border-top: ${tokens.semantic.border.width.thin} solid;`
   }}
   
   /* Apply variant styles */

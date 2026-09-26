@@ -231,6 +231,11 @@
 					"description": "0.125rem: emphasised borders, focus outlines and selected states."
 				}
 			},
+			"focusOffset": {
+				"value": "{base.border.width.2}",
+				"type": "borderWidth",
+				"description": "0.125rem: gap between an element and its focus outline (outline-offset)."
+			},
 			"radius": {
 				"none": {
 					"value": "0",

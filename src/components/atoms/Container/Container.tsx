@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media } from '../../../lib/styleUtils'
+import { breakpoints, media } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 const { semantic: { spacing } } = tokens
@@ -18,23 +18,23 @@ const StyledContainer = styled.div`
   padding-right: ${spacing.layout['2xl']};
   
   ${media.sm} {
-    max-width: 640px;
+    max-width: ${breakpoints.sm};
   }
   
   ${media.md} {
-    max-width: 768px;
+    max-width: ${breakpoints.md};
   }
   
   ${media.lg} {
-    max-width: 1024px;
+    max-width: ${breakpoints.lg};
   }
   
   ${media.xl} {
-    max-width: 1280px;
+    max-width: ${breakpoints.xl};
   }
   
   ${media['2xl']} {
-    max-width: 1536px;
+    max-width: ${breakpoints['2xl']};
   }
 `
 

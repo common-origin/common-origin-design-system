@@ -109,7 +109,7 @@ const IconButtonStyled = styled.button.withConfig({
 
   /* High contrast mode support */
   @media (prefers-contrast: high) {
-    border: 1px solid;
+    border: ${tokens.semantic.border.width.thin} solid;
   }
 
   /* Reduced motion support */

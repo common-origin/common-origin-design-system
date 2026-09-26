@@ -979,6 +979,7 @@ export interface TokensSemanticBorder {
   focus: string;
   tooltip: string;
   width: TokensSemanticBorderWidth;
+  focusOffset: string;
   radius: TokensSemanticBorderRadius;
 }
 

@@ -307,6 +307,11 @@ export const boxDocs: ComponentDocumentation = {
   ],
 
   tokens: [
+    'semantic.border.focusOffset',
+    'semantic.border.width.thick',
+    'semantic.border.width.thin',
+    'semantic.color.border.*',
+    'semantic.color.border.interactive',
     'semantic.spacing.layout.*',
     'semantic.color.background.*',
     'semantic.color.text.*',

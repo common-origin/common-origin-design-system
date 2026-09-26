@@ -104,7 +104,7 @@ const StyledAlert = styled.div.withConfig({
   padding: ${({ $inline }) =>
     $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
   border-radius: ${semantic.border.radius.sm};
-  border: 1px solid;
+  border: ${semantic.border.width.thin} solid;
   position: relative;
   width: 100%;
   
@@ -185,7 +185,7 @@ const StyledActions = styled.div`
 const StyledDismissButton = styled(IconButton)`
   margin-left: ${semantic.spacing.layout.xs};
 	position: absolute;
-	right: 8px;
+	right: ${semantic.spacing.layout.sm};
 	top: 10px;
 `
 

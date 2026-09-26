@@ -61,7 +61,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
   min-height: 72px;
   padding: ${tokens.semantic.spacing.layout.md} ${tokens.semantic.spacing.layout.md};
   background-color: ${tokens.semantic.color.background.default};
-  border-bottom: 1px solid ${tokens.semantic.color.border.default};
+  border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   gap: ${tokens.semantic.spacing.layout.md};
   transition: background-color 0.2s ease;
   
@@ -77,8 +77,8 @@ const StyledContainer = styled.div<StyledContainerProps>`
     }
     
     &:focus-visible {
-      outline: 2px solid ${tokens.semantic.color.border.interactive};
-      outline-offset: -2px;
+      outline: ${tokens.semantic.border.width.thick} solid ${tokens.semantic.color.border.interactive};
+      outline-offset: calc(-1 * ${tokens.semantic.border.focusOffset});
     }
   `}
 `
