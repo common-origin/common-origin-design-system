@@ -311,7 +311,7 @@ export const numberInputDocs: ComponentDocumentation = {
       {
         name: 'Label',
         description: 'Optional label text with required indicator if needed. Uses semantic typography token.',
-        tokens: ['component.field.label.typography', 'component.field.label.color'],
+        tokens: ['component.field.label.typography', 'component.field.label.color', 'component.field.label.colorDisabled', 'component.field.label.gap', 'component.field.requiredIndicator.color', 'component.field.requiredIndicator.fontWeight'],
       },
       {
         name: 'Input Field',

@@ -389,6 +389,8 @@ export const textFieldDocs: ComponentDocumentation = {
         tokens: [
           'component.field.label.typography',
           'component.field.label.color',
+          'component.field.label.colorDisabled',
+          'component.field.label.gap',
         ],
       },
       {

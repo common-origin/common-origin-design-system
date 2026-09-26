@@ -379,7 +379,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.field.label.colorDisabled',
           'component.field.requiredIndicator.color',
           'component.field.requiredIndicator.fontWeight',
-          'base.spacing[1]',
+          'component.field.label.gap',
         ],
       },
       {
