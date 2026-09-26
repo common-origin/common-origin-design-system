@@ -210,7 +210,7 @@ export const boxDocs: ComponentDocumentation = {
     // Borders
     {
       name: 'borderRadius',
-      type: 'keyof typeof tokens.base.border.radius',
+      type: "keyof Tokens['semantic']['border']['radius']",
       required: false,
       description: 'Border radius using design tokens'
     },
@@ -311,7 +311,7 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.color.background.*',
     'semantic.color.text.*',
     'semantic.color.border.*',
-    'base.border.radius.*'
+    'semantic.border.radius.*'
   ],
 
   examples: [

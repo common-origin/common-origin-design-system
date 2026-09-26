@@ -1,13 +1,13 @@
 import tokens from '../styles/tokens.json'
 
-// Breakpoints using base tokens
+// Breakpoints from the semantic tokens (decision 0014)
 export const breakpoints = {
-  xs: tokens.base.breakpoint.xs,
-  sm: tokens.base.breakpoint.sm,
-  md: tokens.base.breakpoint.md,
-  lg: tokens.base.breakpoint.lg,
-  xl: tokens.base.breakpoint.xl,
-  '2xl': tokens.base.breakpoint['2xl'],
+  xs: tokens.semantic.breakpoint.xs,
+  sm: tokens.semantic.breakpoint.sm,
+  md: tokens.semantic.breakpoint.md,
+  lg: tokens.semantic.breakpoint.lg,
+  xl: tokens.semantic.breakpoint.xl,
+  '2xl': tokens.semantic.breakpoint['2xl'],
 }
 
 // Media query helpers

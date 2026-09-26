@@ -61,13 +61,15 @@ export const tabBarDocs: ComponentDocumentation = {
     'semantic.color.text.emphasis - Active tab text color',
     'semantic.color.border.default - Tab borders (default variant)',
     'semantic.color.border.emphasis - Active tab bottom border (underline variant)',
-    'base.spacing.2 - 4px vertical padding for tabs',
-    'base.spacing.4 - 8px horizontal padding for tabs',
+    'semantic.spacing.layout.sm - 8px gap between tabs (pills variant) and within a tab',
+    'semantic.spacing.layout.md - 12px vertical padding for tabs',
+    'semantic.spacing.layout.lg - 16px horizontal padding for tabs',
+    'semantic.spacing.layout.xs - 4px horizontal padding for the count badge',
     'semantic.typography.body2 - Tab label typography',
     'component.tabBar.badge.typography - Badge count text',
     'component.tabBar.badge.fontWeight - Badge count weight',
-    'base.border.radius.md - Rounded corners for pills variant',
-    'base.border.width.1 - 1px border width',
+    'semantic.border.radius.circle - Rounded corners for pills variant',
+    'semantic.border.width.thin - 1px border width',
     'semantic.motion.interactive - Smooth transitions for hover/active states'
   ],
 
@@ -432,8 +434,8 @@ return (
           'semantic.color.text.default',
           'semantic.color.text.emphasis',
           'semantic.typography.body2',
-          'base.spacing.2',
-          'base.spacing.4'
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.lg'
         ]
       },
       {
@@ -442,7 +444,7 @@ return (
         tokens: [
           'semantic.color.background.interactive',
           'semantic.color.text.inverse',
-          'base.border.radius.circle',
+          'semantic.border.radius.circle',
           'component.tabBar.badge.typography',
           'component.tabBar.badge.fontWeight'
         ]

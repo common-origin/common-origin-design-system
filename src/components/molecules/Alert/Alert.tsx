@@ -6,7 +6,7 @@ import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
 import { Typography } from '../../atoms/Typography'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 const { alert } = tokens.component
 
 export interface AlertProps {
@@ -103,7 +103,7 @@ const StyledAlert = styled.div.withConfig({
     $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
   padding: ${({ $inline }) =>
     $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
-  border-radius: ${base.border.radius[2]};
+  border-radius: ${semantic.border.radius.sm};
   border: 1px solid;
   position: relative;
   width: 100%;
@@ -140,7 +140,7 @@ const StyledAlert = styled.div.withConfig({
   }}
   
   /* Responsive adjustments */
-  @media (min-width: ${base.breakpoint.md}) {
+  @media (min-width: ${semantic.breakpoint.md}) {
     padding: ${({ $inline }) =>
       $inline
         ? semantic.spacing.layout.sm

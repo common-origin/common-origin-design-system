@@ -5,7 +5,7 @@ import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
-const { base: { border } } = tokens
+const { semantic: { border } } = tokens
 
 export type CardLargeProps = {
   title: string
@@ -31,7 +31,7 @@ const CardLargeStyled = styled.div`
   }
 
   img {
-    border-radius: ${border.radius[6]};
+    border-radius: ${border.radius['2xl']};
     transition: ease opacity 0.2s;
     width: 100%;
   }

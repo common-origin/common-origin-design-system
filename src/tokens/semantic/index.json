@@ -32,6 +32,50 @@
         "description": "Fixed headers, sticky navigation, bottom bars"
       }
     },
+    "breakpoint": {
+      "xs": {
+        "value": "{base.breakpoint.xs}",
+        "type": "breakpoint",
+        "description": "0px: smallest viewport."
+      },
+      "sm": {
+        "value": "{base.breakpoint.sm}",
+        "type": "breakpoint",
+        "description": "640px: large phones."
+      },
+      "md": {
+        "value": "{base.breakpoint.md}",
+        "type": "breakpoint",
+        "description": "768px: tablets; below this, mobile layouts (e.g. fullscreen Modal)."
+      },
+      "lg": {
+        "value": "{base.breakpoint.lg}",
+        "type": "breakpoint",
+        "description": "1024px: small desktops."
+      },
+      "xl": {
+        "value": "{base.breakpoint.xl}",
+        "type": "breakpoint",
+        "description": "1280px: desktops."
+      },
+      "2xl": {
+        "value": "{base.breakpoint.2xl}",
+        "type": "breakpoint",
+        "description": "1536px: wide desktops."
+      }
+    },
+    "opacity": {
+      "disabled": {
+        "value": "{base.opacity.50}",
+        "type": "opacity",
+        "description": "0.5: disabled controls and items."
+      },
+      "full": {
+        "value": "{base.opacity.100}",
+        "type": "opacity",
+        "description": "1: fully opaque (the enabled counterpart of disabled)."
+      }
+    },
     "fontFamily": {
       "body": {
         "value": "{base.fontFamily.body}",
@@ -174,6 +218,18 @@
 			"tooltip": {
 				"value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
 				"type": "border"
+			},
+			"width": {
+				"thin": {
+					"value": "{base.border.width.1}",
+					"type": "borderWidth",
+					"description": "0.0625rem: default hairline borders and rings."
+				},
+				"thick": {
+					"value": "{base.border.width.2}",
+					"type": "borderWidth",
+					"description": "0.125rem: emphasised borders, focus outlines and selected states."
+				}
 			},
 			"radius": {
 				"none": {
@@ -384,6 +440,11 @@
         "10xl": {
           "value": "{base.spacing.20}",
           "type": "spacing"
+        },
+        "11xl": {
+          "value": "{base.spacing.24}",
+          "type": "spacing",
+          "description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints)."
         },
         "auto": {
           "value": "{base.spacing.auto}",
@@ -884,6 +945,20 @@
       }
     },
     "motion": {
+      "duration": {
+        "normal": {
+          "value": "{base.duration.normal}",
+          "type": "duration",
+          "description": "200ms: standard duration for property-specific transitions."
+        }
+      },
+      "easing": {
+        "easeInOut": {
+          "value": "{base.easing.easeInOut}",
+          "type": "easing",
+          "description": "ease-in-out: standard easing for property-specific transitions."
+        }
+      },
       "transition": {
         "fast": {
           "value": "all {base.duration.fast} {base.easing.easeOut}",

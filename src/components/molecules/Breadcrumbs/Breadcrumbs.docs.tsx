@@ -38,9 +38,9 @@ export const breadcrumbsDocs: ComponentDocumentation = {
 
   tokens: [
     // Spacing tokens
-    'base.spacing.2',  // Item padding and margin
-    'base.spacing.3',  // Right margin for separator
-    'base.spacing.4',  // Separator icon size
+    'semantic.spacing.layout.sm',  // Item padding and margin
+    'semantic.spacing.layout.md',  // Right margin for separator
+    'semantic.spacing.layout.lg',  // Separator icon size
     // Border tokens  
     'semantic.border.default', // Bottom border
     // Typography tokens

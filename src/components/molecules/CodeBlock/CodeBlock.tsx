@@ -31,7 +31,7 @@ interface StyledCodeBlockProps {
 const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
   background-color: ${color.background.subtle};
   border: ${border.subtle};
-  border-radius: ${tokens.base.border.radius[2]};
+  border-radius: ${tokens.semantic.border.radius.sm};
   padding: ${spacing.layout.md};
   font-family: ${tokens.component.codeBlock.fontFamily};
   font-size: ${tokens.component.codeBlock.fontSize};
@@ -76,7 +76,7 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   right: 1px;
   width: calc(100% - 2px);
   margin-bottom: ${spacing.layout.sm};
-  border-radius: ${tokens.base.border.radius[2]};
+  border-radius: ${tokens.semantic.border.radius.sm};
   transition: opacity 300ms ease-in-out, background 300ms ease-in-out;
   
   ${({ $hasGradient }) => $hasGradient ? `

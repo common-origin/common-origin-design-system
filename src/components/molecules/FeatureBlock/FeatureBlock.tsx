@@ -9,7 +9,7 @@ import { Typography } from '../../atoms/Typography'
 import { DateFormatter } from '../../atoms/DateFormatter'
 import tokens from '@/styles/tokens.json'
 
-const { base: { spacing, border } } = tokens
+const { semantic: { spacing: { layout: spacing }, border } } = tokens
 
 export type FeatureBlockProps = {
   title: string
@@ -23,17 +23,17 @@ export type FeatureBlockProps = {
 }
 
 const FeatureBlockStyled = styled.div`
-  @media (min-width: ${tokens.base.breakpoint.md}) {
+  @media (min-width: ${tokens.semantic.breakpoint.md}) {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
   }
 
-  @media (min-width: ${tokens.base.breakpoint.lg}) {
-    gap: ${spacing[12]};
+  @media (min-width: ${tokens.semantic.breakpoint.lg}) {
+    gap: ${spacing['7xl']};
   }
 
   img {
-    border-radius: ${border.radius[6]};
+    border-radius: ${border.radius['2xl']};
     transition: ease opacity 0.2s;
 
     &:hover {
@@ -49,29 +49,29 @@ const FeatureBlockStyled = styled.div`
 const ImageWrapper = styled.div`
   grid-column: span 12;
 
-  @media (min-width: ${tokens.base.breakpoint.lg}) {
+  @media (min-width: ${tokens.semantic.breakpoint.lg}) {
     grid-column: span 6;
   }
 `
 
 const ContentSection = styled.div`
   grid-column: span 12;
-  margin-top: ${spacing[6]};
+  margin-top: ${spacing['2xl']};
 
-  @media (min-width: ${tokens.base.breakpoint.lg}) {
+  @media (min-width: ${tokens.semantic.breakpoint.lg}) {
     grid-column: span 6;
     margin-top: 0;
-    padding-right: ${spacing[8]};
+    padding-right: ${spacing['4xl']};
   }
 
-  @media (min-width: ${tokens.base.breakpoint.xl}) {
-    padding-right: ${spacing[24]};
+  @media (min-width: ${tokens.semantic.breakpoint.xl}) {
+    padding-right: ${spacing['11xl']};
   }
 `
 
 const ButtonWrapper = styled.div`
   button {
-    margin-top: ${spacing[4]};
+    margin-top: ${spacing.lg};
   }
 `
 

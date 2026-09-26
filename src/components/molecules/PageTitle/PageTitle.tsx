@@ -18,8 +18,8 @@ interface StyledPageTitleProps {
 const PageTitleStyled = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledPageTitleProps>`
-  margin-bottom: ${tokens.base.spacing[6]};
-  margin-top: ${({ $hasBackButton }) => $hasBackButton ? tokens.base.spacing[0] : tokens.base.spacing[12]};
+  margin-bottom: ${tokens.semantic.spacing.layout['2xl']};
+  margin-top: ${({ $hasBackButton }) => $hasBackButton ? tokens.semantic.spacing.layout.none : tokens.semantic.spacing.layout['7xl']};
 `
 
 export const PageTitle: FC<PageTitleProps> = ({ title, hasBackButton = false, subtitle }) => {

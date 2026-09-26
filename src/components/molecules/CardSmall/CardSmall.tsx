@@ -24,7 +24,7 @@ const CardSmallStyled = styled.div`
   }
 
   img {
-    border-radius: ${tokens.base.border.radius[2]};
+    border-radius: ${tokens.semantic.border.radius.sm};
     transition: ease opacity 0.2s;
     width: 100%;
     height: auto;

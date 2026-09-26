@@ -4,7 +4,7 @@ import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 const { color, border, spacing } = semantic
 const { label } = tokens.component.badge
 const { category } = color
@@ -93,7 +93,7 @@ const StyledCategoryBadge = styled.span.withConfig({
   white-space: nowrap;
   user-select: none;
   border-style: solid;
-  border-width: ${base.border.width[1]};
+  border-width: ${semantic.border.width.thin};
   
   /* Size styles */
   height: ${({ $size }) => $size === 'small' ? '24px' : '32px'};

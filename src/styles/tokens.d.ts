@@ -861,6 +861,20 @@ export interface TokensComponentCodeBlock {
   lineHeight: string;
 }
 
+export interface TokensComponentSliderThumbShadow {
+  default: string;
+  hover: string;
+  active: string;
+}
+
+export interface TokensComponentSliderThumb {
+  shadow: TokensComponentSliderThumbShadow;
+}
+
+export interface TokensComponentSlider {
+  thumb: TokensComponentSliderThumb;
+}
+
 export interface TokensComponent {
   button: TokensComponentButton;
   chip: TokensComponentChip;
@@ -875,6 +889,7 @@ export interface TokensComponent {
   searchField: TokensComponentSearchField;
   avatar: TokensComponentAvatar;
   codeBlock: TokensComponentCodeBlock;
+  slider: TokensComponentSlider;
 }
 
 export interface TokensSemanticElevation {
@@ -884,6 +899,20 @@ export interface TokensSemanticElevation {
   floating: string;
   overlay: string;
   sticky: string;
+}
+
+export interface TokensSemanticBreakpoint {
+  xs: string;
+  sm: string;
+  md: string;
+  lg: string;
+  xl: string;
+  '2xl': string;
+}
+
+export interface TokensSemanticOpacity {
+  disabled: string;
+  full: string;
 }
 
 export interface TokensSemanticFontFamily {
@@ -926,6 +955,11 @@ export interface TokensSemanticZIndex {
   modal: string;
 }
 
+export interface TokensSemanticBorderWidth {
+  thin: string;
+  thick: string;
+}
+
 export interface TokensSemanticBorderRadius {
   none: string;
   xs: string;
@@ -944,6 +978,7 @@ export interface TokensSemanticBorder {
   strong: string;
   focus: string;
   tooltip: string;
+  width: TokensSemanticBorderWidth;
   radius: TokensSemanticBorderRadius;
 }
 
@@ -1001,6 +1036,7 @@ export interface TokensSemanticSpacingLayout {
   '8xl': string;
   '9xl': string;
   '10xl': string;
+  '11xl': string;
   auto: string;
 }
 
@@ -1151,6 +1187,14 @@ export interface TokensSemanticTypography {
   breadcrumb: string;
 }
 
+export interface TokensSemanticMotionDuration {
+  normal: string;
+}
+
+export interface TokensSemanticMotionEasing {
+  easeInOut: string;
+}
+
 export interface TokensSemanticMotionTransition {
   fast: string;
   normal: string;
@@ -1158,6 +1202,8 @@ export interface TokensSemanticMotionTransition {
 }
 
 export interface TokensSemanticMotion {
+  duration: TokensSemanticMotionDuration;
+  easing: TokensSemanticMotionEasing;
   transition: TokensSemanticMotionTransition;
   hover: string;
   focus: string;
@@ -1166,6 +1212,8 @@ export interface TokensSemanticMotion {
 
 export interface TokensSemantic {
   elevation: TokensSemanticElevation;
+  breakpoint: TokensSemanticBreakpoint;
+  opacity: TokensSemanticOpacity;
   fontFamily: TokensSemanticFontFamily;
   fontSize: TokensSemanticFontSize;
   lineHeight: TokensSemanticLineHeight;

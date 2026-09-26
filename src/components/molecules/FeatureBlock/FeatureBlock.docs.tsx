@@ -61,10 +61,15 @@ export const featureBlockDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.background.subtle',
     'semantic.border.subtle',
-    'base.border.radius.2',
-    'semantic.spacing.layout.md',
+    'semantic.border.radius.2xl',
     'semantic.spacing.layout.lg',
-    'base.fontFamily.sans',
+    'semantic.spacing.layout.2xl',
+    'semantic.spacing.layout.4xl',
+    'semantic.spacing.layout.7xl',
+    'semantic.spacing.layout.11xl',
+    'semantic.breakpoint.md',
+    'semantic.breakpoint.lg',
+    'semantic.breakpoint.xl',
     'semantic.typography.heading.3',
     'semantic.typography.body'
   ],

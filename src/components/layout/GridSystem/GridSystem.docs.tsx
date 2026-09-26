@@ -33,9 +33,8 @@ export const gridSystemDocs: ComponentDocumentation = {
     { name: 'children', type: 'React.ReactNode', required: true, description: 'Child nodes' }
   ],
   tokens: [
-    'base.spacing.*',
-    'base.breakpoint.*',
-    'base.border.radius.*',
+    'base.spacing.* - gap props take base spacing keys (public API; exception to decision 0014)',
+    'semantic.breakpoint.*',
     'semantic.color.background.*',
     'semantic.color.border.*'
   ],

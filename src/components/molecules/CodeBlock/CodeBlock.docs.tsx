@@ -57,7 +57,7 @@ export const codeBlockDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.background.subtle - Subtle background color providing clear code container definition and gradient overlay when collapsed',
     'semantic.border.subtle - Subtle border styling for visual separation from surrounding content',
-    'base.border.radius.2 - Consistent rounded corners matching design system patterns for both container and expand button wrapper',
+    'semantic.border.radius.sm - Consistent rounded corners matching design system patterns for both container and expand button wrapper',
     'semantic.spacing.layout.md - Internal padding for comfortable code reading and visual breathing room',
     'semantic.spacing.layout.sm - Vertical margin, expand button wrapper padding, and bottom positioning',
     'semantic.spacing.layout.lg - Copy button positioning from bottom edge',
@@ -316,7 +316,7 @@ import tokens from '@/styles/tokens.json'
 const StyledCard = styled.div\`
   background: \${tokens.semantic.color.background.default};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.base.border.radius[2]};
+  border-radius: \${tokens.semantic.border.radius.sm};
   padding: \${tokens.semantic.spacing.layout.md};
   box-shadow: \${tokens.semantic.elevation.low};
   
@@ -370,7 +370,7 @@ import tokens from '@/styles/tokens.json'
 const StyledCard = styled.div\`
   background: \${tokens.semantic.color.background.default};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.base.border.radius[2]};
+  border-radius: \${tokens.semantic.border.radius.sm};
   padding: \${tokens.semantic.spacing.layout.md};
   box-shadow: \${tokens.semantic.elevation.low};
   
@@ -621,7 +621,7 @@ interface UserProfile {
 
 const StyledProfileCard = styled.div\`
   background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.base.border.radius[3]};
+  border-radius: \${tokens.semantic.border.radius.md};
   padding: \${tokens.semantic.spacing.layout.lg};
   box-shadow: \${tokens.semantic.elevation.low};
 \`
@@ -708,7 +708,7 @@ interface UserProfile {
 
 const StyledProfileCard = styled.div\`
   background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.base.border.radius[3]};
+  border-radius: \${tokens.semantic.border.radius.md};
   padding: \${tokens.semantic.spacing.layout.lg};
   box-shadow: \${tokens.semantic.elevation.low};
 \`
@@ -832,7 +832,7 @@ export default config`}
         tokens: [
           'semantic.color.background.subtle',
           'semantic.border.subtle',
-          'base.border.radius.2',
+          'semantic.border.radius.sm',
           'semantic.spacing.layout.md',
           'component.codeBlock.fontFamily',
           'semantic.color.text.default',

@@ -77,9 +77,9 @@ export const typographyDocs: ComponentDocumentation = {
     'semantic.color.text.success',
     'semantic.color.text.warning',
     // Letter spacing tokens
-    'base.letterSpacing.0', // Display and H1
-    'base.letterSpacing.1', // H2-H4
-    'base.letterSpacing.2'  // H5-H6
+    'semantic.letterSpacing.tighter', // Display and H1
+    'semantic.letterSpacing.tight', // H2-H4
+    'semantic.letterSpacing.normal'  // H5-H6
   ],
   
   examples: [

@@ -17,7 +17,7 @@ import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base, component } = tokens
+const { semantic, component } = tokens
 
 /**
  * Suggestion item for autocomplete
@@ -137,8 +137,8 @@ const StyledSearchContainer = styled.div<StyledSearchContainerProps>`
 const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   display: flex;
   align-items: center;
-  gap: ${base.spacing[2]};
-  padding: ${base.spacing[2]} ${base.spacing[3]};
+  gap: ${semantic.spacing.layout.sm};
+  padding: ${semantic.spacing.layout.sm} ${semantic.spacing.layout.md};
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${component.input.default.borderRadius};
@@ -181,23 +181,23 @@ const StyledInput = styled.input`
 
 const StyledSuggestionsList = styled.ul`
   position: absolute;
-  top: calc(100% + ${base.spacing[1]});
+  top: calc(100% + ${semantic.spacing.layout.xs});
   left: 0;
   right: 0;
   max-height: 300px;
   overflow-y: auto;
   background-color: ${semantic.color.background.subtle};
-  border: ${base.border.width[1]} solid ${semantic.color.border.default};
-  border-radius: ${base.border.radius[3]};
+  border: ${semantic.border.width.thin} solid ${semantic.color.border.default};
+  border-radius: ${semantic.border.radius.md};
   box-shadow: ${semantic.elevation.floating};
   list-style: none;
-  padding: ${base.spacing[1]} 0;
+  padding: ${semantic.spacing.layout.xs} 0;
   margin: 0;
   z-index: ${semantic.zIndex.dropdown};
 `
 
 const StyledSectionHeader = styled.div`
-  padding: ${base.spacing[2]} ${base.spacing[3]};
+  padding: ${semantic.spacing.layout.sm} ${semantic.spacing.layout.md};
   font: ${tokens.component.searchField.sectionHeader.typography};
   color: ${semantic.color.text.subdued};
   text-transform: uppercase;

@@ -24,7 +24,7 @@ import {
 } from './agentInputSpeech'
 import { AgentInputMachineState, agentInputStateTransition } from './agentInputStateMachine'
 
-const { semantic, base, component } = tokens
+const { semantic, component } = tokens
 
 const DEFAULT_IDLE_HELPER = 'Ask about transactions, spending, or transfers'
 const DEFAULT_LISTENING_MESSAGE = 'Listening… speak now'
@@ -76,7 +76,7 @@ const rotateRing = keyframes`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${base.spacing[2]};
+  gap: ${semantic.spacing.layout.sm};
   width: 100%;
 `
 
@@ -87,7 +87,7 @@ const ControlsRow = styled.div`
 const InputShell = styled.div`
   display: flex;
   align-items: center;
-  gap: ${base.spacing[2]};
+  gap: ${semantic.spacing.layout.sm};
   width: 100%;
   padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm} ${semantic.spacing.layout.xs} ${component.input.default.paddingX};
   background-color: ${component.input.default.backgroundColor};
@@ -111,7 +111,7 @@ const InputShell = styled.div`
 const Input = styled.input`
   flex: 1;
   min-width: 0;
-  min-height: ${base.spacing[12]};
+  min-height: ${semantic.spacing.layout['7xl']};
   border: none;
   background: transparent;
   font: ${semantic.typography.body};
@@ -159,9 +159,9 @@ const MicButtonWrapper = styled.div.withConfig({
 const MicListeningRing = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $reducedMotion: boolean }>`
-  --ring-thickness: ${base.border.width[2]};
+  --ring-thickness: ${semantic.border.width.thick};
   position: absolute;
-  inset: calc(-${base.spacing[1]} - ${component.iconButton.focus.outlineOffset});
+  inset: calc(-${semantic.spacing.layout.xs} - ${component.iconButton.focus.outlineOffset});
   border-radius: ${semantic.border.radius.circle};
   pointer-events: none;
   z-index: 0;
@@ -199,8 +199,8 @@ const StatusRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${base.spacing[3]};
-  min-height: ${base.spacing[6]};
+  gap: ${semantic.spacing.layout.md};
+  min-height: ${semantic.spacing.layout['2xl']};
 `
 
 const StatusText = styled.div.withConfig({
@@ -214,15 +214,15 @@ const StatusAnnouncement = styled.div``
 const MeterContainer = styled.div`
   display: inline-flex;
   align-items: flex-end;
-  gap: ${base.spacing[1]};
-  height: ${base.spacing[4]};
+  gap: ${semantic.spacing.layout.xs};
+  height: ${semantic.spacing.layout.lg};
 `
 
 const MeterBar = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $height: number }>`
-  width: ${base.spacing[1]};
-  border-radius: ${base.border.radius[1]};
+  width: ${semantic.spacing.layout.xs};
+  border-radius: ${semantic.border.radius.xs};
   background-color: ${semantic.color.background.interactive};
   height: ${({ $height }) => `${$height * 100}%`};
   transition: height 120ms linear;

@@ -211,7 +211,7 @@ export const tagDocs: ComponentDocumentation = {
         name: 'Tag Container',
         description: 'Root span element with inline-flex display, rounded corners, and semantic color styling based on variant',
         tokens: [
-          'base.border.radius.2',
+          'semantic.border.radius.sm',
           'semantic.color.background.[variant]-subtle',
           'semantic.color.border.[variant]'
         ]

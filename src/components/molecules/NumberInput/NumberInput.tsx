@@ -4,7 +4,6 @@ import { StyledInputBase } from '../TextField/InputBase'
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import tokens from '@/styles/tokens.json'
 
-const { base } = tokens
 const { field } = tokens.component
 
 /**
@@ -113,15 +112,15 @@ const StyledInputWrapper = styled.div`
 
 const StyledNumberInput = styled(StyledInputBase)`
   /* Add padding on the right to make room for stepper buttons */
-  padding-right: ${base.spacing[10]};
+  padding-right: ${tokens.semantic.spacing.layout['6xl']};
 `
 
 const StyledStepperContainer = styled.div`
   position: absolute;
-  right: ${base.spacing[2]};
+  right: ${tokens.semantic.spacing.layout.sm};
   display: flex;
   flex-direction: row;
-  gap: ${base.spacing[2]};
+  gap: ${tokens.semantic.spacing.layout.sm};
 `
 
 const StyledHelperText = styled.div<{ $isError?: boolean }>`

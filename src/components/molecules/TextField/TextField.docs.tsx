@@ -156,20 +156,19 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.color.border.error',
     
     // Spacing
-    'base.spacing[2]',
-    'base.spacing[3]',
-    'base.spacing[1]',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.xs',
     
     // Border
-    'base.border.width[1]',
-    'base.border.radius[2]',
+    'semantic.border.width.thin',
+    'semantic.border.radius.sm',
     
     // Motion
-    'base.duration.normal',
-    'base.easing.easeInOut',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
     
     // Opacity
-    'base.opacity[60]',
   ],
 
   examples: [
@@ -347,7 +346,7 @@ export const textFieldDocs: ComponentDocumentation = {
       'Error messages use role="alert" and aria-live="polite" for immediate screen reader announcements',
       'Focus ring visible with 2px border using semantic.color.border.interactive',
       'Maintains 4.5:1 color contrast ratio in all states (WCAG 2.2 AA)',
-      'Disabled state uses base.opacity[60] maintaining readability',
+      'Disabled state uses the component.input.disabled colour tokens (no opacity change), keeping the label and value readable',
       'Auto-generates unique IDs using React.useId() when not provided',
     ],
     keyboardNavigation: 'Tab to focus input, Shift+Tab to move backwards. All standard text editing keyboard shortcuts supported (Cmd+A, Cmd+C, Cmd+V, etc.)',
@@ -408,12 +407,12 @@ export const textFieldDocs: ComponentDocumentation = {
           'semantic.color.border.interactive',
           'semantic.color.border.strong',
           'semantic.color.border.error',
-          'base.spacing[2]',
-          'base.spacing[3]',
-          'base.border.width[1]',
-          'base.border.radius[2]',
-          'base.duration.normal',
-          'base.easing.easeInOut',
+          'semantic.spacing.layout.sm',
+          'semantic.spacing.layout.md',
+          'semantic.border.width.thin',
+          'semantic.border.radius.sm',
+          'semantic.motion.duration.normal',
+          'semantic.motion.easing.easeInOut',
         ],
       },
       {

@@ -192,10 +192,10 @@ export const modalDocs: ComponentDocumentation = {
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.lg',
     // Breakpoint
-    'base.breakpoint.md',
+    'semantic.breakpoint.md',
     // Motion
-    'base.duration.normal',
-    'base.easing.easeOut',
+    'semantic.motion.duration.normal',
+    '200ms ease-out (hard-coded until the motion audit, #35)',
   ],
 
   // ---------------------------------------------------------------------------

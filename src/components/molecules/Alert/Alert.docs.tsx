@@ -110,7 +110,7 @@ export const alertDocs: ComponentDocumentation = {
     'semantic.spacing.layout.lg',
 
     // Border
-    'base.border.radius.2',
+    'semantic.border.radius.sm',
 
     // Typography
     'component.alert.title.typography',
@@ -120,7 +120,7 @@ export const alertDocs: ComponentDocumentation = {
     'component.alert.message.lineHeight',
 
     // Breakpoint
-    'base.breakpoint.md'
+    'semantic.breakpoint.md'
   ],
 
   examples: [
@@ -480,7 +480,7 @@ export const alertDocs: ComponentDocumentation = {
           'semantic.color.text.*',
           'semantic.spacing.layout.md',
           'semantic.spacing.layout.lg',
-          'base.border.radius.2'
+          'semantic.border.radius.sm'
         ]
       },
       {

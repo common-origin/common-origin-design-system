@@ -2,7 +2,7 @@ import { ReactNode, useState, useRef, useEffect, KeyboardEvent, MouseEvent } fro
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
-const { semantic, base } = tokens
+const { semantic } = tokens
 
 /**
  * Tab variant options for TabBar
@@ -86,10 +86,10 @@ const StyledTabList = styled.div.withConfig({
 })<StyledTabListProps>`
   display: flex;
   align-items: center;
-  gap: ${props => props.$variant === 'pills' ? base.spacing[2] : '0'};
+  gap: ${props => props.$variant === 'pills' ? semantic.spacing.layout.sm : '0'};
   border-bottom: ${props => 
     props.$variant === 'underline' 
-      ? `${base.border.width[1]} solid ${semantic.color.border.subtle}` 
+      ? `${semantic.border.width.thin} solid ${semantic.color.border.subtle}` 
       : 'none'
   };
   overflow-x: auto;
@@ -107,7 +107,7 @@ const StyledTabList = styled.div.withConfig({
   
   &::-webkit-scrollbar-thumb {
     background: ${semantic.color.border.default};
-    border-radius: ${base.border.radius[2]};
+    border-radius: ${semantic.border.radius.sm};
   }
 `
 
@@ -116,8 +116,8 @@ const StyledTab = styled.button.withConfig({
 })<StyledTabProps>`
   display: inline-flex;
   align-items: center;
-  gap: ${base.spacing[2]};
-  padding: ${base.spacing[3]} ${base.spacing[4]};
+  gap: ${semantic.spacing.layout.sm};
+  padding: ${semantic.spacing.layout.md} ${semantic.spacing.layout.lg};
   font: ${semantic.typography.button2};
   white-space: nowrap;
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
@@ -130,7 +130,7 @@ const StyledTab = styled.button.withConfig({
   ${props => {
     if (props.$variant === 'pills') {
       return `
-        border-radius: ${base.border.radius.circle};
+        border-radius: ${semantic.border.radius.circle};
         background-color: ${props.$isActive 
           ? semantic.color.background.interactive 
           : semantic.color.background.subtle
@@ -162,7 +162,7 @@ const StyledTab = styled.button.withConfig({
           bottom: -1px;
           left: 0;
           right: 0;
-          height: ${base.border.width[2]};
+          height: ${semantic.border.width.thick};
           background-color: ${props.$isActive 
             ? semantic.color.background.interactive 
             : 'transparent'
@@ -178,7 +178,7 @@ const StyledTab = styled.button.withConfig({
     
     // default variant
     return `
-      border-radius: ${base.border.radius[2]} ${base.border.radius[2]} 0 0;
+      border-radius: ${semantic.border.radius.sm} ${semantic.border.radius.sm} 0 0;
       background-color: ${props.$isActive 
         ? semantic.color.background.subtle 
         : semantic.color.background.default
@@ -187,8 +187,8 @@ const StyledTab = styled.button.withConfig({
         ? semantic.color.text.default 
         : semantic.color.text.subdued
       };
-      border: ${base.border.width[1]} solid ${semantic.color.border.default};
-      border-bottom: ${props.$isActive ? 'none' : `${base.border.width[1]} solid ${semantic.color.border.default}`};
+      border: ${semantic.border.width.thin} solid ${semantic.color.border.default};
+      border-bottom: ${props.$isActive ? 'none' : `${semantic.border.width.thin} solid ${semantic.color.border.default}`};
       margin-bottom: ${props.$isActive ? '-1px' : '0'};
       
       &:hover:not(:disabled) {
@@ -203,8 +203,8 @@ const StyledTab = styled.button.withConfig({
   
   /* Focus state */
   &:focus-visible {
-    outline: ${base.border.width[2]} solid ${semantic.color.border.strong};
-    outline-offset: ${base.spacing[1]};
+    outline: ${semantic.border.width.thick} solid ${semantic.color.border.strong};
+    outline-offset: ${semantic.spacing.layout.xs};
     z-index: 1;
   }
   
@@ -222,10 +222,10 @@ const StyledBadge = styled.span.withConfig({
   justify-content: center;
   min-width: 20px;
   height: 20px;
-  padding: 0 ${base.spacing[1]};
+  padding: 0 ${semantic.spacing.layout.xs};
   font: ${tokens.component.tabBar.badge.typography};
   font-weight: ${tokens.component.tabBar.badge.fontWeight};
-  border-radius: ${base.border.radius.circle};
+  border-radius: ${semantic.border.radius.circle};
   background-color: ${props => {
     if (props.$variant === 'pills') {
       return props.$isActive 

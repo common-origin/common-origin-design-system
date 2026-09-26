@@ -4,7 +4,6 @@ import { StyledInputBase } from './InputBase'
 import { Stack } from '../../atoms/Stack/Stack'
 import tokens from '@/styles/tokens.json'
 
-const { base } = tokens
 const { field } = tokens.component
 
 /**

@@ -101,8 +101,8 @@ export const dropdownDocs: ComponentDocumentation = {
     'component.input.error.focus.borderColor',
     
     // Base tokens
-    'base.spacing.2',
-    'base.spacing.1',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.xs',
     'semantic.elevation.floating',
     'semantic.zIndex.dropdown',
     

@@ -1,16 +1,21 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
+
+// Exception to decision 0014: the gap props are typed as base spacing keys (public API),
+// so they are looked up in base.spacing until they accept semantic keys.
+// eslint-disable-next-line no-restricted-syntax
+const gapSpacing = tokens.base.spacing
 import type { Tokens } from '../../../types/tokens'
 
 // Breakpoints using base tokens
 const breakpoints = {
-  xs: tokens.base.breakpoint.xs,
-  sm: tokens.base.breakpoint.sm,
-  md: tokens.base.breakpoint.md,
-  lg: tokens.base.breakpoint.lg,
-  xl: tokens.base.breakpoint.xl,
-  '2xl': tokens.base.breakpoint['2xl'],
+  xs: tokens.semantic.breakpoint.xs,
+  sm: tokens.semantic.breakpoint.sm,
+  md: tokens.semantic.breakpoint.md,
+  lg: tokens.semantic.breakpoint.lg,
+  xl: tokens.semantic.breakpoint.xl,
+  '2xl': tokens.semantic.breakpoint['2xl'],
 }
 
 // Media query helpers
@@ -59,9 +64,9 @@ export const Grid: React.FC<GridProps> = ({
 }) => (
   <GridContainer
     $cols={cols}
-    $gap={gap ? tokens.base.spacing[gap] : undefined}
-    $gapX={gapX ? tokens.base.spacing[gapX] : undefined}
-    $gapY={gapY ? tokens.base.spacing[gapY] : undefined}
+    $gap={gap ? gapSpacing[gap] : undefined}
+    $gapX={gapX ? gapSpacing[gapX] : undefined}
+    $gapY={gapY ? gapSpacing[gapY] : undefined}
     className={className}
   >
     {children}
@@ -368,21 +373,21 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
     $colsMd={colsMd}
     $colsLg={colsLg}
     $colsXl={colsXl}
-    $gap={gap ? tokens.base.spacing[gap] : undefined}
-    $gapSm={gapSm ? tokens.base.spacing[gapSm] : undefined}
-    $gapMd={gapMd ? tokens.base.spacing[gapMd] : undefined}
-    $gapLg={gapLg ? tokens.base.spacing[gapLg] : undefined}
-    $gapXl={gapXl ? tokens.base.spacing[gapXl] : undefined}
-    $gapX={gapX ? tokens.base.spacing[gapX] : undefined}
-    $gapXSm={gapXSm ? tokens.base.spacing[gapXSm] : undefined}
-    $gapXMd={gapXMd ? tokens.base.spacing[gapXMd] : undefined}
-    $gapXLg={gapXLg ? tokens.base.spacing[gapXLg] : undefined}
-    $gapXXl={gapXXl ? tokens.base.spacing[gapXXl] : undefined}
-    $gapY={gapY ? tokens.base.spacing[gapY] : undefined}
-    $gapYSm={gapYSm ? tokens.base.spacing[gapYSm] : undefined}
-    $gapYMd={gapYMd ? tokens.base.spacing[gapYMd] : undefined}
-    $gapYLg={gapYLg ? tokens.base.spacing[gapYLg] : undefined}
-    $gapYXl={gapYXl ? tokens.base.spacing[gapYXl] : undefined}
+    $gap={gap ? gapSpacing[gap] : undefined}
+    $gapSm={gapSm ? gapSpacing[gapSm] : undefined}
+    $gapMd={gapMd ? gapSpacing[gapMd] : undefined}
+    $gapLg={gapLg ? gapSpacing[gapLg] : undefined}
+    $gapXl={gapXl ? gapSpacing[gapXl] : undefined}
+    $gapX={gapX ? gapSpacing[gapX] : undefined}
+    $gapXSm={gapXSm ? gapSpacing[gapXSm] : undefined}
+    $gapXMd={gapXMd ? gapSpacing[gapXMd] : undefined}
+    $gapXLg={gapXLg ? gapSpacing[gapXLg] : undefined}
+    $gapXXl={gapXXl ? gapSpacing[gapXXl] : undefined}
+    $gapY={gapY ? gapSpacing[gapY] : undefined}
+    $gapYSm={gapYSm ? gapSpacing[gapYSm] : undefined}
+    $gapYMd={gapYMd ? gapSpacing[gapYMd] : undefined}
+    $gapYLg={gapYLg ? gapSpacing[gapYLg] : undefined}
+    $gapYXl={gapYXl ? gapSpacing[gapYXl] : undefined}
     className={className}
   >
     {children}

@@ -88,6 +88,25 @@ export default tseslint.config(
     },
   },
   {
+    // Decision 0014: components never use base tokens; they use semantic or component tokens.
+    // Also covers src/lib/styleUtils.ts, which ships in the package and styles components.
+    files: ['src/components/**/*.{ts,tsx}', 'src/lib/styleUtils.ts'],
+    ignores: ['**/*.docs.tsx', '**/*.test.{ts,tsx}'],
+    rules: {
+      'no-restricted-syntax': [
+        'error',
+        {
+          selector: "MemberExpression[object.name='tokens'][property.name='base']",
+          message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
+        },
+        {
+          selector: "VariableDeclarator[init.name='tokens'] > ObjectPattern > Property[key.name='base']",
+          message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
+        },
+      ],
+    },
+  },
+  {
     // Latent bugs in dead custom transforms — removed in the Style Dictionary migration (#24, step 2)
     files: ['config/style-dictionary.config.js'],
     rules: { 'no-undef': 'warn', 'no-useless-escape': 'warn', 'no-constant-binary-expression': 'warn' },
