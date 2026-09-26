@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, cleanup } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Modal, type ModalProps, type ModalAction } from './Modal'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -110,6 +111,13 @@ describe('Modal', () => {
       renderModal({ 'data-testid': 'modal' })
       fireEvent.click(screen.getByTestId('modal-overlay'))
       expect(mockOnClose).toHaveBeenCalledTimes(1)
+    })
+
+    it('uses the overlay token for the backdrop', () => {
+      renderModal({ 'data-testid': 'modal' })
+      expect(screen.getByTestId('modal-overlay')).toHaveStyle({
+        backgroundColor: tokens.semantic.color.background.overlay,
+      })
     })
 
     it('does not call onClose on overlay click when closeOnOverlayClick is false', () => {

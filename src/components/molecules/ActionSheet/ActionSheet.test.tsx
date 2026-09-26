@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor, act, cleanup } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { ActionSheet, type ActionSheetProps, type Action } from './ActionSheet'
+import tokens from '@/styles/tokens.json'
 
 describe('ActionSheet', () => {
   const mockActions: Action[] = [
@@ -93,6 +94,15 @@ describe('ActionSheet', () => {
     it('applies data-testid', () => {
       renderActionSheet({ 'data-testid': 'action-sheet-test' })
       expect(screen.getByTestId('action-sheet-test')).toBeInTheDocument()
+    })
+
+    it('uses the overlay token for the backdrop', () => {
+      renderActionSheet({ 'data-testid': 'action-sheet-test' })
+      // The backdrop is rendered as the sheet's preceding sibling
+      const backdrop = screen.getByTestId('action-sheet-test').previousElementSibling
+      expect(backdrop).toHaveStyle({
+        backgroundColor: tokens.semantic.color.background.overlay,
+      })
     })
   })
   
