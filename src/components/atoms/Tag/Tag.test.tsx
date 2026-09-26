@@ -2,6 +2,8 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Tag, TagProps } from './Tag'
+import tokens from '@/styles/tokens.json'
+import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 
 expect.extend(toHaveNoViolations)
 
@@ -15,6 +17,11 @@ describe('Tag', () => {
   }
 
   describe('Basic Rendering', () => {
+    it('renders its label at the badge-family weight', () => {
+      renderTag()
+      expect(effectiveFontWeight(screen.getByRole('status'))).toBe(tokens.component.badge.label.fontWeight)
+    })
+
     it('renders without crashing', () => {
       renderTag()
       expect(screen.getByRole('status')).toBeInTheDocument()

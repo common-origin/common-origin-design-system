@@ -5,7 +5,8 @@ import type { IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
 
 const { semantic, base } = tokens
-const { color, typography, border, spacing } = semantic
+const { color, border, spacing } = semantic
+const { label } = tokens.component.badge
 const { category } = color
 const { radius } = border
 const { layout } = spacing
@@ -100,7 +101,9 @@ const StyledCategoryBadge = styled.span.withConfig({
     ? `${layout.xs} ${layout.sm}` 
     : `${layout.sm} ${layout.md}`
   };
-  font: ${({ $size }) => $size === 'small' ? typography.caption : typography.small};
+  font: ${({ $size }) => $size === 'small' ? label.typography.small : label.typography.medium};
+  /* After the font shorthand, which would otherwise reset it */
+  font-weight: ${label.fontWeight};
   gap: ${layout.xs};
   
   /* Variant + Color styles */

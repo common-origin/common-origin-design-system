@@ -60,7 +60,8 @@ export const tagDocs: ComponentDocumentation = {
     'semantic.color.border.error',
     
     // Typography
-    'semantic.typography.button3',
+    'component.badge.label.typography.small',
+    'component.badge.label.fontWeight',
     
     // Spacing
     'semantic.spacing.layout.xs',
@@ -219,7 +220,8 @@ export const tagDocs: ComponentDocumentation = {
         name: 'Text Label',
         description: 'Text content with appropriate sizing and color contrast',
         tokens: [
-          'semantic.typography.button3',
+          'component.badge.label.typography.small',
+          'component.badge.label.fontWeight',
           'semantic.color.text.[variant]'
         ]
       }

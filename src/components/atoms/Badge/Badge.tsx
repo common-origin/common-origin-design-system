@@ -6,6 +6,7 @@ import { Typography } from '../Typography'
 const { semantic } = tokens
 const { color, border } = semantic
 const { radius } = border
+const { dot, count, ring } = tokens.component.badge
 
 export interface BadgeProps {
   /** Content to wrap with the badge */
@@ -52,13 +53,13 @@ const BadgeIndicator = styled.span.withConfig({
   display: ${props => props.$isVisible ? 'flex' : 'none'};
   align-items: center;
   justify-content: center;
-  min-width: ${props => props.$isDot ? '8px' : '16px'};
-  height: ${props => props.$isDot ? '8px' : '16px'};
-  padding: ${props => props.$isDot ? '0' : '0 4px'};
+  min-width: ${props => props.$isDot ? dot.size : count.minWidth};
+  height: ${props => props.$isDot ? dot.size : count.height};
+  padding: ${props => props.$isDot ? '0' : `0 ${count.paddingX}`};
   border-radius: ${radius.circle};
   line-height: 1;
   white-space: nowrap;
-  box-shadow: 0 0 0 2px ${color.background.default};
+  box-shadow: 0 0 0 ${ring.width} ${color.background.default};
   animation: ${scaleIn} 0.2s ease-out;
   
   ${props => {

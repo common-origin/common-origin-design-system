@@ -2,12 +2,22 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Badge } from './Badge'
+import tokens from '@/styles/tokens.json'
 import { Button } from '../Button'
 
 expect.extend(toHaveNoViolations)
 
 describe('Badge', () => {
   describe('Rendering', () => {
+    it('sizes the count and dot indicators from the badge tokens', () => {
+      const { dot, count } = tokens.component.badge
+      const { unmount } = render(<Badge count={5}><button>Notifications</button></Badge>)
+      expect(screen.getByRole('status')).toHaveStyle({ minWidth: count.minWidth, height: count.height })
+      unmount()
+      render(<Badge dot><button>Inbox</button></Badge>)
+      expect(screen.getByRole('status')).toHaveStyle({ minWidth: dot.size, height: dot.size })
+    })
+
     it('renders children correctly', () => {
       render(
         <Badge count={5}>

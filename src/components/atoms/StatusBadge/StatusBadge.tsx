@@ -9,7 +9,7 @@ const { status: statusColors } = tokens.semantic.color
 const { layout: spacing } = tokens.semantic.spacing
 const { radius } = tokens.semantic.border
 const { transition } = tokens.semantic.motion
-const typography = tokens.semantic.typography
+const { label } = tokens.component.badge
 
 /**
  * Status type options for StatusBadge
@@ -134,14 +134,14 @@ const sizeConfig = {
   small: {
     height: '20px',
     padding: `${spacing.xs} ${spacing.sm}`,
-    font: typography.caption,
+    font: label.typography.small,
     gap: spacing.xs,
     iconSize: 'xs' as const
   },
   medium: {
     height: '24px',
     padding: `${spacing.xs} ${spacing.sm}`,
-    font: typography.small,
+    font: label.typography.medium,
     gap: spacing.xs,
     iconSize: 'sm' as const
   }
@@ -166,6 +166,7 @@ const StyledStatusBadge = styled.span.withConfig({
       height: ${size.height};
       padding: ${size.padding};
       font: ${size.font};
+      font-weight: ${label.fontWeight};
       gap: ${size.gap};
     `
   }}

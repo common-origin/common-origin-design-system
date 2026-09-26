@@ -363,6 +363,25 @@
       "borderRadius": {
         "value": "{semantic.border.radius.circle}",
         "description": "Badge indicators are always fully circular"
+      },
+      "label": {
+        "fontWeight": {
+          "value": "{semantic.fontWeight.medium}",
+          "type": "fontWeight",
+          "description": "Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it."
+        },
+        "typography": {
+          "small": {
+            "value": "{semantic.typography.caption}",
+            "type": "typography",
+            "description": "Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight."
+          },
+          "medium": {
+            "value": "{semantic.typography.small}",
+            "type": "typography",
+            "description": "Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight."
+          }
+        }
       }
     }
   }

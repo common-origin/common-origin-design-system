@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
-const { color, spacing, border, typography, size } = semantic
+const { color, spacing, border, size } = semantic
+const { label } = tokens.component.badge
 const { layout } = spacing
 const { radius } = border
 
@@ -49,7 +50,8 @@ const StyledTag = styled.span.withConfig({
   
   /* Size - fixed to small */
   padding: ${layout.xs} ${layout.sm};
-  font: ${typography.button3};
+  font: ${label.typography.small};
+  font-weight: ${label.fontWeight};
   
   /* Variant styles */
   background-color: ${({ $variant }) => {
