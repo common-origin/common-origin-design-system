@@ -160,7 +160,7 @@ const StyledStatusBadge = styled.span.withConfig({
   animation: ${scaleIn} ${duration.normal} ${easing.easeOut};
   transition: ${transition.fast};
 
-  /* transition.fast covers `all`, so a size change would animate the badge's dimensions */
+  /* transition.fast covers all properties, so a size change would animate the badge's dimensions */
   ${reducedMotion} {
     animation: none;
     transition: none;
