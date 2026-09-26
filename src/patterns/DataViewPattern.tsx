@@ -13,7 +13,7 @@ import {
 } from '../page-components'
 import tokens from '@/styles/tokens.json'
 
-const { base: { breakpoint, zIndex }, semantic: { color, border, spacing } } = tokens
+const { base: { breakpoint }, semantic: { color, border, spacing, zIndex, elevation } } = tokens
 
 // Styled Components
 const SearchRow = styled.div`
@@ -272,9 +272,9 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
   height: 100vh;
   background-color: ${color.background.default};
   border-left: ${border.default};
-  box-shadow: ${tokens.base.shadow[4]};
+  box-shadow: ${elevation.overlay};
   transition: right 0.3s ease-in-out;
-  z-index: ${zIndex[8]};
+  z-index: ${zIndex.overlay};
   overflow-y: auto;
   
   @media (max-width: ${breakpoint.md}) {
@@ -297,8 +297,8 @@ const DrawerOverlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, ${tokens.base.opacity[40]});
-  z-index: ${zIndex[7]};
+  background-color: ${color.background.overlay};
+  z-index: ${zIndex.overlay};
   opacity: ${props => props.$isOpen ? tokens.base.opacity[100] : tokens.base.opacity[0]};
   pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
   transition: ${tokens.semantic.motion.transition.normal};

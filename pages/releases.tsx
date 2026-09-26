@@ -72,7 +72,7 @@ const FiltersBar = styled.div`
   position: sticky;
   top: 0;
   background: ${color.background.subtle};
-  z-index: 10;
+  z-index: ${tokens.semantic.zIndex.sticky};
   margin-bottom: ${spacing.layout['2xl']};
 	border-bottom: ${border.default};
 `
