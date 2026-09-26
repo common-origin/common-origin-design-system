@@ -33,8 +33,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
   return (
     <LayoutErrorBoundary>
       <Component {...pageProps} />
-      {/* Cookieless page-view analytics (#33). Sends nothing in development. */}
-      <Analytics />
+      {/* Cookieless page-view analytics (#33). Production only: in development
+          <Analytics /> would load Vercel's external debug script. */}
+      {process.env.NODE_ENV === 'production' && <Analytics />}
     </LayoutErrorBoundary>
   )
 }
