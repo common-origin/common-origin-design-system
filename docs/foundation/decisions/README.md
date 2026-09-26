@@ -17,6 +17,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted | 2026-09-25 |
 | [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
+| [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
 
 ## Template
 
