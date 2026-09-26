@@ -146,6 +146,8 @@ export const filterChipDocs: ComponentDocumentation = {
     // Close button shape and states
     'semantic.border.radius.xs',
     'semantic.color.text.disabled',
+    'semantic.color.background.hover-overlay',
+    'semantic.color.background.active-overlay',
     // Focus ring (applies to both chip and close button)
     'component.chip.focus.outline',
     'component.chip.focus.outlineOffset',
@@ -345,11 +347,13 @@ States:
       {
         name: 'Close Button (dismissible only)',
         description:
-          'Button element rendered when onDismiss is provided. Has its own hover (rgba black 10%) and active (rgba black 15%) states. Independently focusable. Labelled with "Remove [label]" for screen readers.',
+          'Button element rendered when onDismiss is provided. Has its own hover and active states (near-black at 10% and 15%). Independently focusable. Labelled with "Remove [label]" for screen readers.',
         tokens: [
           'semantic.spacing.layout.sm',
           'semantic.border.radius.xs',
           'semantic.color.text.disabled',
+          'semantic.color.background.hover-overlay',
+          'semantic.color.background.active-overlay',
           'component.chip.focus.outline',
           'component.chip.focus.outlineOffset',
           'semantic.motion.hover'

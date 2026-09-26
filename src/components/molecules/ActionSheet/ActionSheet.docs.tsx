@@ -328,7 +328,8 @@ export const actionSheetDocs: ComponentDocumentation = {
     'semantic.typography.h3',
     'semantic.typography.body',
     'semantic.motion.hover',
-    'semantic.elevation.overlay'
+    'semantic.elevation.overlay',
+    'semantic.color.background.overlay'
   ],
   
   examples: [
@@ -469,7 +470,7 @@ const actions = [
       {
         name: 'Overlay',
         description: 'Full-screen semi-transparent backdrop',
-        tokens: ['rgba(0, 0, 0, 0.5)']
+        tokens: ['semantic.color.background.overlay']
       },
       {
         name: 'Sheet Container',

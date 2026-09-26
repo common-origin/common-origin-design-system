@@ -179,6 +179,7 @@ export const modalDocs: ComponentDocumentation = {
     // Elevation
     'semantic.elevation.overlay',
     // Background
+    'semantic.color.background.overlay',
     'semantic.color.background.subtle',
     'semantic.color.background.surface',
     // Border
@@ -301,7 +302,7 @@ export const modalDocs: ComponentDocumentation = {
     screenReader:
       'Announced as a dialog with the title as its label. Actions are rendered as standard Button components with visible labels.',
     colorContrast:
-      'Inherits contrast from Typography and Button atoms. Overlay uses 50 % opacity black backdrop.',
+      'Inherits contrast from Typography and Button atoms. Overlay uses a 50 % opacity near-black backdrop (semantic.color.background.overlay).',
     focusManagement:
       'On open, focus moves to the dialog container. On close, focus returns to the element that triggered the modal.',
   },
@@ -330,7 +331,7 @@ export const modalDocs: ComponentDocumentation = {
       {
         name: 'Overlay',
         description: 'Fixed fullscreen backdrop that dims the page. Clicking it can close the modal.',
-        tokens: ['rgba(0,0,0,0.5)'],
+        tokens: ['semantic.color.background.overlay'],
       },
       {
         name: 'Dialog',
