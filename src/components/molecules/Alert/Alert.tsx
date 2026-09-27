@@ -4,7 +4,6 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
-import { reducedMotion } from '../../../lib/styleUtils'
 import { useInert } from '../../../lib/usePresence'
 
 const { semantic } = tokens
@@ -142,6 +141,7 @@ const StyledAlert = styled.div.withConfig({
   $variant: AlertProps['variant']
   $inline: boolean
   $isExiting: boolean
+  $reducedExit: boolean
 }>`
   display: flex;
   align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
@@ -193,15 +193,15 @@ const StyledAlert = styled.div.withConfig({
         : semantic.spacing.layout.lg};
   }
 
-  ${({ $isExiting }) => $isExiting && css`
+  /* The exit is chosen once, when dismissed (not by a media query), so a reduced-motion
+     preference that changes mid-exit can't swap animations and flash the faded alert back.
+     Reduced motion: fade only; the space closes instantly afterwards. */
+  ${({ $isExiting, $reducedExit }) => $isExiting && css`
     overflow: hidden;
     pointer-events: none;
-    animation: ${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards;
-
-    /* Reduced motion: fade only; the space closes instantly afterwards */
-    ${reducedMotion} {
-      animation: ${fadeOut} ${duration.fast} ${easing.easeOut} forwards;
-    }
+    animation: ${$reducedExit
+      ? css`${fadeOut} ${duration.fast} ${easing.easeOut} forwards`
+      : css`${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards`};
   `}
 `
 
@@ -259,6 +259,7 @@ export const Alert = ({
   ...props
 }: AlertProps) => {
   const [phase, setPhase] = React.useState<'visible' | 'exiting' | 'dismissed'>('visible')
+  const [reducedExit, setReducedExit] = React.useState(false)
   const [exitStyle, setExitStyle] = React.useState<React.CSSProperties>()
   const alertRef = React.useRef<HTMLDivElement>(null)
   // While it exits, its controls leave the tab order and can't be activated
@@ -291,6 +292,10 @@ export const Alert = ({
         '--alert-exit-padding-bottom': paddingBottom,
       } as React.CSSProperties)
     }
+    setReducedExit(
+      typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
     setPhase('exiting')
   }
 
@@ -347,6 +352,7 @@ export const Alert = ({
       $variant={variant}
       $inline={inline}
       $isExiting={isExiting}
+      $reducedExit={reducedExit}
       data-testid={dataTestId}
       {...props}
       ref={alertRef}

@@ -172,24 +172,65 @@ describe('Alert', () => {
         expect(presentDuringCallback).toBe(false)
       })
 
+      const mockReducedMotion = (reduce: boolean) => {
+        window.matchMedia = ((query: string) => ({
+          matches: reduce && query === '(prefers-reduced-motion: reduce)',
+          media: query,
+          addEventListener: () => {},
+          removeEventListener: () => {},
+        })) as unknown as typeof window.matchMedia
+      }
+      afterEach(() => {
+        delete (window as { matchMedia?: unknown }).matchMedia
+      })
+
+      // The animation the exiting alert runs, read from its class's rule in the injected CSS
+      const exitAnimationOf = (el: Element) => {
+        const css = Array.from(document.querySelectorAll('style')).map((s) => s.textContent).join('')
+        const classes = Array.from(el.classList)
+        const rule = css
+          .split('}')
+          .find((r) => classes.some((c) => r.includes(`.${c}{`)) && /animation:/.test(r))
+        const match = rule?.match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-out\s+forwards/)
+        if (!match) throw new Error('exit animation not found')
+        return { name: match[1], duration: match[2] }
+      }
+
       it('with reduced motion, only fades (duration.fast) and is removed when that fade ends', () => {
+        mockReducedMotion(true)
         const onDismiss = jest.fn()
         renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
         fireEvent.click(screen.getByLabelText('Dismiss alert'))
 
-        // The alert's reduced-motion rule swaps the exit for a fade of duration.fast
-        const css = Array.from(document.querySelectorAll('style')).map((el) => el.textContent).join('')
-        const reduced = Array.from(css.matchAll(/@media \(prefers-reduced-motion: reduce\)\{([^{}]*\{[^}]*\})*[^}]*\}/g))
-          .map((m) => m[0].match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-out\s+forwards/))
-          .find(Boolean)
-        if (!reduced) throw new Error('reduced-motion exit rule not found')
-        const [, fadeName, fadeDuration] = reduced
-        expect(fadeDuration).toBe(tokens.semantic.motion.duration.fast)
-        expect(fadeName).not.toBe(exitAnimationName())
+        const alert = screen.getByTestId('dismissable-alert')
+        const exit = exitAnimationOf(alert)
+        expect(exit.duration).toBe(tokens.semantic.motion.duration.fast)
+        expect(exit.name).not.toBe(exitAnimationName())
 
-        animationEnd(screen.getByTestId('dismissable-alert'), fadeName)
+        animationEnd(alert, exit.name)
         expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
         expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
+      it('keeps the exit it started with if the reduced-motion preference changes mid-exit', () => {
+        mockReducedMotion(false)
+        const { rerender } = renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+        const alert = screen.getByTestId('dismissable-alert')
+        const before = exitAnimationOf(alert)
+        expect(before.name).toBe(exitAnimationName())
+
+        // No media query can swap the running exit (jsdom doesn't evaluate media queries,
+        // so check that none targets the exiting alert)
+        const css = Array.from(document.querySelectorAll('style')).map((st) => st.textContent).join('')
+        const reducedRules = Array.from(css.matchAll(/@media \(prefers-reduced-motion: reduce\)\{(.*?\})\}/g)).map((m) => m[1])
+        const classes = Array.from(alert.classList)
+        expect(reducedRules.filter((rule) => classes.some((c) => rule.includes(`.${c}{`)))).toEqual([])
+
+        // And the choice made at dismissal isn't re-read
+        mockReducedMotion(true)
+        rerender(<Alert {...defaultProps} dismissible data-testid="dismissable-alert" />)
+        expect(exitAnimationOf(screen.getByTestId('dismissable-alert'))).toEqual(before)
       })
 
       it('ignores animations ending on its children', () => {

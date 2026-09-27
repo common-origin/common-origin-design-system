@@ -16,7 +16,7 @@
 ## Decision
 
 - When the user has `prefers-reduced-motion` set, movement (transform, slide, scale, and changes of height or size) becomes a simple fade or an instant change. Colour and opacity transitions are already the reduced form and stay.
-- Every component that moves has a reduced-motion fallback. Components use `reducedMotion` from `src/lib/styleUtils.ts`.
+- Every component that moves has a reduced-motion fallback. Components use `reducedMotion` from `src/lib/styleUtils.ts`. The exception is an exit that mustn't change once it has started, such as Alert's dismiss: it reads the preference when it starts, so a change mid-exit can't swap animations and flash the faded element back.
 - Overlays (Modal, Sheet, ActionSheet) fade out when they close, over `semantic.motion.duration.fast`, instead of unmounting immediately (`usePresence` and `exitAnimation`). While they fade:
   - the panel is inert and hidden from assistive technology
   - the backdrop still catches clicks, so nothing reaches the page behind it
@@ -24,7 +24,7 @@
 
 ## Consequences
 
-- `src/tokens/motion.test.ts` enforces the rules: token durations of 300ms or less, no linear easing, no literal timings in components, and a reduced-motion fallback in every component that moves.
+- `src/tokens/motion.test.ts` enforces the rules: token durations of 300ms or less, no linear easing, no literal timings in components, and a reduced-motion fallback in every component that moves. Exemptions, each with its reason, are listed in the test.
 - The motion rows in [visual-language.md](../visual-language.md) are Enforced. The one exception is AgentInput's working ring ([0010](0010-agentinput-working-ring.md)).
 - New motion must include its reduced-motion fallback in the same change.
 - `onDismiss` on Alert fires about 300ms after the click (150ms under reduced motion), not on the click.
