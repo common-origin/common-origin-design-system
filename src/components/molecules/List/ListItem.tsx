@@ -238,7 +238,7 @@ const StyledChevronIcon = styled.div.withConfig({
   width: ${semantic.size.icon.lg};
   height: ${semantic.size.icon.lg};
   color: ${semantic.color.icon.subdued};
-  transition: transform ${duration.normal} ${easing.easeOut};
+  transition: transform ${duration.fast} ${easing.easeOut};
   transform: rotate(${({ $expanded }) => ($expanded ? '180deg' : '0deg')});
   pointer-events: none;
 
