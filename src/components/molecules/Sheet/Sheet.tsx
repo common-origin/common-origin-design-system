@@ -1,7 +1,7 @@
 import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
@@ -141,8 +141,8 @@ const StyledOverlay = styled.div.withConfig({
   bottom: 0;
   background-color: ${semantic.color.background.overlay};
   z-index: ${semantic.zIndex.overlay};
-  ${css`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};`}
-  ${({ $isExiting }) => $isExiting && exitFade}
+  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
+  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledSheet = styled.div.withConfig({
@@ -168,50 +168,50 @@ const StyledSheet = styled.div.withConfig({
     
     switch ($position) {
       case 'right':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           right: ${margin};
           bottom: ${margin};
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
-          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'left':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           left: ${margin};
           bottom: ${margin};
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
-          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'top':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           left: ${margin};
           right: ${margin};
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
-          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'bottom':
-        return css`
+        return css<{ $isExiting: boolean }>`
           bottom: ${margin};
           left: ${margin};
           right: ${margin};
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
-          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
     }
   }}
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
   
   /* Focus trap styling */
@@ -219,7 +219,7 @@ const StyledSheet = styled.div.withConfig({
     outline: none;
   }
 
-  ${({ $isExiting }) => $isExiting && exitFade}
+  ${({ $isExiting }) => $isExiting && exiting}
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {

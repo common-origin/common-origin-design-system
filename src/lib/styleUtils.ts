@@ -25,18 +25,21 @@ export const media = {
 // an instant change or a simple fade. Colour and opacity transitions need no fallback.
 export const reducedMotion = '@media (prefers-reduced-motion: reduce)'
 
+// No `from` keyframe: the fade starts from the element's current opacity, including a
+// still-running entrance, so closing mid-entrance doesn't jump back to fully visible.
 const fadeOut = keyframes`
-  from { opacity: 1; }
-  to   { opacity: 0; }
+  to { opacity: 0; }
 `
 
-// Exit for overlays that unmount (use with usePresence): a quick fade, which is already
-// reduced motion. `&&` outranks the element's own entrance and media-query animations.
-export const exitFade = css`
-  && {
-    animation: ${fadeOut} ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.easeOut} forwards;
-    pointer-events: none;
-  }
+// Exit for overlays that unmount (use with usePresence). Append `exitAnimation` to each of
+// the element's `animation` declarations while it exits: the entrance stays in the list,
+// so it isn't restarted, and the fade runs on top of it. A fade is already the
+// reduced-motion form, so it needs no fallback of its own.
+export const exitAnimation = css`, ${fadeOut} ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.easeOut} forwards`
+
+// Other styles for an exiting overlay: it can't be clicked while it fades
+export const exiting = css`
+  pointer-events: none;
 `
 
 // Content for screen readers only. The 1px size and -1px margin are part of the standard

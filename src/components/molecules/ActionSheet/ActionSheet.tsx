@@ -12,7 +12,7 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
-import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { 
@@ -138,8 +138,8 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
-  ${({ $isExiting }) => $isExiting && exitFade}
+  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
@@ -154,13 +154,13 @@ const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   max-height: 90vh;
   overflow-y: auto;
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut};
+  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut};
+    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
-  ${({ $isExiting }) => $isExiting && exitFade}
+  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledHeader = styled.div`

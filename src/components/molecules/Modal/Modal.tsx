@@ -8,7 +8,7 @@ import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
-import { exitFade, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
@@ -119,8 +119,8 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${semantic.zIndex.modal};
-  ${css`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};`}
-  ${({ $isExiting }) => $isExiting && exitFade}
+  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
+  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledDialog = styled.div.withConfig({
@@ -144,10 +144,10 @@ const StyledDialog = styled.div.withConfig({
   box-shadow: ${elevation.overlay};
   overflow: hidden;
 
-  ${css`animation: ${scaleIn} ${motion.duration.normal} ${motion.easing.easeOut};`}
+  ${css<{ $isExiting: boolean }>`animation: ${scaleIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
+    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
   /* Auto-fullscreen below md breakpoint (768px) */
@@ -160,14 +160,14 @@ const StyledDialog = styled.div.withConfig({
     top: 0;
     left: 0;
     transform: none;
-    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
+    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
   &:focus {
     outline: none;
   }
 
-  ${({ $isExiting }) => $isExiting && exitFade}
+  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledHeader = styled.div`
