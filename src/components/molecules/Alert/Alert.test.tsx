@@ -132,6 +132,21 @@ describe('Alert', () => {
       // animationend, which jsdom doesn't fire, so the tests fire it
       const fast = parseInt(tokens.semantic.motion.duration.fast, 10)
 
+      // jsdom has no AnimationEvent, so build one with the fields the alert reads
+      const animationEnd = (el: Element, animationName: string, pseudoElement = '') => {
+        const event = new Event('animationend', { bubbles: true })
+        Object.assign(event, { animationName, pseudoElement })
+        fireEvent(el, event)
+      }
+
+      // The generated name of the full exit: the keyframes that collapse max-height
+      const exitAnimationName = () => {
+        const css = Array.from(document.querySelectorAll('style')).map((el) => el.textContent).join('')
+        const match = css.match(/@keyframes\s+([\w-]+)\s*\{[^@]*max-height/)
+        if (!match) throw new Error('exit keyframes not found')
+        return match[1]
+      }
+
       beforeEach(() => jest.useFakeTimers())
       afterEach(() => jest.useRealTimers())
 
@@ -151,7 +166,7 @@ describe('Alert', () => {
         expect(alert.style.getPropertyValue('--alert-exit-height')).toMatch(/^\d+(\.\d+)?px$/)
         expect(onDismiss).not.toHaveBeenCalled()
 
-        fireEvent.animationEnd(alert)
+        animationEnd(alert, exitAnimationName())
         expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
         expect(onDismiss).toHaveBeenCalledTimes(1)
         expect(presentDuringCallback).toBe(false)
@@ -162,8 +177,20 @@ describe('Alert', () => {
         fireEvent.click(screen.getByLabelText('Dismiss alert'))
 
         const alert = screen.getByTestId('dismissable-alert')
-        fireEvent.animationEnd(alert.firstElementChild as Element)
+        animationEnd(alert.firstElementChild as Element, exitAnimationName())
         expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
+      })
+
+      it('ignores other animations on the alert and its pseudo-elements', () => {
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        const alert = screen.getByTestId('dismissable-alert')
+        animationEnd(alert, 'consumer-pulse')
+        animationEnd(alert, exitAnimationName(), '::before')
+        expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
+        expect(onDismiss).not.toHaveBeenCalled()
       })
 
       it('is removed by a fallback if no animation event arrives', () => {

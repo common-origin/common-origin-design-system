@@ -50,6 +50,9 @@ const fadeOut = keyframes`
 // for example where animations are disabled; it allows for the preference changing mid-exit.
 const EXIT_FALLBACK_MS = EXIT_MS + FADE_MS
 
+// The generated names of the two exits (full, and reduced motion)
+const EXIT_ANIMATION_NAMES = [fadeThenCollapse.getName(), fadeOut.getName()]
+
 export interface AlertProps {
   /**
    * Visual style variant affecting background, border, and icon colors
@@ -317,8 +320,16 @@ export const Alert = ({
 
   const handleAnimationEnd = (event: React.AnimationEvent<HTMLDivElement>) => {
     forwarded.onAnimationEnd?.(event)
-    // Ignore animations bubbling up from children, such as a Badge in the message
-    if (isExiting && event.target === event.currentTarget) setPhase('dismissed')
+    // Only the exit itself ends the dismissal: not animations bubbling up from children,
+    // on pseudo-elements, or other animations a consumer puts on the alert
+    if (
+      isExiting &&
+      event.target === event.currentTarget &&
+      !event.pseudoElement &&
+      EXIT_ANIMATION_NAMES.includes(event.animationName)
+    ) {
+      setPhase('dismissed')
+    }
   }
 
   // Get the icon for the current variant
