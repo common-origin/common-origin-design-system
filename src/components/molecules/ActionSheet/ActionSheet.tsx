@@ -12,7 +12,7 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
-import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { 
@@ -139,7 +139,6 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   background-color: ${color.background.overlay};
   z-index: ${tokens.semantic.zIndex.modal};
   animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
-  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
@@ -160,7 +159,6 @@ const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
     animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
-  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledHeader = styled.div`
@@ -318,7 +316,8 @@ export const ActionSheet = ({
   }, [isOpen, onClose, closeOnEscape])
   
   const handleOverlayClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (closeOnOverlayClick && e.target === e.currentTarget) {
+    // While exiting, the backdrop still catches clicks but doesn't close again
+    if (!isExiting && closeOnOverlayClick && e.target === e.currentTarget) {
       onClose()
     }
   }

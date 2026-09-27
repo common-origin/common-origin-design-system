@@ -409,4 +409,16 @@ describe('ActionSheet exit', () => {
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
     expect(document.activeElement).toBe(screen.getByText('Trigger'))
   })
+
+  it('keeps the backdrop catching clicks while it exits, without closing again', () => {
+    const onClose = jest.fn()
+    const Harness = ({ isOpen }: { isOpen: boolean }) => <ActionSheet isOpen={isOpen} onClose={onClose} actions={[{ id: 'a', label: 'A', onSelect: () => {} }]} data-testid="exit-action-sheet" />
+    const { rerender } = render(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    const backdrop = screen.getByTestId('exit-action-sheet').previousElementSibling as HTMLElement
+    // The backdrop stays hit-testable so clicks can't reach the page behind it
+    expect(getComputedStyle(backdrop).pointerEvents).not.toBe('none')
+    fireEvent.click(backdrop)
+    expect(onClose).not.toHaveBeenCalled()
+  })
 })

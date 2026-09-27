@@ -1,7 +1,7 @@
 import { useEffect, useState, type RefObject } from 'react'
 import tokens from '../styles/tokens.json'
 
-// How long an exiting element stays mounted: the duration of `exitFade` in styleUtils.
+// How long an exiting element stays mounted: the duration of `exitAnimation` in styleUtils.
 export const EXIT_DURATION_MS = parseInt(tokens.semantic.motion.duration.fast, 10)
 
 /**

@@ -1,7 +1,7 @@
 import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
@@ -142,7 +142,6 @@ const StyledOverlay = styled.div.withConfig({
   background-color: ${semantic.color.background.overlay};
   z-index: ${semantic.zIndex.overlay};
   ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
-  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledSheet = styled.div.withConfig({
@@ -219,7 +218,6 @@ const StyledSheet = styled.div.withConfig({
     outline: none;
   }
 
-  ${({ $isExiting }) => $isExiting && exiting}
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {
@@ -355,7 +353,8 @@ export const Sheet = ({
   
   // Overlay click handling
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (closeOnOverlayClick && event.target === event.currentTarget) {
+    // While exiting, the backdrop still catches clicks but doesn't close again
+    if (!isExiting && closeOnOverlayClick && event.target === event.currentTarget) {
       onClose()
     }
   }

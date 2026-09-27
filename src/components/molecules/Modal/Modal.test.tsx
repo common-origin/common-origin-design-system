@@ -279,4 +279,16 @@ describe('Modal exit', () => {
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
     expect(document.activeElement).toBe(screen.getByText('Trigger'))
   })
+
+  it('keeps the backdrop catching clicks while it exits, without closing again', () => {
+    const onClose = jest.fn()
+    const Harness = ({ isOpen }: { isOpen: boolean }) => <Modal isOpen={isOpen} onClose={onClose} title="Exit" data-testid="exit-modal">Body</Modal>
+    const { rerender } = render(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    const backdrop = screen.getByTestId('exit-modal-overlay')
+    // The backdrop stays hit-testable so clicks can't reach the page behind it
+    expect(getComputedStyle(backdrop).pointerEvents).not.toBe('none')
+    fireEvent.click(backdrop)
+    expect(onClose).not.toHaveBeenCalled()
+  })
 })

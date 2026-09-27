@@ -8,7 +8,7 @@ import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
-import { exitAnimation, exiting, reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
@@ -120,7 +120,6 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   background-color: ${color.background.overlay};
   z-index: ${semantic.zIndex.modal};
   ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
-  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledDialog = styled.div.withConfig({
@@ -167,7 +166,6 @@ const StyledDialog = styled.div.withConfig({
     outline: none;
   }
 
-  ${({ $isExiting }) => $isExiting && exiting}
 `
 
 const StyledHeader = styled.div`
@@ -295,7 +293,8 @@ export const Modal: React.FC<ModalProps> = ({
   // Overlay click
   // -----------------------------------------------------------------------
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (closeOnOverlayClick && event.target === event.currentTarget) {
+    // While exiting, the backdrop still catches clicks but doesn't close again
+    if (!isExiting && closeOnOverlayClick && event.target === event.currentTarget) {
       onClose()
     }
   }
