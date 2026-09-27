@@ -254,13 +254,17 @@ describe('Alert', () => {
         expect(onDismiss).not.toHaveBeenCalled()
       })
 
-      it('is removed by a fallback if no animation event arrives', () => {
+      it.each([
+        ['the full exit', false, 2],
+        ['reduced motion', true, 1],
+      ])('is removed after %s even if no animation event arrives', (_label, reduce, steps) => {
+        mockReducedMotion(reduce)
         const onDismiss = jest.fn()
         renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
         fireEvent.click(screen.getByLabelText('Dismiss alert'))
 
-        // Longer than the full exit, in case the reduced-motion preference changes mid-exit
-        act(() => jest.advanceTimersByTime(fast * 3 - 1))
+        // Exactly the chosen exit's length: 300ms, or 150ms under reduced motion
+        act(() => jest.advanceTimersByTime(fast * steps - 1))
         expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
 
         act(() => jest.advanceTimersByTime(1))

@@ -44,10 +44,9 @@ const fadeOut = keyframes`
   to   { opacity: 0; }
 `
 
-// The exit ends on the alert's own animationend (300ms, or 150ms under reduced motion,
-// following the live preference). This fallback removes it if no animation event arrives,
-// for example where animations are disabled; it allows for the preference changing mid-exit.
-const EXIT_FALLBACK_MS = EXIT_MS + FADE_MS
+// The exit ends on the alert's own animationend: 300ms, or 150ms under reduced motion
+// (chosen when dismissed). A timer of the same length removes it if no animation event
+// arrives, for example where animations are disabled or the tab is hidden.
 
 // The generated names of the two exits (full, and reduced motion)
 const EXIT_ANIMATION_NAMES = [fadeThenCollapse.getName(), fadeOut.getName()]
@@ -301,9 +300,9 @@ export const Alert = ({
 
   React.useEffect(() => {
     if (phase !== 'exiting') return
-    const timer = setTimeout(() => setPhase('dismissed'), EXIT_FALLBACK_MS)
+    const timer = setTimeout(() => setPhase('dismissed'), reducedExit ? FADE_MS : EXIT_MS)
     return () => clearTimeout(timer)
-  }, [phase])
+  }, [phase, reducedExit])
 
   // onDismiss fires once the alert has been removed from the DOM, so a consumer that
   // unmounts it in onDismiss still gets the animation, and can't observe it
