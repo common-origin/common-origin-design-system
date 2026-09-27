@@ -138,7 +138,11 @@ describe('Alert', () => {
       })
 
       it('fades and collapses before it is removed, then calls onDismiss', () => {
-        const onDismiss = jest.fn()
+        // onDismiss must not be able to observe the alert: it runs after removal is committed
+        let presentDuringCallback: boolean | undefined
+        const onDismiss = jest.fn(() => {
+          presentDuringCallback = document.body.contains(document.querySelector('[data-testid="dismissable-alert"]'))
+        })
         renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
 
         fireEvent.click(screen.getByLabelText('Dismiss alert'))
@@ -146,7 +150,7 @@ describe('Alert', () => {
         const alert = screen.getByTestId('dismissable-alert')
         expect(alert).toHaveAttribute('aria-hidden', 'true')
         expect(alert).toHaveAttribute('inert')
-        expect(alert.style.getPropertyValue('--alert-exit-height')).toMatch(/^\d+px$/)
+        expect(alert.style.getPropertyValue('--alert-exit-height')).toMatch(/^\d+(\.\d+)?px$/)
         expect(onDismiss).not.toHaveBeenCalled()
 
         act(() => jest.advanceTimersByTime(fast * 2 - 1))
@@ -155,6 +159,7 @@ describe('Alert', () => {
         act(() => jest.advanceTimersByTime(1))
         expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
         expect(onDismiss).toHaveBeenCalledTimes(1)
+        expect(presentDuringCallback).toBe(false)
       })
 
       it('only fades when the user prefers reduced motion', () => {

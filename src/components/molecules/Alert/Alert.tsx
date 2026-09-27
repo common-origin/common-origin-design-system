@@ -191,7 +191,6 @@ const StyledAlert = styled.div.withConfig({
   }
 
   ${({ $isExiting }) => $isExiting && css`
-    box-sizing: border-box;
     overflow: hidden;
     pointer-events: none;
     animation: ${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards;
@@ -269,9 +268,22 @@ export const Alert = ({
   const handleDismiss = () => {
     const node = alertRef.current
     if (node) {
-      const { paddingTop, paddingBottom } = window.getComputedStyle(node)
+      const style = window.getComputedStyle(node)
+      const { paddingTop, paddingBottom } = style
+      // max-height applies to the content box unless the alert is border-box (it depends on
+      // the consumer's reset), so measure whichever box it uses; nothing moves at the click
+      const height = Math.max(
+        0,
+        style.boxSizing === 'border-box'
+          ? node.offsetHeight
+          : node.offsetHeight -
+              parseFloat(paddingTop) -
+              parseFloat(paddingBottom) -
+              parseFloat(style.borderTopWidth) -
+              parseFloat(style.borderBottomWidth)
+      )
       setExitStyle({
-        '--alert-exit-height': `${node.offsetHeight}px`,
+        '--alert-exit-height': `${height}px`,
         '--alert-exit-padding-top': paddingTop,
         '--alert-exit-padding-bottom': paddingBottom,
       } as React.CSSProperties)
@@ -279,15 +291,16 @@ export const Alert = ({
     setPhase('exiting')
   }
 
-  // onDismiss fires once the exit has finished, so a consumer that unmounts the
-  // alert in onDismiss still gets the animation
   React.useEffect(() => {
     if (phase !== 'exiting') return
-    const timer = setTimeout(() => {
-      setPhase('dismissed')
-      onDismissRef.current?.()
-    }, prefersReducedMotion() ? FADE_MS : EXIT_MS)
+    const timer = setTimeout(() => setPhase('dismissed'), prefersReducedMotion() ? FADE_MS : EXIT_MS)
     return () => clearTimeout(timer)
+  }, [phase])
+
+  // onDismiss fires once the alert has been removed from the DOM, so a consumer that
+  // unmounts it in onDismiss still gets the animation, and can't observe it
+  React.useEffect(() => {
+    if (phase === 'dismissed') onDismissRef.current?.()
   }, [phase])
 
   if (phase === 'dismissed') {

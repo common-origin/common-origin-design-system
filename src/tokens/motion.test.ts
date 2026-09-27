@@ -65,10 +65,10 @@ describe('component motion', () => {
   })
 
   it('gives every component that moves a reduced-motion fallback', () => {
-    // Moves = keyframes that transform, or a transition on transform, size, or `all`
+    // Moves = keyframes that transform or change size, or a transition on transform, size, or `all`
     // (including the composite tokens, which are `all`, and motion.interactive, which transforms)
     const moves = (source: string) =>
-      Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /transform/.test(m[1])) ||
+      Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /\b(transform|max-height|height|width|padding|margin|border-width)\b/.test(m[1])) ||
       motionValues(source).some((value) =>
         /\b(transform|max-height|height|width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
       )
@@ -81,7 +81,8 @@ describe('component motion', () => {
 
     const missing = files
       .filter(({ name, source }) => moves(source) && !exempt[name])
-      .filter(({ source }) => !/reducedMotion|prefers-reduced-motion/.test(source))
+      // A CSS fallback, not just a matchMedia check in JavaScript
+      .filter(({ source }) => !/\$\{reducedMotion\}|@media \(prefers-reduced-motion/.test(source))
       .map(({ name }) => name)
     expect(missing).toEqual([])
   })

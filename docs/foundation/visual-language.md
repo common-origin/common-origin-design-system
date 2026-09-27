@@ -77,7 +77,7 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 
 ## Motion
 
-Motion is part of the system ([P6](principles.md#p6-motion-responds-it-doesnt-perform), [0005](decisions/0005-motion.md)).
+Motion is part of the system ([P6](principles.md#p6-motion-responds-it-doesnt-perform), [0005](decisions/0005-motion.md), [0015](decisions/0015-reduced-motion.md)).
 
 | Rule | Status |
 |---|---|
@@ -86,4 +86,4 @@ Motion is part of the system ([P6](principles.md#p6-motion-responds-it-doesnt-pe
 | Interactive elements respond: hover, press, focus, selection, expand/collapse. | Enforced — audited in [#35](https://github.com/common-origin/common-origin-design-system/issues/35) |
 | Eased, never linear; never decorative or scroll-triggered. | Enforced |
 | AgentInput's working ring rotates continuously: linear, 1300ms per turn, and stops under reduced motion. | Exception ([0010](decisions/0010-agentinput-working-ring.md)) — temporary, pending [#22](https://github.com/common-origin/common-origin-design-system/issues/22) |
-| Respect `prefers-reduced-motion`: movement becomes a simple fade or an instant change; colour and opacity fades stay. Use `reducedMotion` from `src/lib/styleUtils.ts`. | Enforced ([0005](decisions/0005-motion.md)) — `src/tokens/motion.test.ts` fails if a component that moves has no fallback |
+| Respect `prefers-reduced-motion`: movement becomes a simple fade or an instant change; colour and opacity fades stay. Use `reducedMotion` from `src/lib/styleUtils.ts`. | Enforced ([0015](decisions/0015-reduced-motion.md)) — `src/tokens/motion.test.ts` fails if a component that moves has no fallback |
