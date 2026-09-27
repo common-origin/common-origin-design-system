@@ -1,8 +1,9 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react'
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import userEvent from '@testing-library/user-event'
 import { Sheet } from './Sheet'
 import tokens from '@/styles/tokens.json'
+import { EXIT_DURATION_MS } from '../../../lib/usePresence'
 
 expect.extend(toHaveNoViolations)
 
@@ -663,5 +664,61 @@ describe('Sheet', () => {
       
       expect(screen.getByText('Nested Button')).toBeInTheDocument()
     })
+  })
+})
+
+describe('Sheet exit', () => {
+  beforeEach(() => jest.useFakeTimers())
+  afterEach(() => jest.useRealTimers())
+
+  const ui = (isOpen: boolean) => <Sheet isOpen={isOpen} onClose={() => {}} data-testid="exit-sheet">Body</Sheet>
+
+  it('stays mounted, faded and hidden from assistive technology while it exits', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    const exiting = screen.getByTestId('exit-sheet')
+    expect(exiting).toHaveAttribute('aria-hidden', 'true')
+    // inert takes the exiting panel's controls out of the tab order
+    expect(exiting).toHaveAttribute('inert')
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
+
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.queryByTestId('exit-sheet')).not.toBeInTheDocument()
+  })
+
+  it('stays open when reopened during the exit', () => {
+    const { rerender } = render(ui(true))
+    rerender(ui(false))
+    rerender(ui(true))
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('aria-hidden')
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('inert')
+  })
+
+  it('leaves focus on the trigger when closed before its opening focus runs', () => {
+    const Harness = ({ isOpen }: { isOpen: boolean }) => (
+      <>
+        <button>Trigger</button>
+        <Sheet isOpen={isOpen} onClose={() => {}} data-testid="exit-sheet">Body</Sheet>
+      </>
+    )
+    const { rerender } = render(<Harness isOpen={false} />)
+    screen.getByText('Trigger').focus()
+    rerender(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(document.activeElement).toBe(screen.getByText('Trigger'))
+  })
+
+  it('keeps the backdrop catching clicks while it exits, without closing again', () => {
+    const onClose = jest.fn()
+    const Harness = ({ isOpen }: { isOpen: boolean }) => <Sheet isOpen={isOpen} onClose={onClose} data-testid="exit-sheet">Body</Sheet>
+    const { rerender } = render(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    const backdrop = screen.getByTestId('exit-sheet-overlay')
+    // The backdrop stays hit-testable so clicks can't reach the page behind it
+    expect(getComputedStyle(backdrop).pointerEvents).not.toBe('none')
+    fireEvent.click(backdrop)
+    expect(onClose).not.toHaveBeenCalled()
   })
 })

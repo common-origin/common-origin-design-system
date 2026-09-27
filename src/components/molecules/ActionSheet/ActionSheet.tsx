@@ -12,7 +12,8 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
+import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { 
   semantic: { 
@@ -132,15 +133,15 @@ const fadeIn = keyframes`
   }
 `
 
-const StyledOverlay = styled.div`
+const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
+  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
 `
 
-const StyledActionSheet = styled.div`
+const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   bottom: 0;
   left: 0;
@@ -152,11 +153,12 @@ const StyledActionSheet = styled.div`
   max-height: 90vh;
   overflow-y: auto;
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut};
+  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut};
+    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
+
 `
 
 const StyledHeader = styled.div`
@@ -247,6 +249,8 @@ export const ActionSheet = ({
 }: ActionSheetProps) => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousActiveElement = useRef<HTMLElement | null>(null)
+  const { isPresent, isExiting } = usePresence(isOpen)
+  useInert(sheetRef, isExiting)
   
   // Store the element that had focus when sheet opened
   useEffect(() => {
@@ -287,7 +291,7 @@ export const ActionSheet = ({
     document.addEventListener('keydown', handleKeyDown)
     
     // Focus first focusable element (button or element with role="button")
-    requestAnimationFrame(() => {
+    const frame = requestAnimationFrame(() => {
       const firstFocusable = sheetRef.current?.querySelector<HTMLElement>(
         'button:not(:disabled), [role="button"][tabindex]:not([aria-disabled="true"])'
       )
@@ -299,6 +303,8 @@ export const ActionSheet = ({
     document.body.style.overflow = 'hidden'
     
     return () => {
+      // A quick close cancels the pending focus, so it can't pull focus back into the exiting sheet
+      cancelAnimationFrame(frame)
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = originalOverflow
       
@@ -310,7 +316,8 @@ export const ActionSheet = ({
   }, [isOpen, onClose, closeOnEscape])
   
   const handleOverlayClick = (e: MouseEvent<HTMLDivElement>) => {
-    if (closeOnOverlayClick && e.target === e.currentTarget) {
+    // While exiting, the backdrop still catches clicks but doesn't close again
+    if (!isExiting && closeOnOverlayClick && e.target === e.currentTarget) {
       onClose()
     }
   }
@@ -322,7 +329,8 @@ export const ActionSheet = ({
     }
   }
   
-  if (!isOpen) return null
+  // Stays mounted while the exit fade runs, hidden from assistive technology
+  if (!isPresent) return null
   
   // Find if there are any destructive actions to add divider
   const destructiveIndex = actions.findIndex(a => a.destructive)
@@ -330,11 +338,13 @@ export const ActionSheet = ({
   
   return createPortal(
     <>
-      <StyledOverlay onClick={handleOverlayClick} />
+      <StyledOverlay onClick={handleOverlayClick} $isExiting={isExiting} />
       <StyledActionSheet
         ref={sheetRef}
         role="dialog"
         aria-modal="true"
+        aria-hidden={isExiting || undefined}
+        $isExiting={isExiting}
         aria-labelledby={title ? 'action-sheet-title' : undefined}
         aria-describedby={description ? 'action-sheet-description' : undefined}
         data-testid={dataTestId}

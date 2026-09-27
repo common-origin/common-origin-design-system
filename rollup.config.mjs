@@ -83,6 +83,7 @@ export default [
         'src/types/**/*',
         'src/styles/**/*',
         'src/lib/styleUtils.ts',
+        'src/lib/usePresence.ts',
         'src/components/index.ts',
         'src/components/dateFormatter.tsx',
         'src/components/atoms/**/*',

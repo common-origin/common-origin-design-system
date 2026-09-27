@@ -199,6 +199,7 @@ export const modalDocs: ComponentDocumentation = {
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.fast',
   ],
 
   // ---------------------------------------------------------------------------

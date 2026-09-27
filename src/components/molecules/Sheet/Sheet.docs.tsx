@@ -120,6 +120,8 @@ export const sheetDocs: ComponentDocumentation = {
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.fast',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [
@@ -172,57 +174,67 @@ export const sheetDocs: ComponentDocumentation = {
       name: 'All Positions',
       description: 'Sheets can slide in from any edge: top, right, bottom, or left.',
       code: `const AllPositionsExample = () => {
-  const [position, setPosition] = useState<'top' | 'right' | 'bottom' | 'left' | null>(null)
-  
+  const [position, setPosition] = useState<'top' | 'right' | 'bottom' | 'left'>('right')
+  const [isOpen, setIsOpen] = useState(false)
+
+  // Keep the Sheet mounted and toggle isOpen, so it can fade out when closed
+  const open = (edge: 'top' | 'right' | 'bottom' | 'left') => {
+    setPosition(edge)
+    setIsOpen(true)
+  }
+
   return (
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <Button onClick={() => setPosition('top')}>Top</Button>
-      <Button onClick={() => setPosition('right')}>Right</Button>
-      <Button onClick={() => setPosition('bottom')}>Bottom</Button>
-      <Button onClick={() => setPosition('left')}>Left</Button>
-      
-      {position && (
-        <Sheet 
-          isOpen={true} 
-          onClose={() => setPosition(null)} 
-          position={position}
-          title={\`Sheet from \${position}\`}
-        >
-          <div style={{ padding: '24px' }}>
-            <h2 style={{ margin: '0 0 16px 0' }}>From {position}</h2>
-            <p>This sheet slides in from the {position}.</p>
-            <Button onClick={() => setPosition(null)}>Close</Button>
-          </div>
-        </Sheet>
-      )}
+      <Button onClick={() => open('top')}>Top</Button>
+      <Button onClick={() => open('right')}>Right</Button>
+      <Button onClick={() => open('bottom')}>Bottom</Button>
+      <Button onClick={() => open('left')}>Left</Button>
+
+      <Sheet
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        position={position}
+        title={\`Sheet from \${position}\`}
+      >
+        <div style={{ padding: '24px' }}>
+          <h2 style={{ margin: '0 0 16px 0' }}>From {position}</h2>
+          <p>This sheet slides in from the {position}.</p>
+          <Button onClick={() => setIsOpen(false)}>Close</Button>
+        </div>
+      </Sheet>
     </div>
   )
 }`,
       renderComponent: () => {
         const AllPositionsExample = () => {
-          const [position, setPosition] = useState<'top' | 'right' | 'bottom' | 'left' | null>(null)
-          
+          const [position, setPosition] = useState<'top' | 'right' | 'bottom' | 'left'>('right')
+          const [isOpen, setIsOpen] = useState(false)
+
+          // Keep the Sheet mounted and toggle isOpen, so it can fade out when closed
+          const open = (edge: 'top' | 'right' | 'bottom' | 'left') => {
+            setPosition(edge)
+            setIsOpen(true)
+          }
+
           return (
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <Button onClick={() => setPosition('top')}>Top</Button>
-              <Button onClick={() => setPosition('right')}>Right</Button>
-              <Button onClick={() => setPosition('bottom')}>Bottom</Button>
-              <Button onClick={() => setPosition('left')}>Left</Button>
-              
-              {position && (
-                <Sheet 
-                  isOpen={true} 
-                  onClose={() => setPosition(null)} 
-                  position={position}
-                  title={`Sheet from ${position}`}
-                >
-                  <div style={{ padding: '24px' }}>
-                    <h2 style={{ margin: '0 0 16px 0', textTransform: 'capitalize' }}>From {position}</h2>
-                    <p>This sheet slides in from the {position}.</p>
-                    <Button onClick={() => setPosition(null)}>Close</Button>
-                  </div>
-                </Sheet>
-              )}
+              <Button onClick={() => open('top')}>Top</Button>
+              <Button onClick={() => open('right')}>Right</Button>
+              <Button onClick={() => open('bottom')}>Bottom</Button>
+              <Button onClick={() => open('left')}>Left</Button>
+
+              <Sheet
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+                position={position}
+                title={`Sheet from ${position}`}
+              >
+                <div style={{ padding: '24px' }}>
+                  <h2 style={{ margin: '0 0 16px 0', textTransform: 'capitalize' }}>From {position}</h2>
+                  <p>This sheet slides in from the {position}.</p>
+                  <Button onClick={() => setIsOpen(false)}>Close</Button>
+                </div>
+              </Sheet>
             </div>
           )
         }
@@ -746,6 +758,8 @@ Position Variants:
 - right: slides left from right edge (default)
 - bottom: slides up from bottom edge
 - left: slides right from left edge
+
+On close, the sheet and overlay fade out (semantic.motion.duration.fast) before unmounting.
 
 Visual Variants:
 - sheet: edge-to-edge, no margin

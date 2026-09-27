@@ -1,7 +1,8 @@
 import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
+import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 
@@ -132,7 +133,7 @@ const slideInBottom = keyframes`
 
 const StyledOverlay = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $isOpen: boolean }>`
+})<{ $isExiting: boolean }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -140,8 +141,7 @@ const StyledOverlay = styled.div.withConfig({
   bottom: 0;
   background-color: ${semantic.color.background.overlay};
   z-index: ${semantic.zIndex.overlay};
-  ${css`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};`}
-  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
+  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
 `
 
 const StyledSheet = styled.div.withConfig({
@@ -151,7 +151,7 @@ const StyledSheet = styled.div.withConfig({
   $variant: 'sheet' | 'drawer'
   $width: string
   $height: string
-  $isOpen: boolean
+  $isExiting: boolean
 }>`
   position: fixed;
   background-color: ${semantic.color.background.default};
@@ -167,56 +167,57 @@ const StyledSheet = styled.div.withConfig({
     
     switch ($position) {
       case 'right':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           right: ${margin};
           bottom: ${margin};
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
-          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'left':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           left: ${margin};
           bottom: ${margin};
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
-          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'top':
-        return css`
+        return css<{ $isExiting: boolean }>`
           top: ${margin};
           left: ${margin};
           right: ${margin};
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
-          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'bottom':
-        return css`
+        return css<{ $isExiting: boolean }>`
           bottom: ${margin};
           left: ${margin};
           right: ${margin};
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
-          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
     }
   }}
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
   }
   
   /* Focus trap styling */
   &:focus {
     outline: none;
   }
+
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {
@@ -285,6 +286,8 @@ export const Sheet = ({
 }: SheetProps) => {
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
+  const { isPresent, isExiting } = usePresence(isOpen)
+  useInert(sheetRef, isExiting)
   
   // Focus management
   useEffect(() => {
@@ -293,12 +296,18 @@ export const Sheet = ({
       previousFocusRef.current = document.activeElement as HTMLElement
       
       // Focus sheet
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         sheetRef.current?.focus()
       }, 100) // Small delay to allow animation to start
       
       // Prevent body scroll
       document.body.style.overflow = 'hidden'
+
+      // A quick close cancels the pending focus, so it can't pull focus back into the exiting sheet
+      return () => {
+        clearTimeout(timer)
+        document.body.style.overflow = ''
+      }
     } else {
       // Restore previous focus
       if (previousFocusRef.current) {
@@ -344,17 +353,19 @@ export const Sheet = ({
   
   // Overlay click handling
   const handleOverlayClick = (event: React.MouseEvent<HTMLDivElement>) => {
-    if (closeOnOverlayClick && event.target === event.currentTarget) {
+    // While exiting, the backdrop still catches clicks but doesn't close again
+    if (!isExiting && closeOnOverlayClick && event.target === event.currentTarget) {
       onClose()
     }
   }
   
-  if (!isOpen) return null
+  // Stays mounted while the exit fade runs, hidden from assistive technology
+  if (!isPresent) return null
   
   return (
     <>
       <StyledOverlay
-        $isOpen={isOpen}
+        $isExiting={isExiting}
         onClick={handleOverlayClick}
         data-testid={dataTestId ? `${dataTestId}-overlay` : 'sheet-overlay'}
       />
@@ -365,12 +376,13 @@ export const Sheet = ({
         aria-modal="true"
         aria-label={ariaLabel || title || 'Sheet dialog'}
         aria-describedby={ariaDescribedBy}
+        aria-hidden={isExiting || undefined}
         tabIndex={-1}
         $position={position}
         $variant={variant}
         $width={width}
         $height={height}
-        $isOpen={isOpen}
+        $isExiting={isExiting}
         onKeyDown={handleKeyDown}
         data-testid={dataTestId}
       >
