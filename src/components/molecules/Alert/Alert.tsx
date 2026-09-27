@@ -1,13 +1,55 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
-import { Typography } from '../../atoms/Typography'
+import { useInert } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 const { alert } = tokens.component
+const { duration, easing } = semantic.motion
+
+// Dismissing fades the alert out, then collapses the space it took (Ollie's call, #35).
+// Each half takes duration.fast, so the whole exit stays within the 300ms maximum (P6).
+const FADE_MS = parseInt(duration.fast, 10)
+const EXIT_MS = FADE_MS * 2
+
+// The --alert-exit-* properties are the alert's height and vertical padding, measured
+// when it's dismissed, so nothing moves until the fade has finished
+const fadeThenCollapse = keyframes`
+  0%, 50% {
+    max-height: var(--alert-exit-height);
+    padding-top: var(--alert-exit-padding-top);
+    padding-bottom: var(--alert-exit-padding-bottom);
+    border-width: ${semantic.border.width.thin};
+  }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+  }
+`
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to   { opacity: 0; }
+`
+
+// The exit ends on the alert's own animationend: 300ms, or 150ms under reduced motion
+// (chosen when dismissed). A timer of the same length removes it if no animation event
+// arrives, for example where animations are disabled or the tab is hidden.
+
+// The generated names of the two exits (full, and reduced motion)
+const EXIT_ANIMATION_NAMES = [fadeThenCollapse.getName(), fadeOut.getName()]
 
 export interface AlertProps {
   /**
@@ -37,7 +79,8 @@ export interface AlertProps {
   dismissible?: boolean
   
   /**
-   * Callback function when alert is dismissed
+   * Callback function when alert is dismissed. Called once the dismiss animation has
+   * finished and the alert has been removed.
    */
   onDismiss?: () => void
   
@@ -96,6 +139,8 @@ const StyledAlert = styled.div.withConfig({
 })<{
   $variant: AlertProps['variant']
   $inline: boolean
+  $isExiting: boolean
+  $reducedExit: boolean
 }>`
   display: flex;
   align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
@@ -146,6 +191,17 @@ const StyledAlert = styled.div.withConfig({
         ? semantic.spacing.layout.sm
         : semantic.spacing.layout.lg};
   }
+
+  /* The exit is chosen once, when dismissed (not by a media query), so a reduced-motion
+     preference that changes mid-exit can't swap animations and flash the faded alert back.
+     Reduced motion: fade only; the space closes instantly afterwards. */
+  ${({ $isExiting, $reducedExit }) => $isExiting && css`
+    overflow: hidden;
+    pointer-events: none;
+    animation: ${$reducedExit
+      ? css`${fadeOut} ${duration.fast} ${easing.easeOut} forwards`
+      : css`${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards`};
+  `}
 `
 
 const StyledIconContainer = styled.div`
@@ -201,15 +257,84 @@ export const Alert = ({
   'data-testid': dataTestId,
   ...props
 }: AlertProps) => {
-  const [isVisible, setIsVisible] = React.useState(true)
+  const [phase, setPhase] = React.useState<'visible' | 'exiting' | 'dismissed'>('visible')
+  const [reducedExit, setReducedExit] = React.useState(false)
+  const [exitStyle, setExitStyle] = React.useState<React.CSSProperties>()
+  const alertRef = React.useRef<HTMLDivElement>(null)
+  // While it exits, its controls leave the tab order and can't be activated
+  useInert(alertRef, phase === 'exiting')
+  const onDismissRef = React.useRef(onDismiss)
+  React.useEffect(() => {
+    onDismissRef.current = onDismiss
+  }, [onDismiss])
 
   const handleDismiss = () => {
-    setIsVisible(false)
-    onDismiss?.()
+    const node = alertRef.current
+    if (node) {
+      const style = window.getComputedStyle(node)
+      const { paddingTop, paddingBottom } = style
+      // max-height applies to the content box unless the alert is border-box (it depends on
+      // the consumer's reset), so measure whichever box it uses; nothing moves at the click
+      const height = Math.max(
+        0,
+        style.boxSizing === 'border-box'
+          ? node.offsetHeight
+          : node.offsetHeight -
+              parseFloat(paddingTop) -
+              parseFloat(paddingBottom) -
+              parseFloat(style.borderTopWidth) -
+              parseFloat(style.borderBottomWidth)
+      )
+      setExitStyle({
+        '--alert-exit-height': `${height}px`,
+        '--alert-exit-padding-top': paddingTop,
+        '--alert-exit-padding-bottom': paddingBottom,
+      } as React.CSSProperties)
+    }
+    setReducedExit(
+      typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+    setPhase('exiting')
   }
 
-  if (!isVisible) {
+  React.useEffect(() => {
+    if (phase !== 'exiting') return
+    const timer = setTimeout(() => setPhase('dismissed'), reducedExit ? FADE_MS : EXIT_MS)
+    return () => clearTimeout(timer)
+  }, [phase, reducedExit])
+
+  // onDismiss fires once the alert has been removed from the DOM, so a consumer that
+  // unmounts it in onDismiss still gets the animation, and can't observe it
+  React.useEffect(() => {
+    if (phase === 'dismissed') onDismissRef.current?.()
+  }, [phase])
+
+  if (phase === 'dismissed') {
     return null
+  }
+
+  const isExiting = phase === 'exiting'
+
+  // Consumers can pass extra HTML attributes, including style, aria-hidden and onAnimationEnd
+  const forwarded = props as {
+    style?: React.CSSProperties
+    'aria-hidden'?: React.AriaAttributes['aria-hidden']
+    onAnimationEnd?: React.AnimationEventHandler<HTMLDivElement>
+  }
+
+  const handleAnimationEnd = (event: React.AnimationEvent<HTMLDivElement>) => {
+    forwarded.onAnimationEnd?.(event)
+    // Only the exit itself ends the dismissal: not animations bubbling up from children,
+    // on pseudo-elements, or other animations a consumer puts on the alert
+    if (
+      isExiting &&
+      event.target === event.currentTarget &&
+      !event.pseudoElement &&
+      EXIT_ANIMATION_NAMES.includes(event.animationName)
+    ) {
+      setPhase('dismissed')
+    }
   }
 
   // Get the icon for the current variant
@@ -226,8 +351,14 @@ export const Alert = ({
       aria-live={ariaLive}
       $variant={variant}
       $inline={inline}
+      $isExiting={isExiting}
+      $reducedExit={reducedExit}
       data-testid={dataTestId}
       {...props}
+      ref={alertRef}
+      aria-hidden={isExiting ? true : forwarded['aria-hidden']}
+      style={isExiting ? { ...forwarded.style, ...exitStyle } : forwarded.style}
+      onAnimationEnd={handleAnimationEnd}
     >
       <StyledIconContainer aria-hidden="true">
         <Icon name={iconName} size="md" iconColor={alertIconColor} />

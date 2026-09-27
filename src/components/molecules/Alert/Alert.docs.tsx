@@ -38,14 +38,14 @@ export const alertDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Show close/dismiss button. When clicked, removes alert from DOM and calls onDismiss callback.'
+      description: 'Show close/dismiss button. When clicked, the alert fades out, then its space collapses (300ms in total; with prefers-reduced-motion it only fades, for 150ms). It is then removed from the DOM and onDismiss is called.'
     },
     {
       name: 'onDismiss',
       type: '() => void',
       required: false,
       default: undefined,
-      description: 'Callback function invoked when alert is dismissed via close button.'
+      description: 'Callback function invoked after the alert is dismissed via the close button, once its exit animation has finished and it has been removed.'
     },
     {
       name: 'action',
@@ -121,7 +121,10 @@ export const alertDocs: ComponentDocumentation = {
     'component.alert.message.lineHeight',
 
     // Breakpoint
-    'semantic.breakpoint.md'
+    'semantic.breakpoint.md',
+    // Motion
+    'semantic.motion.duration.fast',
+    'semantic.motion.easing.easeOut',
   ],
 
   examples: [

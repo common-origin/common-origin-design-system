@@ -8,7 +8,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted | 2026-09-25 |
 | [0003](0003-use-of-blue.md) | Blue is for links, focus, and deliberate highlight | Accepted | 2026-09-25 |
 | [0004](0004-heading-weights.md) | System headings are weight 700; products may go heavier | Superseded by 0011 | 2026-09-25 |
-| [0005](0005-motion.md) | Motion is part of the system; appearing elements animate in | Accepted | 2026-09-25 |
+| [0005](0005-motion.md) | Motion is part of the system; appearing elements animate in | Accepted; reduced-motion clause superseded by 0015 | 2026-09-25 |
 | [0006](0006-page-background.md) | Page background is the `background.default` token | Accepted | 2026-09-25 |
 | [0007](0007-sources-of-truth.md) | Which source answers which question | Accepted | 2026-09-25 |
 | [0008](0008-framework-agnostic-components.md) | Components are framework-agnostic | Accepted | 2025-12-05 |
@@ -18,6 +18,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
+| [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
 
 ## Template
 

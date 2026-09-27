@@ -65,23 +65,28 @@ describe('component motion', () => {
   })
 
   it('gives every component that moves a reduced-motion fallback', () => {
-    // Moves = keyframes that transform, or a transition on transform, size, or `all`
+    // Moves = keyframes that transform or change size, or a transition on transform, size, or `all`
     // (including the composite tokens, which are `all`, and motion.interactive, which transforms)
     const moves = (source: string) =>
-      Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /transform/.test(m[1])) ||
+      Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /\b(transform|max-height|height|width|padding|margin|border-width)\b/.test(m[1])) ||
       motionValues(source).some((value) =>
-        /\b(transform|max-height|height|width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
+        /\b(transform|max-height|height|width|padding|margin|border-width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
       )
 
-    // Moves only through values a consumer passes in, so the consumer owns the fallback
+    // Moves only through values a consumer passes in (so the consumer owns the fallback), or
+    // handles reduced motion another way, with the reason given
     const exempt: Record<string, string> = {
       'atoms/Box/Box.tsx': 'transition and hoverTransform are consumer-supplied props',
       'molecules/Checkbox/SelectableInputBase.tsx': '`all` only ever changes colours; the box never resizes',
+      // Chooses its exit when dismissed from prefers-reduced-motion (tested in Alert.test.tsx), so
+      // a preference change mid-exit can't swap animations and flash the faded alert back
+      'molecules/Alert/Alert.tsx': 'reduced motion is chosen in JavaScript when the exit starts',
     }
 
     const missing = files
       .filter(({ name, source }) => moves(source) && !exempt[name])
-      .filter(({ source }) => !/reducedMotion|prefers-reduced-motion/.test(source))
+      // A CSS fallback, not just a matchMedia check in JavaScript
+      .filter(({ source }) => !/\$\{reducedMotion\}|@media \(prefers-reduced-motion/.test(source))
       .map(({ name }) => name)
     expect(missing).toEqual([])
   })

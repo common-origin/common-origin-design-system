@@ -1,6 +1,6 @@
 # 0005. Motion is part of the system; appearing elements animate in
 
-- **Status:** Accepted (reduced-motion clause proposed)
+- **Status:** Accepted; reduced-motion clause superseded by [0015](0015-reduced-motion.md)
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P5, P6

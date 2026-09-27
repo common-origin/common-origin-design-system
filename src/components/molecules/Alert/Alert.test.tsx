@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act, within } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Alert, type AlertProps } from './Alert'
 import tokens from '@/styles/tokens.json'
@@ -127,26 +127,169 @@ describe('Alert', () => {
       expect(screen.getByLabelText('Dismiss alert')).toBeInTheDocument()
     })
 
-    it('calls onDismiss when dismiss button is clicked', () => {
-      const onDismiss = jest.fn()
-      renderAlert({ dismissible: true, onDismiss })
+    describe('dismiss motion', () => {
+      // Fade (duration.fast) then collapse (duration.fast); removal follows the alert's own
+      // animationend, which jsdom doesn't fire, so the tests fire it
+      const fast = parseInt(tokens.semantic.motion.duration.fast, 10)
 
-      const dismissButton = screen.getByLabelText('Dismiss alert')
-      fireEvent.click(dismissButton)
+      // jsdom has no AnimationEvent, so build one with the fields the alert reads
+      const animationEnd = (el: Element, animationName: string, pseudoElement = '') => {
+        const event = new Event('animationend', { bubbles: true })
+        Object.assign(event, { animationName, pseudoElement })
+        fireEvent(el, event)
+      }
 
-      expect(onDismiss).toHaveBeenCalledTimes(1)
-    })
+      // The generated name of the full exit: the keyframes that collapse max-height
+      const exitAnimationName = () => {
+        const css = Array.from(document.querySelectorAll('style')).map((el) => el.textContent).join('')
+        const match = css.match(/@keyframes\s+([\w-]+)\s*\{[^@]*max-height/)
+        if (!match) throw new Error('exit keyframes not found')
+        return match[1]
+      }
 
-    it('removes alert from DOM when dismissed', () => {
-      renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
+      beforeEach(() => jest.useFakeTimers())
+      afterEach(() => jest.useRealTimers())
 
-      const alert = screen.getByTestId('dismissable-alert')
-      expect(alert).toBeInTheDocument()
+      it('fades and collapses before it is removed, then calls onDismiss', () => {
+        // onDismiss must not be able to observe the alert: it runs after removal is committed
+        let presentDuringCallback: boolean | undefined
+        const onDismiss = jest.fn(() => {
+          presentDuringCallback = document.body.contains(document.querySelector('[data-testid="dismissable-alert"]'))
+        })
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
 
-      const dismissButton = screen.getByLabelText('Dismiss alert')
-      fireEvent.click(dismissButton)
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
 
-      expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        const alert = screen.getByTestId('dismissable-alert')
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
+        expect(alert).toHaveAttribute('inert')
+        expect(alert.style.getPropertyValue('--alert-exit-height')).toMatch(/^\d+(\.\d+)?px$/)
+        expect(onDismiss).not.toHaveBeenCalled()
+
+        animationEnd(alert, exitAnimationName())
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+        expect(presentDuringCallback).toBe(false)
+      })
+
+      const mockReducedMotion = (reduce: boolean) => {
+        window.matchMedia = ((query: string) => ({
+          matches: reduce && query === '(prefers-reduced-motion: reduce)',
+          media: query,
+          addEventListener: () => {},
+          removeEventListener: () => {},
+        })) as unknown as typeof window.matchMedia
+      }
+      afterEach(() => {
+        delete (window as { matchMedia?: unknown }).matchMedia
+      })
+
+      // The animation the exiting alert runs, read from its class's rule in the injected CSS
+      const exitAnimationOf = (el: Element) => {
+        const css = Array.from(document.querySelectorAll('style')).map((s) => s.textContent).join('')
+        const classes = Array.from(el.classList)
+        const rule = css
+          .split('}')
+          .find((r) => classes.some((c) => r.includes(`.${c}{`)) && /animation:/.test(r))
+        const match = rule?.match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-out\s+forwards/)
+        if (!match) throw new Error('exit animation not found')
+        return { name: match[1], duration: match[2] }
+      }
+
+      it('with reduced motion, only fades (duration.fast) and is removed when that fade ends', () => {
+        mockReducedMotion(true)
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        const alert = screen.getByTestId('dismissable-alert')
+        const exit = exitAnimationOf(alert)
+        expect(exit.duration).toBe(tokens.semantic.motion.duration.fast)
+        expect(exit.name).not.toBe(exitAnimationName())
+
+        animationEnd(alert, exit.name)
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
+      it('keeps the exit it started with if the reduced-motion preference changes mid-exit', () => {
+        mockReducedMotion(false)
+        const { rerender } = renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+        const alert = screen.getByTestId('dismissable-alert')
+        const before = exitAnimationOf(alert)
+        expect(before.name).toBe(exitAnimationName())
+
+        // No media query can swap the running exit (jsdom doesn't evaluate media queries,
+        // so check that none targets the exiting alert)
+        const css = Array.from(document.querySelectorAll('style')).map((st) => st.textContent).join('')
+        const reducedRules = Array.from(css.matchAll(/@media \(prefers-reduced-motion: reduce\)\{(.*?\})\}/g)).map((m) => m[1])
+        const classes = Array.from(alert.classList)
+        expect(reducedRules.filter((rule) => classes.some((c) => rule.includes(`.${c}{`)))).toEqual([])
+
+        // And the choice made at dismissal isn't re-read
+        mockReducedMotion(true)
+        rerender(<Alert {...defaultProps} dismissible data-testid="dismissable-alert" />)
+        expect(exitAnimationOf(screen.getByTestId('dismissable-alert'))).toEqual(before)
+      })
+
+      it('ignores animations ending on its children', () => {
+        renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        const alert = screen.getByTestId('dismissable-alert')
+        animationEnd(alert.firstElementChild as Element, exitAnimationName())
+        expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
+      })
+
+      it('ignores other animations on the alert and its pseudo-elements', () => {
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        const alert = screen.getByTestId('dismissable-alert')
+        animationEnd(alert, 'consumer-pulse')
+        animationEnd(alert, exitAnimationName(), '::before')
+        expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
+        expect(onDismiss).not.toHaveBeenCalled()
+      })
+
+      it.each([
+        ['the full exit', false, 2],
+        ['reduced motion', true, 1],
+      ])('is removed after %s even if no animation event arrives', (_label, reduce, steps) => {
+        mockReducedMotion(reduce)
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        // Exactly the chosen exit's length: 300ms, or 150ms under reduced motion
+        act(() => jest.advanceTimersByTime(fast * steps - 1))
+        expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
+
+        act(() => jest.advanceTimersByTime(1))
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
+      it("keeps a consumer's aria-hidden until it exits", () => {
+        renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert', 'aria-hidden': 'true' } as unknown as Partial<AlertProps>)
+        const alert = screen.getByTestId('dismissable-alert')
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
+
+        fireEvent.click(within(alert).getByLabelText('Dismiss alert'))
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
+      })
+
+      it('keeps consumer inline styles while it exits', () => {
+        renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert', style: { marginTop: '8px' } } as unknown as Partial<AlertProps>)
+        const alert = screen.getByTestId('dismissable-alert')
+        expect(alert.style.marginTop).toBe('8px')
+
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+        expect(alert.style.marginTop).toBe('8px')
+        expect(alert.style.getPropertyValue('--alert-exit-height')).not.toBe('')
+      })
     })
 
     it('dismiss button has correct data-testid', () => {
