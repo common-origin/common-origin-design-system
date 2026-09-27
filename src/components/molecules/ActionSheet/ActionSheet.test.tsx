@@ -378,6 +378,8 @@ describe('ActionSheet exit', () => {
     rerender(ui(false))
     const exiting = screen.getByTestId('exit-action-sheet')
     expect(exiting).toHaveAttribute('aria-hidden', 'true')
+    // inert takes the exiting panel's controls out of the tab order
+    expect(exiting).toHaveAttribute('inert')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
@@ -390,5 +392,21 @@ describe('ActionSheet exit', () => {
     rerender(ui(true))
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
     expect(screen.getByRole('dialog')).not.toHaveAttribute('aria-hidden')
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('inert')
+  })
+
+  it('leaves focus on the trigger when closed before its opening focus runs', () => {
+    const Harness = ({ isOpen }: { isOpen: boolean }) => (
+      <>
+        <button>Trigger</button>
+        <ActionSheet isOpen={isOpen} onClose={() => {}} actions={[{ id: 'a', label: 'A', onSelect: () => {} }]} data-testid="exit-action-sheet" />
+      </>
+    )
+    const { rerender } = render(<Harness isOpen={false} />)
+    screen.getByText('Trigger').focus()
+    rerender(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(document.activeElement).toBe(screen.getByText('Trigger'))
   })
 })

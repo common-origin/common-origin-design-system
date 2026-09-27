@@ -9,7 +9,7 @@ import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
 import tokens from '@/styles/tokens.json'
 import { exitFade, reducedMotion } from '../../../lib/styleUtils'
-import { usePresence } from '../../../lib/usePresence'
+import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 const { spacing: { layout }, color, border, elevation, motion } = semantic
@@ -240,6 +240,7 @@ export const Modal: React.FC<ModalProps> = ({
   const dialogRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
   const { isPresent, isExiting } = usePresence(isOpen)
+  useInert(dialogRef, isExiting)
 
   // -----------------------------------------------------------------------
   // Focus & scroll-lock management

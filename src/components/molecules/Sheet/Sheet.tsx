@@ -2,7 +2,7 @@ import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { exitFade, reducedMotion } from '../../../lib/styleUtils'
-import { usePresence } from '../../../lib/usePresence'
+import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 
@@ -289,6 +289,7 @@ export const Sheet = ({
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousFocusRef = useRef<HTMLElement | null>(null)
   const { isPresent, isExiting } = usePresence(isOpen)
+  useInert(sheetRef, isExiting)
   
   // Focus management
   useEffect(() => {
@@ -297,12 +298,18 @@ export const Sheet = ({
       previousFocusRef.current = document.activeElement as HTMLElement
       
       // Focus sheet
-      setTimeout(() => {
+      const timer = setTimeout(() => {
         sheetRef.current?.focus()
       }, 100) // Small delay to allow animation to start
       
       // Prevent body scroll
       document.body.style.overflow = 'hidden'
+
+      // A quick close cancels the pending focus, so it can't pull focus back into the exiting sheet
+      return () => {
+        clearTimeout(timer)
+        document.body.style.overflow = ''
+      }
     } else {
       // Restore previous focus
       if (previousFocusRef.current) {

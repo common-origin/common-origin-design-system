@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type RefObject } from 'react'
 import tokens from '../styles/tokens.json'
 
 // How long an exiting element stays mounted: the duration of `exitFade` in styleUtils.
@@ -24,4 +24,18 @@ export function usePresence(isOpen: boolean, exitMs: number = EXIT_DURATION_MS) 
     isPresent: isOpen || isMounted,
     isExiting: !isOpen && isMounted,
   }
+}
+
+/**
+ * Makes an element inert while `isInert` is true, so an exiting overlay's controls leave
+ * the tab order and can't be activated. Set through the DOM because React 18 has no
+ * `inert` prop.
+ */
+export function useInert(ref: RefObject<HTMLElement | null>, isInert: boolean) {
+  useEffect(() => {
+    const node = ref.current
+    if (!node) return
+    if (isInert) node.setAttribute('inert', '')
+    else node.removeAttribute('inert')
+  }, [ref, isInert])
 }

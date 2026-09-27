@@ -248,6 +248,8 @@ describe('Modal exit', () => {
     rerender(ui(false))
     const exiting = screen.getByTestId('exit-modal')
     expect(exiting).toHaveAttribute('aria-hidden', 'true')
+    // inert takes the exiting panel's controls out of the tab order
+    expect(exiting).toHaveAttribute('inert')
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()
 
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
@@ -260,5 +262,21 @@ describe('Modal exit', () => {
     rerender(ui(true))
     act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
     expect(screen.getByRole('dialog')).not.toHaveAttribute('aria-hidden')
+    expect(screen.getByRole('dialog')).not.toHaveAttribute('inert')
+  })
+
+  it('leaves focus on the trigger when closed before its opening focus runs', () => {
+    const Harness = ({ isOpen }: { isOpen: boolean }) => (
+      <>
+        <button>Trigger</button>
+        <Modal isOpen={isOpen} onClose={() => {}} title="Exit" data-testid="exit-modal">Body</Modal>
+      </>
+    )
+    const { rerender } = render(<Harness isOpen={false} />)
+    screen.getByText('Trigger').focus()
+    rerender(<Harness isOpen={true} />)
+    rerender(<Harness isOpen={false} />)
+    act(() => jest.advanceTimersByTime(EXIT_DURATION_MS))
+    expect(document.activeElement).toBe(screen.getByText('Trigger'))
   })
 })

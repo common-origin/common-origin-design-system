@@ -13,7 +13,7 @@ import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
 import { exitFade, reducedMotion } from '../../../lib/styleUtils'
-import { usePresence } from '../../../lib/usePresence'
+import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { 
   semantic: { 
@@ -252,6 +252,7 @@ export const ActionSheet = ({
   const sheetRef = useRef<HTMLDivElement>(null)
   const previousActiveElement = useRef<HTMLElement | null>(null)
   const { isPresent, isExiting } = usePresence(isOpen)
+  useInert(sheetRef, isExiting)
   
   // Store the element that had focus when sheet opened
   useEffect(() => {
@@ -292,7 +293,7 @@ export const ActionSheet = ({
     document.addEventListener('keydown', handleKeyDown)
     
     // Focus first focusable element (button or element with role="button")
-    requestAnimationFrame(() => {
+    const frame = requestAnimationFrame(() => {
       const firstFocusable = sheetRef.current?.querySelector<HTMLElement>(
         'button:not(:disabled), [role="button"][tabindex]:not([aria-disabled="true"])'
       )
@@ -304,6 +305,8 @@ export const ActionSheet = ({
     document.body.style.overflow = 'hidden'
     
     return () => {
+      // A quick close cancels the pending focus, so it can't pull focus back into the exiting sheet
+      cancelAnimationFrame(frame)
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = originalOverflow
       
