@@ -769,7 +769,7 @@ return (
       },
       {
         name: 'Chevron Icon',
-        description: 'Decorative 24x24px caret icon that rotates 180° when expanded. Only shown on expandable items. Has aria-hidden="true" for accessibility.'
+        description: 'Decorative 24x24px caret icon that rotates 180° when expanded, over semantic.motion.duration.fast (easeOut), the same as the Dropdown chevron. With prefers-reduced-motion set, it flips instantly. Only shown on expandable items. Has aria-hidden="true" for accessibility.'
       },
       {
         name: 'Expanded Content',
