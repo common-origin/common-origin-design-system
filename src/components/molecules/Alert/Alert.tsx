@@ -45,10 +45,10 @@ const fadeOut = keyframes`
   to   { opacity: 0; }
 `
 
-const prefersReducedMotion = () =>
-  typeof window !== 'undefined' &&
-  typeof window.matchMedia === 'function' &&
-  window.matchMedia('(prefers-reduced-motion: reduce)').matches
+// The exit ends on the alert's own animationend (300ms, or 150ms under reduced motion,
+// following the live preference). This fallback removes it if no animation event arrives,
+// for example where animations are disabled; it allows for the preference changing mid-exit.
+const EXIT_FALLBACK_MS = EXIT_MS + FADE_MS
 
 export interface AlertProps {
   /**
@@ -293,7 +293,7 @@ export const Alert = ({
 
   React.useEffect(() => {
     if (phase !== 'exiting') return
-    const timer = setTimeout(() => setPhase('dismissed'), prefersReducedMotion() ? FADE_MS : EXIT_MS)
+    const timer = setTimeout(() => setPhase('dismissed'), EXIT_FALLBACK_MS)
     return () => clearTimeout(timer)
   }, [phase])
 
@@ -308,6 +308,18 @@ export const Alert = ({
   }
 
   const isExiting = phase === 'exiting'
+
+  // Consumers can pass extra HTML attributes, including style and onAnimationEnd
+  const forwarded = props as {
+    style?: React.CSSProperties
+    onAnimationEnd?: React.AnimationEventHandler<HTMLDivElement>
+  }
+
+  const handleAnimationEnd = (event: React.AnimationEvent<HTMLDivElement>) => {
+    forwarded.onAnimationEnd?.(event)
+    // Ignore animations bubbling up from children, such as a Badge in the message
+    if (isExiting && event.target === event.currentTarget) setPhase('dismissed')
+  }
 
   // Get the icon for the current variant
   const iconName = variantIcons[variant]
@@ -328,7 +340,8 @@ export const Alert = ({
       {...props}
       ref={alertRef}
       aria-hidden={isExiting || undefined}
-      style={isExiting ? exitStyle : undefined}
+      style={isExiting ? { ...forwarded.style, ...exitStyle } : forwarded.style}
+      onAnimationEnd={handleAnimationEnd}
     >
       <StyledIconContainer aria-hidden="true">
         <Icon name={iconName} size="md" iconColor={alertIconColor} />
