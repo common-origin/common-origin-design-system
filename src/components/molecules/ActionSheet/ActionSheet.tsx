@@ -12,6 +12,7 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { 
   semantic: { 
@@ -136,7 +137,7 @@ const StyledOverlay = styled.div`
   inset: 0;
   background-color: ${color.background.overlay};
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${fadeIn} 0.2s ease-out;
+  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut};
 `
 
 const StyledActionSheet = styled.div`
@@ -151,7 +152,11 @@ const StyledActionSheet = styled.div`
   max-height: 90vh;
   overflow-y: auto;
   z-index: ${tokens.semantic.zIndex.modal};
-  animation: ${slideUp} 0.3s ease-out;
+  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut};
+
+  ${reducedMotion} {
+    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut};
+  }
 `
 
 const StyledHeader = styled.div`

@@ -559,7 +559,10 @@
   --semantic-typography-label: 600 0.875rem/1.25rem 'Inter', sans-serif;
   --semantic-typography-breadcrumb: 400 0.75rem/1.125rem 'Inter', sans-serif;
   --semantic-motion-duration-normal: 200ms;
+  --semantic-motion-duration-fast: 150ms;
+  --semantic-motion-duration-slow: 300ms;
   --semantic-motion-easing-ease-in-out: ease-in-out;
+  --semantic-motion-easing-ease-out: ease-out;
   --semantic-motion-transition-fast: all 150ms ease-out;
   --semantic-motion-transition-normal: all 200ms ease-in-out;
   --semantic-motion-transition-slow: all 300ms ease-in-out;

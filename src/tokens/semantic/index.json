@@ -1056,6 +1056,16 @@
           "value": "{base.duration.normal}",
           "type": "duration",
           "description": "200ms: standard duration for property-specific transitions."
+        },
+        "fast": {
+          "value": "{base.duration.fast}",
+          "type": "duration",
+          "description": "150ms: quick responses to input such as hover, press and small indicators."
+        },
+        "slow": {
+          "value": "{base.duration.moderate}",
+          "type": "duration",
+          "description": "300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse."
         }
       },
       "easing": {
@@ -1063,6 +1073,11 @@
           "value": "{base.easing.easeInOut}",
           "type": "easing",
           "description": "ease-in-out: standard easing for property-specific transitions."
+        },
+        "easeOut": {
+          "value": "{base.easing.easeOut}",
+          "type": "easing",
+          "description": "ease-out: for elements responding to input or entering the page."
         }
       },
       "transition": {

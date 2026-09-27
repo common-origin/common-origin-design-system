@@ -66,7 +66,10 @@ export const codeBlockDocs: ComponentDocumentation = {
     'component.codeBlock.fontFamily - Monospace font family ensuring proper code alignment and character spacing',
     'semantic.color.text.default - Standard text color optimized for code readability across themes',
     'component.codeBlock.fontSize - Appropriate font size for code content balancing readability and space efficiency',
-    'component.codeBlock.lineHeight - Optimal line height for multi-line code preventing cramped or spread-out appearance'
+    'component.codeBlock.lineHeight - Optimal line height for multi-line code preventing cramped or spread-out appearance',
+    // Motion
+    'semantic.motion.duration.slow',
+    'semantic.motion.easing.easeInOut',
   ],
 
   examples: [
@@ -839,7 +842,8 @@ export default config`}
           'semantic.color.text.default',
           'component.codeBlock.fontSize',
           'component.codeBlock.lineHeight',
-          'semantic.motion.transition.normal'
+          'semantic.motion.duration.slow',
+          'semantic.motion.easing.easeInOut'
         ]
       },
       {
@@ -866,7 +870,7 @@ export default config`}
     'Developer Experience Optimization: Component designed specifically for technical documentation with syntax-preserved formatting, making it ideal for API documentation, code tutorials, and developer onboarding materials where exact code representation is critical.',
     'Expandable Content: The maxHeight prop enables expand/collapse functionality for long code blocks, preventing overwhelming page layouts while still providing access to full content. A gradient overlay visually indicates additional content is available.',
     'Modern Clipboard Integration: Uses the modern Navigator Clipboard API with proper error handling and fallback support. Copy functionality includes immediate visual feedback and works reliably across different browsers and security contexts.',
-    'Smooth Animations: Expand/collapse transitions use design system motion tokens for consistent, accessible animations. Transitions respect user preferences for reduced motion through system settings.',
+    'Smooth Animations: Expand/collapse transitions use design system motion tokens for consistent, accessible animations. With prefers-reduced-motion set, the height changes instantly.',
     'Responsive Behavior: Horizontal scrolling ensures long code lines remain readable on all screen sizes. Copy and expand buttons adapt to content while maintaining consistent accessibility and interaction patterns.',
     'Performance Considerations: Component renders efficiently with minimal re-renders. Content height is measured once on mount and when content changes to determine if expand/collapse is needed.',
     'Content Flexibility: Accepts any string content with preserved whitespace, indentation, and line breaks. Handles various programming languages, configuration files, command-line instructions, and markup examples equally well.',

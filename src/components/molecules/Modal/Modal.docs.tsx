@@ -198,7 +198,7 @@ export const modalDocs: ComponentDocumentation = {
     'semantic.breakpoint.md',
     // Motion
     'semantic.motion.duration.normal',
-    '200ms ease-out (hard-coded until the motion audit, #35)',
+    'semantic.motion.easing.easeOut',
   ],
 
   // ---------------------------------------------------------------------------

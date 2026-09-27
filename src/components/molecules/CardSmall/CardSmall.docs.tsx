@@ -57,7 +57,10 @@ export const cardSmallDocs: ComponentDocumentation = {
     'semantic.border.radius.sm',
     'semantic.color.border.strong',
     'semantic.spacing.sm',
-    'semantic.spacing.none'
+    'semantic.spacing.none',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
   
   examples: [

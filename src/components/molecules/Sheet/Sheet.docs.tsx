@@ -117,6 +117,9 @@ export const sheetDocs: ComponentDocumentation = {
     // Colors for scrollbar
     'semantic.color.border.default',
     'semantic.color.background.tertiary',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
   ],
   
   examples: [

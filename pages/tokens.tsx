@@ -1101,6 +1101,8 @@ export default function Tokens() {
       isHeader: true,
       content: [
         { id: 'motion-transition', type: 'motion', data: tokens.semantic.motion.transition, title: 'Transition' },
+        { id: 'motion-duration', type: 'generic', data: tokens.semantic.motion.duration, title: 'Duration', prefix: 'motion.duration' },
+        { id: 'motion-easing', type: 'generic', data: tokens.semantic.motion.easing, title: 'Easing', prefix: 'motion.easing' },
         { id: 'motion-special', type: 'generic', data: { hover: tokens.semantic.motion.hover, focus: tokens.semantic.motion.focus, interactive: tokens.semantic.motion.interactive }, title: 'Motion', prefix: 'motion' },
       ]
     },

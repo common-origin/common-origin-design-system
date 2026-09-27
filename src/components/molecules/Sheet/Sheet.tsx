@@ -1,6 +1,7 @@
 import { useEffect, useRef, ReactNode, KeyboardEvent } from 'react'
 import styled, { keyframes, css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 
@@ -139,7 +140,7 @@ const StyledOverlay = styled.div.withConfig({
   bottom: 0;
   background-color: ${semantic.color.background.overlay};
   z-index: ${semantic.zIndex.overlay};
-  ${css`animation: ${fadeIn} 200ms ease-in-out;`}
+  ${css`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};`}
   display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
 `
 
@@ -173,7 +174,7 @@ const StyledSheet = styled.div.withConfig({
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
-          animation: ${slideInRight} 200ms ease-in-out;
+          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
         `
       case 'left':
         return css`
@@ -183,7 +184,7 @@ const StyledSheet = styled.div.withConfig({
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
-          animation: ${slideInLeft} 200ms ease-in-out;
+          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
         `
       case 'top':
         return css`
@@ -193,7 +194,7 @@ const StyledSheet = styled.div.withConfig({
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
-          animation: ${slideInTop} 200ms ease-in-out;
+          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
         `
       case 'bottom':
         return css`
@@ -203,10 +204,14 @@ const StyledSheet = styled.div.withConfig({
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
-          animation: ${slideInBottom} 200ms ease-in-out;
+          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
         `
     }
   }}
+
+  ${reducedMotion} {
+    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
+  }
   
   /* Focus trap styling */
   &:focus {

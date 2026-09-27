@@ -83,11 +83,13 @@ export const statusBadgeDocs: ComponentDocumentation = {
     'component.badge.label.fontWeight',
     // Border
     'semantic.border.radius.circle',
-    // Motion
-    'semantic.motion.transition.fast',
     // Icon sizes
     'semantic.size.icon.xs',
-    'semantic.size.icon.sm'
+    'semantic.size.icon.sm',
+    // Motion
+    'semantic.motion.transition.fast',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
   ],
 
   examples: [

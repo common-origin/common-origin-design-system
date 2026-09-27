@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { visuallyHidden } from '../../../lib/styleUtils'
+import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 import { Typography } from '../Typography'
 
@@ -61,7 +61,11 @@ const BadgeIndicator = styled.span.withConfig({
   line-height: ${count.lineHeight};
   white-space: nowrap;
   box-shadow: 0 0 0 ${ring.width} ${color.background.default};
-  animation: ${scaleIn} 0.2s ease-out;
+  animation: ${scaleIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeOut};
+
+  ${reducedMotion} {
+    animation: none;
+  }
   
   ${props => {
     switch (props.$variant) {

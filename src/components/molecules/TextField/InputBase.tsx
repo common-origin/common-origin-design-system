@@ -52,8 +52,8 @@ export const StyledInputBase = styled.input.withConfig({
   outline: none;
   
   /* Transitions */
-  transition: border-color 200ms ease-in-out, 
-              outline 200ms ease-in-out;
+  transition: border-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut},
+              outline ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
   
   /* Placeholder */
   &::placeholder {

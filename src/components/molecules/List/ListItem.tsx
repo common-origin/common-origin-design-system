@@ -4,8 +4,10 @@ import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
+const { duration, easing } = semantic.motion
 
 export interface ListItemProps {
   /**
@@ -172,7 +174,7 @@ const StyledItemContent = styled.div.withConfig({
   border-radius: ${semantic.border.radius.sm};
   background-color: ${({ $selected }) =>
     $selected ? semantic.color.background['interactive-subtle'] : 'transparent'};
-  transition: background-color 150ms ease;
+  transition: background-color ${duration.fast} ${easing.easeOut};
   cursor: ${({ $interactive, $disabled }) => {
     if ($disabled) return 'not-allowed'
     if ($interactive) return 'pointer'
@@ -236,9 +238,13 @@ const StyledChevronIcon = styled.div.withConfig({
   width: ${semantic.size.icon.lg};
   height: ${semantic.size.icon.lg};
   color: ${semantic.color.icon.subdued};
-  transition: transform 200ms ease;
+  transition: transform ${duration.normal} ${easing.easeOut};
   transform: rotate(${({ $expanded }) => ($expanded ? '180deg' : '0deg')});
   pointer-events: none;
+
+  ${reducedMotion} {
+    transition: none;
+  }
 `
 
 const StyledExpandedContent = styled.div.withConfig({
@@ -248,9 +254,20 @@ const StyledExpandedContent = styled.div.withConfig({
   $expanded: boolean
 }>`
   overflow: hidden;
-  transition: max-height 200ms ease-out, opacity 200ms ease-out;
+  /* Padding collapses with the height, and visibility hides the content from
+     keyboard and screen readers once the collapse finishes. */
+  transition: max-height ${duration.normal} ${easing.easeOut},
+              padding ${duration.normal} ${easing.easeOut},
+              opacity ${duration.normal} ${easing.easeOut},
+              visibility ${duration.normal} ${easing.easeOut};
   max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
   opacity: ${({ $expanded }) => ($expanded ? '1' : '0')};
+  visibility: ${({ $expanded }) => ($expanded ? 'visible' : 'hidden')};
+
+  ${reducedMotion} {
+    transition: opacity ${duration.normal} ${easing.easeOut},
+                visibility ${duration.normal} ${easing.easeOut};
+  }
   
   ${({ $expanded, $spacing }) => $expanded && `
     padding: ${

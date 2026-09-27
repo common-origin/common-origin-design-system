@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 // Destructure tokens
 const { semantic } = tokens
@@ -57,6 +58,10 @@ const ProgressBarFill = styled.div.withConfig({
 })<StyledProgressBarFillProps>`
   height: 100%;
   transition: ${motion.transition.normal};
+
+  ${reducedMotion} {
+    transition: none;
+  }
 
   ${props => {
     let backgroundColor

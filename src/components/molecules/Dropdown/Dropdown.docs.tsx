@@ -112,7 +112,12 @@ export const dropdownDocs: ComponentDocumentation = {
     'semantic.color.text.error',
     'semantic.color.text.subdued',
     'semantic.typography.caption',
-    'semantic.border.subtle'
+    'semantic.border.subtle',
+    // Motion
+    'semantic.motion.duration.fast',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.easeInOut',
   ],
 
   examples: [
@@ -634,7 +639,7 @@ export const dropdownDocs: ComponentDocumentation = {
       'Disabled State: Communicated through aria-disabled, disabled attribute, and visual styling changes',
       'Error State Visibility: Error state communicated through border color (visual), aria-invalid attribute (programmatic), and error text (both)',
       'High Contrast Support: Focus outlines, borders, error indicators, and hover states work in Windows High Contrast and similar modes',
-      'Motion Sensitivity: Smooth animations respect user motion preferences and can be disabled via prefers-reduced-motion',
+      'Motion Sensitivity: With prefers-reduced-motion set, the menu fades without sliding and the chevron flips instantly',
       'Touch Accessibility: Adequate touch targets (44px minimum) and touch-friendly interaction patterns',
       'Error Prevention: Validates option selection and provides clear feedback for invalid states',
       'Cognitive Accessibility: Clear visual hierarchy, predictable behavior, optional labels for context, and helpful error messages'
@@ -654,7 +659,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'Performance Optimization: Dropdown menu rendered on mount but hidden via CSS for smooth animations and keyboard navigation',
     'Scroll Behavior: Menu max-height of 300px with auto-scroll. Large option lists become scrollable with proper focus management',
     'Click Outside Handling: Automatic click-outside detection closes dropdown. Escape key also closes without selection',
-    'Visual Feedback: Smooth animations (0.15s ease), icon rotation, and focus indicators provide clear interaction feedback',
+    'Visual Feedback: Quick animations (semantic.motion.duration.fast, easeOut), icon rotation, and focus indicators provide clear interaction feedback',
     'Design Token Integration: All spacing, colors, borders, shadows derive from semantic design tokens ensuring theme consistency',
     'Browser Support: Works in all modern browsers. Fallbacks ensure functionality even without CSS custom property support',
     'Form Integration: Works with form libraries (Formik, React Hook Form) via standard controlled component patterns',

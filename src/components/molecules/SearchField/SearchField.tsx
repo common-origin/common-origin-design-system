@@ -142,7 +142,7 @@ const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${component.input.default.borderRadius};
-  transition: border-color 200ms ease-in-out, outline 200ms ease-in-out;
+  transition: border-color ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}, outline ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
   
   ${props => props.$isFocused && `
     border-color: ${component.input.focus.borderColor};

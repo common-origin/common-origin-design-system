@@ -172,7 +172,9 @@ export const passwordFieldDocs: ComponentDocumentation = {
     
     // Effects
     'semantic.shadow.sm',
-    'semantic.motion.transition.normal',
+    // Motion
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeInOut',
   ],
 
   examples: [
