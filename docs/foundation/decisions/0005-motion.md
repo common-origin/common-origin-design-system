@@ -1,6 +1,6 @@
 # 0005. Motion is part of the system; appearing elements animate in
 
-- **Status:** Accepted (reduced-motion clause proposed)
+- **Status:** Accepted (reduced-motion clause accepted 2026-09-27, [#35](https://github.com/common-origin/common-origin-design-system/issues/35))
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P5, P6
@@ -15,10 +15,9 @@ The April 2026 brand documents banned entrance animations outright ("elements do
 - Elements that appear on the page — modals, sheets, action sheets, dialogs, menus, and similar — animate into place.
 - Interactive elements respond to hover, press, focus, selection, and expand/collapse.
 - Durations come from the motion tokens, 300ms maximum. Easing is never linear. Motion is never decorative or scroll-triggered.
-- **Proposed:** when the user has `prefers-reduced-motion` set, replace movement with an instant change or a simple fade, so people who don't want motion can switch it off (P2). The owner intends to adopt this as motion is added to the system. Until it's accepted, any new or reworked motion should include reduced-motion support rather than add to the backlog.
+- When the user has `prefers-reduced-motion` set, movement is replaced with an instant change or a simple fade, so people who don't want motion can switch it off (P2). Colour and opacity transitions are already the reduced form and stay. Every new or reworked motion includes this; components use `reducedMotion` from `src/lib/styleUtils.ts`.
 
 ## Consequences
 
 - The "never entrance animations" rule has been removed from the `.github/` guidance and agent definitions.
-- Follow-up: audit every component for missing or broken motion, and move hard-coded durations to motion tokens.
-- Follow-up: only IconButton and AgentInput currently respect reduced motion.
+- Done in [#35](https://github.com/common-origin/common-origin-design-system/issues/35): every component was audited, all durations and easings come from `semantic.motion`, overlays and dismissed Alerts animate out, and every component that moves has a reduced-motion fallback. `src/tokens/motion.test.ts` enforces the timing and reduced-motion rules.

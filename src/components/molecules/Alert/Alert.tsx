@@ -1,13 +1,54 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
-import { Typography } from '../../atoms/Typography'
+import { reducedMotion } from '../../../lib/styleUtils'
+import { useInert } from '../../../lib/usePresence'
 
 const { semantic } = tokens
 const { alert } = tokens.component
+const { duration, easing } = semantic.motion
+
+// Dismissing fades the alert out, then collapses the space it took (Ollie's call, #35).
+// Each half takes duration.fast, so the whole exit stays within the 300ms maximum (P6).
+const FADE_MS = parseInt(duration.fast, 10)
+const EXIT_MS = FADE_MS * 2
+
+// The --alert-exit-* properties are the alert's height and vertical padding, measured
+// when it's dismissed, so nothing moves until the fade has finished
+const fadeThenCollapse = keyframes`
+  0%, 50% {
+    max-height: var(--alert-exit-height);
+    padding-top: var(--alert-exit-padding-top);
+    padding-bottom: var(--alert-exit-padding-bottom);
+    border-width: ${semantic.border.width.thin};
+  }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-width: 0;
+  }
+`
+
+const fadeOut = keyframes`
+  from { opacity: 1; }
+  to   { opacity: 0; }
+`
+
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 export interface AlertProps {
   /**
@@ -37,7 +78,8 @@ export interface AlertProps {
   dismissible?: boolean
   
   /**
-   * Callback function when alert is dismissed
+   * Callback function when alert is dismissed. Called once the dismiss animation has
+   * finished and the alert has been removed.
    */
   onDismiss?: () => void
   
@@ -96,6 +138,7 @@ const StyledAlert = styled.div.withConfig({
 })<{
   $variant: AlertProps['variant']
   $inline: boolean
+  $isExiting: boolean
 }>`
   display: flex;
   align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
@@ -146,6 +189,18 @@ const StyledAlert = styled.div.withConfig({
         ? semantic.spacing.layout.sm
         : semantic.spacing.layout.lg};
   }
+
+  ${({ $isExiting }) => $isExiting && css`
+    box-sizing: border-box;
+    overflow: hidden;
+    pointer-events: none;
+    animation: ${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards;
+
+    /* Reduced motion: fade only; the space closes instantly afterwards */
+    ${reducedMotion} {
+      animation: ${fadeOut} ${duration.fast} ${easing.easeOut} forwards;
+    }
+  `}
 `
 
 const StyledIconContainer = styled.div`
@@ -201,16 +256,45 @@ export const Alert = ({
   'data-testid': dataTestId,
   ...props
 }: AlertProps) => {
-  const [isVisible, setIsVisible] = React.useState(true)
+  const [phase, setPhase] = React.useState<'visible' | 'exiting' | 'dismissed'>('visible')
+  const [exitStyle, setExitStyle] = React.useState<React.CSSProperties>()
+  const alertRef = React.useRef<HTMLDivElement>(null)
+  // While it exits, its controls leave the tab order and can't be activated
+  useInert(alertRef, phase === 'exiting')
+  const onDismissRef = React.useRef(onDismiss)
+  React.useEffect(() => {
+    onDismissRef.current = onDismiss
+  }, [onDismiss])
 
   const handleDismiss = () => {
-    setIsVisible(false)
-    onDismiss?.()
+    const node = alertRef.current
+    if (node) {
+      const { paddingTop, paddingBottom } = window.getComputedStyle(node)
+      setExitStyle({
+        '--alert-exit-height': `${node.offsetHeight}px`,
+        '--alert-exit-padding-top': paddingTop,
+        '--alert-exit-padding-bottom': paddingBottom,
+      } as React.CSSProperties)
+    }
+    setPhase('exiting')
   }
 
-  if (!isVisible) {
+  // onDismiss fires once the exit has finished, so a consumer that unmounts the
+  // alert in onDismiss still gets the animation
+  React.useEffect(() => {
+    if (phase !== 'exiting') return
+    const timer = setTimeout(() => {
+      setPhase('dismissed')
+      onDismissRef.current?.()
+    }, prefersReducedMotion() ? FADE_MS : EXIT_MS)
+    return () => clearTimeout(timer)
+  }, [phase])
+
+  if (phase === 'dismissed') {
     return null
   }
+
+  const isExiting = phase === 'exiting'
 
   // Get the icon for the current variant
   const iconName = variantIcons[variant]
@@ -226,8 +310,12 @@ export const Alert = ({
       aria-live={ariaLive}
       $variant={variant}
       $inline={inline}
+      $isExiting={isExiting}
       data-testid={dataTestId}
       {...props}
+      ref={alertRef}
+      aria-hidden={isExiting || undefined}
+      style={isExiting ? exitStyle : undefined}
     >
       <StyledIconContainer aria-hidden="true">
         <Icon name={iconName} size="md" iconColor={alertIconColor} />

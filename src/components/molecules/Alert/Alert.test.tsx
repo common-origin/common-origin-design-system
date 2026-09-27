@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, act } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Alert, type AlertProps } from './Alert'
 import tokens from '@/styles/tokens.json'
@@ -127,26 +127,52 @@ describe('Alert', () => {
       expect(screen.getByLabelText('Dismiss alert')).toBeInTheDocument()
     })
 
-    it('calls onDismiss when dismiss button is clicked', () => {
-      const onDismiss = jest.fn()
-      renderAlert({ dismissible: true, onDismiss })
+    describe('dismiss motion', () => {
+      // Fade (duration.fast) then collapse (duration.fast): 300ms in total
+      const fast = parseInt(tokens.semantic.motion.duration.fast, 10)
 
-      const dismissButton = screen.getByLabelText('Dismiss alert')
-      fireEvent.click(dismissButton)
+      beforeEach(() => jest.useFakeTimers())
+      afterEach(() => {
+        jest.useRealTimers()
+        delete (window as { matchMedia?: unknown }).matchMedia
+      })
 
-      expect(onDismiss).toHaveBeenCalledTimes(1)
-    })
+      it('fades and collapses before it is removed, then calls onDismiss', () => {
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
 
-    it('removes alert from DOM when dismissed', () => {
-      renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
 
-      const alert = screen.getByTestId('dismissable-alert')
-      expect(alert).toBeInTheDocument()
+        const alert = screen.getByTestId('dismissable-alert')
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
+        expect(alert).toHaveAttribute('inert')
+        expect(alert.style.getPropertyValue('--alert-exit-height')).toMatch(/^\d+px$/)
+        expect(onDismiss).not.toHaveBeenCalled()
 
-      const dismissButton = screen.getByLabelText('Dismiss alert')
-      fireEvent.click(dismissButton)
+        act(() => jest.advanceTimersByTime(fast * 2 - 1))
+        expect(screen.getByTestId('dismissable-alert')).toBeInTheDocument()
 
-      expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        act(() => jest.advanceTimersByTime(1))
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
+      it('only fades when the user prefers reduced motion', () => {
+        window.matchMedia = ((query: string) => ({
+          matches: query === '(prefers-reduced-motion: reduce)',
+          media: query,
+          addEventListener: () => {},
+          removeEventListener: () => {},
+        })) as unknown as typeof window.matchMedia
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+        act(() => jest.advanceTimersByTime(fast))
+
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
     })
 
     it('dismiss button has correct data-testid', () => {
