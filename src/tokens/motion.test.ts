@@ -45,7 +45,7 @@ describe('component motion', () => {
   // (transition-duration, animation-timing-function, …) and JSX props (transition="…").
   // Token interpolations (`${…}`) are dropped so only literal text is left to check.
   const motionValues = (source: string): string[] => {
-    const css = [...source.matchAll(/\b(?:transition|animation)(?:-[a-z-]+)?\s*:\s*([^;`{}]*(?:\$\{[^}]*\}[^;`{}]*)*)/g)]
+    const css = Array.from(source.matchAll(/\b(?:transition|animation)(?:-[a-z-]+)?\s*:\s*([^;`{}]*(?:\$\{[^}]*\}[^;`{}]*)*)/g))
     const props = Array.from(source.matchAll(/\b(?:transition|animation)=\{?\s*["'`]([^"'`]*)["'`]/g))
     return [...css, ...props].map((match) => match[1].replace(/\s+/g, ' ').trim())
   }
