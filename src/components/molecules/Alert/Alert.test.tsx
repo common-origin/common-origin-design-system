@@ -172,6 +172,26 @@ describe('Alert', () => {
         expect(presentDuringCallback).toBe(false)
       })
 
+      it('with reduced motion, only fades (duration.fast) and is removed when that fade ends', () => {
+        const onDismiss = jest.fn()
+        renderAlert({ dismissible: true, onDismiss, 'data-testid': 'dismissable-alert' })
+        fireEvent.click(screen.getByLabelText('Dismiss alert'))
+
+        // The alert's reduced-motion rule swaps the exit for a fade of duration.fast
+        const css = Array.from(document.querySelectorAll('style')).map((el) => el.textContent).join('')
+        const reduced = Array.from(css.matchAll(/@media \(prefers-reduced-motion: reduce\)\{([^{}]*\{[^}]*\})*[^}]*\}/g))
+          .map((m) => m[0].match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-out\s+forwards/))
+          .find(Boolean)
+        if (!reduced) throw new Error('reduced-motion exit rule not found')
+        const [, fadeName, fadeDuration] = reduced
+        expect(fadeDuration).toBe(tokens.semantic.motion.duration.fast)
+        expect(fadeName).not.toBe(exitAnimationName())
+
+        animationEnd(screen.getByTestId('dismissable-alert'), fadeName)
+        expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
+        expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
       it('ignores animations ending on its children', () => {
         renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert' })
         fireEvent.click(screen.getByLabelText('Dismiss alert'))

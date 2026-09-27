@@ -70,7 +70,7 @@ describe('component motion', () => {
     const moves = (source: string) =>
       Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /\b(transform|max-height|height|width|padding|margin|border-width)\b/.test(m[1])) ||
       motionValues(source).some((value) =>
-        /\b(transform|max-height|height|width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
+        /\b(transform|max-height|height|width|padding|margin|border-width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
       )
 
     // Moves only through values a consumer passes in, so the consumer owns the fallback
