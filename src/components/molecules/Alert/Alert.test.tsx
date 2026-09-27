@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render, screen, fireEvent, act, within } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Alert, type AlertProps } from './Alert'
 import tokens from '@/styles/tokens.json'
@@ -266,6 +266,15 @@ describe('Alert', () => {
         act(() => jest.advanceTimersByTime(1))
         expect(screen.queryByTestId('dismissable-alert')).not.toBeInTheDocument()
         expect(onDismiss).toHaveBeenCalledTimes(1)
+      })
+
+      it("keeps a consumer's aria-hidden until it exits", () => {
+        renderAlert({ dismissible: true, 'data-testid': 'dismissable-alert', 'aria-hidden': 'true' } as unknown as Partial<AlertProps>)
+        const alert = screen.getByTestId('dismissable-alert')
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
+
+        fireEvent.click(within(alert).getByLabelText('Dismiss alert'))
+        expect(alert).toHaveAttribute('aria-hidden', 'true')
       })
 
       it('keeps consumer inline styles while it exits', () => {

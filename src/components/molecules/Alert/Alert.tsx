@@ -317,9 +317,10 @@ export const Alert = ({
 
   const isExiting = phase === 'exiting'
 
-  // Consumers can pass extra HTML attributes, including style and onAnimationEnd
+  // Consumers can pass extra HTML attributes, including style, aria-hidden and onAnimationEnd
   const forwarded = props as {
     style?: React.CSSProperties
+    'aria-hidden'?: React.AriaAttributes['aria-hidden']
     onAnimationEnd?: React.AnimationEventHandler<HTMLDivElement>
   }
 
@@ -356,7 +357,7 @@ export const Alert = ({
       data-testid={dataTestId}
       {...props}
       ref={alertRef}
-      aria-hidden={isExiting || undefined}
+      aria-hidden={isExiting ? true : forwarded['aria-hidden']}
       style={isExiting ? { ...forwarded.style, ...exitStyle } : forwarded.style}
       onAnimationEnd={handleAnimationEnd}
     >
