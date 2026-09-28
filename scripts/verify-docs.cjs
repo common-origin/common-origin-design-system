@@ -71,7 +71,7 @@ for (const file of allFiles.filter(file => file.endsWith('.md'))) {
     if (line.includes('<!-- verify-docs-ignore')) return
 
     // npm scripts are checked everywhere, including the commands in code blocks
-    for (const [, name] of line.matchAll(/npm run ([a-z][\w:-]*)/g)) {
+    for (const [, name] of line.matchAll(/npm run (\w[\w:.-]*)/g)) {
       if (!scripts[name]) problems.push(`${where}: unknown script "npm run ${name}"`)
     }
 

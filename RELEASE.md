@@ -108,7 +108,7 @@ npx auto-changelog -o CHANGELOG.md
 ### Wrong version published
 
 ```bash
-npm deprecate @common-origin/design-system@X.Y.Z "Accidental publish, use X.Y.Z+1"
+npm deprecate @common-origin/design-system@X.Y.Z "Accidental publish, use <next version> instead"
 ```
 
 Then release the correct version with the normal flow.
