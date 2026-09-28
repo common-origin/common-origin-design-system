@@ -48,6 +48,12 @@ export const pictureDocs: ComponentDocumentation = {
       required: false,
       default: '630',
       description: 'Image height in pixels for optimization'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      description: 'Test identifier for automated testing'
     }
   ],
 

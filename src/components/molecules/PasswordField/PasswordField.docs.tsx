@@ -169,9 +169,6 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.md',
-    
-    // Effects
-    'semantic.shadow.sm',
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
@@ -401,7 +398,6 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.input.disabled.backgroundColor',
           'semantic.typography.body1',
           'semantic.spacing.layout.md',
-          'semantic.shadow.sm',
         ],
       },
       {
