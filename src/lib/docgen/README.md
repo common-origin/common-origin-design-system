@@ -8,6 +8,9 @@ Props, tokens, examples, accessibility and anatomy are all written by hand in ea
 
 ## Adding docs for a component
 
+The full requirements for each section are in [DOCUMENTATION_STANDARDS.md](../../../.github/DOCUMENTATION_STANDARDS.md).
+
+
 1. Create `Name.docs.tsx` next to the component, exporting a `ComponentDocumentation`:
 
    ```tsx
@@ -20,9 +23,9 @@ Props, tokens, examples, accessibility and anatomy are all written by hand in ea
      description: '…',
      category: 'Atoms',     // or 'Molecules', 'Layout'
      parentId: 'parent-id', // optional: nests the page under another, e.g. ListItem under List
-     props: [/* every public prop, with real names, types and defaults */],
+     props: [/* every public prop: name, type, required, default and what it does */],
      tokens: [/* exact token paths the component uses */],
-     examples: [/* code plus renderComponent */],
+     examples: [/* at least three, starting with basic usage: code plus renderComponent */],
      accessibility: { notes: [/* … */] },
      anatomy: { description: '…', parts: [/* … */] }
    }
