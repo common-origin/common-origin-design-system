@@ -18,6 +18,8 @@ import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
 import { containerDocs } from '@/components/atoms/Container/Container.docs'
 import { pictureDocs } from '@/components/atoms/Picture/Picture.docs'
+import { dateFormatterDocs } from '@/components/atoms/DateFormatter/DateFormatter.docs'
+import { pageTitleDocs } from '@/components/molecules/PageTitle/PageTitle.docs'
 import { dropdownDocs } from '@/components/molecules/Dropdown/Dropdown.docs'
 import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
@@ -136,6 +138,8 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(codeBlockDocs),
   convertDocumentationToLegacyFormat(containerDocs),
   convertDocumentationToLegacyFormat(pictureDocs),
+  convertDocumentationToLegacyFormat(dateFormatterDocs),
+  convertDocumentationToLegacyFormat(pageTitleDocs),
   convertDocumentationToLegacyFormat(featureBlockDocs),
   convertDocumentationToLegacyFormat(dropdownDocs),
   convertDocumentationToLegacyFormat(iconDocs),
