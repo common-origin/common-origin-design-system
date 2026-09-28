@@ -19,6 +19,10 @@ export interface ProgressBarProps {
   height?: 'sm' | 'md' | 'lg' | 'xl'
   /** Width size for vertical progress bar (default: md) */
   width?: 'sm' | 'md' | 'lg' | 'xl'
+  /** Accessible name, e.g. "Upload progress". Provide this or aria-labelledby; falls back to "Progress" */
+  'aria-label'?: string
+  /** ID of the visible element that names the progress bar */
+  'aria-labelledby'?: string
   /** Data attribute for testing */
   'data-testid'?: string
 }
@@ -96,8 +100,13 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   color = 'default',
   height,
   width,
+  'aria-label': ariaLabel,
+  'aria-labelledby': ariaLabelledBy,
   'data-testid': dataTestId,
 }) => {
+  // Blank values are no name at all, so they fall back like missing ones
+  const label = ariaLabel?.trim() ? ariaLabel : undefined
+  const labelledBy = ariaLabelledBy?.trim() ? ariaLabelledBy : undefined
   return (
     <ProgressBarContainer
       $variant={variant}
@@ -105,6 +114,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       $width={width}
       data-testid={dataTestId}
       role="progressbar"
+      aria-label={label ?? (labelledBy ? undefined : 'Progress')}
+      aria-labelledby={labelledBy}
       aria-valuenow={Math.min(100, Math.max(0, value))}
       aria-valuemin={0}
       aria-valuemax={100}

@@ -20,6 +20,8 @@ export type FeatureBlockProps = {
   onReadMore?: () => void
   readMoreHref?: string
   readMoreText?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
 }
 
 const FeatureBlockStyled = styled.div`
@@ -93,10 +95,11 @@ export const FeatureBlock: React.FC<FeatureBlockProps> = ({
   onReadMore,
   readMoreHref,
   readMoreText = "Read more",
+  'data-testid': dataTestId,
 }) => {
   return (
     <>
-      <FeatureBlockStyled>
+      <FeatureBlockStyled data-testid={dataTestId}>
         <ImageWrapper>
           <Picture title={title} src={coverImage} />
         </ImageWrapper>

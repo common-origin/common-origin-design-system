@@ -301,11 +301,11 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       'Display-only: renders a non-interactive span with no role and is not focusable',
       'All color variants maintain WCAG 2.2 AA contrast ratios (4.5:1 for text, 3:1 for UI components)',
       'aria-label is currently not announced, because the root span has no role (tracked in #78); the visible label is what screen readers read',
-      'The icon is decorative (aria-hidden); only the text label is exposed to screen readers',
+      'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85)',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
     keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',
-    screenReader: 'Screen readers read the category label as part of the surrounding text. The icon is decorative (aria-hidden).'
+    screenReader: 'Screen readers read the category label as part of the surrounding text. An icon is currently also announced by its internal name, such as "bell" (#85).'
   },
 
   anatomy: {

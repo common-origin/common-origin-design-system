@@ -186,4 +186,9 @@ describe('CardSmall Component', () => {
         expect(results).toHaveNoViolations()
     })
   })
+
+  it('passes data-testid to the root element', () => {
+    render(<CardSmall {...defaultProps} data-testid="card" />)
+    expect(screen.getByTestId('card')).toHaveTextContent(defaultProps.title)
+  })
 })

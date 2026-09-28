@@ -71,6 +71,13 @@ export const dropdownDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       description: 'Error message displayed below the dropdown. When present, applies error styling to the dropdown border and takes precedence over helperText'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element'
     }
   ],
 

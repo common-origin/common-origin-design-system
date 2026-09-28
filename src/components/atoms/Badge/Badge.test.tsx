@@ -242,4 +242,9 @@ describe('Badge', () => {
       expect(screen.getByText('2')).toBeInTheDocument()
     })
   })
+
+  it('passes data-testid to the root element', () => {
+    render(<Badge count={3} data-testid="badge"><button>Inbox</button></Badge>)
+    expect(screen.getByTestId('badge')).toContainElement(screen.getByRole('button', { name: 'Inbox' }))
+  })
 })

@@ -15,6 +15,8 @@ export type CardLargeProps = {
   picture: string
   onImageClick?: () => void
   imageHref?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
 }
 
 const CardLargeStyled = styled.div`
@@ -45,9 +47,10 @@ export const CardLarge = ({
   picture,
   onImageClick,
   imageHref,
+  'data-testid': dataTestId,
 }: CardLargeProps) => {
   return (
-    <CardLargeStyled>
+    <CardLargeStyled data-testid={dataTestId}>
       <Stack direction="column" gap="md">
         <Picture 
           title={title} 

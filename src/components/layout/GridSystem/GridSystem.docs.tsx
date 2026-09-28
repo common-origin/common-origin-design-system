@@ -6,37 +6,24 @@ import { Typography } from '../../atoms/Typography'
 export const gridSystemDocs: ComponentDocumentation = {
   id: 'grid-system',
   name: 'GridSystem',
-  description: 'Flexible, responsive CSS Grid layout utilities for building complex layouts. Includes Grid, GridCol, and ResponsiveGrid components for systematic layout design.',
+  description: 'CSS Grid layout components: Grid (a fixed column grid, whose props are listed here), GridCol (a column that spans and reorders, per breakpoint) and ResponsiveGrid (a grid whose column count and gaps change per breakpoint). GridCol and ResponsiveGrid have their own pages below this one.',
   category: 'Layout',
   props: [
-    // Grid
-    { name: 'cols', type: 'number', required: false, description: 'Number of columns in the grid (default: 12)' },
-    { name: 'gap', type: 'SpacingToken', required: false, description: 'Gap between grid items (uses spacing tokens)' },
-    { name: 'gapX', type: 'SpacingToken', required: false, description: 'Horizontal gap between columns' },
-    { name: 'gapY', type: 'SpacingToken', required: false, description: 'Vertical gap between rows' },
-    // GridCol
-    { name: 'span', type: 'number', required: false, description: 'Number of columns to span' },
-    { name: 'spanSm', type: 'number', required: false, description: 'Columns to span at sm breakpoint' },
-    { name: 'spanMd', type: 'number', required: false, description: 'Columns to span at md breakpoint' },
-    { name: 'spanLg', type: 'number', required: false, description: 'Columns to span at lg breakpoint' },
-    { name: 'spanXl', type: 'number', required: false, description: 'Columns to span at xl breakpoint' },
-    { name: 'order', type: 'number', required: false, description: 'Order of the column' },
-    // ResponsiveGrid
-    { name: 'colsSm', type: 'number', required: false, description: 'Columns at sm breakpoint' },
-    { name: 'colsMd', type: 'number', required: false, description: 'Columns at md breakpoint' },
-    { name: 'colsLg', type: 'number', required: false, description: 'Columns at lg breakpoint' },
-    { name: 'colsXl', type: 'number', required: false, description: 'Columns at xl breakpoint' },
-    // Flex
-    { name: 'gapYLg', type: 'SpacingToken', required: false, description: 'Vertical gap between rows at lg breakpoint' },
-    { name: 'gapYXl', type: 'SpacingToken', required: false, description: 'Vertical gap between rows at xl breakpoint' },
-    { name: 'className', type: 'string', required: false, description: 'Custom className for styling' },
-    { name: 'children', type: 'React.ReactNode', required: true, description: 'Child nodes' }
+    { name: 'cols', type: 'number', required: false, default: '12', description: 'Number of equal columns' },
+    { name: 'gap', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns' },
+    { name: 'gapX', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns' },
+    { name: 'gapY', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows' },
+    { name: 'className', type: 'string', required: false, default: 'undefined', description: 'Custom className for the root element' },
+    { name: 'data-testid', type: 'string', required: false, default: 'undefined', description: 'Test identifier, applied to the root element' },
+    { name: 'children', type: 'React.ReactNode', required: true, description: 'Grid items, usually GridCol' }
+  
   ],
   tokens: [
-    'base.spacing.* - gap props take base spacing keys (public API; exception to decision 0014)',
-    'semantic.breakpoint.*',
-    'semantic.color.background.*',
-    'semantic.color.border.*'
+    'base.spacing.*',
+    'semantic.breakpoint.sm',
+    'semantic.breakpoint.md',
+    'semantic.breakpoint.lg',
+    'semantic.breakpoint.xl'
   ],
   examples: [
     {
@@ -176,16 +163,32 @@ export const gridSystemDocs: ComponentDocumentation = {
       )
     }
   ],
+  anatomy: {
+    description: 'Grid is a single CSS grid container with a fixed number of equal columns. Its children, usually GridCol, are the grid items.',
+    parts: [
+      {
+        name: 'Container',
+        description: 'div with display: grid, repeat(cols, minmax(0, 1fr)) columns (12 by default), and optional gap, column gap and row gap.',
+        tokens: ['base.spacing.*']
+      },
+      {
+        name: 'GridCol',
+        description: 'Optional grid items that span columns and reorder per breakpoint. See the GridCol page.'
+      }
+    ]
+  },
+
   accessibility: {
     notes: [
-      'Grid layouts are purely presentational and do not affect accessibility tree.',
-      'Ensure semantic HTML structure for content inside grid containers.'
+      'Grid, GridCol and ResponsiveGrid render plain divs with no roles, so they add nothing to the accessibility tree',
+      'Use semantic HTML for the content inside the grid (headings, lists, landmarks)',
+      'Screen readers and keyboard focus follow the DOM order, not the visual grid. Avoid GridCol order props that make the visual order disagree with the reading order (WCAG 1.3.2, 2.4.3)'
     ]
   },
   notes: [
     'GridSystem provides CSS Grid-based layout utilities for responsive design.',
     'Use ResponsiveGrid for breakpoint-based layouts similar to Tailwind CSS patterns.',
-    'All spacing and breakpoints are tokenized for design consistency.',
+    'Gap props take base spacing keys (base.spacing.*), which decision 0014 says components should not use. Moving them to semantic spacing keys is migration work tracked in #34.',
     'For flexbox layouts, use the Stack component from the atoms collection.'
   ]
 }

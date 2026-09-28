@@ -16,6 +16,8 @@ export type CardSmallProps = {
    * @example linkComponent={NextLink}
    */
   linkComponent?: React.ComponentType<any>
+  /** Test identifier for automated testing */
+  'data-testid'?: string
 }
 
 const CardSmallStyled = styled.div`
@@ -50,6 +52,7 @@ export const CardSmall: React.FC<CardSmallProps> = ({
   meta,
   href,
   linkComponent: LinkComponent,
+  'data-testid': dataTestId,
 }) => {
   if (!picture || !meta) {
     return null
@@ -74,7 +77,7 @@ export const CardSmall: React.FC<CardSmallProps> = ({
   )
 
   return (
-    <CardSmallStyled>
+    <CardSmallStyled data-testid={dataTestId}>
       {LinkComponent && href ? (
         <LinkComponent href={href} aria-label={title}>
           {content}

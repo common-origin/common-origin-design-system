@@ -48,6 +48,13 @@ export const cardLargeDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       description: 'URL for the cover image when used as a link'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element'
     }
   ],
 

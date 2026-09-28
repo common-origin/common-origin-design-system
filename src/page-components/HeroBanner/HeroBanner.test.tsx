@@ -1,6 +1,7 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { axe } from 'jest-axe'
 import { HeroBanner, HeroBannerProps } from './HeroBanner'
 
 // Default props for consistent testing
@@ -255,6 +256,16 @@ describe('HeroBanner', () => {
       expect(() => {
         render(<HeroBanner />)
       }).not.toThrow()
+    })
+  })
+
+  describe('Accessibility', () => {
+    it('has no axe violations', async () => {
+      const { container } = renderHeroBanner()
+      // no-autoplay-audio waits for the video to load, which never happens in
+      // jsdom; the video is muted, which the test above already checks
+      const results = await axe(container, { rules: { 'no-autoplay-audio': { enabled: false } } })
+      expect(results).toHaveNoViolations()
     })
   })
 })
