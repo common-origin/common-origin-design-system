@@ -100,7 +100,7 @@ describe('Button Atom', () => {
 ```
 
 ### Molecules Testing
-**Focus**: composition and the behaviour the molecule adds. Render the real atoms rather than mocking them: the atoms are part of what users experience, and mocks hide integration bugs (the tests in `src/components/molecules/` follow this).
+**Focus**: composition and the behaviour the molecule adds. Render the real atoms rather than mocking them: the atoms are part of what users experience, and mocks hide integration bugs. Some older tests still mock atoms (for example ChipGroup and Dropdown); don't copy that in new tests.
 ```tsx
 // Example: SearchField
 it('calls onChange as the user types', async () => {

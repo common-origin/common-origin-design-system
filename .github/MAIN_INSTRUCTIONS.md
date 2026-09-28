@@ -34,7 +34,7 @@ const { semantic } = tokens
 
 ## Components
 
-- Styled-components with `$`-prefixed transient props, filtered by `shouldForwardProp: (prop) => !prop.startsWith('$')`.
+- Styled-components with `$`-prefixed transient props, which styled-components keeps off the DOM. Many components also add `withConfig({ shouldForwardProp: (prop) => !prop.startsWith('$') })`; it isn't required for `$` props.
 - Framework-agnostic: no Next.js imports ([0008](../docs/foundation/decisions/0008-framework-agnostic-components.md)). Navigation takes an optional `linkComponent`.
 - Every component supports `'data-testid'?: string` on its root element.
 - Motion uses `semantic.motion` durations and easings, respects `prefers-reduced-motion`, and stays at 300ms or less (P6, [0005](../docs/foundation/decisions/0005-motion.md)). The one exception is AgentInput's continuous working ring ([0010](../docs/foundation/decisions/0010-agentinput-working-ring.md)).
