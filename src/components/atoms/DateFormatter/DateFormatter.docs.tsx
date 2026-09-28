@@ -19,15 +19,15 @@ export const dateFormatterDocs: ComponentDocumentation = {
       name: 'formatString',
       type: 'string',
       required: false,
-      default: "'yyyy'",
-      description: 'Date-fns format pattern string (e.g., "MMM dd, yyyy", "HH:mm", "yyyy-MM-dd"). Used in absolute mode or as fallback in smart mode.'
+      default: 'undefined',
+      description: 'date-fns format pattern (e.g. "MMM dd, yyyy", "HH:mm", "yyyy-MM-dd"). Used in absolute mode, and for older dates in smart and relative modes. Defaults to "yyyy" in absolute mode and "MMMM dd, yyyy" in the other modes.'
     },
     {
       name: 'mode',
       type: "'absolute' | 'relative' | 'smart'",
       required: false,
       default: "'absolute'",
-      description: 'Date formatting mode: "absolute" always uses formatString, "relative" shows "Today"/"Yesterday"/day names for recent dates, "smart" uses relative for recent dates and absolute for older dates'
+      description: '"absolute" always uses formatString. "smart" shows "Today", "Yesterday" or the day name for dates this week (weeks start on Monday), and formats older dates with formatString, or "MMMM dd, yyyy" if none is given. "relative" currently behaves exactly like "smart".'
     },
     {
       name: 'data-testid',
@@ -67,7 +67,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
     },
     {
       name: 'Time Format',
-      description: 'Display time portion of datetime.',
+      description: 'The time portion of a datetime, shown in the viewer\'s local time zone (the example is 14:30 UTC).',
       code: `<DateFormatter 
   dateString="2023-12-25T14:30:00.000Z" 
   formatString="HH:mm" 
@@ -137,7 +137,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
     },
     {
       name: 'Relative Mode',
-      description: 'Relative mode always shows contextual labels when possible.',
+      description: 'Relative mode currently gives the same output as smart mode.',
       code: `<DateFormatter 
   dateString={new Date().toISOString()} 
   mode="relative" 
@@ -164,9 +164,9 @@ export const dateFormatterDocs: ComponentDocumentation = {
     'Accepts any valid date-fns format pattern string',
     'Always includes datetime attribute for semantic markup',
     'Uses design system typography and color tokens for consistency',
-    'Handles timezone information from ISO date strings appropriately',
-    'Smart mode: Shows "Today"/"Yesterday" for recent dates, day names for this week, formatted dates for older dates',
-    'Relative mode: Always attempts to show contextual labels (Today/Yesterday/day name) before falling back to formatted dates',
+    'Dates are parsed with parseISO and formatted in the viewer\'s local time zone, so a UTC timestamp near midnight can show a different day',
+    'Smart mode: "Today" or "Yesterday" for recent dates, the day name for dates this week (weeks start on Monday), and formatted dates for older ones',
+    'Relative mode: currently identical to smart mode',
     'Absolute mode: Always uses the formatString regardless of date recency'
   ],
 
