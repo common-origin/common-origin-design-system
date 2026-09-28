@@ -26,7 +26,7 @@ The package currently publishes from `dist/` with these `package.json` fields:
     }
   },
   "typesVersions": { "*": { "tokens": ["./dist/tokens/tokens.d.ts"] } },
-  "files": ["dist/", "README.md"]
+  "files": ["dist/", "README.md", "LICENSE"]
 }
 ```
 
@@ -57,7 +57,7 @@ That means local `npm publish` and CI publishing both validate package artifacts
 ## Release Automation
 
 - Tag push matching `v*.*.*` triggers `.github/workflows/publish.yml`
-- Publish workflow installs deps, type checks, builds package, then publishes with provenance
+- Publish workflow installs deps, runs tests and type checks, builds the package, then publishes with provenance (npm Trusted Publishing); see [RELEASE.md](../RELEASE.md)
 - `CHANGELOG.md` is updated in the version-bump PR by the `version` script (`auto-changelog -p`); there is no post-release changelog workflow
 
 ## Peer Dependencies

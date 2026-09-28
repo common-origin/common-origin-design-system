@@ -91,9 +91,10 @@ npm run verify:package
 ### Atomic Design Structure
 
 - `atoms/` - Basic building blocks
-- `molecules/` - Simple component groups  
-- `layout/` - Layout components
-- `templates/` - Page templates
+- `molecules/` - Composed components
+- `layout/` - Layout components (GridSystem)
+
+There are no organisms or templates levels. `src/page-components/`, `src/patterns/` and `pages/` belong to the docs site; package components must never import from them.
 
 ### Component File Structure
 
@@ -109,16 +110,19 @@ ComponentName/
 
 ```typescript
 // index.ts
-export { ComponentName } from './ComponentName'
-export type { ComponentNameProps } from './ComponentName'
+export * from './ComponentName'
 ```
+
+Then export the folder from the category's `index.ts` (for example `src/components/atoms/index.ts`).
 
 ## Testing Requirements
 
-- All components must have `.test.tsx`
-- Use React Testing Library
-- Test accessibility with aria-label checks
-- Test variants and states
+- All components must have `.test.tsx`, using React Testing Library
+- Every component needs a passing `jest-axe` test (WCAG 2.2 AA, P2)
+- Test props, variants and states; interactive components also need keyboard tests
+- Support `'data-testid'?: string` on the root element, and test it
+- Query by role first, then label, then static text, then `data-testid`
+- Details: [TESTING_STANDARDS.md](./TESTING_STANDARDS.md)
 
 ## Documentation Requirements
 
@@ -129,7 +133,7 @@ export type { ComponentNameProps } from './ComponentName'
 **This project uses a CUSTOM documentation system, NOT Storybook.**
 
 Key requirements for component documentation:
-- Export a `ComponentDocumentation` object from `lib/docgen/types`
+- Export a `ComponentDocumentation` object (type from `src/lib/docgen/types.ts`)
 - Include all required fields: `id`, `name`, `description`, `category`, `props`, `tokens`, `examples`, `accessibility`, `anatomy`
 - Each example needs both `code` (string) and `renderComponent` (function)
 - Stack and Typography components do NOT support `style` prop - use plain HTML elements when inline styles are needed

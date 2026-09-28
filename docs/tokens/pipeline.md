@@ -55,7 +55,7 @@ Values are strings. There are no object-valued (composite) tokens and no arithme
 
 `config/style-dictionary.config.js` registers 10 transforms and 3 formats, then calls `sd.buildAllPlatforms()` (v3 synchronous API, `StyleDictionary.extend(config)`).
 
-**Every platform sets both `transformGroup` and `transforms`. In v3, `transforms` replaces the group entirely** (`lib/transform/config.js`: `if (transforms) … else if (transformGroup)`), so none of the built-in `js` or `css` transforms run. Only the listed custom transforms apply:
+**Every platform sets both `transformGroup` and `transforms`. In v3, `transforms` replaces the group entirely** (`style-dictionary/lib/transform/config.js`: `if (transforms) … else if (transformGroup)`), so none of the built-in `js` or `css` transforms run. Only the listed custom transforms apply:
 
 | Custom transform | Platforms | Tokens it matches | Effect |
 |---|---|---|---|
@@ -83,7 +83,7 @@ In practice the build **resolves references and writes files**; no value is tran
 | 7 | `description` fields are dropped from every output | Designers, developers and agents can't see a token's intended use outside the source |
 | 8 | Timestamped headers | Every build dirties the working tree |
 | 9 | `lib/tokens.js` (and a stale copy at `src/lib/tokens.js`) generated but unused | Dead output and confusion |
-| 10 | Docs drift: `.github/TOKEN_MANAGEMENT.md` shows a different, CommonJS config with transforms and outputs that don't exist here | Following it would break the build |
+| 10 | ~~Docs drift: `.github/TOKEN_MANAGEMENT.md` showed a different, CommonJS config with transforms and outputs that don't exist here~~ | Fixed in [#37](https://github.com/common-origin/common-origin-design-system/issues/37): the guide no longer describes the build and defers to this document |
 
 ---
 
@@ -144,7 +144,7 @@ await sd.buildAllPlatforms()
 
 Build config, dependency, and token-structure changes need human approval (`.github/MAIN_INSTRUCTIONS.md`, "Change Authority & Validation Protocol"), and a change to the build and distribution approach needs a decision record ([decision 0001](../foundation/decisions/0001-record-decisions.md)). This is the recommended direction, not current fact.
 
-1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`.
+1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`. <!-- verify-docs-ignore: planned file -->
 2. **DTCG source**: `$value` / `$type` / `$description`, DTCG type names, `$type` on groups where uniform. Delete `src/tokens/index.json`.
 3. **Component tier made of real tokens** referencing **semantic** tokens (add missing semantic tokens first); no raw `px`.
 4. **Composite tokens where it helps**: typography, shadow, border, and transition as DTCG objects, emitted with the built-in `*/css/shorthand` transforms, so JSON output stays the same shape for components.

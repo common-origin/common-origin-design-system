@@ -75,6 +75,7 @@ npm run docs:dev         # build tokens, then start the docs site at http://loca
 | `npm test` | Jest, including jest-axe accessibility tests |
 | `npm run typecheck` | `tsc --noEmit` |
 | `npm run lint` | ESLint, with a warnings ratchet: never raise the limit, lower it when you fix warnings |
+| `npm run verify:docs` | Fails if a doc references a missing file, folder or npm script |
 
 Before proposing a change: `typecheck`, `lint`, `test`, `build:package` and `verify:package`.
 

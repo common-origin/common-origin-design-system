@@ -320,7 +320,7 @@ Potential improvements for future versions:
 
 ## Contributing
 
-See the main [DOCUMENTATION_STANDARDS.md](../../../.github/DOCUMENTATION_STANDARDS.md) for guidelines on contributing to this component.
+See the main [DOCUMENTATION_STANDARDS.md](../../../../.github/DOCUMENTATION_STANDARDS.md) for guidelines on contributing to this component.
 
 ## Testing
 

@@ -106,7 +106,7 @@ npm run release:tag
 
 This tags `main` as `vX.Y.Z` and pushes the tag, which triggers the publish workflow (npm Trusted Publishing).
 
-See [RELEASE.md](./RELEASE.md) and [RELEASE_PROCESS.md](./.github/RELEASE_PROCESS.md) for details.
+See [RELEASE.md](./RELEASE.md) for details and troubleshooting.
 
 ## Component Development
 

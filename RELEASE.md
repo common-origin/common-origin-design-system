@@ -1,68 +1,121 @@
-# Release Process
+# Releasing
 
-## Automated Publishing with GitHub Actions
+This is the one release document for `@common-origin/design-system`. Commit message conventions are in [CONTRIBUTING.md](CONTRIBUTING.md#commit-message-convention).
 
-This repository uses GitHub Actions to automatically publish new versions to NPM when version tags are pushed.
+## Quick reference
 
-### Prerequisites
+`main` is protected, so every release is a version-bump PR followed by a tag:
 
-Publishing uses **npm Trusted Publishing** — the publish workflow uses no npm token. npm trusts `.github/workflows/publish.yml` in this repository and authenticates each run with a short-lived GitHub OIDC token; provenance attestations are generated automatically.
+```bash
+git switch main && git pull
+npm run release:create patch   # or minor / major / X.Y.Z: opens the version-bump PR, including the CHANGELOG.md entry
+# wait for CI, address every Copilot review comment, merge the PR
+git switch main && git pull
+npm run release:tag            # tags main as vX.Y.Z and pushes the tag, which publishes to npm
+```
+
+Both commands run `scripts/release.sh`.
+
+## Steps
+
+### 1. Choose the version
+
+Follow [Semantic Versioning](https://semver.org/) and principle P7 (stable contracts):
+
+- **Major:** breaking changes, such as removing or renaming a component, prop, export or token
+- **Minor:** new components, props or tokens, backwards compatible
+- **Patch:** bug fixes, docs, CI and dependency updates
+
+### 2. Open the version-bump PR
+
+```bash
+git switch main && git pull
+npm run release:create minor
+```
+
+The script checks that you're on a clean, up-to-date `main`, previews the new version and lists the commits since the last tag, then asks for confirmation. It creates `chore/release-X.Y.Z`, runs `npm version` (whose `version` script adds and stages the `CHANGELOG.md` entry), commits, pushes and opens the PR.
+
+### 3. Merge the PR
+
+Wait for CI (typecheck, lint, tests, and the package build with `verify:package`), address every Copilot review comment, and merge.
+
+### 4. Tag and publish
+
+```bash
+git switch main && git pull
+npm run release:tag
+```
+
+The script checks that `main` is clean and up to date, that `vX.Y.Z` doesn't exist yet and that `CHANGELOG.md` has the entry, asks for confirmation, then pushes the tag. Publishing can't be undone.
+
+The tag triggers `.github/workflows/publish.yml`, which:
+
+1. checks that the tag equals `v` plus the `package.json` version, and stops otherwise
+2. installs dependencies, runs tests and type checking, and builds the package
+3. publishes to npm; `prepublishOnly` runs `build:tokens`, `build:package` and `verify:package` first
+
+### 5. Verify
+
+- The **📦 Publish Package** run is green: https://github.com/common-origin/common-origin-design-system/actions/workflows/publish.yml
+- `npm view @common-origin/design-system version` shows the new version (the registry can take a few minutes)
+
+## Authentication: npm Trusted Publishing
+
+The publish workflow uses no npm token. npm trusts `.github/workflows/publish.yml` in this repository and authenticates each run with a short-lived GitHub OIDC token, and provenance attestations are generated automatically.
 
 - Configured on npmjs.com: `@common-origin/design-system` → Settings → Trusted Publisher → GitHub Actions (`common-origin` / `common-origin-design-system` / `publish.yml`).
-- The workflow needs `permissions: id-token: write` and npm ≥ 11.5.1 (it upgrades npm itself).
+- The workflow needs `permissions: id-token: write` and npm 11.5.1 or later (it upgrades npm itself).
 - Renaming `publish.yml` breaks publishing until the trusted publisher is re-created on npmjs.com (connections can't be edited).
 
+## Changelog
 
-### Changelog Automation
-
-`CHANGELOG.md` is updated **in the version-bump PR**, before the tag exists: `npm version` runs the `version` script (`auto-changelog -p`), which adds an entry for the new version with today's date (UTC). The changelog is reviewed with the bump and ships with the tagged release. The docs site's `/releases` page reads this file.
+`CHANGELOG.md` is updated in the version-bump PR, before the tag exists: `npm version` runs the `version` script (`auto-changelog -p`), which adds an entry for the new version with today's date (UTC). The changelog is reviewed with the bump and ships with the release. The docs site's `/releases` page reads this file.
 
 The template is `scripts/changelog-template.hbs` (auto-changelog's compact template, changed to print the date for the not-yet-tagged release), configured in `.auto-changelog`.
 
-To regenerate the whole file from tags (e.g. to backfill), open a PR with the output of:
+There is no post-release changelog workflow: a PR opened by the workflow's `GITHUB_TOKEN` can't trigger the required CI checks, so it could never merge unattended.
+
+## Troubleshooting
+
+### Publish failed after the tag was pushed
+
+First check whether npm accepted the version anyway: a run can fail or be cancelled after the publish step succeeded, and a new version can take a few minutes to appear in the registry. Check a few times over at least 10 minutes before concluding it wasn't published.
+
+```bash
+npm view @common-origin/design-system@X.Y.Z version
+npm view @common-origin/design-system versions --json   # the full list, as a second check
+```
+
+- **It prints `X.Y.Z`:** the version is published and immutable. Don't move the tag. Fix any follow-up problem in a new patch release.
+- **It still prints nothing (or `E404`) after waiting:** nothing was published. Fix the cause on `main` through a PR, then move the tag to the fixed commit:
+
+```bash
+git push origin :refs/tags/vX.Y.Z   # delete the remote tag
+git tag -f vX.Y.Z <fixed-commit>
+git push origin vX.Y.Z
+```
+
+Re-running the old workflow run won't pick up fixes, because it uses the workflow file at the tagged commit.
+
+### Changelog is missing a release
+
+Regenerate the whole file from tags on a branch and open a PR:
 
 ```bash
 npx auto-changelog -o CHANGELOG.md
 ```
 
-### Release Process
-
-`main` is protected, so the version bump goes through a pull request. Two scripts do the work:
+### Wrong version published
 
 ```bash
-git switch main && git pull
-npm run release:create patch   # or minor / major / X.Y.Z — branch, bump, CHANGELOG entry, push, open PR
-# merge the PR once CI is green and Copilot review comments are addressed
-git switch main && git pull
-npm run release:tag            # tag main as vX.Y.Z and push the tag → publish workflow
+npm deprecate @common-origin/design-system@X.Y.Z "Accidental publish, use <next version> instead"
 ```
 
-The manual equivalent:
+Then release the correct version with the normal flow.
 
-1. **Bump the version on a branch and open a PR**:
-   ```bash
-   git switch -c chore/release-X.Y.Z main
-   npm version patch --no-git-tag-version  # or minor / major; also updates CHANGELOG.md
-   git commit -am "chore: bump version to X.Y.Z"
-   git push -u origin chore/release-X.Y.Z
-   ```
-   Merge once CI is green and Copilot review comments are addressed.
+### Manual publishing (fallback)
 
-2. **Tag the merge commit on `main`**:
-   ```bash
-   git switch main && git pull
-   git tag vX.Y.Z
-   git push origin vX.Y.Z
-   ```
-   The tag must equal `v` + the `package.json` version, or the workflow stops before publishing.
-
-3. **Monitor workflow**:
-   - Visit: https://github.com/common-origin/common-origin-design-system/actions
-   - Check the "📦 Publish Package" workflow, then `npm view @common-origin/design-system version`
-
-### Manual Publishing (Fallback)
-
-If automated publishing fails, a maintainer can publish manually from a logged-in npm session (`npm login` with two-factor authentication). Once the package's **Publishing access** is set to "Require two-factor authentication and disallow tokens" — planned after the first successful Trusted Publishing release (#40) — publishing with a token no longer works:
+If automated publishing can't be fixed, a maintainer can publish interactively from a logged-in npm session (`npm login`, answering the two-factor challenge). This works even when the package's **Publishing access** is "Require two-factor authentication and disallow tokens"; that setting only blocks publishing with an npm token.
 
 ```bash
 npm run build:tokens
@@ -72,29 +125,10 @@ npm publish --access public   # prepublishOnly runs the full verify:package firs
 
 Manual publishes don't get provenance attestations.
 
-### Package Information
-
-- **NPM Package**: `@common-origin/design-system`
-- **Current Version**: 1.1.0
-- **NPM URL**: https://www.npmjs.com/package/@common-origin/design-system
-
-### Installation
+## Useful commands
 
 ```bash
-npm install @common-origin/design-system
-```
-
-### Usage
-
-```tsx
-import { Button, Typography, Stack } from '@common-origin/design-system'
-
-export function MyComponent() {
-  return (
-    <Stack direction="column" spacing="md">
-      <Typography variant="heading1">Hello World</Typography>
-      <Button variant="primary" size="md">Click me</Button>
-    </Stack>
-  )
-}
+npm view @common-origin/design-system version            # published version
+git tag -l                                               # all tags
+git log $(git describe --tags --abbrev=0)..HEAD --oneline # commits since the last tag
 ```
