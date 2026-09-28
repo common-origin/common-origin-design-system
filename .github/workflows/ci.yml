@@ -41,6 +41,10 @@ jobs:
       - name: 🧹 Lint
         run: npm run lint
 
+      # Docs must not reference missing files, folders or npm scripts (#37)
+      - name: 📚 Check doc references
+        run: npm run verify:docs
+
   test:
     name: test
     runs-on: ubuntu-latest

@@ -62,4 +62,4 @@ npm run build:package
 npm run verify:package   # declarations, consumer type-check (4 resolution modes), publint, attw
 ```
 
-See `.github/CONTRIBUTING.md` for full guidelines.
+See [CONTRIBUTING.md](../CONTRIBUTING.md#type-safety) for full guidelines.

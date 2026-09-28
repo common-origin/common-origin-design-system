@@ -1,7 +1,7 @@
 # Testing Standards & Patterns
 
 ## Overview
-This document defines comprehensive testing strategies for the Common Origin Design System, ensuring robust, accessible, and maintainable components.
+This document defines testing strategies for the Common Origin Design System. Accessibility requirements come from principle P2 in the [foundation](../docs/foundation/principles.md), which wins where this document disagrees.
 
 ## Core Testing Philosophy
 - **Behavior over Implementation**: Test what users experience, not internal implementation details
@@ -12,10 +12,10 @@ This document defines comprehensive testing strategies for the Common Origin Des
 ## Testing Architecture
 
 ### Element Selection Priority
-1. **Semantic Roles** (preferred): `getByRole('button')`, `getByRole('textbox')`
-2. **data-testid**: `getByTestId('component-name')` 
-3. **Labels/Accessible Names**: `getByLabelText('Username')`
-4. **Text Content**: `getByText('Submit')` (static content only)
+1. **Semantic roles** (preferred): `getByRole('button', { name: 'Save' })`, `getByRole('textbox')`
+2. **Labels**: `getByLabelText('Username')`
+3. **Text content**: `getByText('Submit')` (static content only)
+4. **data-testid**: `getByTestId('component-name')`, when nothing user-facing identifies the element
 
 ### Required Test Structure
 ```tsx
@@ -99,70 +99,21 @@ describe('Button Atom', () => {
 })
 ```
 
-### Molecules Testing  
-**Focus**: Component composition, child component integration, complex interactions
+### Molecules Testing
+**Focus**: composition and the behaviour the molecule adds. Render the real atoms rather than mocking them: the atoms are part of what users experience, and mocks hide integration bugs (the tests in `src/components/molecules/` follow this).
 ```tsx
-// Example: SearchInput molecule
-describe('SearchInput Molecule', () => {
-  // Mock child atoms
-  jest.mock('../atoms/Input', () => ({
-    Input: (props) => <input data-testid="mock-input" {...props} />
-  }))
-  
-  jest.mock('../atoms/Button', () => ({
-    Button: (props) => <button data-testid="mock-button" {...props} />
-  }))
-  
-  // Test composition logic
-  it('composes child atoms correctly', () => {
-    renderSearchInput()
-    expect(screen.getByTestId('mock-input')).toBeInTheDocument()
-    expect(screen.getByTestId('mock-button')).toBeInTheDocument()
-  })
-  
-  // Test molecule-specific behavior
-  it('handles search submission', async () => {
-    const onSearch = jest.fn()
-    renderSearchInput({ onSearch })
-    
-    const input = screen.getByTestId('mock-input')
-    const button = screen.getByTestId('mock-button')
-    
-    await userEvent.type(input, 'test query')
-    await userEvent.click(button)
-    
-    expect(onSearch).toHaveBeenCalledWith('test query')
-  })
+// Example: SearchField
+it('calls onChange as the user types', async () => {
+  const onChange = jest.fn()
+  render(<SearchField aria-label="Search" value="" onChange={onChange} />)
+
+  await userEvent.type(screen.getByRole('combobox', { name: 'Search' }), 'milk')
+
+  expect(onChange).toHaveBeenCalled()
 })
 ```
 
-### Organisms Testing
-**Focus**: Complex workflows, state management, user journeys
-```tsx
-// Example: Navigation organism  
-describe('Navigation Organism', () => {
-  // Test complete user journeys
-  it('handles complete navigation workflow', async () => {
-    const onNavigate = jest.fn()
-    renderNavigation({ onNavigate })
-    
-    // Test menu opening
-    const menuButton = screen.getByRole('button', { name: /menu/i })
-    await userEvent.click(menuButton)
-    
-    // Test navigation selection
-    const homeLink = screen.getByRole('link', { name: /home/i })
-    await userEvent.click(homeLink)
-    
-    expect(onNavigate).toHaveBeenCalledWith('/home')
-  })
-  
-  // Test responsive behavior
-  it('adapts to different viewport sizes', () => {
-    // Test mobile vs desktop navigation patterns
-  })
-})
-```
+There is no organisms level in this system; the same approach applies to larger molecules such as Modal, Sheet or AgentInput (test the user journey: open, interact, close, focus return).
 
 ## Accessibility Testing Standards
 
@@ -243,53 +194,21 @@ describe('Component Integration', () => {
 ```
 
 ### Design Token Integration
+Assert against the token values from `tokens.json`, never against literal colours or sizes, so the test follows the tokens:
 ```tsx
-describe('Design Token Integration', () => {
-  it('applies semantic tokens correctly', () => {
-    renderComponent({ variant: 'primary' })
-    const element = screen.getByTestId('component')
-    
-    // Verify computed styles use expected tokens
-    const styles = window.getComputedStyle(element)
-    expect(styles.backgroundColor).toBe('rgb(0, 100, 200)') // Expected token value
-  })
+import tokens from '@/styles/tokens.json'
+
+it('uses the field label tokens', () => {
+  render(<TextField label="Name" />)
+  expect(screen.getByText('Name')).toHaveStyle({ color: tokens.component.field.label.color })
 })
 ```
 
+jsdom can't compute some properties (such as `grid-template-columns`) and doesn't evaluate media queries. For those, check the rules styled-components generated for the element's class, as `GridSystem.test.tsx` does.
+
 ## Visual Regression Testing
 
-### Setup Requirements
-```bash
-# Install visual testing dependencies
-npm install --save-dev @storybook/test-runner chromatic
-```
-
-### Visual Test Structure
-```tsx
-// ComponentName.stories.tsx
-export const AllVariants = () => (
-  <Stack direction="column" gap="md">
-    <Component variant="primary">Primary</Component>
-    <Component variant="secondary">Secondary</Component>
-    <Component variant="tertiary">Tertiary</Component>
-  </Stack>
-)
-
-export const AllStates = () => (
-  <Stack direction="row" gap="md">
-    <Component>Default</Component>
-    <Component disabled>Disabled</Component>
-    <Component loading>Loading</Component>
-  </Stack>
-)
-
-// Responsive testing
-export const ResponsiveTest = () => (
-  <div style={{ width: '100%', maxWidth: '1200px' }}>
-    <Component>Responsive component</Component>
-  </div>
-)
-```
+There are no visual regression tests, and no Storybook or Chromatic. Check visual changes on the docs site (`npm run docs:dev`) at the relevant widths, in both editorial and dense contexts (P9).
 
 ## Performance Testing
 
@@ -374,11 +293,12 @@ describe('data-testid Support', () => {
 ```
 ComponentName/
 ├── ComponentName.tsx
-├── ComponentName.test.tsx      # Unit tests
-├── ComponentName.integration.test.tsx  # Integration tests  
-├── ComponentName.stories.tsx   # Visual regression
-└── ComponentName.docs.tsx      # Documentation
+├── ComponentName.test.tsx      # All tests for the component, including jest-axe
+├── ComponentName.docs.tsx      # Documentation
+└── index.ts
 ```
+
+Tests that cover a family of components live next to it, for example `src/components/molecules/fieldFamily.test.tsx`.
 
 ### Test Naming Conventions
 - **Descriptive**: `it('renders primary variant with correct styling')`
@@ -419,30 +339,12 @@ describe('Accessibility', () => {
 
 ## Consumer Package Testing
 
-### Integration Test Setup
-```tsx
-// tests/integration/package-integration.test.ts
-import { Button, Typography, Stack } from '@common-origin/design-system'
+Consumers are tested through the built package, not in Jest. After `npm run build:package`, `npm run verify:package` checks that:
 
-describe('Package Integration', () => {
-  it('exports all expected components', () => {
-    expect(Button).toBeDefined()
-    expect(Typography).toBeDefined()
-    expect(Stack).toBeDefined()
-  })
-  
-  it('components work in consuming application', () => {
-    render(
-      <Stack direction="column" gap="md">
-        <Typography variant="h1">Test</Typography>
-        <Button variant="primary">Click me</Button>
-      </Stack>
-    )
-    
-    expect(screen.getByRole('heading')).toBeInTheDocument()
-    expect(screen.getByRole('button')).toBeInTheDocument()
-  })
-})
-```
+- every import in the published `.d.ts` files resolves for consumers (`verify:types`)
+- the bundle has no Next.js or docs-site imports (`verify:no-nextjs`)
+- `'use client'` directives are in place (`verify:directives`) and the bundle loads (`verify:load`)
+- a throwaway consumer project type-checks against the package under several module-resolution modes (`verify:consumer`)
+- `package.json` and the exports are correct (`publint`, `attw`)
 
-This testing framework ensures comprehensive coverage, accessibility compliance, and reliable component behavior across all atomic design levels.
+CI runs it on every PR.

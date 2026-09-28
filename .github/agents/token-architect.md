@@ -19,7 +19,7 @@ Then read the real files — never assume their contents:
 - `src/tokens/base/index.json`, `src/tokens/semantic/index.json`, `src/tokens/component/index.json`
 - `src/styles/tokens.json` (compiled output that components import)
 
-**Do not use the Style Dictionary configuration shown in `.github/TOKEN_MANAGEMENT.md`.** It describes a config and outputs that don't exist in this repo.
+For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the reference. `.github/TOKEN_MANAGEMENT.md` covers day-to-day token work (adding, using, changing and testing tokens) and defers to the pipeline doc for the build.
 
 ## What you must know about this repository
 

@@ -47,7 +47,7 @@ Tell the user the tag that was pushed and link `https://github.com/common-origin
 - The `📦 Publish Package` run is green
 - `npm view @common-origin/design-system version` shows the new version (the registry can take a few minutes)
 
-If the publish fails, nothing was published: fix the cause via a PR, then follow "Publish failed after the tag was pushed" in `.github/RELEASE_PROCESS.md` (with the user's approval, since it moves a tag).
+If the publish fails, nothing was published: fix the cause via a PR, then follow "Publish failed after the tag was pushed" in `RELEASE.md` (with the user's approval, since it moves a tag).
 
 ## Constraints
 - DO NOT run `npm publish` directly — the publish workflow handles it via Trusted Publishing

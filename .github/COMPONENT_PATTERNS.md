@@ -11,9 +11,10 @@ Component Type | Complexity | Dependencies | Usage Pattern
 -------------- | ---------- | ------------ | -------------
 Atom          | Single responsibility | None (pure) | Building blocks
 Molecule      | Combines 2-5 atoms | Atom dependencies | Specific UI patterns  
-Organism      | Complex functionality | Molecules + atoms | Complete UI sections
 Layout        | Structural/responsive | Any level | Page organization
 ```
+
+There is no organism level: larger components (Modal, Sheet, AgentInput, TransactionListItem) are molecules.
 
 ### Component Creation Checklist
 - [ ] **Atomic Level**: Correctly categorized by complexity
