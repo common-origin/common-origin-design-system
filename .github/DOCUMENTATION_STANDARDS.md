@@ -18,7 +18,7 @@ export const componentNameDocs: ComponentDocumentation = {
   id: 'component-name',
   name: 'Component Name',
   description: 'Clear, concise description (1-2 sentences)',
-  category: 'Atoms' | 'Molecules' | 'Organisms' | 'Layout',
+  category: 'Atoms' | 'Molecules' | 'Layout',
   
   props: [...],        // REQUIRED
   tokens: [...],       // REQUIRED
@@ -277,7 +277,7 @@ anatomy: {
 
 **When to Use Simple vs Complex Diagrams:**
 - **Simple** (atoms): Single container with 1-3 internal elements
-- **Complex** (molecules/organisms): Multiple nested sections, flexible layouts
+- **Complex** (larger molecules such as Modal or Sheet): Multiple nested sections, flexible layouts
 
 **Alternative Anatomy Approaches:**
 

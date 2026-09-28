@@ -608,7 +608,7 @@ export const componentNameDocs: ComponentDocumentation = {
   id: 'component-name',
   name: 'Component Name',
   description: 'Brief description of what this component does and when to use it.',
-  category: 'Atoms', // or 'Molecules', 'Organisms', 'Layout'
+  category: 'Atoms', // or 'Molecules', 'Layout'
   
   props: [
     {

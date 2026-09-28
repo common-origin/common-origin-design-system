@@ -78,9 +78,10 @@ for (const file of allFiles.filter(file => file.endsWith('.md'))) {
     // Links and paths in code blocks are examples, not references
     if (inFence) return
 
-    // Inline links, optionally <bracketed> or with a "title", and reference definitions
+    // Inline links (optionally <bracketed>, with a "title", or with one level of balanced
+    // parentheses in the destination) and reference definitions
     const targets = [
-      ...Array.from(line.matchAll(/\]\(\s*(?:<([^>]+)>|([^)\s]+))(?:\s+["'(][^)]*)?\s*\)/g), match => match[1] ?? match[2]),
+      ...Array.from(line.matchAll(/\]\(\s*(?:<([^>]+)>|((?:[^()\s]|\([^()\s]*\))+))(?:\s+["'(][^)]*)?\s*\)/g), match => match[1] ?? match[2]),
       ...Array.from(line.matchAll(/^\s{0,3}\[[^\]]+\]:\s*(?:<([^>]+)>|(\S+))/g), match => match[1] ?? match[2])
     ]
     for (const target of targets) {
