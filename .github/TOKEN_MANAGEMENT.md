@@ -16,7 +16,7 @@ Many component-tier entries don't have the `{ "value", "type" }` shape yet, and 
 
 ## Adding or changing a token
 
-1. Edit the source JSON in `src/tokens/`. Every semantic and base token is `{ "value": …, "type": …, "description"?: … }`, and references use `{base.color.neutral.900}` syntax. Match the `type` naming already used in that tier (see the pipeline doc).
+1. Edit the source JSON in `src/tokens/`. Every new or changed token, in any tier, is `{ "value": …, "type": …, "description": … }`, with a description saying what it's for (0014, rule 6). References use `{base.color.neutral.900}` syntax. Match the `type` naming already used in that tier (see the pipeline doc). Many existing tokens lack descriptions; add one when you touch them.
 2. Run `npm run build:tokens`. It regenerates `src/styles/tokens.json`, `tokens.d.ts` and `tokens.css`.
 3. Commit the source change and the regenerated files. Don't commit a rebuild whose only change is the "Generated on" timestamp.
 4. If the token needs a new semantic concept, add the semantic token first; never point a component at a base token.

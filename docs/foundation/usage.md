@@ -104,7 +104,7 @@ export default function StyledComponentsRegistry({ children }: { children: React
 }
 ```
 
-Wrap `{children}` in `<StyledComponentsRegistry>` inside `<body>` in `app/layout.tsx`.
+Wrap `{children}` in `<StyledComponentsRegistry>` inside `<body>` in `app/layout.tsx`. <!-- verify-docs-ignore: consumer's file -->
 
 ## Known issues
 

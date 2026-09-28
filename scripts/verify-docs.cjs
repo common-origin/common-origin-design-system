@@ -5,7 +5,8 @@
  * Checks every Markdown file outside node_modules, build output and the changelog:
  * - relative Markdown links resolve, including titled links and reference definitions (anchors are ignored)
  * - `npm run <script>` names a script in package.json
- * - backticked repo paths (src/, docs/, scripts/, …) exist
+ * - repo paths in inline code exist: anything under a top-level folder, or a/b.ext paths that
+ *   aren't inside an installed package
  *
  * A line ending in `<!-- verify-docs-ignore: reason -->` is skipped, for planned files.
  */
@@ -18,7 +19,20 @@ const scripts = require(path.join(root, 'package.json')).scripts
 const SKIP_DIRS = new Set(['node_modules', '.git', '.next', 'dist', 'coverage', 'out'])
 // Generated history, not guidance
 const SKIP_FILES = new Set(['CHANGELOG.md'])
-const PATH_PREFIXES = ['src/', 'docs/', 'scripts/', 'config/', 'pages/', 'public/', '.github/', 'lib/', 'styles/']
+// Top-level folders of this repo: a path starting with one must exist
+const TOP_LEVEL_DIRS = fs
+  .readdirSync(root, { withFileTypes: true })
+  .filter(entry => entry.isDirectory() && !SKIP_DIRS.has(entry.name))
+  .map(entry => `${entry.name}/`)
+
+// Is this inline code a repo path? Either it starts with a top-level folder, or it looks like a
+// relative file path (a/b.ext) whose first segment isn't an installed package, such as a stale
+// `tests/integration/setup.ts` that names a folder the repo doesn't have.
+const isRepoPath = candidate => {
+  if (TOP_LEVEL_DIRS.some(dir => candidate.startsWith(dir))) return true
+  if (/^[@.~/]|:\/\//.test(candidate) || !/^[\w-]+\/[\w./-]+\.[a-z]{1,5}$/i.test(candidate)) return false
+  return !fs.existsSync(path.join(root, 'node_modules', candidate.split('/')[0]))
+}
 
 const walk = dir =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
@@ -68,7 +82,7 @@ for (const file of walk(root)) {
     // Repo paths in inline code
     for (const [, code] of line.matchAll(/`([^`\s]+)`/g)) {
       const candidate = code.replace(/[),.:;]+$/, '').replace(/:\d+$/, '')
-      if (!PATH_PREFIXES.some(prefix => candidate.startsWith(prefix)) || isPlaceholder(candidate)) continue
+      if (!isRepoPath(candidate) || isPlaceholder(candidate)) continue
       if (!fs.existsSync(path.join(root, candidate))) problems.push(`${where}: missing path ${candidate}`)
     }
   })

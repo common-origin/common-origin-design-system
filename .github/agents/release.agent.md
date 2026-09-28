@@ -47,11 +47,13 @@ Tell the user the tag that was pushed and link `https://github.com/common-origin
 - The `📦 Publish Package` run is green
 - `npm view @common-origin/design-system version` shows the new version (the registry can take a few minutes)
 
-If the publish fails, nothing was published: fix the cause via a PR, then follow "Publish failed after the tag was pushed" in `RELEASE.md` (with the user's approval, since it moves a tag).
+If the publish run fails, don't assume nothing was published: a run can fail after npm accepted the version. Run `npm view @common-origin/design-system@X.Y.Z version` and follow "Publish failed after the tag was pushed" in `RELEASE.md`:
+- If npm has the version, it's immutable. Don't touch the tag; the fix goes in a new patch release.
+- If npm doesn't have it, fix the cause via a PR, then move the tag as `RELEASE.md` describes. This is the only exception to the tag rule below, and only with the user's explicit approval.
 
 ## Constraints
 - DO NOT run `npm publish` directly — the publish workflow handles it via Trusted Publishing
 - DO NOT push to `main`; the version bump always goes through a PR
-- DO NOT create or push tags except via `npm run release:tag`, and only after the user confirms
+- DO NOT create or push tags except via `npm run release:tag` after the user confirms, or the unpublished-tag recovery in `RELEASE.md` with the user's explicit approval
 - DO NOT merge a PR with unaddressed Copilot review comments
 - DO NOT proceed if the working tree has uncommitted changes
