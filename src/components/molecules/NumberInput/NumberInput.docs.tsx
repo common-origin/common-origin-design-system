@@ -106,6 +106,13 @@ export const numberInputDocs: ComponentDocumentation = {
       default: undefined,
       description: 'Accessible label for screen readers. Falls back to label prop.',
     },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: undefined,
+      description: 'Test identifier for automated testing',
+    },
   ],
   
   tokens: [

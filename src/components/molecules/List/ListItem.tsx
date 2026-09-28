@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
-import { Stack } from '../../atoms/Stack'
 import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens

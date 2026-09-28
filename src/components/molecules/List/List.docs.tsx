@@ -78,7 +78,7 @@ const InteractiveListExample: React.FC = () => {
 
 export const listDocs: ComponentDocumentation = {
   id: 'list',
-  name: 'List / ListItem',
+  name: 'List',
   description: 'A flexible list component for displaying structured content with interactive states, expandable sections, badges, and secondary information. Designed for versatile data presentation including shopping lists, recipe ingredients, settings menus, and search results. Features comprehensive accessibility support with proper ARIA attributes, keyboard navigation, and minimum 44px touch targets.',
   category: 'Molecules',
   
@@ -89,149 +89,35 @@ export const listDocs: ComponentDocumentation = {
       type: 'React.ReactNode',
       required: true,
       default: 'undefined',
-      description: '[List] ListItem components to display in the list. Each child should be a ListItem for proper styling and semantics.'
+      description: 'ListItem components to display in the list. Each child should be a ListItem for proper styling and semantics.'
     },
     {
       name: 'dividers',
       type: 'boolean',
       required: false,
       default: 'true',
-      description: '[List] Whether to show divider lines between list items. Defaults to true for clear visual separation.'
+      description: 'Whether to show divider lines between list items. Defaults to true for clear visual separation.'
     },
     {
       name: 'spacing',
       type: "'compact' | 'comfortable'",
       required: false,
       default: 'comfortable',
-      description: '[List] Spacing density for all list items. Compact (8px) for dense layouts, comfortable (12px) for standard use cases.'
-    },
-    
-    // ListItem props
-    {
-      name: 'primary',
-      type: 'React.ReactNode',
-      required: true,
-      default: 'undefined',
-      description: '[ListItem] Main text content displayed prominently. Can be a string or React elements for custom formatting.'
+      description: 'Accepted for API compatibility but currently has no effect: it is not passed to the items. Set spacing on each ListItem instead.'
     },
     {
-      name: 'secondary',
-      type: 'React.ReactNode',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Optional secondary text displayed below primary content in a smaller, subdued style. Perfect for descriptions or metadata.'
-    },
-    {
-      name: 'badge',
-      type: 'React.ReactNode',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Optional component displayed on the right side, typically a Chip, Badge, or count indicator.'
-    },
-    {
-      name: 'icon',
-      type: 'React.ReactNode',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Optional icon component displayed on the left side in a 24x24px container.'
-    },
-    {
-      name: 'expandable',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Whether the item can expand to reveal additional content. Shows a rotating chevron indicator.'
-    },
-    {
-      name: 'expanded',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Controlled expansion state. Only applies when expandable is true.'
-    },
-    {
-      name: 'onToggle',
-      type: '() => void',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Callback fired when an expandable item is toggled. Required for controlled expansion.'
-    },
-    {
-      name: 'interactive',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Whether the item is clickable/interactive. Adds hover states and button role.'
-    },
-    {
-      name: 'onClick',
-      type: '() => void',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Click handler for interactive items. Makes the item focusable with keyboard support.'
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Disables interaction while maintaining visual context. Applies 50% opacity and aria-disabled.'
-    },
-    {
-      name: 'selected',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Marks the item as currently selected with subtle background highlight and aria-current.'
-    },
-    {
-      name: 'destructive',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: '[ListItem] Applies destructive/danger styling with error color text. Used for delete or remove actions in action sheets and menus.'
-    },
-    {
-      name: 'children',
-      type: 'React.ReactNode',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Content revealed when item is expanded. Rendered with indented padding and subtle background.'
-    },
-    {
-      name: 'role',
-      type: 'string',
-      required: false,
-      default: '"listitem"',
-      description: '[ListItem] Custom ARIA role. Useful for combobox patterns where role="option" is required.'
-    },
-    {
-      name: 'aria-selected',
-      type: 'boolean',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] ARIA selected state, used with role="option" for combobox/listbox patterns.'
-    },
-    {
-      name: 'id',
+      name: 'className',
       type: 'string',
       required: false,
       default: 'undefined',
-      description: '[ListItem] Custom element ID for ARIA references like aria-activedescendant.'
+      description: 'Additional CSS class name for the list element.'
     },
     {
-      name: 'tabIndex',
-      type: 'number',
+      name: 'data-testid',
+      type: 'string',
       required: false,
       default: 'undefined',
-      description: '[ListItem] Custom tab index for focus management. Overrides default behavior.'
-    },
-    {
-      name: 'onKeyDown',
-      type: '(e: React.KeyboardEvent) => void',
-      required: false,
-      default: 'undefined',
-      description: '[ListItem] Custom keyboard event handler. When provided, overrides default Enter/Space behavior.'
+      description: 'Test identifier for automated testing.'
     }
   ],
   
@@ -321,17 +207,17 @@ export const listDocs: ComponentDocumentation = {
     },
     {
       name: 'Spacing Variants',
-      description: 'Compact spacing for dense layouts',
-      code: `<List spacing="compact">
-  <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
-  <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
-  <ListItem primary="Compact Item 3" secondary="More items visible at once" />
+      description: 'Compact spacing for dense layouts, set on each ListItem',
+      code: `<List>
+  <ListItem spacing="compact" primary="Compact Item 1" secondary="Less spacing between items" />
+  <ListItem spacing="compact" primary="Compact Item 2" secondary="Better for mobile layouts" />
+  <ListItem spacing="compact" primary="Compact Item 3" secondary="More items visible at once" />
 </List>`,
       renderComponent: () => (
-        <List spacing="compact">
-          <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
-          <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
-          <ListItem primary="Compact Item 3" secondary="More items visible at once" />
+        <List>
+          <ListItem spacing="compact" primary="Compact Item 1" secondary="Less spacing between items" />
+          <ListItem spacing="compact" primary="Compact Item 2" secondary="Better for mobile layouts" />
+          <ListItem spacing="compact" primary="Compact Item 3" secondary="More items visible at once" />
         </List>
       )
     },

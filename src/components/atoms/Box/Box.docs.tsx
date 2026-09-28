@@ -259,6 +259,38 @@ export const boxDocs: ComponentDocumentation = {
       description: 'Text color using semantic text color tokens'
     },
     
+    // Elevation, cursor and motion
+    {
+      name: 'shadow',
+      type: 'keyof typeof tokens.semantic.elevation',
+      required: false,
+      description: 'Box shadow using semantic elevation tokens'
+    },
+    {
+      name: 'hoverShadow',
+      type: 'keyof typeof tokens.semantic.elevation',
+      required: false,
+      description: 'Elevation token applied on hover'
+    },
+    {
+      name: 'hoverTransform',
+      type: 'string',
+      required: false,
+      description: 'CSS transform applied on hover. Keep movement subtle and pair it with transition (P6)'
+    },
+    {
+      name: 'transition',
+      type: 'string',
+      required: false,
+      description: 'CSS transition. Build it from semantic.motion duration and easing tokens rather than literal values'
+    },
+    {
+      name: 'cursor',
+      type: "'auto' | 'default' | 'pointer' | 'wait' | 'text' | 'move' | 'help' | 'not-allowed'",
+      required: false,
+      description: 'CSS cursor property'
+    },
+    
     // Overflow
     {
       name: 'overflow',
@@ -293,6 +325,12 @@ export const boxDocs: ComponentDocumentation = {
       description: 'Content to render inside the box'
     },
     {
+      name: 'id',
+      type: 'string',
+      required: false,
+      description: 'HTML id attribute'
+    },
+    {
       name: 'style',
       type: 'React.CSSProperties',
       required: false,
@@ -303,6 +341,38 @@ export const boxDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       description: 'Data test id for testing'
+    },
+    
+    // Interaction (only when Box is made interactive)
+    {
+      name: 'onClick',
+      type: '(event: React.MouseEvent) => void',
+      required: false,
+      description: 'Click handler. Prefer a Button or Link; if Box must be clickable, render it as a native interactive element with as, or also set role, tabIndex and onKeyDown'
+    },
+    {
+      name: 'onKeyDown',
+      type: '(event: React.KeyboardEvent) => void',
+      required: false,
+      description: 'Key handler, needed for keyboard support when onClick is set on a non-interactive element'
+    },
+    {
+      name: 'tabIndex',
+      type: 'number',
+      required: false,
+      description: 'Tab order. Use 0 to make an interactive Box focusable'
+    },
+    {
+      name: 'role',
+      type: 'string',
+      required: false,
+      description: 'ARIA role, for example "button" when Box is made interactive'
+    },
+    {
+      name: 'aria-label',
+      type: 'string',
+      required: false,
+      description: 'Accessible name. Only use it with a role that supports naming'
     }
   ],
 
@@ -315,7 +385,8 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.color.background.*',
     'semantic.color.text.*',
     'semantic.color.border.*',
-    'semantic.border.radius.*'
+    'semantic.border.radius.*',
+    'semantic.elevation.*'
   ],
 
   examples: [

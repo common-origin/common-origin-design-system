@@ -5,7 +5,7 @@ import { CategoryBadge } from './CategoryBadge'
 export const categoryBadgeDocs: ComponentDocumentation = {
   id: 'category-badge',
   name: 'CategoryBadge',
-  description: 'A compact, color-coded badge for displaying transaction categories with customizable visual styles, optional icons, and interactive capabilities. Designed for financial applications requiring clear visual categorization with semantic color meanings.',
+  description: 'A compact, color-coded badge for displaying transaction categories with customizable visual styles and optional icons. It is display-only; for a selectable or removable category use Chip. Designed for financial applications requiring clear visual categorization with semantic color meanings.',
   category: 'Atoms',
   
   props: [
@@ -43,20 +43,6 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       required: false,
       default: 'undefined',
       description: 'Optional icon name to display before the label. Icons provide visual reinforcement of category meaning. Icon size automatically adjusts based on badge size.'
-    },
-    {
-      name: 'onClick',
-      type: '() => void',
-      required: false,
-      default: 'undefined',
-      description: 'Click handler that makes the badge interactive. When provided, the badge becomes a button with full keyboard support (Enter/Space), focus indicators, and hover states. Use for clickable category filters or navigation.'
-    },
-    {
-      name: 'disabled',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: 'Disables interaction for clickable badges while maintaining visual context. When true, prevents onClick execution, keyboard activation, and applies 50% opacity with not-allowed cursor.'
     },
     {
       name: 'aria-label',
@@ -312,17 +298,14 @@ export const categoryBadgeDocs: ComponentDocumentation = {
 
   accessibility: {
     notes: [
-      'Uses semantic button role when interactive (onClick provided), no role when static',
-      'Full keyboard support with Enter and Space key activation for clickable badges',
-      'Focus indicators provided by design system focus tokens with visible outline',
+      'Display-only: renders a non-interactive span with no role and is not focusable',
       'All color variants maintain WCAG 2.2 AA contrast ratios (4.5:1 for text, 3:1 for UI components)',
-      'Disabled state communicated via aria-disabled="true" and 50% opacity',
       'Supports aria-label for additional context when category name alone is insufficient',
       'Icon and text content are both accessible to screen readers',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
-    keyboardNavigation: 'Tab to focus interactive badges, Enter or Space to activate onClick handler. Non-interactive badges are not keyboard focusable.',
-    screenReader: 'Screen readers announce the category label and role. When interactive, announced as "button" with the label. When aria-label is provided, that label is announced. Disabled badges are announced as "disabled".'
+    keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',
+    screenReader: 'Screen readers read the category label as part of the surrounding text. The icon is decorative (aria-hidden).'
   },
 
   anatomy: {
@@ -339,7 +322,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     parts: [
       {
         name: 'Container',
-        description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border. Becomes button with hover/focus states when clickable.',
+        description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border.',
         tokens: [
           'semantic.color.category.[color]',
           'semantic.color.category.[color]-emphasis',

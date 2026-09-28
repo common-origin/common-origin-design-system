@@ -88,6 +88,12 @@ export const buttonDocs: ComponentDocumentation = {
       description: 'HTML button type for form interactions when purpose="button"'
     },
     {
+      name: 'id',
+      type: 'string',
+      required: false,
+      description: 'HTML id attribute, applied to the rendered button or link. Not currently passed through when linkComponent is set'
+    },
+    {
       name: 'data-testid',
       type: 'string',
       required: false,
