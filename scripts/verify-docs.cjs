@@ -5,8 +5,10 @@
  * Checks every Markdown file outside node_modules, build output and the changelog:
  * - relative Markdown links resolve, including titled links and reference definitions (anchors are ignored)
  * - `npm run <script>` names a script in package.json
- * - repo paths in inline code exist: anything under a top-level folder, or a/b.ext paths that
- *   aren't inside an installed package
+ * - repo paths in inline code exist: root documents (`README.md`), anything under a top-level
+ *   folder, or a/b.ext paths that aren't inside an installed package. Build output (dist/) is
+ *   skipped because a clean checkout doesn't have it. Bare folder names such as `atoms/` are
+ *   ambiguous (they usually mean src/components/atoms/), so they aren't checked
  *
  * A line ending in `<!-- verify-docs-ignore: reason -->` is skipped, for planned files.
  */
@@ -29,6 +31,10 @@ const TOP_LEVEL_DIRS = fs
 // relative file path (a/b.ext) whose first segment isn't an installed package, such as a stale
 // `tests/integration/setup.ts` that names a folder the repo doesn't have.
 const isRepoPath = candidate => {
+  // Build output isn't in a clean checkout, so paths inside it can't be checked
+  if (SKIP_DIRS.has(candidate.split('/')[0])) return false
+  // Documents named in capitals, such as `CONTRIBUTING.md` or `MAIN_INSTRUCTIONS.md`
+  if (/^[A-Z][A-Z0-9_-]*\.md$/.test(candidate)) return true
   if (TOP_LEVEL_DIRS.some(dir => candidate.startsWith(dir))) return true
   if (/^[@.~/]|:\/\//.test(candidate) || !/^[\w-]+\/[\w./-]+\.[a-z]{1,5}$/i.test(candidate)) return false
   return !fs.existsSync(path.join(root, 'node_modules', candidate.split('/')[0]))
@@ -83,7 +89,10 @@ for (const file of walk(root)) {
     for (const [, code] of line.matchAll(/`([^`\s]+)`/g)) {
       const candidate = code.replace(/[),.:;]+$/, '').replace(/:\d+$/, '')
       if (!isRepoPath(candidate) || isPlaceholder(candidate)) continue
-      if (!fs.existsSync(path.join(root, candidate))) problems.push(`${where}: missing path ${candidate}`)
+      // Relative to the repo root or the doc; bare document names may also mean one in .github/
+      const exists = [path.join(root, candidate), path.resolve(path.dirname(file), candidate), path.join(root, '.github', candidate)]
+        .some(option => fs.existsSync(option))
+      if (!exists) problems.push(`${where}: missing path ${candidate}`)
     }
   })
 }

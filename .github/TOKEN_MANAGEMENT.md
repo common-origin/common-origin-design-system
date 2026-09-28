@@ -33,7 +33,7 @@ const Label = styled.span`
 `
 ```
 
-- Never hard-code colour, spacing, radius, shadow, font, z-index or duration values. If the right token doesn't exist, add one.
+- Never hard-code colour, spacing, radius, shadow, font, z-index or duration values. If the right token doesn't exist, add one. The exceptions recorded in the [visual language](../docs/foundation/visual-language.md) still apply: literal `-1`, `0` or `1` z-index for stacking a component's own parts (0013), AgentInput's 1300ms working ring (0010), and a few non-design px literals.
 - Off-grid pixel values snap to the nearest spacing token. If that leaves a component unbalanced, rebalance the component rather than adding an off-grid token ([visual language](../docs/foundation/visual-language.md)).
 - Prop types that accept token keys use `import type { Tokens } from '../../../types/tokens'` and `keyof Tokens['semantic'][…]`. Never use `keyof typeof` on the imported JSON or an `@/` alias in anything that ends up in the published `.d.ts` files.
 

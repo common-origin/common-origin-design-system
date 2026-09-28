@@ -19,7 +19,7 @@ Update this file in the same PR as any change to the structure, build, testing a
 
 ## Tokens
 
-Components import token values from the JSON and never hard-code colours, spacing, radius, shadows, fonts, z-index or durations (P3):
+Components import token values from the JSON and never hard-code colours, spacing, radius, shadows, fonts, z-index or durations (P3). The exceptions recorded in the [visual language](../docs/foundation/visual-language.md) still apply: literal `-1`, `0` or `1` z-index for stacking a component's own parts (0013), AgentInput's 1300ms working ring (0010), and a few non-design px literals.
 
 ```tsx
 import tokens from '@/styles/tokens.json'
@@ -37,7 +37,7 @@ const { semantic } = tokens
 - Styled-components with `$`-prefixed transient props, filtered by `shouldForwardProp: (prop) => !prop.startsWith('$')`.
 - Framework-agnostic: no Next.js imports ([0008](../docs/foundation/decisions/0008-framework-agnostic-components.md)). Navigation takes an optional `linkComponent`.
 - Every component supports `'data-testid'?: string` on its root element.
-- Motion uses `semantic.motion` durations and easings, respects `prefers-reduced-motion`, and stays at 300ms or less (P6, [0005](../docs/foundation/decisions/0005-motion.md)).
+- Motion uses `semantic.motion` durations and easings, respects `prefers-reduced-motion`, and stays at 300ms or less (P6, [0005](../docs/foundation/decisions/0005-motion.md)). The one exception is AgentInput's continuous working ring ([0010](../docs/foundation/decisions/0010-agentinput-working-ring.md)).
 - Documentation: a hand-written `Name.docs.tsx` registered in `src/lib/componentsData.ts`. Nothing is generated from the source, so update the docs with every prop change ([src/lib/docgen/README.md](../src/lib/docgen/README.md)).
 
 ## Testing
