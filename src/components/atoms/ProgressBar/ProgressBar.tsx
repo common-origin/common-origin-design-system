@@ -104,6 +104,9 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   'aria-labelledby': ariaLabelledBy,
   'data-testid': dataTestId,
 }) => {
+  // Blank values are no name at all, so they fall back like missing ones
+  const label = ariaLabel?.trim() ? ariaLabel : undefined
+  const labelledBy = ariaLabelledBy?.trim() ? ariaLabelledBy : undefined
   return (
     <ProgressBarContainer
       $variant={variant}
@@ -111,8 +114,8 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       $width={width}
       data-testid={dataTestId}
       role="progressbar"
-      aria-label={ariaLabel?.trim() ? ariaLabel : (ariaLabelledBy ? undefined : 'Progress')}
-      aria-labelledby={ariaLabelledBy}
+      aria-label={label ?? (labelledBy ? undefined : 'Progress')}
+      aria-labelledby={labelledBy}
       aria-valuenow={Math.min(100, Math.max(0, value))}
       aria-valuemin={0}
       aria-valuemax={100}

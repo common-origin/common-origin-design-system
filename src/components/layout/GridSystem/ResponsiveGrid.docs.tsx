@@ -36,7 +36,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'base.spacing.* - gap props take base spacing keys (public API; exception to decision 0014)',
+    'base.spacing.*',
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -97,6 +97,21 @@ export const responsiveGridDocs: ComponentDocumentation = {
       )
     }
   ],
+
+  notes: [
+    'Gap props take base spacing keys (base.spacing.*), which decision 0014 says components should not use. Moving them to semantic spacing keys is migration work tracked in #34.'
+  ],
+
+  anatomy: {
+    description: 'A single CSS grid container. Its children become the grid items; there are no wrappers.',
+    parts: [
+      {
+        name: 'Container',
+        description: 'div with display: grid and equal columns (repeat(n, minmax(0, 1fr))). Column count, gap, column gap and row gap change at the sm, md, lg and xl breakpoints.',
+        tokens: ['base.spacing.*', 'semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
+      }
+    ]
+  },
 
   accessibility: {
     notes: [

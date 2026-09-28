@@ -19,7 +19,7 @@ export const gridSystemDocs: ComponentDocumentation = {
   
   ],
   tokens: [
-    'base.spacing.* - gap props take base spacing keys (public API; exception to decision 0014)',
+    'base.spacing.*',
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -163,6 +163,21 @@ export const gridSystemDocs: ComponentDocumentation = {
       )
     }
   ],
+  anatomy: {
+    description: 'Grid is a single CSS grid container with a fixed number of equal columns. Its children, usually GridCol, are the grid items.',
+    parts: [
+      {
+        name: 'Container',
+        description: 'div with display: grid, repeat(cols, minmax(0, 1fr)) columns (12 by default), and optional gap, column gap and row gap.',
+        tokens: ['base.spacing.*']
+      },
+      {
+        name: 'GridCol',
+        description: 'Optional grid items that span columns and reorder per breakpoint. See the GridCol page.'
+      }
+    ]
+  },
+
   accessibility: {
     notes: [
       'Grid, GridCol and ResponsiveGrid render plain divs with no roles, so they add nothing to the accessibility tree',
@@ -173,7 +188,7 @@ export const gridSystemDocs: ComponentDocumentation = {
   notes: [
     'GridSystem provides CSS Grid-based layout utilities for responsive design.',
     'Use ResponsiveGrid for breakpoint-based layouts similar to Tailwind CSS patterns.',
-    'All spacing and breakpoints are tokenized for design consistency.',
+    'Gap props take base spacing keys (base.spacing.*), which decision 0014 says components should not use. Moving them to semantic spacing keys is migration work tracked in #34.',
     'For flexbox layouts, use the Stack component from the atoms collection.'
   ]
 }

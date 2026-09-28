@@ -79,6 +79,17 @@ export const gridColDocs: ComponentDocumentation = {
     }
   ],
 
+  anatomy: {
+    description: 'A single grid item. Its content is rendered directly inside it.',
+    parts: [
+      {
+        name: 'Container',
+        description: 'div with grid-column: span n / span n and an optional order, both changeable at the sm, md, lg and xl breakpoints.',
+        tokens: ['semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
+      }
+    ]
+  },
+
   accessibility: {
     notes: [
       'Renders a plain div with no role',
