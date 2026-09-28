@@ -1,5 +1,6 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { PageTitle } from './PageTitle'
+import { Typography } from '../../atoms/Typography'
 
 export const pageTitleDocs: ComponentDocumentation = {
   id: 'page-title',
@@ -48,6 +49,20 @@ export const pageTitleDocs: ComponentDocumentation = {
       code: `<PageTitle title="Welcome to Common Origin" subtitle="Your design system" />`,
       renderComponent: () => (
         <PageTitle title="Welcome to Common Origin" subtitle="Your design system" />
+      )
+    },
+    {
+      name: 'At the Top of a Page',
+      description: 'PageTitle sets the space above the heading and before the first content, so the content that follows needs no extra top margin.',
+      code: `<>
+  <PageTitle title="Recipes" subtitle="Saved this week" />
+  <Typography>Five recipes, sorted by cooking time.</Typography>
+</>`,
+      renderComponent: () => (
+        <>
+          <PageTitle title="Recipes" subtitle="Saved this week" />
+          <Typography>Five recipes, sorted by cooking time.</Typography>
+        </>
       )
     }
   ],

@@ -19,7 +19,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
       name: 'formatString',
       type: 'string',
       required: false,
-      default: "'yyyy'",
+      default: 'undefined',
       description: 'date-fns format pattern (e.g. "MMM dd, yyyy", "HH:mm", "yyyy-MM-dd"). Used in absolute mode, and for older dates in smart and relative modes. Defaults to "yyyy" in absolute mode and "MMMM dd, yyyy" in the other modes.'
     },
     {
