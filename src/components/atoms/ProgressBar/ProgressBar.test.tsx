@@ -148,6 +148,11 @@ describe('ProgressBar', () => {
       expect(await axe(container)).toHaveNoViolations()
     })
 
+    it('treats an empty or whitespace aria-label as missing', () => {
+      render(<ProgressBar value={50} aria-label="  " />)
+      expect(screen.getByRole('progressbar', { name: 'Progress' })).toBeInTheDocument()
+    })
+
     it('does not add the fallback when aria-labelledby is set', () => {
       render(<ProgressBar value={40} aria-labelledby="missing-label" />)
       expect(screen.getByRole('progressbar')).not.toHaveAttribute('aria-label')

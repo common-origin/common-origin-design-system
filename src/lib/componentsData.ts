@@ -30,6 +30,8 @@ import { stackDocs } from '@/components/atoms/Stack/Stack.docs'
 import { tagDocs } from '@/components/atoms/Tag/Tag.docs'
 import { typographyDocs } from '@/components/atoms/Typography/Typography.docs'
 import { gridSystemDocs } from '@/components/layout/GridSystem/GridSystem.docs'
+import { gridColDocs } from '@/components/layout/GridSystem/GridCol.docs'
+import { responsiveGridDocs } from '@/components/layout/GridSystem/ResponsiveGrid.docs'
 import { featureBlockDocs } from '@/components/molecules/FeatureBlock/FeatureBlock.docs'
 import { numberInputDocs } from '@/components/molecules/NumberInput/NumberInput.docs'
 import { passwordFieldDocs } from '@/components/molecules/PasswordField/PasswordField.docs'
@@ -150,6 +152,8 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(tagDocs),
   convertDocumentationToLegacyFormat(typographyDocs),
   convertDocumentationToLegacyFormat(gridSystemDocs),
+  convertDocumentationToLegacyFormat(gridColDocs),
+  convertDocumentationToLegacyFormat(responsiveGridDocs),
   convertDocumentationToLegacyFormat(numberInputDocs),
   convertDocumentationToLegacyFormat(passwordFieldDocs),
   convertDocumentationToLegacyFormat(sheetDocs),
