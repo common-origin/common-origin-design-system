@@ -81,6 +81,13 @@ describe('GridCol', () => {
     expect(screen.getByTestId('col')).toHaveStyle({ order: '2' })
   })
 
+  it('supports order 0, including at a breakpoint', () => {
+    render(<GridCol order={0} orderMd={0} data-testid="col">First</GridCol>)
+    const col = screen.getByTestId('col')
+    expect(col).toHaveStyle({ order: '0' })
+    expect(hasRule(col, 'order:0', breakpoint.md)).toBe(true)
+  })
+
   it('adds responsive span and order rules at the breakpoints', () => {
     render(<GridCol spanMd={4} orderLg={1} data-testid="col">Cell</GridCol>)
     const col = screen.getByTestId('col')

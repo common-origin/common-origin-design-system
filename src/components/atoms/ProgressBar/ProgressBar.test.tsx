@@ -142,6 +142,17 @@ describe('ProgressBar', () => {
       expect(screen.getByRole('progressbar', { name: 'Uploading report.pdf' })).toBeInTheDocument()
     })
 
+    it('falls back to "Progress" when no name is given', async () => {
+      const { container } = render(<ProgressBar value={50} />)
+      expect(screen.getByRole('progressbar', { name: 'Progress' })).toBeInTheDocument()
+      expect(await axe(container)).toHaveNoViolations()
+    })
+
+    it('does not add the fallback when aria-labelledby is set', () => {
+      render(<ProgressBar value={40} aria-labelledby="missing-label" />)
+      expect(screen.getByRole('progressbar')).not.toHaveAttribute('aria-label')
+    })
+
     it('has no axe violations when horizontal', async () => {
       const { container } = render(<ProgressBar value={50} aria-label="Upload progress" />)
       expect(await axe(container)).toHaveNoViolations()

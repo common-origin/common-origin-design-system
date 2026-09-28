@@ -50,8 +50,8 @@ export const progressBarDocs: ComponentDocumentation = {
       name: 'aria-label',
       type: 'string',
       required: false,
-      default: 'undefined',
-      description: 'Accessible name that says what is progressing, e.g. "Upload progress". Always provide this or aria-labelledby: without a name, screen readers announce only "progress bar" and a percentage (WCAG 4.1.2).'
+      default: "'Progress' (when aria-labelledby is not set)",
+      description: 'Accessible name that says what is progressing, e.g. "Upload progress". Always provide this or aria-labelledby: the "Progress" fallback keeps the bar named, but does not tell screen reader users what is progressing.'
     },
     {
       name: 'aria-labelledby',
@@ -437,7 +437,7 @@ export const progressBarDocs: ComponentDocumentation = {
       'Color variants (success, error, default) provide visual feedback but should always be accompanied by text labels for users with color vision deficiencies',
       'ARIA attributes (aria-valuenow, aria-valuemin, aria-valuemax) ensure progress values are accurately communicated to assistive technologies',
       'Progress values are clamped to 0-100 range automatically, preventing invalid ARIA attribute values that could confuse screen readers',
-      'Give every progress bar an accessible name with aria-label or aria-labelledby. Without one, axe reports aria-progressbar-name and screen readers cannot say what is progressing',
+      'Give every progress bar a specific accessible name with aria-label or aria-labelledby. Without one it falls back to "Progress", which is valid but does not say what is progressing',
       'Color contrast ratios exceed minimum requirements across all color variants, ensuring visibility for users with low vision',
       'Smooth transition animations enhance visual feedback without creating distracting motion that could trigger vestibular disorders',
       'Automated accessibility testing with jest-axe validates ARIA implementation and prevents regression issues throughout development'

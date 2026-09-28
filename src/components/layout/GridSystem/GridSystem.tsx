@@ -110,7 +110,7 @@ const GridColContainer = styled.div.withConfig({
   $orderXl?: number
 }>`
   ${props => props.$span && css`grid-column: span ${props.$span} / span ${props.$span};`}
-  ${props => props.$order && css`order: ${props.$order};`}
+  ${props => props.$order !== undefined && css`order: ${props.$order};`}
   
   ${props => props.$spanSm && css`
     ${media.sm} {
@@ -136,25 +136,25 @@ const GridColContainer = styled.div.withConfig({
     }
   `}
   
-  ${props => props.$orderSm && css`
+  ${props => props.$orderSm !== undefined && css`
     ${media.sm} {
       order: ${props.$orderSm};
     }
   `}
   
-  ${props => props.$orderMd && css`
+  ${props => props.$orderMd !== undefined && css`
     ${media.md} {
       order: ${props.$orderMd};
     }
   `}
   
-  ${props => props.$orderLg && css`
+  ${props => props.$orderLg !== undefined && css`
     ${media.lg} {
       order: ${props.$orderLg};
     }
   `}
   
-  ${props => props.$orderXl && css`
+  ${props => props.$orderXl !== undefined && css`
     ${media.xl} {
       order: ${props.$orderXl};
     }

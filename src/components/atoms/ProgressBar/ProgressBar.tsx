@@ -19,7 +19,7 @@ export interface ProgressBarProps {
   height?: 'sm' | 'md' | 'lg' | 'xl'
   /** Width size for vertical progress bar (default: md) */
   width?: 'sm' | 'md' | 'lg' | 'xl'
-  /** Accessible name, e.g. "Upload progress". Provide this or aria-labelledby */
+  /** Accessible name, e.g. "Upload progress". Provide this or aria-labelledby; falls back to "Progress" */
   'aria-label'?: string
   /** ID of the visible element that names the progress bar */
   'aria-labelledby'?: string
@@ -111,7 +111,7 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
       $width={width}
       data-testid={dataTestId}
       role="progressbar"
-      aria-label={ariaLabel}
+      aria-label={ariaLabel ?? (ariaLabelledBy ? undefined : 'Progress')}
       aria-labelledby={ariaLabelledBy}
       aria-valuenow={Math.min(100, Math.max(0, value))}
       aria-valuemin={0}
