@@ -10,9 +10,9 @@ export const gridSystemDocs: ComponentDocumentation = {
   category: 'Layout',
   props: [
     { name: 'cols', type: 'number', required: false, default: '12', description: 'Number of equal columns' },
-    { name: 'gap', type: 'SpacingToken (base spacing key)', required: false, default: 'undefined', description: 'Gap between rows and columns' },
-    { name: 'gapX', type: 'SpacingToken (base spacing key)', required: false, default: 'undefined', description: 'Gap between columns' },
-    { name: 'gapY', type: 'SpacingToken (base spacing key)', required: false, default: 'undefined', description: 'Gap between rows' },
+    { name: 'gap', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns' },
+    { name: 'gapX', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns' },
+    { name: 'gapY', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows' },
     { name: 'className', type: 'string', required: false, default: 'undefined', description: 'Custom className for the root element' },
     { name: 'data-testid', type: 'string', required: false, default: 'undefined', description: 'Test identifier, applied to the root element' },
     { name: 'children', type: 'React.ReactNode', required: true, description: 'Grid items, usually GridCol' }
