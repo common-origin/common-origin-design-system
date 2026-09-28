@@ -3,7 +3,7 @@
  * Fails if a doc references a file, folder or npm script that doesn't exist (#37).
  *
  * Checks every Markdown file outside node_modules, build output and the changelog:
- * - relative Markdown links resolve (anchors are ignored)
+ * - relative Markdown links resolve, including titled links and reference definitions (anchors are ignored)
  * - `npm run <script>` names a script in package.json
  * - backticked repo paths (src/, docs/, scripts/, …) exist
  *
@@ -18,8 +18,6 @@ const scripts = require(path.join(root, 'package.json')).scripts
 const SKIP_DIRS = new Set(['node_modules', '.git', '.next', 'dist', 'coverage', 'out'])
 // Generated history, not guidance
 const SKIP_FILES = new Set(['CHANGELOG.md'])
-// Dead code that #39 deletes; its README describes the dead generator
-const SKIP_PREFIXES = ['lib/releases/']
 const PATH_PREFIXES = ['src/', 'docs/', 'scripts/', 'config/', 'pages/', 'public/', '.github/', 'lib/', 'styles/']
 
 const walk = dir =>
@@ -36,7 +34,7 @@ const isPlaceholder = p => /[*{}<>…]|\bName\b|ComponentName|X\.Y\.Z|yourtype|\
 const problems = []
 for (const file of walk(root)) {
   const rel = path.relative(root, file)
-  if (SKIP_FILES.has(rel) || SKIP_PREFIXES.some(prefix => rel.startsWith(prefix))) continue
+  if (SKIP_FILES.has(rel)) continue
   const text = fs.readFileSync(file, 'utf8')
   const lines = text.split('\n')
   let inFence = false
@@ -47,19 +45,27 @@ for (const file of walk(root)) {
     // For deliberate references to files that don't exist yet, such as a planned migration target
     if (line.includes('<!-- verify-docs-ignore')) return
 
-    for (const [, target] of line.matchAll(/\]\(([^)\s]+)\)/g)) {
+    // npm scripts are checked everywhere, including the commands in code blocks
+    for (const [, name] of line.matchAll(/npm run ([a-z][\w:-]*)/g)) {
+      if (!scripts[name]) problems.push(`${where}: unknown script "npm run ${name}"`)
+    }
+
+    // Links and paths in code blocks are examples, not references
+    if (inFence) return
+
+    // Inline links, optionally <bracketed> or with a "title", and reference definitions
+    const targets = [
+      ...Array.from(line.matchAll(/\]\(\s*(?:<([^>]+)>|([^)\s]+))(?:\s+["'(][^)]*)?\s*\)/g), match => match[1] ?? match[2]),
+      ...Array.from(line.matchAll(/^\s{0,3}\[[^\]]+\]:\s*(?:<([^>]+)>|(\S+))/g), match => match[1] ?? match[2])
+    ]
+    for (const target of targets) {
       if (/^(https?:|mailto:|#)/.test(target)) continue
       const clean = decodeURI(target.split('#')[0])
       if (!clean || isPlaceholder(clean)) continue
       if (!fs.existsSync(path.resolve(path.dirname(file), clean))) problems.push(`${where}: broken link ${target}`)
     }
 
-    for (const [, name] of line.matchAll(/npm run ([a-z][\w:-]*)/g)) {
-      if (!scripts[name]) problems.push(`${where}: unknown script "npm run ${name}"`)
-    }
-
-    // Repo paths in inline code, outside code blocks (which hold examples)
-    if (inFence) return
+    // Repo paths in inline code
     for (const [, code] of line.matchAll(/`([^`\s]+)`/g)) {
       const candidate = code.replace(/[),.:;]+$/, '').replace(/:\d+$/, '')
       if (!PATH_PREFIXES.some(prefix => candidate.startsWith(prefix)) || isPlaceholder(candidate)) continue

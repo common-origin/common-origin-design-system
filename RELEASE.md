@@ -79,7 +79,14 @@ There is no post-release changelog workflow: a PR opened by the workflow's `GITH
 
 ### Publish failed after the tag was pushed
 
-Nothing is published if the workflow fails. Fix the cause on `main` through a PR, then move the tag to the fixed commit (it was never published):
+First check whether npm accepted the version anyway: a run can fail or be cancelled after the publish step succeeded.
+
+```bash
+npm view @common-origin/design-system@X.Y.Z version
+```
+
+- **It prints `X.Y.Z`:** the version is published and immutable. Don't move the tag. Fix any follow-up problem in a new patch release.
+- **It prints nothing (or `E404`):** nothing was published. Fix the cause on `main` through a PR, then move the tag to the fixed commit:
 
 ```bash
 git push origin :refs/tags/vX.Y.Z   # delete the remote tag
