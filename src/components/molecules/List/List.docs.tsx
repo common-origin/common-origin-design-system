@@ -597,21 +597,11 @@ return (
   
   accessibility: {
     notes: [
-      'All interactive and expandable items meet minimum 44px touch target size (WCAG 2.2 AA)',
-      'Proper semantic HTML with role="list" and role="listitem"',
-      'Interactive items use role="button" with proper ARIA attributes',
-      'Supports custom roles like role="option" for combobox/listbox patterns with aria-selected',
-      'Expandable items include aria-expanded to communicate state',
-      'Selected items use aria-current for proper state indication on button role',
-      'Disabled items include aria-disabled attribute',
-      'Full keyboard support: Tab for focus, Enter/Space for activation',
-      'Custom keyboard handlers supported via onKeyDown prop for specialized interaction patterns',
-      'Chevron indicator is decorative only with aria-hidden="true"',
-      'Screen readers announce all item content, state, and available actions',
-      'Focus indicators visible for keyboard navigation',
-      'Color is not the only means of conveying information (icons + text + ARIA)',
+      'Renders a ul with role="list"; each ListItem renders role="listitem"',
+      'Dividers are visual only and are not announced',
+      'Item-level behaviour (interactive, expandable, selected, disabled, combobox options, keyboard support) is documented on the ListItem page'
     ],
-    screenReader: 'List items are announced as "Button [primary text] [secondary text] [expanded/collapsed if expandable]". When using role="option", items are announced as "Option [primary text] [secondary text] [selected/not selected]". Selected state is communicated via aria-current for buttons or aria-selected for options. Disabled state is communicated via aria-disabled.',
+    screenReader: 'Screen readers announce a list and its number of items. See ListItem for how individual items are announced.',
   },
   
   anatomy: {
@@ -642,24 +632,8 @@ return (
 `,
     parts: [
       {
-        name: 'Icon Container',
-        description: 'Optional 24x24px container for leading icon, aligned to the left with 12px/16px right margin (spacing dependent)'
-      },
-      {
-        name: 'Text Content',
-        description: 'Flexible content area containing primary text (body variant) and optional secondary text (small variant, subdued color)'
-      },
-      {
-        name: 'Badge',
-        description: 'Optional right-aligned slot for Chip, Badge, or other status indicators'
-      },
-      {
-        name: 'Chevron Icon',
-        description: 'Decorative 24x24px caret icon that rotates 180° when expanded, over semantic.motion.duration.fast (easeOut), the same as the Dropdown chevron. With prefers-reduced-motion set, it flips instantly. Only shown on expandable items. Has aria-hidden="true" for accessibility.'
-      },
-      {
-        name: 'Expanded Content',
-        description: 'Collapsible content area revealed when expanded. Height, padding and opacity animate over semantic.motion.duration.normal (easeOut); collapsed content is hidden from keyboard and screen readers. With prefers-reduced-motion set, it fades without the height change. Indented padding and subtle background color.'
+        name: 'ListItem',
+        description: 'Each row. Its icon, text, badge, chevron and expanded content are described on the ListItem page.'
       },
       {
         name: 'Divider',

@@ -49,7 +49,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Accessible label providing additional context for screen readers. Useful when the visible label is abbreviated or when action context is needed (e.g., "Filter by shopping category").'
+      description: 'Currently not announced: it is set on a span with no role, which assistive technology ignores (tracked in #78). Put the full category name in the visible label instead.'
     },
     {
       name: 'data-testid',
@@ -300,8 +300,8 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     notes: [
       'Display-only: renders a non-interactive span with no role and is not focusable',
       'All color variants maintain WCAG 2.2 AA contrast ratios (4.5:1 for text, 3:1 for UI components)',
-      'Supports aria-label for additional context when category name alone is insufficient',
-      'Icon and text content are both accessible to screen readers',
+      'aria-label is currently not announced, because the root span has no role (tracked in #78); the visible label is what screen readers read',
+      'The icon is decorative (aria-hidden); only the text label is exposed to screen readers',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
     keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',

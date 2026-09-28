@@ -264,13 +264,13 @@ export const boxDocs: ComponentDocumentation = {
       name: 'shadow',
       type: 'keyof typeof tokens.semantic.elevation',
       required: false,
-      description: 'Box shadow using semantic elevation tokens'
+      description: 'Box shadow using a semantic elevation token: none, raised, floating, overlay, sticky or inset'
     },
     {
       name: 'hoverShadow',
       type: 'keyof typeof tokens.semantic.elevation',
       required: false,
-      description: 'Elevation token applied on hover'
+      description: 'Elevation token applied on hover: none, raised, floating, overlay, sticky or inset'
     },
     {
       name: 'hoverTransform',
@@ -386,7 +386,12 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.color.text.*',
     'semantic.color.border.*',
     'semantic.border.radius.*',
-    'semantic.elevation.*'
+    'semantic.elevation.none',
+    'semantic.elevation.raised',
+    'semantic.elevation.floating',
+    'semantic.elevation.overlay',
+    'semantic.elevation.sticky',
+    'semantic.elevation.inset'
   ],
 
   examples: [
