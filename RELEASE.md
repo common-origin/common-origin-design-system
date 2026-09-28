@@ -79,14 +79,15 @@ There is no post-release changelog workflow: a PR opened by the workflow's `GITH
 
 ### Publish failed after the tag was pushed
 
-First check whether npm accepted the version anyway: a run can fail or be cancelled after the publish step succeeded.
+First check whether npm accepted the version anyway: a run can fail or be cancelled after the publish step succeeded, and a new version can take a few minutes to appear in the registry. Check a few times over at least 10 minutes before concluding it wasn't published.
 
 ```bash
 npm view @common-origin/design-system@X.Y.Z version
+npm view @common-origin/design-system versions --json   # the full list, as a second check
 ```
 
 - **It prints `X.Y.Z`:** the version is published and immutable. Don't move the tag. Fix any follow-up problem in a new patch release.
-- **It prints nothing (or `E404`):** nothing was published. Fix the cause on `main` through a PR, then move the tag to the fixed commit:
+- **It still prints nothing (or `E404`) after waiting:** nothing was published. Fix the cause on `main` through a PR, then move the tag to the fixed commit:
 
 ```bash
 git push origin :refs/tags/vX.Y.Z   # delete the remote tag
@@ -114,7 +115,7 @@ Then release the correct version with the normal flow.
 
 ### Manual publishing (fallback)
 
-If automated publishing can't be fixed, a maintainer can publish from a logged-in npm session (`npm login` with two-factor authentication). This stops working once the package's **Publishing access** is set to "Require two-factor authentication and disallow tokens".
+If automated publishing can't be fixed, a maintainer can publish interactively from a logged-in npm session (`npm login`, answering the two-factor challenge). This works even when the package's **Publishing access** is "Require two-factor authentication and disallow tokens"; that setting only blocks publishing with an npm token.
 
 ```bash
 npm run build:tokens

@@ -5,7 +5,8 @@
  * Checks every Markdown file outside node_modules, build output and the changelog:
  * - relative Markdown links resolve, including titled links and reference definitions (anchors are ignored)
  * - `npm run <script>` names a script in package.json
- * - repo paths in inline code exist: root documents (`README.md`), anything under a top-level
+ * - repo paths in inline code exist: bare file names and dotfiles (`package.json`, `.babelrc`,
+ *   which pass if a file with that name exists anywhere in the repo), anything under a top-level
  *   folder, or a/b.ext paths that aren't inside an installed package. Build output (dist/) is
  *   skipped because a clean checkout doesn't have it. Bare folder names such as `atoms/` are
  *   ambiguous (they usually mean src/components/atoms/), so they aren't checked
@@ -33,8 +34,10 @@ const TOP_LEVEL_DIRS = fs
 const isRepoPath = candidate => {
   // Build output isn't in a clean checkout, so paths inside it can't be checked
   if (SKIP_DIRS.has(candidate.split('/')[0])) return false
-  // Documents named in capitals, such as `CONTRIBUTING.md` or `MAIN_INSTRUCTIONS.md`
-  if (/^[A-Z][A-Z0-9_-]*\.md$/.test(candidate)) return true
+  // File extensions such as `.d.ts` or `.docs.tsx` aren't paths
+  if (/^(\.[a-z]+)?\.(tsx?|jsx?|css|mjs|cjs|json|md|ya?ml)$/.test(candidate)) return false
+  // Bare file names and dotfiles, such as `package.json`, `.babelrc` or `CONTRIBUTING.md`
+  if (/^(\.[\w.-]+|[\w-]+(\.[\w-]+)*\.(json|js|cjs|mjs|ts|tsx|md|css|ya?ml|hbs|sh))$/.test(candidate)) return true
   if (TOP_LEVEL_DIRS.some(dir => candidate.startsWith(dir))) return true
   if (/^[@.~/]|:\/\//.test(candidate) || !/^[\w-]+\/[\w./-]+\.[a-z]{1,5}$/i.test(candidate)) return false
   return !fs.existsSync(path.join(root, 'node_modules', candidate.split('/')[0]))
@@ -44,15 +47,17 @@ const walk = dir =>
   fs.readdirSync(dir, { withFileTypes: true }).flatMap(entry => {
     if (SKIP_DIRS.has(entry.name)) return []
     const full = path.join(dir, entry.name)
-    if (entry.isDirectory()) return walk(full)
-    return entry.name.endsWith('.md') ? [full] : []
+    return entry.isDirectory() ? walk(full) : [full]
   })
+const allFiles = walk(root)
+// Bare file names (`package.json`, `.babelrc`, `tokens.json`) pass if a file with that name exists
+const fileNames = new Set(allFiles.map(file => path.basename(file)))
 
 // Placeholders and patterns, not real paths: Name/, X.Y.Z, <…>, {a,b}, globs, ellipses
 const isPlaceholder = p => /[*{}<>…]|\bName\b|ComponentName|X\.Y\.Z|yourtype|\.\.\.$/.test(p)
 
 const problems = []
-for (const file of walk(root)) {
+for (const file of allFiles.filter(file => file.endsWith('.md'))) {
   const rel = path.relative(root, file)
   if (SKIP_FILES.has(rel)) continue
   const text = fs.readFileSync(file, 'utf8')
@@ -89,9 +94,11 @@ for (const file of walk(root)) {
     for (const [, code] of line.matchAll(/`([^`\s]+)`/g)) {
       const candidate = code.replace(/[),.:;]+$/, '').replace(/:\d+$/, '')
       if (!isRepoPath(candidate) || isPlaceholder(candidate)) continue
-      // Relative to the repo root or the doc; bare document names may also mean one in .github/
-      const exists = [path.join(root, candidate), path.resolve(path.dirname(file), candidate), path.join(root, '.github', candidate)]
-        .some(option => fs.existsSync(option))
+      // Relative to the repo root or the doc; a bare file name may be anywhere in the repo
+      const exists =
+        fs.existsSync(path.join(root, candidate)) ||
+        fs.existsSync(path.resolve(path.dirname(file), candidate)) ||
+        (!candidate.includes('/') && fileNames.has(candidate))
       if (!exists) problems.push(`${where}: missing path ${candidate}`)
     }
   })

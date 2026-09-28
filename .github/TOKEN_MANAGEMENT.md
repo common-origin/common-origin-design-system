@@ -8,9 +8,11 @@ There is no ThemeProvider, runtime token validation or dark-mode switching. Comp
 
 | Tier | Source | Used by |
 |---|---|---|
-| Base | `src/tokens/base/index.json` | Only to build semantic tokens. Components never use base tokens (an ESLint rule enforces this in `src/components`). |
+| Base | `src/tokens/base/index.json` | Only to build semantic tokens. Components never use base tokens (an ESLint rule enforces this in `src/components`), except GridSystem (below). |
 | Semantic | `src/tokens/semantic/index.json` | Components, by default. References base tokens. |
 | Component | `src/tokens/component/index.json` | Components, in the three cases decision 0014 allows: a component departs from the semantic tier, a family of components shares a decision, or a variant or state matrix needs its own values. References semantic tokens. |
+
+GridSystem is the one existing exception: its public `gap*` props take base spacing keys, so it reads `tokens.base.spacing` with the rule disabled on that line. Changing the prop types is a breaking change, tracked in [#34](https://github.com/common-origin/common-origin-design-system/issues/34); don't treat it as routine cleanup.
 
 Many component-tier entries don't have the `{ "value", "type" }` shape yet, and some still reference base tokens. Normalising them is part of [#24](https://github.com/common-origin/common-origin-design-system/issues/24).
 

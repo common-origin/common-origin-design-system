@@ -47,7 +47,7 @@ Tell the user the tag that was pushed and link `https://github.com/common-origin
 - The `📦 Publish Package` run is green
 - `npm view @common-origin/design-system version` shows the new version (the registry can take a few minutes)
 
-If the publish run fails, don't assume nothing was published: a run can fail after npm accepted the version. Run `npm view @common-origin/design-system@X.Y.Z version` and follow "Publish failed after the tag was pushed" in `RELEASE.md`:
+If the publish run fails, don't assume nothing was published: a run can fail after npm accepted the version. Run `npm view @common-origin/design-system@X.Y.Z version` a few times over at least 10 minutes (the registry can lag), and follow "Publish failed after the tag was pushed" in `RELEASE.md`:
 - If npm has the version, it's immutable. Don't touch the tag; the fix goes in a new patch release.
 - If npm doesn't have it, fix the cause via a PR, then move the tag as `RELEASE.md` describes. This is the only exception to the tag rule below, and only with the user's explicit approval.
 

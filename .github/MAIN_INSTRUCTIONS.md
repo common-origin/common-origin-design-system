@@ -27,7 +27,7 @@ const { semantic } = tokens
 // color: ${semantic.color.text.default}; padding: ${semantic.spacing.layout.md};
 ```
 
-- Components use **semantic** tokens, or **component** tokens where decision [0014](../docs/foundation/decisions/0014-token-tiers.md) allows. They **never** use base tokens; an ESLint rule enforces this in `src/components`.
+- Components use **semantic** tokens, or **component** tokens where decision [0014](../docs/foundation/decisions/0014-token-tiers.md) allows. They never use base tokens; an ESLint rule enforces this in `src/components`. GridSystem is the one existing exception: its public `gap*` props take base spacing keys, so it reads `tokens.base.spacing` with the rule disabled on that line. Changing the prop types is a breaking change, tracked in [#34](https://github.com/common-origin/common-origin-design-system/issues/34); don't treat it as routine cleanup.
 - If the right token doesn't exist, add one (semantic first) rather than hard-coding.
 - There is no ThemeProvider or runtime theme: token values are baked in at build time.
 - Prop types built from tokens use `import type { Tokens } from '../../../types/tokens'` and `keyof Tokens['semantic'][…]`, never `keyof typeof` an imported JSON file, and never `@/` aliases in anything that ends up in published `.d.ts` files.
