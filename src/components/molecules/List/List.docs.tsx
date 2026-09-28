@@ -122,34 +122,8 @@ export const listDocs: ComponentDocumentation = {
   ],
   
   tokens: [
-    'component.listItem.expandedIndent.comfortable',
-    'component.listItem.expandedIndent.compact',
-    'semantic.size.touchTarget',
-    'semantic.border.focusOffset',
-    'semantic.border.width.thick',
-    'semantic.color.border.interactive',
-    'semantic.size.icon.lg',
     'semantic.border.width.thin',
-    'semantic.spacing.layout.xs (4px)',
-    'semantic.spacing.layout.sm (8px)',
-    'semantic.spacing.layout.md (12px)',
-    'semantic.spacing.layout.lg (16px)',
-    'semantic.color.background.default',
-    'semantic.color.background.subtle',
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.background.interactive-hover',
-    'semantic.color.text.default',
-    'semantic.color.text.subdued',
-    'semantic.color.icon.default',
-    'semantic.color.icon.subdued',
-    'semantic.color.border.default',
-    'semantic.border.radius.xs (2px)',
-    'semantic.border.radius.sm (4px)',
-    'semantic.opacity.disabled (0.5)',
-    // Motion
-    'semantic.motion.duration.fast',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.color.border.default'
   ],
   
   examples: [

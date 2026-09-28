@@ -59,7 +59,7 @@ export const listItemDocs: ComponentDocumentation = {
       type: '() => void',
       required: false,
       default: 'undefined',
-      description: 'Callback fired when an expandable item is toggled. Required for controlled expansion.'
+      description: 'Callback fired when an expandable item is clicked or activated with Enter or Space. Required for controlled expansion. When set on an expandable item, it replaces onClick rather than firing alongside it.'
     },
     {
       name: 'interactive',
@@ -73,7 +73,7 @@ export const listItemDocs: ComponentDocumentation = {
       type: '() => void',
       required: false,
       default: 'undefined',
-      description: 'Click handler, also triggered by Enter and Space. Set interactive as well: onClick alone does not make the item focusable or give it a button role, so it would be mouse-only.'
+      description: 'Click handler, also triggered by Enter and Space. Set interactive as well: onClick alone does not make the item focusable or give it a button role, so it would be mouse-only. On an expandable item with onToggle, onToggle is called instead and onClick is not.'
     },
     {
       name: 'disabled',
@@ -163,11 +163,25 @@ export const listItemDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.size.touchTarget',
+    'semantic.size.icon.lg',
+    'semantic.spacing.layout.xs',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.lg',
+    'semantic.border.radius.sm',
+    'semantic.border.width.thick',
+    'semantic.border.focusOffset',
+    'semantic.color.border.interactive',
+    'semantic.color.background.subtle',
     'semantic.color.background.interactive-subtle',
-    'semantic.color.background.interactive-hover',
-    'semantic.color.text.default',
-    'semantic.color.text.subdued',
+    'semantic.color.text.error',
+    'semantic.color.icon.subdued',
     'semantic.opacity.disabled',
+    'semantic.motion.duration.fast',
+    'semantic.motion.duration.normal',
+    'semantic.motion.easing.easeOut',
+    'component.button.variants.secondary.backgroundColor',
+    'component.button.variants.naked.backgroundColor',
     'component.listItem.expandedIndent.comfortable',
     'component.listItem.expandedIndent.compact'
   ],
@@ -236,7 +250,7 @@ export const listItemDocs: ComponentDocumentation = {
       'Renders an li with role="listitem" by default; the parent List provides role="list"',
       'Interactive and expandable items get role="button" on their content, are focusable, and meet the 44px minimum touch target (WCAG 2.2 AA)',
       'onClick alone does not make an item keyboard accessible: set interactive (or expandable) as well',
-      'Enter and Space activate interactive items and toggle expandable ones',
+      'Enter and Space activate interactive items and toggle expandable ones (an expandable item with onToggle calls onToggle, not onClick)',
       'Expandable items set aria-expanded; collapsed content is hidden from keyboard and screen readers',
       'Selected items set aria-current; disabled items set aria-disabled',
       'For combobox or listbox patterns, pass role="option" with aria-selected, id and tabIndex, and handle keys with onKeyDown',
