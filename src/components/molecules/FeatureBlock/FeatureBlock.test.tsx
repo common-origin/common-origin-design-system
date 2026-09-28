@@ -74,4 +74,9 @@ describe('FeatureBlock', () => {
       expect(results).toHaveNoViolations()
     })
   })
+
+  it('passes data-testid to the root element', () => {
+    render(<FeatureBlock {...mockProps} data-testid="feature" />)
+    expect(screen.getByTestId('feature')).toHaveTextContent(mockProps.title)
+  })
 })

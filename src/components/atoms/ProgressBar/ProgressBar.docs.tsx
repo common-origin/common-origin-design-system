@@ -47,6 +47,20 @@ export const progressBarDocs: ComponentDocumentation = {
       description: 'Width size for vertical progress bars using design system tokens. sm (0.25rem/4px) for subtle indicators, md (0.5rem/8px) for standard use, lg (1rem/16px) for prominent displays, xl (1.25rem/20px) for high visibility.'
     },
     {
+      name: 'aria-label',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Accessible name that says what is progressing, e.g. "Upload progress". Always provide this or aria-labelledby: without a name, screen readers announce only "progress bar" and a percentage (WCAG 4.1.2).'
+    },
+    {
+      name: 'aria-labelledby',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'ID of a visible element that names the progress bar, such as the label text above it. Use this instead of aria-label when a visible label exists.'
+    },
+    {
       name: 'data-testid',
       type: 'string',
       required: false,
@@ -75,54 +89,54 @@ export const progressBarDocs: ComponentDocumentation = {
       code: `<Stack direction="column" gap="md">
   <div>
     <Typography variant="small">0% Complete</Typography>
-    <ProgressBar value={0} />
+    <ProgressBar aria-label="Upload progress" value={0} />
   </div>
   
   <div>
     <Typography variant="small">25% Complete</Typography>
-    <ProgressBar value={25} />
+    <ProgressBar aria-label="Upload progress" value={25} />
   </div>
   
   <div>
     <Typography variant="small">50% Complete</Typography>
-    <ProgressBar value={50} />
+    <ProgressBar aria-label="Upload progress" value={50} />
   </div>
   
   <div>
     <Typography variant="small">75% Complete</Typography>
-    <ProgressBar value={75} />
+    <ProgressBar aria-label="Upload progress" value={75} />
   </div>
   
   <div>
     <Typography variant="small">100% Complete</Typography>
-    <ProgressBar value={100} />
+    <ProgressBar aria-label="Upload progress" value={100} />
   </div>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="md">
           <div>
             <Typography variant="small">0% Complete</Typography>
-            <ProgressBar value={0} />
+            <ProgressBar aria-label="Upload progress" value={0} />
           </div>
           
           <div>
             <Typography variant="small">25% Complete</Typography>
-            <ProgressBar value={25} />
+            <ProgressBar aria-label="Upload progress" value={25} />
           </div>
           
           <div>
             <Typography variant="small">50% Complete</Typography>
-            <ProgressBar value={50} />
+            <ProgressBar aria-label="Upload progress" value={50} />
           </div>
           
           <div>
             <Typography variant="small">75% Complete</Typography>
-            <ProgressBar value={75} />
+            <ProgressBar aria-label="Upload progress" value={75} />
           </div>
           
           <div>
             <Typography variant="small">100% Complete</Typography>
-            <ProgressBar value={100} />
+            <ProgressBar aria-label="Upload progress" value={100} />
           </div>
         </Stack>
       )
@@ -133,34 +147,34 @@ export const progressBarDocs: ComponentDocumentation = {
       code: `<Stack direction="column" gap="md">
   <div>
     <Typography variant="small">Default - Standard progress</Typography>
-    <ProgressBar value={60} color="default" />
+    <ProgressBar aria-label="Upload progress" value={60} color="default" />
   </div>
   
   <div>
     <Typography variant="small">Success - Task completed</Typography>
-    <ProgressBar value={100} color="success" />
+    <ProgressBar aria-label="Upload progress" value={100} color="success" />
   </div>
   
   <div>
     <Typography variant="small">Error - Failed operation</Typography>
-    <ProgressBar value={45} color="error" />
+    <ProgressBar aria-label="Upload progress" value={45} color="error" />
   </div>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="md">
           <div>
             <Typography variant="small">Default - Standard progress</Typography>
-            <ProgressBar value={60} color="default" />
+            <ProgressBar aria-label="Upload progress" value={60} color="default" />
           </div>
           
           <div>
             <Typography variant="small">Success - Task completed</Typography>
-            <ProgressBar value={100} color="success" />
+            <ProgressBar aria-label="Upload progress" value={100} color="success" />
           </div>
           
           <div>
             <Typography variant="small">Error - Failed operation</Typography>
-            <ProgressBar value={45} color="error" />
+            <ProgressBar aria-label="Upload progress" value={45} color="error" />
           </div>
         </Stack>
       )
@@ -171,44 +185,44 @@ export const progressBarDocs: ComponentDocumentation = {
       code: `<Stack direction="column" gap="md">
   <div>
     <Typography variant="small">Small (sm) - Subtle indicator</Typography>
-    <ProgressBar value={70} height="sm" />
+    <ProgressBar aria-label="Upload progress" value={70} height="sm" />
   </div>
   
   <div>
     <Typography variant="small">Medium (md) - Standard use</Typography>
-    <ProgressBar value={70} height="md" />
+    <ProgressBar aria-label="Upload progress" value={70} height="md" />
   </div>
   
   <div>
     <Typography variant="small">Large (lg) - Prominent display</Typography>
-    <ProgressBar value={70} height="lg" />
+    <ProgressBar aria-label="Upload progress" value={70} height="lg" />
   </div>
   
   <div>
     <Typography variant="small">Extra Large (xl) - High visibility</Typography>
-    <ProgressBar value={70} height="xl" />
+    <ProgressBar aria-label="Upload progress" value={70} height="xl" />
   </div>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="md">
           <div>
             <Typography variant="small">Small (sm) - Subtle indicator</Typography>
-            <ProgressBar value={70} height="sm" />
+            <ProgressBar aria-label="Upload progress" value={70} height="sm" />
           </div>
           
           <div>
             <Typography variant="small">Medium (md) - Standard use</Typography>
-            <ProgressBar value={70} height="md" />
+            <ProgressBar aria-label="Upload progress" value={70} height="md" />
           </div>
           
           <div>
             <Typography variant="small">Large (lg) - Prominent display</Typography>
-            <ProgressBar value={70} height="lg" />
+            <ProgressBar aria-label="Upload progress" value={70} height="lg" />
           </div>
           
           <div>
             <Typography variant="small">Extra Large (xl) - High visibility</Typography>
-            <ProgressBar value={70} height="xl" />
+            <ProgressBar aria-label="Upload progress" value={70} height="xl" />
           </div>
         </Stack>
       )
@@ -219,35 +233,35 @@ export const progressBarDocs: ComponentDocumentation = {
       code: `<div style={{ display: 'flex', gap: '32px', alignItems: 'flex-end' }}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={20} variant="vertical" />
+      <ProgressBar aria-label="Storage used" value={20} variant="vertical" />
     </div>
     <Typography variant="small">20%</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={40} variant="vertical" />
+      <ProgressBar aria-label="Storage used" value={40} variant="vertical" />
     </div>
     <Typography variant="small">40%</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={60} variant="vertical" />
+      <ProgressBar aria-label="Storage used" value={60} variant="vertical" />
     </div>
     <Typography variant="small">60%</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={80} variant="vertical" />
+      <ProgressBar aria-label="Storage used" value={80} variant="vertical" />
     </div>
     <Typography variant="small">80%</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={100} variant="vertical" />
+      <ProgressBar aria-label="Storage used" value={100} variant="vertical" />
     </div>
     <Typography variant="small">100%</Typography>
   </div>
@@ -256,35 +270,35 @@ export const progressBarDocs: ComponentDocumentation = {
         <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-end' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={20} variant="vertical" />
+              <ProgressBar aria-label="Storage used" value={20} variant="vertical" />
             </div>
             <Typography variant="small">20%</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={40} variant="vertical" />
+              <ProgressBar aria-label="Storage used" value={40} variant="vertical" />
             </div>
             <Typography variant="small">40%</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={60} variant="vertical" />
+              <ProgressBar aria-label="Storage used" value={60} variant="vertical" />
             </div>
             <Typography variant="small">60%</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={80} variant="vertical" />
+              <ProgressBar aria-label="Storage used" value={80} variant="vertical" />
             </div>
             <Typography variant="small">80%</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={100} variant="vertical" />
+              <ProgressBar aria-label="Storage used" value={100} variant="vertical" />
             </div>
             <Typography variant="small">100%</Typography>
           </div>
@@ -297,21 +311,21 @@ export const progressBarDocs: ComponentDocumentation = {
       code: `<div style={{ display: 'flex', gap: '32px', alignItems: 'flex-end' }}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={70} variant="vertical" color="default" />
+      <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="default" />
     </div>
     <Typography variant="small">Default</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={70} variant="vertical" color="success" />
+      <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="success" />
     </div>
     <Typography variant="small">Success</Typography>
   </div>
   
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
     <div style={{ height: '200px' }}>
-      <ProgressBar value={70} variant="vertical" color="error" />
+      <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="error" />
     </div>
     <Typography variant="small">Error</Typography>
   </div>
@@ -320,21 +334,21 @@ export const progressBarDocs: ComponentDocumentation = {
         <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-end' }}>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={70} variant="vertical" color="default" />
+              <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="default" />
             </div>
             <Typography variant="small">Default</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={70} variant="vertical" color="success" />
+              <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="success" />
             </div>
             <Typography variant="small">Success</Typography>
           </div>
           
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px' }}>
             <div style={{ height: '200px' }}>
-              <ProgressBar value={70} variant="vertical" color="error" />
+              <ProgressBar aria-label="Storage used" value={70} variant="vertical" color="error" />
             </div>
             <Typography variant="small">Error</Typography>
           </div>
@@ -350,7 +364,7 @@ export const progressBarDocs: ComponentDocumentation = {
       <Typography variant="small">Uploading document.pdf</Typography>
       <Typography variant="small" style={{ color: '#666' }}>78%</Typography>
     </div>
-    <ProgressBar value={78} color="default" />
+    <ProgressBar aria-label="Uploading document.pdf" value={78} color="default" />
   </div>
 
   <div>
@@ -358,7 +372,7 @@ export const progressBarDocs: ComponentDocumentation = {
       <Typography variant="small">Installation Complete</Typography>
       <span style={{ fontSize: '14px', color: '#16a34a' }}>100%</span>
     </div>
-    <ProgressBar value={100} color="success" />
+    <ProgressBar aria-label="Installation" value={100} color="success" />
   </div>
 
   <div>
@@ -366,7 +380,7 @@ export const progressBarDocs: ComponentDocumentation = {
       <Typography variant="small">Upload Failed</Typography>
       <span style={{ fontSize: '14px', color: '#dc2626' }}>45%</span>
     </div>
-    <ProgressBar value={45} color="error" />
+    <ProgressBar aria-label="Upload" value={45} color="error" />
   </div>
 
   <div>
@@ -374,7 +388,7 @@ export const progressBarDocs: ComponentDocumentation = {
       <Typography variant="small">Loading resources...</Typography>
       <span style={{ fontSize: '14px', color: '#666' }}>23%</span>
     </div>
-    <ProgressBar value={23} color="default" height="6px" />
+    <ProgressBar aria-label="Loading resources" value={23} color="default" height="sm" />
   </div>
 </Stack>`,
       renderComponent: () => (
@@ -384,7 +398,7 @@ export const progressBarDocs: ComponentDocumentation = {
               <Typography variant="small">Uploading document.pdf</Typography>
               <span style={{ fontSize: '14px', color: '#666' }}>78%</span>
             </div>
-            <ProgressBar value={78} color="default" />
+            <ProgressBar aria-label="Uploading document.pdf" value={78} color="default" />
           </div>
 
           <div>
@@ -392,7 +406,7 @@ export const progressBarDocs: ComponentDocumentation = {
               <Typography variant="small">Installation Complete</Typography>
               <span style={{ fontSize: '14px', color: '#16a34a' }}>100%</span>
             </div>
-            <ProgressBar value={100} color="success" />
+            <ProgressBar aria-label="Installation" value={100} color="success" />
           </div>
 
           <div>
@@ -400,7 +414,7 @@ export const progressBarDocs: ComponentDocumentation = {
               <Typography variant="small">Upload Failed</Typography>
               <span style={{ fontSize: '14px', color: '#dc2626' }}>45%</span>
             </div>
-            <ProgressBar value={45} color="error" />
+            <ProgressBar aria-label="Upload" value={45} color="error" />
           </div>
 
           <div>
@@ -408,7 +422,7 @@ export const progressBarDocs: ComponentDocumentation = {
               <Typography variant="small">Loading resources...</Typography>
               <span style={{ fontSize: '14px', color: '#666' }}>23%</span>
             </div>
-            <ProgressBar value={23} color="default" height="sm" />
+            <ProgressBar aria-label="Loading resources" value={23} color="default" height="sm" />
           </div>
         </Stack>
       )
@@ -423,13 +437,13 @@ export const progressBarDocs: ComponentDocumentation = {
       'Color variants (success, error, default) provide visual feedback but should always be accompanied by text labels for users with color vision deficiencies',
       'ARIA attributes (aria-valuenow, aria-valuemin, aria-valuemax) ensure progress values are accurately communicated to assistive technologies',
       'Progress values are clamped to 0-100 range automatically, preventing invalid ARIA attribute values that could confuse screen readers',
-      'Component meets WCAG 2.2 AA requirements when used with descriptive text labels indicating what task is in progress',
+      'Give every progress bar an accessible name with aria-label or aria-labelledby. Without one, axe reports aria-progressbar-name and screen readers cannot say what is progressing',
       'Color contrast ratios exceed minimum requirements across all color variants, ensuring visibility for users with low vision',
       'Smooth transition animations enhance visual feedback without creating distracting motion that could trigger vestibular disorders',
       'Automated accessibility testing with jest-axe validates ARIA implementation and prevents regression issues throughout development'
     ],
     keyboardNavigation: 'Not applicable - ProgressBar is a visual indicator without interactive elements. No keyboard controls required.',
-    screenReader: 'Announced as "progress bar" with current value. Screen readers automatically announce changes to aria-valuenow. Example: "progress bar, 75 percent"',
+    screenReader: 'Announced as "progress bar" with current value. Screen readers automatically announce changes to aria-valuenow. Example: "Upload progress, progress bar, 75 percent"',
     focusManagement: 'Not applicable - ProgressBar cannot receive focus as it is a non-interactive presentation component.'
   },
 

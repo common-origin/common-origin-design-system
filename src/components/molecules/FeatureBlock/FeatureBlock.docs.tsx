@@ -55,6 +55,13 @@ export const featureBlockDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       description: 'Custom text for the Read More button (defaults to "Read more")'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element'
     }
   ],
 

@@ -24,6 +24,8 @@ export interface BadgeProps {
   'aria-label'?: string
   /** Additional CSS class */
   className?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
 }
 
 const scaleIn = keyframes`
@@ -109,7 +111,8 @@ export const Badge: React.FC<BadgeProps> = ({
   variant = 'default',
   dot = false,
   'aria-label': ariaLabel,
-  className
+  className,
+  'data-testid': dataTestId
 }) => {
   const isVisible = dot || count > 0
   const displayCount = count > max ? `${max}+` : count.toString()
@@ -124,7 +127,7 @@ export const Badge: React.FC<BadgeProps> = ({
   const label = ariaLabel || defaultAriaLabel
 
   return (
-    <BadgeWrapper className={className}>
+    <BadgeWrapper className={className} data-testid={dataTestId}>
       {children}
       <BadgeIndicator
         $variant={variant}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { axe } from 'jest-axe'
 import { ProgressBar } from './ProgressBar'
 
 describe('ProgressBar', () => {
@@ -122,6 +123,39 @@ describe('ProgressBar', () => {
     it('handles decimal values', () => {
       render(<ProgressBar value={33.33} data-testid="progress" />)
       expect(screen.getByTestId('progress')).toHaveAttribute('aria-valuenow', '33.33')
+    })
+  })
+
+  describe('Accessibility', () => {
+    it('uses aria-label as the accessible name', () => {
+      render(<ProgressBar value={40} aria-label="Upload progress" />)
+      expect(screen.getByRole('progressbar', { name: 'Upload progress' })).toBeInTheDocument()
+    })
+
+    it('uses aria-labelledby as the accessible name', () => {
+      render(
+        <>
+          <span id="upload-label">Uploading report.pdf</span>
+          <ProgressBar value={40} aria-labelledby="upload-label" />
+        </>
+      )
+      expect(screen.getByRole('progressbar', { name: 'Uploading report.pdf' })).toBeInTheDocument()
+    })
+
+    it('has no axe violations when horizontal', async () => {
+      const { container } = render(<ProgressBar value={50} aria-label="Upload progress" />)
+      expect(await axe(container)).toHaveNoViolations()
+    })
+
+    it('has no axe violations when vertical, for each colour', async () => {
+      const { container } = render(
+        <>
+          <ProgressBar value={20} variant="vertical" color="default" aria-label="Storage used" />
+          <ProgressBar value={100} variant="vertical" color="success" aria-label="Sync" />
+          <ProgressBar value={45} variant="vertical" color="error" aria-label="Backup" />
+        </>
+      )
+      expect(await axe(container)).toHaveNoViolations()
     })
   })
 })

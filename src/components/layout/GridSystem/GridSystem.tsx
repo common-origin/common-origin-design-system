@@ -35,6 +35,8 @@ interface GridProps {
   gapX?: keyof Tokens['base']['spacing']
   gapY?: keyof Tokens['base']['spacing']
   className?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
   children: React.ReactNode
 }
 
@@ -60,6 +62,7 @@ export const Grid: React.FC<GridProps> = ({
   gapX, 
   gapY, 
   className, 
+  'data-testid': dataTestId,
   children 
 }) => (
   <GridContainer
@@ -68,6 +71,7 @@ export const Grid: React.FC<GridProps> = ({
     $gapX={gapX ? gapSpacing[gapX] : undefined}
     $gapY={gapY ? gapSpacing[gapY] : undefined}
     className={className}
+    data-testid={dataTestId}
   >
     {children}
   </GridContainer>
@@ -86,6 +90,8 @@ interface GridColProps {
   orderLg?: number
   orderXl?: number
   className?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
   children: React.ReactNode
 }
 
@@ -167,6 +173,7 @@ export const GridCol: React.FC<GridColProps> = ({
   orderLg,
   orderXl,
   className, 
+  'data-testid': dataTestId,
   children 
 }) => (
   <GridColContainer
@@ -181,6 +188,7 @@ export const GridCol: React.FC<GridColProps> = ({
     $orderLg={orderLg}
     $orderXl={orderXl}
     className={className}
+    data-testid={dataTestId}
   >
     {children}
   </GridColContainer>
@@ -209,6 +217,8 @@ interface ResponsiveGridProps {
   gapYLg?: keyof Tokens['base']['spacing']
   gapYXl?: keyof Tokens['base']['spacing']
   className?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
   children: React.ReactNode
 }
 
@@ -365,6 +375,7 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
   gapYLg,
   gapYXl,
   className, 
+  'data-testid': dataTestId,
   children 
 }) => (
   <ResponsiveGridContainer
@@ -389,6 +400,7 @@ export const ResponsiveGrid: React.FC<ResponsiveGridProps> = ({
     $gapYLg={gapYLg ? gapSpacing[gapYLg] : undefined}
     $gapYXl={gapYXl ? gapSpacing[gapYXl] : undefined}
     className={className}
+    data-testid={dataTestId}
   >
     {children}
   </ResponsiveGridContainer>

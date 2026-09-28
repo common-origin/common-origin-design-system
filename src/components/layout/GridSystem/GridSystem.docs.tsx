@@ -30,7 +30,14 @@ export const gridSystemDocs: ComponentDocumentation = {
     { name: 'gapYLg', type: 'SpacingToken', required: false, description: 'Vertical gap between rows at lg breakpoint' },
     { name: 'gapYXl', type: 'SpacingToken', required: false, description: 'Vertical gap between rows at xl breakpoint' },
     { name: 'className', type: 'string', required: false, description: 'Custom className for styling' },
-    { name: 'children', type: 'React.ReactNode', required: true, description: 'Child nodes' }
+    { name: 'children', type: 'React.ReactNode', required: true, description: 'Child nodes' },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element of Grid, GridCol and ResponsiveGrid'
+    }
   ],
   tokens: [
     'base.spacing.* - gap props take base spacing keys (public API; exception to decision 0014)',

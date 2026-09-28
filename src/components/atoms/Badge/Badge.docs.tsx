@@ -58,6 +58,13 @@ export const badgeDocs: ComponentDocumentation = {
       required: false,
       default: 'undefined',
       description: 'Additional CSS class for custom styling'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element'
     }
   ],
   

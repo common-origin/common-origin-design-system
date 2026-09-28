@@ -24,6 +24,8 @@ export interface DropdownProps {
   label?: string
   helperText?: string
   error?: string
+  /** Test identifier for automated testing */
+  'data-testid'?: string
 }
 
 const DropdownContainer = styled.div`
@@ -171,7 +173,8 @@ export const Dropdown: React.FC<DropdownProps> = ({
   className,
   label,
   helperText,
-  error
+  error,
+  'data-testid': dataTestId
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [focusedIndex, setFocusedIndex] = useState(-1)
@@ -281,7 +284,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   }
   
   return (
-    <DropdownContainer ref={dropdownRef} className={className}>
+    <DropdownContainer ref={dropdownRef} className={className} data-testid={dataTestId}>
       {label && (
         <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: field.gap }}>
           <Typography variant="label">{label}</Typography>

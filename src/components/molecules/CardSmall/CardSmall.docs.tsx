@@ -49,6 +49,13 @@ export const cardSmallDocs: ComponentDocumentation = {
       type: 'React.ComponentType<any>',
       required: false,
       description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). Receives href and children props. When not provided, uses standard <a> tag'
+    },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the root element'
     }
   ],
   

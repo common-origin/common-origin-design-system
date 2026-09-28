@@ -102,6 +102,13 @@ export const checkboxDocs: ComponentDocumentation = {
       required: false,
       description: 'Ref forwarded to the underlying input element',
     },
+    {
+      name: 'data-testid',
+      type: 'string',
+      required: false,
+      default: 'undefined',
+      description: 'Test identifier for automated testing, applied to the input element (passed through with the other input attributes)'
+    }
   ],
 
   examples: [

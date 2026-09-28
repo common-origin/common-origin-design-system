@@ -69,4 +69,9 @@ describe('CardLarge', () => {
       expect(results).toHaveNoViolations()
     })
   })
+
+  it('passes data-testid to the root element', () => {
+    render(<CardLarge {...baseProps} data-testid="card" />)
+    expect(screen.getByTestId('card')).toHaveTextContent(baseProps.title)
+  })
 })

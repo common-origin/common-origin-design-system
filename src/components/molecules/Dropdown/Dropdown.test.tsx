@@ -583,4 +583,9 @@ describe('Dropdown Component', () => {
       expect(trigger).toHaveAttribute('aria-invalid', 'false')
     })
   })
+
+  it('passes data-testid to the root element', () => {
+    render(<Dropdown {...defaultProps} data-testid="dropdown" />)
+    expect(screen.getByTestId('dropdown')).toContainElement(screen.getByRole('button'))
+  })
 })
