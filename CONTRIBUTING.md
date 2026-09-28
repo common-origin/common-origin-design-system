@@ -1,6 +1,8 @@
 # Contributing to Common Origin Design System
 
-Thank you for contributing! This guide will help you follow our standards for commits, releases, and documentation.
+Thank you for contributing! This guide covers commits, releases, components, testing and pull requests.
+
+Start with the [foundation](docs/foundation/README.md): it explains why the system exists, who it serves, and the principles (`P1`–`P9`) and decisions used to resolve design questions. Where any other document disagrees with it, the foundation wins.
 
 ## Quick Start
 
@@ -20,7 +22,7 @@ Thank you for contributing! This guide will help you follow our standards for co
    ```
 
 3. **Before committing:**
-   - Ensure all tests pass
+   - Ensure typecheck, lint and tests pass (and `build:package` plus `verify:package` for package changes)
    - Follow conventional commit format (see below)
    - Update component documentation if needed
 
@@ -145,8 +147,10 @@ export const staticComponentsData: ComponentData[] = [
 All components require:
 - ✅ Unit tests for all props and variants
 - ♿ Accessibility tests with `jest-axe`
-- ⌨️ Keyboard navigation tests
-- 🎨 Visual regression tests for interactive states
+- ⌨️ Keyboard tests for interactive components
+- 🏷️ `data-testid` support on the root element
+
+There are no visual regression tests. Check visual changes on the docs site (`npm run docs:dev`).
 
 Example:
 ```typescript
@@ -281,6 +285,7 @@ export interface BoxProps {
    npm run typecheck  # No type errors
    npm run lint       # No lint errors, no new warnings
    npm run build:package  # Package builds
+   npm run verify:package # Published types and exports work for consumers
    ```
 
 4. **Push and create PR:**
@@ -291,6 +296,7 @@ export interface BoxProps {
 5. **PR requirements:**
    - Descriptive title following conventional commit format
    - Summary of changes
+   - Changes to visual behaviour cite the principle (`P1`–`P9`) or decision that justifies them
    - Test coverage for new code
    - Documentation updated
    - No breaking changes (or clearly documented)
@@ -299,24 +305,26 @@ export interface BoxProps {
 
 ```
 common-origin-design-system/
-├── .github/                    # GitHub configs and docs
-│   ├── DOCUMENTATION_STANDARDS.md
-│   ├── RELEASE_PROCESS.md
-│   └── workflows/              # GitHub Actions
+├── .github/                    # CI workflows, PR template, older contributor guidance
+├── config/                     # Style Dictionary config
+├── docs/
+│   ├── foundation/             # Purpose, users, principles, visual language, decisions
+│   └── tokens/                 # Token pipeline
 ├── src/
-│   ├── components/             # Component library
-│   │   ├── atoms/              # Basic components
-│   │   ├── molecules/          # Composed components
-│   │   ├── layout/             # Layout components
+│   ├── components/             # The published package
+│   │   ├── atoms/
+│   │   ├── molecules/
+│   │   ├── layout/
 │   │   └── index.ts
-│   ├── types/                  # Shared TypeScript types
-│   └── styles/                 # Design tokens and global styles
-├── pages/                      # Documentation site (Next.js)
-├── lib/                        # Build and documentation utilities
-│   ├── docgen/                 # Documentation generation
-│   └── releases/               # Changelog generation
-├── scripts/                    # Build and release scripts
-└── tests/                      # Test utilities
+│   ├── tokens/                 # Token sources (base, semantic, component)
+│   ├── styles/                 # Generated tokens and icon data
+│   ├── types/                  # Shared types (Tokens, IconName)
+│   ├── lib/                    # Shared helpers and docs-site data (componentsData.ts)
+│   ├── page-components/        # Docs-site only
+│   ├── patterns/               # Docs-site only
+│   └── test-utils/             # Test helpers
+├── pages/                      # Docs site (Next.js)
+└── scripts/                    # Release and package-verification scripts
 ```
 
 ## Resources

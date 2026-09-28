@@ -49,7 +49,10 @@ Use semantic tokens (`tokens.semantic.*`) in product code. Base tokens are build
 
 ## Fonts
 
-The tokens specify **Inter** (weights 400, 500, 600, 700) for all UI text, but the package does not load any fonts. Each product must load Inter itself — for example with `next/font`, Fontsource, or its own `@font-face`. Without it, text falls back to the system sans-serif.
+The tokens specify **Inter** (weights 400, 500, 600, 700) for all UI text, as the literal family name `'Inter'`. The package does not load any fonts, so each product must load Inter itself **under the family name `Inter`**. Without it, text falls back to the system sans-serif.
+
+- **Fontsource** (`@fontsource/inter`) or your own `@font-face` with `font-family: 'Inter'` both work as-is. The docs site uses `@font-face` in `styles/fonts.css`.
+- **`next/font`** renames the family to a generated name (such as `__Inter_a1b2c3`), so the tokens' `'Inter'` won't match it. Use one of the options above instead.
 
 ## Server rendering
 
@@ -110,4 +113,3 @@ Wrap `{children}` in `<StyledComponentsRegistry>` inside `<body>` in `app/layout
 | Under Node-native ESM resolution (`module`/`moduleResolution: node16` or `nodenext` in an ESM project, no bundler), the **default** import of `@common-origin/design-system/tokens` is typed as the whole module | Use the named export: `import { tokens } from '@common-origin/design-system/tokens'`. Bundler and CommonJS setups are unaffected. Tracked in [#41](https://github.com/common-origin/common-origin-design-system/issues/41) |
 | Loading the package with native Node ESM and no bundler (`import` in a plain Node `.mjs` script or server) fails: styled-components has no ESM entry for Node, so its default import resolves to the whole CommonJS module | Use a bundler or test runner (Next.js, Vite, webpack, Vitest), or load the CommonJS build with `require`. Jest and other `require()` consumers work. Tracked in [#41](https://github.com/common-origin/common-origin-design-system/issues/41) |
 | Everything ships as a single bundle, including all icon data | None yet |
-| Site-only dependencies (TypeScript, ts-morph, remark, Hotjar) install as runtime dependencies | None yet |
