@@ -23,6 +23,8 @@ const flagged = [
   ['numeric interpolation in css helper', 'const a = css`\n  z-index: ${10};\n`'],
   ['zIndex style property', 'const a = { zIndex: 9999 }'],
   ['plus-signed zIndex style property', 'const a = { zIndex: +2 }'],
+  ['hex colour in an untagged template string', 'const a = `#fff`'],
+  ['colour function in an untagged template string', 'const a = `rgba(0, 0, 0, 0.1)`'],
   ['colour in an SVG attribute', 'const a = <path fill="#000" />'],
   ['colour in a style object', "const a = { color: '#fff' }"],
   ['quoted zIndex key', "const a = { 'zIndex': 9999 }"],

@@ -109,6 +109,10 @@ export default tseslint.config(
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
+          selector: 'TemplateLiteral[expressions.length=0]:not(TaggedTemplateExpression > TemplateLiteral) > TemplateElement[value.raw=/^\\s*#[0-9a-f]{3,8}\\s*$|\\b(rgb|hsl)a?\\(/i]',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
           selector: 'TaggedTemplateExpression > TemplateLiteral > TemplateElement[value.raw=/#[0-9a-f]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]',
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
