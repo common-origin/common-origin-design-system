@@ -113,7 +113,7 @@ export default tseslint.config(
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
-          selector: 'TemplateElement[value.raw=/z-index:\\s*-?[0-9]{2,}/]',
+          selector: 'TemplateElement[value.raw=/z-index:\\s*-?([2-9]|[1-9][0-9])/]',
           message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
         },
       ],
