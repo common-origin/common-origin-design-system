@@ -226,18 +226,11 @@ const StyledBadge = styled.span.withConfig({
   font: ${tokens.component.tabBar.badge.typography};
   font-weight: ${tokens.component.tabBar.badge.fontWeight};
   border-radius: ${semantic.border.radius.circle};
-  background-color: ${props => {
-    if (props.$variant === 'pills') {
-      return props.$isActive 
-        ? 'rgba(255, 255, 255, 0.2)'
-        : semantic.color.background.interactive
-    }
-    return semantic.color.background.interactive
-  }};
-  color: ${props => props.$variant === 'pills' && props.$isActive 
-    ? semantic.color.text.inverse
-    : semantic.color.text.inverse
+  background-color: ${props => props.$variant === 'pills' && props.$isActive
+    ? semantic.color.background['inverse-overlay']
+    : semantic.color.background.interactive
   };
+  color: ${semantic.color.text.inverse};
 `
 
 /**

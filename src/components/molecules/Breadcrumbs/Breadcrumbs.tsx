@@ -21,7 +21,7 @@ interface BreadcrumbsProps {
 }
 
 const BreadcrumbNavStyled = styled.nav`
-  border-bottom: ${tokens.semantic?.border?.default || '0.0625rem solid #e9ecef'};
+  border-bottom: ${tokens.semantic.border.default};
 
   ol {
     display: flex;

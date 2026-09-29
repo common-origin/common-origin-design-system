@@ -280,6 +280,7 @@
   --base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --component-chip-close-button-size: 1.25rem;
   --component-input-textarea-min-height: 7.5rem;
   --component-badge-dot-size: 0.5rem;
   --component-badge-count-min-width: 1rem;
@@ -481,6 +482,7 @@
   --semantic-color-background-overlay: rgba(33, 37, 41, 0.5);
   --semantic-color-background-hover-overlay: rgba(33, 37, 41, 0.1);
   --semantic-color-background-active-overlay: rgba(33, 37, 41, 0.15);
+  --semantic-color-background-inverse-overlay: rgba(255, 255, 255, 0.2);
   --semantic-color-border-default: #e9ecef;
   --semantic-color-border-subtle: #dee2e6;
   --semantic-color-border-strong: #343a40;

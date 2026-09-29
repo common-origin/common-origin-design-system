@@ -144,6 +144,7 @@ export const filterChipDocs: ComponentDocumentation = {
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.sm',
     // Close button shape and states
+    'component.chip.closeButton.size',
     'semantic.border.radius.xs',
     'semantic.color.text.disabled',
     'semantic.color.background.hover-overlay',
@@ -349,6 +350,7 @@ States:
         description:
           'Button element rendered when onDismiss is provided. Has its own hover and active states (near-black at 10% and 15%). Independently focusable. Labelled with "Remove [label]" for screen readers.',
         tokens: [
+          'component.chip.closeButton.size',
           'semantic.spacing.layout.sm',
           'semantic.border.radius.xs',
           'semantic.color.text.disabled',

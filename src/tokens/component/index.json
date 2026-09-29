@@ -96,6 +96,13 @@
       }
     },
     "chip": {
+      "closeButton": {
+        "size": {
+          "value": "{semantic.size.dimension.5}",
+          "type": "size",
+          "description": "FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip."
+        }
+      },
       "default": {
         "backgroundColor": "{semantic.color.background.surface}",
         "textColor": "{semantic.color.text.default}",

@@ -493,6 +493,10 @@ export interface TokensComponentButton {
   sizes: TokensComponentButtonSizes;
 }
 
+export interface TokensComponentChipCloseButton {
+  size: string;
+}
+
 export interface TokensComponentChipDefault {
 }
 
@@ -575,6 +579,7 @@ export interface TokensComponentChipSizes {
 }
 
 export interface TokensComponentChip {
+  closeButton: TokensComponentChipCloseButton;
   default: TokensComponentChipDefault;
   hover: TokensComponentChipHover;
   active: TokensComponentChipActive;
@@ -1210,6 +1215,7 @@ export interface TokensSemanticColorBackground {
   overlay: string;
   'hover-overlay': string;
   'active-overlay': string;
+  'inverse-overlay': string;
 }
 
 export interface TokensSemanticColorBorder {

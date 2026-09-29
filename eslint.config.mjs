@@ -103,6 +103,19 @@ export default tseslint.config(
           selector: "VariableDeclarator[init.name='tokens'] > ObjectPattern > Property[key.name='base']",
           message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
         },
+        // P3: colours and z-index layers come from tokens (#34). Stacking inside one component (-1, 0, 1) may use literals (decision 0013).
+        {
+          selector: 'Literal[value=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/]',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: 'TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/]',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: 'TemplateElement[value.raw=/z-index:\\s*-?[0-9]{2,}/]',
+          message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
+        },
       ],
     },
   },

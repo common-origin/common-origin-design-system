@@ -685,6 +685,11 @@
           "value": "rgba(33, 37, 41, 0.15)",
           "type": "color",
           "description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth."
+        },
+        "inverse-overlay": {
+          "value": "rgba(255, 255, 255, 0.2)",
+          "type": "color",
+          "description": "Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse."
         }
       },
       "border": {
