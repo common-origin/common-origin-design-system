@@ -27,6 +27,8 @@ const flagged = [
   ['colour function in an untagged template string', 'const a = `rgba(0, 0, 0, 0.1)`'],
   ['colour in an SVG attribute', 'const a = <path fill="#000" />'],
   ['colour in a style object', "const a = { color: '#fff' }"],
+  ['colour inside a style object value', "const a = { border: '1px solid #fff' }"],
+  ['colour inside a gradient style value', "const a = { background: 'linear-gradient(#fff, #000)' }"],
   ['quoted zIndex key', "const a = { 'zIndex': 9999 }"],
   ['negative zIndex style property', 'const a = { zIndex: -5 }'],
   ['base token', 'const a = tokens.base.spacing'],
@@ -40,6 +42,7 @@ const allowed = [
   ['plain template string', 'const a = `item-${2}`'],
   ['hex-like text', "const a = <a href=\"#abc\" aria-label=\"Issue #123\">{`Issue #${n}`}</a>"],
   ['zero-padded local stacking in CSS', 'const A = styled.div`\n  z-index: 01;\n  z-index: +1;\n`'],
+  ['hash link in an object', "const a = { href: '#abc', label: 'Issue #123' }"],
   ['hash link', "const href = '#section'"],
 ]
 

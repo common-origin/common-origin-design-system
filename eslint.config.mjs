@@ -105,7 +105,11 @@ export default tseslint.config(
         },
         // P3: colours and z-index layers come from tokens (#34). Stacking inside one component (-1, 0, 1) may use literals (decision 0013).
         {
-          selector: 'Literal[value=/^\\s*#[0-9a-f]{3,8}\\s*$|\\b(rgb|hsl)a?\\(/i]:not(JSXAttribute[name.name=/^(href|id|aria-)/] > Literal)',
+          selector: 'Literal[value=/^\\s*#[0-9a-f]{3,8}\\s*$|\\b(rgb|hsl)a?\\(/i]:not(JSXAttribute[name.name=/^(href|id|aria-)/] > Literal):not(Property > Literal.value)',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: "Property:not([key.name=/^(href|id|label|title|aria)/i]) > Literal.value[value=/#[0-9a-f]{3,8}\\b/i]",
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
