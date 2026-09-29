@@ -159,7 +159,7 @@ const MicButtonWrapper = styled.div.withConfig({
 
 // Masks read only alpha, so the opaque stop is a mask value, not a colour (decision 0010).
 // eslint-disable-next-line no-restricted-syntax
-const ringMask = 'radial-gradient(farthest-side, transparent calc(100% - var(--ring-thickness)), #000 calc(100% - var(--ring-thickness)))'
+const ringMask = css`radial-gradient(farthest-side, transparent calc(100% - var(--ring-thickness)), #000 calc(100% - var(--ring-thickness)))`
 
 const MicListeningRing = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
