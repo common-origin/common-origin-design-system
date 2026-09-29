@@ -9,13 +9,16 @@ The flow is in `.github/agents/release.agent.md` (shared with Copilot) and the b
 
 ## Claude-specific rules
 
-- **Ask, then act.** Get the release type (patch, minor, major or `X.Y.Z`) from Ollie. `scripts/release.sh` prompts `[y/N]`, which can't be answered interactively here, so only after Ollie has confirmed the exact version in chat run:
+- **Preview, confirm, then act.** Get the release type (patch, minor, major or `X.Y.Z`) from Ollie. `scripts/release.sh` prompts `[y/N]`, which can't be answered interactively here, so preview first by answering no. Declining exits before anything is created or pushed:
   ```bash
-  echo y | npm run release:create <type>
+  echo n | npm run release:create <type>
   ```
-  If the preview shows a different version from the one confirmed, stop.
+  Show Ollie the previewed version and commit list. Only after Ollie confirms that exact version in chat, run it for real, passing the explicit version so it can't differ from the preview:
+  ```bash
+  echo y | npm run release:create X.Y.Z
+  ```
 - **The version-bump PR is a normal PR:** request Copilot, wait for the review, fix or answer every comment, resolve the threads, and merge only with Ollie's explicit yes.
-- **Tagging publishes, and publishing can't be undone.** Confirm again in chat immediately before:
+- **Tagging publishes, and publishing can't be undone.** Preview the same way (`echo n | npm run release:tag` checks `main` and shows the version without tagging), then confirm again in chat immediately before:
   ```bash
   git switch main && git pull
   echo y | npm run release:tag

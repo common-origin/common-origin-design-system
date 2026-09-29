@@ -26,15 +26,19 @@
       "Bash(gh pr merge *)"
     ],
     "deny": [
-      "Bash(npm publish *)",
       "Bash(npm publish)",
+      "Bash(npm publish *)",
       "Bash(npm run release)",
+      "Bash(npm run release *)",
       "Bash(git push origin main)",
       "Bash(git push origin main *)",
+      "Bash(git push origin HEAD:main)",
       "Bash(git push origin HEAD:main *)",
+      "Bash(git push -u origin main)",
       "Bash(git push -u origin main *)",
-      "Bash(gh pr merge * --admin *)",
-      "Bash(gh pr merge --admin *)"
+      "Bash(gh pr merge --admin *)",
+      "Bash(gh pr merge * --admin)",
+      "Bash(gh pr merge * --admin *)"
     ]
   }
 }
