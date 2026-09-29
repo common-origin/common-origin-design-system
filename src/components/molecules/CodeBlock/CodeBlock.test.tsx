@@ -310,6 +310,19 @@ console.log(greeting + " " + name);`
       expect(expandButton).toHaveTextContent('Show more')
     })
 
+    it('announces expand and collapse in a polite live region', () => {
+      const { container } = render(<CodeBlock maxHeight={100}>{longCode}</CodeBlock>)
+      const liveRegion = container.querySelector('[aria-live="polite"]')
+      expect(liveRegion).toBeInTheDocument()
+      expect(liveRegion).toBeEmptyDOMElement()
+
+      fireEvent.click(screen.getByTestId('expand-button'))
+      expect(liveRegion).toHaveTextContent('Code block expanded')
+
+      fireEvent.click(screen.getByTestId('expand-button'))
+      expect(liveRegion).toHaveTextContent('Code block collapsed')
+    })
+
     it('expand button has aria-expanded attribute', () => {
       render(<CodeBlock maxHeight={100}>{longCode}</CodeBlock>)
       const expandButton = screen.getByTestId('expand-button')

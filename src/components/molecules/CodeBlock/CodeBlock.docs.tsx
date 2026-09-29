@@ -822,6 +822,7 @@ export default config`}
 │ │ ░░░░░░░░░ Gradient overlay ░░░░░░░░░            │ │
 │ │              [Show more ▼]                      │ │
 │ └─────────────────────────────────────────────────┘ │
+│ LiveRegion (visually hidden, with expand button)    │
 └─────────────────────────────────────────────────────┘
     `,
     parts: [
@@ -862,6 +863,11 @@ export default config`}
           'semantic.spacing.layout.4xl',
           'semantic.color.background.subtle'
         ]
+      },
+      {
+        name: 'LiveRegion',
+        description: 'Visually hidden polite live region, rendered with the expand button. Announces "Code block expanded" or "Code block collapsed" to screen readers when the button is used.',
+        tokens: []
       }
     ]
   },

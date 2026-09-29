@@ -103,6 +103,35 @@ export default tseslint.config(
           selector: "VariableDeclarator[init.name='tokens'] > ObjectPattern > Property[key.name='base']",
           message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
         },
+        // P3: colours and z-index layers come from tokens (#34). Stacking inside one component (-1, 0, 1) may use literals (decision 0013).
+        {
+          selector: 'Literal[value=/^\\s*#[0-9a-f]{3,8}\\s*$|\\b(rgb|hsl)a?\\(/i]:not(JSXAttribute[name.name=/^(href|id|aria-)/] > Literal):not(Property > Literal.value)',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: "Property:not([key.name=/^(href|id|label|title|aria-[a-z]+|aria[A-Z][a-zA-Z]*)$/], [key.value=/^(href|id|label|title|aria-[a-z]+|aria[A-Z][a-zA-Z]*)$/]) > Literal.value[value=/#[0-9a-f]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]",
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: 'TemplateLiteral[expressions.length=0]:not(TaggedTemplateExpression > TemplateLiteral) > TemplateElement[value.raw=/^\\s*#[0-9a-f]{3,8}\\s*$|\\b(rgb|hsl)a?\\(/i]',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: 'TaggedTemplateExpression > TemplateLiteral > TemplateElement[value.raw=/#[0-9a-f]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]',
+          message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
+        },
+        {
+          selector: 'TemplateElement[value.raw=/z-index\\s*:\\s*[+-]?0*([2-9]|[1-9][0-9])/i]',
+          message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
+        },
+        {
+          selector: "Property:matches([key.name='zIndex'], [key.value='zIndex']) > Literal[value>1], Property:matches([key.name='zIndex'], [key.value='zIndex']) > UnaryExpression[operator=/^[+-]$/] > Literal[value>1], Property:matches([key.name='zIndex'], [key.value='zIndex']) > Literal.value[value=/^\\s*[+-]?0*([2-9]|[1-9][0-9])/]",
+          message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
+        },
+        {
+          selector: 'TaggedTemplateExpression > TemplateLiteral > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > UnaryExpression > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > Literal.body[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > UnaryExpression.body > Literal[raw=/^[0-9.]+$/]',
+          message: 'Numeric literal interpolated into CSS. Use a token (P3). A permitted literal, such as local stacking z-index -1, 0 or 1, goes straight in the CSS text.',
+        },
       ],
     },
   },

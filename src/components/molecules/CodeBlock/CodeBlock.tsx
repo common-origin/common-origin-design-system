@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../atoms/Button'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 
 const { semantic: { color, border, spacing, motion } } = tokens
 
@@ -146,6 +146,10 @@ const CopyButton: React.FC<{ text: string; onCopy?: () => void }> = ({ text, onC
   )
 }
 
+const LiveRegion = styled.span`
+  ${visuallyHidden}
+`
+
 /**
  * CodeBlock component for displaying formatted code with optional copy functionality
  * and expandable content for long code blocks.
@@ -183,6 +187,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
 }) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded)
   const [needsExpansion, setNeedsExpansion] = useState(false)
+  const [announcement, setAnnouncement] = useState('')
   const contentRef = useRef<HTMLPreElement>(null)
   
   // Check if content exceeds maxHeight
@@ -195,20 +200,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   
   const handleToggleExpand = () => {
     setIsExpanded(prev => !prev)
-    
     // Announce state change to screen readers
-    const announcement = isExpanded ? 'Code block collapsed' : 'Code block expanded'
-    const announcer = document.createElement('div')
-    announcer.setAttribute('aria-live', 'polite')
-    announcer.setAttribute('aria-atomic', 'true')
-    announcer.setAttribute('class', 'sr-only')
-    announcer.style.cssText = 'position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;'
-    announcer.textContent = announcement
-    document.body.appendChild(announcer)
-    
-    setTimeout(() => {
-      document.body.removeChild(announcer)
-    }, 1000)
+    setAnnouncement(isExpanded ? 'Code block collapsed' : 'Code block expanded')
   }
   
   const showExpandButton = maxHeight && needsExpansion
@@ -241,6 +234,12 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
             {isExpanded ? 'Show less' : 'Show more'}
           </Button>
         </ExpandButtonWrapper>
+      )}
+      
+      {showExpandButton && (
+        <LiveRegion aria-live="polite" aria-atomic="true">
+          {announcement}
+        </LiveRegion>
       )}
       
       {showCopyButton && (

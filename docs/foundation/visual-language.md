@@ -10,8 +10,10 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 |---|---|
 | Page background uses `semantic.color.background.default` (`#f8f9fa`). Never hard-code a background. ([0006](decisions/0006-page-background.md)) | Enforced |
 | Text uses `semantic.color.text.*`: `default` `#212529`, `subdued` `#495057`, `disabled` `#adb5bd`, `inverse` `#ffffff`. | Enforced |
-| Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens; overlays use `background.overlay`, `hover-overlay` and `active-overlay`. | Enforced |
+| Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens; overlays use `background.overlay`, `hover-overlay` and `active-overlay`, and light overlays on strong backgrounds use `inverse-overlay`. | Enforced |
 | Shadows (`base.shadow.*`, `semantic.elevation.*`) may use pure-black alpha. | Exception ([0012](decisions/0012-shadows-use-black.md)) |
+| Components take every colour from tokens. ESLint fails on hex, `rgb(a)` and `hsl(a)` literals in `src/components` ([P3](principles.md#p3-tokens-not-values)). | Enforced |
+| Colour literals that stay, each behind a commented `eslint-disable`: selected-chip hover and active (pending [#21](https://github.com/common-origin/common-origin-design-system/issues/21)), and CSS mask stops, which set alpha only and are never seen (AgentInput's ring). | Exception |
 | Status colours (`success`, `error`, `warning`, info) communicate status only. | Enforced |
 | Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `emphasis` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |
@@ -68,12 +70,12 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Rule | Status |
 |---|---|
 | Spacing comes from spacing tokens (base unit 0.25rem). Off-grid values snap to the nearest spacing token; if that leaves a component visually unbalanced, the component is rebalanced rather than given an off-grid token. | Enforced |
-| Pixel values in components come from tokens: border widths (`border.width.thin`/`thick`), focus offsets (`border.focusOffset`), sizes and breakpoints. | Target — shared sizes are semantic (`size.touchTarget`, `size.overlay`, `size.menu`) and one-off sizes are component tokens on `size.dimension`. Still px: badge heights (pending [#62](https://github.com/common-origin/common-origin-design-system/issues/62)), TabBar's 1px press nudge (pending [#73](https://github.com/common-origin/common-origin-design-system/issues/73)), and Chip's close-button `padding: 2px`, which sits halfway between `none` and `xs`, so snapping either way changes the button's size and needs a visual check |
+| Pixel values in components come from tokens: border widths (`border.width.thin`/`thick`), focus offsets (`border.focusOffset`), sizes and breakpoints. | Target — shared sizes are semantic (`size.touchTarget`, `size.overlay`, `size.menu`) and one-off sizes are component tokens on `size.dimension`. Still px: badge heights (pending [#62](https://github.com/common-origin/common-origin-design-system/issues/62)) and TabBar's 1px press nudge (pending [#73](https://github.com/common-origin/common-origin-design-system/issues/73)) |
 | Px literals that aren't design values may stay: the visually-hidden technique (`visuallyHidden` in `src/lib/styleUtils.ts`), drawn glyph geometry (the Checkbox tick), 1px overlaps that seat an active tab over its border, and "no limit" max-heights used to animate collapse. | Exception |
 | Whitespace is generous by default; dense products (A2UI) set density per component. No global density mode. ([P9](principles.md#p9-serve-the-full-range)) | Enforced |
 | Signature editorial layout: narrow content column (~25–30%) beside a large image (~65–70%). | Guideline |
-| Layering uses the semantic z-index layers, in order `sticky` < `dropdown` < `overlay` < `modal`, each paired with an elevation token. Backdrops share their surface's layer. ([0013](decisions/0013-z-index-layers.md)) | Enforced (components and docs site) |
-| Stacking inside a single component (`-1`, `0`, `1`) may use literals. | Exception ([0013](decisions/0013-z-index-layers.md)) |
+| Layering uses the semantic z-index layers, in order `sticky` < `dropdown` < `overlay` < `modal`, each paired with an elevation token. Backdrops share their surface's layer. ([0013](decisions/0013-z-index-layers.md)) | Enforced (components and docs site); ESLint fails on z-index literals other than `-1`, `0` and `1` in `src/components`, in CSS, `zIndex` properties and numbers interpolated into styled templates (fixtures in `src/tokens/lintGuards.test.ts`) |
+| Stacking inside a single component (`-1`, `0`, `1`) may use literals, written directly in the CSS text (`z-index: 1;`). Numbers interpolated into styled templates are always rejected. | Exception ([0013](decisions/0013-z-index-layers.md)) |
 
 ## Motion
 

@@ -45,7 +45,9 @@ export const CloseButton = styled.button.withConfig({
   margin-left: ${tokens.semantic.spacing.layout.sm};
   background: transparent;
   border: none;
-  padding: 2px;
+  width: ${chipTokens.closeButton.size};
+  height: ${chipTokens.closeButton.size};
+  padding: ${tokens.semantic.spacing.layout.none};
   border-radius: ${tokens.semantic.border.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
