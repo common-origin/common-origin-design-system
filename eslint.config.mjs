@@ -122,7 +122,7 @@ export default tseslint.config(
         },
         {
           selector: 'TaggedTemplateExpression > TemplateLiteral > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > UnaryExpression > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > Literal.body[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > UnaryExpression.body > Literal[raw=/^[0-9.]+$/]',
-          message: 'Numeric literal interpolated into CSS. Use a token (P3); for z-index, semantic.zIndex (decision 0013).',
+          message: 'Numeric literal interpolated into CSS. Use a token (P3). A permitted literal, such as local stacking z-index -1, 0 or 1, goes straight in the CSS text.',
         },
       ],
     },

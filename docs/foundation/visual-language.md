@@ -75,7 +75,7 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Whitespace is generous by default; dense products (A2UI) set density per component. No global density mode. ([P9](principles.md#p9-serve-the-full-range)) | Enforced |
 | Signature editorial layout: narrow content column (~25–30%) beside a large image (~65–70%). | Guideline |
 | Layering uses the semantic z-index layers, in order `sticky` < `dropdown` < `overlay` < `modal`, each paired with an elevation token. Backdrops share their surface's layer. ([0013](decisions/0013-z-index-layers.md)) | Enforced (components and docs site); ESLint fails on z-index literals other than `-1`, `0` and `1` in `src/components`, in CSS, `zIndex` properties and numbers interpolated into styled templates (fixtures in `src/tokens/lintGuards.test.ts`) |
-| Stacking inside a single component (`-1`, `0`, `1`) may use literals. | Exception ([0013](decisions/0013-z-index-layers.md)) |
+| Stacking inside a single component (`-1`, `0`, `1`) may use literals, written directly in the CSS text (`z-index: 1;`). Numbers interpolated into styled templates are always rejected. | Exception ([0013](decisions/0013-z-index-layers.md)) |
 
 ## Motion
 
