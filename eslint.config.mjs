@@ -105,19 +105,19 @@ export default tseslint.config(
         },
         // P3: colours and z-index layers come from tokens (#34). Stacking inside one component (-1, 0, 1) may use literals (decision 0013).
         {
-          selector: 'Literal[value=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/]',
+          selector: 'Literal[value=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]',
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
-          selector: 'TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/]',
+          selector: 'TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]',
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
-          selector: 'TemplateElement[value.raw=/z-index:\\s*-?([2-9]|[1-9][0-9])/]',
+          selector: 'TemplateElement[value.raw=/z-index\\s*:\\s*-?([2-9]|[1-9][0-9])/i]',
           message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
         },
         {
-          selector: "Property[key.name='zIndex'] > Literal[value>1], Property[key.name='zIndex'] > UnaryExpression[operator='-'] > Literal[value>1]",
+          selector: "Property:matches([key.name='zIndex'], [key.value='zIndex']) > Literal[value>1], Property:matches([key.name='zIndex'], [key.value='zIndex']) > UnaryExpression[operator='-'] > Literal[value>1]",
           message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
         },
         {

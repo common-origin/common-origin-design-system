@@ -71,6 +71,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'component.tabBar.badge.typography - Badge count text',
     'component.tabBar.badge.fontWeight - Badge count weight',
     'semantic.color.background.inverse-overlay - Count badge background on the active pills tab',
+    'semantic.color.text.inverse - Count badge text',
     'semantic.border.radius.circle - Rounded corners for pills variant',
     'semantic.border.width.thin - 1px border width',
     'semantic.motion.interactive - Smooth transitions for hover/active states'
