@@ -20,7 +20,7 @@ Read `docs/tokens/pipeline.md` first: it is the source of truth for the build (n
    npm run build:tokens
    node -e "const a=require('/tmp/tokens.before.json'),b=require('./src/styles/tokens.json');const d=(x,y,p='')=>{for(const k of new Set([...Object.keys(x||{}),...Object.keys(y||{})])){const P=p?p+'.'+k:k;if(typeof x?.[k]==='object'||typeof y?.[k]==='object')d(x?.[k],y?.[k],P);else if(x?.[k]!==y?.[k])console.log(P,x?.[k],'→',y?.[k])}};d(a,b)"
    ```
-   The diff must show only the intended additions. Any changed existing value is a visual change for every consumer and needs an owner decision (P7).
+   The diff must show exactly the intended changes and nothing else. A changed value of an existing token is a visual change for every consumer, so it's only intended if the owner has decided it (P7); an unexpected one is a regression to fix.
 5. **Drop timestamp noise.** `build:tokens` rewrites the "Generated on" header in `src/styles/tokens.css` and `src/styles/tokens.d.ts` (`docs/tokens/pipeline.md` §1). If those are the only changes to a file, revert it; otherwise restore the header line from `HEAD` so the diff holds only real changes.
 6. **Use it:** reference the token from the component, and list it in that component's `.docs.tsx` `tokens` array as an exact path.
 7. **Validate:** typecheck, lint, test, `build:package`, `verify:package`, as in `CLAUDE.md`. `src/tokens/*.test.ts` guard the z-index layers, font weights and motion tokens.

@@ -37,7 +37,9 @@
       "Bash(gh pr merge --admin)",
       "Bash(gh pr merge --admin *)",
       "Bash(gh pr merge * --admin)",
-      "Bash(gh pr merge * --admin *)"
+      "Bash(gh pr merge * --admin *)",
+      "Bash(git push *refs/heads/main)",
+      "Bash(git push *refs/heads/main *)"
     ]
   }
 }
