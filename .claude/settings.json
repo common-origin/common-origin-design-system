@@ -1,0 +1,40 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run typecheck)",
+      "Bash(npm run lint)",
+      "Bash(npm test)",
+      "Bash(npm test *)",
+      "Bash(npx jest *)",
+      "Bash(npm run build:tokens)",
+      "Bash(npm run build:package)",
+      "Bash(npm run verify:*)",
+      "Bash(npx eslint *)",
+      "Bash(gh pr view *)",
+      "Bash(gh pr checks *)",
+      "Bash(gh pr diff *)",
+      "Bash(gh issue view *)",
+      "Bash(gh issue list *)",
+      "Bash(scripts/project-item.sh *)"
+    ],
+    "ask": [
+      "Bash(npm run release:create *)",
+      "Bash(npm run release:tag)",
+      "Bash(git tag *)",
+      "Bash(git push --force *)",
+      "Bash(git push -f *)",
+      "Bash(gh pr merge *)"
+    ],
+    "deny": [
+      "Bash(npm publish *)",
+      "Bash(npm publish)",
+      "Bash(npm run release)",
+      "Bash(git push origin main)",
+      "Bash(git push origin main *)",
+      "Bash(git push origin HEAD:main *)",
+      "Bash(git push -u origin main *)",
+      "Bash(gh pr merge * --admin *)",
+      "Bash(gh pr merge --admin *)"
+    ]
+  }
+}
