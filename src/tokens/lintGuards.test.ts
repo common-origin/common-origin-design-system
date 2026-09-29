@@ -32,6 +32,7 @@ const flagged = [
   ['colour function in a style object', "const a = { background: 'rgba(0, 0, 0, 0.1)' }"],
   ['hsl colour in a style object', "const a = { color: 'hsl(0 0% 0%)' }"],
   ['string zIndex style property', "const a = { zIndex: '9999' }"],
+  ['colour under a key that starts like an exempt key', "const a = { labelColor: '#fff' }"],
   ['quoted zIndex key', "const a = { 'zIndex': 9999 }"],
   ['negative zIndex style property', 'const a = { zIndex: -5 }'],
   ['base token', 'const a = tokens.base.spacing'],
@@ -47,6 +48,7 @@ const allowed = [
   ['zero-padded local stacking in CSS', 'const A = styled.div`\n  z-index: 01;\n  z-index: +1;\n`'],
   ['hash link in an object', "const a = { href: '#abc', label: 'Issue #123' }"],
   ['string local zIndex style property', "const a = { zIndex: '1' }"],
+  ['hash text under ARIA keys', "const a = { ariaLabel: 'Issue #123', 'aria-label': 'Issue #456' }"],
   ['hash link', "const href = '#section'"],
 ]
 

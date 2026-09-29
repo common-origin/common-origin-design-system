@@ -109,7 +109,7 @@ export default tseslint.config(
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {
-          selector: "Property:not([key.name=/^(href|id|label|title|aria)/i]) > Literal.value[value=/#[0-9a-f]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]",
+          selector: "Property:not([key.name=/^(href|id|label|title|aria-[a-z]+|aria[A-Z][a-zA-Z]*)$/], [key.value=/^(href|id|label|title|aria-[a-z]+|aria[A-Z][a-zA-Z]*)$/]) > Literal.value[value=/#[0-9a-f]{3,8}\\b|\\b(rgb|hsl)a?\\(/i]",
           message: 'Hard-coded colour (P3). Use a semantic or component colour token.',
         },
         {

@@ -822,7 +822,7 @@ export default config`}
 │ │ ░░░░░░░░░ Gradient overlay ░░░░░░░░░            │ │
 │ │              [Show more ▼]                      │ │
 │ └─────────────────────────────────────────────────┘ │
-│ LiveRegion (visually hidden, when maxHeight set)    │
+│ LiveRegion (visually hidden, with expand button)    │
 └─────────────────────────────────────────────────────┘
     `,
     parts: [
