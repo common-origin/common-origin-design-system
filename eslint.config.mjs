@@ -121,7 +121,7 @@ export default tseslint.config(
           message: 'Hard-coded z-index layer (decision 0013). Use semantic.zIndex; only -1, 0 and 1 may be literals.',
         },
         {
-          selector: 'TaggedTemplateExpression > TemplateLiteral > Literal[raw=/^[0-9.]+$/]',
+          selector: 'TaggedTemplateExpression > TemplateLiteral > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > UnaryExpression > Literal[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > Literal.body[raw=/^[0-9.]+$/], TaggedTemplateExpression > TemplateLiteral > ArrowFunctionExpression > UnaryExpression.body > Literal[raw=/^[0-9.]+$/]',
           message: 'Numeric literal interpolated into CSS. Use a token (P3); for z-index, semantic.zIndex (decision 0013).',
         },
       ],

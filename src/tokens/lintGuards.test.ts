@@ -13,6 +13,9 @@ const flagged = [
   ['single-digit z-index layer in CSS', 'const A = styled.div`\n  z-index: 2;\n`'],
   ['negative z-index layer in CSS', 'const A = styled.div`\n  z-index: -2;\n`'],
   ['numeric interpolation in CSS', 'const A = styled.div`\n  z-index: ${9999};\n`'],
+  ['negative numeric interpolation in CSS', 'const A = styled.div`\n  z-index: ${-2};\n`'],
+  ['arrow returning a number in CSS', 'const A = styled.div`\n  z-index: ${() => 9999};\n`'],
+  ['arrow returning a negative number in CSS', 'const A = styled.div`\n  z-index: ${() => -2};\n`'],
   ['numeric interpolation in css helper', 'const a = css`\n  z-index: ${10};\n`'],
   ['zIndex style property', 'const a = { zIndex: 9999 }'],
   ['negative zIndex style property', 'const a = { zIndex: -5 }'],
@@ -23,6 +26,7 @@ const allowed = [
   ['local stacking in CSS', 'const A = styled.div`\n  z-index: 1;\n  z-index: 0;\n  z-index: -1;\n`'],
   ['token interpolation', 'const A = styled.div`\n  z-index: ${semantic.zIndex.modal};\n`'],
   ['local zIndex style property', 'const a = { zIndex: 1 }'],
+  ['computed value in CSS', 'const A = styled.div`\n  width: ${(p) => Math.min(100, p.value)}%;\n  opacity: ${(p) => (p.open ? 1 : 0)};\n`'],
   ['plain template string', 'const a = `item-${2}`'],
   ['hash link', "const href = '#section'"],
 ]
