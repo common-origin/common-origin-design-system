@@ -14,6 +14,8 @@ Object.defineProperty(window, 'open', {
 
 // Mock Link component for testing linkComponent prop
 const MockLink = ({ children, href }: any) => <a href={href}>{children}</a>
+// Forwards every prop to the <a>, as Next.js Link and React Router Link do
+const ForwardingLink = ({ children, ...props }: any) => <a {...props}>{children}</a>
 
 describe('Button Component', () => {
   const defaultProps = {
@@ -136,6 +138,52 @@ describe('Button Component', () => {
       const link = screen.getByRole('link')
       expect(link).toBeInTheDocument()
       expect(link).toHaveAttribute('href', '/test-page')
+    })
+
+    it('passes id, aria and other anchor attributes to a custom linkComponent', () => {
+      renderButton({
+        purpose: 'link',
+        url: '/test-page',
+        linkComponent: ForwardingLink,
+        id: 'cta-link',
+        'aria-describedby': 'cta-help',
+        rel: 'nofollow',
+        target: '_blank',
+      })
+      const link = screen.getByRole('link')
+      expect(link).toHaveAttribute('href', '/test-page')
+      expect(link).toHaveAttribute('id', 'cta-link')
+      expect(link).toHaveAttribute('aria-describedby', 'cta-help')
+      expect(link).toHaveAttribute('rel', 'nofollow')
+      expect(link).toHaveAttribute('target', '_blank')
+    })
+
+    it('passes event handlers to a custom linkComponent', () => {
+      const onClick = jest.fn((e: React.MouseEvent) => e.preventDefault())
+      renderButton({ purpose: 'link', url: '/test-page', linkComponent: ForwardingLink, onClick })
+      fireEvent.click(screen.getByRole('link'))
+      expect(onClick).toHaveBeenCalledTimes(1)
+    })
+
+    it('uses url as the href even if an href attribute is also passed', () => {
+      renderButton({ purpose: 'link', url: '/right', href: '/wrong', linkComponent: ForwardingLink })
+      expect(screen.getByRole('link')).toHaveAttribute('href', '/right')
+    })
+
+    it('uses url as the href on a standard link even if an href attribute is also passed', () => {
+      renderButton({ purpose: 'link', url: '/right', href: '/wrong' })
+      expect(screen.getByRole('link')).toHaveAttribute('href', '/right')
+    })
+
+    it('keeps data-testid on the styled content inside a custom linkComponent', () => {
+      renderButton({ purpose: 'link', url: '/test-page', linkComponent: ForwardingLink, 'data-testid': 'cta' })
+      expect(screen.getByTestId('cta').tagName).toBe('SPAN')
+      expect(screen.getByRole('link')).not.toHaveAttribute('data-testid')
+    })
+
+    it('has no accessibility violations with a custom linkComponent', async () => {
+      const { container } = renderButton({ purpose: 'link', url: '/test-page', linkComponent: ForwardingLink, id: 'cta-link' })
+      expect(await axe(container)).toHaveNoViolations()
     })
 
     it('renders as external link', () => {

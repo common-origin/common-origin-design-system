@@ -221,8 +221,10 @@ export const Button: React.FC<CustomButtonProps> = ({
 }) => {
   // For links with custom link component (e.g., Next.js Link, React Router Link)
   if (purpose === 'link' && url && LinkComponent) {
+    // The link component renders the <a>, so anchor attributes (id, aria-*, rel, handlers) go to it
+    const linkProps = rest as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps>
     return (
-      <LinkComponent href={url}>
+      <LinkComponent {...linkProps} href={url} target={target}>
         <StyledLink 
           as="span"
           $variant={variant} 
@@ -240,12 +242,12 @@ export const Button: React.FC<CustomButtonProps> = ({
     const linkProps = rest as Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, keyof BaseButtonProps>
     return (
       <StyledLink 
+        {...linkProps}
         href={url} 
         target={target} 
         $variant={variant} 
         $size={size}
         data-testid={dataTestId}
-        {...linkProps}
       >
         {renderButtonContent(children, iconName, size)}
       </StyledLink>
