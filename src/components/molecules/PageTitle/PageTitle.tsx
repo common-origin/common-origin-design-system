@@ -22,6 +22,19 @@ const PageTitleStyled = styled.div.withConfig({
   margin-top: ${({ $hasBackButton }) => $hasBackButton ? tokens.semantic.spacing.layout.none : tokens.semantic.spacing.layout['7xl']};
 `
 
+/**
+ * @deprecated PageTitle is a leftover from the personal site (its back button always links to `/music`)
+ * and will be removed in the next major version. Compose a page title from `Typography` in a `Stack`:
+ *
+ * ```tsx
+ * <Stack direction="column" gap="md">
+ *   <Typography variant="h1">{title}</Typography>
+ *   <Typography variant="caption" color="subdued">{subtitle}</Typography>
+ * </Stack>
+ * ```
+ *
+ * For a back link, add an `IconButton` with your own `url` and `aria-label`.
+ */
 export const PageTitle: FC<PageTitleProps> = ({ title, hasBackButton = false, subtitle }) => {
   return (
     <PageTitleStyled $hasBackButton={hasBackButton}>
