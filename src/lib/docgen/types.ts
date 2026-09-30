@@ -43,7 +43,7 @@ export interface ComponentDocumentation {
   category: 'Atoms' | 'Molecules' | 'Organisms' | 'Templates' | 'Layout' | 'Components'
   parentId?: string
   
-  // Props can be auto-extracted or manually specified
+  // Written by hand; nothing is extracted from the source
   props?: PropInfo[]
   
   // Curated content
@@ -61,20 +61,4 @@ export interface ComponentDocumentation {
   version?: string
   lastModified?: Date
   filePath?: string
-}
-
-export interface ComponentMetadata {
-  filePath: string
-  componentName: string
-  interfaceName: string
-  hasDefaultExport: boolean
-  hasNamedExport: boolean
-  dependencies: string[]
-}
-
-export interface ExtractionOptions {
-  includePrivateProps?: boolean
-  includeInheritedProps?: boolean
-  extractJSDoc?: boolean
-  extractDefaultValues?: boolean
 }

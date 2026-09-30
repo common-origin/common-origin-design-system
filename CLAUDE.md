@@ -39,7 +39,8 @@ Run typecheck, lint, tests, `build:package` and `verify:package` before proposin
 ## Gotchas
 
 - Published `.d.ts` files must not contain `@/` aliases or JSON imports. For token-based prop types use `import type { Tokens } from '../../../types/tokens'` and `keyof Tokens['semantic'][…]`, never `keyof typeof` an imported JSON file.
-- `npm run build` rewrites `tsconfig.json` and `next-env.d.ts`, and `build:tokens` rewrites the generated token files' timestamps. Don't commit those incidental changes.
+- `build:tokens` rewrites the timestamps in `tokens.css` and `tokens.d.ts`. Don't commit timestamp-only changes. (Next's generated `next-env` declaration file is git-ignored; if `npm run build` ever rewrites `tsconfig.json`, commit Next's values.)
+- `rollup.config.mjs` holds all the package's Babel and compile-target settings (styled-components `displayName`/`componentId`, ES5). The docs site compiles with SWC via `next.config.mjs`, and there is no Babel config file.
 
 ## Agents and skills
 

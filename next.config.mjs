@@ -8,11 +8,6 @@ const nextConfig = {
   // Turbopack configuration (required for Next.js 16+)
   turbopack: {},
   
-  // Experimental features
-  experimental: {
-    turbo: {},
-  },
-  
   typescript: {
     // Ignore build errors during development
     ignoreBuildErrors: false,

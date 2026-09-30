@@ -9,10 +9,9 @@ const createJestConfig = nextJest({
 const customJestConfig = {
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
+    // Mirrors tsconfig.json "paths": every @/ alias resolves under src/
+    '^@/tokens$': '<rootDir>/src/styles/tokens.json',
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@/components$': '<rootDir>/src/components',
-    '^@/styles/(.*)$': '<rootDir>/src/styles/$1',
-    '^@/lib/(.*)$': '<rootDir>/lib/$1',
   },
   testEnvironment: 'jest-environment-jsdom',
   collectCoverageFrom: [
