@@ -46,7 +46,7 @@ export const buttonDocs: ComponentDocumentation = {
       name: 'linkComponent',
       type: 'React.ComponentType<any>',
       required: false,
-      description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). Receives href and children props. When not provided, uses standard <a> tag'
+      description: 'Custom link component for client-side routing (e.g., Next.js Link, React Router Link). Receives href, target, children and any other anchor attributes (id, aria-*, rel, event handlers), which it should pass to the <a> it renders. data-testid stays on the styled content inside it. When not provided, uses standard <a> tag'
     },
     {
       name: 'purpose',
@@ -91,7 +91,7 @@ export const buttonDocs: ComponentDocumentation = {
       name: 'id',
       type: 'string',
       required: false,
-      description: 'HTML id attribute, applied to the rendered button or link. Not currently passed through when linkComponent is set'
+      description: 'HTML id attribute, applied to the rendered button or link (with linkComponent, passed to the link component)'
     },
     {
       name: 'data-testid',
