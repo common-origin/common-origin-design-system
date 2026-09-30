@@ -165,6 +165,16 @@ describe('Button Component', () => {
       expect(onClick).toHaveBeenCalledTimes(1)
     })
 
+    it('uses url as the href even if an href attribute is also passed', () => {
+      renderButton({ purpose: 'link', url: '/right', href: '/wrong', linkComponent: ForwardingLink })
+      expect(screen.getByRole('link')).toHaveAttribute('href', '/right')
+    })
+
+    it('uses url as the href on a standard link even if an href attribute is also passed', () => {
+      renderButton({ purpose: 'link', url: '/right', href: '/wrong' })
+      expect(screen.getByRole('link')).toHaveAttribute('href', '/right')
+    })
+
     it('keeps data-testid on the styled content inside a custom linkComponent', () => {
       renderButton({ purpose: 'link', url: '/test-page', linkComponent: ForwardingLink, 'data-testid': 'cta' })
       expect(screen.getByTestId('cta').tagName).toBe('SPAN')

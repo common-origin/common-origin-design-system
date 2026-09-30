@@ -78,7 +78,7 @@ export const buttonDocs: ComponentDocumentation = {
       name: 'onClick',
       type: '() => void',
       required: false,
-      description: 'Click handler for button purpose. Not used for link purpose buttons'
+      description: 'Click handler. Also applies to link purpose, with or without linkComponent: it runs on the link, and calling event.preventDefault() stops the navigation'
     },
     {
       name: 'type',
