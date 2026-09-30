@@ -4,7 +4,7 @@
 
 Props, tokens, examples, accessibility and anatomy are all written by hand in each `.docs.tsx`. Nothing is extracted from the TypeScript source, so when you change a component's props, update its `.docs.tsx` in the same change.
 
-`propExtractor.ts`, `generator.ts` and `index.ts` are an unused ts-morph prop extractor. They only import each other: no component, docs page or build script uses them. Removing them is tracked in [#39](https://github.com/common-origin/common-origin-design-system/issues/39). Generated prop tables are being considered in [#41](https://github.com/common-origin/common-origin-design-system/issues/41).
+Generated prop tables are being considered in [#41](https://github.com/common-origin/common-origin-design-system/issues/41).
 
 ## Adding docs for a component
 

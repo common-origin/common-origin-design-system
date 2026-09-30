@@ -82,7 +82,7 @@ In practice the build **resolves references and writes files**; no value is tran
 | 6 | Latent bugs in custom transforms: implicit globals (`objValue`, `result`) that throw in ESM strict mode; `includes(' * ' \|\| ' - ' …)` only checks `' * '`; `a && b && c \|\| d` precedence in `calculationFormatter` | Invisible today because the branches never run; would fail the moment a token uses arithmetic or an object value |
 | 7 | `description` fields are dropped from every output | Designers, developers and agents can't see a token's intended use outside the source |
 | 8 | Timestamped headers | Every build dirties the working tree |
-| 9 | `lib/tokens.js` (and a stale copy at `src/lib/tokens.js`) generated but unused | Dead output and confusion |
+| 9 | `lib/tokens.js` generated but unused (a stale copy of it in `src/lib/` was removed in [#39](https://github.com/common-origin/common-origin-design-system/issues/39)) | Dead output and confusion |
 | 10 | ~~Docs drift: `.github/TOKEN_MANAGEMENT.md` showed a different, CommonJS config with transforms and outputs that don't exist here~~ | Fixed in [#37](https://github.com/common-origin/common-origin-design-system/issues/37): the guide no longer describes the build and defers to this document |
 
 ---

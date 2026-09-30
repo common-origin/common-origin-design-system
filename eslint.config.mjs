@@ -16,7 +16,6 @@ export default tseslint.config(
       'next-env.d.ts',
       'src/styles/tokens.d.ts',
       'lib/tokens.js',
-      'src/lib/tokens.js',
     ],
   },
   js.configs.recommended,
