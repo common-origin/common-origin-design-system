@@ -76,6 +76,9 @@ export default [
     commonjs(),
     typescript({
       tsconfig: './tsconfig.json',
+      // The package keeps compiling to ES5 whatever tsconfig.json targets for the docs site;
+      // changing what consumers receive is a separate decision.
+      target: 'es5',
       declaration: true,
       declarationDir: 'dist',
       include: [
@@ -85,7 +88,6 @@ export default [
         'src/lib/styleUtils.ts',
         'src/lib/usePresence.ts',
         'src/components/index.ts',
-        'src/components/dateFormatter.tsx',
         'src/components/atoms/**/*',
         'src/components/molecules/**/*',
         'src/components/layout/**/*',
@@ -97,13 +99,20 @@ export default [
       ],
     }),
     babel({
-      babelHelpers: 'runtime',
+      // All Babel config for the package lives here; there is no .babelrc.
+      babelrc: false,
+      configFile: false,
+      babelHelpers: 'bundled',
       exclude: 'node_modules/**',
       extensions: ['.js', '.jsx', '.ts', '.tsx'],
       presets: [
         '@babel/preset-env',
         '@babel/preset-react',
         '@babel/preset-typescript'
+      ],
+      // Stable displayName and componentId on every styled component (consumers' SSR relies on them)
+      plugins: [
+        ['babel-plugin-styled-components', { ssr: true, displayName: true, preprocess: false }],
       ],
     }),
   ],
@@ -134,6 +143,7 @@ export default [
       }),
       typescript({
         tsconfig: './tsconfig.json',
+        target: 'es5',
         declaration: true,
         declarationDir: 'dist/tokens',
         include: ['src/tokens.ts', 'src/types/tokens.ts', 'src/styles/**/*'],

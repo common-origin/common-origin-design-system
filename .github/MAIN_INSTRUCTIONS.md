@@ -42,7 +42,7 @@ const { semantic } = tokens
 
 ## Testing
 
-- Jest and React Testing Library, configured in `jest.config.js` and `jest.setup.js`. Jest transforms with Babel (`.babelrc` and `babel-plugin-styled-components`), and styled-components is not mocked.
+- Jest and React Testing Library, configured in `jest.config.js` and `jest.setup.js`. Jest transforms with Babel (configured inline in `jest.config.js`, with `babel-plugin-styled-components`), and styled-components is not mocked.
 - Every component needs a `jest-axe` test (P2), tests for its props and variants, keyboard tests if it's interactive, and a `data-testid` test.
 - Query by role first, then label, then static text, then `data-testid`. Avoid text selectors for dynamic content.
 - Details: [TESTING_STANDARDS.md](./TESTING_STANDARDS.md).
@@ -63,7 +63,7 @@ npm run docs:dev         # build tokens, then run the docs site
 
 Run typecheck, lint, tests, `build:package` and `verify:package` before proposing a change as done.
 
-`npm run build` rewrites `tsconfig.json` and `next-env.d.ts`, and `build:tokens` rewrites the generated token files' timestamps. Don't commit those incidental changes.
+`build:tokens` rewrites the timestamps in `tokens.css` and `tokens.d.ts`. Don't commit timestamp-only changes.
 
 ## Change Authority & Validation Protocol
 
