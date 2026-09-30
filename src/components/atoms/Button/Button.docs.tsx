@@ -76,7 +76,7 @@ export const buttonDocs: ComponentDocumentation = {
     },
     {
       name: 'onClick',
-      type: '() => void',
+      type: '(event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => void',
       required: false,
       description: 'Click handler. Also applies to link purpose, with or without linkComponent: it runs on the link, and calling event.preventDefault() stops the navigation'
     },
