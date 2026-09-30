@@ -37,7 +37,7 @@ Upgrading from v1? See [MIGRATION-V2.md](MIGRATION-V2.md).
 - **Layout** (`src/components/layout/`): GridSystem (Grid, GridCol, ResponsiveGrid)
 - **Tokens** (`src/tokens/`): base, semantic and component tiers, compiled by Style Dictionary to `src/styles/tokens.json`, `.css` and `.d.ts` ([pipeline](docs/tokens/pipeline.md))
 
-The docs site lists every component with its props, examples and accessibility notes, except PageTitle, which is being deprecated ([#81](https://github.com/common-origin/common-origin-design-system/issues/81)).
+The docs site lists every component with its props, examples and accessibility notes, except PageTitle, which is deprecated and will be removed in the next major version: use `Typography variant="h1"` in a `Stack` instead ([#81](https://github.com/common-origin/common-origin-design-system/issues/81)).
 
 ## Repository layout
 
