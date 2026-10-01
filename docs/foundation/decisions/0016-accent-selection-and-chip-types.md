@@ -69,7 +69,7 @@ Chips are classified by job, not by emphasis. There are no emphasis levels on an
   - Button and Modal actions accept `variant="accent"`, and `emphasis` is deprecated. The component token `button.variants.accent` is added, with `emphasis` kept as a deprecated alias.
   - `InputChip` is added (identical to today's `FilterChip`). `FilterChip` is deprecated ("renamed to InputChip; in 3.0 `FilterChip` becomes the toggle chip"), and so is `BooleanChip` ("becomes `FilterChip` in 3.0").
   - The static `Chip`'s non-default variants and `onClick` are deprecated.
-  - Selected hover and pressed colours become tokens with the same values. TabBar's active tab and the docs sidebar move to the selected treatment; this is a visual change but not an API change.
+  - Selected hover and pressed colours become tokens with the same values. Selected chips' text changes from near-black to blue, and TabBar's active tab and the docs sidebar move to the selected treatment. These are visual changes, not API changes.
 - **Next major (3.0): breaking.**
   - `emphasis` is removed from Button, Modal actions and the button tokens.
   - `FilterChip` becomes the toggle chip, and `BooleanChip` is removed.
