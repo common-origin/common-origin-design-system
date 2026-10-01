@@ -35,7 +35,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
       type: "'medium' | 'large'",
       required: false,
       default: "'large'",
-      description: 'The size of the label affecting height, padding, and typography, on the decision 0018 scale. Medium (24px) for compact layouts like transaction list items, large (32px) for standard use in forms and headers. CategoryLabel small is CategoryLabel medium, and CategoryLabel medium is CategoryLabel large.'
+      description: 'The size of the label affecting height, padding, and typography, on the decision 0018 scale. Medium (24px) for compact layouts like transaction list items, large (32px) for standard use in forms and headers. CategoryBadge small is CategoryLabel medium, and CategoryBadge medium is CategoryLabel large.'
     },
     {
       name: 'icon',
@@ -61,44 +61,43 @@ export const categoryLabelDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.category.blue - Primary category color for general/default categories',
-    'semantic.color.category.blue-emphasis - High contrast background for filled blue labels',
-    'semantic.color.category.blue-subtle - Light background for minimal blue labels',
-    'semantic.color.category.purple - Purple for entertainment and leisure categories',
-    'semantic.color.category.purple-emphasis - Filled purple label background',
-    'semantic.color.category.purple-subtle - Minimal purple label background',
-    'semantic.color.category.pink - Pink for personal and lifestyle categories',
-    'semantic.color.category.pink-emphasis - Filled pink label background',
-    'semantic.color.category.pink-subtle - Minimal pink label background',
-    'semantic.color.category.yellow - Yellow for transport and travel categories',
-    'semantic.color.category.yellow-emphasis - Filled yellow label background',
-    'semantic.color.category.yellow-subtle - Minimal yellow label background',
-    'semantic.color.category.green - Green for income and positive financial categories',
-    'semantic.color.category.green-emphasis - Filled green label background',
-    'semantic.color.category.green-subtle - Minimal green label background',
-    'semantic.color.category.red - Red for bills and required expenses',
-    'semantic.color.category.red-emphasis - Filled red label background',
-    'semantic.color.category.red-subtle - Minimal red label background',
-    'semantic.color.category.orange - Orange for food and dining categories',
-    'semantic.color.category.orange-emphasis - Filled orange label background',
-    'semantic.color.category.orange-subtle - Minimal orange label background',
-    'semantic.color.category.gray - Gray for uncategorized or neutral categories',
-    'semantic.color.category.gray-emphasis - Filled gray label background',
-    'semantic.color.category.gray-subtle - Minimal gray label background',
-    'semantic.color.text.inverse - White text for filled variant labels',
-    'semantic.size.label.medium - 24px height for medium labels',
-    'semantic.size.label.large - 32px height for large labels',
-    'semantic.spacing.layout.xs - 4px vertical padding for medium labels',
-    'semantic.spacing.layout.sm - 8px horizontal padding for medium labels; vertical padding for large labels',
-    'semantic.spacing.layout.md - 12px horizontal padding for large labels',
-    'component.badge.label.typography.small - Typography for medium labels',
-    'component.badge.label.typography.medium - Typography for large labels',
-    'component.badge.label.fontWeight - Label weight shared by the badge-like family',
-    'semantic.border.radius.circle - Fully rounded corners for label shape',
-    'semantic.border.width.thin - 1px border for outlined variant',
-    'semantic.size.icon.xs - 12px icon size for medium labels',
-    'semantic.size.icon.sm - 16px icon size for large labels',
-    'semantic.spacing.layout.xs - 4px gap between icon and label'
+    'semantic.color.category.blue', // Primary category color for general/default categories
+    'semantic.color.category.blue-emphasis', // High contrast background for filled blue labels
+    'semantic.color.category.blue-subtle', // Light background for minimal blue labels
+    'semantic.color.category.purple', // Purple for entertainment and leisure categories
+    'semantic.color.category.purple-emphasis', // Filled purple label background
+    'semantic.color.category.purple-subtle', // Minimal purple label background
+    'semantic.color.category.pink', // Pink for personal and lifestyle categories
+    'semantic.color.category.pink-emphasis', // Filled pink label background
+    'semantic.color.category.pink-subtle', // Minimal pink label background
+    'semantic.color.category.yellow', // Yellow for transport and travel categories
+    'semantic.color.category.yellow-emphasis', // Filled yellow label background
+    'semantic.color.category.yellow-subtle', // Minimal yellow label background
+    'semantic.color.category.green', // Green for income and positive financial categories
+    'semantic.color.category.green-emphasis', // Filled green label background
+    'semantic.color.category.green-subtle', // Minimal green label background
+    'semantic.color.category.red', // Red for bills and required expenses
+    'semantic.color.category.red-emphasis', // Filled red label background
+    'semantic.color.category.red-subtle', // Minimal red label background
+    'semantic.color.category.orange', // Orange for food and dining categories
+    'semantic.color.category.orange-emphasis', // Filled orange label background
+    'semantic.color.category.orange-subtle', // Minimal orange label background
+    'semantic.color.category.gray', // Gray for uncategorized or neutral categories
+    'semantic.color.category.gray-emphasis', // Filled gray label background
+    'semantic.color.category.gray-subtle', // Minimal gray label background
+    'semantic.color.text.inverse', // White text for filled variant labels
+    'semantic.size.label.medium', // 24px height for medium labels
+    'semantic.size.label.large', // 32px height for large labels
+    'semantic.spacing.layout.xs', // 4px vertical padding for medium labels; 4px gap between icon and label
+    'semantic.spacing.layout.sm', // 8px horizontal padding for medium labels; vertical padding for large labels
+    'semantic.spacing.layout.md', // 12px horizontal padding for large labels
+    'component.badge.label.typography.small', // Typography for medium labels
+    'component.badge.label.typography.medium', // Typography for large labels
+    'component.badge.label.fontWeight', // Label weight shared by the badge-like family
+    'semantic.border.radius.circle', // Fully rounded corners for label shape
+    'semantic.border.width.thin', // 1px border for outlined variant
+    'semantic.size.icon.xs', // 12px icon size for medium labels
+    'semantic.size.icon.sm', // 16px icon size for large labels
   ],
 
   examples: [
@@ -326,9 +325,30 @@ export const categoryLabelDocs: ComponentDocumentation = {
         name: 'Container',
         description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border.',
         tokens: [
-          'semantic.color.category.[color]',
-          'semantic.color.category.[color]-emphasis',
-          'semantic.color.category.[color]-subtle',
+          'semantic.color.category.blue',
+          'semantic.color.category.purple',
+          'semantic.color.category.pink',
+          'semantic.color.category.yellow',
+          'semantic.color.category.green',
+          'semantic.color.category.red',
+          'semantic.color.category.orange',
+          'semantic.color.category.gray',
+          'semantic.color.category.blue-emphasis',
+          'semantic.color.category.purple-emphasis',
+          'semantic.color.category.pink-emphasis',
+          'semantic.color.category.yellow-emphasis',
+          'semantic.color.category.green-emphasis',
+          'semantic.color.category.red-emphasis',
+          'semantic.color.category.orange-emphasis',
+          'semantic.color.category.gray-emphasis',
+          'semantic.color.category.blue-subtle',
+          'semantic.color.category.purple-subtle',
+          'semantic.color.category.pink-subtle',
+          'semantic.color.category.yellow-subtle',
+          'semantic.color.category.green-subtle',
+          'semantic.color.category.red-subtle',
+          'semantic.color.category.orange-subtle',
+          'semantic.color.category.gray-subtle',
           'semantic.border.radius.circle',
           'semantic.border.width.thin'
         ]

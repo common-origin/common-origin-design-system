@@ -257,8 +257,18 @@ export const statusBadgeDocs: ComponentDocumentation = {
         name: 'Container',
         description: 'Root element with rounded corners and status-specific background color. Includes role="status" and optional ARIA live region attributes.',
         tokens: [
-          'semantic.color.status.[type]',
-          'semantic.color.status.[type]-bg',
+          'semantic.color.status.pending',
+          'semantic.color.status.completed',
+          'semantic.color.status.failed',
+          'semantic.color.status.cancelled',
+          'semantic.color.status.processing',
+          'semantic.color.status.scheduled',
+          'semantic.color.status.pending-bg',
+          'semantic.color.status.completed-bg',
+          'semantic.color.status.failed-bg',
+          'semantic.color.status.cancelled-bg',
+          'semantic.color.status.processing-bg',
+          'semantic.color.status.scheduled-bg',
           'semantic.border.radius.circle'
         ]
       },

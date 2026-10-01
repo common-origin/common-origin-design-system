@@ -62,42 +62,42 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.category.blue - Primary category color for general/default categories',
-    'semantic.color.category.blue-emphasis - High contrast background for filled blue badges',
-    'semantic.color.category.blue-subtle - Light background for minimal blue badges',
-    'semantic.color.category.purple - Purple for entertainment and leisure categories',
-    'semantic.color.category.purple-emphasis - Filled purple badge background',
-    'semantic.color.category.purple-subtle - Minimal purple badge background',
-    'semantic.color.category.pink - Pink for personal and lifestyle categories',
-    'semantic.color.category.pink-emphasis - Filled pink badge background',
-    'semantic.color.category.pink-subtle - Minimal pink badge background',
-    'semantic.color.category.yellow - Yellow for transport and travel categories',
-    'semantic.color.category.yellow-emphasis - Filled yellow badge background',
-    'semantic.color.category.yellow-subtle - Minimal yellow badge background',
-    'semantic.color.category.green - Green for income and positive financial categories',
-    'semantic.color.category.green-emphasis - Filled green badge background',
-    'semantic.color.category.green-subtle - Minimal green badge background',
-    'semantic.color.category.red - Red for bills and required expenses',
-    'semantic.color.category.red-emphasis - Filled red badge background',
-    'semantic.color.category.red-subtle - Minimal red badge background',
-    'semantic.color.category.orange - Orange for food and dining categories',
-    'semantic.color.category.orange-emphasis - Filled orange badge background',
-    'semantic.color.category.orange-subtle - Minimal orange badge background',
-    'semantic.color.category.gray - Gray for uncategorized or neutral categories',
-    'semantic.color.category.gray-emphasis - Filled gray badge background',
-    'semantic.color.category.gray-subtle - Minimal gray badge background',
-    'semantic.color.text.inverse - White text for filled variant badges',
-    'semantic.spacing.layout.xs - 4px vertical padding for small badges',
-    'semantic.spacing.layout.sm - 8px horizontal padding for small badges; vertical padding for medium badges',
-    'semantic.spacing.layout.md - 12px horizontal padding for medium badges',
-    'component.badge.label.typography.small - Typography for small size badges',
-    'component.badge.label.typography.medium - Typography for medium size badges',
-    'component.badge.label.fontWeight - Label weight shared by the badge-like family',
-    'semantic.border.radius.circle - Fully rounded corners for badge shape',
-    'semantic.border.width.thin - 1px border for outlined variant',
-    'semantic.size.icon.xs - 12px icon size for small badges',
-    'semantic.size.icon.sm - 16px icon size for medium badges',
-    'semantic.spacing.layout.xs - 4px gap between icon and label'
+    'semantic.color.category.blue', // Primary category color for general/default categories
+    'semantic.color.category.blue-emphasis', // High contrast background for filled blue badges
+    'semantic.color.category.blue-subtle', // Light background for minimal blue badges
+    'semantic.color.category.purple', // Purple for entertainment and leisure categories
+    'semantic.color.category.purple-emphasis', // Filled purple badge background
+    'semantic.color.category.purple-subtle', // Minimal purple badge background
+    'semantic.color.category.pink', // Pink for personal and lifestyle categories
+    'semantic.color.category.pink-emphasis', // Filled pink badge background
+    'semantic.color.category.pink-subtle', // Minimal pink badge background
+    'semantic.color.category.yellow', // Yellow for transport and travel categories
+    'semantic.color.category.yellow-emphasis', // Filled yellow badge background
+    'semantic.color.category.yellow-subtle', // Minimal yellow badge background
+    'semantic.color.category.green', // Green for income and positive financial categories
+    'semantic.color.category.green-emphasis', // Filled green badge background
+    'semantic.color.category.green-subtle', // Minimal green badge background
+    'semantic.color.category.red', // Red for bills and required expenses
+    'semantic.color.category.red-emphasis', // Filled red badge background
+    'semantic.color.category.red-subtle', // Minimal red badge background
+    'semantic.color.category.orange', // Orange for food and dining categories
+    'semantic.color.category.orange-emphasis', // Filled orange badge background
+    'semantic.color.category.orange-subtle', // Minimal orange badge background
+    'semantic.color.category.gray', // Gray for uncategorized or neutral categories
+    'semantic.color.category.gray-emphasis', // Filled gray badge background
+    'semantic.color.category.gray-subtle', // Minimal gray badge background
+    'semantic.color.text.inverse', // White text for filled variant badges
+    'semantic.spacing.layout.xs', // 4px vertical padding for small badges
+    'semantic.spacing.layout.sm', // 8px horizontal padding for small badges; vertical padding for medium badges
+    'semantic.spacing.layout.md', // 12px horizontal padding for medium badges
+    'component.badge.label.typography.small', // Typography for small size badges
+    'component.badge.label.typography.medium', // Typography for medium size badges
+    'component.badge.label.fontWeight', // Label weight shared by the badge-like family
+    'semantic.border.radius.circle', // Fully rounded corners for badge shape
+    'semantic.border.width.thin', // 1px border for outlined variant
+    'semantic.size.icon.xs', // 12px icon size for small badges
+    'semantic.size.icon.sm', // 16px icon size for medium badges
+    'semantic.spacing.layout.xs', // 4px gap between icon and label
   ],
 
   examples: [
@@ -325,9 +325,30 @@ export const categoryBadgeDocs: ComponentDocumentation = {
         name: 'Container',
         description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border.',
         tokens: [
-          'semantic.color.category.[color]',
-          'semantic.color.category.[color]-emphasis',
-          'semantic.color.category.[color]-subtle',
+          'semantic.color.category.blue',
+          'semantic.color.category.purple',
+          'semantic.color.category.pink',
+          'semantic.color.category.yellow',
+          'semantic.color.category.green',
+          'semantic.color.category.red',
+          'semantic.color.category.orange',
+          'semantic.color.category.gray',
+          'semantic.color.category.blue-emphasis',
+          'semantic.color.category.purple-emphasis',
+          'semantic.color.category.pink-emphasis',
+          'semantic.color.category.yellow-emphasis',
+          'semantic.color.category.green-emphasis',
+          'semantic.color.category.red-emphasis',
+          'semantic.color.category.orange-emphasis',
+          'semantic.color.category.gray-emphasis',
+          'semantic.color.category.blue-subtle',
+          'semantic.color.category.purple-subtle',
+          'semantic.color.category.pink-subtle',
+          'semantic.color.category.yellow-subtle',
+          'semantic.color.category.green-subtle',
+          'semantic.color.category.red-subtle',
+          'semantic.color.category.orange-subtle',
+          'semantic.color.category.gray-subtle',
           'semantic.border.radius.circle',
           'semantic.border.width.thin'
         ]
