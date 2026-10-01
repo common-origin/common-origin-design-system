@@ -244,16 +244,19 @@ export const statusBadgeDocs: ComponentDocumentation = {
   },
 
   anatomy: {
-    description: 'A compact badge with status-specific styling containing an optional icon and label text. Color and icon automatically determined by status type.',
+    description: 'A compact pill with status-specific styling: an icon (optional on the deprecated StatusBadge), the label text and hidden "{status} status" context, wrapped in a visible-content span. When an aria-label is given, that span is hidden from assistive technology and a visually hidden label is announced instead (#78).',
     diagram: `
-┌──────────────────────────┐
-│  StatusBadge Container   │
-│  ┌──────┐  ┌──────────┐ │
-│  │ Icon │  │  Label   │ │
-│  │(opt) │  │  (text)  │ │
-│  └──────┘  └──────────┘ │
-│  Hidden SR context text  │
-└──────────────────────────┘
+┌───────────────────────────────────┐
+│  StatusBadge Container (role=status)│
+│  ┌ Visible content ────────────┐  │
+│  │ ┌──────┐  ┌──────────┐      │  │
+│  │ │ Icon │  │  Label   │      │  │
+│  │ │(opt) │  │  (text)  │      │  │
+│  │ └──────┘  └──────────┘      │  │
+│  │ Hidden "{status} status"    │  │
+│  └─────────────────────────────┘  │
+│  Hidden label (aria-label only)   │
+└───────────────────────────────────┘
     `,
     parts: [
       {
@@ -279,7 +282,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       },
       {
         name: 'Icon',
-        description: 'Optional leading icon automatically selected based on status type. Sized according to badge size variant. Has aria-hidden="true".',
+        description: 'Optional leading icon automatically selected based on status type. Sized according to the size. Decorative, but Icon does not yet honour aria-hidden, so it may be announced (#85) unless an aria-label hides the visible content.',
         tokens: [
           'semantic.size.icon.xs',
           'semantic.size.icon.sm'
@@ -297,6 +300,16 @@ export const statusBadgeDocs: ComponentDocumentation = {
       {
         name: 'Screen Reader Text',
         description: 'Visually hidden text providing additional context for assistive technologies: "{status} status". When an aria-label is provided, the visually hidden aria-label replaces it and the visible content (#78).',
+        tokens: []
+      },
+      {
+        name: 'Visible content',
+        description: 'Wraps the icon, label and "{status} status" text with display: contents, so it adds no box and keeps the container layout. It gets aria-hidden="true" only when a non-blank aria-label is given (#78).',
+        tokens: []
+      },
+      {
+        name: 'Hidden label (aria-label only)',
+        description: 'Rendered only when a non-blank aria-label is given: the aria-label as visually hidden text. Because a live region announces its content, this is what screen readers read; the aria-label also names the status (#78).',
         tokens: []
       }
     ]
