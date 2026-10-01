@@ -92,6 +92,9 @@ export interface AlertProps {
   /**
    * Compact inline variant with reduced padding
    * @default false
+   * @deprecated Use `InlineAlert` for a short, local message (decision 0019). `inline` keeps
+   * working until it is removed in 3.0. An inline alert that needs a title, action or dismiss
+   * button stays an Alert.
    */
   inline?: boolean
   
