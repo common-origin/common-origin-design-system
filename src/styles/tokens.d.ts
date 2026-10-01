@@ -1120,6 +1120,12 @@ export interface TokensSemanticSizeOverlay {
   lg: string;
 }
 
+export interface TokensSemanticSizeLabel {
+  small: string;
+  medium: string;
+  large: string;
+}
+
 export interface TokensSemanticSizeMenu {
   maxHeight: string;
 }
@@ -1127,6 +1133,7 @@ export interface TokensSemanticSizeMenu {
 export interface TokensSemanticSizeDimension {
   '1': string;
   '5': string;
+  '6': string;
   '8': string;
   '12': string;
   '15': string;
@@ -1161,6 +1168,7 @@ export interface TokensSemanticSizeAvatar {
 export interface TokensSemanticSize {
   touchTarget: string;
   overlay: TokensSemanticSizeOverlay;
+  label: TokensSemanticSizeLabel;
   menu: TokensSemanticSizeMenu;
   dimension: TokensSemanticSizeDimension;
   icon: TokensSemanticSizeIcon;

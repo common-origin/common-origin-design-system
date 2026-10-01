@@ -6,7 +6,7 @@ import { type IconName } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { MoneyDisplay } from '../../atoms/MoneyDisplay'
 import { Button } from '../../atoms/Button'
-import { CategoryBadge, type CategoryColor } from '../../atoms/CategoryBadge'
+import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { Avatar } from '../../atoms/Avatar'
 import tokens from '../../../styles/tokens.json'
 
@@ -198,7 +198,7 @@ export const AccountCard: React.FC<AccountCardProps> = ({
                   </Typography>
                   {trend && trendValue && (
                     <StyledTrendSection aria-label={`Trend ${trend}`} role="img">
-                      <CategoryBadge size="small" icon={trendIcon} color={trendColor} variant="minimal">{trendValue}</CategoryBadge>
+                      <CategoryLabel size="medium" icon={trendIcon} color={trendColor} variant="minimal">{trendValue}</CategoryLabel>
                     </StyledTrendSection>
                   )}
                 </Stack>

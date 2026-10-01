@@ -1,0 +1,234 @@
+import React from 'react'
+import styled, { keyframes } from 'styled-components'
+import { Icon } from '../Icon/Icon'
+import type { IconName } from '../../../types/icons'
+import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
+import tokens from '@/styles/tokens.json'
+
+// Destructure tokens for cleaner access
+const { status: statusColors } = tokens.semantic.color
+const { layout: spacing } = tokens.semantic.spacing
+const { radius } = tokens.semantic.border
+const { transition, duration, easing } = tokens.semantic.motion
+const { label: labelHeight } = tokens.semantic.size
+const { label } = tokens.component.badge
+
+/**
+ * Status type options for StatusLabel
+ */
+export type StatusType = 
+  | 'pending' 
+  | 'completed' 
+  | 'failed' 
+  | 'cancelled' 
+  | 'processing' 
+  | 'scheduled'
+
+/**
+ * Size options for StatusLabel
+ */
+export type StatusSize = 'small' | 'medium'
+
+/**
+ * Props shared by StatusLabel and the deprecated StatusBadge
+ */
+export interface StatusLabelProps {
+  /**
+   * The status type to display
+   */
+  status: StatusType
+
+  /**
+   * Optional custom label (defaults to status name)
+   */
+  label?: string
+
+  /**
+   * Size: small (20px) or medium (24px)
+   * @default 'medium'
+   */
+  size?: StatusSize
+
+  /**
+   * Whether status changes should be announced to screen readers
+   * @default true
+   */
+  liveRegion?: boolean
+
+  /**
+   * Test identifier for automated testing
+   */
+  'data-testid'?: string
+
+  /**
+   * Accessible label override
+   */
+  'aria-label'?: string
+}
+
+interface StyledStatusLabelProps {
+  $status: StatusType
+  $size: StatusSize
+}
+
+const scaleIn = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+`
+
+const getStatusConfig = (status: StatusType) => {
+  const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; label: string }> = {
+    pending: {
+      color: statusColors.pending,
+      bgColor: statusColors['pending-bg'],
+      icon: 'refresh', // Fallback until 'clock' icon is added
+      label: 'Pending'
+    },
+    completed: {
+      color: statusColors.completed,
+      bgColor: statusColors['completed-bg'],
+      icon: 'check',
+      label: 'Completed'
+    },
+    failed: {
+      color: statusColors.failed,
+      bgColor: statusColors['failed-bg'],
+      icon: 'close',
+      label: 'Failed'
+    },
+    cancelled: {
+      color: statusColors.cancelled,
+      bgColor: statusColors['cancelled-bg'],
+      icon: 'cancel',
+      label: 'Cancelled'
+    },
+    processing: {
+      color: statusColors.processing,
+      bgColor: statusColors['processing-bg'],
+      icon: 'refresh',
+      label: 'Processing'
+    },
+    scheduled: {
+      color: statusColors.scheduled,
+      bgColor: statusColors['scheduled-bg'],
+      icon: 'bell', // Fallback until 'calendar' icon is added
+      label: 'Scheduled'
+    }
+  }
+  
+  return configs[status]
+}
+
+// Size configuration
+const sizeConfig = {
+  small: {
+    height: labelHeight.small,
+    padding: `${spacing.xs} ${spacing.sm}`,
+    font: label.typography.small,
+    gap: spacing.xs,
+    iconSize: 'xs' as const
+  },
+  medium: {
+    height: labelHeight.medium,
+    padding: `${spacing.xs} ${spacing.sm}`,
+    font: label.typography.medium,
+    gap: spacing.xs,
+    iconSize: 'sm' as const
+  }
+}
+
+const StyledStatusLabel = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<StyledStatusLabelProps>`
+  box-sizing: border-box; /* the height includes padding, without relying on a global reset */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: ${radius.circle};
+  white-space: nowrap;
+  user-select: none;
+  animation: ${scaleIn} ${duration.normal} ${easing.easeOut};
+  transition: ${transition.fast};
+
+  /* transition.fast covers all properties, so a size change would animate the label's dimensions */
+  ${reducedMotion} {
+    animation: none;
+    transition: none;
+  }
+  
+  /* Size styles */
+  ${({ $size }) => {
+    const size = sizeConfig[$size]
+    return `
+      height: ${size.height};
+      padding: ${size.padding};
+      font: ${size.font};
+      font-weight: ${label.fontWeight};
+      gap: ${size.gap};
+    `
+  }}
+  
+  /* Status color styles */
+  ${({ $status }) => {
+    const config = getStatusConfig($status)
+    return `
+      background-color: ${config.bgColor};
+      color: ${config.color};
+    `
+  }}
+`
+
+const ScreenReaderOnly = styled.span`
+  ${visuallyHidden}
+`
+
+/**
+ * Shared implementation of StatusLabel and the deprecated StatusBadge. Internal: not exported
+ * from the package. `showIcon` exists only for StatusBadge; StatusLabel always shows the icon
+ * (decision 0018).
+ */
+export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }> = ({
+  status,
+  label,
+  size = 'medium',
+  showIcon = true,
+  liveRegion = true,
+  'data-testid': dataTestId,
+  'aria-label': ariaLabel
+}) => {
+  const statusConfig = getStatusConfig(status)
+  const sizeStyles = sizeConfig[size]
+  const displayLabel = label || statusConfig.label
+
+  return (
+    <StyledStatusLabel
+      $status={status}
+      $size={size}
+      role="status"
+      aria-label={ariaLabel || `Status: ${displayLabel}`}
+      // role="status" is implicitly polite, so turning announcements off needs an explicit "off"
+      aria-live={liveRegion ? 'polite' : 'off'}
+      aria-atomic={liveRegion ? 'true' : undefined}
+      data-testid={dataTestId}
+    >
+      {showIcon && (
+        <Icon
+          name={statusConfig.icon}
+          size={sizeStyles.iconSize}
+          iconColor="inherit"
+          aria-hidden="true"
+        />
+      )}
+      {displayLabel}
+      <ScreenReaderOnly>
+        {status} status
+      </ScreenReaderOnly>
+    </StyledStatusLabel>
+  )
+}

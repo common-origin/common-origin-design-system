@@ -1,2 +1,2 @@
 export { CategoryBadge } from './CategoryBadge'
-export type { CategoryBadgeProps, CategoryColor, CategoryVariant, CategorySize } from './CategoryBadge'
+export type { CategoryBadgeProps, CategorySize } from './CategoryBadge'

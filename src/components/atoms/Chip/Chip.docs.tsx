@@ -5,6 +5,7 @@ import { InputChip } from './InputChip'
 import { BooleanChip } from './BooleanChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
+import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 // Stateful example comparing the three chip types
 const ChipTypesExample: React.FC = () => {
@@ -265,7 +266,8 @@ export const chipDocs: ComponentDocumentation = {
     'Upcoming rename in 3.0: FilterChip (today a deprecated alias of InputChip) becomes the toggle chip, and BooleanChip is removed. Migrate in order: replace FilterChip with InputChip now, then BooleanChip with FilterChip when you upgrade to 3.0. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changes meaning.',
     'Deprecated in 2.16, removed in 3.0: the emphasis, subtle, interactive, light and dark variants and onClick. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0).',
     'Tag also has emphasis and interactive variants; its future is decided separately (#62).',
-    'Size: small for dense interfaces such as toolbars and metadata rows; medium for standard use.'
+    'Size: small for dense interfaces such as toolbars and metadata rows; medium for standard use.',
+    ...labelGuideNotes
   ],
 
   anatomy: {

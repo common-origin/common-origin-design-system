@@ -307,6 +307,23 @@
             "description": "45rem (720px): large overlay panel width (Modal large)."
           }
         },
+        "label": {
+          "small": {
+            "value": "{semantic.size.dimension.5}",
+            "type": "size",
+            "description": "20px label height: StatusLabel small and Tag small. Decision 0018 size scale."
+          },
+          "medium": {
+            "value": "{semantic.size.dimension.6}",
+            "type": "size",
+            "description": "24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale."
+          },
+          "large": {
+            "value": "{semantic.size.dimension.8}",
+            "type": "size",
+            "description": "32px label height: CategoryLabel large. Decision 0018 size scale."
+          }
+        },
         "menu": {
           "maxHeight": {
             "value": "{base.size.75}",
@@ -323,12 +340,17 @@
           "5": {
             "value": "{base.size.5}",
             "type": "size",
-            "description": "1.25rem (20px): checkbox box; TabBar count badge (via component tokens)."
+            "description": "1.25rem (20px): checkbox box; TabBar count badge (via component tokens); small label height (via size.label.small)."
+          },
+          "6": {
+            "value": "{base.size.6}",
+            "type": "size",
+            "description": "1.5rem (24px): medium label height (via size.label.medium)."
           },
           "8": {
             "value": "{base.size.8}",
             "type": "size",
-            "description": "2rem (32px): checkbox row minimum height (via component tokens)."
+            "description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large)."
           },
           "12": {
             "value": "{base.size.12}",

@@ -411,9 +411,13 @@
   --semantic-size-overlay-sm: 25rem;
   --semantic-size-overlay-md: 35rem;
   --semantic-size-overlay-lg: 45rem;
+  --semantic-size-label-small: 1.25rem;
+  --semantic-size-label-medium: 1.5rem;
+  --semantic-size-label-large: 2rem;
   --semantic-size-menu-max-height: 18.75rem;
   --semantic-size-dimension-1: 0.25rem;
   --semantic-size-dimension-5: 1.25rem;
+  --semantic-size-dimension-6: 1.5rem;
   --semantic-size-dimension-8: 2rem;
   --semantic-size-dimension-12: 3rem;
   --semantic-size-dimension-15: 3.75rem;

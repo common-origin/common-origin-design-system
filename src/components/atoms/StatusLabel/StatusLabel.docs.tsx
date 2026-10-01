@@ -1,13 +1,12 @@
-import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
-import { StatusBadge } from './StatusBadge'
+import { StatusLabel } from './StatusLabel'
+import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
-export const statusBadgeDocs: ComponentDocumentation = {
-  id: 'status-badge',
-  name: 'StatusBadge',
-  description: 'Deprecated: renamed to StatusLabel (decision 0018) and removed in 3.0. Rename to StatusLabel; status, size, label and liveRegion are unchanged, and the icon is always shown (showIcon goes). A semantic status indicator badge displaying transaction or task states with color-coded visual feedback, icons, and screen reader support. Features ARIA live region announcements for dynamic status changes.',
+export const statusLabelDocs: ComponentDocumentation = {
+  id: 'status-label',
+  name: 'StatusLabel',
+  description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows an icon with its text, so status is never conveyed by colour alone. Not interactive. Announces status changes through an ARIA live region. Replaces the deprecated StatusBadge, with the same props apart from showIcon.',
   category: 'Atoms',
-  parentId: 'status-label',
   
   props: [
     {
@@ -30,13 +29,6 @@ export const statusBadgeDocs: ComponentDocumentation = {
       required: false,
       default: "'medium'",
       description: 'Size variant affecting height, padding, typography, and icon size. Small (20px) for compact layouts, medium (24px) for standard visibility.'
-    },
-    {
-      name: 'showIcon',
-      type: 'boolean',
-      required: false,
-      default: 'true',
-      description: 'Controls icon visibility. Icons provide additional visual reinforcement of status meaning. Set to false for text-only badges in space-constrained layouts.'
     },
     {
       name: 'liveRegion',
@@ -102,27 +94,27 @@ export const statusBadgeDocs: ComponentDocumentation = {
       description: 'Six semantic status types with color-coded visual feedback and appropriate iconography. Each status has distinct meaning for transaction or task states.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <StatusBadge status="pending" />
-    <StatusBadge status="processing" />
-    <StatusBadge status="scheduled" />
+    <StatusLabel status="pending" />
+    <StatusLabel status="processing" />
+    <StatusLabel status="scheduled" />
   </div>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <StatusBadge status="completed" />
-    <StatusBadge status="failed" />
-    <StatusBadge status="cancelled" />
+    <StatusLabel status="completed" />
+    <StatusLabel status="failed" />
+    <StatusLabel status="cancelled" />
   </div>
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <StatusBadge status="pending" />
-            <StatusBadge status="processing" />
-            <StatusBadge status="scheduled" />
+            <StatusLabel status="pending" />
+            <StatusLabel status="processing" />
+            <StatusLabel status="scheduled" />
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <StatusBadge status="completed" />
-            <StatusBadge status="failed" />
-            <StatusBadge status="cancelled" />
+            <StatusLabel status="completed" />
+            <StatusLabel status="failed" />
+            <StatusLabel status="cancelled" />
           </div>
         </div>
       )
@@ -131,17 +123,17 @@ export const statusBadgeDocs: ComponentDocumentation = {
       name: 'Custom Labels',
       description: 'Override default status labels for localization or context-specific messaging while maintaining semantic status colors.',
       code: `<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-  <StatusBadge status="pending" label="Awaiting Approval" />
-  <StatusBadge status="processing" label="In Progress" />
-  <StatusBadge status="completed" label="Success" />
-  <StatusBadge status="failed" label="Error" />
+  <StatusLabel status="pending" label="Awaiting Approval" />
+  <StatusLabel status="processing" label="In Progress" />
+  <StatusLabel status="completed" label="Success" />
+  <StatusLabel status="failed" label="Error" />
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <StatusBadge status="pending" label="Awaiting Approval" />
-          <StatusBadge status="processing" label="In Progress" />
-          <StatusBadge status="completed" label="Success" />
-          <StatusBadge status="failed" label="Error" />
+          <StatusLabel status="pending" label="Awaiting Approval" />
+          <StatusLabel status="processing" label="In Progress" />
+          <StatusLabel status="completed" label="Success" />
+          <StatusLabel status="failed" label="Error" />
         </div>
       )
     },
@@ -150,58 +142,40 @@ export const statusBadgeDocs: ComponentDocumentation = {
       description: 'Two size options for different layout contexts. Small for compact transaction lists, medium for prominent status displays.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
   <div>
-    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small (20px height)</p>
+    <p style={{ marginBottom: '8px', fontSize: '14px', }}>Small (20px height)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <StatusBadge status="pending" size="small" />
-      <StatusBadge status="completed" size="small" />
-      <StatusBadge status="failed" size="small" />
+      <StatusLabel status="pending" size="small" />
+      <StatusLabel status="completed" size="small" />
+      <StatusLabel status="failed" size="small" />
     </div>
   </div>
   <div>
-    <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium (24px height)</p>
+    <p style={{ marginBottom: '8px', fontSize: '14px', }}>Medium (24px height)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <StatusBadge status="pending" size="medium" />
-      <StatusBadge status="completed" size="medium" />
-      <StatusBadge status="failed" size="medium" />
+      <StatusLabel status="pending" size="medium" />
+      <StatusLabel status="completed" size="medium" />
+      <StatusLabel status="failed" size="medium" />
     </div>
   </div>
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           <div>
-            <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small (20px height)</p>
+            <p style={{ marginBottom: '8px', fontSize: '14px', }}>Small (20px height)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <StatusBadge status="pending" size="small" />
-              <StatusBadge status="completed" size="small" />
-              <StatusBadge status="failed" size="small" />
+              <StatusLabel status="pending" size="small" />
+              <StatusLabel status="completed" size="small" />
+              <StatusLabel status="failed" size="small" />
             </div>
           </div>
           <div>
-            <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium (24px height)</p>
+            <p style={{ marginBottom: '8px', fontSize: '14px', }}>Medium (24px height)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <StatusBadge status="pending" size="medium" />
-              <StatusBadge status="completed" size="medium" />
-              <StatusBadge status="failed" size="medium" />
+              <StatusLabel status="pending" size="medium" />
+              <StatusLabel status="completed" size="medium" />
+              <StatusLabel status="failed" size="medium" />
             </div>
           </div>
-        </div>
-      )
-    },
-    {
-      name: 'Without Icons',
-      description: 'Text-only badges for space-constrained layouts or when icon meaning is redundant with surrounding context.',
-      code: `<div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-  <StatusBadge status="pending" showIcon={false} />
-  <StatusBadge status="processing" showIcon={false} />
-  <StatusBadge status="completed" showIcon={false} />
-  <StatusBadge status="failed" showIcon={false} />
-</div>`,
-      renderComponent: () => (
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <StatusBadge status="pending" showIcon={false} />
-          <StatusBadge status="processing" showIcon={false} />
-          <StatusBadge status="completed" showIcon={false} />
-          <StatusBadge status="failed" showIcon={false} />
         </div>
       )
     },
@@ -209,19 +183,19 @@ export const statusBadgeDocs: ComponentDocumentation = {
       name: 'Live Region Updates',
       description: 'ARIA live region enabled by default announces status changes to screen readers. Useful for dynamic status updates in transaction monitoring.',
       code: `// Live region announcements (enabled by default)
-<StatusBadge status="processing" liveRegion={true} />
+<StatusLabel status="processing" liveRegion={true} />
 
 // Static status display (no announcements)
-<StatusBadge status="completed" liveRegion={false} />`,
+<StatusLabel status="completed" liveRegion={false} />`,
       renderComponent: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div>
-            <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>With live announcements (default)</p>
-            <StatusBadge status="processing" liveRegion={true} />
+            <p style={{ marginBottom: '8px', fontSize: '14px', }}>With live announcements (default)</p>
+            <StatusLabel status="processing" liveRegion={true} />
           </div>
           <div>
-            <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Static display (no announcements)</p>
-            <StatusBadge status="completed" liveRegion={false} />
+            <p style={{ marginBottom: '8px', fontSize: '14px', }}>Static display (no announcements)</p>
+            <StatusLabel status="completed" liveRegion={false} />
           </div>
         </div>
       )
@@ -232,25 +206,25 @@ export const statusBadgeDocs: ComponentDocumentation = {
     notes: [
       'Uses role="status" for semantic ARIA landmark',
       'ARIA live region (aria-live="polite", aria-atomic="true") enabled by default for screen reader announcements',
-      'Icons have aria-hidden="true" to prevent redundant announcements',
+      'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh"). Making icons decorative by default is #85.',
       'Screen reader text provides additional context beyond visible label',
       'All status colors maintain WCAG 2.2 AA contrast ratios (4.5:1 for text)',
       'Automatic aria-label generation: "Status: {label}"',
       'No accessibility violations detected by jest-axe across all variants',
       'Non-interactive element (no keyboard navigation needed)'
     ],
-    keyboardNavigation: 'Not applicable - status badges are non-interactive display elements.',
+    keyboardNavigation: 'Not applicable - status labels are non-interactive display elements.',
     screenReader: 'Screen readers announce "Status: {label}" followed by hidden context text "{status} status". When liveRegion is true, changes are announced automatically.'
   },
 
   anatomy: {
-    description: 'A compact badge with status-specific styling containing an optional icon and label text. Color and icon automatically determined by status type.',
+    description: 'A compact pill with status-specific styling containing an icon and label text. Color and icon automatically determined by status type.',
     diagram: `
 ┌──────────────────────────┐
-│  StatusBadge Container   │
+│  StatusLabel Container   │
 │  ┌──────┐  ┌──────────┐ │
 │  │ Icon │  │  Label   │ │
-│  │(opt) │  │  (text)  │ │
+│  │      │  │  (text)  │ │
 │  └──────┘  └──────────┘ │
 │  Hidden SR context text  │
 └──────────────────────────┘
@@ -279,7 +253,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       },
       {
         name: 'Icon',
-        description: 'Optional leading icon automatically selected based on status type. Sized according to badge size variant. Has aria-hidden="true".',
+        description: 'Leading icon, always shown, selected by status type. xs on small labels and sm on medium. Decorative (see the accessibility notes and #85).',
         tokens: [
           'semantic.size.icon.xs',
           'semantic.size.icon.sm'
@@ -287,7 +261,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       },
       {
         name: 'Label',
-        description: 'Status text using status-specific color. Default labels provided but can be overridden. Typography scales with badge size.',
+        description: 'Status text using status-specific color. Default labels provided but can be overridden. Typography scales with the label size.',
         tokens: [
           'component.badge.label.typography.small',
           'component.badge.label.typography.medium',
@@ -300,5 +274,10 @@ export const statusBadgeDocs: ComponentDocumentation = {
         tokens: []
       }
     ]
-  }
+  },
+
+  notes: [
+    'Renamed from StatusBadge in 2.16 (decision 0018). StatusBadge still works as a deprecated alias and is removed in 3.0. Migrate by renaming: status, size, label and liveRegion are unchanged. showIcon={false} is no longer possible.',
+    ...labelGuideNotes
+  ]
 }

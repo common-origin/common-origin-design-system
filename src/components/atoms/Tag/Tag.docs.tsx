@@ -1,6 +1,7 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Tag } from './Tag'
 import { Stack } from '../Stack/Stack'
+import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const tagDocs: ComponentDocumentation = {
   id: 'tag',
@@ -227,5 +228,7 @@ export const tagDocs: ComponentDocumentation = {
         ]
       }
     ]
-  }
+  },
+
+  notes: [...labelGuideNotes]
 }
