@@ -150,10 +150,10 @@ The owner approved this direction and the migration plan below in [decision 0017
 4. **Composite tokens where it helps**: typography, shadow, border, and transition as DTCG objects, emitted with the built-in `*/css/shorthand` transforms, so JSON output stays the same shape for components.
 5. **Outputs**
    - `tokens.json` — resolved values, same shape as today (components keep working unchanged).
-   - `tokens.css` — `outputReferences: true`, so semantic variables reference base variables. This is the foundation for theming and dark mode (decision 0009) and can be published for CSS-variable consumers.
+   - `tokens.css` — **published in the package** for CSS-variable consumers, every variable prefixed `co-` (for example `--co-color-text-default`), with `outputReferences: true` so semantic variables reference base variables. The variable names become a published contract (P7). This keeps the door open for theming (decision 0009); dark mode stays out of scope.
    - `tokens.d.ts` — generated with each token's `$description` as JSDoc, so editors and agents see intended use (supports #22).
    - Drop `lib/tokens.js` and the unused custom transforms and formats.
-6. **Deterministic output** (no timestamps). Treat generated files as build artifacts: either stop committing them or add a CI check that they're up to date.
+6. **Deterministic output** (no timestamps). Generated files (`tokens.json`, `tokens.d.ts`, `tokens.css`) **stay committed**, so fresh clones and editors work without a build step, and a CI check fails when they don't match the source.
 7. **Token tests** in Jest: every token has a DTCG `$type`; every semantic token has a `$description`; component tokens reference only semantic tokens; no `$ref` or non-token leaves in output.
 
 ### Migration plan (each step verifiable, each its own PR)
