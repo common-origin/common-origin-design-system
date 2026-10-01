@@ -2,6 +2,7 @@ import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Tag } from './Tag'
 import { Stack } from '../Stack/Stack'
 import { Typography } from '../Typography'
+import { StatusLabel } from '../StatusLabel'
 import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const tagDocs: ComponentDocumentation = {
@@ -154,17 +155,17 @@ export const tagDocs: ComponentDocumentation = {
     },
     {
       name: 'Dense Layout',
-      description: 'Small tags keep compact rows, such as a list of records with several labels each, at a consistent height.',
+      description: 'Small tags keep compact rows, such as a list of records with several category labels each, at a consistent height. Status goes in a StatusLabel, which shares the 20px small size, not a Tag.',
       code: `<Stack direction="column" gap="sm">
   <Stack direction="row" gap="xs" alignItems="center">
     <Typography variant="small">Invoice #1042</Typography>
-    <Tag size="small" variant="success">Paid</Tag>
+    <StatusLabel size="small" status="completed" label="Paid" liveRegion={false} />
     <Tag size="small">Q3</Tag>
     <Tag size="small">Consulting</Tag>
   </Stack>
   <Stack direction="row" gap="xs" alignItems="center">
     <Typography variant="small">Invoice #1043</Typography>
-    <Tag size="small" variant="warning">Overdue</Tag>
+    <StatusLabel size="small" status="failed" label="Overdue" liveRegion={false} />
     <Tag size="small">Q3</Tag>
     <Tag size="small">Design</Tag>
   </Stack>
@@ -173,13 +174,13 @@ export const tagDocs: ComponentDocumentation = {
         <Stack direction="column" gap="sm">
           <Stack direction="row" gap="xs" alignItems="center">
             <Typography variant="small">Invoice #1042</Typography>
-            <Tag size="small" variant="success">Paid</Tag>
+            <StatusLabel size="small" status="completed" label="Paid" liveRegion={false} />
             <Tag size="small">Q3</Tag>
             <Tag size="small">Consulting</Tag>
           </Stack>
           <Stack direction="row" gap="xs" alignItems="center">
             <Typography variant="small">Invoice #1043</Typography>
-            <Tag size="small" variant="warning">Overdue</Tag>
+            <StatusLabel size="small" status="failed" label="Overdue" liveRegion={false} />
             <Tag size="small">Q3</Tag>
             <Tag size="small">Design</Tag>
           </Stack>
