@@ -6,7 +6,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 |---|---|---|---|
 | [0001](0001-record-decisions.md) | Record significant decisions | Accepted | 2026-09-25 |
 | [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted; `emphasis` renamed `accent` by 0016 | 2026-09-25 |
-| [0003](0003-use-of-blue.md) | Blue is for links, focus, and deliberate highlight | Accepted | 2026-09-25 |
+| [0003](0003-use-of-blue.md) | Blue is for links, focus, and deliberate highlight | Accepted; open question resolved by 0016 | 2026-09-25 |
 | [0004](0004-heading-weights.md) | System headings are weight 700; products may go heavier | Superseded by 0011 | 2026-09-25 |
 | [0005](0005-motion.md) | Motion is part of the system; appearing elements animate in | Accepted; reduced-motion clause superseded by 0015 | 2026-09-25 |
 | [0006](0006-page-background.md) | Page background is the `background.default` token | Accepted | 2026-09-25 |

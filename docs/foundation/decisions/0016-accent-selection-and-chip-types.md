@@ -4,7 +4,7 @@
 - **Date:** 2026-10-01
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P3, P4, P5, P7
-- **Supersedes:** the `emphasis` variant name in [0002](0002-button-variants.md) (its role is unchanged)
+- **Supersedes:** the `emphasis` variant name in [0002](0002-button-variants.md) (its role is unchanged), and resolves the open question in [0003](0003-use-of-blue.md) about how blue relates to selected and emphasised states. Under 0003's categories, blue now means links and focus (`interactive`), the selected treatment (light blue), and the `accent` call to action
 
 ## Context
 
