@@ -99,7 +99,7 @@ export const booleanChipDocs: ComponentDocumentation = {
       type: 'boolean',
       required: true,
       description:
-        'Controls the checked state of the chip. When true, a checkmark icon appears on the left and the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. This is a controlled prop — the parent is responsible for toggling it via the onClick handler.'
+        'Controls the checked state of the chip. When true, a checkmark icon appears on the left and, when enabled, the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. A selected disabled chip keeps the checkmark but uses the disabled colours. This is a controlled prop — the parent is responsible for toggling it via the onClick handler.'
     },
     {
       name: 'onClick',

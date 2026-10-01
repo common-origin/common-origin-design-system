@@ -45,7 +45,7 @@ export const inputChipDocs: ComponentDocumentation = {
   id: 'input-chip',
   name: 'InputChip',
   description:
-    'A removable value, such as an applied filter, with an optional selected state (light-blue fill, blue text and a checkmark). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
+    'A removable value, such as an applied filter, with an optional selected state (a checkmark, with the light-blue fill and blue text when enabled; disabled colours when disabled). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
   category: 'Atoms',
   parentId: 'chip',
 
@@ -64,7 +64,7 @@ export const inputChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and the background changes to the interactive-subtle colour. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
+        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and, when enabled, the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. A selected disabled chip keeps the checkmark but uses the disabled colours. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
     },
     {
       name: 'onDismiss',
@@ -161,7 +161,7 @@ export const inputChipDocs: ComponentDocumentation = {
     {
       name: 'Selected Filter Display',
       description:
-        'The most common use of InputChip: displaying which filters are currently active. The selected prop shows a checkmark and the interactive-subtle background, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
+        'The most common use of InputChip: displaying which filters are currently active. On these enabled chips, the selected prop shows a checkmark with the light-blue fill and blue text, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
       code: `<Stack direction="column" gap="sm">
   <Typography variant="small">Active filters</Typography>
   <Stack direction="row" gap="sm" wrap>

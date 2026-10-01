@@ -64,7 +64,7 @@ export const filterChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and the background changes to the interactive-subtle colour. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
+        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and, when enabled, the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. A selected disabled chip keeps the checkmark but uses the disabled colours. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
     },
     {
       name: 'onDismiss',
@@ -161,7 +161,7 @@ export const filterChipDocs: ComponentDocumentation = {
     {
       name: 'Selected Filter Display',
       description:
-        'The most common use of FilterChip: displaying which filters are currently active. The selected prop shows a checkmark and the interactive-subtle background, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
+        'The most common use of FilterChip: displaying which filters are currently active. On these enabled chips, the selected prop shows a checkmark with the light-blue fill and blue text, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
       code: `<Stack direction="column" gap="sm">
   <Typography variant="small">Active filters</Typography>
   <Stack direction="row" gap="sm" wrap>
