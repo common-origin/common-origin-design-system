@@ -584,6 +584,16 @@
           "value": "{base.color.blue.900}",
           "type": "color"
         },
+        "interactive-hover": {
+          "value": "{base.color.blue.1000}",
+          "type": "color",
+          "description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016."
+        },
+        "interactive-active": {
+          "value": "{base.color.blue.1100}",
+          "type": "color",
+          "description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016."
+        },
         "error": {
           "value": "{base.color.red.900}",
           "type": "color"
@@ -625,6 +635,16 @@
 				"interactive-subtle": {
           "value": "{base.color.blue.100}",
           "type": "color"
+        },
+        "interactive-subtle-hover": {
+          "value": "{base.color.blue.200}",
+          "type": "color",
+          "description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016."
+        },
+        "interactive-subtle-active": {
+          "value": "{base.color.blue.300}",
+          "type": "color",
+          "description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016."
         },
         "interactive-hover": {
           "value": "{base.color.blue.1000}",

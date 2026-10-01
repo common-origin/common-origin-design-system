@@ -3,6 +3,7 @@ import { Icon } from '../Icon'
 import { BaseChipProps } from './shared/types'
 import { StyledChip, IconContainer } from './shared/ChipBase'
 
+/** @deprecated Becomes `FilterChipProps` in 3.0 (decision 0016). */
 export interface BooleanChipProps extends BaseChipProps {
   /** Whether the chip is in selected state */
   selected: boolean
@@ -22,7 +23,11 @@ export interface BooleanChipProps extends BaseChipProps {
  * - Entire chip is clickable to toggle
  * - Keyboard activation with Space or Enter
  * - Uses checkbox role with aria-checked
- * - Visual background change when selected
+ * - Light-blue fill and blue text when selected
+ *
+ * @deprecated Becomes `FilterChip` in 3.0, with the same props. Keep using `BooleanChip`
+ * until you upgrade; in 3.0, replace `FilterChip` with `InputChip` first, then
+ * `BooleanChip` with `FilterChip` (decision 0016).
  */
 export const BooleanChip: React.FC<BooleanChipProps> = ({
   children,

@@ -227,7 +227,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 											View detailed commit history, categorized changes, and version information.
 										</Typography>
 										<Stack direction="row" gap="md" wrap>
-											<Chip variant="light">{releasesData.releases.length} Total Releases</Chip>
+											<Chip>{releasesData.releases.length} Total Releases</Chip>
 											<Chip variant="emphasis">
 												Latest: v{releasesData.releases[0]?.version}
 											</Chip>

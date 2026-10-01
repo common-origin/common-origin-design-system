@@ -10,8 +10,18 @@ export interface BaseChipProps {
   'aria-describedby'?: string
 }
 
-// Visual variants for standard chips
-export type ChipVariant = 'default' | 'emphasis' | 'subtle' | 'interactive'
+/**
+ * Visual variants for the static Chip. Only `default` stays in 3.0 (decision 0016):
+ * chips are classified by job, not emphasis.
+ */
+export type ChipVariant =
+  | 'default'
+  /** @deprecated Removed in 3.0. Chips have no emphasis levels; use `default`. */
+  | 'emphasis'
+  /** @deprecated Removed in 3.0. Use `default`. */
+  | 'subtle'
+  /** @deprecated Removed in 3.0. For a clickable action use a Button; for a toggle use `BooleanChip` (`FilterChip` in 3.0). */
+  | 'interactive'
 
 // Internal props for styled components with $ prefix
 export interface InternalStyledProps {
@@ -22,5 +32,8 @@ export interface InternalStyledProps {
   $selected?: boolean
 }
 
-// Legacy variant mapping
+/**
+ * Legacy Chip variants.
+ * @deprecated Removed in 3.0. `light` is the same as `default`; `dark` maps to the deprecated `emphasis`. Use `default`.
+ */
 export type LegacyVariant = 'light' | 'dark'

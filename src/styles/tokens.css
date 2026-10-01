@@ -470,6 +470,8 @@
   --semantic-color-text-inverse: #ffffff;
   --semantic-color-text-disabled: #adb5bd;
   --semantic-color-text-interactive: #0265DC;
+  --semantic-color-text-interactive-hover: #0054B6;
+  --semantic-color-text-interactive-active: #004491;
   --semantic-color-text-error: #D31510;
   --semantic-color-text-success: #007A4D;
   --semantic-color-text-warning: #B14C00;
@@ -480,6 +482,8 @@
   --semantic-color-background-inverse: #343a40;
   --semantic-color-background-interactive: #0265DC;
   --semantic-color-background-interactive-subtle: #E0F2FF;
+  --semantic-color-background-interactive-subtle-hover: #CAE8FF;
+  --semantic-color-background-interactive-subtle-active: #B5DEFF;
   --semantic-color-background-interactive-hover: #0054B6;
   --semantic-color-background-interactive-active: #004491;
   --semantic-color-background-error: #D31510;

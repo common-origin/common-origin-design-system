@@ -4,7 +4,7 @@ import {
   Badge,
   Box,
   Button,
-  FilterChip,
+  InputChip,
   Stack,
   Typography,
   IconButton,
@@ -526,14 +526,14 @@ export const DataViewPattern: React.FC = () => {
 								</ActiveFiltersLabel>
                 <FilterChipsWrapper ref={filterChipsRef}>
                   {appliedFilters.map(filter => (
-                    <FilterChip
+                    <InputChip
                       key={filter.id}
                       selected
                       onDismiss={() => removeAppliedFilter(filter.id)}
                       aria-label={`Remove ${filter.label} filter`}
                     >
                       {filter.label}
-                    </FilterChip>
+                    </InputChip>
                   ))}
                 </FilterChipsWrapper>
                 {hasOverflow && hiddenCount > 0 && (
@@ -589,14 +589,14 @@ export const DataViewPattern: React.FC = () => {
             <MobileFiltersContent>
 							<Typography variant="label" color="subdued">Active filters:</Typography>
               {appliedFilters.map(filter => (
-                <FilterChip
+                <InputChip
                   key={filter.id}
                   selected
                   onDismiss={() => removeAppliedFilter(filter.id)}
                   aria-label={`Remove ${filter.label} filter`}
                 >
                   {filter.label}
-                </FilterChip>
+                </InputChip>
               ))}
             </MobileFiltersContent>
           </MobileFiltersContainer>
