@@ -2,7 +2,7 @@ import { useEffect, useRef, type ReactNode, type KeyboardEvent } from 'react'
 import { createPortal } from 'react-dom'
 import styled, { keyframes, css } from 'styled-components'
 import { IconButton } from '../../atoms/IconButton'
-import { Button, type ButtonProps } from '../../atoms/Button'
+import { Button, type ButtonVariant } from '../../atoms/Button'
 import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
@@ -29,7 +29,7 @@ export interface ModalAction {
    * Button variant. `accent` is the blue call to action (at most one per view).
    * `emphasis` is a deprecated alias for `accent` and will be removed in 3.0.
    */
-  variant?: ButtonProps['variant']
+  variant?: ButtonVariant
   /** Optional leading icon */
   icon?: IconName
   /** Whether the button is disabled */

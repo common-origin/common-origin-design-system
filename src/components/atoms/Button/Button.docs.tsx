@@ -18,7 +18,7 @@ export const buttonDocs: ComponentDocumentation = {
   props: [
     {
       name: 'variant',
-      type: "'primary' | 'secondary' | 'naked' | 'accent' | 'danger'",
+      type: "'primary' | 'secondary' | 'naked' | 'accent' | 'danger' | 'emphasis' (deprecated)",
       required: false,
       default: 'primary',
       description: "Visual style variant: accent (blue, the call to action above primary; at most one per view), primary (dark, the main action), secondary (gray, supporting actions), naked (transparent, minimal), danger (red, destructive actions). 'emphasis' is a deprecated alias for 'accent' and will be removed in 3.0."
@@ -140,6 +140,13 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.variants.accent.active.backgroundColor',
     'component.button.variants.accent.disabled.backgroundColor',
     'component.button.variants.accent.disabled.textColor',
+    // Deprecated emphasis variant: an alias of the accent tokens, removed in 3.0
+    'component.button.variants.emphasis.backgroundColor',
+    'component.button.variants.emphasis.textColor',
+    'component.button.variants.emphasis.hover.backgroundColor',
+    'component.button.variants.emphasis.active.backgroundColor',
+    'component.button.variants.emphasis.disabled.backgroundColor',
+    'component.button.variants.emphasis.disabled.textColor',
     // Danger variant (red destructive)
     'component.button.variants.danger.backgroundColor',
     'component.button.variants.danger.textColor',

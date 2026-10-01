@@ -9,7 +9,7 @@ const { component: { button }, semantic } = tokens
  * Button variants. `accent` is the blue call to action one level above `primary`;
  * use at most one per view (decision 0016).
  */
-type ButtonVariant =
+export type ButtonVariant =
   | 'primary'
   | 'secondary'
   | 'naked'
