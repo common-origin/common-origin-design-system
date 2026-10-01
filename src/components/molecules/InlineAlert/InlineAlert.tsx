@@ -25,9 +25,11 @@ export interface InlineAlertProps {
   size?: InlineAlertSize
 
   /**
-   * The message: short text only (no title, action or dismiss button; use Alert for those)
+   * The message: short text only (no title, action or dismiss button; use Alert for those).
+   * With no message, InlineAlert renders an empty live region and no icon: keep it mounted and
+   * set the message to have screen readers announce it reliably.
    */
-  children: React.ReactNode
+  children?: React.ReactNode
 
   /**
    * ARIA live region behaviour, as on Alert
@@ -57,13 +59,6 @@ const variantIcons: Record<InlineAlertVariant, IconName> = {
   success: 'checkRing'
 }
 
-const variantIconColors: Record<InlineAlertVariant, 'error' | 'warning' | 'success' | 'interactive'> = {
-  error: 'error',
-  warning: 'warning',
-  info: 'interactive',
-  success: 'success'
-}
-
 const variantTextColors: Record<InlineAlertVariant, string> = {
   error: color.text.error,
   warning: color.text.warning,
@@ -78,11 +73,11 @@ const sizeConfig = {
 
 const StyledInlineAlert = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $variant: InlineAlertVariant; $size: InlineAlertSize }>`
+})<{ $variant: InlineAlertVariant; $size: InlineAlertSize; $empty: boolean }>`
   box-sizing: border-box;
   display: flex;
   align-items: flex-start;
-  min-height: ${({ $size }) => size.label[$size]};
+  min-height: ${({ $size, $empty }) => ($empty ? '0' : size.label[$size])};
   gap: ${({ $size }) => sizeConfig[$size].gap};
   font: ${({ $size }) => sizeConfig[$size].font};
   color: ${({ $variant }) => variantTextColors[$variant]};
@@ -125,21 +120,33 @@ export const InlineAlert: React.FC<InlineAlertProps> = ({
   ariaLive = 'polite',
   id,
   'data-testid': dataTestId
-}) => (
-  <StyledInlineAlert
-    // Same roles as Alert: errors interrupt, everything else is a polite status
-    role={variant === 'error' ? 'alert' : 'status'}
-    aria-live={ariaLive}
-    id={id}
-    data-testid={dataTestId}
-    $variant={variant}
-    $size={alertSize}
-  >
-    <StyledIconLine aria-hidden="true">
-      <Icon name={variantIcons[variant]} size={sizeConfig[alertSize].icon} iconColor={variantIconColors[variant]} />
-    </StyledIconLine>
-    <StyledMessage>{children}</StyledMessage>
-  </StyledInlineAlert>
-)
+}) => {
+  // A live region is announced reliably only when it exists before its content changes, so with
+  // no message it stays mounted as an empty region, with no icon and no minimum height
+  const hasMessage = children !== undefined && children !== null && children !== false && children !== ''
+
+  return (
+    <StyledInlineAlert
+      // Same roles as Alert; ariaLive sets how urgently changes are announced
+      role={variant === 'error' ? 'alert' : 'status'}
+      aria-live={ariaLive}
+      id={id}
+      data-testid={dataTestId}
+      $variant={variant}
+      $size={alertSize}
+      $empty={!hasMessage}
+    >
+      {hasMessage && (
+        <>
+          <StyledIconLine aria-hidden="true">
+            {/* The icon takes the text colour, so the two can't diverge */}
+            <Icon name={variantIcons[variant]} size={sizeConfig[alertSize].icon} iconColor="inherit" />
+          </StyledIconLine>
+          <StyledMessage>{children}</StyledMessage>
+        </>
+      )}
+    </StyledInlineAlert>
+  )
+}
 
 InlineAlert.displayName = 'InlineAlert'

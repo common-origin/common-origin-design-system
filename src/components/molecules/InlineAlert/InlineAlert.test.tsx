@@ -63,6 +63,12 @@ describe('InlineAlert', () => {
     expect(screen.getByTestId('alert')).toHaveStyle({ fontSize: sizeAndLine.split('/')[0] })
   })
 
+  it.each(variants)('draws the %s icon in the text colour', (variant) => {
+    render(<InlineAlert variant={variant} data-testid="alert">Message</InlineAlert>)
+    const icon = screen.getByTestId('alert').querySelector('svg')?.parentElement as HTMLElement
+    expect(icon).toHaveStyle({ color: textColour[variant] })
+  })
+
   it('hides the icon from assistive technology', () => {
     render(<InlineAlert data-testid="alert">Message</InlineAlert>)
     expect(screen.getByTestId('alert').querySelector('svg')?.closest('[aria-hidden="true"]')).toBeInTheDocument()
@@ -79,12 +85,24 @@ describe('InlineAlert', () => {
       expect(screen.getByRole('status')).toHaveAttribute('aria-live', ariaLive)
     })
 
-    it('announces a message that appears later', () => {
-      const { rerender } = render(<div data-testid="region" />)
-      rerender(<div data-testid="region"><InlineAlert variant="success">Saved</InlineAlert></div>)
-      const status = screen.getByRole('status')
-      expect(status).toHaveAttribute('aria-live', 'polite')
-      expect(status).toHaveTextContent('Saved')
+    it('stays mounted as an empty live region with no message, so a later message is announced', () => {
+      const { rerender } = render(<InlineAlert variant="success" data-testid="alert" />)
+      const region = screen.getByTestId('alert')
+      expect(region).toHaveAttribute('role', 'status')
+      expect(region).toHaveAttribute('aria-live', 'polite')
+      expect(region).toBeEmptyDOMElement()
+      expect(region).toHaveStyle({ minHeight: '0' })
+
+      rerender(<InlineAlert variant="success" data-testid="alert">Saved</InlineAlert>)
+      // The same element, now with content: the change happens inside an existing live region
+      expect(screen.getByTestId('alert')).toBe(region)
+      expect(region).toHaveTextContent('Saved')
+      expect(region.querySelector('svg')).toBeInTheDocument()
+    })
+
+    it.each([null, false, ''])('treats %p as no message', (empty) => {
+      render(<InlineAlert data-testid="alert">{empty}</InlineAlert>)
+      expect(screen.getByTestId('alert')).toBeEmptyDOMElement()
     })
   })
 
