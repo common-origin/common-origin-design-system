@@ -23,7 +23,7 @@ export interface BooleanChipProps extends BaseChipProps {
  * - Entire chip is clickable to toggle
  * - Keyboard activation with Space or Enter
  * - Uses checkbox role with aria-checked
- * - Light-blue fill and blue text when selected
+ * - Light-blue fill and blue text when selected and enabled; disabled colours when disabled
  *
  * @deprecated Becomes `FilterChip` in 3.0, with the same props. Keep using `BooleanChip`
  * until you upgrade; in 3.0, replace `FilterChip` with `InputChip` first, then

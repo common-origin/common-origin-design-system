@@ -289,7 +289,7 @@ return (
     focusManagement:
       'The close button uses component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected chips use blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour.'
+      'Unselected text meets WCAG AA (4.5:1). An enabled selected chip uses blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },
 
   anatomy: {
@@ -317,7 +317,7 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected: semantic.color.background.interactive-subtle with semantic.color.text.interactive. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
+          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected and enabled: semantic.color.background.interactive-subtle with semantic.color.text.interactive. When disabled, selected or not, it uses component.chip.variants.subtle.disabled. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.textColor',

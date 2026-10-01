@@ -17,11 +17,12 @@ export interface InputChipProps extends BaseChipProps {
  * 
  * Use this component to show values the user has entered or applied, such as filters.
  * When selected, displays a checkmark on the light-blue selected treatment (decision 0016).
+ * A selected disabled chip uses the disabled colours and keeps its checkmark.
  * Optionally dismissible when onDismiss is provided.
  * 
  * Features:
  * - Shows checkmark icon when selected
- * - Light-blue fill and blue text when selected
+ * - Light-blue fill and blue text when selected and enabled; disabled colours when disabled
  * - Optional close (×) button when onDismiss is provided
  * - Keyboard dismissal with Delete or Backspace keys (when dismissible)
  * - Non-clickable body (only close button is interactive when present)

@@ -136,8 +136,18 @@ describe('Selected and disabled chips (#110)', () => {
     expect(chip).toHaveStyle({ backgroundColor: disabled.backgroundColor, color: disabled.textColor })
     expect(checkmark).toBeInTheDocument()
     expect(checkmark).toHaveStyle({ color: disabled.textColor })
-    expect(pseudoClassDeclarations(chip, ':hover')).not.toContain(background['interactive-subtle-hover'])
-    expect(pseudoClassDeclarations(chip, ':hover')).not.toContain(text.interactive)
+    const selectedColours = [
+      background['interactive-subtle'],
+      background['interactive-subtle-hover'],
+      background['interactive-subtle-active'],
+      text.interactive,
+      text['interactive-hover'],
+      text['interactive-active'],
+    ]
+    for (const pseudoClass of [':hover', ':active']) {
+      const declarations = pseudoClassDeclarations(chip, pseudoClass)
+      selectedColours.forEach((colour) => expect(declarations).not.toContain(colour))
+    }
   })
 
   it('looks the same as an unselected disabled chip apart from the checkmark', () => {

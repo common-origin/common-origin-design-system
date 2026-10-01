@@ -305,7 +305,7 @@ return (
     focusManagement:
       'Focus outline uses component.chip.focus.outline (2px solid) and component.chip.focus.outlineOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark takes the text colour.'
+      'Unselected text meets WCAG AA (4.5:1). On an enabled selected chip the text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark takes the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },
 
   anatomy: {
@@ -331,7 +331,7 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="checkbox". Uses the subtle chip variant background by default, switching to semantic.color.background.interactive-subtle when selected. Hover and active states use background-color transitions matching other chip and button components.',
+          'Span element with role="checkbox". Uses the subtle chip variant background by default, switching to semantic.color.background.interactive-subtle with semantic.color.text.interactive when selected and enabled. Hover and active states use background-color transitions matching other chip and button components. When disabled, selected or not, it uses component.chip.variants.subtle.disabled with no hover or active change.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.hover.backgroundColor',
