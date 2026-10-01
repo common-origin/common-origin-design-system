@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '../../atoms/Avatar'
 import { Badge } from '../../atoms/Badge'
-import { CategoryBadge, CategoryColor } from '../../atoms/CategoryBadge'
+import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { MoneyDisplay, MoneyDisplayVariant } from '../../atoms/MoneyDisplay'
 import { Icon, IconName } from '../../atoms/Icon'
 import { DateFormatter } from '../../atoms/DateFormatter'
@@ -136,7 +136,7 @@ const StyledTruncatedText = styled.span`
   white-space: nowrap;
 `
 
-// Map categories to CategoryBadge configurations
+// Map categories to CategoryLabel configurations
 const categoryConfig: Record<TransactionCategory, { color: CategoryColor; icon: IconName; label: string }> = {
   shopping: { color: 'purple', icon: 'paper', label: 'Shopping' },
   dining: { color: 'orange', icon: 'paper', label: 'Dining' },
@@ -237,15 +237,15 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
               </Typography>
             </StyledTruncatedText>
             {categoryData && (
-              <CategoryBadge
+              <CategoryLabel
                 color={categoryData.color}
                 icon={categoryData.icon}
-                size="small"
+                size="medium"
                 variant="minimal"
                 aria-label={`Category: ${categoryData.label}`}
               >
                 {categoryData.label}
-              </CategoryBadge>
+              </CategoryLabel>
             )}
             {status === 'failed' && (
               <Badge variant="error" dot aria-label="Failed transaction">

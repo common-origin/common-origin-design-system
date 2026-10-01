@@ -45,7 +45,9 @@ import { dateGroupDocs } from '@/components/molecules/DateGroup/DateGroup.docs'
 import { transactionListItemDocs } from '@/components/molecules/TransactionListItem/TransactionListItem.docs'
 import { accountCardDocs } from '@/components/molecules/AccountCard/AccountCard.docs'
 import { categoryBadgeDocs } from '@/components/atoms/CategoryBadge/CategoryBadge.docs'
+import { categoryLabelDocs } from '@/components/atoms/CategoryLabel/CategoryLabel.docs'
 import { statusBadgeDocs } from '@/components/atoms/StatusBadge/StatusBadge.docs'
+import { statusLabelDocs } from '@/components/atoms/StatusLabel/StatusLabel.docs'
 import { tabBarDocs } from '@/components/molecules/TabBar/TabBar.docs'
 import { searchFieldDocs } from '@/components/molecules/SearchField/SearchField.docs'
 import { actionSheetDocs } from '@/components/molecules/ActionSheet/ActionSheet.docs'
@@ -166,7 +168,9 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(dateGroupDocs),
   convertDocumentationToLegacyFormat(transactionListItemDocs),
   convertDocumentationToLegacyFormat(accountCardDocs),
+  convertDocumentationToLegacyFormat(categoryLabelDocs),
   convertDocumentationToLegacyFormat(categoryBadgeDocs),
+  convertDocumentationToLegacyFormat(statusLabelDocs),
   convertDocumentationToLegacyFormat(statusBadgeDocs),
   convertDocumentationToLegacyFormat(tabBarDocs),
   convertDocumentationToLegacyFormat(searchFieldDocs),

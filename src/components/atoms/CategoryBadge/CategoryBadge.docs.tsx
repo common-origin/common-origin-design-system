@@ -5,8 +5,9 @@ import { CategoryBadge } from './CategoryBadge'
 export const categoryBadgeDocs: ComponentDocumentation = {
   id: 'category-badge',
   name: 'CategoryBadge',
-  description: 'A compact, color-coded badge for displaying transaction categories with customizable visual styles and optional icons. It is display-only; for a selectable or removable category use Chip. Designed for financial applications requiring clear visual categorization with semantic color meanings.',
+  description: 'Deprecated: renamed to CategoryLabel (decision 0018) and removed in 3.0. Rename to CategoryLabel and map size="small" to "medium" and size="medium" (or no size) to "large"; color and variant are unchanged. A compact, color-coded badge for displaying transaction categories with customizable visual styles and optional icons. It is display-only; for a selectable or removable category use Chip. Designed for financial applications requiring clear visual categorization with semantic color meanings.',
   category: 'Atoms',
+  parentId: 'category-label',
   
   props: [
     {
