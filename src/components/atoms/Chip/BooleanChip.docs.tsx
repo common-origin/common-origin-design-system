@@ -122,7 +122,7 @@ export const booleanChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents interaction. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
+        'Prevents interaction. A disabled chip uses the disabled colour tokens (component.chip.variants.subtle.disabled), whether or not it is selected; a selected disabled chip keeps its checkmark, in the disabled colour. When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
     },
     {
       name: 'aria-label',
@@ -323,7 +323,7 @@ return (
 States:
 ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
 │  Unselected  │  │   Selected   │  │   Disabled   │
-│  subtle bg   │  │ interactive  │  │ disabled tint│
+│  subtle bg   │  │ interactive  │  │ disabled bg  │
 │  no icon     │  │ subtle bg +✓ │  │  no pointer  │
 └──────────────┘  └──────────────┘  └──────────────┘
     `,

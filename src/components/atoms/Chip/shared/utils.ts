@@ -16,8 +16,18 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
   // Selected filter and input chips use the light-blue selected treatment (decision 0016).
   // The text darkens with the fill so every state stays at least 4.5:1.
   if ($selected) {
+    // A selected disabled chip looks like any disabled chip; the checkmark keeps the
+    // selected state visible (#110)
+    if ($disabled) {
+      const { disabled } = chip.variants.subtle
+      return `
+        background-color: ${disabled.backgroundColor};
+        color: ${disabled.textColor};
+      `
+    }
+
     const { background, text } = tokens.semantic.color
-    const interactiveStates = $clickable && !$disabled
+    const interactiveStates = $clickable
     return `
       background-color: ${background['interactive-subtle']};
       color: ${text.interactive};

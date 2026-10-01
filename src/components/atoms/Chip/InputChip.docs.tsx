@@ -88,7 +88,7 @@ export const inputChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents dismissal: the close button is disabled and aria-disabled is set on the container. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked (e.g. while a network request is in flight).'
+        'Prevents dismissal: the close button is disabled and aria-disabled is set on the container. A disabled chip uses the disabled colour tokens (component.chip.variants.subtle.disabled), whether or not it is selected; a selected disabled chip keeps its checkmark, in the disabled colour. Use when a filter is temporarily locked (e.g. while a network request is in flight).'
     },
     {
       name: 'role',
@@ -258,7 +258,7 @@ return (
     {
       name: 'Disabled State',
       description:
-        'Disabled InputChips cannot be dismissed. An unselected disabled chip uses the disabled colours; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
+        'Disabled InputChips cannot be dismissed. They use the disabled colours, whether or not they are selected; a selected disabled chip keeps its checkmark so the state stays visible. Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
       code: `<Stack direction="row" gap="sm">
   <InputChip selected disabled>Loading…</InputChip>
   <InputChip selected onDismiss={() => {}} disabled>Locked Filter</InputChip>
@@ -309,7 +309,7 @@ return (
 States:
 ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
 │  Unselected   │  │   Selected    │  │   Disabled    │
-│  subtle bg    │  │ interactive   │  │ disabled tint │
+│  subtle bg    │  │ interactive   │  │  disabled bg  │
 │  no checkmark │  │ subtle bg + ✓ │  │  no dismiss   │
 └───────────────┘  └───────────────┘  └───────────────┘
     `,
