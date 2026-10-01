@@ -280,6 +280,18 @@
   --base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+  --component-button-variants-accent-background-color: #0265DC;
+  --component-button-variants-accent-text-color: #ffffff;
+  --component-button-variants-accent-hover-background-color: #0054B6;
+  --component-button-variants-accent-active-background-color: #004491;
+  --component-button-variants-accent-disabled-background-color: #dee2e6;
+  --component-button-variants-accent-disabled-text-color: #adb5bd;
+  --component-button-variants-emphasis-background-color: #0265DC;
+  --component-button-variants-emphasis-text-color: #ffffff;
+  --component-button-variants-emphasis-hover-background-color: #0054B6;
+  --component-button-variants-emphasis-active-background-color: #004491;
+  --component-button-variants-emphasis-disabled-background-color: #dee2e6;
+  --component-button-variants-emphasis-disabled-text-color: #adb5bd;
   --component-chip-close-button-size: 1.25rem;
   --component-input-textarea-min-height: 7.5rem;
   --component-badge-dot-size: 0.5rem;
