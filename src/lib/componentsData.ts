@@ -3,6 +3,7 @@ import { ComponentDocumentation } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
 import { alertDocs } from '@/components/molecules/Alert/Alert.docs'
+import { inlineAlertDocs } from '@/components/molecules/InlineAlert/InlineAlert.docs'
 import { avatarDocs } from '@/components/atoms/Avatar/Avatar.docs'
 import { badgeDocs } from '@/components/atoms/Badge/Badge.docs'
 import { boxDocs } from '@/components/atoms/Box/Box.docs'
@@ -127,6 +128,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(alertDocs),
+  convertDocumentationToLegacyFormat(inlineAlertDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
   convertDocumentationToLegacyFormat(badgeDocs),
   convertDocumentationToLegacyFormat(boxDocs),

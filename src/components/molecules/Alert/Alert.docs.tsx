@@ -1,7 +1,9 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Alert } from './Alert'
+import { InlineAlert } from '../InlineAlert'
 import { Button } from '../../atoms/Button'
 import { Stack } from '../../atoms/Stack'
+import { alertGuideNotes } from '../../../lib/docgen/alertGuide'
 
 export const alertDocs: ComponentDocumentation = {
   id: 'alert',
@@ -59,7 +61,7 @@ export const alertDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Compact inline variant with reduced padding, suitable for inline contexts or constrained spaces.'
+      description: 'Deprecated: use InlineAlert for a short, local message (decision 0019); inline is removed in 3.0. Until then it still gives the compact layout with reduced padding.'
     },
     {
       name: 'ariaLive',
@@ -303,30 +305,19 @@ export const alertDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Inline Variant',
-      description: 'Compact inline alerts for constrained spaces or inline contexts',
-      code: `<Stack direction="column" gap="md">
-  <Alert variant="info" inline>
-    Quick tip: Save recipes to your favorites for faster planning.
-  </Alert>
-  <Alert variant="warning" inline>
-    Low inventory: Restock pantry items.
-  </Alert>
-  <Alert variant="success" inline>
-    Synced with grocery app
-  </Alert>
-</Stack>`,
+      name: 'Inline (deprecated)',
+      description: 'The inline prop is deprecated: use InlineAlert for a short, local message, with the same variant and text. An inline alert that needs a title, action or dismiss button stays an Alert.',
+      code: `// Deprecated
+<Alert variant="warning" inline>Low inventory: restock pantry items.</Alert>
+
+// Use instead
+<InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>`,
       renderComponent: () => (
         <Stack direction="column" gap="md">
-          <Alert variant="info" inline>
-            Quick tip: Save recipes to your favorites for faster planning.
-          </Alert>
           <Alert variant="warning" inline>
-            Low inventory: Restock pantry items.
+            Low inventory: restock pantry items.
           </Alert>
-          <Alert variant="success" inline>
-            Synced with grocery app
-          </Alert>
+          <InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>
         </Stack>
       )
     },
@@ -522,5 +513,7 @@ export const alertDocs: ComponentDocumentation = {
         tokens: []
       }
     ]
-  }
+  },
+
+  notes: [...alertGuideNotes]
 }
