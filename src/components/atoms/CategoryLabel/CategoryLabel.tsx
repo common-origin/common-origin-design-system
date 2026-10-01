@@ -143,8 +143,8 @@ const StyledCategoryLabel = styled.span.withConfig({
  *
  * @example
  * ```tsx
- * <CategoryLabel color="orange" icon="restaurant">
- *   Food & Dining
+ * <CategoryLabel color="orange" icon="creditCard">
+ *   Shopping
  * </CategoryLabel>
  *
  * <CategoryLabel color="blue" variant="outlined" size="medium">
