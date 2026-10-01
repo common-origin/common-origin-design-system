@@ -289,3 +289,38 @@ describe('StatusLabel contrast (WCAG AA, #115)', () => {
     expect(contrastRatio(status[s], status[`${s}-bg`])).toBeGreaterThanOrEqual(4.5)
   })
 })
+
+describe('StatusLabel aria-label (#78)', () => {
+  it('names the status "Status: <label>" by default and keeps the visible content announced', () => {
+    render(<StatusLabel status="pending" />)
+    const label = screen.getByRole('status', { name: 'Status: Pending' })
+    expect(label.querySelector('[aria-hidden="true"] svg')).not.toBeInTheDocument()
+    expect(label).toHaveTextContent('Pending')
+  })
+
+  it('uses a provided aria-label as both the name and the announced content', () => {
+    render(<StatusLabel status="failed" label="Error" aria-label="Payment failed: card declined" />)
+    const label = screen.getByRole('status', { name: 'Payment failed: card declined' })
+    expect(screen.getByText('Error').closest('[aria-hidden="true"]')).toBeInTheDocument()
+    // A live region announces its content, so the content must be the provided label only
+    const announced = Array.from(label.childNodes)
+      .filter((n) => !(n instanceof HTMLElement && n.getAttribute('aria-hidden') === 'true'))
+      .map((n) => n.textContent)
+      .join('')
+    expect(announced).toBe('Payment failed: card declined')
+  })
+
+  it('has no accessibility violations with an aria-label', async () => {
+    const { container } = render(<StatusLabel status="completed" aria-label="Payment completed" />)
+    expect(await axe(container)).toHaveNoViolations()
+  })
+})
+
+describe('StatusLabel blank aria-label (#78)', () => {
+  it.each(['', '   '])('treats %j as no label: default name, visible content exposed', (blank) => {
+    render(<StatusLabel status="pending" aria-label={blank} />)
+    const label = screen.getByRole('status', { name: 'Status: Pending' })
+    expect(label.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument()
+    expect(label).toHaveTextContent('Pending')
+  })
+})

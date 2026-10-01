@@ -42,7 +42,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: '"Status: {label}"',
-      description: 'Custom accessible label for screen readers. Automatically generated from status label but can be overridden for additional context.'
+      description: 'Accessible label. It names the status and, because a live region announces its content rather than its name, it also replaces the announced content: the visible text and icon are hidden from assistive technology (#78). Defaults to "Status: {label}", with the visible text announced.'
     },
     {
       name: 'data-testid',
@@ -206,28 +206,31 @@ export const statusLabelDocs: ComponentDocumentation = {
     notes: [
       'Uses role="status" for semantic ARIA landmark',
       'ARIA live region (aria-live="polite", aria-atomic="true") enabled by default for screen reader announcements',
-      'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh"). Making icons decorative by default is #85.',
-      'Screen reader text provides additional context beyond visible label',
+      'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh") unless an aria-label is provided, which hides it. Making icons decorative by default is #85.',
+      'Hidden "{status} status" text adds context beyond the visible label, unless an aria-label replaces the content (#78)',
       'Every status meets WCAG 2.2 AA (4.5:1) for its text and icon on its background, enforced by tests. Pending uses yellow.1000 (#825800), 5.69:1 (#115).',
-      'Automatic aria-label generation: "Status: {label}"',
+      'Accessible name: the aria-label if provided, otherwise "Status: {label}". A provided aria-label also replaces the announced content (#78)',
       'No accessibility violations detected by jest-axe across all variants',
       'Non-interactive element (no keyboard navigation needed)'
     ],
     keyboardNavigation: 'Not applicable - status labels are non-interactive display elements.',
-    screenReader: 'Screen readers announce "Status: {label}" followed by hidden context text "{status} status". When liveRegion is true, changes are announced automatically.'
+    screenReader: 'By default the status is named "Status: {label}", and screen readers read its content: the visible text, then hidden context text "{status} status" (and the icon, until #85). When aria-label is provided, it becomes both the name and the only content read; the visible text, icon and context text are hidden from assistive technology (#78). With liveRegion (the default) changes are announced politely; liveRegion={false} sets aria-live="off".'
   },
 
   anatomy: {
-    description: 'A compact pill with status-specific styling containing an icon and label text. Color and icon automatically determined by status type.',
+    description: 'A compact pill with status-specific styling: an icon, the label text and hidden "{status} status" context, wrapped in a visible-content span. When an aria-label is given, that span is hidden from assistive technology and a visually hidden label is announced instead (#78).',
     diagram: `
-┌──────────────────────────┐
-│  StatusLabel Container   │
-│  ┌──────┐  ┌──────────┐ │
-│  │ Icon │  │  Label   │ │
-│  │      │  │  (text)  │ │
-│  └──────┘  └──────────┘ │
-│  Hidden SR context text  │
-└──────────────────────────┘
+┌───────────────────────────────────┐
+│  StatusLabel (role="status")      │
+│  ┌ Visible content ────────────┐  │
+│  │ ┌──────┐  ┌──────────┐      │  │
+│  │ │ Icon │  │  Label   │      │  │
+│  │ │      │  │  (text)  │      │  │
+│  │ └──────┘  └──────────┘      │  │
+│  │ Hidden "{status} status"    │  │
+│  └─────────────────────────────┘  │
+│  Hidden label (aria-label only)   │
+└───────────────────────────────────┘
     `,
     parts: [
       {
@@ -270,7 +273,17 @@ export const statusLabelDocs: ComponentDocumentation = {
       },
       {
         name: 'Screen Reader Text',
-        description: 'Visually hidden text providing additional context for assistive technologies. Contains "{status} status" for clarity.',
+        description: 'Visually hidden text providing additional context for assistive technologies: "{status} status". When an aria-label is provided, the visually hidden aria-label replaces it and the visible content (#78).',
+        tokens: []
+      },
+      {
+        name: 'Visible content',
+        description: 'Wraps the icon, label and "{status} status" text with display: contents, so it adds no box and keeps the container layout. It gets aria-hidden="true" only when a non-blank aria-label is given (#78).',
+        tokens: []
+      },
+      {
+        name: 'Hidden label (aria-label only)',
+        description: 'Rendered only when a non-blank aria-label is given: the aria-label as visually hidden text. Because a live region announces its content, this is what screen readers read; the aria-label also names the status (#78).',
         tokens: []
       }
     ]

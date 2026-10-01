@@ -153,7 +153,8 @@ describe('AccountCard', () => {
     it('maps up trend to green category badge colors', () => {
       render(<AccountCard {...defaultProps} trend="up" trendValue="+2.5%" />)
 
-      const badge = screen.getByText('+2.5%')
+      // The label's root element: its text sits in an inner content wrapper
+      const badge = screen.getByText('+2.5%').parentElement as HTMLElement
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['green-text']))
@@ -163,7 +164,8 @@ describe('AccountCard', () => {
     it('maps down trend to red category badge colors', () => {
       render(<AccountCard {...defaultProps} trend="down" trendValue="-1.2%" />)
 
-      const badge = screen.getByText('-1.2%')
+      // The label's root element: its text sits in an inner content wrapper
+      const badge = screen.getByText('-1.2%').parentElement as HTMLElement
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['red-text']))
@@ -173,7 +175,8 @@ describe('AccountCard', () => {
     it('maps neutral trend to blue category badge colors', () => {
       render(<AccountCard {...defaultProps} trend="neutral" trendValue="0.0%" />)
 
-      const badge = screen.getByText('0.0%')
+      // The label's root element: its text sits in an inner content wrapper
+      const badge = screen.getByText('0.0%').parentElement as HTMLElement
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['blue-text']))

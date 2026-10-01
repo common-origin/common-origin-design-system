@@ -50,7 +50,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Currently not announced: it is set on a span with no role, which assistive technology ignores (tracked in #78). Put the full category name in the visible label instead.'
+      description: 'Accessible label, announced instead of the visible text and icon, for example "Category: Food & Dining". It is rendered as visually hidden text and the visible content is hidden from assistive technology, because the label has no role that can carry a name (#78). Without it, screen readers read the visible text.'
     },
     {
       name: 'data-testid',
@@ -311,24 +311,27 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     notes: [
       'Display-only: renders a non-interactive span with no role and is not focusable',
       'Text meets WCAG 2.2 AA (4.5:1) in every colour and variant, enforced by tests: filled uses white on the -emphasis colour; outlined and minimal use the category -text token (the -emphasis colour, or one step darker for pink and yellow), on white or the -subtle fill. The outlined border keeps the base colour (#115).',
-      'aria-label is currently not announced, because the root span has no role (tracked in #78); the visible label is what screen readers read',
-      'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85)',
+      'An aria-label is announced as visually hidden text, with the visible text and icon hidden from assistive technology (#78). Without one, screen readers read the visible text.',
+      'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85). An aria-label hides it, along with the visible text (#78)',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
     keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',
-    screenReader: 'Screen readers read the category label as part of the surrounding text. An icon is currently also announced by its internal name, such as "bell" (#85).'
+    screenReader: 'Without an aria-label, screen readers read the visible category text as part of the surrounding content, and the icon (if any) is also announced by its internal name, such as "bell" (#85). With an aria-label, only that label is read: the visible text and icon are hidden from assistive technology (#78). A blank aria-label is ignored.'
   },
 
   anatomy: {
-    description: 'A compact badge consisting of an optional icon and text label within a rounded container. Visual style adapts based on variant, color, and size props.',
+    description: 'A compact label: an optional icon and text inside a rounded container. Visual style adapts to the variant, color and size props. When an aria-label is given, the visible content is hidden from assistive technology and a visually hidden label is announced instead (#78).',
     diagram: `
-┌────────────────────────────┐
-│  CategoryBadge Container   │
-│  ┌──────┐  ┌───────────┐  │
-│  │ Icon │  │   Label   │  │
-│  │(opt) │  │  (text)   │  │
-│  └──────┘  └───────────┘  │
-└────────────────────────────┘
+┌──────────────────────────────────┐
+│  CategoryBadge Container         │
+│  ┌ Visible content ───────────┐  │
+│  │ ┌──────┐  ┌───────────┐    │  │
+│  │ │ Icon │  │   Label   │    │  │
+│  │ │(opt) │  │  (text)   │    │  │
+│  │ └──────┘  └───────────┘    │  │
+│  └────────────────────────────┘  │
+│  Hidden label (aria-label only)  │
+└──────────────────────────────────┘
     `,
     parts: [
       {
@@ -380,6 +383,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           'component.badge.label.fontWeight',
           'semantic.color.text.inverse'
         ]
+      },
+      {
+        name: 'Visible content',
+        description: 'Wraps the icon and text with display: contents, so it adds no box and keeps the container layout. It gets aria-hidden="true" only when an aria-label is given (#78).',
+        tokens: []
+      },
+      {
+        name: 'Hidden label (aria-label only)',
+        description: 'Rendered only when a non-blank aria-label is given: the aria-label as visually hidden text, which is what screen readers read instead of the visible content (#78).',
+        tokens: []
       }
     ]
   }
