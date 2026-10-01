@@ -51,7 +51,7 @@
             "textColor": "{semantic.color.text.disabled}"
           }
         },
-        "emphasis": {
+        "accent": {
           "backgroundColor": "{semantic.color.background.interactive}",
           "textColor": "{semantic.color.text.inverse}",
           "hover": {
@@ -63,6 +63,20 @@
           "disabled": {
             "backgroundColor": "{semantic.color.background.disabled}",
             "textColor": "{semantic.color.text.disabled}"
+          }
+        },
+        "emphasis": {
+          "backgroundColor": "{component.button.variants.accent.backgroundColor}",
+          "textColor": "{component.button.variants.accent.textColor}",
+          "hover": {
+            "backgroundColor": "{component.button.variants.accent.hover.backgroundColor}"
+          },
+          "active": {
+            "backgroundColor": "{component.button.variants.accent.active.backgroundColor}"
+          },
+          "disabled": {
+            "backgroundColor": "{component.button.variants.accent.disabled.backgroundColor}",
+            "textColor": "{component.button.variants.accent.disabled.textColor}"
           }
         },
         "danger": {

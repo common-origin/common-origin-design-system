@@ -18,10 +18,10 @@ export const buttonDocs: ComponentDocumentation = {
   props: [
     {
       name: 'variant',
-      type: "'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'",
+      type: "'primary' | 'secondary' | 'naked' | 'accent' | 'danger'",
       required: false,
       default: 'primary',
-      description: 'Visual style variant: primary (high emphasis, dark), secondary (medium emphasis, gray), naked (minimal styling, transparent), emphasis (blue interactive, prominent CTAs), danger (red, destructive actions)'
+      description: "Visual style variant: accent (blue, the call to action above primary; at most one per view), primary (dark, the main action), secondary (gray, supporting actions), naked (transparent, minimal), danger (red, destructive actions). 'emphasis' is a deprecated alias for 'accent' and will be removed in 3.0."
     },
     {
       name: 'size',
@@ -133,13 +133,13 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.variants.naked.active.backgroundColor',
     'component.button.variants.naked.disabled.backgroundColor',
     'component.button.variants.naked.disabled.textColor',
-    // Emphasis variant (blue interactive)
-    'component.button.variants.emphasis.backgroundColor',
-    'component.button.variants.emphasis.textColor',
-    'component.button.variants.emphasis.hover.backgroundColor',
-    'component.button.variants.emphasis.active.backgroundColor',
-    'component.button.variants.emphasis.disabled.backgroundColor',
-    'component.button.variants.emphasis.disabled.textColor',
+    // Accent variant (blue call to action)
+    'component.button.variants.accent.backgroundColor',
+    'component.button.variants.accent.textColor',
+    'component.button.variants.accent.hover.backgroundColor',
+    'component.button.variants.accent.active.backgroundColor',
+    'component.button.variants.accent.disabled.backgroundColor',
+    'component.button.variants.accent.disabled.textColor',
     // Danger variant (red destructive)
     'component.button.variants.danger.backgroundColor',
     'component.button.variants.danger.textColor',
@@ -162,7 +162,7 @@ export const buttonDocs: ComponentDocumentation = {
   examples: [
     {
       name: 'Button Variants',
-      description: 'Five visual styles for different contexts: primary (dark, high emphasis), secondary (gray, medium emphasis), naked (transparent, minimal), emphasis (blue, prominent CTAs), danger (red, destructive actions)',
+      description: "Five visual styles for different contexts: accent (blue, the call to action above primary; at most one per view), primary (dark, the main action), secondary (gray, supporting actions), naked (transparent, minimal), danger (red, destructive actions). The old 'emphasis' variant is a deprecated alias for 'accent'.",
       code: `<Stack direction="column" gap="md">
   <Stack direction="row" gap="md">
     <Button variant="primary">Primary</Button>
@@ -170,7 +170,7 @@ export const buttonDocs: ComponentDocumentation = {
     <Button variant="naked">Naked</Button>
   </Stack>
   <Stack direction="row" gap="md">
-    <Button variant="emphasis">Emphasis</Button>
+    <Button variant="accent">Accent</Button>
     <Button variant="danger">Danger</Button>
   </Stack>
 </Stack>`,
@@ -182,7 +182,7 @@ export const buttonDocs: ComponentDocumentation = {
             <Button variant="naked">Naked</Button>
           </Stack>
           <Stack direction="row" gap="md">
-            <Button variant="emphasis">Emphasis</Button>
+            <Button variant="accent">Accent</Button>
             <Button variant="danger">Danger</Button>
           </Stack>
         </Stack>
@@ -213,8 +213,8 @@ export const buttonDocs: ComponentDocumentation = {
     <Button disabled>Disabled</Button>
   </Stack>
   <Stack direction="row" gap="md">
-    <Button variant="emphasis">Emphasis</Button>
-    <Button variant="emphasis" disabled>Emphasis Disabled</Button>
+    <Button variant="accent">Accent</Button>
+    <Button variant="accent" disabled>Accent Disabled</Button>
   </Stack>
   <Stack direction="row" gap="md">
     <Button variant="danger">Danger</Button>
@@ -228,8 +228,8 @@ export const buttonDocs: ComponentDocumentation = {
             <Button disabled>Disabled</Button>
           </Stack>
           <Stack direction="row" gap="md">
-            <Button variant="emphasis">Emphasis</Button>
-            <Button variant="emphasis" disabled>Emphasis Disabled</Button>
+            <Button variant="accent">Accent</Button>
+            <Button variant="accent" disabled>Accent Disabled</Button>
           </Stack>
           <Stack direction="row" gap="md">
             <Button variant="danger">Danger</Button>
@@ -284,7 +284,7 @@ export const buttonDocs: ComponentDocumentation = {
     },
     {
       name: 'Icon Color Inheritance',
-      description: 'Icons automatically inherit the button text color across all variants including emphasis and danger',
+      description: 'Icons automatically inherit the button text color across all variants including accent and danger',
       code: `<Stack direction="column" gap="sm">
   <Stack direction="row" gap="md">
     <Button iconName="message" variant="primary">Primary</Button>
@@ -292,7 +292,7 @@ export const buttonDocs: ComponentDocumentation = {
     <Button iconName="message" variant="naked">Naked</Button>
   </Stack>
   <Stack direction="row" gap="md">
-    <Button iconName="add" variant="emphasis">Add New</Button>
+    <Button iconName="add" variant="accent">Add New</Button>
     <Button iconName="trash" variant="danger">Delete</Button>
   </Stack>
 </Stack>`,
@@ -304,7 +304,7 @@ export const buttonDocs: ComponentDocumentation = {
             <Button iconName="message" variant="naked">Naked</Button>
           </Stack>
           <Stack direction="row" gap="md">
-            <Button iconName="add" variant="emphasis">Add New</Button>
+            <Button iconName="add" variant="accent">Add New</Button>
             <Button iconName="trash" variant="danger">Delete</Button>
           </Stack>
         </Stack>
@@ -427,8 +427,9 @@ export const buttonDocs: ComponentDocumentation = {
 
   notes: [
     'Semantic Purpose: Use purpose="button" for actions (forms, modals, state changes), purpose="link" for navigation',
-    'Variant Hierarchy: Primary for main actions, secondary for supporting actions, naked for minimal emphasis, emphasis for prominent blue CTAs, danger for destructive/irreversible actions',
-    'Emphasis Variant: Use for sign-up flows, primary CTAs that need to stand out, and actions you want to encourage users to take',
+    'Variant Hierarchy: Accent for the one call to action that must stand out above primary, primary for main actions, secondary for supporting actions, naked for low-emphasis actions, danger for destructive/irreversible actions (decisions 0002 and 0016)',
+    'Accent Variant: A brand moment or the one action that must stand out beyond the primary action, such as a sign-up. Use at most one per view. Accent is not a selected state or a link colour',
+    'Deprecated: variant="emphasis" is an alias for accent, kept so nothing breaks in 2.x. Replace it with variant="accent"; emphasis will be removed in 3.0. The component.button.variants.emphasis tokens are likewise a deprecated alias of component.button.variants.accent',
     'Danger Variant: Reserve for destructive actions like delete, remove, or cancel subscription. Always pair with confirmation dialogs for irreversible actions',
     'Size Guidelines: Small for compact interfaces, medium for standard use, large for prominent CTAs or touch interfaces',
     'Polymorphic Rendering: Automatically renders semantic HTML (<button> or <a>) with proper attributes based on purpose',
@@ -459,7 +460,7 @@ Variant Colors:
 │ #212529 │ │ #dee2e6 │ │ transp. │
 └─────────┘ └─────────┘ └─────────┘
 ┌─────────┐ ┌─────────┐
-│Emphasis │ │ Danger  │
+│ Accent  │ │ Danger  │
 │ #0265DC │ │ #D31510 │
 └─────────┘ └─────────┘
     `,
