@@ -35,8 +35,8 @@ Alert's tinted backgrounds are about 1.1:1 against the page, so a borderless ale
 
 | `appearance` | Look | Use for |
 |---|---|---|
-| `outlined` | Severity tint, 1px severity border | Page-level alerts at the top or bottom of a page, where the border calls out severity |
-| `borderless` | Severity tint only, no border and no accent bar | Inside content, where a border would compete with it. Severity is carried by the icon and title colour |
+| `outlined` | Severity tint, 1px severity border | **Only alerts at the top:** a page-level alert at the top of the page, an alert at the top of the content area, and an error summary. The border calls out severity |
+| `borderless` | Severity tint only, no border and no accent bar | **Every other alert**, including alerts inside content and at the bottom of a page. Severity is carried by the icon and title colour |
 
 The severity × appearance combinations come from Alert's component tokens (`component.alert.*`, [0014](0014-token-tiers.md)), not conditionals with literal values. Until `inline` is removed in 3.0, `appearance` and the deprecated `inline` prop are independent: any combination renders, and `inline` only changes spacing as it does today.
 
