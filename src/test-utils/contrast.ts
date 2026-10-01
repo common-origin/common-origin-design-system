@@ -28,7 +28,8 @@ export function pseudoClassDeclarations(element: Element, pseudoClass: string): 
     .join('')
   return Array.from(element.classList)
     .map((cls) => {
-      const match = css.match(new RegExp(`\\.${cls}${pseudoClass}\\{([^}]*)\\}`))
+      const escaped = pseudoClass.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      const match = css.match(new RegExp(`\\.${cls}${escaped}\\{([^}]*)\\}`))
       return match ? match[1] : ''
     })
     .join('')

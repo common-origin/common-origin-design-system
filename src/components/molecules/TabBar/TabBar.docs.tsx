@@ -1,13 +1,13 @@
 import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
-import { TabBar, Tab } from './TabBar'
+import { TabBar } from './TabBar'
 
 export const tabBarDocs: ComponentDocumentation = {
   id: 'tab-bar',
   name: 'TabBar',
-  description: 'A fully accessible tabbed navigation component with keyboard support, multiple visual variants, and optional badge indicators. Implements WAI-ARIA tablist pattern with roving tabindex for optimal keyboard navigation.',
+  description: 'An accessible tabbed navigation component with keyboard support and optional count badges. Implements the WAI-ARIA tablist pattern with a roving tabindex. TabBar has one look (decision 0020): the selected tab takes the light-blue selected treatment (fill and blue text) with a blue underline. The variant prop is deprecated; its old default and pills values now render the same way.',
   category: 'Molecules',
-  
+
   props: [
     {
       name: 'tabs',
@@ -34,8 +34,8 @@ export const tabBarDocs: ComponentDocumentation = {
       name: 'variant',
       type: "'default' | 'pills' | 'underline'",
       required: false,
-      default: "'default'",
-      description: 'Visual style variant. Default for standard bordered tabs, pills for rounded button-like tabs, underline for minimal tabs with bottom border indicator.'
+      default: "'underline'",
+      description: "Deprecated, removed in 3.0 (decision 0020). TabBar has one look; every value renders as underline. Remove the prop."
     },
     {
       name: 'data-testid',
@@ -54,36 +54,47 @@ export const tabBarDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.tabBar.badge.size',
+    // Tab list
+    'semantic.border.width.thin',
+    'semantic.color.border.subtle',
     'component.tabBar.scrollbar.height',
-    'semantic.color.background.default - Container background',
-    'semantic.color.background.interactive - Active tab background (default variant)',
-    'semantic.color.background.interactive-subtle - Hover state background',
-    'semantic.color.text.default - Inactive tab text color',
-    'semantic.color.text.emphasis - Active tab text color',
-    'semantic.color.border.default - Tab borders (default variant)',
-    'semantic.color.border.emphasis - Active tab bottom border (underline variant)',
-    'semantic.spacing.layout.sm - 8px gap between tabs (pills variant) and within a tab',
-    'semantic.spacing.layout.md - 12px vertical padding for tabs',
-    'semantic.spacing.layout.lg - 16px horizontal padding for tabs',
-    'semantic.spacing.layout.xs - 4px horizontal padding for the count badge',
-    'semantic.typography.body2 - Tab label typography',
-    'component.tabBar.badge.typography - Badge count text',
-    'component.tabBar.badge.fontWeight - Badge count weight',
-    'semantic.color.background.inverse-overlay - Count badge background on the active pills tab',
-    'semantic.color.text.inverse - Count badge text',
-    'semantic.border.radius.circle - Rounded corners for pills variant',
-    'semantic.border.width.thin - 1px border width',
-    'semantic.motion.interactive - Smooth transitions for hover/active states'
+    'semantic.color.background.subtle',
+    'semantic.color.border.default',
+    'semantic.border.radius.sm',
+    // Tab
+    'semantic.typography.button2',
+    'semantic.spacing.layout.sm',
+    'semantic.spacing.layout.md',
+    'semantic.spacing.layout.lg',
+    'semantic.color.text.subdued',
+    'semantic.color.text.default',
+    'semantic.motion.hover',
+    // Selected tab (decisions 0016, 0020): the text darkens with the fill
+    'semantic.color.background.interactive-subtle',
+    'semantic.color.text.interactive',
+    'semantic.color.background.interactive-subtle-hover',
+    'semantic.color.text.interactive-hover',
+    'semantic.color.background.interactive-subtle-active',
+    'semantic.color.text.interactive-active',
+    // Underline
+    'semantic.color.background.interactive',
+    'semantic.border.width.thick',
+    // Focus
+    'semantic.color.border.strong',
+    'semantic.spacing.layout.xs',
+    // Count badge
+    'component.tabBar.badge.size',
+    'component.tabBar.badge.typography',
+    'component.tabBar.badge.fontWeight',
+    'semantic.border.radius.circle',
+    'semantic.color.text.inverse'
   ],
 
   examples: [
     {
-      name: 'Tab Variants',
-      description: 'Three visual styles for different interface contexts. Default for standard application tabs, pills for prominent navigation, underline for minimal content sections.',
-      code: `const [activeDefault, setActiveDefault] = React.useState('overview')
-const [activePills, setActivePills] = React.useState('overview')
-const [activeUnderline, setActiveUnderline] = React.useState('overview')
+      name: 'Tabs',
+      description: 'The selected tab has the light-blue fill, blue text and a blue underline. Unselected tabs are quiet: subdued text that darkens on hover.',
+      code: `const [activeTab, setActiveTab] = React.useState('overview')
 
 const tabs = [
   { id: 'overview', label: 'Overview' },
@@ -92,85 +103,23 @@ const tabs = [
 ]
 
 return (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-    <div>
-      <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Default Variant</p>
-      <TabBar 
-        tabs={tabs}
-        activeTab={activeDefault}
-        onTabChange={setActiveDefault}
-        variant="default"
-      />
-    </div>
-    
-    <div>
-      <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Pills Variant</p>
-      <TabBar 
-        tabs={tabs}
-        activeTab={activePills}
-        onTabChange={setActivePills}
-        variant="pills"
-      />
-    </div>
-    
-    <div>
-      <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Underline Variant</p>
-      <TabBar 
-        tabs={tabs}
-        activeTab={activeUnderline}
-        onTabChange={setActiveUnderline}
-        variant="underline"
-      />
-    </div>
-  </div>
+  <TabBar
+    tabs={tabs}
+    activeTab={activeTab}
+    onTabChange={setActiveTab}
+  />
 )`,
       renderComponent: () => {
-        const TabVariantsExample = () => {
-          const [activeDefault, setActiveDefault] = React.useState('overview')
-          const [activePills, setActivePills] = React.useState('overview')
-          const [activeUnderline, setActiveUnderline] = React.useState('overview')
-
+        const BasicExample = () => {
+          const [activeTab, setActiveTab] = React.useState('overview')
           const tabs = [
             { id: 'overview', label: 'Overview' },
             { id: 'details', label: 'Details' },
             { id: 'settings', label: 'Settings' }
           ]
-
-          return (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-              <div>
-                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Default Variant</p>
-                <TabBar 
-                  tabs={tabs}
-                  activeTab={activeDefault}
-                  onTabChange={setActiveDefault}
-                  variant="default"
-                />
-              </div>
-              
-              <div>
-                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Pills Variant</p>
-                <TabBar 
-                  tabs={tabs}
-                  activeTab={activePills}
-                  onTabChange={setActivePills}
-                  variant="pills"
-                />
-              </div>
-              
-              <div>
-                <p style={{ marginBottom: '12px', fontSize: '14px', color: '#666' }}>Underline Variant</p>
-                <TabBar 
-                  tabs={tabs}
-                  activeTab={activeUnderline}
-                  onTabChange={setActiveUnderline}
-                  variant="underline"
-                />
-              </div>
-            </div>
-          )
+          return <TabBar tabs={tabs} activeTab={activeTab} onTabChange={setActiveTab} />
         }
-        return <TabVariantsExample />
+        return <BasicExample />
       }
     },
     {
@@ -190,7 +139,6 @@ return (
     tabs={tabs}
     activeTab={activeTab}
     onTabChange={setActiveTab}
-    variant="pills"
   />
 )`,
       renderComponent: () => {
@@ -209,7 +157,6 @@ return (
               tabs={tabs}
               activeTab={activeTab}
               onTabChange={setActiveTab}
-              variant="pills"
             />
           )
         }
@@ -279,7 +226,6 @@ return (
       tabs={tabs}
       activeTab={activeTab}
       onTabChange={setActiveTab}
-      variant="underline"
     />
   </div>
 )`,
@@ -304,7 +250,6 @@ return (
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={setActiveTab}
-                variant="underline"
               />
             </div>
           )
@@ -337,12 +282,9 @@ return (
       tabs={tabs}
       activeTab={activeTab}
       onTabChange={handleTabChange}
-      variant="pills"
     />
     <div style={{ 
       padding: '16px', 
-      backgroundColor: '#f5f5f5', 
-      borderRadius: '8px',
       fontSize: '14px'
     }}>
       <strong>Active Tab:</strong> {activeTab} | <strong>Tab Changes:</strong> {changeCount}
@@ -372,12 +314,9 @@ return (
                 tabs={tabs}
                 activeTab={activeTab}
                 onTabChange={handleTabChange}
-                variant="pills"
               />
               <div style={{ 
                 padding: '16px', 
-                backgroundColor: '#f5f5f5', 
-                borderRadius: '8px',
                 fontSize: '14px'
               }}>
                 <strong>Active Tab:</strong> {activeTab} | <strong>Tab Changes:</strong> {changeCount}
@@ -400,15 +339,16 @@ return (
       'Disabled tabs have aria-disabled="true" and cannot be activated',
       'Badge counts include aria-label for screen reader announcement (e.g., "5 items")',
       'Focus management syncs with activeTab prop changes for external state updates',
-      'All color variants maintain WCAG 2.2 AA contrast ratios',
-      'No accessibility violations detected by jest-axe across all variants and states'
+      'Selected tab text meets WCAG 2.2 AA in every state: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016)',
+      'The selected state does not rely on colour alone: the selected tab also has the underline and aria-selected="true"',
+      'No accessibility violations detected by jest-axe, including for the deprecated variant values'
     ],
     keyboardNavigation: 'Tab key focuses the tab group (enters first or currently active tab). ArrowLeft moves to previous tab, ArrowRight moves to next tab (both wrap around ends). Home jumps to first tab, End jumps to last tab. All navigation automatically skips disabled tabs. Click or tap to activate focused tab.',
     screenReader: 'Screen readers announce "Tab navigation, tablist" for the container. Each tab is announced as "tab" with its label and selection state. Active tabs: "{label}, tab, selected". Inactive tabs: "{label}, tab, not selected". Disabled tabs: "{label}, tab, disabled". Badge counts announced as "{number} items".'
   },
 
   anatomy: {
-    description: 'A horizontal tablist container with multiple tab buttons. Each tab can display a label and optional badge. Visual style varies by variant prop.',
+    description: 'A horizontal tablist container with a bottom border and a row of tab buttons. Each tab shows a label and an optional count badge. The selected tab has the light-blue fill, blue text and a blue underline.',
     diagram: `
 ┌────────────────────────────────────────────────────┐
 │  TabList Container (role="tablist")                │
@@ -425,20 +365,25 @@ return (
         name: 'TabList Container',
         description: 'Horizontal scrollable container with role="tablist". Displays tabs in a row with optional overflow scrolling. Styled scrollbar for better UX.',
         tokens: [
-          'semantic.color.background.default',
-          'semantic.color.border.default'
+          'semantic.border.width.thin',
+          'semantic.color.border.subtle',
+          'component.tabBar.scrollbar.height'
         ]
       },
       {
         name: 'Tab Button',
-        description: 'Individual tab element with role="tab". Changes appearance based on active state, disabled state, and variant. Includes aria-selected and aria-disabled attributes.',
+        description: 'Individual tab element with role="tab". Unselected: subdued text, no fill, darkening to the default text colour on hover. Selected: the light-blue fill with blue text, both darkening on hover and press. Disabled tabs are at half opacity. Includes aria-selected and aria-disabled attributes.',
         tokens: [
-          'semantic.color.background.interactive',
-          'semantic.color.background.interactive-subtle',
+          'semantic.color.text.subdued',
           'semantic.color.text.default',
-          'semantic.color.text.emphasis',
-          'semantic.typography.body2',
-          'semantic.spacing.layout.sm',
+          'semantic.color.background.interactive-subtle',
+          'semantic.color.text.interactive',
+          'semantic.color.background.interactive-subtle-hover',
+          'semantic.color.text.interactive-hover',
+          'semantic.color.background.interactive-subtle-active',
+          'semantic.color.text.interactive-active',
+          'semantic.typography.button2',
+          'semantic.spacing.layout.md',
           'semantic.spacing.layout.lg'
         ]
       },
@@ -454,11 +399,12 @@ return (
         ]
       },
       {
-        name: 'Active Indicator',
-        description: 'Visual indicator showing selected tab. Varies by variant: solid background (default/pills) or bottom border (underline). Animates smoothly on tab change.',
+        name: 'Underline',
+        description: 'A blue underline under the selected tab, on top of the tab list border. Transitions with the hover motion token when the selection changes.',
         tokens: [
-          'semantic.color.border.emphasis',
-          'semantic.motion.interactive'
+          'semantic.color.background.interactive',
+          'semantic.border.width.thick',
+          'semantic.motion.hover'
         ]
       }
     ]

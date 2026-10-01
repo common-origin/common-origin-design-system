@@ -47,7 +47,7 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --max-warnings 195",
+    "lint": "eslint . --max-warnings 192",
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
     "verify:no-nextjs": "node scripts/verify-no-nextjs-deps.cjs",

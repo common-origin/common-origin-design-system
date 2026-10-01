@@ -23,6 +23,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted | 2026-10-01 |
 | [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted | 2026-10-01 |
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
+| [0020](0020-tabbar-single-variant.md) | TabBar has one variant, underline, with the light-blue selected treatment; `default` and `pills` are deprecated | Accepted | 2026-10-01 |
 
 ## Template
 

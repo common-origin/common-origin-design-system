@@ -4,7 +4,6 @@ import { useState, useMemo, useCallback } from 'react'
 import {
   Box,
   Breadcrumbs,
-  Button,
   Chip,
   CodeBlock,
   Container,
@@ -175,6 +174,40 @@ const CategoryChildren = styled.div<{ $isExpanded: boolean }>`
   display: ${({ $isExpanded }) => $isExpanded ? 'flex' : 'none'};
   flex-direction: column;
   padding-left: ${spacing.layout.sm};
+`
+
+// Sidebar item: naked Button styling, with the light-blue selected treatment for the
+// active item (decision 0016)
+const SidebarItem = styled.button<{ $isActive: boolean }>`
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  font: ${tokens.component.button.sizes.medium.font};
+  padding: ${tokens.component.button.sizes.medium.padding};
+  border: none;
+  border-radius: ${tokens.component.button.primary.borderRadius};
+  background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle'] : tokens.component.button.variants.naked.backgroundColor};
+  color: ${({ $isActive }) => $isActive ? color.text.interactive : tokens.component.button.variants.naked.textColor};
+  text-align: left;
+  cursor: pointer;
+  transition: ${tokens.semantic.motion.hover};
+  white-space: nowrap;
+
+  &:hover {
+    background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle-hover'] : tokens.component.button.variants.naked.hover.backgroundColor};
+    color: ${({ $isActive }) => $isActive ? color.text['interactive-hover'] : tokens.component.button.variants.naked.textColor};
+  }
+
+  &:active {
+    background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle-active'] : tokens.component.button.variants.naked.active.backgroundColor};
+    color: ${({ $isActive }) => $isActive ? color.text['interactive-active'] : tokens.component.button.variants.naked.textColor};
+  }
+
+  &:focus-visible {
+    outline: ${tokens.component.button.focus.outline};
+    outline-offset: ${tokens.component.button.focus.outlineOffset};
+  }
 `
 
 const SubComponentGroup = styled.div`
@@ -500,26 +533,26 @@ export default function Components() {
                               })
                             return topLevel.map((comp) => (
                               <div key={comp.id}>
-                                <Button
-                                  variant={activeComponent === comp.id ? 'primary' : 'naked'}
-                                  size="medium"
+                                <SidebarItem
+                                  type="button"
+                                  $isActive={activeComponent === comp.id}
+                                  aria-current={activeComponent === comp.id ? 'page' : undefined}
                                   onClick={() => handleComponentClick(comp.id)}
-                                  style={{ justifyContent: 'flex-start', width: '100%' }}
                                 >
                                   {comp.name}
-                                </Button>
+                                </SidebarItem>
                                 {childMap[comp.id] && (
                                   <SubComponentGroup>
                                     {childMap[comp.id].map(child => (
-                                      <Button
+                                      <SidebarItem
                                         key={child.id}
-                                        variant={activeComponent === child.id ? 'primary' : 'naked'}
-                                        size="medium"
+                                        type="button"
+                                        $isActive={activeComponent === child.id}
+                                        aria-current={activeComponent === child.id ? 'page' : undefined}
                                         onClick={() => handleComponentClick(child.id)}
-                                        style={{ justifyContent: 'flex-start', width: '100%' }}
                                       >
                                         {child.name}
-                                      </Button>
+                                      </SidebarItem>
                                     ))}
                                   </SubComponentGroup>
                                 )}

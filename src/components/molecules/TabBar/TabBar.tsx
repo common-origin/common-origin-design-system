@@ -1,11 +1,13 @@
-import { ReactNode, useState, useRef, useEffect, KeyboardEvent, MouseEvent } from 'react'
+import { useState, useRef, useEffect, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
 
 /**
- * Tab variant options for TabBar
+ * Tab variant options for TabBar.
+ * @deprecated TabBar has one look, `underline` (decision 0020). `'default'` and `'pills'` render
+ * as `underline`. The type is removed in 3.0.
  */
 export type TabVariant = 'default' | 'pills' | 'underline'
 
@@ -55,8 +57,10 @@ export interface TabBarProps {
   onTabChange: (tabId: string) => void
   
   /**
-   * Visual variant of the tabs
-   * @default 'default'
+   * Visual variant of the tabs.
+   * @deprecated TabBar has one look, `underline` (decision 0020). `'default'` and `'pills'` render
+   * as `underline`. Remove the prop; it is removed in 3.0.
+   * @default 'underline'
    */
   variant?: TabVariant
   
@@ -71,27 +75,15 @@ export interface TabBarProps {
   'data-testid'?: string
 }
 
-interface StyledTabListProps {
-  $variant: TabVariant
-}
-
 interface StyledTabProps {
-  $variant: TabVariant
   $isActive: boolean
   $disabled: boolean
 }
 
-const StyledTabList = styled.div.withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$')
-})<StyledTabListProps>`
+const StyledTabList = styled.div`
   display: flex;
   align-items: center;
-  gap: ${props => props.$variant === 'pills' ? semantic.spacing.layout.sm : '0'};
-  border-bottom: ${props => 
-    props.$variant === 'underline' 
-      ? `${semantic.border.width.thin} solid ${semantic.color.border.subtle}` 
-      : 'none'
-  };
+  border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.subtle};
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -126,78 +118,54 @@ const StyledTab = styled.button.withConfig({
   transition: ${semantic.motion.hover};
   position: relative;
   
-  /* Variant-specific styles */
-  ${props => {
-    if (props.$variant === 'pills') {
-      return `
-        border-radius: ${semantic.border.radius.circle};
-        background-color: ${props.$isActive 
-          ? semantic.color.background.interactive 
-          : semantic.color.background.subtle
-        };
-        color: ${props.$isActive 
-          ? semantic.color.text.inverse 
-          : semantic.color.text.default
-        };
-        
-        &:hover:not(:disabled) {
-          background-color: ${props.$isActive 
-            ? semantic.color.background['interactive-hover']
-            : semantic.color.background.surface
-          };
-        }
-      `
-    }
-    
-    if (props.$variant === 'underline') {
-      return `
-        color: ${props.$isActive 
-          ? semantic.color.text.interactive 
-          : semantic.color.text.subdued
-        };
-        
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: -1px;
-          left: 0;
-          right: 0;
-          height: ${semantic.border.width.thick};
-          background-color: ${props.$isActive 
-            ? semantic.color.background.interactive 
-            : 'transparent'
-          };
-          transition: ${semantic.motion.hover};
-        }
-        
-        &:hover:not(:disabled) {
-          color: ${semantic.color.text.interactive};
-        }
-      `
-    }
-    
-    // default variant
-    return `
-      border-radius: ${semantic.border.radius.sm} ${semantic.border.radius.sm} 0 0;
-      background-color: ${props.$isActive 
-        ? semantic.color.background.subtle 
-        : semantic.color.background.default
-      };
-      color: ${props.$isActive 
-        ? semantic.color.text.default 
-        : semantic.color.text.subdued
-      };
-      border: ${semantic.border.width.thin} solid ${semantic.color.border.default};
-      border-bottom: ${props.$isActive ? 'none' : `${semantic.border.width.thin} solid ${semantic.color.border.default}`};
-      margin-bottom: ${props.$isActive ? '-1px' : '0'};
-      
-      &:hover:not(:disabled) {
-        background-color: ${semantic.color.background.surface};
-        color: ${semantic.color.text.default};
-      }
-    `
-  }}
-  
+  /* Selected tab: the light-blue selected treatment plus a blue underline (decisions 0016, 0020).
+     The text darkens with the fill on hover and press so every state stays at least 4.5:1. */
+  border-radius: ${semantic.border.radius.sm} ${semantic.border.radius.sm} 0 0;
+  background-color: ${props => props.$isActive
+    ? semantic.color.background['interactive-subtle']
+    : 'transparent'
+  };
+  color: ${props => props.$isActive
+    ? semantic.color.text.interactive
+    : semantic.color.text.subdued
+  };
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: ${semantic.border.width.thick};
+    background-color: ${props => props.$isActive
+      ? semantic.color.background.interactive
+      : 'transparent'
+    };
+    transition: ${semantic.motion.hover};
+  }
+
+  &:hover:not(:disabled) {
+    background-color: ${props => props.$isActive
+      ? semantic.color.background['interactive-subtle-hover']
+      : 'transparent'
+    };
+    color: ${props => props.$isActive
+      ? semantic.color.text['interactive-hover']
+      : semantic.color.text.default
+    };
+  }
+
+  &:active:not(:disabled) {
+    background-color: ${props => props.$isActive
+      ? semantic.color.background['interactive-subtle-active']
+      : 'transparent'
+    };
+    color: ${props => props.$isActive
+      ? semantic.color.text['interactive-active']
+      : semantic.color.text.default
+    };
+  }
+
   /* Disabled state */
   opacity: ${props => props.$disabled ? '0.5' : '1'};
   
@@ -208,15 +176,13 @@ const StyledTab = styled.button.withConfig({
     z-index: 1;
   }
   
-  /* Active/pressed state */
+  /* Pressed nudge */
   &:active:not(:disabled) {
     transform: translateY(1px);
   }
 `
 
-const StyledBadge = styled.span.withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $variant: TabVariant; $isActive: boolean }>`
+const StyledBadge = styled.span`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -226,17 +192,14 @@ const StyledBadge = styled.span.withConfig({
   font: ${tokens.component.tabBar.badge.typography};
   font-weight: ${tokens.component.tabBar.badge.fontWeight};
   border-radius: ${semantic.border.radius.circle};
-  background-color: ${props => props.$variant === 'pills' && props.$isActive
-    ? semantic.color.background['inverse-overlay']
-    : semantic.color.background.interactive
-  };
+  background-color: ${semantic.color.background.interactive};
   color: ${semantic.color.text.inverse};
 `
 
 /**
  * TabBar component for tabbed navigation
  * 
- * Provides accessible tab navigation with 3 visual variants, keyboard support,
+ * Provides accessible tab navigation with an underline style, keyboard support,
  * and optional badge counts. Follows ARIA tablist pattern.
  * 
  * @example
@@ -251,7 +214,6 @@ const StyledBadge = styled.span.withConfig({
  *   ]}
  *   activeTab={activeTab}
  *   onTabChange={setActiveTab}
- *   variant="pills"
  * />
  * ```
  */
@@ -259,7 +221,8 @@ export const TabBar: React.FC<TabBarProps> = ({
   tabs,
   activeTab,
   onTabChange,
-  variant = 'default',
+  // Deprecated: every variant renders as underline (decision 0020)
+  variant: _variant,
   'aria-label': ariaLabel = 'Tab navigation',
   'data-testid': dataTestId
 }) => {
@@ -349,7 +312,6 @@ export const TabBar: React.FC<TabBarProps> = ({
   
   return (
     <StyledTabList
-      $variant={variant}
       role="tablist"
       aria-label={ariaLabel}
       data-testid={dataTestId}
@@ -358,7 +320,6 @@ export const TabBar: React.FC<TabBarProps> = ({
         <StyledTab
           key={tab.id}
           ref={el => { tabRefs.current[index] = el }}
-          $variant={variant}
           $isActive={tab.id === activeTab}
           $disabled={tab.disabled || false}
           role="tab"
@@ -373,8 +334,6 @@ export const TabBar: React.FC<TabBarProps> = ({
           {tab.label}
           {typeof tab.badge === 'number' && tab.badge > 0 && (
             <StyledBadge 
-              $variant={variant}
-              $isActive={tab.id === activeTab}
               aria-label={`${tab.badge} items`}
             >
               {tab.badge > 99 ? '99+' : tab.badge}
