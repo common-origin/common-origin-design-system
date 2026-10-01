@@ -5,7 +5,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | # | Decision | Status | Date |
 |---|---|---|---|
 | [0001](0001-record-decisions.md) | Record significant decisions | Accepted | 2026-09-25 |
-| [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted | 2026-09-25 |
+| [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted; `emphasis` renamed `accent` by 0016 | 2026-09-25 |
 | [0003](0003-use-of-blue.md) | Blue is for links, focus, and deliberate highlight | Accepted | 2026-09-25 |
 | [0004](0004-heading-weights.md) | System headings are weight 700; products may go heavier | Superseded by 0011 | 2026-09-25 |
 | [0005](0005-motion.md) | Motion is part of the system; appearing elements animate in | Accepted; reduced-motion clause superseded by 0015 | 2026-09-25 |
@@ -19,6 +19,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
+| [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
 
 ## Template
 

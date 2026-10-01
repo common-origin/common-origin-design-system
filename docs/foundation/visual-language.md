@@ -13,9 +13,9 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Pure black `#000000` is reserved for the logo. UI uses `#212529` or darker tokens; overlays use `background.overlay`, `hover-overlay` and `active-overlay`, and light overlays on strong backgrounds use `inverse-overlay`. | Enforced |
 | Shadows (`base.shadow.*`, `semantic.elevation.*`) may use pure-black alpha. | Exception ([0012](decisions/0012-shadows-use-black.md)) |
 | Components take every colour from tokens. ESLint fails on hex, `rgb(a)` and `hsl(a)` literals in `src/components` ([P3](principles.md#p3-tokens-not-values)). | Enforced |
-| Colour literals that stay, each behind a commented `eslint-disable`: selected-chip hover and active (pending [#21](https://github.com/common-origin/common-origin-design-system/issues/21)), and CSS mask stops, which set alpha only and are never seen (AgentInput's ring). | Exception |
+| Colour literals that stay, each behind a commented `eslint-disable`: selected-chip hover and active (becoming tokens per [0016](decisions/0016-accent-selection-and-chip-types.md)), and CSS mask stops, which set alpha only and are never seen (AgentInput's ring). | Exception |
 | Status colours (`success`, `error`, `warning`, info) communicate status only. | Enforced |
-| Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `emphasis` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
+| Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `accent` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |
 | AgentInput's animated blue "working" ring uses a conic gradient. | Exception ([0010](decisions/0010-agentinput-working-ring.md)) — temporary, pending [#22](https://github.com/common-origin/common-origin-design-system/issues/22) |
 | Hierarchy comes from weight and scale, not colour. | Enforced |
@@ -33,11 +33,11 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 
 ## Buttons and actions
 
-Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-variants.md)):
+Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-variants.md), [0016](decisions/0016-accent-selection-and-chip-types.md)):
 
 | Variant | Appearance | Use for |
 |---|---|---|
-| `emphasis` | Blue fill, white text | A call to action one level above primary: a brand moment or something that must stand out. At most one per view. |
+| `accent` (formerly `emphasis`) | Blue fill, white text | A call to action one level above primary: a brand moment or something that must stand out. At most one per view. |
 | `primary` | Near-black fill, white text | The main action in a context |
 | `secondary` | Light grey fill, near-black text | Supporting actions |
 | `naked` | Transparent, near-black text | Low-emphasis actions, inline and toolbar actions |
@@ -47,14 +47,16 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 |---|---|
 | Disabled states use their disabled tokens; never invent new colours for hover or active. | Enforced |
 | Button uses corner radius `sm` (4px). | Enforced |
-| Interactive controls in the same context share a corner radius. | **Open question** — Chip uses 12px against Button's 4px; being resolved in [#21](https://github.com/common-origin/common-origin-design-system/issues/21) |
+| **Accent** is the name for the blue call-to-action level above `primary`, wherever a component has one. It is never a selected state, a link colour or decoration. **Emphasis** means strong near-black everywhere (the `emphasis` tokens, Typography, Icon); it is never blue. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Target — Button's `emphasis` variant is deprecated in favour of `accent` in the next minor and removed in 3.0; a system-wide audit of both words is follow-up work |
+| Chips keep a rounded radius (12px) while Buttons use `sm` (4px): the shape signals a different job. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Exception |
 
 ## Selected and active states
 
 | Rule | Status |
 |---|---|
-| Active navigation items (for example, the docs site sidebar) use a near-black fill with white text. | Enforced on the docs site |
-| Selected and emphasised states across Button, Chip, and TabBar. Today: selected chips are light blue, active tabs are solid blue, the active sidebar item is near-black, and "emphasis" means blue on Button but near-black on Chip. | **Open question** — the rule and the Button–Chip relationship are being defined in [#21](https://github.com/common-origin/common-origin-design-system/issues/21) |
+| Selected and "you are here" states use the light-blue selected treatment: `background.interactive-subtle` fill with `text.interactive` text (4.70:1). Never near-black, never solid accent blue. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Target — selected chips follow it; TabBar's active tab (solid blue) and the docs site sidebar (near-black) move to it in the next minor |
+| Selected filter chips also show a checkmark, so the state doesn't rely on colour alone ([P2](principles.md#p2-accessibility-is-the-floor)). | Enforced |
+| Chips are classified by job, not emphasis: static `Chip` (`default` only, not interactive), `FilterChip` (toggle; formerly `BooleanChip`) and `InputChip` (removable; formerly `FilterChip`). No chip has emphasis levels. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Target — renames and deprecations in the next minor, removals in 3.0. `Tag` is decided in [#62](https://github.com/common-origin/common-origin-design-system/issues/62) |
 | Top navigation is quiet: no background fills; active items change weight or underline only. | Target — to verify |
 
 ## Surfaces, shape and elevation
