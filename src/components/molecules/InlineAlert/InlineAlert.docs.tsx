@@ -90,16 +90,16 @@ export const inlineAlertDocs: ComponentDocumentation = {
   examples: [
     {
       name: 'Severities',
-      description: 'The four severities from Alert. The icon and text take the severity colour; there is no background or border.',
+      description: 'The four severities from Alert. With no props, InlineAlert is info at medium size, as in the first line. The icon and text take the severity colour; there is no background or border.',
       code: `<Stack direction="column" gap="sm">
-  <InlineAlert variant="info">Prices include tax</InlineAlert>
+  <InlineAlert>Prices include tax</InlineAlert>
   <InlineAlert variant="success">Saved</InlineAlert>
   <InlineAlert variant="warning">Only 2 left in stock</InlineAlert>
   <InlineAlert variant="error">Payment failed: card declined</InlineAlert>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="sm">
-          <InlineAlert variant="info">Prices include tax</InlineAlert>
+          <InlineAlert>Prices include tax</InlineAlert>
           <InlineAlert variant="success">Saved</InlineAlert>
           <InlineAlert variant="warning">Only 2 left in stock</InlineAlert>
           <InlineAlert variant="error">Payment failed: card declined</InlineAlert>
