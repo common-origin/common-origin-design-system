@@ -247,7 +247,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
     description: 'A compact pill with status-specific styling: an icon (optional on the deprecated StatusBadge), the label text and hidden "{status} status" context, wrapped in a visible-content span. When an aria-label is given, that span is hidden from assistive technology and a visually hidden label is announced instead (#78).',
     diagram: `
 ┌───────────────────────────────────┐
-│  StatusBadge Container (role=status)│
+│  StatusBadge (role="status")      │
 │  ┌ Visible content ────────────┐  │
 │  │ ┌──────┐  ┌──────────┐      │  │
 │  │ │ Icon │  │  Label   │      │  │
