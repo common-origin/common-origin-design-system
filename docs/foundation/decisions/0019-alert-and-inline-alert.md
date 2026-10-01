@@ -48,7 +48,7 @@ A new component, **`InlineAlert`**, replaces Alert's `inline` prop. It sits next
 
 - **Content:** a severity icon and short text only. No title, no action, no dismiss button.
 - **Look:** the icon and text in the severity colour (`text.error`, `text.warning`, `text.success`, `text.interactive` for info), with **no background or border**. On the page, white and grey surfaces each colour is at least 4.5:1 (5.1:1 on the page, 5.4:1 on white, 4.54:1 on the grey surface). On other backgrounds, check contrast before use.
-- **Sizes:** `small` and `medium`, from the label size scale ([0018](0018-indicators-and-labels.md)), for dense places like forms and tables.
+- **Sizes:** `small` and `medium` (default `medium`), from the label size scale ([0018](0018-indicators-and-labels.md)), for dense places like forms and tables.
 - **Severity:** the same four as Alert (error, warning, info, success).
 - **Announcing:** it keeps the live-region behaviour of today's inline alerts, so screen readers announce new messages.
 - **Describing a field:** when an InlineAlert gives feedback about a control (below a field, for example), it takes an `id` and the control references it with `aria-describedby`. This is the same relationship TextField, NumberInput, Checkbox and Dropdown use for helper and error text, so users who return to the control still hear the message.
