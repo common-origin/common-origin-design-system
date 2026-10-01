@@ -1,5 +1,6 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Alert } from './Alert'
+import { InlineAlert } from '../InlineAlert'
 import { Button } from '../../atoms/Button'
 import { Stack } from '../../atoms/Stack'
 import { alertGuideNotes } from '../../../lib/docgen/alertGuide'
@@ -316,6 +317,7 @@ export const alertDocs: ComponentDocumentation = {
           <Alert variant="warning" inline>
             Low inventory: restock pantry items.
           </Alert>
+          <InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>
         </Stack>
       )
     },
