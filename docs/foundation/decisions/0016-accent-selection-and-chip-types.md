@@ -35,13 +35,17 @@ Research across Primer, Atlassian, eBay, Shopify Polaris, Adobe Spectrum, Materi
 
 ### 2. Selected
 
-A selected or "you are here" state uses the **light-blue selected treatment**: the `background.interactive-subtle` fill with `text.interactive` (blue) text, which is 4.70:1. This applies to:
+Selected states in the contexts below use the **light-blue selected treatment**: the `background.interactive-subtle` fill with `text.interactive` (blue) text, which is 4.70:1. This applies to:
 
-- **selected filter chips**, which also show a checkmark (P2: the state isn't conveyed by colour alone);
+- **selected filter and input chips**, which also show a checkmark (P2: the state isn't conveyed by colour alone);
 - **TabBar's active tab**, which moves from solid blue to light blue. In the `underline` variant the underline is blue;
 - **the docs site's active sidebar item**, which moves from near-black to light blue.
 
-Selection is **never** near-black and never the solid accent blue. Hover and pressed states of a selected item get their own tokens; no hard-coded colours (P3).
+In these contexts selection is **never** near-black and never the solid accent blue. Hover and pressed states of a selected item get their own tokens; no hard-coded colours (P3).
+
+**Scope.** This decision covers only the contexts listed. Two other cases stay as they are:
+- **Top navigation** keeps its quiet treatment, with no background fill; the active item changes weight or gains an underline (`visual-language.md`).
+- **Other selected states,** such as Dropdown and listbox options (`aria-selected`), are reviewed against this rule in the accent/emphasis audit ([#100](https://github.com/common-origin/common-origin-design-system/issues/100)) before they change.
 
 ### 3. Chip types
 
@@ -51,7 +55,7 @@ Chips are classified by job, not by emphasis. There are no emphasis levels on an
 |---|---|---|---|
 | **Static** | `Chip` | A non-interactive label | `default` only |
 | **Filter** | `FilterChip` (formerly `BooleanChip`) | Toggles a filter on and off | Selected state (light blue plus checkmark) |
-| **Input** | `InputChip` (formerly `FilterChip`) | A removable value, such as an applied filter | Optional selected state; dismiss button |
+| **Input** | `InputChip` (formerly `FilterChip`) | A removable value, such as an applied filter | Optional selected state (light blue plus checkmark); dismiss button |
 
 - The static `Chip` loses its `emphasis`, `interactive` and `subtle` variants, the legacy `light` and `dark` variants, and `onClick`. A clickable action uses a Button; a toggle uses `FilterChip`.
 - Chips keep their rounded radius (12px) while Buttons keep `sm` (4px). The different shapes signal different jobs.
