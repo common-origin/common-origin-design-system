@@ -312,11 +312,11 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       'Display-only: renders a non-interactive span with no role and is not focusable',
       'Text meets WCAG 2.2 AA (4.5:1) in every colour and variant, enforced by tests: filled uses white on the -emphasis colour; outlined and minimal use the category -text token (the -emphasis colour, or one step darker for pink and yellow), on white or the -subtle fill. The outlined border keeps the base colour (#115).',
       'An aria-label is announced as visually hidden text, with the visible text and icon hidden from assistive technology (#78). Without one, screen readers read the visible text.',
-      'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85)',
+      'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85). An aria-label hides it, along with the visible text (#78)',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
     keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',
-    screenReader: 'Screen readers read the category label as part of the surrounding text. An icon is currently also announced by its internal name, such as "bell" (#85).'
+    screenReader: 'Without an aria-label, screen readers read the visible category text as part of the surrounding content, and the icon (if any) is also announced by its internal name, such as "bell" (#85). With an aria-label, only that label is read: the visible text and icon are hidden from assistive technology (#78). A blank aria-label is ignored.'
   },
 
   anatomy: {

@@ -212,13 +212,15 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
   const statusConfig = getStatusConfig(status)
   const sizeStyles = sizeConfig[size]
   const displayLabel = label || statusConfig.label
+  // A blank aria-label is no label at all, so it falls back like a missing one
+  const accessibleLabel = ariaLabel?.trim() ? ariaLabel : undefined
 
   return (
     <StyledStatusLabel
       $status={status}
       $size={size}
       role="status"
-      aria-label={ariaLabel || `Status: ${displayLabel}`}
+      aria-label={accessibleLabel || `Status: ${displayLabel}`}
       // role="status" is implicitly polite, so turning announcements off needs an explicit "off"
       aria-live={liveRegion ? 'polite' : 'off'}
       aria-atomic={liveRegion ? 'true' : undefined}
@@ -226,7 +228,7 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
     >
       {/* A live region announces its content, not its name, so a provided aria-label replaces the
           content for assistive technology as well (#78) */}
-      <VisibleContent aria-hidden={ariaLabel ? 'true' : undefined}>
+      <VisibleContent aria-hidden={accessibleLabel ? 'true' : undefined}>
         {showIcon && (
           <Icon
             name={statusConfig.icon}
@@ -240,7 +242,7 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
           {status} status
         </ScreenReaderOnly>
       </VisibleContent>
-      {ariaLabel && <ScreenReaderOnly>{ariaLabel}</ScreenReaderOnly>}
+      {accessibleLabel && <ScreenReaderOnly>{accessibleLabel}</ScreenReaderOnly>}
     </StyledStatusLabel>
   )
 }

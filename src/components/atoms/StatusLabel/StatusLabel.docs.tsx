@@ -207,7 +207,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       'Uses role="status" for semantic ARIA landmark',
       'ARIA live region (aria-live="polite", aria-atomic="true") enabled by default for screen reader announcements',
       'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh") unless an aria-label is provided, which hides it. Making icons decorative by default is #85.',
-      'Screen reader text provides additional context beyond visible label',
+      'Hidden "{status} status" text adds context beyond the visible label, unless an aria-label replaces the content (#78)',
       'Every status meets WCAG 2.2 AA (4.5:1) for its text and icon on its background, enforced by tests. Pending uses yellow.1000 (#825800), 5.69:1 (#115).',
       'Accessible name: the aria-label if provided, otherwise "Status: {label}". A provided aria-label also replaces the announced content (#78)',
       'No accessibility violations detected by jest-axe across all variants',
@@ -270,7 +270,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       },
       {
         name: 'Screen Reader Text',
-        description: 'Visually hidden text providing additional context for assistive technologies. Contains "{status} status" for clarity.',
+        description: 'Visually hidden text providing additional context for assistive technologies: \"{status} status\". When an aria-label is provided, the visually hidden aria-label replaces it and the visible content (#78).',
         tokens: []
       }
     ]

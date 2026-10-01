@@ -267,3 +267,12 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
     expect(labelRoot('Label')).toHaveStyle({ borderColor: category.yellow })
   })
 })
+
+describe('CategoryLabel blank aria-label (#78)', () => {
+  it.each(['', '   '])('treats %j as no label and keeps the visible content exposed', (blank) => {
+    render(<CategoryLabel aria-label={blank} data-testid="label">Shopping</CategoryLabel>)
+    const root = screen.getByTestId('label')
+    expect(root.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument()
+    expect(root).toHaveTextContent(/^Shopping$/)
+  })
+})

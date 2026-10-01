@@ -187,6 +187,8 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
   'aria-label': ariaLabel
 }) => {
   const iconSize = size === 'medium' ? 'xs' : 'sm'
+  // A blank aria-label is no label at all, so it falls back like a missing one
+  const accessibleLabel = ariaLabel?.trim() ? ariaLabel : undefined
 
   return (
     <StyledCategoryLabel
@@ -195,7 +197,7 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
       $size={size}
       data-testid={dataTestId}
     >
-      <VisibleContent aria-hidden={ariaLabel ? 'true' : undefined}>
+      <VisibleContent aria-hidden={accessibleLabel ? 'true' : undefined}>
         {icon && (
           <Icon
             name={icon}
@@ -206,7 +208,7 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
         )}
         {children}
       </VisibleContent>
-      {ariaLabel && <HiddenLabel>{ariaLabel}</HiddenLabel>}
+      {accessibleLabel && <HiddenLabel>{accessibleLabel}</HiddenLabel>}
     </StyledCategoryLabel>
   )
 }
