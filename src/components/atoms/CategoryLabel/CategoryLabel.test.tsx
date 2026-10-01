@@ -4,6 +4,7 @@ import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { CategoryLabel, CategoryLabelProps, CategoryColor, CategoryVariant, CategoryLabelSize } from './CategoryLabel'
 import tokens from '@/styles/tokens.json'
+import { contrastRatio } from '@/test-utils/contrast'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 
 expect.extend(toHaveNoViolations)
@@ -216,5 +217,28 @@ describe('CategoryLabel Component', () => {
       expect(badge).toBeInTheDocument()
       expect(badge).toHaveAttribute('aria-label', 'Test badge')
     })
+  })
+})
+
+describe('CategoryLabel contrast (WCAG AA, #115)', () => {
+  const { category, text } = tokens.semantic.color
+  const colors: CategoryColor[] = ['blue', 'purple', 'pink', 'yellow', 'green', 'red', 'orange', 'gray']
+  const backgrounds: Record<CategoryVariant, (c: CategoryColor) => string> = {
+    filled: (c) => category[`${c}-emphasis`],
+    outlined: () => '#ffffff',
+    minimal: (c) => category[`${c}-subtle`],
+  }
+  const cases = colors.flatMap((c) => (['filled', 'outlined', 'minimal'] as CategoryVariant[]).map((v) => [c, v] as const))
+
+  it.each(cases)('%s %s text meets 4.5:1', (c, variant) => {
+    render(<CategoryLabel color={c} variant={variant}>Label</CategoryLabel>)
+    const foreground = variant === 'filled' ? text.inverse : category[`${c}-text`]
+    expect(screen.getByText('Label')).toHaveStyle({ color: foreground })
+    expect(contrastRatio(foreground, backgrounds[variant](c))).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('keeps the base colour for the outlined border', () => {
+    render(<CategoryLabel color="yellow" variant="outlined">Label</CategoryLabel>)
+    expect(screen.getByText('Label')).toHaveStyle({ borderColor: category.yellow })
   })
 })

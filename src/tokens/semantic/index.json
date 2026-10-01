@@ -962,13 +962,53 @@
           "value": "{base.color.neutral.200}",
           "type": "color",
           "description": "Subtle gray background"
+        },
+        "blue-text": {
+          "value": "{semantic.color.category.blue-emphasis}",
+          "type": "color",
+          "description": "Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "purple-text": {
+          "value": "{semantic.color.category.purple-emphasis}",
+          "type": "color",
+          "description": "Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "pink-text": {
+          "value": "{base.color.pink.1000}",
+          "type": "color",
+          "description": "Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115."
+        },
+        "yellow-text": {
+          "value": "{base.color.yellow.1000}",
+          "type": "color",
+          "description": "Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115."
+        },
+        "green-text": {
+          "value": "{semantic.color.category.green-emphasis}",
+          "type": "color",
+          "description": "Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "red-text": {
+          "value": "{semantic.color.category.red-emphasis}",
+          "type": "color",
+          "description": "Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "orange-text": {
+          "value": "{semantic.color.category.orange-emphasis}",
+          "type": "color",
+          "description": "Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "gray-text": {
+          "value": "{semantic.color.category.gray-emphasis}",
+          "type": "color",
+          "description": "Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         }
       },
       "status": {
         "pending": {
-          "value": "{base.color.yellow.700}",
+          "value": "{base.color.yellow.1000}",
           "type": "color",
-          "description": "Yellow color for pending status"
+          "description": "Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115."
         },
         "pending-bg": {
           "value": "{base.color.yellow.100}",
