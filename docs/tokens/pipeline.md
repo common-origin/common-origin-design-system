@@ -147,10 +147,10 @@ The owner approved this direction and the migration plan below in [decision 0017
 1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`. <!-- verify-docs-ignore: planned file -->
 2. **DTCG source**: `$value` / `$type` / `$description`, DTCG type names, `$type` on groups where uniform. Delete `src/tokens/index.json`.
 3. **Component tier made of real tokens** referencing **semantic** tokens (add missing semantic tokens first); no raw `px`.
-4. **Composite tokens where it helps**: typography, shadow, border, and transition as DTCG objects, emitted with the built-in `*/css/shorthand` transforms, so JSON output stays the same shape for components.
+4. **Composite tokens where it helps**: typography, shadow, border, and transition as DTCG objects, emitted with the built-in `*/css/shorthand` transforms, so the JSON output keeps the same hierarchy and values for components.
 5. **Outputs**
-   - `tokens.json` — resolved values, same shape as today (components keep working unchanged).
-   - `tokens.css` — **published in the package** for CSS-variable consumers, every variable prefixed `co-` (for example `--co-color-text-default`), with `outputReferences: true` so semantic variables reference base variables. The variable names become a published contract (P7). This keeps the door open for theming (decision 0009); dark mode stays out of scope.
+   - `tokens.json` — same token hierarchy and resolved values as today (components keep working unchanged), except the stray `$ref` keys, which step 2 removes. The golden file excludes them.
+   - `tokens.css` — **published in the package** as `@common-origin/design-system/tokens.css` for CSS-variable consumers, every variable prefixed `co-` (for example `--co-color-text-default`), with `outputReferences: true` so semantic variables reference base variables. The variable names become a published contract (P7). This keeps the door open for theming (decision 0009); dark mode stays out of scope.
    - `tokens.d.ts` — generated with each token's `$description` as JSDoc, so editors and agents see intended use (supports #22).
    - Drop `lib/tokens.js` and the unused custom transforms and formats.
 6. **Deterministic output** (no timestamps). Generated files (`tokens.json`, `tokens.d.ts`, `tokens.css`) **stay committed**, so fresh clones and editors work without a build step, and a CI check fails when they don't match the source.
