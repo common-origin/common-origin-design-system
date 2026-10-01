@@ -140,9 +140,9 @@ await sd.buildAllPlatforms()
 
 ---
 
-## 4. Target architecture (proposed — needs a decision record and owner approval)
+## 4. Target architecture (approved in [decision 0017](../foundation/decisions/0017-token-pipeline-dtcg-style-dictionary-5.md); not yet built)
 
-Build config, dependency, and token-structure changes need human approval (`.github/MAIN_INSTRUCTIONS.md`, "Change Authority & Validation Protocol"), and a change to the build and distribution approach needs a decision record ([decision 0001](../foundation/decisions/0001-record-decisions.md)). This is the recommended direction, not current fact.
+The owner approved this direction and the migration plan below in [decision 0017](../foundation/decisions/0017-token-pipeline-dtcg-style-dictionary-5.md) ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)). Until the steps land, sections 1–3 describe what is current. The decision also settles that `tokens.css` is published with a `co-` variable prefix, that generated files stay committed with a CI freshness check, and that the 2.16 work from decision 0016 goes first.
 
 1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`. <!-- verify-docs-ignore: planned file -->
 2. **DTCG source**: `$value` / `$type` / `$description`, DTCG type names, `$type` on groups where uniform. Delete `src/tokens/index.json`.

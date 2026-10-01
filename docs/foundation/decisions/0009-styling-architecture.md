@@ -1,6 +1,6 @@
 # 0009. styled-components with tokens imported as values
 
-- **Status:** Accepted, under review
+- **Status:** Accepted, under review; the token build is extended by [0017](0017-token-pipeline-dtcg-style-dictionary-5.md)
 - **Date:** Recorded 2026-09-25; the original decision predates the repository's records
 - **Decided by:** Unrecorded
 - **Principles:** P3, P8

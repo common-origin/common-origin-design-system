@@ -20,6 +20,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
 | [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
+| [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted | 2026-10-01 |
 
 ## Template
 
