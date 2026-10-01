@@ -61,6 +61,17 @@ export interface AlertProps {
    * @default 'info'
    */
   variant?: 'error' | 'warning' | 'info' | 'success'
+
+  /**
+   * Whether the severity border is drawn (decision 0019)
+   * - outlined: severity tint and a 1px severity border. Only for alerts at the top: a
+   *   page-level alert at the top of the page, an alert at the top of the content area, and an
+   *   error summary
+   * - borderless: severity tint only. Every other alert, including alerts inside content and at
+   *   the bottom of a page; the icon and title colour carry the severity
+   * @default 'outlined'
+   */
+  appearance?: 'outlined' | 'borderless'
   
   /**
    * Alert message content
@@ -141,6 +152,7 @@ const StyledAlert = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{
   $variant: AlertProps['variant']
+  $appearance: NonNullable<AlertProps['appearance']>
   $inline: boolean
   $isExiting: boolean
   $reducedExit: boolean
@@ -156,36 +168,11 @@ const StyledAlert = styled.div.withConfig({
   position: relative;
   width: 100%;
   
-  /* Variant-specific colors */
-  ${({ $variant }) => {
-    switch ($variant) {
-      case 'error':
-        return `
-          background-color: ${semantic.color.background['error-subtle']};
-          border-color: ${semantic.color.border.error};
-          color: ${semantic.color.text.error};
-        `
-      case 'warning':
-        return `
-          background-color: ${semantic.color.background['warning-subtle']};
-          border-color: ${semantic.color.border.warning};
-          color: ${semantic.color.text.warning};
-        `
-      case 'success':
-        return `
-          background-color: ${semantic.color.background['success-subtle']};
-          border-color: ${semantic.color.border.success};
-          color: ${semantic.color.text.success};
-        `
-      case 'info':
-      default:
-        return `
-          background-color: ${semantic.color.background['interactive-subtle']};
-          border-color: ${semantic.color.border.interactive};
-          color: ${semantic.color.text.interactive};
-        `
-    }
-  }}
+  /* Severity × appearance colours from Alert's component tokens (decision 0019). Borderless
+     keeps a transparent border, so both appearances take the same space. */
+  background-color: ${({ $variant = 'info' }) => alert.severity[$variant].background};
+  color: ${({ $variant = 'info' }) => alert.severity[$variant].text};
+  border-color: ${({ $variant = 'info', $appearance }) => alert.appearance[$appearance].borderColor[$variant]};
   
   /* Responsive adjustments */
   @media (min-width: ${semantic.breakpoint.md}) {
@@ -250,6 +237,7 @@ const StyledDismissButton = styled(IconButton)`
 
 export const Alert = ({
   variant = 'info',
+  appearance = 'outlined',
   children,
   title,
   dismissible = false,
@@ -353,6 +341,7 @@ export const Alert = ({
       role={role}
       aria-live={ariaLive}
       $variant={variant}
+      $appearance={appearance}
       $inline={inline}
       $isExiting={isExiting}
       $reducedExit={reducedExit}
