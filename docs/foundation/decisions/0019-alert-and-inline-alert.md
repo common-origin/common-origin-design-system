@@ -66,7 +66,7 @@ This follows the [0016](0016-accent-selection-and-chip-types.md) pattern.
 
 ## Consequences
 
-- **Migration:** `<Alert inline>` becomes `<InlineAlert>` with the same `variant` and text. A title, action or dismiss button on an inline alert has no equivalent: keep those uses as a block `Alert`, either appearance.
+- **Migration:** `<Alert inline>` becomes `<InlineAlert>` with the same `variant` and text. A title, action or dismiss button on an inline alert has no equivalent: keep those uses as a block `Alert`, with the appearance its placement calls for: `borderless` inside content, `outlined` only if it's an alert at the top.
 - `visual-language.md` records the Alert appearances, the dismiss alignment and InlineAlert's look.
 - The docs explain when to use Alert (outlined or borderless) versus InlineAlert, with examples.
 - Implementation: [#70](https://github.com/common-origin/common-origin-design-system/issues/70) (`appearance`), [#69](https://github.com/common-origin/common-origin-design-system/issues/69) (dismiss alignment), [#106](https://github.com/common-origin/common-origin-design-system/issues/106) (InlineAlert); removal of `inline` in [#99](https://github.com/common-origin/common-origin-design-system/issues/99).
