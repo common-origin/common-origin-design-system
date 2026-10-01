@@ -431,16 +431,43 @@ export interface TokensComponentButtonVariantsNaked {
   disabled: TokensComponentButtonVariantsNakedDisabled;
 }
 
+export interface TokensComponentButtonVariantsAccentHover {
+  backgroundColor: string;
+}
+
+export interface TokensComponentButtonVariantsAccentActive {
+  backgroundColor: string;
+}
+
+export interface TokensComponentButtonVariantsAccentDisabled {
+  backgroundColor: string;
+  textColor: string;
+}
+
+export interface TokensComponentButtonVariantsAccent {
+  backgroundColor: string;
+  textColor: string;
+  hover: TokensComponentButtonVariantsAccentHover;
+  active: TokensComponentButtonVariantsAccentActive;
+  disabled: TokensComponentButtonVariantsAccentDisabled;
+}
+
 export interface TokensComponentButtonVariantsEmphasisHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsEmphasisActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsEmphasisDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentButtonVariantsEmphasis {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentButtonVariantsEmphasisHover;
   active: TokensComponentButtonVariantsEmphasisActive;
   disabled: TokensComponentButtonVariantsEmphasisDisabled;
@@ -464,6 +491,7 @@ export interface TokensComponentButtonVariantsDanger {
 export interface TokensComponentButtonVariants {
   secondary: TokensComponentButtonVariantsSecondary;
   naked: TokensComponentButtonVariantsNaked;
+  accent: TokensComponentButtonVariantsAccent;
   emphasis: TokensComponentButtonVariantsEmphasis;
   danger: TokensComponentButtonVariantsDanger;
 }

@@ -5,9 +5,27 @@ import { Icon, type IconName } from '../Icon'
 
 const { component: { button }, semantic } = tokens
 
+/**
+ * Button variants. `accent` is the blue call to action one level above `primary`;
+ * use at most one per view (decision 0016).
+ */
+export type ButtonVariant =
+  | 'primary'
+  | 'secondary'
+  | 'naked'
+  | 'accent'
+  /** @deprecated Use `accent`. `emphasis` will be removed in 3.0. */
+  | 'emphasis'
+  | 'danger'
+
 // Base props shared between button and link
 export interface BaseButtonProps {
-  variant?: 'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'
+  /**
+   * Visual style. `accent` is the blue call to action above `primary` (at most one per view).
+   * `emphasis` is a deprecated alias for `accent` and will be removed in 3.0.
+   * @default 'primary'
+   */
+  variant?: ButtonVariant
   size?: 'small' | 'medium' | 'large'
   url?: string
   purpose?: 'button' | 'link'
@@ -38,7 +56,7 @@ export interface LinkProps extends BaseButtonProps, Omit<React.AnchorHTMLAttribu
 type CustomButtonProps = ButtonProps | LinkProps
 
 interface StyledButtonProps {
-  $variant: 'primary' | 'secondary' | 'naked' | 'emphasis' | 'danger'
+  $variant: ButtonVariant
   $size: 'small' | 'medium' | 'large'
 }
 
@@ -94,6 +112,15 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) => {
       disabledBg: button.variants.naked.disabled.backgroundColor,
       disabledText: button.variants.naked.disabled.textColor
     },
+    accent: {
+      bg: button.variants.accent.backgroundColor,
+      text: button.variants.accent.textColor,
+      hoverBg: button.variants.accent.hover.backgroundColor,
+      activeBg: button.variants.accent.active.backgroundColor,
+      disabledBg: button.variants.accent.disabled.backgroundColor,
+      disabledText: button.variants.accent.disabled.textColor
+    },
+    // Deprecated alias for accent; removed in 3.0
     emphasis: {
       bg: button.variants.emphasis.backgroundColor,
       text: button.variants.emphasis.textColor,

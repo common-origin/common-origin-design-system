@@ -63,7 +63,7 @@ Do not put a molecule in atoms. Do not put an atom in molecules. Do not create c
 
 ### 7. Never add colour for decoration
 Colour communicates meaning. It is not used for visual interest in UI chrome (P1).
-- Hue is for status (success, error, warning, info), links, focus, and deliberate highlight such as the `emphasis` button (decision 0003)
+- Hue is for status (success, error, warning, info), links, focus, and deliberate highlight such as the `accent` button (decisions 0003 and 0016)
 - No decorative coloured backgrounds or borders
 - No decorative gradients (AgentInput's working ring is a recorded exception, decision 0010)
 - No coloured text used for visual hierarchy (hierarchy comes from weight and scale)

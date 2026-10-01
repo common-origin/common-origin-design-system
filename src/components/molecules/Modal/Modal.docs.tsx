@@ -132,7 +132,7 @@ export const modalDocs: ComponentDocumentation = {
       required: false,
       default: undefined,
       description:
-        'Array of action objects rendered as Button components in the footer. Each object accepts label, onClick, variant, icon, and disabled.',
+        "Array of action objects rendered as Button components in the footer. Each object accepts label, onClick, variant, icon, and disabled. variant takes Button's variants: 'primary' | 'secondary' | 'naked' | 'accent' | 'danger' ('emphasis' is a deprecated alias for 'accent', removed in 3.0).",
     },
     {
       name: 'closeOnOverlayClick',

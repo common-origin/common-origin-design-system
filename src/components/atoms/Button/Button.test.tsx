@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Button } from '../Button'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -73,6 +74,29 @@ describe('Button Component', () => {
       const button = screen.getByRole('button')
       expect(button).toBeInTheDocument()
       // Naked variant styling is applied via styled-components
+    })
+
+    it('renders the accent variant with the blue accent tokens', () => {
+      renderButton({ variant: 'accent' })
+      const { accent } = tokens.component.button.variants
+      expect(screen.getByRole('button')).toHaveStyle({
+        backgroundColor: accent.backgroundColor,
+        color: accent.textColor,
+      })
+    })
+
+    it('renders the deprecated emphasis variant identically to accent', () => {
+      render(
+        <>
+          <Button variant="accent">Accent</Button>
+          <Button variant="emphasis">Emphasis</Button>
+        </>
+      )
+      const accent = window.getComputedStyle(screen.getByRole('button', { name: 'Accent' }))
+      const emphasis = window.getComputedStyle(screen.getByRole('button', { name: 'Emphasis' }))
+      expect(emphasis.backgroundColor).toBe(accent.backgroundColor)
+      expect(emphasis.color).toBe(accent.color)
+      expect(tokens.component.button.variants.emphasis).toEqual(tokens.component.button.variants.accent)
     })
   })
 
@@ -268,7 +292,7 @@ describe('Button Component', () => {
     })
 
     it('should have no accessibility violations with all variants', async () => {
-      const variants = ['primary', 'secondary', 'naked'] as const
+      const variants = ['primary', 'secondary', 'naked', 'accent', 'danger'] as const
       for (const variant of variants) {
         const { container } = renderButton({ variant })
         const results = await axe(container)
@@ -366,7 +390,7 @@ describe('Button Component', () => {
   })
 
   describe('Variant and Size Combinations', () => {
-    const variants = ['primary', 'secondary', 'naked'] as const
+    const variants = ['primary', 'secondary', 'naked', 'accent', 'danger'] as const
     const sizes = ['small', 'medium', 'large'] as const
 
     variants.forEach(variant => {

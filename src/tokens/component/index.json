@@ -51,18 +51,80 @@
             "textColor": "{semantic.color.text.disabled}"
           }
         },
-        "emphasis": {
-          "backgroundColor": "{semantic.color.background.interactive}",
-          "textColor": "{semantic.color.text.inverse}",
+        "accent": {
+          "backgroundColor": {
+            "value": "{semantic.color.background.interactive}",
+            "type": "color",
+            "description": "Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016)."
+          },
+          "textColor": {
+            "value": "{semantic.color.text.inverse}",
+            "type": "color",
+            "description": "Text and icon colour on the accent Button."
+          },
           "hover": {
-            "backgroundColor": "{semantic.color.background.interactive-hover}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.interactive-hover}",
+              "type": "color",
+              "description": "Accent Button fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{semantic.color.background.interactive-active}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.interactive-active}",
+              "type": "color",
+              "description": "Accent Button fill while pressed."
+            }
           },
           "disabled": {
-            "backgroundColor": "{semantic.color.background.disabled}",
-            "textColor": "{semantic.color.text.disabled}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.disabled}",
+              "type": "color",
+              "description": "Disabled accent Button fill."
+            },
+            "textColor": {
+              "value": "{semantic.color.text.disabled}",
+              "type": "color",
+              "description": "Disabled accent Button text and icon colour."
+            }
+          }
+        },
+        "emphasis": {
+          "backgroundColor": {
+            "value": "{component.button.variants.accent.backgroundColor}",
+            "type": "color",
+            "description": "Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016)."
+          },
+          "textColor": {
+            "value": "{component.button.variants.accent.textColor}",
+            "type": "color",
+            "description": "Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016)."
+          },
+          "hover": {
+            "backgroundColor": {
+              "value": "{component.button.variants.accent.hover.backgroundColor}",
+              "type": "color",
+              "description": "Deprecated: use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016)."
+            }
+          },
+          "active": {
+            "backgroundColor": {
+              "value": "{component.button.variants.accent.active.backgroundColor}",
+              "type": "color",
+              "description": "Deprecated: use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016)."
+            }
+          },
+          "disabled": {
+            "backgroundColor": {
+              "value": "{component.button.variants.accent.disabled.backgroundColor}",
+              "type": "color",
+              "description": "Deprecated: use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016)."
+            },
+            "textColor": {
+              "value": "{component.button.variants.accent.disabled.textColor}",
+              "type": "color",
+              "description": "Deprecated: use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016)."
+            }
           }
         },
         "danger": {
