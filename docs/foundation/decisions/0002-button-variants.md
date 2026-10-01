@@ -1,6 +1,6 @@
 # 0002. Five Button variants; `emphasis` sits above `primary`
 
-- **Status:** Accepted
+- **Status:** Accepted; the `emphasis` variant is renamed `accent` by [0016](0016-accent-selection-and-chip-types.md) (role unchanged)
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P4, P7
