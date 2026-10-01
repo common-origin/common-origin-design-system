@@ -305,7 +305,7 @@ return (
     focusManagement:
       'Focus outline uses component.chip.focus.outline (2px solid) and component.chip.focus.outlineOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark and close icon take the text colour.'
+      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark takes the text colour.'
   },
 
   anatomy: {

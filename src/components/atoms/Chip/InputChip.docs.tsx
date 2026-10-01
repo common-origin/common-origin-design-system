@@ -127,7 +127,6 @@ export const inputChipDocs: ComponentDocumentation = {
   tokens: [
     // Base shape
     'component.chip.default.borderRadius',
-    'component.chip.default.textColor',
     // Subtle variant (InputChip always uses subtle variant)
     'component.chip.variants.subtle.backgroundColor',
     'component.chip.variants.subtle.textColor',
@@ -185,7 +184,7 @@ export const inputChipDocs: ComponentDocumentation = {
     {
       name: 'Dismissible Active Filters',
       description:
-        'InputChips with onDismiss render a close (×) button. Each chip represents one applied filter. When the user clicks × or presses Delete/Backspace while the chip is focused, the filter is removed. This pattern is standard above search results tables or data grids.',
+        'InputChips with onDismiss render a close (×) button. Each chip represents one applied filter. When the user clicks × or focuses the close button and presses Enter, Space, Delete or Backspace, the filter is removed. This pattern is standard above search results tables or data grids.',
       code: `const [activeFilters, setActiveFilters] = React.useState([
   'Status: Active',
   'Date: Last 30 days',
@@ -284,7 +283,7 @@ return (
       'For filter bars with multiple InputChips, wrap the group in a landmark or add a visible heading so screen reader users can navigate to the active filter region efficiently.'
     ],
     keyboardNavigation:
-      'Tab: Focus the close button (if present and not disabled) | Enter or Space (on close button): Dismiss the filter | Shift+Tab: Move focus backward. The chip container itself is not keyboard-focusable.',
+      'Tab: Focus the close button (if present and not disabled) | Enter, Space, Delete or Backspace (on close button): Dismiss the filter | Shift+Tab: Move focus backward. The chip container itself is not keyboard-focusable.',
     screenReader:
       'Chip container announced with role="status" and aria-label (or visible text). Close button announced as "Remove [filter label], button". When the close button is disabled, its unavailable state is conveyed by native disabled button semantics. Custom role prop overrides the default "status" role when provided.',
     focusManagement:
@@ -318,11 +317,12 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected: semantic.color.background.interactive-subtle with semantic.color.text.interactive. Receives keyboard dismiss events (Delete/Backspace) when onDismiss is provided.',
+          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected: semantic.color.background.interactive-subtle with semantic.color.text.interactive. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.textColor',
           'semantic.color.background.interactive-subtle',
+          'semantic.color.text.interactive',
           'component.chip.default.borderRadius',
           'semantic.motion.hover'
         ]
@@ -344,7 +344,8 @@ States:
           'component.chip.sizes.medium.padding',
           'component.chip.sizes.small.font',
           'component.chip.sizes.small.padding',
-          'component.chip.default.textColor'
+          'component.chip.variants.subtle.textColor',
+          'semantic.color.text.interactive'
         ]
       },
       {
