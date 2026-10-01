@@ -87,6 +87,7 @@ interface StyledLabelProps {
 const StyledCategoryLabel = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledLabelProps>`
+  box-sizing: border-box; /* the height includes padding and border, without relying on a global reset */
   display: inline-flex;
   align-items: center;
   justify-content: center;

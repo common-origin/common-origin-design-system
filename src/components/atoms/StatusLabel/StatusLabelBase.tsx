@@ -146,6 +146,7 @@ const sizeConfig = {
 const StyledStatusLabel = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledStatusLabelProps>`
+  box-sizing: border-box; /* the height includes padding, without relying on a global reset */
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -211,7 +212,8 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
       $size={size}
       role="status"
       aria-label={ariaLabel || `Status: ${displayLabel}`}
-      aria-live={liveRegion ? 'polite' : undefined}
+      // role="status" is implicitly polite, so turning announcements off needs an explicit "off"
+      aria-live={liveRegion ? 'polite' : 'off'}
       aria-atomic={liveRegion ? 'true' : undefined}
       data-testid={dataTestId}
     >

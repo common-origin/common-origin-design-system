@@ -43,7 +43,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'true',
-      description: 'Enables ARIA live region for screen reader announcements when status changes. Set to false for static status displays that don\'t update dynamically.'
+      description: 'Enables ARIA live region for screen reader announcements when status changes. Set to false for static status displays that don\'t update dynamically: this sets aria-live="off", because role="status" is otherwise announced politely.'
     },
     {
       name: 'aria-label',
@@ -75,6 +75,9 @@ export const statusBadgeDocs: ComponentDocumentation = {
     'semantic.color.status.processing-bg',
     'semantic.color.status.scheduled',
     'semantic.color.status.scheduled-bg',
+    // Height (decision 0018 size scale)
+    'semantic.size.label.small',
+    'semantic.size.label.medium',
     // Spacing
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.sm',
@@ -269,7 +272,9 @@ export const statusBadgeDocs: ComponentDocumentation = {
           'semantic.color.status.cancelled-bg',
           'semantic.color.status.processing-bg',
           'semantic.color.status.scheduled-bg',
-          'semantic.border.radius.circle'
+          'semantic.border.radius.circle',
+          'semantic.size.label.small',
+          'semantic.size.label.medium'
         ]
       },
       {

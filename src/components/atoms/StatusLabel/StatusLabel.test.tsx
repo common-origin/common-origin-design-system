@@ -101,6 +101,11 @@ describe('StatusLabel Component', () => {
       })
     })
 
+    it.each(sizes)('keeps the %s height including padding, without a global reset', (size) => {
+      renderStatusLabel({ size })
+      expect(screen.getByRole('status')).toHaveStyle({ boxSizing: 'border-box' })
+    })
+
     it('defaults to medium size (24px)', () => {
       renderStatusLabel()
       const badge = screen.getByRole('status')
@@ -141,10 +146,10 @@ describe('StatusLabel Component', () => {
       expect(badge).toHaveAttribute('aria-live', 'polite')
     })
 
-    it('has no aria-live when liveRegion is false', () => {
+    it('turns announcements off when liveRegion is false (role="status" is implicitly polite)', () => {
       renderStatusLabel({ liveRegion: false })
       const badge = screen.getByRole('status')
-      expect(badge).not.toHaveAttribute('aria-live')
+      expect(badge).toHaveAttribute('aria-live', 'off')
     })
 
     it('has aria-atomic="true" when liveRegion is true', () => {
@@ -233,12 +238,6 @@ describe('StatusLabel Component', () => {
       expect(badge).toHaveAttribute('role', 'status')
     })
 
-    it('icons have aria-hidden="true"', () => {
-      renderStatusLabel({ status: 'completed' })
-      const badge = screen.getByRole('status')
-      expect(badge).toBeInTheDocument()
-      // Icons should have aria-hidden
-    })
   })
 
   describe('Edge Cases', () => {

@@ -87,6 +87,8 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     'semantic.color.category.gray-emphasis', // Filled gray badge background
     'semantic.color.category.gray-subtle', // Minimal gray badge background
     'semantic.color.text.inverse', // White text for filled variant badges
+    'semantic.size.label.medium', // 24px height for size="small"
+    'semantic.size.label.large', // 32px height for size="medium"
     'semantic.spacing.layout.xs', // 4px vertical padding for small badges
     'semantic.spacing.layout.sm', // 8px horizontal padding for small badges; vertical padding for medium badges
     'semantic.spacing.layout.md', // 12px horizontal padding for medium badges

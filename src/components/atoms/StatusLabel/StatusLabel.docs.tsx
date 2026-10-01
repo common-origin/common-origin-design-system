@@ -35,7 +35,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'true',
-      description: 'Enables ARIA live region for screen reader announcements when status changes. Set to false for static status displays that don\'t update dynamically.'
+      description: 'Enables ARIA live region for screen reader announcements when status changes. Set to false for static status displays that don\'t update dynamically: this sets aria-live="off", because role="status" is otherwise announced politely.'
     },
     {
       name: 'aria-label',

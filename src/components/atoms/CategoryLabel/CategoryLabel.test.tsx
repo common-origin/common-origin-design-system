@@ -99,6 +99,11 @@ describe('CategoryLabel Component', () => {
       })
     })
 
+    it.each(sizes)('keeps the %s height including padding and border, without a global reset', (size) => {
+      renderCategoryLabel({ size })
+      expect(screen.getByText('Shopping')).toHaveStyle({ boxSizing: 'border-box' })
+    })
+
     it('defaults to large size (32px)', () => {
       renderCategoryLabel()
       expect(screen.getByText('Shopping')).toHaveStyle({ height: tokens.semantic.size.label.large })
