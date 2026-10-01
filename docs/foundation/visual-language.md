@@ -65,9 +65,9 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 
 | Rule | Status |
 |---|---|
-| `Alert` is the block alert: top or bottom of a page, or in content, with an optional title, action and dismiss button. `appearance="outlined"` (default: severity tint plus 1px severity border) is for the top of a page; `appearance="borderless"` (tint only) is for alerts inside content. ([0019](decisions/0019-alert-and-inline-alert.md)) | Target — `appearance` ships in the next minor |
+| `Alert` is the block alert: top or bottom of a page, or in content, with an optional title, action and dismiss button. `appearance="outlined"` (default: severity tint plus 1px severity border) is for page-level alerts at the top or bottom of a page; `appearance="borderless"` (tint only) is for alerts inside content. ([0019](decisions/0019-alert-and-inline-alert.md)) | Target — `appearance` ships in the next minor |
 | Alert's dismiss button is centred on the first line of content (the title, or the message when there's no title), in every alert. ([0019](decisions/0019-alert-and-inline-alert.md)) | Target — today it sits 8px from the corner |
-| `InlineAlert` is the small, local message: a severity icon and short text in the severity colour, with no background, border, title, action or dismiss button. Sizes `small` and `medium`. Every severity colour is at least 4.5:1 on the page, white and grey surfaces; check other backgrounds before use. ([0019](decisions/0019-alert-and-inline-alert.md)) | Target — replaces Alert's `inline` prop (deprecated in the next minor, removed in 3.0) |
+| `InlineAlert` is the small, local message: a severity icon and short text in the severity colour, with no background, border, title, action or dismiss button. Sizes `small` and `medium`. Feedback about a control is linked with `aria-describedby`. Every severity colour is at least 4.5:1 on the page, white and grey surfaces; check other backgrounds before use. ([0019](decisions/0019-alert-and-inline-alert.md)) | Target — replaces Alert's `inline` prop (deprecated in the next minor, removed in 3.0) |
 
 ## Surfaces, shape and elevation
 

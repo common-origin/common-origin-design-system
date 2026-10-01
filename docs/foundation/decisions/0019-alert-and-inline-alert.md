@@ -35,8 +35,10 @@ Alert's tinted backgrounds are about 1.1:1 against the page, so a borderless ale
 
 | `appearance` | Look | Use for |
 |---|---|---|
-| `outlined` | Severity tint, 1px severity border | The top of a page, where the border calls out severity |
+| `outlined` | Severity tint, 1px severity border | Page-level alerts at the top or bottom of a page, where the border calls out severity |
 | `borderless` | Severity tint only, no border and no accent bar | Inside content, where a border would compete with it. Severity is carried by the icon and title colour |
+
+The severity × appearance combinations come from Alert's component tokens (`component.alert.*`, [0014](0014-token-tiers.md)), not conditionals with literal values. Until `inline` is removed in 3.0, `appearance` and the deprecated `inline` prop are independent: any combination renders, and `inline` only changes spacing as it does today.
 
 **Dismiss button.** The button's centre lines up with the **first line of content**: the title, or the message when there's no title. This works the same for single-line and multi-line alerts and for both appearances. Offsets come from spacing and size tokens ([0014](0014-token-tiers.md)).
 
@@ -49,6 +51,7 @@ A new component, **`InlineAlert`**, replaces Alert's `inline` prop. It sits next
 - **Sizes:** `small` and `medium`, from the label size scale ([0018](0018-indicators-and-labels.md)), for dense places like forms and tables.
 - **Severity:** the same four as Alert (error, warning, info, success).
 - **Announcing:** it keeps the live-region behaviour of today's inline alerts, so screen readers announce new messages.
+- **Describing a field:** when an InlineAlert gives feedback about a control (below a field, for example), it takes an `id` and the control references it with `aria-describedby`. This is the same relationship TextField, NumberInput, Checkbox and Dropdown use for helper and error text, so users who return to the control still hear the message.
 
 ### 3. Release
 
