@@ -247,6 +247,7 @@ export interface TokensBaseColorYellow {
 }
 
 export interface TokensBaseColor {
+  transparent: string;
   neutral: TokensBaseColorNeutral;
   green: TokensBaseColorGreen;
   orange: TokensBaseColorOrange;
@@ -852,6 +853,60 @@ export interface TokensComponentField {
   helperText: TokensComponentFieldHelperText;
 }
 
+export interface TokensComponentAlertSeverityError {
+  background: string;
+  text: string;
+}
+
+export interface TokensComponentAlertSeverityWarning {
+  background: string;
+  text: string;
+}
+
+export interface TokensComponentAlertSeverityInfo {
+  background: string;
+  text: string;
+}
+
+export interface TokensComponentAlertSeveritySuccess {
+  background: string;
+  text: string;
+}
+
+export interface TokensComponentAlertSeverity {
+  error: TokensComponentAlertSeverityError;
+  warning: TokensComponentAlertSeverityWarning;
+  info: TokensComponentAlertSeverityInfo;
+  success: TokensComponentAlertSeveritySuccess;
+}
+
+export interface TokensComponentAlertAppearanceOutlinedBorderColor {
+  error: string;
+  warning: string;
+  info: string;
+  success: string;
+}
+
+export interface TokensComponentAlertAppearanceOutlined {
+  borderColor: TokensComponentAlertAppearanceOutlinedBorderColor;
+}
+
+export interface TokensComponentAlertAppearanceBorderlessBorderColor {
+  error: string;
+  warning: string;
+  info: string;
+  success: string;
+}
+
+export interface TokensComponentAlertAppearanceBorderless {
+  borderColor: TokensComponentAlertAppearanceBorderlessBorderColor;
+}
+
+export interface TokensComponentAlertAppearance {
+  outlined: TokensComponentAlertAppearanceOutlined;
+  borderless: TokensComponentAlertAppearanceBorderless;
+}
+
 export interface TokensComponentAlertTitle {
   typography: string;
   fontWeight: string;
@@ -864,6 +919,8 @@ export interface TokensComponentAlertMessage {
 }
 
 export interface TokensComponentAlert {
+  severity: TokensComponentAlertSeverity;
+  appearance: TokensComponentAlertAppearance;
   title: TokensComponentAlertTitle;
   message: TokensComponentAlertMessage;
 }
@@ -1266,6 +1323,7 @@ export interface TokensSemanticColorBorder {
   error: string;
   success: string;
   warning: string;
+  none: string;
 }
 
 export interface TokensSemanticColorIcon {

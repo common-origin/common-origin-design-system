@@ -3,6 +3,7 @@ import { Alert } from './Alert'
 import { InlineAlert } from '../InlineAlert'
 import { Button } from '../../atoms/Button'
 import { Stack } from '../../atoms/Stack'
+import { Typography } from '../../atoms/Typography'
 import { alertGuideNotes } from '../../../lib/docgen/alertGuide'
 
 export const alertDocs: ComponentDocumentation = {
@@ -19,7 +20,15 @@ export const alertDocs: ComponentDocumentation = {
       required: false,
       default: "'info'",
       description:
-        'Visual style variant affecting background, border, and icon. Error (crossCircle icon) for critical issues, warning (bell icon) for cautions, info (info icon) for tips, success (checkRing icon) for confirmations. Each variant has a fixed icon that always displays.'
+        'Severity, affecting the background, border colour, text and icon. Error (crossCircle icon) for critical issues, warning (bell icon) for cautions, info (info icon) for tips, success (checkRing icon) for confirmations. Each variant has a fixed icon that always displays.'
+    },
+    {
+      name: 'appearance',
+      type: "'outlined' | 'borderless'",
+      required: false,
+      default: "'outlined'",
+      description:
+        'Whether the severity border is drawn (decision 0019). outlined: only for alerts at the top: a page-level alert at the top of the page, an alert at the top of the content area, and an error summary. borderless: every other alert, including alerts inside content and at the bottom of a page; the severity tint, icon and title colour carry the severity. Both take the same space (borderless keeps a transparent border).'
     },
     {
       name: 'children',
@@ -82,24 +91,24 @@ export const alertDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.border.width.thin',
-    // Colors - Background
-    'semantic.color.background.error-subtle',
-    'semantic.color.background.warning-subtle',
-    'semantic.color.background.success-subtle',
-    'semantic.color.background.interactive-subtle',
-    
-    // Colors - Border
-    'semantic.color.border.error',
-    'semantic.color.border.warning',
-    'semantic.color.border.success',
-    'semantic.color.border.interactive',
-    
-    // Colors - Text
-    'semantic.color.text.error',
-    'semantic.color.text.warning',
-    'semantic.color.text.success',
-    'semantic.color.text.interactive',
-    
+    // Severity × appearance (decision 0019)
+    'component.alert.severity.error.background',
+    'component.alert.severity.error.text',
+    'component.alert.severity.warning.background',
+    'component.alert.severity.warning.text',
+    'component.alert.severity.info.background',
+    'component.alert.severity.info.text',
+    'component.alert.severity.success.background',
+    'component.alert.severity.success.text',
+    'component.alert.appearance.outlined.borderColor.error',
+    'component.alert.appearance.outlined.borderColor.warning',
+    'component.alert.appearance.outlined.borderColor.info',
+    'component.alert.appearance.outlined.borderColor.success',
+    'component.alert.appearance.borderless.borderColor.error',
+    'component.alert.appearance.borderless.borderColor.warning',
+    'component.alert.appearance.borderless.borderColor.info',
+    'component.alert.appearance.borderless.borderColor.success',
+
     // Colors - Icon
     'semantic.color.icon.error',
     'semantic.color.icon.warning',
@@ -130,6 +139,63 @@ export const alertDocs: ComponentDocumentation = {
   ],
 
   examples: [
+    {
+      name: 'Appearance: Where Each One Goes',
+      description: 'Outlined only for alerts at the top of the page or content area and for error summaries; borderless everywhere else, including inside content and at the bottom of a page (decision 0019).',
+      code: `<Stack direction="column" gap="lg">
+  {/* Top of the page or content area: outlined (the default) */}
+  <Alert variant="error" title="Payment failed">
+    Your card was declined. Update your payment details to continue.
+  </Alert>
+
+  <Typography>Your plan renews on 1 November. You can change or cancel it any time before then.</Typography>
+
+  {/* Inside content: borderless */}
+  <Alert variant="info" appearance="borderless">
+    Annual plans save two months compared with paying monthly.
+  </Alert>
+
+  <Typography>Billing history and invoices are below.</Typography>
+
+  {/* Bottom of the page: borderless */}
+  <Alert variant="success" appearance="borderless">
+    All invoices are paid.
+  </Alert>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="lg">
+          <Alert variant="error" title="Payment failed">
+            Your card was declined. Update your payment details to continue.
+          </Alert>
+          <Typography>Your plan renews on 1 November. You can change or cancel it any time before then.</Typography>
+          <Alert variant="info" appearance="borderless">
+            Annual plans save two months compared with paying monthly.
+          </Alert>
+          <Typography>Billing history and invoices are below.</Typography>
+          <Alert variant="success" appearance="borderless">
+            All invoices are paid.
+          </Alert>
+        </Stack>
+      )
+    },
+    {
+      name: 'Borderless Severities',
+      description: 'All four severities without a border. The tint, icon and title colour carry the severity.',
+      code: `<Stack direction="column" gap="md">
+  <Alert variant="error" appearance="borderless" title="Error">Something went wrong.</Alert>
+  <Alert variant="warning" appearance="borderless" title="Warning">Check this before continuing.</Alert>
+  <Alert variant="info" appearance="borderless" title="Info">Here is something useful.</Alert>
+  <Alert variant="success" appearance="borderless" title="Success">That worked.</Alert>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="md">
+          <Alert variant="error" appearance="borderless" title="Error">Something went wrong.</Alert>
+          <Alert variant="warning" appearance="borderless" title="Warning">Check this before continuing.</Alert>
+          <Alert variant="info" appearance="borderless" title="Info">Here is something useful.</Alert>
+          <Alert variant="success" appearance="borderless" title="Success">That worked.</Alert>
+        </Stack>
+      )
+    },
     {
       name: 'Basic Variants',
       description: 'All four semantic variants with their default styling and colors',
@@ -468,11 +534,25 @@ export const alertDocs: ComponentDocumentation = {
       {
         name: 'Alert Container',
         description:
-          'Root <div> element with role="alert" or role="status" based on variant. Variant-specific background, border, and text colors. Uses semantic spacing for padding. Full width with flexible layout.',
+          'Root <div> element with role="alert" or role="status" based on variant. Severity background and text colours, and a 1px border that is the severity colour (outlined) or transparent (borderless), from Alert\'s component tokens. Uses semantic spacing for padding. Full width with flexible layout.',
         tokens: [
-          'semantic.color.background.*-subtle',
-          'semantic.color.border.*',
-          'semantic.color.text.*',
+          'component.alert.severity.error.background',
+          'component.alert.severity.error.text',
+          'component.alert.appearance.outlined.borderColor.error',
+          'component.alert.appearance.borderless.borderColor.error',
+          'component.alert.severity.warning.background',
+          'component.alert.severity.warning.text',
+          'component.alert.appearance.outlined.borderColor.warning',
+          'component.alert.appearance.borderless.borderColor.warning',
+          'component.alert.severity.info.background',
+          'component.alert.severity.info.text',
+          'component.alert.appearance.outlined.borderColor.info',
+          'component.alert.appearance.borderless.borderColor.info',
+          'component.alert.severity.success.background',
+          'component.alert.severity.success.text',
+          'component.alert.appearance.outlined.borderColor.success',
+          'component.alert.appearance.borderless.borderColor.success',
+          'semantic.border.width.thin',
           'semantic.spacing.layout.md',
           'semantic.spacing.layout.lg',
           'semantic.border.radius.sm'

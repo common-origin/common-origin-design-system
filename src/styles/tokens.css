@@ -94,6 +94,7 @@
   --base-size-min: min-content;
   --base-size-max: max-content;
   --base-size-fit: fit-content;
+  --base-color-transparent: transparent;
   --base-color-neutral-100: #f8f9fa;
   --base-color-neutral-200: #e9ecef;
   --base-color-neutral-300: #dee2e6;
@@ -314,6 +315,22 @@
   --component-field-helper-text-typography: 400 0.75rem/1rem 'Inter', sans-serif;
   --component-field-helper-text-color: #495057;
   --component-field-helper-text-color-error: #D31510;
+  --component-alert-severity-error-background: #FFEBE7;
+  --component-alert-severity-error-text: #D31510;
+  --component-alert-severity-warning-background: #FFECCC;
+  --component-alert-severity-warning-text: #B14C00;
+  --component-alert-severity-info-background: #E0F2FF;
+  --component-alert-severity-info-text: #0265DC;
+  --component-alert-severity-success-background: #CEF8E0;
+  --component-alert-severity-success-text: #007A4D;
+  --component-alert-appearance-outlined-border-color-error: #D31510;
+  --component-alert-appearance-outlined-border-color-warning: #B14C00;
+  --component-alert-appearance-outlined-border-color-info: #0265DC;
+  --component-alert-appearance-outlined-border-color-success: #007A4D;
+  --component-alert-appearance-borderless-border-color-error: transparent;
+  --component-alert-appearance-borderless-border-color-warning: transparent;
+  --component-alert-appearance-borderless-border-color-info: transparent;
+  --component-alert-appearance-borderless-border-color-success: transparent;
   --component-alert-title-typography: 500 1.125rem/1.5rem 'Inter', sans-serif;
   --component-alert-title-font-weight: 600;
   --component-alert-title-line-height: 1.25rem;
@@ -510,6 +527,7 @@
   --semantic-color-border-error: #D31510;
   --semantic-color-border-success: #007A4D;
   --semantic-color-border-warning: #B14C00;
+  --semantic-color-border-none: transparent;
   --semantic-color-icon-default: #212529;
   --semantic-color-icon-emphasis: #343a40;
   --semantic-color-icon-subdued: #6c757d;

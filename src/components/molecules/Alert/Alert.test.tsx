@@ -498,3 +498,51 @@ describe('Alert', () => {
     })
   })
 })
+
+describe('Alert appearance (decision 0019)', () => {
+  const { alert } = tokens.component
+  const severities = ['error', 'warning', 'info', 'success'] as const
+  const appearances = ['outlined', 'borderless'] as const
+
+  it('defaults to outlined, so existing alerts are unchanged', () => {
+    render(<Alert variant="error" data-testid="alert">Message</Alert>)
+    expect(screen.getByTestId('alert')).toHaveStyle({ borderColor: alert.appearance.outlined.borderColor.error })
+  })
+
+  describe.each(severities)('%s', (variant) => {
+    it.each(appearances)('%s: severity tint and text, with the appearance border colour', (appearance) => {
+      render(<Alert variant={variant} appearance={appearance} data-testid="alert">Message</Alert>)
+      const el = screen.getByTestId('alert')
+      expect(el).toHaveStyle({
+        backgroundColor: alert.severity[variant].background,
+        color: alert.severity[variant].text,
+        borderColor: alert.appearance[appearance].borderColor[variant],
+      })
+    })
+
+    it('keeps the same border width in both appearances, so switching never shifts layout', () => {
+      render(
+        <>
+          <Alert variant={variant} appearance="outlined" data-testid="outlined">Message</Alert>
+          <Alert variant={variant} appearance="borderless" data-testid="borderless">Message</Alert>
+        </>
+      )
+      const outlined = window.getComputedStyle(screen.getByTestId('outlined'))
+      const borderless = window.getComputedStyle(screen.getByTestId('borderless'))
+      expect(borderless.borderTopWidth).toBe(outlined.borderTopWidth)
+      expect(['transparent', 'rgba(0, 0, 0, 0)']).toContain(borderless.borderTopColor)
+    })
+
+    it.each(appearances)('%s has no accessibility violations, with a title and a dismiss button', async (appearance) => {
+      const { container } = render(
+        <Alert variant={variant} appearance={appearance} title="Title" dismissible>Message</Alert>
+      )
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
+  it('works alongside the deprecated inline prop', () => {
+    render(<Alert inline appearance="borderless" variant="warning" data-testid="alert">Message</Alert>)
+    expect(screen.getByTestId('alert')).toHaveStyle({ borderColor: 'transparent' })
+  })
+})

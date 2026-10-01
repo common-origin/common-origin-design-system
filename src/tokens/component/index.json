@@ -524,6 +524,106 @@
       }
     },
     "alert": {
+      "severity": {
+        "error": {
+          "background": {
+            "value": "{semantic.color.background.error-subtle}",
+            "type": "color",
+            "description": "Error alert background, in both appearances."
+          },
+          "text": {
+            "value": "{semantic.color.text.error}",
+            "type": "color",
+            "description": "Error alert text colour."
+          }
+        },
+        "warning": {
+          "background": {
+            "value": "{semantic.color.background.warning-subtle}",
+            "type": "color",
+            "description": "Warning alert background, in both appearances."
+          },
+          "text": {
+            "value": "{semantic.color.text.warning}",
+            "type": "color",
+            "description": "Warning alert text colour."
+          }
+        },
+        "info": {
+          "background": {
+            "value": "{semantic.color.background.interactive-subtle}",
+            "type": "color",
+            "description": "Info alert background, in both appearances."
+          },
+          "text": {
+            "value": "{semantic.color.text.interactive}",
+            "type": "color",
+            "description": "Info alert text colour."
+          }
+        },
+        "success": {
+          "background": {
+            "value": "{semantic.color.background.success-subtle}",
+            "type": "color",
+            "description": "Success alert background, in both appearances."
+          },
+          "text": {
+            "value": "{semantic.color.text.success}",
+            "type": "color",
+            "description": "Success alert text colour."
+          }
+        }
+      },
+      "appearance": {
+        "outlined": {
+          "borderColor": {
+          "error": {
+            "value": "{semantic.color.border.error}",
+            "type": "color",
+            "description": "Outlined error alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+          },
+          "warning": {
+            "value": "{semantic.color.border.warning}",
+            "type": "color",
+            "description": "Outlined warning alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+          },
+          "info": {
+            "value": "{semantic.color.border.interactive}",
+            "type": "color",
+            "description": "Outlined info alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+          },
+          "success": {
+            "value": "{semantic.color.border.success}",
+            "type": "color",
+            "description": "Outlined success alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+          }
+          }
+        },
+        "borderless": {
+          "borderColor": {
+          "error": {
+            "value": "{semantic.color.border.none}",
+            "type": "color",
+            "description": "Borderless error alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+          },
+          "warning": {
+            "value": "{semantic.color.border.none}",
+            "type": "color",
+            "description": "Borderless warning alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+          },
+          "info": {
+            "value": "{semantic.color.border.none}",
+            "type": "color",
+            "description": "Borderless info alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+          },
+          "success": {
+            "value": "{semantic.color.border.none}",
+            "type": "color",
+            "description": "Borderless success alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+          }
+          }
+        }
+      },
       "title": {
         "typography": {
           "value": "{semantic.typography.h6}",

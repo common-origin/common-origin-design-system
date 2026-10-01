@@ -377,6 +377,11 @@
     }
   },
   "color": {
+    "transparent": {
+      "value": "transparent",
+      "type": "color",
+      "description": "Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none)."
+    },
     "neutral": {
       "1000": {
         "value": "#16191C",
