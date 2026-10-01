@@ -296,7 +296,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       },
       {
         name: 'Screen Reader Text',
-        description: 'Visually hidden text providing additional context for assistive technologies: \"{status} status\". When an aria-label is provided, the visually hidden aria-label replaces it and the visible content (#78).',
+        description: 'Visually hidden text providing additional context for assistive technologies: "{status} status". When an aria-label is provided, the visually hidden aria-label replaces it and the visible content (#78).',
         tokens: []
       }
     ]
