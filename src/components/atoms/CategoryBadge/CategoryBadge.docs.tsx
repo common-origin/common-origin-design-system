@@ -320,15 +320,18 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   },
 
   anatomy: {
-    description: 'A compact badge consisting of an optional icon and text label within a rounded container. Visual style adapts based on variant, color, and size props.',
+    description: 'A compact label: an optional icon and text inside a rounded container. Visual style adapts to the variant, color and size props. When an aria-label is given, the visible content is hidden from assistive technology and a visually hidden label is announced instead (#78).',
     diagram: `
-┌────────────────────────────┐
-│  CategoryBadge Container   │
-│  ┌──────┐  ┌───────────┐  │
-│  │ Icon │  │   Label   │  │
-│  │(opt) │  │  (text)   │  │
-│  └──────┘  └───────────┘  │
-└────────────────────────────┘
+┌──────────────────────────────────┐
+│  CategoryBadge Container         │
+│  ┌ Visible content ───────────┐  │
+│  │ ┌──────┐  ┌───────────┐    │  │
+│  │ │ Icon │  │   Label   │    │  │
+│  │ │(opt) │  │  (text)   │    │  │
+│  │ └──────┘  └───────────┘    │  │
+│  └────────────────────────────┘  │
+│  Hidden label (aria-label only)  │
+└──────────────────────────────────┘
     `,
     parts: [
       {
@@ -380,6 +383,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           'component.badge.label.fontWeight',
           'semantic.color.text.inverse'
         ]
+      },
+      {
+        name: 'Visible content',
+        description: 'Wraps the icon and text with display: contents, so it adds no box and keeps the container layout. It gets aria-hidden="true" only when an aria-label is given (#78).',
+        tokens: []
+      },
+      {
+        name: 'Hidden label (aria-label only)',
+        description: 'Rendered only when a non-blank aria-label is given: the aria-label as visually hidden text, which is what screen readers read instead of the visible content (#78).',
+        tokens: []
       }
     ]
   }
