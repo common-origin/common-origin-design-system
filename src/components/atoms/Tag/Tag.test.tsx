@@ -151,6 +151,41 @@ describe('Tag', () => {
     })
   })
 
+  describe('Sizes (decision 0018)', () => {
+    const { label } = tokens.semantic.size
+
+    it('defaults to medium, 24px', () => {
+      renderTag()
+      expect(screen.getByRole('status')).toHaveStyle({ height: label.medium })
+    })
+
+    it.each([
+      ['small', label.small],
+      ['medium', label.medium],
+    ] as const)('renders %s at %s, with or without a border', (size, height) => {
+      const { unmount } = renderTag({ size })
+      expect(screen.getByRole('status')).toHaveStyle({ height, boxSizing: 'border-box' })
+      unmount()
+      renderTag({ size, border: false })
+      expect(screen.getByRole('status')).toHaveStyle({ height, boxSizing: 'border-box' })
+    })
+
+    it('drops the vertical padding at small so the text line fits inside 20px', () => {
+      renderTag({ size: 'small' })
+      expect(screen.getByRole('status')).toHaveStyle({ paddingTop: '0px', paddingBottom: '0px' })
+    })
+
+    it('keeps the same type at both sizes', () => {
+      renderTag({ size: 'small' })
+      expect(screen.getByRole('status')).toHaveStyle({ fontSize: '0.75rem' })
+    })
+
+    it.each(['small', 'medium'] as const)('has no accessibility violations at %s', async (size) => {
+      const { container } = renderTag({ size, variant: 'success' })
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
   describe('Edge Cases', () => {
     it('handles empty string children', () => {
       renderTag({ children: '' })

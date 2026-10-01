@@ -1,6 +1,8 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Tag } from './Tag'
 import { Stack } from '../Stack/Stack'
+import { Typography } from '../Typography'
+import { StatusLabel } from '../StatusLabel'
 import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const tagDocs: ComponentDocumentation = {
@@ -30,6 +32,13 @@ export const tagDocs: ComponentDocumentation = {
       required: false,
       default: 'true',
       description: 'Whether to display a border around the tag'
+    },
+    {
+      name: 'size',
+      type: "'small' | 'medium'",
+      required: false,
+      default: "'medium'",
+      description: 'Height on the decision 0018 label scale: small (20px) for dense layouts such as table rows and toolbars, medium (24px) for standard use. Both sizes use the same type; small drops the vertical padding. The height includes padding and border.'
     },
     {
       name: 'data-testid',
@@ -72,8 +81,9 @@ export const tagDocs: ComponentDocumentation = {
     // Border
     'semantic.border.radius.sm',
     
-    // Size
-    'semantic.size.icon.lg'
+    // Height (decision 0018 size scale)
+    'semantic.size.label.small',
+    'semantic.size.label.medium'
   ],
   
   examples: [
@@ -122,6 +132,58 @@ export const tagDocs: ComponentDocumentation = {
           <Tag variant="interactive" border={false}>Without Border</Tag>
           <Tag variant="success" border={true}>With Border</Tag>
           <Tag variant="success" border={false}>Without Border</Tag>
+        </Stack>
+      )
+    },
+    {
+      name: 'Sizes',
+      description: 'Small (20px) and medium (24px, the default), with and without a border. The height is the same either way.',
+      code: `<Stack direction="row" gap="md" alignItems="center">
+  <Tag size="small">Small</Tag>
+  <Tag size="small" border={false}>Small</Tag>
+  <Tag>Medium</Tag>
+  <Tag border={false}>Medium</Tag>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="row" gap="md" alignItems="center">
+          <Tag size="small">Small</Tag>
+          <Tag size="small" border={false}>Small</Tag>
+          <Tag>Medium</Tag>
+          <Tag border={false}>Medium</Tag>
+        </Stack>
+      )
+    },
+    {
+      name: 'Dense Layout',
+      description: 'Small tags keep compact rows, such as a list of records with several category labels each, at a consistent height. Status goes in a StatusLabel, which shares the 20px small size, not a Tag.',
+      code: `<Stack direction="column" gap="sm">
+  <Stack direction="row" gap="xs" alignItems="center">
+    <Typography variant="small">Invoice #1042</Typography>
+    <StatusLabel size="small" status="completed" label="Paid" liveRegion={false} />
+    <Tag size="small">Q3</Tag>
+    <Tag size="small">Consulting</Tag>
+  </Stack>
+  <Stack direction="row" gap="xs" alignItems="center">
+    <Typography variant="small">Invoice #1043</Typography>
+    <StatusLabel size="small" status="failed" label="Overdue" liveRegion={false} />
+    <Tag size="small">Q3</Tag>
+    <Tag size="small">Design</Tag>
+  </Stack>
+</Stack>`,
+      renderComponent: () => (
+        <Stack direction="column" gap="sm">
+          <Stack direction="row" gap="xs" alignItems="center">
+            <Typography variant="small">Invoice #1042</Typography>
+            <StatusLabel size="small" status="completed" label="Paid" liveRegion={false} />
+            <Tag size="small">Q3</Tag>
+            <Tag size="small">Consulting</Tag>
+          </Stack>
+          <Stack direction="row" gap="xs" alignItems="center">
+            <Typography variant="small">Invoice #1043</Typography>
+            <StatusLabel size="small" status="failed" label="Overdue" liveRegion={false} />
+            <Tag size="small">Q3</Tag>
+            <Tag size="small">Design</Tag>
+          </Stack>
         </Stack>
       )
     },
@@ -214,8 +276,19 @@ export const tagDocs: ComponentDocumentation = {
         description: 'Root span element with inline-flex display, rounded corners, and semantic color styling based on variant',
         tokens: [
           'semantic.border.radius.sm',
-          'semantic.color.background.[variant]-subtle',
-          'semantic.color.border.[variant]'
+          'semantic.size.label.small',
+          'semantic.size.label.medium',
+          'semantic.color.background.surface',
+          'semantic.color.background.interactive-subtle',
+          'semantic.color.background.success-subtle',
+          'semantic.color.background.warning-subtle',
+          'semantic.color.background.error-subtle',
+          'semantic.color.background.emphasis',
+          'semantic.color.border.default',
+          'semantic.color.border.interactive',
+          'semantic.color.border.success',
+          'semantic.color.border.warning',
+          'semantic.color.border.error'
         ]
       },
       {
@@ -224,7 +297,12 @@ export const tagDocs: ComponentDocumentation = {
         tokens: [
           'component.badge.label.typography.small',
           'component.badge.label.fontWeight',
-          'semantic.color.text.[variant]'
+          'semantic.color.text.default',
+          'semantic.color.text.interactive',
+          'semantic.color.text.success',
+          'semantic.color.text.warning',
+          'semantic.color.text.error',
+          'semantic.color.text.inverse'
         ]
       }
     ]

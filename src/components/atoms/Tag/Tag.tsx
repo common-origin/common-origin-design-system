@@ -25,6 +25,12 @@ export interface TagProps {
    * @default true
    */
   border?: boolean
+
+  /**
+   * Size: small (20px) for dense layouts, or medium (24px). Decision 0018 size scale.
+   * @default 'medium'
+   */
+  size?: 'small' | 'medium'
   
   /**
    * Test identifier for automated testing
@@ -35,21 +41,23 @@ export interface TagProps {
 interface StyledTagProps {
   $variant: TagProps['variant']
   $border: boolean
+  $size: NonNullable<TagProps['size']>
 }
 
 const StyledTag = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledTagProps>`
+  box-sizing: border-box; /* the height includes padding and border, without relying on a global reset */
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: ${radius.sm};
   user-select: none;
   white-space: nowrap;
-  max-height: ${size.icon.lg || '2rem'};
-  
-  /* Size - fixed to small */
-  padding: ${layout.xs} ${layout.sm};
+
+  /* Size (decision 0018): small has no vertical padding so the text line fits inside 20px */
+  height: ${({ $size }) => size.label[$size]};
+  padding: ${({ $size }) => $size === 'small' ? `0 ${layout.sm}` : `${layout.xs} ${layout.sm}`};
   font: ${label.typography.small};
   font-weight: ${label.fontWeight};
   
@@ -118,6 +126,7 @@ export const Tag: React.FC<TagProps> = ({
   children,
   variant = 'default',
   border = true,
+  size: tagSize = 'medium',
   'data-testid': dataTestId,
   ...props
 }) => {
@@ -125,6 +134,7 @@ export const Tag: React.FC<TagProps> = ({
     <StyledTag
       $variant={variant}
       $border={border}
+      $size={tagSize}
       data-testid={dataTestId}
       data-variant={variant}
       data-border={border}
