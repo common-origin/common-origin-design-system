@@ -551,7 +551,15 @@
   --semantic-color-category-gray: #495057;
   --semantic-color-category-gray-emphasis: #212529;
   --semantic-color-category-gray-subtle: #e9ecef;
-  --semantic-color-status-pending: #D39700;
+  --semantic-color-category-blue-text: #0265DC;
+  --semantic-color-category-purple-text: #7E2EBD;
+  --semantic-color-category-pink-text: #B90064;
+  --semantic-color-category-yellow-text: #825800;
+  --semantic-color-category-green-text: #007A4D;
+  --semantic-color-category-red-text: #D31510;
+  --semantic-color-category-orange-text: #B14C00;
+  --semantic-color-category-gray-text: #212529;
+  --semantic-color-status-pending: #825800;
   --semantic-color-status-pending-bg: #FFF3D6;
   --semantic-color-status-completed: #007A4D;
   --semantic-color-status-completed-bg: #CEF8E0;

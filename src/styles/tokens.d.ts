@@ -1316,6 +1316,14 @@ export interface TokensSemanticColorCategory {
   gray: string;
   'gray-emphasis': string;
   'gray-subtle': string;
+  'blue-text': string;
+  'purple-text': string;
+  'pink-text': string;
+  'yellow-text': string;
+  'green-text': string;
+  'red-text': string;
+  'orange-text': string;
+  'gray-text': string;
 }
 
 export interface TokensSemanticColorStatus {

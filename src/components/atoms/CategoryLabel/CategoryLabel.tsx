@@ -78,6 +78,18 @@ export interface CategoryLabelProps {
   'aria-label'?: string
 }
 
+// Text on white or the -subtle fill (outlined and minimal), at least 4.5:1 (#115)
+const categoryText: Record<CategoryColor, string> = {
+  blue: category['blue-text'],
+  purple: category['purple-text'],
+  pink: category['pink-text'],
+  yellow: category['yellow-text'],
+  green: category['green-text'],
+  red: category['red-text'],
+  orange: category['orange-text'],
+  gray: category['gray-text']
+}
+
 interface StyledLabelProps {
   $color: CategoryColor
   $variant: CategoryVariant
@@ -120,11 +132,12 @@ const StyledCategoryLabel = styled.span.withConfig({
     return category[`${$color}-subtle` as keyof typeof category]
   }};
   
+  /* Outlined and minimal text uses the AA text token, not the base colour (issue 115) */
   color: ${({ $color, $variant }) => {
     if ($variant === 'filled') {
       return color.text.inverse
     }
-    return category[$color as keyof typeof category]
+    return categoryText[$color]
   }};
   
   border-color: ${({ $color, $variant }) => {

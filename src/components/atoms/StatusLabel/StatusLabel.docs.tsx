@@ -208,7 +208,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       'ARIA live region (aria-live="polite", aria-atomic="true") enabled by default for screen reader announcements',
       'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh"). Making icons decorative by default is #85.',
       'Screen reader text provides additional context beyond visible label',
-      'All status colors maintain WCAG 2.2 AA contrast ratios (4.5:1 for text)',
+      'Every status meets WCAG 2.2 AA (4.5:1) for its text and icon on its background, enforced by tests. Pending uses yellow.1000 (#825800), 5.69:1 (#115).',
       'Automatic aria-label generation: "Status: {label}"',
       'No accessibility violations detected by jest-axe across all variants',
       'Non-interactive element (no keyboard navigation needed)'

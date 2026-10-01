@@ -4,6 +4,7 @@ import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { StatusLabel, StatusLabelProps, StatusType, StatusSize } from './StatusLabel'
 import tokens from '@/styles/tokens.json'
+import { contrastRatio } from '@/test-utils/contrast'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 
 expect.extend(toHaveNoViolations)
@@ -275,5 +276,16 @@ describe('StatusLabel Component', () => {
       rerender(<StatusLabel status="completed" />)
       expect(screen.getByText('Completed')).toBeInTheDocument()
     })
+  })
+})
+
+describe('StatusLabel contrast (WCAG AA, #115)', () => {
+  const { status } = tokens.semantic.color
+  const statuses: StatusType[] = ['pending', 'completed', 'failed', 'cancelled', 'processing', 'scheduled']
+
+  it.each(statuses)('%s text meets 4.5:1 on its background', (s) => {
+    render(<StatusLabel status={s} />)
+    expect(screen.getByRole('status')).toHaveStyle({ color: status[s], backgroundColor: status[`${s}-bg`] })
+    expect(contrastRatio(status[s], status[`${s}-bg`])).toBeGreaterThanOrEqual(4.5)
   })
 })

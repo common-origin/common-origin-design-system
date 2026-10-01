@@ -156,7 +156,7 @@ describe('AccountCard', () => {
       const badge = screen.getByText('+2.5%')
       const styles = window.getComputedStyle(badge)
 
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.green))
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['green-text']))
       expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['green-subtle']))
     })
 
@@ -166,7 +166,7 @@ describe('AccountCard', () => {
       const badge = screen.getByText('-1.2%')
       const styles = window.getComputedStyle(badge)
 
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.red))
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['red-text']))
       expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['red-subtle']))
     })
 
@@ -176,7 +176,7 @@ describe('AccountCard', () => {
       const badge = screen.getByText('0.0%')
       const styles = window.getComputedStyle(badge)
 
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category.blue))
+      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['blue-text']))
       expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['blue-subtle']))
     })
 

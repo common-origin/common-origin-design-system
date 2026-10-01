@@ -309,17 +309,17 @@
         },
         "label": {
           "small": {
-            "value": "{semantic.size.dimension.5}",
+            "value": "{base.size.5}",
             "type": "size",
             "description": "20px label height: StatusLabel small and Tag small. Decision 0018 size scale."
           },
           "medium": {
-            "value": "{semantic.size.dimension.6}",
+            "value": "{base.size.6}",
             "type": "size",
             "description": "24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale."
           },
           "large": {
-            "value": "{semantic.size.dimension.8}",
+            "value": "{base.size.8}",
             "type": "size",
             "description": "32px label height: CategoryLabel large. Decision 0018 size scale."
           }
@@ -962,13 +962,53 @@
           "value": "{base.color.neutral.200}",
           "type": "color",
           "description": "Subtle gray background"
+        },
+        "blue-text": {
+          "value": "{base.color.blue.900}",
+          "type": "color",
+          "description": "Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "purple-text": {
+          "value": "{base.color.purple.900}",
+          "type": "color",
+          "description": "Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "pink-text": {
+          "value": "{base.color.pink.1000}",
+          "type": "color",
+          "description": "Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115."
+        },
+        "yellow-text": {
+          "value": "{base.color.yellow.1000}",
+          "type": "color",
+          "description": "Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115."
+        },
+        "green-text": {
+          "value": "{base.color.green.900}",
+          "type": "color",
+          "description": "Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "red-text": {
+          "value": "{base.color.red.900}",
+          "type": "color",
+          "description": "Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "orange-text": {
+          "value": "{base.color.orange.900}",
+          "type": "color",
+          "description": "Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "gray-text": {
+          "value": "{base.color.neutral.900}",
+          "type": "color",
+          "description": "Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         }
       },
       "status": {
         "pending": {
-          "value": "{base.color.yellow.700}",
+          "value": "{base.color.yellow.1000}",
           "type": "color",
-          "description": "Yellow color for pending status"
+          "description": "Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115."
         },
         "pending-bg": {
           "value": "{base.color.yellow.100}",

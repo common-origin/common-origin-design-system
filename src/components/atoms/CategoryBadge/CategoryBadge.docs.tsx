@@ -86,6 +86,14 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     'semantic.color.category.gray', // Gray for uncategorized or neutral categories
     'semantic.color.category.gray-emphasis', // Filled gray badge background
     'semantic.color.category.gray-subtle', // Minimal gray badge background
+    'semantic.color.category.blue-text', // blue text on white or blue-subtle (outlined, minimal)
+    'semantic.color.category.purple-text', // purple text on white or purple-subtle (outlined, minimal)
+    'semantic.color.category.pink-text', // pink text on white or pink-subtle (outlined, minimal)
+    'semantic.color.category.yellow-text', // yellow text on white or yellow-subtle (outlined, minimal)
+    'semantic.color.category.green-text', // green text on white or green-subtle (outlined, minimal)
+    'semantic.color.category.red-text', // red text on white or red-subtle (outlined, minimal)
+    'semantic.color.category.orange-text', // orange text on white or orange-subtle (outlined, minimal)
+    'semantic.color.category.gray-text', // gray text on white or gray-subtle (outlined, minimal)
     'semantic.color.text.inverse', // White text for filled variant badges
     'semantic.size.label.medium', // 24px height for size="small"
     'semantic.size.label.large', // 32px height for size="medium"
@@ -173,7 +181,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     },
     {
       name: 'All Category Colors',
-      description: 'Eight semantic colors designed for common financial transaction categories. Each color has distinct meaning and maintains WCAG AA contrast ratios across all variants.',
+      description: 'Eight semantic colors designed for common financial transaction categories. Each color has distinct meaning and meets WCAG AA text contrast in every variant.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
     <CategoryBadge color="blue">General</CategoryBadge>
@@ -302,7 +310,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   accessibility: {
     notes: [
       'Display-only: renders a non-interactive span with no role and is not focusable',
-      'All color variants maintain WCAG 2.2 AA contrast ratios (4.5:1 for text, 3:1 for UI components)',
+      'Text meets WCAG 2.2 AA (4.5:1) in every colour and variant, enforced by tests: filled uses white on the -emphasis colour; outlined and minimal use the category -text token (the -emphasis colour, or one step darker for pink and yellow), on white or the -subtle fill. The outlined border keeps the base colour (#115).',
       'aria-label is currently not announced, because the root span has no role (tracked in #78); the visible label is what screen readers read',
       'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85)',
       'No accessibility violations detected by jest-axe automated testing across all variants'
