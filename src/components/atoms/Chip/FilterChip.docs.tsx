@@ -88,7 +88,7 @@ export const filterChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents dismissal and applies reduced-opacity styling. The close button becomes non-functional and aria-disabled is set on the container. Use when a filter is temporarily locked (e.g. while a network request is in flight).'
+        'Prevents dismissal: the close button is disabled and aria-disabled is set on the container. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked (e.g. while a network request is in flight).'
     },
     {
       name: 'role',
@@ -259,7 +259,7 @@ return (
     {
       name: 'Disabled State',
       description:
-        'Disabled FilterChips are visually muted and cannot be dismissed. Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
+        'Disabled FilterChips cannot be dismissed. An unselected disabled chip uses the disabled colours; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
       code: `<Stack direction="row" gap="sm">
   <FilterChip selected disabled>Loading…</FilterChip>
   <FilterChip selected onDismiss={() => {}} disabled>Locked Filter</FilterChip>
@@ -290,7 +290,7 @@ return (
     focusManagement:
       'The close button uses component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected chips use blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle).'
+      'Unselected text meets WCAG AA (4.5:1). Selected chips use blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour.'
   },
 
   anatomy: {
@@ -310,7 +310,7 @@ return (
 States:
 ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
 │  Unselected   │  │   Selected    │  │   Disabled    │
-│  subtle bg    │  │ interactive   │  │  opacity 50%  │
+│  subtle bg    │  │ interactive   │  │ disabled tint │
 │  no checkmark │  │ subtle bg + ✓ │  │  no dismiss   │
 └───────────────┘  └───────────────┘  └───────────────┘
     `,

@@ -57,6 +57,15 @@ describe('InputChip', () => {
     })
   })
 
+  it('draws the checkmark and close icon in the chip text colour', () => {
+    render(<InputChip data-testid="chip" selected onDismiss={() => {}}>Electronics</InputChip>)
+    const [checkmark, close] = Array.from(screen.getByTestId('chip').querySelectorAll('svg'))
+      .map((svg) => svg.parentElement as HTMLElement)
+    expect(checkmark).toHaveStyle({ color: text.interactive })
+    // jsdom doesn't resolve `inherit` through the close button, so check the icon's own rule
+    expect(pseudoClassDeclarations(close, '')).toContain('color:currentColor;')
+  })
+
   it('has no accessibility violations, selected and dismissible', async () => {
     const { container } = render(
       <InputChip selected onDismiss={() => {}}>Category: Electronics</InputChip>
@@ -89,6 +98,12 @@ describe('Selected chip treatment (decision 0016)', () => {
     expect(pseudoClassDeclarations(chip, ':active')).toContain(
       `background-color:${background['interactive-subtle-active']};color:${text['interactive-active']};`
     )
+  })
+
+  it('draws the toggle chip checkmark in the chip text colour', () => {
+    render(<BooleanChip data-testid="chip" selected onClick={() => {}}>In stock</BooleanChip>)
+    const icon = screen.getByTestId('chip').querySelector('svg')?.parentElement as HTMLElement
+    expect(icon).toHaveStyle({ color: text.interactive })
   })
 
   it('keeps the resting colours on hover when the chip is not clickable', () => {

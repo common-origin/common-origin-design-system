@@ -122,7 +122,7 @@ export const booleanChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents interaction and applies reduced-opacity disabled styling. When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
+        'Prevents interaction. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
     },
     {
       name: 'aria-label',
@@ -305,7 +305,7 @@ return (
     focusManagement:
       'Focus outline uses component.chip.focus.outline (2px solid) and component.chip.focus.outlineOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016).'
+      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark and close icon take the text colour.'
   },
 
   anatomy: {
@@ -323,7 +323,7 @@ return (
 States:
 ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
 │  Unselected  │  │   Selected   │  │   Disabled   │
-│  subtle bg   │  │ interactive  │  │  opacity 50% │
+│  subtle bg   │  │ interactive  │  │ disabled tint│
 │  no icon     │  │ subtle bg +✓ │  │  no pointer  │
 └──────────────┘  └──────────────┘  └──────────────┘
     `,

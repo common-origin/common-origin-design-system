@@ -54,13 +54,14 @@ export const chipDocs: ComponentDocumentation = {
   props: [
     {
       name: 'children',
-      type: 'ReactNode',
+      type: 'React.ReactNode',
       required: false,
+      default: 'undefined',
       description: 'Content to display inside the chip, typically a short text label.'
     },
     {
       name: 'variant',
-      type: "'default'",
+      type: "'default' | 'emphasis' | 'subtle' | 'interactive' | 'light' | 'dark'",
       required: false,
       default: 'default',
       description: "Visual style. Only 'default' stays in 3.0. Deprecated, removed in 3.0: 'emphasis', 'subtle', 'interactive', and the legacy 'light' (same as default) and 'dark'. Chips have no emphasis levels."
@@ -76,6 +77,7 @@ export const chipDocs: ComponentDocumentation = {
       name: 'onClick',
       type: '() => void',
       required: false,
+      default: 'undefined',
       description: 'Deprecated, removed in 3.0: the static Chip is not interactive. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0). While it remains, it gives the chip button semantics and Enter/Space activation.'
     },
     {
@@ -89,30 +91,35 @@ export const chipDocs: ComponentDocumentation = {
       name: 'data-testid',
       type: 'string',
       required: false,
+      default: 'undefined',
       description: 'Test identifier for the chip element.'
     },
     {
       name: 'aria-label',
       type: 'string',
       required: false,
+      default: 'undefined',
       description: 'Accessible label when the visible text alone is not enough, such as abbreviated content.'
     },
     {
       name: 'aria-describedby',
       type: 'string',
       required: false,
+      default: 'undefined',
       description: 'ID of an element that further describes the chip.'
     },
     {
       name: 'role',
       type: 'string',
       required: false,
+      default: 'undefined',
       description: 'ARIA role override. A static chip has no role by default.'
     },
     {
       name: 'title',
       type: 'string',
       required: false,
+      default: 'undefined',
       description: 'Legacy alternative to children, used when children is not provided. Prefer children.'
     }
   ],
@@ -287,7 +294,7 @@ Close: InputChip with onDismiss
       },
       {
         name: 'Icon (optional)',
-        description: 'Leading checkmark on selected BooleanChip and InputChip.',
+        description: 'Leading checkmark on selected BooleanChip and InputChip, in the chip text colour.',
         tokens: [
           'semantic.spacing.layout.xs'
         ]

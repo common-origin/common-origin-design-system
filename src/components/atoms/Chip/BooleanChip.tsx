@@ -75,7 +75,7 @@ export const BooleanChip: React.FC<BooleanChipProps> = ({
       {/* Show selected indicator when selected */}
       {selected && (
         <IconContainer aria-hidden="true">
-          <Icon name="check" size="sm" />
+          <Icon name="check" size="sm" iconColor="inherit" />
         </IconContainer>
       )}
       

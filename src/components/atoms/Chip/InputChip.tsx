@@ -84,7 +84,7 @@ export const InputChip: React.FC<InputChipProps> = ({
       {/* Show selected indicator when selected */}
       {selected && (
         <IconContainer aria-hidden="true">
-          <Icon name="check" size="sm" />
+          <Icon name="check" size="sm" iconColor="inherit" />
         </IconContainer>
       )}
       
@@ -102,7 +102,7 @@ export const InputChip: React.FC<InputChipProps> = ({
           tabIndex={0}
           data-testid={dataTestId ? `${dataTestId}-close` : undefined}
         >
-          <Icon name="close" size="sm" />
+          <Icon name="close" size="sm" iconColor="inherit" />
         </CloseButton>
       )}
     </StyledChip>
