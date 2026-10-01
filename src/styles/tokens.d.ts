@@ -247,6 +247,7 @@ export interface TokensBaseColorYellow {
 }
 
 export interface TokensBaseColor {
+  transparent: string;
   neutral: TokensBaseColorNeutral;
   green: TokensBaseColorGreen;
   orange: TokensBaseColorOrange;

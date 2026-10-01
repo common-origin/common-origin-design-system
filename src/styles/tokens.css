@@ -94,6 +94,7 @@
   --base-size-min: min-content;
   --base-size-max: max-content;
   --base-size-fit: fit-content;
+  --base-color-transparent: transparent;
   --base-color-neutral-100: #f8f9fa;
   --base-color-neutral-200: #e9ecef;
   --base-color-neutral-300: #dee2e6;

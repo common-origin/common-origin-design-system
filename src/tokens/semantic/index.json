@@ -764,7 +764,7 @@
           "type": "color"
         },
         "none": {
-          "value": "transparent",
+          "value": "{base.color.transparent}",
           "type": "color",
           "description": "An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019)."
         }
