@@ -232,15 +232,15 @@ export const statusBadgeDocs: ComponentDocumentation = {
     notes: [
       'Uses role="status" for semantic ARIA landmark',
       'ARIA live region (aria-live="polite", aria-atomic="true") enabled by default for screen reader announcements',
-      'Icons have aria-hidden="true" to prevent redundant announcements',
+      'The icon is decorative, but Icon does not yet honour aria-hidden, so screen readers may announce it as an image (for example "refresh") unless an aria-label is provided, which hides it. Making icons decorative by default is #85.',
       'Screen reader text provides additional context beyond visible label',
       'Every status meets WCAG 2.2 AA (4.5:1) for its text and icon on its background, enforced by tests. Pending uses yellow.1000 (#825800), 5.69:1 (#115).',
-      'Automatic aria-label generation: "Status: {label}"',
+      'Accessible name: the aria-label if provided, otherwise "Status: {label}". A provided aria-label also replaces the announced content (#78)',
       'No accessibility violations detected by jest-axe across all variants',
       'Non-interactive element (no keyboard navigation needed)'
     ],
     keyboardNavigation: 'Not applicable - status badges are non-interactive display elements.',
-    screenReader: 'Screen readers announce "Status: {label}" followed by hidden context text "{status} status". When liveRegion is true, changes are announced automatically.'
+    screenReader: 'By default the status is named "Status: {label}", and screen readers read its content: the visible text, then hidden context text "{status} status" (and the icon, until #85). When aria-label is provided, it becomes both the name and the only content read; the visible text, icon and context text are hidden from assistive technology (#78). With liveRegion (the default) changes are announced politely; liveRegion={false} sets aria-live="off".'
   },
 
   anatomy: {
