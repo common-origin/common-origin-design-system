@@ -3,6 +3,10 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { TabBar, TabBarProps, Tab, TabVariant } from './TabBar'
+import tokens from '@/styles/tokens.json'
+import { contrastRatio, pseudoClassDeclarations } from '../../../test-utils/contrast'
+
+const { background, text } = tokens.semantic.color
 
 expect.extend(toHaveNoViolations)
 
@@ -56,19 +60,69 @@ describe('TabBar Component', () => {
     })
   })
 
-  describe('Variants', () => {
-    const variants: TabVariant[] = ['default', 'pills', 'underline']
+  describe('Selected treatment (decisions 0016, 0020)', () => {
+    const tab = (name: RegExp) => screen.getByRole('tab', { name })
 
-    variants.forEach((variant) => {
-      it(`renders with ${variant} variant`, () => {
-        renderTabBar({ variant })
-        expect(screen.getByRole('tablist')).toBeInTheDocument()
+    it('gives the selected tab the light-blue fill, blue text and a blue underline', () => {
+      renderTabBar()
+      const selected = tab(/Overview/i)
+      expect(selected).toHaveStyle({
+        backgroundColor: background['interactive-subtle'],
+        color: text.interactive,
+      })
+      expect(pseudoClassDeclarations(selected, '::after')).toContain(`background-color:${background.interactive};`)
+    })
+
+    it('darkens the selected text with the fill on hover and press', () => {
+      renderTabBar()
+      const selected = tab(/Overview/i)
+      expect(pseudoClassDeclarations(selected, ':hover:not(:disabled)')).toContain(
+        `background-color:${background['interactive-subtle-hover']};color:${text['interactive-hover']};`
+      )
+      expect(pseudoClassDeclarations(selected, ':active:not(:disabled)')).toContain(
+        `background-color:${background['interactive-subtle-active']};color:${text['interactive-active']};`
+      )
+    })
+
+    it('keeps unselected tabs unfilled, subdued, and never blue on hover', () => {
+      renderTabBar()
+      const unselected = tab(/Analytics/i)
+      expect(unselected).toHaveStyle({ color: text.subdued })
+      expect(pseudoClassDeclarations(unselected, ':hover:not(:disabled)')).toContain(
+        `background-color:transparent;color:${text.default};`
+      )
+      expect(pseudoClassDeclarations(unselected, '::after')).toContain('background-color:transparent;')
+    })
+
+    it.each([
+      ['selected', text.interactive, background['interactive-subtle']],
+      ['hover', text['interactive-hover'], background['interactive-subtle-hover']],
+      ['pressed', text['interactive-active'], background['interactive-subtle-active']],
+    ])('meets 4.5:1 text contrast when %s', (_state, foreground, fill) => {
+      expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
+    })
+
+    it('shows the blue count badge on the selected tab', () => {
+      renderTabBar({ tabs: [{ id: 'tab1', label: 'Inbox', badge: 3 }], activeTab: 'tab1' })
+      expect(screen.getByLabelText('3 items')).toHaveStyle({
+        backgroundColor: background.interactive,
+        color: text.inverse,
       })
     })
 
-    it('defaults to default variant', () => {
-      renderTabBar()
-      expect(screen.getByRole('tablist')).toBeInTheDocument()
+    it.each(['default', 'pills'] as TabVariant[])(
+      'renders the deprecated %s variant exactly like underline',
+      (variant) => {
+        const { container: underline } = renderTabBar({ variant: 'underline', 'data-testid': 'tabs' })
+        const { container: deprecated } = renderTabBar({ variant, 'data-testid': 'tabs' })
+        expect(deprecated.innerHTML).toBe(underline.innerHTML)
+      }
+    )
+
+    it('renders as underline when no variant is given', () => {
+      const { container: underline } = renderTabBar({ variant: 'underline', 'data-testid': 'tabs' })
+      const { container: unset } = renderTabBar({ 'data-testid': 'tabs' })
+      expect(unset.innerHTML).toBe(underline.innerHTML)
     })
   })
 
@@ -257,9 +311,9 @@ describe('TabBar Component', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should have no accessibility violations across all variants', async () => {
+    it('should have no accessibility violations for every variant value, including deprecated ones', async () => {
       const variants: TabVariant[] = ['default', 'pills', 'underline']
-      
+
       for (const variant of variants) {
         const { container, unmount } = renderTabBar({ variant })
         const results = await axe(container)
