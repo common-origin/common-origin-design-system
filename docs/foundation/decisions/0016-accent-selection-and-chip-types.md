@@ -10,7 +10,7 @@
 
 The system had no single rule for emphasis and selection, and its words meant different things in different components ([#21](https://github.com/common-origin/common-origin-design-system/issues/21)):
 
-- **"Emphasis" meant two opposite things.** On Button it was the blue call to action above `primary` ([0002](0002-button-variants.md)). Everywhere else it meant strong near-black: the semantic tokens `text.emphasis` (`#343a40`), `background.emphasis` and `icon.emphasis` (`#212529`), Typography and Icon colours, and the Chip and Tag `emphasis` variants. Chip's `interactive` variant was the blue one.
+- **"Emphasis" meant two opposite things.** On Button it was the blue call to action above `primary` ([0002](0002-button-variants.md)). Everywhere else it meant strong near-black: the semantic tokens `text.emphasis` and `icon.emphasis` (`#343a40`) and `background.emphasis` (`#212529`), Typography and Icon colours, and the Chip and Tag `emphasis` variants. Chip's `interactive` variant was the blue one.
 - **"Selected" had three treatments.** Selected chips were light blue, TabBar's active tab was solid blue, and the docs site's active sidebar item was near-black.
 - **Chips borrowed Button's emphasis scale.** Chip had `default`, `emphasis`, `subtle` and `interactive` variants and an `onClick`, so a static label could look and act like a button.
 - **Chip names didn't match the industry.** `BooleanChip` was the toggle that filters content, and `FilterChip` was the dismissible chip for an applied filter, the reverse of Material's and eBay's names.
@@ -41,7 +41,15 @@ Selected states in the contexts below use the **light-blue selected treatment**:
 - **TabBar's active tab**, which moves from solid blue to light blue. In the `underline` variant the underline is blue;
 - **the docs site's active sidebar item**, which moves from near-black to light blue.
 
-In these contexts selection is **never** near-black and never the solid accent blue. Hover and pressed states of a selected item get their own tokens; no hard-coded colours (P3).
+In these contexts selection is **never** near-black and never the solid accent blue. Hover and pressed states of a selected item get their own tokens; no hard-coded colours (P3). **The text darkens with the fill** so every state stays at least 4.5:1 (P2):
+
+| State | Fill | Text | Contrast |
+|---|---|---|---|
+| Selected | `#E0F2FF` (`interactive-subtle`) | `#0265DC` (`interactive`) | 4.70:1 |
+| Selected, hover | `#CAE8FF` | `#0054B6` (the `interactive-hover` blue) | 5.60:1 |
+| Selected, pressed | `#B5DEFF` | `#004491` (the `interactive-active` blue) | 6.65:1 |
+
+The base blue fails on the hover and pressed fills (4.23:1 and 3.81:1), so it must not be kept for those states. Semantic text tokens for the hover and pressed blues are added with the implementation.
 
 **Scope.** This decision covers only the contexts listed. Two other cases stay as they are:
 - **Top navigation** keeps its quiet treatment, with no background fill; the active item changes weight or gains an underline (`visual-language.md`).
