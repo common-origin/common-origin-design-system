@@ -40,7 +40,7 @@ The component tier becomes real tokens that reference semantic tokens ([0014](00
 
 **Every step must leave resolved token values unchanged**, checked against a committed golden `tokens.json`, unless the PR says otherwise.
 
-**3. Consumers keep the same JSON.** `tokens.json` keeps its token hierarchy and resolved values, so components and products that import it don't change. The one exception is the stray `$ref` keys, which are removed as a **fix in a minor release**: they were never meant to be part of the API. The golden file is today's output **without** the `$ref` keys, and every later step must match it exactly.
+**3. Consumers keep the same JSON.** `tokens.json` keeps its token hierarchy and resolved values, so components and products that import it don't change. The one exception is the stray `$ref` keys, which are removed as a **fix in a minor release**: they were never meant to be part of the API. The golden file is today's output **without** the `$ref` keys, and every later step must match it exactly. This was weighed against P7, which normally puts removals in a major. The owner chose a minor because the keys aren't tokens: they hold file paths such as `"./base/index.json"`, so no product can use them as design values. The release note will still name the change, so anyone who reads them knows.
 
 **4. CSS variables are published.** The package ships `tokens.css` as CSS custom properties for products that don't use styled-components, importable as `@common-origin/design-system/tokens.css` (a new `exports` entry beside the existing `./tokens`):
 - every variable has a **`co-` prefix** (e.g. `--co-color-text-default`);
