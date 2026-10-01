@@ -50,7 +50,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: '"Status: {label}"',
-      description: 'Custom accessible label for screen readers. Automatically generated from status label but can be overridden for additional context.'
+      description: 'Accessible label. It names the status and, because a live region announces its content rather than its name, it also replaces the announced content: the visible text and icon are hidden from assistive technology (#78). Defaults to "Status: {label}", with the visible text announced.'
     },
     {
       name: 'data-testid',

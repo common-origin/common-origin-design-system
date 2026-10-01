@@ -120,7 +120,8 @@ describe('TransactionListItem', () => {
       it(`displays ${key} category badge`, () => {
         render(<TransactionListItem {...defaultProps} category={key} />)
         
-        expect(screen.getByLabelText(`Category: ${label}`)).toBeInTheDocument()
+        // Announced as visually hidden text; the visible label is aria-hidden (#78)
+        expect(screen.getByText(`Category: ${label}`)).toBeInTheDocument()
         expect(screen.getByText(label)).toBeInTheDocument()
       })
     })
@@ -349,8 +350,9 @@ describe('TransactionListItem', () => {
     it('category icons have descriptive labels', () => {
       render(<TransactionListItem {...defaultProps} category="shopping" />)
       
-      expect(screen.getByLabelText('Category: Shopping')).toBeInTheDocument()
-      expect(screen.getByText('Shopping')).toBeInTheDocument()
+      // Announced as visually hidden text; the visible label is aria-hidden (#78)
+      expect(screen.getByText('Category: Shopping')).toBeInTheDocument()
+      expect(screen.getByText('Shopping').closest('[aria-hidden="true"]')).toBeInTheDocument()
     })
 
     it('metadata icons have descriptive labels', () => {
@@ -411,8 +413,9 @@ describe('TransactionListItem', () => {
       expect(screen.getByTestId('full-transaction')).toBeInTheDocument()
       expect(screen.getByText('Test Merchant')).toBeInTheDocument()
       expect(screen.getByText('Pending transaction')).toBeInTheDocument()
-      expect(screen.getByLabelText('Category: Shopping')).toBeInTheDocument()
-      expect(screen.getByText('Shopping')).toBeInTheDocument()
+      // Announced as visually hidden text; the visible label is aria-hidden (#78)
+      expect(screen.getByText('Category: Shopping')).toBeInTheDocument()
+      expect(screen.getByText('Shopping').closest('[aria-hidden="true"]')).toBeInTheDocument()
       expect(screen.getByText(/Test description/)).toBeInTheDocument()
       expect(screen.getByText(/Test description/)).toBeInTheDocument()
       expect(screen.getByLabelText('Has receipt')).toBeInTheDocument()

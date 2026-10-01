@@ -61,7 +61,8 @@ export interface StatusLabelProps {
   'data-testid'?: string
 
   /**
-   * Accessible label override
+   * Accessible label override. Used as the status's name and announced instead of the visible
+   * text and icon (#78).
    */
   'aria-label'?: string
 }
@@ -188,6 +189,12 @@ const ScreenReaderOnly = styled.span`
   ${visuallyHidden}
 `
 
+// The visible content, hidden from assistive technology when an aria-label replaces it.
+// display: contents keeps the root's flex layout and gap.
+const VisibleContent = styled.span`
+  display: contents;
+`
+
 /**
  * Shared implementation of StatusLabel and the deprecated StatusBadge. Internal: not exported
  * from the package. `showIcon` exists only for StatusBadge; StatusLabel always shows the icon
@@ -217,18 +224,23 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
       aria-atomic={liveRegion ? 'true' : undefined}
       data-testid={dataTestId}
     >
-      {showIcon && (
-        <Icon
-          name={statusConfig.icon}
-          size={sizeStyles.iconSize}
-          iconColor="inherit"
-          aria-hidden="true"
-        />
-      )}
-      {displayLabel}
-      <ScreenReaderOnly>
-        {status} status
-      </ScreenReaderOnly>
+      {/* A live region announces its content, not its name, so a provided aria-label replaces the
+          content for assistive technology as well (#78) */}
+      <VisibleContent aria-hidden={ariaLabel ? 'true' : undefined}>
+        {showIcon && (
+          <Icon
+            name={statusConfig.icon}
+            size={sizeStyles.iconSize}
+            iconColor="inherit"
+            aria-hidden="true"
+          />
+        )}
+        {displayLabel}
+        <ScreenReaderOnly>
+          {status} status
+        </ScreenReaderOnly>
+      </VisibleContent>
+      {ariaLabel && <ScreenReaderOnly>{ariaLabel}</ScreenReaderOnly>}
     </StyledStatusLabel>
   )
 }

@@ -49,7 +49,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Currently not announced: it is set on a span with no role, which assistive technology ignores (tracked in #78). Put the full category name in the visible label instead.'
+      description: 'Accessible label, announced instead of the visible text and icon, for example "Category: Food & Dining". It is rendered as visually hidden text and the visible content is hidden from assistive technology, because the label has no role that can carry a name (#78). Without it, screen readers read the visible text.'
     },
     {
       name: 'data-testid',
@@ -309,7 +309,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
     notes: [
       'Display-only: renders a non-interactive span with no role and is not focusable',
       'Text meets WCAG 2.2 AA (4.5:1) in every colour and variant, enforced by tests: filled uses white on the -emphasis colour; outlined and minimal use the category -text token (the -emphasis colour, or one step darker for pink and yellow), on white or the -subtle fill. The outlined border keeps the base colour (#115).',
-      'aria-label is currently not announced, because the root span has no role (tracked in #78); the visible label is what screen readers read',
+      'An aria-label is announced as visually hidden text, with the visible text and icon hidden from assistive technology (#78). Without one, screen readers read the visible text.',
       'The icon is currently exposed to screen readers by its internal name (for example "bell"), although it is meant to be decorative (tracked in #85)',
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],

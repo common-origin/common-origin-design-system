@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import styled from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
+import { visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
@@ -73,7 +74,8 @@ export interface CategoryLabelProps {
   'data-testid'?: string
   
   /**
-   * Accessible label for the category label
+   * Accessible label, announced instead of the visible text (for example "Category: Food & Dining").
+   * Rendered as visually hidden text, because a plain label has no role that can be named (#78).
    */
   'aria-label'?: string
 }
@@ -148,6 +150,16 @@ const StyledCategoryLabel = styled.span.withConfig({
   }};
 `
 
+// The visible content, hidden from assistive technology when an aria-label replaces it.
+// display: contents keeps the root's flex layout and gap.
+const VisibleContent = styled.span`
+  display: contents;
+`
+
+const HiddenLabel = styled.span`
+  ${visuallyHidden}
+`
+
 /**
  * CategoryLabel colour-codes an item's category, such as a transaction's (decision 0018).
  *
@@ -181,18 +193,20 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
       $color={color}
       $variant={variant}
       $size={size}
-      aria-label={ariaLabel}
       data-testid={dataTestId}
     >
-      {icon && (
-        <Icon
-          name={icon}
-          size={iconSize}
-          iconColor={variant === 'filled' ? 'inverse' : 'inherit'}
-          aria-hidden="true"
-        />
-      )}
-      {children}
+      <VisibleContent aria-hidden={ariaLabel ? 'true' : undefined}>
+        {icon && (
+          <Icon
+            name={icon}
+            size={iconSize}
+            iconColor={variant === 'filled' ? 'inverse' : 'inherit'}
+            aria-hidden="true"
+          />
+        )}
+        {children}
+      </VisibleContent>
+      {ariaLabel && <HiddenLabel>{ariaLabel}</HiddenLabel>}
     </StyledCategoryLabel>
   )
 }

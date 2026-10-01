@@ -9,6 +9,9 @@ import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 
 expect.extend(toHaveNoViolations)
 
+// The label's root element: its text sits in an inner content wrapper
+const labelRoot = (text: string) => screen.getByText(text).parentElement as HTMLElement
+
 describe('CategoryLabel Component', () => {
   const defaultProps: CategoryLabelProps = {
     children: 'Shopping'
@@ -60,14 +63,14 @@ describe('CategoryLabel Component', () => {
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
         renderCategoryLabel({ color })
-        const badge = screen.getByText('Shopping')
+        const badge = labelRoot('Shopping')
         expect(badge).toBeInTheDocument()
       })
     })
 
     it('defaults to blue color', () => {
       renderCategoryLabel()
-      const badge = screen.getByText('Shopping')
+      const badge = labelRoot('Shopping')
       expect(badge).toBeInTheDocument()
     })
   })
@@ -78,14 +81,14 @@ describe('CategoryLabel Component', () => {
     variants.forEach((variant) => {
       it(`renders with ${variant} variant`, () => {
         renderCategoryLabel({ variant })
-        const badge = screen.getByText('Shopping')
+        const badge = labelRoot('Shopping')
         expect(badge).toBeInTheDocument()
       })
     })
 
     it('defaults to filled variant', () => {
       renderCategoryLabel()
-      const badge = screen.getByText('Shopping')
+      const badge = labelRoot('Shopping')
       expect(badge).toBeInTheDocument()
     })
   })
@@ -96,18 +99,18 @@ describe('CategoryLabel Component', () => {
     sizes.forEach((size) => {
       it(`renders the ${size} size at the ${size} label height`, () => {
         renderCategoryLabel({ size })
-        expect(screen.getByText('Shopping')).toHaveStyle({ height: tokens.semantic.size.label[size] })
+        expect(labelRoot('Shopping')).toHaveStyle({ height: tokens.semantic.size.label[size] })
       })
     })
 
     it.each(sizes)('keeps the %s height including padding and border, without a global reset', (size) => {
       renderCategoryLabel({ size })
-      expect(screen.getByText('Shopping')).toHaveStyle({ boxSizing: 'border-box' })
+      expect(labelRoot('Shopping')).toHaveStyle({ boxSizing: 'border-box' })
     })
 
     it('defaults to large size (32px)', () => {
       renderCategoryLabel()
-      expect(screen.getByText('Shopping')).toHaveStyle({ height: tokens.semantic.size.label.large })
+      expect(labelRoot('Shopping')).toHaveStyle({ height: tokens.semantic.size.label.large })
     })
   })
 
@@ -172,10 +175,32 @@ describe('CategoryLabel Component', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('supports aria-label for additional context', () => {
-      renderCategoryLabel({ 'aria-label': 'Shopping category', 'data-testid': 'labeled-badge' })
-      const badge = screen.getByTestId('labeled-badge')
-      expect(badge).toHaveAttribute('aria-label', 'Shopping category')
+    describe('aria-label (#78)', () => {
+      it('is announced as visually hidden text, with the visible label hidden from assistive technology', () => {
+        renderCategoryLabel({ 'aria-label': 'Shopping category', 'data-testid': 'labeled' })
+        const root = screen.getByTestId('labeled')
+        expect(screen.getByText('Shopping category')).toBeInTheDocument()
+        expect(screen.getByText('Shopping').closest('[aria-hidden="true"]')).toBeInTheDocument()
+        // The root is a span with no role, which can't be named, so it carries no aria-label
+        expect(root).not.toHaveAttribute('aria-label')
+        // What assistive technology reads: the hidden label only
+        const announced = Array.from(root.childNodes)
+          .filter((n) => !(n instanceof HTMLElement && n.getAttribute('aria-hidden') === 'true'))
+          .map((n) => n.textContent)
+          .join('')
+        expect(announced).toBe('Shopping category')
+      })
+
+      it('leaves the visible label exposed when no aria-label is given', () => {
+        renderCategoryLabel({ 'data-testid': 'plain' })
+        expect(screen.getByTestId('plain').querySelector('[aria-hidden="true"]')).not.toBeInTheDocument()
+        expect(screen.getByTestId('plain')).toHaveTextContent('Shopping')
+      })
+
+      it('has no accessibility violations with an aria-label and an icon', async () => {
+        const { container } = renderCategoryLabel({ 'aria-label': 'Category: Shopping', icon: 'filter' })
+        expect(await axe(container)).toHaveNoViolations()
+      })
     })
   })
 
@@ -215,7 +240,7 @@ describe('CategoryLabel Component', () => {
       })
       const badge = screen.getByTestId('full-badge')
       expect(badge).toBeInTheDocument()
-      expect(badge).toHaveAttribute('aria-label', 'Test badge')
+      expect(screen.getByText('Test badge')).toBeInTheDocument()
     })
   })
 })
@@ -233,12 +258,12 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
   it.each(cases)('%s %s text meets 4.5:1', (c, variant) => {
     render(<CategoryLabel color={c} variant={variant}>Label</CategoryLabel>)
     const foreground = variant === 'filled' ? text.inverse : category[`${c}-text`]
-    expect(screen.getByText('Label')).toHaveStyle({ color: foreground })
+    expect(labelRoot('Label')).toHaveStyle({ color: foreground })
     expect(contrastRatio(foreground, backgrounds[variant](c))).toBeGreaterThanOrEqual(4.5)
   })
 
   it('keeps the base colour for the outlined border', () => {
     render(<CategoryLabel color="yellow" variant="outlined">Label</CategoryLabel>)
-    expect(screen.getByText('Label')).toHaveStyle({ borderColor: category.yellow })
+    expect(labelRoot('Label')).toHaveStyle({ borderColor: category.yellow })
   })
 })
