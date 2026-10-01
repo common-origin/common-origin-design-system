@@ -45,7 +45,7 @@ export const inputChipDocs: ComponentDocumentation = {
   id: 'input-chip',
   name: 'InputChip',
   description:
-    'A removable value, such as an applied filter, with an optional selected state (light-blue fill, blue text and a checkmark). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
+    'A removable value, such as an applied filter, with an optional selected state (a checkmark, with the light-blue fill and blue text when enabled; disabled colours when disabled). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
   category: 'Atoms',
   parentId: 'chip',
 
@@ -64,7 +64,7 @@ export const inputChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and the background changes to the interactive-subtle colour. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
+        'Whether the filter is in its selected/applied state. When true, a checkmark icon appears on the left and, when enabled, the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. A selected disabled chip keeps the checkmark but uses the disabled colours. Typically true for filters that are actively filtering results, false for filter options that exist but are not yet applied.'
     },
     {
       name: 'onDismiss',
@@ -88,7 +88,7 @@ export const inputChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents dismissal: the close button is disabled and aria-disabled is set on the container. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked (e.g. while a network request is in flight).'
+        'Prevents dismissal: the close button is disabled and aria-disabled is set on the container. A disabled chip uses the disabled colour tokens (component.chip.variants.subtle.disabled), whether or not it is selected; a selected disabled chip keeps its checkmark, in the disabled colour. Use when a filter is temporarily locked (e.g. while a network request is in flight).'
     },
     {
       name: 'role',
@@ -161,7 +161,7 @@ export const inputChipDocs: ComponentDocumentation = {
     {
       name: 'Selected Filter Display',
       description:
-        'The most common use of InputChip: displaying which filters are currently active. The selected prop shows a checkmark and the interactive-subtle background, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
+        'The most common use of InputChip: displaying which filters are currently active. On these enabled chips, the selected prop shows a checkmark with the light-blue fill and blue text, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
       code: `<Stack direction="column" gap="sm">
   <Typography variant="small">Active filters</Typography>
   <Stack direction="row" gap="sm" wrap>
@@ -258,7 +258,7 @@ return (
     {
       name: 'Disabled State',
       description:
-        'Disabled InputChips cannot be dismissed. An unselected disabled chip uses the disabled colours; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
+        'Disabled InputChips cannot be dismissed. They use the disabled colours, whether or not they are selected; a selected disabled chip keeps its checkmark so the state stays visible. Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
       code: `<Stack direction="row" gap="sm">
   <InputChip selected disabled>Loading…</InputChip>
   <InputChip selected onDismiss={() => {}} disabled>Locked Filter</InputChip>
@@ -289,7 +289,7 @@ return (
     focusManagement:
       'The close button uses component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
-      'Unselected text meets WCAG AA (4.5:1). Selected chips use blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour.'
+      'Unselected text meets WCAG AA (4.5:1). An enabled selected chip uses blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },
 
   anatomy: {
@@ -309,7 +309,7 @@ return (
 States:
 ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
 │  Unselected   │  │   Selected    │  │   Disabled    │
-│  subtle bg    │  │ interactive   │  │ disabled tint │
+│  subtle bg    │  │ interactive   │  │  disabled bg  │
 │  no checkmark │  │ subtle bg + ✓ │  │  no dismiss   │
 └───────────────┘  └───────────────┘  └───────────────┘
     `,
@@ -317,7 +317,7 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected: semantic.color.background.interactive-subtle with semantic.color.text.interactive. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
+          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected and enabled: semantic.color.background.interactive-subtle with semantic.color.text.interactive. When disabled, selected or not, it uses component.chip.variants.subtle.disabled. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.textColor',

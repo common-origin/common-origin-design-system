@@ -170,7 +170,7 @@ export const chipDocs: ComponentDocumentation = {
   examples: [
     {
       name: 'Chip Types',
-      description: 'Pick a chip by its job. Chip is a static label. BooleanChip toggles a filter on and off. InputChip is a removable value, such as an applied filter. Selected filter and input chips use the light-blue fill with blue text and a checkmark.',
+      description: 'Pick a chip by its job. Chip is a static label. BooleanChip toggles a filter on and off. InputChip is a removable value, such as an applied filter. Selected filter and input chips show a checkmark, with the light-blue fill and blue text when enabled; a disabled chip uses the disabled colours, selected or not.',
       code: `<Stack direction="column" gap="lg">
   {/* Static */}
   <Stack direction="row" gap="sm" wrap>

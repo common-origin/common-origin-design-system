@@ -121,3 +121,45 @@ describe('Selected chip treatment (decision 0016)', () => {
     expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
   })
 })
+
+describe('Selected and disabled chips (#110)', () => {
+  const { disabled } = tokens.component.chip.variants.subtle
+
+  it.each([
+    ['InputChip', <InputChip key="input" data-testid="chip" selected disabled onDismiss={() => {}}>Electronics</InputChip>],
+    ['BooleanChip', <BooleanChip key="toggle" data-testid="chip" selected disabled onClick={() => {}}>In stock</BooleanChip>],
+  ])('%s uses the disabled colours and keeps the checkmark', (_name, element) => {
+    render(element)
+    const chip = screen.getByTestId('chip')
+    const checkmark = chip.querySelector('[aria-hidden="true"] svg')?.parentElement as HTMLElement
+
+    expect(chip).toHaveStyle({ backgroundColor: disabled.backgroundColor, color: disabled.textColor })
+    expect(checkmark).toBeInTheDocument()
+    expect(checkmark).toHaveStyle({ color: disabled.textColor })
+    const selectedColours = [
+      background['interactive-subtle'],
+      background['interactive-subtle-hover'],
+      background['interactive-subtle-active'],
+      text.interactive,
+      text['interactive-hover'],
+      text['interactive-active'],
+    ]
+    for (const pseudoClass of [':hover', ':active']) {
+      const declarations = pseudoClassDeclarations(chip, pseudoClass)
+      selectedColours.forEach((colour) => expect(declarations).not.toContain(colour))
+    }
+  })
+
+  it('looks the same as an unselected disabled chip apart from the checkmark', () => {
+    render(
+      <>
+        <InputChip data-testid="selected" selected disabled>Electronics</InputChip>
+        <InputChip data-testid="unselected" disabled>Electronics</InputChip>
+      </>
+    )
+    const selected = window.getComputedStyle(screen.getByTestId('selected'))
+    const unselected = window.getComputedStyle(screen.getByTestId('unselected'))
+    expect(selected.backgroundColor).toBe(unselected.backgroundColor)
+    expect(selected.color).toBe(unselected.color)
+  })
+})
