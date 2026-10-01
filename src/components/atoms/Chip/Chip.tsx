@@ -3,9 +3,17 @@ import { BaseChipProps, ChipVariant, LegacyVariant } from './shared/types'
 import { StyledChip } from './shared/ChipBase'
 
 export interface ChipProps extends BaseChipProps {
-  /** Visual style variant */
+  /**
+   * Visual style. Only `default` stays in 3.0. `emphasis`, `subtle`, `interactive`, `light`
+   * and `dark` are deprecated and will be removed (decision 0016).
+   * @default 'default'
+   */
   variant?: ChipVariant | LegacyVariant
-  /** Click handler for interactive chips */
+  /**
+   * Click handler.
+   * @deprecated Removed in 3.0: the static Chip is not interactive. For a clickable action use a
+   * Button; for a toggle use `BooleanChip` (`FilterChip` in 3.0).
+   */
   onClick?: () => void
   /** Custom ARIA role override */
   role?: string
@@ -14,18 +22,15 @@ export interface ChipProps extends BaseChipProps {
 }
 
 /**
- * Chip - Compact element for displaying tags, categories, and labels
- * 
- * Use this component for static display chips or simple interactive chips.
- * For specialized filtering patterns, use:
- * - FilterChip: Dismissible chips for showing applied filters
- * - BooleanChip: Toggleable chips for quick filter controls
- * 
- * Variants:
- * - default: Standard gray background
- * - emphasis: High-contrast dark background
- * - subtle: Light background for secondary info
- * - interactive: Blue background with hover states
+ * Chip - a static, non-interactive label for tags, categories and metadata.
+ *
+ * Chips are classified by job (decision 0016):
+ * - Chip: a static label (`default` variant only)
+ * - InputChip: a removable value, such as an applied filter (formerly `FilterChip`)
+ * - BooleanChip: toggles a filter on and off (becomes `FilterChip` in 3.0)
+ *
+ * The `emphasis`, `subtle`, `interactive`, `light` and `dark` variants and `onClick` are
+ * deprecated and will be removed in 3.0.
  */
 export const Chip: React.FC<ChipProps> = ({
   children,

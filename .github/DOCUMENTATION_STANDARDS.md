@@ -360,7 +360,7 @@ Some components in this system are **sub-variants or specialisations of a parent
 
 | Parent Component | Sub-variants |
 |-----------------|--------------|
-| `Chip` | `BooleanChip`, `FilterChip` |
+| `Chip` | `InputChip`, `BooleanChip`, `FilterChip` (deprecated) |
 
 This list should be kept up to date as new components are added.
 
@@ -368,9 +368,9 @@ This list should be kept up to date as new components are added.
 
 Sub-variant `.docs.tsx` files must be **registered as child entries under the parent component** in `src/lib/componentsData.ts`, not as standalone top-level entries alongside the parent.
 
-**Correct:** `BooleanChip` and `FilterChip` appear as child pages under `Chip` in the docs nav.
+**Correct:** `InputChip`, `BooleanChip` and `FilterChip` appear as child pages under `Chip` in the docs nav.
 
-**Wrong:** `BooleanChip`, `Chip`, and `FilterChip` all appear as separate top-level entries at the same level.
+**Wrong:** `InputChip`, `BooleanChip`, `Chip`, and `FilterChip` all appear as separate top-level entries at the same level.
 
 #### How to register a sub-variant
 

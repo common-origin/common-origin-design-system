@@ -14,6 +14,7 @@ import { checkboxDocs } from '@/components/molecules/Checkbox/Checkbox.docs'
 import { chipDocs } from '@/components/atoms/Chip/Chip.docs'
 import { booleanChipDocs } from '@/components/atoms/Chip/BooleanChip.docs'
 import { filterChipDocs } from '@/components/atoms/Chip/FilterChip.docs'
+import { inputChipDocs } from '@/components/atoms/Chip/InputChip.docs'
 import { chipGroupDocs } from '@/components/molecules/ChipGroup/ChipGroup.docs'
 import { codeBlockDocs } from '@/components/molecules/CodeBlock/CodeBlock.docs'
 import { containerDocs } from '@/components/atoms/Container/Container.docs'
@@ -133,6 +134,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(cardSmallDocs),
   convertDocumentationToLegacyFormat(checkboxDocs),
   convertDocumentationToLegacyFormat(chipDocs),
+  convertDocumentationToLegacyFormat(inputChipDocs),
   convertDocumentationToLegacyFormat(booleanChipDocs),
   convertDocumentationToLegacyFormat(filterChipDocs),
   convertDocumentationToLegacyFormat(chipGroupDocs),

@@ -81,7 +81,7 @@ export const booleanChipDocs: ComponentDocumentation = {
   id: 'boolean-chip',
   name: 'BooleanChip',
   description:
-    'A toggleable chip for multi-select filter controls. The entire chip body is clickable — clicking or pressing Space/Enter toggles between selected and unselected states. Shows a checkmark icon when selected. Announces as a checkbox to assistive technologies.',
+    'Becomes FilterChip in 3.0 (decision 0016): keep using BooleanChip until you upgrade, then rename it after replacing the old FilterChip with InputChip. A toggleable chip for multi-select filter controls. The entire chip body is clickable — clicking or pressing Space/Enter toggles between selected and unselected states. Shows a checkmark icon when selected. Announces as a checkbox to assistive technologies.',
   category: 'Atoms',
   parentId: 'chip',
 
@@ -99,7 +99,7 @@ export const booleanChipDocs: ComponentDocumentation = {
       type: 'boolean',
       required: true,
       description:
-        'Controls the checked state of the chip. When true, a checkmark icon appears on the left and the background changes to the interactive-subtle colour. This is a controlled prop — the parent is responsible for toggling it via the onClick handler.'
+        'Controls the checked state of the chip. When true, a checkmark icon appears on the left and the chip takes the selected treatment: the light-blue interactive-subtle fill with blue text. This is a controlled prop — the parent is responsible for toggling it via the onClick handler.'
     },
     {
       name: 'onClick',
@@ -122,7 +122,7 @@ export const booleanChipDocs: ComponentDocumentation = {
       required: false,
       default: 'false',
       description:
-        'Prevents interaction and applies reduced-opacity disabled styling. When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
+        'Prevents interaction. An unselected disabled chip uses the disabled colour tokens; a selected disabled chip currently keeps the selected colours (#110). When disabled, the chip is removed from the tab order and onClick is not called. aria-disabled is set to communicate the state to assistive technologies.'
     },
     {
       name: 'aria-label',
@@ -161,8 +161,13 @@ export const booleanChipDocs: ComponentDocumentation = {
     'component.chip.variants.subtle.active.backgroundColor',
     'component.chip.variants.subtle.disabled.backgroundColor',
     'component.chip.variants.subtle.disabled.textColor',
-    // Selected state background
+    // Selected treatment (decision 0016): the text darkens with the fill
     'semantic.color.background.interactive-subtle',
+    'semantic.color.text.interactive',
+    'semantic.color.background.interactive-subtle-hover',
+    'semantic.color.text.interactive-hover',
+    'semantic.color.background.interactive-subtle-active',
+    'semantic.color.text.interactive-active',
     // Size variants
     'component.chip.sizes.small.padding',
     'component.chip.sizes.small.font',
@@ -289,7 +294,7 @@ return (
       'aria-checked is set to "true" when selected and "false" when not selected, providing a redundant accessibility signal alongside the visual checkmark icon.',
       'The checkmark icon rendered when selected is wrapped in aria-hidden="true" — it is purely decorative and does not produce duplicate announcements.',
       'When disabled, aria-disabled="true" is set and the chip is removed from the tab order (tabIndex is unset). The disabled prop alone would prevent interaction but aria-disabled also communicates state to assistive technologies.',
-      'Focus is indicated with a 2px outline (component.chip.focus tokens), matching the Button and FilterChip focus ring for consistent keyboard navigation across the design system.',
+      'Focus is indicated with a 2px outline (component.chip.focus tokens), matching the Button and InputChip focus ring for consistent keyboard navigation across the design system.',
       'Space and Enter both activate the chip, following the standard checkbox/button keyboard contract for web controls.',
       'BooleanChips should be grouped semantically. Wrap a set of related BooleanChips in a fieldset with a legend, or reference a heading via aria-describedby to communicate the filter group\'s purpose to screen readers.'
     ],
@@ -300,12 +305,12 @@ return (
     focusManagement:
       'Focus outline uses component.chip.focus.outline (2px solid) and component.chip.focus.outlineOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
     colorContrast:
-      'Text and icon colours exceed WCAG AA requirements (4.5:1) in both selected and unselected states across all chip size variants.'
+      'Unselected text meets WCAG AA (4.5:1). Selected text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark takes the text colour.'
   },
 
   anatomy: {
     description:
-      'A single inline element that acts as a checkbox control. The left icon slot shows a checkmark only when selected. The label is the primary content. There is no close button on BooleanChip — only FilterChip supports dismissal.',
+      'A single inline element that acts as a checkbox control. The left icon slot shows a checkmark only when selected. The label is the primary content. There is no close button on BooleanChip — only InputChip supports dismissal.',
     diagram: `
 ┌──────────────────────────────┐
 │  BooleanChip                 │
@@ -318,7 +323,7 @@ return (
 States:
 ┌──────────────┐  ┌──────────────┐  ┌──────────────┐
 │  Unselected  │  │   Selected   │  │   Disabled   │
-│  subtle bg   │  │ interactive  │  │  opacity 50% │
+│  subtle bg   │  │ interactive  │  │ disabled tint│
 │  no icon     │  │ subtle bg +✓ │  │  no pointer  │
 └──────────────┘  └──────────────┘  └──────────────┘
     `,
@@ -360,10 +365,10 @@ States:
   },
 
   notes: [
-    'BooleanChip vs FilterChip: BooleanChip is fully clickable to toggle on/off. FilterChip is a read-only display of an applied filter — its body is not clickable. Only FilterChip supports dismissal via a close button.',
+    'BooleanChip vs InputChip: BooleanChip is fully clickable to toggle on/off. InputChip (formerly FilterChip) is a read-only display of an applied filter — its body is not clickable. Only InputChip supports dismissal via a close button.',
     'Always pair BooleanChips with a visible group label (Typography or fieldset/legend) so users understand what the chips are filtering.',
     'Both selected and onClick are required props. BooleanChip is a controlled component — maintain toggle state in the parent using useState or equivalent.',
-    'The chip body is the entire interactive surface. Do not nest interactive elements inside children — if you need a close/dismiss action, use FilterChip instead.',
+    'The chip body is the entire interactive surface. Do not nest interactive elements inside children — if you need a close/dismiss action, use InputChip instead.',
     'For very long labels, the chip will expand horizontally. Prefer short labels (1–3 words) and group many options in a wrapping row layout.'
   ]
 }

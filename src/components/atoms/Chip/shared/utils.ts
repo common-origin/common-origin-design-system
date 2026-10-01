@@ -11,26 +11,25 @@ interface StyledChipProps {
   $selected?: boolean
 }
 
-// Selected-chip hover and active colours have no token yet: they wait on #21 (selected states).
-// eslint-disable-next-line no-restricted-syntax
-const SELECTED_HOVER = '#CAE8FF'
-// eslint-disable-next-line no-restricted-syntax
-const SELECTED_ACTIVE = '#B5DEFF'
-
 // Helper function to get variant styles matching Button's approach
 export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }: StyledChipProps) => {
-  // Boolean chips with selected state get special background
+  // Selected filter and input chips use the light-blue selected treatment (decision 0016).
+  // The text darkens with the fill so every state stays at least 4.5:1.
   if ($selected) {
+    const { background, text } = tokens.semantic.color
+    const interactiveStates = $clickable && !$disabled
     return `
-      background-color: ${tokens.semantic.color.background['interactive-subtle']};
-      color: ${chip.default.textColor};
+      background-color: ${background['interactive-subtle']};
+      color: ${text.interactive};
       
       &:hover {
-        background-color: ${$disabled ? tokens.semantic.color.background['interactive-subtle'] : ($clickable ? SELECTED_HOVER : tokens.semantic.color.background['interactive-subtle'])};
+        background-color: ${interactiveStates ? background['interactive-subtle-hover'] : background['interactive-subtle']};
+        color: ${interactiveStates ? text['interactive-hover'] : text.interactive};
       }
       
       &:active {
-        background-color: ${$disabled ? tokens.semantic.color.background['interactive-subtle'] : ($clickable ? SELECTED_ACTIVE : tokens.semantic.color.background['interactive-subtle'])};
+        background-color: ${interactiveStates ? background['interactive-subtle-active'] : background['interactive-subtle']};
+        color: ${interactiveStates ? text['interactive-active'] : text.interactive};
       }
     `
   }

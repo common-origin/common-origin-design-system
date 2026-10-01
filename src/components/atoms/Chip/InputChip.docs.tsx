@@ -1,6 +1,6 @@
 import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
-import { FilterChip } from './FilterChip'
+import { InputChip } from './InputChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
 
@@ -28,24 +28,24 @@ const ActiveFiltersExample: React.FC = () => {
       <Typography variant="small">Active filters</Typography>
       <Stack direction="row" gap="sm" wrap>
         {activeFilters.map(label => (
-          <FilterChip
+          <InputChip
             key={label}
             selected
             onDismiss={() => remove(label)}
           >
             {label}
-          </FilterChip>
+          </InputChip>
         ))}
       </Stack>
     </Stack>
   )
 }
 
-export const filterChipDocs: ComponentDocumentation = {
-  id: 'filter-chip',
-  name: 'FilterChip',
+export const inputChipDocs: ComponentDocumentation = {
+  id: 'input-chip',
+  name: 'InputChip',
   description:
-    'Deprecated: renamed to InputChip. In 3.0, FilterChip becomes the toggle chip (today\'s BooleanChip), so replace FilterChip with InputChip now (decision 0016). Displays an applied filter with an optional selected state and dismissal action. The chip body is non-interactive — it communicates what filter is active. When onDismiss is provided, a close button appears that lets the user remove the filter. Announces as a status element to screen readers.',
+    'A removable value, such as an applied filter, with an optional selected state (light-blue fill, blue text and a checkmark). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
   category: 'Atoms',
   parentId: 'chip',
 
@@ -127,7 +127,7 @@ export const filterChipDocs: ComponentDocumentation = {
   tokens: [
     // Base shape
     'component.chip.default.borderRadius',
-    // Subtle variant (FilterChip always uses subtle variant)
+    // Subtle variant (InputChip always uses subtle variant)
     'component.chip.variants.subtle.backgroundColor',
     'component.chip.variants.subtle.textColor',
     'component.chip.variants.subtle.disabled.backgroundColor',
@@ -161,22 +161,22 @@ export const filterChipDocs: ComponentDocumentation = {
     {
       name: 'Selected Filter Display',
       description:
-        'The most common use of FilterChip: displaying which filters are currently active. The selected prop shows a checkmark and the interactive-subtle background, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
+        'The most common use of InputChip: displaying which filters are currently active. The selected prop shows a checkmark and the interactive-subtle background, communicating the filter is applied. No dismissal is shown here — use this when the filter cannot be individually removed.',
       code: `<Stack direction="column" gap="sm">
   <Typography variant="small">Active filters</Typography>
   <Stack direction="row" gap="sm" wrap>
-    <FilterChip selected>Status: Active</FilterChip>
-    <FilterChip selected>Date: Last 30 days</FilterChip>
-    <FilterChip selected={false}>Category: All</FilterChip>
+    <InputChip selected>Status: Active</InputChip>
+    <InputChip selected>Date: Last 30 days</InputChip>
+    <InputChip selected={false}>Category: All</InputChip>
   </Stack>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="sm">
           <Typography variant="small">Active filters</Typography>
           <Stack direction="row" gap="sm" wrap>
-            <FilterChip selected>Status: Active</FilterChip>
-            <FilterChip selected>Date: Last 30 days</FilterChip>
-            <FilterChip selected={false}>Category: All</FilterChip>
+            <InputChip selected>Status: Active</InputChip>
+            <InputChip selected>Date: Last 30 days</InputChip>
+            <InputChip selected={false}>Category: All</InputChip>
           </Stack>
         </Stack>
       )
@@ -184,7 +184,7 @@ export const filterChipDocs: ComponentDocumentation = {
     {
       name: 'Dismissible Active Filters',
       description:
-        'FilterChips with onDismiss render a close (×) button. Each chip represents one applied filter. When the user clicks × or focuses the close button and presses Enter, Space, Delete or Backspace, the filter is removed. This pattern is standard above search results tables or data grids.',
+        'InputChips with onDismiss render a close (×) button. Each chip represents one applied filter. When the user clicks × or focuses the close button and presses Enter, Space, Delete or Backspace, the filter is removed. This pattern is standard above search results tables or data grids.',
       code: `const [activeFilters, setActiveFilters] = React.useState([
   'Status: Active',
   'Date: Last 30 days',
@@ -199,13 +199,13 @@ return (
     <Typography variant="small">Active filters</Typography>
     <Stack direction="row" gap="sm" wrap>
       {activeFilters.map(label => (
-        <FilterChip
+        <InputChip
           key={label}
           selected
           onDismiss={() => remove(label)}
         >
           {label}
-        </FilterChip>
+        </InputChip>
       ))}
     </Stack>
   </Stack>
@@ -215,22 +215,22 @@ return (
     {
       name: 'Size Variants',
       description:
-        'Small FilterChips suit compact toolbars and inline filter displays. Medium chips are the default for standard filter bars. Both sizes support selected state and dismissal.',
+        'Small InputChips suit compact toolbars and inline filter displays. Medium chips are the default for standard filter bars. Both sizes support selected state and dismissal.',
       code: `<Stack direction="column" gap="md">
   <div>
     <Typography variant="small">Small — compact toolbar</Typography>
     <Stack direction="row" gap="xs" wrap>
-      <FilterChip selected size="small">Genre: Electronic</FilterChip>
-      <FilterChip selected size="small" onDismiss={() => {}}>BPM: 120–140</FilterChip>
-      <FilterChip selected={false} size="small">Key: Any</FilterChip>
+      <InputChip selected size="small">Genre: Electronic</InputChip>
+      <InputChip selected size="small" onDismiss={() => {}}>BPM: 120–140</InputChip>
+      <InputChip selected={false} size="small">Key: Any</InputChip>
     </Stack>
   </div>
   <div>
     <Typography variant="small">Medium — standard filter bar</Typography>
     <Stack direction="row" gap="sm" wrap>
-      <FilterChip selected>Genre: Electronic</FilterChip>
-      <FilterChip selected onDismiss={() => {}}>BPM: 120–140</FilterChip>
-      <FilterChip selected={false}>Key: Any</FilterChip>
+      <InputChip selected>Genre: Electronic</InputChip>
+      <InputChip selected onDismiss={() => {}}>BPM: 120–140</InputChip>
+      <InputChip selected={false}>Key: Any</InputChip>
     </Stack>
   </div>
 </Stack>`,
@@ -239,17 +239,17 @@ return (
           <div>
             <Typography variant="small">Small — compact toolbar</Typography>
             <Stack direction="row" gap="xs" wrap>
-              <FilterChip selected size="small">Genre: Electronic</FilterChip>
-              <FilterChip selected size="small" onDismiss={() => {}}>BPM: 120–140</FilterChip>
-              <FilterChip selected={false} size="small">Key: Any</FilterChip>
+              <InputChip selected size="small">Genre: Electronic</InputChip>
+              <InputChip selected size="small" onDismiss={() => {}}>BPM: 120–140</InputChip>
+              <InputChip selected={false} size="small">Key: Any</InputChip>
             </Stack>
           </div>
           <div>
             <Typography variant="small">Medium — standard filter bar</Typography>
             <Stack direction="row" gap="sm" wrap>
-              <FilterChip selected>Genre: Electronic</FilterChip>
-              <FilterChip selected onDismiss={() => {}}>BPM: 120–140</FilterChip>
-              <FilterChip selected={false}>Key: Any</FilterChip>
+              <InputChip selected>Genre: Electronic</InputChip>
+              <InputChip selected onDismiss={() => {}}>BPM: 120–140</InputChip>
+              <InputChip selected={false}>Key: Any</InputChip>
             </Stack>
           </div>
         </Stack>
@@ -258,15 +258,15 @@ return (
     {
       name: 'Disabled State',
       description:
-        'Disabled FilterChips cannot be dismissed. An unselected disabled chip uses the disabled colours; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
+        'Disabled InputChips cannot be dismissed. An unselected disabled chip uses the disabled colours; a selected disabled chip currently keeps the selected colours (#110). Use when a filter is temporarily locked — for example, while a server request triggered by a previous filter change is still loading.',
       code: `<Stack direction="row" gap="sm">
-  <FilterChip selected disabled>Loading…</FilterChip>
-  <FilterChip selected onDismiss={() => {}} disabled>Locked Filter</FilterChip>
+  <InputChip selected disabled>Loading…</InputChip>
+  <InputChip selected onDismiss={() => {}} disabled>Locked Filter</InputChip>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="sm">
-          <FilterChip selected disabled>Loading…</FilterChip>
-          <FilterChip selected onDismiss={() => {}} disabled>Locked Filter</FilterChip>
+          <InputChip selected disabled>Loading…</InputChip>
+          <InputChip selected onDismiss={() => {}} disabled>Locked Filter</InputChip>
         </Stack>
       )
     }
@@ -274,13 +274,13 @@ return (
 
   accessibility: {
     notes: [
-      'FilterChip uses role="status" by default. This causes screen readers to announce the chip as live status information when it appears or changes, without requiring the user to navigate to it. This is appropriate for filter chips that appear above search results as filters are applied.',
-      'The close button has an auto-generated aria-label derived from the chip\'s children text (e.g. "Remove Status: Active"). If children is not a string, the label falls back to "Remove filter". Always use string children with FilterChip when dismissal is needed to ensure meaningful close button labels.',
+      'InputChip uses role="status" by default. This causes screen readers to announce the chip as live status information when it appears or changes, without requiring the user to navigate to it. This is appropriate for filter chips that appear above search results as filters are applied.',
+      'The close button has an auto-generated aria-label derived from the chip\'s children text (e.g. "Remove Status: Active"). If children is not a string, the label falls back to "Remove filter". Always use string children with InputChip when dismissal is needed to ensure meaningful close button labels.',
       'The checkmark icon rendered when selected is wrapped in aria-hidden="true" — it is decorative and does not produce duplicate announcements.',
       'The chip container itself is not part of the Tab sequence. The chip body remains non-interactive; when onDismiss is provided, keyboard interaction is available on the trailing close button only.',
       'The close button is independently focusable when present and responds to Enter and Space. This allows keyboard users to navigate directly to the dismiss action without first focusing the chip body.',
       'When disabled, the chip remains non-interactive and the close button uses the native HTML disabled attribute, so it is not focusable or clickable.',
-      'For filter bars with multiple FilterChips, wrap the group in a landmark or add a visible heading so screen reader users can navigate to the active filter region efficiently.'
+      'For filter bars with multiple InputChips, wrap the group in a landmark or add a visible heading so screen reader users can navigate to the active filter region efficiently.'
     ],
     keyboardNavigation:
       'Tab: Focus the close button (if present and not disabled) | Enter, Space, Delete or Backspace (on close button): Dismiss the filter | Shift+Tab: Move focus backward. The chip container itself is not keyboard-focusable.',
@@ -297,7 +297,7 @@ return (
       'An inline container displaying a filter label with an optional leading checkmark (when selected) and an optional trailing close button (when onDismiss is provided). The chip body is non-interactive — only the close button triggers user action.',
     diagram: `
 ┌────────────────────────────────────────┐
-│  FilterChip                            │
+│  InputChip                            │
 │  ┌──────┐  ┌───────────────┐  ┌─────┐ │
 │  │  ✓   │  │    Label      │  │  ×  │ │
 │  │(sel) │  │  (children)   │  │(opt)│ │
@@ -317,7 +317,7 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="status" (default). Uses the subtle chip variant background, switching to semantic.color.background.interactive-subtle when selected. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
+          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected: semantic.color.background.interactive-subtle with semantic.color.text.interactive. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.textColor',
@@ -369,10 +369,11 @@ States:
   },
 
   notes: [
-    'FilterChip vs BooleanChip: FilterChip is a passive display element — its body is not clickable. It shows which filters are applied. BooleanChip is a toggle control — the whole chip is clickable to turn a filter on or off.',
+    'Renamed from FilterChip in 2.16 (decision 0016). FilterChip still works as a deprecated alias. In 3.0 the name FilterChip moves to the toggle chip (today\'s BooleanChip), so replace FilterChip with InputChip before upgrading.',
+    'InputChip vs BooleanChip: InputChip is a passive display element — its body is not clickable. It shows which filters are applied. BooleanChip is a toggle control — the whole chip is clickable to turn a filter on or off.',
     'The close button aria-label is derived from children when children is a string (e.g. children="Status: Active" → aria-label="Remove Status: Active"). Use string children whenever the chip is dismissible to guarantee a meaningful label.',
     'data-testid on the chip container generates a matching "-close" suffix on the close button automatically. For example, data-testid="status-filter" gives data-testid="status-filter-close" on the close button.',
-    'FilterChips are not form inputs — they do not submit values. They are display elements that communicate state and optionally trigger a removal callback.',
-    'For a table filter bar: use BooleanChip (or similar toggles) to let users select filter values, then render FilterChip above the results to show which filters are active and allow individual removal.'
+    'InputChips are not form inputs — they do not submit values. They are display elements that communicate state and optionally trigger a removal callback.',
+    'For a table filter bar: use BooleanChip (or similar toggles) to let users select filter values, then render InputChip above the results to show which filters are active and allow individual removal.'
   ]
 }

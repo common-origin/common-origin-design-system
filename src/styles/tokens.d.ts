@@ -1216,6 +1216,8 @@ export interface TokensSemanticColorText {
   inverse: string;
   disabled: string;
   interactive: string;
+  'interactive-hover': string;
+  'interactive-active': string;
   error: string;
   success: string;
   warning: string;
@@ -1229,6 +1231,8 @@ export interface TokensSemanticColorBackground {
   inverse: string;
   interactive: string;
   'interactive-subtle': string;
+  'interactive-subtle-hover': string;
+  'interactive-subtle-active': string;
   'interactive-hover': string;
   'interactive-active': string;
   error: string;

@@ -31,7 +31,7 @@ export const patternsData: PatternMetadata[] = [
     overview: 'The Data View pattern provides a responsive approach to displaying tabular data with powerful dropdown-based filtering. Applied filters are shown as dismissible chips in a dedicated filter row with automatic overflow detection that displays a "+X more" indicator when space is limited. On larger screens, data is presented in a traditional table format; on smaller screens, it transforms into a card-based list view.',
     keyFeatures: [
       'Dropdown Filters: Side drawer with category, status, and priority dropdown filters',
-      'Filter Chips: Applied filters shown as dismissible FilterChip components with remove functionality',
+      'Filter Chips: Applied filters shown as dismissible InputChip components with remove functionality',
       'Dynamic Overflow Detection: ResizeObserver-based detection shows "+X more" indicator when chips overflow',
       'Staged Filter Application: Users select values in drawer and click "Apply" to activate filters',
       'Responsive Layout: Automatically transitions between table and list views based on viewport',
@@ -52,7 +52,7 @@ export const patternsData: PatternMetadata[] = [
       'Stack',
       'Typography',
       'Button',
-      'FilterChip',
+      'InputChip',
       'Dropdown',
       'IconButton',
       'Divider',

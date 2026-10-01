@@ -1,86 +1,126 @@
 import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Chip } from './Chip'
+import { InputChip } from './InputChip'
+import { BooleanChip } from './BooleanChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
+
+// Stateful example comparing the three chip types
+const ChipTypesExample: React.FC = () => {
+  const [inStock, setInStock] = React.useState(true)
+  const [onSale, setOnSale] = React.useState(false)
+  const [applied, setApplied] = React.useState(['Brand: Acme', 'Price: Under $50'])
+
+  return (
+    <Stack direction="column" gap="lg">
+      <Stack direction="column" gap="sm">
+        <Typography variant="small">Static: Chip</Typography>
+        <Stack direction="row" gap="sm" wrap>
+          <Chip>Design</Chip>
+          <Chip>Research</Chip>
+        </Stack>
+      </Stack>
+      <Stack direction="column" gap="sm">
+        <Typography variant="small">Filter: BooleanChip (FilterChip in 3.0)</Typography>
+        <Stack direction="row" gap="sm" wrap>
+          <BooleanChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</BooleanChip>
+          <BooleanChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</BooleanChip>
+        </Stack>
+      </Stack>
+      <Stack direction="column" gap="sm">
+        <Typography variant="small">Input: InputChip</Typography>
+        <Stack direction="row" gap="sm" wrap>
+          {applied.map(label => (
+            <InputChip key={label} onDismiss={() => setApplied(prev => prev.filter(l => l !== label))}>
+              {label}
+            </InputChip>
+          ))}
+          {applied.length === 0 && (
+            <Typography variant="small" color="subdued">All removed. Refresh to reset.</Typography>
+          )}
+        </Stack>
+      </Stack>
+    </Stack>
+  )
+}
 
 export const chipDocs: ComponentDocumentation = {
   id: 'chip',
   name: 'Chip',
-  description: 'The base Chip component for displaying categorical information, tags, and actionable labels. Supports multiple visual variants (default, emphasis, subtle, interactive) and two sizes. For toggleable multi-select filters, see BooleanChip. For dismissible applied-filter displays, see FilterChip.',
+  description: 'A static, non-interactive label for tags, categories and metadata. Chips are classified by job, not emphasis (decision 0016): Chip is a static label, BooleanChip toggles a filter on and off (it becomes FilterChip in 3.0), and InputChip is a removable value such as an applied filter (formerly FilterChip). The static Chip\'s emphasis, subtle, interactive, light and dark variants and its onClick are deprecated and will be removed in 3.0.',
   category: 'Atoms',
-  
-  // Props extracted with full type safety from ChipProps interface
+
   props: [
     {
       name: 'children',
       type: 'React.ReactNode',
       required: false,
       default: 'undefined',
-      description: 'Content to display inside the chip. Typically text labels but can include icons or other React elements. When combined with onClick, content should clearly indicate the action that will be performed.'
+      description: 'Content to display inside the chip, typically a short text label.'
     },
     {
       name: 'variant',
-      type: "'default' | 'emphasis' | 'subtle' | 'interactive' | 'filter' | 'boolean' | 'light' | 'dark'",
+      type: "'default' | 'emphasis' | 'subtle' | 'interactive' | 'light' | 'dark'",
       required: false,
       default: 'default',
-      description: 'Visual style variant determining the chip\'s appearance and semantic hierarchy. Default for standard tags, emphasis for highlighting, subtle for background information, interactive for actionable elements, filter for dismissible applied filters, boolean for toggleable quick filters, light/dark for legacy compatibility.'
+      description: "Visual style. Only 'default' stays in 3.0. Deprecated, removed in 3.0: 'emphasis', 'subtle', 'interactive', and the legacy 'light' (same as default) and 'dark'. Chips have no emphasis levels."
     },
     {
       name: 'size',
       type: "'small' | 'medium'",
       required: false,
       default: 'medium',
-      description: 'Size variant affecting padding, font size, and overall dimensions. Small for compact layouts and dense interfaces, medium for standard use cases and general content categorization.'
+      description: 'Small for dense interfaces such as toolbars and metadata rows; medium for standard use.'
     },
     {
       name: 'onClick',
       type: '() => void',
       required: false,
       default: 'undefined',
-      description: 'Click handler function that makes the chip interactive. When provided, the chip becomes focusable with button semantics and keyboard support. Essential for filter chips, removable tags, and actionable categories.'
+      description: 'Deprecated, removed in 3.0: the static Chip is not interactive. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0). While it remains, it gives the chip button semantics and Enter/Space activation.'
     },
     {
       name: 'disabled',
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Disables interaction for clickable chips while maintaining visual context. When true, prevents onClick execution, keyboard activation, and focus while applying disabled styling to communicate unavailable state.'
+      description: 'Applies disabled styling and aria-disabled.'
     },
     {
       name: 'data-testid',
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Testing identifier for automated test location and interaction verification. Supports consistent testing patterns across chip variants and interaction states throughout the component lifecycle.'
+      description: 'Test identifier for the chip element.'
     },
     {
       name: 'aria-label',
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Accessible label providing additional context when the visible text alone is insufficient for screen readers. Particularly important for chips with abbreviated content or when action context is needed.'
+      description: 'Accessible label when the visible text alone is not enough, such as abbreviated content.'
     },
     {
       name: 'aria-describedby',
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'References the ID of an element providing additional description or instructions related to the chip\'s function or state, enhancing screen reader user understanding of complex interactions.'
+      description: 'ID of an element that further describes the chip.'
     },
     {
       name: 'role',
       type: 'string',
       required: false,
-      default: 'button (when onClick provided)',
-      description: 'ARIA role override for specific semantic meaning. Automatically set to "button" for interactive chips, but can be customized for specialized use cases requiring different assistive technology interpretation.'
+      default: 'undefined',
+      description: 'ARIA role override. A static chip has no role by default.'
     },
     {
       name: 'title',
       type: 'string',
       required: false,
       default: 'undefined',
-      description: 'Legacy prop for backward compatibility. Content displayed in the chip when children prop is not provided. New implementations should use the children prop for better flexibility and React patterns.'
+      description: 'Legacy alternative to children, used when children is not provided. Prefer children.'
     }
   ],
 
@@ -91,428 +131,116 @@ export const chipDocs: ComponentDocumentation = {
     'component.chip.default.borderRadius',
     'component.chip.default.padding',
     'component.chip.default.font',
-    // Hover/Active states
-    'component.chip.hover.backgroundColor',
-    'component.chip.active.backgroundColor',
     // Disabled state
     'component.chip.disabled.backgroundColor',
     'component.chip.disabled.textColor',
-    // Focus state
+    // Size variants
+    'component.chip.sizes.small.padding',
+    'component.chip.sizes.small.font',
+    'component.chip.sizes.medium.padding',
+    'component.chip.sizes.medium.font',
+    // Motion
+    'semantic.motion.hover',
+    // Deprecated: hover, active and focus apply only to a chip with onClick
+    'component.chip.hover.backgroundColor',
+    'component.chip.active.backgroundColor',
     'component.chip.focus.outline',
     'component.chip.focus.outlineOffset',
-    // Emphasis variant
+    // Deprecated variants, removed in 3.0
     'component.chip.variants.emphasis.backgroundColor',
     'component.chip.variants.emphasis.textColor',
     'component.chip.variants.emphasis.hover.backgroundColor',
     'component.chip.variants.emphasis.active.backgroundColor',
     'component.chip.variants.emphasis.disabled.backgroundColor',
     'component.chip.variants.emphasis.disabled.textColor',
-    // Subtle variant
     'component.chip.variants.subtle.backgroundColor',
     'component.chip.variants.subtle.textColor',
     'component.chip.variants.subtle.hover.backgroundColor',
     'component.chip.variants.subtle.active.backgroundColor',
     'component.chip.variants.subtle.disabled.backgroundColor',
     'component.chip.variants.subtle.disabled.textColor',
-    // Interactive variant
     'component.chip.variants.interactive.backgroundColor',
     'component.chip.variants.interactive.textColor',
     'component.chip.variants.interactive.hover.backgroundColor',
     'component.chip.variants.interactive.active.backgroundColor',
     'component.chip.variants.interactive.disabled.backgroundColor',
-    'component.chip.variants.interactive.disabled.textColor',
-    // Size variants
-    'component.chip.sizes.small.padding',
-    'component.chip.sizes.small.font',
-    'component.chip.sizes.medium.padding',
-    'component.chip.sizes.medium.font',
-    // Selected state (boolean chips)
-    'semantic.color.background.interactive-subtle',
-    // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
-    // Motion
-    'semantic.motion.hover'
+    'component.chip.variants.interactive.disabled.textColor'
   ],
 
   examples: [
     {
-      name: 'Content Categorization Chips',
-      description: 'Static chips for organizing and labeling content with appropriate visual hierarchy',
-      code: `<Stack direction="column" gap="md">
-  <div>
-    <Typography variant="small">Default - Standard content tags</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip variant="default">Design</Chip>
-      <Chip variant="default">Development</Chip>
-      <Chip variant="default">Research</Chip>
-      <Chip variant="default">Documentation</Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Emphasis - Important categories</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip variant="emphasis">Featured</Chip>
-      <Chip variant="emphasis">Premium</Chip>
-      <Chip variant="emphasis">New</Chip>
-      <Chip variant="emphasis">Trending</Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Subtle - Background information</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip variant="subtle">Draft</Chip>
-      <Chip variant="subtle">Archive</Chip>
-      <Chip variant="subtle">Internal</Chip>
-      <Chip variant="subtle">System</Chip>
-    </Stack>
-  </div>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <div>
-            <Typography variant="small">Default - Standard content tags</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip variant="default">Design</Chip>
-              <Chip variant="default">Development</Chip>
-              <Chip variant="default">Research</Chip>
-              <Chip variant="default">Documentation</Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Emphasis - Important categories</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip variant="emphasis">Featured</Chip>
-              <Chip variant="emphasis">Premium</Chip>
-              <Chip variant="emphasis">New</Chip>
-              <Chip variant="emphasis">Trending</Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Subtle - Background information</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip variant="subtle">Draft</Chip>
-              <Chip variant="subtle">Archive</Chip>
-              <Chip variant="subtle">Internal</Chip>
-              <Chip variant="subtle">System</Chip>
-            </Stack>
-          </div>
-        </Stack>
-      )
-    },
-    {
-      name: 'Interactive Filter Chips',
-      description: 'Clickable chips for filtering, selection, and user interaction with proper accessibility',
-      code: `<Stack direction="column" gap="md">
-  <div>
-    <Typography variant="small">Filter Categories - Click to toggle</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Filter: Articles')}
-        aria-label="Filter by articles"
-      >
-        Articles
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Filter: Videos')}
-        aria-label="Filter by videos"
-      >
-        Videos
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Filter: Images')}
-        aria-label="Filter by images"
-      >
-        Images
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Filter: Documents')}
-        aria-label="Filter by documents"
-      >
-        Documents
-      </Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Action Chips - Perform specific actions</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Share content')}
-        aria-label="Share this content"
-      >
-        Share
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Export data')}
-        aria-label="Export data as file"
-      >
-        Export
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        onClick={() => console.log('Print view')}
-        aria-label="Print current view"
-      >
-        Print
-      </Chip>
-    </Stack>
-  </div>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <div>
-            <Typography variant="small">Filter Categories - Click to toggle</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Filter: Articles')}
-                aria-label="Filter by articles"
-              >
-                Articles
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Filter: Videos')}
-                aria-label="Filter by videos"
-              >
-                Videos
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Filter: Images')}
-                aria-label="Filter by images"
-              >
-                Images
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Filter: Documents')}
-                aria-label="Filter by documents"
-              >
-                Documents
-              </Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Action Chips - Perform specific actions</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Share content')}
-                aria-label="Share this content"
-              >
-                Share
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Export data')}
-                aria-label="Export data as file"
-              >
-                Export
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                onClick={() => console.log('Print view')}
-                aria-label="Print current view"
-              >
-                Print
-              </Chip>
-            </Stack>
-          </div>
-        </Stack>
-      )
-    },
-    {
-      name: 'Size Variants for Different Contexts',
-      description: 'Chips in different sizes optimized for various interface contexts and accessibility requirements',
+      name: 'Chip Types',
+      description: 'Pick a chip by its job. Chip is a static label. BooleanChip toggles a filter on and off. InputChip is a removable value, such as an applied filter. Selected filter and input chips use the light-blue fill with blue text and a checkmark.',
       code: `<Stack direction="column" gap="lg">
-  <div>
-    <Typography variant="small">Small - Compact interfaces and dense layouts</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip size="small" variant="default">Tag</Chip>
-      <Chip size="small" variant="emphasis">Priority</Chip>
-      <Chip size="small" variant="interactive" onClick={() => console.log('Small click')}>
-        Action
-      </Chip>
-      <Chip size="small" variant="subtle">Meta</Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Medium - Standard interface elements</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip size="medium" variant="default">Category</Chip>
-      <Chip size="medium" variant="emphasis">Featured</Chip>
-      <Chip size="medium" variant="interactive" onClick={() => console.log('Medium click')}>
-        Filter
-      </Chip>
-      <Chip size="medium" variant="subtle">Status</Chip>
-    </Stack>
-  </div>
+  {/* Static */}
+  <Stack direction="row" gap="sm" wrap>
+    <Chip>Design</Chip>
+    <Chip>Research</Chip>
+  </Stack>
+
+  {/* Filter: toggles on and off */}
+  <Stack direction="row" gap="sm" wrap>
+    <BooleanChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</BooleanChip>
+    <BooleanChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</BooleanChip>
+  </Stack>
+
+  {/* Input: removable values */}
+  <Stack direction="row" gap="sm" wrap>
+    {applied.map(label => (
+      <InputChip key={label} onDismiss={() => remove(label)}>{label}</InputChip>
+    ))}
+  </Stack>
+</Stack>`,
+      renderComponent: () => <ChipTypesExample />
+    },
+    {
+      name: 'Static Labels',
+      description: 'Static chips label content with tags, categories and metadata. They are not interactive.',
+      code: `<Stack direction="row" gap="sm" wrap>
+  <Chip>Design</Chip>
+  <Chip>Development</Chip>
+  <Chip>Research</Chip>
+  <Chip>Documentation</Chip>
 </Stack>`,
       renderComponent: () => (
-        <Stack direction="column" gap="lg">
-          <div>
-            <Typography variant="small">Small - Compact interfaces and dense layouts</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip size="small" variant="default">Tag</Chip>
-              <Chip size="small" variant="emphasis">Priority</Chip>
-              <Chip size="small" variant="interactive" onClick={() => console.log('Small click')}>
-                Action
-              </Chip>
-              <Chip size="small" variant="subtle">Meta</Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Medium - Standard interface elements</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip size="medium" variant="default">Category</Chip>
-              <Chip size="medium" variant="emphasis">Featured</Chip>
-              <Chip size="medium" variant="interactive" onClick={() => console.log('Medium click')}>
-                Filter
-              </Chip>
-              <Chip size="medium" variant="subtle">Status</Chip>
-            </Stack>
-          </div>
+        <Stack direction="row" gap="sm" wrap>
+          <Chip>Design</Chip>
+          <Chip>Development</Chip>
+          <Chip>Research</Chip>
+          <Chip>Documentation</Chip>
         </Stack>
       )
     },
     {
-      name: 'State Management and Disabled Interaction',
-      description: 'Chips with various interaction states including disabled conditions and accessibility considerations',
-      code: `<Stack direction="column" gap="md">
-  <div>
-    <Typography variant="small">Active Interactive Chips</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip variant="interactive" onClick={() => console.log('Available action')}>
-        Available
-      </Chip>
-      <Chip variant="interactive" onClick={() => console.log('Active filter')}>
-        Active Filter
-      </Chip>
-      <Chip variant="interactive" onClick={() => console.log('Selectable item')}>
-        Selectable
-      </Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Disabled Interactive Chips</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip 
-        variant="interactive" 
-        disabled={true}
-        onClick={() => console.log('This will not execute')}
-        aria-label="Unavailable action"
-      >
-        Unavailable
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        disabled={true}
-        onClick={() => console.log('This will not execute')}
-        aria-label="Disabled filter option"
-      >
-        Disabled Filter
-      </Chip>
-      <Chip 
-        variant="interactive" 
-        disabled={true}
-        onClick={() => console.log('This will not execute')}
-        aria-label="Locked selection"
-      >
-        Locked
-      </Chip>
-    </Stack>
-  </div>
-  
-  <div>
-    <Typography variant="small">Mixed State Example</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <Chip variant="emphasis">Always Visible</Chip>
-      <Chip variant="interactive" onClick={() => console.log('Sometimes clickable')}>
-        Conditional
-      </Chip>
-      <Chip variant="interactive" disabled={true}>
-        Sometimes Disabled
-      </Chip>
-      <Chip variant="subtle">Context Info</Chip>
-    </Stack>
-  </div>
+      name: 'Sizes',
+      description: 'Small for dense interfaces such as toolbars and metadata rows; medium for standard use.',
+      code: `<Stack direction="row" gap="sm" alignItems="center">
+  <Chip size="small">Small</Chip>
+  <Chip size="medium">Medium</Chip>
 </Stack>`,
       renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <div>
-            <Typography variant="small">Active Interactive Chips</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip variant="interactive" onClick={() => console.log('Available action')}>
-                Available
-              </Chip>
-              <Chip variant="interactive" onClick={() => console.log('Active filter')}>
-                Active Filter
-              </Chip>
-              <Chip variant="interactive" onClick={() => console.log('Selectable item')}>
-                Selectable
-              </Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Disabled Interactive Chips</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip 
-                variant="interactive" 
-                disabled={true}
-                onClick={() => console.log('This will not execute')}
-                aria-label="Unavailable action"
-              >
-                Unavailable
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                disabled={true}
-                onClick={() => console.log('This will not execute')}
-                aria-label="Disabled filter option"
-              >
-                Disabled Filter
-              </Chip>
-              <Chip 
-                variant="interactive" 
-                disabled={true}
-                onClick={() => console.log('This will not execute')}
-                aria-label="Locked selection"
-              >
-                Locked
-              </Chip>
-            </Stack>
-          </div>
-          
-          <div>
-            <Typography variant="small">Mixed State Example</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <Chip variant="emphasis">Always Visible</Chip>
-              <Chip variant="interactive" onClick={() => console.log('Sometimes clickable')}>
-                Conditional
-              </Chip>
-              <Chip variant="interactive" disabled={true}>
-                Sometimes Disabled
-              </Chip>
-              <Chip variant="subtle">Context Info</Chip>
-            </Stack>
-          </div>
+        <Stack direction="row" gap="sm" alignItems="center">
+          <Chip size="small">Small</Chip>
+          <Chip size="medium">Medium</Chip>
+        </Stack>
+      )
+    },
+    {
+      name: 'Deprecated Variants',
+      description: 'These still render in 2.x but will be removed in 3.0. Replace them with the default chip; replace a chip with onClick with a Button (an action) or a BooleanChip (a toggle).',
+      code: `{/* Deprecated: remove the variant */}
+<Chip variant="emphasis">Featured</Chip>   →  <Chip>Featured</Chip>
+<Chip variant="subtle">Draft</Chip>        →  <Chip>Draft</Chip>
+<Chip variant="light">Archive</Chip>       →  <Chip>Archive</Chip>
+
+{/* Deprecated: onClick */}
+<Chip variant="interactive" onClick={save}>Save</Chip>
+  →  <Button variant="secondary" size="small" onClick={save}>Save</Button>`,
+      renderComponent: () => (
+        <Stack direction="row" gap="sm" wrap>
+          <Chip variant="emphasis">Featured</Chip>
+          <Chip variant="subtle">Draft</Chip>
+          <Chip variant="interactive">Interactive</Chip>
         </Stack>
       )
     }
@@ -520,33 +248,28 @@ export const chipDocs: ComponentDocumentation = {
 
   accessibility: {
     notes: [
-      'Interactive chips (variant="interactive" or when onClick is provided) automatically receive button semantics and announce as "button" elements to screen readers.',
-      'Non-interactive chips are treated as static text content, preserving natural reading flow without interrupting screen reader navigation patterns.',
-      'Tab key moves focus to interactive chips. Enter and Space keys activate the onClick handler following standard web interaction patterns.',
-      'Focus indicators are highly visible with 2px outline and offset using component.chip.focus tokens (matching Button component), ensuring clear visual feedback for keyboard users.',
-      'Disabled state is communicated through aria-disabled, preventing interaction while maintaining semantic context for assistive technology users.',
-      'aria-label support for cases where visible text needs additional context — particularly useful for abbreviated or symbolic content.',
-      'Color contrast ratios exceed WCAG 2.2 AA requirements (4.5:1 for normal text) across all variant combinations and interaction states.',
-      'For toggleable filter controls, use BooleanChip (role="checkbox"). For dismissible applied filters, use FilterChip (role="status"). See the child pages for their specific accessibility contracts.'
+      'A static chip is plain text content with no role, so it doesn\'t interrupt screen reader reading flow.',
+      'Disabled state is communicated through aria-disabled.',
+      'Use aria-label when the visible text needs more context, such as abbreviated content.',
+      'Default chip text meets WCAG 2.2 AA (4.5:1).',
+      'BooleanChip uses role="checkbox" with aria-checked; InputChip uses role="status" and a labelled close button. See their pages for the full accessibility contract.',
+      'Deprecated: a chip with onClick gets button semantics, focus and Enter/Space activation. Use a Button instead, which has these natively.'
     ],
-    keyboardNavigation: 'Tab key moves focus to interactive chips with visible focus outline. Enter or Space key activates the chip\'s onClick handler. Disabled chips are excluded from tab order and do not respond to activation keys.',
-    screenReader: 'Static chips announced as their text content. Interactive chips announced as "button" followed by content. Custom aria-label content takes precedence when provided.',
-    focusManagement: 'Interactive chips receive focus with outline styling from component.chip.focus tokens (2px solid with 2px offset), matching Button component behavior. Focus moves in logical DOM order. Disabled chips cannot receive focus.'
+    keyboardNavigation: 'A static chip is not focusable. (Deprecated: a chip with onClick is focusable and activates with Enter or Space.)',
+    screenReader: 'Announced as its text content, or its aria-label when provided.',
+    focusManagement: 'A static chip does not take focus.'
   },
 
   notes: [
-    'Content Strategy: Use chips for categorical information, content tagging, filtering interfaces, and quick actions. Choose variant based on information hierarchy — emphasis for important categories, subtle for metadata, interactive for user actions.',
-    'Sub-variants: For toggleable multi-select filters use BooleanChip (a controlled checkbox-style toggle). For displaying applied filters that can optionally be dismissed use FilterChip. Both appear as child pages under Chip in the docs.',
-    'Size Selection Guidelines: Small size for dense interfaces like toolbars and metadata displays. Medium size for standard content categorization and general purpose use.',
-    'Interactive Behavior: When onClick is provided on Chip, it automatically becomes focusable with button semantics and keyboard support (Enter/Space to activate).',
-    'Legacy Compatibility: Component supports legacy title prop and light/dark variants for backward compatibility, but new implementations should use children prop and current variant system.',
-    'Performance Optimization: Component uses styled-components with direct token imports for efficient styling. Transitions and focus states leverage component tokens aligned with Button for consistent behavior.',
-    'Design System Integration: Variants map to design tokens ensuring consistency with overall visual hierarchy. Interactive states use semantic.motion.hover for smooth transitions.',
-    'Testing Support: data-testid prop enables consistent automated testing across chip variants and states.'
+    'Chip types (decision 0016): Chip for a static label, BooleanChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips keep their rounded 12px radius while Buttons use 4px, so the shapes signal different jobs.',
+    'Upcoming rename in 3.0: FilterChip (today a deprecated alias of InputChip) becomes the toggle chip, and BooleanChip is removed. Migrate in order: replace FilterChip with InputChip now, then BooleanChip with FilterChip when you upgrade to 3.0. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changes meaning.',
+    'Deprecated in 2.16, removed in 3.0: the emphasis, subtle, interactive, light and dark variants and onClick. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0).',
+    'Tag also has emphasis and interactive variants; its future is decided separately (#62).',
+    'Size: small for dense interfaces such as toolbars and metadata rows; medium for standard use.'
   ],
 
   anatomy: {
-    description: 'A compact inline element with variant-specific styling, optional icons, and interactive states. Hover and active states use background-color changes (not opacity) for consistency with Button and IconButton components.',
+    description: 'A compact inline label with a rounded container and text. InputChip and BooleanChip add a leading checkmark when selected, and InputChip adds a trailing close button when dismissible.',
     diagram: `
 ┌────────────────────────────────────┐
 │  Chip Container                    │
@@ -556,34 +279,29 @@ export const chipDocs: ComponentDocumentation = {
 │  └──────┘  └─────────┘  └───────┘ │
 └────────────────────────────────────┘
 
-States:
-┌─────────┐  ┌─────────┐  ┌─────────┐
-│ Default │  │  Hover  │  │ Active  │
-│   bg    │→ │ bg-hover│→ │bg-active│
-└─────────┘  └─────────┘  └─────────┘
+Icon: checkmark on selected BooleanChip and InputChip
+Close: InputChip with onDismiss
     `,
     parts: [
       {
         name: 'Container',
-        description: 'Root element with rounded corners, variant-specific background color, and color-based hover/active states. Uses background-color transitions matching Button component pattern.',
+        description: 'Root element with rounded corners and the default chip background.',
         tokens: [
           'component.chip.default.backgroundColor',
-          'component.chip.hover.backgroundColor',
-          'component.chip.active.backgroundColor',
           'component.chip.default.borderRadius',
           'semantic.motion.hover'
         ]
       },
       {
         name: 'Icon (optional)',
-        description: 'Leading icon slot. Shows checkmark for selected filter/boolean chips. Uses inherited color from container.',
+        description: 'Leading checkmark on selected BooleanChip and InputChip, in the chip text colour.',
         tokens: [
           'semantic.spacing.layout.xs'
         ]
       },
       {
         name: 'Label',
-        description: 'Text content using variant-specific color and size-based typography.',
+        description: 'Text content with size-based typography.',
         tokens: [
           'component.chip.default.textColor',
           'component.chip.sizes.medium.font',
@@ -592,7 +310,7 @@ States:
       },
       {
         name: 'Close Button (optional)',
-        description: 'Dismissible filter chips include a close button with its own hover state using subtle background-color change.',
+        description: 'InputChip only: a labelled close button with its own hover and pressed overlay.',
         tokens: [
           'semantic.spacing.layout.sm',
           'semantic.border.radius.xs',
