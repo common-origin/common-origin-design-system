@@ -96,7 +96,7 @@ export interface AlertProps {
   onDismiss?: () => void
   
   /**
-   * Optional action button or component
+   * Optional action button or component, placed below the message and left-aligned with it
    */
   action?: React.ReactNode
   
@@ -158,7 +158,8 @@ const StyledAlert = styled.div.withConfig({
   $reducedExit: boolean
 }>`
   display: flex;
-  align-items: ${({ $inline }) => ($inline ? 'center' : 'flex-start')};
+  /* Items start at the top, so the icon and dismiss button line up with the first line */
+  align-items: flex-start;
   gap: ${({ $inline }) =>
     $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
   padding: ${({ $inline }) =>
@@ -220,12 +221,14 @@ const StyledMessage = styled.span`
   line-height: ${alert.message.lineHeight};
 `
 
+// The action follows the content, left-aligned with it, so it's read after the message
+// (#122). With the content's xs gap, the space above it is md: a separate step.
 const StyledActions = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: ${semantic.spacing.layout.sm};
-  flex-shrink: 0;
-  margin-left: auto;
+  margin-top: calc(${semantic.spacing.layout.md} - ${semantic.spacing.layout.xs});
 `
 
 // The dismiss button's centre lines up with the first line of content: the title, or the
@@ -234,16 +237,11 @@ const StyledActions = styled.div`
 // padding and line height. Being in the row, it also keeps text and actions from running under it.
 const StyledDismissSlot = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
-})<{ $lineHeight: string; $centred: boolean }>`
+})<{ $lineHeight: string }>`
   display: flex;
   align-items: center;
   flex-shrink: 0;
   height: ${({ $lineHeight }) => $lineHeight};
-  /* The deprecated inline alert centres its items. The slot starts at the top, level with the
-     content's first line, whenever the content is the tallest item: always without an action,
-     and whenever the message wraps or there's a title. Only a one-line message beside a taller
-     action is centred, and the slot centres with it. */
-  align-self: ${({ $centred }) => ($centred ? 'center' : 'flex-start')};
 `
 
 // The glyph sits on the padding edge, mirroring the severity icon on the left. The inline
@@ -379,14 +377,12 @@ export const Alert = ({
       <StyledContent>
         {title && <StyledTitle role="heading" aria-level={6} color={alertTitleColor}>{title}</StyledTitle>}
         <StyledMessage>{children}</StyledMessage>
+        {action && <StyledActions>{action}</StyledActions>}
       </StyledContent>
-
-      {action && <StyledActions>{action}</StyledActions>}
 
       {dismissible && (
         <StyledDismissSlot
           $lineHeight={title ? alert.title.lineHeight : alert.message.lineHeight}
-          $centred={inline && !title && Boolean(action)}
         >
           <StyledDismissButton
             iconName="close"

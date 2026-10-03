@@ -306,7 +306,6 @@ describe('Alert', () => {
         const slot = window.getComputedStyle(slotOf('a-dismiss'))
         expect(slot.height).toBe(tokens.component.alert.title.lineHeight)
         expect(slot.alignItems).toBe('center')
-        expect(slot.alignSelf).toBe('flex-start')
       })
 
       it('lines up with the message when there is no title', () => {
@@ -316,47 +315,45 @@ describe('Alert', () => {
         )
       })
 
-      it('starts at the top of an inline alert when the content is the tallest item', () => {
-        const long = 'A message long enough to wrap across several lines. '.repeat(6)
-        const cases: Partial<AlertProps>[] = [
-          {},
-          { children: long },
-          { title: 'Title' },
-          { title: 'Title', action: <Button onClick={() => {}}>Undo</Button> },
-        ]
-        cases.forEach((extra) => {
-          const { unmount } = renderAlert({ dismissible: true, inline: true, 'data-testid': 'a', ...extra })
-          expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('flex-start')
+      it('starts at the top, with the icon, in both block and inline alerts', () => {
+        ;[false, true].forEach((inline) => {
+          const { unmount } = renderAlert({ dismissible: true, inline, 'data-testid': 'a' })
+          expect(window.getComputedStyle(screen.getByTestId('a')).alignItems).toBe('flex-start')
           unmount()
         })
       })
 
-      it('centres with a one-line inline message beside an action', () => {
-        renderAlert({
-          dismissible: true,
-          inline: true,
-          action: <Button onClick={() => {}}>Undo</Button>,
-          'data-testid': 'a'
-        })
-        expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('center')
-      })
-
-      it('sits in the row after the action, not over it', () => {
+      it('is the last item in the row', () => {
         renderAlert({
           dismissible: true,
           action: <Button onClick={() => {}}>Undo</Button>,
           'data-testid': 'a'
         })
-        const dismiss = screen.getByTestId('a-dismiss')
-        const action = screen.getByRole('button', { name: 'Undo' })
-        expect(window.getComputedStyle(dismiss).position).not.toBe('absolute')
-        expect(slotOf('a-dismiss').parentElement).toBe(screen.getByTestId('a'))
-        expect(action.compareDocumentPosition(dismiss) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+        const alert = screen.getByTestId('a')
+        expect(window.getComputedStyle(screen.getByTestId('a-dismiss')).position).not.toBe('absolute')
+        expect(alert.lastElementChild).toBe(slotOf('a-dismiss'))
       })
     })
   })
 
   describe('Action Functionality', () => {
+    // #122: the action follows the content, left-aligned with it
+    it('places the action below the message, in the content column', () => {
+      renderAlert({
+        title: 'Title',
+        dismissible: true,
+        action: <Button onClick={() => {}}>Undo</Button>
+      })
+      const message = screen.getByText('This is an alert message')
+      const actions = screen.getByRole('button', { name: 'Undo' }).parentElement as HTMLElement
+      expect(actions.parentElement).toBe(message.parentElement)
+      expect(actions.previousElementSibling).toBe(message)
+      // With the content's xs gap, the space above the action is md
+      const { md, xs } = tokens.semantic.spacing.layout
+      expect(window.getComputedStyle(message.parentElement as HTMLElement).gap).toBe(xs)
+      expect(window.getComputedStyle(actions).marginTop).toBe(`calc(${parseFloat(md) - parseFloat(xs)}rem)`)
+    })
+
     it('renders action button when provided', () => {
       renderAlert({
         action: <Button onClick={() => {}}>Take Action</Button>
