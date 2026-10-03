@@ -131,6 +131,10 @@ export const alertDocs: ComponentDocumentation = {
     'component.alert.message.typography',
     'component.alert.message.lineHeight',
 
+    // Dismiss button: its glyph sits on the padding edge
+    'component.iconButton.sizes.small.minWidth',
+    'semantic.size.icon.sm',
+
     // Breakpoint
     'semantic.breakpoint.md',
     // Motion

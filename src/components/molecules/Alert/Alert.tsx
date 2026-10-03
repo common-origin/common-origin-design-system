@@ -239,8 +239,10 @@ const StyledDismissSlot = styled.div.withConfig({
   align-items: center;
   flex-shrink: 0;
   height: ${({ $lineHeight }) => $lineHeight};
-  /* The deprecated inline alert centres its items. Without a title its content is one line, so
-     the slot centres with it; with a title the content is the tallest item and starts at the top. */
+  /* The deprecated inline alert centres its items. The slot starts at the top, level with the
+     content's first line, whenever the content is the tallest item: always without an action,
+     and whenever the message wraps or there's a title. Only a one-line message beside a taller
+     action is centred, and the slot centres with it. */
   align-self: ${({ $centred }) => ($centred ? 'center' : 'flex-start')};
 `
 
@@ -384,7 +386,7 @@ export const Alert = ({
       {dismissible && (
         <StyledDismissSlot
           $lineHeight={title ? alert.title.lineHeight : alert.message.lineHeight}
-          $centred={inline && !title}
+          $centred={inline && !title && Boolean(action)}
         >
           <StyledDismissButton
             iconName="close"

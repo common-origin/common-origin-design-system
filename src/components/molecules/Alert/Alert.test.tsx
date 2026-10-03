@@ -316,12 +316,29 @@ describe('Alert', () => {
         )
       })
 
-      it('centres with a one-line inline alert, and starts at the top when it has a title', () => {
-        const { unmount } = renderAlert({ dismissible: true, inline: true, 'data-testid': 'a' })
+      it('starts at the top of an inline alert when the content is the tallest item', () => {
+        const long = 'A message long enough to wrap across several lines. '.repeat(6)
+        const cases: Partial<AlertProps>[] = [
+          {},
+          { children: long },
+          { title: 'Title' },
+          { title: 'Title', action: <Button onClick={() => {}}>Undo</Button> },
+        ]
+        cases.forEach((extra) => {
+          const { unmount } = renderAlert({ dismissible: true, inline: true, 'data-testid': 'a', ...extra })
+          expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('flex-start')
+          unmount()
+        })
+      })
+
+      it('centres with a one-line inline message beside an action', () => {
+        renderAlert({
+          dismissible: true,
+          inline: true,
+          action: <Button onClick={() => {}}>Undo</Button>,
+          'data-testid': 'a'
+        })
         expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('center')
-        unmount()
-        renderAlert({ dismissible: true, inline: true, title: 'Title', 'data-testid': 'a' })
-        expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('flex-start')
       })
 
       it('sits in the row after the action, not over it', () => {
