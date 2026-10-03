@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-10-03
-- **Decided by:** Ollie (owner)
+- **Decided by:** Ollie (owner). The placement on 2026-10-03; the 12px spacing and the inline layout, proposed by Claude, confirmed the same day ([#122](https://github.com/common-origin/common-origin-design-system/issues/122#issuecomment-5967486940))
 - **Principles:** P5, P9
 - **Amends:** [0019](0019-alert-and-inline-alert.md) §1, the layout of Alert's action
 
