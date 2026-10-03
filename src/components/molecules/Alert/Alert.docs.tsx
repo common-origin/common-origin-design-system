@@ -513,22 +513,21 @@ export const alertDocs: ComponentDocumentation = {
 
   anatomy: {
     description:
-      'Alert consists of an optional icon, content area (title + message), and optional actions (custom action button + dismiss button)',
+      'Alert consists of an icon, a content area (title + message), an optional action and an optional dismiss button',
     diagram: `
-┌──────────────────────────────────────────────────┐
-│  Alert Container                                 │
-│  ┌────┐  ┌─────────────────┐  ┌─────────────┐  │
-│  │Icon│  │ Content         │  │ Actions     │  │
-│  │    │  │ ┌─────────────┐ │  │ ┌─────────┐ │  │
-│  │    │  │ │ Title (opt) │ │  │ │ Action  │ │  │
-│  │    │  │ └─────────────┘ │  │ │ Button  │ │  │
-│  │    │  │ ┌─────────────┐ │  │ │ (opt)   │ │  │
-│  │    │  │ │ Message     │ │  │ └─────────┘ │  │
-│  │    │  │ │ (children)  │ │  │ ┌─────────┐ │  │
-│  │    │  │ └─────────────┘ │  │ │ Dismiss │ │  │
-│  │    │  │                 │  │ │ (opt)   │ │  │
-│  └────┘  └─────────────────┘  └─┴─────────┴─┘  │
-└──────────────────────────────────────────────────┘
+┌──────────────────────────────────────────────────────┐
+│  Alert Container                                     │
+│  ┌────┐  ┌─────────────────┐  ┌─────────┐  ┌─────┐   │
+│  │Icon│  │ Content         │  │ Action  │  │  ×  │   │
+│  └────┘  │ ┌─────────────┐ │  │ (opt)   │  └─────┘   │
+│          │ │ Title (opt) │ │  └─────────┘  Dismiss   │
+│          │ └─────────────┘ │               (opt),    │
+│          │ ┌─────────────┐ │               centred   │
+│          │ │ Message     │ │               on the    │
+│          │ │ (children)  │ │               first     │
+│          │ └─────────────┘ │               line      │
+│          └─────────────────┘                         │
+└──────────────────────────────────────────────────────┘
     `,
     parts: [
       {
@@ -578,19 +577,23 @@ export const alertDocs: ComponentDocumentation = {
         ]
       },
       {
-        name: 'Actions',
+        name: 'Action',
         description:
-          'Optional actions container on the right side. Contains custom action button and/or dismiss IconButton. Uses auto margin to push to the end.',
+          'Optional container for a custom action, such as a small Button. Uses auto margin to push it to the end, before the dismiss button.',
         tokens: [
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.xs'
+          'semantic.spacing.layout.sm'
         ]
       },
       {
         name: 'Dismiss Button',
         description:
-          'IconButton with "close" icon, small size, naked variant. Removes alert from DOM when clicked. Has aria-label="Dismiss alert" for accessibility.',
-        tokens: []
+          'IconButton with "close" icon, small size, naked variant, last in the row. Its centre lines up with the first line of content: the title, or the message when there is no title (decision 0019). It sits in a slot as tall as that line, so text and the action never run under it. Its glyph sits on the padding edge, mirroring the severity icon. Removes alert from DOM when clicked. Has aria-label="Dismiss alert" for accessibility.',
+        tokens: [
+          'component.alert.title.lineHeight',
+          'component.alert.message.lineHeight',
+          'component.iconButton.sizes.small.minWidth',
+          'semantic.size.icon.sm'
+        ]
       }
     ]
   },
