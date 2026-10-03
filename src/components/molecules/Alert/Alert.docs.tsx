@@ -63,7 +63,7 @@ export const alertDocs: ComponentDocumentation = {
       type: 'ReactNode',
       required: false,
       default: undefined,
-      description: 'Optional action button or component displayed on the right side for user interaction (e.g., "Undo", "Retry").'
+      description: 'Optional action button or component, such as "Undo" or "Retry". It sits below the message, left-aligned with it, so it is read after the message (decision 0021).'
     },
     {
       name: 'inline',
@@ -326,7 +326,7 @@ export const alertDocs: ComponentDocumentation = {
     },
     {
       name: 'With Action Buttons',
-      description: 'Alerts with action buttons for immediate user response',
+      description: 'The action follows the message, left-aligned with it. The dismiss button stays at the top right, on its own (decision 0021).',
       code: `<Stack direction="column" gap="md">
   <Alert
     variant="error"
@@ -521,16 +521,18 @@ export const alertDocs: ComponentDocumentation = {
     diagram: `
 ┌──────────────────────────────────────────────────────┐
 │  Alert Container                                     │
-│  ┌────┐  ┌─────────────────┐  ┌─────────┐  ┌─────┐   │
-│  │Icon│  │ Content         │  │ Action  │  │  ×  │   │
-│  └────┘  │ ┌─────────────┐ │  │ (opt)   │  └─────┘   │
-│          │ │ Title (opt) │ │  └─────────┘  Dismiss   │
-│          │ └─────────────┘ │               (opt),    │
-│          │ ┌─────────────┐ │               centred   │
-│          │ │ Message     │ │               on the    │
-│          │ │ (children)  │ │               first     │
-│          │ └─────────────┘ │               line      │
-│          └─────────────────┘                         │
+│  ┌────┐  ┌──────────────────────────────┐  ┌─────┐   │
+│  │Icon│  │ Content                      │  │  ×  │   │
+│  └────┘  │ ┌──────────────────────────┐ │  └─────┘   │
+│          │ │ Title (opt)              │ │  Dismiss   │
+│          │ └──────────────────────────┘ │  (opt),    │
+│          │ ┌──────────────────────────┐ │  centred   │
+│          │ │ Message (children)       │ │  on the    │
+│          │ └──────────────────────────┘ │  first     │
+│          │ ┌─────────┐                  │  line      │
+│          │ │ Action  │ (opt)            │            │
+│          │ └─────────┘                  │            │
+│          └──────────────────────────────┘            │
 └──────────────────────────────────────────────────────┘
     `,
     parts: [
@@ -570,7 +572,7 @@ export const alertDocs: ComponentDocumentation = {
       {
         name: 'Content',
         description:
-          'Flexible content area with optional title and required message. Title uses h6 typography at semibold weight. Message uses body typography. Grows to fill available space.',
+          'Flexible content area with optional title, required message and optional action, in that order. Title uses h6 typography at semibold weight. Message uses body typography. Grows to fill available space.',
         tokens: [
           'component.alert.title.typography',
           'component.alert.title.fontWeight',
@@ -583,15 +585,17 @@ export const alertDocs: ComponentDocumentation = {
       {
         name: 'Action',
         description:
-          'Optional container for a custom action, such as a small Button. Uses auto margin to push it to the end, before the dismiss button.',
+          'Optional container for a custom action, such as a small Button, at the end of the content: below the message and left-aligned with it (decision 0021). With the content\'s xs gap, the space above it is md. Several actions sit side by side, sm apart, and wrap.',
         tokens: [
+          'semantic.spacing.layout.md',
+          'semantic.spacing.layout.xs',
           'semantic.spacing.layout.sm'
         ]
       },
       {
         name: 'Dismiss Button',
         description:
-          'IconButton with "close" icon, small size, naked variant, last in the row. Its centre lines up with the first line of content: the title, or the message when there is no title (decision 0019). It sits in a slot as tall as that line, so text and the action never run under it. Its glyph sits on the padding edge, mirroring the severity icon. Removes alert from DOM when clicked. Has aria-label="Dismiss alert" for accessibility.',
+          'IconButton with "close" icon, small size, naked variant, last in the row. Its centre lines up with the first line of content: the title, or the message when there is no title (decision 0019). It sits in the row, in a slot as tall as that line, so text never runs under it. The action is below the content, so the two never share a row (decision 0021). Its glyph sits on the padding edge, mirroring the severity icon. Removes alert from DOM when clicked. Has aria-label="Dismiss alert" for accessibility.',
         tokens: [
           'component.alert.title.lineHeight',
           'component.alert.message.lineHeight',
