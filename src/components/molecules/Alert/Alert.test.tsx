@@ -296,6 +296,64 @@ describe('Alert', () => {
       renderAlert({ dismissible: true, 'data-testid': 'my-alert' })
       expect(screen.getByTestId('my-alert-dismiss')).toBeInTheDocument()
     })
+
+    // Decision 0019: the button is centred in a slot as tall as the first line of content
+    describe('dismiss alignment', () => {
+      const slotOf = (testId: string) => screen.getByTestId(testId).parentElement as HTMLElement
+
+      it('lines up with the title when there is one', () => {
+        renderAlert({ dismissible: true, title: 'Title', 'data-testid': 'a' })
+        const slot = window.getComputedStyle(slotOf('a-dismiss'))
+        expect(slot.height).toBe(tokens.component.alert.title.lineHeight)
+        expect(slot.alignItems).toBe('center')
+        expect(slot.alignSelf).toBe('flex-start')
+      })
+
+      it('lines up with the message when there is no title', () => {
+        renderAlert({ dismissible: true, 'data-testid': 'a' })
+        expect(window.getComputedStyle(slotOf('a-dismiss')).height).toBe(
+          tokens.component.alert.message.lineHeight
+        )
+      })
+
+      it('starts at the top of an inline alert when the content is the tallest item', () => {
+        const long = 'A message long enough to wrap across several lines. '.repeat(6)
+        const cases: Partial<AlertProps>[] = [
+          {},
+          { children: long },
+          { title: 'Title' },
+          { title: 'Title', action: <Button onClick={() => {}}>Undo</Button> },
+        ]
+        cases.forEach((extra) => {
+          const { unmount } = renderAlert({ dismissible: true, inline: true, 'data-testid': 'a', ...extra })
+          expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('flex-start')
+          unmount()
+        })
+      })
+
+      it('centres with a one-line inline message beside an action', () => {
+        renderAlert({
+          dismissible: true,
+          inline: true,
+          action: <Button onClick={() => {}}>Undo</Button>,
+          'data-testid': 'a'
+        })
+        expect(window.getComputedStyle(slotOf('a-dismiss')).alignSelf).toBe('center')
+      })
+
+      it('sits in the row after the action, not over it', () => {
+        renderAlert({
+          dismissible: true,
+          action: <Button onClick={() => {}}>Undo</Button>,
+          'data-testid': 'a'
+        })
+        const dismiss = screen.getByTestId('a-dismiss')
+        const action = screen.getByRole('button', { name: 'Undo' })
+        expect(window.getComputedStyle(dismiss).position).not.toBe('absolute')
+        expect(slotOf('a-dismiss').parentElement).toBe(screen.getByTestId('a'))
+        expect(action.compareDocumentPosition(dismiss) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+      })
+    })
   })
 
   describe('Action Functionality', () => {

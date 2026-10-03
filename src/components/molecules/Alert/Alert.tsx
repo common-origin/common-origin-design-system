@@ -228,11 +228,31 @@ const StyledActions = styled.div`
   margin-left: auto;
 `
 
-const StyledDismissButton = styled(IconButton)`
-  margin-left: ${semantic.spacing.layout.xs};
-	position: absolute;
-	right: ${semantic.spacing.layout.sm};
-	top: ${semantic.spacing.layout.sm};
+// The dismiss button's centre lines up with the first line of content: the title, or the
+// message when there's no title (decision 0019). The slot is as tall as that line and the
+// button is centred in it, overflowing evenly into the padding, so it stays aligned at every
+// padding and line height. Being in the row, it also keeps text and actions from running under it.
+const StyledDismissSlot = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{ $lineHeight: string; $centred: boolean }>`
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: ${({ $lineHeight }) => $lineHeight};
+  /* The deprecated inline alert centres its items. The slot starts at the top, level with the
+     content's first line, whenever the content is the tallest item: always without an action,
+     and whenever the message wraps or there's a title. Only a one-line message beside a taller
+     action is centred, and the slot centres with it. */
+  align-self: ${({ $centred }) => ($centred ? 'center' : 'flex-start')};
+`
+
+// The glyph sits on the padding edge, mirroring the severity icon on the left. The inline
+// alert's padding is too small for that, so its button stays inside the padding.
+const StyledDismissButton = styled(IconButton)<{ $inline: boolean }>`
+  margin-right: ${({ $inline }) =>
+    $inline
+      ? 0
+      : `calc((${tokens.component.iconButton.sizes.small.minWidth} - ${semantic.size.icon.sm}) / -2)`};
 `
 
 export const Alert = ({
@@ -361,20 +381,23 @@ export const Alert = ({
         <StyledMessage>{children}</StyledMessage>
       </StyledContent>
 
-      {(action || dismissible) && (
-        <StyledActions>
-          {action}
-          {dismissible && (
-            <StyledDismissButton
-              iconName="close"
-              size="small"
-              variant="naked"
-              onClick={handleDismiss}
-              aria-label="Dismiss alert"
-              data-testid={dataTestId ? `${dataTestId}-dismiss` : undefined}
-            />
-          )}
-        </StyledActions>
+      {action && <StyledActions>{action}</StyledActions>}
+
+      {dismissible && (
+        <StyledDismissSlot
+          $lineHeight={title ? alert.title.lineHeight : alert.message.lineHeight}
+          $centred={inline && !title && Boolean(action)}
+        >
+          <StyledDismissButton
+            iconName="close"
+            size="small"
+            variant="naked"
+            $inline={inline}
+            onClick={handleDismiss}
+            aria-label="Dismiss alert"
+            data-testid={dataTestId ? `${dataTestId}-dismiss` : undefined}
+          />
+        </StyledDismissSlot>
       )}
     </StyledAlert>
   )
