@@ -60,7 +60,8 @@
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "release": "npm publish --provenance --access public",
     "release:create": "./scripts/release.sh",
-    "release:tag": "./scripts/release.sh tag"
+    "release:tag": "./scripts/release.sh tag",
+    "tokens:golden": "node scripts/tokens-golden.cjs"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",

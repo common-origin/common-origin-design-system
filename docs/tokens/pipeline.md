@@ -158,14 +158,14 @@ The owner approved this direction and the migration plan below in [decision 0017
 
 ### Migration plan (each step verifiable, each its own PR)
 
-1. **Snapshot**: commit a golden copy of today's resolved `tokens.json` (minus `$ref`) for diffing.
+1. **Snapshot** (done): `config/tokens.golden.json` is the resolved `tokens.json` from before the migration, minus `$ref`. `src/tokens/golden.test.ts` fails on any difference and lists each changed path. `npm run tokens:golden` rewrites it from the current build. It lives outside `src/tokens/` because the build reads every JSON file there.
 2. **Fix defects on v3 first**: remove `index.json` from `source`; delete dead transforms, formats, and the `styled-components` platform; drop `transforms` overrides so built-in groups run. Diff against the golden file — only the `$ref` keys should disappear.
 3. **Normalise the component tier** into tokens referencing semantic tokens. Diff: values must not change.
 4. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
 5. **Upgrade to Style Dictionary 5** and port the config to hooks. Diff.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
 
-At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file unless the PR intends a visual change.
+At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file (`npm test` runs it) unless the PR intends a visual change.
 
 ---
 
@@ -174,8 +174,8 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 ### Add a token (today, v3)
 1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
 2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
-3. `npm run build:tokens`, then check `src/styles/tokens.json` for the resolved value.
-4. Commit the source change and regenerated outputs, but not unrelated timestamp-only changes.
+3. `npm run build:tokens`, then `npx jest src/tokens/golden`. It fails and lists every resolved value that differs from the golden file: check it shows exactly your change.
+4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`, but not unrelated timestamp-only changes.
 
 ### Check what a token resolves to
 ```bash

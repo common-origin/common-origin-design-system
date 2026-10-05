@@ -71,15 +71,14 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` Â
 ## How to work
 
 1. **Read** the pipeline doc and the actual source files.
-2. **Snapshot** the current output before any change:
-   `cp src/styles/tokens.json /tmp/tokens.before.json`
-3. **Change** the source (or config, if approved).
-4. **Build and diff**:
+2. **Change** the source (or config, if approved).
+3. **Build and diff against the golden file** (`config/tokens.golden.json`, decision 0017):
    ```bash
    npm run build:tokens
-   node -e "const a=require('/tmp/tokens.before.json'),b=require('./src/styles/tokens.json');const d=(x,y,p='')=>{for(const k of new Set([...Object.keys(x||{}),...Object.keys(y||{})])){const P=p?p+'.'+k:k;if(typeof x?.[k]==='object'||typeof y?.[k]==='object')d(x?.[k],y?.[k],P);else if(x?.[k]!==y?.[k])console.log(P,x?.[k],'â†’',y?.[k])}};d(a,b)"
+   npx jest src/tokens/golden
    ```
-   The diff must contain **only** your intended additions. Any changed existing value is a regression unless the task is to change it.
+   The test lists every resolved value that differs from the golden file. The diff must contain **only** your intended changes. Any changed existing value is a regression unless the task is to change it. Pipeline migration steps must show no difference at all.
+4. **Accept intended changes** with `npm run tokens:golden` and commit the golden file with the source change.
 5. **Validate**:
    ```bash
    npm run typecheck && npm test && npm run build:package
@@ -90,7 +89,7 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` Â
 
 - **Gap or defect:** what was missing or broken (cite pipeline defect numbers and file locations)
 - **Tokens added / pipeline change:** each token with tier, type, reference and description; or the config change and why
-- **Resolved-value diff:** paste the diff output from step 4
+- **Resolved-value diff:** paste the golden test's diff from step 3
 - **Principle or decision:** P3/P7 or the decision record that justifies it
 - **Validation:** typecheck, tests, package build
 - **Open questions:** existing values that look wrong, and follow-up component adoption work
