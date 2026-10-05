@@ -324,7 +324,7 @@
         "padding": {
           "value": "2px {semantic.spacing.component.sm}",
           "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
+          "description": "Deprecated (decision 0022): no component spacing tokens. No chip reads it; chips take padding per size. Removed in 3.0."
         },
         "font": {
           "value": "{semantic.typography.body}",

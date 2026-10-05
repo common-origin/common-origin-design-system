@@ -294,7 +294,7 @@ return (
       'aria-checked is set to "true" when selected and "false" when not selected, providing a redundant accessibility signal alongside the visual checkmark icon.',
       'The checkmark icon rendered when selected is wrapped in aria-hidden="true" — it is purely decorative and does not produce duplicate announcements.',
       'When disabled, aria-disabled="true" is set and the chip is removed from the tab order (tabIndex is unset). The disabled prop alone would prevent interaction but aria-disabled also communicates state to assistive technologies.',
-      'Focus is indicated with a 2px outline (component.chip.focus tokens), matching the Button and InputChip focus ring for consistent keyboard navigation across the design system.',
+      'Focus is indicated with a 2px outline (component.chip.focus.outline, offset by semantic.border.focusOffset), matching the Button and InputChip focus ring for consistent keyboard navigation across the design system.',
       'Space and Enter both activate the chip, following the standard checkbox/button keyboard contract for web controls.',
       'BooleanChips should be grouped semantically. Wrap a set of related BooleanChips in a fieldset with a legend, or reference a heading via aria-describedby to communicate the filter group\'s purpose to screen readers.'
     ],
