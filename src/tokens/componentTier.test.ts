@@ -43,10 +43,16 @@ describe('component tier (decisions 0014 and 0022)', () => {
   })
 })
 
-// Tokens retired by decision 0022 stay in tokens.json until 3.0 (#99), but nothing reads them
+// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Two
+// kinds are deliberately still read, and their descriptions say so: aliases kept working until
+// 3.0 (such as Button's `emphasis` variant, decision 0016), and off-grid values with no semantic
+// step that wait for #129.
+const STILL_READ = /Alias kept until 3\.0|#129/
+
 describe('retired component tokens are not read', () => {
   const retired = leaves((source as unknown as { component: Node }).component, ['component'])
-    .filter(({ node }) => typeof node === 'object' && String(node.description).startsWith('Deprecated (decision 0022)'))
+    .filter(({ node }) => typeof node === 'object' && String(node.description).startsWith('Deprecated'))
+    .filter(({ node }) => !STILL_READ.test(String((node as Node).description)))
     .map(({ path }) => path.replace(/^component\./, ''))
 
   it('finds the retired tokens', () => {

@@ -118,6 +118,17 @@ describe('Button Component', () => {
       expect(button).toBeInTheDocument()
       // Default large size styling is applied
     })
+
+    // Padding comes from semantic spacing (decision 0022). The literal values are the design,
+    // so a swapped spacing key fails here even though the resolved tokens are unchanged.
+    it.each([
+      ['small', '0.5rem 0.75rem'],
+      ['medium', '0.5rem 1rem'],
+      ['large', '0.75rem 1rem'],
+    ] as const)('pads the %s size with %s', (size, padding) => {
+      renderButton({ size })
+      expect(screen.getByRole('button')).toHaveStyle({ padding })
+    })
   })
 
   describe('Button Functionality', () => {
