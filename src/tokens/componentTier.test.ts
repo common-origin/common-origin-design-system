@@ -9,7 +9,7 @@ type Leaf = { path: string; node: Node | string }
 
 // The component tier, normalised in step 3 of the token pipeline migration (decision 0017, #24)
 // under decisions 0014 and 0022. Components still to convert are listed until 3b and 3c land.
-const NOT_YET_CONVERTED = ['chip', 'input', 'progressBar', 'badge', 'separator']
+const NOT_YET_CONVERTED = ['input', 'progressBar', 'badge', 'separator']
 
 function leaves(node: Node, path: string[] = []): Leaf[] {
   return Object.entries(node).flatMap(([key, child]) =>

@@ -130,8 +130,6 @@ export const chipDocs: ComponentDocumentation = {
     'component.chip.default.backgroundColor',
     'component.chip.default.textColor',
     'component.chip.default.borderRadius',
-    'component.chip.default.padding',
-    'component.chip.default.font',
     // Disabled state
     'component.chip.disabled.backgroundColor',
     'component.chip.disabled.textColor',
@@ -146,7 +144,7 @@ export const chipDocs: ComponentDocumentation = {
     'component.chip.hover.backgroundColor',
     'component.chip.active.backgroundColor',
     'component.chip.focus.outline',
-    'component.chip.focus.outlineOffset',
+    'semantic.border.focusOffset',
     // Deprecated variants, removed in 3.0
     'component.chip.variants.emphasis.backgroundColor',
     'component.chip.variants.emphasis.textColor',

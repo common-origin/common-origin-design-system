@@ -152,7 +152,7 @@ export const inputChipDocs: ComponentDocumentation = {
     'semantic.color.background.active-overlay',
     // Focus ring (applies to both chip and close button)
     'component.chip.focus.outline',
-    'component.chip.focus.outlineOffset',
+    'semantic.border.focusOffset',
     // Transition
     'semantic.motion.hover'
   ],
@@ -361,7 +361,7 @@ States:
           'semantic.color.background.hover-overlay',
           'semantic.color.background.active-overlay',
           'component.chip.focus.outline',
-          'component.chip.focus.outlineOffset',
+          'semantic.border.focusOffset',
           'semantic.motion.hover'
         ]
       }
