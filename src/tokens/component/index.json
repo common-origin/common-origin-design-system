@@ -797,7 +797,7 @@
       "borderRadius": {
         "value": "{semantic.border.radius.sm}",
         "type": "borderRadius",
-        "description": "Corner radius of the ProgressBar track and fill."
+        "description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
       },
       "sizes": {
         "sm": {
