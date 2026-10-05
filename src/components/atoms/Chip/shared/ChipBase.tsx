@@ -1,7 +1,9 @@
 import styled from 'styled-components'
 import tokens from '../../../../styles/tokens.json'
 import { InternalStyledProps } from './types'
-import { getVariantStyles, getSizeStyles, chipTokens } from './utils'
+import { getVariantStyles, getSizeStyles } from './utils'
+
+const { component: { chip }, semantic } = tokens
 
 // Base styled component using direct prop interpolation like Button
 export const StyledChip = styled.span.withConfig({
@@ -12,19 +14,19 @@ export const StyledChip = styled.span.withConfig({
   justify-content: center;
   width: fit-content;
   height: max-content;
-  border-radius: ${chipTokens.default.borderRadius};
+  border-radius: ${chip.default.borderRadius};
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  transition: ${tokens.semantic.motion.hover};
+  transition: ${semantic.motion.hover};
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
   
   ${getVariantStyles}
   ${getSizeStyles}
   
   &:focus-visible {
-    outline: ${chipTokens.focus.outline};
-    outline-offset: ${chipTokens.focus.outlineOffset};
+    outline: ${chip.focus.outline};
+    outline-offset: ${semantic.border.focusOffset};
   }
 `
 
@@ -45,13 +47,13 @@ export const CloseButton = styled.button.withConfig({
   margin-left: ${tokens.semantic.spacing.layout.sm};
   background: transparent;
   border: none;
-  width: ${chipTokens.closeButton.size};
-  height: ${chipTokens.closeButton.size};
+  width: ${chip.closeButton.size};
+  height: ${chip.closeButton.size};
   padding: ${tokens.semantic.spacing.layout.none};
   border-radius: ${tokens.semantic.border.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
-  transition: ${tokens.semantic.motion.hover};
+  transition: ${semantic.motion.hover};
   
   &:hover:not(:disabled) {
     background-color: ${tokens.semantic.color.background['hover-overlay']};
@@ -66,8 +68,8 @@ export const CloseButton = styled.button.withConfig({
   }
   
   &:focus-visible {
-    outline: ${chipTokens.focus.outline};
-    outline-offset: ${chipTokens.focus.outlineOffset};
-    border-radius: ${chipTokens.default.borderRadius};
+    outline: ${chip.focus.outline};
+    outline-offset: ${semantic.border.focusOffset};
+    border-radius: ${chip.default.borderRadius};
   }
 `

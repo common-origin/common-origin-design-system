@@ -152,7 +152,7 @@ export const inputChipDocs: ComponentDocumentation = {
     'semantic.color.background.active-overlay',
     // Focus ring (applies to both chip and close button)
     'component.chip.focus.outline',
-    'component.chip.focus.outlineOffset',
+    'semantic.border.focusOffset',
     // Transition
     'semantic.motion.hover'
   ],
@@ -287,7 +287,7 @@ return (
     screenReader:
       'Chip container announced with role="status" and aria-label (or visible text). Close button announced as "Remove [filter label], button". When the close button is disabled, its unavailable state is conveyed by native disabled button semantics. Custom role prop overrides the default "status" role when provided.',
     focusManagement:
-      'The close button uses component.chip.focus tokens (2px solid outline with 2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
+      'The close button uses component.chip.focus.outline (2px solid outline) and semantic.border.focusOffset (2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
       'Unselected text meets WCAG AA (4.5:1). An enabled selected chip uses blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },
@@ -361,7 +361,7 @@ States:
           'semantic.color.background.hover-overlay',
           'semantic.color.background.active-overlay',
           'component.chip.focus.outline',
-          'component.chip.focus.outlineOffset',
+          'semantic.border.focusOffset',
           'semantic.motion.hover'
         ]
       }

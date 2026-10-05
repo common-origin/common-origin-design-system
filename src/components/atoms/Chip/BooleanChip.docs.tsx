@@ -177,7 +177,7 @@ export const booleanChipDocs: ComponentDocumentation = {
     'semantic.spacing.layout.xs',
     // Focus ring
     'component.chip.focus.outline',
-    'component.chip.focus.outlineOffset',
+    'semantic.border.focusOffset',
     // Transition
     'semantic.motion.hover'
   ],
@@ -294,7 +294,7 @@ return (
       'aria-checked is set to "true" when selected and "false" when not selected, providing a redundant accessibility signal alongside the visual checkmark icon.',
       'The checkmark icon rendered when selected is wrapped in aria-hidden="true" — it is purely decorative and does not produce duplicate announcements.',
       'When disabled, aria-disabled="true" is set and the chip is removed from the tab order (tabIndex is unset). The disabled prop alone would prevent interaction but aria-disabled also communicates state to assistive technologies.',
-      'Focus is indicated with a 2px outline (component.chip.focus tokens), matching the Button and InputChip focus ring for consistent keyboard navigation across the design system.',
+      'Focus is indicated with a 2px outline (component.chip.focus.outline, offset by semantic.border.focusOffset), matching the Button and InputChip focus ring for consistent keyboard navigation across the design system.',
       'Space and Enter both activate the chip, following the standard checkbox/button keyboard contract for web controls.',
       'BooleanChips should be grouped semantically. Wrap a set of related BooleanChips in a fieldset with a legend, or reference a heading via aria-describedby to communicate the filter group\'s purpose to screen readers.'
     ],
@@ -303,7 +303,7 @@ return (
     screenReader:
       'Announced as "checkbox, [label], checked/not checked". Custom aria-label overrides the visible children text when provided. Disabled chips are announced as "checkbox, [label], dimmed" or similar depending on the screen reader.',
     focusManagement:
-      'Focus outline uses component.chip.focus.outline (2px solid) and component.chip.focus.outlineOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
+      'Focus outline uses component.chip.focus.outline (2px solid) and semantic.border.focusOffset tokens. Focus is visible on keyboard navigation only (focus-visible). Disabled chips cannot receive focus.',
     colorContrast:
       'Unselected text meets WCAG AA (4.5:1). On an enabled selected chip the text is blue and darkens with the fill so every state stays above 4.5:1: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016). The checkmark takes the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },

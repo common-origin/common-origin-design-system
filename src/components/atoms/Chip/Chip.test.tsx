@@ -98,6 +98,16 @@ describe('Chip Component', () => {
       const chip = screen.getByText('Test Chip')
       expect(chip).toBeInTheDocument()
     })
+
+    // The 2px is off-grid and stays until #129 decides how controls get their heights
+    // (decision 0022); the literal values are the design, so a mapping change fails here
+    it.each([
+      ['small', '2px 0.5rem'],
+      ['medium', '2px 0.5rem'],
+    ] as const)('pads the %s size with %s', (size, padding) => {
+      const { container } = renderChip({ size })
+      expect(container.firstChild).toHaveStyle({ padding })
+    })
   })
 
   describe('Interactive Functionality', () => {

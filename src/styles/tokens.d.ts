@@ -562,60 +562,89 @@ export interface TokensComponentChipCloseButton {
 }
 
 export interface TokensComponentChipDefault {
+  backgroundColor: string;
+  textColor: string;
+  borderRadius: string;
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentChipHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipFocus {
+  outline: string;
+  outlineOffset: string;
 }
 
 export interface TokensComponentChipDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentChipVariantsEmphasisHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsEmphasisActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsEmphasisDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentChipVariantsEmphasis {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentChipVariantsEmphasisHover;
   active: TokensComponentChipVariantsEmphasisActive;
   disabled: TokensComponentChipVariantsEmphasisDisabled;
 }
 
 export interface TokensComponentChipVariantsSubtleHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsSubtleActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsSubtleDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentChipVariantsSubtle {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentChipVariantsSubtleHover;
   active: TokensComponentChipVariantsSubtleActive;
   disabled: TokensComponentChipVariantsSubtleDisabled;
 }
 
 export interface TokensComponentChipVariantsInteractiveHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsInteractiveActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentChipVariantsInteractiveDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentChipVariantsInteractive {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentChipVariantsInteractiveHover;
   active: TokensComponentChipVariantsInteractiveActive;
   disabled: TokensComponentChipVariantsInteractiveDisabled;
@@ -628,12 +657,18 @@ export interface TokensComponentChipVariants {
 }
 
 export interface TokensComponentChipSizesSmall {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentChipSizesMedium {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentChipSizesLarge {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentChipSizes {

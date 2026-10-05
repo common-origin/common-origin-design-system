@@ -127,6 +127,7 @@ export const getSizeStyles = ({ $size }: StyledChipProps) => {
     case 'small':
       return `
         font: ${chip.sizes.small.font};
+        // Off-grid 2px: keeps the deprecated token until #129 (decision 0022)
         padding: ${chip.sizes.small.padding};
       `
     case 'medium':
@@ -138,5 +139,3 @@ export const getSizeStyles = ({ $size }: StyledChipProps) => {
   }
 }
 
-// Export chip tokens for reuse
-export { chip as chipTokens }
