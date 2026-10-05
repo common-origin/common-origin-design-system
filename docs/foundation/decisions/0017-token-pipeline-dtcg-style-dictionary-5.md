@@ -17,7 +17,7 @@ The token build runs Style Dictionary 3.9.2. Its defects are listed in [`docs/to
 - Built-in transforms never run, and most custom transforms do nothing or hide bugs.
 - Descriptions are dropped from every output.
 - Headers carry timestamps.
-- One output (`lib/tokens.js`) is unused.
+- One output (`lib/tokens.js`) is unused. <!-- verify-docs-ignore: deleted in #24 step 2; this records the state when decided -->
 
 Style Dictionary 5 only resolves references inside real token leaves, so the component tier blocks a straight upgrade. Pipeline changes are build changes, which need the owner's approval and a decision record ([0001](0001-record-decisions.md)) ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)).
 

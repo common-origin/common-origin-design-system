@@ -11,8 +11,9 @@ const root = join(__dirname, '..')
 const built = join(root, 'src/styles/tokens.json')
 const golden = join(root, 'config/tokens.golden.json')
 
-// The $ref keys come from src/tokens/index.json leaking into the build. They hold file
-// paths, not design values, and step 2 of the migration removes them.
+// The $ref keys came from src/tokens/index.json leaking into the build (removed in step 2 of
+// the migration). They held file paths, not design values. Stripping them keeps this
+// working on builds from before that step.
 function withoutRefs(value) {
   if (Array.isArray(value)) return value.map(withoutRefs)
   if (value && typeof value === 'object') {

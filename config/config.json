@@ -1,9 +1,12 @@
 {
-  "source": ["src/tokens/**/*.json"],
+  "source": [
+    "src/tokens/base/**/*.json",
+    "src/tokens/component/**/*.json",
+    "src/tokens/semantic/**/*.json"
+  ],
   "platforms": {
     "tokens": {
       "transformGroup": "js",
-      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
       "buildPath": "src/styles/",
       "files": [
         {
@@ -14,13 +17,6 @@
     },
     "custom": {
       "transformGroup": "css",
-      "transforms": [
-        "baseToken",
-        "nameFormatter",
-        "pxToRemConverter",
-        "calculationFormatter",
-        "boxShadowValueFormatter"
-      ],
       "buildPath": "src/styles/",
       "files": [
         {
@@ -31,23 +27,11 @@
     },
     "typescript": {
       "transformGroup": "js",
-      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
       "buildPath": "src/styles/",
       "files": [
         {
           "format": "typescript/nested-interface",
           "destination": "tokens.d.ts"
-        }
-      ]
-    },
-    "styled-components": {
-      "transformGroup": "js",
-      "transforms": ["jsCalculationFormatter", "boxShadowValueFormatter"],
-      "buildPath": "lib/",
-      "files": [
-        {
-          "format": "javascript/styled-components",
-          "destination": "tokens.js"
         }
       ]
     }
