@@ -35,7 +35,7 @@ const SearchInput = styled.input`
   
   &:focus {
     outline: ${tokens.component.button.focus.outline};
-    outline-offset: ${tokens.component.button.focus.outlineOffset};
+    outline-offset: ${border.focusOffset};
   }
   
   @media (max-width: ${breakpoint.md}) {

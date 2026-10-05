@@ -388,45 +388,68 @@ export interface TokensBase {
 }
 
 export interface TokensComponentButtonPrimary {
+  backgroundColor: string;
+  textColor: string;
+  borderRadius: string;
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentButtonHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonFocus {
+  outline: string;
+  outlineOffset: string;
 }
 
 export interface TokensComponentButtonDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentButtonVariantsSecondaryHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsSecondaryActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsSecondaryDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentButtonVariantsSecondary {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentButtonVariantsSecondaryHover;
   active: TokensComponentButtonVariantsSecondaryActive;
   disabled: TokensComponentButtonVariantsSecondaryDisabled;
 }
 
 export interface TokensComponentButtonVariantsNakedHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsNakedActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsNakedDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentButtonVariantsNaked {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentButtonVariantsNakedHover;
   active: TokensComponentButtonVariantsNakedActive;
   disabled: TokensComponentButtonVariantsNakedDisabled;
@@ -475,15 +498,21 @@ export interface TokensComponentButtonVariantsEmphasis {
 }
 
 export interface TokensComponentButtonVariantsDangerHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsDangerActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentButtonVariantsDangerDisabled {
+  backgroundColor: string;
+  textColor: string;
 }
 
 export interface TokensComponentButtonVariantsDanger {
+  backgroundColor: string;
+  textColor: string;
   hover: TokensComponentButtonVariantsDangerHover;
   active: TokensComponentButtonVariantsDangerActive;
   disabled: TokensComponentButtonVariantsDangerDisabled;
@@ -498,12 +527,18 @@ export interface TokensComponentButtonVariants {
 }
 
 export interface TokensComponentButtonSizesSmall {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentButtonSizesMedium {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentButtonSizesLarge {
+  padding: string;
+  font: string;
 }
 
 export interface TokensComponentButtonSizes {
@@ -619,45 +654,65 @@ export interface TokensComponentChip {
 }
 
 export interface TokensComponentIconButtonPrimary {
+  backgroundColor: string;
+  borderRadius: string;
+  minWidth: string;
+  minHeight: string;
+  display: string;
+  alignItems: string;
+  justifyContent: string;
 }
 
 export interface TokensComponentIconButtonHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonFocus {
+  outline: string;
+  outlineOffset: string;
 }
 
 export interface TokensComponentIconButtonDisabled {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsSecondaryHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsSecondaryActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsSecondaryDisabled {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsSecondary {
+  backgroundColor: string;
   hover: TokensComponentIconButtonVariantsSecondaryHover;
   active: TokensComponentIconButtonVariantsSecondaryActive;
   disabled: TokensComponentIconButtonVariantsSecondaryDisabled;
 }
 
 export interface TokensComponentIconButtonVariantsNakedHover {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsNakedActive {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsNakedDisabled {
+  backgroundColor: string;
 }
 
 export interface TokensComponentIconButtonVariantsNaked {
+  backgroundColor: string;
   hover: TokensComponentIconButtonVariantsNakedHover;
   active: TokensComponentIconButtonVariantsNakedActive;
   disabled: TokensComponentIconButtonVariantsNakedDisabled;
@@ -669,12 +724,21 @@ export interface TokensComponentIconButtonVariants {
 }
 
 export interface TokensComponentIconButtonSizesSmall {
+  minWidth: string;
+  minHeight: string;
+  padding: string;
 }
 
 export interface TokensComponentIconButtonSizesMedium {
+  minWidth: string;
+  minHeight: string;
+  padding: string;
 }
 
 export interface TokensComponentIconButtonSizesLarge {
+  minWidth: string;
+  minHeight: string;
+  padding: string;
 }
 
 export interface TokensComponentIconButtonSizes {
@@ -1292,6 +1356,8 @@ export interface TokensSemanticColorBackground {
   default: string;
   subtle: string;
   emphasis: string;
+  'emphasis-hover': string;
+  'emphasis-active': string;
   surface: string;
   inverse: string;
   interactive: string;
@@ -1301,12 +1367,18 @@ export interface TokensSemanticColorBackground {
   'interactive-hover': string;
   'interactive-active': string;
   error: string;
+  'error-hover': string;
+  'error-active': string;
   'error-subtle': string;
   success: string;
   'success-subtle': string;
   warning: string;
   'warning-subtle': string;
   disabled: string;
+  neutral: string;
+  'neutral-hover': string;
+  'neutral-active': string;
+  transparent: string;
   progressTrack: string;
   page: string;
   overlay: string;

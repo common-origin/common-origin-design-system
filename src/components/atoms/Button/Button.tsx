@@ -4,6 +4,8 @@ import tokens from '@/styles/tokens.json'
 import { Icon, type IconName } from '../Icon'
 
 const { component: { button }, semantic } = tokens
+// Padding comes from the semantic spacing scale: no component spacing tokens (decision 0022)
+const spacing = semantic.spacing.component
 
 /**
  * Button variants. `accent` is the blue call to action one level above `primary`;
@@ -77,7 +79,7 @@ const baseButtonStyles = `
   
   &:focus {
     outline: ${button.focus.outline};
-    outline-offset: ${button.focus.outlineOffset};
+    outline-offset: ${semantic.border.focusOffset};
   }
 
   &:disabled {
@@ -166,22 +168,22 @@ const getSizeStyles = ({ $size }: StyledButtonProps) => {
     case 'small':
       return `
         font: ${button.sizes.small.font};
-        padding: ${button.sizes.small.padding};
+        padding: ${spacing.sm} ${spacing.md};
       `
     case 'medium':
       return `
         font: ${button.sizes.medium.font};
-        padding: ${button.sizes.medium.padding};
+        padding: ${spacing.sm} ${spacing.lg};
       `
     case 'large':
       return `
         font: ${button.sizes.large.font};
-        padding: ${button.sizes.large.padding};
+        padding: ${spacing.md} ${spacing.lg};
       `
     default:
       return `
         font: ${button.sizes.large.font};
-        padding: ${button.sizes.large.padding};
+        padding: ${spacing.md} ${spacing.lg};
       `
   }
 }

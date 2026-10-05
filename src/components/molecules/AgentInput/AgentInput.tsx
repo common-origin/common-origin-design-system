@@ -166,7 +166,7 @@ const MicListeningRing = styled.span.withConfig({
 })<{ $reducedMotion: boolean }>`
   --ring-thickness: ${semantic.border.width.thick};
   position: absolute;
-  inset: calc(-${semantic.spacing.layout.xs} - ${component.iconButton.focus.outlineOffset});
+  inset: calc(-${semantic.spacing.layout.xs} - ${semantic.border.focusOffset});
   border-radius: ${semantic.border.radius.circle};
   pointer-events: none;
   z-index: 0;

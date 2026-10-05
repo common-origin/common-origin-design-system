@@ -2,53 +2,145 @@
   "component": {
     "button": {
       "primary": {
-        "backgroundColor": "{base.color.neutral.900}",
-        "textColor": "{base.color.neutral.000}",
-        "borderRadius": "{base.border.radius.2}",
-        "padding": "{base.spacing.3} {base.spacing.4}",
-        "font": "{semantic.typography.button1}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis}",
+          "type": "color",
+          "description": "Primary Button fill at rest."
+        },
+        "textColor": {
+          "value": "{semantic.color.text.inverse}",
+          "type": "color",
+          "description": "Text and icon colour on the primary Button."
+        },
+        "borderRadius": {
+          "value": "{semantic.border.radius.sm}",
+          "type": "borderRadius",
+          "description": "Corner radius of every Button (visual language: Button uses sm)."
+        },
+        "padding": {
+          "value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+          "type": "spacing",
+          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
+        },
+        "font": {
+          "value": "{semantic.typography.button1}",
+          "type": "typography",
+          "description": "Button label typography, the same as sizes.large.font."
+        }
       },
       "hover": {
-        "backgroundColor": "{base.color.neutral.800}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis-hover}",
+          "type": "color",
+          "description": "Primary Button fill on hover."
+        }
       },
       "active": {
-        "backgroundColor": "{base.color.neutral.1000}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis-active}",
+          "type": "color",
+          "description": "Primary Button fill while pressed."
+        }
       },
       "focus": {
-        "outline": "{semantic.border.focus}",
-        "outlineOffset": "2px"
+        "outline": {
+          "value": "{semantic.border.focus}",
+          "type": "border",
+          "description": "Focus ring on every Button."
+        },
+        "outlineOffset": {
+          "value": "2px",
+          "type": "size",
+          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+        }
       },
       "disabled": {
-        "backgroundColor": "{semantic.color.background.disabled}",
-        "textColor": "{semantic.color.text.disabled}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.disabled}",
+          "type": "color",
+          "description": "Disabled primary Button fill."
+        },
+        "textColor": {
+          "value": "{semantic.color.text.disabled}",
+          "type": "color",
+          "description": "Disabled primary Button text and icon colour."
+        }
       },
       "variants": {
         "secondary": {
-          "backgroundColor": "{base.color.neutral.300}",
-          "textColor": "{base.color.neutral.900}",
+          "backgroundColor": {
+            "value": "{semantic.color.background.neutral}",
+            "type": "color",
+            "description": "Secondary Button fill at rest."
+          },
+          "textColor": {
+            "value": "{semantic.color.text.default}",
+            "type": "color",
+            "description": "Text and icon colour on the secondary Button."
+          },
           "hover": {
-            "backgroundColor": "{base.color.neutral.400}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.neutral-hover}",
+              "type": "color",
+              "description": "Secondary Button fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{base.color.neutral.500}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.neutral-active}",
+              "type": "color",
+              "description": "Secondary Button fill while pressed."
+            }
           },
           "disabled": {
-            "backgroundColor": "{semantic.color.background.disabled}",
-            "textColor": "{semantic.color.text.disabled}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.disabled}",
+              "type": "color",
+              "description": "Disabled secondary Button fill."
+            },
+            "textColor": {
+              "value": "{semantic.color.text.disabled}",
+              "type": "color",
+              "description": "Disabled secondary Button text and icon colour."
+            }
           }
         },
         "naked": {
-          "backgroundColor": "transparent",
-          "textColor": "{base.color.neutral.900}",
+          "backgroundColor": {
+            "value": "{semantic.color.background.transparent}",
+            "type": "color",
+            "description": "Naked Button has no fill at rest."
+          },
+          "textColor": {
+            "value": "{semantic.color.text.default}",
+            "type": "color",
+            "description": "Text and icon colour on the naked Button."
+          },
           "hover": {
-            "backgroundColor": "{base.color.neutral.200}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.surface}",
+              "type": "color",
+              "description": "Naked Button fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{base.color.neutral.300}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.neutral}",
+              "type": "color",
+              "description": "Naked Button fill while pressed."
+            }
           },
           "disabled": {
-            "backgroundColor": "transparent",
-            "textColor": "{semantic.color.text.disabled}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.transparent}",
+              "type": "color",
+              "description": "Disabled naked Button has no fill."
+            },
+            "textColor": {
+              "value": "{semantic.color.text.disabled}",
+              "type": "color",
+              "description": "Disabled naked Button text and icon colour."
+            }
           }
         },
         "accent": {
@@ -128,32 +220,80 @@
           }
         },
         "danger": {
-          "backgroundColor": "{semantic.color.background.error}",
-          "textColor": "{semantic.color.text.inverse}",
+          "backgroundColor": {
+            "value": "{semantic.color.background.error}",
+            "type": "color",
+            "description": "Danger Button fill at rest, for destructive actions."
+          },
+          "textColor": {
+            "value": "{semantic.color.text.inverse}",
+            "type": "color",
+            "description": "Text and icon colour on the danger Button."
+          },
           "hover": {
-            "backgroundColor": "{base.color.red.1000}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.error-hover}",
+              "type": "color",
+              "description": "Danger Button fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{base.color.red.1100}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.error-active}",
+              "type": "color",
+              "description": "Danger Button fill while pressed."
+            }
           },
           "disabled": {
-            "backgroundColor": "{semantic.color.background.disabled}",
-            "textColor": "{semantic.color.text.disabled}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.disabled}",
+              "type": "color",
+              "description": "Disabled danger Button fill."
+            },
+            "textColor": {
+              "value": "{semantic.color.text.disabled}",
+              "type": "color",
+              "description": "Disabled danger Button text and icon colour."
+            }
           }
         }
       },
       "sizes": {
         "small": {
-          "padding": "{base.spacing.2} {base.spacing.3}",
-          "font": "{semantic.typography.button3}"
+          "padding": {
+            "value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0."
+          },
+          "font": {
+            "value": "{semantic.typography.button3}",
+            "type": "typography",
+            "description": "Small Button label typography."
+          }
         },
         "medium": {
-          "padding": "{base.spacing.2} {base.spacing.4}",
-          "font": "{semantic.typography.button2}"
+          "padding": {
+            "value": "{semantic.spacing.component.sm} {semantic.spacing.component.lg}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .lg. Removed in 3.0."
+          },
+          "font": {
+            "value": "{semantic.typography.button2}",
+            "type": "typography",
+            "description": "Medium Button label typography."
+          }
         },
         "large": {
-          "padding": "{base.spacing.3} {base.spacing.4}",
-          "font": "{semantic.typography.button1}"
+          "padding": {
+            "value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
+          },
+          "font": {
+            "value": "{semantic.typography.button1}",
+            "type": "typography",
+            "description": "Large Button label typography."
+          }
         }
       }
     },
@@ -247,68 +387,184 @@
     },
     "iconButton": {
       "primary": {
-        "backgroundColor": "{base.color.neutral.900}",
-        "borderRadius": "{base.border.radius.2}",
-        "minWidth": "40px",
-        "minHeight": "40px",
-        "display": "flex",
-        "alignItems": "center",
-        "justifyContent": "center"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis}",
+          "type": "color",
+          "description": "Primary IconButton fill at rest."
+        },
+        "borderRadius": {
+          "value": "{semantic.border.radius.sm}",
+          "type": "borderRadius",
+          "description": "Corner radius of every IconButton, matching Button."
+        },
+        "minWidth": {
+          "value": "40px",
+          "type": "size",
+          "description": "Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129."
+        },
+        "minHeight": {
+          "value": "40px",
+          "type": "size",
+          "description": "Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129."
+        },
+        "display": {
+          "value": "flex",
+          "type": "other",
+          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0."
+        },
+        "alignItems": {
+          "value": "center",
+          "type": "other",
+          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0."
+        },
+        "justifyContent": {
+          "value": "center",
+          "type": "other",
+          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0."
+        }
       },
       "hover": {
-        "backgroundColor": "{base.color.neutral.800}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis-hover}",
+          "type": "color",
+          "description": "Primary IconButton fill on hover."
+        }
       },
       "active": {
-        "backgroundColor": "{base.color.neutral.1000}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.emphasis-active}",
+          "type": "color",
+          "description": "Primary IconButton fill while pressed. Today IconButton uses it for every variant (#130)."
+        }
       },
       "focus": {
-        "outline": "{semantic.border.focus}",
-        "outlineOffset": "2px"
+        "outline": {
+          "value": "{semantic.border.focus}",
+          "type": "border",
+          "description": "Focus ring on every IconButton."
+        },
+        "outlineOffset": {
+          "value": "2px",
+          "type": "size",
+          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+        }
       },
       "disabled": {
-        "backgroundColor": "{semantic.color.background.disabled}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.disabled}",
+          "type": "color",
+          "description": "Disabled IconButton fill. Today IconButton uses it for every variant (#130)."
+        }
       },
       "variants": {
         "secondary": {
-          "backgroundColor": "{base.color.neutral.200}",
+          "backgroundColor": {
+            "value": "{semantic.color.background.surface}",
+            "type": "color",
+            "description": "Secondary IconButton fill at rest."
+          },
           "hover": {
-            "backgroundColor": "{base.color.neutral.300}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.neutral}",
+              "type": "color",
+              "description": "Secondary IconButton fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{base.color.neutral.100}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.page}",
+              "type": "color",
+              "description": "Secondary IconButton fill while pressed. Not read today, and lighter than hover (#130)."
+            }
           },
           "disabled": {
-            "backgroundColor": "{semantic.color.background.disabled}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.disabled}",
+              "type": "color",
+              "description": "Disabled secondary IconButton fill."
+            }
           }
         },
         "naked": {
-          "backgroundColor": "transparent",
+          "backgroundColor": {
+            "value": "{semantic.color.background.transparent}",
+            "type": "color",
+            "description": "Naked IconButton has no fill at rest."
+          },
           "hover": {
-            "backgroundColor": "{base.color.neutral.200}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.surface}",
+              "type": "color",
+              "description": "Naked IconButton fill on hover."
+            }
           },
           "active": {
-            "backgroundColor": "{base.color.neutral.300}"
+            "backgroundColor": {
+              "value": "{semantic.color.background.neutral}",
+              "type": "color",
+              "description": "Naked IconButton fill while pressed. Not read today (#130)."
+            }
           },
           "disabled": {
-            "backgroundColor": "transparent"
+            "backgroundColor": {
+              "value": "{semantic.color.background.transparent}",
+              "type": "color",
+              "description": "Disabled naked IconButton has no fill. Not read today (#130)."
+            }
           }
         }
       },
       "sizes": {
         "small": {
-          "minWidth": "32px",
-          "minHeight": "32px",
-          "padding": "{base.spacing.1}"
+          "minWidth": {
+            "value": "32px",
+            "type": "size",
+            "description": "Minimum width of the small IconButton. Raw px until control sizes are decided in #129."
+          },
+          "minHeight": {
+            "value": "32px",
+            "type": "size",
+            "description": "Minimum height of the small IconButton. Raw px until control sizes are decided in #129."
+          },
+          "padding": {
+            "value": "{semantic.spacing.component.xs}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
+          }
         },
         "medium": {
-          "minWidth": "40px",
-          "minHeight": "40px",
-          "padding": "{base.spacing.2}"
+          "minWidth": {
+            "value": "40px",
+            "type": "size",
+            "description": "Minimum width of the medium IconButton. Raw px until control sizes are decided in #129."
+          },
+          "minHeight": {
+            "value": "40px",
+            "type": "size",
+            "description": "Minimum height of the medium IconButton. Raw px until control sizes are decided in #129."
+          },
+          "padding": {
+            "value": "{semantic.spacing.component.sm}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm. Removed in 3.0."
+          }
         },
         "large": {
-          "minWidth": "48px",
-          "minHeight": "48px",
-          "padding": "{base.spacing.3}"
+          "minWidth": {
+            "value": "48px",
+            "type": "size",
+            "description": "Minimum width of the large IconButton. Raw px until control sizes are decided in #129."
+          },
+          "minHeight": {
+            "value": "48px",
+            "type": "size",
+            "description": "Minimum height of the large IconButton. Raw px until control sizes are decided in #129."
+          },
+          "padding": {
+            "value": "{semantic.spacing.component.md}",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md. Removed in 3.0."
+          }
         }
       }
     },

@@ -133,7 +133,7 @@ const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
   gap: ${spacing.layout.xs};
   width: 100%;
   font: ${tokens.component.button.sizes.medium.font};
-  padding: ${tokens.component.button.sizes.medium.padding};
+  padding: ${spacing.component.sm} ${spacing.component.lg};
   background-color: ${tokens.component.button.variants.secondary.backgroundColor};
   color: ${tokens.component.button.variants.secondary.textColor};
   border: none;
@@ -153,7 +153,7 @@ const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
 
   &:focus {
     outline: ${tokens.component.button.focus.outline};
-    outline-offset: ${tokens.component.button.focus.outlineOffset};
+    outline-offset: ${border.focusOffset};
   }
 `
 
@@ -184,7 +184,7 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
   align-items: center;
   width: 100%;
   font: ${tokens.component.button.sizes.medium.font};
-  padding: ${tokens.component.button.sizes.medium.padding};
+  padding: ${spacing.component.sm} ${spacing.component.lg};
   border: none;
   border-radius: ${tokens.component.button.primary.borderRadius};
   background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle'] : tokens.component.button.variants.naked.backgroundColor};
@@ -206,7 +206,7 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
 
   &:focus-visible {
     outline: ${tokens.component.button.focus.outline};
-    outline-offset: ${tokens.component.button.focus.outlineOffset};
+    outline-offset: ${border.focusOffset};
   }
 `
 

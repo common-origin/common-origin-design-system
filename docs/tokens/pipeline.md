@@ -151,7 +151,7 @@ The owner approved this direction and the migration plan below in [decision 0017
 
 1. **Snapshot** (done): `config/tokens.golden.json` is the resolved `tokens.json` from before the migration, minus `$ref`. `src/tokens/golden.test.ts` fails on any difference and lists each changed path. `npm run tokens:golden` rewrites it from the current build. It lives outside `src/tokens/` because the build reads every JSON file there.
 2. **Fix defects on v3 first** (done): remove `index.json` from `source`; delete dead transforms, formats, and the `styled-components` platform; drop `transforms` overrides so built-in groups run. Diff against the golden file — only the `$ref` keys should disappear.
-3. **Normalise the component tier** into tokens referencing semantic tokens. Diff: values must not change.
+3. **Normalise the component tier** into tokens referencing semantic tokens. Diff: values must not change. Component spacing tokens are retired, not converted ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). In progress: Button and IconButton done (3a); Chip (3b) and Input, ProgressBar, Badge and Separator (3c) to go. `src/tokens/componentTier.test.ts` checks the converted components.
 4. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
 5. **Upgrade to Style Dictionary 5** and port the config to hooks. Diff.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.

@@ -108,7 +108,6 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.primary.backgroundColor',
     'component.button.primary.textColor',
     'component.button.primary.borderRadius',
-    'component.button.primary.padding',
     'component.button.primary.font',
     // Hover/Active states (primary)
     'component.button.hover.backgroundColor',
@@ -118,7 +117,7 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.disabled.textColor',
     // Focus state
     'component.button.focus.outline',
-    'component.button.focus.outlineOffset',
+    'semantic.border.focusOffset',
     // Secondary variant
     'component.button.variants.secondary.backgroundColor',
     'component.button.variants.secondary.textColor',
@@ -155,12 +154,13 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.variants.danger.disabled.backgroundColor',
     'component.button.variants.danger.disabled.textColor',
     // Size variants
-    'component.button.sizes.small.padding',
     'component.button.sizes.small.font',
-    'component.button.sizes.medium.padding',
     'component.button.sizes.medium.font',
-    'component.button.sizes.large.padding',
     'component.button.sizes.large.font',
+    // Padding: semantic spacing, no component spacing tokens (decision 0022)
+    'semantic.spacing.component.sm',
+    'semantic.spacing.component.md',
+    'semantic.spacing.component.lg',
     // Spacing and motion
     'semantic.spacing.layout.xs',
     'semantic.motion.hover'
