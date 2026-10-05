@@ -361,6 +361,23 @@ describe('Alert', () => {
       expect(screen.getByRole('button', { name: 'Take Action' })).toBeInTheDocument()
     })
 
+    it('sets several actions side by side, sm apart, wrapping when there is no room', () => {
+      renderAlert({
+        action: (
+          <>
+            <Button onClick={() => {}}>Save</Button>
+            <Button onClick={() => {}}>Discard</Button>
+          </>
+        )
+      })
+      const save = screen.getByRole('button', { name: 'Save' })
+      const actions = window.getComputedStyle(save.parentElement as HTMLElement)
+      expect(screen.getByRole('button', { name: 'Discard' }).parentElement).toBe(save.parentElement)
+      expect(actions.display).toBe('flex')
+      expect(actions.gap).toBe(tokens.semantic.spacing.layout.sm)
+      expect(actions.flexWrap).toBe('wrap')
+    })
+
     it('renders both action and dismiss button', () => {
       renderAlert({
         dismissible: true,
