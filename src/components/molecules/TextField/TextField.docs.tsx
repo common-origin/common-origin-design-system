@@ -167,7 +167,10 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
     
-    // Opacity
+    // Opacity,
+    // Input padding and focus offset, from the semantic tier (decision 0022)
+    'semantic.spacing.component.lg',
+    'semantic.border.focusOffset',
   ],
 
   examples: [

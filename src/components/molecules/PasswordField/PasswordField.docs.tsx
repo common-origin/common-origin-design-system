@@ -170,6 +170,9 @@ export const passwordFieldDocs: ComponentDocumentation = {
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
+    // Input padding and focus offset, from the semantic tier (decision 0022)
+    'semantic.spacing.component.lg',
+    'semantic.border.focusOffset',
   ],
 
   examples: [

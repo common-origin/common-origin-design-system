@@ -32,10 +32,19 @@ describe('component tier (decisions 0014 and 0022)', () => {
     expect(problems).toEqual([])
   })
 
-  it('never references base tokens', () => {
+  // The only exception: deprecated aliases kept until 3.0 point at the component token they
+  // alias (Button's `emphasis` variant points at `accent`, decision 0016)
+  it('references only semantic tokens', () => {
     const problems = converted
-      .filter(({ node }) => typeof node === 'object' && String(node.value).includes('{base.'))
-      .map(({ path, node }) => `${path}: ${(node as Node).value}`)
+      .filter(({ node }) => typeof node === 'object')
+      .flatMap(({ path, node }) => {
+        const { value, description } = node as Node
+        const refs = [...String(value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
+        const alias = String(description).includes('Alias kept until 3.0')
+        return refs
+          .filter((ref) => !ref.startsWith('semantic.') && !(alias && ref.startsWith('component.')))
+          .map((ref) => `${path}: {${ref}}`)
+      })
     expect(problems).toEqual([])
   })
 })
