@@ -32,33 +32,36 @@ describe('component tier (decisions 0014 and 0022)', () => {
     expect(problems).toEqual([])
   })
 
-  // The only exception: deprecated aliases kept until 3.0 point at the component token they
-  // alias (Button's `emphasis` variant points at `accent`, decision 0016)
+  // The only exception: Button's deprecated `emphasis` variant, kept until 3.0, aliases the
+  // matching `accent` token (decision 0016). Matched by exact path, so no other token can opt out.
+  const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
   it('references only semantic tokens', () => {
     const problems = converted
       .filter(({ node }) => typeof node === 'object')
       .flatMap(({ path, node }) => {
-        const { value, description } = node as Node
-        const refs = [...String(value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
-        const alias = String(description).includes('Alias kept until 3.0')
+        const refs = [...String((node as Node).value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
+        const aliasTarget = path.match(ALIAS)?.[1]
         return refs
-          .filter((ref) => !ref.startsWith('semantic.') && !(alias && ref.startsWith('component.')))
+          .filter((ref) => !ref.startsWith('semantic.') && ref !== `component.button.variants.accent.${aliasTarget}`)
           .map((ref) => `${path}: {${ref}}`)
       })
     expect(problems).toEqual([])
   })
 })
 
-// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Two
-// kinds are deliberately still read, and their descriptions say so: aliases kept working until
-// 3.0 (such as Button's `emphasis` variant, decision 0016), and off-grid values with no semantic
-// step that wait for #129.
-const STILL_READ = /Alias kept until 3\.0|#129/
+// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Only
+// these are deliberately still read, listed by exact path: Button's `emphasis` aliases (kept until
+// 3.0, decision 0016) and the off-grid paddings with no semantic step that wait for #129.
+const STILL_READ = [
+  /^component\.button\.variants\.emphasis\./,
+  /^component\.chip\.sizes\.(small|medium)\.padding$/,
+  /^component\.input\.default\.paddingY$/,
+]
 
 describe('retired component tokens are not read', () => {
   const retired = leaves((source as unknown as { component: Node }).component, ['component'])
     .filter(({ node }) => typeof node === 'object' && String(node.description).startsWith('Deprecated'))
-    .filter(({ node }) => !STILL_READ.test(String((node as Node).description)))
+    .filter(({ path }) => !STILL_READ.some((pattern) => pattern.test(path)))
     .map(({ path }) => path.replace(/^component\./, ''))
 
   it('finds the retired tokens', () => {
