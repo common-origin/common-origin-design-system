@@ -95,16 +95,38 @@ export const iconButtonDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.border.width.thin',
-    'component.iconButton.primary.backgroundColor - Primary variant background color and visual hierarchy',
-    'component.iconButton.secondary.backgroundColor - Secondary variant styling for supporting actions',
-    'component.iconButton.naked.backgroundColor - Minimal variant with transparent background styling',
-    'component.iconButton.sizes.small.minWidth - Small size variant dimensions and touch targets',
-    'component.iconButton.sizes.medium.minWidth - Medium size variant optimal for most interfaces',
-    'component.iconButton.sizes.large.minWidth - Large size variant for prominent actions and accessibility',
-    'component.iconButton.hover.backgroundColor - Interactive hover state visual feedback',
-    'component.iconButton.focus.outline - Keyboard focus indicator styling and visibility',
-    'semantic.motion.transition.normal - Smooth state transitions and user feedback timing'
+    // Fill per variant and state
+    'component.iconButton.primary.backgroundColor',
+    'component.iconButton.hover.backgroundColor',
+    'component.iconButton.active.backgroundColor',
+    'component.iconButton.disabled.backgroundColor',
+    'component.iconButton.variants.secondary.backgroundColor',
+    'component.iconButton.variants.secondary.hover.backgroundColor',
+    'component.iconButton.variants.naked.backgroundColor',
+    'component.iconButton.variants.naked.hover.backgroundColor',
+    // Icon colour, shared with Button
+    'component.button.primary.textColor',
+    'component.button.variants.secondary.textColor',
+    'component.button.variants.naked.textColor',
+    'component.button.disabled.textColor',
+    'component.button.variants.secondary.disabled.textColor',
+    'component.button.variants.naked.disabled.textColor',
+    // Shape and size
+    'component.iconButton.primary.borderRadius',
+    'component.iconButton.sizes.small.minWidth',
+    'component.iconButton.sizes.small.minHeight',
+    'component.iconButton.sizes.medium.minWidth',
+    'component.iconButton.sizes.medium.minHeight',
+    'component.iconButton.sizes.large.minWidth',
+    'component.iconButton.sizes.large.minHeight',
+    // Padding: semantic spacing, no component spacing tokens (decision 0022)
+    'semantic.spacing.component.xs',
+    'semantic.spacing.component.sm',
+    'semantic.spacing.component.md',
+    // Focus and motion
+    'component.iconButton.focus.outline',
+    'semantic.border.focusOffset',
+    'semantic.motion.transition.normal'
   ],
 
   examples: [
