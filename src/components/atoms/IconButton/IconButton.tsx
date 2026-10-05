@@ -3,7 +3,14 @@ import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { motion }, component: { iconButton, button } } = tokens
+const { semantic: { motion, border, spacing }, component: { iconButton, button } } = tokens
+
+// Padding comes from the semantic spacing scale: no component spacing tokens (decision 0022)
+const padding = {
+  small: spacing.component.xs,
+  medium: spacing.component.sm,
+  large: spacing.component.md,
+} as const
 
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant: 'primary' | 'secondary' | 'naked'
@@ -54,9 +61,9 @@ const IconButtonStyled = styled.button.withConfig({
   border-radius: ${iconButton.primary.borderRadius};
   transition: ${motion.transition.normal};
   box-sizing: border-box;
-  display: ${iconButton.primary.display};
-  justify-content: ${iconButton.primary.justifyContent};
-  align-items: ${iconButton.primary.alignItems};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: max-content;
   cursor: pointer;
   position: relative;
@@ -64,7 +71,7 @@ const IconButtonStyled = styled.button.withConfig({
   /* Size-specific dimensions from component tokens */
   min-width: ${({ $size }) => iconButton.sizes[$size].minWidth};
   min-height: ${({ $size }) => iconButton.sizes[$size].minHeight};
-  padding: ${({ $size }) => iconButton.sizes[$size].padding};
+  padding: ${({ $size }) => padding[$size]};
 
   &:hover:not(:disabled) {
     background-color: ${({ $variant }) => {
@@ -87,7 +94,7 @@ const IconButtonStyled = styled.button.withConfig({
 
   &:focus {
     outline: ${iconButton.focus.outline};
-    outline-offset: ${iconButton.focus.outlineOffset};
+    outline-offset: ${border.focusOffset};
   }
 
   &:disabled {

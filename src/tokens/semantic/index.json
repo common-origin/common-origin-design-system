@@ -642,6 +642,16 @@
           "value": "{base.color.neutral.900}",
           "type": "color"
         },
+        "emphasis-hover": {
+          "value": "{base.color.neutral.800}",
+          "type": "color",
+          "description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022."
+        },
+        "emphasis-active": {
+          "value": "{base.color.neutral.1000}",
+          "type": "color",
+          "description": "Fill of a pressed emphasis control. Approved under decision 0022."
+        },
         "surface": {
           "value": "{base.color.neutral.200}",
           "type": "color"
@@ -680,6 +690,16 @@
           "value": "{base.color.red.900}",
           "type": "color"
         },
+        "error-hover": {
+          "value": "{base.color.red.1000}",
+          "type": "color",
+          "description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022."
+        },
+        "error-active": {
+          "value": "{base.color.red.1100}",
+          "type": "color",
+          "description": "Fill of a pressed error control. Approved under decision 0022."
+        },
         "error-subtle": {
           "value": "{base.color.red.100}",
           "type": "color"
@@ -703,6 +723,26 @@
         "disabled": {
           "value": "{base.color.neutral.300}",
           "type": "color"
+        },
+        "neutral": {
+          "value": "{base.color.neutral.300}",
+          "type": "color",
+          "description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022."
+        },
+        "neutral-hover": {
+          "value": "{base.color.neutral.400}",
+          "type": "color",
+          "description": "Fill of a hovered neutral control. Approved under decision 0022."
+        },
+        "neutral-active": {
+          "value": "{base.color.neutral.500}",
+          "type": "color",
+          "description": "Fill of a pressed neutral control. Approved under decision 0022."
+        },
+        "transparent": {
+          "value": "{base.color.transparent}",
+          "type": "color",
+          "description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022."
         },
         "progressTrack": {
           "value": "{base.color.neutral.300}",
