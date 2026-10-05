@@ -25,6 +25,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
 | [0020](0020-tabbar-single-variant.md) | TabBar has one variant, underline, with the light-blue selected treatment; `default` and `pills` are deprecated | Accepted | 2026-10-01 |
 | [0021](0021-alert-action-below-content.md) | Alert's action follows the content, left-aligned with it; the dismiss button stays top right | Accepted | 2026-10-03 |
+| [0022](0022-no-component-spacing-tokens.md) | No component spacing tokens; every new token needs the owner's sign-off with a reason | Accepted | 2026-10-05 |
 
 ## Template
 

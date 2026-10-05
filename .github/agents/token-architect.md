@@ -60,6 +60,8 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` Â
 
 ## Rules for every token you add
 
+**Sign-off first (decision 0022).** Don't create any token, in any tier, until the owner has approved it. Propose it with its tier, value, what it's for, and why no existing token does the job, then stop and report. **No component spacing tokens** (padding, margin, gap): spacing comes from the semantic scales.
+
 1. **Real token, Style Dictionary 5-ready**: a leaf with `value` and `type` (DTCG `$value`/`$type` once migrated). Never add a plain string to the component tier.
 2. **Right tier and direction**: base holds raw values; semantic references base; component references **semantic** (add the semantic token first if it's missing).
 3. **Named for use, not value**: `color.background.default`, not `color.offWhite`.
