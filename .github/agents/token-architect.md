@@ -23,10 +23,10 @@ For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the re
 
 ## What you must know about this repository
 
-- **Style Dictionary 3.9.2**, run via `npm run build:tokens`. Four platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only), `styled-components` → `lib/tokens.js` (unused).
-- Every platform sets `transforms`, which in v3 **replaces** `transformGroup`, so no built-in transforms run. Of the custom transforms, only `nameFormatter` changes anything. The calculation and shadow transforms match some tokens but have nothing to transform; `pxToRemConverter` and `baseToken` match **no** tokens (they filter on a `sizing` type that doesn't exist).
+- **Style Dictionary 3.9.2**, run via `npm run build:tokens`. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
+- Each platform uses the built-in `js` or `css` transform group, with no custom transforms. The groups' value transforms match on category (the first path segment, `base`/`semantic`/`component`), so in practice no value is transformed: the build resolves references and writes files.
 - Three tiers: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (**mostly plain strings, not tokens**, often referencing base directly).
-- `src/tokens/index.json` is a `$ref` index caught by the source glob; its `$ref` keys leak into the published `tokens.json` and types.
+- `source` lists the three tier folders explicitly (base, component, semantic, in that order so output order is stable). Don't add other JSON under `src/tokens/`: the golden file lives in `config/`.
 - Components interpolate **resolved values** from `tokens.json`; there are no CSS variables at component level. Changing a token's value changes every consumer's UI.
 
 The full defect list is in `docs/tokens/pipeline.md` §2. Cite defects by number.

@@ -15,7 +15,6 @@ export default tseslint.config(
       '.rollup.cache/**',
       'next-env.d.ts',
       'src/styles/tokens.d.ts',
-      'lib/tokens.js',
     ],
   },
   js.configs.recommended,
