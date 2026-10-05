@@ -9,7 +9,8 @@ Read `docs/tokens/pipeline.md` first: it is the source of truth for the build (n
 
 ## Steps
 
-1. **Check first.** Search `src/styles/tokens.json` for an existing token with the same role and value. Components use semantic tokens by default. Component tokens are for departures, families and state matrices, and reference semantic tokens, never base.
+1. **Check first.** Search `src/styles/tokens.json` for an existing token with the same role and value. Components use semantic tokens by default. Component tokens are for departures, families and state matrices, and reference semantic tokens, never base. **Never a component spacing token** (padding, margin, gap): spacing comes from the semantic scales (decision 0022).
+   **Get sign-off before creating any token** (decision 0022): ask the owner in chat with the token's tier, value, what it's for, and why no existing token does the job, and wait for a yes. A subagent stops and reports the proposal instead.
 2. **Edit the source** in `src/tokens/{base,semantic,component}/index.json`. Every new token is a real leaf (`value`, `type`) with a `description` saying when to use it. Don't use raw `px` in semantic or component tokens; reference a dimension token. Snap off-grid values to the spacing scale.
 3. **Build and diff against the golden file** (`config/tokens.golden.json`, decision 0017):
    ```bash
