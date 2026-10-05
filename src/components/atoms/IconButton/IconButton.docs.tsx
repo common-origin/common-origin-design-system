@@ -123,9 +123,10 @@ export const iconButtonDocs: ComponentDocumentation = {
     'semantic.spacing.component.xs',
     'semantic.spacing.component.sm',
     'semantic.spacing.component.md',
-    // Focus and motion
+    // Focus, high-contrast border and motion
     'component.iconButton.focus.outline',
     'semantic.border.focusOffset',
+    'semantic.border.width.thin',
     'semantic.motion.transition.normal'
   ],
 
