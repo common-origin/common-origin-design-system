@@ -69,6 +69,9 @@ jobs:
         run: npm run test:coverage
 
       - name: 📊 Upload coverage reports
+        # A coverage upload must never block a merge: the tests above are the gate. v4 can
+        # crash on a Codecov connection error despite fail_ci_if_error: false (#124).
+        continue-on-error: true
         uses: codecov/codecov-action@v4
         with:
           file: ./coverage/lcov.info
