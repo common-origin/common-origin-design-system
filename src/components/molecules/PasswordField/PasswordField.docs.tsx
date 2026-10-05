@@ -131,11 +131,11 @@ export const passwordFieldDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.field.gap',
+    'semantic.spacing.layout.sm',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',
-    'component.field.label.gap',
+    'semantic.spacing.layout.xs',
     'component.field.requiredIndicator.color',
     'component.field.requiredIndicator.fontWeight',
     'component.field.helperText.typography',
@@ -166,8 +166,6 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.iconButton.variants.naked.hover.backgroundColor',
     
     // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
     'semantic.spacing.layout.md',
     // Motion
     'semantic.motion.duration.normal',
@@ -367,7 +365,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
       {
         name: 'PasswordField Container',
         description: 'Root flex container organizing label, input wrapper, and helper text vertically with consistent spacing',
-        tokens: ['component.field.gap'],
+        tokens: ['semantic.spacing.layout.sm'],
       },
       {
         name: 'Label',
@@ -378,7 +376,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.field.label.colorDisabled',
           'component.field.requiredIndicator.color',
           'component.field.requiredIndicator.fontWeight',
-          'component.field.label.gap',
+          'semantic.spacing.layout.xs',
         ],
       },
       {

@@ -4,6 +4,7 @@ import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
 const { separator: separatorTokens } = tokens.component
+// Margins come from the semantic separator spacing: no component spacing tokens (decision 0022)
 const { separator: separatorSpacing } = tokens.semantic.spacing
 
 export interface DividerProps {
@@ -60,7 +61,7 @@ const StyledDivider = styled.div.withConfig({
   ${({ $size = 'large', $variant = 'default', $orientation = 'horizontal' }) => {
     if ($variant === 'minimal' && $orientation === 'horizontal') {
       // Minimal variant always uses its predefined spacing for horizontal
-      return `margin: ${separatorTokens.variants.minimal.margin};`
+      return `margin: ${separatorSpacing.md} 0;`
     }
     
     if ($orientation === 'vertical') {
@@ -81,14 +82,14 @@ const StyledDivider = styled.div.withConfig({
     // Horizontal orientation uses vertical margins (top/bottom)
     switch ($size) {
       case 'small':
-        return `margin: ${separatorTokens.sizes.small.margin};`
+        return `margin: ${separatorSpacing.sm} 0;`
       case 'medium':
-        return `margin: ${separatorTokens.sizes.medium.margin};`
+        return `margin: ${separatorSpacing.md} 0;`
       case 'xlarge':
-        return `margin: ${separatorTokens.sizes.xlarge.margin};`
+        return `margin: ${separatorSpacing.xl} 0;`
       case 'large':
       default:
-        return `margin: ${separatorTokens.sizes.large.margin};`
+        return `margin: ${separatorSpacing.lg} 0;`
     }
   }}
 `

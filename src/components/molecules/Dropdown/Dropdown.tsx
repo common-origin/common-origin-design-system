@@ -6,6 +6,10 @@ import { Typography } from '../../atoms/Typography'
 import { reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic: { color, border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
+
+// Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
+// The 11px vertical padding is off-grid and keeps its deprecated token until #129.
+const controlPaddingX = tokens.semantic.spacing.component.lg
 const { duration, easing } = motion
 
 interface DropdownOption {
@@ -40,7 +44,7 @@ const DropdownTrigger = styled.button.withConfig({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${input.default.paddingY} ${input.default.paddingX};
+  padding: ${input.default.paddingY} ${controlPaddingX};
   background-color: ${input.default.backgroundColor};
   border: ${input.default.borderWidth} solid ${({ $hasError }) =>
     $hasError ? input.error.borderColor : input.default.borderColor
@@ -63,14 +67,14 @@ const DropdownTrigger = styled.button.withConfig({
       $hasError ? input.error.focus.borderColor : input.focus.borderColor
     };
     outline: ${input.focus.outline};
-    outline-offset: ${input.focus.outlineOffset};
+    outline-offset: ${border.focusOffset};
   }
   
   &:disabled {
     background-color: ${input.disabled.backgroundColor};
     color: ${input.disabled.textColor};
     border-color: ${input.disabled.borderColor};
-    cursor: ${input.disabled.cursor};
+    cursor: not-allowed;
   }
   
   ${({ $isOpen, $hasError }) => $isOpen && `
@@ -126,7 +130,7 @@ const DropdownOption = styled.button.withConfig({
 })<{ $isSelected: boolean; $isFocused: boolean }>`
   width: 100%;
   display: block;
-  padding: ${input.default.paddingY} ${input.default.paddingX};
+  padding: ${input.default.paddingY} ${controlPaddingX};
   background-color: ${({ $isSelected, $isFocused }) => {
     if ($isFocused) return color.background.surface
     if ($isSelected) return color.background.surface
@@ -160,7 +164,7 @@ const StyledHelperText = styled.div<{ $hasError?: boolean }>`
       ? field.helperText.colorError
       : field.helperText.color
   };
-  margin-top: ${field.gap};
+  margin-top: ${spacing.sm};
 `
 
 
@@ -286,7 +290,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownContainer ref={dropdownRef} className={className} data-testid={dataTestId}>
       {label && (
-        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: field.gap }}>
+        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: spacing.sm }}>
           <Typography variant="label">{label}</Typography>
         </label>
       )}

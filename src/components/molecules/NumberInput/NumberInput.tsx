@@ -5,6 +5,8 @@ import { IconButton } from '../../atoms/IconButton/IconButton'
 import tokens from '@/styles/tokens.json'
 
 const { field } = tokens.component
+// Gaps come from the semantic spacing scale: no component spacing tokens (decision 0022)
+const { layout: gap } = tokens.semantic.spacing
 
 /**
  * Props for the NumberInput component
@@ -83,14 +85,14 @@ export interface NumberInputProps extends Omit<InputHTMLAttributes<HTMLInputElem
 const StyledFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${field.gap};
+  gap: ${gap.sm};
   width: 100%;
 `
 
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
-  gap: ${field.label.gap};
+  gap: ${gap.xs};
   font: ${field.label.typography};
   color: ${field.label.color};
 

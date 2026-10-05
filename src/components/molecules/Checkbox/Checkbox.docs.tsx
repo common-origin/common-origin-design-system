@@ -214,16 +214,14 @@ export const checkboxDocs: ComponentDocumentation = {
     'component.input.hover.borderColor',
     'component.input.focus.borderColor',
     'component.input.focus.outline',
-    'component.input.focus.outlineOffset',
+    'semantic.border.focusOffset',
     'component.input.error.borderColor',
     'component.input.error.focus.borderColor',
     'component.input.error.focus.outline',
-    'component.input.error.focus.outlineOffset',
     'component.input.error.hover.borderColor',
     'component.input.disabled.backgroundColor',
     'component.input.disabled.textColor',
     'component.input.disabled.borderColor',
-    'component.input.disabled.cursor',
 
     // Semantic tokens
     'semantic.color.background.interactive',

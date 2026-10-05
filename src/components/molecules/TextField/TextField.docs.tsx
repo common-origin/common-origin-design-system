@@ -125,11 +125,11 @@ export const textFieldDocs: ComponentDocumentation = {
 
   tokens: [
     'component.input.textarea.minHeight',
-    'component.field.gap',
+    'semantic.spacing.layout.sm',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',
-    'component.field.label.gap',
+    'semantic.spacing.layout.xs',
     'component.field.requiredIndicator.color',
     'component.field.requiredIndicator.fontWeight',
     'component.field.helperText.typography',
@@ -157,9 +157,7 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.color.border.error',
     
     // Spacing
-    'semantic.spacing.layout.sm',
     'semantic.spacing.layout.md',
-    'semantic.spacing.layout.xs',
     
     // Border
     'semantic.border.width.thin',
@@ -381,7 +379,7 @@ export const textFieldDocs: ComponentDocumentation = {
       {
         name: 'Field Container',
         description: 'Root wrapper providing vertical spacing between label, input, and help text',
-        tokens: ['component.field.gap'],
+        tokens: ['semantic.spacing.layout.sm'],
       },
       {
         name: 'Label',
@@ -390,7 +388,7 @@ export const textFieldDocs: ComponentDocumentation = {
           'component.field.label.typography',
           'component.field.label.color',
           'component.field.label.colorDisabled',
-          'component.field.label.gap',
+          'semantic.spacing.layout.xs',
         ],
       },
       {

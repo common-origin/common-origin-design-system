@@ -86,7 +86,7 @@ export const badgeDocs: ComponentDocumentation = {
     'component.badge.dot.size',
     'component.badge.count.minWidth',
     'component.badge.count.height',
-    'component.badge.count.paddingX',
+    'semantic.spacing.component.xs',
     'component.badge.count.lineHeight',
     'component.badge.ring.width',
     
@@ -317,7 +317,7 @@ export const badgeDocs: ComponentDocumentation = {
           'component.badge.dot.size',
           'component.badge.count.minWidth',
           'component.badge.count.height',
-          'component.badge.count.paddingX',
+          'semantic.spacing.component.xs',
           'component.badge.count.lineHeight',
           'component.badge.ring.width',
           'semantic.typography.caption'

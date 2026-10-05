@@ -230,10 +230,10 @@ The NumberInput component uses the following design tokens from the Common Origi
 - `component.input.placeholder.*` - Placeholder text styling
 
 ### Field (label, required indicator, helper text)
-- `component.field.gap` - Spacing between label, input and helper text
+- `semantic.spacing.layout.sm` - Spacing between label, input and helper text
 - `component.field.label.typography` - Label text style
 - `component.field.label.color` / `component.field.label.colorDisabled` - Label colour, and when disabled
-- `component.field.label.gap` - Spacing between the label and the required indicator
+- `semantic.spacing.layout.xs` - Spacing between the label and the required indicator
 - `component.field.requiredIndicator.color` / `component.field.requiredIndicator.fontWeight` - Required indicator
 - `component.field.helperText.typography` - Helper text style (caption)
 - `component.field.helperText.color` / `component.field.helperText.colorError` - Helper text colour, and for errors

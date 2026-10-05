@@ -83,13 +83,13 @@ export const dropdownDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.size.menu.maxHeight',
-    'component.field.gap',
+    'semantic.spacing.layout.sm',
     'component.field.helperText.typography',
     'component.field.helperText.color',
     'component.field.helperText.colorError',
     // Input component tokens
     'component.input.default.paddingY',
-    'component.input.default.paddingX',
+    'semantic.spacing.component.lg',
     'component.input.default.backgroundColor',
     'component.input.default.borderWidth',
     'component.input.default.borderColor',
@@ -99,17 +99,15 @@ export const dropdownDocs: ComponentDocumentation = {
     'component.input.hover.borderColor',
     'component.input.focus.borderColor',
     'component.input.focus.outline',
-    'component.input.focus.outlineOffset',
+    'semantic.border.focusOffset',
     'component.input.disabled.backgroundColor',
     'component.input.disabled.textColor',
     'component.input.disabled.borderColor',
-    'component.input.disabled.cursor',
     'component.input.error.borderColor',
     'component.input.error.hover.borderColor',
     'component.input.error.focus.borderColor',
     
     // Base tokens
-    'semantic.spacing.layout.sm',
     'semantic.spacing.layout.xs',
     'semantic.elevation.floating',
     'semantic.zIndex.dropdown',

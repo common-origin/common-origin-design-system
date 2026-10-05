@@ -147,7 +147,7 @@ const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   ${props => props.$isFocused && `
     border-color: ${component.input.focus.borderColor};
     outline: ${component.input.focus.outline};
-    outline-offset: ${component.input.focus.outlineOffset};
+    outline-offset: ${semantic.border.focusOffset};
   `}
   
   ${props => props.$disabled && `

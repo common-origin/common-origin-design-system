@@ -8,8 +8,7 @@ type Node = { [key: string]: Node | string }
 type Leaf = { path: string; node: Node | string }
 
 // The component tier, normalised in step 3 of the token pipeline migration (decision 0017, #24)
-// under decisions 0014 and 0022. Components still to convert are listed until 3b and 3c land.
-const NOT_YET_CONVERTED = ['input', 'progressBar', 'badge', 'separator']
+// under decisions 0014 and 0022
 
 function leaves(node: Node, path: string[] = []): Leaf[] {
   return Object.entries(node).flatMap(([key, child]) =>
@@ -19,9 +18,7 @@ function leaves(node: Node, path: string[] = []): Leaf[] {
   )
 }
 
-const components = Object.entries((source as unknown as { component: Node }).component).filter(
-  ([name]) => !NOT_YET_CONVERTED.includes(name)
-)
+const components = Object.entries((source as unknown as { component: Node }).component)
 const converted = components.flatMap(([name, node]) =>
   leaves(node as Node, ['component', name])
 )
@@ -59,6 +56,8 @@ describe('retired component tokens are not read', () => {
     expect(retired.length).toBeGreaterThan(0)
   })
 
+  // Matches dotted paths in source text, so a read through a destructured or aliased object
+  // (`const { count } = badge`, then `count.paddingX`) isn't caught. Read tokens by full path.
   it('is not referenced by components, patterns or the docs site', () => {
     // Match the path after its component group (`button.sizes.small.padding`) or in full,
     // excluding tests and the token sources themselves. No `\b`: macOS's regex lacks it.

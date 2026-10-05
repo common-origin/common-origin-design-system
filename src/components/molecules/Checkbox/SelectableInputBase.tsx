@@ -68,7 +68,7 @@ export const StyledCheckbox = styled.span.withConfig({
   /* Focus state */
   ${HiddenCheckboxInput}:focus-visible + & {
     outline: ${tokens.component.input.focus.outline};
-    outline-offset: ${tokens.component.input.focus.outlineOffset};
+    outline-offset: ${tokens.semantic.border.focusOffset};
     border-color: ${(props) =>
       props.$state === 'error'
         ? tokens.component.input.error.focus.borderColor

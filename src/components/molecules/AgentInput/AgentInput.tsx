@@ -90,7 +90,7 @@ const InputShell = styled.div`
   align-items: center;
   gap: ${semantic.spacing.layout.sm};
   width: 100%;
-  padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm} ${semantic.spacing.layout.xs} ${component.input.default.paddingX};
+  padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm} ${semantic.spacing.layout.xs} ${semantic.spacing.component.lg};
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${semantic.border.radius['3xl']};
@@ -100,7 +100,7 @@ const InputShell = styled.div`
   &:focus-within {
     border-color: ${component.input.focus.borderColor};
     outline: ${component.input.focus.outline};
-    outline-offset: ${component.input.focus.outlineOffset};
+    outline-offset: ${semantic.border.focusOffset};
   }
 
   &[data-disabled='true'] {

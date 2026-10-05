@@ -335,12 +335,22 @@
           "1": {
             "value": "{base.size.1}",
             "type": "size",
-            "description": "0.25rem (4px): TabBar scrollbar height (via component tokens)."
+            "description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens)."
+          },
+          "2": {
+            "value": "{base.size.2}",
+            "type": "size",
+            "description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022."
+          },
+          "4": {
+            "value": "{base.size.4}",
+            "type": "size",
+            "description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022."
           },
           "5": {
             "value": "{base.size.5}",
             "type": "size",
-            "description": "1.25rem (20px): checkbox box; TabBar count badge (via component tokens); small label height (via size.label.small)."
+            "description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small)."
           },
           "6": {
             "value": "{base.size.6}",
