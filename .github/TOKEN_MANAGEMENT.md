@@ -14,7 +14,7 @@ There is no ThemeProvider, runtime token validation or dark-mode switching. Comp
 
 GridSystem is the one existing exception: its public `gap*` props take base spacing keys, so it reads `tokens.base.spacing` with the rule disabled on that line. Changing the prop types is a breaking change, tracked in [#34](https://github.com/common-origin/common-origin-design-system/issues/34); don't treat it as routine cleanup.
 
-The source files are DTCG (`$value`, `$type`, `$description`), and every component-tier entry is a real token that references semantic tokens ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)).
+The source files are DTCG (`$value`, `$type`, `$description`), and every component-tier entry is a real token that references semantic tokens ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)). The one exception: Button's deprecated `emphasis` tokens alias the matching `accent` tokens until 3.0 (decision 0016).
 
 ## Adding or changing a token
 

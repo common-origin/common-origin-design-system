@@ -25,14 +25,30 @@ function aliases(node: Node, path: string[] = [], out: [string, string][] = []) 
   return out
 }
 
+// The DTCG types this source uses (decision 0017, #24 step 5)
+const DTCG_TYPES = new Set([
+  'color', 'dimension', 'number', 'fontFamily', 'fontWeight', 'duration', 'cubicBezier',
+  'strokeStyle', 'shadow', 'border', 'transition', 'typography',
+])
+// `other` is not a DTCG type. Only these deprecated layout and behaviour tokens use it, until 3.0.
+const OTHER = new Set([
+  'component.iconButton.primary.display',
+  'component.iconButton.primary.alignItems',
+  'component.iconButton.primary.justifyContent',
+  'component.input.disabled.cursor',
+])
+
 const sources = [base, semantic, component] as unknown as Node[]
 const typeOf = new Map(sources.flatMap((source) => [...types(source)]))
 
 // Step 5 of the token pipeline migration (decision 0017, #24): a token that only references
 // another token (an alias) has the same DTCG type as its target
 describe('DTCG types', () => {
-  it('give every token a type', () => {
-    expect([...typeOf].filter(([, type]) => type === 'undefined').map(([path]) => path)).toEqual([])
+  it('give every token a supported DTCG type', () => {
+    const problems = [...typeOf]
+      .filter(([path, type]) => !DTCG_TYPES.has(type) && !(type === 'other' && OTHER.has(path)))
+      .map(([path, type]) => `${path}: ${type}`)
+    expect(problems).toEqual([])
   })
 
   it('match between an alias and the token it references', () => {
