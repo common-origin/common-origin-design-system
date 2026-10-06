@@ -41,7 +41,8 @@ const OTHER = new Set([
 function descriptions(node: Node, path: string[] = [], out: [string, string][] = []) {
   for (const [key, child] of Object.entries(node)) {
     if (key.startsWith('$') || typeof child !== 'object') continue
-    if ('$value' in child) out.push([[...path, key].join('.'), String(child.$description ?? '')])
+    // A DTCG description is text: anything else counts as missing
+    if ('$value' in child) out.push([[...path, key].join('.'), typeof child.$description === 'string' ? child.$description : ''])
     else descriptions(child, [...path, key], out)
   }
   return out
