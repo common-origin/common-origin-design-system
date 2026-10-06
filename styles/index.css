@@ -14,13 +14,13 @@ html {
 html, body {
   padding: 0;
   margin: 0;
-  font-family: var(--base-font-family-body);
+  font-family: var(--co-base-font-family-body);
 }
 
 /* Page background is the background.default token (decision 0006). */
 body {
-  background: var(--semantic-color-background-default);
-  color: var(--semantic-color-text-default);
+  background: var(--co-semantic-color-background-default);
+  color: var(--co-semantic-color-text-default);
 }
 
 a {

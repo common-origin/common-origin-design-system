@@ -71,6 +71,9 @@ export default [
     peerDepsExternal(),
     json(),
     copyFiles(['src/styles/icons.json', 'src/styles/tokens.json'], 'dist/styles'),
+    // CSS custom properties, published as @common-origin/design-system/tokens.css (decision 0017),
+    // with the declaration that lets the side-effect import type-check
+    copyFiles(['src/styles/tokens.css', 'src/styles/tokens.css.d.ts'], 'dist'),
     resolve({
       browser: true,
       preferBuiltins: false,

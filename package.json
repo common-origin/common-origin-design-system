@@ -28,12 +28,19 @@
       "types": "./dist/tokens/tokens.d.ts",
       "import": "./dist/tokens/index.esm.js",
       "require": "./dist/tokens/index.js"
+    },
+    "./tokens.css": {
+      "types": "./dist/tokens.css.d.ts",
+      "default": "./dist/tokens.css"
     }
   },
   "typesVersions": {
     "*": {
       "tokens": [
         "./dist/tokens/tokens.d.ts"
+      ],
+      "tokens.css": [
+        "./dist/tokens.css.d.ts"
       ]
     }
   },

@@ -63,10 +63,13 @@ const sd = new StyleDictionary({
       buildPath: 'src/styles/',
       files: [{ format: 'json/nested', destination: 'tokens.json' }],
     },
+    // Published as @common-origin/design-system/tokens.css (decision 0017 §4). Every variable keeps
+    // its tier after the `co-` prefix (decision 0024), and references stay as var() chains.
     custom: {
       transforms: ['name/kebab'],
+      prefix: 'co',
       buildPath: 'src/styles/',
-      files: [{ format: 'css/variables', destination: 'tokens.css' }],
+      files: [{ format: 'css/variables', destination: 'tokens.css', options: { outputReferences: true } }],
     },
     typescript: {
       transforms: ['name/camel'],

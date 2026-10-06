@@ -30,6 +30,9 @@ tokensOnly.semantic.color.text.doesNotExist
 `
 
 const consumerSource = `
+// The CSS custom properties entry (decision 0017 §4). With noUncheckedSideEffectImports (the
+// TypeScript 6 default) a side-effect import must resolve, so the entry needs its own declaration.
+import '@common-origin/design-system/tokens.css'
 import {
   Box, Button, Icon, ResponsiveGrid, iconsData, tokens,
   type IconName, type Tokens, type TokensBase, type TokensComponent,
@@ -119,6 +122,7 @@ try {
           module: mode.module,
           moduleResolution: mode.moduleResolution,
           target: 'es2020',
+          noUncheckedSideEffectImports: true,
           types: [],
         },
         files: mode.defaultImport ? ['app.tsx', 'default-import.ts'] : ['app.tsx'],
