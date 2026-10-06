@@ -62,7 +62,7 @@ import '@common-origin/design-system/tokens.css'
 }
 ```
 
-Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. The components themselves still use the JS tokens ([0009](decisions/0009-styling-architecture.md)).
+Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Most semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. Six semantic tokens hold their own value instead (`elevation.inset`, `border.radius.none` and the four background overlays), so overriding a base variable doesn't change them. The components themselves still use the JS tokens ([0009](decisions/0009-styling-architecture.md)).
 
 ## Fonts
 
