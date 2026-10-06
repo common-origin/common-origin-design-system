@@ -419,19 +419,19 @@
       "separator": {
         "sm": {
           "$value": "{base.spacing.4}",
-          "$description": "1rem: space above and below a small Divider."
+          "$description": "1rem: space around a small Divider, above and below when horizontal, either side when vertical."
         },
         "md": {
           "$value": "{base.spacing.6}",
-          "$description": "1.5rem: space above and below a medium or minimal Divider."
+          "$description": "1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical."
         },
         "lg": {
           "$value": "{base.spacing.8}",
-          "$description": "2rem: space above and below a large Divider, the default."
+          "$description": "2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical."
         },
         "xl": {
           "$value": "{base.spacing.12}",
-          "$description": "3rem: space above and below an extra-large Divider, between major sections."
+          "$description": "3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical."
         }
       },
       "component": {
@@ -1064,7 +1064,7 @@
       },
       "breadcrumb": {
         "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
-        "$description": "Breadcrumb links: 0.75rem, weight 400."
+        "$description": "Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption."
       }
     },
     "motion": {

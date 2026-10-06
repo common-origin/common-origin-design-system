@@ -391,10 +391,10 @@
   --co-semantic-size-avatar-md: var(--co-base-size-10); /** 2.5rem (40px): the default avatar size. */
   --co-semantic-size-avatar-lg: var(--co-base-size-12); /** 3rem (48px): large avatar, in headers and cards. */
   --co-semantic-size-avatar-xl: var(--co-base-size-16); /** 4rem (64px): extra-large avatar, on profile pages. */
-  --co-semantic-spacing-separator-sm: var(--co-base-spacing-4); /** 1rem: space above and below a small Divider. */
-  --co-semantic-spacing-separator-md: var(--co-base-spacing-6); /** 1.5rem: space above and below a medium or minimal Divider. */
-  --co-semantic-spacing-separator-lg: var(--co-base-spacing-8); /** 2rem: space above and below a large Divider, the default. */
-  --co-semantic-spacing-separator-xl: var(--co-base-spacing-12); /** 3rem: space above and below an extra-large Divider, between major sections. */
+  --co-semantic-spacing-separator-sm: var(--co-base-spacing-4); /** 1rem: space around a small Divider, above and below when horizontal, either side when vertical. */
+  --co-semantic-spacing-separator-md: var(--co-base-spacing-6); /** 1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical. */
+  --co-semantic-spacing-separator-lg: var(--co-base-spacing-8); /** 2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical. */
+  --co-semantic-spacing-separator-xl: var(--co-base-spacing-12); /** 3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical. */
   --co-semantic-spacing-component-xs: var(--co-base-spacing-1); /** Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips. */
   --co-semantic-spacing-component-sm: var(--co-base-spacing-2); /** Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing. */
   --co-semantic-spacing-component-md: var(--co-base-spacing-3); /** Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding. */
@@ -741,7 +741,7 @@
   --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Medium Button label: 0.875rem, weight 500. Also tab labels. */
   --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Small Button label: 0.75rem, weight 500. */
   --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider. */
-  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb links: 0.75rem, weight 400. */
+  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption. */
   --co-component-button-primary-font: var(--co-semantic-typography-button1); /** Button label typography, the same as sizes.large.font. */
   --co-component-button-variants-emphasis-background-color: var(--co-component-button-variants-accent-background-color); /** Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-variants-emphasis-text-color: var(--co-component-button-variants-accent-text-color); /** Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */
