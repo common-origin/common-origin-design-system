@@ -58,7 +58,7 @@ Package components never import from `src/page-components/`, `src/patterns/` or 
 
 ## Development
 
-Requires Node 20 or later.
+Requires Node 22 or later to work on the repository: the token build uses Style Dictionary 5. The published package supports Node 20 or later.
 
 ```bash
 npm install

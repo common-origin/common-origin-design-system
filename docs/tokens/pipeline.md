@@ -80,7 +80,7 @@ In practice the build **resolves references and writes files**; no value is tran
 
 ## 3. Style Dictionary v4/v5 — what an expert needs to know
 
-Current release: **5.5.5** (ESM only, Node ≥ 22; this repo pins Node 22).
+This repo uses **5.6.0** (`^5.6.0`; ESM only, Node ≥ 22, and the repo pins Node 22).
 
 ### API
 ```js
