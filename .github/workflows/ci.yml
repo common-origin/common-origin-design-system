@@ -65,6 +65,19 @@ jobs:
       - name: 🏗️ Build tokens
         run: npm run build:tokens
 
+      # The generated token files are committed (decision 0017). The build is deterministic, so any
+      # difference here means a source change was committed without rebuilding.
+      # tokens.css and tokens.d.ts are in .gitignore, so first check all three are still tracked:
+      # a deleted file would be rebuilt as an untracked one, which git diff doesn't see.
+      - name: 🔍 Check generated token files are current
+        run: |
+          for file in src/styles/tokens.json src/styles/tokens.css src/styles/tokens.d.ts; do
+            git ls-files --error-unmatch "$file" > /dev/null 2>&1 \
+              || { echo "::error::$file is not committed. Run npm run build:tokens and commit it."; exit 1; }
+          done
+          git diff --exit-code -- src/styles/tokens.json src/styles/tokens.css src/styles/tokens.d.ts \
+            || { echo "::error::Generated token files are out of date. Run npm run build:tokens and commit src/styles/."; exit 1; }
+
       - name: 🧪 Run tests
         run: npm run test:coverage
 
