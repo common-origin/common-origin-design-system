@@ -65,7 +65,9 @@ export default [
         { src: 'src/styles/icons.json', dest: 'dist/styles' },
         { src: 'src/styles/tokens.json', dest: 'dist/styles' },
         // CSS custom properties, published as @common-origin/design-system/tokens.css (decision 0017)
-        { src: 'src/styles/tokens.css', dest: 'dist' }
+        { src: 'src/styles/tokens.css', dest: 'dist' },
+        // Its declaration, so the side-effect import type-checks
+        { src: 'src/styles/tokens.css.d.ts', dest: 'dist' }
       ]
     }),
     resolve({

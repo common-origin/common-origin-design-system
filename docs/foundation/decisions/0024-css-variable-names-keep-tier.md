@@ -22,7 +22,7 @@ The variable names are a published contract once they ship (P7).
 - `--co-base-color-neutral-900`
 - `--co-component-button-primary-background-color`
 
-The rest of 0017 §4 is unchanged: the file is importable as `@common-origin/design-system/tokens.css`, and semantic variables reference base variables through `outputReferences`.
+The rest of 0017 §4 is unchanged: the file is importable as `@common-origin/design-system/tokens.css`, and `outputReferences` keeps references as `var()` chains. Semantic tokens that reference base tokens become `var(--co-base-…)`. Six semantic tokens hold their own value rather than referencing base (`elevation.inset`, `border.radius.none` and the four background overlays), so they don't follow a base override.
 
 ## Consequences
 
