@@ -28,7 +28,8 @@
       "types": "./dist/tokens/tokens.d.ts",
       "import": "./dist/tokens/index.esm.js",
       "require": "./dist/tokens/index.js"
-    }
+    },
+    "./tokens.css": "./dist/tokens.css"
   },
   "typesVersions": {
     "*": {
@@ -55,7 +56,7 @@
     "verify:directives": "node scripts/verify-directives.cjs",
     "verify:load": "node scripts/verify-load.cjs",
     "verify:docs": "node scripts/verify-docs.cjs",
-    "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:directives && npm run verify:load && npm run verify:consumer && publint && attw --pack . --ignore-rules unexpected-module-syntax",
+    "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:directives && npm run verify:load && npm run verify:consumer && publint && attw --pack . --ignore-rules unexpected-module-syntax --exclude-entrypoints ./tokens.css",
     "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:package",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "release": "npm publish --provenance --access public",

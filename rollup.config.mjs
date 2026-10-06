@@ -63,7 +63,9 @@ export default [
     copy({
       targets: [
         { src: 'src/styles/icons.json', dest: 'dist/styles' },
-        { src: 'src/styles/tokens.json', dest: 'dist/styles' }
+        { src: 'src/styles/tokens.json', dest: 'dist/styles' },
+        // CSS custom properties, published as @common-origin/design-system/tokens.css (decision 0017)
+        { src: 'src/styles/tokens.css', dest: 'dist' }
       ]
     }),
     resolve({

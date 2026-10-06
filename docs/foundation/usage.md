@@ -47,6 +47,23 @@ const text = tokens.semantic.color.text.default
 
 Use semantic tokens (`tokens.semantic.*`) in product code. Base tokens are building blocks for the token system itself.
 
+### CSS custom properties
+
+For CSS that doesn't go through styled-components, import the tokens as custom properties once, at the root of the app:
+
+```ts
+import '@common-origin/design-system/tokens.css'
+```
+
+```css
+.panel {
+  color: var(--co-semantic-color-text-default);
+  padding: var(--co-semantic-spacing-layout-md);
+}
+```
+
+Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. The components themselves still use the JS tokens ([0009](decisions/0009-styling-architecture.md)).
+
 ## Fonts
 
 The tokens specify **Inter** (weights 400, 500, 600, 700) for all UI text, as the literal family name `'Inter'`. The package does not load any fonts, so each product must load Inter itself **under the family name `Inter`**. Without it, text falls back to the system sans-serif.

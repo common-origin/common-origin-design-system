@@ -5,7 +5,7 @@
 - **Decided by:** Ollie (owner)
 - **Principles:** P3, P7, P8
 - **Extends:** [0009](0009-styling-architecture.md) (the build part; how components consume tokens is unchanged)
-- **Amended by:** [0023](0023-upgrade-before-dtcg.md): steps 4 and 5 swap, so the upgrade comes before the DTCG conversion
+- **Amended by:** [0023](0023-upgrade-before-dtcg.md): steps 4 and 5 swap, so the upgrade comes before the DTCG conversion; [0024](0024-css-variable-names-keep-tier.md): published CSS variable names keep their tier (`--co-semantic-color-text-default`)
 
 ## Context
 

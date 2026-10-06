@@ -19,7 +19,7 @@ src/tokens/{base,component,semantic}/index.json
 │ tokens            │ src/styles/tokens.json       │ json/nested (built-in)        │ every component; published in package │
 │ typescript        │ src/styles/tokens.d.ts       │ typescript/nested-interface   │ nothing (see below)                   │
 │                   │                              │ (custom)                      │                                       │
-│ custom            │ src/styles/tokens.css        │ css/variables (built-in)      │ docs site only (pages/_app.tsx)       │
+│ custom            │ src/styles/tokens.css        │ css/variables (built-in)      │ published as …/tokens.css (step 6b)   │
 └───────────────────┴──────────────────────────────┴───────────────────────────────┴───────────────────────────────────────┘
 ```
 
@@ -55,7 +55,7 @@ Values are strings. There are no object-valued (composite) tokens and no arithme
 
 `config/style-dictionary.config.mjs` is an ESM config for Style Dictionary 5 (step 4 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). It registers one custom format through `hooks.formats` (`typescript/nested-interface`), sets `log.warnings: 'error'`, and awaits `sd.buildAllPlatforms()`. It sets `usesDtcg: true`: the source is DTCG (step 5).
 
-**No value transforms.** Each platform names only a name transform: `name/camel` for `tokens` and `typescript` (their output doesn't use names, but Style Dictionary needs unique ones), and `name/kebab` for `custom`, which produces the CSS variable names (`--semantic-color-text-default`). Style Dictionary 5's built-in `js` and `css` groups match on token **type**, unlike v3's, which matched on the first path segment and so never ran here. Turned on, `color/hex` and `color/css` would rewrite every colour (`#16191C` → `#16191c`, `transparent` → `#00000000`). Value transforms come back deliberately, each with its own diff, in later steps.
+**No value transforms.** Each platform names only a name transform: `name/camel` for `tokens` and `typescript` (their output doesn't use names, but Style Dictionary needs unique ones), and `name/kebab` for `custom`, which, with the `co` prefix, produces the CSS variable names (`--co-semantic-color-text-default`). That platform also sets `outputReferences`, so references stay as `var()` chains. Style Dictionary 5's built-in `js` and `css` groups match on token **type**, unlike v3's, which matched on the first path segment and so never ran here. Turned on, `color/hex` and `color/css` would rewrite every colour (`#16191C` → `#16191c`, `transparent` → `#00000000`). Value transforms come back deliberately, each with its own diff, in later steps.
 
 Until step 2, every platform also set `transforms`, which in v3 replaced the group, so only ten custom transforms ran. All but the CSS name transform were no-ops or dead code, and they were deleted with the unused `styled-components` platform, its output and the unused formats.
 
@@ -180,7 +180,7 @@ The owner approved this direction and the migration plan below in [decision 0017
    | Multi-value shorthands (`0.75rem 1rem`, `2rem 0`) | 16 component padding and margin tokens: Button's and Chip's paddings and Separator's margins | Retired by [0022](../foundation/decisions/0022-no-component-spacing-tokens.md) and removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)), so they're dropped, not converted. Chip's small and medium paddings wait for [#129](https://github.com/common-origin/common-origin-design-system/issues/129) first |
 
 Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
-6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check. In parts: **6a** (done) the CI freshness check; then the published `co-` CSS (needs the variable naming settled), descriptions for the 103 semantic tokens without one, and a way for descriptions to reach the types people see (`tokens.d.ts` is unused).
+6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check. In parts: **6a** (done) the CI freshness check; **6b** (done) `tokens.css` published as `@common-origin/design-system/tokens.css`, with `--co-<tier>-<path>` names ([0024](../foundation/decisions/0024-css-variable-names-keep-tier.md)) and `outputReferences`, checked by `src/tokens/tokensCss.test.ts`; then descriptions for the 103 semantic tokens without one, and a way for descriptions to reach the types people see (`tokens.d.ts` is unused).
 
 At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file (`npm test` runs it) unless the PR intends a visual change.
 
