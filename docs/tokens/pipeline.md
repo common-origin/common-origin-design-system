@@ -17,7 +17,7 @@ src/tokens/{base,component,semantic}/index.json
 │ platform          │ output                       │ format                        │ used by                               │
 ├───────────────────┼──────────────────────────────┼───────────────────────────────┼───────────────────────────────────────┤
 │ tokens            │ src/styles/tokens.json       │ json/nested (built-in)        │ every component; published in package │
-│ typescript        │ src/styles/tokens.d.ts       │ typescript/nested-interface   │ Tokens* types exported from package   │
+│ typescript        │ src/styles/tokens.d.ts       │ typescript/nested-interface   │ nothing (see below)                   │
 │                   │                              │ (custom)                      │                                       │
 │ custom            │ src/styles/tokens.css        │ css/variables (built-in)      │ docs site only (pages/_app.tsx)       │
 └───────────────────┴──────────────────────────────┴───────────────────────────────┴───────────────────────────────────────┘
@@ -25,6 +25,8 @@ src/tokens/{base,component,semantic}/index.json
 
 - Components import `src/styles/tokens.json` directly and interpolate **resolved values** into styled-components. There are no CSS custom properties at component level.
 - The package publishes `tokens.json` (inside the JS bundle and as `dist/styles/tokens.json`) and a tokens-only entry (`@common-origin/design-system/tokens`).
+- The published `Tokens`, `TokensBase`, `TokensSemantic` and `TokensComponent` types come from `src/types/tokens.ts`, as `typeof` the imported `tokens.json`. **`src/styles/tokens.d.ts` is not used** by the package, the components or the docs site: TypeScript doesn't read a sibling `.d.ts` for a `.json` import. So JSDoc written into it (decision 0017 §5) would reach no one until the types come from a generated file. That's an open question in step 6.
+- CI rebuilds the tokens and fails if `tokens.json`, `tokens.css` or `tokens.d.ts` differ from what's committed (step 6).
 - `tokens.css` and `tokens.d.ts` are committed even though `.gitignore` lists them. The build is deterministic: their headers carry no timestamp, so a rebuild with no token changes leaves them untouched.
 
 ### Token tiers
@@ -178,7 +180,7 @@ The owner approved this direction and the migration plan below in [decision 0017
    | Multi-value shorthands (`0.75rem 1rem`, `2rem 0`) | 16 component padding and margin tokens: Button's and Chip's paddings and Separator's margins | Retired by [0022](../foundation/decisions/0022-no-component-spacing-tokens.md) and removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)), so they're dropped, not converted. Chip's small and medium paddings wait for [#129](https://github.com/common-origin/common-origin-design-system/issues/129) first |
 
 Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
-6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
+6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check. In parts: **6a** (done) the CI freshness check; then the published `co-` CSS (needs the variable naming settled), descriptions for the 103 semantic tokens without one, and a way for descriptions to reach the types people see (`tokens.d.ts` is unused).
 
 At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file (`npm test` runs it) unless the PR intends a visual change.
 

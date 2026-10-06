@@ -65,6 +65,13 @@ jobs:
       - name: 🏗️ Build tokens
         run: npm run build:tokens
 
+      # The generated token files are committed (decision 0017). The build is deterministic, so any
+      # difference here means a source change was committed without rebuilding.
+      - name: 🔍 Check generated token files are current
+        run: |
+          git diff --exit-code -- src/styles/tokens.json src/styles/tokens.css src/styles/tokens.d.ts \
+            || { echo "::error::Generated token files are out of date. Run npm run build:tokens and commit src/styles/."; exit 1; }
+
       - name: 🧪 Run tests
         run: npm run test:coverage
 
