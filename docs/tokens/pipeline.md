@@ -168,6 +168,14 @@ The owner approved this direction and the migration plan below in [decision 0017
 
    **Values keep their current strings**, so some don't yet have the shape DTCG specifies for their type: the composite types (`shadow`, `border`, `transition`, `typography`) are CSS shorthand strings, not objects; `number` and `fontWeight` values are strings (`"0"`, `"500"`); `cubicBezier` holds keywords and `cubic-bezier(…)` strings, not four-number arrays; and `base.spacing.auto` is `auto`. Converting them would change the published `tokens.json` strings, so it needs value transforms that keep the output identical. That's the composite-token work in the target above (item 4), checked against the golden file like every step.
 
+   **`dimension` values that aren't a single `px` or `rem` length** (24 tokens), from mapping `size` and `spacing` wholesale:
+
+   | Values | Tokens | Plan |
+   |---|---|---|
+   | Keywords: `auto`, `min-content`, `max-content`, `fit-content` | `base.size.auto`, `base.size.min`, `base.size.max`, `base.size.fit`; `base.spacing.auto`; `semantic.spacing.layout.auto` | **Open:** not lengths, so they don't fit DTCG `dimension`. Decide whether they stay as tokens, and with what type, before value transforms reach them |
+   | Units DTCG doesn't allow (only `px` and `rem` are valid) | `base.size.full` (`100%`), `base.size.screen` (`100vh`) | **Open,** with the keywords |
+   | Multi-value shorthands (`0.75rem 1rem`, `2rem 0`) | 16 component padding and margin tokens: Button's and Chip's paddings and Separator's margins | Retired by [0022](../foundation/decisions/0022-no-component-spacing-tokens.md) and removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)), so they're dropped, not converted. Chip's small and medium paddings wait for [#129](https://github.com/common-origin/common-origin-design-system/issues/129) first |
+
 Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
 

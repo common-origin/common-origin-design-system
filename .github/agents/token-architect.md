@@ -65,8 +65,8 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` Â
 1. **Real DTCG token**: a leaf with `$value`, a DTCG `$type` (on the token or its group) and a `$description`. Never add a plain string to the component tier.
 2. **Right tier and direction**: base holds raw values; semantic references base; component references **semantic** (add the semantic token first if it's missing).
 3. **Named for use, not value**: `color.background.default`, not `color.offWhite`.
-4. **Typed consistently** with the tier's existing convention today, and with the DTCG type you'd map it to later.
-5. **Described**: every semantic token gets a `description` saying when to use it.
+4. **Typed with a DTCG type**: one already used in the file, matching its target if it's an alias (`src/tokens/dtcgTypes.test.ts` checks both).
+5. **Described**: every semantic and component token gets a `$description` saying when to use it.
 6. **No raw `px` in semantic or component tokens**: reference a dimension token.
 7. **No duplicates**: search `src/styles/tokens.json` for an existing token with the same value and role first.
 
