@@ -4,12 +4,22 @@ import typescript from '@rollup/plugin-typescript'
 import babel from '@rollup/plugin-babel'
 import json from '@rollup/plugin-json'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external'
-import copy from 'rollup-plugin-copy'
 import { fileURLToPath } from 'url'
-import { dirname } from 'path'
+import { basename, dirname } from 'path'
+import { copyFile, mkdir } from 'fs/promises'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
+
+// Ships the raw JSON data files in dist/styles. Inline rather than rollup-plugin-copy,
+// whose glob dependencies carry an unpatched advisory (braces, GHSA-vfj7-8cjw-p6xm).
+const copyFiles = (files, dest) => ({
+  name: 'copy-files',
+  async buildEnd() {
+    await mkdir(dest, { recursive: true })
+    await Promise.all(files.map((file) => copyFile(file, `${dest}/${basename(file)}`)))
+  },
+})
 
 // React Server Components (Next.js App Router) support.
 // Components use hooks and styled-components, so they must be Client Components.
@@ -60,12 +70,7 @@ export default [
   plugins: [
     peerDepsExternal(),
     json(),
-    copy({
-      targets: [
-        { src: 'src/styles/icons.json', dest: 'dist/styles' },
-        { src: 'src/styles/tokens.json', dest: 'dist/styles' }
-      ]
-    }),
+    copyFiles(['src/styles/icons.json', 'src/styles/tokens.json'], 'dist/styles'),
     resolve({
       browser: true,
       preferBuiltins: false,
