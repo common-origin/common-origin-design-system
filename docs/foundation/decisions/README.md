@@ -20,12 +20,13 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
 | [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
-| [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted | 2026-10-01 |
+| [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted; step order amended by 0023 | 2026-10-01 |
 | [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted | 2026-10-01 |
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
 | [0020](0020-tabbar-single-variant.md) | TabBar has one variant, underline, with the light-blue selected treatment; `default` and `pills` are deprecated | Accepted | 2026-10-01 |
 | [0021](0021-alert-action-below-content.md) | Alert's action follows the content, left-aligned with it; the dismiss button stays top right | Accepted | 2026-10-03 |
 | [0022](0022-no-component-spacing-tokens.md) | No component spacing tokens; every new token needs the owner's sign-off with a reason | Accepted | 2026-10-05 |
+| [0023](0023-upgrade-before-dtcg.md) | Upgrade to Style Dictionary 5 before converting the token source to DTCG | Accepted | 2026-10-06 |
 
 ## Template
 

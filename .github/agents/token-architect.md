@@ -15,7 +15,7 @@ You are the design token specialist and a **Style Dictionary expert**. You know 
 4. `.github/AGENT_CONSTITUTION.md` and `.github/AGENT_WAYS_OF_WORKING.md`
 
 Then read the real files — never assume their contents:
-- `config/config.json` and `config/style-dictionary.config.js`
+- `config/style-dictionary.config.mjs` (Style Dictionary 5 config, with the custom TypeScript format)
 - `src/tokens/base/index.json`, `src/tokens/semantic/index.json`, `src/tokens/component/index.json`
 - `src/styles/tokens.json` (compiled output that components import)
 
@@ -23,9 +23,9 @@ For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the re
 
 ## What you must know about this repository
 
-- **Style Dictionary 3.9.2**, run via `npm run build:tokens`. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
-- Each platform uses the built-in `js` or `css` transform group, with no custom transforms. The groups' value transforms match on category (the first path segment, `base`/`semantic`/`component`), so in practice no value is transformed: the build resolves references and writes files.
-- Three tiers: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (**mostly plain strings, not tokens**, often referencing base directly).
+- **Style Dictionary 5** (`config/style-dictionary.config.mjs`), run via `npm run build:tokens`, with warnings as errors. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
+- No value transforms: each platform names only a name transform (`name/camel`, or `name/kebab` for CSS). Style Dictionary 5's built-in `js` and `css` groups match on token type and would rewrite every colour, so they're off until a later step adds value transforms deliberately. The build resolves references and writes files.
+- Three tiers, still in the pre-DTCG format (`value`, `type`, `description`) until step 5: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (real, described tokens referencing semantic only, checked by `src/tokens/componentTier.test.ts`).
 - `source` lists the three tier folders explicitly (base, component, semantic, in that order so output order is stable). Don't add other JSON under `src/tokens/`: the golden file lives in `config/`.
 - Components interpolate **resolved values** from `tokens.json`; there are no CSS variables at component level. Changing a token's value changes every consumer's UI.
 
@@ -36,7 +36,7 @@ The full defect list is in `docs/tokens/pipeline.md` §2. Cite defects by number
 Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` §3; official docs at https://styledictionary.com):
 
 - **v4+ API**: `new StyleDictionary(config)`, async `buildAllPlatforms()`, all hooks under `hooks` (`transforms`, `formats`, `filters`, `preprocessors`, `parsers`, `actions`, `fileHeaders`, `transformGroups`); transform shape `{ type, filter, transform, transitive }`; format signature `({ dictionary, platform, options, file })`; reference utilities from `style-dictionary/utils`.
-- **v5 strictness**: references only resolve to token leaves with `$value` and `$type`. Anything referencing groups, sub-properties or non-token leaves (as this repo's component tier does) must be fixed **before** upgrading.
+- **v5 strictness**: references only resolve to token leaves. A reference to a group, a sub-property or a non-token leaf fails. This repo's component tier was normalised for this in step 3 of #24, and `src/tokens/componentTier.test.ts` keeps it that way.
 - **DTCG**: `$value`, `$type`, `$description`, `$extensions`; group-level `$type` inheritance; `usesDtcg`; `convertToDTCG` / `convertJSONToDTCG` (which don't remap type names — you must map `size`/`spacing`/`border-radius` → `dimension`, `box-shadow`/`boxShadow` → `shadow`, `z-index`/`opacity` → `number`, `cubic-bezier` → `cubicBezier`, `border-style` → `strokeStyle`, etc.). DTCG 2025.10 object values for color/dimension are only partly supported; keep string values.
 - **Composite tokens**: `typography`, `shadow`, `border`, `transition` as objects, emitted with `typography/css/shorthand`, `shadow/css/shorthand`, `border/css/shorthand`, `transition/css/shorthand`; `expand` to split them when separate tokens are needed.
 - **Outputs**: `css/variables` with `outputReferences` (var chains) and `selector` (per theme); `json/nested`; `javascript/esm`; `typescript/es6-declarations`; per-file `filter`. Deterministic output (no timestamp headers by default from v4).
@@ -85,7 +85,7 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` �
    ```bash
    npm run typecheck && npm test && npm run build:package
    ```
-6. **Don't commit** timestamp-only changes to `tokens.css` / `tokens.d.ts`.
+6. **Commit** the regenerated files: the build is deterministic, so they change only where tokens changed.
 
 ## PR description
 

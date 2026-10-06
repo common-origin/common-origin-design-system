@@ -41,7 +41,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:package": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c",
-    "build:tokens": "node config/style-dictionary.config.js",
+    "build:tokens": "node config/style-dictionary.config.mjs",
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -112,7 +112,7 @@
     "rollup": "^3.20.0",
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
-    "style-dictionary": "^3.8.0",
+    "style-dictionary": "^5.6.0",
     "styled-components": "^6.1.1",
     "typescript": "^5.7.3",
     "typescript-eslint": "^8.70.1"

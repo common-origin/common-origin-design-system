@@ -6,12 +6,12 @@ Verified against the code on 2026-09-25.
 
 ---
 
-## 1. Current pipeline (Style Dictionary 3.9.2)
+## 1. Current pipeline (Style Dictionary 5)
 
 ```
 src/tokens/{base,component,semantic}/index.json
-        │  npm run build:tokens  →  node config/style-dictionary.config.js
-        │  config/config.json: source = the three tier folders, listed in that order
+        │  npm run build:tokens  →  node config/style-dictionary.config.mjs
+        │  source = the three tier folders, listed in that order
         ▼
 ┌───────────────────┬──────────────────────────────┬───────────────────────────────┬───────────────────────────────────────┐
 │ platform          │ output                       │ format                        │ used by                               │
@@ -25,7 +25,7 @@ src/tokens/{base,component,semantic}/index.json
 
 - Components import `src/styles/tokens.json` directly and interpolate **resolved values** into styled-components. There are no CSS custom properties at component level.
 - The package publishes `tokens.json` (inside the JS bundle and as `dist/styles/tokens.json`) and a tokens-only entry (`@common-origin/design-system/tokens`).
-- `tokens.css` and `tokens.d.ts` are committed even though `.gitignore` lists them. Every build rewrites their "Generated on" timestamp.
+- `tokens.css` and `tokens.d.ts` are committed even though `.gitignore` lists them. The build is deterministic: their headers carry no timestamp, so a rebuild with no token changes leaves them untouched.
 
 ### Token tiers
 
@@ -51,11 +51,11 @@ Values are strings. There are no object-valued (composite) tokens and no arithme
 
 ### How the config actually behaves
 
-`config/style-dictionary.config.js` registers one custom format (`typescript/nested-interface`), then calls `sd.buildAllPlatforms()` (v3 synchronous API, `StyleDictionary.extend(config)`). It registers no custom transforms.
+`config/style-dictionary.config.mjs` is an ESM config for Style Dictionary 5 (step 4 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). It registers one custom format through `hooks.formats` (`typescript/nested-interface`), sets `log.warnings: 'error'`, and awaits `sd.buildAllPlatforms()`. The token source is still the pre-DTCG format (`value`, `type`, `description`); step 5 converts it.
 
-Each platform uses a built-in transform group: `js` for `tokens` and `typescript`, `css` for `custom`. The groups' value transforms (`size/rem`, `color/hex`, `color/css`, `time/seconds`, `content/icon`) match on a token's category, which `attribute/cti` takes from the first path segment. Here that's always `base`, `semantic` or `component`, so none of them match, and values pass through unchanged. `name/cti/kebab` in the `css` group produces the CSS variable names (`--semantic-color-text-default`).
+**No value transforms.** Each platform names only a name transform: `name/camel` for `tokens` and `typescript` (their output doesn't use names, but Style Dictionary needs unique ones), and `name/kebab` for `custom`, which produces the CSS variable names (`--semantic-color-text-default`). Style Dictionary 5's built-in `js` and `css` groups match on token **type**, unlike v3's, which matched on the first path segment and so never ran here. Turned on, `color/hex` and `color/css` would rewrite every colour (`#16191C` → `#16191c`, `transparent` → `#00000000`). Value transforms come back deliberately, each with its own diff, in later steps.
 
-Until step 2 of the migration ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)), every platform also set `transforms`, which in v3 replaces the group, so only ten custom transforms ran. All but the CSS name transform were no-ops or dead code, and they were deleted with the unused `styled-components` platform, its output and the unused formats.
+Until step 2, every platform also set `transforms`, which in v3 replaced the group, so only ten custom transforms ran. All but the CSS name transform were no-ops or dead code, and they were deleted with the unused `styled-components` platform, its output and the unused formats.
 
 In practice the build **resolves references and writes files**; no value is transformed.
 
@@ -72,7 +72,7 @@ In practice the build **resolves references and writes files**; no value is tran
 | 5 | ~~`transformGroup` + `transforms` on every platform~~ | Fixed in step 2 of #24: the platforms use the built-in groups alone |
 | 6 | ~~Latent bugs in custom transforms (implicit globals that throw in ESM strict mode, broken `includes` and precedence logic)~~ | Fixed in step 2 of #24: the custom transforms are deleted |
 | 7 | `description` fields are dropped from every output | Designers, developers and agents can't see a token's intended use outside the source |
-| 8 | Timestamped headers | Every build dirties the working tree |
+| 8 | ~~Timestamped headers~~ | Fixed in step 4 of #24: Style Dictionary 5's CSS header has no timestamp, and the custom TypeScript format no longer writes one |
 | 9 | ~~The `styled-components` platform's output generated but unused~~ | Fixed in step 2 of #24: the platform and its output are deleted |
 | 10 | ~~Docs drift: `.github/TOKEN_MANAGEMENT.md` showed a different, CommonJS config with transforms and outputs that don't exist here~~ | Fixed in [#37](https://github.com/common-origin/common-origin-design-system/issues/37): the guide no longer describes the build and defers to this document |
 
@@ -80,7 +80,7 @@ In practice the build **resolves references and writes files**; no value is tran
 
 ## 3. Style Dictionary v4/v5 — what an expert needs to know
 
-Current release: **5.5.5** (ESM only, Node ≥ 22; this repo pins Node 22).
+This repo uses **5.6.0** (`^5.6.0`; ESM only, Node ≥ 22, and the repo pins Node 22).
 
 ### API
 ```js
@@ -135,7 +135,7 @@ await sd.buildAllPlatforms()
 
 The owner approved this direction and the migration plan below in [decision 0017](../foundation/decisions/0017-token-pipeline-dtcg-style-dictionary-5.md) ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)). Until the steps land, sections 1–3 describe what is current. The decision also settles that `tokens.css` is published with a `co-` variable prefix, that generated files stay committed with a CI freshness check, and that the 2.16 work from decision 0016 goes first.
 
-1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'`. <!-- verify-docs-ignore: planned file -->
+1. **Style Dictionary 5**, ESM config in `config/style-dictionary.config.mjs`, `log.warnings: 'error'` (done in step 4).
 2. **DTCG source**: `$value` / `$type` / `$description`, DTCG type names, `$type` on groups where uniform. (The `$ref` index file was deleted in step 2.)
 3. **Component tier made of real tokens** referencing **semantic** tokens (add missing semantic tokens first); no raw `px`.
 4. **Composite tokens where it helps**: typography, shadow, border, and transition as DTCG objects, emitted with the built-in `*/css/shorthand` transforms, so the JSON output keeps the same hierarchy and values for components.
@@ -152,8 +152,10 @@ The owner approved this direction and the migration plan below in [decision 0017
 1. **Snapshot** (done): `config/tokens.golden.json` is the resolved `tokens.json` from before the migration, minus `$ref`. `src/tokens/golden.test.ts` fails on any difference and lists each changed path. `npm run tokens:golden` rewrites it from the current build. It lives outside `src/tokens/` because the build reads every JSON file there.
 2. **Fix defects on v3 first** (done): remove `index.json` from `source`; delete dead transforms, formats, and the `styled-components` platform; drop `transforms` overrides so built-in groups run. Diff against the golden file — only the `$ref` keys should disappear.
 3. **Normalise the component tier** (done) into tokens referencing semantic tokens. Diff: values must not change. Component spacing tokens are retired, not converted ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). Done (3a Button and IconButton, 3b Chip, 3c Input, ProgressBar, Badge, Separator and Field): every component token is a real, described token that references semantic tokens, and `src/tokens/componentTier.test.ts` keeps it that way. Two exceptions remain until 3.0: Button's deprecated `emphasis` aliases reference the `accent` tokens they alias, and deprecated tokens keep their original raw values (such as `2px`), since nothing reads them except the two waiting for #129. Input's `11px` and Chip's `2px` paddings stay as deprecated tokens until [#129](https://github.com/common-origin/common-origin-design-system/issues/129).
-4. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
-5. **Upgrade to Style Dictionary 5** and port the config to hooks. Diff.
+4. **Upgrade to Style Dictionary 5** (done) and port the config to hooks, on the existing format. Diff: `tokens.json` byte-identical; `tokens.css` and `tokens.d.ts` lose their timestamps. Value transforms stay off (see §1).
+5. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
+
+Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
 
 At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file (`npm test` runs it) unless the PR intends a visual change.
@@ -162,12 +164,12 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 
 ## 5. Recipes
 
-### Add a token (today, v3)
+### Add a token
 0. **Get the owner's sign-off first** ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)): the token's tier, value, use, and why no existing token does the job. Never a component spacing token.
 1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
 2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
 3. `npm run build:tokens`, then `npx jest src/tokens/golden`. It fails and lists every resolved value that differs from the golden file: check it shows exactly your change.
-4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`, but not unrelated timestamp-only changes.
+4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`.
 
 ### Check what a token resolves to
 ```bash
