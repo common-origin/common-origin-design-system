@@ -25,7 +25,7 @@ For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the re
 
 - **Style Dictionary 5** (`config/style-dictionary.config.mjs`), run via `npm run build:tokens`, with warnings as errors. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
 - No value transforms: each platform names only a name transform (`name/camel`, or `name/kebab` for CSS). Style Dictionary 5's built-in `js` and `css` groups match on token type and would rewrite every colour, so they're off until a later step adds value transforms deliberately. The build resolves references and writes files.
-- Three tiers, still in the pre-DTCG format (`value`, `type`, `description`) until step 5: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (real, described tokens referencing semantic only, checked by `src/tokens/componentTier.test.ts`).
+- Three tiers in DTCG format (`$value`, `$type` on the token or its group, `$description`), with DTCG type names: base → semantic (some descriptions) → component (real, described tokens referencing semantic only, checked by `src/tokens/componentTier.test.ts`).
 - `source` lists the three tier folders explicitly (base, component, semantic, in that order so output order is stable). Don't add other JSON under `src/tokens/`: the golden file lives in `config/`.
 - Components interpolate **resolved values** from `tokens.json`; there are no CSS variables at component level. Changing a token's value changes every consumer's UI.
 
@@ -62,11 +62,11 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` �
 
 **Sign-off first (decision 0022).** Don't create any token, in any tier, until the owner has approved it. Propose it with its tier, value, what it's for, and why no existing token does the job, then stop and report. **No component spacing tokens** (padding, margin, gap): spacing comes from the semantic scales.
 
-1. **Real token, Style Dictionary 5-ready**: a leaf with `value` and `type` (DTCG `$value`/`$type` once migrated). Never add a plain string to the component tier.
+1. **Real DTCG token**: a leaf with `$value`, a DTCG `$type` (on the token or its group) and a `$description`. Never add a plain string to the component tier.
 2. **Right tier and direction**: base holds raw values; semantic references base; component references **semantic** (add the semantic token first if it's missing).
 3. **Named for use, not value**: `color.background.default`, not `color.offWhite`.
-4. **Typed consistently** with the tier's existing convention today, and with the DTCG type you'd map it to later.
-5. **Described**: every semantic token gets a `description` saying when to use it.
+4. **Typed with a DTCG type**: one already used in the file, matching its target if it's an alias (`src/tokens/dtcgTypes.test.ts` checks both).
+5. **Described**: every semantic and component token gets a `$description` saying when to use it.
 6. **No raw `px` in semantic or component tokens**: reference a dimension token.
 7. **No duplicates**: search `src/styles/tokens.json` for an existing token with the same value and role first.
 

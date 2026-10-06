@@ -5,29 +5,41 @@ import { execFileSync } from 'child_process'
 import source from './component/index.json'
 
 type Node = { [key: string]: Node | string }
-type Leaf = { path: string; node: Node | string }
+type Leaf = { path: string; node: Node | string; type?: string }
 
 // The component tier, normalised in step 3 of the token pipeline migration (decision 0017, #24)
 // under decisions 0014 and 0022
 
-function leaves(node: Node, path: string[] = []): Leaf[] {
-  return Object.entries(node).flatMap(([key, child]) =>
-    typeof child === 'object' && !('value' in child)
-      ? leaves(child, [...path, key])
-      : [{ path: [...path, key].join('.'), node: child }]
-  )
+// The source is DTCG: a token has `$value`, and its `$type` may sit on a parent group. An object
+// with no child tokens or groups (only `$` metadata, or nothing) is a token that lost its
+// `$value`, so it's returned as a leaf for the checks below to report.
+function leaves(node: Node, path: string[] = [], inheritedType?: string): Leaf[] {
+  const groupType = typeof node.$type === 'string' ? node.$type : inheritedType
+  const isGroup = (child: Node) =>
+    !('$value' in child) && Object.keys(child).some((key) => !key.startsWith('$'))
+  return Object.entries(node)
+    .filter(([key]) => !key.startsWith('$'))
+    .flatMap(([key, child]) =>
+      typeof child === 'object' && isGroup(child)
+        ? leaves(child, [...path, key], groupType)
+        : [{ path: [...path, key].join('.'), node: child, type: typeof child === 'object' ? String(child.$type ?? groupType ?? '') : undefined }]
+    )
 }
 
 const components = Object.entries((source as unknown as { component: Node }).component)
 const converted = components.flatMap(([name, node]) =>
-  leaves(node as Node, ['component', name])
+  leaves(node as Node, ['component', name], (source as unknown as { component: Node }).component.$type as string | undefined)
 )
 
 describe('component tier (decisions 0014 and 0022)', () => {
   it('every leaf is a real token with a value, a type and a description', () => {
-    const problems = converted.flatMap(({ path, node }) => {
+    const problems = converted.flatMap(({ path, node, type }) => {
       if (typeof node !== 'object') return [`${path}: a plain string, not a token`]
-      return ['value', 'type', 'description'].filter((key) => !node[key]).map((key) => `${path}: no ${key}`)
+      return [
+        ...(node.$value ? [] : [`${path}: no $value`]),
+        ...(type ? [] : [`${path}: no $type (on the token or a parent group)`]),
+        ...(node.$description ? [] : [`${path}: no $description`]),
+      ]
     })
     expect(problems).toEqual([])
   })
@@ -37,9 +49,10 @@ describe('component tier (decisions 0014 and 0022)', () => {
   const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
   it('references only semantic tokens', () => {
     const problems = converted
-      .filter(({ node }) => typeof node === 'object')
+      // A leaf with no `$value` is reported by the test above, not counted as having no references
+      .filter(({ node }) => typeof node === 'object' && typeof node.$value === 'string')
       .flatMap(({ path, node }) => {
-        const refs = [...String((node as Node).value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
+        const refs = [...String((node as Node).$value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
         const aliasTarget = path.match(ALIAS)?.[1]
         return refs
           .filter((ref) => !ref.startsWith('semantic.') && ref !== `component.button.variants.accent.${aliasTarget}`)
@@ -60,7 +73,7 @@ const STILL_READ = [
 
 describe('retired component tokens are not read', () => {
   const retired = leaves((source as unknown as { component: Node }).component, ['component'])
-    .filter(({ node }) => typeof node === 'object' && String(node.description).startsWith('Deprecated'))
+    .filter(({ node }) => typeof node === 'object' && String(node.$description).startsWith('Deprecated'))
     .filter(({ path }) => !STILL_READ.some((pattern) => pattern.test(path)))
     .map(({ path }) => path.replace(/^component\./, ''))
 

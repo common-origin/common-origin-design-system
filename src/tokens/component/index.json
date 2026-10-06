@@ -3,257 +3,227 @@
     "button": {
       "primary": {
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis}",
-          "type": "color",
-          "description": "Primary Button fill at rest."
+          "$value": "{semantic.color.background.emphasis}",
+          "$type": "color",
+          "$description": "Primary Button fill at rest."
         },
         "textColor": {
-          "value": "{semantic.color.text.inverse}",
-          "type": "color",
-          "description": "Text and icon colour on the primary Button."
+          "$value": "{semantic.color.text.inverse}",
+          "$type": "color",
+          "$description": "Text and icon colour on the primary Button."
         },
         "borderRadius": {
-          "value": "{semantic.border.radius.sm}",
-          "type": "borderRadius",
-          "description": "Corner radius of every Button (visual language: Button uses sm)."
+          "$value": "{semantic.border.radius.sm}",
+          "$type": "dimension",
+          "$description": "Corner radius of every Button (visual language: Button uses sm)."
         },
         "padding": {
-          "value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
+          "$value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
         },
         "font": {
-          "value": "{semantic.typography.button1}",
-          "type": "typography",
-          "description": "Button label typography, the same as sizes.large.font."
+          "$value": "{semantic.typography.button1}",
+          "$type": "typography",
+          "$description": "Button label typography, the same as sizes.large.font."
         }
       },
       "hover": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis-hover}",
-          "type": "color",
-          "description": "Primary Button fill on hover."
+          "$value": "{semantic.color.background.emphasis-hover}",
+          "$description": "Primary Button fill on hover."
         }
       },
       "active": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis-active}",
-          "type": "color",
-          "description": "Primary Button fill while pressed."
+          "$value": "{semantic.color.background.emphasis-active}",
+          "$description": "Primary Button fill while pressed."
         }
       },
       "focus": {
         "outline": {
-          "value": "{semantic.border.focus}",
-          "type": "border",
-          "description": "Focus ring on every Button."
+          "$value": "{semantic.border.focus}",
+          "$type": "border",
+          "$description": "Focus ring on every Button."
         },
         "outlineOffset": {
-          "value": "2px",
-          "type": "size",
-          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
         }
       },
       "disabled": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.disabled}",
-          "type": "color",
-          "description": "Disabled primary Button fill."
+          "$value": "{semantic.color.background.disabled}",
+          "$description": "Disabled primary Button fill."
         },
         "textColor": {
-          "value": "{semantic.color.text.disabled}",
-          "type": "color",
-          "description": "Disabled primary Button text and icon colour."
+          "$value": "{semantic.color.text.disabled}",
+          "$description": "Disabled primary Button text and icon colour."
         }
       },
       "variants": {
+        "$type": "color",
         "secondary": {
           "backgroundColor": {
-            "value": "{semantic.color.background.neutral}",
-            "type": "color",
-            "description": "Secondary Button fill at rest."
+            "$value": "{semantic.color.background.neutral}",
+            "$description": "Secondary Button fill at rest."
           },
           "textColor": {
-            "value": "{semantic.color.text.default}",
-            "type": "color",
-            "description": "Text and icon colour on the secondary Button."
+            "$value": "{semantic.color.text.default}",
+            "$description": "Text and icon colour on the secondary Button."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.neutral-hover}",
-              "type": "color",
-              "description": "Secondary Button fill on hover."
+              "$value": "{semantic.color.background.neutral-hover}",
+              "$description": "Secondary Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.neutral-active}",
-              "type": "color",
-              "description": "Secondary Button fill while pressed."
+              "$value": "{semantic.color.background.neutral-active}",
+              "$description": "Secondary Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled secondary Button fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled secondary Button fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled secondary Button text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled secondary Button text and icon colour."
             }
           }
         },
         "naked": {
           "backgroundColor": {
-            "value": "{semantic.color.background.transparent}",
-            "type": "color",
-            "description": "Naked Button has no fill at rest."
+            "$value": "{semantic.color.background.transparent}",
+            "$description": "Naked Button has no fill at rest."
           },
           "textColor": {
-            "value": "{semantic.color.text.default}",
-            "type": "color",
-            "description": "Text and icon colour on the naked Button."
+            "$value": "{semantic.color.text.default}",
+            "$description": "Text and icon colour on the naked Button."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.surface}",
-              "type": "color",
-              "description": "Naked Button fill on hover."
+              "$value": "{semantic.color.background.surface}",
+              "$description": "Naked Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.neutral}",
-              "type": "color",
-              "description": "Naked Button fill while pressed."
+              "$value": "{semantic.color.background.neutral}",
+              "$description": "Naked Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.transparent}",
-              "type": "color",
-              "description": "Disabled naked Button has no fill."
+              "$value": "{semantic.color.background.transparent}",
+              "$description": "Disabled naked Button has no fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled naked Button text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled naked Button text and icon colour."
             }
           }
         },
         "accent": {
           "backgroundColor": {
-            "value": "{semantic.color.background.interactive}",
-            "type": "color",
-            "description": "Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016)."
+            "$value": "{semantic.color.background.interactive}",
+            "$description": "Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016)."
           },
           "textColor": {
-            "value": "{semantic.color.text.inverse}",
-            "type": "color",
-            "description": "Text and icon colour on the accent Button."
+            "$value": "{semantic.color.text.inverse}",
+            "$description": "Text and icon colour on the accent Button."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.interactive-hover}",
-              "type": "color",
-              "description": "Accent Button fill on hover."
+              "$value": "{semantic.color.background.interactive-hover}",
+              "$description": "Accent Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.interactive-active}",
-              "type": "color",
-              "description": "Accent Button fill while pressed."
+              "$value": "{semantic.color.background.interactive-active}",
+              "$description": "Accent Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled accent Button fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled accent Button fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled accent Button text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled accent Button text and icon colour."
             }
           }
         },
         "emphasis": {
           "backgroundColor": {
-            "value": "{component.button.variants.accent.backgroundColor}",
-            "type": "color",
-            "description": "Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016)."
+            "$value": "{component.button.variants.accent.backgroundColor}",
+            "$description": "Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016)."
           },
           "textColor": {
-            "value": "{component.button.variants.accent.textColor}",
-            "type": "color",
-            "description": "Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016)."
+            "$value": "{component.button.variants.accent.textColor}",
+            "$description": "Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016)."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{component.button.variants.accent.hover.backgroundColor}",
-              "type": "color",
-              "description": "Deprecated: use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016)."
+              "$value": "{component.button.variants.accent.hover.backgroundColor}",
+              "$description": "Deprecated: use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016)."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{component.button.variants.accent.active.backgroundColor}",
-              "type": "color",
-              "description": "Deprecated: use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016)."
+              "$value": "{component.button.variants.accent.active.backgroundColor}",
+              "$description": "Deprecated: use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016)."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{component.button.variants.accent.disabled.backgroundColor}",
-              "type": "color",
-              "description": "Deprecated: use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016)."
+              "$value": "{component.button.variants.accent.disabled.backgroundColor}",
+              "$description": "Deprecated: use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016)."
             },
             "textColor": {
-              "value": "{component.button.variants.accent.disabled.textColor}",
-              "type": "color",
-              "description": "Deprecated: use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016)."
+              "$value": "{component.button.variants.accent.disabled.textColor}",
+              "$description": "Deprecated: use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016)."
             }
           }
         },
         "danger": {
           "backgroundColor": {
-            "value": "{semantic.color.background.error}",
-            "type": "color",
-            "description": "Danger Button fill at rest, for destructive actions."
+            "$value": "{semantic.color.background.error}",
+            "$description": "Danger Button fill at rest, for destructive actions."
           },
           "textColor": {
-            "value": "{semantic.color.text.inverse}",
-            "type": "color",
-            "description": "Text and icon colour on the danger Button."
+            "$value": "{semantic.color.text.inverse}",
+            "$description": "Text and icon colour on the danger Button."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.error-hover}",
-              "type": "color",
-              "description": "Danger Button fill on hover."
+              "$value": "{semantic.color.background.error-hover}",
+              "$description": "Danger Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.error-active}",
-              "type": "color",
-              "description": "Danger Button fill while pressed."
+              "$value": "{semantic.color.background.error-active}",
+              "$description": "Danger Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled danger Button fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled danger Button fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled danger Button text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled danger Button text and icon colour."
             }
           }
         }
@@ -261,227 +231,209 @@
       "sizes": {
         "small": {
           "padding": {
-            "value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0."
+            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.button3}",
-            "type": "typography",
-            "description": "Small Button label typography."
+            "$value": "{semantic.typography.button3}",
+            "$type": "typography",
+            "$description": "Small Button label typography."
           }
         },
         "medium": {
           "padding": {
-            "value": "{semantic.spacing.component.sm} {semantic.spacing.component.lg}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .lg. Removed in 3.0."
+            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.lg}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .lg. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.button2}",
-            "type": "typography",
-            "description": "Medium Button label typography."
+            "$value": "{semantic.typography.button2}",
+            "$type": "typography",
+            "$description": "Medium Button label typography."
           }
         },
         "large": {
           "padding": {
-            "value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
+            "$value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.button1}",
-            "type": "typography",
-            "description": "Large Button label typography."
+            "$value": "{semantic.typography.button1}",
+            "$type": "typography",
+            "$description": "Large Button label typography."
           }
         }
       }
     },
     "chip": {
       "closeButton": {
+        "$type": "dimension",
         "size": {
-          "value": "{semantic.size.dimension.5}",
-          "type": "size",
-          "description": "FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip."
+          "$value": "{semantic.size.dimension.5}",
+          "$description": "FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip."
         }
       },
       "default": {
         "backgroundColor": {
-          "value": "{semantic.color.background.surface}",
-          "type": "color",
-          "description": "Default chip fill at rest."
+          "$value": "{semantic.color.background.surface}",
+          "$type": "color",
+          "$description": "Default chip fill at rest."
         },
         "textColor": {
-          "value": "{semantic.color.text.default}",
-          "type": "color",
-          "description": "Default chip text and icon colour."
+          "$value": "{semantic.color.text.default}",
+          "$type": "color",
+          "$description": "Default chip text and icon colour."
         },
         "borderRadius": {
-          "value": "{semantic.border.radius.lg}",
-          "type": "borderRadius",
-          "description": "Corner radius of every chip: rounder than Button, to signal a different job (decision 0016)."
+          "$value": "{semantic.border.radius.lg}",
+          "$type": "dimension",
+          "$description": "Corner radius of every chip: rounder than Button, to signal a different job (decision 0016)."
         },
         "padding": {
-          "value": "2px {semantic.spacing.component.sm}",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. No chip reads it; chips take padding per size. Removed in 3.0."
+          "$value": "2px {semantic.spacing.component.sm}",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. No chip reads it; chips take padding per size. Removed in 3.0."
         },
         "font": {
-          "value": "{semantic.typography.body}",
-          "type": "typography",
-          "description": "Chip label typography, the same as sizes.large.font."
+          "$value": "{semantic.typography.body}",
+          "$type": "typography",
+          "$description": "Chip label typography, the same as sizes.large.font."
         }
       },
       "hover": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.neutral}",
-          "type": "color",
-          "description": "Default chip fill on hover, when it's clickable."
+          "$value": "{semantic.color.background.neutral}",
+          "$description": "Default chip fill on hover, when it's clickable."
         }
       },
       "active": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.neutral-hover}",
-          "type": "color",
-          "description": "Default chip fill while pressed, when it's clickable."
+          "$value": "{semantic.color.background.neutral-hover}",
+          "$description": "Default chip fill while pressed, when it's clickable."
         }
       },
       "focus": {
         "outline": {
-          "value": "{semantic.border.focus}",
-          "type": "border",
-          "description": "Focus ring on every chip and its close button."
+          "$value": "{semantic.border.focus}",
+          "$type": "border",
+          "$description": "Focus ring on every chip and its close button."
         },
         "outlineOffset": {
-          "value": "2px",
-          "type": "size",
-          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
         }
       },
       "disabled": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.surface}",
-          "type": "color",
-          "description": "Disabled default chip fill."
+          "$value": "{semantic.color.background.surface}",
+          "$description": "Disabled default chip fill."
         },
         "textColor": {
-          "value": "{semantic.color.text.disabled}",
-          "type": "color",
-          "description": "Disabled default chip text and icon colour."
+          "$value": "{semantic.color.text.disabled}",
+          "$description": "Disabled default chip text and icon colour."
         }
       },
       "variants": {
+        "$type": "color",
         "emphasis": {
           "backgroundColor": {
-            "value": "{semantic.color.background.emphasis}",
-            "type": "color",
-            "description": "Emphasis chip fill at rest."
+            "$value": "{semantic.color.background.emphasis}",
+            "$description": "Emphasis chip fill at rest."
           },
           "textColor": {
-            "value": "{semantic.color.text.inverse}",
-            "type": "color",
-            "description": "Emphasis chip text and icon colour."
+            "$value": "{semantic.color.text.inverse}",
+            "$description": "Emphasis chip text and icon colour."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.emphasis-hover}",
-              "type": "color",
-              "description": "Emphasis chip fill on hover, when it's clickable."
+              "$value": "{semantic.color.background.emphasis-hover}",
+              "$description": "Emphasis chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.emphasis-active}",
-              "type": "color",
-              "description": "Emphasis chip fill while pressed, when it's clickable."
+              "$value": "{semantic.color.background.emphasis-active}",
+              "$description": "Emphasis chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled emphasis chip fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled emphasis chip fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled emphasis chip text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled emphasis chip text and icon colour."
             }
           }
         },
         "subtle": {
           "backgroundColor": {
-            "value": "{semantic.color.background.subtle}",
-            "type": "color",
-            "description": "Subtle chip fill at rest."
+            "$value": "{semantic.color.background.subtle}",
+            "$description": "Subtle chip fill at rest."
           },
           "textColor": {
-            "value": "{semantic.color.text.default}",
-            "type": "color",
-            "description": "Subtle chip text and icon colour."
+            "$value": "{semantic.color.text.default}",
+            "$description": "Subtle chip text and icon colour."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.page}",
-              "type": "color",
-              "description": "Subtle chip fill on hover, when it's clickable."
+              "$value": "{semantic.color.background.page}",
+              "$description": "Subtle chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.surface}",
-              "type": "color",
-              "description": "Subtle chip fill while pressed, when it's clickable."
+              "$value": "{semantic.color.background.surface}",
+              "$description": "Subtle chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.subtle}",
-              "type": "color",
-              "description": "Disabled subtle chip fill."
+              "$value": "{semantic.color.background.subtle}",
+              "$description": "Disabled subtle chip fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled subtle chip text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled subtle chip text and icon colour."
             }
           }
         },
         "interactive": {
           "backgroundColor": {
-            "value": "{semantic.color.background.interactive}",
-            "type": "color",
-            "description": "Interactive chip fill at rest."
+            "$value": "{semantic.color.background.interactive}",
+            "$description": "Interactive chip fill at rest."
           },
           "textColor": {
-            "value": "{semantic.color.text.inverse}",
-            "type": "color",
-            "description": "Interactive chip text and icon colour."
+            "$value": "{semantic.color.text.inverse}",
+            "$description": "Interactive chip text and icon colour."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.interactive-hover}",
-              "type": "color",
-              "description": "Interactive chip fill on hover, when it's clickable."
+              "$value": "{semantic.color.background.interactive-hover}",
+              "$description": "Interactive chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.interactive-active}",
-              "type": "color",
-              "description": "Interactive chip fill while pressed, when it's clickable."
+              "$value": "{semantic.color.background.interactive-active}",
+              "$description": "Interactive chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled interactive chip fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled interactive chip fill."
             },
             "textColor": {
-              "value": "{semantic.color.text.disabled}",
-              "type": "color",
-              "description": "Disabled interactive chip text and icon colour."
+              "$value": "{semantic.color.text.disabled}",
+              "$description": "Disabled interactive chip text and icon colour."
             }
           }
         }
@@ -489,38 +441,38 @@
       "sizes": {
         "small": {
           "padding": {
-            "value": "2px {semantic.spacing.component.sm}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
+            "$value": "2px {semantic.spacing.component.sm}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.caption}",
-            "type": "typography",
-            "description": "Small chip label typography."
+            "$value": "{semantic.typography.caption}",
+            "$type": "typography",
+            "$description": "Small chip label typography."
           }
         },
         "medium": {
           "padding": {
-            "value": "2px {semantic.spacing.component.sm}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
+            "$value": "2px {semantic.spacing.component.sm}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.small}",
-            "type": "typography",
-            "description": "Medium chip label typography."
+            "$value": "{semantic.typography.small}",
+            "$type": "typography",
+            "$description": "Medium chip label typography."
           }
         },
         "large": {
           "padding": {
-            "value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0."
+            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0."
           },
           "font": {
-            "value": "{semantic.typography.body}",
-            "type": "typography",
-            "description": "Large chip label typography. No chip uses the large size today."
+            "$value": "{semantic.typography.body}",
+            "$type": "typography",
+            "$description": "Large chip label typography. No chip uses the large size today."
           }
         }
       }
@@ -528,304 +480,283 @@
     "iconButton": {
       "primary": {
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis}",
-          "type": "color",
-          "description": "Primary IconButton fill at rest."
+          "$value": "{semantic.color.background.emphasis}",
+          "$type": "color",
+          "$description": "Primary IconButton fill at rest."
         },
         "borderRadius": {
-          "value": "{semantic.border.radius.sm}",
-          "type": "borderRadius",
-          "description": "Corner radius of every IconButton, matching Button."
+          "$value": "{semantic.border.radius.sm}",
+          "$type": "dimension",
+          "$description": "Corner radius of every IconButton, matching Button."
         },
         "minWidth": {
-          "value": "40px",
-          "type": "size",
-          "description": "Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129."
+          "$value": "40px",
+          "$type": "dimension",
+          "$description": "Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129."
         },
         "minHeight": {
-          "value": "40px",
-          "type": "size",
-          "description": "Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129."
+          "$value": "40px",
+          "$type": "dimension",
+          "$description": "Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129."
         },
         "display": {
-          "value": "flex",
-          "type": "other",
-          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0."
+          "$value": "flex",
+          "$type": "other",
+          "$description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0."
         },
         "alignItems": {
-          "value": "center",
-          "type": "other",
-          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0."
+          "$value": "center",
+          "$type": "other",
+          "$description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0."
         },
         "justifyContent": {
-          "value": "center",
-          "type": "other",
-          "description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0."
+          "$value": "center",
+          "$type": "other",
+          "$description": "Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0."
         }
       },
       "hover": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis-hover}",
-          "type": "color",
-          "description": "Primary IconButton fill on hover."
+          "$value": "{semantic.color.background.emphasis-hover}",
+          "$description": "Primary IconButton fill on hover."
         }
       },
       "active": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.emphasis-active}",
-          "type": "color",
-          "description": "Primary IconButton fill while pressed. Today IconButton uses it for every variant (#130)."
+          "$value": "{semantic.color.background.emphasis-active}",
+          "$description": "Primary IconButton fill while pressed. Today IconButton uses it for every variant (#130)."
         }
       },
       "focus": {
         "outline": {
-          "value": "{semantic.border.focus}",
-          "type": "border",
-          "description": "Focus ring on every IconButton."
+          "$value": "{semantic.border.focus}",
+          "$type": "border",
+          "$description": "Focus ring on every IconButton."
         },
         "outlineOffset": {
-          "value": "2px",
-          "type": "size",
-          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
         }
       },
       "disabled": {
+        "$type": "color",
         "backgroundColor": {
-          "value": "{semantic.color.background.disabled}",
-          "type": "color",
-          "description": "Disabled IconButton fill. Today IconButton uses it for every variant (#130)."
+          "$value": "{semantic.color.background.disabled}",
+          "$description": "Disabled IconButton fill. Today IconButton uses it for every variant (#130)."
         }
       },
       "variants": {
+        "$type": "color",
         "secondary": {
           "backgroundColor": {
-            "value": "{semantic.color.background.surface}",
-            "type": "color",
-            "description": "Secondary IconButton fill at rest."
+            "$value": "{semantic.color.background.surface}",
+            "$description": "Secondary IconButton fill at rest."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.neutral}",
-              "type": "color",
-              "description": "Secondary IconButton fill on hover."
+              "$value": "{semantic.color.background.neutral}",
+              "$description": "Secondary IconButton fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.page}",
-              "type": "color",
-              "description": "Secondary IconButton fill while pressed. Not read today, and lighter than hover (#130)."
+              "$value": "{semantic.color.background.page}",
+              "$description": "Secondary IconButton fill while pressed. Not read today, and lighter than hover (#130)."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.disabled}",
-              "type": "color",
-              "description": "Disabled secondary IconButton fill."
+              "$value": "{semantic.color.background.disabled}",
+              "$description": "Disabled secondary IconButton fill."
             }
           }
         },
         "naked": {
           "backgroundColor": {
-            "value": "{semantic.color.background.transparent}",
-            "type": "color",
-            "description": "Naked IconButton has no fill at rest."
+            "$value": "{semantic.color.background.transparent}",
+            "$description": "Naked IconButton has no fill at rest."
           },
           "hover": {
             "backgroundColor": {
-              "value": "{semantic.color.background.surface}",
-              "type": "color",
-              "description": "Naked IconButton fill on hover."
+              "$value": "{semantic.color.background.surface}",
+              "$description": "Naked IconButton fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "value": "{semantic.color.background.neutral}",
-              "type": "color",
-              "description": "Naked IconButton fill while pressed. Not read today (#130)."
+              "$value": "{semantic.color.background.neutral}",
+              "$description": "Naked IconButton fill while pressed. Not read today (#130)."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "value": "{semantic.color.background.transparent}",
-              "type": "color",
-              "description": "Disabled naked IconButton has no fill. Not read today (#130)."
+              "$value": "{semantic.color.background.transparent}",
+              "$description": "Disabled naked IconButton has no fill. Not read today (#130)."
             }
           }
         }
       },
       "sizes": {
+        "$type": "dimension",
         "small": {
           "minWidth": {
-            "value": "32px",
-            "type": "size",
-            "description": "Minimum width of the small IconButton. Raw px until control sizes are decided in #129."
+            "$value": "32px",
+            "$description": "Minimum width of the small IconButton. Raw px until control sizes are decided in #129."
           },
           "minHeight": {
-            "value": "32px",
-            "type": "size",
-            "description": "Minimum height of the small IconButton. Raw px until control sizes are decided in #129."
+            "$value": "32px",
+            "$description": "Minimum height of the small IconButton. Raw px until control sizes are decided in #129."
           },
           "padding": {
-            "value": "{semantic.spacing.component.xs}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
+            "$value": "{semantic.spacing.component.xs}",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
           }
         },
         "medium": {
           "minWidth": {
-            "value": "40px",
-            "type": "size",
-            "description": "Minimum width of the medium IconButton. Raw px until control sizes are decided in #129."
+            "$value": "40px",
+            "$description": "Minimum width of the medium IconButton. Raw px until control sizes are decided in #129."
           },
           "minHeight": {
-            "value": "40px",
-            "type": "size",
-            "description": "Minimum height of the medium IconButton. Raw px until control sizes are decided in #129."
+            "$value": "40px",
+            "$description": "Minimum height of the medium IconButton. Raw px until control sizes are decided in #129."
           },
           "padding": {
-            "value": "{semantic.spacing.component.sm}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm. Removed in 3.0."
+            "$value": "{semantic.spacing.component.sm}",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm. Removed in 3.0."
           }
         },
         "large": {
           "minWidth": {
-            "value": "48px",
-            "type": "size",
-            "description": "Minimum width of the large IconButton. Raw px until control sizes are decided in #129."
+            "$value": "48px",
+            "$description": "Minimum width of the large IconButton. Raw px until control sizes are decided in #129."
           },
           "minHeight": {
-            "value": "48px",
-            "type": "size",
-            "description": "Minimum height of the large IconButton. Raw px until control sizes are decided in #129."
+            "$value": "48px",
+            "$description": "Minimum height of the large IconButton. Raw px until control sizes are decided in #129."
           },
           "padding": {
-            "value": "{semantic.spacing.component.md}",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md. Removed in 3.0."
+            "$value": "{semantic.spacing.component.md}",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md. Removed in 3.0."
           }
         }
       }
     },
     "separator": {
       "border": {
-        "value": "{semantic.border.subtle}",
-        "type": "border",
-        "description": "Divider line, the same as variants.default.border."
+        "$value": "{semantic.border.subtle}",
+        "$type": "border",
+        "$description": "Divider line, the same as variants.default.border."
       },
       "margin": {
-        "value": "{semantic.spacing.separator.lg} 0",
-        "type": "spacing",
-        "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+        "$value": "{semantic.spacing.separator.lg} 0",
+        "$type": "dimension",
+        "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
       },
       "variants": {
         "default": {
           "border": {
-            "value": "{semantic.border.subtle}",
-            "type": "border",
-            "description": "Default Divider line."
+            "$value": "{semantic.border.subtle}",
+            "$type": "border",
+            "$description": "Default Divider line."
           },
           "margin": {
-            "value": "{semantic.spacing.separator.lg} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.lg} 0",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
           }
         },
         "strong": {
           "border": {
-            "value": "{semantic.border.strong}",
-            "type": "border",
-            "description": "Strong Divider line, for a firmer break."
+            "$value": "{semantic.border.strong}",
+            "$type": "border",
+            "$description": "Strong Divider line, for a firmer break."
           },
           "margin": {
-            "value": "{semantic.spacing.separator.lg} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.lg} 0",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
           }
         },
         "minimal": {
           "border": {
-            "value": "{semantic.border.subtle}",
-            "type": "border",
-            "description": "Minimal Divider line."
+            "$value": "{semantic.border.subtle}",
+            "$type": "border",
+            "$description": "Minimal Divider line."
           },
           "margin": {
-            "value": "{semantic.spacing.separator.md} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.md} 0",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
           }
         }
       },
       "sizes": {
+        "$type": "dimension",
         "small": {
           "margin": {
-            "value": "{semantic.spacing.separator.sm} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.sm} 0",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0."
           }
         },
         "medium": {
           "margin": {
-            "value": "{semantic.spacing.separator.md} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.md} 0",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
           }
         },
         "large": {
           "margin": {
-            "value": "{semantic.spacing.separator.lg} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.lg} 0",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
           }
         },
         "xlarge": {
           "margin": {
-            "value": "{semantic.spacing.separator.xl} 0",
-            "type": "spacing",
-            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0."
+            "$value": "{semantic.spacing.separator.xl} 0",
+            "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0."
           }
         }
       }
     },
     "progressBar": {
       "backgroundColor": {
-        "value": "{semantic.color.background.progressTrack}",
-        "type": "color",
-        "description": "ProgressBar track, behind the filled part."
+        "$value": "{semantic.color.background.progressTrack}",
+        "$type": "color",
+        "$description": "ProgressBar track, behind the filled part."
       },
       "borderRadius": {
-        "value": "{semantic.border.radius.sm}",
-        "type": "borderRadius",
-        "description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
+        "$value": "{semantic.border.radius.sm}",
+        "$type": "dimension",
+        "$description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
       },
       "sizes": {
+        "$type": "dimension",
         "sm": {
           "height": {
-            "value": "{semantic.size.dimension.1}",
-            "type": "size",
-            "description": "Thickness of the small ProgressBar (4px)."
+            "$value": "{semantic.size.dimension.1}",
+            "$description": "Thickness of the small ProgressBar (4px)."
           }
         },
         "md": {
           "height": {
-            "value": "{semantic.size.dimension.2}",
-            "type": "size",
-            "description": "Thickness of the medium ProgressBar (8px), the default."
+            "$value": "{semantic.size.dimension.2}",
+            "$description": "Thickness of the medium ProgressBar (8px), the default."
           }
         },
         "lg": {
           "height": {
-            "value": "{semantic.size.dimension.4}",
-            "type": "size",
-            "description": "Thickness of the large ProgressBar (16px)."
+            "$value": "{semantic.size.dimension.4}",
+            "$description": "Thickness of the large ProgressBar (16px)."
           }
         },
         "xl": {
           "height": {
-            "value": "{semantic.size.dimension.5}",
-            "type": "size",
-            "description": "Thickness of the extra-large ProgressBar (20px)."
+            "$value": "{semantic.size.dimension.5}",
+            "$description": "Thickness of the extra-large ProgressBar (20px)."
           }
         }
       }
@@ -833,616 +764,585 @@
     "input": {
       "default": {
         "backgroundColor": {
-          "value": "{semantic.color.background.subtle}",
-          "type": "color",
-          "description": "Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box."
+          "$value": "{semantic.color.background.subtle}",
+          "$type": "color",
+          "$description": "Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box."
         },
         "textColor": {
-          "value": "{semantic.color.text.default}",
-          "type": "color",
-          "description": "Text input value colour."
+          "$value": "{semantic.color.text.default}",
+          "$type": "color",
+          "$description": "Text input value colour."
         },
         "borderColor": {
-          "value": "{semantic.color.border.subtle}",
-          "type": "color",
-          "description": "Text input border at rest."
+          "$value": "{semantic.color.border.subtle}",
+          "$type": "color",
+          "$description": "Text input border at rest."
         },
         "borderRadius": {
-          "value": "{semantic.border.radius.sm}",
-          "type": "borderRadius",
-          "description": "Corner radius of text inputs and the Checkbox box."
+          "$value": "{semantic.border.radius.sm}",
+          "$type": "dimension",
+          "$description": "Corner radius of text inputs and the Checkbox box."
         },
         "borderWidth": {
-          "value": "{semantic.border.width.thin}",
-          "type": "borderWidth",
-          "description": "Border width of text inputs and the Checkbox box."
+          "$value": "{semantic.border.width.thin}",
+          "$type": "dimension",
+          "$description": "Border width of text inputs and the Checkbox box."
         },
         "paddingY": {
-          "value": "11px",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0."
+          "$value": "11px",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0."
         },
         "paddingX": {
-          "value": "{semantic.spacing.component.lg}",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0."
+          "$value": "{semantic.spacing.component.lg}",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0."
         },
         "font": {
-          "value": "{semantic.typography.body}",
-          "type": "typography",
-          "description": "Text input value typography."
+          "$value": "{semantic.typography.body}",
+          "$type": "typography",
+          "$description": "Text input value typography."
         }
       },
       "placeholder": {
+        "$type": "color",
         "textColor": {
-          "value": "{semantic.color.text.disabled}",
-          "type": "color",
-          "description": "Placeholder text colour."
+          "$value": "{semantic.color.text.disabled}",
+          "$description": "Placeholder text colour."
         }
       },
       "hover": {
+        "$type": "color",
         "borderColor": {
-          "value": "{semantic.color.border.strong}",
-          "type": "color",
-          "description": "Text input border on hover."
+          "$value": "{semantic.color.border.strong}",
+          "$description": "Text input border on hover."
         }
       },
       "focus": {
         "borderColor": {
-          "value": "{semantic.color.border.strong}",
-          "type": "color",
-          "description": "Text input border while focused."
+          "$value": "{semantic.color.border.strong}",
+          "$type": "color",
+          "$description": "Text input border while focused."
         },
         "outline": {
-          "value": "{semantic.border.focus}",
-          "type": "border",
-          "description": "Focus ring on text inputs and the Checkbox box."
+          "$value": "{semantic.border.focus}",
+          "$type": "border",
+          "$description": "Focus ring on text inputs and the Checkbox box."
         },
         "outlineOffset": {
-          "value": "2px",
-          "type": "size",
-          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+          "$value": "2px",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
         }
       },
       "error": {
         "borderColor": {
-          "value": "{semantic.color.border.error}",
-          "type": "color",
-          "description": "Text input border when invalid."
+          "$value": "{semantic.color.border.error}",
+          "$type": "color",
+          "$description": "Text input border when invalid."
         },
         "focus": {
           "borderColor": {
-            "value": "{semantic.color.border.error}",
-            "type": "color",
-            "description": "Invalid text input border while focused."
+            "$value": "{semantic.color.border.error}",
+            "$type": "color",
+            "$description": "Invalid text input border while focused."
           },
           "outline": {
-            "value": "{semantic.border.focus}",
-            "type": "border",
-            "description": "Focus ring on an invalid text input."
+            "$value": "{semantic.border.focus}",
+            "$type": "border",
+            "$description": "Focus ring on an invalid text input."
           },
           "outlineOffset": {
-            "value": "2px",
-            "type": "size",
-            "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+            "$value": "2px",
+            "$type": "dimension",
+            "$description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
           }
         },
         "hover": {
+          "$type": "color",
           "borderColor": {
-            "value": "{semantic.color.border.error}",
-            "type": "color",
-            "description": "Invalid text input border on hover."
+            "$value": "{semantic.color.border.error}",
+            "$description": "Invalid text input border on hover."
           }
         }
       },
       "disabled": {
         "backgroundColor": {
-          "value": "{semantic.color.background.disabled}",
-          "type": "color",
-          "description": "Disabled text input fill."
+          "$value": "{semantic.color.background.disabled}",
+          "$type": "color",
+          "$description": "Disabled text input fill."
         },
         "textColor": {
-          "value": "{semantic.color.text.disabled}",
-          "type": "color",
-          "description": "Disabled text input value colour."
+          "$value": "{semantic.color.text.disabled}",
+          "$type": "color",
+          "$description": "Disabled text input value colour."
         },
         "borderColor": {
-          "value": "{semantic.color.border.subtle}",
-          "type": "color",
-          "description": "Disabled text input border."
+          "$value": "{semantic.color.border.subtle}",
+          "$type": "color",
+          "$description": "Disabled text input border."
         },
         "cursor": {
-          "value": "not-allowed",
-          "type": "other",
-          "description": "Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0."
+          "$value": "not-allowed",
+          "$type": "other",
+          "$description": "Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0."
         }
       },
       "textarea": {
+        "$type": "dimension",
         "minHeight": {
-          "value": "{semantic.size.dimension.30}",
-          "type": "size",
-          "description": "Minimum height of a multi-line text input (120px)."
+          "$value": "{semantic.size.dimension.30}",
+          "$description": "Minimum height of a multi-line text input (120px)."
         }
       }
     },
     "badge": {
       "dot": {
+        "$type": "dimension",
         "size": {
-          "value": "{semantic.size.dimension.2}",
-          "type": "size",
-          "description": "Width and height of the dot badge indicator (8px)."
+          "$value": "{semantic.size.dimension.2}",
+          "$description": "Width and height of the dot badge indicator (8px)."
         }
       },
       "count": {
+        "$type": "dimension",
         "minWidth": {
-          "value": "{semantic.size.dimension.4}",
-          "type": "size",
-          "description": "Minimum width of the count badge indicator (16px)."
+          "$value": "{semantic.size.dimension.4}",
+          "$description": "Minimum width of the count badge indicator (16px)."
         },
         "height": {
-          "value": "{semantic.size.dimension.4}",
-          "type": "size",
-          "description": "Height of the count badge indicator (16px)."
+          "$value": "{semantic.size.dimension.4}",
+          "$description": "Height of the count badge indicator (16px)."
         },
         "paddingX": {
-          "value": "{semantic.spacing.component.xs}",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
+          "$value": "{semantic.spacing.component.xs}",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
         },
         "lineHeight": {
-          "value": "{semantic.lineHeight.none}",
-          "type": "lineHeight",
-          "description": "Line height of the count text, so the digits centre in the indicator."
+          "$type": "number",
+          "$value": "{semantic.lineHeight.none}",
+          "$description": "Line height of the count text, so the digits centre in the indicator."
         }
       },
       "ring": {
+        "$type": "dimension",
         "width": {
-          "value": "{semantic.border.width.thick}",
-          "type": "borderWidth",
-          "description": "Width of the ring that separates the badge indicator from its host element (2px)."
+          "$value": "{semantic.border.width.thick}",
+          "$description": "Width of the ring that separates the badge indicator from its host element (2px)."
         }
       },
       "borderRadius": {
-        "value": "{semantic.border.radius.circle}",
-        "type": "borderRadius",
-        "description": "Badge indicators are always fully circular."
+        "$value": "{semantic.border.radius.circle}",
+        "$type": "dimension",
+        "$description": "Badge indicators are always fully circular."
       },
       "label": {
         "fontWeight": {
-          "value": "{semantic.fontWeight.medium}",
-          "type": "fontWeight",
-          "description": "Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it."
+          "$value": "{semantic.fontWeight.medium}",
+          "$type": "fontWeight",
+          "$description": "Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it."
         },
         "typography": {
+          "$type": "typography",
           "small": {
-            "value": "{semantic.typography.caption}",
-            "type": "typography",
-            "description": "Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight."
+            "$value": "{semantic.typography.caption}",
+            "$description": "Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight."
           },
           "medium": {
-            "value": "{semantic.typography.small}",
-            "type": "typography",
-            "description": "Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight."
+            "$value": "{semantic.typography.small}",
+            "$description": "Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight."
           }
         }
       }
     },
     "field": {
       "gap": {
-        "value": "{semantic.spacing.layout.sm}",
-        "type": "spacing",
-        "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.sm. Removed in 3.0. Was the vertical gap between a field's label, control and helper text."
+        "$value": "{semantic.spacing.layout.sm}",
+        "$type": "dimension",
+        "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.sm. Removed in 3.0. Was the vertical gap between a field's label, control and helper text."
       },
       "label": {
         "typography": {
-          "value": "{semantic.typography.label}",
-          "type": "typography",
-          "description": "Field label text."
+          "$value": "{semantic.typography.label}",
+          "$type": "typography",
+          "$description": "Field label text."
         },
         "color": {
-          "value": "{semantic.color.text.default}",
-          "type": "color",
-          "description": "Field label colour."
+          "$value": "{semantic.color.text.default}",
+          "$type": "color",
+          "$description": "Field label colour."
         },
         "colorDisabled": {
-          "value": "{semantic.color.text.disabled}",
-          "type": "color",
-          "description": "Field label colour when the field is disabled."
+          "$value": "{semantic.color.text.disabled}",
+          "$type": "color",
+          "$description": "Field label colour when the field is disabled."
         },
         "gap": {
-          "value": "{semantic.spacing.layout.xs}",
-          "type": "spacing",
-          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.xs. Removed in 3.0. Was the gap between the label text and the required indicator."
+          "$value": "{semantic.spacing.layout.xs}",
+          "$type": "dimension",
+          "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.xs. Removed in 3.0. Was the gap between the label text and the required indicator."
         }
       },
       "requiredIndicator": {
         "color": {
-          "value": "{semantic.color.text.error}",
-          "type": "color",
-          "description": "Colour of the required-field asterisk."
+          "$value": "{semantic.color.text.error}",
+          "$type": "color",
+          "$description": "Colour of the required-field asterisk."
         },
         "fontWeight": {
-          "value": "{semantic.fontWeight.bold}",
-          "type": "fontWeight",
-          "description": "Weight of the required-field asterisk."
+          "$value": "{semantic.fontWeight.bold}",
+          "$type": "fontWeight",
+          "$description": "Weight of the required-field asterisk."
         }
       },
       "helperText": {
         "typography": {
-          "value": "{semantic.typography.caption}",
-          "type": "typography",
-          "description": "Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label."
+          "$value": "{semantic.typography.caption}",
+          "$type": "typography",
+          "$description": "Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label."
         },
         "color": {
-          "value": "{semantic.color.text.subdued}",
-          "type": "color",
-          "description": "Helper text colour."
+          "$value": "{semantic.color.text.subdued}",
+          "$type": "color",
+          "$description": "Helper text colour."
         },
         "colorError": {
-          "value": "{semantic.color.text.error}",
-          "type": "color",
-          "description": "Helper text colour when it describes an error."
+          "$value": "{semantic.color.text.error}",
+          "$type": "color",
+          "$description": "Helper text colour when it describes an error."
         }
       }
     },
     "alert": {
       "severity": {
+        "$type": "color",
         "error": {
           "background": {
-            "value": "{semantic.color.background.error-subtle}",
-            "type": "color",
-            "description": "Error alert background, in both appearances."
+            "$value": "{semantic.color.background.error-subtle}",
+            "$description": "Error alert background, in both appearances."
           },
           "text": {
-            "value": "{semantic.color.text.error}",
-            "type": "color",
-            "description": "Error alert text colour."
+            "$value": "{semantic.color.text.error}",
+            "$description": "Error alert text colour."
           }
         },
         "warning": {
           "background": {
-            "value": "{semantic.color.background.warning-subtle}",
-            "type": "color",
-            "description": "Warning alert background, in both appearances."
+            "$value": "{semantic.color.background.warning-subtle}",
+            "$description": "Warning alert background, in both appearances."
           },
           "text": {
-            "value": "{semantic.color.text.warning}",
-            "type": "color",
-            "description": "Warning alert text colour."
+            "$value": "{semantic.color.text.warning}",
+            "$description": "Warning alert text colour."
           }
         },
         "info": {
           "background": {
-            "value": "{semantic.color.background.interactive-subtle}",
-            "type": "color",
-            "description": "Info alert background, in both appearances."
+            "$value": "{semantic.color.background.interactive-subtle}",
+            "$description": "Info alert background, in both appearances."
           },
           "text": {
-            "value": "{semantic.color.text.interactive}",
-            "type": "color",
-            "description": "Info alert text colour."
+            "$value": "{semantic.color.text.interactive}",
+            "$description": "Info alert text colour."
           }
         },
         "success": {
           "background": {
-            "value": "{semantic.color.background.success-subtle}",
-            "type": "color",
-            "description": "Success alert background, in both appearances."
+            "$value": "{semantic.color.background.success-subtle}",
+            "$description": "Success alert background, in both appearances."
           },
           "text": {
-            "value": "{semantic.color.text.success}",
-            "type": "color",
-            "description": "Success alert text colour."
+            "$value": "{semantic.color.text.success}",
+            "$description": "Success alert text colour."
           }
         }
       },
       "appearance": {
+        "$type": "color",
         "outlined": {
           "borderColor": {
-          "error": {
-            "value": "{semantic.color.border.error}",
-            "type": "color",
-            "description": "Outlined error alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
-          },
-          "warning": {
-            "value": "{semantic.color.border.warning}",
-            "type": "color",
-            "description": "Outlined warning alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
-          },
-          "info": {
-            "value": "{semantic.color.border.interactive}",
-            "type": "color",
-            "description": "Outlined info alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
-          },
-          "success": {
-            "value": "{semantic.color.border.success}",
-            "type": "color",
-            "description": "Outlined success alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
-          }
+            "error": {
+              "$value": "{semantic.color.border.error}",
+              "$description": "Outlined error alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+            },
+            "warning": {
+              "$value": "{semantic.color.border.warning}",
+              "$description": "Outlined warning alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+            },
+            "info": {
+              "$value": "{semantic.color.border.interactive}",
+              "$description": "Outlined info alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+            },
+            "success": {
+              "$value": "{semantic.color.border.success}",
+              "$description": "Outlined success alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
+            }
           }
         },
         "borderless": {
           "borderColor": {
-          "error": {
-            "value": "{semantic.color.border.none}",
-            "type": "color",
-            "description": "Borderless error alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
-          },
-          "warning": {
-            "value": "{semantic.color.border.none}",
-            "type": "color",
-            "description": "Borderless warning alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
-          },
-          "info": {
-            "value": "{semantic.color.border.none}",
-            "type": "color",
-            "description": "Borderless info alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
-          },
-          "success": {
-            "value": "{semantic.color.border.none}",
-            "type": "color",
-            "description": "Borderless success alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
-          }
+            "error": {
+              "$value": "{semantic.color.border.none}",
+              "$description": "Borderless error alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+            },
+            "warning": {
+              "$value": "{semantic.color.border.none}",
+              "$description": "Borderless warning alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+            },
+            "info": {
+              "$value": "{semantic.color.border.none}",
+              "$description": "Borderless info alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+            },
+            "success": {
+              "$value": "{semantic.color.border.none}",
+              "$description": "Borderless success alert: no visible border, keeping its width so both appearances take the same space (decision 0019)."
+            }
           }
         }
       },
       "title": {
         "typography": {
-          "value": "{semantic.typography.h6}",
-          "type": "typography",
-          "description": "Alert title style (h6), adjusted by title.fontWeight and title.lineHeight."
+          "$value": "{semantic.typography.h6}",
+          "$type": "typography",
+          "$description": "Alert title style (h6), adjusted by title.fontWeight and title.lineHeight."
         },
         "fontWeight": {
-          "value": "{semantic.fontWeight.semibold}",
-          "type": "fontWeight",
-          "description": "Alert titles are semibold, heavier than h6's medium."
+          "$value": "{semantic.fontWeight.semibold}",
+          "$type": "fontWeight",
+          "$description": "Alert titles are semibold, heavier than h6's medium."
         },
         "lineHeight": {
-          "value": "{semantic.lineHeight.tight}",
-          "type": "lineHeight",
-          "description": "Alert titles use a tighter line height than h6."
+          "$value": "{semantic.lineHeight.tight}",
+          "$type": "dimension",
+          "$description": "Alert titles use a tighter line height than h6."
         }
       },
       "message": {
         "typography": {
-          "value": "{semantic.typography.body}",
-          "type": "typography",
-          "description": "Alert message style (body), adjusted by message.lineHeight."
+          "$value": "{semantic.typography.body}",
+          "$type": "typography",
+          "$description": "Alert message style (body), adjusted by message.lineHeight."
         },
         "lineHeight": {
-          "value": "{semantic.lineHeight.tight}",
-          "type": "lineHeight",
-          "description": "Alert messages use a tighter line height than body."
+          "$value": "{semantic.lineHeight.tight}",
+          "$type": "dimension",
+          "$description": "Alert messages use a tighter line height than body."
         }
       }
     },
     "tabBar": {
       "badge": {
         "typography": {
-          "value": "{semantic.typography.caption}",
-          "type": "typography",
-          "description": "Tab count badge text."
+          "$value": "{semantic.typography.caption}",
+          "$type": "typography",
+          "$description": "Tab count badge text."
         },
         "fontWeight": {
-          "value": "{semantic.fontWeight.bold}",
-          "type": "fontWeight",
-          "description": "Tab count badges are bold, heavier than caption."
+          "$value": "{semantic.fontWeight.bold}",
+          "$type": "fontWeight",
+          "$description": "Tab count badges are bold, heavier than caption."
         },
         "size": {
-          "value": "{semantic.size.dimension.5}",
-          "type": "size",
-          "description": "Tab count badge height and minimum width (20px)."
+          "$value": "{semantic.size.dimension.5}",
+          "$type": "dimension",
+          "$description": "Tab count badge height and minimum width (20px)."
         }
       },
       "scrollbar": {
+        "$type": "dimension",
         "height": {
-          "value": "{semantic.size.dimension.1}",
-          "type": "size",
-          "description": "Height of the horizontal scrollbar when tabs overflow (4px)."
+          "$value": "{semantic.size.dimension.1}",
+          "$description": "Height of the horizontal scrollbar when tabs overflow (4px)."
         }
       }
     },
     "searchField": {
       "sectionHeader": {
         "typography": {
-          "value": "{semantic.typography.caption}",
-          "type": "typography",
-          "description": "Suggestion-list section header text (shown uppercase)."
+          "$value": "{semantic.typography.caption}",
+          "$type": "typography",
+          "$description": "Suggestion-list section header text (shown uppercase)."
         },
         "letterSpacing": {
-          "value": "{semantic.letterSpacing.wide}",
-          "type": "letterSpacing",
-          "description": "Tracking for the uppercase section header."
+          "$value": "{semantic.letterSpacing.wide}",
+          "$type": "dimension",
+          "$description": "Tracking for the uppercase section header."
         }
       }
     },
     "avatar": {
       "initials": {
         "fontFamily": {
-          "value": "{semantic.fontFamily.body}",
-          "type": "fontFamily",
-          "description": "Initials font."
+          "$value": "{semantic.fontFamily.body}",
+          "$type": "fontFamily",
+          "$description": "Initials font."
         },
         "fontWeight": {
-          "value": "{semantic.fontWeight.medium}",
-          "type": "fontWeight",
-          "description": "Initials weight."
+          "$value": "{semantic.fontWeight.medium}",
+          "$type": "fontWeight",
+          "$description": "Initials weight."
         },
         "lineHeight": {
-          "value": "{semantic.lineHeight.none}",
-          "type": "lineHeight",
-          "description": "Initials sit on a single line equal to their size."
+          "$type": "number",
+          "$value": "{semantic.lineHeight.none}",
+          "$description": "Initials sit on a single line equal to their size."
         },
         "fontSize": {
+          "$type": "dimension",
           "xs": {
-            "value": "{semantic.fontSize.xs}",
-            "type": "fontSize",
-            "description": "Initials in an xs avatar."
+            "$value": "{semantic.fontSize.xs}",
+            "$description": "Initials in an xs avatar."
           },
           "sm": {
-            "value": "{semantic.fontSize.sm}",
-            "type": "fontSize",
-            "description": "Initials in an sm avatar."
+            "$value": "{semantic.fontSize.sm}",
+            "$description": "Initials in an sm avatar."
           },
           "md": {
-            "value": "{semantic.fontSize.md}",
-            "type": "fontSize",
-            "description": "Initials in an md avatar."
+            "$value": "{semantic.fontSize.md}",
+            "$description": "Initials in an md avatar."
           },
           "lg": {
-            "value": "{semantic.fontSize.lg}",
-            "type": "fontSize",
-            "description": "Initials in an lg avatar."
+            "$value": "{semantic.fontSize.lg}",
+            "$description": "Initials in an lg avatar."
           },
           "xl": {
-            "value": "{semantic.fontSize.xl}",
-            "type": "fontSize",
-            "description": "Initials in an xl avatar."
+            "$value": "{semantic.fontSize.xl}",
+            "$description": "Initials in an xl avatar."
           }
         }
       }
     },
     "codeBlock": {
       "fontFamily": {
-        "value": "{semantic.fontFamily.monospace}",
-        "type": "fontFamily",
-        "description": "Code font."
+        "$value": "{semantic.fontFamily.monospace}",
+        "$type": "fontFamily",
+        "$description": "Code font."
       },
       "fontSize": {
-        "value": "{semantic.fontSize.xs}",
-        "type": "fontSize",
-        "description": "Code text size."
+        "$value": "{semantic.fontSize.xs}",
+        "$type": "dimension",
+        "$description": "Code text size."
       },
       "lineHeight": {
-        "value": "{semantic.lineHeight.tight}",
-        "type": "lineHeight",
-        "description": "Code line height."
+        "$value": "{semantic.lineHeight.tight}",
+        "$type": "dimension",
+        "$description": "Code line height."
       }
     },
     "slider": {
+      "$type": "shadow",
       "thumb": {
         "shadow": {
           "default": {
-            "value": "{semantic.elevation.raised}",
-            "type": "boxShadow",
-            "description": "Slider thumb at rest."
+            "$value": "{semantic.elevation.raised}",
+            "$description": "Slider thumb at rest."
           },
           "hover": {
-            "value": "{semantic.elevation.sticky}",
-            "type": "boxShadow",
-            "description": "Slider thumb on hover: one step deeper."
+            "$value": "{semantic.elevation.sticky}",
+            "$description": "Slider thumb on hover: one step deeper."
           },
           "active": {
-            "value": "{semantic.elevation.floating}",
-            "type": "boxShadow",
-            "description": "Slider thumb while dragging: deepest."
+            "$value": "{semantic.elevation.floating}",
+            "$description": "Slider thumb while dragging: deepest."
           }
         }
       }
     },
     "accountCard": {
+      "$type": "dimension",
       "header": {
         "minHeight": {
-          "value": "{semantic.size.dimension.12}",
-          "type": "size",
-          "description": "Minimum height of the card header row (48px)."
+          "$value": "{semantic.size.dimension.12}",
+          "$description": "Minimum height of the card header row (48px)."
         }
       },
       "minWidth": {
-        "value": "{semantic.size.dimension.75}",
-        "type": "size",
-        "description": "Minimum card width (300px)."
+        "$value": "{semantic.size.dimension.75}",
+        "$description": "Minimum card width (300px)."
       }
     },
     "breadcrumbs": {
+      "$type": "dimension",
       "item": {
         "maxWidth": {
-          "value": "{semantic.size.dimension.45}",
-          "type": "size",
-          "description": "Width at which a breadcrumb label truncates (180px)."
+          "$value": "{semantic.size.dimension.45}",
+          "$description": "Width at which a breadcrumb label truncates (180px)."
         }
       }
     },
     "cardLarge": {
+      "$type": "dimension",
       "maxWidth": {
-        "value": "{semantic.size.dimension.192}",
-        "type": "size",
-        "description": "Maximum card width (768px)."
+        "$value": "{semantic.size.dimension.192}",
+        "$description": "Maximum card width (768px)."
       }
     },
     "checkbox": {
+      "$type": "dimension",
       "box": {
         "size": {
-          "value": "{semantic.size.dimension.5}",
-          "type": "size",
-          "description": "Width and height of the checkbox square (20px)."
+          "$value": "{semantic.size.dimension.5}",
+          "$description": "Width and height of the checkbox square (20px)."
         }
       },
       "row": {
         "minHeight": {
-          "value": "{semantic.size.dimension.8}",
-          "type": "size",
-          "description": "Minimum height of a checkbox or radio row (32px)."
+          "$value": "{semantic.size.dimension.8}",
+          "$description": "Minimum height of a checkbox or radio row (32px)."
         }
       }
     },
     "emptyState": {
+      "$type": "dimension",
       "illustration": {
         "small": {
-          "value": "{semantic.size.dimension.20}",
-          "type": "size",
-          "description": "Small illustration size (80px)."
+          "$value": "{semantic.size.dimension.20}",
+          "$description": "Small illustration size (80px)."
         },
         "medium": {
-          "value": "{semantic.size.dimension.30}",
-          "type": "size",
-          "description": "Medium illustration size (120px)."
+          "$value": "{semantic.size.dimension.30}",
+          "$description": "Medium illustration size (120px)."
         },
         "large": {
-          "value": "{semantic.size.dimension.50}",
-          "type": "size",
-          "description": "Large illustration size (200px)."
+          "$value": "{semantic.size.dimension.50}",
+          "$description": "Large illustration size (200px)."
         }
       },
       "maxWidth": {
-        "value": "{semantic.size.dimension.100}",
-        "type": "size",
-        "description": "Maximum width of the empty state (400px)."
+        "$value": "{semantic.size.dimension.100}",
+        "$description": "Maximum width of the empty state (400px)."
       },
       "text": {
         "maxWidth": {
-          "value": "{semantic.size.dimension.90}",
-          "type": "size",
-          "description": "Maximum width of the title and description (360px)."
+          "$value": "{semantic.size.dimension.90}",
+          "$description": "Maximum width of the title and description (360px)."
         }
       },
       "actions": {
         "maxWidth": {
-          "value": "{semantic.size.dimension.75}",
-          "type": "size",
-          "description": "Maximum width of the actions area (300px)."
+          "$value": "{semantic.size.dimension.75}",
+          "$description": "Maximum width of the actions area (300px)."
         }
       }
     },
     "listItem": {
+      "$type": "dimension",
       "expandedIndent": {
         "compact": {
-          "value": "{semantic.size.dimension.12}",
-          "type": "size",
-          "description": "Left indent of expanded content in compact rows, aligning it with the label (48px)."
+          "$value": "{semantic.size.dimension.12}",
+          "$description": "Left indent of expanded content in compact rows, aligning it with the label (48px)."
         },
         "comfortable": {
-          "value": "{semantic.size.dimension.15}",
-          "type": "size",
-          "description": "Left indent of expanded content in comfortable rows (60px)."
+          "$value": "{semantic.size.dimension.15}",
+          "$description": "Left indent of expanded content in comfortable rows (60px)."
         }
       }
     },
     "transactionListItem": {
+      "$type": "dimension",
       "minHeight": {
-        "value": "{semantic.size.dimension.18}",
-        "type": "size",
-        "description": "Minimum row height (72px)."
+        "$value": "{semantic.size.dimension.18}",
+        "$description": "Minimum row height (72px)."
       }
     }
   }
