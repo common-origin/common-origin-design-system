@@ -155,7 +155,7 @@ The owner approved this direction and the migration plan below in [decision 0017
 4. **Upgrade to Style Dictionary 5** (done) and port the config to hooks, on the existing format. Diff: `tokens.json` byte-identical; `tokens.css` and `tokens.d.ts` lose their timestamps. Value transforms stay off (see §1).
 5. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
 
-Steps 4 and 5 were swapped on 2026-10-06 ([0017](../foundation/decisions/0017-token-pipeline-dtcg-style-dictionary-5.md)): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
+Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
 
 At every step: `npm run build:tokens && npm run typecheck && npm test && npm run build:package`, plus a zero-diff check of resolved values against the golden file (`npm test` runs it) unless the PR intends a visual change.
