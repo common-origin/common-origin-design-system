@@ -473,9 +473,9 @@
   --co-semantic-color-icon-interactive: var(--co-base-color-blue-900); /** Blue icons in links and selected items, matching text.interactive. 5.39:1 on white. */
   --co-semantic-color-icon-interactive-hover: var(--co-base-color-blue-1000); /** Blue icon on hover, matching text.interactive-hover. */
   --co-semantic-color-icon-interactive-active: var(--co-base-color-blue-1100); /** Blue icon while pressed, matching text.interactive-active. */
-  --co-semantic-color-icon-error: var(--co-base-color-red-900); /** Error icons, such as in Alert, InlineAlert and EmptyState. 5.41:1 on white. */
-  --co-semantic-color-icon-success: var(--co-base-color-green-900); /** Success icons, such as in Alert, InlineAlert and EmptyState. 5.40:1 on white. */
-  --co-semantic-color-icon-warning: var(--co-base-color-orange-900); /** Warning icons, such as in Alert and InlineAlert. 5.38:1 on white. */
+  --co-semantic-color-icon-error: var(--co-base-color-red-900); /** Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.) */
+  --co-semantic-color-icon-success: var(--co-base-color-green-900); /** Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.) */
+  --co-semantic-color-icon-warning: var(--co-base-color-orange-900); /** Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.) */
   --co-semantic-color-financial-credit: var(--co-base-color-green-700); /** Color for positive monetary values, credits, income */
   --co-semantic-color-financial-credit-hover: var(--co-base-color-green-800); /** Hover state for credit-colored interactive elements */
   --co-semantic-color-financial-debit: var(--co-base-color-red-900); /** Color for negative monetary values, debits, expenses */

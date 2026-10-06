@@ -778,15 +778,15 @@
         },
         "error": {
           "$value": "{base.color.red.900}",
-          "$description": "Error icons, such as in Alert, InlineAlert and EmptyState. 5.41:1 on white."
+          "$description": "Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)"
         },
         "success": {
           "$value": "{base.color.green.900}",
-          "$description": "Success icons, such as in Alert, InlineAlert and EmptyState. 5.40:1 on white."
+          "$description": "Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.)"
         },
         "warning": {
           "$value": "{base.color.orange.900}",
-          "$description": "Warning icons, such as in Alert and InlineAlert. 5.38:1 on white."
+          "$description": "Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.)"
         }
       },
       "financial": {
