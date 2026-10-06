@@ -4,7 +4,9 @@ import StyleDictionary from 'style-dictionary'
 
 // Nested TypeScript interfaces for the published `Tokens*` types. Every leaf is a string.
 function nestedInterface({ dictionary }) {
-  const isToken = (node) => node && typeof node === 'object' && '$value' in node
+  // With usesDtcg the tokens carry `$value`; accept `value` too, so a change in Style Dictionary's
+  // in-memory shape can't make the format mistake tokens for groups
+  const isToken = (node) => node && typeof node === 'object' && ('$value' in node || 'value' in node)
   const typeName = (parent, key) => `${parent}${key.charAt(0).toUpperCase() + key.slice(1).replace(/[-\s]/g, '')}`
   const safeKey = (key) => (/^[0-9]/.test(key) || key.includes('-') || key.includes(' ') ? `'${key}'` : key)
 
@@ -12,7 +14,7 @@ function nestedInterface({ dictionary }) {
     Object.fromEntries(
       Object.entries(node)
         .filter(([, child]) => child && typeof child === 'object')
-        .map(([key, child]) => [key, isToken(child) ? child.$value : values(child)])
+        .map(([key, child]) => [key, isToken(child) ? (child.$value ?? child.value) : values(child)])
     )
 
   const interfaces = (node, name = 'Tokens', seen = new Set()) => {

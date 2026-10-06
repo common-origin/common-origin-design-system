@@ -49,7 +49,8 @@ describe('component tier (decisions 0014 and 0022)', () => {
   const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
   it('references only semantic tokens', () => {
     const problems = converted
-      .filter(({ node }) => typeof node === 'object')
+      // A leaf with no `$value` is reported by the test above, not counted as having no references
+      .filter(({ node }) => typeof node === 'object' && typeof node.$value === 'string')
       .flatMap(({ path, node }) => {
         const refs = [...String((node as Node).$value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
         const aliasTarget = path.match(ALIAS)?.[1]
