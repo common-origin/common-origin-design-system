@@ -133,9 +133,4 @@ export default tseslint.config(
       ],
     },
   },
-  {
-    // Latent bugs in dead custom transforms — removed in the Style Dictionary migration (#24, step 2)
-    files: ['config/style-dictionary.config.js'],
-    rules: { 'no-undef': 'warn', 'no-useless-escape': 'warn', 'no-constant-binary-expression': 'warn' },
-  },
 )

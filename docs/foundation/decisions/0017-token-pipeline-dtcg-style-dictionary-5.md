@@ -34,9 +34,11 @@ The component tier becomes real tokens that reference semantic tokens ([0014](00
 1. snapshot the resolved values;
 2. fix the defects on v3;
 3. normalise the component tier;
-4. convert to DTCG;
-5. upgrade to Style Dictionary 5;
+4. upgrade to Style Dictionary 5;
+5. convert to DTCG;
 6. add the new outputs and tests.
+
+Steps 4 and 5 were swapped on 2026-10-06 (owner's call): Style Dictionary 3 can't read DTCG files and `convertJSONToDTCG` only exists from version 4, while Style Dictionary 5 reads both formats. So the upgrade comes first, on the existing format.
 
 **Every step must leave resolved token values unchanged**, checked against a committed golden `tokens.json`, unless the PR says otherwise.
 

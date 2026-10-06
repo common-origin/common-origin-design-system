@@ -15,7 +15,7 @@ You are the design token specialist and a **Style Dictionary expert**. You know 
 4. `.github/AGENT_CONSTITUTION.md` and `.github/AGENT_WAYS_OF_WORKING.md`
 
 Then read the real files — never assume their contents:
-- `config/config.json` and `config/style-dictionary.config.js`
+- `config/style-dictionary.config.mjs` (Style Dictionary 5 config, with the custom TypeScript format)
 - `src/tokens/base/index.json`, `src/tokens/semantic/index.json`, `src/tokens/component/index.json`
 - `src/styles/tokens.json` (compiled output that components import)
 
@@ -23,9 +23,9 @@ For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the re
 
 ## What you must know about this repository
 
-- **Style Dictionary 3.9.2**, run via `npm run build:tokens`. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
-- Each platform uses the built-in `js` or `css` transform group, with no custom transforms. The groups' value transforms match on category (the first path segment, `base`/`semantic`/`component`), so in practice no value is transformed: the build resolves references and writes files.
-- Three tiers: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (**mostly plain strings, not tokens**, often referencing base directly).
+- **Style Dictionary 5** (`config/style-dictionary.config.mjs`), run via `npm run build:tokens`, with warnings as errors. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
+- No value transforms: each platform names only a name transform (`name/camel`, or `name/kebab` for CSS). Style Dictionary 5's built-in `js` and `css` groups match on token type and would rewrite every colour, so they're off until a later step adds value transforms deliberately. The build resolves references and writes files.
+- Three tiers, still in the pre-DTCG format (`value`, `type`, `description`) until step 5: base (kebab-case types) → semantic (camelCase types, some descriptions) → component (real, described tokens referencing semantic only, checked by `src/tokens/componentTier.test.ts`).
 - `source` lists the three tier folders explicitly (base, component, semantic, in that order so output order is stable). Don't add other JSON under `src/tokens/`: the golden file lives in `config/`.
 - Components interpolate **resolved values** from `tokens.json`; there are no CSS variables at component level. Changing a token's value changes every consumer's UI.
 
@@ -85,7 +85,7 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` �
    ```bash
    npm run typecheck && npm test && npm run build:package
    ```
-6. **Don't commit** timestamp-only changes to `tokens.css` / `tokens.d.ts`.
+6. **Commit** the regenerated files: the build is deterministic, so they change only where tokens changed.
 
 ## PR description
 

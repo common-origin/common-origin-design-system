@@ -63,7 +63,7 @@ npm run docs:dev         # build tokens, then run the docs site
 
 Run typecheck, lint, tests, `build:package` and `verify:package` before proposing a change as done.
 
-`build:tokens` rewrites the timestamps in `tokens.css` and `tokens.d.ts`. Don't commit timestamp-only changes.
+`build:tokens` output is deterministic: a rebuild with no token changes leaves the generated files untouched.
 
 ## Change Authority & Validation Protocol
 
