@@ -177,12 +177,12 @@
       "default": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
-        "$description": "Hairline in the default border colour: dividers and outlines that separate content, such as Breadcrumbs. 1.19:1 on white, so it's decorative, not a control's boundary."
+        "$description": "Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white."
       },
       "subtle": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
-        "$description": "Hairline in the subtle border colour: quiet outlines, such as dividers and the resting text input border. 1.30:1 on white."
+        "$description": "Hairline in the subtle border colour: quiet outlines and dividers. 1.30:1 on white."
       },
       "strong": {
         "$type": "border",
@@ -192,7 +192,7 @@
       "focus": {
         "$type": "border",
         "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
-        "$description": "The focus ring: 2px solid near-black. Every interactive component uses it for visible keyboard focus (P2), with border.focusOffset."
+        "$description": "The standard focus ring: 2px solid near-black, used with border.focusOffset for visible keyboard focus (P2). Some components draw a blue ring instead, from border.width.thick and color.border.interactive (Box, ListItem, Slider, TransactionListItem)."
       },
       "tooltip": {
         "$type": "border",
@@ -487,39 +487,39 @@
         },
         "2xl": {
           "$value": "{base.spacing.6}",
-          "$description": "1.5rem: space between distinct blocks of content."
+          "$description": "1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "3xl": {
           "$value": "{base.spacing.7}",
-          "$description": "1.75rem: between 2xl and 4xl, for spacious layouts."
+          "$description": "1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "4xl": {
           "$value": "{base.spacing.8}",
-          "$description": "2rem: space between page sections."
+          "$description": "2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "5xl": {
           "$value": "{base.spacing.9}",
-          "$description": "2.25rem: between 4xl and 6xl, for spacious layouts."
+          "$description": "2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "6xl": {
           "$value": "{base.spacing.10}",
-          "$description": "2.5rem: large space between page sections."
+          "$description": "2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "7xl": {
           "$value": "{base.spacing.12}",
-          "$description": "3rem: space between major page regions."
+          "$description": "3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "8xl": {
           "$value": "{base.spacing.14}",
-          "$description": "3.5rem: very large space for editorial layouts."
+          "$description": "3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "9xl": {
           "$value": "{base.spacing.16}",
-          "$description": "4rem: very large space for editorial layouts and hero areas."
+          "$description": "4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "10xl": {
           "$value": "{base.spacing.20}",
-          "$description": "5rem: the largest layout space, for hero areas in editorial products."
+          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. The largest step."
         },
         "11xl": {
           "$value": "{base.spacing.24}",
@@ -552,7 +552,7 @@
         },
         "disabled": {
           "$value": "{base.color.neutral.500}",
-          "$description": "Text of disabled controls and placeholders. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3); never use it for readable content."
+          "$description": "Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders."
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
@@ -712,11 +712,11 @@
       "border": {
         "default": {
           "$value": "{base.color.neutral.200}",
-          "$description": "Default border colour for dividers and outlines. 1.19:1 on white: decorative only."
+          "$description": "Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11)."
         },
         "subtle": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Subtle border colour for quiet outlines and the resting text input. 1.30:1 on white."
+          "$description": "Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144)."
         },
         "strong": {
           "$value": "{base.color.neutral.800}",

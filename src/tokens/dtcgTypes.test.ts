@@ -65,7 +65,8 @@ describe('DTCG types', () => {
   it('describe every semantic and component token', () => {
     const undescribed = [semantic, component]
       .flatMap((source) => descriptions(source as unknown as Node))
-      .filter(([, description]) => !description)
+      // A description of only whitespace doesn't count
+      .filter(([, description]) => !description.trim())
       .map(([path]) => path)
     expect(undescribed).toEqual([])
   })

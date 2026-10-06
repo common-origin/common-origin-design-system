@@ -339,10 +339,10 @@
   --co-semantic-z-index-dropdown: var(--co-base-z-index-6); /** Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays. */
   --co-semantic-z-index-overlay: var(--co-base-z-index-7); /** Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals. */
   --co-semantic-z-index-modal: var(--co-base-z-index-8); /** Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system. */
-  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers and outlines that separate content, such as Breadcrumbs. 1.19:1 on white, so it's decorative, not a control's boundary. */
-  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Hairline in the subtle border colour: quiet outlines, such as dividers and the resting text input border. 1.30:1 on white. */
+  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white. */
+  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Hairline in the subtle border colour: quiet outlines and dividers. 1.30:1 on white. */
   --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white. */
-  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** The focus ring: 2px solid near-black. Every interactive component uses it for visible keyboard focus (P2), with border.focusOffset. */
+  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** The standard focus ring: 2px solid near-black, used with border.focusOffset for visible keyboard focus (P2). Some components draw a blue ring instead, from border.width.thick and color.border.interactive (Box, ListItem, Slider, TransactionListItem). */
   --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-subtle); /** 2px dotted underline marking text that has a tooltip. */
   --co-semantic-border-width-thin: var(--co-base-border-width-1); /** 0.0625rem: default hairline borders and rings. */
   --co-semantic-border-width-thick: var(--co-base-border-width-2); /** 0.125rem: emphasised borders, focus outlines and selected states. */
@@ -407,22 +407,22 @@
   --co-semantic-spacing-layout-md: var(--co-base-spacing-3); /** 0.75rem: the default gap between related elements. */
   --co-semantic-spacing-layout-lg: var(--co-base-spacing-4); /** 1rem: space between groups of elements, and padding inside containers. */
   --co-semantic-spacing-layout-xl: var(--co-base-spacing-5); /** 1.25rem: generous padding inside larger containers. */
-  --co-semantic-spacing-layout-2xl: var(--co-base-spacing-6); /** 1.5rem: space between distinct blocks of content. */
-  --co-semantic-spacing-layout-3xl: var(--co-base-spacing-7); /** 1.75rem: between 2xl and 4xl, for spacious layouts. */
-  --co-semantic-spacing-layout-4xl: var(--co-base-spacing-8); /** 2rem: space between page sections. */
-  --co-semantic-spacing-layout-5xl: var(--co-base-spacing-9); /** 2.25rem: between 4xl and 6xl, for spacious layouts. */
-  --co-semantic-spacing-layout-6xl: var(--co-base-spacing-10); /** 2.5rem: large space between page sections. */
-  --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12); /** 3rem: space between major page regions. */
-  --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14); /** 3.5rem: very large space for editorial layouts. */
-  --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16); /** 4rem: very large space for editorial layouts and hero areas. */
-  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** 5rem: the largest layout space, for hero areas in editorial products. */
+  --co-semantic-spacing-layout-2xl: var(--co-base-spacing-6); /** 1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-3xl: var(--co-base-spacing-7); /** 1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-4xl: var(--co-base-spacing-8); /** 2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-5xl: var(--co-base-spacing-9); /** 2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-6xl: var(--co-base-spacing-10); /** 2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12); /** 3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14); /** 3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16); /** 4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** 5rem: a larger step on the layout spacing scale, for space between blocks and sections. The largest step. */
   --co-semantic-spacing-layout-11xl: var(--co-base-spacing-24); /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
   --co-semantic-color-text-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black text for emphasis without full weight. 11.51:1 on white. */
   --co-semantic-color-text-subdued: var(--co-base-color-neutral-700); /** Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page. */
   --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
-  --co-semantic-color-text-disabled: var(--co-base-color-neutral-500); /** Text of disabled controls and placeholders. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3); never use it for readable content. */
+  --co-semantic-color-text-disabled: var(--co-base-color-neutral-500); /** Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
   --co-semantic-color-text-interactive: var(--co-base-color-blue-900); /** Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page. */
   --co-semantic-color-text-interactive-hover: var(--co-base-color-blue-1000); /** Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016. */
   --co-semantic-color-text-interactive-active: var(--co-base-color-blue-1100); /** Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016. */
@@ -457,8 +457,8 @@
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
   --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar. */
   --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'. */
-  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and outlines. 1.19:1 on white: decorative only. */
-  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for quiet outlines and the resting text input. 1.30:1 on white. */
+  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11). */
+  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144). */
   --co-semantic-color-border-strong: var(--co-base-color-neutral-800); /** Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white. */
   --co-semantic-color-border-interactive: var(--co-base-color-blue-900); /** Blue border for selected and interactive states (decision 0003). 5.39:1 on white. */
   --co-semantic-color-border-error: var(--co-base-color-red-900); /** Red border for invalid fields and error outlines. 5.41:1 on white. */
