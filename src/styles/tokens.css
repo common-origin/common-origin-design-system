@@ -429,7 +429,7 @@
   --co-semantic-color-text-error: var(--co-base-color-red-900); /** Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page. */
   --co-semantic-color-text-success: var(--co-base-color-green-900); /** Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page. */
   --co-semantic-color-text-warning: var(--co-base-color-orange-900); /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
-  --co-semantic-color-background-default: var(--co-base-color-neutral-100); /** Page background: warm off-white, never pure white (decision 0006). */
+  --co-semantic-color-background-default: var(--co-base-color-neutral-100); /** Page background: a cool off-white (#f8f9fa), never pure white (decision 0006). */
   --co-semantic-color-background-subtle: var(--co-base-color-neutral-000); /** White: inputs, sheets and other surfaces that sit on the page background. */
   --co-semantic-color-background-emphasis: var(--co-base-color-neutral-900); /** Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip. */
   --co-semantic-color-background-emphasis-hover: var(--co-base-color-neutral-800); /** Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022. */
@@ -456,7 +456,7 @@
   --co-semantic-color-background-neutral-active: var(--co-base-color-neutral-500); /** Fill of a pressed neutral control. Approved under decision 0022. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
   --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar. */
-  --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'. */
+  --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that. */
   --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11). */
   --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144). */
   --co-semantic-color-border-strong: var(--co-base-color-neutral-800); /** Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white. */

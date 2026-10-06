@@ -582,7 +582,7 @@
       "background": {
         "default": {
           "$value": "{base.color.neutral.100}",
-          "$description": "Page background: warm off-white, never pure white (decision 0006)."
+          "$description": "Page background: a cool off-white (#f8f9fa), never pure white (decision 0006)."
         },
         "subtle": {
           "$value": "{base.color.neutral.000}",
@@ -690,7 +690,7 @@
         },
         "page": {
           "$value": "{base.color.neutral.100}",
-          "$description": "Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'."
+          "$description": "The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that."
         },
         "overlay": {
           "$value": "rgba(33, 37, 41, 0.5)",
