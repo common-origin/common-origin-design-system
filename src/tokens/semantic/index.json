@@ -519,7 +519,7 @@
         },
         "10xl": {
           "$value": "{base.spacing.20}",
-          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. The largest step."
+          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl."
         },
         "11xl": {
           "$value": "{base.spacing.24}",

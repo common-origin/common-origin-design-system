@@ -415,7 +415,7 @@
   --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12); /** 3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
   --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14); /** 3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
   --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16); /** 4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
-  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** 5rem: a larger step on the layout spacing scale, for space between blocks and sections. The largest step. */
+  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** 5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl. */
   --co-semantic-spacing-layout-11xl: var(--co-base-spacing-24); /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
