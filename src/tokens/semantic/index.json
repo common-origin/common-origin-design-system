@@ -1,1252 +1,1025 @@
 {
   "semantic": {
     "elevation": {
+      "$type": "shadow",
       "none": {
-        "value": "{base.shadow.none}",
-        "type": "boxShadow",
-        "description": "No elevation - flat surfaces, default state"
+        "$value": "{base.shadow.none}",
+        "$description": "No elevation - flat surfaces, default state"
       },
       "inset": {
-        "value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
-        "type": "boxShadow",
-        "description": "Sunken/pressed states, input fields, wells"
+        "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "$description": "Sunken/pressed states, input fields, wells"
       },
       "raised": {
-        "value": "{base.shadow.2}",
-        "type": "boxShadow",
-        "description": "Subtle lift - cards, buttons with depth"
+        "$value": "{base.shadow.2}",
+        "$description": "Subtle lift - cards, buttons with depth"
       },
       "floating": {
-        "value": "{base.shadow.4}",
-        "type": "boxShadow",
-        "description": "Moderate lift - tooltips, popovers, dropdowns"
+        "$value": "{base.shadow.4}",
+        "$description": "Moderate lift - tooltips, popovers, dropdowns"
       },
       "overlay": {
-        "value": "{base.shadow.5}",
-        "type": "boxShadow",
-        "description": "High lift - modals, dialogs, action sheets"
+        "$value": "{base.shadow.5}",
+        "$description": "High lift - modals, dialogs, action sheets"
       },
       "sticky": {
-        "value": "{base.shadow.3}",
-        "type": "boxShadow",
-        "description": "Fixed headers, sticky navigation, bottom bars"
+        "$value": "{base.shadow.3}",
+        "$description": "Fixed headers, sticky navigation, bottom bars"
       }
     },
     "breakpoint": {
+      "$type": "dimension",
       "xs": {
-        "value": "{base.breakpoint.xs}",
-        "type": "breakpoint",
-        "description": "0px: smallest viewport."
+        "$value": "{base.breakpoint.xs}",
+        "$description": "0px: smallest viewport."
       },
       "sm": {
-        "value": "{base.breakpoint.sm}",
-        "type": "breakpoint",
-        "description": "640px: large phones."
+        "$value": "{base.breakpoint.sm}",
+        "$description": "640px: large phones."
       },
       "md": {
-        "value": "{base.breakpoint.md}",
-        "type": "breakpoint",
-        "description": "768px: tablets; below this, mobile layouts (e.g. fullscreen Modal)."
+        "$value": "{base.breakpoint.md}",
+        "$description": "768px: tablets; below this, mobile layouts (e.g. fullscreen Modal)."
       },
       "lg": {
-        "value": "{base.breakpoint.lg}",
-        "type": "breakpoint",
-        "description": "1024px: small desktops."
+        "$value": "{base.breakpoint.lg}",
+        "$description": "1024px: small desktops."
       },
       "xl": {
-        "value": "{base.breakpoint.xl}",
-        "type": "breakpoint",
-        "description": "1280px: desktops."
+        "$value": "{base.breakpoint.xl}",
+        "$description": "1280px: desktops."
       },
       "2xl": {
-        "value": "{base.breakpoint.2xl}",
-        "type": "breakpoint",
-        "description": "1536px: wide desktops."
+        "$value": "{base.breakpoint.2xl}",
+        "$description": "1536px: wide desktops."
       }
     },
     "opacity": {
+      "$type": "number",
       "disabled": {
-        "value": "{base.opacity.50}",
-        "type": "opacity",
-        "description": "0.5: disabled controls and items."
+        "$value": "{base.opacity.50}",
+        "$description": "0.5: disabled controls and items."
       },
       "full": {
-        "value": "{base.opacity.100}",
-        "type": "opacity",
-        "description": "1: fully opaque (the enabled counterpart of disabled)."
+        "$value": "{base.opacity.100}",
+        "$description": "1: fully opaque (the enabled counterpart of disabled)."
       }
     },
     "fontFamily": {
+      "$type": "fontFamily",
       "body": {
-        "value": "{base.fontFamily.body}",
-        "type": "fontFamily",
-        "description": "UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own."
+        "$value": "{base.fontFamily.body}",
+        "$description": "UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own."
       },
       "monospace": {
-        "value": "{base.fontFamily.monospace}",
-        "type": "fontFamily",
-        "description": "Code and other fixed-width text (CodeBlock)."
+        "$value": "{base.fontFamily.monospace}",
+        "$description": "Code and other fixed-width text (CodeBlock)."
       }
     },
     "fontSize": {
+      "$type": "dimension",
       "xs": {
-        "value": "{base.fontSize.1}",
-        "type": "fontSize",
-        "description": "0.75rem."
+        "$value": "{base.fontSize.1}",
+        "$description": "0.75rem."
       },
       "sm": {
-        "value": "{base.fontSize.2}",
-        "type": "fontSize",
-        "description": "0.875rem."
+        "$value": "{base.fontSize.2}",
+        "$description": "0.875rem."
       },
       "md": {
-        "value": "{base.fontSize.3}",
-        "type": "fontSize",
-        "description": "1rem."
+        "$value": "{base.fontSize.3}",
+        "$description": "1rem."
       },
       "lg": {
-        "value": "{base.fontSize.4}",
-        "type": "fontSize",
-        "description": "1.125rem."
+        "$value": "{base.fontSize.4}",
+        "$description": "1.125rem."
       },
       "xl": {
-        "value": "{base.fontSize.5}",
-        "type": "fontSize",
-        "description": "1.25rem."
+        "$value": "{base.fontSize.5}",
+        "$description": "1.25rem."
       }
     },
     "lineHeight": {
       "none": {
-        "value": "{base.lineHeight.none}",
-        "type": "lineHeight",
-        "description": "1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators."
+        "$value": "{base.lineHeight.none}",
+        "$type": "number",
+        "$description": "1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators."
       },
       "tight": {
-        "value": "{base.lineHeight.3}",
-        "type": "lineHeight",
-        "description": "1.25rem: compact multi-line text (Alert, CodeBlock)."
+        "$value": "{base.lineHeight.3}",
+        "$type": "dimension",
+        "$description": "1.25rem: compact multi-line text (Alert, CodeBlock)."
       },
       "normal": {
-        "value": "{base.lineHeight.4}",
-        "type": "lineHeight",
-        "description": "1.5rem: body-text line height (TextArea)."
+        "$value": "{base.lineHeight.4}",
+        "$type": "dimension",
+        "$description": "1.5rem: body-text line height (TextArea)."
       }
     },
     "letterSpacing": {
+      "$type": "dimension",
       "tighter": {
-        "value": "{base.letterSpacing.0}",
-        "type": "letterSpacing",
-        "description": "-0.125rem: tracking for the largest headings (display, h1)."
+        "$value": "{base.letterSpacing.0}",
+        "$description": "-0.125rem: tracking for the largest headings (display, h1)."
       },
       "tight": {
-        "value": "{base.letterSpacing.1}",
-        "type": "letterSpacing",
-        "description": "-0.0625rem: tracking for h2 to h4."
+        "$value": "{base.letterSpacing.1}",
+        "$description": "-0.0625rem: tracking for h2 to h4."
       },
       "normal": {
-        "value": "{base.letterSpacing.2}",
-        "type": "letterSpacing",
-        "description": "0: default tracking (h5, h6 and text)."
+        "$value": "{base.letterSpacing.2}",
+        "$description": "0: default tracking (h5, h6 and text)."
       },
       "wide": {
-        "value": "{base.letterSpacing.4}",
-        "type": "letterSpacing",
-        "description": "0.125rem: tracking for small uppercase labels (SearchField section headers)."
+        "$value": "{base.letterSpacing.4}",
+        "$description": "0.125rem: tracking for small uppercase labels (SearchField section headers)."
       }
     },
     "fontWeight": {
+      "$type": "fontWeight",
       "regular": {
-        "value": "{base.fontWeight.2}",
-        "type": "fontWeight",
-        "description": "400. Body text, captions, most UI text."
+        "$value": "{base.fontWeight.2}",
+        "$description": "400. Body text, captions, most UI text."
       },
       "medium": {
-        "value": "{base.fontWeight.3}",
-        "type": "fontWeight",
-        "description": "500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text."
+        "$value": "{base.fontWeight.3}",
+        "$description": "500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text."
       },
       "semibold": {
-        "value": "{base.fontWeight.4}",
-        "type": "fontWeight",
-        "description": "600. Labels and short titles that need more weight than medium (label, Alert title)."
+        "$value": "{base.fontWeight.4}",
+        "$description": "600. Labels and short titles that need more weight than medium (label, Alert title)."
       },
       "bold": {
-        "value": "{base.fontWeight.5}",
-        "type": "fontWeight",
-        "description": "700. Headings (display to h4), overline, strong indicators such as the required-field asterisk."
+        "$value": "{base.fontWeight.5}",
+        "$description": "700. Headings (display to h4), overline, strong indicators such as the required-field asterisk."
       }
     },
     "zIndex": {
+      "$type": "number",
       "sticky": {
-        "value": "{base.zIndex.1}",
-        "type": "zIndex",
-        "description": "Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals."
+        "$value": "{base.zIndex.1}",
+        "$description": "Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals."
       },
       "dropdown": {
-        "value": "{base.zIndex.6}",
-        "type": "zIndex",
-        "description": "Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays."
+        "$value": "{base.zIndex.6}",
+        "$description": "Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays."
       },
       "overlay": {
-        "value": "{base.zIndex.7}",
-        "type": "zIndex",
-        "description": "Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals."
+        "$value": "{base.zIndex.7}",
+        "$description": "Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals."
       },
       "modal": {
-        "value": "{base.zIndex.8}",
-        "type": "zIndex",
-        "description": "Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system."
+        "$value": "{base.zIndex.8}",
+        "$description": "Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system."
       }
     },
-		"border": {
-			"default": {
-				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
-				"type": "border"
-			},
-			"subtle": {
-				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
-				"type": "border"
-			},
-			"strong": {
-				"value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
-				"type": "border"
-			},
-			"focus": {
-				"value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
-				"type": "border"
-			},
-			"tooltip": {
-				"value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
-				"type": "border"
-			},
-			"width": {
-				"thin": {
-					"value": "{base.border.width.1}",
-					"type": "borderWidth",
-					"description": "0.0625rem: default hairline borders and rings."
-				},
-				"thick": {
-					"value": "{base.border.width.2}",
-					"type": "borderWidth",
-					"description": "0.125rem: emphasised borders, focus outlines and selected states."
-				}
-			},
-			"focusOffset": {
-				"value": "{base.border.width.2}",
-				"type": "borderWidth",
-				"description": "0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does."
-			},
-			"radius": {
-				"none": {
-					"value": "0",
-					"type": "borderRadius",
-					"description": "No rounding - tables, dividers, inline code blocks, sharp-edged containers"
-				},
-				"xs": {
-					"value": "{base.border.radius.1}",
-					"type": "borderRadius",
-					"description": "Minimal rounding - small badges, compact tags, inline buttons, checkboxes"
-				},
-				"sm": {
-					"value": "{base.border.radius.2}",
-					"type": "borderRadius",
-					"description": "Subtle rounding - buttons, inputs, chips, form controls, list items"
-				},
-				"md": {
-					"value": "{base.border.radius.3}",
-					"type": "borderRadius",
-					"description": "Standard rounding - cards, containers, dropdowns, popovers, menus"
-				},
-				"lg": {
-					"value": "{base.border.radius.4}",
-					"type": "borderRadius",
-					"description": "Generous rounding - modals, action sheets, dialogs, feature cards, panels"
-				},
-				"xl": {
-					"value": "{base.border.radius.5}",
-					"type": "borderRadius",
-					"description": "Large rounding - pills, pill buttons, prominent CTAs, search bars"
-				},
-				"2xl": {
-					"value": "{base.border.radius.6}",
-					"type": "borderRadius",
-					"description": "Extra large rounding - hero elements, decorative containers, large pills"
-				},
-				"3xl": {
-					"value": "{base.border.radius.7}",
-					"type": "borderRadius",
-					"description": "Maximum rounding - decorative elements, marketing components, large decorative cards"
-				},
-				"circle": {
-					"value": "{base.border.radius.circle}",
-					"type": "borderRadius",
-					"description": "Fully circular - avatars, round icon buttons, status indicators, FABs"
-				}
-			}
-    },
-    "size": {
-        "touchTarget": {
-          "value": "{base.size.11}",
-          "type": "size",
-          "description": "2.75rem (44px): minimum height of a tappable row or control."
+    "border": {
+      "default": {
+        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
+        "$type": "border"
+      },
+      "subtle": {
+        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
+        "$type": "border"
+      },
+      "strong": {
+        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
+        "$type": "border"
+      },
+      "focus": {
+        "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
+        "$type": "border"
+      },
+      "tooltip": {
+        "$value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
+        "$type": "border"
+      },
+      "width": {
+        "$type": "dimension",
+        "thin": {
+          "$value": "{base.border.width.1}",
+          "$description": "0.0625rem: default hairline borders and rings."
         },
-        "overlay": {
-          "sm": {
-            "value": "{base.size.100}",
-            "type": "size",
-            "description": "25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets)."
-          },
-          "md": {
-            "value": "{base.size.140}",
-            "type": "size",
-            "description": "35rem (560px): medium overlay panel width (Modal medium)."
-          },
-          "lg": {
-            "value": "{base.size.180}",
-            "type": "size",
-            "description": "45rem (720px): large overlay panel width (Modal large)."
-          }
+        "thick": {
+          "$value": "{base.border.width.2}",
+          "$description": "0.125rem: emphasised borders, focus outlines and selected states."
+        }
+      },
+      "focusOffset": {
+        "$value": "{base.border.width.2}",
+        "$type": "dimension",
+        "$description": "0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does."
+      },
+      "radius": {
+        "$type": "dimension",
+        "none": {
+          "$value": "0",
+          "$description": "No rounding - tables, dividers, inline code blocks, sharp-edged containers"
         },
-        "label": {
-          "small": {
-            "value": "{base.size.5}",
-            "type": "size",
-            "description": "20px label height: StatusLabel small and Tag small. Decision 0018 size scale."
-          },
-          "medium": {
-            "value": "{base.size.6}",
-            "type": "size",
-            "description": "24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale."
-          },
-          "large": {
-            "value": "{base.size.8}",
-            "type": "size",
-            "description": "32px label height: CategoryLabel large. Decision 0018 size scale."
-          }
-        },
-        "menu": {
-          "maxHeight": {
-            "value": "{base.size.75}",
-            "type": "size",
-            "description": "18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField)."
-          }
-        },
-        "dimension": {
-          "1": {
-            "value": "{base.size.1}",
-            "type": "size",
-            "description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens)."
-          },
-          "2": {
-            "value": "{base.size.2}",
-            "type": "size",
-            "description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022."
-          },
-          "4": {
-            "value": "{base.size.4}",
-            "type": "size",
-            "description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022."
-          },
-          "5": {
-            "value": "{base.size.5}",
-            "type": "size",
-            "description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small)."
-          },
-          "6": {
-            "value": "{base.size.6}",
-            "type": "size",
-            "description": "1.5rem (24px): medium label height (via size.label.medium)."
-          },
-          "8": {
-            "value": "{base.size.8}",
-            "type": "size",
-            "description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large)."
-          },
-          "12": {
-            "value": "{base.size.12}",
-            "type": "size",
-            "description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens)."
-          },
-          "15": {
-            "value": "{base.size.15}",
-            "type": "size",
-            "description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens)."
-          },
-          "18": {
-            "value": "{base.size.18}",
-            "type": "size",
-            "description": "4.5rem (72px): TransactionListItem minimum height (via component tokens)."
-          },
-          "20": {
-            "value": "{base.size.20}",
-            "type": "size",
-            "description": "5rem (80px): small EmptyState illustration (via component tokens)."
-          },
-          "30": {
-            "value": "{base.size.30}",
-            "type": "size",
-            "description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens)."
-          },
-          "45": {
-            "value": "{base.size.45}",
-            "type": "size",
-            "description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens)."
-          },
-          "50": {
-            "value": "{base.size.50}",
-            "type": "size",
-            "description": "12.5rem (200px): large EmptyState illustration (via component tokens)."
-          },
-          "75": {
-            "value": "{base.size.75}",
-            "type": "size",
-            "description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens)."
-          },
-          "90": {
-            "value": "{base.size.90}",
-            "type": "size",
-            "description": "22.5rem (360px): EmptyState text maximum width (via component tokens)."
-          },
-          "100": {
-            "value": "{base.size.100}",
-            "type": "size",
-            "description": "25rem (400px): EmptyState maximum width (via component tokens)."
-          },
-          "192": {
-            "value": "{base.size.192}",
-            "type": "size",
-            "description": "48rem (768px): CardLarge maximum width (via component tokens)."
-          }
-        },
-      "icon": {
         "xs": {
-          "value": "{base.size.3}",
-          "type": "size"
+          "$value": "{base.border.radius.1}",
+          "$description": "Minimal rounding - small badges, compact tags, inline buttons, checkboxes"
         },
         "sm": {
-          "value": "{base.size.4}",
-          "type": "size"
+          "$value": "{base.border.radius.2}",
+          "$description": "Subtle rounding - buttons, inputs, chips, form controls, list items"
         },
         "md": {
-          "value": "{base.size.5}",
-          "type": "size"
+          "$value": "{base.border.radius.3}",
+          "$description": "Standard rounding - cards, containers, dropdowns, popovers, menus"
         },
         "lg": {
-          "value": "{base.size.6}",
-          "type": "size"
+          "$value": "{base.border.radius.4}",
+          "$description": "Generous rounding - modals, action sheets, dialogs, feature cards, panels"
         },
         "xl": {
-          "value": "{base.size.8}",
-          "type": "size"
+          "$value": "{base.border.radius.5}",
+          "$description": "Large rounding - pills, pill buttons, prominent CTAs, search bars"
         },
         "2xl": {
-          "value": "{base.size.10}",
-          "type": "size"
+          "$value": "{base.border.radius.6}",
+          "$description": "Extra large rounding - hero elements, decorative containers, large pills"
+        },
+        "3xl": {
+          "$value": "{base.border.radius.7}",
+          "$description": "Maximum rounding - decorative elements, marketing components, large decorative cards"
+        },
+        "circle": {
+          "$value": "{base.border.radius.circle}",
+          "$description": "Fully circular - avatars, round icon buttons, status indicators, FABs"
+        }
+      }
+    },
+    "size": {
+      "$type": "dimension",
+      "touchTarget": {
+        "$value": "{base.size.11}",
+        "$description": "2.75rem (44px): minimum height of a tappable row or control."
+      },
+      "overlay": {
+        "sm": {
+          "$value": "{base.size.100}",
+          "$description": "25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets)."
+        },
+        "md": {
+          "$value": "{base.size.140}",
+          "$description": "35rem (560px): medium overlay panel width (Modal medium)."
+        },
+        "lg": {
+          "$value": "{base.size.180}",
+          "$description": "45rem (720px): large overlay panel width (Modal large)."
+        }
+      },
+      "label": {
+        "small": {
+          "$value": "{base.size.5}",
+          "$description": "20px label height: StatusLabel small and Tag small. Decision 0018 size scale."
+        },
+        "medium": {
+          "$value": "{base.size.6}",
+          "$description": "24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale."
+        },
+        "large": {
+          "$value": "{base.size.8}",
+          "$description": "32px label height: CategoryLabel large. Decision 0018 size scale."
+        }
+      },
+      "menu": {
+        "maxHeight": {
+          "$value": "{base.size.75}",
+          "$description": "18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField)."
+        }
+      },
+      "dimension": {
+        "1": {
+          "$value": "{base.size.1}",
+          "$description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens)."
+        },
+        "2": {
+          "$value": "{base.size.2}",
+          "$description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022."
+        },
+        "4": {
+          "$value": "{base.size.4}",
+          "$description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022."
+        },
+        "5": {
+          "$value": "{base.size.5}",
+          "$description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small)."
+        },
+        "6": {
+          "$value": "{base.size.6}",
+          "$description": "1.5rem (24px): medium label height (via size.label.medium)."
+        },
+        "8": {
+          "$value": "{base.size.8}",
+          "$description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large)."
+        },
+        "12": {
+          "$value": "{base.size.12}",
+          "$description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens)."
+        },
+        "15": {
+          "$value": "{base.size.15}",
+          "$description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens)."
+        },
+        "18": {
+          "$value": "{base.size.18}",
+          "$description": "4.5rem (72px): TransactionListItem minimum height (via component tokens)."
+        },
+        "20": {
+          "$value": "{base.size.20}",
+          "$description": "5rem (80px): small EmptyState illustration (via component tokens)."
+        },
+        "30": {
+          "$value": "{base.size.30}",
+          "$description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens)."
+        },
+        "45": {
+          "$value": "{base.size.45}",
+          "$description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens)."
+        },
+        "50": {
+          "$value": "{base.size.50}",
+          "$description": "12.5rem (200px): large EmptyState illustration (via component tokens)."
+        },
+        "75": {
+          "$value": "{base.size.75}",
+          "$description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens)."
+        },
+        "90": {
+          "$value": "{base.size.90}",
+          "$description": "22.5rem (360px): EmptyState text maximum width (via component tokens)."
+        },
+        "100": {
+          "$value": "{base.size.100}",
+          "$description": "25rem (400px): EmptyState maximum width (via component tokens)."
+        },
+        "192": {
+          "$value": "{base.size.192}",
+          "$description": "48rem (768px): CardLarge maximum width (via component tokens)."
+        }
+      },
+      "icon": {
+        "xs": {
+          "$value": "{base.size.3}"
+        },
+        "sm": {
+          "$value": "{base.size.4}"
+        },
+        "md": {
+          "$value": "{base.size.5}"
+        },
+        "lg": {
+          "$value": "{base.size.6}"
+        },
+        "xl": {
+          "$value": "{base.size.8}"
+        },
+        "2xl": {
+          "$value": "{base.size.10}"
         }
       },
       "avatar": {
         "xs": {
-          "value": "{base.size.6}",
-          "type": "size"
+          "$value": "{base.size.6}"
         },
         "sm": {
-          "value": "{base.size.8}",
-          "type": "size"
+          "$value": "{base.size.8}"
         },
         "md": {
-          "value": "{base.size.10}",
-          "type": "size"
+          "$value": "{base.size.10}"
         },
         "lg": {
-          "value": "{base.size.12}",
-          "type": "size"
+          "$value": "{base.size.12}"
         },
         "xl": {
-          "value": "{base.size.16}",
-          "type": "size"
+          "$value": "{base.size.16}"
         }
       }
     },
     "spacing": {
+      "$type": "dimension",
       "separator": {
         "sm": {
-          "value": "{base.spacing.4}",
-          "type": "spacing"
+          "$value": "{base.spacing.4}"
         },
         "md": {
-          "value": "{base.spacing.6}",
-          "type": "spacing"
+          "$value": "{base.spacing.6}"
         },
         "lg": {
-          "value": "{base.spacing.8}",
-          "type": "spacing"
+          "$value": "{base.spacing.8}"
         },
         "xl": {
-          "value": "{base.spacing.12}",
-          "type": "spacing"
+          "$value": "{base.spacing.12}"
         }
       },
       "component": {
         "xs": {
-          "value": "{base.spacing.1}",
-          "type": "spacing",
-          "description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips."
+          "$value": "{base.spacing.1}",
+          "$description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips."
         },
         "sm": {
-          "value": "{base.spacing.2}",
-          "type": "spacing",
-          "description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing."
+          "$value": "{base.spacing.2}",
+          "$description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing."
         },
         "md": {
-          "value": "{base.spacing.3}",
-          "type": "spacing",
-          "description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding."
+          "$value": "{base.spacing.3}",
+          "$description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding."
         },
         "lg": {
-          "value": "{base.spacing.4}",
-          "type": "spacing",
-          "description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing."
+          "$value": "{base.spacing.4}",
+          "$description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing."
         },
         "xl": {
-          "value": "{base.spacing.5}",
-          "type": "spacing",
-          "description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs."
+          "$value": "{base.spacing.5}",
+          "$description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs."
         },
         "2xl": {
-          "value": "{base.spacing.6}",
-          "type": "spacing",
-          "description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections."
+          "$value": "{base.spacing.6}",
+          "$description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections."
         }
       },
       "layout": {
         "none": {
-          "value": "{base.spacing.0}",
-          "type": "spacing"
+          "$value": "{base.spacing.0}"
         },
         "xs": {
-          "value": "{base.spacing.1}",
-          "type": "spacing"
+          "$value": "{base.spacing.1}"
         },
         "sm": {
-          "value": "{base.spacing.2}",
-          "type": "spacing"
+          "$value": "{base.spacing.2}"
         },
         "md": {
-          "value": "{base.spacing.3}",
-          "type": "spacing"
+          "$value": "{base.spacing.3}"
         },
         "lg": {
-          "value": "{base.spacing.4}",
-          "type": "spacing"
+          "$value": "{base.spacing.4}"
         },
         "xl": {
-          "value": "{base.spacing.5}",
-          "type": "spacing"
+          "$value": "{base.spacing.5}"
         },
         "2xl": {
-          "value": "{base.spacing.6}",
-          "type": "spacing"
+          "$value": "{base.spacing.6}"
         },
         "3xl": {
-          "value": "{base.spacing.7}",
-          "type": "spacing"
+          "$value": "{base.spacing.7}"
         },
         "4xl": {
-          "value": "{base.spacing.8}",
-          "type": "spacing"
+          "$value": "{base.spacing.8}"
         },
         "5xl": {
-          "value": "{base.spacing.9}",
-          "type": "spacing"
+          "$value": "{base.spacing.9}"
         },
         "6xl": {
-          "value": "{base.spacing.10}",
-          "type": "spacing"
+          "$value": "{base.spacing.10}"
         },
         "7xl": {
-          "value": "{base.spacing.12}",
-          "type": "spacing"
+          "$value": "{base.spacing.12}"
         },
         "8xl": {
-          "value": "{base.spacing.14}",
-          "type": "spacing"
+          "$value": "{base.spacing.14}"
         },
         "9xl": {
-          "value": "{base.spacing.16}",
-          "type": "spacing"
+          "$value": "{base.spacing.16}"
         },
         "10xl": {
-          "value": "{base.spacing.20}",
-          "type": "spacing"
+          "$value": "{base.spacing.20}"
         },
         "11xl": {
-          "value": "{base.spacing.24}",
-          "type": "spacing",
-          "description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints)."
+          "$value": "{base.spacing.24}",
+          "$description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints)."
         },
         "auto": {
-          "value": "{base.spacing.auto}",
-          "type": "spacing"
+          "$value": "{base.spacing.auto}"
         }
       }
     },
     "color": {
+      "$type": "color",
       "text": {
         "default": {
-          "value": "{base.color.neutral.900}",
-          "type": "color"
+          "$value": "{base.color.neutral.900}"
         },
         "emphasis": {
-          "value": "{base.color.neutral.800}",
-          "type": "color"
+          "$value": "{base.color.neutral.800}"
         },
         "subdued": {
-          "value": "{base.color.neutral.700}",
-          "type": "color"
+          "$value": "{base.color.neutral.700}"
         },
         "inverse": {
-          "value": "{base.color.neutral.000}",
-          "type": "color"
+          "$value": "{base.color.neutral.000}"
         },
         "disabled": {
-          "value": "{base.color.neutral.500}",
-          "type": "color"
+          "$value": "{base.color.neutral.500}"
         },
         "interactive": {
-          "value": "{base.color.blue.900}",
-          "type": "color"
+          "$value": "{base.color.blue.900}"
         },
         "interactive-hover": {
-          "value": "{base.color.blue.1000}",
-          "type": "color",
-          "description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016."
+          "$value": "{base.color.blue.1000}",
+          "$description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016."
         },
         "interactive-active": {
-          "value": "{base.color.blue.1100}",
-          "type": "color",
-          "description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016."
+          "$value": "{base.color.blue.1100}",
+          "$description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016."
         },
         "error": {
-          "value": "{base.color.red.900}",
-          "type": "color"
+          "$value": "{base.color.red.900}"
         },
         "success": {
-          "value": "{base.color.green.900}",
-          "type": "color"
+          "$value": "{base.color.green.900}"
         },
         "warning": {
-          "value": "{base.color.orange.900}",
-          "type": "color"
+          "$value": "{base.color.orange.900}"
         }
       },
       "background": {
         "default": {
-          "value": "{base.color.neutral.100}",
-          "type": "color"
+          "$value": "{base.color.neutral.100}"
         },
         "subtle": {
-          "value": "{base.color.neutral.000}",
-          "type": "color"
+          "$value": "{base.color.neutral.000}"
         },
         "emphasis": {
-          "value": "{base.color.neutral.900}",
-          "type": "color"
+          "$value": "{base.color.neutral.900}"
         },
         "emphasis-hover": {
-          "value": "{base.color.neutral.800}",
-          "type": "color",
-          "description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022."
+          "$value": "{base.color.neutral.800}",
+          "$description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022."
         },
         "emphasis-active": {
-          "value": "{base.color.neutral.1000}",
-          "type": "color",
-          "description": "Fill of a pressed emphasis control. Approved under decision 0022."
+          "$value": "{base.color.neutral.1000}",
+          "$description": "Fill of a pressed emphasis control. Approved under decision 0022."
         },
         "surface": {
-          "value": "{base.color.neutral.200}",
-          "type": "color"
+          "$value": "{base.color.neutral.200}"
         },
         "inverse": {
-          "value": "{base.color.neutral.800}",
-          "type": "color"
+          "$value": "{base.color.neutral.800}"
         },
         "interactive": {
-          "value": "{base.color.blue.900}",
-          "type": "color"
+          "$value": "{base.color.blue.900}"
         },
-				"interactive-subtle": {
-          "value": "{base.color.blue.100}",
-          "type": "color"
+        "interactive-subtle": {
+          "$value": "{base.color.blue.100}"
         },
         "interactive-subtle-hover": {
-          "value": "{base.color.blue.200}",
-          "type": "color",
-          "description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016."
+          "$value": "{base.color.blue.200}",
+          "$description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016."
         },
         "interactive-subtle-active": {
-          "value": "{base.color.blue.300}",
-          "type": "color",
-          "description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016."
+          "$value": "{base.color.blue.300}",
+          "$description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016."
         },
         "interactive-hover": {
-          "value": "{base.color.blue.1000}",
-          "type": "color"
+          "$value": "{base.color.blue.1000}"
         },
         "interactive-active": {
-          "value": "{base.color.blue.1100}",
-          "type": "color"
+          "$value": "{base.color.blue.1100}"
         },
         "error": {
-          "value": "{base.color.red.900}",
-          "type": "color"
+          "$value": "{base.color.red.900}"
         },
         "error-hover": {
-          "value": "{base.color.red.1000}",
-          "type": "color",
-          "description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022."
+          "$value": "{base.color.red.1000}",
+          "$description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022."
         },
         "error-active": {
-          "value": "{base.color.red.1100}",
-          "type": "color",
-          "description": "Fill of a pressed error control. Approved under decision 0022."
+          "$value": "{base.color.red.1100}",
+          "$description": "Fill of a pressed error control. Approved under decision 0022."
         },
         "error-subtle": {
-          "value": "{base.color.red.100}",
-          "type": "color"
+          "$value": "{base.color.red.100}"
         },
         "success": {
-          "value": "{base.color.green.900}",
-          "type": "color"
+          "$value": "{base.color.green.900}"
         },
         "success-subtle": {
-          "value": "{base.color.green.100}",
-          "type": "color"
+          "$value": "{base.color.green.100}"
         },
         "warning": {
-          "value": "{base.color.orange.900}",
-          "type": "color"
+          "$value": "{base.color.orange.900}"
         },
         "warning-subtle": {
-          "value": "{base.color.orange.100}",
-          "type": "color"
+          "$value": "{base.color.orange.100}"
         },
         "disabled": {
-          "value": "{base.color.neutral.300}",
-          "type": "color"
+          "$value": "{base.color.neutral.300}"
         },
         "neutral": {
-          "value": "{base.color.neutral.300}",
-          "type": "color",
-          "description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022."
+          "$value": "{base.color.neutral.300}",
+          "$description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022."
         },
         "neutral-hover": {
-          "value": "{base.color.neutral.400}",
-          "type": "color",
-          "description": "Fill of a hovered neutral control. Approved under decision 0022."
+          "$value": "{base.color.neutral.400}",
+          "$description": "Fill of a hovered neutral control. Approved under decision 0022."
         },
         "neutral-active": {
-          "value": "{base.color.neutral.500}",
-          "type": "color",
-          "description": "Fill of a pressed neutral control. Approved under decision 0022."
+          "$value": "{base.color.neutral.500}",
+          "$description": "Fill of a pressed neutral control. Approved under decision 0022."
         },
         "transparent": {
-          "value": "{base.color.transparent}",
-          "type": "color",
-          "description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022."
+          "$value": "{base.color.transparent}",
+          "$description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022."
         },
         "progressTrack": {
-          "value": "{base.color.neutral.300}",
-          "type": "color"
+          "$value": "{base.color.neutral.300}"
         },
         "page": {
-          "value": "{base.color.neutral.100}",
-          "type": "color",
-          "description": "Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'."
+          "$value": "{base.color.neutral.100}",
+          "$description": "Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'."
         },
         "overlay": {
-          "value": "rgba(33, 37, 41, 0.5)",
-          "type": "color",
-          "description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content."
+          "$value": "rgba(33, 37, 41, 0.5)",
+          "$description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content."
         },
         "hover-overlay": {
-          "value": "rgba(33, 37, 41, 0.1)",
-          "type": "color",
-          "description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL."
+          "$value": "rgba(33, 37, 41, 0.1)",
+          "$description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL."
         },
         "active-overlay": {
-          "value": "rgba(33, 37, 41, 0.15)",
-          "type": "color",
-          "description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth."
+          "$value": "rgba(33, 37, 41, 0.15)",
+          "$description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth."
         },
         "inverse-overlay": {
-          "value": "rgba(255, 255, 255, 0.2)",
-          "type": "color",
-          "description": "Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse."
+          "$value": "rgba(255, 255, 255, 0.2)",
+          "$description": "Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse."
         }
       },
       "border": {
         "default": {
-          "value": "{base.color.neutral.200}",
-          "type": "color"
+          "$value": "{base.color.neutral.200}"
         },
         "subtle": {
-          "value": "{base.color.neutral.300}",
-          "type": "color"
+          "$value": "{base.color.neutral.300}"
         },
         "strong": {
-          "value": "{base.color.neutral.800}",
-          "type": "color"
+          "$value": "{base.color.neutral.800}"
         },
         "interactive": {
-          "value": "{base.color.blue.900}",
-          "type": "color"
+          "$value": "{base.color.blue.900}"
         },
         "error": {
-          "value": "{base.color.red.900}",
-          "type": "color"
+          "$value": "{base.color.red.900}"
         },
         "success": {
-          "value": "{base.color.green.900}",
-          "type": "color"
+          "$value": "{base.color.green.900}"
         },
         "warning": {
-          "value": "{base.color.orange.900}",
-          "type": "color"
+          "$value": "{base.color.orange.900}"
         },
         "none": {
-          "value": "{base.color.transparent}",
-          "type": "color",
-          "description": "An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019)."
+          "$value": "{base.color.transparent}",
+          "$description": "An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019)."
         }
       },
       "icon": {
         "default": {
-          "value": "{base.color.neutral.900}",
-          "type": "color"
+          "$value": "{base.color.neutral.900}"
         },
         "emphasis": {
-          "value": "{base.color.neutral.800}",
-          "type": "color"
+          "$value": "{base.color.neutral.800}"
         },
         "subdued": {
-          "value": "{base.color.neutral.600}",
-          "type": "color"
+          "$value": "{base.color.neutral.600}"
         },
         "disabled": {
-          "value": "{base.color.neutral.500}",
-          "type": "color"
+          "$value": "{base.color.neutral.500}"
         },
         "inverse": {
-          "value": "{base.color.neutral.000}",
-          "type": "color"
+          "$value": "{base.color.neutral.000}"
         },
         "interactive": {
-          "value": "{base.color.blue.900}",
-          "type": "color"
+          "$value": "{base.color.blue.900}"
         },
         "interactive-hover": {
-          "value": "{base.color.blue.1000}",
-          "type": "color"
+          "$value": "{base.color.blue.1000}"
         },
         "interactive-active": {
-          "value": "{base.color.blue.1100}",
-          "type": "color"
+          "$value": "{base.color.blue.1100}"
         },
         "error": {
-          "value": "{base.color.red.900}",
-          "type": "color"
+          "$value": "{base.color.red.900}"
         },
         "success": {
-          "value": "{base.color.green.900}",
-          "type": "color"
+          "$value": "{base.color.green.900}"
         },
         "warning": {
-          "value": "{base.color.orange.900}",
-          "type": "color"
+          "$value": "{base.color.orange.900}"
         }
       },
       "financial": {
         "credit": {
-          "value": "{base.color.green.700}",
-          "type": "color",
-          "description": "Color for positive monetary values, credits, income"
+          "$value": "{base.color.green.700}",
+          "$description": "Color for positive monetary values, credits, income"
         },
         "credit-hover": {
-          "value": "{base.color.green.800}",
-          "type": "color",
-          "description": "Hover state for credit-colored interactive elements"
+          "$value": "{base.color.green.800}",
+          "$description": "Hover state for credit-colored interactive elements"
         },
         "debit": {
-          "value": "{base.color.red.900}",
-          "type": "color",
-          "description": "Color for negative monetary values, debits, expenses"
+          "$value": "{base.color.red.900}",
+          "$description": "Color for negative monetary values, debits, expenses"
         },
         "debit-hover": {
-          "value": "{base.color.red.1000}",
-          "type": "color",
-          "description": "Hover state for debit-colored interactive elements"
+          "$value": "{base.color.red.1000}",
+          "$description": "Hover state for debit-colored interactive elements"
         },
         "pending": {
-          "value": "{base.color.orange.600}",
-          "type": "color",
-          "description": "Color for pending or processing financial transactions"
+          "$value": "{base.color.orange.600}",
+          "$description": "Color for pending or processing financial transactions"
         },
         "neutral": {
-          "value": "{base.color.neutral.600}",
-          "type": "color",
-          "description": "Neutral color for informational monetary amounts"
+          "$value": "{base.color.neutral.600}",
+          "$description": "Neutral color for informational monetary amounts"
         }
       },
       "category": {
         "blue": {
-          "value": "{base.color.blue.700}",
-          "type": "color",
-          "description": "Blue category color for general/miscellaneous"
+          "$value": "{base.color.blue.700}",
+          "$description": "Blue category color for general/miscellaneous"
         },
         "blue-emphasis": {
-          "value": "{base.color.blue.900}",
-          "type": "color",
-          "description": "Emphasized blue for filled variants"
+          "$value": "{base.color.blue.900}",
+          "$description": "Emphasized blue for filled variants"
         },
         "blue-subtle": {
-          "value": "{base.color.blue.100}",
-          "type": "color",
-          "description": "Subtle blue background"
+          "$value": "{base.color.blue.100}",
+          "$description": "Subtle blue background"
         },
         "purple": {
-          "value": "{base.color.purple.700}",
-          "type": "color",
-          "description": "Purple category color for entertainment"
+          "$value": "{base.color.purple.700}",
+          "$description": "Purple category color for entertainment"
         },
         "purple-emphasis": {
-          "value": "{base.color.purple.900}",
-          "type": "color",
-          "description": "Emphasized purple for filled variants"
+          "$value": "{base.color.purple.900}",
+          "$description": "Emphasized purple for filled variants"
         },
         "purple-subtle": {
-          "value": "{base.color.purple.100}",
-          "type": "color",
-          "description": "Subtle purple background"
+          "$value": "{base.color.purple.100}",
+          "$description": "Subtle purple background"
         },
         "pink": {
-          "value": "{base.color.pink.700}",
-          "type": "color",
-          "description": "Pink category color for health/wellness"
+          "$value": "{base.color.pink.700}",
+          "$description": "Pink category color for health/wellness"
         },
         "pink-emphasis": {
-          "value": "{base.color.pink.900}",
-          "type": "color",
-          "description": "Emphasized pink for filled variants"
+          "$value": "{base.color.pink.900}",
+          "$description": "Emphasized pink for filled variants"
         },
         "pink-subtle": {
-          "value": "{base.color.pink.100}",
-          "type": "color",
-          "description": "Subtle pink background"
+          "$value": "{base.color.pink.100}",
+          "$description": "Subtle pink background"
         },
         "yellow": {
-          "value": "{base.color.yellow.700}",
-          "type": "color",
-          "description": "Yellow category color for utilities"
+          "$value": "{base.color.yellow.700}",
+          "$description": "Yellow category color for utilities"
         },
         "yellow-emphasis": {
-          "value": "{base.color.yellow.900}",
-          "type": "color",
-          "description": "Emphasized yellow for filled variants"
+          "$value": "{base.color.yellow.900}",
+          "$description": "Emphasized yellow for filled variants"
         },
         "yellow-subtle": {
-          "value": "{base.color.yellow.100}",
-          "type": "color",
-          "description": "Subtle yellow background"
+          "$value": "{base.color.yellow.100}",
+          "$description": "Subtle yellow background"
         },
         "green": {
-          "value": "{base.color.green.700}",
-          "type": "color",
-          "description": "Green category color for income"
+          "$value": "{base.color.green.700}",
+          "$description": "Green category color for income"
         },
         "green-emphasis": {
-          "value": "{base.color.green.900}",
-          "type": "color",
-          "description": "Emphasized green for filled variants"
+          "$value": "{base.color.green.900}",
+          "$description": "Emphasized green for filled variants"
         },
         "green-subtle": {
-          "value": "{base.color.green.100}",
-          "type": "color",
-          "description": "Subtle green background"
+          "$value": "{base.color.green.100}",
+          "$description": "Subtle green background"
         },
         "red": {
-          "value": "{base.color.red.700}",
-          "type": "color",
-          "description": "Red category color for expenses"
+          "$value": "{base.color.red.700}",
+          "$description": "Red category color for expenses"
         },
         "red-emphasis": {
-          "value": "{base.color.red.900}",
-          "type": "color",
-          "description": "Emphasized red for filled variants"
+          "$value": "{base.color.red.900}",
+          "$description": "Emphasized red for filled variants"
         },
         "red-subtle": {
-          "value": "{base.color.red.100}",
-          "type": "color",
-          "description": "Subtle red background"
+          "$value": "{base.color.red.100}",
+          "$description": "Subtle red background"
         },
         "orange": {
-          "value": "{base.color.orange.700}",
-          "type": "color",
-          "description": "Orange category color for food & dining"
+          "$value": "{base.color.orange.700}",
+          "$description": "Orange category color for food & dining"
         },
         "orange-emphasis": {
-          "value": "{base.color.orange.900}",
-          "type": "color",
-          "description": "Emphasized orange for filled variants"
+          "$value": "{base.color.orange.900}",
+          "$description": "Emphasized orange for filled variants"
         },
         "orange-subtle": {
-          "value": "{base.color.orange.100}",
-          "type": "color",
-          "description": "Subtle orange background"
+          "$value": "{base.color.orange.100}",
+          "$description": "Subtle orange background"
         },
         "gray": {
-          "value": "{base.color.neutral.700}",
-          "type": "color",
-          "description": "Gray category color for uncategorized"
+          "$value": "{base.color.neutral.700}",
+          "$description": "Gray category color for uncategorized"
         },
         "gray-emphasis": {
-          "value": "{base.color.neutral.900}",
-          "type": "color",
-          "description": "Emphasized gray for filled variants"
+          "$value": "{base.color.neutral.900}",
+          "$description": "Emphasized gray for filled variants"
         },
         "gray-subtle": {
-          "value": "{base.color.neutral.200}",
-          "type": "color",
-          "description": "Subtle gray background"
+          "$value": "{base.color.neutral.200}",
+          "$description": "Subtle gray background"
         },
         "blue-text": {
-          "value": "{base.color.blue.900}",
-          "type": "color",
-          "description": "Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         },
         "purple-text": {
-          "value": "{base.color.purple.900}",
-          "type": "color",
-          "description": "Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.purple.900}",
+          "$description": "Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         },
         "pink-text": {
-          "value": "{base.color.pink.1000}",
-          "type": "color",
-          "description": "Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115."
+          "$value": "{base.color.pink.1000}",
+          "$description": "Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115."
         },
         "yellow-text": {
-          "value": "{base.color.yellow.1000}",
-          "type": "color",
-          "description": "Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115."
+          "$value": "{base.color.yellow.1000}",
+          "$description": "Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115."
         },
         "green-text": {
-          "value": "{base.color.green.900}",
-          "type": "color",
-          "description": "Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.green.900}",
+          "$description": "Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         },
         "red-text": {
-          "value": "{base.color.red.900}",
-          "type": "color",
-          "description": "Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.red.900}",
+          "$description": "Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         },
         "orange-text": {
-          "value": "{base.color.orange.900}",
-          "type": "color",
-          "description": "Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.orange.900}",
+          "$description": "Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         },
         "gray-text": {
-          "value": "{base.color.neutral.900}",
-          "type": "color",
-          "description": "Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+          "$value": "{base.color.neutral.900}",
+          "$description": "Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
         }
       },
       "status": {
         "pending": {
-          "value": "{base.color.yellow.1000}",
-          "type": "color",
-          "description": "Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115."
+          "$value": "{base.color.yellow.1000}",
+          "$description": "Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115."
         },
         "pending-bg": {
-          "value": "{base.color.yellow.100}",
-          "type": "color",
-          "description": "Background for pending status"
+          "$value": "{base.color.yellow.100}",
+          "$description": "Background for pending status"
         },
         "completed": {
-          "value": "{base.color.green.900}",
-          "type": "color",
-          "description": "Green color for completed status"
+          "$value": "{base.color.green.900}",
+          "$description": "Green color for completed status"
         },
         "completed-bg": {
-          "value": "{base.color.green.100}",
-          "type": "color",
-          "description": "Background for completed status"
+          "$value": "{base.color.green.100}",
+          "$description": "Background for completed status"
         },
         "failed": {
-          "value": "{base.color.red.900}",
-          "type": "color",
-          "description": "Red color for failed/error status"
+          "$value": "{base.color.red.900}",
+          "$description": "Red color for failed/error status"
         },
         "failed-bg": {
-          "value": "{base.color.red.100}",
-          "type": "color",
-          "description": "Background for failed status"
+          "$value": "{base.color.red.100}",
+          "$description": "Background for failed status"
         },
         "cancelled": {
-          "value": "{base.color.neutral.700}",
-          "type": "color",
-          "description": "Gray color for cancelled status"
+          "$value": "{base.color.neutral.700}",
+          "$description": "Gray color for cancelled status"
         },
         "cancelled-bg": {
-          "value": "{base.color.neutral.200}",
-          "type": "color",
-          "description": "Background for cancelled status"
+          "$value": "{base.color.neutral.200}",
+          "$description": "Background for cancelled status"
         },
         "processing": {
-          "value": "{base.color.blue.900}",
-          "type": "color",
-          "description": "Blue color for processing status"
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue color for processing status"
         },
         "processing-bg": {
-          "value": "{base.color.blue.100}",
-          "type": "color",
-          "description": "Background for processing status"
+          "$value": "{base.color.blue.100}",
+          "$description": "Background for processing status"
         },
         "scheduled": {
-          "value": "{base.color.purple.900}",
-          "type": "color",
-          "description": "Purple color for scheduled status"
+          "$value": "{base.color.purple.900}",
+          "$description": "Purple color for scheduled status"
         },
         "scheduled-bg": {
-          "value": "{base.color.purple.100}",
-          "type": "color",
-          "description": "Background for scheduled status"
+          "$value": "{base.color.purple.100}",
+          "$description": "Background for scheduled status"
         }
       }
     },
     "typography": {
+      "$type": "typography",
       "display": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}"
       },
       "h1": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}"
       },
       "h2": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}"
       },
       "h3": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}"
       },
       "h4": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}"
       },
       "h5": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}"
       },
       "h6": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}"
       },
       "subtitle": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
       },
       "body": {
-        "value": "{semantic.fontWeight.regular} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
       },
       "small": {
-        "value": "{semantic.fontWeight.regular} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}"
       },
       "overline": {
-        "value": "{semantic.fontWeight.bold} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
       },
       "caption": {
-        "value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
       },
       "button1": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
       },
       "button2": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}"
       },
       "button3": {
-        "value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
       },
       "label": {
-        "value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}"
       },
       "breadcrumb": {
-        "value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
-        "type": "typography"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}"
       }
     },
     "motion": {
       "duration": {
+        "$type": "duration",
         "normal": {
-          "value": "{base.duration.normal}",
-          "type": "duration",
-          "description": "200ms: standard duration for property-specific transitions."
+          "$value": "{base.duration.normal}",
+          "$description": "200ms: standard duration for property-specific transitions."
         },
         "fast": {
-          "value": "{base.duration.fast}",
-          "type": "duration",
-          "description": "150ms: quick responses to input such as hover, press and small indicators."
+          "$value": "{base.duration.fast}",
+          "$description": "150ms: quick responses to input such as hover, press and small indicators."
         },
         "slow": {
-          "value": "{base.duration.moderate}",
-          "type": "duration",
-          "description": "300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse."
+          "$value": "{base.duration.moderate}",
+          "$description": "300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse."
         }
       },
       "easing": {
+        "$type": "cubicBezier",
         "easeInOut": {
-          "value": "{base.easing.easeInOut}",
-          "type": "easing",
-          "description": "ease-in-out: standard easing for property-specific transitions."
+          "$value": "{base.easing.easeInOut}",
+          "$description": "ease-in-out: standard easing for property-specific transitions."
         },
         "easeOut": {
-          "value": "{base.easing.easeOut}",
-          "type": "easing",
-          "description": "ease-out: for elements responding to input or entering the page."
+          "$value": "{base.easing.easeOut}",
+          "$description": "ease-out: for elements responding to input or entering the page."
         }
       },
       "transition": {
+        "$type": "transition",
         "fast": {
-          "value": "all {base.duration.fast} {base.easing.easeOut}",
-          "type": "transition"
+          "$value": "all {base.duration.fast} {base.easing.easeOut}"
         },
         "normal": {
-          "value": "all {base.duration.normal} {base.easing.easeInOut}",
-          "type": "transition"
+          "$value": "all {base.duration.normal} {base.easing.easeInOut}"
         },
         "slow": {
-          "value": "all {base.duration.moderate} {base.easing.easeInOut}",
-          "type": "transition"
+          "$value": "all {base.duration.moderate} {base.easing.easeInOut}"
         }
       },
       "hover": {
-        "value": "background-color {base.duration.fast} {base.easing.easeOut}, color {base.duration.fast} {base.easing.easeOut}",
-        "type": "transition"
+        "$value": "background-color {base.duration.fast} {base.easing.easeOut}, color {base.duration.fast} {base.easing.easeOut}",
+        "$type": "transition"
       },
       "focus": {
-        "value": "outline {base.duration.fast} {base.easing.easeOut}, outline-offset {base.duration.fast} {base.easing.easeOut}",
-        "type": "transition"
+        "$value": "outline {base.duration.fast} {base.easing.easeOut}, outline-offset {base.duration.fast} {base.easing.easeOut}",
+        "$type": "transition"
       },
       "interactive": {
-        "value": "transform {base.duration.fast} {base.easing.easeOut}, opacity {base.duration.fast} {base.easing.easeOut}",
-        "type": "transition"
+        "$value": "transform {base.duration.fast} {base.easing.easeOut}, opacity {base.duration.fast} {base.easing.easeOut}",
+        "$type": "transition"
       }
     }
   }

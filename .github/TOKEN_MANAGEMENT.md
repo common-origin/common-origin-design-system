@@ -14,11 +14,11 @@ There is no ThemeProvider, runtime token validation or dark-mode switching. Comp
 
 GridSystem is the one existing exception: its public `gap*` props take base spacing keys, so it reads `tokens.base.spacing` with the rule disabled on that line. Changing the prop types is a breaking change, tracked in [#34](https://github.com/common-origin/common-origin-design-system/issues/34); don't treat it as routine cleanup.
 
-Many component-tier entries don't have the `{ "value", "type" }` shape yet, and some still reference base tokens. Normalising them is part of [#24](https://github.com/common-origin/common-origin-design-system/issues/24).
+The source files are DTCG (`$value`, `$type`, `$description`), and every component-tier entry is a real token that references semantic tokens ([#24](https://github.com/common-origin/common-origin-design-system/issues/24)).
 
 ## Adding or changing a token
 
-1. Edit the source JSON in `src/tokens/`. Every new or changed token, in any tier, is `{ "value": …, "type": …, "description": … }`, with a description saying what it's for (0014, rule 6). References use `{base.color.neutral.900}` syntax. Match the `type` naming already used in that tier (see the pipeline doc). Many existing tokens lack descriptions; add one when you touch them.
+1. Edit the source JSON in `src/tokens/`. Every new or changed token, in any tier, is `{ "$value": …, "$description": … }` with a DTCG `$type` on the token or its group, and a description saying what it's for (0014, rule 6). References use `{base.color.neutral.900}` syntax. Use the DTCG type names already in the file (see the pipeline doc). Many existing tokens lack descriptions; add one when you touch them.
 2. Run `npm run build:tokens`. It regenerates `src/styles/tokens.json`, `tokens.d.ts` and `tokens.css`.
 3. Commit the source change and the regenerated files.
 4. If the token needs a new semantic concept, add the semantic token first; never point a component at a base token.

@@ -93,7 +93,7 @@
   --base-size-min: min-content;
   --base-size-max: max-content;
   --base-size-fit: fit-content;
-  --base-color-transparent: transparent;
+  --base-color-transparent: transparent; /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
   --base-color-neutral-100: #f8f9fa;
   --base-color-neutral-200: #e9ecef;
   --base-color-neutral-300: #dee2e6;
@@ -237,8 +237,8 @@
   --base-font-weight-3: 500;
   --base-font-weight-4: 600;
   --base-font-weight-5: 700;
-  --base-font-weight-6: 800;
-  --base-font-weight-7: 900;
+  --base-font-weight-6: 800; /** Extra Bold — for page titles and primary display headings per VDL (800–900 weight range) */
+  --base-font-weight-7: 900; /** Black/Ultra Bold — maximum heading weight for the most dominant display headings per VDL */
   --base-line-height-1: 1rem;
   --base-line-height-2: 1.125rem;
   --base-line-height-3: 1.25rem;
@@ -280,313 +280,313 @@
   --base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --component-button-primary-background-color: #212529;
-  --component-button-primary-text-color: #ffffff;
-  --component-button-primary-border-radius: 0.25rem;
-  --component-button-primary-padding: 0.75rem 1rem;
-  --component-button-primary-font: 500 1rem/1.5rem 'Inter', sans-serif;
-  --component-button-hover-background-color: #343a40;
-  --component-button-active-background-color: #16191C;
-  --component-button-focus-outline: 0.125rem solid #343a40;
-  --component-button-focus-outline-offset: 2px;
-  --component-button-disabled-background-color: #dee2e6;
-  --component-button-disabled-text-color: #adb5bd;
-  --component-button-variants-secondary-background-color: #dee2e6;
-  --component-button-variants-secondary-text-color: #212529;
-  --component-button-variants-secondary-hover-background-color: #ced4da;
-  --component-button-variants-secondary-active-background-color: #adb5bd;
-  --component-button-variants-secondary-disabled-background-color: #dee2e6;
-  --component-button-variants-secondary-disabled-text-color: #adb5bd;
-  --component-button-variants-naked-background-color: transparent;
-  --component-button-variants-naked-text-color: #212529;
-  --component-button-variants-naked-hover-background-color: #e9ecef;
-  --component-button-variants-naked-active-background-color: #dee2e6;
-  --component-button-variants-naked-disabled-background-color: transparent;
-  --component-button-variants-naked-disabled-text-color: #adb5bd;
-  --component-button-variants-accent-background-color: #0265DC;
-  --component-button-variants-accent-text-color: #ffffff;
-  --component-button-variants-accent-hover-background-color: #0054B6;
-  --component-button-variants-accent-active-background-color: #004491;
-  --component-button-variants-accent-disabled-background-color: #dee2e6;
-  --component-button-variants-accent-disabled-text-color: #adb5bd;
-  --component-button-variants-emphasis-background-color: #0265DC;
-  --component-button-variants-emphasis-text-color: #ffffff;
-  --component-button-variants-emphasis-hover-background-color: #0054B6;
-  --component-button-variants-emphasis-active-background-color: #004491;
-  --component-button-variants-emphasis-disabled-background-color: #dee2e6;
-  --component-button-variants-emphasis-disabled-text-color: #adb5bd;
-  --component-button-variants-danger-background-color: #D31510;
-  --component-button-variants-danger-text-color: #ffffff;
-  --component-button-variants-danger-hover-background-color: #B40000;
-  --component-button-variants-danger-active-background-color: #930000;
-  --component-button-variants-danger-disabled-background-color: #dee2e6;
-  --component-button-variants-danger-disabled-text-color: #adb5bd;
-  --component-button-sizes-small-padding: 0.5rem 0.75rem;
-  --component-button-sizes-small-font: 500 0.75rem/1rem 'Inter', sans-serif;
-  --component-button-sizes-medium-padding: 0.5rem 1rem;
-  --component-button-sizes-medium-font: 500 0.875rem/1.5rem 'Inter', sans-serif;
-  --component-button-sizes-large-padding: 0.75rem 1rem;
-  --component-button-sizes-large-font: 500 1rem/1.5rem 'Inter', sans-serif;
-  --component-chip-close-button-size: 1.25rem;
-  --component-chip-default-background-color: #e9ecef;
-  --component-chip-default-text-color: #212529;
-  --component-chip-default-border-radius: 0.75rem;
-  --component-chip-default-padding: 2px 0.5rem;
-  --component-chip-default-font: 400 1rem/1.5rem 'Inter', sans-serif;
-  --component-chip-hover-background-color: #dee2e6;
-  --component-chip-active-background-color: #ced4da;
-  --component-chip-focus-outline: 0.125rem solid #343a40;
-  --component-chip-focus-outline-offset: 2px;
-  --component-chip-disabled-background-color: #e9ecef;
-  --component-chip-disabled-text-color: #adb5bd;
-  --component-chip-variants-emphasis-background-color: #212529;
-  --component-chip-variants-emphasis-text-color: #ffffff;
-  --component-chip-variants-emphasis-hover-background-color: #343a40;
-  --component-chip-variants-emphasis-active-background-color: #16191C;
-  --component-chip-variants-emphasis-disabled-background-color: #dee2e6;
-  --component-chip-variants-emphasis-disabled-text-color: #adb5bd;
-  --component-chip-variants-subtle-background-color: #ffffff;
-  --component-chip-variants-subtle-text-color: #212529;
-  --component-chip-variants-subtle-hover-background-color: #f8f9fa;
-  --component-chip-variants-subtle-active-background-color: #e9ecef;
-  --component-chip-variants-subtle-disabled-background-color: #ffffff;
-  --component-chip-variants-subtle-disabled-text-color: #adb5bd;
-  --component-chip-variants-interactive-background-color: #0265DC;
-  --component-chip-variants-interactive-text-color: #ffffff;
-  --component-chip-variants-interactive-hover-background-color: #0054B6;
-  --component-chip-variants-interactive-active-background-color: #004491;
-  --component-chip-variants-interactive-disabled-background-color: #dee2e6;
-  --component-chip-variants-interactive-disabled-text-color: #adb5bd;
-  --component-chip-sizes-small-padding: 2px 0.5rem;
-  --component-chip-sizes-small-font: 400 0.75rem/1rem 'Inter', sans-serif;
-  --component-chip-sizes-medium-padding: 2px 0.5rem;
-  --component-chip-sizes-medium-font: 400 0.875rem/1.25rem 'Inter', sans-serif;
-  --component-chip-sizes-large-padding: 0.5rem 0.75rem;
-  --component-chip-sizes-large-font: 400 1rem/1.5rem 'Inter', sans-serif;
-  --component-icon-button-primary-background-color: #212529;
-  --component-icon-button-primary-border-radius: 0.25rem;
-  --component-icon-button-primary-min-width: 40px;
-  --component-icon-button-primary-min-height: 40px;
-  --component-icon-button-primary-display: flex;
-  --component-icon-button-primary-align-items: center;
-  --component-icon-button-primary-justify-content: center;
-  --component-icon-button-hover-background-color: #343a40;
-  --component-icon-button-active-background-color: #16191C;
-  --component-icon-button-focus-outline: 0.125rem solid #343a40;
-  --component-icon-button-focus-outline-offset: 2px;
-  --component-icon-button-disabled-background-color: #dee2e6;
-  --component-icon-button-variants-secondary-background-color: #e9ecef;
-  --component-icon-button-variants-secondary-hover-background-color: #dee2e6;
-  --component-icon-button-variants-secondary-active-background-color: #f8f9fa;
-  --component-icon-button-variants-secondary-disabled-background-color: #dee2e6;
-  --component-icon-button-variants-naked-background-color: transparent;
-  --component-icon-button-variants-naked-hover-background-color: #e9ecef;
-  --component-icon-button-variants-naked-active-background-color: #dee2e6;
-  --component-icon-button-variants-naked-disabled-background-color: transparent;
-  --component-icon-button-sizes-small-min-width: 32px;
-  --component-icon-button-sizes-small-min-height: 32px;
-  --component-icon-button-sizes-small-padding: 0.25rem;
-  --component-icon-button-sizes-medium-min-width: 40px;
-  --component-icon-button-sizes-medium-min-height: 40px;
-  --component-icon-button-sizes-medium-padding: 0.5rem;
-  --component-icon-button-sizes-large-min-width: 48px;
-  --component-icon-button-sizes-large-min-height: 48px;
-  --component-icon-button-sizes-large-padding: 0.75rem;
-  --component-separator-border: 0.0625rem solid #dee2e6;
-  --component-separator-margin: 2rem 0;
-  --component-separator-variants-default-border: 0.0625rem solid #dee2e6;
-  --component-separator-variants-default-margin: 2rem 0;
-  --component-separator-variants-strong-border: 0.0625rem solid #343a40;
-  --component-separator-variants-strong-margin: 2rem 0;
-  --component-separator-variants-minimal-border: 0.0625rem solid #dee2e6;
-  --component-separator-variants-minimal-margin: 1.5rem 0;
-  --component-separator-sizes-small-margin: 1rem 0;
-  --component-separator-sizes-medium-margin: 1.5rem 0;
-  --component-separator-sizes-large-margin: 2rem 0;
-  --component-separator-sizes-xlarge-margin: 3rem 0;
-  --component-progress-bar-background-color: #dee2e6;
-  --component-progress-bar-border-radius: 0.25rem;
-  --component-progress-bar-sizes-sm-height: 0.25rem;
-  --component-progress-bar-sizes-md-height: 0.5rem;
-  --component-progress-bar-sizes-lg-height: 1rem;
-  --component-progress-bar-sizes-xl-height: 1.25rem;
-  --component-input-default-background-color: #ffffff;
-  --component-input-default-text-color: #212529;
-  --component-input-default-border-color: #dee2e6;
-  --component-input-default-border-radius: 0.25rem;
-  --component-input-default-border-width: 0.0625rem;
-  --component-input-default-padding-y: 11px;
-  --component-input-default-padding-x: 1rem;
-  --component-input-default-font: 400 1rem/1.5rem 'Inter', sans-serif;
-  --component-input-placeholder-text-color: #adb5bd;
-  --component-input-hover-border-color: #343a40;
-  --component-input-focus-border-color: #343a40;
-  --component-input-focus-outline: 0.125rem solid #343a40;
-  --component-input-focus-outline-offset: 2px;
-  --component-input-error-border-color: #D31510;
-  --component-input-error-focus-border-color: #D31510;
-  --component-input-error-focus-outline: 0.125rem solid #343a40;
-  --component-input-error-focus-outline-offset: 2px;
-  --component-input-error-hover-border-color: #D31510;
-  --component-input-disabled-background-color: #dee2e6;
-  --component-input-disabled-text-color: #adb5bd;
-  --component-input-disabled-border-color: #dee2e6;
-  --component-input-disabled-cursor: not-allowed;
-  --component-input-textarea-min-height: 7.5rem;
-  --component-badge-dot-size: 0.5rem;
-  --component-badge-count-min-width: 1rem;
-  --component-badge-count-height: 1rem;
-  --component-badge-count-padding-x: 0.25rem;
-  --component-badge-count-line-height: 1;
-  --component-badge-ring-width: 0.125rem;
-  --component-badge-border-radius: 10rem;
-  --component-badge-label-font-weight: 500;
-  --component-badge-label-typography-small: 400 0.75rem/1rem 'Inter', sans-serif;
-  --component-badge-label-typography-medium: 400 0.875rem/1.25rem 'Inter', sans-serif;
-  --component-field-gap: 0.5rem;
-  --component-field-label-typography: 600 0.875rem/1.25rem 'Inter', sans-serif;
-  --component-field-label-color: #212529;
-  --component-field-label-color-disabled: #adb5bd;
-  --component-field-label-gap: 0.25rem;
-  --component-field-required-indicator-color: #D31510;
-  --component-field-required-indicator-font-weight: 700;
-  --component-field-helper-text-typography: 400 0.75rem/1rem 'Inter', sans-serif;
-  --component-field-helper-text-color: #495057;
-  --component-field-helper-text-color-error: #D31510;
-  --component-alert-severity-error-background: #FFEBE7;
-  --component-alert-severity-error-text: #D31510;
-  --component-alert-severity-warning-background: #FFECCC;
-  --component-alert-severity-warning-text: #B14C00;
-  --component-alert-severity-info-background: #E0F2FF;
-  --component-alert-severity-info-text: #0265DC;
-  --component-alert-severity-success-background: #CEF8E0;
-  --component-alert-severity-success-text: #007A4D;
-  --component-alert-appearance-outlined-border-color-error: #D31510;
-  --component-alert-appearance-outlined-border-color-warning: #B14C00;
-  --component-alert-appearance-outlined-border-color-info: #0265DC;
-  --component-alert-appearance-outlined-border-color-success: #007A4D;
-  --component-alert-appearance-borderless-border-color-error: transparent;
-  --component-alert-appearance-borderless-border-color-warning: transparent;
-  --component-alert-appearance-borderless-border-color-info: transparent;
-  --component-alert-appearance-borderless-border-color-success: transparent;
-  --component-alert-title-typography: 500 1.125rem/1.5rem 'Inter', sans-serif;
-  --component-alert-title-font-weight: 600;
-  --component-alert-title-line-height: 1.25rem;
-  --component-alert-message-typography: 400 1rem/1.5rem 'Inter', sans-serif;
-  --component-alert-message-line-height: 1.25rem;
-  --component-tab-bar-badge-typography: 400 0.75rem/1rem 'Inter', sans-serif;
-  --component-tab-bar-badge-font-weight: 700;
-  --component-tab-bar-badge-size: 1.25rem;
-  --component-tab-bar-scrollbar-height: 0.25rem;
-  --component-search-field-section-header-typography: 400 0.75rem/1rem 'Inter', sans-serif;
-  --component-search-field-section-header-letter-spacing: 0.125rem;
-  --component-avatar-initials-font-family: 'Inter', sans-serif;
-  --component-avatar-initials-font-weight: 500;
-  --component-avatar-initials-line-height: 1;
-  --component-avatar-initials-font-size-xs: 0.75rem;
-  --component-avatar-initials-font-size-sm: 0.875rem;
-  --component-avatar-initials-font-size-md: 1rem;
-  --component-avatar-initials-font-size-lg: 1.125rem;
-  --component-avatar-initials-font-size-xl: 1.25rem;
-  --component-code-block-font-family: Menlo, Monaco, Consolas, Courier New, monospace;
-  --component-code-block-font-size: 0.75rem;
-  --component-code-block-line-height: 1.25rem;
-  --component-slider-thumb-shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --component-slider-thumb-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --component-slider-thumb-shadow-active: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --component-account-card-header-min-height: 3rem;
-  --component-account-card-min-width: 18.75rem;
-  --component-breadcrumbs-item-max-width: 11.25rem;
-  --component-card-large-max-width: 48rem;
-  --component-checkbox-box-size: 1.25rem;
-  --component-checkbox-row-min-height: 2rem;
-  --component-empty-state-illustration-small: 5rem;
-  --component-empty-state-illustration-medium: 7.5rem;
-  --component-empty-state-illustration-large: 12.5rem;
-  --component-empty-state-max-width: 25rem;
-  --component-empty-state-text-max-width: 22.5rem;
-  --component-empty-state-actions-max-width: 18.75rem;
-  --component-list-item-expanded-indent-compact: 3rem;
-  --component-list-item-expanded-indent-comfortable: 3.75rem;
-  --component-transaction-list-item-min-height: 4.5rem;
-  --semantic-elevation-none: none;
-  --semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
-  --semantic-elevation-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-  --semantic-elevation-floating: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-  --semantic-elevation-overlay: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  --semantic-elevation-sticky: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --semantic-breakpoint-xs: 0px;
-  --semantic-breakpoint-sm: 640px;
-  --semantic-breakpoint-md: 768px;
-  --semantic-breakpoint-lg: 1024px;
-  --semantic-breakpoint-xl: 1280px;
-  --semantic-breakpoint-2xl: 1536px;
-  --semantic-opacity-disabled: 0.5;
-  --semantic-opacity-full: 1;
-  --semantic-font-family-body: 'Inter', sans-serif;
-  --semantic-font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace;
-  --semantic-font-size-xs: 0.75rem;
-  --semantic-font-size-sm: 0.875rem;
-  --semantic-font-size-md: 1rem;
-  --semantic-font-size-lg: 1.125rem;
-  --semantic-font-size-xl: 1.25rem;
-  --semantic-line-height-none: 1;
-  --semantic-line-height-tight: 1.25rem;
-  --semantic-line-height-normal: 1.5rem;
-  --semantic-letter-spacing-tighter: -0.125rem;
-  --semantic-letter-spacing-tight: -0.0625rem;
-  --semantic-letter-spacing-normal: 0rem;
-  --semantic-letter-spacing-wide: 0.125rem;
-  --semantic-font-weight-regular: 400;
-  --semantic-font-weight-medium: 500;
-  --semantic-font-weight-semibold: 600;
-  --semantic-font-weight-bold: 700;
-  --semantic-z-index-sticky: 10;
-  --semantic-z-index-dropdown: 1000;
-  --semantic-z-index-overlay: 1010;
-  --semantic-z-index-modal: 1020;
+  --component-button-primary-background-color: #212529; /** Primary Button fill at rest. */
+  --component-button-primary-text-color: #ffffff; /** Text and icon colour on the primary Button. */
+  --component-button-primary-border-radius: 0.25rem; /** Corner radius of every Button (visual language: Button uses sm). */
+  --component-button-primary-padding: 0.75rem 1rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --component-button-primary-font: 500 1rem/1.5rem 'Inter', sans-serif; /** Button label typography, the same as sizes.large.font. */
+  --component-button-hover-background-color: #343a40; /** Primary Button fill on hover. */
+  --component-button-active-background-color: #16191C; /** Primary Button fill while pressed. */
+  --component-button-focus-outline: 0.125rem solid #343a40; /** Focus ring on every Button. */
+  --component-button-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --component-button-disabled-background-color: #dee2e6; /** Disabled primary Button fill. */
+  --component-button-disabled-text-color: #adb5bd; /** Disabled primary Button text and icon colour. */
+  --component-button-variants-secondary-background-color: #dee2e6; /** Secondary Button fill at rest. */
+  --component-button-variants-secondary-text-color: #212529; /** Text and icon colour on the secondary Button. */
+  --component-button-variants-secondary-hover-background-color: #ced4da; /** Secondary Button fill on hover. */
+  --component-button-variants-secondary-active-background-color: #adb5bd; /** Secondary Button fill while pressed. */
+  --component-button-variants-secondary-disabled-background-color: #dee2e6; /** Disabled secondary Button fill. */
+  --component-button-variants-secondary-disabled-text-color: #adb5bd; /** Disabled secondary Button text and icon colour. */
+  --component-button-variants-naked-background-color: transparent; /** Naked Button has no fill at rest. */
+  --component-button-variants-naked-text-color: #212529; /** Text and icon colour on the naked Button. */
+  --component-button-variants-naked-hover-background-color: #e9ecef; /** Naked Button fill on hover. */
+  --component-button-variants-naked-active-background-color: #dee2e6; /** Naked Button fill while pressed. */
+  --component-button-variants-naked-disabled-background-color: transparent; /** Disabled naked Button has no fill. */
+  --component-button-variants-naked-disabled-text-color: #adb5bd; /** Disabled naked Button text and icon colour. */
+  --component-button-variants-accent-background-color: #0265DC; /** Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016). */
+  --component-button-variants-accent-text-color: #ffffff; /** Text and icon colour on the accent Button. */
+  --component-button-variants-accent-hover-background-color: #0054B6; /** Accent Button fill on hover. */
+  --component-button-variants-accent-active-background-color: #004491; /** Accent Button fill while pressed. */
+  --component-button-variants-accent-disabled-background-color: #dee2e6; /** Disabled accent Button fill. */
+  --component-button-variants-accent-disabled-text-color: #adb5bd; /** Disabled accent Button text and icon colour. */
+  --component-button-variants-emphasis-background-color: #0265DC; /** Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-emphasis-text-color: #ffffff; /** Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-emphasis-hover-background-color: #0054B6; /** Deprecated: use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-emphasis-active-background-color: #004491; /** Deprecated: use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-emphasis-disabled-background-color: #dee2e6; /** Deprecated: use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-emphasis-disabled-text-color: #adb5bd; /** Deprecated: use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016). */
+  --component-button-variants-danger-background-color: #D31510; /** Danger Button fill at rest, for destructive actions. */
+  --component-button-variants-danger-text-color: #ffffff; /** Text and icon colour on the danger Button. */
+  --component-button-variants-danger-hover-background-color: #B40000; /** Danger Button fill on hover. */
+  --component-button-variants-danger-active-background-color: #930000; /** Danger Button fill while pressed. */
+  --component-button-variants-danger-disabled-background-color: #dee2e6; /** Disabled danger Button fill. */
+  --component-button-variants-danger-disabled-text-color: #adb5bd; /** Disabled danger Button text and icon colour. */
+  --component-button-sizes-small-padding: 0.5rem 0.75rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --component-button-sizes-small-font: 500 0.75rem/1rem 'Inter', sans-serif; /** Small Button label typography. */
+  --component-button-sizes-medium-padding: 0.5rem 1rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
+  --component-button-sizes-medium-font: 500 0.875rem/1.5rem 'Inter', sans-serif; /** Medium Button label typography. */
+  --component-button-sizes-large-padding: 0.75rem 1rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --component-button-sizes-large-font: 500 1rem/1.5rem 'Inter', sans-serif; /** Large Button label typography. */
+  --component-chip-close-button-size: 1.25rem; /** FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip. */
+  --component-chip-default-background-color: #e9ecef; /** Default chip fill at rest. */
+  --component-chip-default-text-color: #212529; /** Default chip text and icon colour. */
+  --component-chip-default-border-radius: 0.75rem; /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
+  --component-chip-default-padding: 2px 0.5rem; /** Deprecated (decision 0022): no component spacing tokens. No chip reads it; chips take padding per size. Removed in 3.0. */
+  --component-chip-default-font: 400 1rem/1.5rem 'Inter', sans-serif; /** Chip label typography, the same as sizes.large.font. */
+  --component-chip-hover-background-color: #dee2e6; /** Default chip fill on hover, when it's clickable. */
+  --component-chip-active-background-color: #ced4da; /** Default chip fill while pressed, when it's clickable. */
+  --component-chip-focus-outline: 0.125rem solid #343a40; /** Focus ring on every chip and its close button. */
+  --component-chip-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --component-chip-disabled-background-color: #e9ecef; /** Disabled default chip fill. */
+  --component-chip-disabled-text-color: #adb5bd; /** Disabled default chip text and icon colour. */
+  --component-chip-variants-emphasis-background-color: #212529; /** Emphasis chip fill at rest. */
+  --component-chip-variants-emphasis-text-color: #ffffff; /** Emphasis chip text and icon colour. */
+  --component-chip-variants-emphasis-hover-background-color: #343a40; /** Emphasis chip fill on hover, when it's clickable. */
+  --component-chip-variants-emphasis-active-background-color: #16191C; /** Emphasis chip fill while pressed, when it's clickable. */
+  --component-chip-variants-emphasis-disabled-background-color: #dee2e6; /** Disabled emphasis chip fill. */
+  --component-chip-variants-emphasis-disabled-text-color: #adb5bd; /** Disabled emphasis chip text and icon colour. */
+  --component-chip-variants-subtle-background-color: #ffffff; /** Subtle chip fill at rest. */
+  --component-chip-variants-subtle-text-color: #212529; /** Subtle chip text and icon colour. */
+  --component-chip-variants-subtle-hover-background-color: #f8f9fa; /** Subtle chip fill on hover, when it's clickable. */
+  --component-chip-variants-subtle-active-background-color: #e9ecef; /** Subtle chip fill while pressed, when it's clickable. */
+  --component-chip-variants-subtle-disabled-background-color: #ffffff; /** Disabled subtle chip fill. */
+  --component-chip-variants-subtle-disabled-text-color: #adb5bd; /** Disabled subtle chip text and icon colour. */
+  --component-chip-variants-interactive-background-color: #0265DC; /** Interactive chip fill at rest. */
+  --component-chip-variants-interactive-text-color: #ffffff; /** Interactive chip text and icon colour. */
+  --component-chip-variants-interactive-hover-background-color: #0054B6; /** Interactive chip fill on hover, when it's clickable. */
+  --component-chip-variants-interactive-active-background-color: #004491; /** Interactive chip fill while pressed, when it's clickable. */
+  --component-chip-variants-interactive-disabled-background-color: #dee2e6; /** Disabled interactive chip fill. */
+  --component-chip-variants-interactive-disabled-text-color: #adb5bd; /** Disabled interactive chip text and icon colour. */
+  --component-chip-sizes-small-padding: 2px 0.5rem; /** Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0. */
+  --component-chip-sizes-small-font: 400 0.75rem/1rem 'Inter', sans-serif; /** Small chip label typography. */
+  --component-chip-sizes-medium-padding: 2px 0.5rem; /** Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0. */
+  --component-chip-sizes-medium-font: 400 0.875rem/1.25rem 'Inter', sans-serif; /** Medium chip label typography. */
+  --component-chip-sizes-large-padding: 0.5rem 0.75rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --component-chip-sizes-large-font: 400 1rem/1.5rem 'Inter', sans-serif; /** Large chip label typography. No chip uses the large size today. */
+  --component-icon-button-primary-background-color: #212529; /** Primary IconButton fill at rest. */
+  --component-icon-button-primary-border-radius: 0.25rem; /** Corner radius of every IconButton, matching Button. */
+  --component-icon-button-primary-min-width: 40px; /** Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-primary-min-height: 40px; /** Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-primary-display: flex; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0. */
+  --component-icon-button-primary-align-items: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0. */
+  --component-icon-button-primary-justify-content: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0. */
+  --component-icon-button-hover-background-color: #343a40; /** Primary IconButton fill on hover. */
+  --component-icon-button-active-background-color: #16191C; /** Primary IconButton fill while pressed. Today IconButton uses it for every variant (#130). */
+  --component-icon-button-focus-outline: 0.125rem solid #343a40; /** Focus ring on every IconButton. */
+  --component-icon-button-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --component-icon-button-disabled-background-color: #dee2e6; /** Disabled IconButton fill. Today IconButton uses it for every variant (#130). */
+  --component-icon-button-variants-secondary-background-color: #e9ecef; /** Secondary IconButton fill at rest. */
+  --component-icon-button-variants-secondary-hover-background-color: #dee2e6; /** Secondary IconButton fill on hover. */
+  --component-icon-button-variants-secondary-active-background-color: #f8f9fa; /** Secondary IconButton fill while pressed. Not read today, and lighter than hover (#130). */
+  --component-icon-button-variants-secondary-disabled-background-color: #dee2e6; /** Disabled secondary IconButton fill. */
+  --component-icon-button-variants-naked-background-color: transparent; /** Naked IconButton has no fill at rest. */
+  --component-icon-button-variants-naked-hover-background-color: #e9ecef; /** Naked IconButton fill on hover. */
+  --component-icon-button-variants-naked-active-background-color: #dee2e6; /** Naked IconButton fill while pressed. Not read today (#130). */
+  --component-icon-button-variants-naked-disabled-background-color: transparent; /** Disabled naked IconButton has no fill. Not read today (#130). */
+  --component-icon-button-sizes-small-min-width: 32px; /** Minimum width of the small IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-small-min-height: 32px; /** Minimum height of the small IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-small-padding: 0.25rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0. */
+  --component-icon-button-sizes-medium-min-width: 40px; /** Minimum width of the medium IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-medium-min-height: 40px; /** Minimum height of the medium IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-medium-padding: 0.5rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm. Removed in 3.0. */
+  --component-icon-button-sizes-large-min-width: 48px; /** Minimum width of the large IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-large-min-height: 48px; /** Minimum height of the large IconButton. Raw px until control sizes are decided in #129. */
+  --component-icon-button-sizes-large-padding: 0.75rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md. Removed in 3.0. */
+  --component-separator-border: 0.0625rem solid #dee2e6; /** Divider line, the same as variants.default.border. */
+  --component-separator-margin: 2rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --component-separator-variants-default-border: 0.0625rem solid #dee2e6; /** Default Divider line. */
+  --component-separator-variants-default-margin: 2rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --component-separator-variants-strong-border: 0.0625rem solid #343a40; /** Strong Divider line, for a firmer break. */
+  --component-separator-variants-strong-margin: 2rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --component-separator-variants-minimal-border: 0.0625rem solid #dee2e6; /** Minimal Divider line. */
+  --component-separator-variants-minimal-margin: 1.5rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
+  --component-separator-sizes-small-margin: 1rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0. */
+  --component-separator-sizes-medium-margin: 1.5rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
+  --component-separator-sizes-large-margin: 2rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --component-separator-sizes-xlarge-margin: 3rem 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0. */
+  --component-progress-bar-background-color: #dee2e6; /** ProgressBar track, behind the filled part. */
+  --component-progress-bar-border-radius: 0.25rem; /** Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change. */
+  --component-progress-bar-sizes-sm-height: 0.25rem; /** Thickness of the small ProgressBar (4px). */
+  --component-progress-bar-sizes-md-height: 0.5rem; /** Thickness of the medium ProgressBar (8px), the default. */
+  --component-progress-bar-sizes-lg-height: 1rem; /** Thickness of the large ProgressBar (16px). */
+  --component-progress-bar-sizes-xl-height: 1.25rem; /** Thickness of the extra-large ProgressBar (20px). */
+  --component-input-default-background-color: #ffffff; /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
+  --component-input-default-text-color: #212529; /** Text input value colour. */
+  --component-input-default-border-color: #dee2e6; /** Text input border at rest. */
+  --component-input-default-border-radius: 0.25rem; /** Corner radius of text inputs and the Checkbox box. */
+  --component-input-default-border-width: 0.0625rem; /** Border width of text inputs and the Checkbox box. */
+  --component-input-default-padding-y: 11px; /** Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0. */
+  --component-input-default-padding-x: 1rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0. */
+  --component-input-default-font: 400 1rem/1.5rem 'Inter', sans-serif; /** Text input value typography. */
+  --component-input-placeholder-text-color: #adb5bd; /** Placeholder text colour. */
+  --component-input-hover-border-color: #343a40; /** Text input border on hover. */
+  --component-input-focus-border-color: #343a40; /** Text input border while focused. */
+  --component-input-focus-outline: 0.125rem solid #343a40; /** Focus ring on text inputs and the Checkbox box. */
+  --component-input-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --component-input-error-border-color: #D31510; /** Text input border when invalid. */
+  --component-input-error-focus-border-color: #D31510; /** Invalid text input border while focused. */
+  --component-input-error-focus-outline: 0.125rem solid #343a40; /** Focus ring on an invalid text input. */
+  --component-input-error-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --component-input-error-hover-border-color: #D31510; /** Invalid text input border on hover. */
+  --component-input-disabled-background-color: #dee2e6; /** Disabled text input fill. */
+  --component-input-disabled-text-color: #adb5bd; /** Disabled text input value colour. */
+  --component-input-disabled-border-color: #dee2e6; /** Disabled text input border. */
+  --component-input-disabled-cursor: not-allowed; /** Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0. */
+  --component-input-textarea-min-height: 7.5rem; /** Minimum height of a multi-line text input (120px). */
+  --component-badge-dot-size: 0.5rem; /** Width and height of the dot badge indicator (8px). */
+  --component-badge-count-min-width: 1rem; /** Minimum width of the count badge indicator (16px). */
+  --component-badge-count-height: 1rem; /** Height of the count badge indicator (16px). */
+  --component-badge-count-padding-x: 0.25rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0. */
+  --component-badge-count-line-height: 1; /** Line height of the count text, so the digits centre in the indicator. */
+  --component-badge-ring-width: 0.125rem; /** Width of the ring that separates the badge indicator from its host element (2px). */
+  --component-badge-border-radius: 10rem; /** Badge indicators are always fully circular. */
+  --component-badge-label-font-weight: 500; /** Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
+  --component-badge-label-typography-small: 400 0.75rem/1rem 'Inter', sans-serif; /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
+  --component-badge-label-typography-medium: 400 0.875rem/1.25rem 'Inter', sans-serif; /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */
+  --component-field-gap: 0.5rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.sm. Removed in 3.0. Was the vertical gap between a field's label, control and helper text. */
+  --component-field-label-typography: 600 0.875rem/1.25rem 'Inter', sans-serif; /** Field label text. */
+  --component-field-label-color: #212529; /** Field label colour. */
+  --component-field-label-color-disabled: #adb5bd; /** Field label colour when the field is disabled. */
+  --component-field-label-gap: 0.25rem; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.xs. Removed in 3.0. Was the gap between the label text and the required indicator. */
+  --component-field-required-indicator-color: #D31510; /** Colour of the required-field asterisk. */
+  --component-field-required-indicator-font-weight: 700; /** Weight of the required-field asterisk. */
+  --component-field-helper-text-typography: 400 0.75rem/1rem 'Inter', sans-serif; /** Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label. */
+  --component-field-helper-text-color: #495057; /** Helper text colour. */
+  --component-field-helper-text-color-error: #D31510; /** Helper text colour when it describes an error. */
+  --component-alert-severity-error-background: #FFEBE7; /** Error alert background, in both appearances. */
+  --component-alert-severity-error-text: #D31510; /** Error alert text colour. */
+  --component-alert-severity-warning-background: #FFECCC; /** Warning alert background, in both appearances. */
+  --component-alert-severity-warning-text: #B14C00; /** Warning alert text colour. */
+  --component-alert-severity-info-background: #E0F2FF; /** Info alert background, in both appearances. */
+  --component-alert-severity-info-text: #0265DC; /** Info alert text colour. */
+  --component-alert-severity-success-background: #CEF8E0; /** Success alert background, in both appearances. */
+  --component-alert-severity-success-text: #007A4D; /** Success alert text colour. */
+  --component-alert-appearance-outlined-border-color-error: #D31510; /** Outlined error alert border: alerts at the top of a page or content area, and error summaries (decision 0019). */
+  --component-alert-appearance-outlined-border-color-warning: #B14C00; /** Outlined warning alert border: alerts at the top of a page or content area, and error summaries (decision 0019). */
+  --component-alert-appearance-outlined-border-color-info: #0265DC; /** Outlined info alert border: alerts at the top of a page or content area, and error summaries (decision 0019). */
+  --component-alert-appearance-outlined-border-color-success: #007A4D; /** Outlined success alert border: alerts at the top of a page or content area, and error summaries (decision 0019). */
+  --component-alert-appearance-borderless-border-color-error: transparent; /** Borderless error alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
+  --component-alert-appearance-borderless-border-color-warning: transparent; /** Borderless warning alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
+  --component-alert-appearance-borderless-border-color-info: transparent; /** Borderless info alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
+  --component-alert-appearance-borderless-border-color-success: transparent; /** Borderless success alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
+  --component-alert-title-typography: 500 1.125rem/1.5rem 'Inter', sans-serif; /** Alert title style (h6), adjusted by title.fontWeight and title.lineHeight. */
+  --component-alert-title-font-weight: 600; /** Alert titles are semibold, heavier than h6's medium. */
+  --component-alert-title-line-height: 1.25rem; /** Alert titles use a tighter line height than h6. */
+  --component-alert-message-typography: 400 1rem/1.5rem 'Inter', sans-serif; /** Alert message style (body), adjusted by message.lineHeight. */
+  --component-alert-message-line-height: 1.25rem; /** Alert messages use a tighter line height than body. */
+  --component-tab-bar-badge-typography: 400 0.75rem/1rem 'Inter', sans-serif; /** Tab count badge text. */
+  --component-tab-bar-badge-font-weight: 700; /** Tab count badges are bold, heavier than caption. */
+  --component-tab-bar-badge-size: 1.25rem; /** Tab count badge height and minimum width (20px). */
+  --component-tab-bar-scrollbar-height: 0.25rem; /** Height of the horizontal scrollbar when tabs overflow (4px). */
+  --component-search-field-section-header-typography: 400 0.75rem/1rem 'Inter', sans-serif; /** Suggestion-list section header text (shown uppercase). */
+  --component-search-field-section-header-letter-spacing: 0.125rem; /** Tracking for the uppercase section header. */
+  --component-avatar-initials-font-family: 'Inter', sans-serif; /** Initials font. */
+  --component-avatar-initials-font-weight: 500; /** Initials weight. */
+  --component-avatar-initials-line-height: 1; /** Initials sit on a single line equal to their size. */
+  --component-avatar-initials-font-size-xs: 0.75rem; /** Initials in an xs avatar. */
+  --component-avatar-initials-font-size-sm: 0.875rem; /** Initials in an sm avatar. */
+  --component-avatar-initials-font-size-md: 1rem; /** Initials in an md avatar. */
+  --component-avatar-initials-font-size-lg: 1.125rem; /** Initials in an lg avatar. */
+  --component-avatar-initials-font-size-xl: 1.25rem; /** Initials in an xl avatar. */
+  --component-code-block-font-family: Menlo, Monaco, Consolas, Courier New, monospace; /** Code font. */
+  --component-code-block-font-size: 0.75rem; /** Code text size. */
+  --component-code-block-line-height: 1.25rem; /** Code line height. */
+  --component-slider-thumb-shadow-default: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /** Slider thumb at rest. */
+  --component-slider-thumb-shadow-hover: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /** Slider thumb on hover: one step deeper. */
+  --component-slider-thumb-shadow-active: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /** Slider thumb while dragging: deepest. */
+  --component-account-card-header-min-height: 3rem; /** Minimum height of the card header row (48px). */
+  --component-account-card-min-width: 18.75rem; /** Minimum card width (300px). */
+  --component-breadcrumbs-item-max-width: 11.25rem; /** Width at which a breadcrumb label truncates (180px). */
+  --component-card-large-max-width: 48rem; /** Maximum card width (768px). */
+  --component-checkbox-box-size: 1.25rem; /** Width and height of the checkbox square (20px). */
+  --component-checkbox-row-min-height: 2rem; /** Minimum height of a checkbox or radio row (32px). */
+  --component-empty-state-illustration-small: 5rem; /** Small illustration size (80px). */
+  --component-empty-state-illustration-medium: 7.5rem; /** Medium illustration size (120px). */
+  --component-empty-state-illustration-large: 12.5rem; /** Large illustration size (200px). */
+  --component-empty-state-max-width: 25rem; /** Maximum width of the empty state (400px). */
+  --component-empty-state-text-max-width: 22.5rem; /** Maximum width of the title and description (360px). */
+  --component-empty-state-actions-max-width: 18.75rem; /** Maximum width of the actions area (300px). */
+  --component-list-item-expanded-indent-compact: 3rem; /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
+  --component-list-item-expanded-indent-comfortable: 3.75rem; /** Left indent of expanded content in comfortable rows (60px). */
+  --component-transaction-list-item-min-height: 4.5rem; /** Minimum row height (72px). */
+  --semantic-elevation-none: none; /** No elevation - flat surfaces, default state */
+  --semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /** Sunken/pressed states, input fields, wells */
+  --semantic-elevation-raised: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /** Subtle lift - cards, buttons with depth */
+  --semantic-elevation-floating: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /** Moderate lift - tooltips, popovers, dropdowns */
+  --semantic-elevation-overlay: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /** High lift - modals, dialogs, action sheets */
+  --semantic-elevation-sticky: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /** Fixed headers, sticky navigation, bottom bars */
+  --semantic-breakpoint-xs: 0px; /** 0px: smallest viewport. */
+  --semantic-breakpoint-sm: 640px; /** 640px: large phones. */
+  --semantic-breakpoint-md: 768px; /** 768px: tablets; below this, mobile layouts (e.g. fullscreen Modal). */
+  --semantic-breakpoint-lg: 1024px; /** 1024px: small desktops. */
+  --semantic-breakpoint-xl: 1280px; /** 1280px: desktops. */
+  --semantic-breakpoint-2xl: 1536px; /** 1536px: wide desktops. */
+  --semantic-opacity-disabled: 0.5; /** 0.5: disabled controls and items. */
+  --semantic-opacity-full: 1; /** 1: fully opaque (the enabled counterpart of disabled). */
+  --semantic-font-family-body: 'Inter', sans-serif; /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */
+  --semantic-font-family-monospace: Menlo, Monaco, Consolas, Courier New, monospace; /** Code and other fixed-width text (CodeBlock). */
+  --semantic-font-size-xs: 0.75rem; /** 0.75rem. */
+  --semantic-font-size-sm: 0.875rem; /** 0.875rem. */
+  --semantic-font-size-md: 1rem; /** 1rem. */
+  --semantic-font-size-lg: 1.125rem; /** 1.125rem. */
+  --semantic-font-size-xl: 1.25rem; /** 1.25rem. */
+  --semantic-line-height-none: 1; /** 1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators. */
+  --semantic-line-height-tight: 1.25rem; /** 1.25rem: compact multi-line text (Alert, CodeBlock). */
+  --semantic-line-height-normal: 1.5rem; /** 1.5rem: body-text line height (TextArea). */
+  --semantic-letter-spacing-tighter: -0.125rem; /** -0.125rem: tracking for the largest headings (display, h1). */
+  --semantic-letter-spacing-tight: -0.0625rem; /** -0.0625rem: tracking for h2 to h4. */
+  --semantic-letter-spacing-normal: 0rem; /** 0: default tracking (h5, h6 and text). */
+  --semantic-letter-spacing-wide: 0.125rem; /** 0.125rem: tracking for small uppercase labels (SearchField section headers). */
+  --semantic-font-weight-regular: 400; /** 400. Body text, captions, most UI text. */
+  --semantic-font-weight-medium: 500; /** 500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text. */
+  --semantic-font-weight-semibold: 600; /** 600. Labels and short titles that need more weight than medium (label, Alert title). */
+  --semantic-font-weight-bold: 700; /** 700. Headings (display to h4), overline, strong indicators such as the required-field asterisk. */
+  --semantic-z-index-sticky: 10; /** Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals. */
+  --semantic-z-index-dropdown: 1000; /** Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays. */
+  --semantic-z-index-overlay: 1010; /** Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals. */
+  --semantic-z-index-modal: 1020; /** Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system. */
   --semantic-border-default: 0.0625rem solid #e9ecef;
   --semantic-border-subtle: 0.0625rem solid #dee2e6;
   --semantic-border-strong: 0.0625rem solid #343a40;
   --semantic-border-focus: 0.125rem solid #343a40;
   --semantic-border-tooltip: 0.125rem dotted #dee2e6;
-  --semantic-border-width-thin: 0.0625rem;
-  --semantic-border-width-thick: 0.125rem;
-  --semantic-border-focus-offset: 0.125rem;
-  --semantic-border-radius-none: 0;
-  --semantic-border-radius-xs: 0.125rem;
-  --semantic-border-radius-sm: 0.25rem;
-  --semantic-border-radius-md: 0.5rem;
-  --semantic-border-radius-lg: 0.75rem;
-  --semantic-border-radius-xl: 1rem;
-  --semantic-border-radius-2xl: 1.5rem;
-  --semantic-border-radius-3xl: 2rem;
-  --semantic-border-radius-circle: 10rem;
-  --semantic-size-touch-target: 2.75rem;
-  --semantic-size-overlay-sm: 25rem;
-  --semantic-size-overlay-md: 35rem;
-  --semantic-size-overlay-lg: 45rem;
-  --semantic-size-label-small: 1.25rem;
-  --semantic-size-label-medium: 1.5rem;
-  --semantic-size-label-large: 2rem;
-  --semantic-size-menu-max-height: 18.75rem;
-  --semantic-size-dimension-1: 0.25rem;
-  --semantic-size-dimension-2: 0.5rem;
-  --semantic-size-dimension-4: 1rem;
-  --semantic-size-dimension-5: 1.25rem;
-  --semantic-size-dimension-6: 1.5rem;
-  --semantic-size-dimension-8: 2rem;
-  --semantic-size-dimension-12: 3rem;
-  --semantic-size-dimension-15: 3.75rem;
-  --semantic-size-dimension-18: 4.5rem;
-  --semantic-size-dimension-20: 5rem;
-  --semantic-size-dimension-30: 7.5rem;
-  --semantic-size-dimension-45: 11.25rem;
-  --semantic-size-dimension-50: 12.5rem;
-  --semantic-size-dimension-75: 18.75rem;
-  --semantic-size-dimension-90: 22.5rem;
-  --semantic-size-dimension-100: 25rem;
-  --semantic-size-dimension-192: 48rem;
+  --semantic-border-width-thin: 0.0625rem; /** 0.0625rem: default hairline borders and rings. */
+  --semantic-border-width-thick: 0.125rem; /** 0.125rem: emphasised borders, focus outlines and selected states. */
+  --semantic-border-focus-offset: 0.125rem; /** 0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does. */
+  --semantic-border-radius-none: 0; /** No rounding - tables, dividers, inline code blocks, sharp-edged containers */
+  --semantic-border-radius-xs: 0.125rem; /** Minimal rounding - small badges, compact tags, inline buttons, checkboxes */
+  --semantic-border-radius-sm: 0.25rem; /** Subtle rounding - buttons, inputs, chips, form controls, list items */
+  --semantic-border-radius-md: 0.5rem; /** Standard rounding - cards, containers, dropdowns, popovers, menus */
+  --semantic-border-radius-lg: 0.75rem; /** Generous rounding - modals, action sheets, dialogs, feature cards, panels */
+  --semantic-border-radius-xl: 1rem; /** Large rounding - pills, pill buttons, prominent CTAs, search bars */
+  --semantic-border-radius-2xl: 1.5rem; /** Extra large rounding - hero elements, decorative containers, large pills */
+  --semantic-border-radius-3xl: 2rem; /** Maximum rounding - decorative elements, marketing components, large decorative cards */
+  --semantic-border-radius-circle: 10rem; /** Fully circular - avatars, round icon buttons, status indicators, FABs */
+  --semantic-size-touch-target: 2.75rem; /** 2.75rem (44px): minimum height of a tappable row or control. */
+  --semantic-size-overlay-sm: 25rem; /** 25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets). */
+  --semantic-size-overlay-md: 35rem; /** 35rem (560px): medium overlay panel width (Modal medium). */
+  --semantic-size-overlay-lg: 45rem; /** 45rem (720px): large overlay panel width (Modal large). */
+  --semantic-size-label-small: 1.25rem; /** 20px label height: StatusLabel small and Tag small. Decision 0018 size scale. */
+  --semantic-size-label-medium: 1.5rem; /** 24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale. */
+  --semantic-size-label-large: 2rem; /** 32px label height: CategoryLabel large. Decision 0018 size scale. */
+  --semantic-size-menu-max-height: 18.75rem; /** 18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField). */
+  --semantic-size-dimension-1: 0.25rem; /** 0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens). */
+  --semantic-size-dimension-2: 0.5rem; /** 0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022. */
+  --semantic-size-dimension-4: 1rem; /** 1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022. */
+  --semantic-size-dimension-5: 1.25rem; /** 1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small). */
+  --semantic-size-dimension-6: 1.5rem; /** 1.5rem (24px): medium label height (via size.label.medium). */
+  --semantic-size-dimension-8: 2rem; /** 2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large). */
+  --semantic-size-dimension-12: 3rem; /** 3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens). */
+  --semantic-size-dimension-15: 3.75rem; /** 3.75rem (60px): comfortable ListItem expanded indent (via component tokens). */
+  --semantic-size-dimension-18: 4.5rem; /** 4.5rem (72px): TransactionListItem minimum height (via component tokens). */
+  --semantic-size-dimension-20: 5rem; /** 5rem (80px): small EmptyState illustration (via component tokens). */
+  --semantic-size-dimension-30: 7.5rem; /** 7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens). */
+  --semantic-size-dimension-45: 11.25rem; /** 11.25rem (180px): Breadcrumbs label truncation width (via component tokens). */
+  --semantic-size-dimension-50: 12.5rem; /** 12.5rem (200px): large EmptyState illustration (via component tokens). */
+  --semantic-size-dimension-75: 18.75rem; /** 18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens). */
+  --semantic-size-dimension-90: 22.5rem; /** 22.5rem (360px): EmptyState text maximum width (via component tokens). */
+  --semantic-size-dimension-100: 25rem; /** 25rem (400px): EmptyState maximum width (via component tokens). */
+  --semantic-size-dimension-192: 48rem; /** 48rem (768px): CardLarge maximum width (via component tokens). */
   --semantic-size-icon-xs: 0.75rem;
   --semantic-size-icon-sm: 1rem;
   --semantic-size-icon-md: 1.25rem;
@@ -602,12 +602,12 @@
   --semantic-spacing-separator-md: 1.5rem;
   --semantic-spacing-separator-lg: 2rem;
   --semantic-spacing-separator-xl: 3rem;
-  --semantic-spacing-component-xs: 0.25rem;
-  --semantic-spacing-component-sm: 0.5rem;
-  --semantic-spacing-component-md: 0.75rem;
-  --semantic-spacing-component-lg: 1rem;
-  --semantic-spacing-component-xl: 1.25rem;
-  --semantic-spacing-component-2xl: 1.5rem;
+  --semantic-spacing-component-xs: 0.25rem; /** Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips. */
+  --semantic-spacing-component-sm: 0.5rem; /** Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing. */
+  --semantic-spacing-component-md: 0.75rem; /** Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding. */
+  --semantic-spacing-component-lg: 1rem; /** Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing. */
+  --semantic-spacing-component-xl: 1.25rem; /** Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs. */
+  --semantic-spacing-component-2xl: 1.5rem; /** 2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections. */
   --semantic-spacing-layout-none: 0;
   --semantic-spacing-layout-xs: 0.25rem;
   --semantic-spacing-layout-sm: 0.5rem;
@@ -623,7 +623,7 @@
   --semantic-spacing-layout-8xl: 3.5rem;
   --semantic-spacing-layout-9xl: 4rem;
   --semantic-spacing-layout-10xl: 5rem;
-  --semantic-spacing-layout-11xl: 6rem;
+  --semantic-spacing-layout-11xl: 6rem; /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
   --semantic-spacing-layout-auto: auto;
   --semantic-color-text-default: #212529;
   --semantic-color-text-emphasis: #343a40;
@@ -631,43 +631,43 @@
   --semantic-color-text-inverse: #ffffff;
   --semantic-color-text-disabled: #adb5bd;
   --semantic-color-text-interactive: #0265DC;
-  --semantic-color-text-interactive-hover: #0054B6;
-  --semantic-color-text-interactive-active: #004491;
+  --semantic-color-text-interactive-hover: #0054B6; /** Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016. */
+  --semantic-color-text-interactive-active: #004491; /** Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016. */
   --semantic-color-text-error: #D31510;
   --semantic-color-text-success: #007A4D;
   --semantic-color-text-warning: #B14C00;
   --semantic-color-background-default: #f8f9fa;
   --semantic-color-background-subtle: #ffffff;
   --semantic-color-background-emphasis: #212529;
-  --semantic-color-background-emphasis-hover: #343a40;
-  --semantic-color-background-emphasis-active: #16191C;
+  --semantic-color-background-emphasis-hover: #343a40; /** Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022. */
+  --semantic-color-background-emphasis-active: #16191C; /** Fill of a pressed emphasis control. Approved under decision 0022. */
   --semantic-color-background-surface: #e9ecef;
   --semantic-color-background-inverse: #343a40;
   --semantic-color-background-interactive: #0265DC;
   --semantic-color-background-interactive-subtle: #E0F2FF;
-  --semantic-color-background-interactive-subtle-hover: #CAE8FF;
-  --semantic-color-background-interactive-subtle-active: #B5DEFF;
+  --semantic-color-background-interactive-subtle-hover: #CAE8FF; /** Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016. */
+  --semantic-color-background-interactive-subtle-active: #B5DEFF; /** Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016. */
   --semantic-color-background-interactive-hover: #0054B6;
   --semantic-color-background-interactive-active: #004491;
   --semantic-color-background-error: #D31510;
-  --semantic-color-background-error-hover: #B40000;
-  --semantic-color-background-error-active: #930000;
+  --semantic-color-background-error-hover: #B40000; /** Fill of a hovered error control, such as the danger Button. Approved under decision 0022. */
+  --semantic-color-background-error-active: #930000; /** Fill of a pressed error control. Approved under decision 0022. */
   --semantic-color-background-error-subtle: #FFEBE7;
   --semantic-color-background-success: #007A4D;
   --semantic-color-background-success-subtle: #CEF8E0;
   --semantic-color-background-warning: #B14C00;
   --semantic-color-background-warning-subtle: #FFECCC;
   --semantic-color-background-disabled: #dee2e6;
-  --semantic-color-background-neutral: #dee2e6;
-  --semantic-color-background-neutral-hover: #ced4da;
-  --semantic-color-background-neutral-active: #adb5bd;
-  --semantic-color-background-transparent: transparent;
+  --semantic-color-background-neutral: #dee2e6; /** Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022. */
+  --semantic-color-background-neutral-hover: #ced4da; /** Fill of a hovered neutral control. Approved under decision 0022. */
+  --semantic-color-background-neutral-active: #adb5bd; /** Fill of a pressed neutral control. Approved under decision 0022. */
+  --semantic-color-background-transparent: transparent; /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
   --semantic-color-background-progress-track: #dee2e6;
-  --semantic-color-background-page: #f8f9fa;
-  --semantic-color-background-overlay: rgba(33, 37, 41, 0.5);
-  --semantic-color-background-hover-overlay: rgba(33, 37, 41, 0.1);
-  --semantic-color-background-active-overlay: rgba(33, 37, 41, 0.15);
-  --semantic-color-background-inverse-overlay: rgba(255, 255, 255, 0.2);
+  --semantic-color-background-page: #f8f9fa; /** Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'. */
+  --semantic-color-background-overlay: rgba(33, 37, 41, 0.5); /** Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content. */
+  --semantic-color-background-hover-overlay: rgba(33, 37, 41, 0.1); /** Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL. */
+  --semantic-color-background-active-overlay: rgba(33, 37, 41, 0.15); /** Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth. */
+  --semantic-color-background-inverse-overlay: rgba(255, 255, 255, 0.2); /** Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse. */
   --semantic-color-border-default: #e9ecef;
   --semantic-color-border-subtle: #dee2e6;
   --semantic-color-border-strong: #343a40;
@@ -675,7 +675,7 @@
   --semantic-color-border-error: #D31510;
   --semantic-color-border-success: #007A4D;
   --semantic-color-border-warning: #B14C00;
-  --semantic-color-border-none: transparent;
+  --semantic-color-border-none: transparent; /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
   --semantic-color-icon-default: #212529;
   --semantic-color-icon-emphasis: #343a40;
   --semantic-color-icon-subdued: #6c757d;
@@ -687,56 +687,56 @@
   --semantic-color-icon-error: #D31510;
   --semantic-color-icon-success: #007A4D;
   --semantic-color-icon-warning: #B14C00;
-  --semantic-color-financial-credit: #15A46E;
-  --semantic-color-financial-credit-hover: #008F5D;
-  --semantic-color-financial-debit: #D31510;
-  --semantic-color-financial-debit-hover: #B40000;
-  --semantic-color-financial-pending: #F68511;
-  --semantic-color-financial-neutral: #6c757d;
-  --semantic-color-category-blue: #3892F3;
-  --semantic-color-category-blue-emphasis: #0265DC;
-  --semantic-color-category-blue-subtle: #E0F2FF;
-  --semantic-color-category-purple: #AD5FE8;
-  --semantic-color-category-purple-emphasis: #7E2EBD;
-  --semantic-color-category-purple-subtle: #F9F0FF;
-  --semantic-color-category-pink: #FF42AB;
-  --semantic-color-category-pink-emphasis: #DC007B;
-  --semantic-color-category-pink-subtle: #FFEFF9;
-  --semantic-color-category-yellow: #D39700;
-  --semantic-color-category-yellow-emphasis: #9D6C00;
-  --semantic-color-category-yellow-subtle: #FFF3D6;
-  --semantic-color-category-green: #15A46E;
-  --semantic-color-category-green-emphasis: #007A4D;
-  --semantic-color-category-green-subtle: #CEF8E0;
-  --semantic-color-category-red: #F75C46;
-  --semantic-color-category-red-emphasis: #D31510;
-  --semantic-color-category-red-subtle: #FFEBE7;
-  --semantic-color-category-orange: #E46F00;
-  --semantic-color-category-orange-emphasis: #B14C00;
-  --semantic-color-category-orange-subtle: #FFECCC;
-  --semantic-color-category-gray: #495057;
-  --semantic-color-category-gray-emphasis: #212529;
-  --semantic-color-category-gray-subtle: #e9ecef;
-  --semantic-color-category-blue-text: #0265DC;
-  --semantic-color-category-purple-text: #7E2EBD;
-  --semantic-color-category-pink-text: #B90064;
-  --semantic-color-category-yellow-text: #825800;
-  --semantic-color-category-green-text: #007A4D;
-  --semantic-color-category-red-text: #D31510;
-  --semantic-color-category-orange-text: #B14C00;
-  --semantic-color-category-gray-text: #212529;
-  --semantic-color-status-pending: #825800;
-  --semantic-color-status-pending-bg: #FFF3D6;
-  --semantic-color-status-completed: #007A4D;
-  --semantic-color-status-completed-bg: #CEF8E0;
-  --semantic-color-status-failed: #D31510;
-  --semantic-color-status-failed-bg: #FFEBE7;
-  --semantic-color-status-cancelled: #495057;
-  --semantic-color-status-cancelled-bg: #e9ecef;
-  --semantic-color-status-processing: #0265DC;
-  --semantic-color-status-processing-bg: #E0F2FF;
-  --semantic-color-status-scheduled: #7E2EBD;
-  --semantic-color-status-scheduled-bg: #F9F0FF;
+  --semantic-color-financial-credit: #15A46E; /** Color for positive monetary values, credits, income */
+  --semantic-color-financial-credit-hover: #008F5D; /** Hover state for credit-colored interactive elements */
+  --semantic-color-financial-debit: #D31510; /** Color for negative monetary values, debits, expenses */
+  --semantic-color-financial-debit-hover: #B40000; /** Hover state for debit-colored interactive elements */
+  --semantic-color-financial-pending: #F68511; /** Color for pending or processing financial transactions */
+  --semantic-color-financial-neutral: #6c757d; /** Neutral color for informational monetary amounts */
+  --semantic-color-category-blue: #3892F3; /** Blue category color for general/miscellaneous */
+  --semantic-color-category-blue-emphasis: #0265DC; /** Emphasized blue for filled variants */
+  --semantic-color-category-blue-subtle: #E0F2FF; /** Subtle blue background */
+  --semantic-color-category-purple: #AD5FE8; /** Purple category color for entertainment */
+  --semantic-color-category-purple-emphasis: #7E2EBD; /** Emphasized purple for filled variants */
+  --semantic-color-category-purple-subtle: #F9F0FF; /** Subtle purple background */
+  --semantic-color-category-pink: #FF42AB; /** Pink category color for health/wellness */
+  --semantic-color-category-pink-emphasis: #DC007B; /** Emphasized pink for filled variants */
+  --semantic-color-category-pink-subtle: #FFEFF9; /** Subtle pink background */
+  --semantic-color-category-yellow: #D39700; /** Yellow category color for utilities */
+  --semantic-color-category-yellow-emphasis: #9D6C00; /** Emphasized yellow for filled variants */
+  --semantic-color-category-yellow-subtle: #FFF3D6; /** Subtle yellow background */
+  --semantic-color-category-green: #15A46E; /** Green category color for income */
+  --semantic-color-category-green-emphasis: #007A4D; /** Emphasized green for filled variants */
+  --semantic-color-category-green-subtle: #CEF8E0; /** Subtle green background */
+  --semantic-color-category-red: #F75C46; /** Red category color for expenses */
+  --semantic-color-category-red-emphasis: #D31510; /** Emphasized red for filled variants */
+  --semantic-color-category-red-subtle: #FFEBE7; /** Subtle red background */
+  --semantic-color-category-orange: #E46F00; /** Orange category color for food & dining */
+  --semantic-color-category-orange-emphasis: #B14C00; /** Emphasized orange for filled variants */
+  --semantic-color-category-orange-subtle: #FFECCC; /** Subtle orange background */
+  --semantic-color-category-gray: #495057; /** Gray category color for uncategorized */
+  --semantic-color-category-gray-emphasis: #212529; /** Emphasized gray for filled variants */
+  --semantic-color-category-gray-subtle: #e9ecef; /** Subtle gray background */
+  --semantic-color-category-blue-text: #0265DC; /** Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-category-purple-text: #7E2EBD; /** Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-category-pink-text: #B90064; /** Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115. */
+  --semantic-color-category-yellow-text: #825800; /** Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115. */
+  --semantic-color-category-green-text: #007A4D; /** Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-category-red-text: #D31510; /** Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-category-orange-text: #B14C00; /** Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-category-gray-text: #212529; /** Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --semantic-color-status-pending: #825800; /** Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115. */
+  --semantic-color-status-pending-bg: #FFF3D6; /** Background for pending status */
+  --semantic-color-status-completed: #007A4D; /** Green color for completed status */
+  --semantic-color-status-completed-bg: #CEF8E0; /** Background for completed status */
+  --semantic-color-status-failed: #D31510; /** Red color for failed/error status */
+  --semantic-color-status-failed-bg: #FFEBE7; /** Background for failed status */
+  --semantic-color-status-cancelled: #495057; /** Gray color for cancelled status */
+  --semantic-color-status-cancelled-bg: #e9ecef; /** Background for cancelled status */
+  --semantic-color-status-processing: #0265DC; /** Blue color for processing status */
+  --semantic-color-status-processing-bg: #E0F2FF; /** Background for processing status */
+  --semantic-color-status-scheduled: #7E2EBD; /** Purple color for scheduled status */
+  --semantic-color-status-scheduled-bg: #F9F0FF; /** Background for scheduled status */
   --semantic-typography-display: 700 5rem/4.5rem 'Inter', sans-serif;
   --semantic-typography-h1: 700 3rem/3rem 'Inter', sans-serif;
   --semantic-typography-h2: 700 2rem/2.5rem 'Inter', sans-serif;
@@ -754,11 +754,11 @@
   --semantic-typography-button3: 500 0.75rem/1rem 'Inter', sans-serif;
   --semantic-typography-label: 600 0.875rem/1.25rem 'Inter', sans-serif;
   --semantic-typography-breadcrumb: 400 0.75rem/1.125rem 'Inter', sans-serif;
-  --semantic-motion-duration-normal: 200ms;
-  --semantic-motion-duration-fast: 150ms;
-  --semantic-motion-duration-slow: 300ms;
-  --semantic-motion-easing-ease-in-out: ease-in-out;
-  --semantic-motion-easing-ease-out: ease-out;
+  --semantic-motion-duration-normal: 200ms; /** 200ms: standard duration for property-specific transitions. */
+  --semantic-motion-duration-fast: 150ms; /** 150ms: quick responses to input such as hover, press and small indicators. */
+  --semantic-motion-duration-slow: 300ms; /** 300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse. */
+  --semantic-motion-easing-ease-in-out: ease-in-out; /** ease-in-out: standard easing for property-specific transitions. */
+  --semantic-motion-easing-ease-out: ease-out; /** ease-out: for elements responding to input or entering the page. */
   --semantic-motion-transition-fast: all 150ms ease-out;
   --semantic-motion-transition-normal: all 200ms ease-in-out;
   --semantic-motion-transition-slow: all 300ms ease-in-out;

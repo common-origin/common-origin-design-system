@@ -31,9 +31,9 @@ src/tokens/{base,component,semantic}/index.json
 
 | Tier | File | Convention today |
 |---|---|---|
-| Base | `src/tokens/base/index.json` | Raw values, `{ "value", "type" }`. 17 types, kebab-case (`border-radius`, `font-size`, `box-shadow`, `z-index`, …) |
-| Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 14 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`, `fontFamily`, `fontSize`, `lineHeight`, `letterSpacing`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
-| Component | `src/tokens/component/index.json` | Real tokens, `{ "value", "type", "description" }`, referencing **semantic** tokens only, apart from Button's deprecated `emphasis` aliases, which reference `accent` until 3.0 (step 3 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). No spacing tokens ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)): the old ones stay, marked `Deprecated`, until 3.0. The only raw px still read are IconButton's sizes, Input's `11px` and Chip's `2px`, waiting for [#129](https://github.com/common-origin/common-origin-design-system/issues/129). Deprecated tokens that nothing reads, such as the `2px` focus offsets, also keep their raw values until 3.0 |
+| Base | `src/tokens/base/index.json` | Raw values, DTCG `{ "$value" }` with `$type` on the group where its tokens share one |
+| Semantic | `src/tokens/semantic/index.json` | References to base, DTCG `{ "$value", "$description"? }` with `$type` on the token or its group |
+| Component | `src/tokens/component/index.json` | Real DTCG tokens with `$value`, `$type` and `$description`, referencing **semantic** tokens only, apart from Button's deprecated `emphasis` aliases, which reference `accent` until 3.0 (step 3 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). No spacing tokens ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)): the old ones stay, marked `Deprecated`, until 3.0. The only raw px still read are IconButton's sizes, Input's `11px` and Chip's `2px`, waiting for [#129](https://github.com/common-origin/common-origin-design-system/issues/129). Deprecated tokens that nothing reads, such as the `2px` focus offsets, also keep their raw values until 3.0 |
 
 **Which tier a component uses** ([decision 0014](../foundation/decisions/0014-token-tiers.md)):
 - Components never use base tokens.
@@ -51,7 +51,7 @@ Values are strings. There are no object-valued (composite) tokens and no arithme
 
 ### How the config actually behaves
 
-`config/style-dictionary.config.mjs` is an ESM config for Style Dictionary 5 (step 4 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). It registers one custom format through `hooks.formats` (`typescript/nested-interface`), sets `log.warnings: 'error'`, and awaits `sd.buildAllPlatforms()`. The token source is still the pre-DTCG format (`value`, `type`, `description`); step 5 converts it.
+`config/style-dictionary.config.mjs` is an ESM config for Style Dictionary 5 (step 4 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). It registers one custom format through `hooks.formats` (`typescript/nested-interface`), sets `log.warnings: 'error'`, and awaits `sd.buildAllPlatforms()`. It sets `usesDtcg: true`: the source is DTCG (step 5).
 
 **No value transforms.** Each platform names only a name transform: `name/camel` for `tokens` and `typescript` (their output doesn't use names, but Style Dictionary needs unique ones), and `name/kebab` for `custom`, which produces the CSS variable names (`--semantic-color-text-default`). Style Dictionary 5's built-in `js` and `css` groups match on token **type**, unlike v3's, which matched on the first path segment and so never ran here. Turned on, `color/hex` and `color/css` would rewrite every colour (`#16191C` → `#16191c`, `transparent` → `#00000000`). Value transforms come back deliberately, each with its own diff, in later steps.
 
@@ -68,10 +68,10 @@ In practice the build **resolves references and writes files**; no value is tran
 | 1 | ~~An `index.json` of `$ref` pointers in `src/tokens/` matches the `source` glob. Style Dictionary doesn't understand `$ref`, so it merges the keys as data~~ | Fixed in step 2 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24): the index is deleted and `source` lists the tier folders. The `$ref` keys no longer reach `tokens.json` or the package (a fix in a minor, decision 0017) |
 | 2 | ~~Component tier is mostly not made of tokens~~ | Fixed in step 3 of #24: every component leaf is a real token with a type and a description |
 | 3 | ~~Component tokens reference base tokens directly~~ | Fixed in step 3 of #24: component tokens reference semantic tokens only, checked by `componentTier.test.ts` |
-| 4 | Type names are inconsistent (kebab in base, camel in semantic) and don't match the transforms' filters | Transforms silently skip tokens; types carry no reliable meaning |
+| 4 | ~~Type names are inconsistent (kebab in base, camel in semantic) and don't match the transforms' filters~~ | Fixed in step 5 of #24: every token has a DTCG type name |
 | 5 | ~~`transformGroup` + `transforms` on every platform~~ | Fixed in step 2 of #24: the platforms use the built-in groups alone |
 | 6 | ~~Latent bugs in custom transforms (implicit globals that throw in ESM strict mode, broken `includes` and precedence logic)~~ | Fixed in step 2 of #24: the custom transforms are deleted |
-| 7 | `description` fields are dropped from every output | Designers, developers and agents can't see a token's intended use outside the source |
+| 7 | `description` fields are dropped from every output | Partly fixed in step 5 of #24: `tokens.css` carries each `$description` as a comment. `tokens.d.ts` JSDoc comes in step 6 |
 | 8 | ~~Timestamped headers~~ | Fixed in step 4 of #24: Style Dictionary 5's CSS header has no timestamp, and the custom TypeScript format no longer writes one |
 | 9 | ~~The `styled-components` platform's output generated but unused~~ | Fixed in step 2 of #24: the platform and its output are deleted |
 | 10 | ~~Docs drift: `.github/TOKEN_MANAGEMENT.md` showed a different, CommonJS config with transforms and outputs that don't exist here~~ | Fixed in [#37](https://github.com/common-origin/common-origin-design-system/issues/37): the guide no longer describes the build and defers to this document |
@@ -153,7 +153,18 @@ The owner approved this direction and the migration plan below in [decision 0017
 2. **Fix defects on v3 first** (done): remove `index.json` from `source`; delete dead transforms, formats, and the `styled-components` platform; drop `transforms` overrides so built-in groups run. Diff against the golden file — only the `$ref` keys should disappear.
 3. **Normalise the component tier** (done) into tokens referencing semantic tokens. Diff: values must not change. Component spacing tokens are retired, not converted ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). Done (3a Button and IconButton, 3b Chip, 3c Input, ProgressBar, Badge, Separator and Field): every component token is a real, described token that references semantic tokens, and `src/tokens/componentTier.test.ts` keeps it that way. Two exceptions remain until 3.0: Button's deprecated `emphasis` aliases reference the `accent` tokens they alias, and deprecated tokens keep their original raw values (such as `2px`), since nothing reads them except the two waiting for #129. Input's `11px` and Chip's `2px` paddings stay as deprecated tokens until [#129](https://github.com/common-origin/common-origin-design-system/issues/129).
 4. **Upgrade to Style Dictionary 5** (done) and port the config to hooks, on the existing format. Diff: `tokens.json` byte-identical; `tokens.css` and `tokens.d.ts` lose their timestamps. Value transforms stay off (see §1).
-5. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
+5. **Convert to DTCG** (done): type names remapped, then `convertToDTCG` with `$type` moved to groups where uniform, and `usesDtcg: true`. Diff: `tokens.json` and `tokens.d.ts` byte-identical; `tokens.css` variables identical, each now followed by its `$description` as a comment.
+
+   | Old type(s) | DTCG `$type` |
+   |---|---|
+   | `size`, `spacing`, `dimension`, `breakpoint`, `border-radius`/`borderRadius`, `border-width`/`borderWidth`, `font-size`/`fontSize`, `letter-spacing`/`letterSpacing`, `line-height`/`lineHeight` | `dimension` |
+   | unitless line height (`base.lineHeight.none` = `1`, and `semantic.lineHeight.none`), `opacity`, `z-index`/`zIndex` | `number` |
+   | `font-family`/`fontFamily`, `font-weight`/`fontWeight`, `duration`, `color` | `fontFamily`, `fontWeight`, `duration`, `color` |
+   | `cubic-bezier`/`easing`, `border-style` | `cubicBezier`, `strokeStyle` |
+   | `box-shadow`/`boxShadow`, `border`, `transition`, `typography` | `shadow`, `border`, `transition`, `typography` |
+   | `other` (four deprecated layout and behaviour tokens: IconButton's `display` and alignment, `input.disabled.cursor`) | `other`, not a DTCG type; removed in 3.0 |
+
+   **Values keep their current strings**, so some don't yet have the shape DTCG specifies for their type: the composite types (`shadow`, `border`, `transition`, `typography`) are CSS shorthand strings, not objects; `number` and `fontWeight` values are strings (`"0"`, `"500"`); `cubicBezier` holds keywords and `cubic-bezier(…)` strings, not four-number arrays; and `base.spacing.auto` is `auto`. Converting them would change the published `tokens.json` strings, so it needs value transforms that keep the output identical. That's the composite-token work in the target above (item 4), checked against the golden file like every step.
 
 Steps 4 and 5 were swapped on 2026-10-06 ([0023](../foundation/decisions/0023-upgrade-before-dtcg.md), amending 0017): Style Dictionary 3 can't read DTCG, and Style Dictionary 5 reads both formats.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.
@@ -166,7 +177,7 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 
 ### Add a token
 0. **Get the owner's sign-off first** ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)): the token's tier, value, use, and why no existing token does the job. Never a component spacing token.
-1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
+1. Add it at the right tier with `$value`, a DTCG `$type` (on the token, or inherited from its group) and a `$description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
 2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
 3. `npm run build:tokens`, then `npx jest src/tokens/golden`. It fails and lists every resolved value that differs from the golden file: check it shows exactly your change.
 4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`.
