@@ -919,6 +919,7 @@
           "$description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
         },
         "lineHeight": {
+          "$type": "number",
           "$value": "{semantic.lineHeight.none}",
           "$description": "Line height of the count text, so the digits centre in the indicator."
         }
@@ -1182,8 +1183,8 @@
           "$description": "Initials weight."
         },
         "lineHeight": {
+          "$type": "number",
           "$value": "{semantic.lineHeight.none}",
-          "$type": "dimension",
           "$description": "Initials sit on a single line equal to their size."
         },
         "fontSize": {

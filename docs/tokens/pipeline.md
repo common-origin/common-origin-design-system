@@ -158,11 +158,13 @@ The owner approved this direction and the migration plan below in [decision 0017
    | Old type(s) | DTCG `$type` |
    |---|---|
    | `size`, `spacing`, `dimension`, `breakpoint`, `border-radius`/`borderRadius`, `border-width`/`borderWidth`, `font-size`/`fontSize`, `letter-spacing`/`letterSpacing`, `line-height`/`lineHeight` | `dimension` |
-   | unitless line height (`base.lineHeight.none` = `1`, and `semantic.lineHeight.none`), `opacity`, `z-index`/`zIndex` | `number` |
+   | unitless line height (`base.lineHeight.none` = `1`, and the tokens that alias it: `semantic.lineHeight.none`, `component.badge.count.lineHeight`, `component.avatar.initials.lineHeight`), `opacity`, `z-index`/`zIndex` | `number` |
    | `font-family`/`fontFamily`, `font-weight`/`fontWeight`, `duration`, `color` | `fontFamily`, `fontWeight`, `duration`, `color` |
    | `cubic-bezier`/`easing`, `border-style` | `cubicBezier`, `strokeStyle` |
    | `box-shadow`/`boxShadow`, `border`, `transition`, `typography` | `shadow`, `border`, `transition`, `typography` |
    | `other` (four deprecated layout and behaviour tokens: IconButton's `display` and alignment, `input.disabled.cursor`) | `other`, not a DTCG type; removed in 3.0 |
+
+   `src/tokens/dtcgTypes.test.ts` checks that every token has a type and that every alias has its target's type.
 
    **Values keep their current strings**, so some don't yet have the shape DTCG specifies for their type: the composite types (`shadow`, `border`, `transition`, `typography`) are CSS shorthand strings, not objects; `number` and `fontWeight` values are strings (`"0"`, `"500"`); `cubicBezier` holds keywords and `cubic-bezier(…)` strings, not four-number arrays; and `base.spacing.auto` is `auto`. Converting them would change the published `tokens.json` strings, so it needs value transforms that keep the output identical. That's the composite-token work in the target above (item 4), checked against the golden file like every step.
 
