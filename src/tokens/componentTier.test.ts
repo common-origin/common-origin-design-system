@@ -10,13 +10,17 @@ type Leaf = { path: string; node: Node | string; type?: string }
 // The component tier, normalised in step 3 of the token pipeline migration (decision 0017, #24)
 // under decisions 0014 and 0022
 
-// The source is DTCG: a token has `$value`, and its `$type` may sit on a parent group
+// The source is DTCG: a token has `$value`, and its `$type` may sit on a parent group. An object
+// with no child tokens or groups (only `$` metadata, or nothing) is a token that lost its
+// `$value`, so it's returned as a leaf for the checks below to report.
 function leaves(node: Node, path: string[] = [], inheritedType?: string): Leaf[] {
   const groupType = typeof node.$type === 'string' ? node.$type : inheritedType
+  const isGroup = (child: Node) =>
+    !('$value' in child) && Object.keys(child).some((key) => !key.startsWith('$'))
   return Object.entries(node)
     .filter(([key]) => !key.startsWith('$'))
     .flatMap(([key, child]) =>
-      typeof child === 'object' && !('$value' in child)
+      typeof child === 'object' && isGroup(child)
         ? leaves(child, [...path, key], groupType)
         : [{ path: [...path, key].join('.'), node: child, type: typeof child === 'object' ? String(child.$type ?? groupType ?? '') : undefined }]
     )
