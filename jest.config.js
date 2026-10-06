@@ -25,7 +25,10 @@ const customJestConfig = {
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
+    // Claude Code worktrees are separate checkouts of this repository
+    '<rootDir>/.claude/worktrees/',
   ],
+  modulePathIgnorePatterns: ['<rootDir>/.claude/worktrees/'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { 
       presets: ['next/babel'],

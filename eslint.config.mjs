@@ -13,6 +13,8 @@ export default tseslint.config(
       'coverage/**',
       'public/**',
       '.rollup.cache/**',
+      // Claude Code worktrees are separate checkouts of this repository
+      '.claude/worktrees/**',
       'next-env.d.ts',
       'src/styles/tokens.d.ts',
     ],
