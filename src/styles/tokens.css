@@ -339,11 +339,11 @@
   --co-semantic-z-index-dropdown: var(--co-base-z-index-6); /** Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays. */
   --co-semantic-z-index-overlay: var(--co-base-z-index-7); /** Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals. */
   --co-semantic-z-index-modal: var(--co-base-z-index-8); /** Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system. */
-  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default);
-  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle);
-  --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong);
-  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong);
-  --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-subtle);
+  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers and outlines that separate content, such as Breadcrumbs. 1.19:1 on white, so it's decorative, not a control's boundary. */
+  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Hairline in the subtle border colour: quiet outlines, such as dividers and the resting text input border. 1.30:1 on white. */
+  --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white. */
+  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** The focus ring: 2px solid near-black. Every interactive component uses it for visible keyboard focus (P2), with border.focusOffset. */
+  --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-subtle); /** 2px dotted underline marking text that has a tooltip. */
   --co-semantic-border-width-thin: var(--co-base-border-width-1); /** 0.0625rem: default hairline borders and rings. */
   --co-semantic-border-width-thick: var(--co-base-border-width-2); /** 0.125rem: emphasised borders, focus outlines and selected states. */
   --co-semantic-border-focus-offset: var(--co-base-border-width-2); /** 0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does. */
@@ -380,102 +380,102 @@
   --co-semantic-size-dimension-90: var(--co-base-size-90); /** 22.5rem (360px): EmptyState text maximum width (via component tokens). */
   --co-semantic-size-dimension-100: var(--co-base-size-100); /** 25rem (400px): EmptyState maximum width (via component tokens). */
   --co-semantic-size-dimension-192: var(--co-base-size-192); /** 48rem (768px): CardLarge maximum width (via component tokens). */
-  --co-semantic-size-icon-xs: var(--co-base-size-3);
-  --co-semantic-size-icon-sm: var(--co-base-size-4);
-  --co-semantic-size-icon-md: var(--co-base-size-5);
-  --co-semantic-size-icon-lg: var(--co-base-size-6);
-  --co-semantic-size-icon-xl: var(--co-base-size-8);
-  --co-semantic-size-icon-2xl: var(--co-base-size-10);
-  --co-semantic-size-avatar-xs: var(--co-base-size-6);
-  --co-semantic-size-avatar-sm: var(--co-base-size-8);
-  --co-semantic-size-avatar-md: var(--co-base-size-10);
-  --co-semantic-size-avatar-lg: var(--co-base-size-12);
-  --co-semantic-size-avatar-xl: var(--co-base-size-16);
-  --co-semantic-spacing-separator-sm: var(--co-base-spacing-4);
-  --co-semantic-spacing-separator-md: var(--co-base-spacing-6);
-  --co-semantic-spacing-separator-lg: var(--co-base-spacing-8);
-  --co-semantic-spacing-separator-xl: var(--co-base-spacing-12);
+  --co-semantic-size-icon-xs: var(--co-base-size-3); /** 0.75rem (12px): the smallest icon, for dense inline indicators. */
+  --co-semantic-size-icon-sm: var(--co-base-size-4); /** 1rem (16px): small icons in compact controls, such as the dismiss icon in Alert and small icon buttons. */
+  --co-semantic-size-icon-md: var(--co-base-size-5); /** 1.25rem (20px): icons beside body text, such as Alert's severity icon. */
+  --co-semantic-size-icon-lg: var(--co-base-size-6); /** 1.5rem (24px): the Icon component's default size; also list item icons. */
+  --co-semantic-size-icon-xl: var(--co-base-size-8); /** 2rem (32px): extra-large standalone icons. */
+  --co-semantic-size-icon-2xl: var(--co-base-size-10); /** 2.5rem (40px): the largest icon size, for prominent standalone icons. */
+  --co-semantic-size-avatar-xs: var(--co-base-size-6); /** 1.5rem (24px): extra-small avatar, inline with text. */
+  --co-semantic-size-avatar-sm: var(--co-base-size-8); /** 2rem (32px): small avatar, in dense lists. */
+  --co-semantic-size-avatar-md: var(--co-base-size-10); /** 2.5rem (40px): the default avatar size. */
+  --co-semantic-size-avatar-lg: var(--co-base-size-12); /** 3rem (48px): large avatar, in headers and cards. */
+  --co-semantic-size-avatar-xl: var(--co-base-size-16); /** 4rem (64px): extra-large avatar, on profile pages. */
+  --co-semantic-spacing-separator-sm: var(--co-base-spacing-4); /** 1rem: space above and below a small Divider. */
+  --co-semantic-spacing-separator-md: var(--co-base-spacing-6); /** 1.5rem: space above and below a medium or minimal Divider. */
+  --co-semantic-spacing-separator-lg: var(--co-base-spacing-8); /** 2rem: space above and below a large Divider, the default. */
+  --co-semantic-spacing-separator-xl: var(--co-base-spacing-12); /** 3rem: space above and below an extra-large Divider, between major sections. */
   --co-semantic-spacing-component-xs: var(--co-base-spacing-1); /** Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips. */
   --co-semantic-spacing-component-sm: var(--co-base-spacing-2); /** Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing. */
   --co-semantic-spacing-component-md: var(--co-base-spacing-3); /** Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding. */
   --co-semantic-spacing-component-lg: var(--co-base-spacing-4); /** Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing. */
   --co-semantic-spacing-component-xl: var(--co-base-spacing-5); /** Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs. */
   --co-semantic-spacing-component-2xl: var(--co-base-spacing-6); /** 2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections. */
-  --co-semantic-spacing-layout-none: var(--co-base-spacing-0);
-  --co-semantic-spacing-layout-xs: var(--co-base-spacing-1);
-  --co-semantic-spacing-layout-sm: var(--co-base-spacing-2);
-  --co-semantic-spacing-layout-md: var(--co-base-spacing-3);
-  --co-semantic-spacing-layout-lg: var(--co-base-spacing-4);
-  --co-semantic-spacing-layout-xl: var(--co-base-spacing-5);
-  --co-semantic-spacing-layout-2xl: var(--co-base-spacing-6);
-  --co-semantic-spacing-layout-3xl: var(--co-base-spacing-7);
-  --co-semantic-spacing-layout-4xl: var(--co-base-spacing-8);
-  --co-semantic-spacing-layout-5xl: var(--co-base-spacing-9);
-  --co-semantic-spacing-layout-6xl: var(--co-base-spacing-10);
-  --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12);
-  --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14);
-  --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16);
-  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20);
+  --co-semantic-spacing-layout-none: var(--co-base-spacing-0); /** 0: no space, for explicit resets. */
+  --co-semantic-spacing-layout-xs: var(--co-base-spacing-1); /** 0.25rem: the tightest gap, such as between a label and its required indicator. */
+  --co-semantic-spacing-layout-sm: var(--co-base-spacing-2); /** 0.5rem: a small gap, such as between a field's label, control and helper text. */
+  --co-semantic-spacing-layout-md: var(--co-base-spacing-3); /** 0.75rem: the default gap between related elements. */
+  --co-semantic-spacing-layout-lg: var(--co-base-spacing-4); /** 1rem: space between groups of elements, and padding inside containers. */
+  --co-semantic-spacing-layout-xl: var(--co-base-spacing-5); /** 1.25rem: generous padding inside larger containers. */
+  --co-semantic-spacing-layout-2xl: var(--co-base-spacing-6); /** 1.5rem: space between distinct blocks of content. */
+  --co-semantic-spacing-layout-3xl: var(--co-base-spacing-7); /** 1.75rem: between 2xl and 4xl, for spacious layouts. */
+  --co-semantic-spacing-layout-4xl: var(--co-base-spacing-8); /** 2rem: space between page sections. */
+  --co-semantic-spacing-layout-5xl: var(--co-base-spacing-9); /** 2.25rem: between 4xl and 6xl, for spacious layouts. */
+  --co-semantic-spacing-layout-6xl: var(--co-base-spacing-10); /** 2.5rem: large space between page sections. */
+  --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12); /** 3rem: space between major page regions. */
+  --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14); /** 3.5rem: very large space for editorial layouts. */
+  --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16); /** 4rem: very large space for editorial layouts and hero areas. */
+  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** 5rem: the largest layout space, for hero areas in editorial products. */
   --co-semantic-spacing-layout-11xl: var(--co-base-spacing-24); /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
-  --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto);
-  --co-semantic-color-text-default: var(--co-base-color-neutral-900);
-  --co-semantic-color-text-emphasis: var(--co-base-color-neutral-800);
-  --co-semantic-color-text-subdued: var(--co-base-color-neutral-700);
-  --co-semantic-color-text-inverse: var(--co-base-color-neutral-000);
-  --co-semantic-color-text-disabled: var(--co-base-color-neutral-500);
-  --co-semantic-color-text-interactive: var(--co-base-color-blue-900);
+  --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
+  --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
+  --co-semantic-color-text-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black text for emphasis without full weight. 11.51:1 on white. */
+  --co-semantic-color-text-subdued: var(--co-base-color-neutral-700); /** Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page. */
+  --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
+  --co-semantic-color-text-disabled: var(--co-base-color-neutral-500); /** Text of disabled controls and placeholders. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3); never use it for readable content. */
+  --co-semantic-color-text-interactive: var(--co-base-color-blue-900); /** Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page. */
   --co-semantic-color-text-interactive-hover: var(--co-base-color-blue-1000); /** Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016. */
   --co-semantic-color-text-interactive-active: var(--co-base-color-blue-1100); /** Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016. */
-  --co-semantic-color-text-error: var(--co-base-color-red-900);
-  --co-semantic-color-text-success: var(--co-base-color-green-900);
-  --co-semantic-color-text-warning: var(--co-base-color-orange-900);
-  --co-semantic-color-background-default: var(--co-base-color-neutral-100);
-  --co-semantic-color-background-subtle: var(--co-base-color-neutral-000);
-  --co-semantic-color-background-emphasis: var(--co-base-color-neutral-900);
+  --co-semantic-color-text-error: var(--co-base-color-red-900); /** Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page. */
+  --co-semantic-color-text-success: var(--co-base-color-green-900); /** Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page. */
+  --co-semantic-color-text-warning: var(--co-base-color-orange-900); /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
+  --co-semantic-color-background-default: var(--co-base-color-neutral-100); /** Page background: warm off-white, never pure white (decision 0006). */
+  --co-semantic-color-background-subtle: var(--co-base-color-neutral-000); /** White: inputs, sheets and other surfaces that sit on the page background. */
+  --co-semantic-color-background-emphasis: var(--co-base-color-neutral-900); /** Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip. */
   --co-semantic-color-background-emphasis-hover: var(--co-base-color-neutral-800); /** Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022. */
   --co-semantic-color-background-emphasis-active: var(--co-base-color-neutral-1000); /** Fill of a pressed emphasis control. Approved under decision 0022. */
-  --co-semantic-color-background-surface: var(--co-base-color-neutral-200);
-  --co-semantic-color-background-inverse: var(--co-base-color-neutral-800);
-  --co-semantic-color-background-interactive: var(--co-base-color-blue-900);
-  --co-semantic-color-background-interactive-subtle: var(--co-base-color-blue-100);
+  --co-semantic-color-background-surface: var(--co-base-color-neutral-200); /** Light grey fill for quiet surfaces and grouped content, such as the default Chip. */
+  --co-semantic-color-background-inverse: var(--co-base-color-neutral-800); /** Dark grey fill for inverse surfaces, such as a checked Checkbox box. */
+  --co-semantic-color-background-interactive: var(--co-base-color-blue-900); /** Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1). */
+  --co-semantic-color-background-interactive-subtle: var(--co-base-color-blue-100); /** Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive. */
   --co-semantic-color-background-interactive-subtle-hover: var(--co-base-color-blue-200); /** Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016. */
   --co-semantic-color-background-interactive-subtle-active: var(--co-base-color-blue-300); /** Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016. */
-  --co-semantic-color-background-interactive-hover: var(--co-base-color-blue-1000);
-  --co-semantic-color-background-interactive-active: var(--co-base-color-blue-1100);
-  --co-semantic-color-background-error: var(--co-base-color-red-900);
+  --co-semantic-color-background-interactive-hover: var(--co-base-color-blue-1000); /** Blue fill on hover, for controls that use background.interactive. */
+  --co-semantic-color-background-interactive-active: var(--co-base-color-blue-1100); /** Blue fill while pressed, for controls that use background.interactive. */
+  --co-semantic-color-background-error: var(--co-base-color-red-900); /** Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1). */
   --co-semantic-color-background-error-hover: var(--co-base-color-red-1000); /** Fill of a hovered error control, such as the danger Button. Approved under decision 0022. */
   --co-semantic-color-background-error-active: var(--co-base-color-red-1100); /** Fill of a pressed error control. Approved under decision 0022. */
-  --co-semantic-color-background-error-subtle: var(--co-base-color-red-100);
-  --co-semantic-color-background-success: var(--co-base-color-green-900);
-  --co-semantic-color-background-success-subtle: var(--co-base-color-green-100);
-  --co-semantic-color-background-warning: var(--co-base-color-orange-900);
-  --co-semantic-color-background-warning-subtle: var(--co-base-color-orange-100);
-  --co-semantic-color-background-disabled: var(--co-base-color-neutral-300);
+  --co-semantic-color-background-error-subtle: var(--co-base-color-red-100); /** Light red tint behind error messages, such as an error Alert. */
+  --co-semantic-color-background-success: var(--co-base-color-green-900); /** Strong green fill for success states. */
+  --co-semantic-color-background-success-subtle: var(--co-base-color-green-100); /** Light green tint behind success messages, such as a success Alert. */
+  --co-semantic-color-background-warning: var(--co-base-color-orange-900); /** Strong orange fill for warning states. */
+  --co-semantic-color-background-warning-subtle: var(--co-base-color-orange-100); /** Light orange tint behind warning messages, such as a warning Alert. */
+  --co-semantic-color-background-disabled: var(--co-base-color-neutral-300); /** Fill of disabled controls. */
   --co-semantic-color-background-neutral: var(--co-base-color-neutral-300); /** Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022. */
   --co-semantic-color-background-neutral-hover: var(--co-base-color-neutral-400); /** Fill of a hovered neutral control. Approved under decision 0022. */
   --co-semantic-color-background-neutral-active: var(--co-base-color-neutral-500); /** Fill of a pressed neutral control. Approved under decision 0022. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
-  --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300);
+  --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar. */
   --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'. */
-  --co-semantic-color-border-default: var(--co-base-color-neutral-200);
-  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300);
-  --co-semantic-color-border-strong: var(--co-base-color-neutral-800);
-  --co-semantic-color-border-interactive: var(--co-base-color-blue-900);
-  --co-semantic-color-border-error: var(--co-base-color-red-900);
-  --co-semantic-color-border-success: var(--co-base-color-green-900);
-  --co-semantic-color-border-warning: var(--co-base-color-orange-900);
+  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and outlines. 1.19:1 on white: decorative only. */
+  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for quiet outlines and the resting text input. 1.30:1 on white. */
+  --co-semantic-color-border-strong: var(--co-base-color-neutral-800); /** Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white. */
+  --co-semantic-color-border-interactive: var(--co-base-color-blue-900); /** Blue border for selected and interactive states (decision 0003). 5.39:1 on white. */
+  --co-semantic-color-border-error: var(--co-base-color-red-900); /** Red border for invalid fields and error outlines. 5.41:1 on white. */
+  --co-semantic-color-border-success: var(--co-base-color-green-900); /** Green border for success outlines, such as an outlined success Alert. */
+  --co-semantic-color-border-warning: var(--co-base-color-orange-900); /** Orange border for warning outlines, such as an outlined warning Alert. */
   --co-semantic-color-border-none: var(--co-base-color-transparent); /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
-  --co-semantic-color-icon-default: var(--co-base-color-neutral-900);
-  --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-800);
-  --co-semantic-color-icon-subdued: var(--co-base-color-neutral-600);
-  --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500);
-  --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000);
-  --co-semantic-color-icon-interactive: var(--co-base-color-blue-900);
-  --co-semantic-color-icon-interactive-hover: var(--co-base-color-blue-1000);
-  --co-semantic-color-icon-interactive-active: var(--co-base-color-blue-1100);
-  --co-semantic-color-icon-error: var(--co-base-color-red-900);
-  --co-semantic-color-icon-success: var(--co-base-color-green-900);
-  --co-semantic-color-icon-warning: var(--co-base-color-orange-900);
+  --co-semantic-color-icon-default: var(--co-base-color-neutral-900); /** Default icon colour, matching text.default. 15.43:1 on white. */
+  --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black icon colour, matching text.emphasis. */
+  --co-semantic-color-icon-subdued: var(--co-base-color-neutral-600); /** Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1). */
+  --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500); /** Icons in disabled controls. Exempt from the contrast minimum, like text.disabled. */
+  --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000); /** Icons on dark or coloured fills, matching text.inverse. */
+  --co-semantic-color-icon-interactive: var(--co-base-color-blue-900); /** Blue icons in links and selected items, matching text.interactive. 5.39:1 on white. */
+  --co-semantic-color-icon-interactive-hover: var(--co-base-color-blue-1000); /** Blue icon on hover, matching text.interactive-hover. */
+  --co-semantic-color-icon-interactive-active: var(--co-base-color-blue-1100); /** Blue icon while pressed, matching text.interactive-active. */
+  --co-semantic-color-icon-error: var(--co-base-color-red-900); /** Error icons, such as in Alert, InlineAlert and EmptyState. 5.41:1 on white. */
+  --co-semantic-color-icon-success: var(--co-base-color-green-900); /** Success icons, such as in Alert, InlineAlert and EmptyState. 5.40:1 on white. */
+  --co-semantic-color-icon-warning: var(--co-base-color-orange-900); /** Warning icons, such as in Alert and InlineAlert. 5.38:1 on white. */
   --co-semantic-color-financial-credit: var(--co-base-color-green-700); /** Color for positive monetary values, credits, income */
   --co-semantic-color-financial-credit-hover: var(--co-base-color-green-800); /** Hover state for credit-colored interactive elements */
   --co-semantic-color-financial-debit: var(--co-base-color-red-900); /** Color for negative monetary values, debits, expenses */
@@ -531,12 +531,12 @@
   --co-semantic-motion-duration-slow: var(--co-base-duration-moderate); /** 300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse. */
   --co-semantic-motion-easing-ease-in-out: var(--co-base-easing-ease-in-out); /** ease-in-out: standard easing for property-specific transitions. */
   --co-semantic-motion-easing-ease-out: var(--co-base-easing-ease-out); /** ease-out: for elements responding to input or entering the page. */
-  --co-semantic-motion-transition-fast: all var(--co-base-duration-fast) var(--co-base-easing-ease-out);
-  --co-semantic-motion-transition-normal: all var(--co-base-duration-normal) var(--co-base-easing-ease-in-out);
-  --co-semantic-motion-transition-slow: all var(--co-base-duration-moderate) var(--co-base-easing-ease-in-out);
-  --co-semantic-motion-hover: background-color var(--co-base-duration-fast) var(--co-base-easing-ease-out), color var(--co-base-duration-fast) var(--co-base-easing-ease-out);
-  --co-semantic-motion-focus: outline var(--co-base-duration-fast) var(--co-base-easing-ease-out), outline-offset var(--co-base-duration-fast) var(--co-base-easing-ease-out);
-  --co-semantic-motion-interactive: transform var(--co-base-duration-fast) var(--co-base-easing-ease-out), opacity var(--co-base-duration-fast) var(--co-base-easing-ease-out);
+  --co-semantic-motion-transition-fast: all var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** All properties over duration.fast (150ms), easing out: quick feedback, such as the Slider thumb. */
+  --co-semantic-motion-transition-normal: all var(--co-base-duration-normal) var(--co-base-easing-ease-in-out); /** All properties over duration.normal (200ms), easing in and out: the default state transition. */
+  --co-semantic-motion-transition-slow: all var(--co-base-duration-moderate) var(--co-base-easing-ease-in-out); /** All properties over duration.slow (300ms), the motion maximum (P6), easing in and out: larger changes. */
+  --co-semantic-motion-hover: background-color var(--co-base-duration-fast) var(--co-base-easing-ease-out), color var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Background and text colour over 150ms: the hover and press response of buttons, chips and tabs. */
+  --co-semantic-motion-focus: outline var(--co-base-duration-fast) var(--co-base-easing-ease-out), outline-offset var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Outline and outline offset over 150ms: how the focus ring appears. */
+  --co-semantic-motion-interactive: transform var(--co-base-duration-fast) var(--co-base-easing-ease-out), opacity var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Transform and opacity over 150ms: small movement or fade in response to input. */
   --co-component-button-primary-background-color: var(--co-semantic-color-background-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
   --co-component-button-primary-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of every Button (visual language: Button uses sm). */
@@ -725,23 +725,23 @@
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-dimension-12); /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
   --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-dimension-15); /** Left indent of expanded content in comfortable rows (60px). */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-dimension-18); /** Minimum row height (72px). */
-  --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading);
-  --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading);
-  --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading);
-  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading);
-  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading);
-  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading);
-  --co-semantic-typography-h6: var(--co-semantic-font-weight-medium) var(--co-base-font-size-4)/var(--co-base-line-height-4) var(--co-base-font-family-heading);
-  --co-semantic-typography-subtitle: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body);
-  --co-semantic-typography-body: var(--co-semantic-font-weight-regular) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body);
-  --co-semantic-typography-small: var(--co-semantic-font-weight-regular) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body);
-  --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body);
-  --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body);
-  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body);
-  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body);
-  --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body);
-  --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body);
-  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body);
+  --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** Display text: 5rem, weight 700. The largest heading, for hero titles. */
+  --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: 3rem, weight 700. The page title. */
+  --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: 2rem, weight 700. Major sections. */
+  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading); /** Heading 3: 1.75rem, weight 700. */
+  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading); /** Heading 4: 1.5rem, weight 700. */
+  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading); /** Heading 5: 1.25rem, weight 500. */
+  --co-semantic-typography-h6: var(--co-semantic-font-weight-medium) var(--co-base-font-size-4)/var(--co-base-line-height-4) var(--co-base-font-family-heading); /** Heading 6: 1.125rem, weight 500. The smallest heading; Alert's title builds on it. */
+  --co-semantic-typography-subtitle: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Subtitle: 1rem, weight 500. A short line under a heading. */
+  --co-semantic-typography-body: var(--co-semantic-font-weight-regular) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Body text: 1rem, weight 400, 1.5rem line height. The default for paragraphs and input values. */
+  --co-semantic-typography-small: var(--co-semantic-font-weight-regular) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Small text: 0.875rem, weight 400. Secondary copy and compact controls. */
+  --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Overline: 0.75rem, weight 700. A short label above a heading. */
+  --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Caption: 0.75rem, weight 400. Helper text, metadata and image captions. */
+  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Large Button label: 1rem, weight 500. */
+  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Medium Button label: 0.875rem, weight 500. Also tab labels. */
+  --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Small Button label: 0.75rem, weight 500. */
+  --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider. */
+  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb links: 0.75rem, weight 400. */
   --co-component-button-primary-font: var(--co-semantic-typography-button1); /** Button label typography, the same as sizes.large.font. */
   --co-component-button-variants-emphasis-background-color: var(--co-component-button-variants-accent-background-color); /** Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-variants-emphasis-text-color: var(--co-component-button-variants-accent-text-color); /** Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */

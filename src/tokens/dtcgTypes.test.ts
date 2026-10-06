@@ -38,6 +38,15 @@ const OTHER = new Set([
   'component.input.disabled.cursor',
 ])
 
+function descriptions(node: Node, path: string[] = [], out: [string, string][] = []) {
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith('$') || typeof child !== 'object') continue
+    if ('$value' in child) out.push([[...path, key].join('.'), String(child.$description ?? '')])
+    else descriptions(child, [...path, key], out)
+  }
+  return out
+}
+
 const sources = [base, semantic, component] as unknown as Node[]
 const typeOf = new Map(sources.flatMap((source) => [...types(source)]))
 
@@ -49,6 +58,16 @@ describe('DTCG types', () => {
       .filter(([path, type]) => !DTCG_TYPES.has(type) && !(type === 'other' && OTHER.has(path)))
       .map(([path, type]) => `${path}: ${type}`)
     expect(problems).toEqual([])
+  })
+
+  // Decision 0014, rule 6: semantic and component tokens say what they're for. Base tokens are
+  // raw values, named by their value, so they don't need one.
+  it('describe every semantic and component token', () => {
+    const undescribed = [semantic, component]
+      .flatMap((source) => descriptions(source as unknown as Node))
+      .filter(([, description]) => !description)
+      .map(([path]) => path)
+    expect(undescribed).toEqual([])
   })
 
   it('match between an alias and the token it references', () => {
