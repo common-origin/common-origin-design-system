@@ -169,7 +169,7 @@ At every step: `npm run build:tokens && npm run typecheck && npm test && npm run
 1. Add it at the right tier with `value`, `type` (match the tier's existing type naming), and a `description` of what it's for. Semantic and component tokens always need a description ([0014](../foundation/decisions/0014-token-tiers.md)).
 2. Reference the tier below: semantic → base, component → semantic (never base; add the missing semantic token first). Add a component token only for a departure, a family or a variant or state matrix ([0014](../foundation/decisions/0014-token-tiers.md)). Otherwise use the semantic token directly.
 3. `npm run build:tokens`, then `npx jest src/tokens/golden`. It fails and lists every resolved value that differs from the golden file: check it shows exactly your change.
-4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`, but not unrelated timestamp-only changes.
+4. `npm run tokens:golden` to accept it, then commit the source change, the regenerated outputs and `config/tokens.golden.json`.
 
 ### Check what a token resolves to
 ```bash
