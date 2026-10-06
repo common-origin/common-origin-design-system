@@ -1,6 +1,7 @@
 /**
  * @jest-environment node
  */
+import { execFileSync } from 'child_process'
 import { readFileSync } from 'fs'
 import { join } from 'path'
 import tokens from '@/styles/tokens.json'
@@ -49,6 +50,20 @@ describe('tokens.css', () => {
       .filter(([name, value]) => resolve(declared.get(name) ?? '') !== value)
       .map(([name, value]) => `${name}: ${resolve(declared.get(name) ?? '')} (tokens.json: ${value})`)
     expect(problems).toEqual([])
+  })
+
+  // The docs site's global styles (styles/index.css) use these variables too. A renamed variable
+  // fails silently in CSS, so check every use in the repository's code and CSS against the file.
+  it('declares every token variable the repository uses, under its current name', () => {
+    let used = ''
+    try {
+      used = execFileSync('git', ['grep', '-hoE', 'var\\(--(co|base|semantic|component)-[a-z0-9-]+', '--', '*.css', '*.ts', '*.tsx', '*.js', '*.mjs', ':!src/styles/tokens.css', ':!dist'], { encoding: 'utf8' })
+    } catch (error) {
+      // git grep exits 1 when nothing matches; anything else is a real failure
+      if ((error as { status?: number }).status !== 1) throw error
+    }
+    const names = [...new Set(used.trim().split('\n').filter(Boolean).map((match) => match.slice(4)))]
+    expect(names.filter((name) => !declared.has(name))).toEqual([])
   })
 
   it('keeps references, so semantic variables point at base variables', () => {
