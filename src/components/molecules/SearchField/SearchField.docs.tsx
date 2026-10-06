@@ -129,6 +129,18 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.motion.hover',
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
+    // Input box, shared with the text inputs
+    'component.input.default.backgroundColor',
+    'component.input.default.borderColor',
+    'component.input.default.borderRadius',
+    'component.input.default.borderWidth',
+    'component.input.hover.borderColor',
+    'component.input.focus.borderColor',
+    'component.input.focus.outline',
+    'semantic.border.focusOffset',
+    'component.input.disabled.backgroundColor',
+    'component.input.disabled.borderColor',
+    'semantic.spacing.layout.xs',
   ],
   
   examples: [
@@ -389,11 +401,20 @@ useEffect(() => {
         name: 'Input Wrapper',
         description: 'Visual container with border, padding, background, and focus states',
         tokens: [
-          'semantic.color.background.subtle',
-          'semantic.color.border.default',
-          'semantic.border.radius.md',
+          'component.input.default.backgroundColor',
+          'component.input.default.borderWidth',
+          'component.input.default.borderColor',
+          'component.input.default.borderRadius',
+          'component.input.hover.borderColor',
+          'component.input.focus.borderColor',
+          'component.input.focus.outline',
+          'semantic.border.focusOffset',
+          'component.input.disabled.backgroundColor',
+          'component.input.disabled.borderColor',
           'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.md'
+          'semantic.spacing.layout.md',
+          'semantic.motion.duration.normal',
+          'semantic.motion.easing.easeInOut'
         ]
       },
       {

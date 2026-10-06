@@ -10,6 +10,8 @@ import { Checkbox } from './Checkbox'
 // The field family shares its label, required indicator and helper text through
 // component.field (decision 0014)
 const { field } = tokens.component
+// Gaps come from the semantic spacing scale (decision 0022)
+const { layout: gap } = tokens.semantic.spacing
 const fontSize = (typography: string) => typography.split(' ')[1].split('/')[0]
 
 describe('field family', () => {
@@ -31,8 +33,8 @@ describe('field family', () => {
   it.each(labelled)('%s spaces the field and label with the field gap tokens', (_, renderField) => {
     renderField()
     const label = screen.getByText('Name').closest('label')!
-    expect(label).toHaveStyle({ gap: field.label.gap })
-    expect(label.parentElement).toHaveStyle({ gap: field.gap })
+    expect(label).toHaveStyle({ gap: gap.xs })
+    expect(label.parentElement).toHaveStyle({ gap: gap.sm })
   })
 
   const disabled = [
@@ -64,8 +66,8 @@ describe('field family', () => {
 
   it('Dropdown spaces its label and helper text with the field gap', () => {
     render(<Dropdown label="Name" helperText="Hint" value="" options={[{ id: 'a', label: 'A' }]} onChange={() => {}} />)
-    expect(screen.getByText('Name').closest('label')).toHaveStyle({ marginBottom: field.gap })
-    expect(screen.getByText('Hint')).toHaveStyle({ marginTop: field.gap })
+    expect(screen.getByText('Name').closest('label')).toHaveStyle({ marginBottom: gap.sm })
+    expect(screen.getByText('Hint')).toHaveStyle({ marginTop: gap.sm })
   })
 
   const withHelper = [

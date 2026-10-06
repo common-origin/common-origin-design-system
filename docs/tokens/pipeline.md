@@ -33,7 +33,7 @@ src/tokens/{base,component,semantic}/index.json
 |---|---|---|
 | Base | `src/tokens/base/index.json` | Raw values, `{ "value", "type" }`. 17 types, kebab-case (`border-radius`, `font-size`, `box-shadow`, `z-index`, …) |
 | Semantic | `src/tokens/semantic/index.json` | References to base, `{ "value", "type", "description"? }`. 14 types, **camelCase** (`boxShadow`, `borderRadius`, `zIndex`, `fontWeight`, `fontFamily`, `fontSize`, `lineHeight`, `letterSpacing`) plus `color`, `spacing`, `typography`, `transition`, `border`, `size` |
-| Component | `src/tokens/component/index.json` | **Mostly not tokens.** Plain key/value strings such as `"backgroundColor": "{base.color.neutral.900}"`, with no `value`/`type` wrapper. Only 6 leaves are real tokens. Many reference **base** tokens directly, and 17 values hard-code `px` (focus outline offsets, chip padding, icon-button sizes, input padding) |
+| Component | `src/tokens/component/index.json` | Real tokens, `{ "value", "type", "description" }`, referencing **semantic** tokens only, apart from Button's deprecated `emphasis` aliases, which reference `accent` until 3.0 (step 3 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24)). No spacing tokens ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)): the old ones stay, marked `Deprecated`, until 3.0. The only raw px still read are IconButton's sizes, Input's `11px` and Chip's `2px`, waiting for [#129](https://github.com/common-origin/common-origin-design-system/issues/129). Deprecated tokens that nothing reads, such as the `2px` focus offsets, also keep their raw values until 3.0 |
 
 **Which tier a component uses** ([decision 0014](../foundation/decisions/0014-token-tiers.md)):
 - Components never use base tokens.
@@ -45,7 +45,7 @@ src/tokens/{base,component,semantic}/index.json
 
 An ESLint rule (`no-restricted-syntax` in `eslint.config.mjs`) fails the lint if a component in `src/components` uses `tokens.base` or destructures `base` from `tokens`. The one exception is `GridSystem`: its `gap*` props are typed as base spacing keys (public API), so it looks them up in `base.spacing` until those props accept semantic keys.
 
-The table above describes the component tier's state before 0014; it is being cleaned up with #24.
+`src/tokens/componentTier.test.ts` keeps the component tier to these rules, and fails if anything reads a retired token.
 
 Values are strings. There are no object-valued (composite) tokens and no arithmetic expressions. Typography is a CSS `font` shorthand string (`"700 3rem/3rem 'Inter', sans-serif"`); shadows are CSS strings.
 
@@ -66,8 +66,8 @@ In practice the build **resolves references and writes files**; no value is tran
 | # | Defect | Consequence |
 |---|---|---|
 | 1 | ~~An `index.json` of `$ref` pointers in `src/tokens/` matches the `source` glob. Style Dictionary doesn't understand `$ref`, so it merges the keys as data~~ | Fixed in step 2 of [#24](https://github.com/common-origin/common-origin-design-system/issues/24): the index is deleted and `source` lists the tier folders. The `$ref` keys no longer reach `tokens.json` or the package (a fix in a minor, decision 0017) |
-| 2 | Component tier is mostly not made of tokens (only the 6 badge entries are) | Button, chip, input and the rest get no CSS variables, no `type`, no transforms, no descriptions. **Breaks on Style Dictionary v5**, which only resolves references inside real token leaves |
-| 3 | Component tokens reference base tokens directly | Violates the tier rule (component → semantic → base) and P3 |
+| 2 | ~~Component tier is mostly not made of tokens~~ | Fixed in step 3 of #24: every component leaf is a real token with a type and a description |
+| 3 | ~~Component tokens reference base tokens directly~~ | Fixed in step 3 of #24: component tokens reference semantic tokens only, checked by `componentTier.test.ts` |
 | 4 | Type names are inconsistent (kebab in base, camel in semantic) and don't match the transforms' filters | Transforms silently skip tokens; types carry no reliable meaning |
 | 5 | ~~`transformGroup` + `transforms` on every platform~~ | Fixed in step 2 of #24: the platforms use the built-in groups alone |
 | 6 | ~~Latent bugs in custom transforms (implicit globals that throw in ESM strict mode, broken `includes` and precedence logic)~~ | Fixed in step 2 of #24: the custom transforms are deleted |
@@ -151,7 +151,7 @@ The owner approved this direction and the migration plan below in [decision 0017
 
 1. **Snapshot** (done): `config/tokens.golden.json` is the resolved `tokens.json` from before the migration, minus `$ref`. `src/tokens/golden.test.ts` fails on any difference and lists each changed path. `npm run tokens:golden` rewrites it from the current build. It lives outside `src/tokens/` because the build reads every JSON file there.
 2. **Fix defects on v3 first** (done): remove `index.json` from `source`; delete dead transforms, formats, and the `styled-components` platform; drop `transforms` overrides so built-in groups run. Diff against the golden file — only the `$ref` keys should disappear.
-3. **Normalise the component tier** into tokens referencing semantic tokens. Diff: values must not change. Component spacing tokens are retired, not converted ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). In progress: Button and IconButton (3a) and Chip (3b) done; Input, ProgressBar, Badge and Separator (3c) to go. `src/tokens/componentTier.test.ts` checks the converted components.
+3. **Normalise the component tier** (done) into tokens referencing semantic tokens. Diff: values must not change. Component spacing tokens are retired, not converted ([0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). Done (3a Button and IconButton, 3b Chip, 3c Input, ProgressBar, Badge, Separator and Field): every component token is a real, described token that references semantic tokens, and `src/tokens/componentTier.test.ts` keeps it that way. Two exceptions remain until 3.0: Button's deprecated `emphasis` aliases reference the `accent` tokens they alias, and deprecated tokens keep their original raw values (such as `2px`), since nothing reads them except the two waiting for #129. Input's `11px` and Chip's `2px` paddings stay as deprecated tokens until [#129](https://github.com/common-origin/common-origin-design-system/issues/129).
 4. **Convert to DTCG** (`convertJSONToDTCG`), then remap type names. Diff.
 5. **Upgrade to Style Dictionary 5** and port the config to hooks. Diff.
 6. **Add** `outputReferences` CSS, JSDoc types, token tests, and the CI freshness check.

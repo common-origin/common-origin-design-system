@@ -793,12 +793,18 @@ export interface TokensComponentIconButton {
 }
 
 export interface TokensComponentSeparatorVariantsDefault {
+  border: string;
+  margin: string;
 }
 
 export interface TokensComponentSeparatorVariantsStrong {
+  border: string;
+  margin: string;
 }
 
 export interface TokensComponentSeparatorVariantsMinimal {
+  border: string;
+  margin: string;
 }
 
 export interface TokensComponentSeparatorVariants {
@@ -808,15 +814,19 @@ export interface TokensComponentSeparatorVariants {
 }
 
 export interface TokensComponentSeparatorSizesSmall {
+  margin: string;
 }
 
 export interface TokensComponentSeparatorSizesMedium {
+  margin: string;
 }
 
 export interface TokensComponentSeparatorSizesLarge {
+  margin: string;
 }
 
 export interface TokensComponentSeparatorSizesXlarge {
+  margin: string;
 }
 
 export interface TokensComponentSeparatorSizes {
@@ -827,20 +837,26 @@ export interface TokensComponentSeparatorSizes {
 }
 
 export interface TokensComponentSeparator {
+  border: string;
+  margin: string;
   variants: TokensComponentSeparatorVariants;
   sizes: TokensComponentSeparatorSizes;
 }
 
 export interface TokensComponentProgressBarSizesSm {
+  height: string;
 }
 
 export interface TokensComponentProgressBarSizesMd {
+  height: string;
 }
 
 export interface TokensComponentProgressBarSizesLg {
+  height: string;
 }
 
 export interface TokensComponentProgressBarSizesXl {
+  height: string;
 }
 
 export interface TokensComponentProgressBarSizes {
@@ -851,33 +867,57 @@ export interface TokensComponentProgressBarSizes {
 }
 
 export interface TokensComponentProgressBar {
+  backgroundColor: string;
+  borderRadius: string;
   sizes: TokensComponentProgressBarSizes;
 }
 
 export interface TokensComponentInputDefault {
+  backgroundColor: string;
+  textColor: string;
+  borderColor: string;
+  borderRadius: string;
+  borderWidth: string;
+  paddingY: string;
+  paddingX: string;
+  font: string;
 }
 
 export interface TokensComponentInputPlaceholder {
+  textColor: string;
 }
 
 export interface TokensComponentInputHover {
+  borderColor: string;
 }
 
 export interface TokensComponentInputFocus {
+  borderColor: string;
+  outline: string;
+  outlineOffset: string;
 }
 
 export interface TokensComponentInputErrorFocus {
+  borderColor: string;
+  outline: string;
+  outlineOffset: string;
 }
 
 export interface TokensComponentInputErrorHover {
+  borderColor: string;
 }
 
 export interface TokensComponentInputError {
+  borderColor: string;
   focus: TokensComponentInputErrorFocus;
   hover: TokensComponentInputErrorHover;
 }
 
 export interface TokensComponentInputDisabled {
+  backgroundColor: string;
+  textColor: string;
+  borderColor: string;
+  cursor: string;
 }
 
 export interface TokensComponentInputTextarea {
@@ -1288,6 +1328,8 @@ export interface TokensSemanticSizeMenu {
 
 export interface TokensSemanticSizeDimension {
   '1': string;
+  '2': string;
+  '4': string;
   '5': string;
   '6': string;
   '8': string;

@@ -709,93 +709,253 @@
       }
     },
     "separator": {
-      "border": "{semantic.border.subtle}",
-      "margin": "{semantic.spacing.separator.lg} 0",
+      "border": {
+        "value": "{semantic.border.subtle}",
+        "type": "border",
+        "description": "Divider line, the same as variants.default.border."
+      },
+      "margin": {
+        "value": "{semantic.spacing.separator.lg} 0",
+        "type": "spacing",
+        "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+      },
       "variants": {
         "default": {
-          "border": "{semantic.border.subtle}",
-          "margin": "{semantic.spacing.separator.lg} 0"
+          "border": {
+            "value": "{semantic.border.subtle}",
+            "type": "border",
+            "description": "Default Divider line."
+          },
+          "margin": {
+            "value": "{semantic.spacing.separator.lg} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+          }
         },
         "strong": {
-          "border": "{semantic.border.strong}",
-          "margin": "{semantic.spacing.separator.lg} 0"
+          "border": {
+            "value": "{semantic.border.strong}",
+            "type": "border",
+            "description": "Strong Divider line, for a firmer break."
+          },
+          "margin": {
+            "value": "{semantic.spacing.separator.lg} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+          }
         },
         "minimal": {
-          "border": "{semantic.border.subtle}",
-          "margin": "{semantic.spacing.separator.md} 0"
+          "border": {
+            "value": "{semantic.border.subtle}",
+            "type": "border",
+            "description": "Minimal Divider line."
+          },
+          "margin": {
+            "value": "{semantic.spacing.separator.md} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
+          }
         }
       },
       "sizes": {
         "small": {
-          "margin": "{semantic.spacing.separator.sm} 0"
+          "margin": {
+            "value": "{semantic.spacing.separator.sm} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0."
+          }
         },
         "medium": {
-          "margin": "{semantic.spacing.separator.md} 0"
+          "margin": {
+            "value": "{semantic.spacing.separator.md} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0."
+          }
         },
         "large": {
-          "margin": "{semantic.spacing.separator.lg} 0"
+          "margin": {
+            "value": "{semantic.spacing.separator.lg} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0."
+          }
         },
         "xlarge": {
-          "margin": "{semantic.spacing.separator.xl} 0"
+          "margin": {
+            "value": "{semantic.spacing.separator.xl} 0",
+            "type": "spacing",
+            "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0."
+          }
         }
       }
     },
     "progressBar": {
-      "backgroundColor": "{semantic.color.background.progressTrack}",
-      "borderRadius": "{base.border.radius.2}",
+      "backgroundColor": {
+        "value": "{semantic.color.background.progressTrack}",
+        "type": "color",
+        "description": "ProgressBar track, behind the filled part."
+      },
+      "borderRadius": {
+        "value": "{semantic.border.radius.sm}",
+        "type": "borderRadius",
+        "description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
+      },
       "sizes": {
         "sm": {
-          "height": "{base.size.1}"
+          "height": {
+            "value": "{semantic.size.dimension.1}",
+            "type": "size",
+            "description": "Thickness of the small ProgressBar (4px)."
+          }
         },
         "md": {
-          "height": "{base.size.2}"
+          "height": {
+            "value": "{semantic.size.dimension.2}",
+            "type": "size",
+            "description": "Thickness of the medium ProgressBar (8px), the default."
+          }
         },
         "lg": {
-          "height": "{base.size.4}"
+          "height": {
+            "value": "{semantic.size.dimension.4}",
+            "type": "size",
+            "description": "Thickness of the large ProgressBar (16px)."
+          }
         },
         "xl": {
-          "height": "{base.size.5}"
+          "height": {
+            "value": "{semantic.size.dimension.5}",
+            "type": "size",
+            "description": "Thickness of the extra-large ProgressBar (20px)."
+          }
         }
       }
     },
     "input": {
       "default": {
-        "backgroundColor": "{semantic.color.background.subtle}",
-        "textColor": "{semantic.color.text.default}",
-        "borderColor": "{semantic.color.border.subtle}",
-        "borderRadius": "{base.border.radius.2}",
-        "borderWidth": "{base.border.width.1}",
-        "paddingY": "11px",
-        "paddingX": "{base.spacing.4}",
-        "font": "{semantic.typography.body}"
+        "backgroundColor": {
+          "value": "{semantic.color.background.subtle}",
+          "type": "color",
+          "description": "Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box."
+        },
+        "textColor": {
+          "value": "{semantic.color.text.default}",
+          "type": "color",
+          "description": "Text input value colour."
+        },
+        "borderColor": {
+          "value": "{semantic.color.border.subtle}",
+          "type": "color",
+          "description": "Text input border at rest."
+        },
+        "borderRadius": {
+          "value": "{semantic.border.radius.sm}",
+          "type": "borderRadius",
+          "description": "Corner radius of text inputs and the Checkbox box."
+        },
+        "borderWidth": {
+          "value": "{semantic.border.width.thin}",
+          "type": "borderWidth",
+          "description": "Border width of text inputs and the Checkbox box."
+        },
+        "paddingY": {
+          "value": "11px",
+          "type": "spacing",
+          "description": "Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0."
+        },
+        "paddingX": {
+          "value": "{semantic.spacing.component.lg}",
+          "type": "spacing",
+          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0."
+        },
+        "font": {
+          "value": "{semantic.typography.body}",
+          "type": "typography",
+          "description": "Text input value typography."
+        }
       },
       "placeholder": {
-        "textColor": "{semantic.color.text.disabled}"
+        "textColor": {
+          "value": "{semantic.color.text.disabled}",
+          "type": "color",
+          "description": "Placeholder text colour."
+        }
       },
       "hover": {
-        "borderColor": "{semantic.color.border.strong}"
+        "borderColor": {
+          "value": "{semantic.color.border.strong}",
+          "type": "color",
+          "description": "Text input border on hover."
+        }
       },
       "focus": {
-        "borderColor": "{semantic.color.border.strong}",
-        "outline": "{semantic.border.focus}",
-        "outlineOffset": "2px"
+        "borderColor": {
+          "value": "{semantic.color.border.strong}",
+          "type": "color",
+          "description": "Text input border while focused."
+        },
+        "outline": {
+          "value": "{semantic.border.focus}",
+          "type": "border",
+          "description": "Focus ring on text inputs and the Checkbox box."
+        },
+        "outlineOffset": {
+          "value": "2px",
+          "type": "size",
+          "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+        }
       },
       "error": {
-        "borderColor": "{semantic.color.border.error}",
+        "borderColor": {
+          "value": "{semantic.color.border.error}",
+          "type": "color",
+          "description": "Text input border when invalid."
+        },
         "focus": {
-          "borderColor": "{semantic.color.border.error}",
-          "outline": "{semantic.border.focus}",
-          "outlineOffset": "2px"
+          "borderColor": {
+            "value": "{semantic.color.border.error}",
+            "type": "color",
+            "description": "Invalid text input border while focused."
+          },
+          "outline": {
+            "value": "{semantic.border.focus}",
+            "type": "border",
+            "description": "Focus ring on an invalid text input."
+          },
+          "outlineOffset": {
+            "value": "2px",
+            "type": "size",
+            "description": "Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0."
+          }
         },
         "hover": {
-          "borderColor": "{semantic.color.border.error}"
+          "borderColor": {
+            "value": "{semantic.color.border.error}",
+            "type": "color",
+            "description": "Invalid text input border on hover."
+          }
         }
       },
       "disabled": {
-        "backgroundColor": "{semantic.color.background.disabled}",
-        "textColor": "{semantic.color.text.disabled}",
-        "borderColor": "{semantic.color.border.subtle}",
-        "cursor": "not-allowed"
+        "backgroundColor": {
+          "value": "{semantic.color.background.disabled}",
+          "type": "color",
+          "description": "Disabled text input fill."
+        },
+        "textColor": {
+          "value": "{semantic.color.text.disabled}",
+          "type": "color",
+          "description": "Disabled text input value colour."
+        },
+        "borderColor": {
+          "value": "{semantic.color.border.subtle}",
+          "type": "color",
+          "description": "Disabled text input border."
+        },
+        "cursor": {
+          "value": "not-allowed",
+          "type": "other",
+          "description": "Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0."
+        }
       },
       "textarea": {
         "minHeight": {
@@ -808,22 +968,26 @@
     "badge": {
       "dot": {
         "size": {
-          "value": "{base.size.2}",
-          "description": "Width and height of the dot variant badge indicator (0.5rem / 8px)"
+          "value": "{semantic.size.dimension.2}",
+          "type": "size",
+          "description": "Width and height of the dot badge indicator (8px)."
         }
       },
       "count": {
         "minWidth": {
-          "value": "{base.size.4}",
-          "description": "Minimum width of the count badge indicator (1rem / 16px)"
+          "value": "{semantic.size.dimension.4}",
+          "type": "size",
+          "description": "Minimum width of the count badge indicator (16px)."
         },
         "height": {
-          "value": "{base.size.4}",
-          "description": "Height of the count badge indicator (1rem / 16px)"
+          "value": "{semantic.size.dimension.4}",
+          "type": "size",
+          "description": "Height of the count badge indicator (16px)."
         },
         "paddingX": {
-          "value": "{base.spacing.1}",
-          "description": "Horizontal padding inside the count badge (0.25rem / 4px)"
+          "value": "{semantic.spacing.component.xs}",
+          "type": "spacing",
+          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0."
         },
         "lineHeight": {
           "value": "{semantic.lineHeight.none}",
@@ -833,13 +997,15 @@
       },
       "ring": {
         "width": {
-          "value": "{base.border.width.2}",
-          "description": "Width of the ring shadow separating the badge indicator from its host element (0.125rem / 2px)"
+          "value": "{semantic.border.width.thick}",
+          "type": "borderWidth",
+          "description": "Width of the ring that separates the badge indicator from its host element (2px)."
         }
       },
       "borderRadius": {
         "value": "{semantic.border.radius.circle}",
-        "description": "Badge indicators are always fully circular"
+        "type": "borderRadius",
+        "description": "Badge indicators are always fully circular."
       },
       "label": {
         "fontWeight": {
@@ -865,7 +1031,7 @@
       "gap": {
         "value": "{semantic.spacing.layout.sm}",
         "type": "spacing",
-        "description": "Vertical gap between a field's label, control and helper text (TextField, PasswordField, NumberInput, Dropdown)."
+        "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.sm. Removed in 3.0. Was the vertical gap between a field's label, control and helper text."
       },
       "label": {
         "typography": {
@@ -886,7 +1052,7 @@
         "gap": {
           "value": "{semantic.spacing.layout.xs}",
           "type": "spacing",
-          "description": "Gap between the label text and the required indicator."
+          "description": "Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.xs. Removed in 3.0. Was the gap between the label text and the required indicator."
         }
       },
       "requiredIndicator": {

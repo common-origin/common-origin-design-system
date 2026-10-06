@@ -1,7 +1,10 @@
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
-const { component: { input } } = tokens
+const { component: { input }, semantic } = tokens
+
+// Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
+// The 11px vertical padding is off-grid and keeps its deprecated token until #129.
 
 /**
  * Shared input states for text-based form controls
@@ -30,7 +33,7 @@ export const StyledInputBase = styled.input.withConfig({
   
   /* Layout */
   width: 100%;
-  padding: ${input.default.paddingY} ${input.default.paddingX};
+  padding: ${input.default.paddingY} ${semantic.spacing.component.lg};
   
   /* Visual styling */
   background-color: ${({ $disabled }) => 
@@ -69,7 +72,7 @@ export const StyledInputBase = styled.input.withConfig({
         : input.focus.borderColor
     };
     outline: ${input.focus.outline};
-    outline-offset: ${input.focus.outlineOffset};
+    outline-offset: ${semantic.border.focusOffset};
   }
   
   /* Hover state (only when not disabled) */
@@ -83,7 +86,7 @@ export const StyledInputBase = styled.input.withConfig({
   
   /* Disabled state */
   &:disabled {
-    cursor: ${input.disabled.cursor};
+    cursor: not-allowed;
   }
   
   /* Remove number input spinners */

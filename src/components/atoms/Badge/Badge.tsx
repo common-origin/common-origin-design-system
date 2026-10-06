@@ -58,7 +58,7 @@ const BadgeIndicator = styled.span.withConfig({
   justify-content: center;
   min-width: ${props => props.$isDot ? dot.size : count.minWidth};
   height: ${props => props.$isDot ? dot.size : count.height};
-  padding: ${props => props.$isDot ? '0' : `0 ${count.paddingX}`};
+  padding: ${props => props.$isDot ? '0' : `0 ${semantic.spacing.component.xs}`};
   border-radius: ${radius.circle};
   line-height: ${count.lineHeight};
   white-space: nowrap;

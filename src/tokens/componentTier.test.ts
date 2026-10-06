@@ -8,8 +8,7 @@ type Node = { [key: string]: Node | string }
 type Leaf = { path: string; node: Node | string }
 
 // The component tier, normalised in step 3 of the token pipeline migration (decision 0017, #24)
-// under decisions 0014 and 0022. Components still to convert are listed until 3b and 3c land.
-const NOT_YET_CONVERTED = ['input', 'progressBar', 'badge', 'separator']
+// under decisions 0014 and 0022
 
 function leaves(node: Node, path: string[] = []): Leaf[] {
   return Object.entries(node).flatMap(([key, child]) =>
@@ -19,9 +18,7 @@ function leaves(node: Node, path: string[] = []): Leaf[] {
   )
 }
 
-const components = Object.entries((source as unknown as { component: Node }).component).filter(
-  ([name]) => !NOT_YET_CONVERTED.includes(name)
-)
+const components = Object.entries((source as unknown as { component: Node }).component)
 const converted = components.flatMap(([name, node]) =>
   leaves(node as Node, ['component', name])
 )
@@ -35,39 +32,54 @@ describe('component tier (decisions 0014 and 0022)', () => {
     expect(problems).toEqual([])
   })
 
-  it('never references base tokens', () => {
+  // The only exception: Button's deprecated `emphasis` variant, kept until 3.0, aliases the
+  // matching `accent` token (decision 0016). Matched by exact path, so no other token can opt out.
+  const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
+  it('references only semantic tokens', () => {
     const problems = converted
-      .filter(({ node }) => typeof node === 'object' && String(node.value).includes('{base.'))
-      .map(({ path, node }) => `${path}: ${(node as Node).value}`)
+      .filter(({ node }) => typeof node === 'object')
+      .flatMap(({ path, node }) => {
+        const refs = [...String((node as Node).value).matchAll(/\{([^}]+)\}/g)].map((match) => match[1])
+        const aliasTarget = path.match(ALIAS)?.[1]
+        return refs
+          .filter((ref) => !ref.startsWith('semantic.') && ref !== `component.button.variants.accent.${aliasTarget}`)
+          .map((ref) => `${path}: {${ref}}`)
+      })
     expect(problems).toEqual([])
   })
 })
 
-// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Two
-// kinds are deliberately still read, and their descriptions say so: aliases kept working until
-// 3.0 (such as Button's `emphasis` variant, decision 0016), and off-grid values with no semantic
-// step that wait for #129.
-const STILL_READ = /Alias kept until 3\.0|#129/
+// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Only
+// these are deliberately still read, listed by exact path: Button's `emphasis` aliases (kept until
+// 3.0, decision 0016) and the off-grid paddings with no semantic step that wait for #129.
+const STILL_READ = [
+  /^component\.button\.variants\.emphasis\./,
+  /^component\.chip\.sizes\.(small|medium)\.padding$/,
+  /^component\.input\.default\.paddingY$/,
+]
 
 describe('retired component tokens are not read', () => {
   const retired = leaves((source as unknown as { component: Node }).component, ['component'])
     .filter(({ node }) => typeof node === 'object' && String(node.description).startsWith('Deprecated'))
-    .filter(({ node }) => !STILL_READ.test(String((node as Node).description)))
+    .filter(({ path }) => !STILL_READ.some((pattern) => pattern.test(path)))
     .map(({ path }) => path.replace(/^component\./, ''))
 
   it('finds the retired tokens', () => {
     expect(retired.length).toBeGreaterThan(0)
   })
 
-  it('is not referenced by components, patterns or the docs site', () => {
+  // Matches dotted paths in source text, so a read through a destructured or aliased object
+  // (`const { count } = badge`, then `count.paddingX`) isn't caught. Read tokens by full path.
+  it('is not referenced by components, patterns, tests or the docs site', () => {
     // Match the path after its component group (`button.sizes.small.padding`) or in full,
-    // excluding tests and the token sources themselves. No `\b`: macOS's regex lacks it.
+    // excluding only the token sources and builds. Tests are included, so none asserts a
+    // retired token that 3.0 removes. No `\b`: macOS's regex lacks it.
     const pattern = retired.map((path) => path.replace(/\./g, '\\.')).join('|')
     let hits = ''
     try {
       hits = execFileSync(
         'git',
-        ['grep', '-nE', `(${pattern})([^A-Za-z0-9_]|$)`, '--', 'src', 'pages', ':!src/tokens', ':!src/styles', ':!*.test.ts', ':!*.test.tsx'],
+        ['grep', '-nE', `(${pattern})([^A-Za-z0-9_]|$)`, '--', 'src', 'pages', ':!src/tokens', ':!src/styles'],
         { encoding: 'utf8' }
       )
     } catch (error) {
