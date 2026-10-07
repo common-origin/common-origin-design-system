@@ -120,7 +120,7 @@ const Input = styled.input`
   outline: none;
 
   &::placeholder {
-    color: ${semantic.color.text.subdued};
+    color: ${component.input.placeholder.textColor};
   }
 
   &:disabled {
