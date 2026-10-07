@@ -31,7 +31,7 @@ The script previews the version and asks `Open a release PR for vX.Y.Z? [y/N]` â
 
 ### 4. Get the PR merged
 - Wait for CI (typecheck, test, build including `verify:package`).
-- Read **every Copilot review comment** and make sure each is fixed or answered before merging.
+- Review the PR with `/code-review` (it replaced Copilot review on 2026-10-07) and make sure every finding is fixed or answered before merging.
 - Merge only with the user's approval.
 
 ### 5. Tag and publish
@@ -55,5 +55,5 @@ If the publish run fails, don't assume nothing was published: a run can fail aft
 - DO NOT run `npm publish` directly â€” the publish workflow handles it via Trusted Publishing
 - DO NOT push to `main`; the version bump always goes through a PR
 - DO NOT create or push tags except via `npm run release:tag` after the user confirms, or the unpublished-tag recovery in `RELEASE.md` with the user's explicit approval
-- DO NOT merge a PR with unaddressed Copilot review comments
+- DO NOT merge a PR with unaddressed review findings
 - DO NOT proceed if the working tree has uncommitted changes

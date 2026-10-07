@@ -9,7 +9,7 @@ This is the one release document for `@common-origin/design-system`. Commit mess
 ```bash
 git switch main && git pull
 npm run release:create patch   # or minor / major / X.Y.Z: opens the version-bump PR, including the CHANGELOG.md entry
-# wait for CI, address every Copilot review comment, merge the PR
+# wait for CI, run /code-review and address every finding, merge the PR
 git switch main && git pull
 npm run release:tag            # tags main as vX.Y.Z and pushes the tag, which publishes to npm
 ```
@@ -37,7 +37,7 @@ The script checks that you're on a clean, up-to-date `main`, previews the new ve
 
 ### 3. Merge the PR
 
-Wait for CI (typecheck, lint, tests, and the package build with `verify:package`), address every Copilot review comment, and merge.
+Wait for CI (typecheck, lint, tests, and the package build with `verify:package`), run `/code-review` on the PR and address every finding, and merge.
 
 ### 4. Tag and publish
 

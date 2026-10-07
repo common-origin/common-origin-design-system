@@ -97,7 +97,7 @@ npm run release:create patch   # or minor / major / X.Y.Z
 
 This checks you're on a clean, up-to-date `main`, previews the version, then creates `chore/release-X.Y.Z`, bumps `package.json`, adds the `CHANGELOG.md` entry, commits, pushes and opens the PR.
 
-Once the PR is merged (CI green, Copilot review comments addressed):
+Once the PR is merged (CI green, `/code-review` findings addressed):
 
 ```bash
 git switch main && git pull
