@@ -807,8 +807,8 @@
       "placeholder": {
         "$type": "color",
         "textColor": {
-          "$value": "{semantic.color.text.disabled}",
-          "$description": "Placeholder text colour."
+          "$value": "{semantic.color.text.subdued}",
+          "$description": "Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text."
         }
       },
       "hover": {

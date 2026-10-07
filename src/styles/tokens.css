@@ -645,7 +645,7 @@
   --co-component-input-default-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of text inputs and the Checkbox box. */
   --co-component-input-default-border-width: var(--co-semantic-border-width-thin); /** Border width of text inputs and the Checkbox box. */
   --co-component-input-default-padding-x: var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0. */
-  --co-component-input-placeholder-text-color: var(--co-semantic-color-text-disabled); /** Placeholder text colour. */
+  --co-component-input-placeholder-text-color: var(--co-semantic-color-text-subdued); /** Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text. */
   --co-component-input-hover-border-color: var(--co-semantic-color-border-strong); /** Text input border on hover. */
   --co-component-input-focus-border-color: var(--co-semantic-color-border-strong); /** Text input border while focused. */
   --co-component-input-focus-outline: var(--co-semantic-border-focus); /** Focus ring on text inputs and the Checkbox box. */

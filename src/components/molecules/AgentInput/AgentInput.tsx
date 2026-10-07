@@ -120,7 +120,9 @@ const Input = styled.input`
   outline: none;
 
   &::placeholder {
-    color: ${semantic.color.text.subdued};
+    color: ${component.input.placeholder.textColor};
+    /* Firefox fades placeholders to 0.54 by default, which would undo the 4.5:1 contrast */
+    opacity: 1;
   }
 
   &:disabled {

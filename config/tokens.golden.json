@@ -653,7 +653,7 @@
         "font": "400 1rem/1.5rem 'Inter', sans-serif"
       },
       "placeholder": {
-        "textColor": "#adb5bd"
+        "textColor": "#495057"
       },
       "hover": {
         "borderColor": "#343a40"
