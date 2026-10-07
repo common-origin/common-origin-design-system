@@ -1,3 +1,5 @@
+import { execFileSync } from 'child_process'
+import { readFileSync } from 'fs'
 import tokens from '@/styles/tokens.json'
 
 // WCAG 2.2 relative luminance and contrast ratio, for hex colours (P2)
@@ -18,5 +20,23 @@ describe('token contrast', () => {
   // Placeholder text isn't disabled text, so it isn't exempt from SC 1.4.3 (#145)
   it('keeps input placeholder text at 4.5:1 or more on the input fill', () => {
     expect(contrast(input.placeholder.textColor, input.default.backgroundColor)).toBeGreaterThanOrEqual(4.5)
+  })
+
+  // Firefox renders placeholders at 0.54 opacity by default, which would cut that contrast to about
+  // 2.6:1, so every ::placeholder rule in the components resets it
+  it('sets opacity: 1 in every ::placeholder rule', () => {
+    let files = ''
+    try {
+      files = execFileSync('git', ['grep', '-l', '::placeholder', '--', 'src/components', ':!*.test.tsx', ':!*.docs.tsx'], { encoding: 'utf8' })
+    } catch (error) {
+      if ((error as { status?: number }).status !== 1) throw error
+    }
+    const missing = files.trim().split('\n').filter(Boolean).flatMap((file) =>
+      // The rule body runs to the brace on its own line; `${…}` interpolations close inside it
+      [...readFileSync(file, 'utf8').matchAll(/::placeholder\s*\{([\s\S]*?)\n\s*\}/g)]
+        .filter((match) => !/opacity:\s*1\s*;/.test(match[1]))
+        .map(() => file)
+    )
+    expect(missing).toEqual([])
   })
 })
