@@ -61,7 +61,8 @@ Skills in `.claude/skills/`: `new-component`, `token-change`, `component-docs`, 
 ## Pull requests
 
 - Cite the principle (`P1`–`P9`) or decision behind any visual change, and put `Closes #N` in the body only when the PR finishes the issue. A partial PR must not contain a closing keyword in any form, including "doesn't close #N", because GitHub still auto-closes the issue.
-- **Before merging:** CI is green, and every Copilot review comment is fixed or answered with a reason, with its thread resolved. Request Copilot on every PR (`gh pr edit <n> --add-reviewer @copilot`), and again after pushing fixes. Merging needs the owner's explicit yes.
+- **Review every PR with `/code-review`:** run it on the PR (`/code-review <n>`) once it's open, and again after pushing fixes. Fix every finding, or answer it in a PR comment with a reason, and post the review's result on the PR so the record lives there. (This replaced Copilot review on 2026-10-07.)
+- **Before merging:** CI is green, and the latest `/code-review` has no unaddressed findings. Merging needs the owner's explicit yes.
 
 ## Project board — keep it current as part of the work
 
