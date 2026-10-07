@@ -38,6 +38,16 @@ const OTHER = new Set([
   'component.input.disabled.cursor',
 ])
 
+function descriptions(node: Node, path: string[] = [], out: [string, string][] = []) {
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith('$') || typeof child !== 'object') continue
+    // A DTCG description is text: anything else counts as missing
+    if ('$value' in child) out.push([[...path, key].join('.'), typeof child.$description === 'string' ? child.$description : ''])
+    else descriptions(child, [...path, key], out)
+  }
+  return out
+}
+
 const sources = [base, semantic, component] as unknown as Node[]
 const typeOf = new Map(sources.flatMap((source) => [...types(source)]))
 
@@ -49,6 +59,18 @@ describe('DTCG types', () => {
       .filter(([path, type]) => !DTCG_TYPES.has(type) && !(type === 'other' && OTHER.has(path)))
       .map(([path, type]) => `${path}: ${type}`)
     expect(problems).toEqual([])
+  })
+
+  // Decision 0014, rule 6: every token has a description saying what it's for. This covers the
+  // semantic and component tiers. The 274 base tokens don't have descriptions yet, an open question
+  // on #24, so base isn't checked here.
+  it('describe every semantic and component token', () => {
+    const undescribed = [semantic, component]
+      .flatMap((source) => descriptions(source as unknown as Node))
+      // A description of only whitespace doesn't count
+      .filter(([, description]) => !description.trim())
+      .map(([path]) => path)
+    expect(undescribed).toEqual([])
   })
 
   it('match between an alias and the token it references', () => {

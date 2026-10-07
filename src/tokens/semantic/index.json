@@ -175,24 +175,29 @@
     },
     "border": {
       "default": {
+        "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
-        "$type": "border"
+        "$description": "Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white."
       },
       "subtle": {
+        "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
-        "$type": "border"
+        "$description": "Hairline in the subtle border colour: quiet outlines and dividers. 1.30:1 on white."
       },
       "strong": {
+        "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
-        "$type": "border"
+        "$description": "Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white."
       },
       "focus": {
+        "$type": "border",
         "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
-        "$type": "border"
+        "$description": "The standard focus ring: 2px solid near-black, used with border.focusOffset for visible keyboard focus (P2). Some components draw a blue ring instead, from border.width.thick and color.border.interactive (Box, ListItem, Slider, TransactionListItem)."
       },
       "tooltip": {
+        "$type": "border",
         "$value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
-        "$type": "border"
+        "$description": "2px dotted underline marking text that has a tooltip."
       },
       "width": {
         "$type": "dimension",
@@ -362,39 +367,50 @@
       },
       "icon": {
         "xs": {
-          "$value": "{base.size.3}"
+          "$value": "{base.size.3}",
+          "$description": "0.75rem (12px): the smallest icon, for dense inline indicators."
         },
         "sm": {
-          "$value": "{base.size.4}"
+          "$value": "{base.size.4}",
+          "$description": "1rem (16px): small icons in compact controls, such as the dismiss icon in Alert and small icon buttons."
         },
         "md": {
-          "$value": "{base.size.5}"
+          "$value": "{base.size.5}",
+          "$description": "1.25rem (20px): icons beside body text, such as Alert's severity icon."
         },
         "lg": {
-          "$value": "{base.size.6}"
+          "$value": "{base.size.6}",
+          "$description": "1.5rem (24px): the Icon component's default size; also list item icons."
         },
         "xl": {
-          "$value": "{base.size.8}"
+          "$value": "{base.size.8}",
+          "$description": "2rem (32px): extra-large standalone icons."
         },
         "2xl": {
-          "$value": "{base.size.10}"
+          "$value": "{base.size.10}",
+          "$description": "2.5rem (40px): the largest icon size, for prominent standalone icons."
         }
       },
       "avatar": {
         "xs": {
-          "$value": "{base.size.6}"
+          "$value": "{base.size.6}",
+          "$description": "1.5rem (24px): extra-small avatar, inline with text."
         },
         "sm": {
-          "$value": "{base.size.8}"
+          "$value": "{base.size.8}",
+          "$description": "2rem (32px): small avatar, in dense lists."
         },
         "md": {
-          "$value": "{base.size.10}"
+          "$value": "{base.size.10}",
+          "$description": "2.5rem (40px): the default avatar size."
         },
         "lg": {
-          "$value": "{base.size.12}"
+          "$value": "{base.size.12}",
+          "$description": "3rem (48px): large avatar, in headers and cards."
         },
         "xl": {
-          "$value": "{base.size.16}"
+          "$value": "{base.size.16}",
+          "$description": "4rem (64px): extra-large avatar, on profile pages."
         }
       }
     },
@@ -402,16 +418,20 @@
       "$type": "dimension",
       "separator": {
         "sm": {
-          "$value": "{base.spacing.4}"
+          "$value": "{base.spacing.4}",
+          "$description": "1rem: space around a small Divider, above and below when horizontal, either side when vertical."
         },
         "md": {
-          "$value": "{base.spacing.6}"
+          "$value": "{base.spacing.6}",
+          "$description": "1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical."
         },
         "lg": {
-          "$value": "{base.spacing.8}"
+          "$value": "{base.spacing.8}",
+          "$description": "2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical."
         },
         "xl": {
-          "$value": "{base.spacing.12}"
+          "$value": "{base.spacing.12}",
+          "$description": "3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical."
         }
       },
       "component": {
@@ -442,56 +462,72 @@
       },
       "layout": {
         "none": {
-          "$value": "{base.spacing.0}"
+          "$value": "{base.spacing.0}",
+          "$description": "0: no space, for explicit resets."
         },
         "xs": {
-          "$value": "{base.spacing.1}"
+          "$value": "{base.spacing.1}",
+          "$description": "0.25rem: the tightest gap, such as between a label and its required indicator."
         },
         "sm": {
-          "$value": "{base.spacing.2}"
+          "$value": "{base.spacing.2}",
+          "$description": "0.5rem: a small gap, such as between a field's label, control and helper text."
         },
         "md": {
-          "$value": "{base.spacing.3}"
+          "$value": "{base.spacing.3}",
+          "$description": "0.75rem: the default gap between related elements."
         },
         "lg": {
-          "$value": "{base.spacing.4}"
+          "$value": "{base.spacing.4}",
+          "$description": "1rem: space between groups of elements, and padding inside containers."
         },
         "xl": {
-          "$value": "{base.spacing.5}"
+          "$value": "{base.spacing.5}",
+          "$description": "1.25rem: generous padding inside larger containers."
         },
         "2xl": {
-          "$value": "{base.spacing.6}"
+          "$value": "{base.spacing.6}",
+          "$description": "1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "3xl": {
-          "$value": "{base.spacing.7}"
+          "$value": "{base.spacing.7}",
+          "$description": "1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "4xl": {
-          "$value": "{base.spacing.8}"
+          "$value": "{base.spacing.8}",
+          "$description": "2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "5xl": {
-          "$value": "{base.spacing.9}"
+          "$value": "{base.spacing.9}",
+          "$description": "2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "6xl": {
-          "$value": "{base.spacing.10}"
+          "$value": "{base.spacing.10}",
+          "$description": "2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "7xl": {
-          "$value": "{base.spacing.12}"
+          "$value": "{base.spacing.12}",
+          "$description": "3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "8xl": {
-          "$value": "{base.spacing.14}"
+          "$value": "{base.spacing.14}",
+          "$description": "3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "9xl": {
-          "$value": "{base.spacing.16}"
+          "$value": "{base.spacing.16}",
+          "$description": "4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
         },
         "10xl": {
-          "$value": "{base.spacing.20}"
+          "$value": "{base.spacing.20}",
+          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl."
         },
         "11xl": {
           "$value": "{base.spacing.24}",
           "$description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints)."
         },
         "auto": {
-          "$value": "{base.spacing.auto}"
+          "$value": "{base.spacing.auto}",
+          "$description": "auto: lets the browser compute the space, such as margin: auto to centre or push an element."
         }
       }
     },
@@ -499,22 +535,28 @@
       "$type": "color",
       "text": {
         "default": {
-          "$value": "{base.color.neutral.900}"
+          "$value": "{base.color.neutral.900}",
+          "$description": "Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.800}"
+          "$value": "{base.color.neutral.800}",
+          "$description": "Slightly softer near-black text for emphasis without full weight. 11.51:1 on white."
         },
         "subdued": {
-          "$value": "{base.color.neutral.700}"
+          "$value": "{base.color.neutral.700}",
+          "$description": "Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page."
         },
         "inverse": {
-          "$value": "{base.color.neutral.000}"
+          "$value": "{base.color.neutral.000}",
+          "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive."
         },
         "disabled": {
-          "$value": "{base.color.neutral.500}"
+          "$value": "{base.color.neutral.500}",
+          "$description": "Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}"
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page."
         },
         "interactive-hover": {
           "$value": "{base.color.blue.1000}",
@@ -525,24 +567,30 @@
           "$description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016."
         },
         "error": {
-          "$value": "{base.color.red.900}"
+          "$value": "{base.color.red.900}",
+          "$description": "Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page."
         },
         "success": {
-          "$value": "{base.color.green.900}"
+          "$value": "{base.color.green.900}",
+          "$description": "Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page."
         },
         "warning": {
-          "$value": "{base.color.orange.900}"
+          "$value": "{base.color.orange.900}",
+          "$description": "Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page."
         }
       },
       "background": {
         "default": {
-          "$value": "{base.color.neutral.100}"
+          "$value": "{base.color.neutral.100}",
+          "$description": "Page background: a cool off-white (#f8f9fa), never pure white (decision 0006)."
         },
         "subtle": {
-          "$value": "{base.color.neutral.000}"
+          "$value": "{base.color.neutral.000}",
+          "$description": "White: inputs, sheets and other surfaces that sit on the page background."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.900}"
+          "$value": "{base.color.neutral.900}",
+          "$description": "Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip."
         },
         "emphasis-hover": {
           "$value": "{base.color.neutral.800}",
@@ -553,16 +601,20 @@
           "$description": "Fill of a pressed emphasis control. Approved under decision 0022."
         },
         "surface": {
-          "$value": "{base.color.neutral.200}"
+          "$value": "{base.color.neutral.200}",
+          "$description": "Light grey fill for quiet surfaces and grouped content, such as the default Chip."
         },
         "inverse": {
-          "$value": "{base.color.neutral.800}"
+          "$value": "{base.color.neutral.800}",
+          "$description": "Dark grey fill for inverse surfaces, such as a checked Checkbox box."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}"
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1)."
         },
         "interactive-subtle": {
-          "$value": "{base.color.blue.100}"
+          "$value": "{base.color.blue.100}",
+          "$description": "Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive."
         },
         "interactive-subtle-hover": {
           "$value": "{base.color.blue.200}",
@@ -573,13 +625,16 @@
           "$description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016."
         },
         "interactive-hover": {
-          "$value": "{base.color.blue.1000}"
+          "$value": "{base.color.blue.1000}",
+          "$description": "Blue fill on hover, for controls that use background.interactive."
         },
         "interactive-active": {
-          "$value": "{base.color.blue.1100}"
+          "$value": "{base.color.blue.1100}",
+          "$description": "Blue fill while pressed, for controls that use background.interactive."
         },
         "error": {
-          "$value": "{base.color.red.900}"
+          "$value": "{base.color.red.900}",
+          "$description": "Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1)."
         },
         "error-hover": {
           "$value": "{base.color.red.1000}",
@@ -590,22 +645,28 @@
           "$description": "Fill of a pressed error control. Approved under decision 0022."
         },
         "error-subtle": {
-          "$value": "{base.color.red.100}"
+          "$value": "{base.color.red.100}",
+          "$description": "Light red tint behind error messages, such as an error Alert."
         },
         "success": {
-          "$value": "{base.color.green.900}"
+          "$value": "{base.color.green.900}",
+          "$description": "Strong green fill for success states."
         },
         "success-subtle": {
-          "$value": "{base.color.green.100}"
+          "$value": "{base.color.green.100}",
+          "$description": "Light green tint behind success messages, such as a success Alert."
         },
         "warning": {
-          "$value": "{base.color.orange.900}"
+          "$value": "{base.color.orange.900}",
+          "$description": "Strong orange fill for warning states."
         },
         "warning-subtle": {
-          "$value": "{base.color.orange.100}"
+          "$value": "{base.color.orange.100}",
+          "$description": "Light orange tint behind warning messages, such as a warning Alert."
         },
         "disabled": {
-          "$value": "{base.color.neutral.300}"
+          "$value": "{base.color.neutral.300}",
+          "$description": "Fill of disabled controls."
         },
         "neutral": {
           "$value": "{base.color.neutral.300}",
@@ -624,11 +685,12 @@
           "$description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022."
         },
         "progressTrack": {
-          "$value": "{base.color.neutral.300}"
+          "$value": "{base.color.neutral.300}",
+          "$description": "Unfilled track of ProgressBar."
         },
         "page": {
           "$value": "{base.color.neutral.100}",
-          "$description": "Default page/canvas background. Warm off-white (~#F8F8F8). Never pure white (#FFFFFF). Use on all top-level page surfaces. Per VISUAL_DESIGN_LANGUAGE: 'Default page background: warm off-white ~#F8F8F8 (never pure #FFFFFF)'."
+          "$description": "The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that."
         },
         "overlay": {
           "$value": "rgba(33, 37, 41, 0.5)",
@@ -649,25 +711,32 @@
       },
       "border": {
         "default": {
-          "$value": "{base.color.neutral.200}"
+          "$value": "{base.color.neutral.200}",
+          "$description": "Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11)."
         },
         "subtle": {
-          "$value": "{base.color.neutral.300}"
+          "$value": "{base.color.neutral.300}",
+          "$description": "Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144)."
         },
         "strong": {
-          "$value": "{base.color.neutral.800}"
+          "$value": "{base.color.neutral.800}",
+          "$description": "Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}"
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue border for selected and interactive states (decision 0003). 5.39:1 on white."
         },
         "error": {
-          "$value": "{base.color.red.900}"
+          "$value": "{base.color.red.900}",
+          "$description": "Red border for invalid fields and error outlines. 5.41:1 on white."
         },
         "success": {
-          "$value": "{base.color.green.900}"
+          "$value": "{base.color.green.900}",
+          "$description": "Green border for success outlines, such as an outlined success Alert."
         },
         "warning": {
-          "$value": "{base.color.orange.900}"
+          "$value": "{base.color.orange.900}",
+          "$description": "Orange border for warning outlines, such as an outlined warning Alert."
         },
         "none": {
           "$value": "{base.color.transparent}",
@@ -676,37 +745,48 @@
       },
       "icon": {
         "default": {
-          "$value": "{base.color.neutral.900}"
+          "$value": "{base.color.neutral.900}",
+          "$description": "Default icon colour, matching text.default. 15.43:1 on white."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.800}"
+          "$value": "{base.color.neutral.800}",
+          "$description": "Slightly softer near-black icon colour, matching text.emphasis."
         },
         "subdued": {
-          "$value": "{base.color.neutral.600}"
+          "$value": "{base.color.neutral.600}",
+          "$description": "Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1)."
         },
         "disabled": {
-          "$value": "{base.color.neutral.500}"
+          "$value": "{base.color.neutral.500}",
+          "$description": "Icons in disabled controls. Exempt from the contrast minimum, like text.disabled."
         },
         "inverse": {
-          "$value": "{base.color.neutral.000}"
+          "$value": "{base.color.neutral.000}",
+          "$description": "Icons on dark or coloured fills, matching text.inverse."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}"
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue icons in links and selected items, matching text.interactive. 5.39:1 on white."
         },
         "interactive-hover": {
-          "$value": "{base.color.blue.1000}"
+          "$value": "{base.color.blue.1000}",
+          "$description": "Blue icon on hover, matching text.interactive-hover."
         },
         "interactive-active": {
-          "$value": "{base.color.blue.1100}"
+          "$value": "{base.color.blue.1100}",
+          "$description": "Blue icon while pressed, matching text.interactive-active."
         },
         "error": {
-          "$value": "{base.color.red.900}"
+          "$value": "{base.color.red.900}",
+          "$description": "Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)"
         },
         "success": {
-          "$value": "{base.color.green.900}"
+          "$value": "{base.color.green.900}",
+          "$description": "Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.)"
         },
         "warning": {
-          "$value": "{base.color.orange.900}"
+          "$value": "{base.color.orange.900}",
+          "$description": "Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.)"
         }
       },
       "financial": {
@@ -919,55 +999,72 @@
     "typography": {
       "$type": "typography",
       "display": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.10}/{base.lineHeight.10} {base.fontFamily.heading}",
+        "$description": "Display text: 5rem, weight 700. The largest heading, for hero titles."
       },
       "h1": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
+        "$description": "Heading 1: 3rem, weight 700. The page title."
       },
       "h2": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
+        "$description": "Heading 2: 2rem, weight 700. Major sections."
       },
       "h3": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
+        "$description": "Heading 3: 1.75rem, weight 700."
       },
       "h4": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
+        "$description": "Heading 4: 1.5rem, weight 700."
       },
       "h5": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
+        "$description": "Heading 5: 1.25rem, weight 500."
       },
       "h6": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
+        "$description": "Heading 6: 1.125rem, weight 500. The smallest heading; Alert's title builds on it."
       },
       "subtitle": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "$description": "Subtitle: 1rem, weight 500. A short line under a heading."
       },
       "body": {
-        "$value": "{semantic.fontWeight.regular} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "$description": "Body text: 1rem, weight 400, 1.5rem line height. The default for paragraphs and input values."
       },
       "small": {
-        "$value": "{semantic.fontWeight.regular} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
+        "$description": "Small text: 0.875rem, weight 400. Secondary copy and compact controls."
       },
       "overline": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.bold} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "$description": "Overline: 0.75rem, weight 700. A short label above a heading."
       },
       "caption": {
-        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "$description": "Caption: 0.75rem, weight 400. Helper text, metadata and image captions."
       },
       "button1": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
+        "$description": "Large Button label: 1rem, weight 500."
       },
       "button2": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
+        "$description": "Medium Button label: 0.875rem, weight 500. Also tab labels."
       },
       "button3": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
+        "$description": "Small Button label: 0.75rem, weight 500."
       },
       "label": {
-        "$value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
+        "$description": "Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider."
       },
       "breadcrumb": {
-        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}"
+        "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
+        "$description": "Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption."
       }
     },
     "motion": {
@@ -1000,26 +1097,32 @@
       "transition": {
         "$type": "transition",
         "fast": {
-          "$value": "all {base.duration.fast} {base.easing.easeOut}"
+          "$value": "all {base.duration.fast} {base.easing.easeOut}",
+          "$description": "All properties over duration.fast (150ms), easing out: quick feedback, such as the Slider thumb."
         },
         "normal": {
-          "$value": "all {base.duration.normal} {base.easing.easeInOut}"
+          "$value": "all {base.duration.normal} {base.easing.easeInOut}",
+          "$description": "All properties over duration.normal (200ms), easing in and out: the default state transition."
         },
         "slow": {
-          "$value": "all {base.duration.moderate} {base.easing.easeInOut}"
+          "$value": "all {base.duration.moderate} {base.easing.easeInOut}",
+          "$description": "All properties over duration.slow (300ms), the motion maximum (P6), easing in and out: larger changes."
         }
       },
       "hover": {
+        "$type": "transition",
         "$value": "background-color {base.duration.fast} {base.easing.easeOut}, color {base.duration.fast} {base.easing.easeOut}",
-        "$type": "transition"
+        "$description": "Background and text colour over 150ms: the hover and press response of buttons, chips and tabs."
       },
       "focus": {
+        "$type": "transition",
         "$value": "outline {base.duration.fast} {base.easing.easeOut}, outline-offset {base.duration.fast} {base.easing.easeOut}",
-        "$type": "transition"
+        "$description": "Outline and outline offset over 150ms: how the focus ring appears."
       },
       "interactive": {
+        "$type": "transition",
         "$value": "transform {base.duration.fast} {base.easing.easeOut}, opacity {base.duration.fast} {base.easing.easeOut}",
-        "$type": "transition"
+        "$description": "Transform and opacity over 150ms: small movement or fade in response to input."
       }
     }
   }
