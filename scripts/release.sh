@@ -98,7 +98,7 @@ create_release_pr() {
   fi
 
   echo ""
-  info "Next: wait for CI, address any Copilot review comments, merge, then on main:"
+  info "Next: wait for CI, run /code-review and address every finding, merge, then on main:"
   echo "    git switch main && git pull && npm run release:tag"
 }
 

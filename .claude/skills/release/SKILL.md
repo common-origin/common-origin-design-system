@@ -17,7 +17,7 @@ The flow is in `.github/agents/release.agent.md` (shared with Copilot) and the b
   ```bash
   echo y | npm run release:create X.Y.Z
   ```
-- **The version-bump PR is a normal PR:** request Copilot, wait for the review, fix or answer every comment, resolve the threads, and merge only with Ollie's explicit yes.
+- **The version-bump PR is a normal PR:** run `/code-review` on it, fix or answer every finding, and merge only with Ollie's explicit yes.
 - **Tagging publishes, and publishing can't be undone.** Pull once, before the preview, never after Ollie confirms:
   ```bash
   git switch main && git pull
