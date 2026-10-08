@@ -124,12 +124,11 @@ export const sliderDocs: ComponentDocumentation = {
   
   tokens: [
     // Colors
-    'semantic.color.background.default',
     'semantic.color.background.disabled',
-    'semantic.color.background.interactive',
+    'semantic.color.background.progressTrack',
     'semantic.color.background.subtle',
     'semantic.color.background.emphasis',
-    'semantic.color.border.default',
+    'semantic.color.icon.disabled',
     'semantic.color.border.interactive',
     'semantic.color.text.default',
     'semantic.color.text.disabled',
@@ -393,7 +392,7 @@ export const sliderDocs: ComponentDocumentation = {
         tokens: [
           'semantic.spacing.layout.xs',
           'semantic.border.radius.circle',
-          'semantic.color.border.default',
+          'semantic.color.background.progressTrack',
           'semantic.color.background.disabled'
         ]
       },
@@ -401,7 +400,8 @@ export const sliderDocs: ComponentDocumentation = {
         name: 'Track Fill',
         description: 'Filled portion of track indicating selected value or range',
         tokens: [
-          'semantic.color.background.interactive',
+          'semantic.color.background.emphasis',
+          'semantic.color.icon.disabled',
           'semantic.border.radius.circle'
         ]
       },
@@ -413,7 +413,10 @@ export const sliderDocs: ComponentDocumentation = {
           'semantic.border.radius.circle',
           'semantic.border.width.thick',
           'semantic.color.background.subtle',
-          'semantic.color.background.interactive',
+          'semantic.color.background.disabled',
+          'semantic.color.background.emphasis',
+          'semantic.color.icon.disabled',
+          'semantic.color.border.interactive',
           'semantic.motion.transition.fast',
           'component.slider.thumb.shadow.default',
           'component.slider.thumb.shadow.hover',

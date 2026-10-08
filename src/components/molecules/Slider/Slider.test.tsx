@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Slider } from './Slider'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -734,6 +735,40 @@ describe('Slider', () => {
       
       const slider = screen.getByRole('slider')
       expect(slider).toHaveAttribute('aria-valuenow', '500000')
+    })
+  })
+
+  // The track is a fill, not a border (decision 0025). The thumb and the filled part show the value, so the
+  // track stays light (#150); a disabled slider keeps its value visible in the disabled foreground colour
+  describe('Colours', () => {
+    const { color } = tokens.semantic
+    // jsdom reports colours as the browser would, so normalise the token the same way
+    const css = (value: string) => {
+      const probe = document.createElement('div')
+      probe.style.color = value
+      return probe.style.color
+    }
+    const parts = () => {
+      const thumb = screen.getByRole('slider')
+      const track = thumb.parentElement as HTMLElement
+      const fill = track.firstElementChild as HTMLElement
+      return { thumb: getComputedStyle(thumb), track: getComputedStyle(track), fill: getComputedStyle(fill) }
+    }
+
+    it('uses the progress track colour for the unfilled track', () => {
+      render(<Slider defaultValue={50} />)
+      const { track, fill, thumb } = parts()
+      expect(track.backgroundColor).toBe(css(color.background.progressTrack))
+      expect(fill.backgroundColor).toBe(css(color.background.emphasis))
+      expect(thumb.borderColor).toBe(css(color.background.emphasis))
+    })
+
+    it('shows a disabled value in the disabled foreground colour', () => {
+      render(<Slider defaultValue={50} disabled />)
+      const { track, fill, thumb } = parts()
+      expect(track.backgroundColor).toBe(css(color.background.disabled))
+      expect(fill.backgroundColor).toBe(css(color.icon.disabled))
+      expect(thumb.borderColor).toBe(css(color.icon.disabled))
     })
   })
 })

@@ -25,4 +25,4 @@ On the neutral scale, the first grey above 3:1 on white is neutral.600 (#6c757d,
 
 - Text inputs, Dropdown, SearchField, AgentInput and the Checkbox box get a clearly darker resting border. Hover and focus are unchanged (`border.strong`), so hovering now changes the border less than it did.
 - `src/tokens/contrast.test.ts` checks that the resting input border stays at 3:1 or more on the input fill and the page.
-- Slider's unfilled track also uses `border.default` (1.19:1). It's a track, not a field edge, so it's decided separately in [#150](https://github.com/common-origin/common-origin-design-system/issues/150).
+- Slider's unfilled track also used `border.default` (1.19:1). It's a track, not a field edge, so it was decided separately in [0026](0026-slider-track-stays-light.md).
