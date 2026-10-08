@@ -28,6 +28,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0022](0022-no-component-spacing-tokens.md) | No component spacing tokens; every new token needs the owner's sign-off with a reason | Accepted | 2026-10-05 |
 | [0023](0023-upgrade-before-dtcg.md) | Upgrade to Style Dictionary 5 before converting the token source to DTCG | Accepted | 2026-10-06 |
 | [0024](0024-css-variable-names-keep-tier.md) | Published CSS variable names keep their tier: `--co-semantic-color-text-default` | Accepted | 2026-10-06 |
+| [0025](0025-control-borders-meet-3-to-1.md) | Resting control borders meet 3:1 with `color.border.control`; `border.default` and `border.subtle` are for dividers | Accepted | 2026-10-08 |
 
 ## Template
 

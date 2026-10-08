@@ -150,9 +150,9 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.color.background.subtle',
     
     // Colors - Border
-    'semantic.color.border.default',
+    'component.input.default.borderColor',
+    'component.input.disabled.borderColor',
     'semantic.color.border.strong',
-    'semantic.color.border.subtle',
     'semantic.color.border.interactive',
     'semantic.color.border.error',
     
@@ -404,7 +404,7 @@ export const textFieldDocs: ComponentDocumentation = {
         tokens: [
           'semantic.typography.body',
           'semantic.color.background.subtle',
-          'semantic.color.border.default',
+          'component.input.default.borderColor',
           'semantic.color.border.interactive',
           'semantic.color.border.strong',
           'semantic.color.border.error',

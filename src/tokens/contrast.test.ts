@@ -22,6 +22,14 @@ describe('token contrast', () => {
     expect(contrast(input.placeholder.textColor, input.default.backgroundColor)).toBeGreaterThanOrEqual(4.5)
   })
 
+  // A resting control's border shows where the control is, so it needs 3:1 against the fill and
+  // the page (SC 1.4.11, decision 0025). Disabled borders are exempt
+  it('keeps the resting input border at 3:1 or more on the input fill and the page', () => {
+    const { background } = tokens.semantic.color
+    expect(contrast(input.default.borderColor, input.default.backgroundColor)).toBeGreaterThanOrEqual(3)
+    expect(contrast(input.default.borderColor, background.default)).toBeGreaterThanOrEqual(3)
+  })
+
   // Firefox renders placeholders at 0.54 opacity by default, which would cut that contrast to about
   // 2.6:1, so every ::placeholder rule in the components resets it
   it('sets opacity: 1 in every ::placeholder rule', () => {

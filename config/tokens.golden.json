@@ -645,7 +645,7 @@
       "default": {
         "backgroundColor": "#ffffff",
         "textColor": "#212529",
-        "borderColor": "#dee2e6",
+        "borderColor": "#6c757d",
         "borderRadius": "0.25rem",
         "borderWidth": "0.0625rem",
         "paddingY": "11px",
@@ -1075,6 +1075,7 @@
       "border": {
         "default": "#e9ecef",
         "subtle": "#dee2e6",
+        "control": "#6c757d",
         "strong": "#343a40",
         "interactive": "#0265DC",
         "error": "#D31510",

@@ -15,6 +15,7 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Components take every colour from tokens. ESLint fails on hex, `rgb(a)` and `hsl(a)` literals in `src/components` ([P3](principles.md#p3-tokens-not-values)). | Enforced |
 | The colour literal that stays, behind a commented `eslint-disable`: CSS mask stops, which set alpha only and are never seen (AgentInput's ring). | Exception |
 | Status colours (`success`, `error`, `warning`, info) communicate status only. | Enforced |
+| A control whose edge shows where it is (text inputs, Dropdown, the Checkbox box) has a resting border of at least 3:1, from `color.border.control`. `border.default` and `border.subtle` are for dividers and decorative outlines, and for disabled controls. ([0025](decisions/0025-control-borders-meet-3-to-1.md)) | Enforced — `contrast.test.ts` checks the input border. Slider's track is pending [#150](https://github.com/common-origin/common-origin-design-system/issues/150) |
 | Blue (`#0265DC` family) is for links, focus, and deliberate highlight such as the `accent` button. It isn't decoration or filler. ([0003](decisions/0003-use-of-blue.md)) | Guideline ([0003](decisions/0003-use-of-blue.md)) |
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |
 | AgentInput's animated blue "working" ring uses a conic gradient. | Exception ([0010](decisions/0010-agentinput-working-ring.md)) — temporary, pending [#22](https://github.com/common-origin/common-origin-design-system/issues/22) |

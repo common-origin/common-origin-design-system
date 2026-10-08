@@ -1466,6 +1466,7 @@ export interface TokensSemanticColorBackground {
 export interface TokensSemanticColorBorder {
   default: string;
   subtle: string;
+  control: string;
   strong: string;
   interactive: string;
   error: string;
