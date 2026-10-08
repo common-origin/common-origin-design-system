@@ -49,6 +49,9 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 |---|---|
 | Disabled states use their disabled tokens; never invent new colours for hover or active. | Enforced |
 | Button uses corner radius `sm` (4px). | Enforced |
+| `IconButton`'s `primary`, `secondary` and `naked` look and behave exactly like `Button`'s: the same colours in every state, from `component.button.*`, and the same colour transition (`motion.hover`). Only the size and the icon differ. ([0027](decisions/0027-iconbutton-follows-button.md)) | Enforced — `IconButton.test.tsx` compares the two |
+| `IconButton` has no `accent` or `danger` variant until a product needs one ([P4](principles.md#p4-earn-its-place)). ([0027](decisions/0027-iconbutton-follows-button.md)) | Guideline |
+| `IconButton`'s icon is one step larger than a `Button`'s at the same size (`sm`, `md`, `lg` against `xs`, `sm`, `md`): an icon-only button needs a larger glyph to fill the same square. ([0027](decisions/0027-iconbutton-follows-button.md)) | Exception |
 | **Accent** is the name for the blue call-to-action level above `primary`, wherever a component has one. It is never a selected state, a link colour or decoration. **Emphasis** means strong near-black everywhere (the `emphasis` tokens, Typography, Icon); it is never blue. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Target — Button's `emphasis` variant is deprecated in favour of `accent` in the next minor and removed in 3.0; a system-wide audit of both words is follow-up work |
 | Chips keep a rounded radius (12px) while Buttons use `sm` (4px): the shape signals a different job. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Exception |
 
