@@ -24,6 +24,9 @@ All notable changes to this project will be documented in this file. Dates are r
   {{#each merges}}
     - {{#if commit.breaking}}**Breaking change:** {{/if}}{{message}}{{#if href}} [`#{{id}}`]({{href}}){{/if}}
   {{/each}}
+  {{!-- A release made of PRs lists only its PRs: auto-changelog's extra commit and issue-link entries
+       repeat commits already inside them. Releases from before main was protected keep their commits. --}}
+  {{#unless merges}}
   {{#each fixes}}
     - {{#if commit.breaking}}**Breaking change:** {{/if}}{{commit.subject}}{{#each fixes}}{{#if href}} [`#{{id}}`]({{href}}){{/if}}{{/each}}
   {{/each}}
@@ -31,4 +34,5 @@ All notable changes to this project will be documented in this file. Dates are r
     - {{#if breaking}}**Breaking change:** {{/if}}{{subject}}{{#if href}} [`{{shorthash}}`]({{href}}){{/if}}
   {{/each}}
 
+  {{/unless}}
 {{/each}}
