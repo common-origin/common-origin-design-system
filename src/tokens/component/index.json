@@ -774,9 +774,9 @@
           "$description": "Text input value colour."
         },
         "borderColor": {
-          "$value": "{semantic.color.border.subtle}",
+          "$value": "{semantic.color.border.control}",
           "$type": "color",
-          "$description": "Text input border at rest."
+          "$description": "Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025)."
         },
         "borderRadius": {
           "$value": "{semantic.border.radius.sm}",
@@ -880,7 +880,7 @@
         "borderColor": {
           "$value": "{semantic.color.border.subtle}",
           "$type": "color",
-          "$description": "Disabled text input border."
+          "$description": "Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025)."
         },
         "cursor": {
           "$value": "not-allowed",

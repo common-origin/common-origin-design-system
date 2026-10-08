@@ -108,7 +108,8 @@ const DropdownMenu = styled.div.withConfig({
   right: 0;
   z-index: ${zIndex.dropdown};
   background-color: ${input.default.backgroundColor};
-  border: ${input.default.borderWidth} solid ${input.default.borderColor};
+  /* A decorative outline: elevation separates the menu, and only the trigger is a control edge (decision 0025) */
+  border: ${border.subtle};
   border-radius: ${input.default.borderRadius};
   box-shadow: ${elevation.floating};
   margin-top: ${spacing.xs};

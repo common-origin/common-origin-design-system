@@ -339,8 +339,8 @@
   --co-semantic-z-index-dropdown: var(--co-base-z-index-6); /** Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays. */
   --co-semantic-z-index-overlay: var(--co-base-z-index-7); /** Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals. */
   --co-semantic-z-index-modal: var(--co-base-z-index-8); /** Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system. */
-  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white. */
-  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Hairline in the subtle border colour: quiet outlines and dividers. 1.30:1 on white. */
+  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025). */
+  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025). */
   --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white. */
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** The standard focus ring: 2px solid near-black, used with border.focusOffset for visible keyboard focus (P2). Some components draw a blue ring instead, from border.width.thick and color.border.interactive (Box, ListItem, Slider, TransactionListItem). */
   --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-subtle); /** 2px dotted underline marking text that has a tooltip. */
@@ -457,8 +457,9 @@
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
   --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar. */
   --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that. */
-  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11). */
-  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144). */
+  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025). */
+  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025). */
+  --co-semantic-color-border-control: var(--co-base-color-neutral-600); /** Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025). */
   --co-semantic-color-border-strong: var(--co-base-color-neutral-800); /** Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white. */
   --co-semantic-color-border-interactive: var(--co-base-color-blue-900); /** Blue border for selected and interactive states (decision 0003). 5.39:1 on white. */
   --co-semantic-color-border-error: var(--co-base-color-red-900); /** Red border for invalid fields and error outlines. 5.41:1 on white. */
@@ -641,7 +642,7 @@
   --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-dimension-5); /** Thickness of the extra-large ProgressBar (20px). */
   --co-component-input-default-background-color: var(--co-semantic-color-background-subtle); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-text-color: var(--co-semantic-color-text-default); /** Text input value colour. */
-  --co-component-input-default-border-color: var(--co-semantic-color-border-subtle); /** Text input border at rest. */
+  --co-component-input-default-border-color: var(--co-semantic-color-border-control); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
   --co-component-input-default-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of text inputs and the Checkbox box. */
   --co-component-input-default-border-width: var(--co-semantic-border-width-thin); /** Border width of text inputs and the Checkbox box. */
   --co-component-input-default-padding-x: var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0. */
@@ -655,7 +656,7 @@
   --co-component-input-error-hover-border-color: var(--co-semantic-color-border-error); /** Invalid text input border on hover. */
   --co-component-input-disabled-background-color: var(--co-semantic-color-background-disabled); /** Disabled text input fill. */
   --co-component-input-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled text input value colour. */
-  --co-component-input-disabled-border-color: var(--co-semantic-color-border-subtle); /** Disabled text input border. */
+  --co-component-input-disabled-border-color: var(--co-semantic-color-border-subtle); /** Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025). */
   --co-component-input-textarea-min-height: var(--co-semantic-size-dimension-30); /** Minimum height of a multi-line text input (120px). */
   --co-component-badge-dot-size: var(--co-semantic-size-dimension-2); /** Width and height of the dot badge indicator (8px). */
   --co-component-badge-count-min-width: var(--co-semantic-size-dimension-4); /** Minimum width of the count badge indicator (16px). */

@@ -177,12 +177,12 @@
       "default": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
-        "$description": "Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white."
+        "$description": "Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025)."
       },
       "subtle": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
-        "$description": "Hairline in the subtle border colour: quiet outlines and dividers. 1.30:1 on white."
+        "$description": "Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025)."
       },
       "strong": {
         "$type": "border",
@@ -712,11 +712,15 @@
       "border": {
         "default": {
           "$value": "{base.color.neutral.200}",
-          "$description": "Default border colour for dividers and quiet outlines. 1.19:1 on white, so it isn't enough on its own to show a control's edges (WCAG 1.4.11)."
+          "$description": "Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025)."
         },
         "subtle": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Subtle border colour for quiet outlines, including the resting text input border. 1.30:1 on white, below the 3:1 a control's boundary needs (#144)."
+          "$description": "Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025)."
+        },
+        "control": {
+          "$value": "{base.color.neutral.600}",
+          "$description": "Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025)."
         },
         "strong": {
           "$value": "{base.color.neutral.800}",
