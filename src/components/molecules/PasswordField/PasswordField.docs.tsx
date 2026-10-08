@@ -161,9 +161,9 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.input.error.hover.borderColor',
     'component.input.error.focus.borderColor',
     
-    // Component IconButton Tokens (for visibility toggle)
-    'component.iconButton.variants.naked.backgroundColor',
-    'component.iconButton.variants.naked.hover.backgroundColor',
+    // Naked IconButton colours, shared with Button (for the visibility toggle)
+    'component.button.variants.naked.backgroundColor',
+    'component.button.variants.naked.hover.backgroundColor',
     
     // Spacing
     'semantic.spacing.layout.md',
@@ -405,8 +405,8 @@ export const passwordFieldDocs: ComponentDocumentation = {
         name: 'Toggle Button',
         description: 'IconButton with variant="naked" positioned absolutely at right center, displays eye or eyeSlash icon based on visibility state',
         tokens: [
-          'component.iconButton.variants.naked.backgroundColor',
-          'component.iconButton.variants.naked.hover.backgroundColor',
+          'component.button.variants.naked.backgroundColor',
+          'component.button.variants.naked.hover.backgroundColor',
           'semantic.spacing.layout.sm',
         ],
       },

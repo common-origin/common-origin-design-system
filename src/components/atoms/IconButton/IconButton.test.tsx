@@ -4,6 +4,8 @@ import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { IconButton } from './IconButton'
+import { Button } from '../Button'
+import tokens from '@/styles/tokens.json'
 import type { IconButtonProps } from './IconButton'
 
 // Extend Jest matchers
@@ -421,5 +423,58 @@ describe('IconButton', () => {
       expect(results).toHaveNoViolations()
     })
 
+  })
+
+  // IconButton's colours and motion are Button's, in every variant and state (decision 0027)
+  describe('matches Button', () => {
+    // The rules styled-components generated for an element, keyed by state: '' is rest, then
+    // ':hover:not(:disabled)', ':active:not(:disabled)', ':disabled' and so on
+    const rulesFor = (element: Element) => {
+      const css = Array.from(document.querySelectorAll('style')).map((style) => style.textContent).join('')
+      const rules: Record<string, Record<string, string>> = {}
+      element.classList.forEach((name) => {
+        for (const [, state = '', body] of css.matchAll(new RegExp(`\\.${name}(:[^{,]*)?\\{([^}]*)\\}`, 'g'))) {
+          rules[state] = { ...rules[state] }
+          body.split(';').filter(Boolean).forEach((declaration) => {
+            const [property, ...value] = declaration.split(':')
+            rules[state][property.trim()] = value.join(':').trim()
+          })
+        }
+      })
+      return rules
+    }
+    const pick = (rules: Record<string, Record<string, string>>) =>
+      Object.fromEntries(
+        ['', ':hover:not(:disabled)', ':active:not(:disabled)', ':disabled'].map((state) => [
+          state || 'rest',
+          { background: rules[state]?.['background-color'], color: rules[state]?.color },
+        ])
+      )
+
+    it.each(['primary', 'secondary', 'naked'] as const)('%s uses Button\'s colours in every state', (variant) => {
+      render(
+        <>
+          <Button variant={variant}>Label</Button>
+          <IconButton variant={variant} iconName="close" aria-label="Close" />
+        </>
+      )
+      const [button, iconButton] = screen.getAllByRole('button')
+      expect(pick(rulesFor(iconButton))).toEqual(pick(rulesFor(button)))
+    })
+
+    it('uses Button\'s colour transition', () => {
+      renderIconButton()
+      expect(rulesFor(getButton())[''].transition).toBe(tokens.semantic.motion.hover.replace(/, /g, ','))
+    })
+
+    it('darkens secondary from rest to hover to pressed (#130)', () => {
+      renderIconButton({ variant: 'secondary' })
+      const { secondary } = tokens.component.button.variants
+      expect(pick(rulesFor(getButton()))).toMatchObject({
+        rest: { background: secondary.backgroundColor },
+        ':hover:not(:disabled)': { background: secondary.hover.backgroundColor },
+        ':active:not(:disabled)': { background: secondary.active.backgroundColor },
+      })
+    })
   })
 })

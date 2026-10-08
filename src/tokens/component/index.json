@@ -482,7 +482,7 @@
         "backgroundColor": {
           "$value": "{semantic.color.background.emphasis}",
           "$type": "color",
-          "$description": "Primary IconButton fill at rest."
+          "$description": "Deprecated (decision 0027): IconButton reads component.button.primary.backgroundColor, so its colours match Button's. Removed in 3.0."
         },
         "borderRadius": {
           "$value": "{semantic.border.radius.sm}",
@@ -519,14 +519,14 @@
         "$type": "color",
         "backgroundColor": {
           "$value": "{semantic.color.background.emphasis-hover}",
-          "$description": "Primary IconButton fill on hover."
+          "$description": "Deprecated (decision 0027): IconButton reads component.button.hover.backgroundColor, so its colours match Button's. Removed in 3.0."
         }
       },
       "active": {
         "$type": "color",
         "backgroundColor": {
           "$value": "{semantic.color.background.emphasis-active}",
-          "$description": "Primary IconButton fill while pressed. Today IconButton uses it for every variant (#130)."
+          "$description": "Deprecated (decision 0027): IconButton reads component.button.active.backgroundColor, so its colours match Button's. Removed in 3.0."
         }
       },
       "focus": {
@@ -545,7 +545,7 @@
         "$type": "color",
         "backgroundColor": {
           "$value": "{semantic.color.background.disabled}",
-          "$description": "Disabled IconButton fill. Today IconButton uses it for every variant (#130)."
+          "$description": "Deprecated (decision 0027): IconButton reads component.button.disabled.backgroundColor, so its colours match Button's. Removed in 3.0."
         }
       },
       "variants": {
@@ -553,48 +553,48 @@
         "secondary": {
           "backgroundColor": {
             "$value": "{semantic.color.background.surface}",
-            "$description": "Secondary IconButton fill at rest."
+            "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's. Removed in 3.0."
           },
           "hover": {
             "backgroundColor": {
               "$value": "{semantic.color.background.neutral}",
-              "$description": "Secondary IconButton fill on hover."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.secondary.hover.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           },
           "active": {
             "backgroundColor": {
               "$value": "{semantic.color.background.page}",
-              "$description": "Secondary IconButton fill while pressed. Not read today, and lighter than hover (#130)."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.secondary.active.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           },
           "disabled": {
             "backgroundColor": {
               "$value": "{semantic.color.background.disabled}",
-              "$description": "Disabled secondary IconButton fill."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.secondary.disabled.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           }
         },
         "naked": {
           "backgroundColor": {
             "$value": "{semantic.color.background.transparent}",
-            "$description": "Naked IconButton has no fill at rest."
+            "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.naked.backgroundColor, so its colours match Button's. Removed in 3.0."
           },
           "hover": {
             "backgroundColor": {
               "$value": "{semantic.color.background.surface}",
-              "$description": "Naked IconButton fill on hover."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.naked.hover.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           },
           "active": {
             "backgroundColor": {
               "$value": "{semantic.color.background.neutral}",
-              "$description": "Naked IconButton fill while pressed. Not read today (#130)."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.naked.active.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           },
           "disabled": {
             "backgroundColor": {
               "$value": "{semantic.color.background.transparent}",
-              "$description": "Disabled naked IconButton has no fill. Not read today (#130)."
+              "$description": "Deprecated (decision 0027): IconButton reads component.button.variants.naked.disabled.backgroundColor, so its colours match Button's. Removed in 3.0."
             }
           }
         }

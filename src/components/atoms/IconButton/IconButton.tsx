@@ -30,36 +30,46 @@ interface StyledButtonProps {
   $size: 'small' | 'medium' | 'large'
 }
 
+// Colours and motion come from Button's tokens, so IconButton's variants look and behave exactly like
+// Button's in every state (#130). Only the size and the icon differ
+const variants = {
+  primary: {
+    bg: button.primary.backgroundColor,
+    text: button.primary.textColor,
+    hoverBg: button.hover.backgroundColor,
+    activeBg: button.active.backgroundColor,
+    disabledBg: button.disabled.backgroundColor,
+    disabledText: button.disabled.textColor,
+  },
+  secondary: {
+    bg: button.variants.secondary.backgroundColor,
+    text: button.variants.secondary.textColor,
+    hoverBg: button.variants.secondary.hover.backgroundColor,
+    activeBg: button.variants.secondary.active.backgroundColor,
+    disabledBg: button.variants.secondary.disabled.backgroundColor,
+    disabledText: button.variants.secondary.disabled.textColor,
+  },
+  naked: {
+    bg: button.variants.naked.backgroundColor,
+    text: button.variants.naked.textColor,
+    hoverBg: button.variants.naked.hover.backgroundColor,
+    activeBg: button.variants.naked.active.backgroundColor,
+    disabledBg: button.variants.naked.disabled.backgroundColor,
+    disabledText: button.variants.naked.disabled.textColor,
+  },
+} as const
+
+// JavaScript callers can pass any string, so an unknown variant falls back to primary, as before
+const colours = (variant: StyledButtonProps['$variant']) => variants[variant] ?? variants.primary
+
 const IconButtonStyled = styled.button.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledButtonProps>`
-  background-color: ${({ $variant }) => {
-    switch ($variant) {
-      case 'primary':
-        return iconButton.primary.backgroundColor
-      case 'secondary':
-        return iconButton.variants.secondary.backgroundColor
-      case 'naked':
-        return iconButton.variants.naked.backgroundColor
-      default:
-        return iconButton.primary.backgroundColor
-    }
-  }};
-  color: ${({ $variant }) => {
-    switch ($variant) {
-      case 'primary':
-        return button.primary.textColor
-      case 'secondary':
-        return button.variants.secondary.textColor
-      case 'naked':
-        return button.variants.naked.textColor
-      default:
-        return button.primary.textColor
-    }
-  }};
+  background-color: ${({ $variant }) => colours($variant).bg};
+  color: ${({ $variant }) => colours($variant).text};
   border: none;
   border-radius: ${iconButton.primary.borderRadius};
-  transition: ${motion.transition.normal};
+  transition: ${motion.hover};
   box-sizing: border-box;
   display: flex;
   justify-content: center;
@@ -74,22 +84,11 @@ const IconButtonStyled = styled.button.withConfig({
   padding: ${({ $size }) => padding[$size]};
 
   &:hover:not(:disabled) {
-    background-color: ${({ $variant }) => {
-      switch ($variant) {
-        case 'primary':
-          return iconButton.hover.backgroundColor
-        case 'secondary':
-          return iconButton.variants.secondary.hover.backgroundColor
-        case 'naked':
-          return iconButton.variants.naked.hover.backgroundColor
-        default:
-          return iconButton.hover.backgroundColor
-      }
-    }};
+    background-color: ${({ $variant }) => colours($variant).hoverBg};
   }
 
   &:active:not(:disabled) {
-    background-color: ${iconButton.active.backgroundColor};
+    background-color: ${({ $variant }) => colours($variant).activeBg};
   }
 
   &:focus {
@@ -98,30 +97,9 @@ const IconButtonStyled = styled.button.withConfig({
   }
 
   &:disabled {
-    background-color: ${iconButton.disabled.backgroundColor};
-    color: ${({ $variant }) => {
-      switch ($variant) {
-        case 'primary':
-          return button.disabled.textColor
-        case 'secondary':
-          return button.variants.secondary.disabled.textColor
-        case 'naked':
-          return button.variants.naked.disabled.textColor
-        default:
-          return button.disabled.textColor
-      }
-    }};
+    background-color: ${({ $variant }) => colours($variant).disabledBg};
+    color: ${({ $variant }) => colours($variant).disabledText};
     cursor: not-allowed;
-  }
-
-  /* High contrast mode support */
-  @media (prefers-contrast: high) {
-    border: ${tokens.semantic.border.width.thin} solid;
-  }
-
-  /* Reduced motion support */
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
   }
 `
 

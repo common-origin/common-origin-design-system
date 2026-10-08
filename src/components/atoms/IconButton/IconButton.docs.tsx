@@ -95,21 +95,24 @@ export const iconButtonDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    // Fill per variant and state
-    'component.iconButton.primary.backgroundColor',
-    'component.iconButton.hover.backgroundColor',
-    'component.iconButton.active.backgroundColor',
-    'component.iconButton.disabled.backgroundColor',
-    'component.iconButton.variants.secondary.backgroundColor',
-    'component.iconButton.variants.secondary.hover.backgroundColor',
-    'component.iconButton.variants.naked.backgroundColor',
-    'component.iconButton.variants.naked.hover.backgroundColor',
-    // Icon colour, shared with Button
+    // Colours per variant and state, shared with Button (decision 0027)
+    'component.button.primary.backgroundColor',
     'component.button.primary.textColor',
-    'component.button.variants.secondary.textColor',
-    'component.button.variants.naked.textColor',
+    'component.button.hover.backgroundColor',
+    'component.button.active.backgroundColor',
+    'component.button.disabled.backgroundColor',
     'component.button.disabled.textColor',
+    'component.button.variants.secondary.backgroundColor',
+    'component.button.variants.secondary.textColor',
+    'component.button.variants.secondary.hover.backgroundColor',
+    'component.button.variants.secondary.active.backgroundColor',
+    'component.button.variants.secondary.disabled.backgroundColor',
     'component.button.variants.secondary.disabled.textColor',
+    'component.button.variants.naked.backgroundColor',
+    'component.button.variants.naked.textColor',
+    'component.button.variants.naked.hover.backgroundColor',
+    'component.button.variants.naked.active.backgroundColor',
+    'component.button.variants.naked.disabled.backgroundColor',
     'component.button.variants.naked.disabled.textColor',
     // Shape and size
     'component.iconButton.primary.borderRadius',
@@ -123,11 +126,10 @@ export const iconButtonDocs: ComponentDocumentation = {
     'semantic.spacing.component.xs',
     'semantic.spacing.component.sm',
     'semantic.spacing.component.md',
-    // Focus, high-contrast border and motion
+    // Focus and motion
     'component.iconButton.focus.outline',
     'semantic.border.focusOffset',
-    'semantic.border.width.thin',
-    'semantic.motion.transition.normal'
+    'semantic.motion.hover'
   ],
 
   examples: [
@@ -527,12 +529,11 @@ export const iconButtonDocs: ComponentDocumentation = {
       'Focus indicators are highly visible and consistent with design system standards, supporting focus-visible for enhanced keyboard navigation',
       'Icon elements marked with aria-hidden="true" to prevent duplicate announcements while preserving button semantic meaning',
       'Disabled state uses native button semantics for assistive technology compatibility without requiring manual aria-disabled or tabIndex management',
-      'High contrast mode support with adaptive border styling ensuring visibility across all user preference settings',
       'Color contrast ratios exceed WCAG 2.2 AA requirements (3:1 minimum) for all interactive states and variant combinations',
       'Touch target sizes meet accessibility guidelines with minimum 44px interaction areas on medium and large size variants',
       'Automated accessibility testing with jest-axe integration ensures ongoing compliance throughout component lifecycle',
       'Screen reader testing validates proper announcement patterns: "aria-label text, button" with appropriate state information',
-      'Reduced motion preference support disables animations for users with vestibular sensitivity or motion preferences'
+      'Only colours transition, as on Button, so nothing moves and reduced motion needs no change (decision 0015)'
     ],
     keyboardNavigation: 'Tab key moves focus to button with visible focus indicator. Enter or Space key activates the button. Disabled buttons are excluded from keyboard interaction by native button semantics.',
     screenReader: 'Announced as "aria-label text, button" with additional state information (pressed, expanded, disabled) when applicable. Icon content hidden from screen readers to prevent confusion.',
