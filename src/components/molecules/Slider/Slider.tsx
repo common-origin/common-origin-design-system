@@ -125,7 +125,7 @@ const StyledTrack = styled.div<{ $disabled?: boolean }>`
   background-color: ${({ $disabled }) =>
     $disabled 
       ? semantic.color.background.disabled
-      : semantic.color.border.default
+      : semantic.color.background.progressTrack
   };
   border-radius: ${semantic.border.radius.circle};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
@@ -136,7 +136,7 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
   height: 100%;
   background-color: ${({ $disabled }) =>
     $disabled
-      ? semantic.color.border.default
+      ? semantic.color.icon.disabled
       : semantic.color.background.emphasis
   };
   border-radius: ${semantic.border.radius.circle};
@@ -158,7 +158,7 @@ const StyledThumb = styled.div<{
   };
   border: ${semantic.border.width.thick} solid ${({ $disabled }) =>
     $disabled
-      ? semantic.color.border.default
+      ? semantic.color.icon.disabled
       : semantic.color.background.emphasis
   };
   border-radius: ${semantic.border.radius.circle};

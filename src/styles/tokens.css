@@ -455,7 +455,7 @@
   --co-semantic-color-background-neutral-hover: var(--co-base-color-neutral-400); /** Fill of a hovered neutral control. Approved under decision 0022. */
   --co-semantic-color-background-neutral-active: var(--co-base-color-neutral-500); /** Fill of a pressed neutral control. Approved under decision 0022. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
-  --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar. */
+  --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026). */
   --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that. */
   --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025). */
   --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025). */
@@ -469,7 +469,7 @@
   --co-semantic-color-icon-default: var(--co-base-color-neutral-900); /** Default icon colour, matching text.default. 15.43:1 on white. */
   --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black icon colour, matching text.emphasis. */
   --co-semantic-color-icon-subdued: var(--co-base-color-neutral-600); /** Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1). */
-  --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500); /** Icons in disabled controls. Exempt from the contrast minimum, like text.disabled. */
+  --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500); /** Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled. */
   --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000); /** Icons on dark or coloured fills, matching text.inverse. */
   --co-semantic-color-icon-interactive: var(--co-base-color-blue-900); /** Blue icons in links and selected items, matching text.interactive. 5.39:1 on white. */
   --co-semantic-color-icon-interactive-hover: var(--co-base-color-blue-1000); /** Blue icon on hover, matching text.interactive-hover. */
