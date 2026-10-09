@@ -28,7 +28,7 @@ export const dateGroupDocs: ComponentDocumentation = {
       type: "'absolute' | 'relative' | 'smart'",
       required: false,
       default: "'smart'",
-      description: 'Date formatting mode: absolute (full date), relative (X days ago), smart (Today/Yesterday/day names)'
+      description: 'Date formatting mode, passed to DateFormatter: absolute (formatted date) or smart (Today, Yesterday, day names this week, then a formatted date). relative is deprecated: it behaves exactly like smart and will be removed in 3.0'
     },
     {
       name: 'showTotal',
