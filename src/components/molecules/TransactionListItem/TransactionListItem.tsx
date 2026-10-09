@@ -287,20 +287,10 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
           {(hasReceipt || hasNote) && (
             <StyledIconIndicator>
               {hasReceipt && (
-                <span aria-label="Has receipt" role="img">
-                  <Icon 
-                    name="fileDocSearch" 
-                    size="xs" 
-                  />
-                </span>
+                <Icon name="fileDocSearch" size="xs" aria-label="Has receipt" />
               )}
               {hasNote && (
-                <span aria-label="Has note" role="img">
-                  <Icon 
-                    name="paper" 
-                    size="xs" 
-                  />
-                </span>
+                <Icon name="paper" size="xs" aria-label="Has note" />
               )}
             </StyledIconIndicator>
           )}

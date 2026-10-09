@@ -421,13 +421,13 @@ export const buttonDocs: ComponentDocumentation = {
       'Interactive States: Hover, active, and focus states provide clear feedback with sufficient color contrast ratios',
       'Form Integration: Submit/reset button types work correctly with form validation and submission flows',
       'Link Navigation: Next.js Link integration preserves client-side routing while maintaining accessibility',
-      'Icon Accessibility: Icons inherit proper color contrast and are announced as part of button content',
+      'Icon Accessibility: The icon is decorative and silent; the button is named by its text alone (#85)',
       'Touch Accessibility: Minimum 44px touch target size maintained across all variants and sizes',
       'High Contrast Mode: All variants remain visible and functional in Windows High Contrast and similar modes',
       'WCAG 2.2 AA Compliance: Comprehensive testing ensures all interactive guidelines are met'
     ],
     keyboardNavigation: 'Tab: Focus button | Enter/Space: Activate button or follow link | Standard form navigation for submit/reset types',
-    screenReader: 'Announced as "button" or "link" with content. Disabled state announced. Icon content integrated with button text.',
+    screenReader: 'Announced as "button" or "link" with content. Disabled state announced. The icon is decorative and not announced.',
     focusManagement: 'Focus outline visible on keyboard navigation, respects focus-visible. Focus moves to next logical element after activation.',
     colorContrast: 'All variants exceed WCAG AA requirements (4.5:1 for text, 3:1 for non-text). Interactive states maintain contrast ratios.'
   },

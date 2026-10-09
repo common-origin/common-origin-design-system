@@ -131,10 +131,11 @@ export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
       data-testid={dataTestId}
     >
       {showPositiveIcon && !showNegativeIcon && (
-        <Icon name="addRing" size={iconSize} iconColor={iconColor} />
+        // The amount is shown without a sign, so the icon is the sign and needs a name (#85)
+        <Icon name="addRing" size={iconSize} iconColor={iconColor} aria-label="Plus" />
       )}
       {showNegativeIcon && (
-        <Icon name="remove" size={iconSize} iconColor={iconColor} />
+        <Icon name="remove" size={iconSize} iconColor={iconColor} aria-label="Minus" />
       )}
       <Typography
         variant={typographyVariant}

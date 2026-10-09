@@ -320,7 +320,8 @@ describe('StatusLabel blank aria-label (#78)', () => {
   it.each(['', '   '])('treats %j as no label: default name, visible content exposed', (blank) => {
     render(<StatusLabel status="pending" aria-label={blank} />)
     const label = screen.getByRole('status', { name: 'Status: Pending' })
-    expect(label.querySelector('[aria-hidden="true"]')).not.toBeInTheDocument()
+    // The visible content isn't hidden (its decorative icon is, inside it: #85)
+    expect(label.querySelector(':scope > [aria-hidden="true"]')).not.toBeInTheDocument()
     expect(label).toHaveTextContent('Pending')
   })
 })

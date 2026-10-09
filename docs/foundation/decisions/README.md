@@ -31,6 +31,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0025](0025-control-borders-meet-3-to-1.md) | Resting control borders meet 3:1 with `color.border.control`; `border.default` and `border.subtle` are for dividers | Accepted | 2026-10-08 |
 | [0026](0026-slider-track-stays-light.md) | Slider's unfilled track stays light on `background.progressTrack`; a disabled slider uses `icon.disabled` | Accepted | 2026-10-08 |
 | [0027](0027-iconbutton-follows-button.md) | IconButton uses Button's colours and motion in every variant and state; its own colour tokens are deprecated | Accepted | 2026-10-08 |
+| [0028](0028-icons-decorative-by-default.md) | Icons are decorative by default; a meaningful icon gets a human-readable `aria-label`; no internal icon names are announced | Accepted | 2026-10-09 |
 
 ## Template
 

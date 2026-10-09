@@ -10,6 +10,17 @@ export interface IconProps {
   name: IconName
   size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
   iconColor?: 'default' | 'emphasis' | 'subdued' | 'disabled' | 'inverse' | 'interactive' | 'error' | 'success' | 'warning' | 'inherit'
+  /**
+   * Makes the icon meaningful: it's announced as an image with this name. Without `aria-label`
+   * or `title`, the icon is decorative and hidden from assistive technology (#85). Use a
+   * human-readable name, never the internal icon name; `icons.json`'s `ariaLabelDefault` is a
+   * starting point.
+   */
+  'aria-label'?: string
+  /**
+   * Like `aria-label`, and also shown as a tooltip. `aria-label` wins if both are given.
+   */
+  title?: string
   'data-testid'?: string
 }
 
@@ -66,8 +77,13 @@ export const Icon: FC<IconProps> = ({
   name,
   size = 'lg',
   iconColor = 'default',
+  'aria-label': ariaLabel,
+  title,
   'data-testid': dataTestId
 }): ReactElement => {
+  // Decorative unless it's given a name. A blank name is no name, so the icon stays hidden
+  const label = ariaLabel?.trim() || title?.trim() || undefined
+
   // Get the icon data from the JSON file
   const iconData = iconsData[name]
   
@@ -82,9 +98,11 @@ export const Icon: FC<IconProps> = ({
         viewBox="0 0 24 24"
         fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
-        role="img"
-        aria-label={iconData.name}
+        {...(label
+          ? { role: 'img', 'aria-label': label }
+          : { 'aria-hidden': true, focusable: false })}
       >
+        {title?.trim() && <title>{title}</title>}
         <path d={iconData.path} />
       </svg>
     </IconStyled>

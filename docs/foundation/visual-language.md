@@ -75,6 +75,12 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Alert's action follows the content: below the message, left-aligned with it, `md` above it. The action and the dismiss button never share a row. ([0021](decisions/0021-alert-action-below-content.md)) | Enforced ([#122](https://github.com/common-origin/common-origin-design-system/issues/122)) |
 | `InlineAlert` is the small, local message: a severity icon and short text in the severity colour, with no background, border, title, action or dismiss button. Sizes `small` and `medium`. Feedback about a control is linked with `aria-describedby`. Every severity colour is at least 4.5:1 on the page, white and grey surfaces; check other backgrounds before use. ([0019](decisions/0019-alert-and-inline-alert.md)) | Enforced — InlineAlert ships; Alert's `inline` prop is deprecated and removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)) |
 
+## Icons
+
+| Rule | Status |
+|---|---|
+| Icons are decorative by default: `Icon` hides them from assistive technology unless it's given an `aria-label` or `title`. A component gives an icon a human-readable name only when the icon is the only way something is shown, such as MoneyDisplay's plus and minus signs or TransactionListItem's receipt and note indicators. No component announces an internal icon name such as "arrowDown" or "addRing" ([0028](decisions/0028-icons-decorative-by-default.md), [P2](principles.md#p2-accessibility-is-the-floor), WCAG 1.1.1). | Enforced — `iconAnnouncements.test.tsx` and `Icon.test.tsx` |
+
 ## Surfaces, shape and elevation
 
 | Rule | Status |
