@@ -223,8 +223,9 @@ export const checkboxDocs: ComponentDocumentation = {
     'component.input.disabled.textColor',
     'component.input.disabled.borderColor',
 
-    // Semantic tokens
-    'semantic.color.background.interactive',
+    // Semantic tokens: the checked and indeterminate box
+    'semantic.color.background.inverse',
+    'semantic.color.border.strong',
     'semantic.color.text.inverse',
     'semantic.color.text.error',
     'semantic.color.text.subdued',
@@ -291,7 +292,8 @@ export const checkboxDocs: ComponentDocumentation = {
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
           'component.input.default.borderWidth',
-          'semantic.color.background.interactive',
+          'semantic.color.background.inverse',
+          'semantic.color.border.strong',
           'semantic.color.text.inverse',
         ],
       },
