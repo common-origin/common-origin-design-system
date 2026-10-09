@@ -346,70 +346,75 @@ export const ListItem = ({
   }
   
   return (
-    <StyledListItem
-      $interactive={isInteractive}
-      $disabled={disabled}
-      $selected={selected}
-      $destructive={destructive}
-      $spacing={spacing}
-      className={className}
-      data-testid={dataTestId}
-      role={customRole || 'listitem'}
-      id={id}
-      aria-selected={ariaSelected}
-      {...props}
-    >
-      <StyledItemContent
+    // The List's spacing is for its own items: reset it for this item's content, so components
+    // built on ListItem (ActionSheet, even through its portal) and expanded content keep their own
+    // density. A nested List provides its own spacing (#77)
+    <ListSpacingContext.Provider value="comfortable">
+      <StyledListItem
         $interactive={isInteractive}
         $disabled={disabled}
         $selected={selected}
         $destructive={destructive}
         $spacing={spacing}
-        role={contentRole}
-        aria-expanded={ariaExpanded}
-        aria-disabled={ariaDisabled}
-        aria-current={ariaCurrent}
-        tabIndex={customTabIndex !== undefined ? customTabIndex : (isInteractive && !disabled ? 0 : undefined)}
-        onClick={handleClick}
-        onKeyDown={handleKeyDown}
+        className={className}
+        data-testid={dataTestId}
+        role={customRole || 'listitem'}
+        id={id}
+        aria-selected={ariaSelected}
+        {...props}
       >
-        {icon && (
-          <StyledIconContainer aria-hidden="true">
-            {icon}
-          </StyledIconContainer>
-        )}
-        
-        <StyledTextContent>
-          <Typography variant="body" color={destructive ? 'error' : 'default'}>
-            {primary}
-          </Typography>
-          {secondary && (
-            <Typography variant="small" color="subdued">
-              {secondary}
-            </Typography>
-          )}
-        </StyledTextContent>
-        
-        <StyledRightContent>
-          {badge}
-          {expandable && (
-            <StyledChevronIcon $expanded={expanded} aria-hidden="true">
-              <Icon name="caretDown" size="sm" />
-            </StyledChevronIcon>
-          )}
-        </StyledRightContent>
-      </StyledItemContent>
-      
-      {expandable && children && (
-        <StyledExpandedContent
+        <StyledItemContent
+          $interactive={isInteractive}
+          $disabled={disabled}
+          $selected={selected}
+          $destructive={destructive}
           $spacing={spacing}
-          $expanded={expanded}
-          aria-hidden={!expanded}
+          role={contentRole}
+          aria-expanded={ariaExpanded}
+          aria-disabled={ariaDisabled}
+          aria-current={ariaCurrent}
+          tabIndex={customTabIndex !== undefined ? customTabIndex : (isInteractive && !disabled ? 0 : undefined)}
+          onClick={handleClick}
+          onKeyDown={handleKeyDown}
         >
-          {children}
-        </StyledExpandedContent>
-      )}
-    </StyledListItem>
+          {icon && (
+            <StyledIconContainer aria-hidden="true">
+              {icon}
+            </StyledIconContainer>
+          )}
+          
+          <StyledTextContent>
+            <Typography variant="body" color={destructive ? 'error' : 'default'}>
+              {primary}
+            </Typography>
+            {secondary && (
+              <Typography variant="small" color="subdued">
+                {secondary}
+              </Typography>
+            )}
+          </StyledTextContent>
+          
+          <StyledRightContent>
+            {badge}
+            {expandable && (
+              <StyledChevronIcon $expanded={expanded} aria-hidden="true">
+                <Icon name="caretDown" size="sm" />
+              </StyledChevronIcon>
+            )}
+          </StyledRightContent>
+        </StyledItemContent>
+        
+        {expandable && children && (
+          <StyledExpandedContent
+            $spacing={spacing}
+            $expanded={expanded}
+            aria-hidden={!expanded}
+          >
+            {children}
+          </StyledExpandedContent>
+        )}
+      </StyledListItem>
+    </ListSpacingContext.Provider>
   )
 }
 

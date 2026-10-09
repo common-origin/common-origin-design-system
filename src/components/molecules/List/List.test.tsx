@@ -107,6 +107,22 @@ describe('List', () => {
       expect(paddingOf('Comfortable')).toHaveStyle({ padding: comfortable })
     })
 
+    it('reaches only its own items, not ListItems inside an item\'s content', () => {
+      render(
+        <List spacing="compact">
+          <ListItem primary="Row" expandable expanded>
+            <ListItem primary="Inside the row" />
+            <List spacing="compact">
+              <ListItem primary="Nested list item" />
+            </List>
+          </ListItem>
+        </List>
+      )
+      expect(paddingOf('Row')).toHaveStyle({ padding: compact })
+      expect(paddingOf('Inside the row')).toHaveStyle({ padding: comfortable })
+      expect(paddingOf('Nested list item')).toHaveStyle({ padding: compact })
+    })
+
     it('keeps comfortable spacing for an item outside a list', () => {
       render(<ListItem primary="Alone" />)
       expect(paddingOf('Alone')).toHaveStyle({ padding: comfortable })
