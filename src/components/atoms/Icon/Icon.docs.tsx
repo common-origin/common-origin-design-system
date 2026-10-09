@@ -32,6 +32,18 @@ export const iconDocs: ComponentDocumentation = {
       description: 'Semantic color variant. Use "inherit" to inherit color from parent text context'
     },
     {
+      name: 'aria-label',
+      type: 'string',
+      required: false,
+      description: 'Makes the icon meaningful: it is announced as an image with this name. Without aria-label or title the icon is decorative and hidden from assistive technology. Use a human-readable name, never the internal icon name (icons.json\'s ariaLabelDefault is a starting point)'
+    },
+    {
+      name: 'title',
+      type: 'string',
+      required: false,
+      description: 'Like aria-label, and also shown as a tooltip. aria-label wins if both are given'
+    },
+    {
       name: 'data-testid',
       type: 'string',
       required: false,
@@ -62,13 +74,12 @@ export const iconDocs: ComponentDocumentation = {
   
   accessibility: {
     notes: [
-      'Semantic Labeling: Automatically generates aria-label from icon name in JSON data for screen reader accessibility',
-      'SVG Accessibility: Uses role="img" and proper ARIA attributes to ensure assistive technology compatibility',
-      'Decorative vs Semantic: When used decoratively (within buttons/links), parent elements should handle accessibility context',
+      'Decorative by default: without aria-label or title, the SVG has aria-hidden="true" and no role, so screen readers skip it. Most icons sit next to text or inside a labelled control, where announcing them would only repeat or add noise',
+      'Meaningful icons: pass aria-label (or title) with a human-readable name, and the SVG becomes role="img" with that name. Do this when the icon is the only way a piece of information is shown, such as MoneyDisplay\'s plus and minus signs',
+      'Never announce an internal icon name such as "arrowDown" or "addRing" (#85, WCAG 1.1.1). A blank label counts as no label',
       'Color Independence: Never rely solely on color to convey information - always pair with text or other indicators',
       'Text Integration: Icons integrate naturally with text flow using inline-flex display and proper alignment',
       'Contrast Compliance: All color variants meet WCAG AA contrast requirements against standard backgrounds',
-      'High Contrast Mode: Icons remain visible and functional in Windows High Contrast and similar accessibility modes',
       'Screen Magnification: Vector SVG format ensures crisp rendering at all zoom levels up to 200% text scaling',
       'Reduced Motion: Static icons respect user motion preferences - no animated or moving elements',
       'Keyboard Navigation: Non-interactive by default - keyboard behavior handled by containing interactive elements',
@@ -76,7 +87,7 @@ export const iconDocs: ComponentDocumentation = {
       'Automated Testing: Comprehensive jest-axe testing validates accessibility compliance across all variants'
     ],
     keyboardNavigation: 'Non-interactive element - keyboard navigation handled by parent components (buttons, links, etc.)',
-    screenReader: 'Announced as image with aria-label derived from icon name. Context provided by surrounding content or parent interactive elements',
+    screenReader: 'Silent by default. With aria-label or title, announced as an image with that name',
     colorContrast: 'All semantic color variants exceed WCAG AA contrast requirements. Use high-contrast variants (emphasis, inverse) for critical visual information',
     focusManagement: 'Not focusable - icon content is announced when parent interactive elements receive focus'
   },
@@ -88,6 +99,14 @@ export const iconDocs: ComponentDocumentation = {
       code: `<Icon name="play" />`,
       renderComponent: () => (
         <Icon name="play" />
+      )
+    },
+    {
+      name: 'Meaningful Icon',
+      description: 'An icon that is the only way something is shown needs a human-readable name. Without one, icons are decorative and silent',
+      code: `<Icon name="paper" size="sm" aria-label="Has note" />`,
+      renderComponent: () => (
+        <Icon name="paper" size="sm" aria-label="Has note" />
       )
     },
     {
@@ -557,7 +576,7 @@ export const iconDocs: ComponentDocumentation = {
     'Color Semantics: Use semantic colors (error, success, warning) consistently with their meaning, not just for visual variety',
     'Inherit Color: Use iconColor="inherit" to match parent text color for seamless text integration',
     'Performance: Renders inline SVG for optimal loading, caching, and style control compared to icon fonts or external images',
-    'Accessibility First: Automatically provides proper ARIA labels - for decorative use, ensure parent elements handle context',
+    'Accessibility: decorative unless given aria-label or title; give a name only when the icon carries information nothing else shows',
     'Consistent Proportions: All icons use 24x24 viewBox for uniform visual weight and predictable spacing',
     'Missing Icon Handling: Component gracefully handles missing icons with console warnings for development debugging',
     'Browser Support: SVG and CSS currentColor supported in all modern browsers with consistent rendering',

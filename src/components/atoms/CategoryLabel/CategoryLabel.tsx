@@ -203,7 +203,6 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
             name={icon}
             size={iconSize}
             iconColor={variant === 'filled' ? 'inverse' : 'inherit'}
-            aria-hidden="true"
           />
         )}
         {children}

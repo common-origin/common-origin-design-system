@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { Icon } from './Icon'
+import iconsData from '@/styles/icons.json'
 
 // Mock the icons JSON file directly as a default export
 jest.mock('@/styles/icons.json', () => ({
@@ -50,12 +51,7 @@ jest.mock('@/styles/icons.json', () => ({
   }
 }))
 
-type IconProps = {
-  name: keyof typeof import('@/styles/icons.json')
-  size?: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl'
-  iconColor?: 'default' | 'emphasis' | 'subdued' | 'disabled' | 'inverse' | 'interactive' | 'error' | 'success' | 'warning' | 'inherit'
-  'data-testid'?: string
-}
+import type { IconProps } from './Icon'
 
 describe('Icon', () => {
   const defaultProps: Omit<IconProps, 'name'> = {}
@@ -69,7 +65,13 @@ describe('Icon', () => {
     return render(<Icon {...finalProps} />)
   }
 
-  const getIcon = () => screen.getByRole('img')
+  // The SVG itself: icons are decorative by default, so they have no role to query by (#85)
+  const getIcon = () => {
+    const svg = document.querySelector('svg')
+    if (!svg) throw new Error('No icon SVG rendered')
+    return svg
+  }
+  const pathOf = (name: keyof typeof iconsData) => iconsData[name].path
 
   describe('Basic Rendering', () => {
     it('renders without crashing', () => {
@@ -78,17 +80,14 @@ describe('Icon', () => {
       expect(icon).toBeInTheDocument()
     })
 
-    it('renders with correct icon name', () => {
+    it('draws the named icon', () => {
       renderIcon({ name: 'close' })
-      const icon = getIcon()
-      expect(icon).toHaveAttribute('aria-label', 'close')
+      expect(getIcon().querySelector('path')).toHaveAttribute('d', pathOf('close'))
     })
 
     it('renders with default props when minimal props provided', () => {
       renderIcon()
-      const icon = getIcon()
-      expect(icon).toBeInTheDocument()
-      expect(icon).toHaveAttribute('aria-label', 'close')
+      expect(getIcon()).toHaveAttribute('aria-hidden', 'true')
     })
 
     it('applies custom data-testid', () => {
@@ -208,27 +207,53 @@ describe('Icon', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('has correct aria-label based on icon name', () => {
+    // Decorative by default; meaningful only when given a human-readable name (#85, WCAG 1.1.1)
+    it('is decorative by default: hidden, with no role and no name', () => {
       renderIcon({ name: 'menu' })
       const icon = getIcon()
-      expect(icon).toHaveAttribute('aria-label', 'menu')
+      expect(icon).toHaveAttribute('aria-hidden', 'true')
+      expect(icon).toHaveAttribute('focusable', 'false')
+      expect(icon).not.toHaveAttribute('role')
+      expect(icon).not.toHaveAttribute('aria-label')
+      expect(screen.queryByRole('img')).not.toBeInTheDocument()
     })
 
-    it('has role img for screen readers', () => {
-      renderIcon()
-      const icon = getIcon()
-      expect(icon).toHaveAttribute('role', 'img')
-    })
-
-    it('maintains accessibility across different icon names', () => {
-      const iconNames = ['arrowDown', 'back', 'play', 'pause'] as const
+    it('never announces its internal name', () => {
+      const iconNames = ['arrowDown', 'back', 'play', 'pause', 'menu'] as const
       iconNames.forEach((name) => {
         const { unmount } = renderIcon({ name })
-        const icon = getIcon()
-        expect(icon).toHaveAttribute('role', 'img')
-        expect(icon).toHaveAttribute('aria-label', name)
+        expect(screen.queryByRole('img', { name })).not.toBeInTheDocument()
         unmount()
       })
+    })
+
+    it('is an image with that name when given an aria-label', () => {
+      renderIcon({ name: 'play', 'aria-label': 'Loading' })
+      const icon = screen.getByRole('img', { name: 'Loading' })
+      expect(icon).toBe(getIcon())
+      expect(icon).not.toHaveAttribute('aria-hidden')
+    })
+
+    it('is an image named by its title, which is also the tooltip', () => {
+      renderIcon({ name: 'menu', title: 'Has note' })
+      expect(screen.getByRole('img', { name: 'Has note' })).toBeInTheDocument()
+      expect(getIcon().querySelector('title')).toHaveTextContent('Has note')
+    })
+
+    it('prefers aria-label over title for the name', () => {
+      renderIcon({ 'aria-label': 'Has receipt', title: 'Receipt attached' })
+      expect(screen.getByRole('img', { name: 'Has receipt' })).toBeInTheDocument()
+    })
+
+    it.each(['', '   '])('treats a blank label %j as no label: still decorative', (blank) => {
+      renderIcon({ 'aria-label': blank, title: blank })
+      expect(getIcon()).toHaveAttribute('aria-hidden', 'true')
+      expect(screen.queryByRole('img')).not.toBeInTheDocument()
+    })
+
+    it('should have no accessibility violations when labelled', async () => {
+      const { container } = renderIcon({ 'aria-label': 'Close' })
+      expect(await axe(container)).toHaveNoViolations()
     })
   })
 
@@ -238,11 +263,7 @@ describe('Icon', () => {
       
       iconNames.forEach((name) => {
         const { unmount } = renderIcon({ name })
-        const icon = getIcon()
-        expect(icon).toHaveAttribute('aria-label', name)
-        const pathElement = icon.querySelector('path')
-        expect(pathElement).toBeInTheDocument()
-        expect(pathElement).toHaveAttribute('d')
+        expect(getIcon().querySelector('path')).toHaveAttribute('d', pathOf(name))
         unmount()
       })
     })
@@ -262,8 +283,7 @@ describe('Icon', () => {
         size: 'md',
         iconColor: 'interactive'
       })
-      const icon = getIcon()
-      expect(icon).toHaveAttribute('aria-label', 'play')
+      expect(getIcon().querySelector('path')).toHaveAttribute('d', pathOf('play'))
     })
 
     it('handles optional size prop', () => {
@@ -309,7 +329,7 @@ describe('Icon', () => {
       const icon = getIcon()
       const wrapper = screen.getByTestId('complex-icon')
       
-      expect(icon).toHaveAttribute('aria-label', 'playBack')
+      expect(icon.querySelector('path')).toHaveAttribute('d', pathOf('playBack'))
       expect(wrapper).toContainElement(icon)
     })
   })
@@ -336,7 +356,7 @@ describe('Icon', () => {
       
       const iconContainer = container.firstChild
       expect(iconContainer).toBeInTheDocument()
-      expect(iconContainer).not.toContainElement(screen.queryByRole('img'))
+      expect(iconContainer).toBeEmptyDOMElement()
       
       consoleSpy.mockRestore()
     })
@@ -359,8 +379,7 @@ describe('Icon', () => {
       const icon = getIcon()
       
       expect(wrapper).toBeInTheDocument()
-      expect(icon).toHaveAttribute('aria-label', 'caret')
-      expect(icon.querySelector('path')).toBeInTheDocument()
+      expect(icon.querySelector('path')).toHaveAttribute('d', pathOf('caret'))
     })
   })
 })

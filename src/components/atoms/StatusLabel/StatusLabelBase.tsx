@@ -234,7 +234,6 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
             name={statusConfig.icon}
             size={sizeStyles.iconSize}
             iconColor="inherit"
-            aria-hidden="true"
           />
         )}
         {displayLabel}

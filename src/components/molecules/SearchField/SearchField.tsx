@@ -416,7 +416,6 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
             name="search"
             size="sm"
             iconColor="subdued"
-            aria-hidden="true"
           />
           
           <StyledInput
@@ -504,7 +503,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
                   aria-selected={index === highlightedIndex}
                   primary={label}
                   secondary={description}
-                  icon={item.type === 'recent' ? <Icon name="refresh" size="xs" aria-hidden="true" /> : undefined}
+                  icon={item.type === 'recent' ? <Icon name="refresh" size="xs" /> : undefined}
                   interactive
                   selected={index === highlightedIndex}
                   spacing="compact"

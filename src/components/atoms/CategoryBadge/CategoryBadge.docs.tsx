@@ -316,7 +316,7 @@ export const categoryBadgeDocs: ComponentDocumentation = {
       'No accessibility violations detected by jest-axe automated testing across all variants'
     ],
     keyboardNavigation: 'Not keyboard focusable. CategoryBadge has no interaction; use Chip when the category needs to be selected or removed.',
-    screenReader: 'Without an aria-label, screen readers read the visible category text as part of the surrounding content, and the icon (if any) is also announced by its internal name, such as "bell" (#85). With an aria-label, only that label is read: the visible text and icon are hidden from assistive technology (#78). A blank aria-label is ignored.'
+    screenReader: 'Without an aria-label, screen readers read the visible category text as part of the surrounding content, and the icon (if any) is decorative and silent (#85). With an aria-label, only that label is read: the visible text and icon are hidden from assistive technology (#78). A blank aria-label is ignored.'
   },
 
   anatomy: {

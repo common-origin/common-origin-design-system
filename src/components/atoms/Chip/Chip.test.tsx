@@ -649,8 +649,8 @@ describe('Chip Component', () => {
       expect(chip).toBeInTheDocument()
       
       // Pause icon should not be visible when not selected
-      const icons = screen.queryAllByRole('img', { hidden: true })
-      expect(icons.length).toBe(0)
+      // Icons are decorative, so look for the drawing itself (#85)
+      expect(screen.getByRole('checkbox').querySelector('svg')).not.toBeInTheDocument()
     })
 
     it('shows selected indicator when selected', () => {
@@ -662,8 +662,7 @@ describe('Chip Component', () => {
       expect(chip).toBeInTheDocument()
       
       // Should have pause icon (temporary check icon)
-      const icon = screen.getByRole('img', { hidden: true })
-      expect(icon).toBeInTheDocument()
+      expect(screen.getByRole('checkbox').querySelector('svg')).toBeInTheDocument()
     })
 
     it('is clickable and calls onClick', () => {
@@ -702,8 +701,7 @@ describe('Chip Component', () => {
       )
       
       // Icon should now be visible
-      const icon = screen.getByRole('img', { hidden: true })
-      expect(icon).toBeInTheDocument()
+      expect(screen.getByRole('checkbox').querySelector('svg')).toBeInTheDocument()
     })
 
     it('has checkbox role', () => {
