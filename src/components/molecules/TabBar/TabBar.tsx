@@ -175,11 +175,7 @@ const StyledTab = styled.button.withConfig({
     outline-offset: ${semantic.spacing.layout.xs};
     z-index: 1;
   }
-  
-  /* Pressed nudge */
-  &:active:not(:disabled) {
-    transform: translateY(1px);
-  }
+
 `
 
 const StyledBadge = styled.span`

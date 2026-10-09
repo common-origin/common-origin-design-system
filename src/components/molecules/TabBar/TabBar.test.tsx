@@ -84,6 +84,14 @@ describe('TabBar Component', () => {
       )
     })
 
+    // Press feedback is colour only, like Button and Chip: no off-grid 1px nudge (#73)
+    it('doesn\'t move a tab when it is pressed', () => {
+      renderTabBar()
+      ;[tab(/Overview/i), tab(/Analytics/i)].forEach((pressed) => {
+        expect(pseudoClassDeclarations(pressed, ':active:not(:disabled)')).not.toMatch(/transform/)
+      })
+    })
+
     it('keeps unselected tabs unfilled, subdued, and never blue on hover', () => {
       renderTabBar()
       const unselected = tab(/Analytics/i)
