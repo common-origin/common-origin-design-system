@@ -3,6 +3,7 @@ import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Checkbox } from './Checkbox'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -419,6 +420,39 @@ describe('Checkbox', () => {
       const form = screen.getByTestId('form')
       const checkbox = screen.getByLabelText('Form checkbox')
       expect(form).toContainElement(checkbox)
+    })
+  })
+
+  // A checked or indeterminate box's border is the near-black colour token, the same as its fill,
+  // so the box reads as one solid square. It used to be a composite border token, which made the
+  // declaration invalid, so the border fell back to the text colour (#152)
+  describe('checked border colour', () => {
+    // jsdom reports colours as the browser would, so normalise the token the same way
+    const css = (value: string) => {
+      const probe = document.createElement('div')
+      probe.style.color = value
+      return probe.style.color
+    }
+    const boxOf = (checkbox: HTMLElement) => checkbox.nextElementSibling as HTMLElement
+    const strong = tokens.semantic.color.border.strong
+
+    it.each([
+      ['checked', { checked: true }],
+      ['indeterminate', { indeterminate: true }],
+    ])('%s: the border is color.border.strong', (_, props) => {
+      render(<Checkbox label="Box" onChange={() => {}} {...props} />)
+      const box = getComputedStyle(boxOf(screen.getByRole('checkbox')))
+      expect(box.borderTopColor).toBe(css(strong))
+      expect(box.borderTopColor).toBe(css(tokens.semantic.color.background.inverse))
+    })
+
+    it('keeps that colour inside a parent that sets its own text colour', () => {
+      render(
+        <div style={{ color: tokens.semantic.color.text.error }}>
+          <Checkbox label="Box" checked onChange={() => {}} />
+        </div>
+      )
+      expect(getComputedStyle(boxOf(screen.getByRole('checkbox'))).borderTopColor).toBe(css(strong))
     })
   })
 })
