@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { ListSpacingContext, type ListSpacing } from './ListContext'
 
 const { semantic } = tokens
 
@@ -17,10 +18,10 @@ export interface ListProps {
   dividers?: boolean
   
   /**
-   * Vertical spacing between items
+   * Density of the list's items: their padding. A ListItem's own `spacing` overrides it (#77).
    * @default 'comfortable'
    */
-  spacing?: 'compact' | 'comfortable'
+  spacing?: ListSpacing
   
   /**
    * Additional CSS class name
@@ -37,7 +38,6 @@ const StyledList = styled.ul.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{
   $dividers: boolean
-  $spacing: 'compact' | 'comfortable'
 }>`
   list-style: none;
   margin: 0;
@@ -61,16 +61,17 @@ export const List = ({
   ...props
 }: ListProps) => {
   return (
-    <StyledList
-      $dividers={dividers}
-      $spacing={spacing}
-      className={className}
-      data-testid={dataTestId}
-      role="list"
-      {...props}
-    >
-      {children}
-    </StyledList>
+    <ListSpacingContext.Provider value={spacing}>
+      <StyledList
+        $dividers={dividers}
+        className={className}
+        data-testid={dataTestId}
+        role="list"
+        {...props}
+      >
+        {children}
+      </StyledList>
+    </ListSpacingContext.Provider>
   )
 }
 

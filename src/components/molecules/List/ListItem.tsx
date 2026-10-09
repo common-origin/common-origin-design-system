@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { reducedMotion } from '../../../lib/styleUtils'
+import { ListSpacingContext, type ListSpacing } from './ListContext'
 
 const { semantic } = tokens
 const { duration, easing } = semantic.motion
@@ -77,10 +78,10 @@ export interface ListItemProps {
   destructive?: boolean
   
   /**
-   * Spacing variant from parent List
-   * @default 'comfortable'
+   * Density of this item. Defaults to the parent List's `spacing`, or `comfortable` outside a
+   * List; set it to override the List for this item (#77).
    */
-  spacing?: 'compact' | 'comfortable'
+  spacing?: ListSpacing
   
   /**
    * Expanded content (shown when expanded=true)
@@ -301,7 +302,7 @@ export const ListItem = ({
   disabled = false,
   selected = false,
   destructive = false,
-  spacing = 'comfortable',
+  spacing: spacingProp,
   children,
   className,
   'data-testid': dataTestId,
@@ -312,6 +313,8 @@ export const ListItem = ({
   onKeyDown: customOnKeyDown,
   ...props
 }: ListItemProps) => {
+  const listSpacing = useContext(ListSpacingContext)
+  const spacing = spacingProp ?? listSpacing
   const isInteractive = interactive || expandable || customRole === 'option'
   const contentRole = customRole === 'option' ? undefined : (isInteractive ? 'button' : undefined)
   const ariaExpanded = expandable ? expanded : undefined

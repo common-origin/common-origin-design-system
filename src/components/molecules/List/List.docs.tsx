@@ -103,7 +103,7 @@ export const listDocs: ComponentDocumentation = {
       type: "'compact' | 'comfortable'",
       required: false,
       default: 'comfortable',
-      description: 'Accepted for API compatibility but currently has no effect: it is not passed to the items. Set spacing on each ListItem instead.'
+      description: 'Density of the list\'s items: their padding. Items that don\'t set their own spacing use it; an item\'s own spacing overrides it.'
     },
     {
       name: 'className',
@@ -181,17 +181,17 @@ export const listDocs: ComponentDocumentation = {
     },
     {
       name: 'Spacing Variants',
-      description: 'Compact spacing for dense layouts, set on each ListItem',
-      code: `<List>
-  <ListItem spacing="compact" primary="Compact Item 1" secondary="Less spacing between items" />
-  <ListItem spacing="compact" primary="Compact Item 2" secondary="Better for mobile layouts" />
-  <ListItem spacing="compact" primary="Compact Item 3" secondary="More items visible at once" />
+      description: 'Compact spacing for dense layouts, set once on the List',
+      code: `<List spacing="compact">
+  <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
+  <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
+  <ListItem primary="Compact Item 3" secondary="More items visible at once" />
 </List>`,
       renderComponent: () => (
-        <List>
-          <ListItem spacing="compact" primary="Compact Item 1" secondary="Less spacing between items" />
-          <ListItem spacing="compact" primary="Compact Item 2" secondary="Better for mobile layouts" />
-          <ListItem spacing="compact" primary="Compact Item 3" secondary="More items visible at once" />
+        <List spacing="compact">
+          <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
+          <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
+          <ListItem primary="Compact Item 3" secondary="More items visible at once" />
         </List>
       )
     },
