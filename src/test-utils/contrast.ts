@@ -19,8 +19,9 @@ export function contrastRatio(foreground: string, background: string): number {
 }
 
 /**
- * The declarations styled-components injected for one of an element's classes under a
- * pseudo-class such as `:hover`, since getComputedStyle can't apply pseudo-classes.
+ * The declarations styled-components injected for an element's classes under a pseudo-class
+ * such as `:hover`, since getComputedStyle can't apply pseudo-classes. Every matching rule is
+ * included, since a component can style the same state in more than one block.
  */
 export function pseudoClassDeclarations(element: Element, pseudoClass: string): string {
   const css = Array.from(document.querySelectorAll('style'))
@@ -29,8 +30,7 @@ export function pseudoClassDeclarations(element: Element, pseudoClass: string): 
   return Array.from(element.classList)
     .map((cls) => {
       const escaped = pseudoClass.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-      const match = css.match(new RegExp(`\\.${cls}${escaped}\\{([^}]*)\\}`))
-      return match ? match[1] : ''
+      return Array.from(css.matchAll(new RegExp(`\\.${cls}${escaped}\\{([^}]*)\\}`, 'g')), (match) => match[1]).join('')
     })
     .join('')
 }
