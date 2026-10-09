@@ -142,8 +142,8 @@ export const listItemDocs: ComponentDocumentation = {
       name: 'spacing',
       type: "'compact' | 'comfortable'",
       required: false,
-      default: "'comfortable'",
-      description: 'Padding density. Compact for dense layouts, comfortable for standard use. Set it on each item; List does not pass its own spacing down.'
+      default: "the List's spacing, or 'comfortable'",
+      description: 'Padding density. Compact for dense layouts, comfortable for standard use. Defaults to the parent List\'s spacing (comfortable outside a List); set it to override the List for this item.'
     },
     {
       name: 'className',

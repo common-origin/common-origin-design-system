@@ -3,6 +3,7 @@ import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { List, ListItem } from './index'
+import tokens from '@/styles/tokens.json'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 
@@ -67,25 +68,64 @@ describe('List', () => {
     })
   })
 
+  // List's spacing reaches items that don't set their own; an item's own spacing wins (#77)
   describe('Spacing Prop', () => {
+    const { layout } = tokens.semantic.spacing
+    const comfortable = `${layout.md} ${layout.lg}`
+    const compact = `${layout.sm} ${layout.md}`
+    // The padding is on the item's content row, the list item's first child
+    const paddingOf = (name: string) => screen.getByText(name).closest('[role="listitem"]')?.firstElementChild
+
     it('uses comfortable spacing by default', () => {
       render(
-        <List data-testid="comfortable-list">
+        <List>
           <ListItem primary="Item 1" />
         </List>
       )
-      const list = screen.getByTestId('comfortable-list')
-      expect(list).toBeInTheDocument()
+      expect(paddingOf('Item 1')).toHaveStyle({ padding: comfortable })
     })
 
-    it('applies compact spacing correctly', () => {
+    it('gives its items compact spacing', () => {
       render(
-        <List spacing="compact" data-testid="compact-list">
-          <ListItem primary="Item 1" spacing="compact" />
+        <List spacing="compact">
+          <ListItem primary="Item 1" />
+          <ListItem primary="Item 2" />
         </List>
       )
-      const list = screen.getByTestId('compact-list')
-      expect(list).toBeInTheDocument()
+      expect(paddingOf('Item 1')).toHaveStyle({ padding: compact })
+      expect(paddingOf('Item 2')).toHaveStyle({ padding: compact })
+    })
+
+    it('lets an item override the list', () => {
+      render(
+        <List spacing="compact">
+          <ListItem primary="Compact" />
+          <ListItem primary="Comfortable" spacing="comfortable" />
+        </List>
+      )
+      expect(paddingOf('Compact')).toHaveStyle({ padding: compact })
+      expect(paddingOf('Comfortable')).toHaveStyle({ padding: comfortable })
+    })
+
+    it('reaches only its own items, not ListItems inside an item\'s content', () => {
+      render(
+        <List spacing="compact">
+          <ListItem primary="Row" expandable expanded>
+            <ListItem primary="Inside the row" />
+            <List spacing="compact">
+              <ListItem primary="Nested list item" />
+            </List>
+          </ListItem>
+        </List>
+      )
+      expect(paddingOf('Row')).toHaveStyle({ padding: compact })
+      expect(paddingOf('Inside the row')).toHaveStyle({ padding: comfortable })
+      expect(paddingOf('Nested list item')).toHaveStyle({ padding: compact })
+    })
+
+    it('keeps comfortable spacing for an item outside a list', () => {
+      render(<ListItem primary="Alone" />)
+      expect(paddingOf('Alone')).toHaveStyle({ padding: comfortable })
     })
   })
 })
