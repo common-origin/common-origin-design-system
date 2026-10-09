@@ -27,7 +27,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
       type: "'absolute' | 'relative' | 'smart'",
       required: false,
       default: "'absolute'",
-      description: '"absolute" always uses formatString. "smart" shows "Today", "Yesterday" or the day name for dates this week (weeks start on Monday), and formats older dates with formatString, or "MMMM dd, yyyy" if none is given. "relative" currently behaves exactly like "smart".'
+      description: '"absolute" always uses formatString. "smart" shows "Today", "Yesterday" or the day name for dates this week (weeks start on Monday), and formats older dates with formatString, or "MMMM dd, yyyy" if none is given. "relative" is deprecated: it behaves exactly like "smart", so use "smart". It will be removed in 3.0.'
     },
     {
       name: 'data-testid',
@@ -135,20 +135,6 @@ export const dateFormatterDocs: ComponentDocumentation = {
         />
       )
     },
-    {
-      name: 'Relative Mode',
-      description: 'Relative mode currently gives the same output as smart mode.',
-      code: `<DateFormatter 
-  dateString={new Date().toISOString()} 
-  mode="relative" 
-/>`,
-      renderComponent: () => (
-        <DateFormatter 
-          dateString={new Date().toISOString()} 
-          mode="relative" 
-        />
-      )
-    }
   ],
 
   accessibility: {
@@ -166,7 +152,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
     'Uses design system typography and color tokens for consistency',
     'Dates are parsed with parseISO and formatted in the viewer\'s local time zone, so a UTC timestamp near midnight can show a different day',
     'Smart mode: "Today" or "Yesterday" for recent dates, the day name for dates this week (weeks start on Monday), and formatted dates for older ones',
-    'Relative mode: currently identical to smart mode',
+    'Relative mode: deprecated, because it is identical to smart mode. Use smart. Removed in 3.0',
     'Absolute mode: Always uses the formatString regardless of date recency'
   ],
 

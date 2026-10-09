@@ -13,7 +13,10 @@ export interface DateGroupProps {
   /** Children to render under the date header (typically transactions) */
   children: React.ReactNode
   
-  /** Format mode for date display */
+  /**
+   * Format mode for the date header, passed to DateFormatter's `mode`. `'relative'` is
+   * deprecated: it behaves exactly like `'smart'`, so use `'smart'` (#82).
+   */
   format?: DateFormatMode
   
   /** Whether to show total amount for this date group */

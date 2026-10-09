@@ -61,27 +61,27 @@ describe('DateFormatter', () => {
     })
   })
 
-  describe('Relative Date Formatting', () => {
-    it('shows "Today" for today\'s date in relative mode', () => {
+  describe('Smart Date Formatting', () => {
+    it('shows "Today" for today\'s date in smart mode', () => {
       const today = new Date().toISOString()
       const { getByText } = renderComponent({
         dateString: today,
-        mode: 'relative'
+        mode: 'smart'
       })
       expect(getByText('Today')).toBeInTheDocument()
     })
 
-    it('shows "Yesterday" for yesterday\'s date in relative mode', () => {
+    it('shows "Yesterday" for yesterday\'s date in smart mode', () => {
       const yesterday = new Date()
       yesterday.setDate(yesterday.getDate() - 1)
       const { getByText } = renderComponent({
         dateString: yesterday.toISOString(),
-        mode: 'relative'
+        mode: 'smart'
       })
       expect(getByText('Yesterday')).toBeInTheDocument()
     })
 
-    it('shows day name for dates within this week in relative mode', () => {
+    it('shows day name for dates within this week in smart mode', () => {
       const today = new Date()
       const dayOfWeek = today.getDay() // 0=Sun, 1=Mon, 2=Tue, ..., 6=Sat
       // With weekStartsOn: 1 (Monday), "this week" spans Mon–Sun.
@@ -98,11 +98,30 @@ describe('DateFormatter', () => {
       twoDaysAgo.setDate(twoDaysAgo.getDate() - 2)
       const { container } = renderComponent({
         dateString: twoDaysAgo.toISOString(),
-        mode: 'relative'
+        mode: 'smart'
       })
       // Should show a day name (Monday, Tuesday, etc.)
       const timeElement = container.querySelector('time')
       expect(timeElement?.textContent).toMatch(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$/)
+    })
+
+    // 'relative' is a deprecated alias for 'smart' until 3.0 (#82)
+    it('renders deprecated relative mode exactly like smart mode', () => {
+      const daysAgo = (n: number) => {
+        const date = new Date()
+        date.setDate(date.getDate() - n)
+        return date.toISOString()
+      }
+      const dates = [daysAgo(0), daysAgo(1), daysAgo(3), '2023-06-15T10:30:00.000Z']
+      dates.forEach((dateString) => {
+        const text = (mode: 'relative' | 'smart') => {
+          const { container, unmount } = renderComponent({ dateString, mode, formatString: 'MMM d, yyyy' })
+          const value = container.querySelector('time')?.textContent
+          unmount()
+          return value
+        }
+        expect(text('relative')).toBe(text('smart'))
+      })
     })
 
     it('uses absolute format for old dates in smart mode', () => {

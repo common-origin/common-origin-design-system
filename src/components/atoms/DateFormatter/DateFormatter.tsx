@@ -5,6 +5,10 @@ import tokens from '@/styles/tokens.json'
 
 const { semantic: { typography, color } } = tokens
 
+/**
+ * How DateFormatter shows a date. `'relative'` is deprecated: it has always behaved exactly like
+ * `'smart'`, so use `'smart'`. It keeps working until it is removed in 3.0 (#82).
+ */
 export type DateFormatMode = 'absolute' | 'relative' | 'smart'
 
 export interface DateFormatterProps {
@@ -12,7 +16,13 @@ export interface DateFormatterProps {
   dateString: string
   /** Format pattern (defaults to 'yyyy') */
   formatString?: string
-  /** Date formatting mode: 'absolute' uses formatString, 'relative' shows "Today"/"Yesterday", 'smart' combines both */
+  /**
+   * `'absolute'` always uses `formatString`. `'smart'` shows "Today", "Yesterday" or the day name
+   * for dates this week, and formats older dates with `formatString`.
+   * `'relative'` is deprecated: it behaves exactly like `'smart'`, so use `'smart'`. It keeps
+   * working until it is removed in 3.0 (#82).
+   * @default 'absolute'
+   */
   mode?: DateFormatMode
   /** Optional data-testid for testing */
   'data-testid'?: string
@@ -51,12 +61,9 @@ export const DateFormatter: React.FC<DateFormatterProps> = ({
   let displayText: string
   
   switch (mode) {
-    case 'relative':
-      // Always use relative labels (Today/Yesterday) or fall back to day name
-      displayText = formatDateSmart(date, formatString)
-      break
+    case 'relative': // Deprecated alias for 'smart', removed in 3.0 (#82)
     case 'smart':
-      // Smart mode: relative for recent, absolute for older
+      // Today, Yesterday or the day name for recent dates; formatted for older ones
       displayText = formatDateSmart(date, formatString)
       break
     case 'absolute':
