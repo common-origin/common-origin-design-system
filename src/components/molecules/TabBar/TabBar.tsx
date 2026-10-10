@@ -171,8 +171,8 @@ const StyledTab = styled.button.withConfig({
   
   /* Focus state */
   &:focus-visible {
-    outline: ${semantic.border.width.thick} solid ${semantic.color.border.strong};
-    outline-offset: ${semantic.spacing.layout.xs};
+    outline: ${semantic.border.focus};
+    outline-offset: ${semantic.border.focusOffset};
     z-index: 1;
   }
 

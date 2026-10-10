@@ -198,7 +198,7 @@ const StyledItemContent = styled.div.withConfig({
   
   /* Focus visible */
   &:focus-visible {
-    outline: ${semantic.border.width.thick} solid ${semantic.color.border.interactive};
+    outline: ${semantic.border.focus};
     outline-offset: ${semantic.border.focusOffset};
   }
 `

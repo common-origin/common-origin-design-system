@@ -100,7 +100,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
     'semantic.color.background.interactive-hover',
     'semantic.color.background.interactive-active',
     'semantic.color.border.default',
-    'semantic.color.border.interactive',
+    'semantic.border.focus',
     'semantic.color.icon.subdued',
     'semantic.typography.body',
     'semantic.typography.caption',
@@ -357,7 +357,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
           'semantic.color.background.interactive-hover',
           'semantic.color.background.interactive-active',
           'semantic.color.border.default',
-          'semantic.color.border.interactive'
+          'semantic.border.focus'
         ]
       },
       {

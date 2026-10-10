@@ -232,7 +232,7 @@ const StyledBox = styled.div.withConfig({
     }
     
     &:focus-visible {
-      outline: ${tokens.semantic.border.width.thick} solid ${tokens.semantic.color.border.interactive};
+      outline: ${tokens.semantic.border.focus};
       outline-offset: ${tokens.semantic.border.focusOffset};
     }
   `}
