@@ -21,10 +21,10 @@ export const tagDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: "'default' | 'interactive' | 'success' | 'warning' | 'error' | 'emphasis'",
+      type: "'default' | 'emphasis' | 'success' | 'warning' | 'error' | 'interactive' (last four deprecated)",
       required: false,
       default: "'default'",
-      description: 'Visual variant based on semantic meaning - determines background and text colors'
+      description: 'Tag is neutral metadata: default, or emphasis (near-black) to stand out. success, warning and error are deprecated, because status belongs to StatusLabel; interactive is deprecated, because a blue fill on a static label is decoration. They are removed in 3.0 (decision 0029).'
     },
     {
       name: 'border',
@@ -96,23 +96,15 @@ export const tagDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Semantic Variants',
-      description: 'Different tag variants for semantic meanings - interactive, success, warning, error, and emphasis states',
+      name: 'Variants',
+      description: 'Default and emphasis. For status (success, warning, error), use StatusLabel: the matching Tag variants are deprecated.',
       code: `<Stack direction="row" gap="md" alignItems="center">
   <Tag variant="default">Default</Tag>
-  <Tag variant="interactive">Interactive</Tag>
-  <Tag variant="success">Success</Tag>
-  <Tag variant="warning">Warning</Tag>
-  <Tag variant="error">Error</Tag>
   <Tag variant="emphasis">Emphasis</Tag>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="md" alignItems="center">
           <Tag variant="default">Default</Tag>
-          <Tag variant="interactive">Interactive</Tag>
-          <Tag variant="success">Success</Tag>
-          <Tag variant="warning">Warning</Tag>
-          <Tag variant="error">Error</Tag>
           <Tag variant="emphasis">Emphasis</Tag>
         </Stack>
       )
@@ -121,17 +113,17 @@ export const tagDocs: ComponentDocumentation = {
       name: 'Border Options',
       description: 'Tags with and without borders',
       code: `<Stack direction="row" gap="md" alignItems="center">
-  <Tag variant="interactive" border={true}>With Border</Tag>
-  <Tag variant="interactive" border={false}>Without Border</Tag>
-  <Tag variant="success" border={true}>With Border</Tag>
-  <Tag variant="success" border={false}>Without Border</Tag>
+  <Tag border={true}>With Border</Tag>
+  <Tag border={false}>Without Border</Tag>
+  <Tag variant="emphasis" border={true}>With Border</Tag>
+  <Tag variant="emphasis" border={false}>Without Border</Tag>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="md" alignItems="center">
-          <Tag variant="interactive" border={true}>With Border</Tag>
-          <Tag variant="interactive" border={false}>Without Border</Tag>
-          <Tag variant="success" border={true}>With Border</Tag>
-          <Tag variant="success" border={false}>Without Border</Tag>
+          <Tag border={true}>With Border</Tag>
+          <Tag border={false}>Without Border</Tag>
+          <Tag variant="emphasis" border={true}>With Border</Tag>
+          <Tag variant="emphasis" border={false}>Without Border</Tag>
         </Stack>
       )
     },
@@ -188,24 +180,6 @@ export const tagDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Status Tags',
-      description: 'Using tags to indicate status or state of items',
-      code: `<Stack direction="row" gap="md" alignItems="center">
-  <Tag variant="success">Published</Tag>
-  <Tag variant="warning">Draft</Tag>
-  <Tag variant="error">Archived</Tag>
-  <Tag variant="interactive">In Review</Tag>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="row" gap="md" alignItems="center">
-          <Tag variant="success">Published</Tag>
-          <Tag variant="warning">Draft</Tag>
-          <Tag variant="error">Archived</Tag>
-          <Tag variant="interactive">In Review</Tag>
-        </Stack>
-      )
-    },
-    {
       name: 'Category Tags',
       description: 'Using tags to categorize content',
       code: `<Stack direction="row" gap="sm" alignItems="center">
@@ -220,28 +194,6 @@ export const tagDocs: ComponentDocumentation = {
           <Tag>Development</Tag>
           <Tag>Documentation</Tag>
           <Tag>Testing</Tag>
-        </Stack>
-      )
-    },
-    {
-      name: 'All Variant Examples',
-      description: 'Comprehensive view of all variants',
-      code: `<Stack direction="row" gap="md" alignItems="center">
-  <Tag variant="default">Default</Tag>
-  <Tag variant="interactive">Interactive</Tag>
-  <Tag variant="success">Success</Tag>
-  <Tag variant="warning">Warning</Tag>
-  <Tag variant="error">Error</Tag>
-  <Tag variant="emphasis">Emphasis</Tag>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="row" gap="md" alignItems="center">
-          <Tag variant="default">Default</Tag>
-          <Tag variant="interactive">Interactive</Tag>
-          <Tag variant="success">Success</Tag>
-          <Tag variant="warning">Warning</Tag>
-          <Tag variant="error">Error</Tag>
-          <Tag variant="emphasis">Emphasis</Tag>
         </Stack>
       )
     }
