@@ -30,7 +30,7 @@ export const progressBarDocs: ComponentDocumentation = {
       type: "'default' | 'success' | 'error'",
       required: false,
       default: 'default',
-      description: 'Color variant indicating progress state or semantic meaning. Default (primary) for standard progress, success for completed tasks, error for failed operations or warning states.'
+      description: 'Fill colour. Default is near-black, like Slider (decision 0029), for standard progress; success for completed tasks; error for failed operations.'
     },
     {
       name: 'height',
@@ -70,8 +70,8 @@ export const progressBarDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.background.disabled',
-    'semantic.color.background.interactive',
+    'semantic.color.background.progressTrack',
+    'semantic.color.background.emphasis',
     'semantic.color.background.success',
     'semantic.color.background.error',
     'semantic.border.radius.xs',
@@ -476,7 +476,7 @@ Container
         description: 'Background track providing visual context for progress. Sets the maximum width/height and provides subtle background color.',
         tokens: [
           'semantic.color.background.progressTrack',
-          'semantic.spacing.borderRadius.small',
+          'semantic.border.radius.xs',
           'semantic.motion.transition.normal',
           'component.progressBar.sizes.sm.height',
           'component.progressBar.sizes.md.height',
@@ -488,10 +488,9 @@ Container
         name: 'Fill',
         description: 'Colored indicator showing current progress. Animates smoothly when value changes. Color varies by variant (default/success/error).',
         tokens: [
-          'semantic.color.core.primary',
-          'semantic.color.core.success',
-          'semantic.color.core.error',
-          'semantic.spacing.borderRadius.small',
+          'semantic.color.background.emphasis',
+          'semantic.color.background.success',
+          'semantic.color.background.error',
           'semantic.motion.transition.normal'
         ]
       }
