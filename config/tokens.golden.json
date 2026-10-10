@@ -1027,7 +1027,7 @@
     "color": {
       "text": {
         "default": "#212529",
-        "emphasis": "#343a40",
+        "emphasis": "#16191C",
         "subdued": "#495057",
         "inverse": "#ffffff",
         "disabled": "#adb5bd",
@@ -1085,7 +1085,7 @@
       },
       "icon": {
         "default": "#212529",
-        "emphasis": "#343a40",
+        "emphasis": "#16191C",
         "subdued": "#6c757d",
         "disabled": "#adb5bd",
         "inverse": "#ffffff",

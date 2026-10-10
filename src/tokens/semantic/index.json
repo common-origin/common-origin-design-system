@@ -539,8 +539,8 @@
           "$description": "Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.800}",
-          "$description": "Slightly softer near-black text for emphasis without full weight. 11.51:1 on white."
+          "$value": "{base.color.neutral.1000}",
+          "$description": "Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white."
         },
         "subdued": {
           "$value": "{base.color.neutral.700}",
@@ -753,8 +753,8 @@
           "$description": "Default icon colour, matching text.default. 15.43:1 on white."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.800}",
-          "$description": "Slightly softer near-black icon colour, matching text.emphasis."
+          "$value": "{base.color.neutral.1000}",
+          "$description": "Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029)."
         },
         "subdued": {
           "$value": "{base.color.neutral.600}",

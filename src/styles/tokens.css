@@ -419,7 +419,7 @@
   --co-semantic-spacing-layout-11xl: var(--co-base-spacing-24); /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
-  --co-semantic-color-text-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black text for emphasis without full weight. 11.51:1 on white. */
+  --co-semantic-color-text-emphasis: var(--co-base-color-neutral-1000); /** Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white. */
   --co-semantic-color-text-subdued: var(--co-base-color-neutral-700); /** Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page. */
   --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
   --co-semantic-color-text-disabled: var(--co-base-color-neutral-500); /** Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
@@ -467,7 +467,7 @@
   --co-semantic-color-border-warning: var(--co-base-color-orange-900); /** Orange border for warning outlines, such as an outlined warning Alert. */
   --co-semantic-color-border-none: var(--co-base-color-transparent); /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
   --co-semantic-color-icon-default: var(--co-base-color-neutral-900); /** Default icon colour, matching text.default. 15.43:1 on white. */
-  --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-800); /** Slightly softer near-black icon colour, matching text.emphasis. */
+  --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-1000); /** Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029). */
   --co-semantic-color-icon-subdued: var(--co-base-color-neutral-600); /** Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1). */
   --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500); /** Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled. */
   --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000); /** Icons on dark or coloured fills, matching text.inverse. */
