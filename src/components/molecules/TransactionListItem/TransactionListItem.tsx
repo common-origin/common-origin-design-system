@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '../../atoms/Avatar'
-import { Badge } from '../../atoms/Badge'
+import { Badge, type BadgeProps } from '../../atoms/Badge'
 import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { MoneyDisplay, MoneyDisplayVariant } from '../../atoms/MoneyDisplay'
 import { Icon, IconName } from '../../atoms/Icon'
@@ -147,7 +147,7 @@ const categoryConfig: Record<TransactionCategory, { color: CategoryColor; icon: 
 }
 
 // Map status to badge variant
-const statusToBadgeVariant: Record<TransactionStatus, 'default' | 'primary' | 'error' | 'warning' | 'success'> = {
+const statusToBadgeVariant: Record<TransactionStatus, NonNullable<BadgeProps['variant']>> = {
   completed: 'success',
   pending: 'warning',
   failed: 'error'

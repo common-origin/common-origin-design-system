@@ -93,14 +93,32 @@ describe('Badge', () => {
       expect(container.querySelector('[role="status"]')).toBeInTheDocument()
     })
 
-    it('renders primary variant', () => {
+    // accent is the blue highlight; primary is its deprecated alias until 3.0 (#169)
+    it('renders the accent variant in the interactive blue', () => {
       const { container } = render(
-        <Badge count={5} variant="primary">
+        <Badge count={5} variant="accent">
           <Button>Button</Button>
         </Badge>
       )
-      
-      expect(container.querySelector('[role="status"]')).toBeInTheDocument()
+      const indicator = container.querySelector('[role="status"]') as HTMLElement
+      expect(indicator).toHaveStyle({
+        backgroundColor: tokens.semantic.color.background.interactive,
+        color: tokens.semantic.color.text.inverse,
+      })
+    })
+
+    it('renders deprecated primary exactly like accent', () => {
+      const styleOf = (variant: 'accent' | 'primary') => {
+        const { container, unmount } = render(
+          <Badge count={5} variant={variant}>
+            <Button>Button</Button>
+          </Badge>
+        )
+        const { backgroundColor, color } = getComputedStyle(container.querySelector('[role="status"]') as HTMLElement)
+        unmount()
+        return { backgroundColor, color }
+      }
+      expect(styleOf('primary')).toEqual(styleOf('accent'))
     })
 
     it('renders error variant', () => {
