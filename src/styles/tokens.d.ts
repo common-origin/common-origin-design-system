@@ -1500,27 +1500,35 @@ export interface TokensSemanticColorFinancial {
 
 export interface TokensSemanticColorCategory {
   blue: string;
+  'blue-strong': string;
   'blue-emphasis': string;
   'blue-subtle': string;
   purple: string;
+  'purple-strong': string;
   'purple-emphasis': string;
   'purple-subtle': string;
   pink: string;
+  'pink-strong': string;
   'pink-emphasis': string;
   'pink-subtle': string;
   yellow: string;
+  'yellow-strong': string;
   'yellow-emphasis': string;
   'yellow-subtle': string;
   green: string;
+  'green-strong': string;
   'green-emphasis': string;
   'green-subtle': string;
   red: string;
+  'red-strong': string;
   'red-emphasis': string;
   'red-subtle': string;
   orange: string;
+  'orange-strong': string;
   'orange-emphasis': string;
   'orange-subtle': string;
   gray: string;
+  'gray-strong': string;
   'gray-emphasis': string;
   'gray-subtle': string;
   'blue-text': string;

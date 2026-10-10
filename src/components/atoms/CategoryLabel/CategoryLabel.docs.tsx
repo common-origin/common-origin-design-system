@@ -62,28 +62,28 @@ export const categoryLabelDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.color.category.blue', // Primary category color for general/default categories
-    'semantic.color.category.blue-emphasis', // High contrast background for filled blue labels
+    'semantic.color.category.blue-strong', // High contrast background for filled blue labels
     'semantic.color.category.blue-subtle', // Light background for minimal blue labels
     'semantic.color.category.purple', // Purple for entertainment and leisure categories
-    'semantic.color.category.purple-emphasis', // Filled purple label background
+    'semantic.color.category.purple-strong', // Filled purple label background
     'semantic.color.category.purple-subtle', // Minimal purple label background
     'semantic.color.category.pink', // Pink for personal and lifestyle categories
-    'semantic.color.category.pink-emphasis', // Filled pink label background
+    'semantic.color.category.pink-strong', // Filled pink label background
     'semantic.color.category.pink-subtle', // Minimal pink label background
     'semantic.color.category.yellow', // Yellow for transport and travel categories
-    'semantic.color.category.yellow-emphasis', // Filled yellow label background
+    'semantic.color.category.yellow-strong', // Filled yellow label background
     'semantic.color.category.yellow-subtle', // Minimal yellow label background
     'semantic.color.category.green', // Green for income and positive financial categories
-    'semantic.color.category.green-emphasis', // Filled green label background
+    'semantic.color.category.green-strong', // Filled green label background
     'semantic.color.category.green-subtle', // Minimal green label background
     'semantic.color.category.red', // Red for bills and required expenses
-    'semantic.color.category.red-emphasis', // Filled red label background
+    'semantic.color.category.red-strong', // Filled red label background
     'semantic.color.category.red-subtle', // Minimal red label background
     'semantic.color.category.orange', // Orange for food and dining categories
-    'semantic.color.category.orange-emphasis', // Filled orange label background
+    'semantic.color.category.orange-strong', // Filled orange label background
     'semantic.color.category.orange-subtle', // Minimal orange label background
     'semantic.color.category.gray', // Gray for uncategorized or neutral categories
-    'semantic.color.category.gray-emphasis', // Filled gray label background
+    'semantic.color.category.gray-strong', // Filled gray label background
     'semantic.color.category.gray-subtle', // Minimal gray label background
     'semantic.color.category.blue-text', // blue text on white or blue-subtle (outlined, minimal)
     'semantic.color.category.purple-text', // purple text on white or purple-subtle (outlined, minimal)
@@ -344,14 +344,14 @@ export const categoryLabelDocs: ComponentDocumentation = {
           'semantic.color.category.red',
           'semantic.color.category.orange',
           'semantic.color.category.gray',
-          'semantic.color.category.blue-emphasis',
-          'semantic.color.category.purple-emphasis',
-          'semantic.color.category.pink-emphasis',
-          'semantic.color.category.yellow-emphasis',
-          'semantic.color.category.green-emphasis',
-          'semantic.color.category.red-emphasis',
-          'semantic.color.category.orange-emphasis',
-          'semantic.color.category.gray-emphasis',
+          'semantic.color.category.blue-strong',
+          'semantic.color.category.purple-strong',
+          'semantic.color.category.pink-strong',
+          'semantic.color.category.yellow-strong',
+          'semantic.color.category.green-strong',
+          'semantic.color.category.red-strong',
+          'semantic.color.category.orange-strong',
+          'semantic.color.category.gray-strong',
           'semantic.color.category.blue-subtle',
           'semantic.color.category.purple-subtle',
           'semantic.color.category.pink-subtle',
