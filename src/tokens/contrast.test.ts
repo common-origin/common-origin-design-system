@@ -30,6 +30,13 @@ describe('token contrast', () => {
     expect(contrast(input.default.borderColor, background.default)).toBeGreaterThanOrEqual(3)
   })
 
+  // Emphasis is stronger than default, never softer (decision 0029)
+  it('makes emphasis text and icons darker than default', () => {
+    const { text, icon } = tokens.semantic.color
+    expect(luminance(text.emphasis)).toBeLessThan(luminance(text.default))
+    expect(luminance(icon.emphasis)).toBeLessThan(luminance(icon.default))
+  })
+
   // Firefox renders placeholders at 0.54 opacity by default, which would cut that contrast to about
   // 2.6:1, so every ::placeholder rule in the components resets it
   it('sets opacity: 1 in every ::placeholder rule', () => {
