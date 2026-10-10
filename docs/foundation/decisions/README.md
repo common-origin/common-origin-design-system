@@ -32,6 +32,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0026](0026-slider-track-stays-light.md) | Slider's unfilled track stays light on `background.progressTrack`; a disabled slider uses `icon.disabled` | Accepted | 2026-10-08 |
 | [0027](0027-iconbutton-follows-button.md) | IconButton uses Button's colours and motion in every variant and state; its own colour tokens are deprecated | Accepted | 2026-10-08 |
 | [0028](0028-icons-decorative-by-default.md) | Icons are decorative by default; a meaningful icon gets a human-readable `aria-label`; no internal icon names are announced | Accepted | 2026-10-09 |
+| [0029](0029-accent-emphasis-audit.md) | Accent and emphasis audit: emphasis is stronger than default, focus is grey and selection light blue, one focus ring, Badge `accent`, Tag keeps `default` and `emphasis` | Accepted | 2026-10-10 |
 
 ## Template
 
