@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import styled from 'styled-components'
 import { useState, useMemo, useCallback } from 'react'
 import {
@@ -214,6 +215,16 @@ const SubComponentGroup = styled.div`
   display: flex;
   flex-direction: column;
   padding-left: ${spacing.layout.md};
+`
+
+const GuideLink = styled(Link)`
+  font: ${tokens.semantic.typography.body};
+  color: ${tokens.semantic.color.text.interactive};
+  text-decoration: underline;
+
+  &:hover {
+    color: ${tokens.semantic.color.text['interactive-hover']};
+  }
 `
 
 const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Layout', 'Components']
@@ -579,9 +590,17 @@ export default function Components() {
                           {activeComponentData.description}
                         </Typography>
                       </Box>
-                      <Box mt="lg">
-                        
-                      </Box>
+                      {activeComponentData.guides && activeComponentData.guides.length > 0 && (
+                        <Box mt="lg">
+                          <Stack direction="row" gap="md" wrap>
+                            {activeComponentData.guides.map((guide) => (
+                              <GuideLink key={guide.href} href={guide.href}>
+                                Guide: {guide.label} →
+                              </GuideLink>
+                            ))}
+                          </Stack>
+                        </Box>
+                      )}
                     </Box>
 
                     <ComponentSection>

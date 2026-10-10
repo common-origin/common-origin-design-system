@@ -3,7 +3,7 @@ import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { Badge } from './Badge'
 import { Button } from '../Button'
 import { IconButton } from '../IconButton'
-import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
+import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const badgeDocs: ComponentDocumentation = {
   id: 'badge',
@@ -331,5 +331,6 @@ export const badgeDocs: ComponentDocumentation = {
     ]
   },
 
+  guides: [labelGuide],
   notes: [...labelGuideNotes]
 }

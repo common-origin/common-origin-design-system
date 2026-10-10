@@ -3,7 +3,7 @@ import { Tag } from './Tag'
 import { Stack } from '../Stack/Stack'
 import { Typography } from '../Typography'
 import { StatusLabel } from '../StatusLabel'
-import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
+import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const tagDocs: ComponentDocumentation = {
   id: 'tag',
@@ -260,5 +260,6 @@ export const tagDocs: ComponentDocumentation = {
     ]
   },
 
+  guides: [labelGuide],
   notes: [...labelGuideNotes]
 }

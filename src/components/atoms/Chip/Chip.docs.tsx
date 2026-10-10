@@ -5,7 +5,7 @@ import { InputChip } from './InputChip'
 import { BooleanChip } from './BooleanChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
-import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
+import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 // Stateful example comparing the three chip types
 const ChipTypesExample: React.FC = () => {
@@ -259,6 +259,7 @@ export const chipDocs: ComponentDocumentation = {
     focusManagement: 'A static chip does not take focus.'
   },
 
+  guides: [labelGuide],
   notes: [
     'Chip types (decision 0016): Chip for a static label, BooleanChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips keep their rounded 12px radius while Buttons use 4px, so the shapes signal different jobs.',
     'Upcoming rename in 3.0: FilterChip (today a deprecated alias of InputChip) becomes the toggle chip, and BooleanChip is removed. Migrate in order: replace FilterChip with InputChip now, then BooleanChip with FilterChip when you upgrade to 3.0. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changes meaning.',

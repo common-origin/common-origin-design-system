@@ -1,6 +1,6 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { StatusLabel } from './StatusLabel'
-import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
+import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const statusLabelDocs: ComponentDocumentation = {
   id: 'status-label',
@@ -289,6 +289,7 @@ export const statusLabelDocs: ComponentDocumentation = {
     ]
   },
 
+  guides: [labelGuide],
   notes: [
     'Renamed from StatusBadge in 2.16 (decision 0018). StatusBadge still works as a deprecated alias and is removed in 3.0. Migrate by renaming: status, size, label and liveRegion are unchanged. showIcon={false} is no longer possible.',
     ...labelGuideNotes

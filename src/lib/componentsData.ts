@@ -94,6 +94,7 @@ export interface ComponentData {
     }>
   }
   notes?: string[]
+  guides?: { label: string; href: string }[]
 }
 
 // Helper function to convert new documentation format to legacy format
@@ -121,7 +122,8 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
     })),
     accessibility: docs.accessibility,
     anatomy: docs.anatomy,
-    notes: docs.notes
+    notes: docs.notes,
+    guides: docs.guides
   }
 }
 

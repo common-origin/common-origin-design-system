@@ -1,6 +1,6 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { CategoryLabel } from './CategoryLabel'
-import { labelGuideNotes } from '../../../lib/docgen/labelGuide'
+import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 
 export const categoryLabelDocs: ComponentDocumentation = {
   id: 'category-label',
@@ -395,6 +395,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
     ]
   },
 
+  guides: [labelGuide],
   notes: [
     'Renamed from CategoryBadge in 2.16 (decision 0018). CategoryBadge still works as a deprecated alias and is removed in 3.0. Migrate by renaming, with size="small" → "medium" and size="medium" (or no size) → "large". color and variant are unchanged.',
     ...labelGuideNotes
