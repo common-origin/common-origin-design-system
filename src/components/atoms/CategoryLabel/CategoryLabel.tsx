@@ -125,7 +125,7 @@ const StyledCategoryLabel = styled.span.withConfig({
   /* Variant + Color styles */
   background-color: ${({ $color, $variant }) => {
     if ($variant === 'filled') {
-      return category[`${$color}-emphasis` as keyof typeof category]
+      return category[`${$color}-strong` as keyof typeof category]
     }
     if ($variant === 'outlined') {
       return 'transparent'

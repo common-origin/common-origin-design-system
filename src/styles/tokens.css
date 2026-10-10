@@ -484,28 +484,28 @@
   --co-semantic-color-financial-pending: var(--co-base-color-orange-600); /** Color for pending or processing financial transactions */
   --co-semantic-color-financial-neutral: var(--co-base-color-neutral-600); /** Neutral color for informational monetary amounts */
   --co-semantic-color-category-blue: var(--co-base-color-blue-700); /** Blue category color for general/miscellaneous */
-  --co-semantic-color-category-blue-emphasis: var(--co-base-color-blue-900); /** Emphasized blue for filled variants */
+  --co-semantic-color-category-blue-strong: var(--co-base-color-blue-900); /** Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-blue-subtle: var(--co-base-color-blue-100); /** Subtle blue background */
   --co-semantic-color-category-purple: var(--co-base-color-purple-700); /** Purple category color for entertainment */
-  --co-semantic-color-category-purple-emphasis: var(--co-base-color-purple-900); /** Emphasized purple for filled variants */
+  --co-semantic-color-category-purple-strong: var(--co-base-color-purple-900); /** Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-purple-subtle: var(--co-base-color-purple-100); /** Subtle purple background */
   --co-semantic-color-category-pink: var(--co-base-color-pink-700); /** Pink category color for health/wellness */
-  --co-semantic-color-category-pink-emphasis: var(--co-base-color-pink-900); /** Emphasized pink for filled variants */
+  --co-semantic-color-category-pink-strong: var(--co-base-color-pink-900); /** Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-pink-subtle: var(--co-base-color-pink-100); /** Subtle pink background */
   --co-semantic-color-category-yellow: var(--co-base-color-yellow-700); /** Yellow category color for utilities */
-  --co-semantic-color-category-yellow-emphasis: var(--co-base-color-yellow-900); /** Emphasized yellow for filled variants */
+  --co-semantic-color-category-yellow-strong: var(--co-base-color-yellow-900); /** Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-yellow-subtle: var(--co-base-color-yellow-100); /** Subtle yellow background */
   --co-semantic-color-category-green: var(--co-base-color-green-700); /** Green category color for income */
-  --co-semantic-color-category-green-emphasis: var(--co-base-color-green-900); /** Emphasized green for filled variants */
+  --co-semantic-color-category-green-strong: var(--co-base-color-green-900); /** Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-green-subtle: var(--co-base-color-green-100); /** Subtle green background */
   --co-semantic-color-category-red: var(--co-base-color-red-700); /** Red category color for expenses */
-  --co-semantic-color-category-red-emphasis: var(--co-base-color-red-900); /** Emphasized red for filled variants */
+  --co-semantic-color-category-red-strong: var(--co-base-color-red-900); /** Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-red-subtle: var(--co-base-color-red-100); /** Subtle red background */
   --co-semantic-color-category-orange: var(--co-base-color-orange-700); /** Orange category color for food & dining */
-  --co-semantic-color-category-orange-emphasis: var(--co-base-color-orange-900); /** Emphasized orange for filled variants */
+  --co-semantic-color-category-orange-strong: var(--co-base-color-orange-900); /** Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-orange-subtle: var(--co-base-color-orange-100); /** Subtle orange background */
   --co-semantic-color-category-gray: var(--co-base-color-neutral-700); /** Gray category color for uncategorized */
-  --co-semantic-color-category-gray-emphasis: var(--co-base-color-neutral-900); /** Emphasized gray for filled variants */
+  --co-semantic-color-category-gray-strong: var(--co-base-color-neutral-900); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-gray-subtle: var(--co-base-color-neutral-200); /** Subtle gray background */
   --co-semantic-color-category-blue-text: var(--co-base-color-blue-900); /** Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
   --co-semantic-color-category-purple-text: var(--co-base-color-purple-900); /** Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
@@ -726,6 +726,14 @@
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-dimension-12); /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
   --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-dimension-15); /** Left indent of expanded content in comfortable rows (60px). */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-dimension-18); /** Minimum row height (72px). */
+  --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.blue-strong. Removed in 3.0. */
+  --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.purple-strong. Removed in 3.0. */
+  --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.pink-strong. Removed in 3.0. */
+  --co-semantic-color-category-yellow-emphasis: var(--co-semantic-color-category-yellow-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.yellow-strong. Removed in 3.0. */
+  --co-semantic-color-category-green-emphasis: var(--co-semantic-color-category-green-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.green-strong. Removed in 3.0. */
+  --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.red-strong. Removed in 3.0. */
+  --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.orange-strong. Removed in 3.0. */
+  --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.gray-strong. Removed in 3.0. */
   --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** Display text: 5rem, weight 700. The largest heading, for hero titles. */
   --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: 3rem, weight 700. The page title. */
   --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: 2rem, weight 700. Major sections. */

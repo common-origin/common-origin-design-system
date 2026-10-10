@@ -824,9 +824,13 @@
           "$value": "{base.color.blue.700}",
           "$description": "Blue category color for general/miscellaneous"
         },
-        "blue-emphasis": {
+        "blue-strong": {
           "$value": "{base.color.blue.900}",
-          "$description": "Emphasized blue for filled variants"
+          "$description": "Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "blue-emphasis": {
+          "$value": "{semantic.color.category.blue-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.blue-strong. Removed in 3.0."
         },
         "blue-subtle": {
           "$value": "{base.color.blue.100}",
@@ -836,9 +840,13 @@
           "$value": "{base.color.purple.700}",
           "$description": "Purple category color for entertainment"
         },
-        "purple-emphasis": {
+        "purple-strong": {
           "$value": "{base.color.purple.900}",
-          "$description": "Emphasized purple for filled variants"
+          "$description": "Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "purple-emphasis": {
+          "$value": "{semantic.color.category.purple-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.purple-strong. Removed in 3.0."
         },
         "purple-subtle": {
           "$value": "{base.color.purple.100}",
@@ -848,9 +856,13 @@
           "$value": "{base.color.pink.700}",
           "$description": "Pink category color for health/wellness"
         },
-        "pink-emphasis": {
+        "pink-strong": {
           "$value": "{base.color.pink.900}",
-          "$description": "Emphasized pink for filled variants"
+          "$description": "Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "pink-emphasis": {
+          "$value": "{semantic.color.category.pink-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.pink-strong. Removed in 3.0."
         },
         "pink-subtle": {
           "$value": "{base.color.pink.100}",
@@ -860,9 +872,13 @@
           "$value": "{base.color.yellow.700}",
           "$description": "Yellow category color for utilities"
         },
-        "yellow-emphasis": {
+        "yellow-strong": {
           "$value": "{base.color.yellow.900}",
-          "$description": "Emphasized yellow for filled variants"
+          "$description": "Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "yellow-emphasis": {
+          "$value": "{semantic.color.category.yellow-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.yellow-strong. Removed in 3.0."
         },
         "yellow-subtle": {
           "$value": "{base.color.yellow.100}",
@@ -872,9 +888,13 @@
           "$value": "{base.color.green.700}",
           "$description": "Green category color for income"
         },
-        "green-emphasis": {
+        "green-strong": {
           "$value": "{base.color.green.900}",
-          "$description": "Emphasized green for filled variants"
+          "$description": "Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "green-emphasis": {
+          "$value": "{semantic.color.category.green-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.green-strong. Removed in 3.0."
         },
         "green-subtle": {
           "$value": "{base.color.green.100}",
@@ -884,9 +904,13 @@
           "$value": "{base.color.red.700}",
           "$description": "Red category color for expenses"
         },
-        "red-emphasis": {
+        "red-strong": {
           "$value": "{base.color.red.900}",
-          "$description": "Emphasized red for filled variants"
+          "$description": "Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "red-emphasis": {
+          "$value": "{semantic.color.category.red-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.red-strong. Removed in 3.0."
         },
         "red-subtle": {
           "$value": "{base.color.red.100}",
@@ -896,9 +920,13 @@
           "$value": "{base.color.orange.700}",
           "$description": "Orange category color for food & dining"
         },
-        "orange-emphasis": {
+        "orange-strong": {
           "$value": "{base.color.orange.900}",
-          "$description": "Emphasized orange for filled variants"
+          "$description": "Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "orange-emphasis": {
+          "$value": "{semantic.color.category.orange-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.orange-strong. Removed in 3.0."
         },
         "orange-subtle": {
           "$value": "{base.color.orange.100}",
@@ -908,9 +936,13 @@
           "$value": "{base.color.neutral.700}",
           "$description": "Gray category color for uncategorized"
         },
-        "gray-emphasis": {
+        "gray-strong": {
           "$value": "{base.color.neutral.900}",
-          "$description": "Emphasized gray for filled variants"
+          "$description": "Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+        },
+        "gray-emphasis": {
+          "$value": "{semantic.color.category.gray-strong}",
+          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.gray-strong. Removed in 3.0."
         },
         "gray-subtle": {
           "$value": "{base.color.neutral.200}",

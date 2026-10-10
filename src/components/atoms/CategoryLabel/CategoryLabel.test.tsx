@@ -249,7 +249,7 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
   const { category, text } = tokens.semantic.color
   const colors: CategoryColor[] = ['blue', 'purple', 'pink', 'yellow', 'green', 'red', 'orange', 'gray']
   const backgrounds: Record<CategoryVariant, (c: CategoryColor) => string> = {
-    filled: (c) => category[`${c}-emphasis`],
+    filled: (c) => category[`${c}-strong`],
     outlined: () => '#ffffff',
     minimal: (c) => category[`${c}-subtle`],
   }
