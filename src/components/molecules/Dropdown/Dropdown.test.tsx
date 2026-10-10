@@ -4,13 +4,15 @@ import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import '@testing-library/jest-dom'
 import { Dropdown } from './Dropdown'
+import tokens from '@/styles/tokens.json'
 
 // Extend Jest matchers for accessibility testing
 expect.extend(toHaveNoViolations)
 
 // Mock the Icon component
 jest.mock('../../atoms/Icon', () => ({
-  Icon: ({ name }: { name: string }) => <span data-testid={`icon-${name}`}>{name}</span>
+  // Icons are decorative by default (#85), so the mock is hidden from the accessibility tree too
+  Icon: ({ name }: { name: string }) => <span data-testid={`icon-${name}`} aria-hidden="true">{name}</span>
 }))
 
 describe('Dropdown Component', () => {
@@ -587,5 +589,38 @@ describe('Dropdown Component', () => {
   it('passes data-testid to the root element', () => {
     render(<Dropdown {...defaultProps} data-testid="dropdown" />)
     expect(screen.getByTestId('dropdown')).toContainElement(screen.getByRole('button'))
+  })
+})
+
+// Focus is grey; only the selected option is light blue, with a checkmark (decisions 0016, 0029, #168)
+describe('Dropdown option states', () => {
+  const { background, text } = tokens.semantic.color
+  const options = [
+    { id: 'option1', label: 'Option 1' },
+    { id: 'option2', label: 'Option 2' },
+    { id: 'option3', label: 'Option 3' }
+  ]
+  const optionNamed = (name: string) => screen.getByRole('option', { name: new RegExp(name) })
+
+  it('shows the selected option in light blue with a checkmark, and focus in grey', async () => {
+    const user = userEvent.setup()
+    render(<Dropdown options={options} value="option2" onChange={jest.fn()} />)
+    await user.click(screen.getByRole('button'))
+
+    // Opening focuses the selected option, which darkens like a hovered selected option
+    expect(optionNamed('Option 2')).toHaveStyle({
+      backgroundColor: background['interactive-subtle-hover'],
+      color: text['interactive-hover'],
+    })
+    expect(optionNamed('Option 2')).toContainElement(screen.getByTestId('icon-check'))
+    expect(screen.getAllByTestId('icon-check')).toHaveLength(1)
+
+    await user.keyboard('{ArrowDown}')
+    expect(optionNamed('Option 3')).toHaveStyle({ backgroundColor: background.surface })
+    expect(optionNamed('Option 2')).toHaveStyle({
+      backgroundColor: background['interactive-subtle'],
+      color: text.interactive,
+    })
+    expect(getComputedStyle(optionNamed('Option 1')).backgroundColor).toMatch(/^(transparent|rgba\(0, 0, 0, 0\))$/)
   })
 })

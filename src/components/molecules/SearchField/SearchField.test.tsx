@@ -1,6 +1,7 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { SearchField, type SearchFieldProps, type Suggestion } from './SearchField'
+import tokens from '@/styles/tokens.json'
 
 describe('SearchField', () => {
   const mockSuggestions: Suggestion[] = [
@@ -615,5 +616,28 @@ describe('SearchField', () => {
       const input = screen.getByRole('combobox')
       expect(input).toHaveValue(specialValue)
     })
+  })
+})
+
+// The highlighted suggestion has keyboard focus, which is grey, not the light-blue selected
+// treatment (decision 0029, #168)
+describe('SearchField highlighted suggestion', () => {
+  it('shows the highlighted suggestion in grey', async () => {
+    render(<SearchField value="ap" onChange={() => {}} suggestions={[{ id: 'apple', label: 'Apple' }, { id: 'apricot', label: 'Apricot' }]} />)
+    const input = screen.getByRole('combobox')
+    fireEvent.focus(input)
+    await waitFor(() => expect(screen.getByRole('listbox')).toBeInTheDocument())
+    fireEvent.keyDown(input, { key: 'ArrowDown' })
+
+    const [highlighted, other] = screen.getAllByRole('option')
+    expect(highlighted).toHaveAttribute('aria-selected', 'true')
+    const row = (option: HTMLElement) => getComputedStyle(option.firstElementChild as HTMLElement).backgroundColor
+    const css = (value: string) => {
+      const probe = document.createElement('div')
+      probe.style.color = value
+      return probe.style.color
+    }
+    expect(row(highlighted)).toBe(css(tokens.semantic.color.background.surface))
+    expect(row(other)).not.toBe(css(tokens.semantic.color.background.surface))
   })
 })

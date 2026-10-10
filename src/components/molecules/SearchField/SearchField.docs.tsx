@@ -452,7 +452,7 @@ useEffect(() => {
       },
       {
         name: 'Suggestion Item',
-        description: 'ListItem component with role="option", spacing="compact", showing primary text and optional secondary description. Includes hover and selected states.',
+        description: 'ListItem component with role="option", spacing="compact", showing primary text and optional secondary description. The highlighted (keyboard-focused) suggestion is grey, background.surface, not the light-blue selected treatment (decision 0029).',
         tokens: []
       },
       {
