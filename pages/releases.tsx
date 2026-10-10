@@ -228,7 +228,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 										</Typography>
 										<Stack direction="row" gap="md" wrap>
 											<Chip>{releasesData.releases.length} Total Releases</Chip>
-											<Chip variant="emphasis">
+											<Chip>
 												Latest: v{releasesData.releases[0]?.version}
 											</Chip>
 										</Stack>
