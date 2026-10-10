@@ -54,6 +54,8 @@ export interface ComponentDocumentation {
   accessibility?: AccessibilityInfo
   anatomy?: AnatomyInfo
   notes?: string[]
+  // Docs-site guides that cover this component alongside others, linked from its page
+  guides?: { label: string; href: string }[]
   deprecatedProps?: string[]
   migrationGuide?: string
   
