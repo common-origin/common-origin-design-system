@@ -15,7 +15,10 @@ export interface TagProps {
   children: React.ReactNode
   
   /**
-   * Visual variant of the tag based on semantic meaning
+   * Visual variant. Tag is neutral metadata: use `default`, or `emphasis` (near-black) to make a
+   * tag stand out. `success`, `warning` and `error` are deprecated (status belongs to
+   * `StatusLabel`), and so is `interactive` (a blue fill on a static label is decoration).
+   * They keep working until they are removed in 3.0 (decision 0029).
    * @default 'default'
    */
   variant?: 'default' | 'interactive' | 'success' | 'warning' | 'error' | 'emphasis'
