@@ -177,8 +177,8 @@ const StyledThumb = styled.div<{
   }
   
   &:focus-visible {
-    outline: ${semantic.border.width.thick} solid ${semantic.color.border.interactive};
-    outline-offset: ${semantic.spacing.layout.xs};
+    outline: ${semantic.border.focus};
+    outline-offset: ${semantic.border.focusOffset};
   }
   
   &:active:not([aria-disabled="true"]) {

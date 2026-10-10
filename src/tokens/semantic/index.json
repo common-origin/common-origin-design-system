@@ -192,7 +192,7 @@
       "focus": {
         "$type": "border",
         "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
-        "$description": "The standard focus ring: 2px solid near-black, used with border.focusOffset for visible keyboard focus (P2). Some components draw a blue ring instead, from border.width.thick and color.border.interactive (Box, ListItem, Slider, TransactionListItem)."
+        "$description": "The focus ring: 2px solid near-black, always used with border.focusOffset for visible keyboard focus (P2). Every component draws this ring; there is no blue focus ring (decision 0029)."
       },
       "tooltip": {
         "$type": "border",

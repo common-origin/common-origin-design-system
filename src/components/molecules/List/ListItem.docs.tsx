@@ -171,7 +171,7 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.border.radius.sm',
     'semantic.border.width.thick',
     'semantic.border.focusOffset',
-    'semantic.color.border.interactive',
+    'semantic.border.focus',
     'semantic.color.background.subtle',
     'semantic.color.background.interactive-subtle',
     'semantic.color.text.error',

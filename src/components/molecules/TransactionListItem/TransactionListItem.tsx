@@ -77,7 +77,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
     }
     
     &:focus-visible {
-      outline: ${tokens.semantic.border.width.thick} solid ${tokens.semantic.color.border.interactive};
+      outline: ${tokens.semantic.border.focus};
       outline-offset: calc(-1 * ${tokens.semantic.border.focusOffset});
     }
   `}

@@ -193,7 +193,7 @@ const StyledCloseButton = styled.button`
   
   &:focus-visible {
     outline: ${border.focus};
-    outline-offset: ${layout.xs};
+    outline-offset: ${border.focusOffset};
   }
 `
 

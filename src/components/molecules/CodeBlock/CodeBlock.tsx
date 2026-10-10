@@ -57,6 +57,13 @@ const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
       ? 'max-height: 10000px;'
       : `max-height: ${$maxHeight}px;`
   }}
+
+  /* The block is focusable so keyboard users can scroll it; it shows the system focus ring
+     (decision 0029) */
+  &:focus-visible {
+    outline: ${border.focus};
+    outline-offset: ${border.focusOffset};
+  }
 `
 
 const CodeBlockWrapper = styled.div`
