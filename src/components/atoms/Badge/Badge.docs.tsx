@@ -34,10 +34,10 @@ export const badgeDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: '"default" | "primary" | "error" | "warning" | "success"',
+      type: '"default" | "accent" | "error" | "warning" | "success" | "primary" (deprecated)',
       required: false,
       default: '"default"',
-      description: 'Visual style variant affecting background color and semantic meaning'
+      description: 'Visual style. "accent" is the blue highlight. "primary" is a deprecated alias for "accent" (Button\'s primary is near-black, decision 0029) and will be removed in 3.0.'
     },
     {
       name: 'dot',
@@ -129,8 +129,8 @@ export const badgeDocs: ComponentDocumentation = {
   <Badge count={3} variant="default">
     <Button>Default</Button>
   </Badge>
-  <Badge count={5} variant="primary">
-    <Button>Primary</Button>
+  <Badge count={5} variant="accent">
+    <Button>Accent</Button>
   </Badge>
   <Badge count={2} variant="error">
     <Button>Error</Button>
@@ -147,8 +147,8 @@ export const badgeDocs: ComponentDocumentation = {
           <Badge count={3} variant="default">
             <Button>Default</Button>
           </Badge>
-          <Badge count={5} variant="primary">
-            <Button>Primary</Button>
+          <Badge count={5} variant="accent">
+            <Button>Accent</Button>
           </Badge>
           <Badge count={2} variant="error">
             <Button>Error</Button>
@@ -200,7 +200,7 @@ export const badgeDocs: ComponentDocumentation = {
   <Badge dot variant="error">
     <IconButton iconName="message" variant="secondary" aria-label="Messages" />
   </Badge>
-  <Badge count={12} variant="primary">
+  <Badge count={12} variant="accent">
     <IconButton iconName="message" variant="secondary" aria-label="Alerts" />
   </Badge>
 </div>`,
@@ -212,7 +212,7 @@ export const badgeDocs: ComponentDocumentation = {
           <Badge dot variant="error">
             <IconButton iconName="message" variant="secondary" aria-label="Messages" />
           </Badge>
-          <Badge count={12} variant="primary">
+          <Badge count={12} variant="accent">
             <IconButton iconName="message" variant="secondary" aria-label="Alerts" />
           </Badge>
         </div>

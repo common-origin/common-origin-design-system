@@ -16,8 +16,13 @@ export interface BadgeProps {
   count?: number
   /** Maximum number to display before showing "99+" */
   max?: number
-  /** Visual variant of the badge */
-  variant?: 'default' | 'primary' | 'error' | 'warning' | 'success'
+  /**
+   * Visual variant of the badge. `accent` is the blue highlight. `primary` is a deprecated alias
+   * for `accent`, because Button's `primary` is near-black (decision 0029). It keeps working
+   * until it is removed in 3.0.
+   * @default 'default'
+   */
+  variant?: 'default' | 'accent' | 'primary' | 'error' | 'warning' | 'success'
   /** Show only a dot indicator instead of count */
   dot?: boolean
   /** Screen reader label for the badge */
@@ -71,7 +76,8 @@ const BadgeIndicator = styled.span.withConfig({
   
   ${props => {
     switch (props.$variant) {
-      case 'primary':
+      case 'accent':
+      case 'primary': // Deprecated alias for 'accent', removed in 3.0 (#169)
         return `
           background-color: ${color.background.interactive};
           color: ${color.text.inverse};

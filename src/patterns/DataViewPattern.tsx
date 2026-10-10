@@ -506,7 +506,7 @@ export const DataViewPattern: React.FC = () => {
         {/* Filter Row */}
         <FilterRow>
           <FilterGroup>
-						<Badge count={appliedFilters.length} variant="primary">
+						<Badge count={appliedFilters.length} variant="accent">
 							<Button 
 								variant="primary" 
 								size="small"
