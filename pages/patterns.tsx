@@ -10,6 +10,8 @@ import {
   Layout,
   Navigation,
   Stack,
+  StatusLabel,
+  Tag,
   Typography,
 } from '../src/page-components'
 import { patternsData, type PatternMetadata } from '../src/patterns'
@@ -63,30 +65,12 @@ export default function Patterns() {
     setActivePattern(patternId)
   }
 
-  const getComplexityColor = (complexity: PatternMetadata['complexity']): 'default' | 'light' | 'emphasis' => {
-    switch (complexity) {
-      case 'Simple':
-        return 'emphasis'
-      case 'Moderate':
-        return 'light'
-      case 'Complex':
-        return 'default'
-      default:
-        return 'default'
-    }
-  }
-
-  const getStatusColor = (status: PatternMetadata['status']): 'default' | 'light' | 'emphasis' => {
-    switch (status) {
-      case 'Complete':
-        return 'emphasis'
-      case 'Review':
-        return 'light'
-      case 'Draft':
-        return 'default'
-      default:
-        return 'default'
-    }
+  // A pattern's status is a status, so it uses StatusLabel with the pattern's own wording
+  // (decisions 0018 and 0029); category and complexity are neutral metadata, so they're Tags
+  const statusTypes: Record<PatternMetadata['status'], 'completed' | 'processing' | 'pending'> = {
+    Complete: 'completed',
+    Review: 'processing',
+    Draft: 'pending',
   }
 
   if (!activePatternData) {
@@ -140,24 +124,14 @@ export default function Patterns() {
                   <Stack gap="md" direction="column">
                     <Typography variant="h1">{activePatternData.name}</Typography>
                     <Stack gap="sm" direction="row" alignItems="center" wrap>
-											<Chip 
-                        variant="dark" 
-                        size="medium"
-                      >
-                        {activePatternData.category}
-                      </Chip>
-                      <Chip 
-                        variant={getComplexityColor(activePatternData.complexity)} 
-                        size="medium"
-                      >
-                        {activePatternData.complexity}
-                      </Chip>
-                      <Chip 
-                        variant={getStatusColor(activePatternData.status)} 
-                        size="medium"
-                      >
-                        {activePatternData.status}
-                      </Chip>
+                      <Tag variant="emphasis">{activePatternData.category}</Tag>
+                      <Tag>{activePatternData.complexity}</Tag>
+                      <StatusLabel
+                        status={statusTypes[activePatternData.status]}
+                        label={activePatternData.status}
+                        aria-label={`Status: ${activePatternData.status}`}
+                        liveRegion={false}
+                      />
                     </Stack>
                   </Stack>
                   <Box mt="md">
