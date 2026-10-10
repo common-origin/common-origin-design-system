@@ -13,7 +13,7 @@ export interface ProgressBarProps {
   value: number
   /** Orientation of the progress bar */
   variant?: 'horizontal' | 'vertical'
-  /** Color variant for the progress bar */
+  /** Fill colour: `default` is near-black (`background.emphasis`); `success` and `error` use their status colours */
   color?: 'success' | 'error' | 'default'
   /** Height size for horizontal progress bar (default: md) */
   height?: 'sm' | 'md' | 'lg' | 'xl'
@@ -42,7 +42,7 @@ interface StyledProgressBarFillProps {
 const ProgressBarContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledProgressBarContainerProps>`
-  background-color: ${color.background.disabled};
+  background-color: ${color.background.progressTrack};
   border-radius: ${radius.xs};
   overflow: hidden;
 
@@ -78,7 +78,8 @@ const ProgressBarFill = styled.div.withConfig({
         break
       case 'default':
       default:
-        backgroundColor = color.background.interactive
+        // Near-black, like Slider's fill (decision 0029)
+        backgroundColor = color.background.emphasis
         break
     }
     return css`background-color: ${backgroundColor};`

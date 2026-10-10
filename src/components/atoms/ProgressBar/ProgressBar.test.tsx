@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { ProgressBar } from './ProgressBar'
+import tokens from '@/styles/tokens.json'
 
 describe('ProgressBar', () => {
   describe('Horizontal Variant', () => {
@@ -28,9 +29,12 @@ describe('ProgressBar', () => {
       expect(screen.getByTestId('progress')).toHaveAttribute('aria-valuenow', '0')
     })
 
-    it('renders with default color variant', () => {
+    // Near-black fill on the shared progress track, like Slider (decisions 0026, 0029)
+    it('fills default progress near-black on the progress track', () => {
       render(<ProgressBar value={50} data-testid="progress" />)
-      expect(screen.getByTestId('progress')).toBeInTheDocument()
+      const track = screen.getByTestId('progress')
+      expect(track).toHaveStyle({ backgroundColor: tokens.semantic.color.background.progressTrack })
+      expect(track.firstElementChild).toHaveStyle({ backgroundColor: tokens.semantic.color.background.emphasis })
     })
 
     it('renders with success color variant', () => {
