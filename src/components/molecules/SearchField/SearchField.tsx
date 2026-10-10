@@ -196,6 +196,12 @@ const StyledSuggestionsList = styled.ul`
   padding: ${semantic.spacing.layout.xs} 0;
   margin: 0;
   z-index: ${semantic.zIndex.dropdown};
+
+  /* The highlighted suggestion has keyboard focus, which is grey, not the light-blue selected
+     treatment (decision 0029). Its row is the option's first child */
+  & > [data-highlighted] > :first-child {
+    background-color: ${semantic.color.background.surface};
+  }
 `
 
 const StyledSectionHeader = styled.div`
@@ -505,7 +511,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
                   secondary={description}
                   icon={item.type === 'recent' ? <Icon name="refresh" size="xs" /> : undefined}
                   interactive
-                  selected={index === highlightedIndex}
+                  data-highlighted={index === highlightedIndex || undefined}
                   spacing="compact"
                   onClick={() => handleSuggestionClick(item)}
                 />

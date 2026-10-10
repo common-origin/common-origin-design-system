@@ -130,27 +130,42 @@ const DropdownOption = styled.button.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isSelected: boolean; $isFocused: boolean }>`
   width: 100%;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: ${spacing.sm};
   padding: ${input.default.paddingY} ${controlPaddingX};
+  /* Focus is grey; only the selected option is light blue, and the text darkens with its fill on
+     focus, hover and press so it stays at least 4.5:1 (decisions 0016, 0029) */
   background-color: ${({ $isSelected, $isFocused }) => {
+    if ($isSelected) return $isFocused ? color.background['interactive-subtle-hover'] : color.background['interactive-subtle']
     if ($isFocused) return color.background.surface
-    if ($isSelected) return color.background.surface
     return 'transparent'
   }};
   border: none;
   font: ${input.default.font};
-  color: ${input.default.textColor};
+  color: ${({ $isSelected, $isFocused }) => {
+    if ($isSelected) return $isFocused ? color.text['interactive-hover'] : color.text.interactive
+    return input.default.textColor
+  }};
   text-align: left;
   cursor: pointer;
-  transition: background-color ${duration.fast} ${easing.easeOut};
+  transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
   
   &:hover {
-    background-color: ${color.background.surface};
+    background-color: ${({ $isSelected }) =>
+      $isSelected ? color.background['interactive-subtle-hover'] : color.background.surface};
+    color: ${({ $isSelected }) => ($isSelected ? color.text['interactive-hover'] : input.default.textColor)};
+  }
+
+  &:active {
+    background-color: ${({ $isSelected }) =>
+      $isSelected ? color.background['interactive-subtle-active'] : color.background.neutral};
+    color: ${({ $isSelected }) => ($isSelected ? color.text['interactive-active'] : input.default.textColor)};
   }
   
   &:focus {
     outline: none;
-    background-color: ${color.background.surface};
   }
   
   &:not(:last-child) {
@@ -322,6 +337,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
             aria-selected={option.id === value}
           >
             {option.label}
+            {/* The selected state isn't conveyed by colour alone (P2); aria-selected carries it for
+                assistive technology, so the checkmark is decorative */}
+            {option.id === value && <Icon name="check" size="sm" iconColor="inherit" />}
           </DropdownOption>
         ))}
       </DropdownMenu>

@@ -112,8 +112,16 @@ export const dropdownDocs: ComponentDocumentation = {
     'semantic.elevation.floating',
     'semantic.zIndex.dropdown',
     
-    // Semantic tokens
+    // Semantic tokens: options. Focus is grey; the selected option is light blue with a checkmark (decision 0029)
     'semantic.color.background.surface',
+    'semantic.color.background.neutral',
+    'semantic.color.background.interactive-subtle',
+    'semantic.color.background.interactive-subtle-hover',
+    'semantic.color.background.interactive-subtle-active',
+    'semantic.color.text.interactive',
+    'semantic.color.text.interactive-hover',
+    'semantic.color.text.interactive-active',
+    'semantic.spacing.layout.sm',
     'semantic.color.text.error',
     'semantic.color.text.subdued',
     'semantic.typography.caption',
