@@ -48,7 +48,7 @@ A semantic token is `{category}.{property}.{key}`.
 | emphasis | `muted`, `default`, `emphasis` | `default`, if a role is written |
 | state | `hover`, `pressed`, `selected`, `focus` | at rest |
 
-Neutral keys always name their emphasis: `default`, `default-hover`, `muted`, `emphasis-pressed`. Role keys drop `default`: `accent`, `accent-hover`, `accent-muted`, `accent-muted-pressed`. Two words stand alone because they replace emphasis: `disabled` and `none` (transparent, as in `color.fill.none-hover` for a naked control). CSS variables read the same as the path: `--co-semantic-color-fill-accent-muted-hover`.
+Neutral keys always name their emphasis: `default`, `default-hover`, `muted`, `emphasis-pressed`. Role keys drop `default`: `accent`, `accent-hover`, `accent-muted`, `accent-muted-pressed`. Three words stand alone because they replace emphasis: `disabled`, `focus` (`color.border.focus`, the one focus ring) and `none` (transparent, as in `color.fill.none-hover` for a naked control). CSS variables read the same as the path: `--co-semantic-color-fill-accent-muted-hover`.
 
 The emphasis words are Primer's (`muted`, `emphasis`) rather than the draft's (`subtle`, `strong`), because ours already exist with other values. Keys are hyphen-joined rather than nested because Style Dictionary 5 can't yet make a group that is also a token (DTCG `$root`), and nesting would turn `color.text.success` into a group.
 
@@ -67,7 +67,7 @@ The emphasis words are Primer's (`muted`, `emphasis`) rather than the draft's (`
 ### 4. Motion
 
 - `motion.duration.{instant, fast, moderate, slow}`: 0, 150, 200 and 300ms (`normal` becomes `moderate`). 300ms stays the maximum ([0005](0005-motion.md)).
-- `motion.easing.{standard, enter, exit}`, named by purpose: standard for on-screen change, enter decelerates, exit accelerates, never linear ([0015](0015-reduced-motion.md)).
+- `motion.easing.{standard, decelerate, accelerate}`, named by the curve's job as Material and Fluent do: `standard` for change on screen, `decelerate` for things arriving or responding (entering, hover), `accelerate` for things leaving. Never linear ([0015](0015-reduced-motion.md)). The names describe the curve, not one use, because today's `easeOut` serves entrances, hover feedback and some exits; whether those exits should accelerate is a visual question for #195.
 - `motion.transition.{feedback, focus, press, enter, exit}`: composites that name their properties. The `transition: all` composites (`motion.transition.fast/normal/slow`) are removed in 3.0.
 - `motion.distance.*`: how far an element travels when it enters or exits, so reduced motion can set it to zero ([0032](0032-token-modes.md)).
 
@@ -91,7 +91,7 @@ Details and values are settled in [#195](https://github.com/common-origin/common
 ## Consequences
 
 - No current token changes value in this migration; every rename is additive until 3.0. A script that checks this (no new name equals an old name with another value, or turns a token into a group) runs in the first implementation PR.
-- New tokens with no current equivalent (`surface.sunken` and `surface.overlay` when used, `space.stack.*`, `space.inline.*`, `size.control.*`, `motion.distance.*`, `motion.easing.exit`, `motion.transition.enter/exit`) still need the owner's sign-off with values ([0022](0022-no-component-spacing-tokens.md)).
+- New tokens with no current equivalent (`surface.sunken` and `surface.overlay` when used, `space.stack.*`, `space.inline.*`, `size.control.*`, `motion.distance.*`, `motion.easing.accelerate`, `motion.transition.enter/exit`) still need the owner's sign-off with values ([0022](0022-no-component-spacing-tokens.md)).
 - `motion.transition.*` gains new keys beside the old ones; the old `fast`, `normal` and `slow` are removed in 3.0.
 - Agents and people can derive a token name from intent ("accent fill, pressed" → `color.fill.accent-pressed`) instead of looking it up.
 
@@ -115,7 +115,7 @@ Unchanged: `elevation.*`, `breakpoint.*`, `opacity.*`, `fontFamily.*`, `fontSize
 | Today | New |
 |---|---|
 | `border.subtle` | `border.emphasis` |
-| `border.strong` | `border.input-hover` |
+| `border.strong` | `border.input-hover` (control borders on hover) |
 | `border.tooltip` | component tier: `component.tooltip.border` |
 | `border.radius.none` | `radius.none` |
 | `border.radius.xs` | `radius.xs` |
@@ -234,7 +234,7 @@ Unchanged: `elevation.*`, `breakpoint.*`, `opacity.*`, `fontFamily.*`, `fontSize
 |---|---|
 | `color.border.subtle` | `color.border.emphasis` |
 | `color.border.control` | `color.border.input` |
-| `color.border.strong` | `color.border.input-hover` |
+| `color.border.strong` | split by use: `color.border.input-hover` for control hover; `color.border.focus` for the focus ring ([0029](0029-accent-emphasis-audit.md)) and CardSmall's ring; `color.fill.inverse` (same value) for the Modal and Sheet drag handles |
 | `color.border.interactive` | `color.border.accent` |
 | `color.border.error` | `color.border.danger` |
 
@@ -312,7 +312,7 @@ Unchanged: `elevation.*`, `breakpoint.*`, `opacity.*`, `fontFamily.*`, `fontSize
 |---|---|
 | `motion.duration.normal` | `motion.duration.moderate` |
 | `motion.easing.easeInOut` | `motion.easing.standard` |
-| `motion.easing.easeOut` | `motion.easing.enter` |
+| `motion.easing.easeOut` | `motion.easing.decelerate` |
 | `motion.transition.fast` | removed in 3.0 (it is `transition: all`); use a property-named composite |
 | `motion.transition.normal` | removed in 3.0 (it is `transition: all`); use a property-named composite |
 | `motion.transition.slow` | removed in 3.0 (it is `transition: all`); use a property-named composite |

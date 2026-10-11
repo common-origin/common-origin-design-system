@@ -33,7 +33,7 @@ Components can't switch token values at run time yet: they bake resolved values 
 
    | Mode | Changes | Never changes |
    |---|---|---|
-   | Density | `size.control.*`, `size.row`, `space.inset.*`, `space.stack.*`, `space.inline.*`, `typography.body` size | Colour, radius, border, elevation, motion, `size.touchTarget` |
+   | Density | `size.control.*`, `size.row`, `space.inset.*`, `space.stack.*`, `space.inline.*`, the body text size (see Consequences) | Colour, radius, border, elevation, motion, `size.touchTarget` |
    | Motion | `motion.distance.*` (0 under `reduced`), movement durations | Colour and opacity transitions, which are already the reduced form (0015) |
 
 5. **`default` renders exactly as the product does today.** Turning a mode on is opt-in.
@@ -46,5 +46,6 @@ Components can't switch token values at run time yet: they bake resolved values 
 - P9 and the visual-language density rule are updated: density is a mode a product applies to a region, not a per-component setting.
 - Values are proposed with their tokens and signed off then ([0022](0022-no-component-spacing-tokens.md)). The starting proposal for density, on the 4px grid, is control heights of 32 / 40 / 48px for `compact` / `default` / `comfortable`, after #129 settles today's `default` scale (Input is 48px and a medium Button about 40px, so they disagree now).
 - `tokens.css` gains `[data-co-density="…"]` and `[data-co-motion="reduced"]` blocks (and an `@media (prefers-reduced-motion: reduce)` block), with tests that each block only overrides the groups in the table above.
+- Text styles are single CSS `font` shorthands today, so a mode can't change only their size. Density changes body size only after typography styles are built from part tokens (the composite-token step in [`docs/tokens/pipeline.md`](../../tokens/pipeline.md) §4), so a density context overrides one `fontSize` token rather than duplicating the whole style. Until then, density leaves text alone.
 - When motion is a mode, the per-component `reducedMotion` branches are removed and `motion.test.ts` checks the token overrides instead.
 - Build work: density in [#191](https://github.com/common-origin/common-origin-design-system/issues/191), motion in [#195](https://github.com/common-origin/common-origin-design-system/issues/195), both after #41.
