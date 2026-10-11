@@ -34,6 +34,8 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0028](0028-icons-decorative-by-default.md) | Icons are decorative by default; a meaningful icon gets a human-readable `aria-label`; no internal icon names are announced | Accepted | 2026-10-09 |
 | [0029](0029-accent-emphasis-audit.md) | Accent and emphasis audit: emphasis is stronger than default, focus is grey and selection light blue, one focus ring, Badge `accent`, Tag keeps `default` and `emphasis` | Accepted | 2026-10-10 |
 | [0030](0030-row-interaction-states.md) | Rows and items share one interaction pattern: the naked Button ladder, the 0016 selected ladder, one shared helper | Accepted | 2026-10-11 |
+| [0031](0031-semantic-token-grammar.md) | Semantic tokens follow one grammar: `{category}.{property}.{role-emphasis-state}`; surfaces and fills split; a 100-based spacing scale; `color.data` reserved; domain tokens move to the component tier | Accepted | 2026-10-11 |
+| [0032](0032-token-modes.md) | Density and motion are token modes scoped to an element (`data-co-density`, `data-co-motion`); amends P9 | Accepted | 2026-10-11 |
 
 ## Template
 

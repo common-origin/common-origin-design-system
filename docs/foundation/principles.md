@@ -27,7 +27,7 @@ The package is published and other products depend on it. Component props, expor
 Components work in any React app (Next.js, Vite, React Router, and so on) with no framework imports ([0008](decisions/0008-framework-agnostic-components.md)). Runtime dependencies are avoided unless there is no reasonable alternative; UI component libraries are never added. Keep bundles small, avoid unnecessary re-renders and heavy client-side work in display components, and never block rendering (images support lazy loading).
 
 ## P9. Serve the full range
-Decisions must work in both editorial, spacious products (the personal site) and dense, data-heavy ones (A2UI). Density is handled per component; there is no global density mode.
+Decisions must work in both editorial, spacious products (the personal site) and dense, data-heavy ones (A2UI). Density is a token mode (`compact`, `default`, `comfortable`) that a product applies to any element or region; components never take a density prop, and no single switch forces one density on every product ([0032](decisions/0032-token-modes.md)).
 
 ---
 
