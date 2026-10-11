@@ -3,7 +3,7 @@
 - **Status:** Accepted
 - **Date:** 2026-09-26
 - **Decided by:** Ollie (owner)
-- **Amended by:** [0022](0022-no-component-spacing-tokens.md): no component spacing tokens, and every new token needs the owner's sign-off
+- **Amended by:** [0022](0022-no-component-spacing-tokens.md): no component spacing tokens, and every new token needs the owner's sign-off; [0031](0031-semantic-token-grammar.md): semantic token naming grammar
 - **Principles:** P3, P4, P5
 
 ## Context
