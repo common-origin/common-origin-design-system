@@ -941,6 +941,11 @@
     },
     "size": {
       "touchTarget": "2.75rem",
+      "control": {
+        "sm": "2rem",
+        "md": "2.5rem",
+        "lg": "3rem"
+      },
       "overlay": {
         "sm": "25rem",
         "md": "35rem",
