@@ -33,6 +33,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0027](0027-iconbutton-follows-button.md) | IconButton uses Button's colours and motion in every variant and state; its own colour tokens are deprecated | Accepted | 2026-10-08 |
 | [0028](0028-icons-decorative-by-default.md) | Icons are decorative by default; a meaningful icon gets a human-readable `aria-label`; no internal icon names are announced | Accepted | 2026-10-09 |
 | [0029](0029-accent-emphasis-audit.md) | Accent and emphasis audit: emphasis is stronger than default, focus is grey and selection light blue, one focus ring, Badge `accent`, Tag keeps `default` and `emphasis` | Accepted | 2026-10-10 |
+| [0030](0030-row-interaction-states.md) | Rows and items share one interaction pattern: the naked Button ladder, the 0016 selected ladder, one shared helper | Accepted | 2026-10-11 |
 
 ## Template
 

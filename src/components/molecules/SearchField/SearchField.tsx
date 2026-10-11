@@ -16,6 +16,7 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/styles/tokens.json'
+import { rowStates } from '../../../lib/styleUtils'
 
 const { semantic, component } = tokens
 
@@ -198,9 +199,10 @@ const StyledSuggestionsList = styled.ul`
   z-index: ${semantic.zIndex.dropdown};
 
   /* The highlighted suggestion has keyboard focus, which is grey, not the light-blue selected
-     treatment (decision 0029). Its row is the option's first child */
-  & > [data-highlighted] > :first-child {
-    background-color: ${semantic.color.background.surface};
+     treatment (decision 0029). Its row is the option's first child. While pressed, the row's own
+     pressed state shows (decision 0030) */
+  & > [data-highlighted] > :first-child:not(:active) {
+    background-color: ${rowStates.unselected.hover.background};
   }
 `
 

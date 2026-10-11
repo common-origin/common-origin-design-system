@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 
-const { semantic: { color, border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
+const { semantic: { border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
 
 // Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
 // The 11px vertical padding is off-grid and keeps its deprecated token until #129.
@@ -135,34 +135,16 @@ const DropdownOption = styled.button.withConfig({
   justify-content: space-between;
   gap: ${spacing.sm};
   padding: ${input.default.paddingY} ${controlPaddingX};
-  /* Focus is grey; only the selected option is light blue, and the text darkens with its fill on
-     focus, hover and press so it stays at least 4.5:1 (decisions 0016, 0029) */
-  background-color: ${({ $isSelected, $isFocused }) => {
-    if ($isSelected) return $isFocused ? color.background['interactive-subtle-hover'] : color.background['interactive-subtle']
-    if ($isFocused) return color.background.surface
-    return 'transparent'
-  }};
   border: none;
   font: ${input.default.font};
-  color: ${({ $isSelected, $isFocused }) => {
-    if ($isSelected) return $isFocused ? color.text['interactive-hover'] : color.text.interactive
-    return input.default.textColor
-  }};
+  color: ${input.default.textColor};
   text-align: left;
   cursor: pointer;
   transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
-  
-  &:hover {
-    background-color: ${({ $isSelected }) =>
-      $isSelected ? color.background['interactive-subtle-hover'] : color.background.surface};
-    color: ${({ $isSelected }) => ($isSelected ? color.text['interactive-hover'] : input.default.textColor)};
-  }
 
-  &:active {
-    background-color: ${({ $isSelected }) =>
-      $isSelected ? color.background['interactive-subtle-active'] : color.background.neutral};
-    color: ${({ $isSelected }) => ($isSelected ? color.text['interactive-active'] : input.default.textColor)};
-  }
+  /* The shared row states (decisions 0029, 0030): focus shows the hover state in grey; only the
+     selected option is light blue, with its text darkening with the fill */
+  ${({ $isSelected, $isFocused }) => interactiveRow({ selected: $isSelected, focused: $isFocused })}
   
   &:focus {
     outline: none;

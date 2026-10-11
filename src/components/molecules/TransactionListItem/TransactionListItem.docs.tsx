@@ -97,8 +97,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
     'semantic.spacing.layout.sm',
     'semantic.spacing.layout.xs',
     'semantic.color.background.default',
-    'semantic.color.background.interactive-hover',
-    'semantic.color.background.interactive-active',
+    'semantic.color.background.surface',
+    'semantic.color.background.neutral',
     'semantic.color.border.default',
     'semantic.border.focus',
     'semantic.color.icon.subdued',
@@ -354,8 +354,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
         tokens: [
           'semantic.spacing.layout.md',
           'semantic.color.background.default',
-          'semantic.color.background.interactive-hover',
-          'semantic.color.background.interactive-active',
+          'semantic.color.background.surface',
+          'semantic.color.background.neutral',
           'semantic.color.border.default',
           'semantic.border.focus'
         ]

@@ -20,6 +20,7 @@ import {
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/styles/tokens.json'
+import { interactiveRow } from '@/lib/styleUtils'
 
 const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
 
@@ -188,22 +189,14 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
   padding: ${spacing.component.sm} ${spacing.component.lg};
   border: none;
   border-radius: ${tokens.component.button.primary.borderRadius};
-  background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle'] : tokens.component.button.variants.naked.backgroundColor};
-  color: ${({ $isActive }) => $isActive ? color.text.interactive : tokens.component.button.variants.naked.textColor};
+  color: ${tokens.semantic.color.text.default};
   text-align: left;
   cursor: pointer;
   transition: ${tokens.semantic.motion.hover};
   white-space: nowrap;
 
-  &:hover {
-    background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle-hover'] : tokens.component.button.variants.naked.hover.backgroundColor};
-    color: ${({ $isActive }) => $isActive ? color.text['interactive-hover'] : tokens.component.button.variants.naked.textColor};
-  }
-
-  &:active {
-    background-color: ${({ $isActive }) => $isActive ? color.background['interactive-subtle-active'] : tokens.component.button.variants.naked.active.backgroundColor};
-    color: ${({ $isActive }) => $isActive ? color.text['interactive-active'] : tokens.component.button.variants.naked.textColor};
-  }
+  /* The shared row states (decision 0030), with the active page as the selected row */
+  ${({ $isActive }) => interactiveRow({ selected: $isActive })}
 
   &:focus-visible {
     outline: ${tokens.component.button.focus.outline};
