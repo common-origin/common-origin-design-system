@@ -356,6 +356,9 @@
   --co-semantic-border-radius-3xl: var(--co-base-border-radius-7); /** Maximum rounding - decorative elements, marketing components, large decorative cards */
   --co-semantic-border-radius-circle: var(--co-base-border-radius-circle); /** Fully circular - avatars, round icon buttons, status indicators, FABs */
   --co-semantic-size-touch-target: var(--co-base-size-11); /** 2.75rem (44px): minimum height of a tappable row or control. */
+  --co-semantic-size-control-sm: var(--co-base-size-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
+  --co-semantic-size-control-md: var(--co-base-size-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
+  --co-semantic-size-control-lg: var(--co-base-size-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
   --co-semantic-size-overlay-sm: var(--co-base-size-100); /** 25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets). */
   --co-semantic-size-overlay-md: var(--co-base-size-140); /** 35rem (560px): medium overlay panel width (Modal medium). */
   --co-semantic-size-overlay-lg: var(--co-base-size-180); /** 45rem (720px): large overlay panel width (Modal large). */

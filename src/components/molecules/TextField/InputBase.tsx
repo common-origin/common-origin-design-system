@@ -4,7 +4,8 @@ import tokens from '@/styles/tokens.json'
 const { component: { input }, semantic } = tokens
 
 // Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
-// The 11px vertical padding is off-grid and keeps its deprecated token until #129.
+// Single-line fields take their height from size.control.lg as a minimum and the
+// browser centres the text, so there is no vertical padding (decision 0034).
 
 /**
  * Shared input states for text-based form controls
@@ -35,6 +36,7 @@ const inputBaseStyles = css<StyledInputBaseProps>`
   };
   
   /* Layout */
+  box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
   width: 100%;
   
   /* Visual styling */
@@ -107,7 +109,8 @@ export const StyledInputBase = styled.input.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledInputBaseProps>`
   ${inputBaseStyles}
-  padding: ${input.default.paddingY} ${semantic.spacing.component.lg};
+  min-height: ${semantic.size.control.lg};
+  padding: 0 ${semantic.spacing.component.lg};
 `
 
 /**
@@ -119,7 +122,6 @@ export const StyledTextAreaBase = styled.textarea.withConfig({
   ${inputBaseStyles}
   
   /* TextArea specific: a taller minimum for multi-line entry (decision 0034) */
-  box-sizing: border-box;
   min-height: ${input.textarea.minHeight};
   padding: ${semantic.spacing.component.md} ${semantic.spacing.component.lg};
   resize: vertical;

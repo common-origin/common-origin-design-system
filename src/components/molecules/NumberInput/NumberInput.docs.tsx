@@ -134,7 +134,7 @@ export const numberInputDocs: ComponentDocumentation = {
     'component.input.default.borderWidth',
     'component.input.default.borderRadius',
     'semantic.spacing.component.lg',
-    'component.input.default.paddingY',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.placeholder.textColor',
     'component.input.focus.borderColor',
     'component.input.focus.outline',
@@ -327,7 +327,7 @@ export const numberInputDocs: ComponentDocumentation = {
         tokens: [
           'component.input.default.font',
           'semantic.spacing.component.lg',
-          'component.input.default.paddingY',
+          'semantic.size.control.lg', // Minimum height (decision 0034)
           'component.input.default.backgroundColor',
           'component.input.default.borderColor',
           'component.input.default.borderRadius',

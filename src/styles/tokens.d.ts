@@ -1309,6 +1309,12 @@ export interface TokensSemanticBorder {
   radius: TokensSemanticBorderRadius;
 }
 
+export interface TokensSemanticSizeControl {
+  sm: string;
+  md: string;
+  lg: string;
+}
+
 export interface TokensSemanticSizeOverlay {
   sm: string;
   md: string;
@@ -1364,6 +1370,7 @@ export interface TokensSemanticSizeAvatar {
 
 export interface TokensSemanticSize {
   touchTarget: string;
+  control: TokensSemanticSizeControl;
   overlay: TokensSemanticSizeOverlay;
   label: TokensSemanticSizeLabel;
   menu: TokensSemanticSizeMenu;

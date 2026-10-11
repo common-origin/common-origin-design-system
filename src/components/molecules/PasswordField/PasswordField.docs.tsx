@@ -150,6 +150,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
     // Component Input Tokens
     'component.input.default.backgroundColor',
     'component.input.default.borderColor',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.default.textColor',
     'component.input.placeholder.textColor',
     'component.input.hover.borderColor',
