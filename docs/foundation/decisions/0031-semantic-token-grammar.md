@@ -196,7 +196,7 @@ Unchanged: `elevation.*`, `breakpoint.*`, `opacity.*`, `fontFamily.*`, `fontSize
 | Today | New |
 |---|---|
 | `color.background.default` | `surface.base` |
-| `color.background.subtle` | `surface.raised` |
+| `color.background.subtle` | split by use: `surface.raised` for surfaces (cards, inputs, sheets, dialogs, code blocks, TabBar); component tier: `component.slider.thumb.background` (same value) for Slider's thumb, a control rather than a surface |
 | `color.background.emphasis` | `color.fill.emphasis` |
 | `color.background.emphasis-hover` | `color.fill.emphasis-hover` |
 | `color.background.emphasis-active` | `color.fill.emphasis-pressed` |
