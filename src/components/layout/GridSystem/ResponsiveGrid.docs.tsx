@@ -1,4 +1,5 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
+import { tokenPaths } from '../../../lib/docgen/tokenPaths'
 import { ResponsiveGrid } from './GridSystem'
 import { Box } from '../../atoms/Box'
 import { Typography } from '../../atoms/Typography'
@@ -36,7 +37,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'base.spacing.*',
+    ...tokenPaths('base.spacing'), // Gap props take base spacing keys (see notes)
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -108,7 +109,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'div with display: grid and equal columns (repeat(n, minmax(0, 1fr))). Column count, gap, column gap and row gap change at the sm, md, lg and xl breakpoints.',
-        tokens: ['base.spacing.*', 'semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
+        tokens: [...tokenPaths('base.spacing'), 'semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
       }
     ]
   },

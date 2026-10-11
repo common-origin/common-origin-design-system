@@ -60,7 +60,6 @@ export const pictureDocs: ComponentDocumentation = {
   tokens: [
     'semantic.border.radius.sm',
     'semantic.spacing.layout.md',
-    'semantic.color.interactive.hover',
     'semantic.breakpoint.sm',
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut'

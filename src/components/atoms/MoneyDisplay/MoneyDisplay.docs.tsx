@@ -76,12 +76,12 @@ export const moneyDisplayDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.text.default',
     'semantic.color.text.subdued',
-    'semantic.color.icon.success - Green color for positive/addRing icon',
-    'semantic.color.icon.error - Red color for negative/remove icon',
-    'semantic.size.icon.xs - Icon size for small amounts',
-    'semantic.size.icon.sm - Icon size for medium amounts',
-    'semantic.size.icon.md - Icon size for large amounts',
-    'semantic.size.icon.lg - Icon size for xlarge amounts',
+    'semantic.color.icon.success', // Plus icon on positive amounts
+    'semantic.color.icon.error', // Minus icon on negative amounts
+    'semantic.size.icon.xs', // size="small"
+    'semantic.size.icon.sm', // size="medium"
+    'semantic.size.icon.md', // size="large"
+    'semantic.size.icon.lg', // size="xlarge"
     'semantic.typography.caption',
     'semantic.typography.body',
     'semantic.typography.h3',

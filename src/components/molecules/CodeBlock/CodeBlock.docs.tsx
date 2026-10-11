@@ -55,20 +55,22 @@ export const codeBlockDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.border.width.thin',
-    'semantic.color.background.subtle - Subtle background color providing clear code container definition and gradient overlay when collapsed',
-    'semantic.border.subtle - Subtle border styling for visual separation from surrounding content',
-    'semantic.border.radius.sm - Consistent rounded corners matching design system patterns for both container and expand button wrapper',
-    'semantic.spacing.layout.md - Internal padding for comfortable code reading and visual breathing room',
-    'semantic.spacing.layout.sm - Vertical margin, expand button wrapper padding, and bottom positioning',
-    'semantic.spacing.layout.lg - Copy button positioning from bottom edge',
-    'semantic.spacing.layout.4xl - Gradient overlay height for collapsed state fade effect',
-    'component.codeBlock.fontFamily - Monospace font family ensuring proper code alignment and character spacing',
-    'semantic.color.text.default - Standard text color optimized for code readability across themes',
-    'component.codeBlock.fontSize - Appropriate font size for code content balancing readability and space efficiency',
-    'component.codeBlock.lineHeight - Optimal line height for multi-line code preventing cramped or spread-out appearance',
+    'semantic.color.background.subtle', // Container, and the fade over collapsed code
+    'semantic.border.subtle', // Container border
+    'semantic.border.width.thin', // Insets the expand-button bar inside the border
+    'semantic.border.radius.sm', // Container and expand-button bar
+    'semantic.border.focus', // Focus ring on the expand button
+    'semantic.border.focusOffset',
+    'semantic.spacing.layout.md', // Container padding
+    'semantic.spacing.layout.sm', // Vertical margin, expand-button bar padding
+    'semantic.spacing.layout.lg', // Copy button offset from the bottom
+    'semantic.spacing.layout.4xl', // Height of the fade over collapsed code
+    'semantic.color.text.default', // Code text
+    'component.codeBlock.fontFamily',
+    'component.codeBlock.fontSize',
+    'component.codeBlock.lineHeight',
     // Motion
-    'semantic.motion.duration.slow',
+    'semantic.motion.duration.slow', // Expand and collapse
     'semantic.motion.easing.easeInOut',
   ],
 

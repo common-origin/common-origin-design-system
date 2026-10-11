@@ -35,12 +35,12 @@ export const containerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.spacing.layout.2xl - Consistent horizontal padding across breakpoints',
-    'semantic.breakpoint.sm (640px) - Small device breakpoint with 640px max-width',
-    'semantic.breakpoint.md (768px) - Medium device breakpoint with 768px max-width', 
-    'semantic.breakpoint.lg (1024px) - Large device breakpoint with 1024px max-width',
-    'semantic.breakpoint.xl (1280px) - Extra large device breakpoint with 1280px max-width',
-    'semantic.breakpoint.2xl (1536px) - Extra extra large device breakpoint with 1536px max-width'
+    'semantic.spacing.layout.2xl', // Horizontal padding at every width
+    'semantic.breakpoint.sm', // Max width from 640px
+    'semantic.breakpoint.md', // Max width from 768px
+    'semantic.breakpoint.lg', // Max width from 1024px
+    'semantic.breakpoint.xl', // Max width from 1280px
+    'semantic.breakpoint.2xl', // Max width from 1536px
   ],
 
   examples: [

@@ -77,8 +77,8 @@ export const featureBlockDocs: ComponentDocumentation = {
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
     'semantic.breakpoint.xl',
-    'semantic.typography.heading.3',
-    'semantic.typography.body',
+    'semantic.typography.h3', // Title
+    'semantic.typography.small', // Excerpt
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeOut',

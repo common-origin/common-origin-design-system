@@ -27,13 +27,12 @@ export const pageTitleDocs: ComponentDocumentation = {
     }
   ],
   tokens: [
-    'semantic.color.background.subtle',
-    'semantic.border.subtle',
-    'semantic.spacing.layout.none',
-    'semantic.spacing.layout.2xl',
-    'semantic.spacing.layout.7xl',
-    'semantic.typography.heading.3',
-    'semantic.typography.body'
+    'semantic.spacing.layout.2xl', // Bottom margin
+    'semantic.spacing.layout.7xl', // Top margin without a back button
+    'semantic.spacing.layout.none', // Top margin with a back button
+    'semantic.typography.h1', // Title
+    'semantic.typography.caption', // Subtitle
+    'semantic.color.text.subdued',
   ],
   examples: [
     {
