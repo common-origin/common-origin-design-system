@@ -27,7 +27,7 @@ Primer, Spectrum, Carbon and Radix all make control height a token, mostly on 32
 ## Decision
 
 1. **Three semantic tokens:** `size.control.sm` = 2rem (32px), `size.control.md` = 2.5rem (40px) and `size.control.lg` = 3rem (48px), referencing `base.size.8`, `base.size.10` and `base.size.12`. They're semantic because the whole control family shares them ([0014](0014-token-tiers.md)). No new base or component tokens. Signed off under [0022](0022-no-component-spacing-tokens.md). <!-- verify-docs-ignore: token name, not a file -->
-2. **Controls set `min-height` from the scale and centre their content.** Vertical padding is no longer a token; horizontal padding comes from the semantic spacing scale. A `min-height` rather than a fixed `height` means a wrapped label, a WCAG 1.4.12 text-spacing override or a larger text size grows the control instead of clipping it. TextArea uses the control height as its minimum.
+2. **Controls set `min-height` from the scale and centre their content.** Vertical padding is no longer a token; horizontal padding comes from the semantic spacing scale. A `min-height` rather than a fixed `height` means a wrapped label, a WCAG 1.4.12 text-spacing override or a larger text size grows the control instead of clipping it. TextArea keeps its own taller minimum (`component.input.textarea.minHeight`, 7.5rem), which is a departure for multi-line entry, not a control height.
 3. **Who uses which size:**
 
    | Control | Sizes |
