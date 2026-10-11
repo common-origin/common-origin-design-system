@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 import { ListSpacingContext, type ListSpacing } from './ListContext'
 
 const { semantic } = tokens
@@ -172,29 +172,21 @@ const StyledItemContent = styled.div.withConfig({
       ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md}`
       : `${semantic.spacing.layout.md} ${semantic.spacing.layout.lg}`};
   border-radius: ${semantic.border.radius.sm};
-  background-color: ${({ $selected }) =>
-    $selected ? semantic.color.background['interactive-subtle'] : 'transparent'};
-  transition: background-color ${duration.fast} ${easing.easeOut};
+  transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
   cursor: ${({ $interactive, $disabled }) => {
     if ($disabled) return 'not-allowed'
     if ($interactive) return 'pointer'
     return 'default'
   }};
   
-  /* Interactive hover states */
-  ${({ $interactive, $disabled, $selected }) => !$disabled && $interactive && `
-    &:hover {
-      background-color: ${
-        $selected 
-          ? tokens.component.button.variants.secondary.backgroundColor
-          : tokens.component.button.variants.secondary.backgroundColor
-      };
-    }
-    
-    &:active {
-      background-color: ${tokens.component.button.variants.naked.backgroundColor};
-    }
-  `}
+  /* The shared row states (decision 0030). Only interactive, enabled rows respond to hover and
+     press; the primary text is Typography, so the row colours it through a selector */
+  ${({ $interactive, $disabled, $selected }) =>
+    interactiveRow({
+      selected: $selected,
+      disabled: $disabled || !$interactive,
+      textSelector: `${StyledTextContent} > :first-child`,
+    })}
   
   /* Focus visible */
   &:focus-visible {

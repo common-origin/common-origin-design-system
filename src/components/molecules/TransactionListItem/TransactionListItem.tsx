@@ -9,6 +9,7 @@ import { DateFormatter } from '../../atoms/DateFormatter'
 import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
 import tokens from '../../../styles/tokens.json'
+import { interactiveRow } from '../../../lib/styleUtils'
 
 export type TransactionStatus = 'completed' | 'pending' | 'failed'
 export type TransactionCategory = 'shopping' | 'dining' | 'transport' | 'entertainment' | 'bills' | 'other'
@@ -65,16 +66,10 @@ const StyledContainer = styled.div<StyledContainerProps>`
   gap: ${tokens.semantic.spacing.layout.md};
   transition: background-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
   
+  /* A clickable row uses the shared row states (decision 0030) */
   ${({ $clickable }) => $clickable && `
     cursor: pointer;
-    
-    &:hover {
-      background-color: ${tokens.semantic.color.background.subtle};
-    }
-    
-    &:active {
-      background-color: ${tokens.semantic.color.background['interactive-active']};
-    }
+    ${interactiveRow()}
     
     &:focus-visible {
       outline: ${tokens.semantic.border.focus};

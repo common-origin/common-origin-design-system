@@ -51,3 +51,68 @@ export const visuallyHidden = css`
   white-space: nowrap;
   border: 0;
 `
+
+// One interaction pattern for rows and items: list items, menu and listbox options, sidebars
+// (decision 0030). Unselected rows follow the naked Button's ladder; selected rows follow the
+// light-blue selected ladder, with the text darkening with its fill (decision 0016). Unselected
+// rows leave their text colour to the component, so a destructive row can stay red.
+const { background: rowBackground, text: rowText } = tokens.semantic.color
+
+export interface RowState {
+  background: string
+  text?: string
+}
+
+export const rowStates: Record<'unselected' | 'selected', Record<'rest' | 'hover' | 'pressed', RowState>> = {
+  unselected: {
+    rest: { background: 'transparent' },
+    hover: { background: rowBackground.surface },
+    pressed: { background: rowBackground.neutral },
+  },
+  selected: {
+    rest: { background: rowBackground['interactive-subtle'], text: rowText.interactive },
+    hover: { background: rowBackground['interactive-subtle-hover'], text: rowText['interactive-hover'] },
+    pressed: { background: rowBackground['interactive-subtle-active'], text: rowText['interactive-active'] },
+  },
+}
+
+const rowDeclarations = ({ background, text }: RowState, textSelector?: string) => {
+  if (!text) return `background-color: ${background};`
+  return textSelector
+    ? `background-color: ${background};\n  ${textSelector} { color: ${text}; }`
+    : `background-color: ${background};\n  color: ${text};`
+}
+
+/**
+ * The background (and, when selected, text) of an interactive row in every state.
+ * - `focused`: keyboard focus that isn't DOM focus, such as a listbox option under
+ *   aria-activedescendant. It shows the hover state.
+ * - `disabled`: shows the resting state, with no hover or press.
+ * - `textSelector`: a descendant to colour when the row's text isn't the row itself, for example
+ *   text set by Typography. Pass it without `&`.
+ */
+export const interactiveRow = ({
+  selected = false,
+  focused = false,
+  disabled = false,
+  textSelector,
+}: {
+  selected?: boolean
+  focused?: boolean
+  disabled?: boolean
+  textSelector?: string
+} = {}) => {
+  const states = selected ? rowStates.selected : rowStates.unselected
+  if (disabled) return rowDeclarations(states.rest, textSelector)
+  return `
+  ${rowDeclarations(focused ? states.hover : states.rest, textSelector)}
+
+  &:hover {
+    ${rowDeclarations(states.hover, textSelector)}
+  }
+
+  &:active {
+    ${rowDeclarations(states.pressed, textSelector)}
+  }
+`
+}
