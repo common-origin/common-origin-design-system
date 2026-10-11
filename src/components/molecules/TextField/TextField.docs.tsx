@@ -151,6 +151,7 @@ export const textFieldDocs: ComponentDocumentation = {
     
     // Colors - Border
     'component.input.default.borderColor',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.disabled.borderColor',
     'semantic.color.border.strong',
     'semantic.color.border.interactive',

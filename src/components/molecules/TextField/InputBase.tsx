@@ -4,7 +4,8 @@ import tokens from '@/styles/tokens.json'
 const { component: { input }, semantic } = tokens
 
 // Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
-// The 11px vertical padding is off-grid and keeps its deprecated token until #129.
+// Single-line fields take their height from size.control.lg as a minimum and the
+// browser centres the text, so there is no vertical padding (decision 0034).
 
 /**
  * Shared input states for text-based form controls
@@ -32,8 +33,10 @@ export const StyledInputBase = styled.input.withConfig({
   };
   
   /* Layout */
+  box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
   width: 100%;
-  padding: ${input.default.paddingY} ${semantic.spacing.component.lg};
+  min-height: ${semantic.size.control.lg};
+  padding: 0 ${semantic.spacing.component.lg};
   
   /* Visual styling */
   background-color: ${({ $disabled }) => 

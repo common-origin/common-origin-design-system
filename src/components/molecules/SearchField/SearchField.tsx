@@ -139,6 +139,10 @@ const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   display: flex;
   align-items: center;
   gap: ${semantic.spacing.layout.sm};
+  /* The field's height comes from size.control.lg as a minimum, matching the other fields
+     (decision 0034); the padding only matters if the content grows past it */
+  box-sizing: border-box;
+  min-height: ${semantic.size.control.lg};
   padding: ${semantic.spacing.layout.sm} ${semantic.spacing.layout.md};
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};

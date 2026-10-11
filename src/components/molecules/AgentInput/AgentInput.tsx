@@ -112,7 +112,7 @@ const InputShell = styled.div`
 const Input = styled.input`
   flex: 1;
   min-width: 0;
-  min-height: ${semantic.spacing.layout['7xl']};
+  min-height: ${semantic.size.control.lg};
   border: none;
   background: transparent;
   font: ${semantic.typography.body};

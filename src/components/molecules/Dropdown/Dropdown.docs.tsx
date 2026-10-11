@@ -88,7 +88,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'component.field.helperText.color',
     'component.field.helperText.colorError',
     // Input component tokens
-    'component.input.default.paddingY',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'semantic.spacing.component.lg',
     'component.input.default.backgroundColor',
     'component.input.default.borderWidth',

@@ -261,6 +261,20 @@
         "$value": "{base.size.11}",
         "$description": "2.75rem (44px): minimum height of a tappable row or control."
       },
+      "control": {
+        "sm": {
+          "$value": "{base.size.8}",
+          "$description": "Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034)."
+        },
+        "md": {
+          "$value": "{base.size.10}",
+          "$description": "Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034)."
+        },
+        "lg": {
+          "$value": "{base.size.12}",
+          "$description": "Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034)."
+        }
+      },
       "overlay": {
         "sm": {
           "$value": "{base.size.100}",

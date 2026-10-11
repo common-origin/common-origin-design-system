@@ -158,7 +158,6 @@ export const agentInputDocs: ComponentDocumentation = {
     'semantic.color.background.interactive-subtle',
     'semantic.color.background.interactive-hover',
     'semantic.color.border.interactive',
-    'component.input.default.paddingY',
     'semantic.spacing.component.lg',
     'component.input.default.backgroundColor',
     'component.input.default.borderWidth',
@@ -174,7 +173,7 @@ export const agentInputDocs: ComponentDocumentation = {
     'semantic.spacing.layout.md',
     'semantic.spacing.layout.lg',
     'semantic.spacing.layout.2xl',
-    'semantic.spacing.layout.7xl',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'semantic.border.width.thin',
     'semantic.border.radius.xs',
     'semantic.border.radius.lg',
@@ -295,7 +294,7 @@ export const agentInputDocs: ComponentDocumentation = {
       {
         name: 'Text Input',
         description: 'Primary single-line entry point for typed and interim voice transcript text.',
-        tokens: ['semantic.spacing.layout.7xl'],
+        tokens: ['semantic.size.control.lg'],
       },
       {
         name: 'Voice Toggle',

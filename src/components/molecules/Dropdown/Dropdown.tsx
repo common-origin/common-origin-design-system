@@ -8,8 +8,12 @@ import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 const { semantic: { border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
 
 // Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
-// The 11px vertical padding is off-grid and keeps its deprecated token until #129.
+// The trigger and options take their height from size.control.lg as a minimum and centre
+// their content (decision 0034). The small vertical padding only matters when a long
+// label wraps; a single line is shorter than the minimum.
 const controlPaddingX = tokens.semantic.spacing.component.lg
+const controlPaddingY = spacing.sm
+const controlHeight = tokens.semantic.size.control.lg
 const { duration, easing } = motion
 
 interface DropdownOption {
@@ -44,7 +48,9 @@ const DropdownTrigger = styled.button.withConfig({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${input.default.paddingY} ${controlPaddingX};
+  box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
+  min-height: ${controlHeight};
+  padding: ${controlPaddingY} ${controlPaddingX};
   background-color: ${input.default.backgroundColor};
   border: ${input.default.borderWidth} solid ${({ $hasError }) =>
     $hasError ? input.error.borderColor : input.default.borderColor
@@ -134,7 +140,9 @@ const DropdownOption = styled.button.withConfig({
   align-items: center;
   justify-content: space-between;
   gap: ${spacing.sm};
-  padding: ${input.default.paddingY} ${controlPaddingX};
+  box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
+  min-height: ${controlHeight};
+  padding: ${controlPaddingY} ${controlPaddingX};
   border: none;
   font: ${input.default.font};
   color: ${input.default.textColor};

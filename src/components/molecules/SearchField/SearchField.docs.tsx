@@ -132,6 +132,7 @@ export const searchFieldDocs: ComponentDocumentation = {
     // Input box, shared with the text inputs
     'component.input.default.backgroundColor',
     'component.input.default.borderColor',
+    'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.default.borderRadius',
     'component.input.default.borderWidth',
     'component.input.hover.borderColor',
