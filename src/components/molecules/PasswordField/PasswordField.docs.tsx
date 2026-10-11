@@ -142,7 +142,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.field.helperText.color',
     'component.field.helperText.colorError',
     // Typography
-    'semantic.typography.body1',
+    'component.input.default.font', // Input text
     'semantic.typography.label',
     'semantic.typography.caption',
     'semantic.fontWeight.bold',
@@ -151,7 +151,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.input.default.backgroundColor',
     'component.input.default.borderColor',
     'component.input.default.textColor',
-    'component.input.default.placeholderColor',
+    'component.input.placeholder.textColor',
     'component.input.hover.borderColor',
     'component.input.focus.borderColor',
     'component.input.disabled.backgroundColor',
@@ -397,7 +397,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.input.focus.borderColor',
           'component.input.error.borderColor',
           'component.input.disabled.backgroundColor',
-          'semantic.typography.body1',
+          'component.input.default.font',
           'semantic.spacing.layout.md',
         ],
       },

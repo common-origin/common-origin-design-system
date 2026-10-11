@@ -1,4 +1,5 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
+import { tokenPaths } from '../../../lib/docgen/tokenPaths'
 import React from 'react'
 import { Grid, GridCol, ResponsiveGrid } from './GridSystem'
 import { Typography } from '../../atoms/Typography'
@@ -19,7 +20,7 @@ export const gridSystemDocs: ComponentDocumentation = {
   
   ],
   tokens: [
-    'base.spacing.*',
+    ...tokenPaths('base.spacing'), // Gap props take base spacing keys (see notes)
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -169,7 +170,7 @@ export const gridSystemDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'div with display: grid, repeat(cols, minmax(0, 1fr)) columns (12 by default), and optional gap, column gap and row gap.',
-        tokens: ['base.spacing.*']
+        tokens: [...tokenPaths('base.spacing')]
       },
       {
         name: 'GridCol',

@@ -1,4 +1,5 @@
 import { ComponentDocumentation } from '../../../lib/docgen/types'
+import { tokenPaths } from '../../../lib/docgen/tokenPaths'
 import { Box } from './Box'
 import { Typography } from '../Typography'
 import { Stack } from '../Stack'
@@ -380,12 +381,12 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.border.focusOffset',
     'semantic.border.width.thick',
     'semantic.border.width.thin',
-    'semantic.color.border.interactive',
-    'semantic.spacing.layout.*',
-    'semantic.color.background.*',
-    'semantic.color.text.*',
-    'semantic.color.border.*',
-    'semantic.border.radius.*',
+    // Box's spacing, colour, border and radius props accept any token in these groups
+    ...tokenPaths('semantic.spacing.layout'),
+    ...tokenPaths('semantic.color.background'),
+    ...tokenPaths('semantic.color.text'),
+    ...tokenPaths('semantic.color.border'),
+    ...tokenPaths('semantic.border.radius'),
     'semantic.elevation.none',
     'semantic.elevation.raised',
     'semantic.elevation.floating',

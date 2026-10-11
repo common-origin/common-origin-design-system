@@ -63,8 +63,11 @@ export const cardSmallDocs: ComponentDocumentation = {
     'semantic.border.width.thick',
     'semantic.border.radius.sm',
     'semantic.color.border.strong',
-    'semantic.spacing.sm',
-    'semantic.spacing.none',
+    'semantic.spacing.layout.sm', // Gap between the image and the text (Stack gap="sm")
+    'semantic.spacing.layout.xs', // Gap between the title and the subtitle
+    'semantic.spacing.layout.none', // Between the subtitle and meta lines
+    'semantic.typography.small', // Title
+    'semantic.typography.label', // Subtitle
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeOut',

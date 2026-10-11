@@ -115,8 +115,9 @@ export const sheetDocs: ComponentDocumentation = {
     'semantic.border.radius.md',
     
     // Colors for scrollbar
-    'semantic.color.border.default',
-    'semantic.color.background.tertiary',
+    'semantic.color.background.subtle', // Scrollbar track
+    'semantic.color.border.default', // Scrollbar thumb
+    'semantic.color.border.strong', // Scrollbar thumb on hover
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
