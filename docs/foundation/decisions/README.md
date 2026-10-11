@@ -36,6 +36,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0030](0030-row-interaction-states.md) | Rows and items share one interaction pattern: the naked Button ladder, the 0016 selected ladder, one shared helper | Accepted | 2026-10-11 |
 | [0031](0031-semantic-token-grammar.md) | Semantic tokens follow one grammar: `{category}.{property}.{role-emphasis-state}`; surfaces and fills split; a 100-based spacing scale; `color.data` reserved; domain tokens move to the component tier | Accepted | 2026-10-11 |
 | [0032](0032-token-modes.md) | Density and motion are token modes scoped to an element (`data-co-density`, `data-co-motion`); amends P9 | Accepted | 2026-10-11 |
+| [0033](0033-token-descriptions.md) | Token descriptions say when to use a token in one sentence; deprecation, replacement and pairings are fields; base tokens are described per group; descriptions reach the types, a generated `TOKENS.md` and the docs site <!-- verify-docs-ignore: planned generated file --> | Accepted | 2026-10-11 |
 
 ## Template
 
