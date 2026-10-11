@@ -48,7 +48,7 @@ A semantic token is `{category}.{property}.{key}`.
 | emphasis | `muted`, `default`, `emphasis` | `default`, if a role is written |
 | state | `hover`, `pressed`, `selected`, `focus` | at rest |
 
-Neutral keys always name their emphasis: `default`, `default-hover`, `muted`, `emphasis-pressed`. Role keys drop `default`: `accent`, `accent-hover`, `accent-muted`, `accent-muted-pressed`. Three words stand alone because they replace emphasis: `disabled`, `focus` (`color.border.focus`, the one focus ring) and `none` (transparent, as in `color.fill.none-hover` for a naked control). CSS variables read the same as the path: `--co-semantic-color-fill-accent-muted-hover`.
+`emphasis` is only used with the neutral role, where it means one step stronger than default ([0029](0029-accent-emphasis-audit.md) rule 1): near-black for text, icons and fills, a darker grey for borders. It is never a hue ([0016](0016-accent-selection-and-chip-types.md), 0029 rule 2), so roles take `muted` and their default only. Neutral keys always name their emphasis: `default`, `default-hover`, `muted`, `emphasis-pressed`. Role keys drop `default`: `accent`, `accent-hover`, `accent-muted`, `accent-muted-pressed`. Three words stand alone because they replace emphasis: `disabled`, `focus` (`color.border.focus`, the one focus ring) and `none` (transparent, as in `color.fill.none-hover` for a naked control). CSS variables read the same as the path: `--co-semantic-color-fill-accent-muted-hover`.
 
 The emphasis words are Primer's (`muted`, `emphasis`) rather than the draft's (`subtle`, `strong`), because ours already exist with other values. Keys are hyphen-joined rather than nested because Style Dictionary 5 can't yet make a group that is also a token (DTCG `$root`), and nesting would turn `color.text.success` into a group.
 
@@ -81,7 +81,7 @@ Details and values are settled in [#195](https://github.com/common-origin/common
 
 `color.status.*`, `color.financial.*`, `background.progressTrack`, `typography.button1–3`, `typography.breadcrumb` and `border.tooltip` move to component tokens: `component.status.*` (the status indicators), `component.transaction.*` (amounts), `component.track.background` (ProgressBar and Slider, [0026](0026-slider-track-stays-light.md)), Button's existing `font` tokens, `component.breadcrumbs.font` and `component.tooltip.border`. They are moves, not new decisions, so they keep their values.
 
-`color.category.*` keeps its own `{hue}-{emphasis}` shape for now (`blue`, `blue-muted`, `blue-emphasis`, `blue-text`); whether it joins `color.data` is a question for #196.
+`color.category.*` keeps its own `{hue}-{step}` shape for now (`blue`, `blue-muted`, `blue-strong`, `blue-text`). Its strong step stays `-strong` and the `-emphasis` aliases stay deprecated until 3.0, as [0029](0029-accent-emphasis-audit.md) decided; whether it joins `color.data` is a question for #196.
 
 ### 7. Migration
 
@@ -259,25 +259,25 @@ Unchanged: `elevation.*`, `breakpoint.*`, `opacity.*`, `fontFamily.*`, `fontSize
 | `color.financial.pending` | component tier: `component.transaction.pending` |
 | `color.financial.neutral` | component tier: `component.transaction.neutral` |
 
-**`color.category`** (unchanged: `blue`, `blue-emphasis`, `purple`, `purple-emphasis`, `pink`, `pink-emphasis`, `yellow`, `yellow-emphasis`, `green`, `green-emphasis`, `red`, `red-emphasis`, `orange`, `orange-emphasis`, `gray`, `gray-emphasis`, `blue-text`, `purple-text`, `pink-text`, `yellow-text`, `green-text`, `red-text`, `orange-text`, `gray-text`)
+**`color.category`** (unchanged: `blue`, `blue-strong`, `purple`, `purple-strong`, `pink`, `pink-strong`, `yellow`, `yellow-strong`, `green`, `green-strong`, `red`, `red-strong`, `orange`, `orange-strong`, `gray`, `gray-strong`, `blue-text`, `purple-text`, `pink-text`, `yellow-text`, `green-text`, `red-text`, `orange-text`, `gray-text`)
 
 | Today | New |
 |---|---|
-| `color.category.blue-strong` | `color.category.blue-emphasis` |
+| `color.category.blue-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.blue-strong` |
 | `color.category.blue-subtle` | `color.category.blue-muted` |
-| `color.category.purple-strong` | `color.category.purple-emphasis` |
+| `color.category.purple-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.purple-strong` |
 | `color.category.purple-subtle` | `color.category.purple-muted` |
-| `color.category.pink-strong` | `color.category.pink-emphasis` |
+| `color.category.pink-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.pink-strong` |
 | `color.category.pink-subtle` | `color.category.pink-muted` |
-| `color.category.yellow-strong` | `color.category.yellow-emphasis` |
+| `color.category.yellow-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.yellow-strong` |
 | `color.category.yellow-subtle` | `color.category.yellow-muted` |
-| `color.category.green-strong` | `color.category.green-emphasis` |
+| `color.category.green-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.green-strong` |
 | `color.category.green-subtle` | `color.category.green-muted` |
-| `color.category.red-strong` | `color.category.red-emphasis` |
+| `color.category.red-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.red-strong` |
 | `color.category.red-subtle` | `color.category.red-muted` |
-| `color.category.orange-strong` | `color.category.orange-emphasis` |
+| `color.category.orange-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.orange-strong` |
 | `color.category.orange-subtle` | `color.category.orange-muted` |
-| `color.category.gray-strong` | `color.category.gray-emphasis` |
+| `color.category.gray-emphasis` | removed in 3.0 (deprecated alias, [0029](0029-accent-emphasis-audit.md)); use `color.category.gray-strong` |
 | `color.category.gray-subtle` | `color.category.gray-muted` |
 
 **`color.status`**
