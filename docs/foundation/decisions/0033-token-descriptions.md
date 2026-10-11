@@ -42,9 +42,9 @@ A local test showed that JSDoc on a nested token object survives `tsc --declarat
 
 - Tests enforce the rules ([#200](https://github.com/common-origin/common-origin-design-system/issues/200), [#201](https://github.com/common-origin/common-origin-design-system/issues/201)):
   - every semantic and component token, and every base group, has a description
-  - descriptions contain no hex or px values and no "Approved under"
+  - descriptions of non-deprecated tokens contain no hex, px or rem values and no "Approved under". About 50 current descriptions break this (every breakpoint, for one), so they start on an allowlist in the test, and #189 rewrites them, including for names 0031 leaves unchanged, until the list is empty
   - every `replacedBy` and `pairsWith` path exists, and `replacedBy` isn't itself deprecated
-  - no component uses a deprecated token
+  - no component uses a deprecated token, except those listed with their reason in the test: today Chip's small and medium paddings and Input's `paddingY`, which wait for [#129](https://github.com/common-origin/common-origin-design-system/issues/129)
 - The 59 tokens marked "Deprecated: …" in prose move to `$deprecated` (#200).
 - `tokens.d.ts` is retired once the generated `tokens.ts` lands (#199), which closes the JSDoc item left open in [#24](https://github.com/common-origin/common-origin-design-system/issues/24) step 6.
 - Agent-facing metadata for components stays with [#22](https://github.com/common-origin/common-origin-design-system/issues/22); this decision covers tokens only.
