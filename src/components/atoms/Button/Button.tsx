@@ -4,8 +4,11 @@ import tokens from '@/styles/tokens.json'
 import { Icon, type IconName } from '../Icon'
 
 const { component: { button }, semantic } = tokens
-// Padding comes from the semantic spacing scale: no component spacing tokens (decision 0022)
+// Height comes from size.control as a minimum and the content is centred, so there is no
+// vertical padding (decision 0034). Horizontal padding comes from the semantic spacing scale:
+// no component spacing tokens (decision 0022)
 const spacing = semantic.spacing.component
+const control = semantic.size.control
 
 /**
  * Button variants. `accent` is the blue call to action one level above `primary`;
@@ -162,28 +165,27 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) => {
   `
 }
 
-// Dynamic size styles using component tokens
+// Dynamic size styles: font from component tokens, height from size.control (decision 0034)
 const getSizeStyles = ({ $size }: StyledButtonProps) => {
   switch ($size) {
     case 'small':
       return `
         font: ${button.sizes.small.font};
-        padding: ${spacing.sm} ${spacing.md};
+        min-height: ${control.sm};
+        padding: 0 ${spacing.md};
       `
     case 'medium':
       return `
         font: ${button.sizes.medium.font};
-        padding: ${spacing.sm} ${spacing.lg};
+        min-height: ${control.md};
+        padding: 0 ${spacing.lg};
       `
     case 'large':
-      return `
-        font: ${button.sizes.large.font};
-        padding: ${spacing.md} ${spacing.lg};
-      `
     default:
       return `
         font: ${button.sizes.large.font};
-        padding: ${spacing.md} ${spacing.lg};
+        min-height: ${control.lg};
+        padding: 0 ${spacing.lg};
       `
   }
 }

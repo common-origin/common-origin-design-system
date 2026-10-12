@@ -288,12 +288,12 @@
   --co-component-icon-button-primary-align-items: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0. */
   --co-component-icon-button-primary-justify-content: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0. */
   --co-component-icon-button-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
-  --co-component-icon-button-sizes-small-min-width: 32px; /** Minimum width of the small IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-sizes-small-min-height: 32px; /** Minimum height of the small IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-sizes-medium-min-width: 40px; /** Minimum width of the medium IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-sizes-medium-min-height: 40px; /** Minimum height of the medium IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-sizes-large-min-width: 48px; /** Minimum width of the large IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-sizes-large-min-height: 48px; /** Minimum height of the large IconButton. Raw px until control sizes are decided in #129. */
+  --co-component-icon-button-sizes-small-min-width: 32px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-small-min-height: 32px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-min-width: 40px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.md. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-min-height: 40px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.md. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-min-width: 48px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.lg. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-min-height: 48px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.lg. Removed in 3.0. */
   --co-component-input-default-padding-y: 11px; /** Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0. */
   --co-component-input-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
   --co-component-input-error-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */

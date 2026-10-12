@@ -116,12 +116,10 @@ export const iconButtonDocs: ComponentDocumentation = {
     'component.button.variants.naked.disabled.textColor',
     // Shape and size
     'component.iconButton.primary.borderRadius',
-    'component.iconButton.sizes.small.minWidth',
-    'component.iconButton.sizes.small.minHeight',
-    'component.iconButton.sizes.medium.minWidth',
-    'component.iconButton.sizes.medium.minHeight',
-    'component.iconButton.sizes.large.minWidth',
-    'component.iconButton.sizes.large.minHeight',
+    // Width and height: size.control as a minimum (decision 0034)
+    'semantic.size.control.sm',
+    'semantic.size.control.md',
+    'semantic.size.control.lg',
     // Padding: semantic spacing, no component spacing tokens (decision 0022)
     'semantic.spacing.component.xs',
     'semantic.spacing.component.sm',

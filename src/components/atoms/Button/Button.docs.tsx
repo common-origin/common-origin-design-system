@@ -28,7 +28,7 @@ export const buttonDocs: ComponentDocumentation = {
       type: "'small' | 'medium' | 'large'",
       required: false,
       default: 'medium',
-      description: 'Size variant affecting padding, font size, and icon size. Small for compact spaces, large for prominence'
+      description: 'Size variant affecting height (32, 40 or 48px minimum), font size and icon size. Small for compact spaces, large for prominence'
     },
     {
       name: 'iconName',
@@ -157,8 +157,11 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.sizes.small.font',
     'component.button.sizes.medium.font',
     'component.button.sizes.large.font',
-    // Padding: semantic spacing, no component spacing tokens (decision 0022)
-    'semantic.spacing.component.sm',
+    // Height: size.control as a minimum (decision 0034)
+    'semantic.size.control.sm',
+    'semantic.size.control.md',
+    'semantic.size.control.lg',
+    // Horizontal padding: semantic spacing, no component spacing tokens (decision 0022)
     'semantic.spacing.component.md',
     'semantic.spacing.component.lg',
     // Spacing and motion

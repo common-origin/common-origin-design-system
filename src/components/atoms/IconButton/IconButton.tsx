@@ -3,7 +3,14 @@ import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { motion, border, spacing }, component: { iconButton, button } } = tokens
+const { semantic: { motion, border, spacing, size }, component: { iconButton, button } } = tokens
+
+// Height and width come from size.control as a minimum (decision 0034)
+const control = {
+  small: size.control.sm,
+  medium: size.control.md,
+  large: size.control.lg,
+} as const
 
 // Padding comes from the semantic spacing scale: no component spacing tokens (decision 0022)
 const padding = {
@@ -78,9 +85,8 @@ const IconButtonStyled = styled.button.withConfig({
   cursor: pointer;
   position: relative;
 
-  /* Size-specific dimensions from component tokens */
-  min-width: ${({ $size }) => iconButton.sizes[$size].minWidth};
-  min-height: ${({ $size }) => iconButton.sizes[$size].minHeight};
+  min-width: ${({ $size }) => control[$size]};
+  min-height: ${({ $size }) => control[$size]};
   padding: ${({ $size }) => padding[$size]};
 
   &:hover:not(:disabled) {

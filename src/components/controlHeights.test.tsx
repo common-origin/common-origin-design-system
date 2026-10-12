@@ -6,9 +6,12 @@ import { NumberInput } from './molecules/NumberInput'
 import { SearchField } from './molecules/SearchField'
 import { Dropdown } from './molecules/Dropdown'
 import { AgentInput } from './molecules/AgentInput'
+import { Button } from './atoms/Button'
+import { IconButton } from './atoms/IconButton'
 
 // Controls take their height from size.control as a minimum, including the border, and
-// centre their content (decision 0034). Fields are size.control.lg.
+// centre their content (decision 0034). Fields are size.control.lg; Button and IconButton
+// take sm / md / lg by size.
 const { lg } = tokens.semantic.size.control
 
 function expectControlHeight(element: HTMLElement) {
@@ -65,5 +68,35 @@ describe('control heights', () => {
     })
     render(<AgentInput onSubmit={jest.fn().mockResolvedValue(undefined)} />)
     expect(getComputedStyle(screen.getByRole('textbox')).minHeight).toBe(lg)
+  })
+})
+
+describe('Button and IconButton heights', () => {
+  const sizes = [
+    ['small', tokens.semantic.size.control.sm],
+    ['medium', tokens.semantic.size.control.md],
+    ['large', tokens.semantic.size.control.lg],
+  ] as const
+
+  it.each(sizes)('a %s Button has the size.control minimum and no vertical padding', (size, height) => {
+    render(<Button size={size}>Save</Button>)
+    const style = getComputedStyle(screen.getByRole('button'))
+    expect(style.minHeight).toBe(height)
+    expect(style.boxSizing).toBe('border-box')
+    expect(style.paddingTop).toBe('0px')
+    expect(style.paddingBottom).toBe('0px')
+  })
+
+  it('a Button link has the same minimum', () => {
+    render(<Button purpose="link" url="/docs">Docs</Button>)
+    expect(getComputedStyle(screen.getByRole('link')).minHeight).toBe(lg)
+  })
+
+  it.each(sizes)('a %s IconButton has the size.control minimum width and height', (size, height) => {
+    render(<IconButton variant="primary" size={size} iconName="close" aria-label="Close" />)
+    const style = getComputedStyle(screen.getByRole('button'))
+    expect(style.minHeight).toBe(height)
+    expect(style.minWidth).toBe(height)
+    expect(style.boxSizing).toBe('border-box')
   })
 })

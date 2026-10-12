@@ -604,11 +604,11 @@
         "small": {
           "minWidth": {
             "$value": "32px",
-            "$description": "Minimum width of the small IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.sm. Removed in 3.0."
           },
           "minHeight": {
             "$value": "32px",
-            "$description": "Minimum height of the small IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.sm. Removed in 3.0."
           },
           "padding": {
             "$value": "{semantic.spacing.component.xs}",
@@ -618,11 +618,11 @@
         "medium": {
           "minWidth": {
             "$value": "40px",
-            "$description": "Minimum width of the medium IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.md. Removed in 3.0."
           },
           "minHeight": {
             "$value": "40px",
-            "$description": "Minimum height of the medium IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.md. Removed in 3.0."
           },
           "padding": {
             "$value": "{semantic.spacing.component.sm}",
@@ -632,11 +632,11 @@
         "large": {
           "minWidth": {
             "$value": "48px",
-            "$description": "Minimum width of the large IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.lg. Removed in 3.0."
           },
           "minHeight": {
             "$value": "48px",
-            "$description": "Minimum height of the large IconButton. Raw px until control sizes are decided in #129."
+            "$description": "Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.lg. Removed in 3.0."
           },
           "padding": {
             "$value": "{semantic.spacing.component.md}",

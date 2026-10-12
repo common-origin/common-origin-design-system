@@ -250,7 +250,7 @@ const StyledDismissButton = styled(IconButton)<{ $inline: boolean }>`
   margin-right: ${({ $inline }) =>
     $inline
       ? 0
-      : `calc((${tokens.component.iconButton.sizes.small.minWidth} - ${semantic.size.icon.sm}) / -2)`};
+      : `calc((${semantic.size.control.sm} - ${semantic.size.icon.sm}) / -2)`};
 `
 
 export const Alert = ({
