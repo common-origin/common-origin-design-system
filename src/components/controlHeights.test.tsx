@@ -8,6 +8,7 @@ import { Dropdown } from './molecules/Dropdown'
 import { AgentInput } from './molecules/AgentInput'
 import { Button } from './atoms/Button'
 import { IconButton } from './atoms/IconButton'
+import { Chip, BooleanChip, InputChip } from './atoms/Chip'
 
 // Controls take their height from size.control as a minimum, including the border, and
 // centre their content (decision 0034). Fields are size.control.lg; Button and IconButton
@@ -98,5 +99,39 @@ describe('Button and IconButton heights', () => {
     expect(style.minHeight).toBe(height)
     expect(style.minWidth).toBe(height)
     expect(style.boxSizing).toBe('border-box')
+  })
+})
+
+// Chips stay on the label scale (decision 0018). A chip with a close button is at least
+// size.label.medium tall, so a small one keeps its 24px (decision 0034, #208).
+describe('chip heights', () => {
+  const { label } = tokens.semantic.size
+
+  function expectChipHeight(element: HTMLElement, height: string) {
+    const style = getComputedStyle(element)
+    expect(style.minHeight).toBe(height)
+    expect(style.paddingTop).toBe('0px')
+    expect(style.paddingBottom).toBe('0px')
+  }
+
+  it.each([
+    ['small', label.small],
+    ['medium', label.medium],
+  ] as const)('a %s Chip, BooleanChip and InputChip are size.label.%s', (size, height) => {
+    render(
+      <>
+        <Chip size={size} data-testid="chip">Tag</Chip>
+        <BooleanChip size={size} selected={false} onClick={() => {}} data-testid="boolean">Filter</BooleanChip>
+        <InputChip size={size} data-testid="input">Value</InputChip>
+      </>
+    )
+    expectChipHeight(screen.getByTestId('chip'), height)
+    expectChipHeight(screen.getByTestId('boolean'), height)
+    expectChipHeight(screen.getByTestId('input'), height)
+  })
+
+  it.each(['small', 'medium'] as const)('a %s InputChip with a close button is at least size.label.medium', (size) => {
+    render(<InputChip size={size} onDismiss={() => {}} data-testid="input">Value</InputChip>)
+    expectChipHeight(screen.getByTestId('input'), label.medium)
   })
 })

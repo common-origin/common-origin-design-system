@@ -443,7 +443,7 @@
           "padding": {
             "$value": "2px {semantic.spacing.component.sm}",
             "$type": "dimension",
-            "$description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
+            "$description": "Deprecated (decisions 0022 and 0034): chips take their min-height from semantic.size.label with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
           },
           "font": {
             "$value": "{semantic.typography.caption}",
@@ -455,7 +455,7 @@
           "padding": {
             "$value": "2px {semantic.spacing.component.sm}",
             "$type": "dimension",
-            "$description": "Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0."
+            "$description": "Deprecated (decisions 0022 and 0034): chips take their min-height from semantic.size.label with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
           },
           "font": {
             "$value": "{semantic.typography.small}",
@@ -791,7 +791,7 @@
         "paddingY": {
           "$value": "11px",
           "$type": "dimension",
-          "$description": "Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0."
+          "$description": "Deprecated (decisions 0022 and 0034): single-line fields take their min-height from semantic.size.control.lg with no vertical padding. Removed in 3.0."
         },
         "paddingX": {
           "$value": "{semantic.spacing.component.lg}",

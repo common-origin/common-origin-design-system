@@ -99,14 +99,14 @@ describe('Chip Component', () => {
       expect(chip).toBeInTheDocument()
     })
 
-    // The 2px is off-grid and stays until #129 decides how controls get their heights
-    // (decision 0022); the literal values are the design, so a mapping change fails here
+    // Height comes from the label scale with no vertical padding (decisions 0018 and 0034);
+    // the literal values are the design, so a mapping change fails here
     it.each([
-      ['small', '2px 0.5rem'],
-      ['medium', '2px 0.5rem'],
-    ] as const)('pads the %s size with %s', (size, padding) => {
+      ['small', '0 0.5rem', '1.25rem'],
+      ['medium', '0 0.5rem', '1.5rem'],
+    ] as const)('pads the %s size with %s, %s minimum height', (size, padding, minHeight) => {
       const { container } = renderChip({ size })
-      expect(container.firstChild).toHaveStyle({ padding })
+      expect(container.firstChild).toHaveStyle({ padding, minHeight })
     })
   })
 

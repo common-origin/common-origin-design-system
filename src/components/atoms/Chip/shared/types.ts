@@ -30,6 +30,8 @@ export interface InternalStyledProps {
   $disabled?: boolean
   $clickable?: boolean
   $selected?: boolean
+  /** Has a close button: at least size.label.medium tall (decision 0034) */
+  $dismissible?: boolean
 }
 
 /**

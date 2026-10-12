@@ -169,10 +169,12 @@ export const booleanChipDocs: ComponentDocumentation = {
     'semantic.color.background.interactive-subtle-active',
     'semantic.color.text.interactive-active',
     // Size variants
-    'component.chip.sizes.small.padding',
     'component.chip.sizes.small.font',
-    'component.chip.sizes.medium.padding',
     'component.chip.sizes.medium.font',
+    // Height: the label scale as a minimum (decisions 0018 and 0034); horizontal padding: semantic spacing
+    'semantic.size.label.small',
+    'semantic.size.label.medium',
+    'semantic.spacing.component.sm',
     // Icon spacing
     'semantic.spacing.layout.xs',
     // Focus ring
@@ -355,9 +357,7 @@ States:
           'The children prop rendered as chip text. Size variant controls font and padding.',
         tokens: [
           'component.chip.sizes.medium.font',
-          'component.chip.sizes.medium.padding',
           'component.chip.sizes.small.font',
-          'component.chip.sizes.small.padding',
           'component.chip.default.textColor'
         ]
       }

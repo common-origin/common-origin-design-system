@@ -74,6 +74,7 @@ export const InputChip: React.FC<InputChipProps> = ({
       $disabled={disabled || undefined}
       $clickable={false}
       $selected={selected}
+      $dismissible={isDismissible || undefined}
       onKeyDown={handleKeyDown}
       role={role || 'status'}
       aria-label={ariaLabel}

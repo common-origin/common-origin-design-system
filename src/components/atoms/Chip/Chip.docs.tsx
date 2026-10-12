@@ -134,10 +134,12 @@ export const chipDocs: ComponentDocumentation = {
     'component.chip.disabled.backgroundColor',
     'component.chip.disabled.textColor',
     // Size variants
-    'component.chip.sizes.small.padding',
     'component.chip.sizes.small.font',
-    'component.chip.sizes.medium.padding',
     'component.chip.sizes.medium.font',
+    // Height: the label scale as a minimum (decisions 0018 and 0034); horizontal padding: semantic spacing
+    'semantic.size.label.small',
+    'semantic.size.label.medium',
+    'semantic.spacing.component.sm',
     // Motion
     'semantic.motion.hover',
     // Deprecated: hover, active and focus apply only to a chip with onClick

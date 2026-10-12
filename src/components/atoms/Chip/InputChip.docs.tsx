@@ -136,10 +136,12 @@ export const inputChipDocs: ComponentDocumentation = {
     'semantic.color.background.interactive-subtle',
     'semantic.color.text.interactive',
     // Size variants
-    'component.chip.sizes.small.padding',
     'component.chip.sizes.small.font',
-    'component.chip.sizes.medium.padding',
     'component.chip.sizes.medium.font',
+    // Height: the label scale as a minimum (decisions 0018 and 0034); horizontal padding: semantic spacing
+    'semantic.size.label.small',
+    'semantic.size.label.medium',
+    'semantic.spacing.component.sm',
     // Icon and close button spacing
     'semantic.spacing.layout.xs',
     'semantic.spacing.layout.sm',
@@ -341,9 +343,7 @@ States:
           'The children prop rendered as filter text. Size variant controls font and padding.',
         tokens: [
           'component.chip.sizes.medium.font',
-          'component.chip.sizes.medium.padding',
           'component.chip.sizes.small.font',
-          'component.chip.sizes.small.padding',
           'component.chip.variants.subtle.textColor',
           'semantic.color.text.interactive'
         ]
