@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
 const { component: { input }, semantic } = tokens
@@ -21,9 +21,12 @@ interface StyledInputBaseProps {
   $disabled?: boolean
 }
 
-export const StyledInputBase = styled.input.withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$')
-})<StyledInputBaseProps>`
+/**
+ * Styles shared by the single-line input and the textarea. Each element sets its
+ * own min-height and padding. Interpolating a styled component into another's CSS
+ * inserts its class selector, not its styles, so the sharing goes through `css`.
+ */
+const inputBaseStyles = css<StyledInputBaseProps>`
   /* Typography */
   font: ${input.default.font};
   color: ${({ $disabled }) => 
@@ -35,8 +38,6 @@ export const StyledInputBase = styled.input.withConfig({
   /* Layout */
   box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
   width: 100%;
-  min-height: ${semantic.size.control.lg};
-  padding: 0 ${semantic.spacing.component.lg};
   
   /* Visual styling */
   background-color: ${({ $disabled }) => 
@@ -104,18 +105,24 @@ export const StyledInputBase = styled.input.withConfig({
   }
 `
 
+export const StyledInputBase = styled.input.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<StyledInputBaseProps>`
+  ${inputBaseStyles}
+  min-height: ${semantic.size.control.lg};
+  padding: 0 ${semantic.spacing.component.lg};
+`
+
 /**
  * Base styled textarea with shared styling
  */
 export const StyledTextAreaBase = styled.textarea.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledInputBaseProps>`
-  /* Inherit all input base styles */
-  ${StyledInputBase}
+  ${inputBaseStyles}
   
-  /* TextArea specific */
-  min-height: ${tokens.component.input.textarea.minHeight};
+  /* TextArea specific: a taller minimum for multi-line entry (decision 0034) */
+  min-height: ${input.textarea.minHeight};
+  padding: ${semantic.spacing.component.md} ${semantic.spacing.component.lg};
   resize: vertical;
-  font-family: inherit;
-  line-height: ${tokens.semantic.lineHeight.normal};
 `
