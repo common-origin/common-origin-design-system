@@ -282,8 +282,8 @@
   --co-base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
   --co-component-button-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
   --co-component-chip-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
-  --co-component-icon-button-primary-min-width: 40px; /** Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-primary-min-height: 40px; /** Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129. */
+  --co-component-icon-button-primary-min-width: 40px; /** Deprecated: No IconButton reads it: sizes take their minimum width from semantic.size.control (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-primary-min-height: 40px; /** Deprecated: No IconButton reads it: sizes take their minimum height from semantic.size.control (decision 0034). Removed in 3.0. */
   --co-component-icon-button-primary-display: flex; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0. */
   --co-component-icon-button-primary-align-items: center; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0. */
   --co-component-icon-button-primary-justify-content: center; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0. */
@@ -314,28 +314,28 @@
   --co-semantic-elevation-floating: var(--co-base-shadow-4); /** Moderate lift - tooltips, popovers, dropdowns */
   --co-semantic-elevation-overlay: var(--co-base-shadow-5); /** High lift - modals, dialogs, action sheets */
   --co-semantic-elevation-sticky: var(--co-base-shadow-3); /** Fixed headers, sticky navigation, bottom bars */
-  --co-semantic-breakpoint-xs: var(--co-base-breakpoint-xs); /** 0px: smallest viewport. */
-  --co-semantic-breakpoint-sm: var(--co-base-breakpoint-sm); /** 640px: large phones. */
-  --co-semantic-breakpoint-md: var(--co-base-breakpoint-md); /** 768px: tablets; below this, mobile layouts (e.g. fullscreen Modal). */
-  --co-semantic-breakpoint-lg: var(--co-base-breakpoint-lg); /** 1024px: small desktops. */
-  --co-semantic-breakpoint-xl: var(--co-base-breakpoint-xl); /** 1280px: desktops. */
-  --co-semantic-breakpoint-2xl: var(--co-base-breakpoint-2xl); /** 1536px: wide desktops. */
+  --co-semantic-breakpoint-xs: var(--co-base-breakpoint-xs); /** The smallest viewport, where mobile-first styles start. */
+  --co-semantic-breakpoint-sm: var(--co-base-breakpoint-sm); /** Breakpoint for large phones in landscape and small tablets. */
+  --co-semantic-breakpoint-md: var(--co-base-breakpoint-md); /** Breakpoint for tablets; below it, mobile layouts apply, such as a fullscreen Modal. */
+  --co-semantic-breakpoint-lg: var(--co-base-breakpoint-lg); /** Breakpoint for small desktops and landscape tablets. */
+  --co-semantic-breakpoint-xl: var(--co-base-breakpoint-xl); /** Breakpoint for standard desktops. */
+  --co-semantic-breakpoint-2xl: var(--co-base-breakpoint-2xl); /** Breakpoint for wide desktops; layouts can add columns from here. */
   --co-semantic-opacity-disabled: var(--co-base-opacity-50); /** 0.5: disabled controls and items. */
   --co-semantic-opacity-full: var(--co-base-opacity-100); /** 1: fully opaque (the enabled counterpart of disabled). */
   --co-semantic-font-family-body: var(--co-base-font-family-body); /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */
   --co-semantic-font-family-monospace: var(--co-base-font-family-monospace); /** Code and other fixed-width text (CodeBlock). */
-  --co-semantic-font-size-xs: var(--co-base-font-size-1); /** 0.75rem. */
-  --co-semantic-font-size-sm: var(--co-base-font-size-2); /** 0.875rem. */
-  --co-semantic-font-size-md: var(--co-base-font-size-3); /** 1rem. */
-  --co-semantic-font-size-lg: var(--co-base-font-size-4); /** 1.125rem. */
-  --co-semantic-font-size-xl: var(--co-base-font-size-5); /** 1.25rem. */
+  --co-semantic-font-size-xs: var(--co-base-font-size-1); /** Smallest text size: captions, metadata and small labels. */
+  --co-semantic-font-size-sm: var(--co-base-font-size-2); /** Secondary text size: labels, compact controls and supporting copy. */
+  --co-semantic-font-size-md: var(--co-base-font-size-3); /** Body text size: paragraphs, input values and most controls. */
+  --co-semantic-font-size-lg: var(--co-base-font-size-4); /** One step larger than body text on the type scale. */
+  --co-semantic-font-size-xl: var(--co-base-font-size-5); /** Two steps larger than body text on the type scale. */
   --co-semantic-line-height-none: var(--co-base-line-height-none); /** 1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators. */
-  --co-semantic-line-height-tight: var(--co-base-line-height-3); /** 1.25rem: compact multi-line text (Alert, CodeBlock). */
-  --co-semantic-line-height-normal: var(--co-base-line-height-4); /** 1.5rem: body-text line height (TextArea). */
-  --co-semantic-letter-spacing-tighter: var(--co-base-letter-spacing-0); /** -0.125rem: tracking for the largest headings (display, h1). */
-  --co-semantic-letter-spacing-tight: var(--co-base-letter-spacing-1); /** -0.0625rem: tracking for h2 to h4. */
+  --co-semantic-line-height-tight: var(--co-base-line-height-3); /** Line height for compact multi-line text, such as Alert and CodeBlock. */
+  --co-semantic-line-height-normal: var(--co-base-line-height-4); /** Line height for body text and multi-line entry, such as TextArea. */
+  --co-semantic-letter-spacing-tighter: var(--co-base-letter-spacing-0); /** Tightest tracking, for the largest headings: display and h1. */
+  --co-semantic-letter-spacing-tight: var(--co-base-letter-spacing-1); /** Slightly tighter tracking for mid-size headings, h2 to h4. */
   --co-semantic-letter-spacing-normal: var(--co-base-letter-spacing-2); /** 0: default tracking (h5, h6 and text). */
-  --co-semantic-letter-spacing-wide: var(--co-base-letter-spacing-4); /** 0.125rem: tracking for small uppercase labels (SearchField section headers). */
+  --co-semantic-letter-spacing-wide: var(--co-base-letter-spacing-4); /** Wide tracking for small uppercase labels, such as SearchField section headers. */
   --co-semantic-font-weight-regular: var(--co-base-font-weight-2); /** 400. Body text, captions, most UI text. */
   --co-semantic-font-weight-medium: var(--co-base-font-weight-3); /** 500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text. */
   --co-semantic-font-weight-semibold: var(--co-base-font-weight-4); /** 600. Labels and short titles that need more weight than medium (label, Alert title). */
@@ -347,11 +347,11 @@
   --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025). */
   --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Deprecated: Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** Deprecated: Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus); /** The focus ring: 2px solid near-black, always used with border.focusOffset for visible keyboard focus (P2). Every component draws this ring; there is no blue focus ring (decision 0029). */
-  --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-emphasis); /** 2px dotted underline marking text that has a tooltip. */
-  --co-semantic-border-width-thin: var(--co-base-border-width-1); /** 0.0625rem: default hairline borders and rings. */
-  --co-semantic-border-width-thick: var(--co-base-border-width-2); /** 0.125rem: emphasised borders, focus outlines and selected states. */
-  --co-semantic-border-focus-offset: var(--co-base-border-width-2); /** 0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does. */
+  --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus); /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
+  --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-emphasis); /** Dotted underline marking text that has a tooltip. */
+  --co-semantic-border-width-thin: var(--co-base-border-width-1); /** Hairline border: dividers, control edges and rings. */
+  --co-semantic-border-width-thick: var(--co-base-border-width-2); /** Thick border: focus rings, emphasised outlines and selected states. */
+  --co-semantic-border-focus-offset: var(--co-base-border-width-2); /** Gap between an element and its focus ring; negate it to inset the ring inside the element. */
   --co-semantic-border-radius-xs: var(--co-base-border-radius-1); /** Deprecated: Renamed to semantic.radius.xs by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-radius-sm: var(--co-base-border-radius-2); /** Deprecated: Renamed to semantic.radius.sm by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-radius-md: var(--co-base-border-radius-3); /** Deprecated: Renamed to semantic.radius.md by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -379,17 +379,17 @@
   --co-semantic-size-9000: var(--co-base-size-90); /** Size step for readable text widths, such as EmptyState copy. */
   --co-semantic-size-10000: var(--co-base-size-100); /** Size step for compact panel widths, such as the EmptyState block. */
   --co-semantic-size-19200: var(--co-base-size-192); /** Size step for wide content columns, such as CardLarge. */
-  --co-semantic-size-touch-target: var(--co-base-size-11); /** 2.75rem (44px): minimum height of a tappable row or control. */
+  --co-semantic-size-touch-target: var(--co-base-size-11); /** Minimum height of a tappable row or control on touch screens. */
   --co-semantic-size-control-sm: var(--co-base-size-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-size-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
   --co-semantic-size-control-lg: var(--co-base-size-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
-  --co-semantic-size-overlay-sm: var(--co-base-size-100); /** 25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets). */
-  --co-semantic-size-overlay-md: var(--co-base-size-140); /** 35rem (560px): medium overlay panel width (Modal medium). */
-  --co-semantic-size-overlay-lg: var(--co-base-size-180); /** 45rem (720px): large overlay panel width (Modal large). */
-  --co-semantic-size-label-small: var(--co-base-size-5); /** 20px label height: StatusLabel small and Tag small. Decision 0018 size scale. */
-  --co-semantic-size-label-medium: var(--co-base-size-6); /** 24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale. */
-  --co-semantic-size-label-large: var(--co-base-size-8); /** 32px label height: CategoryLabel large. Decision 0018 size scale. */
-  --co-semantic-size-menu-max-height: var(--co-base-size-75); /** 18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField). */
+  --co-semantic-size-overlay-sm: var(--co-base-size-100); /** Width of a small Modal, and the default width or height of a Sheet. */
+  --co-semantic-size-overlay-md: var(--co-base-size-140); /** Width of a medium overlay panel, such as a medium Modal. */
+  --co-semantic-size-overlay-lg: var(--co-base-size-180); /** Width of a large overlay panel, such as a large Modal. */
+  --co-semantic-size-label-small: var(--co-base-size-5); /** Height of a small label: StatusLabel small and Tag small (decision 0018). */
+  --co-semantic-size-label-medium: var(--co-base-size-6); /** Height of a medium label and every chip: StatusLabel, Tag, CategoryLabel (0018, 0035). */
+  --co-semantic-size-label-large: var(--co-base-size-8); /** Height of a large label: CategoryLabel large (decision 0018). */
+  --co-semantic-size-menu-max-height: var(--co-base-size-75); /** Tallest a floating menu grows before it scrolls: Dropdown, SearchField. */
   --co-semantic-size-dimension-1: var(--co-base-size-1); /** Deprecated: Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-size-dimension-2: var(--co-base-size-2); /** Deprecated: Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-size-dimension-4: var(--co-base-size-4); /** Deprecated: Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -407,17 +407,17 @@
   --co-semantic-size-dimension-90: var(--co-base-size-90); /** Deprecated: Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-size-dimension-100: var(--co-base-size-100); /** Deprecated: Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-size-dimension-192: var(--co-base-size-192); /** Deprecated: Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-icon-xs: var(--co-base-size-3); /** 0.75rem (12px): the smallest icon, for dense inline indicators. */
-  --co-semantic-size-icon-sm: var(--co-base-size-4); /** 1rem (16px): small icons in compact controls, such as the dismiss icon in Alert and small icon buttons. */
-  --co-semantic-size-icon-md: var(--co-base-size-5); /** 1.25rem (20px): icons beside body text, such as Alert's severity icon. */
-  --co-semantic-size-icon-lg: var(--co-base-size-6); /** 1.5rem (24px): the Icon component's default size; also list item icons. */
-  --co-semantic-size-icon-xl: var(--co-base-size-8); /** 2rem (32px): extra-large standalone icons. */
-  --co-semantic-size-icon-2xl: var(--co-base-size-10); /** 2.5rem (40px): the largest icon size, for prominent standalone icons. */
-  --co-semantic-size-avatar-xs: var(--co-base-size-6); /** 1.5rem (24px): extra-small avatar, inline with text. */
-  --co-semantic-size-avatar-sm: var(--co-base-size-8); /** 2rem (32px): small avatar, in dense lists. */
-  --co-semantic-size-avatar-md: var(--co-base-size-10); /** 2.5rem (40px): the default avatar size. */
-  --co-semantic-size-avatar-lg: var(--co-base-size-12); /** 3rem (48px): large avatar, in headers and cards. */
-  --co-semantic-size-avatar-xl: var(--co-base-size-16); /** 4rem (64px): extra-large avatar, on profile pages. */
+  --co-semantic-size-icon-xs: var(--co-base-size-3); /** The smallest icon size, for dense inline indicators. */
+  --co-semantic-size-icon-sm: var(--co-base-size-4); /** Icons in compact controls, such as Alert's dismiss icon and small icon buttons. */
+  --co-semantic-size-icon-md: var(--co-base-size-5); /** Icons beside body text, such as Alert's severity icon. */
+  --co-semantic-size-icon-lg: var(--co-base-size-6); /** The Icon component's default size; also list item icons. */
+  --co-semantic-size-icon-xl: var(--co-base-size-8); /** Extra-large standalone icons, such as feature illustrations. */
+  --co-semantic-size-icon-2xl: var(--co-base-size-10); /** The largest icon size, for prominent standalone icons. */
+  --co-semantic-size-avatar-xs: var(--co-base-size-6); /** Extra-small avatar, inline with text. */
+  --co-semantic-size-avatar-sm: var(--co-base-size-8); /** Small avatar, in dense lists and tables. */
+  --co-semantic-size-avatar-md: var(--co-base-size-10); /** Medium avatar, the default size. */
+  --co-semantic-size-avatar-lg: var(--co-base-size-12); /** Large avatar, in headers and cards. */
+  --co-semantic-size-avatar-xl: var(--co-base-size-16); /** Extra-large avatar, on profile pages. */
   --co-semantic-spacing-separator-sm: var(--co-base-spacing-4); /** Deprecated: Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-separator-md: var(--co-base-spacing-6); /** Deprecated: Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-separator-lg: var(--co-base-spacing-8); /** Deprecated: Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -550,14 +550,14 @@
   --co-semantic-color-category-gray: var(--co-base-color-neutral-700); /** Gray category color for uncategorized */
   --co-semantic-color-category-gray-strong: var(--co-base-color-neutral-900); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029). */
   --co-semantic-color-category-gray-subtle: var(--co-base-color-neutral-200); /** Deprecated: Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-blue-text: var(--co-base-color-blue-900); /** Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
-  --co-semantic-color-category-purple-text: var(--co-base-color-purple-900); /** Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
-  --co-semantic-color-category-pink-text: var(--co-base-color-pink-1000); /** Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115. */
-  --co-semantic-color-category-yellow-text: var(--co-base-color-yellow-1000); /** Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115. */
-  --co-semantic-color-category-green-text: var(--co-base-color-green-900); /** Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
-  --co-semantic-color-category-red-text: var(--co-base-color-red-900); /** Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
-  --co-semantic-color-category-orange-text: var(--co-base-color-orange-900); /** Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
-  --co-semantic-color-category-gray-text: var(--co-base-color-neutral-900); /** Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+  --co-semantic-color-category-blue-text: var(--co-base-color-blue-900); /** Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted. */
+  --co-semantic-color-category-purple-text: var(--co-base-color-purple-900); /** Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted. */
+  --co-semantic-color-category-pink-text: var(--co-base-color-pink-1000); /** Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted. */
+  --co-semantic-color-category-yellow-text: var(--co-base-color-yellow-1000); /** Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted. */
+  --co-semantic-color-category-green-text: var(--co-base-color-green-900); /** Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted. */
+  --co-semantic-color-category-red-text: var(--co-base-color-red-900); /** Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted. */
+  --co-semantic-color-category-orange-text: var(--co-base-color-orange-900); /** Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted. */
+  --co-semantic-color-category-gray-text: var(--co-base-color-neutral-900); /** Text and icons of an outlined or minimal gray CategoryLabel, on white or gray-muted. */
   --co-semantic-color-category-blue-muted: var(--co-base-color-blue-100); /** Light blue fill of a blue CategoryLabel, behind the blue-text colour. */
   --co-semantic-color-category-purple-muted: var(--co-base-color-purple-100); /** Light purple fill of a purple CategoryLabel, behind the purple-text colour. */
   --co-semantic-color-category-pink-muted: var(--co-base-color-pink-100); /** Light pink fill of a pink CategoryLabel, behind the pink-text colour. */
@@ -566,7 +566,7 @@
   --co-semantic-color-category-red-muted: var(--co-base-color-red-100); /** Light red fill of a red CategoryLabel, behind the red-text colour. */
   --co-semantic-color-category-orange-muted: var(--co-base-color-orange-100); /** Light orange fill of a orange CategoryLabel, behind the orange-text colour. */
   --co-semantic-color-category-gray-muted: var(--co-base-color-neutral-200); /** Light gray fill of a gray CategoryLabel, behind the gray-text colour. */
-  --co-semantic-color-status-pending: var(--co-base-color-yellow-1000); /** Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115. */
+  --co-semantic-color-status-pending: var(--co-base-color-yellow-1000); /** Text and icon of a pending StatusLabel, on its pending background. */
   --co-semantic-color-status-pending-bg: var(--co-base-color-yellow-100); /** Background for pending status */
   --co-semantic-color-status-completed: var(--co-base-color-green-900); /** Green color for completed status */
   --co-semantic-color-status-completed-bg: var(--co-base-color-green-100); /** Background for completed status */
@@ -685,7 +685,7 @@
   --co-component-button-sizes-small-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
   --co-component-button-sizes-medium-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
   --co-component-button-sizes-large-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
-  --co-component-chip-close-button-size: var(--co-semantic-size-500); /** FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip. */
+  --co-component-chip-close-button-size: var(--co-semantic-size-500); /** Width and height of a chip's close button, which fits inside the chip with room around it. */
   --co-component-chip-default-background-color: var(--co-semantic-color-fill-muted); /** Default chip fill at rest. */
   --co-component-chip-default-text-color: var(--co-semantic-color-text-default); /** Default chip text and icon colour. */
   --co-component-chip-default-border-radius: var(--co-semantic-radius-lg); /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
@@ -746,11 +746,11 @@
   --co-component-separator-sizes-large-margin: var(--co-semantic-space-800) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0. */
   --co-component-separator-sizes-xlarge-margin: var(--co-semantic-space-1200) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0. */
   --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
-  --co-component-progress-bar-border-radius: var(--co-semantic-radius-sm); /** Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change. */
-  --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-100); /** Thickness of the small ProgressBar (4px). */
-  --co-component-progress-bar-sizes-md-height: var(--co-semantic-size-200); /** Thickness of the medium ProgressBar (8px), the default. */
-  --co-component-progress-bar-sizes-lg-height: var(--co-semantic-size-400); /** Thickness of the large ProgressBar (16px). */
-  --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-500); /** Thickness of the extra-large ProgressBar (20px). */
+  --co-component-progress-bar-border-radius: var(--co-semantic-radius-sm); /** Deprecated: ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0. */
+  --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-100); /** Thickness of the small ProgressBar, the thinnest size. */
+  --co-component-progress-bar-sizes-md-height: var(--co-semantic-size-200); /** Thickness of the medium ProgressBar, the default. */
+  --co-component-progress-bar-sizes-lg-height: var(--co-semantic-size-400); /** Thickness of the large ProgressBar, for prominent progress. */
+  --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-500); /** Thickness of the extra-large ProgressBar, the thickest size. */
   --co-component-input-default-background-color: var(--co-semantic-surface-raised); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-text-color: var(--co-semantic-color-text-default); /** Text input value colour. */
   --co-component-input-default-border-color: var(--co-semantic-color-border-input); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
@@ -768,13 +768,13 @@
   --co-component-input-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled text input fill. */
   --co-component-input-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled text input value colour. */
   --co-component-input-disabled-border-color: var(--co-semantic-color-border-emphasis); /** Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025). */
-  --co-component-input-textarea-min-height: var(--co-semantic-size-3000); /** Minimum height of a multi-line text input (120px). */
-  --co-component-badge-dot-size: var(--co-semantic-size-200); /** Width and height of the dot badge indicator (8px). */
-  --co-component-badge-count-min-width: var(--co-semantic-size-400); /** Minimum width of the count badge indicator (16px). */
-  --co-component-badge-count-height: var(--co-semantic-size-400); /** Height of the count badge indicator (16px). */
+  --co-component-input-textarea-min-height: var(--co-semantic-size-3000); /** Minimum height of TextArea, tall enough for a few lines of entry (decision 0034). */
+  --co-component-badge-dot-size: var(--co-semantic-size-200); /** Width and height of the dot Badge indicator on a button, tab or icon. */
+  --co-component-badge-count-min-width: var(--co-semantic-size-400); /** Minimum width of the count Badge, so a single digit sits in a circle. */
+  --co-component-badge-count-height: var(--co-semantic-size-400); /** Height of the count Badge indicator on a button, tab or icon. */
   --co-component-badge-count-padding-x: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
   --co-component-badge-count-line-height: var(--co-semantic-line-height-none); /** Line height of the count text, so the digits centre in the indicator. */
-  --co-component-badge-ring-width: var(--co-semantic-border-width-thick); /** Width of the ring that separates the badge indicator from its host element (2px). */
+  --co-component-badge-ring-width: var(--co-semantic-border-width-thick); /** Ring that separates a Badge indicator from the element it sits on. */
   --co-component-badge-border-radius: var(--co-semantic-radius-full); /** Badge indicators are always fully circular. */
   --co-component-badge-label-font-weight: var(--co-semantic-font-weight-medium); /** Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
   --co-component-field-gap: var(--co-semantic-space-200); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.200. Removed in 3.0. */
@@ -805,8 +805,8 @@
   --co-component-alert-title-line-height: var(--co-semantic-line-height-tight); /** Alert titles use a tighter line height than h6. */
   --co-component-alert-message-line-height: var(--co-semantic-line-height-tight); /** Alert messages use a tighter line height than body. */
   --co-component-tab-bar-badge-font-weight: var(--co-semantic-font-weight-bold); /** Tab count badges are bold, heavier than caption. */
-  --co-component-tab-bar-badge-size: var(--co-semantic-size-500); /** Tab count badge height and minimum width (20px). */
-  --co-component-tab-bar-scrollbar-height: var(--co-semantic-size-100); /** Height of the horizontal scrollbar when tabs overflow (4px). */
+  --co-component-tab-bar-badge-size: var(--co-semantic-size-500); /** Height and minimum width of a tab's count badge in TabBar. */
+  --co-component-tab-bar-scrollbar-height: var(--co-semantic-size-100); /** Height of the horizontal scrollbar TabBar shows when its tabs overflow. */
   --co-component-search-field-section-header-letter-spacing: var(--co-semantic-letter-spacing-wide); /** Tracking for the uppercase section header. */
   --co-component-avatar-initials-font-family: var(--co-semantic-font-family-body); /** Initials font. */
   --co-component-avatar-initials-font-weight: var(--co-semantic-font-weight-medium); /** Initials weight. */
@@ -822,21 +822,21 @@
   --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised); /** Slider thumb at rest. */
   --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky); /** Slider thumb on hover: one step deeper. */
   --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating); /** Slider thumb while dragging: deepest. */
-  --co-component-account-card-header-min-height: var(--co-semantic-size-1200); /** Minimum height of the card header row (48px). */
-  --co-component-account-card-min-width: var(--co-semantic-size-7500); /** Minimum card width (300px). */
-  --co-component-breadcrumbs-item-max-width: var(--co-semantic-size-4500); /** Width at which a breadcrumb label truncates (180px). */
-  --co-component-card-large-max-width: var(--co-semantic-size-19200); /** Maximum card width (768px). */
-  --co-component-checkbox-box-size: var(--co-semantic-size-500); /** Width and height of the checkbox square (20px). */
-  --co-component-checkbox-row-min-height: var(--co-semantic-size-800); /** Minimum height of a checkbox or radio row (32px). */
-  --co-component-empty-state-illustration-small: var(--co-semantic-size-2000); /** Small illustration size (80px). */
-  --co-component-empty-state-illustration-medium: var(--co-semantic-size-3000); /** Medium illustration size (120px). */
-  --co-component-empty-state-illustration-large: var(--co-semantic-size-5000); /** Large illustration size (200px). */
-  --co-component-empty-state-max-width: var(--co-semantic-size-10000); /** Maximum width of the empty state (400px). */
-  --co-component-empty-state-text-max-width: var(--co-semantic-size-9000); /** Maximum width of the title and description (360px). */
-  --co-component-empty-state-actions-max-width: var(--co-semantic-size-7500); /** Maximum width of the actions area (300px). */
-  --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
-  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of expanded content in comfortable rows (60px). */
-  --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Minimum row height (72px). */
+  --co-component-account-card-header-min-height: var(--co-semantic-size-1200); /** Minimum height of AccountCard's header row, so cards in a grid line up. */
+  --co-component-account-card-min-width: var(--co-semantic-size-7500); /** Narrowest an AccountCard may get before its content wraps badly. */
+  --co-component-breadcrumbs-item-max-width: var(--co-semantic-size-4500); /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
+  --co-component-card-large-max-width: var(--co-semantic-size-19200); /** Widest a CardLarge grows, so its text keeps a readable measure. */
+  --co-component-checkbox-box-size: var(--co-semantic-size-500); /** Width and height of the Checkbox and Radio box. */
+  --co-component-checkbox-row-min-height: var(--co-semantic-size-800); /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */
+  --co-component-empty-state-illustration-small: var(--co-semantic-size-2000); /** Size of the small EmptyState illustration, for empty panels and cards. */
+  --co-component-empty-state-illustration-medium: var(--co-semantic-size-3000); /** Size of the medium EmptyState illustration, the default. */
+  --co-component-empty-state-illustration-large: var(--co-semantic-size-5000); /** Size of the large EmptyState illustration, for full-page empty states. */
+  --co-component-empty-state-max-width: var(--co-semantic-size-10000); /** Widest an EmptyState block grows inside a wide container. */
+  --co-component-empty-state-text-max-width: var(--co-semantic-size-9000); /** Widest EmptyState's title and description run, for a readable measure. */
+  --co-component-empty-state-actions-max-width: var(--co-semantic-size-7500); /** Widest EmptyState's actions area grows, so buttons don't stretch. */
+  --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Indent of a compact ListItem's expanded content, aligning it with the label. */
+  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of a comfortable ListItem's expanded content. */
+  --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Minimum height of a TransactionListItem row, so rows line up in a list. */
   --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. */
@@ -845,23 +845,23 @@
   --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** Display text: 5rem, weight 700. The largest heading, for hero titles. */
-  --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: 3rem, weight 700. The page title. */
-  --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: 2rem, weight 700. Major sections. */
-  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading); /** Heading 3: 1.75rem, weight 700. */
-  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading); /** Heading 4: 1.5rem, weight 700. */
-  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading); /** Heading 5: 1.25rem, weight 500. */
-  --co-semantic-typography-h6: var(--co-semantic-font-weight-medium) var(--co-base-font-size-4)/var(--co-base-line-height-4) var(--co-base-font-family-heading); /** Heading 6: 1.125rem, weight 500. The smallest heading; Alert's title builds on it. */
-  --co-semantic-typography-subtitle: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Subtitle: 1rem, weight 500. A short line under a heading. */
-  --co-semantic-typography-body: var(--co-semantic-font-weight-regular) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Body text: 1rem, weight 400, 1.5rem line height. The default for paragraphs and input values. */
-  --co-semantic-typography-small: var(--co-semantic-font-weight-regular) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Small text: 0.875rem, weight 400. Secondary copy and compact controls. */
-  --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Overline: 0.75rem, weight 700. A short label above a heading. */
-  --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Caption: 0.75rem, weight 400. Helper text, metadata and image captions. */
-  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Large Button label: 1rem, weight 500. */
-  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Medium Button label: 0.875rem, weight 500. Also tab labels. */
-  --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Small Button label: 0.75rem, weight 500. */
-  --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider. */
-  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption. */
+  --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** The largest heading, for hero titles. */
+  --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: the page title, one per page. */
+  --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: major sections of a page. */
+  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading); /** Heading 3: the third heading level in a page outline. */
+  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading); /** Heading 4: the fourth heading level in a page outline. */
+  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading); /** Heading 5: the fifth heading level in a page outline. */
+  --co-semantic-typography-h6: var(--co-semantic-font-weight-medium) var(--co-base-font-size-4)/var(--co-base-line-height-4) var(--co-base-font-family-heading); /** The smallest heading; Alert's title builds on it. */
+  --co-semantic-typography-subtitle: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Subtitle: a short line under a heading. */
+  --co-semantic-typography-body: var(--co-semantic-font-weight-regular) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Body text: paragraphs and input values. The default text style. */
+  --co-semantic-typography-small: var(--co-semantic-font-weight-regular) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Small text: secondary copy and compact controls. */
+  --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** A short uppercase label above a heading. */
+  --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Captions: helper text, metadata and image captions. */
+  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Label of the large Button, the default size. */
+  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Label of the medium Button, and tab labels. */
+  --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Label of the small Button, for dense toolbars. */
+  --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form labels for fields such as TextField and Slider. */
+  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption. */
   --co-component-button-primary-font: var(--co-semantic-typography-button1); /** Button label typography, the same as sizes.large.font. */
   --co-component-button-variants-emphasis-background-color: var(--co-component-button-variants-accent-background-color); /** Deprecated: Use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-variants-emphasis-text-color: var(--co-component-button-variants-accent-text-color); /** Deprecated: Use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */

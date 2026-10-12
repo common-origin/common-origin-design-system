@@ -318,7 +318,7 @@
         "$type": "dimension",
         "size": {
           "$value": "{semantic.size.500}",
-          "$description": "FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip."
+          "$description": "Width and height of a chip's close button, which fits inside the chip with room around it."
         }
       },
       "default": {
@@ -566,12 +566,24 @@
         "minWidth": {
           "$value": "40px",
           "$type": "dimension",
-          "$description": "Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129."
+          "$description": "Minimum width of the medium IconButton, duplicated from its sizes.",
+          "$deprecated": "No IconButton reads it: sizes take their minimum width from semantic.size.control (decision 0034). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.control.md"
+            }
+          }
         },
         "minHeight": {
           "$value": "40px",
           "$type": "dimension",
-          "$description": "Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129."
+          "$description": "Minimum height of the medium IconButton, duplicated from its sizes.",
+          "$deprecated": "No IconButton reads it: sizes take their minimum height from semantic.size.control (decision 0034). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.control.md"
+            }
+          }
         },
         "display": {
           "$value": "flex",
@@ -982,32 +994,38 @@
       "borderRadius": {
         "$value": "{semantic.radius.sm}",
         "$type": "dimension",
-        "$description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
+        "$description": "Corner radius of the ProgressBar track and fill.",
+        "$deprecated": "ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.radius.xs"
+          }
+        }
       },
       "sizes": {
         "$type": "dimension",
         "sm": {
           "height": {
             "$value": "{semantic.size.100}",
-            "$description": "Thickness of the small ProgressBar (4px)."
+            "$description": "Thickness of the small ProgressBar, the thinnest size."
           }
         },
         "md": {
           "height": {
             "$value": "{semantic.size.200}",
-            "$description": "Thickness of the medium ProgressBar (8px), the default."
+            "$description": "Thickness of the medium ProgressBar, the default."
           }
         },
         "lg": {
           "height": {
             "$value": "{semantic.size.400}",
-            "$description": "Thickness of the large ProgressBar (16px)."
+            "$description": "Thickness of the large ProgressBar, for prominent progress."
           }
         },
         "xl": {
           "height": {
             "$value": "{semantic.size.500}",
-            "$description": "Thickness of the extra-large ProgressBar (20px)."
+            "$description": "Thickness of the extra-large ProgressBar, the thickest size."
           }
         }
       }
@@ -1163,7 +1181,7 @@
         "$type": "dimension",
         "minHeight": {
           "$value": "{semantic.size.3000}",
-          "$description": "Minimum height of a multi-line text input (120px)."
+          "$description": "Minimum height of TextArea, tall enough for a few lines of entry (decision 0034)."
         }
       }
     },
@@ -1172,18 +1190,18 @@
         "$type": "dimension",
         "size": {
           "$value": "{semantic.size.200}",
-          "$description": "Width and height of the dot badge indicator (8px)."
+          "$description": "Width and height of the dot Badge indicator on a button, tab or icon."
         }
       },
       "count": {
         "$type": "dimension",
         "minWidth": {
           "$value": "{semantic.size.400}",
-          "$description": "Minimum width of the count badge indicator (16px)."
+          "$description": "Minimum width of the count Badge, so a single digit sits in a circle."
         },
         "height": {
           "$value": "{semantic.size.400}",
-          "$description": "Height of the count badge indicator (16px)."
+          "$description": "Height of the count Badge indicator on a button, tab or icon."
         },
         "paddingX": {
           "$value": "{semantic.space.inset.xs}",
@@ -1205,7 +1223,7 @@
         "$type": "dimension",
         "width": {
           "$value": "{semantic.border.width.thick}",
-          "$description": "Width of the ring that separates the badge indicator from its host element (2px)."
+          "$description": "Ring that separates a Badge indicator from the element it sits on."
         }
       },
       "borderRadius": {
@@ -1434,14 +1452,14 @@
         "size": {
           "$value": "{semantic.size.500}",
           "$type": "dimension",
-          "$description": "Tab count badge height and minimum width (20px)."
+          "$description": "Height and minimum width of a tab's count badge in TabBar."
         }
       },
       "scrollbar": {
         "$type": "dimension",
         "height": {
           "$value": "{semantic.size.100}",
-          "$description": "Height of the horizontal scrollbar when tabs overflow (4px)."
+          "$description": "Height of the horizontal scrollbar TabBar shows when its tabs overflow."
         }
       }
     },
@@ -1542,12 +1560,12 @@
       "header": {
         "minHeight": {
           "$value": "{semantic.size.1200}",
-          "$description": "Minimum height of the card header row (48px)."
+          "$description": "Minimum height of AccountCard's header row, so cards in a grid line up."
         }
       },
       "minWidth": {
         "$value": "{semantic.size.7500}",
-        "$description": "Minimum card width (300px)."
+        "$description": "Narrowest an AccountCard may get before its content wraps badly."
       }
     },
     "breadcrumbs": {
@@ -1555,7 +1573,7 @@
       "item": {
         "maxWidth": {
           "$value": "{semantic.size.4500}",
-          "$description": "Width at which a breadcrumb label truncates (180px)."
+          "$description": "Width at which a long Breadcrumbs label truncates with an ellipsis."
         }
       }
     },
@@ -1563,7 +1581,7 @@
       "$type": "dimension",
       "maxWidth": {
         "$value": "{semantic.size.19200}",
-        "$description": "Maximum card width (768px)."
+        "$description": "Widest a CardLarge grows, so its text keeps a readable measure."
       }
     },
     "checkbox": {
@@ -1571,13 +1589,13 @@
       "box": {
         "size": {
           "$value": "{semantic.size.500}",
-          "$description": "Width and height of the checkbox square (20px)."
+          "$description": "Width and height of the Checkbox and Radio box."
         }
       },
       "row": {
         "minHeight": {
           "$value": "{semantic.size.800}",
-          "$description": "Minimum height of a checkbox or radio row (32px)."
+          "$description": "Minimum height of a Checkbox or Radio row, so the whole row is easy to hit."
         }
       }
     },
@@ -1586,31 +1604,31 @@
       "illustration": {
         "small": {
           "$value": "{semantic.size.2000}",
-          "$description": "Small illustration size (80px)."
+          "$description": "Size of the small EmptyState illustration, for empty panels and cards."
         },
         "medium": {
           "$value": "{semantic.size.3000}",
-          "$description": "Medium illustration size (120px)."
+          "$description": "Size of the medium EmptyState illustration, the default."
         },
         "large": {
           "$value": "{semantic.size.5000}",
-          "$description": "Large illustration size (200px)."
+          "$description": "Size of the large EmptyState illustration, for full-page empty states."
         }
       },
       "maxWidth": {
         "$value": "{semantic.size.10000}",
-        "$description": "Maximum width of the empty state (400px)."
+        "$description": "Widest an EmptyState block grows inside a wide container."
       },
       "text": {
         "maxWidth": {
           "$value": "{semantic.size.9000}",
-          "$description": "Maximum width of the title and description (360px)."
+          "$description": "Widest EmptyState's title and description run, for a readable measure."
         }
       },
       "actions": {
         "maxWidth": {
           "$value": "{semantic.size.7500}",
-          "$description": "Maximum width of the actions area (300px)."
+          "$description": "Widest EmptyState's actions area grows, so buttons don't stretch."
         }
       }
     },
@@ -1619,11 +1637,11 @@
       "expandedIndent": {
         "compact": {
           "$value": "{semantic.size.1200}",
-          "$description": "Left indent of expanded content in compact rows, aligning it with the label (48px)."
+          "$description": "Indent of a compact ListItem's expanded content, aligning it with the label."
         },
         "comfortable": {
           "$value": "{semantic.size.1500}",
-          "$description": "Left indent of expanded content in comfortable rows (60px)."
+          "$description": "Left indent of a comfortable ListItem's expanded content."
         }
       }
     },
@@ -1631,7 +1649,7 @@
       "$type": "dimension",
       "minHeight": {
         "$value": "{semantic.size.1800}",
-        "$description": "Minimum row height (72px)."
+        "$description": "Minimum height of a TransactionListItem row, so rows line up in a list."
       }
     }
   }

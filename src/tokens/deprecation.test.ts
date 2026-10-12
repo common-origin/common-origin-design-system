@@ -4,7 +4,6 @@
 import { execFileSync } from 'child_process'
 import semantic from './semantic/index.json'
 import component from './component/index.json'
-import valueAllowlist from './descriptionValues.allowlist.json'
 import grammarMigration from './grammarMigration.allowlist.json'
 import resolved from '../styles/tokens.json'
 
@@ -136,20 +135,15 @@ function readers(retired: Token[]): string[] {
   }
 }
 
-// A description names the token's job, never its value: values change, the job shouldn't.
-// The tokens on the allowlist predate the rule; #189 rewrites them until the list is empty.
+// A description names the token's job, never its value: values change, the job shouldn't
+// (decision 0033). Deprecated tokens keep their old text until 3.0.
 const VALUE = /#[0-9a-fA-F]{3,8}\b|\b\d*\.?\d+(px|rem)\b|Approved under/
 
 describe('descriptions of tokens in use', () => {
-  const offending = all
-    .filter((token) => token.$deprecated === undefined && VALUE.test(String(token.$description ?? '')))
-    .map((token) => token.path)
-
-  it('contain no hex, px or rem values and no "Approved under", outside the allowlist', () => {
-    expect(offending.filter((path) => !valueAllowlist.includes(path))).toEqual([])
-  })
-
-  it('keep the allowlist current: every entry still exists and still breaks the rule', () => {
-    expect(valueAllowlist.filter((path) => !offending.includes(path))).toEqual([])
+  it('contain no hex, px or rem values and no "Approved under"', () => {
+    const offending = all
+      .filter((token) => token.$deprecated === undefined && VALUE.test(String(token.$description ?? '')))
+      .map((token) => token.path)
+    expect(offending).toEqual([])
   })
 })
