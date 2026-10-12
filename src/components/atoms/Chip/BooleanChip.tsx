@@ -33,7 +33,8 @@ export const BooleanChip: React.FC<BooleanChipProps> = ({
   children,
   selected,
   onClick,
-  size = 'medium',
+  // Deprecated and ignored: chips have one size (decision 0035)
+  size: _size,
   disabled = false,
   'data-testid': dataTestId,
   'aria-label': ariaLabel,
@@ -57,7 +58,6 @@ export const BooleanChip: React.FC<BooleanChipProps> = ({
   return (
     <StyledChip
       $variant="subtle"
-      $size={size}
       $disabled={disabled || undefined}
       $clickable={!disabled}
       $selected={selected}

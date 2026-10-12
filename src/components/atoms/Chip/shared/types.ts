@@ -3,6 +3,9 @@ import React from 'react'
 // Base props shared across all chip variants
 export interface BaseChipProps {
   children?: React.ReactNode
+  /**
+   * @deprecated Ignored, and removed in 3.0. Chips have one size, 24px (decision 0035).
+   */
   size?: 'small' | 'medium'
   disabled?: boolean
   'data-testid'?: string
@@ -26,7 +29,6 @@ export type ChipVariant =
 // Internal props for styled components with $ prefix
 export interface InternalStyledProps {
   $variant: ChipVariant
-  $size: BaseChipProps['size']
   $disabled?: boolean
   $clickable?: boolean
   $selected?: boolean

@@ -294,7 +294,7 @@
   --co-component-icon-button-sizes-medium-min-height: 40px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.md. Removed in 3.0. */
   --co-component-icon-button-sizes-large-min-width: 48px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.lg. Removed in 3.0. */
   --co-component-icon-button-sizes-large-min-height: 48px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.lg. Removed in 3.0. */
-  --co-component-input-default-padding-y: 11px; /** Deprecated (decision 0022): no component spacing tokens. The 11px is off-grid and has no semantic step, so inputs keep reading this until #129 decides how controls get their heights. Removed in 3.0. */
+  --co-component-input-default-padding-y: 11px; /** Deprecated (decisions 0022 and 0034): single-line fields take their min-height from semantic.size.control.lg with no vertical padding. Removed in 3.0. */
   --co-component-input-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
   --co-component-input-error-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
   --co-component-input-disabled-cursor: not-allowed; /** Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0. */
@@ -605,8 +605,8 @@
   --co-component-chip-variants-interactive-active-background-color: var(--co-semantic-color-background-interactive-active); /** Interactive chip fill while pressed, when it's clickable. */
   --co-component-chip-variants-interactive-disabled-background-color: var(--co-semantic-color-background-disabled); /** Disabled interactive chip fill. */
   --co-component-chip-variants-interactive-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled interactive chip text and icon colour. */
-  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0. */
-  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decision 0022): no component spacing tokens. The 2px is off-grid and has no semantic step, so Chip keeps reading this until #129 decides how controls get their heights. Removed in 3.0. */
+  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0. */
+  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0. */
   --co-component-chip-sizes-large-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-md); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0. */
   --co-component-icon-button-primary-background-color: var(--co-semantic-color-background-emphasis); /** Deprecated (decision 0027): IconButton reads component.button.primary.backgroundColor, so its colours match Button's. Removed in 3.0. */
   --co-component-icon-button-primary-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of every IconButton, matching Button. */
@@ -765,9 +765,9 @@
   --co-component-button-sizes-medium-font: var(--co-semantic-typography-button2); /** Medium Button label typography. */
   --co-component-button-sizes-large-font: var(--co-semantic-typography-button1); /** Large Button label typography. */
   --co-component-chip-default-font: var(--co-semantic-typography-body); /** Chip label typography, the same as sizes.large.font. */
-  --co-component-chip-sizes-small-font: var(--co-semantic-typography-caption); /** Small chip label typography. */
-  --co-component-chip-sizes-medium-font: var(--co-semantic-typography-small); /** Medium chip label typography. */
-  --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Large chip label typography. No chip uses the large size today. */
+  --co-component-chip-sizes-small-font: var(--co-semantic-typography-caption); /** Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0. */
+  --co-component-chip-sizes-medium-font: var(--co-semantic-typography-small); /** Chip label typography. Every chip uses it: chips have one size (decision 0035). */
+  --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0. */
   --co-component-input-default-font: var(--co-semantic-typography-body); /** Text input value typography. */
   --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
   --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */

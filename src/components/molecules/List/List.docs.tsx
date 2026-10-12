@@ -258,17 +258,17 @@ export const listDocs: ComponentDocumentation = {
   <ListItem 
     primary="Inbox"
     secondary="Unread messages"
-    badge={<Chip variant="emphasis" size="small">12</Chip>}
+    badge={<Chip variant="emphasis">12</Chip>}
   />
   <ListItem 
     primary="Sent"
     secondary="Outgoing messages"
-    badge={<Chip variant="subtle" size="small">48</Chip>}
+    badge={<Chip variant="subtle">48</Chip>}
   />
   <ListItem 
     primary="Drafts"
     secondary="Work in progress"
-    badge={<Chip variant="default" size="small">3</Chip>}
+    badge={<Chip variant="default">3</Chip>}
   />
 </List>`,
       renderComponent: () => (
@@ -276,17 +276,17 @@ export const listDocs: ComponentDocumentation = {
           <ListItem 
             primary="Inbox"
             secondary="Unread messages"
-            badge={<Chip variant="emphasis" size="small">12</Chip>}
+            badge={<Chip variant="emphasis">12</Chip>}
           />
           <ListItem 
             primary="Sent"
             secondary="Outgoing messages"
-            badge={<Chip variant="subtle" size="small">48</Chip>}
+            badge={<Chip variant="subtle">48</Chip>}
           />
           <ListItem 
             primary="Drafts"
             secondary="Work in progress"
-            badge={<Chip variant="default" size="small">3</Chip>}
+            badge={<Chip variant="default">3</Chip>}
           />
         </List>
       )
@@ -368,7 +368,7 @@ return (
     icon={<Icon name="add" iconColor="success" size="lg" />}
     primary="Milk"
     secondary="2% organic"
-    badge={<Chip variant="default" size="small">$4.99</Chip>}
+    badge={<Chip variant="default">$4.99</Chip>}
     interactive
     onClick={() => console.log('Toggle milk')}
   />
@@ -376,7 +376,7 @@ return (
     icon={<Icon name="add" iconColor="success" size="lg" />}
     primary="Bread"
     secondary="Whole wheat"
-    badge={<Chip variant="default" size="small">$3.49</Chip>}
+    badge={<Chip variant="default">$3.49</Chip>}
     interactive
     onClick={() => console.log('Toggle bread')}
   />
@@ -384,7 +384,7 @@ return (
     icon={<Icon name="crossCircle" iconColor="subdued" size="lg" />}
     primary="Eggs"
     secondary="Free range, dozen"
-    badge={<Chip variant="subtle" size="small">$6.99</Chip>}
+    badge={<Chip variant="subtle">$6.99</Chip>}
     interactive
     onClick={() => console.log('Toggle eggs')}
   />
@@ -395,7 +395,7 @@ return (
             icon={<Icon name="add" iconColor="success" size="lg" />}
             primary="Milk"
             secondary="2% organic"
-            badge={<Chip variant="default" size="small">$4.99</Chip>}
+            badge={<Chip variant="default">$4.99</Chip>}
             interactive
             onClick={() => console.log('Toggle milk')}
           />
@@ -403,7 +403,7 @@ return (
             icon={<Icon name="add" iconColor="success" size="lg" />}
             primary="Bread"
             secondary="Whole wheat"
-            badge={<Chip variant="default" size="small">$3.49</Chip>}
+            badge={<Chip variant="default">$3.49</Chip>}
             interactive
             onClick={() => console.log('Toggle bread')}
           />
@@ -411,7 +411,7 @@ return (
             icon={<Icon name="crossCircle" iconColor="subdued" size="lg" />}
             primary="Eggs"
             secondary="Free range, dozen"
-            badge={<Chip variant="subtle" size="small">$6.99</Chip>}
+            badge={<Chip variant="subtle">$6.99</Chip>}
             interactive
             onClick={() => console.log('Toggle eggs')}
           />

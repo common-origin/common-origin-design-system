@@ -576,7 +576,7 @@ export default function Components() {
                     <Box my="4xl">
                       <Stack gap="sm">
                         <Typography variant="h1">{activeComponentData.name}</Typography>
-                        <Chip title={activeComponentData.category} variant="default" size="small" />
+                        <Chip title={activeComponentData.category} variant="default" />
                       </Stack>
                       <Box mt="md">
                         <Typography variant="body" color="emphasis">

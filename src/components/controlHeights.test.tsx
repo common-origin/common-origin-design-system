@@ -8,6 +8,7 @@ import { Dropdown } from './molecules/Dropdown'
 import { AgentInput } from './molecules/AgentInput'
 import { Button } from './atoms/Button'
 import { IconButton } from './atoms/IconButton'
+import { Chip, BooleanChip, InputChip } from './atoms/Chip'
 
 // Controls take their height from size.control as a minimum, including the border, and
 // centre their content (decision 0034). Fields are size.control.lg; Button and IconButton
@@ -98,5 +99,33 @@ describe('Button and IconButton heights', () => {
     expect(style.minHeight).toBe(height)
     expect(style.minWidth).toBe(height)
     expect(style.boxSizing).toBe('border-box')
+  })
+})
+
+// Chips have one size, 24px, with or without a close button; the deprecated `size` prop is
+// ignored (decisions 0034 and 0035).
+describe('chip heights', () => {
+  const { medium } = tokens.semantic.size.label
+
+  function expectChipHeight(element: HTMLElement) {
+    const style = getComputedStyle(element)
+    expect(style.minHeight).toBe(medium)
+    expect(style.paddingTop).toBe('0px')
+    expect(style.paddingBottom).toBe('0px')
+  }
+
+  it.each([undefined, 'small', 'medium'] as const)('every chip is size.label.medium with size=%s', (size) => {
+    render(
+      <>
+        <Chip size={size} data-testid="chip">Tag</Chip>
+        <BooleanChip size={size} selected onClick={() => {}} data-testid="boolean">Filter</BooleanChip>
+        <InputChip size={size} data-testid="input">Value</InputChip>
+        <InputChip size={size} onDismiss={() => {}} data-testid="dismissible">Value</InputChip>
+      </>
+    )
+    expectChipHeight(screen.getByTestId('chip'))
+    expectChipHeight(screen.getByTestId('boolean'))
+    expectChipHeight(screen.getByTestId('input'))
+    expectChipHeight(screen.getByTestId('dismissible'))
   })
 })

@@ -1,6 +1,6 @@
 # 0034. Controls take their height from `size.control`, as a minimum
 
-- **Status:** Accepted
+- **Status:** Accepted; point 5 (chips) amended by [0035](0035-chips-have-one-size.md)
 - **Date:** 2026-10-11
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P3, P5, P9

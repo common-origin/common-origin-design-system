@@ -47,8 +47,8 @@ const ContentFilterExample: React.FC = () => {
   )
 }
 
-// Stateful example showing small size in a compact toolbar
-const CompactTagFilterExample: React.FC = () => {
+// Stateful example: a tag filter bar
+const TagFilterExample: React.FC = () => {
   const [tags, setTags] = React.useState<string[]>(['electronic'])
 
   const toggleTag = (tag: string) =>
@@ -65,7 +65,6 @@ const CompactTagFilterExample: React.FC = () => {
         {allTags.map(tag => (
           <BooleanChip
             key={tag}
-            size="small"
             selected={tags.includes(tag)}
             onClick={() => toggleTag(tag)}
           >
@@ -112,9 +111,8 @@ export const booleanChipDocs: ComponentDocumentation = {
       name: 'size',
       type: "'small' | 'medium'",
       required: false,
-      default: 'medium',
-      description:
-        'Size variant affecting padding and font size. Use small for compact toolbars or dense filter bars; medium for standard filter panels.'
+      default: 'undefined',
+      description: 'Deprecated and ignored, removed in 3.0: chips have one size, 24px (decision 0035).'
     },
     {
       name: 'disabled',
@@ -168,11 +166,11 @@ export const booleanChipDocs: ComponentDocumentation = {
     'semantic.color.text.interactive-hover',
     'semantic.color.background.interactive-subtle-active',
     'semantic.color.text.interactive-active',
-    // Size variants
-    'component.chip.sizes.small.padding',
-    'component.chip.sizes.small.font',
-    'component.chip.sizes.medium.padding',
+    // Typography
     'component.chip.sizes.medium.font',
+    // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
+    'semantic.size.label.medium',
+    'semantic.spacing.component.sm',
     // Icon spacing
     'semantic.spacing.layout.xs',
     // Focus ring
@@ -232,9 +230,9 @@ return (
       renderComponent: () => <ContentFilterExample />
     },
     {
-      name: 'Compact Size in a Tag Filter Bar',
+      name: 'Tag Filter Bar',
       description:
-        'Small-size BooleanChips suit dense toolbars and tag filters where space is at a premium. The selected state is still clearly communicated through the checkmark icon and background change.',
+        'BooleanChips in a tag filter bar. The selected state is communicated through the checkmark icon as well as the background change.',
       code: `const [tags, setTags] = React.useState(['electronic'])
 
 const toggleTag = (tag) =>
@@ -251,7 +249,6 @@ return (
       {allTags.map(tag => (
         <BooleanChip
           key={tag}
-          size="small"
           selected={tags.includes(tag)}
           onClick={() => toggleTag(tag)}
         >
@@ -261,7 +258,7 @@ return (
     </Stack>
   </Stack>
 )`,
-      renderComponent: () => <CompactTagFilterExample />
+      renderComponent: () => <TagFilterExample />
     },
     {
       name: 'Disabled State',
@@ -352,12 +349,9 @@ States:
       {
         name: 'Label',
         description:
-          'The children prop rendered as chip text. Size variant controls font and padding.',
+          'The children prop rendered as chip text. Every chip is one size, 24px (decision 0035).',
         tokens: [
           'component.chip.sizes.medium.font',
-          'component.chip.sizes.medium.padding',
-          'component.chip.sizes.small.font',
-          'component.chip.sizes.small.padding',
           'component.chip.default.textColor'
         ]
       }

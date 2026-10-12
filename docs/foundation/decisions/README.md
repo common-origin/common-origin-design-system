@@ -37,7 +37,8 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0031](0031-semantic-token-grammar.md) | Semantic tokens follow one grammar: `{category}.{property}.{role-emphasis-state}`; surfaces and fills split; a 100-based spacing scale; `color.data` reserved; domain tokens move to the component tier | Accepted | 2026-10-11 |
 | [0032](0032-token-modes.md) | Density and motion are token modes scoped to an element (`data-co-density`, `data-co-motion`); amends P9 | Accepted | 2026-10-11 |
 | [0033](0033-token-descriptions.md) | Token descriptions say when to use a token in one sentence; deprecation, replacement and pairings are fields; base tokens are described per group; descriptions reach the types, a generated `TOKENS.md` and the docs site <!-- verify-docs-ignore: planned generated file --> | Accepted | 2026-10-11 |
-| [0034](0034-control-heights.md) | Controls take their height from `size.control` (32 / 40 / 48px) as a min-height and centre their content; chips stay on the label scale; density shifts the scale by 8px | Accepted | 2026-10-11 |
+| [0034](0034-control-heights.md) | Controls take their height from `size.control` (32 / 40 / 48px) as a min-height and centre their content; chips stay on the label scale; density shifts the scale by 8px | Accepted; chips amended by 0035 | 2026-10-11 |
+| [0035](0035-chips-have-one-size.md) | Chips have one size, 24px (`size.label.medium`); the chip `size` prop is deprecated and ignored | Accepted | 2026-10-12 |
 
 ## Template
 

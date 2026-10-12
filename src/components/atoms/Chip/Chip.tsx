@@ -35,7 +35,8 @@ export interface ChipProps extends BaseChipProps {
 export const Chip: React.FC<ChipProps> = ({
   children,
   variant = 'default',
-  size = 'medium',
+  // Deprecated and ignored: chips have one size (decision 0035)
+  size: _size,
   onClick,
   disabled = false,
   'data-testid': dataTestId,
@@ -72,7 +73,6 @@ export const Chip: React.FC<ChipProps> = ({
   return (
     <StyledChip
       $variant={normalizedVariant}
-      $size={size}
       $disabled={disabled || undefined}
       $clickable={isClickable || undefined}
       onClick={isClickable ? handleClick : undefined}

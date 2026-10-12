@@ -64,11 +64,9 @@ describe('component tier (decisions 0014 and 0022)', () => {
 
 // Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Only
 // these are deliberately still read, listed by exact path: Button's `emphasis` aliases (kept until
-// 3.0, decision 0016) and the off-grid paddings with no semantic step that wait for #129.
+// 3.0, decision 0016).
 const STILL_READ = [
   /^component\.button\.variants\.emphasis\./,
-  /^component\.chip\.sizes\.(small|medium)\.padding$/,
-  /^component\.input\.default\.paddingY$/,
 ]
 
 describe('retired component tokens are not read', () => {
