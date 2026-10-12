@@ -1,7 +1,6 @@
 /**
  * @jest-environment node
  */
-import { execFileSync } from 'child_process'
 import source from './component/index.json'
 
 type Node = { [key: string]: Node | string }
@@ -62,41 +61,4 @@ describe('component tier (decisions 0014 and 0022)', () => {
   })
 })
 
-// Deprecated component tokens stay in tokens.json until 3.0 (#99), but nothing reads them. Only
-// these are deliberately still read, listed by exact path: Button's `emphasis` aliases (kept until
-// 3.0, decision 0016).
-const STILL_READ = [
-  /^component\.button\.variants\.emphasis\./,
-]
-
-describe('retired component tokens are not read', () => {
-  const retired = leaves((source as unknown as { component: Node }).component, ['component'])
-    .filter(({ node }) => typeof node === 'object' && String(node.$description).startsWith('Deprecated'))
-    .filter(({ path }) => !STILL_READ.some((pattern) => pattern.test(path)))
-    .map(({ path }) => path.replace(/^component\./, ''))
-
-  it('finds the retired tokens', () => {
-    expect(retired.length).toBeGreaterThan(0)
-  })
-
-  // Matches dotted paths in source text, so a read through a destructured or aliased object
-  // (`const { count } = badge`, then `count.paddingX`) isn't caught. Read tokens by full path.
-  it('is not referenced by components, patterns, tests or the docs site', () => {
-    // Match the path after its component group (`button.sizes.small.padding`) or in full,
-    // excluding only the token sources and builds. Tests are included, so none asserts a
-    // retired token that 3.0 removes. No `\b`: macOS's regex lacks it.
-    const pattern = retired.map((path) => path.replace(/\./g, '\\.')).join('|')
-    let hits = ''
-    try {
-      hits = execFileSync(
-        'git',
-        ['grep', '-nE', `(${pattern})([^A-Za-z0-9_]|$)`, '--', 'src', 'pages', ':!src/tokens', ':!src/styles'],
-        { encoding: 'utf8' }
-      )
-    } catch (error) {
-      // git grep exits 1 when nothing matches; anything else is a real failure
-      if ((error as { status?: number }).status !== 1) throw error
-    }
-    expect(hits.trim().split('\n').filter(Boolean)).toEqual([])
-  })
-})
+// Deprecated tokens, in every tier, are checked in deprecation.test.ts (decision 0033, #200).
