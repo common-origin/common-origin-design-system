@@ -132,7 +132,7 @@ export const alertDocs: ComponentDocumentation = {
     'component.alert.message.lineHeight',
 
     // Dismiss button: its glyph sits on the padding edge
-    'component.iconButton.sizes.small.minWidth',
+    'semantic.size.control.sm',
     'semantic.size.icon.sm',
 
     // Breakpoint
@@ -599,7 +599,7 @@ export const alertDocs: ComponentDocumentation = {
         tokens: [
           'component.alert.title.lineHeight',
           'component.alert.message.lineHeight',
-          'component.iconButton.sizes.small.minWidth',
+          'semantic.size.control.sm',
           'semantic.size.icon.sm'
         ]
       }

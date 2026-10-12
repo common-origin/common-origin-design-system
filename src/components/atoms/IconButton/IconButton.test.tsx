@@ -131,9 +131,9 @@ describe('IconButton', () => {
     // Padding comes from semantic spacing (decision 0022). The literal values are the design,
     // so a swapped spacing key fails here even though the resolved tokens are unchanged.
     it.each([
-      ['small', '0.25rem', '32px'],
-      ['medium', '0.5rem', '40px'],
-      ['large', '0.75rem', '48px'],
+      ['small', '0.25rem', '2rem'],
+      ['medium', '0.5rem', '2.5rem'],
+      ['large', '0.75rem', '3rem'],
     ] as const)('sizes the %s button: %s padding, %s minimum', (size, padding, min) => {
       renderIconButton({ size })
       expect(getButton()).toHaveStyle({ padding, minWidth: min, minHeight: min })

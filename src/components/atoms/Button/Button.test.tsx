@@ -119,15 +119,16 @@ describe('Button Component', () => {
       // Default large size styling is applied
     })
 
-    // Padding comes from semantic spacing (decision 0022). The literal values are the design,
-    // so a swapped spacing key fails here even though the resolved tokens are unchanged.
+    // Height comes from size.control as a minimum with no vertical padding (decision 0034);
+    // horizontal padding from semantic spacing (decision 0022). The literal values are the
+    // design, so a swapped token key fails here even though the resolved tokens are unchanged.
     it.each([
-      ['small', '0.5rem 0.75rem'],
-      ['medium', '0.5rem 1rem'],
-      ['large', '0.75rem 1rem'],
-    ] as const)('pads the %s size with %s', (size, padding) => {
+      ['small', '0 0.75rem', '2rem'],
+      ['medium', '0 1rem', '2.5rem'],
+      ['large', '0 1rem', '3rem'],
+    ] as const)('pads the %s size with %s, %s minimum height', (size, padding, minHeight) => {
       renderButton({ size })
-      expect(screen.getByRole('button')).toHaveStyle({ padding })
+      expect(screen.getByRole('button')).toHaveStyle({ padding, minHeight })
     })
   })
 
