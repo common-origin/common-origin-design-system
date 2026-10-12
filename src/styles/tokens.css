@@ -280,24 +280,24 @@
   --co-base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --co-base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --co-base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --co-component-button-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
-  --co-component-chip-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
+  --co-component-button-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
+  --co-component-chip-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
   --co-component-icon-button-primary-min-width: 40px; /** Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129. */
   --co-component-icon-button-primary-min-height: 40px; /** Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129. */
-  --co-component-icon-button-primary-display: flex; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0. */
-  --co-component-icon-button-primary-align-items: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0. */
-  --co-component-icon-button-primary-justify-content: center; /** Deprecated: layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0. */
-  --co-component-icon-button-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
-  --co-component-icon-button-sizes-small-min-width: 32px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.sm. Removed in 3.0. */
-  --co-component-icon-button-sizes-small-min-height: 32px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.sm. Removed in 3.0. */
-  --co-component-icon-button-sizes-medium-min-width: 40px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.md. Removed in 3.0. */
-  --co-component-icon-button-sizes-medium-min-height: 40px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.md. Removed in 3.0. */
-  --co-component-icon-button-sizes-large-min-width: 48px; /** Deprecated (decision 0034): IconButton takes its minimum width from semantic.size.control.lg. Removed in 3.0. */
-  --co-component-icon-button-sizes-large-min-height: 48px; /** Deprecated (decision 0034): IconButton takes its minimum height from semantic.size.control.lg. Removed in 3.0. */
-  --co-component-input-default-padding-y: 11px; /** Deprecated (decisions 0022 and 0034): single-line fields take their min-height from semantic.size.control.lg with no vertical padding. Removed in 3.0. */
-  --co-component-input-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
-  --co-component-input-error-focus-outline-offset: 2px; /** Deprecated (decision 0022): use semantic.border.focusOffset. Removed in 3.0. */
-  --co-component-input-disabled-cursor: not-allowed; /** Deprecated: behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0. */
+  --co-component-icon-button-primary-display: flex; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0. */
+  --co-component-icon-button-primary-align-items: center; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0. */
+  --co-component-icon-button-primary-justify-content: center; /** Deprecated: Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0. */
+  --co-component-icon-button-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
+  --co-component-icon-button-sizes-small-min-width: 32px; /** Deprecated: IconButton takes its minimum width from semantic.size.control.sm (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-sizes-small-min-height: 32px; /** Deprecated: IconButton takes its minimum height from semantic.size.control.sm (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-min-width: 40px; /** Deprecated: IconButton takes its minimum width from semantic.size.control.md (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-min-height: 40px; /** Deprecated: IconButton takes its minimum height from semantic.size.control.md (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-sizes-large-min-width: 48px; /** Deprecated: IconButton takes its minimum width from semantic.size.control.lg (decision 0034). Removed in 3.0. */
+  --co-component-icon-button-sizes-large-min-height: 48px; /** Deprecated: IconButton takes its minimum height from semantic.size.control.lg (decision 0034). Removed in 3.0. */
+  --co-component-input-default-padding-y: 11px; /** Deprecated: Single-line fields take their min-height from semantic.size.control.lg with no vertical padding (decisions 0022 and 0034). Removed in 3.0. */
+  --co-component-input-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
+  --co-component-input-error-focus-outline-offset: 2px; /** Deprecated: Use semantic.border.focusOffset (decision 0022). Removed in 3.0. */
+  --co-component-input-disabled-cursor: not-allowed; /** Deprecated: Behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0. */
   --co-semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /** Sunken/pressed states, input fields, wells */
   --co-semantic-border-radius-none: 0; /** No rounding - tables, dividers, inline code blocks, sharp-edged containers */
   --co-semantic-color-background-overlay: rgba(33, 37, 41, 0.5); /** Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content. */
@@ -544,7 +544,7 @@
   --co-component-button-primary-background-color: var(--co-semantic-color-background-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
   --co-component-button-primary-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of every Button (visual language: Button uses sm). */
-  --co-component-button-primary-padding: var(--co-semantic-spacing-component-md) var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-button-primary-padding: var(--co-semantic-spacing-component-md) var(--co-semantic-spacing-component-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
   --co-component-button-hover-background-color: var(--co-semantic-color-background-emphasis-hover); /** Primary Button fill on hover. */
   --co-component-button-active-background-color: var(--co-semantic-color-background-emphasis-active); /** Primary Button fill while pressed. */
   --co-component-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every Button. */
@@ -574,14 +574,14 @@
   --co-component-button-variants-danger-active-background-color: var(--co-semantic-color-background-error-active); /** Danger Button fill while pressed. */
   --co-component-button-variants-danger-disabled-background-color: var(--co-semantic-color-background-disabled); /** Disabled danger Button fill. */
   --co-component-button-variants-danger-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled danger Button text and icon colour. */
-  --co-component-button-sizes-small-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-md); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0. */
-  --co-component-button-sizes-medium-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
-  --co-component-button-sizes-large-padding: var(--co-semantic-spacing-component-md) var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-button-sizes-small-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-button-sizes-medium-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
+  --co-component-button-sizes-large-padding: var(--co-semantic-spacing-component-md) var(--co-semantic-spacing-component-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
   --co-component-chip-close-button-size: var(--co-semantic-size-dimension-5); /** FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip. */
   --co-component-chip-default-background-color: var(--co-semantic-color-background-surface); /** Default chip fill at rest. */
   --co-component-chip-default-text-color: var(--co-semantic-color-text-default); /** Default chip text and icon colour. */
   --co-component-chip-default-border-radius: var(--co-semantic-border-radius-lg); /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
-  --co-component-chip-default-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decision 0022): no component spacing tokens. No chip reads it; chips take padding per size. Removed in 3.0. */
+  --co-component-chip-default-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated: No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0. */
   --co-component-chip-hover-background-color: var(--co-semantic-color-background-neutral); /** Default chip fill on hover, when it's clickable. */
   --co-component-chip-active-background-color: var(--co-semantic-color-background-neutral-hover); /** Default chip fill while pressed, when it's clickable. */
   --co-component-chip-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every chip and its close button. */
@@ -605,38 +605,38 @@
   --co-component-chip-variants-interactive-active-background-color: var(--co-semantic-color-background-interactive-active); /** Interactive chip fill while pressed, when it's clickable. */
   --co-component-chip-variants-interactive-disabled-background-color: var(--co-semantic-color-background-disabled); /** Disabled interactive chip fill. */
   --co-component-chip-variants-interactive-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled interactive chip text and icon colour. */
-  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0. */
-  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0. */
-  --co-component-chip-sizes-large-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-md); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm and .md. Removed in 3.0. */
-  --co-component-icon-button-primary-background-color: var(--co-semantic-color-background-emphasis); /** Deprecated (decision 0027): IconButton reads component.button.primary.backgroundColor, so its colours match Button's. Removed in 3.0. */
+  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-spacing-component-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-large-padding: var(--co-semantic-spacing-component-sm) var(--co-semantic-spacing-component-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-icon-button-primary-background-color: var(--co-semantic-color-background-emphasis); /** Deprecated: IconButton reads component.button.primary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
   --co-component-icon-button-primary-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of every IconButton, matching Button. */
-  --co-component-icon-button-hover-background-color: var(--co-semantic-color-background-emphasis-hover); /** Deprecated (decision 0027): IconButton reads component.button.hover.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-active-background-color: var(--co-semantic-color-background-emphasis-active); /** Deprecated (decision 0027): IconButton reads component.button.active.backgroundColor, so its colours match Button's. Removed in 3.0. */
+  --co-component-icon-button-hover-background-color: var(--co-semantic-color-background-emphasis-hover); /** Deprecated: IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-active-background-color: var(--co-semantic-color-background-emphasis-active); /** Deprecated: IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every IconButton. */
-  --co-component-icon-button-disabled-background-color: var(--co-semantic-color-background-disabled); /** Deprecated (decision 0027): IconButton reads component.button.disabled.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-secondary-background-color: var(--co-semantic-color-background-surface); /** Deprecated (decision 0027): IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-secondary-hover-background-color: var(--co-semantic-color-background-neutral); /** Deprecated (decision 0027): IconButton reads component.button.variants.secondary.hover.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-secondary-active-background-color: var(--co-semantic-color-background-page); /** Deprecated (decision 0027): IconButton reads component.button.variants.secondary.active.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-secondary-disabled-background-color: var(--co-semantic-color-background-disabled); /** Deprecated (decision 0027): IconButton reads component.button.variants.secondary.disabled.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-naked-background-color: var(--co-semantic-color-background-transparent); /** Deprecated (decision 0027): IconButton reads component.button.variants.naked.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-naked-hover-background-color: var(--co-semantic-color-background-surface); /** Deprecated (decision 0027): IconButton reads component.button.variants.naked.hover.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-naked-active-background-color: var(--co-semantic-color-background-neutral); /** Deprecated (decision 0027): IconButton reads component.button.variants.naked.active.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-variants-naked-disabled-background-color: var(--co-semantic-color-background-transparent); /** Deprecated (decision 0027): IconButton reads component.button.variants.naked.disabled.backgroundColor, so its colours match Button's. Removed in 3.0. */
-  --co-component-icon-button-sizes-small-padding: var(--co-semantic-spacing-component-xs); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0. */
-  --co-component-icon-button-sizes-medium-padding: var(--co-semantic-spacing-component-sm); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.sm. Removed in 3.0. */
-  --co-component-icon-button-sizes-large-padding: var(--co-semantic-spacing-component-md); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.md. Removed in 3.0. */
+  --co-component-icon-button-disabled-background-color: var(--co-semantic-color-background-disabled); /** Deprecated: IconButton reads component.button.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-secondary-background-color: var(--co-semantic-color-background-surface); /** Deprecated: IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-secondary-hover-background-color: var(--co-semantic-color-background-neutral); /** Deprecated: IconButton reads component.button.variants.secondary.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-secondary-active-background-color: var(--co-semantic-color-background-page); /** Deprecated: IconButton reads component.button.variants.secondary.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-secondary-disabled-background-color: var(--co-semantic-color-background-disabled); /** Deprecated: IconButton reads component.button.variants.secondary.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-naked-background-color: var(--co-semantic-color-background-transparent); /** Deprecated: IconButton reads component.button.variants.naked.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-naked-hover-background-color: var(--co-semantic-color-background-surface); /** Deprecated: IconButton reads component.button.variants.naked.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-naked-active-background-color: var(--co-semantic-color-background-neutral); /** Deprecated: IconButton reads component.button.variants.naked.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-variants-naked-disabled-background-color: var(--co-semantic-color-background-transparent); /** Deprecated: IconButton reads component.button.variants.naked.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-sizes-small-padding: var(--co-semantic-spacing-component-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-padding: var(--co-semantic-spacing-component-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-padding: var(--co-semantic-spacing-component-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md. Removed in 3.0. */
   --co-component-separator-border: var(--co-semantic-border-subtle); /** Divider line, the same as variants.default.border. */
-  --co-component-separator-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --co-component-separator-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
   --co-component-separator-variants-default-border: var(--co-semantic-border-subtle); /** Default Divider line. */
-  --co-component-separator-variants-default-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --co-component-separator-variants-default-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
   --co-component-separator-variants-strong-border: var(--co-semantic-border-strong); /** Strong Divider line, for a firmer break. */
-  --co-component-separator-variants-strong-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --co-component-separator-variants-strong-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
   --co-component-separator-variants-minimal-border: var(--co-semantic-border-subtle); /** Minimal Divider line. */
-  --co-component-separator-variants-minimal-margin: var(--co-semantic-spacing-separator-md) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
-  --co-component-separator-sizes-small-margin: var(--co-semantic-spacing-separator-sm) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0. */
-  --co-component-separator-sizes-medium-margin: var(--co-semantic-spacing-separator-md) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
-  --co-component-separator-sizes-large-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
-  --co-component-separator-sizes-xlarge-margin: var(--co-semantic-spacing-separator-xl) 0; /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0. */
+  --co-component-separator-variants-minimal-margin: var(--co-semantic-spacing-separator-md) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
+  --co-component-separator-sizes-small-margin: var(--co-semantic-spacing-separator-sm) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0. */
+  --co-component-separator-sizes-medium-margin: var(--co-semantic-spacing-separator-md) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0. */
+  --co-component-separator-sizes-large-margin: var(--co-semantic-spacing-separator-lg) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0. */
+  --co-component-separator-sizes-xlarge-margin: var(--co-semantic-spacing-separator-xl) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0. */
   --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
   --co-component-progress-bar-border-radius: var(--co-semantic-border-radius-sm); /** Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change. */
   --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-dimension-1); /** Thickness of the small ProgressBar (4px). */
@@ -648,7 +648,7 @@
   --co-component-input-default-border-color: var(--co-semantic-color-border-control); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
   --co-component-input-default-border-radius: var(--co-semantic-border-radius-sm); /** Corner radius of text inputs and the Checkbox box. */
   --co-component-input-default-border-width: var(--co-semantic-border-width-thin); /** Border width of text inputs and the Checkbox box. */
-  --co-component-input-default-padding-x: var(--co-semantic-spacing-component-lg); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.lg. Removed in 3.0. */
+  --co-component-input-default-padding-x: var(--co-semantic-spacing-component-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.lg. Removed in 3.0. */
   --co-component-input-placeholder-text-color: var(--co-semantic-color-text-subdued); /** Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text. */
   --co-component-input-hover-border-color: var(--co-semantic-color-border-strong); /** Text input border on hover. */
   --co-component-input-focus-border-color: var(--co-semantic-color-border-strong); /** Text input border while focused. */
@@ -664,15 +664,15 @@
   --co-component-badge-dot-size: var(--co-semantic-size-dimension-2); /** Width and height of the dot badge indicator (8px). */
   --co-component-badge-count-min-width: var(--co-semantic-size-dimension-4); /** Minimum width of the count badge indicator (16px). */
   --co-component-badge-count-height: var(--co-semantic-size-dimension-4); /** Height of the count badge indicator (16px). */
-  --co-component-badge-count-padding-x: var(--co-semantic-spacing-component-xs); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.component.xs. Removed in 3.0. */
+  --co-component-badge-count-padding-x: var(--co-semantic-spacing-component-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0. */
   --co-component-badge-count-line-height: var(--co-semantic-line-height-none); /** Line height of the count text, so the digits centre in the indicator. */
   --co-component-badge-ring-width: var(--co-semantic-border-width-thick); /** Width of the ring that separates the badge indicator from its host element (2px). */
   --co-component-badge-border-radius: var(--co-semantic-border-radius-circle); /** Badge indicators are always fully circular. */
   --co-component-badge-label-font-weight: var(--co-semantic-font-weight-medium); /** Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
-  --co-component-field-gap: var(--co-semantic-spacing-layout-sm); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.sm. Removed in 3.0. Was the vertical gap between a field's label, control and helper text. */
+  --co-component-field-gap: var(--co-semantic-spacing-layout-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.layout.sm. Removed in 3.0. */
   --co-component-field-label-color: var(--co-semantic-color-text-default); /** Field label colour. */
   --co-component-field-label-color-disabled: var(--co-semantic-color-text-disabled); /** Field label colour when the field is disabled. */
-  --co-component-field-label-gap: var(--co-semantic-spacing-layout-xs); /** Deprecated (decision 0022): no component spacing tokens. Use semantic.spacing.layout.xs. Removed in 3.0. Was the gap between the label text and the required indicator. */
+  --co-component-field-label-gap: var(--co-semantic-spacing-layout-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.layout.xs. Removed in 3.0. */
   --co-component-field-required-indicator-color: var(--co-semantic-color-text-error); /** Colour of the required-field asterisk. */
   --co-component-field-required-indicator-font-weight: var(--co-semantic-font-weight-bold); /** Weight of the required-field asterisk. */
   --co-component-field-helper-text-color: var(--co-semantic-color-text-subdued); /** Helper text colour. */
@@ -729,14 +729,14 @@
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-dimension-12); /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
   --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-dimension-15); /** Left indent of expanded content in comfortable rows (60px). */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-dimension-18); /** Minimum row height (72px). */
-  --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.blue-strong. Removed in 3.0. */
-  --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.purple-strong. Removed in 3.0. */
-  --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.pink-strong. Removed in 3.0. */
-  --co-semantic-color-category-yellow-emphasis: var(--co-semantic-color-category-yellow-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.yellow-strong. Removed in 3.0. */
-  --co-semantic-color-category-green-emphasis: var(--co-semantic-color-category-green-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.green-strong. Removed in 3.0. */
-  --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.red-strong. Removed in 3.0. */
-  --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.orange-strong. Removed in 3.0. */
-  --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated (decision 0029): "emphasis" means near-black, so use semantic.color.category.gray-strong. Removed in 3.0. */
+  --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-yellow-emphasis: var(--co-semantic-color-category-yellow-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-green-emphasis: var(--co-semantic-color-category-green-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0. */
   --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** Display text: 5rem, weight 700. The largest heading, for hero titles. */
   --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: 3rem, weight 700. The page title. */
   --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: 2rem, weight 700. Major sections. */
@@ -755,19 +755,19 @@
   --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider. */
   --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption. */
   --co-component-button-primary-font: var(--co-semantic-typography-button1); /** Button label typography, the same as sizes.large.font. */
-  --co-component-button-variants-emphasis-background-color: var(--co-component-button-variants-accent-background-color); /** Deprecated: use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
-  --co-component-button-variants-emphasis-text-color: var(--co-component-button-variants-accent-text-color); /** Deprecated: use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */
-  --co-component-button-variants-emphasis-hover-background-color: var(--co-component-button-variants-accent-hover-background-color); /** Deprecated: use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016). */
-  --co-component-button-variants-emphasis-active-background-color: var(--co-component-button-variants-accent-active-background-color); /** Deprecated: use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016). */
-  --co-component-button-variants-emphasis-disabled-background-color: var(--co-component-button-variants-accent-disabled-background-color); /** Deprecated: use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016). */
-  --co-component-button-variants-emphasis-disabled-text-color: var(--co-component-button-variants-accent-disabled-text-color); /** Deprecated: use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-background-color: var(--co-component-button-variants-accent-background-color); /** Deprecated: Use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-text-color: var(--co-component-button-variants-accent-text-color); /** Deprecated: Use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-hover-background-color: var(--co-component-button-variants-accent-hover-background-color); /** Deprecated: Use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-active-background-color: var(--co-component-button-variants-accent-active-background-color); /** Deprecated: Use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-disabled-background-color: var(--co-component-button-variants-accent-disabled-background-color); /** Deprecated: Use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016). */
+  --co-component-button-variants-emphasis-disabled-text-color: var(--co-component-button-variants-accent-disabled-text-color); /** Deprecated: Use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-sizes-small-font: var(--co-semantic-typography-button3); /** Small Button label typography. */
   --co-component-button-sizes-medium-font: var(--co-semantic-typography-button2); /** Medium Button label typography. */
   --co-component-button-sizes-large-font: var(--co-semantic-typography-button1); /** Large Button label typography. */
   --co-component-chip-default-font: var(--co-semantic-typography-body); /** Chip label typography, the same as sizes.large.font. */
-  --co-component-chip-sizes-small-font: var(--co-semantic-typography-caption); /** Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0. */
+  --co-component-chip-sizes-small-font: var(--co-semantic-typography-caption); /** Deprecated: Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0. */
   --co-component-chip-sizes-medium-font: var(--co-semantic-typography-small); /** Chip label typography. Every chip uses it: chips have one size (decision 0035). */
-  --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0. */
+  --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Deprecated: Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0. */
   --co-component-input-default-font: var(--co-semantic-typography-body); /** Text input value typography. */
   --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
   --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */

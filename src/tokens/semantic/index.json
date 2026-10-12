@@ -844,7 +844,13 @@
         },
         "blue-emphasis": {
           "$value": "{semantic.color.category.blue-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.blue-strong. Removed in 3.0."
+          "$description": "Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.blue-strong"
+            }
+          }
         },
         "blue-subtle": {
           "$value": "{base.color.blue.100}",
@@ -860,7 +866,13 @@
         },
         "purple-emphasis": {
           "$value": "{semantic.color.category.purple-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.purple-strong. Removed in 3.0."
+          "$description": "Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.purple-strong"
+            }
+          }
         },
         "purple-subtle": {
           "$value": "{base.color.purple.100}",
@@ -876,7 +888,13 @@
         },
         "pink-emphasis": {
           "$value": "{semantic.color.category.pink-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.pink-strong. Removed in 3.0."
+          "$description": "Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.pink-strong"
+            }
+          }
         },
         "pink-subtle": {
           "$value": "{base.color.pink.100}",
@@ -892,7 +910,13 @@
         },
         "yellow-emphasis": {
           "$value": "{semantic.color.category.yellow-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.yellow-strong. Removed in 3.0."
+          "$description": "Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.yellow-strong"
+            }
+          }
         },
         "yellow-subtle": {
           "$value": "{base.color.yellow.100}",
@@ -908,7 +932,13 @@
         },
         "green-emphasis": {
           "$value": "{semantic.color.category.green-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.green-strong. Removed in 3.0."
+          "$description": "Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.green-strong"
+            }
+          }
         },
         "green-subtle": {
           "$value": "{base.color.green.100}",
@@ -924,7 +954,13 @@
         },
         "red-emphasis": {
           "$value": "{semantic.color.category.red-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.red-strong. Removed in 3.0."
+          "$description": "Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.red-strong"
+            }
+          }
         },
         "red-subtle": {
           "$value": "{base.color.red.100}",
@@ -940,7 +976,13 @@
         },
         "orange-emphasis": {
           "$value": "{semantic.color.category.orange-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.orange-strong. Removed in 3.0."
+          "$description": "Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.orange-strong"
+            }
+          }
         },
         "orange-subtle": {
           "$value": "{base.color.orange.100}",
@@ -956,7 +998,13 @@
         },
         "gray-emphasis": {
           "$value": "{semantic.color.category.gray-strong}",
-          "$description": "Deprecated (decision 0029): \"emphasis\" means near-black, so use semantic.color.category.gray-strong. Removed in 3.0."
+          "$description": "Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.gray-strong"
+            }
+          }
         },
         "gray-subtle": {
           "$value": "{base.color.neutral.200}",

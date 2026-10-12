@@ -45,13 +45,30 @@ export default tokens;
 `
 }
 
+// Deprecation is the DTCG `$deprecated` field (decision 0033). The CSS format prints only the
+// description as a comment, so a deprecated token's comment carries the deprecation instead.
+function deprecationComments(dictionary) {
+  const walk = (node) => {
+    for (const [key, child] of Object.entries(node)) {
+      if (key.startsWith('$') || !child || typeof child !== 'object') continue
+      if ('$value' in child) {
+        if (typeof child.$deprecated === 'string') child.$description = `Deprecated: ${child.$deprecated}`
+      } else walk(child)
+    }
+  }
+  walk(dictionary)
+  return dictionary
+}
+
 const sd = new StyleDictionary({
   // The three tier folders, in this order so output order stays stable
   source: ['src/tokens/base/**/*.json', 'src/tokens/component/**/*.json', 'src/tokens/semantic/**/*.json'],
   usesDtcg: true,
   log: { warnings: 'error' },
+  preprocessors: ['deprecation-comments'],
   hooks: {
     formats: { 'typescript/nested-interface': nestedInterface },
+    preprocessors: { 'deprecation-comments': deprecationComments },
   },
   // No value transforms yet. Style Dictionary 5's built-in groups match on token type, so `js` and
   // `css` would rewrite every colour (#16191C -> #16191c, transparent -> #00000000). Step 4 must
