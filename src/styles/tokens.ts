@@ -862,7 +862,7 @@ export type Tokens = {
           /**
            * Padding of the small IconButton.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.
            */
           padding: string;
         };
@@ -882,7 +882,7 @@ export type Tokens = {
           /**
            * Padding of the medium IconButton.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.sm. Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0.
            */
           padding: string;
         };
@@ -902,7 +902,7 @@ export type Tokens = {
           /**
            * Padding of the large IconButton.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.md. Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0.
            */
           padding: string;
         };
@@ -914,7 +914,7 @@ export type Tokens = {
       /**
        * Space around a Divider.
        *
-       * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.
+       * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
        */
       margin: string;
       variants: {
@@ -924,7 +924,7 @@ export type Tokens = {
           /**
            * Space around the default Divider variant.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -934,7 +934,7 @@ export type Tokens = {
           /**
            * Space around a strong Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -944,7 +944,7 @@ export type Tokens = {
           /**
            * Space around a minimal Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -954,7 +954,7 @@ export type Tokens = {
           /**
            * Space around a small Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.400 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -962,7 +962,7 @@ export type Tokens = {
           /**
            * Space around a medium Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -970,7 +970,7 @@ export type Tokens = {
           /**
            * Space around a large Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -978,7 +978,7 @@ export type Tokens = {
           /**
            * Space around an extra-large Divider.
            *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0.
+           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0.
            */
           margin: string;
         };
@@ -1029,7 +1029,7 @@ export type Tokens = {
         /**
          * Horizontal padding of text inputs.
          *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.lg. Removed in 3.0.
+         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0.
          */
         paddingX: string;
         /** Text input value typography. */
@@ -1107,7 +1107,7 @@ export type Tokens = {
         /**
          * Horizontal padding of a count Badge.
          *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0.
+         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.
          */
         paddingX: string;
         /** Line height of the count text, so the digits centre in the indicator. */
@@ -1134,7 +1134,7 @@ export type Tokens = {
       /**
        * Vertical gap between a field's label, control and helper text.
        *
-       * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.layout.sm. Removed in 3.0.
+       * @deprecated No component spacing tokens (decision 0022). Use semantic.space.200. Removed in 3.0.
        */
       gap: string;
       label: {
@@ -1147,7 +1147,7 @@ export type Tokens = {
         /**
          * Gap between a label and its required indicator.
          *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.layout.xs. Removed in 3.0.
+         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.100. Removed in 3.0.
          */
         gap: string;
       };
@@ -1441,21 +1441,45 @@ export type Tokens = {
       bold: string;
     };
     zIndex: {
-      /** Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals. */
+      /**
+       * Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals.
+       *
+       * @deprecated Renamed to semantic.layer.sticky by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       sticky: string;
-      /** Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays. */
+      /**
+       * Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays.
+       *
+       * @deprecated Renamed to semantic.layer.dropdown by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       dropdown: string;
-      /** Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals. */
+      /**
+       * Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals.
+       *
+       * @deprecated Renamed to semantic.layer.overlay by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       overlay: string;
-      /** Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system. */
+      /**
+       * Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system.
+       *
+       * @deprecated Renamed to semantic.layer.modal by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       modal: string;
     };
     border: {
       /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025). */
       default: string;
-      /** Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025). */
+      /**
+       * Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025).
+       *
+       * @deprecated Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       subtle: string;
-      /** Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white. */
+      /**
+       * Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white.
+       *
+       * @deprecated Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0.
+       */
       strong: string;
       /** The focus ring: 2px solid near-black, always used with border.focusOffset for visible keyboard focus (P2). Every component draws this ring; there is no blue focus ring (decision 0029). */
       focus: string;
@@ -1470,27 +1494,101 @@ export type Tokens = {
       /** 0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does. */
       focusOffset: string;
       radius: {
-        /** No rounding - tables, dividers, inline code blocks, sharp-edged containers */
+        /**
+         * No rounding - tables, dividers, inline code blocks, sharp-edged containers
+         *
+         * @deprecated Renamed to semantic.radius.none by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         none: string;
-        /** Minimal rounding - small badges, compact tags, inline buttons, checkboxes */
+        /**
+         * Minimal rounding - small badges, compact tags, inline buttons, checkboxes
+         *
+         * @deprecated Renamed to semantic.radius.xs by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xs: string;
-        /** Subtle rounding - buttons, inputs, chips, form controls, list items */
+        /**
+         * Subtle rounding - buttons, inputs, chips, form controls, list items
+         *
+         * @deprecated Renamed to semantic.radius.sm by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         sm: string;
-        /** Standard rounding - cards, containers, dropdowns, popovers, menus */
+        /**
+         * Standard rounding - cards, containers, dropdowns, popovers, menus
+         *
+         * @deprecated Renamed to semantic.radius.md by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         md: string;
-        /** Generous rounding - modals, action sheets, dialogs, feature cards, panels */
+        /**
+         * Generous rounding - modals, action sheets, dialogs, feature cards, panels
+         *
+         * @deprecated Renamed to semantic.radius.lg by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         lg: string;
-        /** Large rounding - pills, pill buttons, prominent CTAs, search bars */
+        /**
+         * Large rounding - pills, pill buttons, prominent CTAs, search bars
+         *
+         * @deprecated Renamed to semantic.radius.xl by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xl: string;
-        /** Extra large rounding - hero elements, decorative containers, large pills */
+        /**
+         * Extra large rounding - hero elements, decorative containers, large pills
+         *
+         * @deprecated Renamed to semantic.radius.2xl by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '2xl': string;
-        /** Maximum rounding - decorative elements, marketing components, large decorative cards */
+        /**
+         * Maximum rounding - decorative elements, marketing components, large decorative cards
+         *
+         * @deprecated Renamed to semantic.radius.3xl by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '3xl': string;
-        /** Fully circular - avatars, round icon buttons, status indicators, FABs */
+        /**
+         * Fully circular - avatars, round icon buttons, status indicators, FABs
+         *
+         * @deprecated Renamed to semantic.radius.full by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         circle: string;
       };
+      /** Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge. */
+      emphasis: string;
+      /** Firm hairline that must read as a boundary, such as a hovered text input. */
+      'input-hover': string;
     };
     size: {
+      /** Size step for thin bars: the TabBar scrollbar, the small ProgressBar. */
+      '100': string;
+      /** Size step for small marks: the Badge dot, the medium ProgressBar. */
+      '200': string;
+      /** Size step for compact indicators: the Badge count, the large ProgressBar. */
+      '400': string;
+      /** Size step for small boxes: the Checkbox box, TabBar count badges, small labels. */
+      '500': string;
+      /** Size step for the medium label height, used by chips and StatusLabel. */
+      '600': string;
+      /** Size step for compact rows and large labels, such as the Checkbox row. */
+      '800': string;
+      /** Size step for headers and indents, such as the AccountCard header. */
+      '1200': string;
+      /** Size step for the comfortable ListItem expanded indent. */
+      '1500': string;
+      /** Size step for tall rows, such as the TransactionListItem minimum height. */
+      '1800': string;
+      /** Size step for small illustrations, such as the small EmptyState image. */
+      '2000': string;
+      /** Size step for medium illustrations and multi-line inputs: EmptyState, TextArea. */
+      '3000': string;
+      /** Size step for truncation widths, such as a Breadcrumbs label. */
+      '4500': string;
+      /** Size step for large illustrations, such as the large EmptyState image. */
+      '5000': string;
+      /** Size step for narrow column widths: AccountCard, EmptyState actions. */
+      '7500': string;
+      /** Size step for readable text widths, such as EmptyState copy. */
+      '9000': string;
+      /** Size step for compact panel widths, such as the EmptyState block. */
+      '10000': string;
+      /** Size step for wide content columns, such as CardLarge. */
+      '19200': string;
       /** 2.75rem (44px): minimum height of a tappable row or control. */
       touchTarget: string;
       control: {
@@ -1522,39 +1620,107 @@ export type Tokens = {
         maxHeight: string;
       };
       dimension: {
-        /** 0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens). */
+        /**
+         * 0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '1': string;
-        /** 0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022. */
+        /**
+         * 0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '2': string;
-        /** 1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022. */
+        /**
+         * 1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '4': string;
-        /** 1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small). */
+        /**
+         * 1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small).
+         *
+         * @deprecated Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '5': string;
-        /** 1.5rem (24px): medium label height (via size.label.medium). */
+        /**
+         * 1.5rem (24px): medium label height (via size.label.medium).
+         *
+         * @deprecated Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '6': string;
-        /** 2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large). */
+        /**
+         * 2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large).
+         *
+         * @deprecated Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '8': string;
-        /** 3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens). */
+        /**
+         * 3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '12': string;
-        /** 3.75rem (60px): comfortable ListItem expanded indent (via component tokens). */
+        /**
+         * 3.75rem (60px): comfortable ListItem expanded indent (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '15': string;
-        /** 4.5rem (72px): TransactionListItem minimum height (via component tokens). */
+        /**
+         * 4.5rem (72px): TransactionListItem minimum height (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '18': string;
-        /** 5rem (80px): small EmptyState illustration (via component tokens). */
+        /**
+         * 5rem (80px): small EmptyState illustration (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '20': string;
-        /** 7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens). */
+        /**
+         * 7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '30': string;
-        /** 11.25rem (180px): Breadcrumbs label truncation width (via component tokens). */
+        /**
+         * 11.25rem (180px): Breadcrumbs label truncation width (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '45': string;
-        /** 12.5rem (200px): large EmptyState illustration (via component tokens). */
+        /**
+         * 12.5rem (200px): large EmptyState illustration (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '50': string;
-        /** 18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens). */
+        /**
+         * 18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '75': string;
-        /** 22.5rem (360px): EmptyState text maximum width (via component tokens). */
+        /**
+         * 22.5rem (360px): EmptyState text maximum width (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '90': string;
-        /** 25rem (400px): EmptyState maximum width (via component tokens). */
+        /**
+         * 25rem (400px): EmptyState maximum width (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '100': string;
-        /** 48rem (768px): CardLarge maximum width (via component tokens). */
+        /**
+         * 48rem (768px): CardLarge maximum width (via component tokens).
+         *
+         * @deprecated Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '192': string;
       };
       icon: {
@@ -1586,61 +1752,165 @@ export type Tokens = {
     };
     spacing: {
       separator: {
-        /** 1rem: space around a small Divider, above and below when horizontal, either side when vertical. */
+        /**
+         * 1rem: space around a small Divider, above and below when horizontal, either side when vertical.
+         *
+         * @deprecated Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         sm: string;
-        /** 1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical. */
+        /**
+         * 1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical.
+         *
+         * @deprecated Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         md: string;
-        /** 2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical. */
+        /**
+         * 2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical.
+         *
+         * @deprecated Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         lg: string;
-        /** 3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical. */
+        /**
+         * 3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical.
+         *
+         * @deprecated Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xl: string;
       };
       component: {
-        /** Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips. */
+        /**
+         * Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips.
+         *
+         * @deprecated Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xs: string;
-        /** Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing. */
+        /**
+         * Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing.
+         *
+         * @deprecated Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         sm: string;
-        /** Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding. */
+        /**
+         * Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding.
+         *
+         * @deprecated Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         md: string;
-        /** Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing. */
+        /**
+         * Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing.
+         *
+         * @deprecated Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         lg: string;
-        /** Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs. */
+        /**
+         * Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs.
+         *
+         * @deprecated Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xl: string;
-        /** 2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections. */
+        /**
+         * 2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections.
+         *
+         * @deprecated Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '2xl': string;
       };
       layout: {
-        /** 0: no space, for explicit resets. */
+        /**
+         * 0: no space, for explicit resets.
+         *
+         * @deprecated Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         none: string;
-        /** 0.25rem: the tightest gap, such as between a label and its required indicator. */
+        /**
+         * 0.25rem: the tightest gap, such as between a label and its required indicator.
+         *
+         * @deprecated Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xs: string;
-        /** 0.5rem: a small gap, such as between a field's label, control and helper text. */
+        /**
+         * 0.5rem: a small gap, such as between a field's label, control and helper text.
+         *
+         * @deprecated Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         sm: string;
-        /** 0.75rem: the default gap between related elements. */
+        /**
+         * 0.75rem: the default gap between related elements.
+         *
+         * @deprecated Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         md: string;
-        /** 1rem: space between groups of elements, and padding inside containers. */
+        /**
+         * 1rem: space between groups of elements, and padding inside containers.
+         *
+         * @deprecated Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         lg: string;
-        /** 1.25rem: generous padding inside larger containers. */
+        /**
+         * 1.25rem: generous padding inside larger containers.
+         *
+         * @deprecated Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         xl: string;
-        /** 1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '2xl': string;
-        /** 1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '3xl': string;
-        /** 2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '4xl': string;
-        /** 2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '5xl': string;
-        /** 2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '6xl': string;
-        /** 3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '7xl': string;
-        /** 3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '8xl': string;
-        /** 4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs. */
+        /**
+         * 4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
+         *
+         * @deprecated Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '9xl': string;
-        /** 5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl. */
+        /**
+         * 5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl.
+         *
+         * @deprecated Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '10xl': string;
-        /** 6rem: the largest layout gap (FeatureBlock at wide breakpoints). */
+        /**
+         * 6rem: the largest layout gap (FeatureBlock at wide breakpoints).
+         *
+         * @deprecated Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         '11xl': string;
         /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
         auto: string;
@@ -1652,103 +1922,277 @@ export type Tokens = {
         default: string;
         /** Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white. */
         emphasis: string;
-        /** Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page. */
+        /**
+         * Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page.
+         *
+         * @deprecated Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         subdued: string;
         /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
         inverse: string;
         /** Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
-        /** Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page. */
+        /**
+         * Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page.
+         *
+         * @deprecated Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         interactive: string;
-        /** Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016. */
+        /**
+         * Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016.
+         *
+         * @deprecated Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-hover': string;
-        /** Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016. */
+        /**
+         * Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016.
+         *
+         * @deprecated Renamed to semantic.color.text.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-active': string;
-        /** Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page. */
+        /**
+         * Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page.
+         *
+         * @deprecated Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         error: string;
         /** Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page. */
         success: string;
         /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
         warning: string;
+        /** Secondary text: helper text, metadata, timestamps. */
+        muted: string;
+        /** Blue text for links and selected items; never decoration, see 0003. */
+        accent: string;
+        /** Text of a hovered selected item, on the accent-muted-hover fill. */
+        'accent-hover': string;
+        /** Text of a pressed selected item, on the accent-muted-pressed fill. */
+        'accent-pressed': string;
+        /** Error text: field error messages, InlineAlert errors. */
+        danger: string;
       };
       background: {
-        /** Page background: a cool off-white (#f8f9fa), never pure white (decision 0006). */
+        /**
+         * Page background: a cool off-white (#f8f9fa), never pure white (decision 0006).
+         *
+         * @deprecated Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         default: string;
-        /** White: inputs, sheets and other surfaces that sit on the page background. */
+        /**
+         * White: inputs, sheets and other surfaces that sit on the page background.
+         *
+         * @deprecated Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; Slider's thumb moves to a component token (#189). Removed in 3.0.
+         */
         subtle: string;
-        /** Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip. */
+        /**
+         * Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip.
+         *
+         * @deprecated Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         emphasis: string;
-        /** Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022. */
+        /**
+         * Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'emphasis-hover': string;
-        /** Fill of a pressed emphasis control. Approved under decision 0022. */
+        /**
+         * Fill of a pressed emphasis control. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'emphasis-active': string;
-        /** Light grey fill for quiet surfaces and grouped content, such as the default Chip. */
+        /**
+         * Light grey fill for quiet surfaces and grouped content, such as the default Chip.
+         *
+         * @deprecated Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         surface: string;
-        /** Dark grey fill for inverse surfaces, such as a checked Checkbox box. */
+        /**
+         * Dark grey fill for inverse surfaces, such as a checked Checkbox box.
+         *
+         * @deprecated Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         inverse: string;
-        /** Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1). */
+        /**
+         * Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1).
+         *
+         * @deprecated Renamed to semantic.color.fill.accent by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         interactive: string;
-        /** Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive. */
+        /**
+         * Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive.
+         *
+         * @deprecated Renamed to semantic.color.fill.accent-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-subtle': string;
-        /** Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016. */
+        /**
+         * Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016.
+         *
+         * @deprecated Renamed to semantic.color.fill.accent-muted-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-subtle-hover': string;
-        /** Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016. */
+        /**
+         * Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016.
+         *
+         * @deprecated Renamed to semantic.color.fill.accent-muted-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-subtle-active': string;
-        /** Blue fill on hover, for controls that use background.interactive. */
+        /**
+         * Blue fill on hover, for controls that use background.interactive.
+         *
+         * @deprecated Renamed to semantic.color.fill.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-hover': string;
-        /** Blue fill while pressed, for controls that use background.interactive. */
+        /**
+         * Blue fill while pressed, for controls that use background.interactive.
+         *
+         * @deprecated Renamed to semantic.color.fill.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-active': string;
-        /** Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1). */
+        /**
+         * Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1).
+         *
+         * @deprecated Renamed to semantic.color.fill.danger by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         error: string;
-        /** Fill of a hovered error control, such as the danger Button. Approved under decision 0022. */
+        /**
+         * Fill of a hovered error control, such as the danger Button. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.danger-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'error-hover': string;
-        /** Fill of a pressed error control. Approved under decision 0022. */
+        /**
+         * Fill of a pressed error control. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.danger-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'error-active': string;
-        /** Light red tint behind error messages, such as an error Alert. */
+        /**
+         * Light red tint behind error messages, such as an error Alert.
+         *
+         * @deprecated Renamed to semantic.color.fill.danger-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'error-subtle': string;
-        /** Strong green fill for success states. */
+        /**
+         * Strong green fill for success states.
+         *
+         * @deprecated Renamed to semantic.color.fill.success by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         success: string;
-        /** Light green tint behind success messages, such as a success Alert. */
+        /**
+         * Light green tint behind success messages, such as a success Alert.
+         *
+         * @deprecated Renamed to semantic.color.fill.success-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'success-subtle': string;
-        /** Strong orange fill for warning states. */
+        /**
+         * Strong orange fill for warning states.
+         *
+         * @deprecated Renamed to semantic.color.fill.warning by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         warning: string;
-        /** Light orange tint behind warning messages, such as a warning Alert. */
+        /**
+         * Light orange tint behind warning messages, such as a warning Alert.
+         *
+         * @deprecated Renamed to semantic.color.fill.warning-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'warning-subtle': string;
-        /** Fill of disabled controls. */
+        /**
+         * Fill of disabled controls.
+         *
+         * @deprecated Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         disabled: string;
-        /** Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022. */
+        /**
+         * Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         neutral: string;
-        /** Fill of a hovered neutral control. Approved under decision 0022. */
+        /**
+         * Fill of a hovered neutral control. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'neutral-hover': string;
-        /** Fill of a pressed neutral control. Approved under decision 0022. */
+        /**
+         * Fill of a pressed neutral control. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'neutral-active': string;
-        /** No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022. */
+        /**
+         * No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022.
+         *
+         * @deprecated Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         transparent: string;
         /** Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026). */
         progressTrack: string;
-        /** The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that. */
+        /**
+         * The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that.
+         *
+         * @deprecated Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         page: string;
-        /** Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content. */
+        /**
+         * Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content.
+         *
+         * @deprecated Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         overlay: string;
-        /** Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL. */
+        /**
+         * Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL.
+         *
+         * @deprecated Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'hover-overlay': string;
-        /** Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth. */
+        /**
+         * Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth.
+         *
+         * @deprecated Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'active-overlay': string;
-        /** Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse. */
+        /**
+         * Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse.
+         *
+         * @deprecated Renamed to semantic.color.fill.inverse-none-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'inverse-overlay': string;
       };
       border: {
         /** Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025). */
         default: string;
-        /** Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025). */
+        /**
+         * Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025).
+         *
+         * @deprecated Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         subtle: string;
-        /** Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025). */
+        /**
+         * Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025).
+         *
+         * @deprecated Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         control: string;
-        /** Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white. */
+        /**
+         * Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white.
+         *
+         * @deprecated Split by use (decision 0031): semantic.color.border.input-hover for a hovered control, semantic.color.border.focus for the focus ring and CardSmall's ring, semantic.color.fill.inverse for drag handles. Removed in 3.0.
+         */
         strong: string;
-        /** Blue border for selected and interactive states (decision 0003). 5.39:1 on white. */
+        /**
+         * Blue border for selected and interactive states (decision 0003). 5.39:1 on white.
+         *
+         * @deprecated Renamed to semantic.color.border.accent by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         interactive: string;
-        /** Red border for invalid fields and error outlines. 5.41:1 on white. */
+        /**
+         * Red border for invalid fields and error outlines. 5.41:1 on white.
+         *
+         * @deprecated Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         error: string;
         /** Green border for success outlines, such as an outlined success Alert. */
         success: string;
@@ -1756,30 +2200,72 @@ export type Tokens = {
         warning: string;
         /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
         none: string;
+        /** Border for dividers, decorative outlines and disabled controls; never a resting control edge. */
+        emphasis: string;
+        /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. */
+        input: string;
+        /** Edge of a hovered control, such as a hovered text input or Dropdown. */
+        'input-hover': string;
+        /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). */
+        focus: string;
+        /** Blue border for selected items; never decoration, see 0003. */
+        accent: string;
+        /** Border of an invalid field and other error outlines. */
+        danger: string;
       };
       icon: {
         /** Default icon colour, matching text.default. 15.43:1 on white. */
         default: string;
         /** Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029). */
         emphasis: string;
-        /** Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1). */
+        /**
+         * Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1).
+         *
+         * @deprecated Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         subdued: string;
         /** Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled. */
         disabled: string;
         /** Icons on dark or coloured fills, matching text.inverse. */
         inverse: string;
-        /** Blue icons in links and selected items, matching text.interactive. 5.39:1 on white. */
+        /**
+         * Blue icons in links and selected items, matching text.interactive. 5.39:1 on white.
+         *
+         * @deprecated Renamed to semantic.color.icon.accent by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         interactive: string;
-        /** Blue icon on hover, matching text.interactive-hover. */
+        /**
+         * Blue icon on hover, matching text.interactive-hover.
+         *
+         * @deprecated Renamed to semantic.color.icon.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-hover': string;
-        /** Blue icon while pressed, matching text.interactive-active. */
+        /**
+         * Blue icon while pressed, matching text.interactive-active.
+         *
+         * @deprecated Renamed to semantic.color.icon.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'interactive-active': string;
-        /** Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.) */
+        /**
+         * Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)
+         *
+         * @deprecated Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         error: string;
         /** Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.) */
         success: string;
         /** Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.) */
         warning: string;
+        /** Secondary icons, such as list item and empty-state icons. */
+        muted: string;
+        /** Blue icons in links and selected items, matching color.text.accent. */
+        accent: string;
+        /** Icon of a hovered selected item, matching color.text.accent-hover. */
+        'accent-hover': string;
+        /** Icon of a pressed selected item, matching color.text.accent-pressed. */
+        'accent-pressed': string;
+        /** Error icons, such as in Alert and EmptyState. */
+        danger: string;
       };
       financial: {
         /** Color for positive monetary values, credits, income */
@@ -1806,7 +2292,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0.
          */
         'blue-emphasis': string;
-        /** Subtle blue background */
+        /**
+         * Subtle blue background
+         *
+         * @deprecated Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'blue-subtle': string;
         /** Purple category color for entertainment */
         purple: string;
@@ -1818,7 +2308,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0.
          */
         'purple-emphasis': string;
-        /** Subtle purple background */
+        /**
+         * Subtle purple background
+         *
+         * @deprecated Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'purple-subtle': string;
         /** Pink category color for health/wellness */
         pink: string;
@@ -1830,7 +2324,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0.
          */
         'pink-emphasis': string;
-        /** Subtle pink background */
+        /**
+         * Subtle pink background
+         *
+         * @deprecated Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'pink-subtle': string;
         /** Yellow category color for utilities */
         yellow: string;
@@ -1842,7 +2340,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0.
          */
         'yellow-emphasis': string;
-        /** Subtle yellow background */
+        /**
+         * Subtle yellow background
+         *
+         * @deprecated Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'yellow-subtle': string;
         /** Green category color for income */
         green: string;
@@ -1854,7 +2356,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0.
          */
         'green-emphasis': string;
-        /** Subtle green background */
+        /**
+         * Subtle green background
+         *
+         * @deprecated Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'green-subtle': string;
         /** Red category color for expenses */
         red: string;
@@ -1866,7 +2372,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0.
          */
         'red-emphasis': string;
-        /** Subtle red background */
+        /**
+         * Subtle red background
+         *
+         * @deprecated Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'red-subtle': string;
         /** Orange category color for food & dining */
         orange: string;
@@ -1878,7 +2388,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0.
          */
         'orange-emphasis': string;
-        /** Subtle orange background */
+        /**
+         * Subtle orange background
+         *
+         * @deprecated Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'orange-subtle': string;
         /** Gray category color for uncategorized */
         gray: string;
@@ -1890,7 +2404,11 @@ export type Tokens = {
          * @deprecated "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0.
          */
         'gray-emphasis': string;
-        /** Subtle gray background */
+        /**
+         * Subtle gray background
+         *
+         * @deprecated Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         */
         'gray-subtle': string;
         /** Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
         'blue-text': string;
@@ -1908,6 +2426,22 @@ export type Tokens = {
         'orange-text': string;
         /** Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
         'gray-text': string;
+        /** Light blue fill of a blue CategoryLabel, behind the blue-text colour. */
+        'blue-muted': string;
+        /** Light purple fill of a purple CategoryLabel, behind the purple-text colour. */
+        'purple-muted': string;
+        /** Light pink fill of a pink CategoryLabel, behind the pink-text colour. */
+        'pink-muted': string;
+        /** Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour. */
+        'yellow-muted': string;
+        /** Light green fill of a green CategoryLabel, behind the green-text colour. */
+        'green-muted': string;
+        /** Light red fill of a red CategoryLabel, behind the red-text colour. */
+        'red-muted': string;
+        /** Light orange fill of a orange CategoryLabel, behind the orange-text colour. */
+        'orange-muted': string;
+        /** Light gray fill of a gray CategoryLabel, behind the gray-text colour. */
+        'gray-muted': string;
       };
       status: {
         /** Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115. */
@@ -1934,6 +2468,62 @@ export type Tokens = {
         scheduled: string;
         /** Background for scheduled status */
         'scheduled-bg': string;
+      };
+      fill: {
+        /** Near-black fill for emphasis controls, such as the primary Button and IconButton. */
+        emphasis: string;
+        /** Fill of a hovered emphasis control, such as the primary Button. */
+        'emphasis-hover': string;
+        /** Fill of a pressed emphasis control, such as the primary Button. */
+        'emphasis-pressed': string;
+        /** Light grey fill for quiet grouped content, such as the default Chip. */
+        muted: string;
+        /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
+        inverse: string;
+        /** Blue fill for the accent Button and other deliberate highlights; see 0003. */
+        accent: string;
+        /** Light blue fill for selected items: a selected chip, tab or row; see 0016. */
+        'accent-muted': string;
+        /** Fill of a hovered selected item, such as a selected filter chip. */
+        'accent-muted-hover': string;
+        /** Fill of a pressed selected item, such as a selected filter chip. */
+        'accent-muted-pressed': string;
+        /** Blue fill of a hovered accent control, such as the accent Button. */
+        'accent-hover': string;
+        /** Blue fill of a pressed accent control, such as the accent Button. */
+        'accent-pressed': string;
+        /** Strong red fill for destructive actions, such as the danger Button. */
+        danger: string;
+        /** Fill of a hovered destructive control, such as the danger Button. */
+        'danger-hover': string;
+        /** Fill of a pressed destructive control, such as the danger Button. */
+        'danger-pressed': string;
+        /** Light red tint behind error messages, such as an error Alert. */
+        'danger-muted': string;
+        /** Strong green fill for success states, such as a success indicator. */
+        success: string;
+        /** Light green tint behind success messages, such as a success Alert. */
+        'success-muted': string;
+        /** Strong orange fill for warning states, such as a warning indicator. */
+        warning: string;
+        /** Light orange tint behind warning messages, such as a warning Alert. */
+        'warning-muted': string;
+        /** Fill of a disabled control, such as a disabled Button or Switch. */
+        disabled: string;
+        /** Fill of a neutral control at rest, such as the secondary Button. */
+        default: string;
+        /** Fill of a hovered neutral control, such as the secondary Button. */
+        'default-hover': string;
+        /** Fill of a pressed neutral control, such as the secondary Button. */
+        'default-pressed': string;
+        /** No fill, for controls without a background at rest: the naked Button and IconButton. */
+        none: string;
+        /** Hover tint for a fill-less control over any background, such as a chip close button. */
+        'none-hover': string;
+        /** Pressed tint for a fill-less control over any background, such as a chip close button. */
+        'none-pressed': string;
+        /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
+        'inverse-none-hover': string;
       };
     };
     typography: {
@@ -2001,6 +2591,92 @@ export type Tokens = {
       focus: string;
       /** Transform and opacity over 150ms: small movement or fade in response to input. */
       interactive: string;
+    };
+    layer: {
+      /** Stacking layer for chrome that stays visible while scrolling: sticky headers, navigation bars. */
+      sticky: string;
+      /** Stacking layer for menus anchored to a control: Dropdown and SearchField lists. */
+      dropdown: string;
+      /** Stacking layer for panels that slide over the page and their backdrop, such as Sheet. */
+      overlay: string;
+      /** Stacking layer for blocking dialogs and their backdrop: Modal, ActionSheet. */
+      modal: string;
+    };
+    radius: {
+      /** No rounding: tables, dividers and sharp-edged containers. */
+      none: string;
+      /** Minimal rounding: small badges, checkboxes, compact tags. */
+      xs: string;
+      /** Subtle rounding: buttons, inputs and other form controls. */
+      sm: string;
+      /** Standard rounding: cards, dropdown menus, popovers. */
+      md: string;
+      /** Generous rounding: modals, action sheets and feature cards. */
+      lg: string;
+      /** Large rounding: pill buttons and prominent search bars. */
+      xl: string;
+      /** Extra-large rounding: hero elements and decorative containers. */
+      '2xl': string;
+      /** Maximum rounding short of a circle: decorative cards and marketing elements. */
+      '3xl': string;
+      /** Fully round: avatars, round icon buttons, status dots and chips. */
+      full: string;
+    };
+    space: {
+      /** No space, for explicit resets of padding, margin or gap. */
+      '0': string;
+      /** The tightest gap, such as between a label and its required indicator. */
+      '100': string;
+      /** A small gap, such as between a field's label, control and helper text. */
+      '200': string;
+      /** The default gap between related elements in a group. */
+      '300': string;
+      /** Space between groups of elements, around a small Divider, and inside containers. */
+      '400': string;
+      /** Generous padding inside larger containers and cards. */
+      '500': string;
+      /** Space between blocks, and around a medium or minimal Divider. */
+      '600': string;
+      /** A larger step between blocks and sections; pick the step the layout needs. */
+      '700': string;
+      /** Space between sections, and around the default Divider. */
+      '800': string;
+      /** A larger step between blocks and sections; pick the step the layout needs. */
+      '900': string;
+      /** A larger step between blocks and sections; pick the step the layout needs. */
+      '1000': string;
+      /** Space between major sections, and around an extra-large Divider. */
+      '1200': string;
+      /** A large step between page sections; pick the step the layout needs. */
+      '1400': string;
+      /** A large step between page sections; pick the step the layout needs. */
+      '1600': string;
+      /** A very large step between page sections, second only to the largest. */
+      '2000': string;
+      /** The largest gap between page sections, such as FeatureBlock at wide breakpoints. */
+      '2400': string;
+      inset: {
+        /** Tightest padding inside a component, such as around an icon in a small control. */
+        xs: string;
+        /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
+        sm: string;
+        /** Medium padding inside a component: form field insides, medium IconButtons. */
+        md: string;
+        /** Large padding inside a component: button and input sides, card insides. */
+        lg: string;
+        /** Generous padding inside a component, such as a prominent call to action. */
+        xl: string;
+        /** Largest padding inside a component: large cards, spacious form sections. */
+        '2xl': string;
+      };
+    };
+    surface: {
+      /** The page: the off-white background everything else sits on (decision 0006). */
+      base: string;
+      /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
+      raised: string;
+      /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+      scrim: string;
     };
   };
 };

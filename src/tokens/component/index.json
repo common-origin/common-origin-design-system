@@ -3,7 +3,7 @@
     "button": {
       "primary": {
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis}",
+          "$value": "{semantic.color.fill.emphasis}",
           "$type": "color",
           "$description": "Primary Button fill at rest."
         },
@@ -13,12 +13,12 @@
           "$description": "Text and icon colour on the primary Button."
         },
         "borderRadius": {
-          "$value": "{semantic.border.radius.sm}",
+          "$value": "{semantic.radius.sm}",
           "$type": "dimension",
           "$description": "Corner radius of every Button (visual language: Button uses sm)."
         },
         "padding": {
-          "$value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+          "$value": "{semantic.space.inset.md} {semantic.space.inset.lg}",
           "$type": "dimension",
           "$description": "Padding of the primary Button.",
           "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0."
@@ -32,14 +32,14 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis-hover}",
+          "$value": "{semantic.color.fill.emphasis-hover}",
           "$description": "Primary Button fill on hover."
         }
       },
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis-active}",
+          "$value": "{semantic.color.fill.emphasis-pressed}",
           "$description": "Primary Button fill while pressed."
         }
       },
@@ -64,7 +64,7 @@
       "disabled": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.disabled}",
+          "$value": "{semantic.color.fill.disabled}",
           "$description": "Disabled primary Button fill."
         },
         "textColor": {
@@ -76,7 +76,7 @@
         "$type": "color",
         "secondary": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.neutral}",
+            "$value": "{semantic.color.fill.default}",
             "$description": "Secondary Button fill at rest."
           },
           "textColor": {
@@ -85,19 +85,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.neutral-hover}",
+              "$value": "{semantic.color.fill.default-hover}",
               "$description": "Secondary Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.neutral-active}",
+              "$value": "{semantic.color.fill.default-pressed}",
               "$description": "Secondary Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Disabled secondary Button fill."
             },
             "textColor": {
@@ -108,7 +108,7 @@
         },
         "naked": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.transparent}",
+            "$value": "{semantic.color.fill.none}",
             "$description": "Naked Button has no fill at rest."
           },
           "textColor": {
@@ -117,19 +117,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.surface}",
+              "$value": "{semantic.color.fill.muted}",
               "$description": "Naked Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.neutral}",
+              "$value": "{semantic.color.fill.default}",
               "$description": "Naked Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.transparent}",
+              "$value": "{semantic.color.fill.none}",
               "$description": "Disabled naked Button has no fill."
             },
             "textColor": {
@@ -140,7 +140,7 @@
         },
         "accent": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.interactive}",
+            "$value": "{semantic.color.fill.accent}",
             "$description": "Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016)."
           },
           "textColor": {
@@ -149,19 +149,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.interactive-hover}",
+              "$value": "{semantic.color.fill.accent-hover}",
               "$description": "Accent Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.interactive-active}",
+              "$value": "{semantic.color.fill.accent-pressed}",
               "$description": "Accent Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Disabled accent Button fill."
             },
             "textColor": {
@@ -240,7 +240,7 @@
         },
         "danger": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.error}",
+            "$value": "{semantic.color.fill.danger}",
             "$description": "Danger Button fill at rest, for destructive actions."
           },
           "textColor": {
@@ -249,19 +249,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.error-hover}",
+              "$value": "{semantic.color.fill.danger-hover}",
               "$description": "Danger Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.error-active}",
+              "$value": "{semantic.color.fill.danger-pressed}",
               "$description": "Danger Button fill while pressed."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Disabled danger Button fill."
             },
             "textColor": {
@@ -274,7 +274,7 @@
       "sizes": {
         "small": {
           "padding": {
-            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
+            "$value": "{semantic.space.inset.sm} {semantic.space.inset.md}",
             "$type": "dimension",
             "$description": "Padding of the small Button.",
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0."
@@ -287,7 +287,7 @@
         },
         "medium": {
           "padding": {
-            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.lg}",
+            "$value": "{semantic.space.inset.sm} {semantic.space.inset.lg}",
             "$type": "dimension",
             "$description": "Padding of the medium Button.",
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0."
@@ -300,7 +300,7 @@
         },
         "large": {
           "padding": {
-            "$value": "{semantic.spacing.component.md} {semantic.spacing.component.lg}",
+            "$value": "{semantic.space.inset.md} {semantic.space.inset.lg}",
             "$type": "dimension",
             "$description": "Padding of the large Button.",
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0."
@@ -317,13 +317,13 @@
       "closeButton": {
         "$type": "dimension",
         "size": {
-          "$value": "{semantic.size.dimension.5}",
+          "$value": "{semantic.size.500}",
           "$description": "FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip."
         }
       },
       "default": {
         "backgroundColor": {
-          "$value": "{semantic.color.background.surface}",
+          "$value": "{semantic.color.fill.muted}",
           "$type": "color",
           "$description": "Default chip fill at rest."
         },
@@ -333,12 +333,12 @@
           "$description": "Default chip text and icon colour."
         },
         "borderRadius": {
-          "$value": "{semantic.border.radius.lg}",
+          "$value": "{semantic.radius.lg}",
           "$type": "dimension",
           "$description": "Corner radius of every chip: rounder than Button, to signal a different job (decision 0016)."
         },
         "padding": {
-          "$value": "2px {semantic.spacing.component.sm}",
+          "$value": "2px {semantic.space.inset.sm}",
           "$type": "dimension",
           "$description": "Padding of a chip before chips took padding per size.",
           "$deprecated": "No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0."
@@ -352,14 +352,14 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.neutral}",
+          "$value": "{semantic.color.fill.default}",
           "$description": "Default chip fill on hover, when it's clickable."
         }
       },
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.neutral-hover}",
+          "$value": "{semantic.color.fill.default-hover}",
           "$description": "Default chip fill while pressed, when it's clickable."
         }
       },
@@ -384,7 +384,7 @@
       "disabled": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.surface}",
+          "$value": "{semantic.color.fill.muted}",
           "$description": "Disabled default chip fill."
         },
         "textColor": {
@@ -396,7 +396,7 @@
         "$type": "color",
         "emphasis": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.emphasis}",
+            "$value": "{semantic.color.fill.emphasis}",
             "$description": "Emphasis chip fill at rest."
           },
           "textColor": {
@@ -405,19 +405,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.emphasis-hover}",
+              "$value": "{semantic.color.fill.emphasis-hover}",
               "$description": "Emphasis chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.emphasis-active}",
+              "$value": "{semantic.color.fill.emphasis-pressed}",
               "$description": "Emphasis chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Disabled emphasis chip fill."
             },
             "textColor": {
@@ -428,7 +428,7 @@
         },
         "subtle": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.subtle}",
+            "$value": "{semantic.surface.raised}",
             "$description": "Subtle chip fill at rest."
           },
           "textColor": {
@@ -437,19 +437,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.page}",
+              "$value": "{semantic.surface.base}",
               "$description": "Subtle chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.surface}",
+              "$value": "{semantic.color.fill.muted}",
               "$description": "Subtle chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.subtle}",
+              "$value": "{semantic.surface.raised}",
               "$description": "Disabled subtle chip fill."
             },
             "textColor": {
@@ -460,7 +460,7 @@
         },
         "interactive": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.interactive}",
+            "$value": "{semantic.color.fill.accent}",
             "$description": "Interactive chip fill at rest."
           },
           "textColor": {
@@ -469,19 +469,19 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.interactive-hover}",
+              "$value": "{semantic.color.fill.accent-hover}",
               "$description": "Interactive chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.interactive-active}",
+              "$value": "{semantic.color.fill.accent-pressed}",
               "$description": "Interactive chip fill while pressed, when it's clickable."
             }
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Disabled interactive chip fill."
             },
             "textColor": {
@@ -494,7 +494,7 @@
       "sizes": {
         "small": {
           "padding": {
-            "$value": "2px {semantic.spacing.component.sm}",
+            "$value": "2px {semantic.space.inset.sm}",
             "$type": "dimension",
             "$description": "Padding of the small chip.",
             "$deprecated": "Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0."
@@ -513,7 +513,7 @@
         },
         "medium": {
           "padding": {
-            "$value": "2px {semantic.spacing.component.sm}",
+            "$value": "2px {semantic.space.inset.sm}",
             "$type": "dimension",
             "$description": "Padding of the medium chip.",
             "$deprecated": "Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0."
@@ -526,7 +526,7 @@
         },
         "large": {
           "padding": {
-            "$value": "{semantic.spacing.component.sm} {semantic.spacing.component.md}",
+            "$value": "{semantic.space.inset.sm} {semantic.space.inset.md}",
             "$type": "dimension",
             "$description": "Padding of the large chip, which no chip used.",
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0."
@@ -548,7 +548,7 @@
     "iconButton": {
       "primary": {
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis}",
+          "$value": "{semantic.color.fill.emphasis}",
           "$type": "color",
           "$description": "Fill of the primary IconButton at rest.",
           "$deprecated": "IconButton reads component.button.primary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
@@ -559,7 +559,7 @@
           }
         },
         "borderRadius": {
-          "$value": "{semantic.border.radius.sm}",
+          "$value": "{semantic.radius.sm}",
           "$type": "dimension",
           "$description": "Corner radius of every IconButton, matching Button."
         },
@@ -595,7 +595,7 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis-hover}",
+          "$value": "{semantic.color.fill.emphasis-hover}",
           "$description": "Fill of the primary IconButton on hover.",
           "$deprecated": "IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
           "$extensions": {
@@ -608,7 +608,7 @@
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.emphasis-active}",
+          "$value": "{semantic.color.fill.emphasis-pressed}",
           "$description": "Fill of the primary IconButton while pressed.",
           "$deprecated": "IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
           "$extensions": {
@@ -639,7 +639,7 @@
       "disabled": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.background.disabled}",
+          "$value": "{semantic.color.fill.disabled}",
           "$description": "Fill of the primary IconButton when disabled.",
           "$deprecated": "IconButton reads component.button.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
           "$extensions": {
@@ -653,7 +653,7 @@
         "$type": "color",
         "secondary": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.surface}",
+            "$value": "{semantic.color.fill.muted}",
             "$description": "Fill of the secondary IconButton at rest.",
             "$deprecated": "IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
             "$extensions": {
@@ -664,7 +664,7 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.neutral}",
+              "$value": "{semantic.color.fill.default}",
               "$description": "Fill of the secondary IconButton on hover.",
               "$deprecated": "IconButton reads component.button.variants.secondary.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -676,7 +676,7 @@
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.page}",
+              "$value": "{semantic.surface.base}",
               "$description": "Fill of the secondary IconButton while pressed.",
               "$deprecated": "IconButton reads component.button.variants.secondary.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -688,7 +688,7 @@
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.disabled}",
+              "$value": "{semantic.color.fill.disabled}",
               "$description": "Fill of the secondary IconButton when disabled.",
               "$deprecated": "IconButton reads component.button.variants.secondary.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -701,7 +701,7 @@
         },
         "naked": {
           "backgroundColor": {
-            "$value": "{semantic.color.background.transparent}",
+            "$value": "{semantic.color.fill.none}",
             "$description": "Fill of the naked IconButton at rest.",
             "$deprecated": "IconButton reads component.button.variants.naked.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
             "$extensions": {
@@ -712,7 +712,7 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.surface}",
+              "$value": "{semantic.color.fill.muted}",
               "$description": "Fill of the naked IconButton on hover.",
               "$deprecated": "IconButton reads component.button.variants.naked.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -724,7 +724,7 @@
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.neutral}",
+              "$value": "{semantic.color.fill.default}",
               "$description": "Fill of the naked IconButton while pressed.",
               "$deprecated": "IconButton reads component.button.variants.naked.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -736,7 +736,7 @@
           },
           "disabled": {
             "backgroundColor": {
-              "$value": "{semantic.color.background.transparent}",
+              "$value": "{semantic.color.fill.none}",
               "$description": "Fill of the naked IconButton when disabled.",
               "$deprecated": "IconButton reads component.button.variants.naked.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
               "$extensions": {
@@ -772,12 +772,12 @@
             }
           },
           "padding": {
-            "$value": "{semantic.spacing.component.xs}",
+            "$value": "{semantic.space.inset.xs}",
             "$description": "Padding of the small IconButton.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.component.xs"
+                "replacedBy": "semantic.space.inset.xs"
               }
             }
           }
@@ -804,12 +804,12 @@
             }
           },
           "padding": {
-            "$value": "{semantic.spacing.component.sm}",
+            "$value": "{semantic.space.inset.sm}",
             "$description": "Padding of the medium IconButton.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm. Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.component.sm"
+                "replacedBy": "semantic.space.inset.sm"
               }
             }
           }
@@ -836,12 +836,12 @@
             }
           },
           "padding": {
-            "$value": "{semantic.spacing.component.md}",
+            "$value": "{semantic.space.inset.md}",
             "$description": "Padding of the large IconButton.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.md. Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.component.md"
+                "replacedBy": "semantic.space.inset.md"
               }
             }
           }
@@ -850,72 +850,72 @@
     },
     "separator": {
       "border": {
-        "$value": "{semantic.border.subtle}",
+        "$value": "{semantic.border.emphasis}",
         "$type": "border",
         "$description": "Divider line, the same as variants.default.border."
       },
       "margin": {
-        "$value": "{semantic.spacing.separator.lg} 0",
+        "$value": "{semantic.space.800} 0",
         "$type": "dimension",
         "$description": "Space around a Divider.",
-        "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.",
+        "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.",
         "$extensions": {
           "studio.commonorigin": {
-            "replacedBy": "semantic.spacing.separator.lg"
+            "replacedBy": "semantic.space.800"
           }
         }
       },
       "variants": {
         "default": {
           "border": {
-            "$value": "{semantic.border.subtle}",
+            "$value": "{semantic.border.emphasis}",
             "$type": "border",
             "$description": "Default Divider line."
           },
           "margin": {
-            "$value": "{semantic.spacing.separator.lg} 0",
+            "$value": "{semantic.space.800} 0",
             "$type": "dimension",
             "$description": "Space around the default Divider variant.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.lg"
+                "replacedBy": "semantic.space.800"
               }
             }
           }
         },
         "strong": {
           "border": {
-            "$value": "{semantic.border.strong}",
+            "$value": "{semantic.border.input-hover}",
             "$type": "border",
             "$description": "Strong Divider line, for a firmer break."
           },
           "margin": {
-            "$value": "{semantic.spacing.separator.lg} 0",
+            "$value": "{semantic.space.800} 0",
             "$type": "dimension",
             "$description": "Space around a strong Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.lg"
+                "replacedBy": "semantic.space.800"
               }
             }
           }
         },
         "minimal": {
           "border": {
-            "$value": "{semantic.border.subtle}",
+            "$value": "{semantic.border.emphasis}",
             "$type": "border",
             "$description": "Minimal Divider line."
           },
           "margin": {
-            "$value": "{semantic.spacing.separator.md} 0",
+            "$value": "{semantic.space.600} 0",
             "$type": "dimension",
             "$description": "Space around a minimal Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.md"
+                "replacedBy": "semantic.space.600"
               }
             }
           }
@@ -925,48 +925,48 @@
         "$type": "dimension",
         "small": {
           "margin": {
-            "$value": "{semantic.spacing.separator.sm} 0",
+            "$value": "{semantic.space.400} 0",
             "$description": "Space around a small Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.sm (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.400 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.sm"
+                "replacedBy": "semantic.space.400"
               }
             }
           }
         },
         "medium": {
           "margin": {
-            "$value": "{semantic.spacing.separator.md} 0",
+            "$value": "{semantic.space.600} 0",
             "$description": "Space around a medium Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.md (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.md"
+                "replacedBy": "semantic.space.600"
               }
             }
           }
         },
         "large": {
           "margin": {
-            "$value": "{semantic.spacing.separator.lg} 0",
+            "$value": "{semantic.space.800} 0",
             "$description": "Space around a large Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.lg (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.lg"
+                "replacedBy": "semantic.space.800"
               }
             }
           }
         },
         "xlarge": {
           "margin": {
-            "$value": "{semantic.spacing.separator.xl} 0",
+            "$value": "{semantic.space.1200} 0",
             "$description": "Space around an extra-large Divider.",
-            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.separator.xl (vertical margin). Removed in 3.0.",
+            "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0.",
             "$extensions": {
               "studio.commonorigin": {
-                "replacedBy": "semantic.spacing.separator.xl"
+                "replacedBy": "semantic.space.1200"
               }
             }
           }
@@ -980,7 +980,7 @@
         "$description": "ProgressBar track, behind the filled part."
       },
       "borderRadius": {
-        "$value": "{semantic.border.radius.sm}",
+        "$value": "{semantic.radius.sm}",
         "$type": "dimension",
         "$description": "Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change."
       },
@@ -988,25 +988,25 @@
         "$type": "dimension",
         "sm": {
           "height": {
-            "$value": "{semantic.size.dimension.1}",
+            "$value": "{semantic.size.100}",
             "$description": "Thickness of the small ProgressBar (4px)."
           }
         },
         "md": {
           "height": {
-            "$value": "{semantic.size.dimension.2}",
+            "$value": "{semantic.size.200}",
             "$description": "Thickness of the medium ProgressBar (8px), the default."
           }
         },
         "lg": {
           "height": {
-            "$value": "{semantic.size.dimension.4}",
+            "$value": "{semantic.size.400}",
             "$description": "Thickness of the large ProgressBar (16px)."
           }
         },
         "xl": {
           "height": {
-            "$value": "{semantic.size.dimension.5}",
+            "$value": "{semantic.size.500}",
             "$description": "Thickness of the extra-large ProgressBar (20px)."
           }
         }
@@ -1015,7 +1015,7 @@
     "input": {
       "default": {
         "backgroundColor": {
-          "$value": "{semantic.color.background.subtle}",
+          "$value": "{semantic.surface.raised}",
           "$type": "color",
           "$description": "Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box."
         },
@@ -1025,12 +1025,12 @@
           "$description": "Text input value colour."
         },
         "borderColor": {
-          "$value": "{semantic.color.border.control}",
+          "$value": "{semantic.color.border.input}",
           "$type": "color",
           "$description": "Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025)."
         },
         "borderRadius": {
-          "$value": "{semantic.border.radius.sm}",
+          "$value": "{semantic.radius.sm}",
           "$type": "dimension",
           "$description": "Corner radius of text inputs and the Checkbox box."
         },
@@ -1046,13 +1046,13 @@
           "$deprecated": "Single-line fields take their min-height from semantic.size.control.lg with no vertical padding (decisions 0022 and 0034). Removed in 3.0."
         },
         "paddingX": {
-          "$value": "{semantic.spacing.component.lg}",
+          "$value": "{semantic.space.inset.lg}",
           "$type": "dimension",
           "$description": "Horizontal padding of text inputs.",
-          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.lg. Removed in 3.0.",
+          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.spacing.component.lg"
+              "replacedBy": "semantic.space.inset.lg"
             }
           }
         },
@@ -1065,20 +1065,20 @@
       "placeholder": {
         "$type": "color",
         "textColor": {
-          "$value": "{semantic.color.text.subdued}",
+          "$value": "{semantic.color.text.muted}",
           "$description": "Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text."
         }
       },
       "hover": {
         "$type": "color",
         "borderColor": {
-          "$value": "{semantic.color.border.strong}",
+          "$value": "{semantic.color.border.input-hover}",
           "$description": "Text input border on hover."
         }
       },
       "focus": {
         "borderColor": {
-          "$value": "{semantic.color.border.strong}",
+          "$value": "{semantic.color.border.focus}",
           "$type": "color",
           "$description": "Text input border while focused."
         },
@@ -1101,13 +1101,13 @@
       },
       "error": {
         "borderColor": {
-          "$value": "{semantic.color.border.error}",
+          "$value": "{semantic.color.border.danger}",
           "$type": "color",
           "$description": "Text input border when invalid."
         },
         "focus": {
           "borderColor": {
-            "$value": "{semantic.color.border.error}",
+            "$value": "{semantic.color.border.danger}",
             "$type": "color",
             "$description": "Invalid text input border while focused."
           },
@@ -1131,14 +1131,14 @@
         "hover": {
           "$type": "color",
           "borderColor": {
-            "$value": "{semantic.color.border.error}",
+            "$value": "{semantic.color.border.danger}",
             "$description": "Invalid text input border on hover."
           }
         }
       },
       "disabled": {
         "backgroundColor": {
-          "$value": "{semantic.color.background.disabled}",
+          "$value": "{semantic.color.fill.disabled}",
           "$type": "color",
           "$description": "Disabled text input fill."
         },
@@ -1148,7 +1148,7 @@
           "$description": "Disabled text input value colour."
         },
         "borderColor": {
-          "$value": "{semantic.color.border.subtle}",
+          "$value": "{semantic.color.border.emphasis}",
           "$type": "color",
           "$description": "Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025)."
         },
@@ -1162,7 +1162,7 @@
       "textarea": {
         "$type": "dimension",
         "minHeight": {
-          "$value": "{semantic.size.dimension.30}",
+          "$value": "{semantic.size.3000}",
           "$description": "Minimum height of a multi-line text input (120px)."
         }
       }
@@ -1171,27 +1171,27 @@
       "dot": {
         "$type": "dimension",
         "size": {
-          "$value": "{semantic.size.dimension.2}",
+          "$value": "{semantic.size.200}",
           "$description": "Width and height of the dot badge indicator (8px)."
         }
       },
       "count": {
         "$type": "dimension",
         "minWidth": {
-          "$value": "{semantic.size.dimension.4}",
+          "$value": "{semantic.size.400}",
           "$description": "Minimum width of the count badge indicator (16px)."
         },
         "height": {
-          "$value": "{semantic.size.dimension.4}",
+          "$value": "{semantic.size.400}",
           "$description": "Height of the count badge indicator (16px)."
         },
         "paddingX": {
-          "$value": "{semantic.spacing.component.xs}",
+          "$value": "{semantic.space.inset.xs}",
           "$description": "Horizontal padding of a count Badge.",
-          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.xs. Removed in 3.0.",
+          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.spacing.component.xs"
+              "replacedBy": "semantic.space.inset.xs"
             }
           }
         },
@@ -1209,7 +1209,7 @@
         }
       },
       "borderRadius": {
-        "$value": "{semantic.border.radius.circle}",
+        "$value": "{semantic.radius.full}",
         "$type": "dimension",
         "$description": "Badge indicators are always fully circular."
       },
@@ -1234,13 +1234,13 @@
     },
     "field": {
       "gap": {
-        "$value": "{semantic.spacing.layout.sm}",
+        "$value": "{semantic.space.200}",
         "$type": "dimension",
         "$description": "Vertical gap between a field's label, control and helper text.",
-        "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.layout.sm. Removed in 3.0.",
+        "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.200. Removed in 3.0.",
         "$extensions": {
           "studio.commonorigin": {
-            "replacedBy": "semantic.spacing.layout.sm"
+            "replacedBy": "semantic.space.200"
           }
         }
       },
@@ -1261,20 +1261,20 @@
           "$description": "Field label colour when the field is disabled."
         },
         "gap": {
-          "$value": "{semantic.spacing.layout.xs}",
+          "$value": "{semantic.space.100}",
           "$type": "dimension",
           "$description": "Gap between a label and its required indicator.",
-          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.layout.xs. Removed in 3.0.",
+          "$deprecated": "No component spacing tokens (decision 0022). Use semantic.space.100. Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.spacing.layout.xs"
+              "replacedBy": "semantic.space.100"
             }
           }
         }
       },
       "requiredIndicator": {
         "color": {
-          "$value": "{semantic.color.text.error}",
+          "$value": "{semantic.color.text.danger}",
           "$type": "color",
           "$description": "Colour of the required-field asterisk."
         },
@@ -1291,12 +1291,12 @@
           "$description": "Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label."
         },
         "color": {
-          "$value": "{semantic.color.text.subdued}",
+          "$value": "{semantic.color.text.muted}",
           "$type": "color",
           "$description": "Helper text colour."
         },
         "colorError": {
-          "$value": "{semantic.color.text.error}",
+          "$value": "{semantic.color.text.danger}",
           "$type": "color",
           "$description": "Helper text colour when it describes an error."
         }
@@ -1307,17 +1307,17 @@
         "$type": "color",
         "error": {
           "background": {
-            "$value": "{semantic.color.background.error-subtle}",
+            "$value": "{semantic.color.fill.danger-muted}",
             "$description": "Error alert background, in both appearances."
           },
           "text": {
-            "$value": "{semantic.color.text.error}",
+            "$value": "{semantic.color.text.danger}",
             "$description": "Error alert text colour."
           }
         },
         "warning": {
           "background": {
-            "$value": "{semantic.color.background.warning-subtle}",
+            "$value": "{semantic.color.fill.warning-muted}",
             "$description": "Warning alert background, in both appearances."
           },
           "text": {
@@ -1327,17 +1327,17 @@
         },
         "info": {
           "background": {
-            "$value": "{semantic.color.background.interactive-subtle}",
+            "$value": "{semantic.color.fill.accent-muted}",
             "$description": "Info alert background, in both appearances."
           },
           "text": {
-            "$value": "{semantic.color.text.interactive}",
+            "$value": "{semantic.color.text.accent}",
             "$description": "Info alert text colour."
           }
         },
         "success": {
           "background": {
-            "$value": "{semantic.color.background.success-subtle}",
+            "$value": "{semantic.color.fill.success-muted}",
             "$description": "Success alert background, in both appearances."
           },
           "text": {
@@ -1351,7 +1351,7 @@
         "outlined": {
           "borderColor": {
             "error": {
-              "$value": "{semantic.color.border.error}",
+              "$value": "{semantic.color.border.danger}",
               "$description": "Outlined error alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
             },
             "warning": {
@@ -1359,7 +1359,7 @@
               "$description": "Outlined warning alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
             },
             "info": {
-              "$value": "{semantic.color.border.interactive}",
+              "$value": "{semantic.color.border.accent}",
               "$description": "Outlined info alert border: alerts at the top of a page or content area, and error summaries (decision 0019)."
             },
             "success": {
@@ -1432,7 +1432,7 @@
           "$description": "Tab count badges are bold, heavier than caption."
         },
         "size": {
-          "$value": "{semantic.size.dimension.5}",
+          "$value": "{semantic.size.500}",
           "$type": "dimension",
           "$description": "Tab count badge height and minimum width (20px)."
         }
@@ -1440,7 +1440,7 @@
       "scrollbar": {
         "$type": "dimension",
         "height": {
-          "$value": "{semantic.size.dimension.1}",
+          "$value": "{semantic.size.100}",
           "$description": "Height of the horizontal scrollbar when tabs overflow (4px)."
         }
       }
@@ -1541,12 +1541,12 @@
       "$type": "dimension",
       "header": {
         "minHeight": {
-          "$value": "{semantic.size.dimension.12}",
+          "$value": "{semantic.size.1200}",
           "$description": "Minimum height of the card header row (48px)."
         }
       },
       "minWidth": {
-        "$value": "{semantic.size.dimension.75}",
+        "$value": "{semantic.size.7500}",
         "$description": "Minimum card width (300px)."
       }
     },
@@ -1554,7 +1554,7 @@
       "$type": "dimension",
       "item": {
         "maxWidth": {
-          "$value": "{semantic.size.dimension.45}",
+          "$value": "{semantic.size.4500}",
           "$description": "Width at which a breadcrumb label truncates (180px)."
         }
       }
@@ -1562,7 +1562,7 @@
     "cardLarge": {
       "$type": "dimension",
       "maxWidth": {
-        "$value": "{semantic.size.dimension.192}",
+        "$value": "{semantic.size.19200}",
         "$description": "Maximum card width (768px)."
       }
     },
@@ -1570,13 +1570,13 @@
       "$type": "dimension",
       "box": {
         "size": {
-          "$value": "{semantic.size.dimension.5}",
+          "$value": "{semantic.size.500}",
           "$description": "Width and height of the checkbox square (20px)."
         }
       },
       "row": {
         "minHeight": {
-          "$value": "{semantic.size.dimension.8}",
+          "$value": "{semantic.size.800}",
           "$description": "Minimum height of a checkbox or radio row (32px)."
         }
       }
@@ -1585,31 +1585,31 @@
       "$type": "dimension",
       "illustration": {
         "small": {
-          "$value": "{semantic.size.dimension.20}",
+          "$value": "{semantic.size.2000}",
           "$description": "Small illustration size (80px)."
         },
         "medium": {
-          "$value": "{semantic.size.dimension.30}",
+          "$value": "{semantic.size.3000}",
           "$description": "Medium illustration size (120px)."
         },
         "large": {
-          "$value": "{semantic.size.dimension.50}",
+          "$value": "{semantic.size.5000}",
           "$description": "Large illustration size (200px)."
         }
       },
       "maxWidth": {
-        "$value": "{semantic.size.dimension.100}",
+        "$value": "{semantic.size.10000}",
         "$description": "Maximum width of the empty state (400px)."
       },
       "text": {
         "maxWidth": {
-          "$value": "{semantic.size.dimension.90}",
+          "$value": "{semantic.size.9000}",
           "$description": "Maximum width of the title and description (360px)."
         }
       },
       "actions": {
         "maxWidth": {
-          "$value": "{semantic.size.dimension.75}",
+          "$value": "{semantic.size.7500}",
           "$description": "Maximum width of the actions area (300px)."
         }
       }
@@ -1618,11 +1618,11 @@
       "$type": "dimension",
       "expandedIndent": {
         "compact": {
-          "$value": "{semantic.size.dimension.12}",
+          "$value": "{semantic.size.1200}",
           "$description": "Left indent of expanded content in compact rows, aligning it with the label (48px)."
         },
         "comfortable": {
-          "$value": "{semantic.size.dimension.15}",
+          "$value": "{semantic.size.1500}",
           "$description": "Left indent of expanded content in comfortable rows (60px)."
         }
       }
@@ -1630,7 +1630,7 @@
     "transactionListItem": {
       "$type": "dimension",
       "minHeight": {
-        "$value": "{semantic.size.dimension.18}",
+        "$value": "{semantic.size.1800}",
         "$description": "Minimum row height (72px)."
       }
     }
