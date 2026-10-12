@@ -10,27 +10,27 @@ import {
 } from '../page-components'
 import tokens from '@/styles/tokens.json'
 
-const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
+const { base: { breakpoint }, semantic: { color, border } } = tokens
 
 // Styled Components
 const SearchRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
 `
 
 const SearchInput = styled.input`
   width: 100%;
   max-width: 400px;
-  padding: ${spacing.layout.md} ${spacing.layout.lg};
-  border: ${border.subtle};
+  padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[400]};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[6]};
   font-size: ${tokens.base.fontSize[2]};
-  background-color: ${color.background.subtle};
+  background-color: ${tokens.semantic.surface.raised};
   color: ${color.text.default};
   
   &::placeholder {
-    color: ${color.text.subdued};
+    color: ${color.text.muted};
   }
   
   &:focus {
@@ -54,19 +54,19 @@ const MobileActionButton = styled.div`
 const FilterRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.md};
-  margin-bottom: ${spacing.layout.lg};
+  gap: ${tokens.semantic.space[300]};
+  margin-bottom: ${tokens.semantic.space[400]};
   flex-wrap: wrap;
   
   @media (max-width: ${breakpoint.md}) {
-    gap: ${spacing.layout.sm};
+    gap: ${tokens.semantic.space[200]};
   }
 `
 
 const QuickFiltersGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   flex-wrap: wrap;
   flex: 1;
   
@@ -79,7 +79,7 @@ const QuickFiltersGroup = styled.div`
 const QuickFiltersLabel = styled.div`
   display: flex;
   align-items: center;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
 
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -89,7 +89,7 @@ const QuickFiltersLabel = styled.div`
 const ActionsGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   margin-left: auto;
   
   @media (max-width: ${breakpoint.md}) {
@@ -101,10 +101,10 @@ const ItemsCount = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
   font-size: ${tokens.base.fontSize[1]};
-  padding-bottom: ${spacing.layout.md};
-  border-bottom: ${border.subtle};
+  padding-bottom: ${tokens.semantic.space[300]};
+  border-bottom: ${border.emphasis};
 
   @media (max-width: ${breakpoint.md}) {
     border-bottom: none;
@@ -113,7 +113,7 @@ const ItemsCount = styled.div`
 
 const TableContainer = styled.div`
   overflow-x: auto;
-  margin-bottom: ${spacing.layout.lg};
+  margin-bottom: ${tokens.semantic.space[400]};
   
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -126,11 +126,11 @@ const Table = styled.table`
 `
 
 const TableHeader = styled.thead`
-  border-bottom: ${border.subtle};
+  border-bottom: ${border.emphasis};
 `
 
 const TableHeaderCell = styled.th`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
   text-align: left;
   font-weight: 600;
   color: ${color.text.emphasis};
@@ -138,7 +138,7 @@ const TableHeaderCell = styled.th`
 `
 
 const TableRow = styled.tr`
-  border-bottom: ${border.subtle};
+  border-bottom: ${border.emphasis};
   
   &:last-child {
     border-bottom: none;
@@ -146,11 +146,11 @@ const TableRow = styled.tr`
 `
 
 const TableCell = styled.td`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
 `
 
 const PlaceholderBox = styled.div<{ $width?: string; $height?: string }>`
-  background-color: ${color.background.surface};
+  background-color: ${color.fill.muted};
   border-radius: ${tokens.base.border.radius[2]};
   width: ${props => props.$width || '100%'};
   height: ${props => props.$height || '40px'};
@@ -165,24 +165,24 @@ const ListView = styled.div`
 `
 
 const ListItem = styled.div`
-  background-color: ${color.background.subtle};
-  border: ${border.subtle};
+  background-color: ${tokens.semantic.surface.raised};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[3]};
-  padding: ${spacing.layout.md};
-  margin-bottom: ${spacing.layout.lg};
+  padding: ${tokens.semantic.space[300]};
+  margin-bottom: ${tokens.semantic.space[400]};
 `
 
 const ListItemContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.layout.lg};
+  gap: ${tokens.semantic.space[400]};
 `
 
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-top: ${spacing.layout.lg};
+  padding-top: ${tokens.semantic.space[400]};
   
   @media (max-width: ${breakpoint.md}) {
     justify-content: center;
@@ -191,16 +191,16 @@ const PaginationContainer = styled.div`
 
 const PaginationButtons = styled.div`
   display: flex;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
   align-items: center;
 `
 
 const DemoContainer = styled.div`
-  background-color: ${color.background.default};
-  border: ${border.subtle};
+  background-color: ${tokens.semantic.surface.base};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[3]};
-  padding: ${spacing.layout['2xl']};
-  margin: ${spacing.layout.lg} 0;
+  padding: ${tokens.semantic.space[600]};
+  margin: ${tokens.semantic.space[400]} 0;
 `
 
 export const DataViewQuickFiltersPattern: React.FC = () => {

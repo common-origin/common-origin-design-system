@@ -3,22 +3,21 @@ import styled from 'styled-components'
 import { Button, Stack, Typography } from '../src/page-components'
 import tokens from '../src/styles/tokens.json'
 
-const { semantic: { color, spacing } } = tokens
 
 const CenteredContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: ${spacing.layout.xl};
-  background-color: ${color.background.default};
+  padding: ${tokens.semantic.space[500]};
+  background-color: ${tokens.semantic.surface.base};
 `
 
 const ContentCard = styled.div`
   text-align: center;
   max-width: 600px;
-  padding: ${spacing.layout['2xl']};
-  background-color: ${color.background.subtle};
+  padding: ${tokens.semantic.space[600]};
+  background-color: ${tokens.semantic.surface.raised};
   border-radius: ${tokens.base.border.radius[4]};
   box-shadow: ${tokens.base.shadow[3]};
 `

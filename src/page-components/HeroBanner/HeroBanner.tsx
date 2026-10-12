@@ -6,7 +6,7 @@ import { Stack } from '../../components/atoms/Stack'
 import { Typography } from '../../components/atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { spacing }, base: { border, breakpoint } } = tokens
+const { base: { border, breakpoint } } = tokens
 
 // Props interface for the HeroBanner component
 export interface HeroBannerProps {
@@ -21,17 +21,17 @@ export interface HeroBannerProps {
 const HeroGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: ${spacing.layout.lg};
-  margin-bottom: ${spacing.layout['4xl']};
+  gap: ${tokens.semantic.space[400]};
+  margin-bottom: ${tokens.semantic.space[800]};
 
   @media (min-width: ${breakpoint.xl}) {
-    margin-bottom: ${spacing.layout['10xl']};
+    margin-bottom: ${tokens.semantic.space[2000]};
   }
 `
 
 const HeroContent = styled.div`
   grid-column: span 12;
-  margin: ${spacing.layout.lg} 0;
+  margin: ${tokens.semantic.space[400]} 0;
 
   @media (min-width: ${breakpoint.md}) {
     grid-column: span 6;
@@ -73,7 +73,7 @@ const HeroVideoWrapper = styled.div`
   position: relative;
   height: 50vw;
   max-height: 768px;
-  margin-top: ${spacing.layout.lg};
+  margin-top: ${tokens.semantic.space[400]};
   overflow: hidden;
   border-radius: ${border.radius[5]};
 
@@ -86,8 +86,8 @@ const HeroVideoWrapper = styled.div`
   }
 
   @media (max-width: calc(${breakpoint.sm} - 1px)) {
-    margin-left: -${spacing.layout['2xl']};
-    margin-right: -${spacing.layout['2xl']};
+    margin-left: -${tokens.semantic.space[600]};
+    margin-right: -${tokens.semantic.space[600]};
   }
 `
 

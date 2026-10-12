@@ -26,10 +26,10 @@ export const footerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.background.emphasis',
+    'semantic.color.fill.emphasis',
     'semantic.color.text.inverse',
-    'semantic.spacing.layout.2xl',
-    'semantic.spacing.layout.lg'
+    'semantic.space.600',
+    'semantic.space.400'
   ],
 
   examples: [
@@ -70,7 +70,7 @@ export const footerDocs: ComponentDocumentation = {
     ],
     keyboardNavigation: 'Logo link is keyboard accessible with Tab navigation and visible focus indicators',
     screenReader: 'Footer landmark is announced with descriptive label, logo link provides clear navigation context',
-    colorContrast: 'Uses high contrast colors (semantic.color.text.inverse on background.emphasis) meeting WCAG AA standards',
+    colorContrast: 'Uses high contrast colors (semantic.color.text.inverse on semantic.color.fill.emphasis) meeting WCAG AA standards',
     focusManagement: 'Clear focus indicators with 2px outline and proper contrast ratios'
   },
 

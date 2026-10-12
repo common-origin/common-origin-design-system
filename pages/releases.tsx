@@ -54,7 +54,7 @@ interface ReleasesData {
   generatedAt: string
 }
 
-const { semantic: { color, spacing, border }, base } = tokens
+const { semantic: { color, border }, base } = tokens
 
 // Styled Components
 const PageWrapper = styled.div`
@@ -65,15 +65,15 @@ const PageWrapper = styled.div`
 
 const FiltersBar = styled.div`
   display: flex;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   flex-wrap: wrap;
 	align-items: center;
-  padding: ${spacing.layout['lg']} 0;
+  padding: ${tokens.semantic.space[400]} 0;
   position: sticky;
   top: 0;
-  background: ${color.background.subtle};
-  z-index: ${tokens.semantic.zIndex.sticky};
-  margin-bottom: ${spacing.layout['2xl']};
+  background: ${tokens.semantic.surface.raised};
+  z-index: ${tokens.semantic.layer.sticky};
+  margin-bottom: ${tokens.semantic.space[600]};
 	border-bottom: ${border.default};
 `
 
@@ -81,21 +81,21 @@ const VersionHeader = styled.div`
   display: flex;
 	justify-content: space-between;
 	align-items: center;
-  gap: ${spacing.layout.md};
-  margin-bottom: ${spacing.layout.lg};
-  padding-bottom: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[300]};
+  margin-bottom: ${tokens.semantic.space[400]};
+  padding-bottom: ${tokens.semantic.space[200]};
 `
 
 const DateBadge = styled.div`
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
   font-size: ${base.fontSize['2']};
 `
 
 const CommitTypeHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
-	margin-bottom: ${spacing.layout.md};
+  gap: ${tokens.semantic.space[200]};
+	margin-bottom: ${tokens.semantic.space[300]};
 `
 
 const CommitList = styled.ul`
@@ -105,28 +105,28 @@ const CommitList = styled.ul`
 `
 
 const CommitItem = styled.li`
-  padding-bottom: ${spacing.layout.md};
+  padding-bottom: ${tokens.semantic.space[300]};
 `
 
 const CommitMeta = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.md};
+  gap: ${tokens.semantic.space[300]};
   flex-wrap: wrap;
   font-size: ${base.fontSize['2']};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
 `
 
 const CommitHash = styled.a`
   font-family: ${base.fontFamily.monospace};
-  color: ${color.text.interactive};
+  color: ${color.text.accent};
   text-decoration: underline;
 `
 
 const EmptyState = styled.div`
   text-align: center;
-  padding: ${spacing.layout['4xl']} 0;
-  color: ${color.text.subdued};
+  padding: ${tokens.semantic.space[800]} 0;
+  color: ${color.text.muted};
 `
 
 // Type Labels and Order
@@ -339,7 +339,7 @@ export default function ReleasesPage({ releasesData }: ReleasesPageProps) {
 							)}
 						</Grid>
 						
-						<Box style={{ padding: `${spacing.layout['4xl']} 0` }}>
+						<Box style={{ padding: `${tokens.semantic.space[800]} 0` }}>
 							<Typography variant="caption" color="subdued">
 								Last updated: {format(new Date(releasesData.generatedAt), 'PPpp')}
 							</Typography>

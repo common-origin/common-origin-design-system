@@ -17,7 +17,7 @@ import {
 import { patternsData, type PatternMetadata } from '../src/patterns'
 import tokens from '@/styles/tokens.json'
 
-const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
+const { base: { breakpoint }, semantic: { border } } = tokens
 
 const PatternsLayout = styled.div`
   display: flex;
@@ -31,7 +31,7 @@ const Sidebar = styled.nav`
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: ${spacing.layout['8xl']} 0;
+  padding: ${tokens.semantic.space[1400]} 0;
   
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -40,20 +40,20 @@ const Sidebar = styled.nav`
 
 const MainContent = styled.main`
   flex: 1;
-  padding: ${spacing.layout['2xl']};
+  padding: ${tokens.semantic.space[600]};
   overflow-x: auto;
   
   @media (max-width: ${breakpoint.md}) {
-    padding: ${spacing.layout.lg};
+    padding: ${tokens.semantic.space[400]};
   }
 `
 
 const PatternSection = styled.div`
-  margin-bottom: ${spacing.layout['4xl']};
-  border: ${border.subtle};
+  margin-bottom: ${tokens.semantic.space[800]};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[4]};
-  padding: ${spacing.layout['2xl']};
-  background-color: ${color.background.subtle};
+  padding: ${tokens.semantic.space[600]};
+  background-color: ${tokens.semantic.surface.raised};
 `
 
 export default function Patterns() {

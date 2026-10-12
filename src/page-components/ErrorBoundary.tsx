@@ -26,8 +26,8 @@ const ErrorContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${semantic.color.background.subtle};
-  border: ${semantic.border.subtle};
+  background-color: ${semantic.surface.raised};
+  border: ${semantic.border.emphasis};
   border-radius: ${tokens.base.border.radius[4]};
   padding: ${tokens.base.spacing[8]};
   margin: ${tokens.base.spacing[4]} 0;
@@ -41,20 +41,20 @@ const ErrorContent = styled.div`
 const ErrorIcon = styled.div`
   font-size: 4rem;
   margin-bottom: ${tokens.base.spacing[4]};
-  color: ${semantic.color.text.subdued};
+  color: ${semantic.color.text.muted};
 `
 
 const ErrorDetails = styled.details`
   margin-top: ${tokens.base.spacing[6]};
   padding: ${tokens.base.spacing[4]};
-  background-color: ${semantic.color.background.surface};
+  background-color: ${semantic.color.fill.muted};
   border-radius: ${tokens.base.border.radius[3]};
-  border: ${semantic.border.subtle};
+  border: ${semantic.border.emphasis};
   
   summary {
     cursor: pointer;
     font-weight: ${tokens.semantic.fontWeight.medium};
-    color: ${semantic.color.text.subdued};
+    color: ${semantic.color.text.muted};
     margin-bottom: ${tokens.base.spacing[2]};
     
     &:hover {
@@ -64,11 +64,11 @@ const ErrorDetails = styled.details`
 `
 
 const ErrorStack = styled.pre`
-  background-color: ${semantic.color.background.default};
+  background-color: ${semantic.surface.base};
   padding: ${tokens.base.spacing[3]};
   border-radius: ${tokens.base.border.radius[2]};
   font-size: ${tokens.base.fontSize[2]};
-  color: ${semantic.color.text.subdued};
+  color: ${semantic.color.text.muted};
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;

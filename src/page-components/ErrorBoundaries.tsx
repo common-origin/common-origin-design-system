@@ -23,15 +23,15 @@ const PageErrorContainer = styled(ErrorContainer)`
 
 const ComponentErrorContainer = styled(ErrorContainer)`
   min-height: 200px;
-  background-color: ${semantic.color.background.subtle};
-  border: 1px solid ${semantic.color.border.subtle};
+  background-color: ${semantic.surface.raised};
+  border: 1px solid ${semantic.color.border.emphasis};
   border-radius: ${base.border.radius[4]};
   margin: ${base.spacing[2]} 0;
 `
 
 const LayoutErrorContainer = styled(ErrorContainer)`
   min-height: 100vh;
-  background-color: ${semantic.color.background.surface};
+  background-color: ${semantic.color.fill.muted};
   justify-content: center;
 `
 
@@ -53,13 +53,13 @@ const ErrorTitle = styled.h2`
 const ErrorSubtitle = styled.h3`
   font: ${semantic.typography.h4};
   letter-spacing: ${base.letterSpacing[1]};
-  color: ${semantic.color.text.subdued};
+  color: ${semantic.color.text.muted};
   margin: 0 0 ${base.spacing[2]} 0;
 `
 
 const ErrorText = styled.p`
   font: ${semantic.typography.body};
-  color: ${semantic.color.text.subdued};
+  color: ${semantic.color.text.muted};
   margin: 0;
   max-width: 500px;
   line-height: 1.6;
@@ -76,15 +76,15 @@ const ErrorActions = styled.div`
 const ErrorButton = styled.button`
   font: ${semantic.typography.button2};
   padding: ${base.spacing[2]} ${base.spacing[4]};
-  background-color: ${semantic.color.background.surface};
+  background-color: ${semantic.color.fill.muted};
   color: ${semantic.color.text.default};
-  border: 1px solid ${semantic.color.border.subtle};
+  border: 1px solid ${semantic.color.border.emphasis};
   border-radius: ${base.border.radius[3]};
   cursor: pointer;
   transition: all 0.2s ease;
   
   &:hover {
-    background-color: ${semantic.color.background.subtle};
+    background-color: ${semantic.surface.raised};
     border-color: ${semantic.color.border.default};
   }
   

@@ -1,19 +1,4 @@
 [
-  "pages/components.tsx",
-  "pages/guides/labels.tsx",
-  "pages/index.tsx",
-  "pages/patterns.tsx",
-  "pages/releases.tsx",
-  "pages/tokens.tsx",
   "src/components/molecules/Slider/Slider.docs.tsx",
-  "src/components/molecules/Slider/Slider.tsx",
-  "src/page-components/ErrorBoundaries.tsx",
-  "src/page-components/ErrorBoundary.tsx",
-  "src/page-components/Footer/Footer.docs.tsx",
-  "src/page-components/Footer/Footer.tsx",
-  "src/page-components/HeroBanner/HeroBanner.docs.tsx",
-  "src/page-components/HeroBanner/HeroBanner.tsx",
-  "src/page-components/Navigation.tsx",
-  "src/patterns/DataViewPattern.tsx",
-  "src/patterns/DataViewQuickFiltersPattern.tsx"
+  "src/components/molecules/Slider/Slider.tsx"
 ]

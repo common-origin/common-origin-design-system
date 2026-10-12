@@ -13,27 +13,27 @@ import {
 } from '../page-components'
 import tokens from '@/styles/tokens.json'
 
-const { base: { breakpoint }, semantic: { color, border, spacing, zIndex, elevation } } = tokens
+const { base: { breakpoint }, semantic: { color, border, elevation } } = tokens
 
 // Styled Components
 const SearchRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
 `
 
 const SearchInput = styled.input`
   width: 100%;
   max-width: 400px;
-  padding: ${spacing.layout.md} ${spacing.layout.lg};
-  border: ${border.subtle};
+  padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[400]};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[6]};
   font-size: ${tokens.base.fontSize[2]};
-  background-color: ${color.background.subtle};
+  background-color: ${tokens.semantic.surface.raised};
   color: ${color.text.default};
   
   &::placeholder {
-    color: ${color.text.subdued};
+    color: ${color.text.muted};
   }
   
   &:focus {
@@ -57,20 +57,20 @@ const MobileActionButton = styled.div`
 const FilterRow = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout['6xl']};
-  margin-bottom: ${spacing.layout.lg};
+  gap: ${tokens.semantic.space[1000]};
+  margin-bottom: ${tokens.semantic.space[400]};
   flex-wrap: wrap;
   
   @media (max-width: ${breakpoint.md}) {
     flex-wrap: nowrap;
-    gap: ${spacing.layout.sm};
+    gap: ${tokens.semantic.space[200]};
   }
 `
 
 const FilterGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.md};
+  gap: ${tokens.semantic.space[300]};
   flex: 1;
   min-width: 0;
   position: relative;
@@ -84,9 +84,9 @@ const FilterGroup = styled.div`
 const ActiveFiltersLabel = styled.div`
   display: flex;
   align-items: center;
-  padding-left: ${spacing.layout.md};
-  border-left: ${border.subtle};
-  height: ${spacing.layout['2xl']};
+  padding-left: ${tokens.semantic.space[300]};
+  border-left: ${border.emphasis};
+  height: ${tokens.semantic.space[600]};
 
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -96,7 +96,7 @@ const ActiveFiltersLabel = styled.div`
 const AppliedFiltersContainer = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   flex: 1;
   min-width: 0;
   overflow: hidden;
@@ -109,7 +109,7 @@ const AppliedFiltersContainer = styled.div`
 const FilterChipsWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   flex-wrap: nowrap;
   overflow: hidden;
   min-width: 0;
@@ -120,7 +120,7 @@ const OverflowIndicator = styled.div`
 	display: flex;
 	align-items: center;
   flex-shrink: 0;
-  margin-left: ${spacing.layout.sm};
+  margin-left: ${tokens.semantic.space[200]};
   
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -148,16 +148,16 @@ const MobileFiltersContainer = styled.div<{ $isExpanded: boolean }>`
 `
 
 const MobileFiltersContent = styled.div`
-  padding: 0 0 ${spacing.layout.xl} 0;
+  padding: 0 0 ${tokens.semantic.space[500]} 0;
   display: flex;
   flex-direction: column;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const ActionsGroup = styled.div`
   display: flex;
   align-items: center;
-  gap: ${spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   margin-left: auto;
   
   @media (max-width: ${breakpoint.md}) {
@@ -169,10 +169,10 @@ const ItemsCount = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
   font-size: ${tokens.base.fontSize[1]};
-  padding-bottom: ${spacing.layout.md};
-	border-bottom: ${border.subtle};
+  padding-bottom: ${tokens.semantic.space[300]};
+	border-bottom: ${border.emphasis};
 
 	@media (max-width: ${breakpoint.md}) {
     border-bottom: none;
@@ -181,7 +181,7 @@ const ItemsCount = styled.div`
 
 const TableContainer = styled.div`
   overflow-x: auto;
-  margin-bottom: ${spacing.layout.lg};
+  margin-bottom: ${tokens.semantic.space[400]};
   
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -194,11 +194,11 @@ const Table = styled.table`
 `
 
 const TableHeader = styled.thead`
-  border-bottom: ${border.subtle};
+  border-bottom: ${border.emphasis};
 `
 
 const TableHeaderCell = styled.th`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
   text-align: left;
   font-weight: 600;
   color: ${color.text.emphasis};
@@ -206,7 +206,7 @@ const TableHeaderCell = styled.th`
 `
 
 const TableRow = styled.tr`
-  border-bottom: ${border.subtle};
+  border-bottom: ${border.emphasis};
   
   &:last-child {
     border-bottom: none;
@@ -214,11 +214,11 @@ const TableRow = styled.tr`
 `
 
 const TableCell = styled.td`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
 `
 
 const PlaceholderBox = styled.div<{ $width?: string; $height?: string }>`
-  background-color: ${color.background.surface};
+  background-color: ${color.fill.muted};
   border-radius: ${tokens.base.border.radius[2]};
   width: ${props => props.$width || '100%'};
   height: ${props => props.$height || '40px'};
@@ -233,24 +233,24 @@ const ListView = styled.div`
 `
 
 const ListItem = styled.div`
-  background-color: ${color.background.subtle};
-  border: ${border.subtle};
+  background-color: ${tokens.semantic.surface.raised};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[3]};
-  padding: ${spacing.layout.md};
-  margin-bottom: ${spacing.layout.lg};
+  padding: ${tokens.semantic.space[300]};
+  margin-bottom: ${tokens.semantic.space[400]};
 `
 
 const ListItemContent = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.layout.lg};
+  gap: ${tokens.semantic.space[400]};
 `
 
 const PaginationContainer = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding-top: ${spacing.layout.lg};
+  padding-top: ${tokens.semantic.space[400]};
   
   @media (max-width: ${breakpoint.md}) {
     justify-content: center;
@@ -259,7 +259,7 @@ const PaginationContainer = styled.div`
 
 const PaginationButtons = styled.div`
   display: flex;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
   align-items: center;
 `
 
@@ -270,11 +270,11 @@ const SideDrawer = styled.div<{ $isOpen: boolean }>`
   width: 100%;
   max-width: 360px;
   height: 100vh;
-  background-color: ${color.background.default};
+  background-color: ${tokens.semantic.surface.base};
   border-left: ${border.default};
   box-shadow: ${elevation.overlay};
   transition: right 0.3s ease-in-out;
-  z-index: ${zIndex.overlay};
+  z-index: ${tokens.semantic.layer.overlay};
   overflow-y: auto;
   
   @media (max-width: ${breakpoint.md}) {
@@ -297,8 +297,8 @@ const DrawerOverlay = styled.div<{ $isOpen: boolean }>`
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${color.background.overlay};
-  z-index: ${zIndex.overlay};
+  background-color: ${tokens.semantic.surface.scrim};
+  z-index: ${tokens.semantic.layer.overlay};
   opacity: ${props => props.$isOpen ? tokens.base.opacity[100] : tokens.base.opacity[0]};
   pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
   transition: ${tokens.semantic.motion.transition.normal};
@@ -308,20 +308,20 @@ const DrawerHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${spacing.layout.lg};
+  padding: ${tokens.semantic.space[400]};
   border-bottom: ${border.default};
 `
 
 const DrawerContent = styled.div`
-  padding: ${spacing.layout.lg};
+  padding: ${tokens.semantic.space[400]};
 `
 
 const DemoContainer = styled.div`
-  background-color: ${color.background.default};
-  border: ${border.subtle};
+  background-color: ${tokens.semantic.surface.base};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[3]};
-  padding: ${spacing.layout['2xl']};
-  margin: ${spacing.layout.lg} 0;
+  padding: ${tokens.semantic.space[600]};
+  margin: ${tokens.semantic.space[400]} 0;
 `
 
 export const DataViewPattern: React.FC = () => {

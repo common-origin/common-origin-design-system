@@ -34,10 +34,10 @@ export const heroBannerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.spacing.layout.lg',
-    'semantic.spacing.layout.4xl',
-    'semantic.spacing.layout.10xl',
-    'semantic.spacing.layout.2xl',
+    'semantic.space.400',
+    'semantic.space.800',
+    'semantic.space.2000',
+    'semantic.space.600',
     'base.border.radius[5]',
     'base.breakpoint.md',
     'base.breakpoint.lg',
