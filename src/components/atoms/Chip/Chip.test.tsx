@@ -99,14 +99,11 @@ describe('Chip Component', () => {
       expect(chip).toBeInTheDocument()
     })
 
-    // Height comes from the label scale with no vertical padding (decisions 0018 and 0034);
-    // the literal values are the design, so a mapping change fails here
-    it.each([
-      ['small', '0 0.5rem', '1.25rem'],
-      ['medium', '0 0.5rem', '1.5rem'],
-    ] as const)('pads the %s size with %s, %s minimum height', (size, padding, minHeight) => {
+    // Chips have one size, 24px, with no vertical padding; `size` is deprecated and ignored
+    // (decisions 0034 and 0035). The literal values are the design, so a mapping change fails here
+    it.each(['small', 'medium'] as const)('renders size=%s at the one chip size', (size) => {
       const { container } = renderChip({ size })
-      expect(container.firstChild).toHaveStyle({ padding, minHeight })
+      expect(container.firstChild).toHaveStyle({ padding: '0 0.5rem', minHeight: '1.5rem', font: "400 0.875rem/1.25rem 'Inter', sans-serif" })
     })
   })
 

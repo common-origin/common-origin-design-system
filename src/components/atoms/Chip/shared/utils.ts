@@ -1,15 +1,13 @@
 import tokens from '../../../../styles/tokens.json'
-import { ChipVariant, BaseChipProps } from './types'
+import { ChipVariant } from './types'
 
 const { component: { chip }, semantic } = tokens
 
 interface StyledChipProps {
   $variant: ChipVariant
-  $size: BaseChipProps['size']
   $disabled?: boolean
   $clickable?: boolean
   $selected?: boolean
-  $dismissible?: boolean
 }
 
 // Helper function to get variant styles matching Button's approach
@@ -122,27 +120,12 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
   }
 }
 
-// Chips take their height from the label scale as a minimum and centre their content, so
-// there is no vertical padding (decisions 0018 and 0034). A chip with a close button is at
-// least size.label.medium tall, so the 20px button keeps room around it at either size.
-// Horizontal padding comes from the semantic spacing scale (decision 0022).
-export const getSizeStyles = ({ $size, $dismissible }: StyledChipProps) => {
-  const { label } = semantic.size
-  const padding = `0 ${semantic.spacing.component.sm}`
-  switch ($size) {
-    case 'small':
-      return `
-        font: ${chip.sizes.small.font};
-        min-height: ${$dismissible ? label.medium : label.small};
-        padding: ${padding};
-      `
-    case 'medium':
-    default:
-      return `
-        font: ${chip.sizes.medium.font};
-        min-height: ${label.medium};
-        padding: ${padding};
-      `
-  }
-}
+// Chips have one size: 24px from the label scale as a minimum, with the content centred
+// and no vertical padding (decisions 0034 and 0035). Horizontal padding comes from the
+// semantic spacing scale (decision 0022).
+export const sizeStyles = `
+  font: ${chip.sizes.medium.font};
+  min-height: ${semantic.size.label.medium};
+  padding: 0 ${semantic.spacing.component.sm};
+`
 

@@ -443,24 +443,24 @@
           "padding": {
             "$value": "2px {semantic.spacing.component.sm}",
             "$type": "dimension",
-            "$description": "Deprecated (decisions 0022 and 0034): chips take their min-height from semantic.size.label with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
+            "$description": "Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
           },
           "font": {
             "$value": "{semantic.typography.caption}",
             "$type": "typography",
-            "$description": "Small chip label typography."
+            "$description": "Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0."
           }
         },
         "medium": {
           "padding": {
             "$value": "2px {semantic.spacing.component.sm}",
             "$type": "dimension",
-            "$description": "Deprecated (decisions 0022 and 0034): chips take their min-height from semantic.size.label with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
+            "$description": "Deprecated (decisions 0022, 0034 and 0035): chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally. Removed in 3.0."
           },
           "font": {
             "$value": "{semantic.typography.small}",
             "$type": "typography",
-            "$description": "Medium chip label typography."
+            "$description": "Chip label typography. Every chip uses it: chips have one size (decision 0035)."
           }
         },
         "large": {
@@ -472,7 +472,7 @@
           "font": {
             "$value": "{semantic.typography.body}",
             "$type": "typography",
-            "$description": "Large chip label typography. No chip uses the large size today."
+            "$description": "Deprecated (decision 0035): chips have one size. Use component.chip.sizes.medium.font. Removed in 3.0."
           }
         }
       }

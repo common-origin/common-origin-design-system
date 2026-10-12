@@ -71,8 +71,8 @@ export const chipDocs: ComponentDocumentation = {
       name: 'size',
       type: "'small' | 'medium'",
       required: false,
-      default: 'medium',
-      description: 'Small for dense interfaces such as toolbars and metadata rows; medium for standard use.'
+      default: 'undefined',
+      description: 'Deprecated and ignored, removed in 3.0: chips have one size, 24px (decision 0035).'
     },
     {
       name: 'onClick',
@@ -133,11 +133,9 @@ export const chipDocs: ComponentDocumentation = {
     // Disabled state
     'component.chip.disabled.backgroundColor',
     'component.chip.disabled.textColor',
-    // Size variants
-    'component.chip.sizes.small.font',
+    // Typography
     'component.chip.sizes.medium.font',
-    // Height: the label scale as a minimum (decisions 0018 and 0034); horizontal padding: semantic spacing
-    'semantic.size.label.small',
+    // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
     'semantic.size.label.medium',
     'semantic.spacing.component.sm',
     // Motion
@@ -213,20 +211,6 @@ export const chipDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Sizes',
-      description: 'Small for dense interfaces such as toolbars and metadata rows; medium for standard use.',
-      code: `<Stack direction="row" gap="sm" alignItems="center">
-  <Chip size="small">Small</Chip>
-  <Chip size="medium">Medium</Chip>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="row" gap="sm" alignItems="center">
-          <Chip size="small">Small</Chip>
-          <Chip size="medium">Medium</Chip>
-        </Stack>
-      )
-    },
-    {
       name: 'Deprecated Variants',
       description: 'These still render in 2.x but will be removed in 3.0. Replace them with the default chip; replace a chip with onClick with a Button (an action) or a BooleanChip (a toggle).',
       code: `{/* Deprecated: remove the variant */}
@@ -236,7 +220,7 @@ export const chipDocs: ComponentDocumentation = {
 
 {/* Deprecated: onClick */}
 <Chip variant="interactive" onClick={save}>Save</Chip>
-  →  <Button variant="secondary" size="small" onClick={save}>Save</Button>`,
+  →  <Button variant="secondary" onClick={save}>Save</Button>`,
       renderComponent: () => (
         <Stack direction="row" gap="sm" wrap>
           <Chip variant="emphasis">Featured</Chip>
@@ -308,7 +292,6 @@ Close: InputChip with onDismiss
         tokens: [
           'component.chip.default.textColor',
           'component.chip.sizes.medium.font',
-          'component.chip.sizes.small.font'
         ]
       },
       {

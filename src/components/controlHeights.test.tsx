@@ -102,36 +102,30 @@ describe('Button and IconButton heights', () => {
   })
 })
 
-// Chips stay on the label scale (decision 0018). A chip with a close button is at least
-// size.label.medium tall, so a small one keeps its 24px (decision 0034, #208).
+// Chips have one size, 24px, with or without a close button; the deprecated `size` prop is
+// ignored (decisions 0034 and 0035).
 describe('chip heights', () => {
-  const { label } = tokens.semantic.size
+  const { medium } = tokens.semantic.size.label
 
-  function expectChipHeight(element: HTMLElement, height: string) {
+  function expectChipHeight(element: HTMLElement) {
     const style = getComputedStyle(element)
-    expect(style.minHeight).toBe(height)
+    expect(style.minHeight).toBe(medium)
     expect(style.paddingTop).toBe('0px')
     expect(style.paddingBottom).toBe('0px')
   }
 
-  it.each([
-    ['small', label.small],
-    ['medium', label.medium],
-  ] as const)('a %s Chip, BooleanChip and InputChip are size.label.%s', (size, height) => {
+  it.each([undefined, 'small', 'medium'] as const)('every chip is size.label.medium with size=%s', (size) => {
     render(
       <>
         <Chip size={size} data-testid="chip">Tag</Chip>
-        <BooleanChip size={size} selected={false} onClick={() => {}} data-testid="boolean">Filter</BooleanChip>
+        <BooleanChip size={size} selected onClick={() => {}} data-testid="boolean">Filter</BooleanChip>
         <InputChip size={size} data-testid="input">Value</InputChip>
+        <InputChip size={size} onDismiss={() => {}} data-testid="dismissible">Value</InputChip>
       </>
     )
-    expectChipHeight(screen.getByTestId('chip'), height)
-    expectChipHeight(screen.getByTestId('boolean'), height)
-    expectChipHeight(screen.getByTestId('input'), height)
-  })
-
-  it.each(['small', 'medium'] as const)('a %s InputChip with a close button is at least size.label.medium', (size) => {
-    render(<InputChip size={size} onDismiss={() => {}} data-testid="input">Value</InputChip>)
-    expectChipHeight(screen.getByTestId('input'), label.medium)
+    expectChipHeight(screen.getByTestId('chip'))
+    expectChipHeight(screen.getByTestId('boolean'))
+    expectChipHeight(screen.getByTestId('input'))
+    expectChipHeight(screen.getByTestId('dismissible'))
   })
 })

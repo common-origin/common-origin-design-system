@@ -78,9 +78,8 @@ export const filterChipDocs: ComponentDocumentation = {
       name: 'size',
       type: "'small' | 'medium'",
       required: false,
-      default: 'medium',
-      description:
-        'Size variant controlling padding and font size. Use small in compact filter bars or toolbars; medium for standard filter displays above tables or lists.'
+      default: 'undefined',
+      description: 'Deprecated and ignored, removed in 3.0: chips have one size, 24px (decision 0035).'
     },
     {
       name: 'disabled',
@@ -135,11 +134,9 @@ export const filterChipDocs: ComponentDocumentation = {
     // Selected treatment (decision 0016)
     'semantic.color.background.interactive-subtle',
     'semantic.color.text.interactive',
-    // Size variants
-    'component.chip.sizes.small.font',
+    // Typography
     'component.chip.sizes.medium.font',
-    // Height: the label scale as a minimum (decisions 0018 and 0034); horizontal padding: semantic spacing
-    'semantic.size.label.small',
+    // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
     'semantic.size.label.medium',
     'semantic.spacing.component.sm',
     // Icon and close button spacing
@@ -213,49 +210,6 @@ return (
   </Stack>
 )`,
       renderComponent: () => <ActiveFiltersExample />
-    },
-    {
-      name: 'Size Variants',
-      description:
-        'Small FilterChips suit compact toolbars and inline filter displays. Medium chips are the default for standard filter bars. Both sizes support selected state and dismissal.',
-      code: `<Stack direction="column" gap="md">
-  <div>
-    <Typography variant="small">Small — compact toolbar</Typography>
-    <Stack direction="row" gap="xs" wrap>
-      <FilterChip selected size="small">Genre: Electronic</FilterChip>
-      <FilterChip selected size="small" onDismiss={() => {}}>BPM: 120–140</FilterChip>
-      <FilterChip selected={false} size="small">Key: Any</FilterChip>
-    </Stack>
-  </div>
-  <div>
-    <Typography variant="small">Medium — standard filter bar</Typography>
-    <Stack direction="row" gap="sm" wrap>
-      <FilterChip selected>Genre: Electronic</FilterChip>
-      <FilterChip selected onDismiss={() => {}}>BPM: 120–140</FilterChip>
-      <FilterChip selected={false}>Key: Any</FilterChip>
-    </Stack>
-  </div>
-</Stack>`,
-      renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <div>
-            <Typography variant="small">Small — compact toolbar</Typography>
-            <Stack direction="row" gap="xs" wrap>
-              <FilterChip selected size="small">Genre: Electronic</FilterChip>
-              <FilterChip selected size="small" onDismiss={() => {}}>BPM: 120–140</FilterChip>
-              <FilterChip selected={false} size="small">Key: Any</FilterChip>
-            </Stack>
-          </div>
-          <div>
-            <Typography variant="small">Medium — standard filter bar</Typography>
-            <Stack direction="row" gap="sm" wrap>
-              <FilterChip selected>Genre: Electronic</FilterChip>
-              <FilterChip selected onDismiss={() => {}}>BPM: 120–140</FilterChip>
-              <FilterChip selected={false}>Key: Any</FilterChip>
-            </Stack>
-          </div>
-        </Stack>
-      )
     },
     {
       name: 'Disabled State',
@@ -340,10 +294,9 @@ States:
       {
         name: 'Label',
         description:
-          'The children prop rendered as filter text. Size variant controls font and padding.',
+          'The children prop rendered as filter text. Every chip is one size, 24px (decision 0035).',
         tokens: [
           'component.chip.sizes.medium.font',
-          'component.chip.sizes.small.font',
           'component.chip.variants.subtle.textColor',
           'semantic.color.text.interactive'
         ]

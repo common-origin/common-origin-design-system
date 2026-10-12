@@ -214,7 +214,7 @@ export const listItemDocs: ComponentDocumentation = {
     primary="Notifications"
     secondary="Push and email"
     icon={<Icon name="bell" iconColor="default" size="lg" />}
-    badge={<Chip size="small">3 new</Chip>}
+    badge={<Chip>3 new</Chip>}
   />
 </List>`,
       renderComponent: () => (
@@ -223,7 +223,7 @@ export const listItemDocs: ComponentDocumentation = {
             primary="Notifications"
             secondary="Push and email"
             icon={<Icon name="bell" iconColor="default" size="lg" />}
-            badge={<Chip size="small">3 new</Chip>}
+            badge={<Chip>3 new</Chip>}
           />
         </List>
       )

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import tokens from '../../../../styles/tokens.json'
 import { InternalStyledProps } from './types'
-import { getVariantStyles, getSizeStyles } from './utils'
+import { getVariantStyles, sizeStyles } from './utils'
 
 const { component: { chip }, semantic } = tokens
 
@@ -22,7 +22,7 @@ export const StyledChip = styled.span.withConfig({
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
   
   ${getVariantStyles}
-  ${getSizeStyles}
+  ${sizeStyles}
   
   &:focus-visible {
     outline: ${chip.focus.outline};

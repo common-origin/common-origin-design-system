@@ -1,6 +1,6 @@
 # 0034. Controls take their height from `size.control`, as a minimum
 
-- **Status:** Accepted
+- **Status:** Accepted; point 5 (chips) amended by [0035](0035-chips-have-one-size.md)
 - **Date:** 2026-10-11
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P3, P5, P9
@@ -38,7 +38,7 @@ Primer, Spectrum, Carbon and Radix all make control height a token, mostly on 32
 
    Sizes line up by name: a `lg` Button sits level with a field. Fields stay one size until a product needs another (P4); density is how a dense product gets shorter fields.
 4. **Two visible changes:** SearchField goes from 44 to 48px, matching the other fields, and Dropdown options from 46–47 to 48px. Every other control renders at the height it has today.
-5. **Chips stay on the label scale** ([0018](0018-indicators-and-labels.md)): `size.label.small` (20px) and `size.label.medium` (24px) as their min-height. A chip with a close button is at least `size.label.medium` tall at either size, so its 20px close button keeps room around it and a small dismissible chip stays 24px, as it was ([#208](https://github.com/common-origin/common-origin-design-system/issues/208)). Whether interactive 20px chips meet WCAG 2.5.8 is a separate question ([#209](https://github.com/common-origin/common-origin-design-system/issues/209)).
+5. **Chips stay on the label scale** ([0018](0018-indicators-and-labels.md)): `size.label.small` (20px) and `size.label.medium` (24px) as their min-height. Whether interactive 20px chips meet WCAG 2.5.8 is a separate question ([#209](https://github.com/common-origin/common-origin-design-system/issues/209)).
 6. **Density shifts the whole scale by one 8px step** ([0032](0032-token-modes.md)): `compact` 24 / 32 / 40, `default` 32 / 40 / 48, `comfortable` 40 / 48 / 56. `compact` never goes below 24px (WCAG 2.5.8).
 
 ## Consequences
