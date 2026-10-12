@@ -45,13 +45,13 @@ const Table = styled.table`
   td {
     text-align: left;
     vertical-align: middle;
-    padding: ${semantic.spacing.layout.md} ${semantic.spacing.layout.sm};
+    padding: ${semantic.space[300]} ${semantic.space[200]};
     border-bottom: ${semantic.border.default};
   }
 
   th {
     font: ${semantic.typography.label};
-    color: ${semantic.color.text.subdued};
+    color: ${semantic.color.text.muted};
   }
 `
 

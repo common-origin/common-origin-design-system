@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { Container } from '../../components/atoms/Container'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { color, spacing } } = tokens
+const { semantic: { color } } = tokens
 
 // Props interface for the Footer component
 export interface FooterProps {
@@ -16,7 +16,7 @@ export interface FooterProps {
 }
 
 const FooterStyled = styled.footer`
-  background-color: ${color.background.emphasis};
+  background-color: ${color.fill.emphasis};
   color: ${color.text.inverse};
   width: 100%;
 `
@@ -25,11 +25,11 @@ const FooterContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: ${spacing.layout['2xl']} 0;
+  padding: ${tokens.semantic.space[600]} 0;
 `
 
 const LogoLink = styled(Link)<{ $isActive: boolean }>`
-  margin-right: ${spacing.layout.lg};
+  margin-right: ${tokens.semantic.space[400]};
   display: flex;
   align-items: center;
   text-decoration: ${props => props.$isActive ? 'underline' : 'none'};

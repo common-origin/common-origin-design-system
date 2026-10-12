@@ -26,7 +26,7 @@ const MobileNavWrapper = styled.div`
   align-items: center;
   padding: ${spacing[4]} 0;
   width: 100%;
-  z-index: ${tokens.semantic.zIndex.sticky};
+  z-index: ${tokens.semantic.layer.sticky};
 
   @media (min-width: ${tokens.base.breakpoint.md}) {
     display: none;
@@ -34,10 +34,10 @@ const MobileNavWrapper = styled.div`
 `
 
 const NavigationWrapperDefault = styled.div`
-  background-color: ${color.background.default};
+  background-color: ${tokens.semantic.surface.base};
   transition: all 0.3s ease-in-out;
   display: none;
-  z-index: ${tokens.semantic.zIndex.sticky};
+  z-index: ${tokens.semantic.layer.sticky};
   width: 100%;
 
   @media (min-width: ${tokens.base.breakpoint.md}) {
@@ -79,7 +79,7 @@ const DesktopNavMenu = styled.nav`
 const DesktopNavLink = styled(Link)<{ $isActive: boolean }>`
   padding: ${spacing[6]} ${spacing[12]};
   border-left: ${border.default};
-  background-color: ${color.background.default};
+  background-color: ${tokens.semantic.surface.base};
   transition: background-color 0.15s ease-in-out;
   text-decoration: ${props => props.$isActive ? 'underline' : 'none'};
 
@@ -88,7 +88,7 @@ const DesktopNavLink = styled(Link)<{ $isActive: boolean }>`
   }
 
   &:hover {
-    background-color: ${color.background.surface};
+    background-color: ${color.fill.muted};
   }
 `
 
@@ -97,7 +97,7 @@ const MobileNav = styled.nav`
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  z-index: ${tokens.semantic.zIndex.sticky};
+  z-index: ${tokens.semantic.layer.sticky};
 `
 
 const SidePanel = styled.div<{ $isOpen: boolean }>`
@@ -106,10 +106,10 @@ const SidePanel = styled.div<{ $isOpen: boolean }>`
   right: 0;
   height: 100%;
   width: 100vw;
-  background-color: ${color.background.default};
+  background-color: ${tokens.semantic.surface.base};
   transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.15s ease-in-out;
-  z-index: ${tokens.semantic.zIndex.overlay};
+  z-index: ${tokens.semantic.layer.overlay};
 
   @media (min-width: ${tokens.base.breakpoint.md}) {
     display: none;

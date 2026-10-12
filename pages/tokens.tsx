@@ -16,8 +16,24 @@ import {
   Chip,
 } from '../src/page-components'
 import tokens from '@/styles/tokens.json'
+import semanticSource from '@/tokens/semantic/index.json'
 
-const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
+// The token source carries each token's description and deprecation (decision 0033). The page
+// shows the tokens in use under decision 0031's names and leaves deprecated names out.
+type SourceNode = { [key: string]: SourceNode | string | undefined }
+const sourceAt = (path: string) =>
+  path.split('.').reduce<SourceNode | undefined>((node, key) => node?.[key] as SourceNode | undefined, semanticSource as unknown as SourceNode)
+const sourceDescription = (path: string) => {
+  const description = sourceAt(path)?.$description
+  return typeof description === 'string' ? description : undefined
+}
+/** The tokens of a group that aren't deprecated, without nested groups */
+const inUse = (path: string, group: Record<string, unknown>) =>
+  Object.fromEntries(
+    Object.entries(group).filter(([key, value]) => typeof value === 'string' && sourceAt(`${path}.${key}`)?.$deprecated === undefined)
+  )
+
+const { base: { breakpoint }, semantic: { color, border } } = tokens
 
 const TokensLayout = styled.div`
   display: flex;
@@ -31,7 +47,7 @@ const Sidebar = styled.nav`
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: ${spacing.layout['8xl']} 0;
+  padding: ${tokens.semantic.space[1400]} 0;
   
   @media (max-width: ${breakpoint.md}) {
     display: none;
@@ -43,22 +59,22 @@ const MobileNavigation = styled.div`
   
   @media (max-width: ${breakpoint.md}) {
     display: block;
-    padding: ${spacing.layout.lg};
-    background-color: ${color.background.subtle};
+    padding: ${tokens.semantic.space[400]};
+    background-color: ${tokens.semantic.surface.raised};
     border-bottom: ${border.default};
     position: sticky;
     top: 0;
-    z-index: ${tokens.semantic.zIndex.sticky};
+    z-index: ${tokens.semantic.layer.sticky};
   }
 `
 
 const MainContent = styled.main`
   flex: 1;
-  padding: ${spacing.layout['2xl']};
+  padding: ${tokens.semantic.space[600]};
   overflow-x: auto;
   
   @media (max-width: ${breakpoint.md}) {
-    padding: ${spacing.layout.lg};
+    padding: ${tokens.semantic.space[400]};
   }
 `
 
@@ -66,7 +82,7 @@ const TokenTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin-top: ${spacing.layout.lg};
+  margin-top: ${tokens.semantic.space[400]};
   border-radius: ${tokens.base.border.radius[3]};
   overflow: hidden;
   border: ${border.default};
@@ -74,56 +90,56 @@ const TokenTable = styled.table`
 `
 
 const TableHeader = styled.th`
-  background-color: ${color.background.default};
-  border-bottom: ${border.subtle};
-  padding: ${spacing.layout.md};
+  background-color: ${tokens.semantic.surface.base};
+  border-bottom: ${border.emphasis};
+  padding: ${tokens.semantic.space[300]};
   text-align: left;
   font: ${tokens.semantic.typography.label};
   color: ${color.text.emphasis};
   font-weight: 600;
   
   &:not(:last-child) {
-    border-right: ${border.subtle};
+    border-right: ${border.emphasis};
   }
   
   @media (max-width: ${breakpoint.md}) {
-    padding: ${spacing.layout.sm};
+    padding: ${tokens.semantic.space[200]};
     font: ${tokens.semantic.typography.label};
   }
 `
 
 const TableRow = styled.tr`
   &:not(:last-child) td {
-    border-bottom: ${border.subtle};
+    border-bottom: ${border.emphasis};
   }
 `
 
 const TableCell = styled.td`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
   vertical-align: top;
   
   &:not(:last-child) {
-    border-right: ${border.subtle};
+    border-right: ${border.emphasis};
   }
   
   @media (max-width: ${breakpoint.md}) {
-    padding: ${spacing.layout.sm};
+    padding: ${tokens.semantic.space[200]};
   }
 `
 
 const TokenValue = styled.span`
   font: ${tokens.semantic.typography.caption};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
 `
 
 const ColorSwatch = styled.div<{ $color: string }>`
   width: 40px;
   height: 40px;
   background-color: ${props => props.$color};
-  border: ${border.subtle};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[2]};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
   box-shadow: ${tokens.base.shadow[1]};
   
@@ -135,11 +151,11 @@ const ColorSwatch = styled.div<{ $color: string }>`
 
 const SpacingSwatch = styled.div<{ $size: string }>`
   width: ${props => props.$size};
-  height: ${spacing.layout.lg};
-  background-color: ${color.background.interactive};
+  height: ${tokens.semantic.space[400]};
+  background-color: ${color.fill.accent};
   border-radius: ${tokens.base.border.radius[1]};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
   box-shadow: ${tokens.base.shadow[1]};
 `
@@ -147,18 +163,18 @@ const SpacingSwatch = styled.div<{ $size: string }>`
 const IconSizeSwatch = styled.div<{ $size: string }>`
   width: ${props => props.$size};
   height: ${props => props.$size};
-  background-color: ${color.text.subdued};
+  background-color: ${color.text.muted};
   border-radius: ${tokens.base.border.radius[1]};
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
   box-shadow: ${tokens.base.shadow[1]};
   
   &::after {
     content: '★';
-    color: ${color.background.subtle};
+    color: ${color.text.inverse};
     font-size: calc(${props => props.$size} * 0.6);
     line-height: 1;
   }
@@ -166,35 +182,35 @@ const IconSizeSwatch = styled.div<{ $size: string }>`
 
 const FontSample = styled.div<{ $font: string }>`
   font: ${props => props.$font};
-  margin: ${spacing.layout.xs} 0;
+  margin: ${tokens.semantic.space[100]} 0;
   color: ${color.text.default};
 `
 
 const BorderSample = styled.div<{ $border: string }>`
   border: ${props => props.$border};
-  padding: ${spacing.layout.sm};
+  padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${color.background.subtle};
+  background-color: ${tokens.semantic.surface.raised};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 100px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
 `
 
 const BorderRadiusSample = styled.div<{ $radius: string }>`
   border: ${border.default};
-  padding: ${spacing.layout.sm};
+  padding: ${tokens.semantic.space[200]};
   border-radius: ${props => props.$radius};
-  background-color: ${color.background.subtle};
+  background-color: ${tokens.semantic.surface.raised};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 60px;
   min-height: 60px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,29 +218,29 @@ const BorderRadiusSample = styled.div<{ $radius: string }>`
 
 const ShadowSample = styled.div<{ $shadow: string }>`
   box-shadow: ${props => props.$shadow};
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${color.background.subtle};
+  background-color: ${tokens.semantic.surface.raised};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 100px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
 `
 
 const ElevationSample = styled.div<{ $elevation: string }>`
   box-shadow: ${props => props.$elevation};
-  padding: ${spacing.layout.lg};
-  border-radius: ${tokens.semantic.border.radius.md};
-  background-color: ${color.background.subtle};
+  padding: ${tokens.semantic.space[400]};
+  border-radius: ${tokens.semantic.radius.md};
+  background-color: ${tokens.semantic.surface.raised};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 80px;
   min-height: 60px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -232,30 +248,30 @@ const ElevationSample = styled.div<{ $elevation: string }>`
 
 const MotionSample = styled.div<{ $transition: string }>`
   transition: ${props => props.$transition};
-  padding: ${spacing.layout.sm};
+  padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${color.background.interactive};
+  background-color: ${color.fill.accent};
   color: ${color.text.inverse};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   cursor: pointer;
   font: ${tokens.semantic.typography.caption};
   
   &:hover {
     transform: translateY(-2px);
-    background-color: ${color.background['interactive-hover']};
+    background-color: ${color.fill['accent-hover']};
   }
 `
 
 const AvatarSizeSample = styled.div<{ $size: string }>`
   width: ${props => props.$size};
   height: ${props => props.$size};
-  background-color: ${color.background.interactive};
+  background-color: ${color.fill.accent};
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
   box-shadow: ${tokens.base.shadow[1]};
   color: ${color.text.inverse};
@@ -269,12 +285,12 @@ const AvatarSizeSample = styled.div<{ $size: string }>`
 
 const OpacitySample = styled.div<{ $opacity: string }>`
   opacity: ${props => props.$opacity};
-  padding: ${spacing.layout.sm};
+  padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${color.background.emphasis};
+  background-color: ${color.fill.emphasis};
   color: ${color.text.inverse};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 80px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
@@ -289,19 +305,19 @@ const ZIndexExamples = styled.div`
 const ZIndexSample = styled.div<{ $zIndex: string }>`
   position: relative;
   z-index: ${props => props.$zIndex};
-  padding: ${spacing.layout.sm};
+  padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${color.background.interactive};
+  background-color: ${color.fill.accent};
   color: ${color.text.inverse};
   display: inline-block;
-  margin-right: ${spacing.layout.sm};
+  margin-right: ${tokens.semantic.space[200]};
   min-width: 60px;
   text-align: center;
   font: ${tokens.semantic.typography.caption};
 `
 
 // Helper function to render color tokens as table
-const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix: string) => {
+const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix: string, path?: string) => {
   return (
     <Box key={idPrefix} mb="7xl">
       <Typography variant="h3" color="default">{categoryName}</Typography>
@@ -318,13 +334,13 @@ const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix
           {Object.entries(colorTokens).map(([key, value]) => (
             <TableRow key={key}>
               <TableCell>
-                <Chip title={`color.${idPrefix.replace('color-', '')}.${key}`} variant="default" />
+                <Chip title={path ? `${path.replace(/^semantic\./, '')}.${key}` : `color.${idPrefix.replace('color-', '')}.${key}`} variant="default" />
               </TableCell>
               <TableCell>
                 <TokenValue>{value as string}</TokenValue>
               </TableCell>
               <TableCell>
-                <TokenValue>{getColorUsageDescription(idPrefix, key)}</TokenValue>
+                <TokenValue>{(path && sourceDescription(`${path}.${key}`)) || getColorUsageDescription(idPrefix, key)}</TokenValue>
               </TableCell>
               <TableCell>
                 <ColorSwatch $color={value as string} />
@@ -371,7 +387,7 @@ const renderBaseColorTokensTable = (colorTokens: any, categoryName: string, idPr
 }
 
 // Helper function to render spacing tokens as table
-const renderSpacingTokensTable = (spacingTokens: any, title: string = 'Spacing') => {
+const renderSpacingTokensTable = (spacingTokens: any, title: string, path: string) => {
   return (
     <Box mb="7xl">
       <Typography variant="h3" color="default">{title}</Typography>
@@ -388,13 +404,13 @@ const renderSpacingTokensTable = (spacingTokens: any, title: string = 'Spacing')
           {Object.entries(spacingTokens).map(([key, value]) => (
             <TableRow key={key}>
               <TableCell>
-                <Chip title={`semantic.spacing.${title.toLowerCase().replace(' ', '.')}.${key}`} variant="default" />
+                <Chip title={`${path.replace(/^semantic\./, '')}.${key}`} variant="default" />
               </TableCell>
               <TableCell>
                 <TokenValue>{value as string}</TokenValue>
               </TableCell>
               <TableCell>
-                <TokenValue>{getSemanticSpacingUsageDescription(key, title)}</TokenValue>
+                <TokenValue>{sourceDescription(`${path}.${key}`) ?? 'Semantic spacing value'}</TokenValue>
               </TableCell>
               <TableCell>
                 <SpacingSwatch $size={value as string} />
@@ -484,10 +500,8 @@ const renderTypographyTokensTable = (typographyTokens: any) => {
 }
 
 // Helper function to render border tokens as table
-const renderBorderTokensTable = (borderTokens: any) => {
-  // Separate string tokens from nested objects like radius
-  const stringTokens = Object.entries(borderTokens).filter(([, value]) => typeof value === 'string')
-  const radiusTokens = borderTokens.radius as Record<string, string> | undefined
+const renderBorderTokensTable = (borderTokens: Record<string, unknown>, radiusTokens?: Record<string, string>) => {
+  const stringTokens = Object.entries(borderTokens)
   
   return (
     <>
@@ -512,7 +526,7 @@ const renderBorderTokensTable = (borderTokens: any) => {
                   <TokenValue>{value as string}</TokenValue>
                 </TableCell>
                 <TableCell>
-                  <TokenValue>{getBorderUsageDescription(key)}</TokenValue>
+                  <TokenValue>{sourceDescription(`semantic.border.${key}`) ?? getBorderUsageDescription(key)}</TokenValue>
                 </TableCell>
                 <TableCell>
                   <BorderSample $border={value as string}>
@@ -527,7 +541,7 @@ const renderBorderTokensTable = (borderTokens: any) => {
       
       {radiusTokens && (
         <Box mb="7xl">
-          <Typography variant="h3" color="default">Border Radius</Typography>
+          <Typography variant="h3" color="default">Radius</Typography>
           <TokenTable>
             <thead>
               <tr>
@@ -540,7 +554,7 @@ const renderBorderTokensTable = (borderTokens: any) => {
               {Object.entries(radiusTokens).map(([key, value]) => (
                 <TableRow key={key}>
                   <TableCell>
-                    <Chip title={`border.radius.${key}`} variant="default" />
+                    <Chip title={`radius.${key}`} variant="default" />
                   </TableCell>
                   <TableCell>
                     <TokenValue>{value}</TokenValue>
@@ -823,7 +837,7 @@ const renderZIndexTokensTable = (zIndexTokens: any, title = 'Z-Index', prefix = 
                 <TokenValue>{value as string}</TokenValue>
               </TableCell>
               <TableCell>
-                <TokenValue>{getZIndexUsageDescription(key)}</TokenValue>
+                <TokenValue>{sourceDescription(`${prefix}.${key}`) ?? getZIndexUsageDescription(key)}</TokenValue>
               </TableCell>
               <TableCell>
                 <ZIndexSample $zIndex={value as string}>
@@ -854,23 +868,6 @@ const getColorUsageDescription = (category: string, key: string): string => {
       'success': 'Success messages and confirmations',
       'warning': 'Warning messages and alerts'
     },
-    'color-background': {
-      'default': 'Default page background',
-      'subtle': 'Card and component backgrounds',
-      'emphasis': 'High contrast backgrounds',
-      'surface': 'Elevated surface backgrounds',
-      'inverse': 'Dark theme backgrounds',
-      'interactive': 'Interactive elements like buttons',
-      'interactive-hover': 'Hover state for interactive elements',
-      'interactive-active': 'Active/pressed state for interactive elements',
-      'error': 'Error state backgrounds',
-      'error-subtle': 'Subtle error state backgrounds',
-      'success': 'Success state backgrounds',
-      'success-subtle': 'Subtle success state backgrounds',
-      'warning': 'Warning state backgrounds',
-      'warning-subtle': 'Subtle warning state backgrounds',
-      'disabled': 'Disabled element backgrounds'
-    },
     'color-border': {
       'default': 'Standard borders and dividers',
       'subtle': 'Subtle borders and separators',
@@ -894,42 +891,6 @@ const getColorUsageDescription = (category: string, key: string): string => {
   }
   
   return descriptions[category]?.[key] || 'Design token usage'
-}
-
-const getSemanticSpacingUsageDescription = (key: string, category: string): string => {
-  const layoutDescriptions: Record<string, string> = {
-    'xs': 'Extra small layout spacing (4px) - tight element spacing',
-    'sm': 'Small layout spacing (8px) - compact component spacing',
-    'md': 'Medium layout spacing (16px) - default component spacing',
-    'lg': 'Large layout spacing (24px) - section spacing',
-    'xl': 'Extra large layout spacing (32px) - large section spacing',
-    '2xl': 'Double extra large spacing (48px) - major section spacing',
-    '3xl': 'Triple extra large spacing (64px) - page section spacing',
-    '4xl': 'Quadruple extra large spacing (80px) - large page sections',
-    '5xl': 'Quintuple extra large spacing (96px) - hero sections',
-    '6xl': 'Sextuple extra large spacing (128px) - major page divisions',
-    '7xl': 'Septuple extra large spacing (160px) - maximum page spacing',
-    '8xl': 'Octuple extra large spacing (192px) - maximum layout spacing'
-  }
-  
-  const separatorDescriptions: Record<string, string> = {
-    'xs': 'Extra small separator spacing (8px) - minimal visual separation',
-    'sm': 'Small separator spacing (16px) - subtle content separation',
-    'md': 'Medium separator spacing (24px) - standard content separation',
-    'lg': 'Large separator spacing (32px) - emphasized content separation',
-    'xl': 'Extra large separator spacing (48px) - strong visual separation',
-    '2xl': 'Double extra large separator spacing (64px) - major section separation',
-    '3xl': 'Triple extra large separator spacing (80px) - page-level separation',
-    '4xl': 'Quadruple extra large separator spacing (96px) - maximum separation'
-  }
-  
-  if (category.toLowerCase().includes('layout')) {
-    return layoutDescriptions[key] || 'Layout spacing value'
-  } else if (category.toLowerCase().includes('separator')) {
-    return separatorDescriptions[key] || 'Separator spacing value'
-  }
-  
-  return 'Semantic spacing value'
 }
 
 const getTypographyUsageDescription = (key: string): string => {
@@ -1072,7 +1033,7 @@ export default function Tokens() {
       label: 'Border',
       isHeader: true,
       content: [
-        { id: 'border-styles', type: 'border', data: tokens.semantic.border, title: 'Border Style' },
+        { id: 'border-styles', type: 'border', data: inUse('semantic.border', tokens.semantic.border), radius: tokens.semantic.radius, title: 'Border Style' },
       ]
     },
     {
@@ -1081,7 +1042,7 @@ export default function Tokens() {
       isHeader: true,
       content: [
         { id: 'elevation-levels', type: 'elevation', data: tokens.semantic.elevation, title: 'Elevation' },
-        { id: 'z-index-layers', type: 'z-index', data: tokens.semantic.zIndex, title: 'Z-index layers', prefix: 'semantic.zIndex' },
+        { id: 'layers', type: 'z-index', data: tokens.semantic.layer, title: 'Layers', prefix: 'semantic.layer' },
       ]
     },
     {
@@ -1089,10 +1050,11 @@ export default function Tokens() {
       label: 'Color',
       isHeader: true,
       content: [
-        { id: 'color-text', type: 'color', data: tokens.semantic.color.text, title: 'Text' },
-        { id: 'color-background', type: 'color', data: tokens.semantic.color.background, title: 'Background' },
-        { id: 'color-border', type: 'color', data: tokens.semantic.color.border, title: 'Border' },
-        { id: 'color-icon', type: 'color', data: tokens.semantic.color.icon, title: 'Icon' },
+        { id: 'surface', type: 'color', data: tokens.semantic.surface, title: 'Surface', path: 'semantic.surface' },
+        { id: 'color-text', type: 'color', data: inUse('semantic.color.text', tokens.semantic.color.text), title: 'Text', path: 'semantic.color.text' },
+        { id: 'color-fill', type: 'color', data: tokens.semantic.color.fill, title: 'Fill', path: 'semantic.color.fill' },
+        { id: 'color-border', type: 'color', data: inUse('semantic.color.border', tokens.semantic.color.border), title: 'Border', path: 'semantic.color.border' },
+        { id: 'color-icon', type: 'color', data: inUse('semantic.color.icon', tokens.semantic.color.icon), title: 'Icon', path: 'semantic.color.icon' },
       ]
     },
     {
@@ -1120,8 +1082,8 @@ export default function Tokens() {
       label: 'Spacing',
       isHeader: true,
       content: [
-        { id: 'layout-spacing', type: 'spacing', data: tokens.semantic.spacing.layout, title: 'Layout Spacing' },
-        { id: 'separator-spacing', type: 'spacing', data: tokens.semantic.spacing.separator, title: 'Separator Spacing' },
+        { id: 'space', type: 'spacing', data: inUse('semantic.space', tokens.semantic.space), title: 'Space', path: 'semantic.space' },
+        { id: 'space-inset', type: 'spacing', data: tokens.semantic.space.inset, title: 'Inset', path: 'semantic.space.inset' },
       ]
     },
     {
@@ -1145,17 +1107,17 @@ export default function Tokens() {
     return content.map((item) => {
       switch (item.type) {
         case 'color':
-          return renderColorTokensTable(item.data, item.title, item.id)
+          return renderColorTokensTable(item.data, item.title, item.id, item.path)
         case 'base-color':
           return renderBaseColorTokensTable(item.data, item.title, item.id)
         case 'typography':
           return renderTypographyTokensTable(item.data)
         case 'border':
-          return renderBorderTokensTable(item.data)
+          return renderBorderTokensTable(item.data, item.radius)
         case 'elevation':
           return renderElevationTokensTable(item.data)
         case 'spacing':
-          return renderSpacingTokensTable(item.data, item.title)
+          return renderSpacingTokensTable(item.data, item.title, item.path)
         case 'icon-size':
           return renderIconSizeTokensTable(item.data)
         case 'avatar-size':

@@ -56,7 +56,7 @@ export const visuallyHidden = css`
 // (decision 0030). Unselected rows follow the naked Button's ladder; selected rows follow the
 // light-blue selected ladder, with the text darkening with its fill (decision 0016). Unselected
 // rows leave their text colour to the component, so a destructive row can stay red.
-const { background: rowBackground, text: rowText } = tokens.semantic.color
+const { fill: rowFill, text: rowText } = tokens.semantic.color
 
 export interface RowState {
   background: string
@@ -66,13 +66,13 @@ export interface RowState {
 export const rowStates: Record<'unselected' | 'selected', Record<'rest' | 'hover' | 'pressed', RowState>> = {
   unselected: {
     rest: { background: 'transparent' },
-    hover: { background: rowBackground.surface },
-    pressed: { background: rowBackground.neutral },
+    hover: { background: rowFill.muted },
+    pressed: { background: rowFill.default },
   },
   selected: {
-    rest: { background: rowBackground['interactive-subtle'], text: rowText.interactive },
-    hover: { background: rowBackground['interactive-subtle-hover'], text: rowText['interactive-hover'] },
-    pressed: { background: rowBackground['interactive-subtle-active'], text: rowText['interactive-active'] },
+    rest: { background: rowFill['accent-muted'], text: rowText.accent },
+    hover: { background: rowFill['accent-muted-hover'], text: rowText['accent-hover'] },
+    pressed: { background: rowFill['accent-muted-pressed'], text: rowText['accent-pressed'] },
   },
 }
 

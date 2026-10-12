@@ -22,7 +22,7 @@ import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/styles/tokens.json'
 import { interactiveRow } from '@/lib/styleUtils'
 
-const { base: { breakpoint }, semantic: { color, border, spacing } } = tokens
+const { base: { breakpoint }, semantic: { color, border } } = tokens
 
 const ComponentsLayout = styled.div`
   display: flex;
@@ -36,7 +36,7 @@ const Sidebar = styled.nav`
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: ${spacing.layout['8xl']} 0;
+  padding: ${tokens.semantic.space[1400]} 0;
   
   @media (max-width:${breakpoint.md}) {
     display: none;
@@ -48,83 +48,83 @@ const MobileNavigation = styled.div`
   
   @media (max-width: ${breakpoint.md}) {
     display: block;
-    padding: ${spacing.layout.lg};
-    background-color: ${color.background.subtle};
+    padding: ${tokens.semantic.space[400]};
+    background-color: ${tokens.semantic.surface.raised};
     border-bottom: ${border.default};
     position: sticky;
     top: 0;
-    z-index: ${tokens.semantic.zIndex.sticky};
+    z-index: ${tokens.semantic.layer.sticky};
   }
 `
 
 const MainContent = styled.main`
   flex: 1;
-  padding: ${spacing.layout['2xl']};
+  padding: ${tokens.semantic.space[600]};
   overflow-x: auto;
   
   @media (max-width: ${breakpoint.md}) {
-    padding: ${spacing.layout.lg};
+    padding: ${tokens.semantic.space[400]};
   }
 `
 
 const ComponentSection = styled.div`
-  margin-bottom: ${spacing.layout['4xl']};
-  border: ${border.subtle};
+  margin-bottom: ${tokens.semantic.space[800]};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[4]};
-  padding: ${spacing.layout['2xl']};
-  background-color: ${color.background.subtle};
+  padding: ${tokens.semantic.space[600]};
+  background-color: ${tokens.semantic.surface.raised};
 `
 
 const ComponentShowcase = styled.div`
-  background-color: ${color.background.default};
-  border: ${border.subtle};
+  background-color: ${tokens.semantic.surface.base};
+  border: ${border.emphasis};
   border-radius: ${tokens.base.border.radius[3]};
-  padding: ${spacing.layout['2xl']};
-  margin: ${spacing.layout.lg} 0;
+  padding: ${tokens.semantic.space[600]};
+  margin: ${tokens.semantic.space[400]} 0;
 `
 
 const PropsTable = styled.table`
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  margin-top: ${spacing.layout.lg};
+  margin-top: ${tokens.semantic.space[400]};
   border-radius: ${tokens.base.border.radius[3]};
   overflow: hidden;
-  border: ${border.subtle};
-  background-color: ${color.background.default};
+  border: ${border.emphasis};
+  background-color: ${tokens.semantic.surface.base};
 `
 
 const TableHeader = styled.th`
-  background-color: ${color.background.subtle};
-  border-bottom: ${border.subtle};  
-  padding: ${spacing.layout.md};
+  background-color: ${tokens.semantic.surface.raised};
+  border-bottom: ${border.emphasis};  
+  padding: ${tokens.semantic.space[300]};
   text-align: left;
   font: ${tokens.semantic.typography.label};
   color: ${color.text.emphasis};
   font-weight: 600;
   
   &:not(:last-child) {
-    border-right: ${border.subtle};
+    border-right: ${border.emphasis};
   }
 `
 
 const TableRow = styled.tr`
   &:not(:last-child) td {
-    border-bottom: ${border.subtle};
+    border-bottom: ${border.emphasis};
   }
 `
 
 const TableCell = styled.td`
-  padding: ${spacing.layout.md};
+  padding: ${tokens.semantic.space[300]};
   vertical-align: top;
   
   &:not(:last-child) {
-    border-right: ${border.subtle};
+    border-right: ${border.emphasis};
   }
 `
 
 const TokenChip = styled(Chip)`
-  margin: ${spacing.layout.xs} ${spacing.layout.xs} 0 0;
+  margin: ${tokens.semantic.space[100]} ${tokens.semantic.space[100]} 0 0;
 `
 
 const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
@@ -132,10 +132,10 @@ const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
   display: inline-flex;
   align-items: center;
   justify-content: flex-start;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
   width: 100%;
   font: ${tokens.component.button.sizes.medium.font};
-  padding: ${spacing.component.sm} ${spacing.component.lg};
+  padding: ${tokens.semantic.space.inset.sm} ${tokens.semantic.space.inset.lg};
   background-color: ${tokens.component.button.variants.secondary.backgroundColor};
   color: ${tokens.component.button.variants.secondary.textColor};
   border: none;
@@ -169,13 +169,13 @@ const CategoryIcon = styled.span<{ $isExpanded: boolean }>`
 const CategoryGroup = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
 `
 
 const CategoryChildren = styled.div<{ $isExpanded: boolean }>`
   display: ${({ $isExpanded }) => $isExpanded ? 'flex' : 'none'};
   flex-direction: column;
-  padding-left: ${spacing.layout.sm};
+  padding-left: ${tokens.semantic.space[200]};
 `
 
 // Sidebar item: naked Button styling, with the light-blue selected treatment for the
@@ -186,7 +186,7 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
   align-items: center;
   width: 100%;
   font: ${tokens.component.button.sizes.medium.font};
-  padding: ${spacing.component.sm} ${spacing.component.lg};
+  padding: ${tokens.semantic.space.inset.sm} ${tokens.semantic.space.inset.lg};
   border: none;
   border-radius: ${tokens.component.button.primary.borderRadius};
   color: ${tokens.semantic.color.text.default};
@@ -207,16 +207,16 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
 const SubComponentGroup = styled.div`
   display: flex;
   flex-direction: column;
-  padding-left: ${spacing.layout.md};
+  padding-left: ${tokens.semantic.space[300]};
 `
 
 const GuideLink = styled(Link)`
   font: ${tokens.semantic.typography.body};
-  color: ${tokens.semantic.color.text.interactive};
+  color: ${tokens.semantic.color.text.accent};
   text-decoration: underline;
 
   &:hover {
-    color: ${tokens.semantic.color.text['interactive-hover']};
+    color: ${tokens.semantic.color.text['accent-hover']};
   }
 `
 
