@@ -12,7 +12,7 @@ Update this file in the same PR as any change to the structure, build, testing a
 
 - `src/components/atoms/`, `molecules/`, `layout/`: the published package. There is no organisms level.
 - Each component folder has `Name.tsx`, `Name.test.tsx`, `Name.docs.tsx` and `index.ts` (`export * from './Name'`).
-- `src/tokens/`: token sources. `npm run build:tokens` compiles them to `src/styles/tokens.json`, `tokens.d.ts` and `tokens.css` ([pipeline](../docs/tokens/pipeline.md)).
+- `src/tokens/`: token sources. `npm run build:tokens` compiles them to `src/styles/tokens.json`, `tokens.ts` and `tokens.css` ([pipeline](../docs/tokens/pipeline.md)).
 - `src/styles/icons.json`: icon path data, used through `Icon`. Icon names are typed in `src/types/icons.ts`.
 - `src/lib/`: shared helpers used by components (`styleUtils`, `usePresence`) and docs-site data (`componentsData.ts`).
 - `src/page-components/`, `src/patterns/`, `pages/`: docs site only. Package components must never import from them.

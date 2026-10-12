@@ -16,7 +16,7 @@ export default tseslint.config(
       // Claude Code worktrees are separate checkouts of this repository
       '.claude/worktrees/**',
       'next-env.d.ts',
-      'src/styles/tokens.d.ts',
+      'src/styles/tokens.ts',
     ],
   },
   js.configs.recommended,

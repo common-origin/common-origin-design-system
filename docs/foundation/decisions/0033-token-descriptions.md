@@ -9,7 +9,7 @@
 
 ## Context
 
-Every semantic (265) and component (229) token has a `$description`, and 3 of 277 base tokens do. The descriptions reach almost no one: the source JSON and the comments in `tokens.css`. The published `Tokens` type is `typeof tokens.json`, which carries no comments, and the generated `tokens.d.ts` isn't read by anything ([pipeline §1](../../tokens/pipeline.md)).
+Every semantic (265) and component (229) token has a `$description`, and 3 of 277 base tokens do. The descriptions reach almost no one: the source JSON and the comments in `tokens.css`. The published `Tokens` type is `typeof tokens.json`, which carries no comments, and the generated `tokens.d.ts` isn't read by anything ([pipeline §1](../../tokens/pipeline.md)). <!-- verify-docs-ignore: retired file (#199) -->
 
 Their style varies. Some say what the token is for; some restate the value or the name; some record process ("Approved under decision 0022"). Contrast ratios are typed into prose, and #143 took seven review rounds to remove claims that had drifted from the code. Deprecation is a "Deprecated: …" prefix that no tool can read.
 
@@ -46,5 +46,5 @@ A local test showed that JSDoc on a nested token object survives `tsc --declarat
   - every `replacedBy` and `pairsWith` path exists, and `replacedBy` isn't itself deprecated
   - no component uses a deprecated token, except those listed with their reason in the test: today Chip's small and medium paddings and Input's `paddingY`, which wait for [#129](https://github.com/common-origin/common-origin-design-system/issues/129)
 - The 59 tokens marked "Deprecated: …" in prose move to `$deprecated` (#200).
-- `tokens.d.ts` is retired once the generated `tokens.ts` lands (#199), which closes the JSDoc item left open in [#24](https://github.com/common-origin/common-origin-design-system/issues/24) step 6.
+- `tokens.d.ts` is retired once the generated `tokens.ts` lands (#199), which closes the JSDoc item left open in [#24](https://github.com/common-origin/common-origin-design-system/issues/24) step 6. <!-- verify-docs-ignore: retired file (#199) -->
 - Agent-facing metadata for components stays with [#22](https://github.com/common-origin/common-origin-design-system/issues/22); this decision covers tokens only.

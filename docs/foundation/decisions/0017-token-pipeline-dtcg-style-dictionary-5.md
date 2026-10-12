@@ -49,7 +49,7 @@ The component tier becomes real tokens that reference semantic tokens ([0014](00
 
 This is a new output. Nothing existing changes.
 
-**5. Generated files stay committed.** `tokens.json`, `tokens.d.ts` and `tokens.css` stay in git, so fresh clones and editors work without a build step. A CI check fails when they don't match the source. `tokens.d.ts` carries each token's `$description` as JSDoc.
+**5. Generated files stay committed.** `tokens.json`, `tokens.d.ts` and `tokens.css` stay in git, so fresh clones and editors work without a build step. A CI check fails when they don't match the source. `tokens.d.ts` carries each token's `$description` as JSDoc. <!-- verify-docs-ignore: retired file, replaced by tokens.ts (#199) -->
 
 **6. Out of scope.**
 - Components keep importing token values ([0009](0009-styling-architecture.md)). Moving components to CSS variables at runtime is a styling-architecture question for [#41](https://github.com/common-origin/common-origin-design-system/issues/41).
