@@ -58,8 +58,8 @@ export const pictureDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.border.radius.sm',
-    'semantic.spacing.layout.md',
+    'semantic.radius.sm',
+    'semantic.space.300',
     'semantic.breakpoint.sm',
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut'

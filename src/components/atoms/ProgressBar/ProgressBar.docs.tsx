@@ -71,10 +71,10 @@ export const progressBarDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.color.background.progressTrack',
-    'semantic.color.background.emphasis',
-    'semantic.color.background.success',
-    'semantic.color.background.error',
-    'semantic.border.radius.xs',
+    'semantic.color.fill.emphasis',
+    'semantic.color.fill.success',
+    'semantic.color.fill.danger',
+    'semantic.radius.xs',
     'semantic.motion.transition.normal',
     'component.progressBar.sizes.sm.height',
     'component.progressBar.sizes.md.height',
@@ -476,7 +476,7 @@ Container
         description: 'Background track providing visual context for progress. Sets the maximum width/height and provides subtle background color.',
         tokens: [
           'semantic.color.background.progressTrack',
-          'semantic.border.radius.xs',
+          'semantic.radius.xs',
           'semantic.motion.transition.normal',
           'component.progressBar.sizes.sm.height',
           'component.progressBar.sizes.md.height',
@@ -488,9 +488,9 @@ Container
         name: 'Fill',
         description: 'Colored indicator showing current progress. Animates smoothly when value changes. Color varies by variant (default/success/error).',
         tokens: [
-          'semantic.color.background.emphasis',
-          'semantic.color.background.success',
-          'semantic.color.background.error',
+          'semantic.color.fill.emphasis',
+          'semantic.color.fill.success',
+          'semantic.color.fill.danger',
           'semantic.motion.transition.normal'
         ]
       }

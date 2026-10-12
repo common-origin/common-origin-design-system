@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { breakpoints, media } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { spacing } } = tokens
+const { semantic: { space } } = tokens
 
 export type ContainerProps = {
   children?: React.ReactNode
@@ -14,8 +14,8 @@ const StyledContainer = styled.div`
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  padding-left: ${spacing.layout['2xl']};
-  padding-right: ${spacing.layout['2xl']};
+  padding-left: ${space[600]};
+  padding-right: ${space[600]};
   
   ${media.sm} {
     max-width: ${breakpoints.sm};

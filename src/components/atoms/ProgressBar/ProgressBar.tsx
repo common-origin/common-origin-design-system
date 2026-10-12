@@ -71,15 +71,15 @@ const ProgressBarFill = styled.div.withConfig({
     let backgroundColor
     switch (props.$color) {
       case 'success':
-        backgroundColor = color.background.success
+        backgroundColor = color.fill.success
         break
       case 'error':
-        backgroundColor = color.background.error
+        backgroundColor = color.fill.danger
         break
       case 'default':
       default:
         // Near-black, like Slider's fill (decision 0029)
-        backgroundColor = color.background.emphasis
+        backgroundColor = color.fill.emphasis
         break
     }
     return css`background-color: ${backgroundColor};`

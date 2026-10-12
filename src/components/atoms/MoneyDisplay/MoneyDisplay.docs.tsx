@@ -75,9 +75,9 @@ export const moneyDisplayDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.color.text.default',
-    'semantic.color.text.subdued',
+    'semantic.color.text.muted',
     'semantic.color.icon.success', // Plus icon on positive amounts
-    'semantic.color.icon.error', // Minus icon on negative amounts
+    'semantic.color.icon.danger', // Minus icon on negative amounts
     'semantic.size.icon.xs', // size="small"
     'semantic.size.icon.sm', // size="medium"
     'semantic.size.icon.md', // size="large"
@@ -261,7 +261,7 @@ export const moneyDisplayDocs: ComponentDocumentation = {
           'semantic.size.icon.md',
           'semantic.size.icon.lg',
           'semantic.color.icon.success',
-          'semantic.color.icon.error'
+          'semantic.color.icon.danger'
         ]
       },
       {
@@ -276,7 +276,7 @@ export const moneyDisplayDocs: ComponentDocumentation = {
           'semantic.fontWeight.medium',
           'semantic.fontWeight.bold',
           'semantic.color.text.default',
-          'semantic.color.text.subdued'
+          'semantic.color.text.muted'
         ]
       }
     ]

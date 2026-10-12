@@ -7,7 +7,7 @@ const { component: { button }, semantic } = tokens
 // Height comes from size.control as a minimum and the content is centred, so there is no
 // vertical padding (decision 0034). Horizontal padding comes from the semantic spacing scale:
 // no component spacing tokens (decision 0022)
-const spacing = semantic.spacing.component
+const inset = semantic.space.inset
 const control = semantic.size.control
 
 /**
@@ -71,7 +71,7 @@ const baseButtonStyles = `
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: ${tokens.semantic.spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
   height: max-content;
   cursor: pointer;
   border: none;
@@ -172,20 +172,20 @@ const getSizeStyles = ({ $size }: StyledButtonProps) => {
       return `
         font: ${button.sizes.small.font};
         min-height: ${control.sm};
-        padding: 0 ${spacing.md};
+        padding: 0 ${inset.md};
       `
     case 'medium':
       return `
         font: ${button.sizes.medium.font};
         min-height: ${control.md};
-        padding: 0 ${spacing.lg};
+        padding: 0 ${inset.lg};
       `
     case 'large':
     default:
       return `
         font: ${button.sizes.large.font};
         min-height: ${control.lg};
-        padding: 0 ${spacing.lg};
+        padding: 0 ${inset.lg};
       `
   }
 }

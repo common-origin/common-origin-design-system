@@ -71,13 +71,13 @@ export const badgeDocs: ComponentDocumentation = {
   
   tokens: [
     // Colors
-    'semantic.color.background.emphasis',
-    'semantic.color.background.interactive',
-    'semantic.color.background.error',
-    'semantic.color.background.warning',
-    'semantic.color.background.success',
+    'semantic.color.fill.emphasis',
+    'semantic.color.fill.accent',
+    'semantic.color.fill.danger',
+    'semantic.color.fill.warning',
+    'semantic.color.fill.success',
     'semantic.color.text.inverse',
-    'semantic.color.background.default',
+    'semantic.surface.base',
     
     // Typography (count text)
     'semantic.typography.caption',
@@ -86,12 +86,12 @@ export const badgeDocs: ComponentDocumentation = {
     'component.badge.dot.size',
     'component.badge.count.minWidth',
     'component.badge.count.height',
-    'semantic.spacing.component.xs',
+    'semantic.space.inset.xs',
     'component.badge.count.lineHeight',
     'component.badge.ring.width',
     
     // Border
-    'semantic.border.radius.circle',
+    'semantic.radius.full',
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeOut',
@@ -311,13 +311,13 @@ export const badgeDocs: ComponentDocumentation = {
         name: 'Badge Indicator',
         description: 'Absolutely positioned element in top-right corner showing count or dot. Includes white shadow for separation from background',
         tokens: [
-          'semantic.color.background.emphasis',
+          'semantic.color.fill.emphasis',
           'semantic.color.text.inverse',
-          'semantic.border.radius.circle',
+          'semantic.radius.full',
           'component.badge.dot.size',
           'component.badge.count.minWidth',
           'component.badge.count.height',
-          'semantic.spacing.component.xs',
+          'semantic.space.inset.xs',
           'component.badge.count.lineHeight',
           'component.badge.ring.width',
           'semantic.typography.caption'

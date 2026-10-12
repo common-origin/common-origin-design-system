@@ -251,7 +251,7 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
   const backgrounds: Record<CategoryVariant, (c: CategoryColor) => string> = {
     filled: (c) => category[`${c}-strong`],
     outlined: () => '#ffffff',
-    minimal: (c) => category[`${c}-subtle`],
+    minimal: (c) => category[`${c}-muted`],
   }
   const cases = colors.flatMap((c) => (['filled', 'outlined', 'minimal'] as CategoryVariant[]).map((v) => [c, v] as const))
 

@@ -50,7 +50,7 @@ const ImageButton = styled.button`
 const StyledImage = styled.img`
   width: 100%;
   height: auto;
-  border-radius: ${tokens.semantic.border.radius.sm};
+  border-radius: ${tokens.semantic.radius.sm};
   display: block;
 `
 

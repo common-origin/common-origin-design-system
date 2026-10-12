@@ -69,11 +69,11 @@ const getTextColor = (colorVariant: TypographyColor) => {
   const colorMap = {
     default: color.text.default,
     emphasis: color.text.emphasis,
-    subdued: color.text.subdued,
+    subdued: color.text.muted,
     inverse: color.text.inverse,
     disabled: color.text.disabled,
-    interactive: color.text.interactive,
-    error: color.text.error,
+    interactive: color.text.accent,
+    error: color.text.danger,
     success: color.text.success,
     warning: color.text.warning,
   }

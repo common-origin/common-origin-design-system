@@ -79,14 +79,14 @@ export const statusBadgeDocs: ComponentDocumentation = {
     'semantic.size.label.small',
     'semantic.size.label.medium',
     // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
+    'semantic.space.100',
+    'semantic.space.200',
     // Typography
     'component.badge.label.typography.small',
     'component.badge.label.typography.medium',
     'component.badge.label.fontWeight',
     // Border
-    'semantic.border.radius.circle',
+    'semantic.radius.full',
     // Icon sizes
     'semantic.size.icon.xs',
     'semantic.size.icon.sm',
@@ -275,7 +275,7 @@ export const statusBadgeDocs: ComponentDocumentation = {
           'semantic.color.status.cancelled-bg',
           'semantic.color.status.processing-bg',
           'semantic.color.status.scheduled-bg',
-          'semantic.border.radius.circle',
+          'semantic.radius.full',
           'semantic.size.label.small',
           'semantic.size.label.medium'
         ]

@@ -160,19 +160,19 @@ export const booleanChipDocs: ComponentDocumentation = {
     'component.chip.variants.subtle.disabled.backgroundColor',
     'component.chip.variants.subtle.disabled.textColor',
     // Selected treatment (decision 0016): the text darkens with the fill
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.text.interactive',
-    'semantic.color.background.interactive-subtle-hover',
-    'semantic.color.text.interactive-hover',
-    'semantic.color.background.interactive-subtle-active',
-    'semantic.color.text.interactive-active',
+    'semantic.color.fill.accent-muted',
+    'semantic.color.text.accent',
+    'semantic.color.fill.accent-muted-hover',
+    'semantic.color.text.accent-hover',
+    'semantic.color.fill.accent-muted-pressed',
+    'semantic.color.text.accent-pressed',
     // Typography
     'component.chip.sizes.medium.font',
     // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
     'semantic.size.label.medium',
-    'semantic.spacing.component.sm',
+    'semantic.space.inset.sm',
     // Icon spacing
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     // Focus ring
     'component.chip.focus.outline',
     'semantic.border.focusOffset',
@@ -328,12 +328,12 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="checkbox". Uses the subtle chip variant background by default, switching to semantic.color.background.interactive-subtle with semantic.color.text.interactive when selected and enabled. Hover and active states use background-color transitions matching other chip and button components. When disabled, selected or not, it uses component.chip.variants.subtle.disabled with no hover or active change.',
+          'Span element with role="checkbox". Uses the subtle chip variant background by default, switching to semantic.color.fill.accent-muted with semantic.color.text.accent when selected and enabled. Hover and active states use background-color transitions matching other chip and button components. When disabled, selected or not, it uses component.chip.variants.subtle.disabled with no hover or active change.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.hover.backgroundColor',
           'component.chip.variants.subtle.active.backgroundColor',
-          'semantic.color.background.interactive-subtle',
+          'semantic.color.fill.accent-muted',
           'component.chip.default.borderRadius',
           'semantic.motion.hover'
         ]
@@ -343,7 +343,7 @@ States:
         description:
           'Icon rendered with aria-hidden="true" when selected prop is true. Positioned to the left of the label via an inline-flex icon container with right margin.',
         tokens: [
-          'semantic.spacing.layout.xs'
+          'semantic.space.100'
         ]
       },
       {

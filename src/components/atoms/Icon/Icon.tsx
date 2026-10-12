@@ -52,15 +52,15 @@ const IconStyled = styled.span.withConfig({
       case 'emphasis':
         return tokens.semantic.color.icon.emphasis
       case 'subdued':
-        return tokens.semantic.color.icon.subdued
+        return tokens.semantic.color.icon.muted
       case 'disabled':
         return tokens.semantic.color.icon.disabled
       case 'inverse':
         return tokens.semantic.color.icon.inverse
       case 'interactive':
-        return tokens.semantic.color.icon.interactive
+        return tokens.semantic.color.icon.accent
       case 'error':
-        return tokens.semantic.color.icon.error
+        return tokens.semantic.color.icon.danger
       case 'success':
         return tokens.semantic.color.icon.success
       case 'warning':

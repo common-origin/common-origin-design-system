@@ -5,8 +5,8 @@ import tokens from '@/styles/tokens.json'
 import { Typography } from '../Typography'
 
 const { semantic } = tokens
-const { color, border } = semantic
-const { radius } = border
+const { color } = semantic
+const { radius } = semantic
 const { dot, count, ring } = tokens.component.badge
 
 export interface BadgeProps {
@@ -63,11 +63,11 @@ const BadgeIndicator = styled.span.withConfig({
   justify-content: center;
   min-width: ${props => props.$isDot ? dot.size : count.minWidth};
   height: ${props => props.$isDot ? dot.size : count.height};
-  padding: ${props => props.$isDot ? '0' : `0 ${semantic.spacing.component.xs}`};
-  border-radius: ${radius.circle};
+  padding: ${props => props.$isDot ? '0' : `0 ${semantic.space.inset.xs}`};
+  border-radius: ${radius.full};
   line-height: ${count.lineHeight};
   white-space: nowrap;
-  box-shadow: 0 0 0 ${ring.width} ${color.background.default};
+  box-shadow: 0 0 0 ${ring.width} ${semantic.surface.base};
   animation: ${scaleIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeOut};
 
   ${reducedMotion} {
@@ -79,27 +79,27 @@ const BadgeIndicator = styled.span.withConfig({
       case 'accent':
       case 'primary': // Deprecated alias for 'accent', removed in 3.0 (#169)
         return `
-          background-color: ${color.background.interactive};
+          background-color: ${color.fill.accent};
           color: ${color.text.inverse};
         `
       case 'error':
         return `
-          background-color: ${color.background.error};
+          background-color: ${color.fill.danger};
           color: ${color.text.inverse};
         `
       case 'warning':
         return `
-          background-color: ${color.background.warning};
+          background-color: ${color.fill.warning};
           color: ${color.text.inverse};
         `
       case 'success':
         return `
-          background-color: ${color.background.success};
+          background-color: ${color.fill.success};
           color: ${color.text.inverse};
         `
       default:
         return `
-          background-color: ${color.background.emphasis};
+          background-color: ${color.fill.emphasis};
           color: ${color.text.inverse};
         `
     }

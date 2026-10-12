@@ -62,17 +62,17 @@ export const stackDocs: ComponentDocumentation = {
 
   tokens: [
     // Layout spacing tokens used for gap property
-    'semantic.spacing.layout.none',  // 0px
-    'semantic.spacing.layout.xs',    // 4px
-    'semantic.spacing.layout.sm',    // 8px
-    'semantic.spacing.layout.md',    // 16px (default)
-    'semantic.spacing.layout.lg',    // 24px
-    'semantic.spacing.layout.xl',    // 32px
-    'semantic.spacing.layout.2xl',   // 48px
-    'semantic.spacing.layout.3xl',   // 64px
-    'semantic.spacing.layout.4xl',   // 80px
-    'semantic.spacing.layout.5xl',   // 96px
-    'semantic.spacing.layout.6xl'    // 128px
+    'semantic.space.0',  // 0px
+    'semantic.space.100',    // 4px
+    'semantic.space.200',    // 8px
+    'semantic.space.300',    // 16px (default)
+    'semantic.space.400',    // 24px
+    'semantic.space.500',    // 32px
+    'semantic.space.600',   // 48px
+    'semantic.space.700',   // 64px
+    'semantic.space.800',   // 80px
+    'semantic.space.900',   // 96px
+    'semantic.space.1000'    // 128px
   ],
 
   examples: [

@@ -6,11 +6,11 @@ import { visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
-const { color, border, spacing } = semantic
+const { color } = semantic
 const { label } = tokens.component.badge
 const { category } = color
-const { radius } = border
-const { layout } = spacing
+const { radius } = semantic
+const { space } = semantic
 const { label: labelHeight } = semantic.size
 
 /**
@@ -105,7 +105,7 @@ const StyledCategoryLabel = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${radius.circle};
+  border-radius: ${radius.full};
   white-space: nowrap;
   user-select: none;
   border-style: solid;
@@ -114,13 +114,13 @@ const StyledCategoryLabel = styled.span.withConfig({
   /* Size styles */
   height: ${({ $size }) => labelHeight[$size]};
   padding: ${({ $size }) => $size === 'medium' 
-    ? `${layout.xs} ${layout.sm}` 
-    : `${layout.sm} ${layout.md}`
+    ? `${space[100]} ${space[200]}` 
+    : `${space[200]} ${space[300]}`
   };
   font: ${({ $size }) => $size === 'medium' ? label.typography.small : label.typography.medium};
   /* After the font shorthand, which would otherwise reset it */
   font-weight: ${label.fontWeight};
-  gap: ${layout.xs};
+  gap: ${space[100]};
   
   /* Variant + Color styles */
   background-color: ${({ $color, $variant }) => {
@@ -131,7 +131,7 @@ const StyledCategoryLabel = styled.span.withConfig({
       return 'transparent'
     }
     // minimal
-    return category[`${$color}-subtle` as keyof typeof category]
+    return category[`${$color}-muted` as keyof typeof category]
   }};
   
   /* Outlined and minimal text uses the AA text token, not the base colour (issue 115) */

@@ -10,7 +10,7 @@ import { contrastRatio, pseudoClassDeclarations } from '../../../test-utils/cont
 
 expect.extend(toHaveNoViolations)
 
-const { background, text } = tokens.semantic.color
+const { fill, text } = tokens.semantic.color
 
 describe('InputChip', () => {
   it('renders its value', () => {
@@ -52,8 +52,8 @@ describe('InputChip', () => {
     const { container } = render(<InputChip data-testid="chip" selected>Electronics</InputChip>)
     expect(container.querySelector('[aria-hidden="true"] svg')).toBeInTheDocument()
     expect(screen.getByTestId('chip')).toHaveStyle({
-      backgroundColor: background['interactive-subtle'],
-      color: text.interactive,
+      backgroundColor: fill['accent-muted'],
+      color: text.accent,
     })
   })
 
@@ -61,7 +61,7 @@ describe('InputChip', () => {
     render(<InputChip data-testid="chip" selected onDismiss={() => {}}>Electronics</InputChip>)
     const [checkmark, close] = Array.from(screen.getByTestId('chip').querySelectorAll('svg'))
       .map((svg) => svg.parentElement as HTMLElement)
-    expect(checkmark).toHaveStyle({ color: text.interactive })
+    expect(checkmark).toHaveStyle({ color: text.accent })
     // jsdom doesn't resolve `inherit` through the close button, so check the icon's own rule
     expect(pseudoClassDeclarations(close, '')).toContain('color:currentColor;')
   })
@@ -91,32 +91,32 @@ describe('Selected chip treatment (decision 0016)', () => {
     render(<BooleanChip data-testid="chip" selected onClick={() => {}}>In stock</BooleanChip>)
     const chip = screen.getByTestId('chip')
 
-    expect(chip).toHaveStyle({ backgroundColor: background['interactive-subtle'], color: text.interactive })
+    expect(chip).toHaveStyle({ backgroundColor: fill['accent-muted'], color: text.accent })
     expect(pseudoClassDeclarations(chip, ':hover')).toContain(
-      `background-color:${background['interactive-subtle-hover']};color:${text['interactive-hover']};`
+      `background-color:${fill['accent-muted-hover']};color:${text['accent-hover']};`
     )
     expect(pseudoClassDeclarations(chip, ':active')).toContain(
-      `background-color:${background['interactive-subtle-active']};color:${text['interactive-active']};`
+      `background-color:${fill['accent-muted-pressed']};color:${text['accent-pressed']};`
     )
   })
 
   it('draws the toggle chip checkmark in the chip text colour', () => {
     render(<BooleanChip data-testid="chip" selected onClick={() => {}}>In stock</BooleanChip>)
     const icon = screen.getByTestId('chip').querySelector('svg')?.parentElement as HTMLElement
-    expect(icon).toHaveStyle({ color: text.interactive })
+    expect(icon).toHaveStyle({ color: text.accent })
   })
 
   it('keeps the resting colours on hover when the chip is not clickable', () => {
     render(<InputChip data-testid="chip" selected>Electronics</InputChip>)
     expect(pseudoClassDeclarations(screen.getByTestId('chip'), ':hover')).toContain(
-      `background-color:${background['interactive-subtle']};color:${text.interactive};`
+      `background-color:${fill['accent-muted']};color:${text.accent};`
     )
   })
 
   it.each([
-    ['selected', text.interactive, background['interactive-subtle']],
-    ['hover', text['interactive-hover'], background['interactive-subtle-hover']],
-    ['pressed', text['interactive-active'], background['interactive-subtle-active']],
+    ['selected', text.accent, fill['accent-muted']],
+    ['hover', text['accent-hover'], fill['accent-muted-hover']],
+    ['pressed', text['accent-pressed'], fill['accent-muted-pressed']],
   ])('meets 4.5:1 text contrast when %s', (_state, foreground, fill) => {
     expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
   })
@@ -137,12 +137,12 @@ describe('Selected and disabled chips (#110)', () => {
     expect(checkmark).toBeInTheDocument()
     expect(checkmark).toHaveStyle({ color: disabled.textColor })
     const selectedColours = [
-      background['interactive-subtle'],
-      background['interactive-subtle-hover'],
-      background['interactive-subtle-active'],
-      text.interactive,
-      text['interactive-hover'],
-      text['interactive-active'],
+      fill['accent-muted'],
+      fill['accent-muted-hover'],
+      fill['accent-muted-pressed'],
+      text.accent,
+      text['accent-hover'],
+      text['accent-pressed'],
     ]
     for (const pseudoClass of [':hover', ':active']) {
       const declarations = pseudoClassDeclarations(chip, pseudoClass)
