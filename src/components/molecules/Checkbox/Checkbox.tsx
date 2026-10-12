@@ -53,7 +53,7 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
 const StyledFieldContainer = styled.div`
   display: inline-flex;
   flex-direction: column;
-  gap: ${tokens.semantic.spacing.layout.xs};
+  gap: ${tokens.semantic.space[100]};
 `
 
 const StyledHelperText = styled.span<{ $error?: boolean }>`
@@ -62,7 +62,7 @@ const StyledHelperText = styled.span<{ $error?: boolean }>`
     props.$error
       ? tokens.component.field.helperText.colorError
       : tokens.component.field.helperText.color};
-  margin-left: ${tokens.semantic.spacing.layout['5xl']}; /* Align with label text after checkbox */
+  margin-left: ${tokens.semantic.space[900]}; /* Align with label text after checkbox */
   display: block;
 `
 

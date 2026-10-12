@@ -182,10 +182,10 @@ The Checkbox component uses the following design tokens:
 - `component.input.disabled.*` - Disabled state styling
 
 ### Semantic Tokens
-- `semantic.color.background.interactive` - Checked background color
+- `semantic.color.fill.accent` - Checked background color
 - `semantic.color.text.inverse` - Checkmark color
-- `semantic.color.text.error` - Error message color
-- `semantic.color.text.subdued` - Helper text color
+- `semantic.color.text.danger` - Error message color
+- `semantic.color.text.muted` - Helper text color
 - `semantic.typography.small` - Helper/error text typography
 
 ### Base Tokens

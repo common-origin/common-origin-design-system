@@ -6,7 +6,7 @@ import { TabBar, TabBarProps, Tab, TabVariant } from './TabBar'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio, pseudoClassDeclarations } from '../../../test-utils/contrast'
 
-const { background, text } = tokens.semantic.color
+const { text } = tokens.semantic.color
 
 expect.extend(toHaveNoViolations)
 
@@ -67,20 +67,20 @@ describe('TabBar Component', () => {
       renderTabBar()
       const selected = tab(/Overview/i)
       expect(selected).toHaveStyle({
-        backgroundColor: background['interactive-subtle'],
-        color: text.interactive,
+        backgroundColor: tokens.semantic.color.fill['accent-muted'],
+        color: text.accent,
       })
-      expect(pseudoClassDeclarations(selected, '::after')).toContain(`background-color:${background.interactive};`)
+      expect(pseudoClassDeclarations(selected, '::after')).toContain(`background-color:${tokens.semantic.color.fill.accent};`)
     })
 
     it('darkens the selected text with the fill on hover and press', () => {
       renderTabBar()
       const selected = tab(/Overview/i)
       expect(pseudoClassDeclarations(selected, ':hover:not(:disabled)')).toContain(
-        `background-color:${background['interactive-subtle-hover']};color:${text['interactive-hover']};`
+        `background-color:${tokens.semantic.color.fill['accent-muted-hover']};color:${text['accent-hover']};`
       )
       expect(pseudoClassDeclarations(selected, ':active:not(:disabled)')).toContain(
-        `background-color:${background['interactive-subtle-active']};color:${text['interactive-active']};`
+        `background-color:${tokens.semantic.color.fill['accent-muted-pressed']};color:${text['accent-pressed']};`
       )
     })
 
@@ -95,7 +95,7 @@ describe('TabBar Component', () => {
     it('keeps unselected tabs unfilled, subdued, and never blue on hover', () => {
       renderTabBar()
       const unselected = tab(/Analytics/i)
-      expect(unselected).toHaveStyle({ color: text.subdued })
+      expect(unselected).toHaveStyle({ color: text.muted })
       expect(pseudoClassDeclarations(unselected, ':hover:not(:disabled)')).toContain(
         `background-color:transparent;color:${text.default};`
       )
@@ -103,9 +103,9 @@ describe('TabBar Component', () => {
     })
 
     it.each([
-      ['selected', text.interactive, background['interactive-subtle']],
-      ['hover', text['interactive-hover'], background['interactive-subtle-hover']],
-      ['pressed', text['interactive-active'], background['interactive-subtle-active']],
+      ['selected', text.accent, tokens.semantic.color.fill['accent-muted']],
+      ['hover', text['accent-hover'], tokens.semantic.color.fill['accent-muted-hover']],
+      ['pressed', text['accent-pressed'], tokens.semantic.color.fill['accent-muted-pressed']],
     ])('meets 4.5:1 text contrast when %s', (_state, foreground, fill) => {
       expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
     })
@@ -113,7 +113,7 @@ describe('TabBar Component', () => {
     it('shows the blue count badge on the selected tab', () => {
       renderTabBar({ tabs: [{ id: 'tab1', label: 'Inbox', badge: 3 }], activeTab: 'tab1' })
       expect(screen.getByLabelText('3 items')).toHaveStyle({
-        backgroundColor: background.interactive,
+        backgroundColor: tokens.semantic.color.fill.accent,
         color: text.inverse,
       })
     })

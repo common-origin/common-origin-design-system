@@ -82,19 +82,19 @@ export const accountCardDocs: ComponentDocumentation = {
   tokens: [
     'component.accountCard.header.minHeight',
     'component.accountCard.minWidth',
-    'semantic.spacing.layout.lg',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.xs',
-    'semantic.color.background.surface',
-    'semantic.color.background.inverse',
+    'semantic.space.400',
+    'semantic.space.300',
+    'semantic.space.200',
+    'semantic.space.100',
+    'semantic.color.fill.muted',
+    'semantic.color.fill.inverse',
     'semantic.color.border.default',
-    'semantic.border.radius.md',
-    'semantic.color.icon.interactive',
+    'semantic.radius.md',
+    'semantic.color.icon.accent',
     'semantic.color.icon.inverse',
-    'semantic.color.text.subdued',
+    'semantic.color.text.muted',
     'semantic.color.text.success',
-    'semantic.color.text.error',
+    'semantic.color.text.danger',
     'semantic.typography.h4',
     'semantic.typography.caption',
     // Motion
@@ -357,23 +357,23 @@ export const accountCardDocs: ComponentDocumentation = {
         name: 'Box (Card Container)',
         description: 'Root Box component with min dimensions, padding, border, and shadow',
         tokens: [
-          'semantic.spacing.layout.lg',
-          'semantic.color.background.surface',
+          'semantic.space.400',
+          'semantic.color.fill.muted',
           'semantic.color.border.default'
         ]
       },
       {
         name: 'StyledHeader',
         description: 'Header section with flex layout containing icon and account name/number',
-        tokens: ['semantic.spacing.layout.md']
+        tokens: ['semantic.space.300']
       },
       {
         name: 'StyledIconWrapper',
         description: 'Icon container with inverse background color, rounded corners, and fixed dimensions (40x40px)',
         tokens: [
-          'semantic.color.background.inverse',
-          'semantic.border.radius.md',
-          'semantic.color.icon.interactive'
+          'semantic.color.fill.inverse',
+          'semantic.radius.md',
+          'semantic.color.icon.accent'
         ]
       },
       {
@@ -389,17 +389,17 @@ export const accountCardDocs: ComponentDocumentation = {
       {
         name: 'Account Number',
         description: 'Optional last 4 digits in subdued caption text with bullet prefix',
-        tokens: ['semantic.typography.caption', 'semantic.color.text.subdued']
+        tokens: ['semantic.typography.caption', 'semantic.color.text.muted']
       },
       {
         name: 'StyledBalanceSection',
         description: 'Balance display area with label, amount, and optional trend',
-        tokens: ['semantic.spacing.layout.lg']
+        tokens: ['semantic.space.400']
       },
       {
         name: 'Balance Label',
         description: 'Caption text reading "Balance" in subdued color',
-        tokens: ['semantic.typography.caption', 'semantic.color.text.subdued']
+        tokens: ['semantic.typography.caption', 'semantic.color.text.muted']
       },
       {
         name: 'MoneyDisplay',
@@ -409,12 +409,12 @@ export const accountCardDocs: ComponentDocumentation = {
       {
         name: 'StyledTrendSection',
         description: 'Trend indicator with directional icon and value text',
-        tokens: ['semantic.spacing.layout.xs', 'semantic.spacing.layout.sm']
+        tokens: ['semantic.space.100', 'semantic.space.200']
       },
       {
         name: 'Trend Icon',
         description: 'Small directional arrow (up/down/right) with semantic color',
-        tokens: ['semantic.color.text.success', 'semantic.color.text.error', 'semantic.color.text.subdued']
+        tokens: ['semantic.color.text.success', 'semantic.color.text.danger', 'semantic.color.text.muted']
       },
       {
         name: 'Trend Value',
@@ -424,7 +424,7 @@ export const accountCardDocs: ComponentDocumentation = {
       {
         name: 'StyledActions',
         description: 'Action button container with flex layout and equal-width buttons',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       }
     ]
   },

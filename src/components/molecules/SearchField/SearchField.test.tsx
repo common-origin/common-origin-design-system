@@ -637,7 +637,7 @@ describe('SearchField highlighted suggestion', () => {
       probe.style.color = value
       return probe.style.color
     }
-    expect(row(highlighted)).toBe(css(tokens.semantic.color.background.surface))
-    expect(row(other)).not.toBe(css(tokens.semantic.color.background.surface))
+    expect(row(highlighted)).toBe(css(tokens.semantic.color.fill.muted))
+    expect(row(other)).not.toBe(css(tokens.semantic.color.fill.muted))
   })
 })

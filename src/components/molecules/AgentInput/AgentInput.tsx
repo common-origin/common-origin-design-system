@@ -77,7 +77,7 @@ const rotateRing = keyframes`
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${semantic.spacing.layout.sm};
+  gap: ${semantic.space[200]};
   width: 100%;
 `
 
@@ -88,12 +88,12 @@ const ControlsRow = styled.div`
 const InputShell = styled.div`
   display: flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
+  gap: ${semantic.space[200]};
   width: 100%;
-  padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm} ${semantic.spacing.layout.xs} ${semantic.spacing.component.lg};
+  padding: ${semantic.space[100]} ${semantic.space[200]} ${semantic.space[100]} ${semantic.space.inset.lg};
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
-  border-radius: ${semantic.border.radius['3xl']};
+  border-radius: ${semantic.radius['3xl']};
   box-shadow: ${semantic.elevation.raised};
   transition: border-color ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}, outline ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut};
 
@@ -134,11 +134,11 @@ const Input = styled.input`
 const InputActions = styled.div`
   display: inline-flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
+  gap: ${semantic.space[200]};
 `
 
 const CircularActionIconButton = styled(IconButton)`
-  border-radius: ${semantic.border.radius.circle};
+  border-radius: ${semantic.radius.full};
 `
 
 const InputWrapper = styled.div`
@@ -151,7 +151,7 @@ const MicButtonWrapper = styled.div.withConfig({
 })<{ $isListening: boolean; $reducedMotion: boolean }>`
   position: relative;
   display: inline-flex;
-  border-radius: ${semantic.border.radius.circle};
+  border-radius: ${semantic.radius.full};
 
   & > button {
     position: relative;
@@ -168,17 +168,17 @@ const MicListeningRing = styled.span.withConfig({
 })<{ $reducedMotion: boolean }>`
   --ring-thickness: ${semantic.border.width.thick};
   position: absolute;
-  inset: calc(-${semantic.spacing.layout.xs} - ${semantic.border.focusOffset});
-  border-radius: ${semantic.border.radius.circle};
+  inset: calc(-${semantic.space[100]} - ${semantic.border.focusOffset});
+  border-radius: ${semantic.radius.full};
   pointer-events: none;
   z-index: 0;
   background: conic-gradient(
     from 0deg,
-    ${semantic.color.background['interactive-subtle']} 0deg,
-    ${semantic.color.background.interactive} 110deg,
-    ${semantic.color.background['interactive-hover']} 210deg,
-    ${semantic.color.background.interactive} 300deg,
-    ${semantic.color.background['interactive-subtle']} 360deg
+    ${semantic.color.fill['accent-muted']} 0deg,
+    ${semantic.color.fill.accent} 110deg,
+    ${semantic.color.fill['accent-hover']} 210deg,
+    ${semantic.color.fill.accent} 300deg,
+    ${semantic.color.fill['accent-muted']} 360deg
   );
   mask: ${ringMask};
   -webkit-mask: ${ringMask};
@@ -198,14 +198,14 @@ const StatusRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${semantic.spacing.layout.md};
-  min-height: ${semantic.spacing.layout['2xl']};
+  gap: ${semantic.space[300]};
+  min-height: ${semantic.space[600]};
 `
 
 const StatusText = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $isError: boolean }>`
-  padding-left: ${semantic.spacing.layout.xl};
+  padding-left: ${semantic.space[500]};
 `
 
 const StatusAnnouncement = styled.div``
@@ -213,16 +213,16 @@ const StatusAnnouncement = styled.div``
 const MeterContainer = styled.div`
   display: inline-flex;
   align-items: flex-end;
-  gap: ${semantic.spacing.layout.xs};
-  height: ${semantic.spacing.layout.lg};
+  gap: ${semantic.space[100]};
+  height: ${semantic.space[400]};
 `
 
 const MeterBar = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<{ $height: number }>`
-  width: ${semantic.spacing.layout.xs};
-  border-radius: ${semantic.border.radius.xs};
-  background-color: ${semantic.color.background.interactive};
+  width: ${semantic.space[100]};
+  border-radius: ${semantic.radius.xs};
+  background-color: ${semantic.color.fill.accent};
   height: ${({ $height }) => `${$height * 100}%`};
   transition: height ${semantic.motion.duration.fast} ${semantic.motion.easing.easeOut};
 `

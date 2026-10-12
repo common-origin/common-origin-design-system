@@ -12,9 +12,9 @@ const { color, size, typography } = tokens.semantic
 const variants: InlineAlertVariant[] = ['error', 'warning', 'info', 'success']
 const sizes: InlineAlertSize[] = ['small', 'medium']
 const textColour: Record<InlineAlertVariant, string> = {
-  error: color.text.error,
+  error: color.text.danger,
   warning: color.text.warning,
-  info: color.text.interactive,
+  info: color.text.accent,
   success: color.text.success,
 }
 
@@ -36,9 +36,9 @@ describe('InlineAlert', () => {
     })
 
     it.each([
-      ['page', color.background.default],
-      ['white', color.background.subtle],
-      ['grey surface', color.background.surface],
+      ['page', tokens.semantic.surface.base],
+      ['white', tokens.semantic.surface.raised],
+      ['grey surface', color.fill.muted],
     ])('meets 4.5:1 on the %s background', (_name, background) => {
       expect(contrastRatio(textColour[variant], background)).toBeGreaterThanOrEqual(4.5)
     })
@@ -51,7 +51,7 @@ describe('InlineAlert', () => {
 
   it('defaults to info and medium', () => {
     render(<InlineAlert data-testid="alert">Message</InlineAlert>)
-    expect(screen.getByRole('status')).toHaveStyle({ color: color.text.interactive, minHeight: size.label.medium })
+    expect(screen.getByRole('status')).toHaveStyle({ color: color.text.accent, minHeight: size.label.medium })
   })
 
   it.each([

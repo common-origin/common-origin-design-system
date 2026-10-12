@@ -49,14 +49,14 @@ const StyledHeader = styled.div<StyledHeaderProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${tokens.semantic.spacing.layout.md} ${tokens.semantic.spacing.layout.sm};
-  background-color: ${tokens.semantic.color.background.default};
+  padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[200]};
+  background-color: ${tokens.semantic.surface.base};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   
   ${({ $sticky }) => $sticky && `
     position: sticky;
     top: 0;
-    z-index: ${tokens.semantic.zIndex.sticky};
+    z-index: ${tokens.semantic.layer.sticky};
     box-shadow: ${tokens.semantic.elevation.sticky};
   `}
 `
@@ -64,13 +64,13 @@ const StyledHeader = styled.div<StyledHeaderProps>`
 const StyledLeftSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const StyledRightSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.md};
+  gap: ${tokens.semantic.space[300]};
 `
 
 const StyledContent = styled.div`

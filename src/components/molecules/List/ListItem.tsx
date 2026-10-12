@@ -151,7 +151,7 @@ const StyledListItem = styled.li.withConfig({
   
   /* Destructive state - apply error color to text */
   ${({ $destructive, $disabled }) => $destructive && !$disabled && `
-    color: ${semantic.color.text.error};
+    color: ${semantic.color.text.danger};
   `}
 `
 
@@ -166,12 +166,12 @@ const StyledItemContent = styled.div.withConfig({
 }>`
   display: flex;
   align-items: flex-start;
-  gap: ${semantic.spacing.layout.md};
+  gap: ${semantic.space[300]};
   padding: ${({ $spacing }) =>
     $spacing === 'compact'
-      ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md}`
-      : `${semantic.spacing.layout.md} ${semantic.spacing.layout.lg}`};
-  border-radius: ${semantic.border.radius.sm};
+      ? `${semantic.space[200]} ${semantic.space[300]}`
+      : `${semantic.space[300]} ${semantic.space[400]}`};
+  border-radius: ${semantic.radius.sm};
   transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
   cursor: ${({ $interactive, $disabled }) => {
     if ($disabled) return 'not-allowed'
@@ -207,14 +207,14 @@ const StyledTextContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: ${semantic.spacing.layout.xs};
+  gap: ${semantic.space[100]};
   min-width: 0; /* Allow text truncation */
 `
 
 const StyledRightContent = styled.div`
   display: flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
+  gap: ${semantic.space[200]};
   flex-shrink: 0;
   margin-left: auto;
 `
@@ -229,7 +229,7 @@ const StyledChevronIcon = styled.div.withConfig({
   justify-content: center;
   width: ${semantic.size.icon.lg};
   height: ${semantic.size.icon.lg};
-  color: ${semantic.color.icon.subdued};
+  color: ${semantic.color.icon.muted};
   transition: transform ${duration.fast} ${easing.easeOut};
   transform: rotate(${({ $expanded }) => ($expanded ? '180deg' : '0deg')});
   pointer-events: none;
@@ -264,19 +264,19 @@ const StyledExpandedContent = styled.div.withConfig({
   ${({ $expanded, $spacing }) => $expanded && `
     padding: ${
       $spacing === 'compact'
-        ? `${semantic.spacing.layout.sm} ${semantic.spacing.layout.md} ${semantic.spacing.layout.sm} ${tokens.component.listItem.expandedIndent.compact}`
-        : `${semantic.spacing.layout.sm} ${semantic.spacing.layout.lg} ${semantic.spacing.layout.md} ${tokens.component.listItem.expandedIndent.comfortable}`
+        ? `${semantic.space[200]} ${semantic.space[300]} ${semantic.space[200]} ${tokens.component.listItem.expandedIndent.compact}`
+        : `${semantic.space[200]} ${semantic.space[400]} ${semantic.space[300]} ${tokens.component.listItem.expandedIndent.comfortable}`
     };
     background-color: ${semantic.color.background['subtle']};
-    border-radius: ${semantic.border.radius.sm};
+    border-radius: ${semantic.radius.sm};
     margin: 0 ${
       $spacing === 'compact' 
-        ? semantic.spacing.layout.md 
-        : semantic.spacing.layout.lg
+        ? semantic.space[300] 
+        : semantic.space[400]
     } ${
       $spacing === 'compact'
-        ? semantic.spacing.layout.sm
-        : semantic.spacing.layout.md
+        ? semantic.space[200]
+        : semantic.space[300]
     };
   `}
 `

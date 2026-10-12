@@ -101,7 +101,7 @@ describe('ActionSheet', () => {
       renderActionSheet({ 'data-testid': 'action-sheet-test' })
       const sheet = screen.getByTestId('action-sheet-test')
       const backdrop = sheet.previousElementSibling
-      const { modal } = tokens.semantic.zIndex
+      const { modal } = tokens.semantic.layer
       expect(backdrop).toHaveStyle({ zIndex: modal })
       expect(sheet).toHaveStyle({ zIndex: modal })
     })
@@ -111,7 +111,7 @@ describe('ActionSheet', () => {
       // The backdrop is rendered as the sheet's preceding sibling
       const backdrop = screen.getByTestId('action-sheet-test').previousElementSibling
       expect(backdrop).toHaveStyle({
-        backgroundColor: tokens.semantic.color.background.overlay,
+        backgroundColor: tokens.semantic.surface.scrim,
       })
     })
   })

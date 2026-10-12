@@ -43,12 +43,13 @@ export const StyledCheckbox = styled.span.withConfig({
   border: ${tokens.component.input.default.borderWidth} solid;
   background-color: ${(props) =>
     props.$checked || props.$indeterminate
-      ? tokens.semantic.color.background.inverse
+      ? tokens.semantic.color.fill.inverse
       : tokens.component.input.default.backgroundColor};
   border-color: ${(props) => {
     if (props.$state === 'error') return tokens.component.input.error.borderColor
+    // A checked box's border matches its fill, so the box reads as solid
     if (props.$checked || props.$indeterminate)
-      return tokens.semantic.color.border.strong
+      return tokens.semantic.color.fill.inverse
     return tokens.component.input.default.borderColor
   }};
   cursor: ${(props) => (props.$state === 'disabled' ? 'not-allowed' : 'pointer')};
@@ -61,7 +62,7 @@ export const StyledCheckbox = styled.span.withConfig({
       props.$state === 'error'
         ? tokens.component.input.error.hover.borderColor
         : props.$checked || props.$indeterminate
-          ? tokens.semantic.color.border.strong
+          ? tokens.semantic.color.fill.inverse
           : tokens.component.input.hover.borderColor};
   }
 
@@ -119,7 +120,7 @@ export const StyledCheckboxContainer = styled.label.withConfig({
 })<{ $disabled: boolean; $labelPosition: 'left' | 'right' }>`
   display: inline-flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.md};
+  gap: ${tokens.semantic.space[300]};
   cursor: ${(props) => (props.$disabled ? 'not-allowed' : 'pointer')};
   min-height: ${tokens.component.checkbox.row.minHeight};
   flex-direction: ${(props) => (props.$labelPosition === 'left' ? 'row-reverse' : 'row')};

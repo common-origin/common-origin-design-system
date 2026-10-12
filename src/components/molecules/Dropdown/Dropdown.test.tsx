@@ -594,7 +594,7 @@ describe('Dropdown Component', () => {
 
 // Focus is grey; only the selected option is light blue, with a checkmark (decisions 0016, 0029, #168)
 describe('Dropdown option states', () => {
-  const { background, text } = tokens.semantic.color
+  const { text } = tokens.semantic.color
   const options = [
     { id: 'option1', label: 'Option 1' },
     { id: 'option2', label: 'Option 2' },
@@ -609,17 +609,17 @@ describe('Dropdown option states', () => {
 
     // Opening focuses the selected option, which darkens like a hovered selected option
     expect(optionNamed('Option 2')).toHaveStyle({
-      backgroundColor: background['interactive-subtle-hover'],
-      color: text['interactive-hover'],
+      backgroundColor: tokens.semantic.color.fill['accent-muted-hover'],
+      color: text['accent-hover'],
     })
     expect(optionNamed('Option 2')).toContainElement(screen.getByTestId('icon-check'))
     expect(screen.getAllByTestId('icon-check')).toHaveLength(1)
 
     await user.keyboard('{ArrowDown}')
-    expect(optionNamed('Option 3')).toHaveStyle({ backgroundColor: background.surface })
+    expect(optionNamed('Option 3')).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.muted })
     expect(optionNamed('Option 2')).toHaveStyle({
-      backgroundColor: background['interactive-subtle'],
-      color: text.interactive,
+      backgroundColor: tokens.semantic.color.fill['accent-muted'],
+      color: text.accent,
     })
     expect(getComputedStyle(optionNamed('Option 1')).backgroundColor).toMatch(/^(transparent|rgba\(0, 0, 0, 0\))$/)
   })

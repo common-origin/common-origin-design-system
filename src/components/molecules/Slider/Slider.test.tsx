@@ -759,14 +759,14 @@ describe('Slider', () => {
       render(<Slider defaultValue={50} />)
       const { track, fill, thumb } = parts()
       expect(track.backgroundColor).toBe(css(color.background.progressTrack))
-      expect(fill.backgroundColor).toBe(css(color.background.emphasis))
-      expect(thumb.borderColor).toBe(css(color.background.emphasis))
+      expect(fill.backgroundColor).toBe(css(color.fill.emphasis))
+      expect(thumb.borderColor).toBe(css(color.fill.emphasis))
     })
 
     it('shows a disabled value in the disabled foreground colour', () => {
       render(<Slider defaultValue={50} disabled />)
       const { track, fill, thumb } = parts()
-      expect(track.backgroundColor).toBe(css(color.background.disabled))
+      expect(track.backgroundColor).toBe(css(color.fill.disabled))
       expect(fill.backgroundColor).toBe(css(color.icon.disabled))
       expect(thumb.borderColor).toBe(css(color.icon.disabled))
     })

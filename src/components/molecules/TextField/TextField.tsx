@@ -6,7 +6,7 @@ import tokens from '@/styles/tokens.json'
 
 const { field } = tokens.component
 // Gaps come from the semantic spacing scale: no component spacing tokens (decision 0022)
-const { layout: gap } = tokens.semantic.spacing
+const { space } = tokens.semantic
 
 /**
  * Props for the TextField component
@@ -60,14 +60,14 @@ export interface TextFieldProps extends Omit<InputHTMLAttributes<HTMLInputElemen
 const StyledFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${gap.sm};
+  gap: ${space[200]};
   width: 100%;
 `
 
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
-  gap: ${gap.xs};
+  gap: ${space[100]};
   font: ${field.label.typography};
   color: ${field.label.color};
 

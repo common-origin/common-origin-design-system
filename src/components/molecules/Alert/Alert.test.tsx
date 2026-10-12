@@ -349,7 +349,7 @@ describe('Alert', () => {
       expect(actions.parentElement).toBe(message.parentElement)
       expect(actions.previousElementSibling).toBe(message)
       // With the content's xs gap, the space above the action is md
-      const { md, xs } = tokens.semantic.spacing.layout
+      const { 300: md, 100: xs } = tokens.semantic.space
       expect(window.getComputedStyle(message.parentElement as HTMLElement).gap).toBe(xs)
       expect(window.getComputedStyle(actions).marginTop).toBe(`calc(${parseFloat(md) - parseFloat(xs)}rem)`)
     })
@@ -374,7 +374,7 @@ describe('Alert', () => {
       const actions = window.getComputedStyle(save.parentElement as HTMLElement)
       expect(screen.getByRole('button', { name: 'Discard' }).parentElement).toBe(save.parentElement)
       expect(actions.display).toBe('flex')
-      expect(actions.gap).toBe(tokens.semantic.spacing.layout.sm)
+      expect(actions.gap).toBe(tokens.semantic.space[200])
       expect(actions.flexWrap).toBe('wrap')
     })
 

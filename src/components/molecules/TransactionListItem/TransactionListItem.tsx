@@ -60,10 +60,10 @@ const StyledContainer = styled.div<StyledContainerProps>`
   display: flex;
   align-items: center;
   min-height: ${tokens.component.transactionListItem.minHeight};
-  padding: ${tokens.semantic.spacing.layout.md} ${tokens.semantic.spacing.layout.md};
-  background-color: ${tokens.semantic.color.background.default};
+  padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[300]};
+  background-color: ${tokens.semantic.surface.base};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
-  gap: ${tokens.semantic.spacing.layout.md};
+  gap: ${tokens.semantic.space[300]};
   transition: background-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
   
   /* A clickable row uses the shared row states (decision 0030) */
@@ -94,13 +94,13 @@ const StyledTopRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const StyledMerchantSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
   min-width: 0;
   flex: 1;
 `
@@ -109,20 +109,20 @@ const StyledBottomRow = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const StyledMetadata = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const StyledIconIndicator = styled.div`
   display: flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.xs};
-  color: ${tokens.semantic.color.icon.subdued};
+  gap: ${tokens.semantic.space[100]};
+  color: ${tokens.semantic.color.icon.muted};
 `
 
 const StyledTruncatedText = styled.span`

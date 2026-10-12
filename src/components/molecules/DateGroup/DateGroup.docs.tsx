@@ -80,10 +80,10 @@ export const dateGroupDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.border.width.thin',
-    'semantic.zIndex.sticky',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.sm',
-    'semantic.color.background.default',
+    'semantic.layer.sticky',
+    'semantic.space.300',
+    'semantic.space.200',
+    'semantic.surface.base',
     'semantic.color.border.default',
     'semantic.elevation.sticky',
     'semantic.typography.body',
@@ -316,9 +316,9 @@ export const dateGroupDocs: ComponentDocumentation = {
         name: 'StyledHeader',
         description: 'Header container with flexbox layout, border, and optional sticky positioning',
         tokens: [
-          'semantic.spacing.layout.md',
-          'semantic.spacing.layout.sm',
-          'semantic.color.background.default',
+          'semantic.space.300',
+          'semantic.space.200',
+          'semantic.surface.base',
           'semantic.color.border.default',
           'semantic.elevation.sticky'
         ]
@@ -326,7 +326,7 @@ export const dateGroupDocs: ComponentDocumentation = {
       {
         name: 'StyledLeftSection',
         description: 'Left-aligned section containing DateFormatter and optional item count',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       },
       {
         name: 'DateFormatter',
@@ -341,7 +341,7 @@ export const dateGroupDocs: ComponentDocumentation = {
       {
         name: 'StyledRightSection',
         description: 'Right-aligned section containing optional total amount display',
-        tokens: ['semantic.spacing.layout.md']
+        tokens: ['semantic.space.300']
       },
       {
         name: 'MoneyDisplay (Total)',

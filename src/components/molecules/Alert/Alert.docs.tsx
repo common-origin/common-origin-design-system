@@ -110,19 +110,19 @@ export const alertDocs: ComponentDocumentation = {
     'component.alert.appearance.borderless.borderColor.success',
 
     // Colors - Icon
-    'semantic.color.icon.error',
+    'semantic.color.icon.danger',
     'semantic.color.icon.warning',
     'semantic.color.icon.success',
-    'semantic.color.icon.interactive',
+    'semantic.color.icon.accent',
 
     // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
+    'semantic.space.100',
+    'semantic.space.200',
+    'semantic.space.300',
+    'semantic.space.400',
 
     // Border
-    'semantic.border.radius.sm',
+    'semantic.radius.sm',
 
     // Typography
     'component.alert.title.typography',
@@ -558,9 +558,9 @@ export const alertDocs: ComponentDocumentation = {
           'component.alert.appearance.outlined.borderColor.success',
           'component.alert.appearance.borderless.borderColor.success',
           'semantic.border.width.thin',
-          'semantic.spacing.layout.md',
-          'semantic.spacing.layout.lg',
-          'semantic.border.radius.sm'
+          'semantic.space.300',
+          'semantic.space.400',
+          'semantic.radius.sm'
         ]
       },
       {
@@ -579,7 +579,7 @@ export const alertDocs: ComponentDocumentation = {
           'component.alert.title.lineHeight',
           'component.alert.message.typography',
           'component.alert.message.lineHeight',
-          'semantic.spacing.layout.xs'
+          'semantic.space.100'
         ]
       },
       {
@@ -587,9 +587,9 @@ export const alertDocs: ComponentDocumentation = {
         description:
           'Optional container for a custom action, such as a small Button, at the end of the content: below the message and left-aligned with it (decision 0021). With the content\'s xs gap, the space above it is md. Several actions sit side by side, sm apart, and wrap.',
         tokens: [
-          'semantic.spacing.layout.md',
-          'semantic.spacing.layout.xs',
-          'semantic.spacing.layout.sm'
+          'semantic.space.300',
+          'semantic.space.100',
+          'semantic.space.200'
         ]
       },
       {

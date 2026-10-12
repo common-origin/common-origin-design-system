@@ -5,7 +5,7 @@ import { Icon } from '../../atoms/Icon'
 import type { IconName } from '../../../types/icons'
 
 const { semantic } = tokens
-const { color, typography, spacing, size } = semantic
+const { color, typography, size } = semantic
 
 export type InlineAlertVariant = 'error' | 'warning' | 'info' | 'success'
 export type InlineAlertSize = 'small' | 'medium'
@@ -60,15 +60,15 @@ const variantIcons: Record<InlineAlertVariant, IconName> = {
 }
 
 const variantTextColors: Record<InlineAlertVariant, string> = {
-  error: color.text.error,
+  error: color.text.danger,
   warning: color.text.warning,
-  info: color.text.interactive,
+  info: color.text.accent,
   success: color.text.success
 }
 
 const sizeConfig = {
-  small: { font: typography.caption, gap: spacing.layout.xs, icon: 'xs' as const },
-  medium: { font: typography.small, gap: spacing.layout.sm, icon: 'sm' as const }
+  small: { font: typography.caption, gap: semantic.space[100], icon: 'xs' as const },
+  medium: { font: typography.small, gap: semantic.space[200], icon: 'sm' as const }
 }
 
 const StyledInlineAlert = styled.div.withConfig({

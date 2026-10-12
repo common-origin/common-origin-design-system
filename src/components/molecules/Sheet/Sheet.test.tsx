@@ -61,7 +61,7 @@ describe('Sheet', () => {
       )
       const backdrop = screen.getByTestId('sheet-overlay')
       const panel = screen.getByRole('dialog')
-      const { overlay } = tokens.semantic.zIndex
+      const { overlay } = tokens.semantic.layer
       expect(backdrop).toHaveStyle({ zIndex: overlay })
       expect(panel).toHaveStyle({ zIndex: overlay })
       expect(backdrop.compareDocumentPosition(panel) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
@@ -86,7 +86,7 @@ describe('Sheet', () => {
       )
 
       expect(screen.getByTestId('sheet-overlay')).toHaveStyle({
-        backgroundColor: tokens.semantic.color.background.overlay,
+        backgroundColor: tokens.semantic.surface.scrim,
       })
     })
     

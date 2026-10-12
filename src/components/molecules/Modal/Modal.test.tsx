@@ -117,7 +117,7 @@ describe('Modal', () => {
     it('uses the overlay token for the backdrop', () => {
       renderModal({ 'data-testid': 'modal' })
       expect(screen.getByTestId('modal-overlay')).toHaveStyle({
-        backgroundColor: tokens.semantic.color.background.overlay,
+        backgroundColor: tokens.semantic.surface.scrim,
       })
     })
 
@@ -125,7 +125,7 @@ describe('Modal', () => {
       renderModal({ 'data-testid': 'modal' })
       const backdrop = screen.getByTestId('modal-overlay')
       const dialog = screen.getByRole('dialog')
-      const { modal } = tokens.semantic.zIndex
+      const { modal } = tokens.semantic.layer
       expect(backdrop).toHaveStyle({ zIndex: modal })
       expect(dialog).toHaveStyle({ zIndex: modal })
       // Same z-index: the dialog paints above the backdrop because it comes later in the DOM

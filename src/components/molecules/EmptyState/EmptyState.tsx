@@ -56,9 +56,9 @@ const StyledContainer = styled.div.withConfig({
   max-width: ${tokens.component.emptyState.maxWidth};
   margin: 0 auto;
   padding: ${({ $size }) => 
-    $size === 'small' ? semantic.spacing.layout['4xl'] :
-    $size === 'large' ? semantic.spacing.layout['8xl'] :
-    semantic.spacing.layout['6xl']
+    $size === 'small' ? semantic.space[800] :
+    $size === 'large' ? semantic.space[1400] :
+    semantic.space[1000]
   };
 `
 
@@ -83,17 +83,17 @@ const StyledIllustration = styled.div.withConfig({
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: ${semantic.spacing.layout['2xl']};
+  margin-bottom: ${semantic.space[600]};
   color: ${({ $variant }) =>
-    $variant === 'error' ? semantic.color.icon.error :
+    $variant === 'error' ? semantic.color.icon.danger :
     $variant === 'success' ? semantic.color.icon.success :
-    semantic.color.icon.subdued
+    semantic.color.icon.muted
   };
 `
 
 const StyledTextContainer = styled.div`
   max-width: ${tokens.component.emptyState.text.maxWidth};
-  margin-bottom: ${semantic.spacing.layout['2xl']};
+  margin-bottom: ${semantic.space[600]};
 `
 
 // Map illustration type to icon name
@@ -150,7 +150,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({
           {title}
         </Typography>
         
-        <div style={{ marginTop: semantic.spacing.layout.md }}>
+        <div style={{ marginTop: semantic.space[300] }}>
           <Typography variant="body" color="subdued">
             {description}
           </Typography>

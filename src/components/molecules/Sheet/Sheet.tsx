@@ -139,8 +139,8 @@ const StyledOverlay = styled.div.withConfig({
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: ${semantic.color.background.overlay};
-  z-index: ${semantic.zIndex.overlay};
+  background-color: ${semantic.surface.scrim};
+  z-index: ${semantic.layer.overlay};
   ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
 `
 
@@ -154,16 +154,16 @@ const StyledSheet = styled.div.withConfig({
   $isExiting: boolean
 }>`
   position: fixed;
-  background-color: ${semantic.color.background.default};
+  background-color: ${semantic.surface.base};
   box-shadow: ${semantic.elevation.overlay};
-  z-index: ${semantic.zIndex.overlay};
+  z-index: ${semantic.layer.overlay};
   overflow-y: auto;
   
   /* Position-specific styles */
   ${({ $position, $variant, $width, $height }) => {
     const isDrawer = $variant === 'drawer'
-    const margin = isDrawer ? semantic.spacing.layout.lg : '0'
-    const borderRadius = isDrawer ? semantic.border.radius.md : '0'
+    const margin = isDrawer ? semantic.space[400] : '0'
+    const borderRadius = isDrawer ? semantic.radius.md : '0'
     
     switch ($position) {
       case 'right':
@@ -172,7 +172,7 @@ const StyledSheet = styled.div.withConfig({
           right: ${margin};
           bottom: ${margin};
           width: ${$width};
-          max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
+          max-width: calc(100vw - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
           animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
@@ -182,7 +182,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           bottom: ${margin};
           width: ${$width};
-          max-width: calc(100vw - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
+          max-width: calc(100vw - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
           animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
@@ -192,7 +192,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           right: ${margin};
           height: ${$height};
-          max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
+          max-height: calc(100vh - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
           animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
@@ -202,7 +202,7 @@ const StyledSheet = styled.div.withConfig({
           left: ${margin};
           right: ${margin};
           height: ${$height};
-          max-height: calc(100vh - ${isDrawer ? `${semantic.spacing.layout.lg} * 2` : '0px'});
+          max-height: calc(100vh - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
           animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
         `
@@ -221,25 +221,25 @@ const StyledSheet = styled.div.withConfig({
   
   /* Scrollbar styling */
   &::-webkit-scrollbar {
-    width: ${semantic.spacing.layout.sm};
+    width: ${semantic.space[200]};
   }
   
   &::-webkit-scrollbar-track {
-    background: ${semantic.color.background.subtle};
+    background: ${semantic.surface.raised};
   }
   
   &::-webkit-scrollbar-thumb {
     background: ${semantic.color.border.default};
-    border-radius: ${semantic.border.radius.circle};
+    border-radius: ${semantic.radius.full};
   }
   
   &::-webkit-scrollbar-thumb:hover {
-    background: ${semantic.color.border.strong};
+    background: ${semantic.color.fill.inverse};
   }
 `
 
 const StyledSheetContent = styled.div`
-  padding: ${semantic.spacing.layout['2xl']};
+  padding: ${semantic.space[600]};
   min-height: 100%;
 `
 

@@ -224,16 +224,16 @@ export const checkboxDocs: ComponentDocumentation = {
     'component.input.disabled.borderColor',
 
     // Semantic tokens: the checked and indeterminate box
-    'semantic.color.background.inverse',
-    'semantic.color.border.strong',
+    'semantic.color.fill.inverse',
+    'semantic.color.fill.inverse',
     'semantic.color.text.inverse',
-    'semantic.color.text.error',
-    'semantic.color.text.subdued',
+    'semantic.color.text.danger',
+    'semantic.color.text.muted',
 
     // Base tokens
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.5xl',
+    'semantic.space.100',
+    'semantic.space.300',
+    'semantic.space.900',
     // Motion
     'semantic.motion.duration.fast',
     'semantic.motion.easing.easeOut',
@@ -292,8 +292,8 @@ export const checkboxDocs: ComponentDocumentation = {
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
           'component.input.default.borderWidth',
-          'semantic.color.background.inverse',
-          'semantic.color.border.strong',
+          'semantic.color.fill.inverse',
+          'semantic.color.fill.inverse',
           'semantic.color.text.inverse',
         ],
       },
@@ -301,7 +301,7 @@ export const checkboxDocs: ComponentDocumentation = {
         name: 'Label Container',
         description:
           'Container element that wraps checkbox and label, provides 48px touch target and handles label positioning',
-        tokens: ['semantic.spacing.layout.md'],
+        tokens: ['semantic.space.300'],
       },
       {
         name: 'Label Text',
@@ -314,8 +314,8 @@ export const checkboxDocs: ComponentDocumentation = {
         tokens: [
           'component.field.helperText.typography',
           'component.field.helperText.color',
-          'semantic.spacing.layout.5xl',
-          'semantic.spacing.layout.xs',
+          'semantic.space.900',
+          'semantic.space.100',
         ],
       },
       {
@@ -325,8 +325,8 @@ export const checkboxDocs: ComponentDocumentation = {
         tokens: [
           'component.field.helperText.typography',
           'component.field.helperText.colorError',
-          'semantic.spacing.layout.5xl',
-          'semantic.spacing.layout.xs',
+          'semantic.space.900',
+          'semantic.space.100',
         ],
       },
     ],

@@ -13,7 +13,7 @@ describe('InputBase', () => {
     expect(style.borderRadius).toBe(input.default.borderRadius)
     expect(style.font).toBe(`400 1rem / 1.5rem "Inter", sans-serif`)
     expect(style.minHeight).toBe(input.textarea.minHeight)
-    expect(style.padding).toBe(`${semantic.spacing.component.md} ${semantic.spacing.component.lg}`)
+    expect(style.padding).toBe(`${semantic.space.inset.md} ${semantic.space.inset.lg}`)
     expect(style.resize).toBe('vertical')
   })
 

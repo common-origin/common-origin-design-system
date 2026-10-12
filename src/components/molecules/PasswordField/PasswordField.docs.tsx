@@ -131,11 +131,11 @@ export const passwordFieldDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.spacing.layout.sm',
+    'semantic.space.200',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     'component.field.requiredIndicator.color',
     'component.field.requiredIndicator.fontWeight',
     'component.field.helperText.typography',
@@ -167,12 +167,12 @@ export const passwordFieldDocs: ComponentDocumentation = {
     'component.button.variants.naked.hover.backgroundColor',
     
     // Spacing
-    'semantic.spacing.layout.md',
+    'semantic.space.300',
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
     // Input padding and focus offset, from the semantic tier (decision 0022)
-    'semantic.spacing.component.lg',
+    'semantic.space.inset.lg',
     'semantic.border.focusOffset',
   ],
 
@@ -369,7 +369,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
       {
         name: 'PasswordField Container',
         description: 'Root flex container organizing label, input wrapper, and helper text vertically with consistent spacing',
-        tokens: ['semantic.spacing.layout.sm'],
+        tokens: ['semantic.space.200'],
       },
       {
         name: 'Label',
@@ -380,7 +380,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.field.label.colorDisabled',
           'component.field.requiredIndicator.color',
           'component.field.requiredIndicator.fontWeight',
-          'semantic.spacing.layout.xs',
+          'semantic.space.100',
         ],
       },
       {
@@ -399,7 +399,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
           'component.input.error.borderColor',
           'component.input.disabled.backgroundColor',
           'component.input.default.font',
-          'semantic.spacing.layout.md',
+          'semantic.space.300',
         ],
       },
       {
@@ -408,7 +408,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
         tokens: [
           'component.button.variants.naked.backgroundColor',
           'component.button.variants.naked.hover.backgroundColor',
-          'semantic.spacing.layout.sm',
+          'semantic.space.200',
         ],
       },
       {

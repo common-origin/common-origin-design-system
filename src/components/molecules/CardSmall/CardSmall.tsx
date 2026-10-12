@@ -26,7 +26,7 @@ const CardSmallStyled = styled.div`
   }
 
   img {
-    border-radius: ${tokens.semantic.border.radius.sm};
+    border-radius: ${tokens.semantic.radius.sm};
     transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
     width: 100%;
     height: auto;
@@ -41,7 +41,7 @@ const CardSmallStyled = styled.div`
 
   &:focus-within {
     outline: none;
-    box-shadow: 0 0 0 ${tokens.semantic.border.width.thick} ${tokens.semantic.color.border.strong};
+    box-shadow: 0 0 0 ${tokens.semantic.border.width.thick} ${tokens.semantic.color.border.focus};
   }
 `
 

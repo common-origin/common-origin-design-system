@@ -124,28 +124,28 @@ export const sliderDocs: ComponentDocumentation = {
   
   tokens: [
     // Colors
-    'semantic.color.background.disabled',
+    'semantic.color.fill.disabled',
     'semantic.color.background.progressTrack',
     'semantic.color.background.subtle',
-    'semantic.color.background.emphasis',
+    'semantic.color.fill.emphasis',
     'semantic.color.icon.disabled',
     'semantic.border.focus',
     'semantic.border.focusOffset',
     'semantic.color.text.default',
     'semantic.color.text.disabled',
-    'semantic.color.text.subdued',
+    'semantic.color.text.muted',
     'semantic.color.text.inverse',
     
     // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.xl',
-    'semantic.spacing.layout.4xl',
-    'semantic.spacing.layout.6xl',
+    'semantic.space.100',
+    'semantic.space.200',
+    'semantic.space.500',
+    'semantic.space.800',
+    'semantic.space.1000',
     
     // Border
-    'semantic.border.radius.sm',
-    'semantic.border.radius.circle',
+    'semantic.radius.sm',
+    'semantic.radius.full',
     'semantic.border.width.thick',
     
     // Typography
@@ -371,7 +371,7 @@ export const sliderDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'Root wrapper organizing label, track, and range labels',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       },
       {
         name: 'Label',
@@ -385,37 +385,37 @@ export const sliderDocs: ComponentDocumentation = {
       {
         name: 'Track Container',
         description: 'Wrapper for track and thumbs with relative positioning',
-        tokens: ['semantic.spacing.layout.6xl']
+        tokens: ['semantic.space.1000']
       },
       {
         name: 'Track',
         description: 'Background track showing the full slider range',
         tokens: [
-          'semantic.spacing.layout.xs',
-          'semantic.border.radius.circle',
+          'semantic.space.100',
+          'semantic.radius.full',
           'semantic.color.background.progressTrack',
-          'semantic.color.background.disabled'
+          'semantic.color.fill.disabled'
         ]
       },
       {
         name: 'Track Fill',
         description: 'Filled portion of track indicating selected value or range',
         tokens: [
-          'semantic.color.background.emphasis',
+          'semantic.color.fill.emphasis',
           'semantic.color.icon.disabled',
-          'semantic.border.radius.circle'
+          'semantic.radius.full'
         ]
       },
       {
         name: 'Thumb',
         description: 'Draggable circular control for adjusting values with focus and hover states',
         tokens: [
-          'semantic.spacing.layout.xl',
-          'semantic.border.radius.circle',
+          'semantic.space.500',
+          'semantic.radius.full',
           'semantic.border.width.thick',
           'semantic.color.background.subtle',
-          'semantic.color.background.disabled',
-          'semantic.color.background.emphasis',
+          'semantic.color.fill.disabled',
+          'semantic.color.fill.emphasis',
           'semantic.color.icon.disabled',
           'semantic.border.focus',
           'semantic.border.focusOffset',
@@ -429,13 +429,13 @@ export const sliderDocs: ComponentDocumentation = {
         name: 'Value Label',
         description: 'Tooltip-style label showing current value above thumb',
         tokens: [
-          'semantic.spacing.layout.xs',
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.4xl',
-          'semantic.color.background.emphasis',
+          'semantic.space.100',
+          'semantic.space.200',
+          'semantic.space.800',
+          'semantic.color.fill.emphasis',
           'semantic.color.text.inverse',
           'semantic.typography.caption',
-          'semantic.border.radius.sm',
+          'semantic.radius.sm',
           'semantic.opacity.disabled',
           'semantic.opacity.full'
         ]
@@ -445,8 +445,8 @@ export const sliderDocs: ComponentDocumentation = {
         description: 'Range labels showing minimum and maximum values',
         tokens: [
           'semantic.typography.caption',
-          'semantic.color.text.subdued',
-          'semantic.spacing.layout.xs'
+          'semantic.color.text.muted',
+          'semantic.space.100'
         ]
       }
     ]

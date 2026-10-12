@@ -308,28 +308,28 @@ export const actionSheetDocs: ComponentDocumentation = {
   ],
   
   tokens: [
-    'semantic.zIndex.modal',
-    'semantic.color.background.subtle',
-    'semantic.color.background.surface',
+    'semantic.layer.modal',
+    'semantic.surface.raised',
+    'semantic.color.fill.muted',
     'semantic.color.border.default',
     'semantic.color.text.default',
-    'semantic.color.text.subdued',
-    'semantic.color.text.error',
+    'semantic.color.text.muted',
+    'semantic.color.text.danger',
     'semantic.color.text.disabled',
-    'semantic.color.icon.subdued',
+    'semantic.color.icon.muted',
     'semantic.color.icon.default',
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
+    'semantic.space.100',
+    'semantic.space.200',
+    'semantic.space.300',
+    'semantic.space.400',
     'semantic.border.default',
     'semantic.border.focus',
-    'semantic.border.radius.sm',
-    'semantic.border.radius.lg',
+    'semantic.radius.sm',
+    'semantic.radius.lg',
     'semantic.typography.h3',
     'semantic.typography.body',
     'semantic.elevation.overlay',
-    'semantic.color.background.overlay',
+    'semantic.surface.scrim',
     // Motion
     'semantic.motion.hover',
     'semantic.motion.duration.normal',
@@ -476,14 +476,14 @@ const actions = [
       {
         name: 'Overlay',
         description: 'Full-screen semi-transparent backdrop',
-        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.modal']
+        tokens: ['semantic.surface.scrim', 'semantic.layer.modal']
       },
       {
         name: 'Sheet Container',
         description: 'Bottom-aligned container that slides up on open and fades out on close',
         tokens: [
-          'semantic.color.background.subtle',
-          'semantic.border.radius.lg',
+          'semantic.surface.raised',
+          'semantic.radius.lg',
           'semantic.elevation.overlay'
         ]
       },
@@ -492,8 +492,8 @@ const actions = [
         description: 'Optional header with title, description, and close button',
         tokens: [
           'semantic.border.default',
-          'semantic.spacing.layout.lg',
-          'semantic.spacing.layout.md',
+          'semantic.space.400',
+          'semantic.space.300',
           'semantic.typography.h3'
         ]
       },
@@ -501,21 +501,21 @@ const actions = [
         name: 'Close Button',
         description: 'Icon button to dismiss the sheet',
         tokens: [
-          'semantic.color.icon.subdued',
-          'semantic.border.radius.sm',
+          'semantic.color.icon.muted',
+          'semantic.radius.sm',
           'semantic.border.focus'
         ]
       },
       {
         name: 'Actions List',
         description: 'Scrollable list of action buttons using ListItem components',
-        tokens: ['semantic.spacing.layout.sm', 'semantic.spacing.layout.md']
+        tokens: ['semantic.space.200', 'semantic.space.300']
       },
       {
         name: 'Action Item (ListItem)',
         description: 'Individual action using ListItem with optional icon and interactive states',
         tokens: [
-          'semantic.color.background.surface',
+          'semantic.color.fill.muted',
           'semantic.typography.body'
         ]
       },
@@ -523,7 +523,7 @@ const actions = [
         name: 'Destructive Action',
         description: 'Action styled in error color using ListItem destructive prop',
         tokens: [
-          'semantic.color.text.error'
+          'semantic.color.text.danger'
         ]
       },
       {

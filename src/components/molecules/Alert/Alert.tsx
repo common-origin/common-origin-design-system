@@ -161,10 +161,10 @@ const StyledAlert = styled.div.withConfig({
   /* Items start at the top, so the icon and dismiss button line up with the first line */
   align-items: flex-start;
   gap: ${({ $inline }) =>
-    $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
+    $inline ? semantic.space[200] : semantic.space[300]};
   padding: ${({ $inline }) =>
-    $inline ? semantic.spacing.layout.sm : semantic.spacing.layout.md};
-  border-radius: ${semantic.border.radius.sm};
+    $inline ? semantic.space[200] : semantic.space[300]};
+  border-radius: ${semantic.radius.sm};
   border: ${semantic.border.width.thin} solid;
   position: relative;
   width: 100%;
@@ -179,8 +179,8 @@ const StyledAlert = styled.div.withConfig({
   @media (min-width: ${semantic.breakpoint.md}) {
     padding: ${({ $inline }) =>
       $inline
-        ? semantic.spacing.layout.sm
-        : semantic.spacing.layout.lg};
+        ? semantic.space[200]
+        : semantic.space[400]};
   }
 
   /* The exit is chosen once, when dismissed (not by a media query), so a reduced-motion
@@ -205,7 +205,7 @@ const StyledContent = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: ${semantic.spacing.layout.xs};
+  gap: ${semantic.space[100]};
   min-width: 0; /* Allow text wrapping */
 `
 
@@ -227,8 +227,8 @@ const StyledActions = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
-  margin-top: calc(${semantic.spacing.layout.md} - ${semantic.spacing.layout.xs});
+  gap: ${semantic.space[200]};
+  margin-top: calc(${semantic.space[300]} - ${semantic.space[100]});
 `
 
 // The dismiss button's centre lines up with the first line of content: the title, or the

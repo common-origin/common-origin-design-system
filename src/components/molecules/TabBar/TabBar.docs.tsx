@@ -56,37 +56,37 @@ export const tabBarDocs: ComponentDocumentation = {
   tokens: [
     // Tab list
     'semantic.border.width.thin',
-    'semantic.color.border.subtle',
+    'semantic.color.border.emphasis',
     'component.tabBar.scrollbar.height',
-    'semantic.color.background.subtle',
+    'semantic.surface.raised',
     'semantic.color.border.default',
-    'semantic.border.radius.sm',
+    'semantic.radius.sm',
     // Tab
     'semantic.typography.button2',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
-    'semantic.color.text.subdued',
+    'semantic.space.200',
+    'semantic.space.300',
+    'semantic.space.400',
+    'semantic.color.text.muted',
     'semantic.color.text.default',
     'semantic.motion.hover',
     // Selected tab (decisions 0016, 0020): the text darkens with the fill
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.text.interactive',
-    'semantic.color.background.interactive-subtle-hover',
-    'semantic.color.text.interactive-hover',
-    'semantic.color.background.interactive-subtle-active',
-    'semantic.color.text.interactive-active',
+    'semantic.color.fill.accent-muted',
+    'semantic.color.text.accent',
+    'semantic.color.fill.accent-muted-hover',
+    'semantic.color.text.accent-hover',
+    'semantic.color.fill.accent-muted-pressed',
+    'semantic.color.text.accent-pressed',
     // Underline
-    'semantic.color.background.interactive',
+    'semantic.color.fill.accent',
     'semantic.border.width.thick',
     // Focus
-    'semantic.color.border.strong',
-    'semantic.spacing.layout.xs',
+    'semantic.color.border.focus',
+    'semantic.space.100',
     // Count badge
     'component.tabBar.badge.size',
     'component.tabBar.badge.typography',
     'component.tabBar.badge.fontWeight',
-    'semantic.border.radius.circle',
+    'semantic.radius.full',
     'semantic.color.text.inverse'
   ],
 
@@ -366,7 +366,7 @@ return (
         description: 'Horizontal scrollable container with role="tablist". Displays tabs in a row with optional overflow scrolling. Styled scrollbar for better UX.',
         tokens: [
           'semantic.border.width.thin',
-          'semantic.color.border.subtle',
+          'semantic.color.border.emphasis',
           'component.tabBar.scrollbar.height'
         ]
       },
@@ -374,26 +374,26 @@ return (
         name: 'Tab Button',
         description: 'Individual tab element with role="tab". Unselected: subdued text, no fill, darkening to the default text colour on hover. Selected: the light-blue fill with blue text, both darkening on hover and press. Disabled tabs are at half opacity. Includes aria-selected and aria-disabled attributes.',
         tokens: [
-          'semantic.color.text.subdued',
+          'semantic.color.text.muted',
           'semantic.color.text.default',
-          'semantic.color.background.interactive-subtle',
-          'semantic.color.text.interactive',
-          'semantic.color.background.interactive-subtle-hover',
-          'semantic.color.text.interactive-hover',
-          'semantic.color.background.interactive-subtle-active',
-          'semantic.color.text.interactive-active',
+          'semantic.color.fill.accent-muted',
+          'semantic.color.text.accent',
+          'semantic.color.fill.accent-muted-hover',
+          'semantic.color.text.accent-hover',
+          'semantic.color.fill.accent-muted-pressed',
+          'semantic.color.text.accent-pressed',
           'semantic.typography.button2',
-          'semantic.spacing.layout.md',
-          'semantic.spacing.layout.lg'
+          'semantic.space.300',
+          'semantic.space.400'
         ]
       },
       {
         name: 'Badge',
         description: 'Optional circular badge displaying notification or item count. Positioned inline after tab label. Shows "99+" for values over 99. Has aria-label for accessibility.',
         tokens: [
-          'semantic.color.background.interactive',
+          'semantic.color.fill.accent',
           'semantic.color.text.inverse',
-          'semantic.border.radius.circle',
+          'semantic.radius.full',
           'component.tabBar.badge.typography',
           'component.tabBar.badge.fontWeight'
         ]
@@ -402,7 +402,7 @@ return (
         name: 'Underline',
         description: 'A blue underline under the selected tab, on top of the tab list border. Transitions with the hover motion token when the selection changes.',
         tokens: [
-          'semantic.color.background.interactive',
+          'semantic.color.fill.accent',
           'semantic.border.width.thick',
           'semantic.motion.hover'
         ]

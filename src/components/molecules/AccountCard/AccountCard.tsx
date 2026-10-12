@@ -12,8 +12,7 @@ import tokens from '../../../styles/tokens.json'
 
 // Destructure tokens for cleaner access
 const { semantic } = tokens
-const { spacing } = semantic
-const { layout } = spacing
+const { space } = semantic
 
 export type AccountType = 'checking' | 'savings' | 'credit' | 'investment' | 'loan'
 export type TrendDirection = 'up' | 'down' | 'neutral'
@@ -61,18 +60,18 @@ export interface AccountCardProps {
 }
 
 const StyledBalanceSection = styled.div`
-  margin-bottom: ${layout.lg};
+  margin-bottom: ${space[400]};
 `
 
 const StyledTrendSection = styled.div`
   display: flex;
   align-items: center;
-  gap: ${layout.xs};
+  gap: ${space[100]};
 `
 
 const StyledActions = styled.div`
   display: flex;
-  gap: ${layout.sm};
+  gap: ${space[200]};
   margin-top: auto;
 `
 
@@ -85,10 +84,10 @@ const StyledHeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: ${layout.none};
+  gap: ${space[0]};
 
   & > span {
-    margin-top: -${layout.xs};
+    margin-top: -${space[100]};
   }
 `
 
