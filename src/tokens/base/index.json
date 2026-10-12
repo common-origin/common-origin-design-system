@@ -2,6 +2,7 @@
   "base": {
     "border": {
       "radius": {
+        "$description": "Corner radius scale from 1 (2px) to 7 (32px); the key is the step, and circle makes a pill or circle.",
         "1": {
           "$value": "0.125rem"
         },
@@ -29,6 +30,7 @@
         }
       },
       "style": {
+        "$description": "Border line styles, keyed by their CSS name.",
         "$type": "strokeStyle",
         "solid": {
           "$value": "solid"
@@ -41,6 +43,7 @@
         }
       },
       "width": {
+        "$description": "Border width scale; the key is the width in pixels (2 is 0.125rem, 2px).",
         "0": {
           "$value": "0"
         },
@@ -69,6 +72,7 @@
       }
     },
     "shadow": {
+      "$description": "Shadow scale from 1 (subtle) to 6 (deepest), plus none; the key is the elevation step.",
       "1": {
         "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.05)"
       },
@@ -93,6 +97,7 @@
       }
     },
     "zIndex": {
+      "$description": "Stacking order: 1–5 are 10–50 for layers within the page, 6–8 are 1000 and up for overlays.",
       "0": {
         "$value": "0"
       },
@@ -123,6 +128,7 @@
       "$type": "number"
     },
     "opacity": {
+      "$description": "Opacity scale; the key is the percentage (50 is 0.5).",
       "0": {
         "$value": "0"
       },
@@ -171,6 +177,7 @@
       "$type": "number"
     },
     "size": {
+      "$description": "Dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px).",
       "0": {
         "$value": "0"
       },
@@ -294,12 +301,14 @@
       }
     },
     "color": {
+      "$description": "Colour palette: a neutral ramp and seven hue ramps, plus transparent.",
       "$type": "color",
       "transparent": {
         "$value": "transparent",
         "$description": "Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none)."
       },
       "neutral": {
+        "$description": "Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black).",
         "100": {
           "$value": "#f8f9fa"
         },
@@ -335,6 +344,7 @@
         }
       },
       "green": {
+        "$description": "Green ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#CEF8E0"
         },
@@ -376,6 +386,7 @@
         }
       },
       "orange": {
+        "$description": "Orange ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#FFECCC"
         },
@@ -417,6 +428,7 @@
         }
       },
       "red": {
+        "$description": "Red ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#FFEBE7"
         },
@@ -458,6 +470,7 @@
         }
       },
       "blue": {
+        "$description": "Blue ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#E0F2FF"
         },
@@ -499,6 +512,7 @@
         }
       },
       "purple": {
+        "$description": "Purple ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#F9F0FF"
         },
@@ -540,6 +554,7 @@
         }
       },
       "pink": {
+        "$description": "Pink ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#FFEFF9"
         },
@@ -581,6 +596,7 @@
         }
       },
       "yellow": {
+        "$description": "Yellow ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
           "$value": "#FFF3D6"
         },
@@ -623,6 +639,7 @@
       }
     },
     "spacing": {
+      "$description": "Spacing scale on the 4px grid; the key is the multiple of 4px (4 is 1rem, 16px), plus auto.",
       "0": {
         "$value": "0"
       },
@@ -695,6 +712,7 @@
       }
     },
     "fontFamily": {
+      "$description": "Font stacks keyed by role: heading, body and monospace.",
       "$type": "fontFamily",
       "heading": {
         "$value": "'Inter', sans-serif"
@@ -707,6 +725,7 @@
       }
     },
     "fontSize": {
+      "$description": "Type size scale from 1 (0.75rem, 12px) to 10 (5rem, 80px); the key is the step.",
       "1": {
         "$value": "0.75rem"
       },
@@ -740,6 +759,7 @@
       "$type": "dimension"
     },
     "fontWeight": {
+      "$description": "Font weight scale from 1 (300, light) to 7 (900, black); the key is the step.",
       "1": {
         "$value": "300"
       },
@@ -766,6 +786,7 @@
       "$type": "fontWeight"
     },
     "lineHeight": {
+      "$description": "Line height scale from 1 (1rem) to 11 (5rem), plus none (1, the font size); the key is the step.",
       "1": {
         "$value": "1rem",
         "$type": "dimension"
@@ -816,6 +837,7 @@
       }
     },
     "letterSpacing": {
+      "$description": "Letter spacing from 0 (tightest, -0.125rem) to 4 (widest, 0.125rem); 2 is normal.",
       "0": {
         "$value": "-0.125rem"
       },
@@ -834,6 +856,7 @@
       "$type": "dimension"
     },
     "breakpoint": {
+      "$description": "Viewport widths where layouts change, from xs (0) to 2xl (1536px), keyed by size.",
       "$type": "dimension",
       "xs": {
         "$value": "0px"
@@ -855,6 +878,7 @@
       }
     },
     "duration": {
+      "$description": "Animation durations from instant (0ms) to slowest (1000ms), keyed by speed.",
       "$type": "duration",
       "instant": {
         "$value": "0ms"
@@ -879,6 +903,7 @@
       }
     },
     "easing": {
+      "$description": "Timing functions keyed by their CSS name; the Quart and Back curves are stronger variants.",
       "$type": "cubicBezier",
       "linear": {
         "$value": "linear"

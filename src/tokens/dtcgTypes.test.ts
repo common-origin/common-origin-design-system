@@ -48,6 +48,17 @@ function descriptions(node: Node, path: string[] = [], out: [string, string][] =
   return out
 }
 
+// Every group that holds tokens directly, with its own description (or '' if it has none)
+function groupDescriptions(node: Node, path: string[] = [], out: [string, string][] = []) {
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith('$') || typeof child !== 'object' || '$value' in child) continue
+    const holdsTokens = Object.values(child).some((grandchild) => typeof grandchild === 'object' && '$value' in grandchild)
+    if (holdsTokens) out.push([[...path, key].join('.'), typeof child.$description === 'string' ? child.$description : ''])
+    groupDescriptions(child, [...path, key], out)
+  }
+  return out
+}
+
 const sources = [base, semantic, component] as unknown as Node[]
 const typeOf = new Map(sources.flatMap((source) => [...types(source)]))
 
@@ -61,9 +72,8 @@ describe('DTCG types', () => {
     expect(problems).toEqual([])
   })
 
-  // Decision 0014, rule 6: every token has a description saying what it's for. This covers the
-  // semantic and component tiers. The 274 base tokens don't have descriptions yet, an open question
-  // on #24, so base isn't checked here.
+  // Decision 0014, rule 6, as amended by 0033: every semantic and component token has a
+  // description saying when to use it
   it('describe every semantic and component token', () => {
     const undescribed = [semantic, component]
       .flatMap((source) => descriptions(source as unknown as Node))
@@ -71,6 +81,15 @@ describe('DTCG types', () => {
       .filter(([, description]) => !description.trim())
       .map(([path]) => path)
     expect(undescribed).toEqual([])
+  })
+
+  // Base tokens are described per group, not per token: what the scale is and how it's keyed
+  // (decision 0033, #201). Components never use base tokens, so a per-token description would
+  // only restate the value.
+  it('describe every base group that holds tokens', () => {
+    const groups = groupDescriptions(base as unknown as Node)
+    expect(groups.length).toBeGreaterThan(0)
+    expect(groups.filter(([, description]) => !description.trim()).map(([path]) => path)).toEqual([])
   })
 
   it('match between an alias and the token it references', () => {
