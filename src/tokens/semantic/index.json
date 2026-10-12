@@ -158,19 +158,43 @@
       "$type": "number",
       "sticky": {
         "$value": "{base.zIndex.1}",
-        "$description": "Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals."
+        "$description": "Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals.",
+        "$deprecated": "Renamed to semantic.layer.sticky by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.layer.sticky"
+          }
+        }
       },
       "dropdown": {
         "$value": "{base.zIndex.6}",
-        "$description": "Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays."
+        "$description": "Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays.",
+        "$deprecated": "Renamed to semantic.layer.dropdown by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.layer.dropdown"
+          }
+        }
       },
       "overlay": {
         "$value": "{base.zIndex.7}",
-        "$description": "Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals."
+        "$description": "Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals.",
+        "$deprecated": "Renamed to semantic.layer.overlay by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.layer.overlay"
+          }
+        }
       },
       "modal": {
         "$value": "{base.zIndex.8}",
-        "$description": "Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system."
+        "$description": "Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system.",
+        "$deprecated": "Renamed to semantic.layer.modal by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.layer.modal"
+          }
+        }
       }
     },
     "border": {
@@ -182,21 +206,33 @@
       "subtle": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
-        "$description": "Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025)."
+        "$description": "Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025).",
+        "$deprecated": "Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.border.emphasis"
+          }
+        }
       },
       "strong": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
-        "$description": "Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white."
+        "$description": "Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white.",
+        "$deprecated": "Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.border.input-hover"
+          }
+        }
       },
       "focus": {
         "$type": "border",
-        "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.strong}",
+        "$value": "{base.border.width.2} {base.border.style.solid} {semantic.color.border.focus}",
         "$description": "The focus ring: 2px solid near-black, always used with border.focusOffset for visible keyboard focus (P2). Every component draws this ring; there is no blue focus ring (decision 0029)."
       },
       "tooltip": {
         "$type": "border",
-        "$value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.subtle}",
+        "$value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.emphasis}",
         "$description": "2px dotted underline marking text that has a tooltip."
       },
       "width": {
@@ -219,40 +255,104 @@
         "$type": "dimension",
         "none": {
           "$value": "0",
-          "$description": "No rounding - tables, dividers, inline code blocks, sharp-edged containers"
+          "$description": "No rounding - tables, dividers, inline code blocks, sharp-edged containers",
+          "$deprecated": "Renamed to semantic.radius.none by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.none"
+            }
+          }
         },
         "xs": {
           "$value": "{base.border.radius.1}",
-          "$description": "Minimal rounding - small badges, compact tags, inline buttons, checkboxes"
+          "$description": "Minimal rounding - small badges, compact tags, inline buttons, checkboxes",
+          "$deprecated": "Renamed to semantic.radius.xs by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.xs"
+            }
+          }
         },
         "sm": {
           "$value": "{base.border.radius.2}",
-          "$description": "Subtle rounding - buttons, inputs, chips, form controls, list items"
+          "$description": "Subtle rounding - buttons, inputs, chips, form controls, list items",
+          "$deprecated": "Renamed to semantic.radius.sm by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.sm"
+            }
+          }
         },
         "md": {
           "$value": "{base.border.radius.3}",
-          "$description": "Standard rounding - cards, containers, dropdowns, popovers, menus"
+          "$description": "Standard rounding - cards, containers, dropdowns, popovers, menus",
+          "$deprecated": "Renamed to semantic.radius.md by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.md"
+            }
+          }
         },
         "lg": {
           "$value": "{base.border.radius.4}",
-          "$description": "Generous rounding - modals, action sheets, dialogs, feature cards, panels"
+          "$description": "Generous rounding - modals, action sheets, dialogs, feature cards, panels",
+          "$deprecated": "Renamed to semantic.radius.lg by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.lg"
+            }
+          }
         },
         "xl": {
           "$value": "{base.border.radius.5}",
-          "$description": "Large rounding - pills, pill buttons, prominent CTAs, search bars"
+          "$description": "Large rounding - pills, pill buttons, prominent CTAs, search bars",
+          "$deprecated": "Renamed to semantic.radius.xl by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.xl"
+            }
+          }
         },
         "2xl": {
           "$value": "{base.border.radius.6}",
-          "$description": "Extra large rounding - hero elements, decorative containers, large pills"
+          "$description": "Extra large rounding - hero elements, decorative containers, large pills",
+          "$deprecated": "Renamed to semantic.radius.2xl by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.2xl"
+            }
+          }
         },
         "3xl": {
           "$value": "{base.border.radius.7}",
-          "$description": "Maximum rounding - decorative elements, marketing components, large decorative cards"
+          "$description": "Maximum rounding - decorative elements, marketing components, large decorative cards",
+          "$deprecated": "Renamed to semantic.radius.3xl by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.3xl"
+            }
+          }
         },
         "circle": {
           "$value": "{base.border.radius.circle}",
-          "$description": "Fully circular - avatars, round icon buttons, status indicators, FABs"
+          "$description": "Fully circular - avatars, round icon buttons, status indicators, FABs",
+          "$deprecated": "Renamed to semantic.radius.full by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.radius.full"
+            }
+          }
         }
+      },
+      "emphasis": {
+        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.emphasis}",
+        "$type": "border",
+        "$description": "Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge."
+      },
+      "input-hover": {
+        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.input-hover}",
+        "$type": "border",
+        "$description": "Firm hairline that must read as a boundary, such as a hovered text input."
       }
     },
     "size": {
@@ -312,71 +412,173 @@
       "dimension": {
         "1": {
           "$value": "{base.size.1}",
-          "$description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens)."
+          "$description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.100"
+            }
+          }
         },
         "2": {
           "$value": "{base.size.2}",
-          "$description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022."
+          "$description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.200"
+            }
+          }
         },
         "4": {
           "$value": "{base.size.4}",
-          "$description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022."
+          "$description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.400"
+            }
+          }
         },
         "5": {
           "$value": "{base.size.5}",
-          "$description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small)."
+          "$description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small).",
+          "$deprecated": "Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.500"
+            }
+          }
         },
         "6": {
           "$value": "{base.size.6}",
-          "$description": "1.5rem (24px): medium label height (via size.label.medium)."
+          "$description": "1.5rem (24px): medium label height (via size.label.medium).",
+          "$deprecated": "Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.600"
+            }
+          }
         },
         "8": {
           "$value": "{base.size.8}",
-          "$description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large)."
+          "$description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large).",
+          "$deprecated": "Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.800"
+            }
+          }
         },
         "12": {
           "$value": "{base.size.12}",
-          "$description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens)."
+          "$description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.1200"
+            }
+          }
         },
         "15": {
           "$value": "{base.size.15}",
-          "$description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens)."
+          "$description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.1500"
+            }
+          }
         },
         "18": {
           "$value": "{base.size.18}",
-          "$description": "4.5rem (72px): TransactionListItem minimum height (via component tokens)."
+          "$description": "4.5rem (72px): TransactionListItem minimum height (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.1800"
+            }
+          }
         },
         "20": {
           "$value": "{base.size.20}",
-          "$description": "5rem (80px): small EmptyState illustration (via component tokens)."
+          "$description": "5rem (80px): small EmptyState illustration (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.2000"
+            }
+          }
         },
         "30": {
           "$value": "{base.size.30}",
-          "$description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens)."
+          "$description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.3000"
+            }
+          }
         },
         "45": {
           "$value": "{base.size.45}",
-          "$description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens)."
+          "$description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.4500"
+            }
+          }
         },
         "50": {
           "$value": "{base.size.50}",
-          "$description": "12.5rem (200px): large EmptyState illustration (via component tokens)."
+          "$description": "12.5rem (200px): large EmptyState illustration (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.5000"
+            }
+          }
         },
         "75": {
           "$value": "{base.size.75}",
-          "$description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens)."
+          "$description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.7500"
+            }
+          }
         },
         "90": {
           "$value": "{base.size.90}",
-          "$description": "22.5rem (360px): EmptyState text maximum width (via component tokens)."
+          "$description": "22.5rem (360px): EmptyState text maximum width (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.9000"
+            }
+          }
         },
         "100": {
           "$value": "{base.size.100}",
-          "$description": "25rem (400px): EmptyState maximum width (via component tokens)."
+          "$description": "25rem (400px): EmptyState maximum width (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.10000"
+            }
+          }
         },
         "192": {
           "$value": "{base.size.192}",
-          "$description": "48rem (768px): CardLarge maximum width (via component tokens)."
+          "$description": "48rem (768px): CardLarge maximum width (via component tokens).",
+          "$deprecated": "Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.size.19200"
+            }
+          }
         }
       },
       "icon": {
@@ -426,6 +628,74 @@
           "$value": "{base.size.16}",
           "$description": "4rem (64px): extra-large avatar, on profile pages."
         }
+      },
+      "100": {
+        "$value": "{base.size.1}",
+        "$description": "Size step for thin bars: the TabBar scrollbar, the small ProgressBar."
+      },
+      "200": {
+        "$value": "{base.size.2}",
+        "$description": "Size step for small marks: the Badge dot, the medium ProgressBar."
+      },
+      "400": {
+        "$value": "{base.size.4}",
+        "$description": "Size step for compact indicators: the Badge count, the large ProgressBar."
+      },
+      "500": {
+        "$value": "{base.size.5}",
+        "$description": "Size step for small boxes: the Checkbox box, TabBar count badges, small labels."
+      },
+      "600": {
+        "$value": "{base.size.6}",
+        "$description": "Size step for the medium label height, used by chips and StatusLabel."
+      },
+      "800": {
+        "$value": "{base.size.8}",
+        "$description": "Size step for compact rows and large labels, such as the Checkbox row."
+      },
+      "1200": {
+        "$value": "{base.size.12}",
+        "$description": "Size step for headers and indents, such as the AccountCard header."
+      },
+      "1500": {
+        "$value": "{base.size.15}",
+        "$description": "Size step for the comfortable ListItem expanded indent."
+      },
+      "1800": {
+        "$value": "{base.size.18}",
+        "$description": "Size step for tall rows, such as the TransactionListItem minimum height."
+      },
+      "2000": {
+        "$value": "{base.size.20}",
+        "$description": "Size step for small illustrations, such as the small EmptyState image."
+      },
+      "3000": {
+        "$value": "{base.size.30}",
+        "$description": "Size step for medium illustrations and multi-line inputs: EmptyState, TextArea."
+      },
+      "4500": {
+        "$value": "{base.size.45}",
+        "$description": "Size step for truncation widths, such as a Breadcrumbs label."
+      },
+      "5000": {
+        "$value": "{base.size.50}",
+        "$description": "Size step for large illustrations, such as the large EmptyState image."
+      },
+      "7500": {
+        "$value": "{base.size.75}",
+        "$description": "Size step for narrow column widths: AccountCard, EmptyState actions."
+      },
+      "9000": {
+        "$value": "{base.size.90}",
+        "$description": "Size step for readable text widths, such as EmptyState copy."
+      },
+      "10000": {
+        "$value": "{base.size.100}",
+        "$description": "Size step for compact panel widths, such as the EmptyState block."
+      },
+      "19200": {
+        "$value": "{base.size.192}",
+        "$description": "Size step for wide content columns, such as CardLarge."
       }
     },
     "spacing": {
@@ -433,111 +703,267 @@
       "separator": {
         "sm": {
           "$value": "{base.spacing.4}",
-          "$description": "1rem: space around a small Divider, above and below when horizontal, either side when vertical."
+          "$description": "1rem: space around a small Divider, above and below when horizontal, either side when vertical.",
+          "$deprecated": "Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.400"
+            }
+          }
         },
         "md": {
           "$value": "{base.spacing.6}",
-          "$description": "1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical."
+          "$description": "1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical.",
+          "$deprecated": "Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.600"
+            }
+          }
         },
         "lg": {
           "$value": "{base.spacing.8}",
-          "$description": "2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical."
+          "$description": "2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical.",
+          "$deprecated": "Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.800"
+            }
+          }
         },
         "xl": {
           "$value": "{base.spacing.12}",
-          "$description": "3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical."
+          "$description": "3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical.",
+          "$deprecated": "Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.1200"
+            }
+          }
         }
       },
       "component": {
         "xs": {
           "$value": "{base.spacing.1}",
-          "$description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips."
+          "$description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips.",
+          "$deprecated": "Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.xs"
+            }
+          }
         },
         "sm": {
           "$value": "{base.spacing.2}",
-          "$description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing."
+          "$description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing.",
+          "$deprecated": "Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.sm"
+            }
+          }
         },
         "md": {
           "$value": "{base.spacing.3}",
-          "$description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding."
+          "$description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding.",
+          "$deprecated": "Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.md"
+            }
+          }
         },
         "lg": {
           "$value": "{base.spacing.4}",
-          "$description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing."
+          "$description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing.",
+          "$deprecated": "Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.lg"
+            }
+          }
         },
         "xl": {
           "$value": "{base.spacing.5}",
-          "$description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs."
+          "$description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs.",
+          "$deprecated": "Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.xl"
+            }
+          }
         },
         "2xl": {
           "$value": "{base.spacing.6}",
-          "$description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections."
+          "$description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections.",
+          "$deprecated": "Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.inset.2xl"
+            }
+          }
         }
       },
       "layout": {
         "none": {
           "$value": "{base.spacing.0}",
-          "$description": "0: no space, for explicit resets."
+          "$description": "0: no space, for explicit resets.",
+          "$deprecated": "Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.0"
+            }
+          }
         },
         "xs": {
           "$value": "{base.spacing.1}",
-          "$description": "0.25rem: the tightest gap, such as between a label and its required indicator."
+          "$description": "0.25rem: the tightest gap, such as between a label and its required indicator.",
+          "$deprecated": "Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.100"
+            }
+          }
         },
         "sm": {
           "$value": "{base.spacing.2}",
-          "$description": "0.5rem: a small gap, such as between a field's label, control and helper text."
+          "$description": "0.5rem: a small gap, such as between a field's label, control and helper text.",
+          "$deprecated": "Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.200"
+            }
+          }
         },
         "md": {
           "$value": "{base.spacing.3}",
-          "$description": "0.75rem: the default gap between related elements."
+          "$description": "0.75rem: the default gap between related elements.",
+          "$deprecated": "Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.300"
+            }
+          }
         },
         "lg": {
           "$value": "{base.spacing.4}",
-          "$description": "1rem: space between groups of elements, and padding inside containers."
+          "$description": "1rem: space between groups of elements, and padding inside containers.",
+          "$deprecated": "Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.400"
+            }
+          }
         },
         "xl": {
           "$value": "{base.spacing.5}",
-          "$description": "1.25rem: generous padding inside larger containers."
+          "$description": "1.25rem: generous padding inside larger containers.",
+          "$deprecated": "Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.500"
+            }
+          }
         },
         "2xl": {
           "$value": "{base.spacing.6}",
-          "$description": "1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.600"
+            }
+          }
         },
         "3xl": {
           "$value": "{base.spacing.7}",
-          "$description": "1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.700"
+            }
+          }
         },
         "4xl": {
           "$value": "{base.spacing.8}",
-          "$description": "2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.800"
+            }
+          }
         },
         "5xl": {
           "$value": "{base.spacing.9}",
-          "$description": "2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.900"
+            }
+          }
         },
         "6xl": {
           "$value": "{base.spacing.10}",
-          "$description": "2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.1000"
+            }
+          }
         },
         "7xl": {
           "$value": "{base.spacing.12}",
-          "$description": "3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.1200"
+            }
+          }
         },
         "8xl": {
           "$value": "{base.spacing.14}",
-          "$description": "3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.1400"
+            }
+          }
         },
         "9xl": {
           "$value": "{base.spacing.16}",
-          "$description": "4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs."
+          "$description": "4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
+          "$deprecated": "Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.1600"
+            }
+          }
         },
         "10xl": {
           "$value": "{base.spacing.20}",
-          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl."
+          "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl.",
+          "$deprecated": "Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.2000"
+            }
+          }
         },
         "11xl": {
           "$value": "{base.spacing.24}",
-          "$description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints)."
+          "$description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints).",
+          "$deprecated": "Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.space.2400"
+            }
+          }
         },
         "auto": {
           "$value": "{base.spacing.auto}",
@@ -558,7 +984,13 @@
         },
         "subdued": {
           "$value": "{base.color.neutral.700}",
-          "$description": "Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page."
+          "$description": "Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page.",
+          "$deprecated": "Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.muted"
+            }
+          }
         },
         "inverse": {
           "$value": "{base.color.neutral.000}",
@@ -570,19 +1002,43 @@
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
-          "$description": "Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page."
+          "$description": "Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page.",
+          "$deprecated": "Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.accent"
+            }
+          }
         },
         "interactive-hover": {
           "$value": "{base.color.blue.1000}",
-          "$description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016."
+          "$description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016.",
+          "$deprecated": "Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.accent-hover"
+            }
+          }
         },
         "interactive-active": {
           "$value": "{base.color.blue.1100}",
-          "$description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016."
+          "$description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016.",
+          "$deprecated": "Renamed to semantic.color.text.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.accent-pressed"
+            }
+          }
         },
         "error": {
           "$value": "{base.color.red.900}",
-          "$description": "Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page."
+          "$description": "Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page.",
+          "$deprecated": "Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.danger"
+            }
+          }
         },
         "success": {
           "$value": "{base.color.green.900}",
@@ -591,112 +1047,283 @@
         "warning": {
           "$value": "{base.color.orange.900}",
           "$description": "Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page."
+        },
+        "muted": {
+          "$value": "{base.color.neutral.700}",
+          "$description": "Secondary text: helper text, metadata, timestamps."
+        },
+        "accent": {
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue text for links and selected items; never decoration, see 0003."
+        },
+        "accent-hover": {
+          "$value": "{base.color.blue.1000}",
+          "$description": "Text of a hovered selected item, on the accent-muted-hover fill."
+        },
+        "accent-pressed": {
+          "$value": "{base.color.blue.1100}",
+          "$description": "Text of a pressed selected item, on the accent-muted-pressed fill."
+        },
+        "danger": {
+          "$value": "{base.color.red.900}",
+          "$description": "Error text: field error messages, InlineAlert errors."
         }
       },
       "background": {
         "default": {
           "$value": "{base.color.neutral.100}",
-          "$description": "Page background: a cool off-white (#f8f9fa), never pure white (decision 0006)."
+          "$description": "Page background: a cool off-white (#f8f9fa), never pure white (decision 0006).",
+          "$deprecated": "Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.surface.base"
+            }
+          }
         },
         "subtle": {
           "$value": "{base.color.neutral.000}",
-          "$description": "White: inputs, sheets and other surfaces that sit on the page background."
+          "$description": "White: inputs, sheets and other surfaces that sit on the page background.",
+          "$deprecated": "Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; Slider's thumb moves to a component token (#189). Removed in 3.0."
         },
         "emphasis": {
           "$value": "{base.color.neutral.900}",
-          "$description": "Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip."
+          "$description": "Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip.",
+          "$deprecated": "Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.emphasis"
+            }
+          }
         },
         "emphasis-hover": {
           "$value": "{base.color.neutral.800}",
-          "$description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022."
+          "$description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.emphasis-hover"
+            }
+          }
         },
         "emphasis-active": {
           "$value": "{base.color.neutral.1000}",
-          "$description": "Fill of a pressed emphasis control. Approved under decision 0022."
+          "$description": "Fill of a pressed emphasis control. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.emphasis-pressed"
+            }
+          }
         },
         "surface": {
           "$value": "{base.color.neutral.200}",
-          "$description": "Light grey fill for quiet surfaces and grouped content, such as the default Chip."
+          "$description": "Light grey fill for quiet surfaces and grouped content, such as the default Chip.",
+          "$deprecated": "Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.muted"
+            }
+          }
         },
         "inverse": {
           "$value": "{base.color.neutral.800}",
-          "$description": "Dark grey fill for inverse surfaces, such as a checked Checkbox box."
+          "$description": "Dark grey fill for inverse surfaces, such as a checked Checkbox box.",
+          "$deprecated": "Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.inverse"
+            }
+          }
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
-          "$description": "Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1)."
+          "$description": "Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1).",
+          "$deprecated": "Renamed to semantic.color.fill.accent by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent"
+            }
+          }
         },
         "interactive-subtle": {
           "$value": "{base.color.blue.100}",
-          "$description": "Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive."
+          "$description": "Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive.",
+          "$deprecated": "Renamed to semantic.color.fill.accent-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent-muted"
+            }
+          }
         },
         "interactive-subtle-hover": {
           "$value": "{base.color.blue.200}",
-          "$description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016."
+          "$description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016.",
+          "$deprecated": "Renamed to semantic.color.fill.accent-muted-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent-muted-hover"
+            }
+          }
         },
         "interactive-subtle-active": {
           "$value": "{base.color.blue.300}",
-          "$description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016."
+          "$description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016.",
+          "$deprecated": "Renamed to semantic.color.fill.accent-muted-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent-muted-pressed"
+            }
+          }
         },
         "interactive-hover": {
           "$value": "{base.color.blue.1000}",
-          "$description": "Blue fill on hover, for controls that use background.interactive."
+          "$description": "Blue fill on hover, for controls that use background.interactive.",
+          "$deprecated": "Renamed to semantic.color.fill.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent-hover"
+            }
+          }
         },
         "interactive-active": {
           "$value": "{base.color.blue.1100}",
-          "$description": "Blue fill while pressed, for controls that use background.interactive."
+          "$description": "Blue fill while pressed, for controls that use background.interactive.",
+          "$deprecated": "Renamed to semantic.color.fill.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.accent-pressed"
+            }
+          }
         },
         "error": {
           "$value": "{base.color.red.900}",
-          "$description": "Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1)."
+          "$description": "Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1).",
+          "$deprecated": "Renamed to semantic.color.fill.danger by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.danger"
+            }
+          }
         },
         "error-hover": {
           "$value": "{base.color.red.1000}",
-          "$description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022."
+          "$description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.danger-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.danger-hover"
+            }
+          }
         },
         "error-active": {
           "$value": "{base.color.red.1100}",
-          "$description": "Fill of a pressed error control. Approved under decision 0022."
+          "$description": "Fill of a pressed error control. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.danger-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.danger-pressed"
+            }
+          }
         },
         "error-subtle": {
           "$value": "{base.color.red.100}",
-          "$description": "Light red tint behind error messages, such as an error Alert."
+          "$description": "Light red tint behind error messages, such as an error Alert.",
+          "$deprecated": "Renamed to semantic.color.fill.danger-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.danger-muted"
+            }
+          }
         },
         "success": {
           "$value": "{base.color.green.900}",
-          "$description": "Strong green fill for success states."
+          "$description": "Strong green fill for success states.",
+          "$deprecated": "Renamed to semantic.color.fill.success by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.success"
+            }
+          }
         },
         "success-subtle": {
           "$value": "{base.color.green.100}",
-          "$description": "Light green tint behind success messages, such as a success Alert."
+          "$description": "Light green tint behind success messages, such as a success Alert.",
+          "$deprecated": "Renamed to semantic.color.fill.success-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.success-muted"
+            }
+          }
         },
         "warning": {
           "$value": "{base.color.orange.900}",
-          "$description": "Strong orange fill for warning states."
+          "$description": "Strong orange fill for warning states.",
+          "$deprecated": "Renamed to semantic.color.fill.warning by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.warning"
+            }
+          }
         },
         "warning-subtle": {
           "$value": "{base.color.orange.100}",
-          "$description": "Light orange tint behind warning messages, such as a warning Alert."
+          "$description": "Light orange tint behind warning messages, such as a warning Alert.",
+          "$deprecated": "Renamed to semantic.color.fill.warning-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.warning-muted"
+            }
+          }
         },
         "disabled": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Fill of disabled controls."
+          "$description": "Fill of disabled controls.",
+          "$deprecated": "Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.disabled"
+            }
+          }
         },
         "neutral": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022."
+          "$description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.default"
+            }
+          }
         },
         "neutral-hover": {
           "$value": "{base.color.neutral.400}",
-          "$description": "Fill of a hovered neutral control. Approved under decision 0022."
+          "$description": "Fill of a hovered neutral control. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.default-hover"
+            }
+          }
         },
         "neutral-active": {
           "$value": "{base.color.neutral.500}",
-          "$description": "Fill of a pressed neutral control. Approved under decision 0022."
+          "$description": "Fill of a pressed neutral control. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.default-pressed"
+            }
+          }
         },
         "transparent": {
           "$value": "{base.color.transparent}",
-          "$description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022."
+          "$description": "No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022.",
+          "$deprecated": "Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.none"
+            }
+          }
         },
         "progressTrack": {
           "$value": "{base.color.neutral.300}",
@@ -704,23 +1331,53 @@
         },
         "page": {
           "$value": "{base.color.neutral.100}",
-          "$description": "The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that."
+          "$description": "The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that.",
+          "$deprecated": "Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.surface.base"
+            }
+          }
         },
         "overlay": {
           "$value": "rgba(33, 37, 41, 0.5)",
-          "$description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content."
+          "$description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content.",
+          "$deprecated": "Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.surface.scrim"
+            }
+          }
         },
         "hover-overlay": {
           "$value": "rgba(33, 37, 41, 0.1)",
-          "$description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL."
+          "$description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL.",
+          "$deprecated": "Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.none-hover"
+            }
+          }
         },
         "active-overlay": {
           "$value": "rgba(33, 37, 41, 0.15)",
-          "$description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth."
+          "$description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth.",
+          "$deprecated": "Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.none-pressed"
+            }
+          }
         },
         "inverse-overlay": {
           "$value": "rgba(255, 255, 255, 0.2)",
-          "$description": "Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse."
+          "$description": "Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse.",
+          "$deprecated": "Renamed to semantic.color.fill.inverse-none-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.fill.inverse-none-hover"
+            }
+          }
         }
       },
       "border": {
@@ -730,23 +1387,48 @@
         },
         "subtle": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025)."
+          "$description": "Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025).",
+          "$deprecated": "Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.border.emphasis"
+            }
+          }
         },
         "control": {
           "$value": "{base.color.neutral.600}",
-          "$description": "Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025)."
+          "$description": "Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025).",
+          "$deprecated": "Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.border.input"
+            }
+          }
         },
         "strong": {
           "$value": "{base.color.neutral.800}",
-          "$description": "Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white."
+          "$description": "Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white.",
+          "$deprecated": "Split by use (decision 0031): semantic.color.border.input-hover for a hovered control, semantic.color.border.focus for the focus ring and CardSmall's ring, semantic.color.fill.inverse for drag handles. Removed in 3.0."
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
-          "$description": "Blue border for selected and interactive states (decision 0003). 5.39:1 on white."
+          "$description": "Blue border for selected and interactive states (decision 0003). 5.39:1 on white.",
+          "$deprecated": "Renamed to semantic.color.border.accent by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.border.accent"
+            }
+          }
         },
         "error": {
           "$value": "{base.color.red.900}",
-          "$description": "Red border for invalid fields and error outlines. 5.41:1 on white."
+          "$description": "Red border for invalid fields and error outlines. 5.41:1 on white.",
+          "$deprecated": "Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.border.danger"
+            }
+          }
         },
         "success": {
           "$value": "{base.color.green.900}",
@@ -759,6 +1441,30 @@
         "none": {
           "$value": "{base.color.transparent}",
           "$description": "An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019)."
+        },
+        "emphasis": {
+          "$value": "{base.color.neutral.300}",
+          "$description": "Border for dividers, decorative outlines and disabled controls; never a resting control edge."
+        },
+        "input": {
+          "$value": "{base.color.neutral.600}",
+          "$description": "Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox."
+        },
+        "input-hover": {
+          "$value": "{base.color.neutral.800}",
+          "$description": "Edge of a hovered control, such as a hovered text input or Dropdown."
+        },
+        "focus": {
+          "$value": "{base.color.neutral.800}",
+          "$description": "The focus ring, and rings that mark the current item, such as on CardSmall (0029)."
+        },
+        "accent": {
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue border for selected items; never decoration, see 0003."
+        },
+        "danger": {
+          "$value": "{base.color.red.900}",
+          "$description": "Border of an invalid field and other error outlines."
         }
       },
       "icon": {
@@ -772,7 +1478,13 @@
         },
         "subdued": {
           "$value": "{base.color.neutral.600}",
-          "$description": "Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1)."
+          "$description": "Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1).",
+          "$deprecated": "Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.muted"
+            }
+          }
         },
         "disabled": {
           "$value": "{base.color.neutral.500}",
@@ -784,19 +1496,43 @@
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
-          "$description": "Blue icons in links and selected items, matching text.interactive. 5.39:1 on white."
+          "$description": "Blue icons in links and selected items, matching text.interactive. 5.39:1 on white.",
+          "$deprecated": "Renamed to semantic.color.icon.accent by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.accent"
+            }
+          }
         },
         "interactive-hover": {
           "$value": "{base.color.blue.1000}",
-          "$description": "Blue icon on hover, matching text.interactive-hover."
+          "$description": "Blue icon on hover, matching text.interactive-hover.",
+          "$deprecated": "Renamed to semantic.color.icon.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.accent-hover"
+            }
+          }
         },
         "interactive-active": {
           "$value": "{base.color.blue.1100}",
-          "$description": "Blue icon while pressed, matching text.interactive-active."
+          "$description": "Blue icon while pressed, matching text.interactive-active.",
+          "$deprecated": "Renamed to semantic.color.icon.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.accent-pressed"
+            }
+          }
         },
         "error": {
           "$value": "{base.color.red.900}",
-          "$description": "Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)"
+          "$description": "Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)",
+          "$deprecated": "Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.danger"
+            }
+          }
         },
         "success": {
           "$value": "{base.color.green.900}",
@@ -805,6 +1541,26 @@
         "warning": {
           "$value": "{base.color.orange.900}",
           "$description": "Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.)"
+        },
+        "muted": {
+          "$value": "{base.color.neutral.600}",
+          "$description": "Secondary icons, such as list item and empty-state icons."
+        },
+        "accent": {
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue icons in links and selected items, matching color.text.accent."
+        },
+        "accent-hover": {
+          "$value": "{base.color.blue.1000}",
+          "$description": "Icon of a hovered selected item, matching color.text.accent-hover."
+        },
+        "accent-pressed": {
+          "$value": "{base.color.blue.1100}",
+          "$description": "Icon of a pressed selected item, matching color.text.accent-pressed."
+        },
+        "danger": {
+          "$value": "{base.color.red.900}",
+          "$description": "Error icons, such as in Alert and EmptyState."
         }
       },
       "financial": {
@@ -854,7 +1610,13 @@
         },
         "blue-subtle": {
           "$value": "{base.color.blue.100}",
-          "$description": "Subtle blue background"
+          "$description": "Subtle blue background",
+          "$deprecated": "Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.blue-muted"
+            }
+          }
         },
         "purple": {
           "$value": "{base.color.purple.700}",
@@ -876,7 +1638,13 @@
         },
         "purple-subtle": {
           "$value": "{base.color.purple.100}",
-          "$description": "Subtle purple background"
+          "$description": "Subtle purple background",
+          "$deprecated": "Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.purple-muted"
+            }
+          }
         },
         "pink": {
           "$value": "{base.color.pink.700}",
@@ -898,7 +1666,13 @@
         },
         "pink-subtle": {
           "$value": "{base.color.pink.100}",
-          "$description": "Subtle pink background"
+          "$description": "Subtle pink background",
+          "$deprecated": "Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.pink-muted"
+            }
+          }
         },
         "yellow": {
           "$value": "{base.color.yellow.700}",
@@ -920,7 +1694,13 @@
         },
         "yellow-subtle": {
           "$value": "{base.color.yellow.100}",
-          "$description": "Subtle yellow background"
+          "$description": "Subtle yellow background",
+          "$deprecated": "Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.yellow-muted"
+            }
+          }
         },
         "green": {
           "$value": "{base.color.green.700}",
@@ -942,7 +1722,13 @@
         },
         "green-subtle": {
           "$value": "{base.color.green.100}",
-          "$description": "Subtle green background"
+          "$description": "Subtle green background",
+          "$deprecated": "Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.green-muted"
+            }
+          }
         },
         "red": {
           "$value": "{base.color.red.700}",
@@ -964,7 +1750,13 @@
         },
         "red-subtle": {
           "$value": "{base.color.red.100}",
-          "$description": "Subtle red background"
+          "$description": "Subtle red background",
+          "$deprecated": "Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.red-muted"
+            }
+          }
         },
         "orange": {
           "$value": "{base.color.orange.700}",
@@ -986,7 +1778,13 @@
         },
         "orange-subtle": {
           "$value": "{base.color.orange.100}",
-          "$description": "Subtle orange background"
+          "$description": "Subtle orange background",
+          "$deprecated": "Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.orange-muted"
+            }
+          }
         },
         "gray": {
           "$value": "{base.color.neutral.700}",
@@ -1008,7 +1806,13 @@
         },
         "gray-subtle": {
           "$value": "{base.color.neutral.200}",
-          "$description": "Subtle gray background"
+          "$description": "Subtle gray background",
+          "$deprecated": "Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.gray-muted"
+            }
+          }
         },
         "blue-text": {
           "$value": "{base.color.blue.900}",
@@ -1041,6 +1845,38 @@
         "gray-text": {
           "$value": "{base.color.neutral.900}",
           "$description": "Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115."
+        },
+        "blue-muted": {
+          "$value": "{base.color.blue.100}",
+          "$description": "Light blue fill of a blue CategoryLabel, behind the blue-text colour."
+        },
+        "purple-muted": {
+          "$value": "{base.color.purple.100}",
+          "$description": "Light purple fill of a purple CategoryLabel, behind the purple-text colour."
+        },
+        "pink-muted": {
+          "$value": "{base.color.pink.100}",
+          "$description": "Light pink fill of a pink CategoryLabel, behind the pink-text colour."
+        },
+        "yellow-muted": {
+          "$value": "{base.color.yellow.100}",
+          "$description": "Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour."
+        },
+        "green-muted": {
+          "$value": "{base.color.green.100}",
+          "$description": "Light green fill of a green CategoryLabel, behind the green-text colour."
+        },
+        "red-muted": {
+          "$value": "{base.color.red.100}",
+          "$description": "Light red fill of a red CategoryLabel, behind the red-text colour."
+        },
+        "orange-muted": {
+          "$value": "{base.color.orange.100}",
+          "$description": "Light orange fill of a orange CategoryLabel, behind the orange-text colour."
+        },
+        "gray-muted": {
+          "$value": "{base.color.neutral.200}",
+          "$description": "Light gray fill of a gray CategoryLabel, behind the gray-text colour."
         }
       },
       "status": {
@@ -1091,6 +1927,116 @@
         "scheduled-bg": {
           "$value": "{base.color.purple.100}",
           "$description": "Background for scheduled status"
+        }
+      },
+      "fill": {
+        "emphasis": {
+          "$value": "{base.color.neutral.900}",
+          "$description": "Near-black fill for emphasis controls, such as the primary Button and IconButton."
+        },
+        "emphasis-hover": {
+          "$value": "{base.color.neutral.800}",
+          "$description": "Fill of a hovered emphasis control, such as the primary Button."
+        },
+        "emphasis-pressed": {
+          "$value": "{base.color.neutral.1000}",
+          "$description": "Fill of a pressed emphasis control, such as the primary Button."
+        },
+        "muted": {
+          "$value": "{base.color.neutral.200}",
+          "$description": "Light grey fill for quiet grouped content, such as the default Chip."
+        },
+        "inverse": {
+          "$value": "{base.color.neutral.800}",
+          "$description": "Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles."
+        },
+        "accent": {
+          "$value": "{base.color.blue.900}",
+          "$description": "Blue fill for the accent Button and other deliberate highlights; see 0003."
+        },
+        "accent-muted": {
+          "$value": "{base.color.blue.100}",
+          "$description": "Light blue fill for selected items: a selected chip, tab or row; see 0016."
+        },
+        "accent-muted-hover": {
+          "$value": "{base.color.blue.200}",
+          "$description": "Fill of a hovered selected item, such as a selected filter chip."
+        },
+        "accent-muted-pressed": {
+          "$value": "{base.color.blue.300}",
+          "$description": "Fill of a pressed selected item, such as a selected filter chip."
+        },
+        "accent-hover": {
+          "$value": "{base.color.blue.1000}",
+          "$description": "Blue fill of a hovered accent control, such as the accent Button."
+        },
+        "accent-pressed": {
+          "$value": "{base.color.blue.1100}",
+          "$description": "Blue fill of a pressed accent control, such as the accent Button."
+        },
+        "danger": {
+          "$value": "{base.color.red.900}",
+          "$description": "Strong red fill for destructive actions, such as the danger Button."
+        },
+        "danger-hover": {
+          "$value": "{base.color.red.1000}",
+          "$description": "Fill of a hovered destructive control, such as the danger Button."
+        },
+        "danger-pressed": {
+          "$value": "{base.color.red.1100}",
+          "$description": "Fill of a pressed destructive control, such as the danger Button."
+        },
+        "danger-muted": {
+          "$value": "{base.color.red.100}",
+          "$description": "Light red tint behind error messages, such as an error Alert."
+        },
+        "success": {
+          "$value": "{base.color.green.900}",
+          "$description": "Strong green fill for success states, such as a success indicator."
+        },
+        "success-muted": {
+          "$value": "{base.color.green.100}",
+          "$description": "Light green tint behind success messages, such as a success Alert."
+        },
+        "warning": {
+          "$value": "{base.color.orange.900}",
+          "$description": "Strong orange fill for warning states, such as a warning indicator."
+        },
+        "warning-muted": {
+          "$value": "{base.color.orange.100}",
+          "$description": "Light orange tint behind warning messages, such as a warning Alert."
+        },
+        "disabled": {
+          "$value": "{base.color.neutral.300}",
+          "$description": "Fill of a disabled control, such as a disabled Button or Switch."
+        },
+        "default": {
+          "$value": "{base.color.neutral.300}",
+          "$description": "Fill of a neutral control at rest, such as the secondary Button."
+        },
+        "default-hover": {
+          "$value": "{base.color.neutral.400}",
+          "$description": "Fill of a hovered neutral control, such as the secondary Button."
+        },
+        "default-pressed": {
+          "$value": "{base.color.neutral.500}",
+          "$description": "Fill of a pressed neutral control, such as the secondary Button."
+        },
+        "none": {
+          "$value": "{base.color.transparent}",
+          "$description": "No fill, for controls without a background at rest: the naked Button and IconButton."
+        },
+        "none-hover": {
+          "$value": "rgba(33, 37, 41, 0.1)",
+          "$description": "Hover tint for a fill-less control over any background, such as a chip close button."
+        },
+        "none-pressed": {
+          "$value": "rgba(33, 37, 41, 0.15)",
+          "$description": "Pressed tint for a fill-less control over any background, such as a chip close button."
+        },
+        "inverse-none-hover": {
+          "$value": "rgba(255, 255, 255, 0.2)",
+          "$description": "Hover tint for a fill-less element on a dark background, such as a count on a dark tab."
         }
       }
     },
@@ -1221,6 +2167,206 @@
         "$type": "transition",
         "$value": "transform {base.duration.fast} {base.easing.easeOut}, opacity {base.duration.fast} {base.easing.easeOut}",
         "$description": "Transform and opacity over 150ms: small movement or fade in response to input."
+      }
+    },
+    "layer": {
+      "sticky": {
+        "$value": "{base.zIndex.1}",
+        "$type": "number",
+        "$description": "Stacking layer for chrome that stays visible while scrolling: sticky headers, navigation bars."
+      },
+      "dropdown": {
+        "$value": "{base.zIndex.6}",
+        "$type": "number",
+        "$description": "Stacking layer for menus anchored to a control: Dropdown and SearchField lists."
+      },
+      "overlay": {
+        "$value": "{base.zIndex.7}",
+        "$type": "number",
+        "$description": "Stacking layer for panels that slide over the page and their backdrop, such as Sheet."
+      },
+      "modal": {
+        "$value": "{base.zIndex.8}",
+        "$type": "number",
+        "$description": "Stacking layer for blocking dialogs and their backdrop: Modal, ActionSheet."
+      }
+    },
+    "radius": {
+      "none": {
+        "$value": "0",
+        "$type": "dimension",
+        "$description": "No rounding: tables, dividers and sharp-edged containers."
+      },
+      "xs": {
+        "$value": "{base.border.radius.1}",
+        "$type": "dimension",
+        "$description": "Minimal rounding: small badges, checkboxes, compact tags."
+      },
+      "sm": {
+        "$value": "{base.border.radius.2}",
+        "$type": "dimension",
+        "$description": "Subtle rounding: buttons, inputs and other form controls."
+      },
+      "md": {
+        "$value": "{base.border.radius.3}",
+        "$type": "dimension",
+        "$description": "Standard rounding: cards, dropdown menus, popovers."
+      },
+      "lg": {
+        "$value": "{base.border.radius.4}",
+        "$type": "dimension",
+        "$description": "Generous rounding: modals, action sheets and feature cards."
+      },
+      "xl": {
+        "$value": "{base.border.radius.5}",
+        "$type": "dimension",
+        "$description": "Large rounding: pill buttons and prominent search bars."
+      },
+      "2xl": {
+        "$value": "{base.border.radius.6}",
+        "$type": "dimension",
+        "$description": "Extra-large rounding: hero elements and decorative containers."
+      },
+      "3xl": {
+        "$value": "{base.border.radius.7}",
+        "$type": "dimension",
+        "$description": "Maximum rounding short of a circle: decorative cards and marketing elements."
+      },
+      "full": {
+        "$value": "{base.border.radius.circle}",
+        "$type": "dimension",
+        "$description": "Fully round: avatars, round icon buttons, status dots and chips."
+      }
+    },
+    "space": {
+      "400": {
+        "$value": "{base.spacing.4}",
+        "$type": "dimension",
+        "$description": "Space between groups of elements, around a small Divider, and inside containers."
+      },
+      "600": {
+        "$value": "{base.spacing.6}",
+        "$type": "dimension",
+        "$description": "Space between blocks, and around a medium or minimal Divider."
+      },
+      "800": {
+        "$value": "{base.spacing.8}",
+        "$type": "dimension",
+        "$description": "Space between sections, and around the default Divider."
+      },
+      "1200": {
+        "$value": "{base.spacing.12}",
+        "$type": "dimension",
+        "$description": "Space between major sections, and around an extra-large Divider."
+      },
+      "inset": {
+        "xs": {
+          "$value": "{base.spacing.1}",
+          "$type": "dimension",
+          "$description": "Tightest padding inside a component, such as around an icon in a small control."
+        },
+        "sm": {
+          "$value": "{base.spacing.2}",
+          "$type": "dimension",
+          "$description": "Small padding inside a component: chip sides, icon-to-label gaps, compact buttons."
+        },
+        "md": {
+          "$value": "{base.spacing.3}",
+          "$type": "dimension",
+          "$description": "Medium padding inside a component: form field insides, medium IconButtons."
+        },
+        "lg": {
+          "$value": "{base.spacing.4}",
+          "$type": "dimension",
+          "$description": "Large padding inside a component: button and input sides, card insides."
+        },
+        "xl": {
+          "$value": "{base.spacing.5}",
+          "$type": "dimension",
+          "$description": "Generous padding inside a component, such as a prominent call to action."
+        },
+        "2xl": {
+          "$value": "{base.spacing.6}",
+          "$type": "dimension",
+          "$description": "Largest padding inside a component: large cards, spacious form sections."
+        }
+      },
+      "0": {
+        "$value": "{base.spacing.0}",
+        "$type": "dimension",
+        "$description": "No space, for explicit resets of padding, margin or gap."
+      },
+      "100": {
+        "$value": "{base.spacing.1}",
+        "$type": "dimension",
+        "$description": "The tightest gap, such as between a label and its required indicator."
+      },
+      "200": {
+        "$value": "{base.spacing.2}",
+        "$type": "dimension",
+        "$description": "A small gap, such as between a field's label, control and helper text."
+      },
+      "300": {
+        "$value": "{base.spacing.3}",
+        "$type": "dimension",
+        "$description": "The default gap between related elements in a group."
+      },
+      "500": {
+        "$value": "{base.spacing.5}",
+        "$type": "dimension",
+        "$description": "Generous padding inside larger containers and cards."
+      },
+      "700": {
+        "$value": "{base.spacing.7}",
+        "$type": "dimension",
+        "$description": "A larger step between blocks and sections; pick the step the layout needs."
+      },
+      "900": {
+        "$value": "{base.spacing.9}",
+        "$type": "dimension",
+        "$description": "A larger step between blocks and sections; pick the step the layout needs."
+      },
+      "1000": {
+        "$value": "{base.spacing.10}",
+        "$type": "dimension",
+        "$description": "A larger step between blocks and sections; pick the step the layout needs."
+      },
+      "1400": {
+        "$value": "{base.spacing.14}",
+        "$type": "dimension",
+        "$description": "A large step between page sections; pick the step the layout needs."
+      },
+      "1600": {
+        "$value": "{base.spacing.16}",
+        "$type": "dimension",
+        "$description": "A large step between page sections; pick the step the layout needs."
+      },
+      "2000": {
+        "$value": "{base.spacing.20}",
+        "$type": "dimension",
+        "$description": "A very large step between page sections, second only to the largest."
+      },
+      "2400": {
+        "$value": "{base.spacing.24}",
+        "$type": "dimension",
+        "$description": "The largest gap between page sections, such as FeatureBlock at wide breakpoints."
+      }
+    },
+    "surface": {
+      "base": {
+        "$value": "{base.color.neutral.100}",
+        "$type": "color",
+        "$description": "The page: the off-white background everything else sits on (decision 0006)."
+      },
+      "raised": {
+        "$value": "{base.color.neutral.000}",
+        "$type": "color",
+        "$description": "Content raised off the page: cards, inputs, sheets, dialogs, code blocks."
+      },
+      "scrim": {
+        "$value": "rgba(33, 37, 41, 0.5)",
+        "$type": "color",
+        "$description": "Backdrop behind a modal surface: Modal, Sheet, ActionSheet."
       }
     }
   }
