@@ -758,7 +758,7 @@ describe('Slider', () => {
     it('uses the progress track colour for the unfilled track', () => {
       render(<Slider defaultValue={50} />)
       const { track, fill, thumb } = parts()
-      expect(track.backgroundColor).toBe(css(color.background.progressTrack))
+      expect(track.backgroundColor).toBe(css(tokens.component.track.background))
       expect(fill.backgroundColor).toBe(css(color.fill.emphasis))
       expect(thumb.borderColor).toBe(css(color.fill.emphasis))
     })

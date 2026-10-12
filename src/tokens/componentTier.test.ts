@@ -46,6 +46,34 @@ describe('component tier (decisions 0014 and 0022)', () => {
   // The only exception: Button's deprecated `emphasis` variant, kept until 3.0, aliases the
   // matching `accent` token (decision 0016). Matched by exact path, so no other token can opt out.
   const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
+  // Decision 0036 (interim, #224): domain tokens that 0031 §6 moved out of the semantic tier may
+  // reference base values where no semantic token fits, listed by exact path. #224 empties this.
+  const BASE_INTERIM = [
+    'component.status.pending.text',
+    'component.status.pending.background',
+    'component.status.processing.text',
+    'component.status.processing.background',
+    'component.status.scheduled.text',
+    'component.status.scheduled.background',
+    'component.transaction.credit',
+    'component.transaction.credit-hover',
+    'component.transaction.debit',
+    'component.transaction.debit-hover',
+    'component.transaction.pending',
+    'component.transaction.neutral',
+    'component.track.background',
+    'component.tooltip.border',
+    'component.breadcrumbs.font',
+    'component.button.sizes.small.font',
+    'component.slider.thumb.background',
+  ]
+
+  it('lists only interim base references that still exist and still need it', () => {
+    const byPath = new Map(converted.map(({ path, node }) => [path, node]))
+    const stale = BASE_INTERIM.filter((path) => !/\{base\./.test(String((byPath.get(path) as Node | undefined)?.$value ?? '')))
+    expect(stale).toEqual([])
+  })
+
   it('references only semantic tokens', () => {
     const problems = converted
       // A leaf with no `$value` is reported by the test above, not counted as having no references
@@ -55,6 +83,7 @@ describe('component tier (decisions 0014 and 0022)', () => {
         const aliasTarget = path.match(ALIAS)?.[1]
         return refs
           .filter((ref) => !ref.startsWith('semantic.') && ref !== `component.button.variants.accent.${aliasTarget}`)
+          .filter((ref) => !(BASE_INTERIM.includes(path) && ref.startsWith('base.')))
           .map((ref) => `${path}: {${ref}}`)
       })
     expect(problems).toEqual([])

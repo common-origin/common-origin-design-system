@@ -56,9 +56,9 @@ const getTypographyStyles = (variant: TypographyVariant) => {
     small: `font: ${typography.small};`,
     overline: `font: ${typography.overline};`,
     caption: `font: ${typography.caption}; text-transform: uppercase;`,
-    button1: `font: ${typography.button1};`,
-    button2: `font: ${typography.button2};`,
-    button3: `font: ${typography.button3};`,
+    button1: `font: ${tokens.component.button.sizes.large.font};`,
+    button2: `font: ${tokens.component.button.sizes.medium.font};`,
+    button3: `font: ${tokens.component.button.sizes.small.font};`,
     label: `font: ${typography.label};`,
   }
   

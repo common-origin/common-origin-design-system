@@ -33,7 +33,7 @@ describe('ProgressBar', () => {
     it('fills default progress near-black on the progress track', () => {
       render(<ProgressBar value={50} data-testid="progress" />)
       const track = screen.getByTestId('progress')
-      expect(track).toHaveStyle({ backgroundColor: tokens.semantic.color.background.progressTrack })
+      expect(track).toHaveStyle({ backgroundColor: tokens.component.track.background })
       expect(track.firstElementChild).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.emphasis })
     })
 

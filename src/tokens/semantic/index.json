@@ -233,7 +233,13 @@
       "tooltip": {
         "$type": "border",
         "$value": "{base.border.width.2} {base.border.style.dotted} {semantic.color.border.emphasis}",
-        "$description": "Dotted underline marking text that has a tooltip."
+        "$description": "Dotted underline marking text that has a tooltip.",
+        "$deprecated": "Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "component.tooltip.border"
+          }
+        }
       },
       "width": {
         "$type": "dimension",
@@ -1083,7 +1089,7 @@
         "subtle": {
           "$value": "{base.color.neutral.000}",
           "$description": "White: inputs, sheets and other surfaces that sit on the page background.",
-          "$deprecated": "Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; Slider's thumb moves to a component token (#189). Removed in 3.0."
+          "$deprecated": "Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0."
         },
         "emphasis": {
           "$value": "{base.color.neutral.900}",
@@ -1327,7 +1333,13 @@
         },
         "progressTrack": {
           "$value": "{base.color.neutral.300}",
-          "$description": "Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026)."
+          "$description": "Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026).",
+          "$deprecated": "Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.track.background"
+            }
+          }
         },
         "page": {
           "$value": "{base.color.neutral.100}",
@@ -1566,27 +1578,63 @@
       "financial": {
         "credit": {
           "$value": "{base.color.green.700}",
-          "$description": "Color for positive monetary values, credits, income"
+          "$description": "Color for positive monetary values, credits, income",
+          "$deprecated": "Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.credit"
+            }
+          }
         },
         "credit-hover": {
           "$value": "{base.color.green.800}",
-          "$description": "Hover state for credit-colored interactive elements"
+          "$description": "Hover state for credit-colored interactive elements",
+          "$deprecated": "Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.credit-hover"
+            }
+          }
         },
         "debit": {
           "$value": "{base.color.red.900}",
-          "$description": "Color for negative monetary values, debits, expenses"
+          "$description": "Color for negative monetary values, debits, expenses",
+          "$deprecated": "Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.debit"
+            }
+          }
         },
         "debit-hover": {
           "$value": "{base.color.red.1000}",
-          "$description": "Hover state for debit-colored interactive elements"
+          "$description": "Hover state for debit-colored interactive elements",
+          "$deprecated": "Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.debit-hover"
+            }
+          }
         },
         "pending": {
           "$value": "{base.color.orange.600}",
-          "$description": "Color for pending or processing financial transactions"
+          "$description": "Color for pending or processing financial transactions",
+          "$deprecated": "Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.pending"
+            }
+          }
         },
         "neutral": {
           "$value": "{base.color.neutral.600}",
-          "$description": "Neutral color for informational monetary amounts"
+          "$description": "Neutral color for informational monetary amounts",
+          "$deprecated": "Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.transaction.neutral"
+            }
+          }
         }
       },
       "category": {
@@ -1882,51 +1930,123 @@
       "status": {
         "pending": {
           "$value": "{base.color.yellow.1000}",
-          "$description": "Text and icon of a pending StatusLabel, on its pending background."
+          "$description": "Text and icon of a pending StatusLabel, on its pending background.",
+          "$deprecated": "Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.pending.text"
+            }
+          }
         },
         "pending-bg": {
           "$value": "{base.color.yellow.100}",
-          "$description": "Background for pending status"
+          "$description": "Background for pending status",
+          "$deprecated": "Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.pending.background"
+            }
+          }
         },
         "completed": {
           "$value": "{base.color.green.900}",
-          "$description": "Green color for completed status"
+          "$description": "Green color for completed status",
+          "$deprecated": "Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.completed.text"
+            }
+          }
         },
         "completed-bg": {
           "$value": "{base.color.green.100}",
-          "$description": "Background for completed status"
+          "$description": "Background for completed status",
+          "$deprecated": "Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.completed.background"
+            }
+          }
         },
         "failed": {
           "$value": "{base.color.red.900}",
-          "$description": "Red color for failed/error status"
+          "$description": "Red color for failed/error status",
+          "$deprecated": "Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.failed.text"
+            }
+          }
         },
         "failed-bg": {
           "$value": "{base.color.red.100}",
-          "$description": "Background for failed status"
+          "$description": "Background for failed status",
+          "$deprecated": "Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.failed.background"
+            }
+          }
         },
         "cancelled": {
           "$value": "{base.color.neutral.700}",
-          "$description": "Gray color for cancelled status"
+          "$description": "Gray color for cancelled status",
+          "$deprecated": "Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.cancelled.text"
+            }
+          }
         },
         "cancelled-bg": {
           "$value": "{base.color.neutral.200}",
-          "$description": "Background for cancelled status"
+          "$description": "Background for cancelled status",
+          "$deprecated": "Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.cancelled.background"
+            }
+          }
         },
         "processing": {
           "$value": "{base.color.blue.900}",
-          "$description": "Blue color for processing status"
+          "$description": "Blue color for processing status",
+          "$deprecated": "Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.processing.text"
+            }
+          }
         },
         "processing-bg": {
           "$value": "{base.color.blue.100}",
-          "$description": "Background for processing status"
+          "$description": "Background for processing status",
+          "$deprecated": "Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.processing.background"
+            }
+          }
         },
         "scheduled": {
           "$value": "{base.color.purple.900}",
-          "$description": "Purple color for scheduled status"
+          "$description": "Purple color for scheduled status",
+          "$deprecated": "Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.scheduled.text"
+            }
+          }
         },
         "scheduled-bg": {
           "$value": "{base.color.purple.100}",
-          "$description": "Background for scheduled status"
+          "$description": "Background for scheduled status",
+          "$deprecated": "Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "component.status.scheduled.background"
+            }
+          }
         }
       },
       "fill": {
@@ -2092,15 +2212,33 @@
       },
       "button1": {
         "$value": "{semantic.fontWeight.medium} {base.fontSize.3}/{base.lineHeight.4} {base.fontFamily.body}",
-        "$description": "Label of the large Button, the default size."
+        "$description": "Label of the large Button, the default size.",
+        "$deprecated": "Moved to the component tier as component.button.sizes.large.font (decision 0031 §6). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "component.button.sizes.large.font"
+          }
+        }
       },
       "button2": {
         "$value": "{semantic.fontWeight.medium} {base.fontSize.2}/{base.lineHeight.4} {base.fontFamily.body}",
-        "$description": "Label of the medium Button, and tab labels."
+        "$description": "Label of the medium Button, and tab labels.",
+        "$deprecated": "Moved to the component tier as component.button.sizes.medium.font (decision 0031 §6). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "component.button.sizes.medium.font"
+          }
+        }
       },
       "button3": {
         "$value": "{semantic.fontWeight.medium} {base.fontSize.1}/{base.lineHeight.1} {base.fontFamily.body}",
-        "$description": "Label of the small Button, for dense toolbars."
+        "$description": "Label of the small Button, for dense toolbars.",
+        "$deprecated": "Moved to the component tier as component.button.sizes.small.font (decision 0031 §6). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "component.button.sizes.small.font"
+          }
+        }
       },
       "label": {
         "$value": "{semantic.fontWeight.semibold} {base.fontSize.2}/{base.lineHeight.3} {base.fontFamily.body}",
@@ -2108,7 +2246,13 @@
       },
       "breadcrumb": {
         "$value": "{semantic.fontWeight.regular} {base.fontSize.1}/{base.lineHeight.2} {base.fontFamily.body}",
-        "$description": "Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption."
+        "$description": "Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption.",
+        "$deprecated": "Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "component.breadcrumbs.font"
+          }
+        }
       }
     },
     "motion": {

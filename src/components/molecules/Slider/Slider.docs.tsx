@@ -125,8 +125,8 @@ export const sliderDocs: ComponentDocumentation = {
   tokens: [
     // Colors
     'semantic.color.fill.disabled',
-    'semantic.color.background.progressTrack',
-    'semantic.color.background.subtle',
+    'component.track.background',
+    'component.slider.thumb.background',
     'semantic.color.fill.emphasis',
     'semantic.color.icon.disabled',
     'semantic.border.focus',
@@ -393,7 +393,7 @@ export const sliderDocs: ComponentDocumentation = {
         tokens: [
           'semantic.space.100',
           'semantic.radius.full',
-          'semantic.color.background.progressTrack',
+          'component.track.background',
           'semantic.color.fill.disabled'
         ]
       },
@@ -413,7 +413,7 @@ export const sliderDocs: ComponentDocumentation = {
           'semantic.space.500',
           'semantic.radius.full',
           'semantic.border.width.thick',
-          'semantic.color.background.subtle',
+          'component.slider.thumb.background',
           'semantic.color.fill.disabled',
           'semantic.color.fill.emphasis',
           'semantic.color.icon.disabled',

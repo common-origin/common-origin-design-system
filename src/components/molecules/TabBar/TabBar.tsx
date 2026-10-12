@@ -110,7 +110,7 @@ const StyledTab = styled.button.withConfig({
   align-items: center;
   gap: ${semantic.space[200]};
   padding: ${semantic.space[300]} ${semantic.space[400]};
-  font: ${semantic.typography.button2};
+  font: ${tokens.component.button.sizes.medium.font};
   white-space: nowrap;
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   border: none;

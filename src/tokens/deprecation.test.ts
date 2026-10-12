@@ -4,12 +4,15 @@
 import { execFileSync } from 'child_process'
 import semantic from './semantic/index.json'
 import component from './component/index.json'
-import grammarMigration from './grammarMigration.allowlist.json'
+import grammarMigrationList from './grammarMigration.allowlist.json'
 import resolved from '../styles/tokens.json'
 
 // Deprecation is data, not prose (decision 0033, #200): a deprecated token has a DTCG
 // `$deprecated` string saying why, and `$extensions["studio.commonorigin"].replacedBy` when one
 // token replaces it. Descriptions say when to use a token, without values.
+
+// Empty once every family has migrated (#189); typed so the checks below still compile
+const grammarMigration: string[] = grammarMigrationList
 
 type Node = { [key: string]: unknown }
 type Token = {

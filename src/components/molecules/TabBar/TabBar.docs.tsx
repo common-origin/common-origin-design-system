@@ -62,7 +62,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'semantic.color.border.default',
     'semantic.radius.sm',
     // Tab
-    'semantic.typography.button2',
+    'component.button.sizes.medium.font',
     'semantic.space.200',
     'semantic.space.300',
     'semantic.space.400',
@@ -382,7 +382,7 @@ return (
           'semantic.color.text.accent-hover',
           'semantic.color.fill.accent-muted-pressed',
           'semantic.color.text.accent-pressed',
-          'semantic.typography.button2',
+          'component.button.sizes.medium.font',
           'semantic.space.300',
           'semantic.space.400'
         ]

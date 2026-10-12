@@ -1308,6 +1308,8 @@ export type Tokens = {
           /** Slider thumb while dragging: deepest. */
           active: string;
         };
+        /** Fill of Slider's thumb: white, so it reads on both the track and the fill. */
+        background: string;
       };
     };
     accountCard: {
@@ -1323,6 +1325,8 @@ export type Tokens = {
         /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
         maxWidth: string;
       };
+      /** Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today. */
+      font: string;
     };
     cardLarge: {
       /** Widest a CardLarge grows, so its text keeps a readable measure. */
@@ -1369,6 +1373,66 @@ export type Tokens = {
     transactionListItem: {
       /** Minimum height of a TransactionListItem row, so rows line up in a list. */
       minHeight: string;
+    };
+    status: {
+      pending: {
+        /** Text and icon of a pending StatusLabel, on its pending background. */
+        text: string;
+        /** Fill of a pending StatusLabel, behind its pending text. */
+        background: string;
+      };
+      completed: {
+        /** Text and icon of a completed StatusLabel, on its completed background. */
+        text: string;
+        /** Fill of a completed StatusLabel, behind its completed text. */
+        background: string;
+      };
+      failed: {
+        /** Text and icon of a failed StatusLabel, on its failed background. */
+        text: string;
+        /** Fill of a failed StatusLabel, behind its failed text. */
+        background: string;
+      };
+      cancelled: {
+        /** Text and icon of a cancelled StatusLabel, on its cancelled background. */
+        text: string;
+        /** Fill of a cancelled StatusLabel, behind its cancelled text. */
+        background: string;
+      };
+      processing: {
+        /** Text and icon of a processing StatusLabel, on its processing background. */
+        text: string;
+        /** Fill of a processing StatusLabel, behind its processing text. */
+        background: string;
+      };
+      scheduled: {
+        /** Text and icon of a scheduled StatusLabel, on its scheduled background. */
+        text: string;
+        /** Fill of a scheduled StatusLabel, behind its scheduled text. */
+        background: string;
+      };
+    };
+    transaction: {
+      /** Positive amounts and credits in MoneyDisplay and TransactionListItem. */
+      credit: string;
+      /** A credit amount on a hovered interactive row. */
+      'credit-hover': string;
+      /** Negative amounts and debits in MoneyDisplay and TransactionListItem. */
+      debit: string;
+      /** A debit amount on a hovered interactive row. */
+      'debit-hover': string;
+      /** Amounts of pending or processing transactions. */
+      pending: string;
+      /** Informational amounts that are neither credit nor debit. */
+      neutral: string;
+    };
+    track: {
+      /** Unfilled track of ProgressBar and Slider; the fill and thumb show the value (decision 0026). */
+      background: string;
+    };
+    tooltip: {
+      /** Dotted underline marking text that has a tooltip. */
+      border: string;
     };
   };
   semantic: {
@@ -1495,7 +1559,11 @@ export type Tokens = {
       strong: string;
       /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
       focus: string;
-      /** Dotted underline marking text that has a tooltip. */
+      /**
+       * Dotted underline marking text that has a tooltip.
+       *
+       * @deprecated Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0.
+       */
       tooltip: string;
       width: {
         /** Hairline border: dividers, control edges and rings. */
@@ -1993,7 +2061,7 @@ export type Tokens = {
         /**
          * White: inputs, sheets and other surfaces that sit on the page background.
          *
-         * @deprecated Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; Slider's thumb moves to a component token (#189). Removed in 3.0.
+         * @deprecated Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0.
          */
         subtle: string;
         /**
@@ -2140,7 +2208,11 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0.
          */
         transparent: string;
-        /** Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026). */
+        /**
+         * Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026).
+         *
+         * @deprecated Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0.
+         */
         progressTrack: string;
         /**
          * The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that.
@@ -2280,17 +2352,41 @@ export type Tokens = {
         danger: string;
       };
       financial: {
-        /** Color for positive monetary values, credits, income */
+        /**
+         * Color for positive monetary values, credits, income
+         *
+         * @deprecated Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0.
+         */
         credit: string;
-        /** Hover state for credit-colored interactive elements */
+        /**
+         * Hover state for credit-colored interactive elements
+         *
+         * @deprecated Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0.
+         */
         'credit-hover': string;
-        /** Color for negative monetary values, debits, expenses */
+        /**
+         * Color for negative monetary values, debits, expenses
+         *
+         * @deprecated Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0.
+         */
         debit: string;
-        /** Hover state for debit-colored interactive elements */
+        /**
+         * Hover state for debit-colored interactive elements
+         *
+         * @deprecated Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0.
+         */
         'debit-hover': string;
-        /** Color for pending or processing financial transactions */
+        /**
+         * Color for pending or processing financial transactions
+         *
+         * @deprecated Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0.
+         */
         pending: string;
-        /** Neutral color for informational monetary amounts */
+        /**
+         * Neutral color for informational monetary amounts
+         *
+         * @deprecated Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0.
+         */
         neutral: string;
       };
       category: {
@@ -2456,29 +2552,77 @@ export type Tokens = {
         'gray-muted': string;
       };
       status: {
-        /** Text and icon of a pending StatusLabel, on its pending background. */
+        /**
+         * Text and icon of a pending StatusLabel, on its pending background.
+         *
+         * @deprecated Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0.
+         */
         pending: string;
-        /** Background for pending status */
+        /**
+         * Background for pending status
+         *
+         * @deprecated Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0.
+         */
         'pending-bg': string;
-        /** Green color for completed status */
+        /**
+         * Green color for completed status
+         *
+         * @deprecated Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0.
+         */
         completed: string;
-        /** Background for completed status */
+        /**
+         * Background for completed status
+         *
+         * @deprecated Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0.
+         */
         'completed-bg': string;
-        /** Red color for failed/error status */
+        /**
+         * Red color for failed/error status
+         *
+         * @deprecated Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0.
+         */
         failed: string;
-        /** Background for failed status */
+        /**
+         * Background for failed status
+         *
+         * @deprecated Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0.
+         */
         'failed-bg': string;
-        /** Gray color for cancelled status */
+        /**
+         * Gray color for cancelled status
+         *
+         * @deprecated Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0.
+         */
         cancelled: string;
-        /** Background for cancelled status */
+        /**
+         * Background for cancelled status
+         *
+         * @deprecated Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0.
+         */
         'cancelled-bg': string;
-        /** Blue color for processing status */
+        /**
+         * Blue color for processing status
+         *
+         * @deprecated Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0.
+         */
         processing: string;
-        /** Background for processing status */
+        /**
+         * Background for processing status
+         *
+         * @deprecated Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0.
+         */
         'processing-bg': string;
-        /** Purple color for scheduled status */
+        /**
+         * Purple color for scheduled status
+         *
+         * @deprecated Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0.
+         */
         scheduled: string;
-        /** Background for scheduled status */
+        /**
+         * Background for scheduled status
+         *
+         * @deprecated Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0.
+         */
         'scheduled-bg': string;
       };
       fill: {
@@ -2563,15 +2707,31 @@ export type Tokens = {
       overline: string;
       /** Captions: helper text, metadata and image captions. */
       caption: string;
-      /** Label of the large Button, the default size. */
+      /**
+       * Label of the large Button, the default size.
+       *
+       * @deprecated Moved to the component tier as component.button.sizes.large.font (decision 0031 §6). Removed in 3.0.
+       */
       button1: string;
-      /** Label of the medium Button, and tab labels. */
+      /**
+       * Label of the medium Button, and tab labels.
+       *
+       * @deprecated Moved to the component tier as component.button.sizes.medium.font (decision 0031 §6). Removed in 3.0.
+       */
       button2: string;
-      /** Label of the small Button, for dense toolbars. */
+      /**
+       * Label of the small Button, for dense toolbars.
+       *
+       * @deprecated Moved to the component tier as component.button.sizes.small.font (decision 0031 §6). Removed in 3.0.
+       */
       button3: string;
       /** Form labels for fields such as TextField and Slider. */
       label: string;
-      /** Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption. */
+      /**
+       * Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption.
+       *
+       * @deprecated Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0.
+       */
       breadcrumb: string;
     };
     motion: {

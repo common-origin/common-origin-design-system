@@ -62,9 +62,9 @@ export const typographyDocs: ComponentDocumentation = {
     'semantic.typography.small',
     'semantic.typography.overline',
     'semantic.typography.caption',
-    'semantic.typography.button1',
-    'semantic.typography.button2',
-    'semantic.typography.button3',
+    'component.button.sizes.large.font',
+    'component.button.sizes.medium.font',
+    'component.button.sizes.small.font',
     'semantic.typography.label',
     // Color variant tokens
     'semantic.color.text.default',

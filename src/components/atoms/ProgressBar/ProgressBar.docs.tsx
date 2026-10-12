@@ -70,7 +70,7 @@ export const progressBarDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.background.progressTrack',
+    'component.track.background',
     'semantic.color.fill.emphasis',
     'semantic.color.fill.success',
     'semantic.color.fill.danger',
@@ -475,7 +475,7 @@ Container
         name: 'Container',
         description: 'Background track providing visual context for progress. Sets the maximum width/height and provides subtle background color.',
         tokens: [
-          'semantic.color.background.progressTrack',
+          'component.track.background',
           'semantic.radius.xs',
           'semantic.motion.transition.normal',
           'component.progressBar.sizes.sm.height',

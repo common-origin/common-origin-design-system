@@ -17,7 +17,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted | 2026-09-25 |
 | [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
-| [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted | 2026-09-26 |
+| [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted; rule 4 has an interim exception (0036) | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
 | [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
 | [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted; step order amended by 0023, CSS variable names by 0024 | 2026-10-01 |
@@ -39,6 +39,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0033](0033-token-descriptions.md) | Token descriptions say when to use a token in one sentence; deprecation, replacement and pairings are fields; base tokens are described per group; descriptions reach the types, a generated `TOKENS.md` and the docs site <!-- verify-docs-ignore: planned generated file --> | Accepted | 2026-10-11 |
 | [0034](0034-control-heights.md) | Controls take their height from `size.control` (32 / 40 / 48px) as a min-height and centre their content; chips stay on the label scale; density shifts the scale by 8px | Accepted; chips amended by 0035 | 2026-10-11 |
 | [0035](0035-chips-have-one-size.md) | Chips have one size, 24px (`size.label.medium`); the chip `size` prop is deprecated and ignored | Accepted | 2026-10-12 |
+| [0036](0036-domain-tokens-interim-base-references.md) | Domain component tokens moved out of the semantic tier may reference base values where no semantic token fits, listed by path; interim, resolved by #224 | Accepted (interim) | 2026-10-13 |
 
 ## Template
 

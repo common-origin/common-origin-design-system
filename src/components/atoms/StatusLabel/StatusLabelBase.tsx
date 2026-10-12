@@ -6,7 +6,7 @@ import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
-const { status: statusColors } = tokens.semantic.color
+const { status: statusColors } = tokens.component
 const { space, radius } = tokens.semantic
 const { transition, duration, easing } = tokens.semantic.motion
 const { label: labelHeight } = tokens.semantic.size
@@ -85,38 +85,38 @@ const scaleIn = keyframes`
 const getStatusConfig = (status: StatusType) => {
   const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; label: string }> = {
     pending: {
-      color: statusColors.pending,
-      bgColor: statusColors['pending-bg'],
+      color: statusColors.pending.text,
+      bgColor: statusColors.pending.background,
       icon: 'refresh', // Fallback until 'clock' icon is added
       label: 'Pending'
     },
     completed: {
-      color: statusColors.completed,
-      bgColor: statusColors['completed-bg'],
+      color: statusColors.completed.text,
+      bgColor: statusColors.completed.background,
       icon: 'check',
       label: 'Completed'
     },
     failed: {
-      color: statusColors.failed,
-      bgColor: statusColors['failed-bg'],
+      color: statusColors.failed.text,
+      bgColor: statusColors.failed.background,
       icon: 'close',
       label: 'Failed'
     },
     cancelled: {
-      color: statusColors.cancelled,
-      bgColor: statusColors['cancelled-bg'],
+      color: statusColors.cancelled.text,
+      bgColor: statusColors.cancelled.background,
       icon: 'cancel',
       label: 'Cancelled'
     },
     processing: {
-      color: statusColors.processing,
-      bgColor: statusColors['processing-bg'],
+      color: statusColors.processing.text,
+      bgColor: statusColors.processing.background,
       icon: 'refresh',
       label: 'Processing'
     },
     scheduled: {
-      color: statusColors.scheduled,
-      bgColor: statusColors['scheduled-bg'],
+      color: statusColors.scheduled.text,
+      bgColor: statusColors.scheduled.background,
       icon: 'bell', // Fallback until 'calendar' icon is added
       label: 'Scheduled'
     }
