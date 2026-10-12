@@ -280,13 +280,13 @@ describe('StatusLabel Component', () => {
 })
 
 describe('StatusLabel contrast (WCAG AA, #115)', () => {
-  const { status } = tokens.semantic.color
+  const { status } = tokens.component
   const statuses: StatusType[] = ['pending', 'completed', 'failed', 'cancelled', 'processing', 'scheduled']
 
   it.each(statuses)('%s text meets 4.5:1 on its background', (s) => {
     render(<StatusLabel status={s} />)
-    expect(screen.getByRole('status')).toHaveStyle({ color: status[s], backgroundColor: status[`${s}-bg`] })
-    expect(contrastRatio(status[s], status[`${s}-bg`])).toBeGreaterThanOrEqual(4.5)
+    expect(screen.getByRole('status')).toHaveStyle({ color: status[s].text, backgroundColor: status[s].background })
+    expect(contrastRatio(status[s].text, status[s].background)).toBeGreaterThanOrEqual(4.5)
   })
 })
 

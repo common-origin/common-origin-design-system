@@ -77,8 +77,8 @@ export const backgroundByKey: Record<keyof Semantic['color']['background'], stri
   'hover-overlay': color.fill['none-hover'],
   'active-overlay': color.fill['none-pressed'],
   'inverse-overlay': color.fill['inverse-none-hover'],
-  // Moves to the component tier with the other domain tokens (#189)
-  progressTrack: color.background.progressTrack,
+  // Moved to the component tier (decision 0031 §6)
+  progressTrack: tokens.component.track.background,
 }
 
 /** Box's `color` prop: text colours, old and new keys. */

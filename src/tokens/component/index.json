@@ -280,7 +280,7 @@
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0."
           },
           "font": {
-            "$value": "{semantic.typography.button3}",
+            "$value": "{semantic.fontWeight.medium} {semantic.fontSize.xs}/{base.lineHeight.1} {semantic.fontFamily.body}",
             "$type": "typography",
             "$description": "Small Button label typography."
           }
@@ -293,7 +293,7 @@
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0."
           },
           "font": {
-            "$value": "{semantic.typography.button2}",
+            "$value": "{semantic.fontWeight.medium} {semantic.fontSize.sm}/{semantic.lineHeight.normal} {semantic.fontFamily.body}",
             "$type": "typography",
             "$description": "Medium Button label typography."
           }
@@ -306,7 +306,7 @@
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0."
           },
           "font": {
-            "$value": "{semantic.typography.button1}",
+            "$value": "{semantic.fontWeight.medium} {semantic.fontSize.md}/{semantic.lineHeight.normal} {semantic.fontFamily.body}",
             "$type": "typography",
             "$description": "Large Button label typography."
           }
@@ -1552,6 +1552,11 @@
             "$value": "{semantic.elevation.floating}",
             "$description": "Slider thumb while dragging: deepest."
           }
+        },
+        "background": {
+          "$value": "{base.color.neutral.000}",
+          "$type": "color",
+          "$description": "Fill of Slider's thumb: white, so it reads on both the track and the fill."
         }
       }
     },
@@ -1575,6 +1580,11 @@
           "$value": "{semantic.size.4500}",
           "$description": "Width at which a long Breadcrumbs label truncates with an ellipsis."
         }
+      },
+      "font": {
+        "$value": "{semantic.fontWeight.regular} {semantic.fontSize.xs}/{base.lineHeight.2} {semantic.fontFamily.body}",
+        "$type": "typography",
+        "$description": "Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today."
       }
     },
     "cardLarge": {
@@ -1650,6 +1660,110 @@
       "minHeight": {
         "$value": "{semantic.size.1800}",
         "$description": "Minimum height of a TransactionListItem row, so rows line up in a list."
+      }
+    },
+    "status": {
+      "$type": "color",
+      "pending": {
+        "text": {
+          "$value": "{base.color.yellow.1000}",
+          "$description": "Text and icon of a pending StatusLabel, on its pending background."
+        },
+        "background": {
+          "$value": "{base.color.yellow.100}",
+          "$description": "Fill of a pending StatusLabel, behind its pending text."
+        }
+      },
+      "completed": {
+        "text": {
+          "$value": "{semantic.color.text.success}",
+          "$description": "Text and icon of a completed StatusLabel, on its completed background."
+        },
+        "background": {
+          "$value": "{semantic.color.fill.success-muted}",
+          "$description": "Fill of a completed StatusLabel, behind its completed text."
+        }
+      },
+      "failed": {
+        "text": {
+          "$value": "{semantic.color.text.danger}",
+          "$description": "Text and icon of a failed StatusLabel, on its failed background."
+        },
+        "background": {
+          "$value": "{semantic.color.fill.danger-muted}",
+          "$description": "Fill of a failed StatusLabel, behind its failed text."
+        }
+      },
+      "cancelled": {
+        "text": {
+          "$value": "{semantic.color.text.muted}",
+          "$description": "Text and icon of a cancelled StatusLabel, on its cancelled background."
+        },
+        "background": {
+          "$value": "{semantic.color.fill.muted}",
+          "$description": "Fill of a cancelled StatusLabel, behind its cancelled text."
+        }
+      },
+      "processing": {
+        "text": {
+          "$value": "{base.color.blue.900}",
+          "$description": "Text and icon of a processing StatusLabel, on its processing background."
+        },
+        "background": {
+          "$value": "{base.color.blue.100}",
+          "$description": "Fill of a processing StatusLabel, behind its processing text."
+        }
+      },
+      "scheduled": {
+        "text": {
+          "$value": "{base.color.purple.900}",
+          "$description": "Text and icon of a scheduled StatusLabel, on its scheduled background."
+        },
+        "background": {
+          "$value": "{base.color.purple.100}",
+          "$description": "Fill of a scheduled StatusLabel, behind its scheduled text."
+        }
+      }
+    },
+    "transaction": {
+      "$type": "color",
+      "credit": {
+        "$value": "{base.color.green.700}",
+        "$description": "Positive amounts and credits in MoneyDisplay and TransactionListItem."
+      },
+      "credit-hover": {
+        "$value": "{base.color.green.800}",
+        "$description": "A credit amount on a hovered interactive row."
+      },
+      "debit": {
+        "$value": "{base.color.red.900}",
+        "$description": "Negative amounts and debits in MoneyDisplay and TransactionListItem."
+      },
+      "debit-hover": {
+        "$value": "{base.color.red.1000}",
+        "$description": "A debit amount on a hovered interactive row."
+      },
+      "pending": {
+        "$value": "{base.color.orange.600}",
+        "$description": "Amounts of pending or processing transactions."
+      },
+      "neutral": {
+        "$value": "{base.color.neutral.600}",
+        "$description": "Informational amounts that are neither credit nor debit."
+      }
+    },
+    "track": {
+      "$type": "color",
+      "background": {
+        "$value": "{base.color.neutral.300}",
+        "$description": "Unfilled track of ProgressBar and Slider; the fill and thumb show the value (decision 0026)."
+      }
+    },
+    "tooltip": {
+      "$type": "border",
+      "border": {
+        "$value": "{semantic.border.width.thick} {base.border.style.dotted} {semantic.color.border.emphasis}",
+        "$description": "Dotted underline marking text that has a tooltip."
       }
     }
   }

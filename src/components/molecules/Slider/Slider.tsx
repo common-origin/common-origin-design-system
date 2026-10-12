@@ -125,7 +125,7 @@ const StyledTrack = styled.div<{ $disabled?: boolean }>`
   background-color: ${({ $disabled }) =>
     $disabled 
       ? semantic.color.fill.disabled
-      : semantic.color.background.progressTrack
+      : tokens.component.track.background
   };
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
@@ -154,7 +154,7 @@ const StyledThumb = styled.div<{
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.fill.disabled
-      : semantic.color.background.subtle
+      : tokens.component.slider.thumb.background
   };
   border: ${semantic.border.width.thick} solid ${({ $disabled }) =>
     $disabled

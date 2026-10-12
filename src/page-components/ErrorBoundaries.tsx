@@ -74,7 +74,7 @@ const ErrorActions = styled.div`
 `
 
 const ErrorButton = styled.button`
-  font: ${semantic.typography.button2};
+  font: ${tokens.component.button.sizes.medium.font};
   padding: ${base.spacing[2]} ${base.spacing[4]};
   background-color: ${semantic.color.fill.muted};
   color: ${semantic.color.text.default};

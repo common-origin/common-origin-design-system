@@ -42,7 +42,7 @@ interface StyledProgressBarFillProps {
 const ProgressBarContainer = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledProgressBarContainerProps>`
-  background-color: ${color.background.progressTrack};
+  background-color: ${tokens.component.track.background};
   border-radius: ${radius.xs};
   overflow: hidden;
 
