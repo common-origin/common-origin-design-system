@@ -76,15 +76,15 @@ export const emptyStateDocs: ComponentDocumentation = {
     'component.emptyState.illustration.small',
     'component.emptyState.maxWidth',
     'component.emptyState.text.maxWidth',
-    'semantic.spacing.layout.4xl',
-    'semantic.spacing.layout.6xl',
-    'semantic.spacing.layout.8xl',
-    'semantic.spacing.layout.2xl',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.sm',
-    'semantic.color.icon.error',
+    'semantic.space.800',
+    'semantic.space.1000',
+    'semantic.space.1400',
+    'semantic.space.600',
+    'semantic.space.300',
+    'semantic.space.200',
+    'semantic.color.icon.danger',
     'semantic.color.icon.success',
-    'semantic.color.icon.subdued',
+    'semantic.color.icon.muted',
     'semantic.typography.h2',
     'semantic.typography.h3',
     'semantic.typography.h4',
@@ -333,25 +333,25 @@ export const emptyStateDocs: ComponentDocumentation = {
         name: 'StyledContainer',
         description: 'Outer container with centered column layout, responsive padding, and max-width constraint',
         tokens: [
-          'semantic.spacing.layout.4xl',
-          'semantic.spacing.layout.6xl',
-          'semantic.spacing.layout.8xl'
+          'semantic.space.800',
+          'semantic.space.1000',
+          'semantic.space.1400'
         ]
       },
       {
         name: 'StyledIllustration',
         description: 'Illustration container with size-dependent dimensions and variant-based color',
         tokens: [
-          'semantic.spacing.layout.2xl',
-          'semantic.color.icon.error',
+          'semantic.space.600',
+          'semantic.color.icon.danger',
           'semantic.color.icon.success',
-          'semantic.color.icon.subdued'
+          'semantic.color.icon.muted'
         ]
       },
       {
         name: 'StyledTextContainer',
         description: 'Text content wrapper with max-width for readability',
-        tokens: ['semantic.spacing.layout.2xl', 'semantic.spacing.layout.md']
+        tokens: ['semantic.space.600', 'semantic.space.300']
       },
       {
         name: 'Typography (Title)',
@@ -366,7 +366,7 @@ export const emptyStateDocs: ComponentDocumentation = {
       {
         name: 'Stack (Actions)',
         description: 'Vertical stack containing primary and optional secondary action buttons',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       }
     ]
   },

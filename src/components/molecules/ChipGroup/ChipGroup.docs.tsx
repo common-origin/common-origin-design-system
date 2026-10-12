@@ -33,7 +33,7 @@ export const chipGroupDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.spacing.layout.sm', // Gap between chips (Stack gap="sm")
+    'semantic.space.200', // Gap between chips (Stack gap="sm")
     'component.chip.default.borderRadius',
     'component.chip.default.backgroundColor', // variant="default"
     'component.chip.default.textColor',

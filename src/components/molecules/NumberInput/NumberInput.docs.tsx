@@ -116,11 +116,11 @@ export const numberInputDocs: ComponentDocumentation = {
   ],
   
   tokens: [
-    'semantic.spacing.layout.sm',
+    'semantic.space.200',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     'component.field.requiredIndicator.color',
     'component.field.requiredIndicator.fontWeight',
     'component.field.helperText.typography',
@@ -133,7 +133,7 @@ export const numberInputDocs: ComponentDocumentation = {
     'component.input.default.borderColor',
     'component.input.default.borderWidth',
     'component.input.default.borderRadius',
-    'semantic.spacing.component.lg',
+    'semantic.space.inset.lg',
     'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.placeholder.textColor',
     'component.input.focus.borderColor',
@@ -150,10 +150,10 @@ export const numberInputDocs: ComponentDocumentation = {
     // Typography & spacing
     'semantic.typography.label',
     'semantic.color.text.default',
-    'semantic.color.text.subdued',
-    'semantic.color.text.error',
+    'semantic.color.text.muted',
+    'semantic.color.text.danger',
     'semantic.color.text.disabled',
-    'semantic.spacing.layout.6xl',
+    'semantic.space.1000',
     'semantic.fontWeight.bold',
     // Motion
     'semantic.motion.duration.normal',
@@ -319,25 +319,25 @@ export const numberInputDocs: ComponentDocumentation = {
       {
         name: 'Label',
         description: 'Optional label text with required indicator if needed. Uses semantic typography token.',
-        tokens: ['component.field.label.typography', 'component.field.label.color', 'component.field.label.colorDisabled', 'semantic.spacing.layout.xs', 'component.field.requiredIndicator.color', 'component.field.requiredIndicator.fontWeight'],
+        tokens: ['component.field.label.typography', 'component.field.label.color', 'component.field.label.colorDisabled', 'semantic.space.100', 'component.field.requiredIndicator.color', 'component.field.requiredIndicator.fontWeight'],
       },
       {
         name: 'Input Field',
         description: 'Text input using InputBase with type="text" and inputMode="decimal" for optimal mobile keyboard. Extra padding on right for stepper buttons.',
         tokens: [
           'component.input.default.font',
-          'semantic.spacing.component.lg',
+          'semantic.space.inset.lg',
           'semantic.size.control.lg', // Minimum height (decision 0034)
           'component.input.default.backgroundColor',
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
-          'semantic.spacing.layout.6xl',
+          'semantic.space.1000',
         ],
       },
       {
         name: 'Stepper Container',
         description: 'Absolute positioned container on right side of input holding increment/decrement buttons',
-        tokens: ['semantic.spacing.layout.sm'],
+        tokens: ['semantic.space.200'],
       },
       {
         name: 'Stepper Buttons',

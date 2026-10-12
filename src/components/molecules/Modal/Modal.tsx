@@ -12,7 +12,7 @@ import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 
 const { semantic } = tokens
-const { spacing: { layout }, color, border, elevation, motion } = semantic
+const { space, color, elevation, motion } = semantic
 
 // ---------------------------------------------------------------------------
 // Types
@@ -120,8 +120,8 @@ const scaleIn = keyframes`
 const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   inset: 0;
-  background-color: ${color.background.overlay};
-  z-index: ${semantic.zIndex.modal};
+  background-color: ${semantic.surface.scrim};
+  z-index: ${semantic.layer.modal};
   ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
 `
 
@@ -132,17 +132,17 @@ const StyledDialog = styled.div.withConfig({
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(1);
-  z-index: ${semantic.zIndex.modal};
+  z-index: ${semantic.layer.modal};
 
   width: ${({ $width }) => $width};
-  max-width: calc(100vw - ${layout.lg} * 2);
-  max-height: calc(100vh - ${layout.lg} * 2);
+  max-width: calc(100vw - ${space[400]} * 2);
+  max-height: calc(100vh - ${space[400]} * 2);
 
   display: flex;
   flex-direction: column;
 
-  background-color: ${color.background.subtle};
-  border-radius: ${border.radius.xl};
+  background-color: ${semantic.surface.raised};
+  border-radius: ${semantic.radius.xl};
   box-shadow: ${elevation.overlay};
   overflow: hidden;
 
@@ -175,36 +175,36 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${layout.lg} ${layout.lg} 0;
+  padding: ${space[400]} ${space[400]} 0;
   flex-shrink: 0;
 `
 
 const StyledBody = styled.div`
   flex: 1 1 auto;
   overflow-y: auto;
-  padding: ${layout.md} ${layout.lg};
+  padding: ${space[300]} ${space[400]};
 
   /* Scrollbar styling */
   &::-webkit-scrollbar {
-    width: ${semantic.spacing.layout.sm};
+    width: ${semantic.space[200]};
   }
   &::-webkit-scrollbar-track {
-    background: ${color.background.surface};
+    background: ${color.fill.muted};
   }
   &::-webkit-scrollbar-thumb {
     background: ${color.border.default};
-    border-radius: ${border.radius.circle};
+    border-radius: ${semantic.radius.full};
   }
   &::-webkit-scrollbar-thumb:hover {
-    background: ${color.border.strong};
+    background: ${color.fill.inverse};
   }
 `
 
 const StyledFooter = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: ${layout.sm};
-  padding: 0 ${layout.lg} ${layout.lg};
+  gap: ${space[200]};
+  padding: 0 ${space[400]} ${space[400]};
   flex-shrink: 0;
 `
 

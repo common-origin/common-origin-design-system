@@ -4,7 +4,7 @@ import { Button } from '../../atoms/Button'
 import tokens from '@/styles/tokens.json'
 import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 
-const { semantic: { color, border, spacing, motion } } = tokens
+const { semantic: { color, border, motion } } = tokens
 
 export interface CodeBlockProps {
   children: string
@@ -30,10 +30,10 @@ interface StyledCodeBlockProps {
 }
 
 const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
-  background-color: ${color.background.subtle};
-  border: ${border.subtle};
-  border-radius: ${tokens.semantic.border.radius.sm};
-  padding: ${spacing.layout.md};
+  background-color: ${tokens.semantic.surface.raised};
+  border: ${border.emphasis};
+  border-radius: ${tokens.semantic.radius.sm};
+  padding: ${tokens.semantic.space[300]};
   font-family: ${tokens.component.codeBlock.fontFamily};
   font-size: ${tokens.component.codeBlock.fontSize};
   line-height: ${tokens.component.codeBlock.lineHeight};
@@ -41,7 +41,7 @@ const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
   overflow-x: auto;
   overflow-y: ${({ $isExpanded, $needsExpansion }) => 
     $needsExpansion && !$isExpanded ? 'hidden' : 'auto'};
-  margin: ${spacing.layout.sm} 0;
+  margin: ${tokens.semantic.space[200]} 0;
   position: relative;
   transition: max-height ${motion.duration.slow} ${motion.easing.easeInOut};
 
@@ -74,30 +74,30 @@ const CodeBlockWrapper = styled.div`
 
 const CopyButtonWrapper = styled.div`
   position: absolute;
-  bottom: ${spacing.layout.lg};
-  right: ${spacing.layout.sm};
+  bottom: ${tokens.semantic.space[400]};
+  right: ${tokens.semantic.space[200]};
 `
 
 const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   display: flex;
   justify-content: center;
-  padding: ${spacing.layout.sm} 0;
+  padding: ${tokens.semantic.space[200]} 0;
   position: absolute;
   bottom: ${tokens.semantic.border.width.thin};
   left: ${tokens.semantic.border.width.thin};
   right: ${tokens.semantic.border.width.thin};
   width: calc(100% - 2 * ${tokens.semantic.border.width.thin});
-  margin-bottom: ${spacing.layout.sm};
-  border-radius: ${tokens.semantic.border.radius.sm};
+  margin-bottom: ${tokens.semantic.space[200]};
+  border-radius: ${tokens.semantic.radius.sm};
   transition: opacity ${motion.duration.slow} ${motion.easing.easeInOut}, background ${motion.duration.slow} ${motion.easing.easeInOut};
   
   ${({ $hasGradient }) => $hasGradient ? `
-    margin-top: -${spacing.layout['4xl']};
-    padding-top: ${spacing.layout['4xl']};
+    margin-top: -${tokens.semantic.space[800]};
+    padding-top: ${tokens.semantic.space[800]};
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      ${color.background.subtle} 60%
+      ${tokens.semantic.surface.raised} 60%
     );
   ` : `
     background: transparent;

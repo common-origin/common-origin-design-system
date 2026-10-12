@@ -179,21 +179,21 @@ export const modalDocs: ComponentDocumentation = {
     'semantic.size.overlay.lg',
     'semantic.size.overlay.md',
     'semantic.size.overlay.sm',
-    'semantic.zIndex.modal',
+    'semantic.layer.modal',
     // Elevation
     'semantic.elevation.overlay',
     // Background
-    'semantic.color.background.overlay',
-    'semantic.color.background.subtle',
-    'semantic.color.background.surface',
+    'semantic.surface.scrim',
+    'semantic.surface.raised',
+    'semantic.color.fill.muted',
     // Border
-    'semantic.border.radius.xl',
+    'semantic.radius.xl',
     'semantic.color.border.default',
-    'semantic.color.border.strong',
+    'semantic.color.fill.inverse',
     // Spacing
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
+    'semantic.space.200',
+    'semantic.space.300',
+    'semantic.space.400',
     // Breakpoint
     'semantic.breakpoint.md',
     // Motion
@@ -307,7 +307,7 @@ export const modalDocs: ComponentDocumentation = {
     screenReader:
       'Announced as a dialog with the title as its label. Actions are rendered as standard Button components with visible labels.',
     colorContrast:
-      'Inherits contrast from Typography and Button atoms. Overlay uses a 50 % opacity near-black backdrop (semantic.color.background.overlay).',
+      'Inherits contrast from Typography and Button atoms. Overlay uses a 50 % opacity near-black backdrop (semantic.surface.scrim).',
     focusManagement:
       'On open, focus moves to the dialog container. On close, focus returns to the element that triggered the modal.',
   },
@@ -336,27 +336,27 @@ export const modalDocs: ComponentDocumentation = {
       {
         name: 'Overlay',
         description: 'Fixed fullscreen backdrop that dims the page. Clicking it can close the modal.',
-        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.modal'],
+        tokens: ['semantic.surface.scrim', 'semantic.layer.modal'],
       },
       {
         name: 'Dialog',
         description: 'Centred panel containing header, body, and footer. Sized by the size prop.',
-        tokens: ['semantic.color.background.subtle', 'semantic.elevation.overlay', 'semantic.border.radius.xl'],
+        tokens: ['semantic.surface.raised', 'semantic.elevation.overlay', 'semantic.radius.xl'],
       },
       {
         name: 'Header',
         description: 'Flex row with the title (Typography h3) and a close IconButton.',
-        tokens: ['semantic.spacing.layout.md', 'semantic.spacing.layout.lg'],
+        tokens: ['semantic.space.300', 'semantic.space.400'],
       },
       {
         name: 'Body',
         description: 'Scrollable content area that renders children.',
-        tokens: ['semantic.spacing.layout.md', 'semantic.spacing.layout.lg'],
+        tokens: ['semantic.space.300', 'semantic.space.400'],
       },
       {
         name: 'Footer',
         description: 'Right-aligned row of Button components generated from the actions array.',
-        tokens: ['semantic.spacing.layout.sm', 'semantic.spacing.layout.md', 'semantic.spacing.layout.lg'],
+        tokens: ['semantic.space.200', 'semantic.space.300', 'semantic.space.400'],
       },
       {
         name: 'Divider',

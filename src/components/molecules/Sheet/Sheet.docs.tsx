@@ -98,26 +98,26 @@ export const sheetDocs: ComponentDocumentation = {
   
   tokens: [
     'semantic.size.overlay.sm',
-    'semantic.zIndex.overlay',
+    'semantic.layer.overlay',
     // Colors
-    'semantic.color.background.default',
-    'semantic.color.background.overlay',
+    'semantic.surface.base',
+    'semantic.surface.scrim',
     
     // Shadows
     'semantic.elevation.overlay',
     
     // Spacing
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.lg',
-    'semantic.spacing.layout.2xl',
+    'semantic.space.200',
+    'semantic.space.400',
+    'semantic.space.600',
     
     // Border
-    'semantic.border.radius.md',
+    'semantic.radius.md',
     
     // Colors for scrollbar
-    'semantic.color.background.subtle', // Scrollbar track
+    'semantic.surface.raised', // Scrollbar track
     'semantic.color.border.default', // Scrollbar thumb
-    'semantic.color.border.strong', // Scrollbar thumb on hover
+    'semantic.color.fill.inverse', // Scrollbar thumb on hover
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
@@ -730,7 +730,7 @@ export const sheetDocs: ComponentDocumentation = {
       'Body scroll is prevented while sheet is open to maintain context',
       'Proper ARIA labeling via title prop or aria-label prop',
       'Support for aria-describedby for additional context',
-      'Overlay dims the page with a 50% near-black backdrop (semantic.color.background.overlay)',
+      'Overlay dims the page with a 50% near-black backdrop (semantic.surface.scrim)',
     ],
     keyboardNavigation: 'Tab to move forward through focusable elements, Shift+Tab to move backward. Focus wraps from last to first element and vice versa. Press ESC to close the sheet (if closeOnEscape is true).',
     screenReader: 'Announces as "dialog" with the provided label. Screen readers are informed this is a modal dialog via aria-modal="true". Focus management ensures users stay within the sheet context.',
@@ -770,24 +770,24 @@ Visual Variants:
       {
         name: 'Overlay',
         description: 'Fixed-position backdrop that covers the entire viewport with a semi-transparent near-black background. Fades in with 200ms animation. Clicking it closes the sheet by default.',
-        tokens: ['semantic.color.background.overlay', 'semantic.zIndex.overlay'],
+        tokens: ['semantic.surface.scrim', 'semantic.layer.overlay'],
       },
       {
         name: 'Sheet Panel',
         description: 'The main sliding panel that contains content. Fixed position with slide animation from the configured edge. Has elevated shadow and scrollable overflow.',
         tokens: [
-          'semantic.color.background.default',
+          'semantic.surface.base',
           'semantic.elevation.overlay',
-          'semantic.border.radius.md',
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.lg',
-          'semantic.spacing.layout.2xl',
+          'semantic.radius.md',
+          'semantic.space.200',
+          'semantic.space.400',
+          'semantic.space.600',
         ],
       },
       {
         name: 'Content Area',
         description: 'Inner wrapper for children with padding. Inherits sheet dimensions and can scroll if content exceeds available space.',
-        tokens: ['semantic.spacing.layout.2xl'],
+        tokens: ['semantic.space.600'],
       },
     ],
   },

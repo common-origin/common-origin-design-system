@@ -107,13 +107,13 @@ const StyledLabel = styled.label<{ $disabled?: boolean }>`
   color: ${({ $disabled }) => 
     $disabled ? semantic.color.text.disabled : semantic.color.text.default
   };
-  margin-bottom: ${semantic.spacing.layout.lg};
+  margin-bottom: ${semantic.space[400]};
 `
 
 const StyledSliderTrackContainer = styled.div`
   position: relative;
   width: 100%;
-  height: ${semantic.spacing.layout['6xl']};
+  height: ${semantic.space[1000]};
   display: flex;
   align-items: center;
 `
@@ -121,13 +121,13 @@ const StyledSliderTrackContainer = styled.div`
 const StyledTrack = styled.div<{ $disabled?: boolean }>`
   position: relative;
   width: 100%;
-  height: ${semantic.spacing.layout.xs};
+  height: ${semantic.space[100]};
   background-color: ${({ $disabled }) =>
     $disabled 
-      ? semantic.color.background.disabled
+      ? semantic.color.fill.disabled
       : semantic.color.background.progressTrack
   };
-  border-radius: ${semantic.border.radius.circle};
+  border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
 `
 
@@ -137,9 +137,9 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.icon.disabled
-      : semantic.color.background.emphasis
+      : semantic.color.fill.emphasis
   };
-  border-radius: ${semantic.border.radius.circle};
+  border-radius: ${semantic.radius.full};
   pointer-events: none;
 `
 
@@ -148,20 +148,20 @@ const StyledThumb = styled.div<{
   $active?: boolean
 }>`
   position: absolute;
-  width: ${semantic.spacing.layout.xl};
-  height: ${semantic.spacing.layout.xl};
-  top: -${semantic.spacing.layout.sm};
+  width: ${semantic.space[500]};
+  height: ${semantic.space[500]};
+  top: -${semantic.space[200]};
   background-color: ${({ $disabled }) =>
     $disabled
-      ? semantic.color.background.disabled
+      ? semantic.color.fill.disabled
       : semantic.color.background.subtle
   };
   border: ${semantic.border.width.thick} solid ${({ $disabled }) =>
     $disabled
       ? semantic.color.icon.disabled
-      : semantic.color.background.emphasis
+      : semantic.color.fill.emphasis
   };
-  border-radius: ${semantic.border.radius.circle};
+  border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
   transform: translateX(-50%);
   transition: ${semantic.motion.transition.fast};
@@ -194,14 +194,14 @@ const StyledThumb = styled.div<{
 
 const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
   position: absolute;
-  top: -${semantic.spacing.layout['4xl']};
-  left: ${semantic.spacing.layout.sm};
+  top: -${semantic.space[800]};
+  left: ${semantic.space[200]};
   transform: translateX(-50%);
-  padding: ${semantic.spacing.layout.xs} ${semantic.spacing.layout.sm};
-  background-color: ${semantic.color.background.emphasis};
+  padding: ${semantic.space[100]} ${semantic.space[200]};
+  background-color: ${semantic.color.fill.emphasis};
   color: ${semantic.color.text.inverse};
   font: ${semantic.typography.caption};
-  border-radius: ${semantic.border.radius.sm};
+  border-radius: ${semantic.radius.sm};
   white-space: nowrap;
   pointer-events: none;
   opacity: ${({ $disabled }) => $disabled ? semantic.opacity.disabled : semantic.opacity.full};
@@ -214,9 +214,9 @@ const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: ${semantic.spacing.layout.xs} solid transparent;
-    border-right: ${semantic.spacing.layout.xs} solid transparent;
-    border-top: ${semantic.spacing.layout.xs} solid ${semantic.color.background.emphasis};
+    border-left: ${semantic.space[100]} solid transparent;
+    border-right: ${semantic.space[100]} solid transparent;
+    border-top: ${semantic.space[100]} solid ${semantic.color.fill.emphasis};
   }
 `
 
@@ -224,8 +224,8 @@ const StyledMinMaxLabels = styled.div`
   display: flex;
   justify-content: space-between;
   font: ${semantic.typography.body};
-  color: ${semantic.color.text.subdued};
-  margin-top: ${semantic.spacing.layout.xs};
+  color: ${semantic.color.text.muted};
+  margin-top: ${semantic.space[100]};
 `
 
 /**

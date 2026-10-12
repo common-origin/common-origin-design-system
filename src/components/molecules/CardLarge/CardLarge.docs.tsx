@@ -60,11 +60,11 @@ export const cardLargeDocs: ComponentDocumentation = {
 
   tokens: [
     'component.cardLarge.maxWidth',
-    'semantic.color.background.subtle',
-    'semantic.border.subtle',
-    'semantic.border.radius.2xl',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.lg',
+    'semantic.surface.raised',
+    'semantic.border.emphasis',
+    'semantic.radius.2xl',
+    'semantic.space.300',
+    'semantic.space.400',
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeOut',

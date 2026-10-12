@@ -72,9 +72,9 @@ export const inlineAlertDocs: ComponentDocumentation = {
 
   tokens: [
     // Severity colours (the icon takes the text colour)
-    'semantic.color.text.error',
+    'semantic.color.text.danger',
     'semantic.color.text.warning',
-    'semantic.color.text.interactive',
+    'semantic.color.text.accent',
     'semantic.color.text.success',
     // Size (decision 0018 label scale)
     'semantic.size.label.small',
@@ -83,8 +83,8 @@ export const inlineAlertDocs: ComponentDocumentation = {
     'semantic.typography.small', // medium text
     'semantic.size.icon.xs', // small icon
     'semantic.size.icon.sm', // medium icon
-    'semantic.spacing.layout.xs', // small gap
-    'semantic.spacing.layout.sm' // medium gap
+    'semantic.space.100', // small gap
+    'semantic.space.200' // medium gap
   ],
 
   examples: [
@@ -181,12 +181,12 @@ export const inlineAlertDocs: ComponentDocumentation = {
         tokens: [
           'semantic.size.label.small',
           'semantic.size.label.medium',
-          'semantic.color.text.error',
+          'semantic.color.text.danger',
           'semantic.color.text.warning',
-          'semantic.color.text.interactive',
+          'semantic.color.text.accent',
           'semantic.color.text.success',
-          'semantic.spacing.layout.xs',
-          'semantic.spacing.layout.sm'
+          'semantic.space.100',
+          'semantic.space.200'
         ]
       },
       {

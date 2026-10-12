@@ -70,9 +70,9 @@ describe('List', () => {
 
   // List's spacing reaches items that don't set their own; an item's own spacing wins (#77)
   describe('Spacing Prop', () => {
-    const { layout } = tokens.semantic.spacing
-    const comfortable = `${layout.md} ${layout.lg}`
-    const compact = `${layout.sm} ${layout.md}`
+    const { space } = tokens.semantic
+    const comfortable = `${space[300]} ${space[400]}`
+    const compact = `${space[200]} ${space[300]}`
     // The padding is on the item's content row, the list item's first child
     const paddingOf = (name: string) => screen.getByText(name).closest('[role="listitem"]')?.firstElementChild
 

@@ -100,25 +100,26 @@ export const searchFieldDocs: ComponentDocumentation = {
   
   tokens: [
     'semantic.size.menu.maxHeight',
-    'semantic.zIndex.dropdown',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.md',
-    'semantic.color.background.subtle',
-    'semantic.color.background.surface',
-    'semantic.color.background.interactive-subtle',
+    'semantic.layer.dropdown',
+    'semantic.space.200',
+    'semantic.space.300',
+    'semantic.surface.raised',
+    'semantic.color.fill.muted',
+    'semantic.color.fill.accent-muted',
     'semantic.color.border.default',
-    'semantic.color.border.interactive',
-    'semantic.color.border.strong',
+    'semantic.color.border.accent',
+    'semantic.color.border.input-hover',
+    'semantic.color.border.focus',
     'semantic.color.text.default',
-    'semantic.color.text.subdued',
+    'semantic.color.text.muted',
     'semantic.color.text.disabled',
-    'semantic.color.text.interactive',
-    'semantic.color.icon.subdued',
+    'semantic.color.text.accent',
+    'semantic.color.icon.muted',
     'semantic.color.icon.default',
     'semantic.border.width.thin',
     'semantic.border.width.thick',
-    'semantic.border.radius.sm',
-    'semantic.border.radius.md',
+    'semantic.radius.sm',
+    'semantic.radius.md',
     'semantic.typography.body',
     'semantic.typography.caption',
     'component.searchField.sectionHeader.typography',
@@ -141,7 +142,7 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.border.focusOffset',
     'component.input.disabled.backgroundColor',
     'component.input.disabled.borderColor',
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
   ],
   
   examples: [
@@ -412,8 +413,8 @@ useEffect(() => {
           'semantic.border.focusOffset',
           'component.input.disabled.backgroundColor',
           'component.input.disabled.borderColor',
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.md',
+          'semantic.space.200',
+          'semantic.space.300',
           'semantic.motion.duration.normal',
           'semantic.motion.easing.easeInOut'
         ]
@@ -421,7 +422,7 @@ useEffect(() => {
       {
         name: 'Search Icon',
         description: 'Leading search icon (decorative, aria-hidden)',
-        tokens: ['semantic.color.icon.subdued']
+        tokens: ['semantic.color.icon.muted']
       },
       {
         name: 'Text Input',
@@ -434,7 +435,7 @@ useEffect(() => {
       {
         name: 'Loading Indicator',
         description: 'Optional refresh icon shown during async operations',
-        tokens: ['semantic.color.icon.subdued']
+        tokens: ['semantic.color.icon.muted']
       },
       {
         name: 'Clear Button',
@@ -445,9 +446,9 @@ useEffect(() => {
         name: 'Suggestions Listbox',
         description: 'Dropdown container with scrollable list of suggestions',
         tokens: [
-          'semantic.color.background.subtle',
+          'semantic.surface.raised',
           'semantic.color.border.default',
-          'semantic.border.radius.md',
+          'semantic.radius.md',
           'semantic.elevation.floating'
         ]
       },
@@ -460,7 +461,7 @@ useEffect(() => {
         name: 'Recent Searches Section',
         description: 'Header and items for recent search history',
         tokens: [
-          'semantic.color.text.subdued',
+          'semantic.color.text.muted',
           'component.searchField.sectionHeader.typography',
           'component.searchField.sectionHeader.letterSpacing'
         ]

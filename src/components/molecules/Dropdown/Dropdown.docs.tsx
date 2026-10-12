@@ -83,13 +83,13 @@ export const dropdownDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.size.menu.maxHeight',
-    'semantic.spacing.layout.sm',
+    'semantic.space.200',
     'component.field.helperText.typography',
     'component.field.helperText.color',
     'component.field.helperText.colorError',
     // Input component tokens
     'semantic.size.control.lg', // Minimum height (decision 0034)
-    'semantic.spacing.component.lg',
+    'semantic.space.inset.lg',
     'component.input.default.backgroundColor',
     'component.input.default.borderWidth',
     'component.input.default.borderColor',
@@ -108,24 +108,24 @@ export const dropdownDocs: ComponentDocumentation = {
     'component.input.error.focus.borderColor',
     
     // Base tokens
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     'semantic.elevation.floating',
-    'semantic.zIndex.dropdown',
+    'semantic.layer.dropdown',
     
     // Semantic tokens: options. Focus is grey; the selected option is light blue with a checkmark (decision 0029)
-    'semantic.color.background.surface',
-    'semantic.color.background.neutral',
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.background.interactive-subtle-hover',
-    'semantic.color.background.interactive-subtle-active',
-    'semantic.color.text.interactive',
-    'semantic.color.text.interactive-hover',
-    'semantic.color.text.interactive-active',
-    'semantic.spacing.layout.sm',
-    'semantic.color.text.error',
-    'semantic.color.text.subdued',
+    'semantic.color.fill.muted',
+    'semantic.color.fill.default',
+    'semantic.color.fill.accent-muted',
+    'semantic.color.fill.accent-muted-hover',
+    'semantic.color.fill.accent-muted-pressed',
+    'semantic.color.text.accent',
+    'semantic.color.text.accent-hover',
+    'semantic.color.text.accent-pressed',
+    'semantic.space.200',
+    'semantic.color.text.danger',
+    'semantic.color.text.muted',
     'semantic.typography.caption',
-    'semantic.border.subtle',
+    'semantic.border.emphasis',
     // Motion
     'semantic.motion.duration.fast',
     'semantic.motion.duration.normal',

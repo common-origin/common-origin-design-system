@@ -434,25 +434,24 @@ describe('Checkbox', () => {
       return probe.style.color
     }
     const boxOf = (checkbox: HTMLElement) => checkbox.nextElementSibling as HTMLElement
-    const strong = tokens.semantic.color.border.strong
+    const checkedFill = tokens.semantic.color.fill.inverse
 
     it.each([
       ['checked', { checked: true }],
       ['indeterminate', { indeterminate: true }],
-    ])('%s: the border is color.border.strong', (_, props) => {
+    ])('%s: the border matches the checked fill, color.fill.inverse', (_, props) => {
       render(<Checkbox label="Box" onChange={() => {}} {...props} />)
       const box = getComputedStyle(boxOf(screen.getByRole('checkbox')))
-      expect(box.borderTopColor).toBe(css(strong))
-      expect(box.borderTopColor).toBe(css(tokens.semantic.color.background.inverse))
+      expect(box.borderTopColor).toBe(css(checkedFill))
     })
 
     it('keeps that colour inside a parent that sets its own text colour', () => {
       render(
-        <div style={{ color: tokens.semantic.color.text.error }}>
+        <div style={{ color: tokens.semantic.color.text.danger }}>
           <Checkbox label="Box" checked onChange={() => {}} />
         </div>
       )
-      expect(getComputedStyle(boxOf(screen.getByRole('checkbox'))).borderTopColor).toBe(css(strong))
+      expect(getComputedStyle(boxOf(screen.getByRole('checkbox'))).borderTopColor).toBe(css(checkedFill))
     })
   })
 })

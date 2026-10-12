@@ -125,11 +125,11 @@ export const textFieldDocs: ComponentDocumentation = {
 
   tokens: [
     'component.input.textarea.minHeight',
-    'semantic.spacing.layout.sm',
+    'semantic.space.200',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     'component.field.requiredIndicator.color',
     'component.field.requiredIndicator.fontWeight',
     'component.field.helperText.typography',
@@ -143,33 +143,34 @@ export const textFieldDocs: ComponentDocumentation = {
     
     // Colors - Text
     'semantic.color.text.default',
-    'semantic.color.text.subdued',
-    'semantic.color.text.error',
+    'semantic.color.text.muted',
+    'semantic.color.text.danger',
     
     // Colors - Background
-    'semantic.color.background.subtle',
+    'semantic.surface.raised',
     
     // Colors - Border
     'component.input.default.borderColor',
     'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.disabled.borderColor',
-    'semantic.color.border.strong',
-    'semantic.color.border.interactive',
-    'semantic.color.border.error',
+    'semantic.color.border.input-hover',
+    'semantic.color.border.focus',
+    'semantic.color.border.accent',
+    'semantic.color.border.danger',
     
     // Spacing
-    'semantic.spacing.layout.md',
+    'semantic.space.300',
     
     // Border
     'semantic.border.width.thin',
-    'semantic.border.radius.sm',
+    'semantic.radius.sm',
     
     // Motion
     'semantic.motion.duration.normal',
     'semantic.motion.easing.easeInOut',
     
     // Input padding and focus offset, from the semantic tier (decision 0022)
-    'semantic.spacing.component.lg',
+    'semantic.space.inset.lg',
     'semantic.border.focusOffset',
   ],
 
@@ -346,7 +347,7 @@ export const textFieldDocs: ComponentDocumentation = {
       'Error state sets aria-invalid="true" and uses aria-describedby to link error message',
       'Helper text linked to input via aria-describedby for screen reader context',
       'Error messages use role="alert" and aria-live="polite" for immediate screen reader announcements',
-      'Focus ring visible with 2px border using semantic.color.border.interactive',
+      'Focus ring visible with 2px border using semantic.color.border.accent',
       'Maintains 4.5:1 color contrast ratio in all states (WCAG 2.2 AA)',
       'Disabled state uses the component.input.disabled colour tokens (no opacity change), keeping the label and value readable',
       'Auto-generates unique IDs using React.useId() when not provided',
@@ -382,7 +383,7 @@ export const textFieldDocs: ComponentDocumentation = {
       {
         name: 'Field Container',
         description: 'Root wrapper providing vertical spacing between label, input, and help text',
-        tokens: ['semantic.spacing.layout.sm'],
+        tokens: ['semantic.space.200'],
       },
       {
         name: 'Label',
@@ -391,7 +392,7 @@ export const textFieldDocs: ComponentDocumentation = {
           'component.field.label.typography',
           'component.field.label.color',
           'component.field.label.colorDisabled',
-          'semantic.spacing.layout.xs',
+          'semantic.space.100',
         ],
       },
       {
@@ -404,15 +405,16 @@ export const textFieldDocs: ComponentDocumentation = {
         description: 'Base input element (StyledInputBase) with background, border, padding, and interactive states. Supports all HTML input attributes',
         tokens: [
           'semantic.typography.body',
-          'semantic.color.background.subtle',
+          'semantic.surface.raised',
           'component.input.default.borderColor',
-          'semantic.color.border.interactive',
-          'semantic.color.border.strong',
-          'semantic.color.border.error',
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.md',
+          'semantic.color.border.accent',
+          'semantic.color.border.input-hover',
+          'semantic.color.border.focus',
+          'semantic.color.border.danger',
+          'semantic.space.200',
+          'semantic.space.300',
           'semantic.border.width.thin',
-          'semantic.border.radius.sm',
+          'semantic.radius.sm',
           'semantic.motion.duration.normal',
           'semantic.motion.easing.easeInOut',
         ],

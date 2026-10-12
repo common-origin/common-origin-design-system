@@ -6,7 +6,7 @@ import tokens from '@/styles/tokens.json'
 
 const { field } = tokens.component
 // Gaps come from the semantic spacing scale: no component spacing tokens (decision 0022)
-const { layout: gap } = tokens.semantic.spacing
+const { space } = tokens.semantic
 
 /**
  * Props for the NumberInput component
@@ -85,14 +85,14 @@ export interface NumberInputProps extends Omit<InputHTMLAttributes<HTMLInputElem
 const StyledFieldContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${gap.sm};
+  gap: ${space[200]};
   width: 100%;
 `
 
 const StyledLabel = styled.label`
   display: flex;
   align-items: center;
-  gap: ${gap.xs};
+  gap: ${space[100]};
   font: ${field.label.typography};
   color: ${field.label.color};
 
@@ -114,15 +114,15 @@ const StyledInputWrapper = styled.div`
 
 const StyledNumberInput = styled(StyledInputBase)`
   /* Add padding on the right to make room for stepper buttons */
-  padding-right: ${tokens.semantic.spacing.layout['6xl']};
+  padding-right: ${tokens.semantic.space[1000]};
 `
 
 const StyledStepperContainer = styled.div`
   position: absolute;
-  right: ${tokens.semantic.spacing.layout.sm};
+  right: ${tokens.semantic.space[200]};
   display: flex;
   flex-direction: row;
-  gap: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
 `
 
 const StyledHelperText = styled.div<{ $isError?: boolean }>`

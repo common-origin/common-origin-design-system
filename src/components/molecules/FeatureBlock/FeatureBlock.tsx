@@ -9,7 +9,7 @@ import { Typography } from '../../atoms/Typography'
 import { DateFormatter } from '../../atoms/DateFormatter'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { spacing: { layout: spacing }, border } } = tokens
+const { semantic: { space } } = tokens
 
 export type FeatureBlockProps = {
   title: string
@@ -31,11 +31,11 @@ const FeatureBlockStyled = styled.div`
   }
 
   @media (min-width: ${tokens.semantic.breakpoint.lg}) {
-    gap: ${spacing['7xl']};
+    gap: ${space[1200]};
   }
 
   img {
-    border-radius: ${border.radius['2xl']};
+    border-radius: ${tokens.semantic.radius['2xl']};
     transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
 
     &:hover {
@@ -58,22 +58,22 @@ const ImageWrapper = styled.div`
 
 const ContentSection = styled.div`
   grid-column: span 12;
-  margin-top: ${spacing['2xl']};
+  margin-top: ${space[600]};
 
   @media (min-width: ${tokens.semantic.breakpoint.lg}) {
     grid-column: span 6;
     margin-top: 0;
-    padding-right: ${spacing['4xl']};
+    padding-right: ${space[800]};
   }
 
   @media (min-width: ${tokens.semantic.breakpoint.xl}) {
-    padding-right: ${spacing['11xl']};
+    padding-right: ${space[2400]};
   }
 `
 
 const ButtonWrapper = styled.div`
   button {
-    margin-top: ${spacing.lg};
+    margin-top: ${space[400]};
   }
 `
 

@@ -158,7 +158,7 @@ describe('AccountCard', () => {
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['green-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['green-subtle']))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['green-muted']))
     })
 
     it('maps down trend to red category badge colors', () => {
@@ -169,7 +169,7 @@ describe('AccountCard', () => {
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['red-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['red-subtle']))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['red-muted']))
     })
 
     it('maps neutral trend to blue category badge colors', () => {
@@ -180,7 +180,7 @@ describe('AccountCard', () => {
       const styles = window.getComputedStyle(badge)
 
       expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['blue-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['blue-subtle']))
+      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['blue-muted']))
     })
 
     it('does not display trend when not provided', () => {

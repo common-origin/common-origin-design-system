@@ -19,7 +19,7 @@ const {
   semantic: { 
     color, 
     border, 
-    spacing: { layout }, 
+    space, 
     motion,
     elevation
   }
@@ -136,8 +136,8 @@ const fadeIn = keyframes`
 const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   position: fixed;
   inset: 0;
-  background-color: ${color.background.overlay};
-  z-index: ${tokens.semantic.zIndex.modal};
+  background-color: ${tokens.semantic.surface.scrim};
+  z-index: ${tokens.semantic.layer.modal};
   animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
 `
 
@@ -146,13 +146,13 @@ const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${color.background.subtle};
-  border-top-left-radius: ${border.radius.lg};
-  border-top-right-radius: ${border.radius.lg};
+  background-color: ${tokens.semantic.surface.raised};
+  border-top-left-radius: ${tokens.semantic.radius.lg};
+  border-top-right-radius: ${tokens.semantic.radius.lg};
   box-shadow: ${elevation.overlay};
   max-height: 90vh;
   overflow-y: auto;
-  z-index: ${tokens.semantic.zIndex.modal};
+  z-index: ${tokens.semantic.layer.modal};
   animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
 
   ${reducedMotion} {
@@ -165,7 +165,7 @@ const StyledHeader = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: ${layout.lg} ${layout.lg} ${layout.md};
+  padding: ${space[400]} ${space[400]} ${space[300]};
   border-bottom: ${border.default};
 `
 
@@ -177,18 +177,18 @@ const StyledCloseButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: ${layout.sm};
+  padding: ${space[200]};
   border: none;
   background: transparent;
-  color: ${color.icon.subdued};
+  color: ${color.icon.muted};
   cursor: pointer;
-  border-radius: ${border.radius.sm};
+  border-radius: ${tokens.semantic.radius.sm};
   transition: ${motion.hover};
-  margin-left: ${layout.sm};
+  margin-left: ${space[200]};
   
   &:hover {
     color: ${color.icon.default};
-    background-color: ${color.background.surface};
+    background-color: ${color.fill.muted};
   }
   
   &:focus-visible {
@@ -198,7 +198,7 @@ const StyledCloseButton = styled.button`
 `
 
 const StyledActionsList = styled.ul`
-  padding: ${layout.sm} ${layout.md};
+  padding: ${space[200]} ${space[300]};
   margin: 0;
   list-style: none;
 `

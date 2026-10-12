@@ -83,7 +83,7 @@ interface StyledTabProps {
 const StyledTabList = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.subtle};
+  border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.emphasis};
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -94,12 +94,12 @@ const StyledTabList = styled.div`
   }
   
   &::-webkit-scrollbar-track {
-    background: ${semantic.color.background.subtle};
+    background: ${semantic.surface.raised};
   }
   
   &::-webkit-scrollbar-thumb {
     background: ${semantic.color.border.default};
-    border-radius: ${semantic.border.radius.sm};
+    border-radius: ${semantic.radius.sm};
   }
 `
 
@@ -108,8 +108,8 @@ const StyledTab = styled.button.withConfig({
 })<StyledTabProps>`
   display: inline-flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
-  padding: ${semantic.spacing.layout.md} ${semantic.spacing.layout.lg};
+  gap: ${semantic.space[200]};
+  padding: ${semantic.space[300]} ${semantic.space[400]};
   font: ${semantic.typography.button2};
   white-space: nowrap;
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
@@ -120,14 +120,14 @@ const StyledTab = styled.button.withConfig({
   
   /* Selected tab: the light-blue selected treatment plus a blue underline (decisions 0016, 0020).
      The text darkens with the fill on hover and press so every state stays at least 4.5:1. */
-  border-radius: ${semantic.border.radius.sm} ${semantic.border.radius.sm} 0 0;
+  border-radius: ${semantic.radius.sm} ${semantic.radius.sm} 0 0;
   background-color: ${props => props.$isActive
-    ? semantic.color.background['interactive-subtle']
+    ? semantic.color.fill['accent-muted']
     : 'transparent'
   };
   color: ${props => props.$isActive
-    ? semantic.color.text.interactive
-    : semantic.color.text.subdued
+    ? semantic.color.text.accent
+    : semantic.color.text.muted
   };
 
   &::after {
@@ -138,7 +138,7 @@ const StyledTab = styled.button.withConfig({
     right: 0;
     height: ${semantic.border.width.thick};
     background-color: ${props => props.$isActive
-      ? semantic.color.background.interactive
+      ? semantic.color.fill.accent
       : 'transparent'
     };
     transition: ${semantic.motion.hover};
@@ -146,22 +146,22 @@ const StyledTab = styled.button.withConfig({
 
   &:hover:not(:disabled) {
     background-color: ${props => props.$isActive
-      ? semantic.color.background['interactive-subtle-hover']
+      ? semantic.color.fill['accent-muted-hover']
       : 'transparent'
     };
     color: ${props => props.$isActive
-      ? semantic.color.text['interactive-hover']
+      ? semantic.color.text['accent-hover']
       : semantic.color.text.default
     };
   }
 
   &:active:not(:disabled) {
     background-color: ${props => props.$isActive
-      ? semantic.color.background['interactive-subtle-active']
+      ? semantic.color.fill['accent-muted-pressed']
       : 'transparent'
     };
     color: ${props => props.$isActive
-      ? semantic.color.text['interactive-active']
+      ? semantic.color.text['accent-pressed']
       : semantic.color.text.default
     };
   }
@@ -184,11 +184,11 @@ const StyledBadge = styled.span`
   justify-content: center;
   min-width: ${tokens.component.tabBar.badge.size};
   height: ${tokens.component.tabBar.badge.size};
-  padding: 0 ${semantic.spacing.layout.xs};
+  padding: 0 ${semantic.space[100]};
   font: ${tokens.component.tabBar.badge.typography};
   font-weight: ${tokens.component.tabBar.badge.fontWeight};
-  border-radius: ${semantic.border.radius.circle};
-  background-color: ${semantic.color.background.interactive};
+  border-radius: ${semantic.radius.full};
+  background-color: ${semantic.color.fill.accent};
   color: ${semantic.color.text.inverse};
 `
 

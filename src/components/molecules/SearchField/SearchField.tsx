@@ -138,12 +138,12 @@ const StyledSearchContainer = styled.div<StyledSearchContainerProps>`
 const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   display: flex;
   align-items: center;
-  gap: ${semantic.spacing.layout.sm};
+  gap: ${semantic.space[200]};
   /* The field's height comes from size.control.lg as a minimum, matching the other fields
      (decision 0034); the padding only matters if the content grows past it */
   box-sizing: border-box;
   min-height: ${semantic.size.control.lg};
-  padding: ${semantic.spacing.layout.sm} ${semantic.spacing.layout.md};
+  padding: ${semantic.space[200]} ${semantic.space[300]};
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${component.input.default.borderRadius};
@@ -188,19 +188,19 @@ const StyledInput = styled.input`
 
 const StyledSuggestionsList = styled.ul`
   position: absolute;
-  top: calc(100% + ${semantic.spacing.layout.xs});
+  top: calc(100% + ${semantic.space[100]});
   left: 0;
   right: 0;
   max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
-  background-color: ${semantic.color.background.subtle};
+  background-color: ${semantic.surface.raised};
   border: ${semantic.border.width.thin} solid ${semantic.color.border.default};
-  border-radius: ${semantic.border.radius.md};
+  border-radius: ${semantic.radius.md};
   box-shadow: ${semantic.elevation.floating};
   list-style: none;
-  padding: ${semantic.spacing.layout.xs} 0;
+  padding: ${semantic.space[100]} 0;
   margin: 0;
-  z-index: ${semantic.zIndex.dropdown};
+  z-index: ${semantic.layer.dropdown};
 
   /* The highlighted suggestion has keyboard focus, which is grey, not the light-blue selected
      treatment (decision 0029). Its row is the option's first child. While pressed, the row's own
@@ -211,9 +211,9 @@ const StyledSuggestionsList = styled.ul`
 `
 
 const StyledSectionHeader = styled.div`
-  padding: ${semantic.spacing.layout.sm} ${semantic.spacing.layout.md};
+  padding: ${semantic.space[200]} ${semantic.space[300]};
   font: ${tokens.component.searchField.sectionHeader.typography};
-  color: ${semantic.color.text.subdued};
+  color: ${semantic.color.text.muted};
   text-transform: uppercase;
   letter-spacing: ${tokens.component.searchField.sectionHeader.letterSpacing};
 `

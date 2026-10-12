@@ -36,12 +36,12 @@ const BreadcrumbStyled = styled.li`
   text-transform: uppercase;
   display: inline-flex;
   align-items: center;
-  gap: ${tokens.semantic.spacing.layout.sm};
-  padding: ${tokens.semantic.spacing.layout.sm};
+  gap: ${tokens.semantic.space[200]};
+  padding: ${tokens.semantic.space[200]};
 
   &:last-of-type a {
     text-decoration: none;
-    color: ${tokens.semantic.color.text.subdued};
+    color: ${tokens.semantic.color.text.muted};
   }
 
   &:last-of-type p {

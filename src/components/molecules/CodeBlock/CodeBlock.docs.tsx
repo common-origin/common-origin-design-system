@@ -55,16 +55,16 @@ export const codeBlockDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.background.subtle', // Container, and the fade over collapsed code
-    'semantic.border.subtle', // Container border
+    'semantic.surface.raised', // Container, and the fade over collapsed code
+    'semantic.border.emphasis', // Container border
     'semantic.border.width.thin', // Insets the expand-button bar inside the border
-    'semantic.border.radius.sm', // Container and expand-button bar
+    'semantic.radius.sm', // Container and expand-button bar
     'semantic.border.focus', // Focus ring on the expand button
     'semantic.border.focusOffset',
-    'semantic.spacing.layout.md', // Container padding
-    'semantic.spacing.layout.sm', // Vertical margin, expand-button bar padding
-    'semantic.spacing.layout.lg', // Copy button offset from the bottom
-    'semantic.spacing.layout.4xl', // Height of the fade over collapsed code
+    'semantic.space.300', // Container padding
+    'semantic.space.200', // Vertical margin, expand-button bar padding
+    'semantic.space.400', // Copy button offset from the bottom
+    'semantic.space.800', // Height of the fade over collapsed code
     'semantic.color.text.default', // Code text
     'component.codeBlock.fontFamily',
     'component.codeBlock.fontSize',
@@ -320,10 +320,10 @@ export const useLocalStorage = (key, initialValue) => {
 import tokens from '@/styles/tokens.json'
 
 const StyledCard = styled.div\`
-  background: \${tokens.semantic.color.background.default};
+  background: \${tokens.semantic.surface.base};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.semantic.border.radius.sm};
-  padding: \${tokens.semantic.spacing.layout.md};
+  border-radius: \${tokens.semantic.radius.sm};
+  padding: \${tokens.semantic.space[300]};
   box-shadow: \${tokens.semantic.elevation.low};
   
   &:hover {
@@ -374,10 +374,10 @@ export const Card = ({ children, ...props }) => (
 import tokens from '@/styles/tokens.json'
 
 const StyledCard = styled.div\`
-  background: \${tokens.semantic.color.background.default};
+  background: \${tokens.semantic.surface.base};
   border: \${tokens.semantic.border.default};
-  border-radius: \${tokens.semantic.border.radius.sm};
-  padding: \${tokens.semantic.spacing.layout.md};
+  border-radius: \${tokens.semantic.radius.sm};
+  padding: \${tokens.semantic.space[300]};
   box-shadow: \${tokens.semantic.elevation.low};
   
   &:hover {
@@ -626,9 +626,9 @@ interface UserProfile {
 }
 
 const StyledProfileCard = styled.div\`
-  background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.semantic.border.radius.md};
-  padding: \${tokens.semantic.spacing.layout.lg};
+  background: \${tokens.semantic.color.fill.muted};
+  border-radius: \${tokens.semantic.radius.md};
+  padding: \${tokens.semantic.space[400]};
   box-shadow: \${tokens.semantic.elevation.low};
 \`
 
@@ -713,9 +713,9 @@ interface UserProfile {
 }
 
 const StyledProfileCard = styled.div\`
-  background: \${tokens.semantic.color.background.surface};
-  border-radius: \${tokens.semantic.border.radius.md};
-  padding: \${tokens.semantic.spacing.layout.lg};
+  background: \${tokens.semantic.color.fill.muted};
+  border-radius: \${tokens.semantic.radius.md};
+  padding: \${tokens.semantic.space[400]};
   box-shadow: \${tokens.semantic.elevation.low};
 \`
 
@@ -837,10 +837,10 @@ export default config`}
         name: 'StyledCodeBlock',
         description: 'The <pre> element containing code with preserved whitespace, monospace font, and optional max-height constraint with smooth transitions',
         tokens: [
-          'semantic.color.background.subtle',
-          'semantic.border.subtle',
-          'semantic.border.radius.sm',
-          'semantic.spacing.layout.md',
+          'semantic.surface.raised',
+          'semantic.border.emphasis',
+          'semantic.radius.sm',
+          'semantic.space.300',
           'component.codeBlock.fontFamily',
           'semantic.color.text.default',
           'component.codeBlock.fontSize',
@@ -853,17 +853,17 @@ export default config`}
         name: 'CopyButtonWrapper',
         description: 'Absolutely positioned container that anchors the copy button to the bottom-right of the code block',
         tokens: [
-          'semantic.spacing.layout.lg',
-          'semantic.spacing.layout.sm'
+          'semantic.space.400',
+          'semantic.space.200'
         ]
       },
       {
         name: 'ExpandButtonWrapper',
         description: 'Container for the expand/collapse button with gradient overlay when collapsed to indicate more content',
         tokens: [
-          'semantic.spacing.layout.sm',
-          'semantic.spacing.layout.4xl',
-          'semantic.color.background.subtle'
+          'semantic.space.200',
+          'semantic.space.800',
+          'semantic.surface.raised'
         ]
       },
       {

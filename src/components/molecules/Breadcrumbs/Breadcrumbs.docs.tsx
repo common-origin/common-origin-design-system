@@ -38,10 +38,10 @@ export const breadcrumbsDocs: ComponentDocumentation = {
 
   tokens: [
     'component.breadcrumbs.item.maxWidth',
-    'semantic.spacing.layout.sm', // Item padding and the gap around the separator
+    'semantic.space.200', // Item padding and the gap around the separator
     'semantic.border.default', // Bottom border
     'semantic.color.text.default', // Links to earlier pages
-    'semantic.color.text.subdued', // Current page (last item)
+    'semantic.color.text.muted', // Current page (last item)
     'semantic.typography.caption', // Item text (Typography variant="caption")
     'semantic.size.icon.xs', // Separator icon
   ],

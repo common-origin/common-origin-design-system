@@ -110,7 +110,7 @@ export const StyledInputBase = styled.input.withConfig({
 })<StyledInputBaseProps>`
   ${inputBaseStyles}
   min-height: ${semantic.size.control.lg};
-  padding: 0 ${semantic.spacing.component.lg};
+  padding: 0 ${semantic.space.inset.lg};
 `
 
 /**
@@ -123,6 +123,6 @@ export const StyledTextAreaBase = styled.textarea.withConfig({
   
   /* TextArea specific: a taller minimum for multi-line entry (decision 0034) */
   min-height: ${input.textarea.minHeight};
-  padding: ${semantic.spacing.component.md} ${semantic.spacing.component.lg};
+  padding: ${semantic.space.inset.md} ${semantic.space.inset.lg};
   resize: vertical;
 `

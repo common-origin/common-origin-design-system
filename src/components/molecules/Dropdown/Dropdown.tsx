@@ -5,14 +5,14 @@ import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 
-const { semantic: { border, zIndex, elevation, motion, spacing: { layout: spacing } }, component: { input, field } } = tokens
+const { semantic: { border, elevation, motion, space }, component: { input, field } } = tokens
 
 // Spacing comes from the semantic scales: no component spacing tokens (decision 0022).
 // The trigger and options take their height from size.control.lg as a minimum and centre
 // their content (decision 0034). The small vertical padding only matters when a long
 // label wraps; a single line is shorter than the minimum.
-const controlPaddingX = tokens.semantic.spacing.component.lg
-const controlPaddingY = spacing.sm
+const controlPaddingX = tokens.semantic.space.inset.lg
+const controlPaddingY = space[200]
 const controlHeight = tokens.semantic.size.control.lg
 const { duration, easing } = motion
 
@@ -93,7 +93,7 @@ const DropdownIcon = styled.div.withConfig({
 })<{ $isOpen: boolean }>`
   display: flex;
   align-items: center;
-  margin-left: ${spacing.sm};
+  margin-left: ${space[200]};
   transition: transform ${duration.fast} ${easing.easeOut};
   
   ${({ $isOpen }) => $isOpen && `
@@ -112,17 +112,17 @@ const DropdownMenu = styled.div.withConfig({
   top: 100%;
   left: 0;
   right: 0;
-  z-index: ${zIndex.dropdown};
+  z-index: ${tokens.semantic.layer.dropdown};
   background-color: ${input.default.backgroundColor};
   /* A decorative outline: elevation separates the menu, and only the trigger is a control edge (decision 0025) */
-  border: ${border.subtle};
+  border: ${border.emphasis};
   border-radius: ${input.default.borderRadius};
   box-shadow: ${elevation.floating};
-  margin-top: ${spacing.xs};
+  margin-top: ${space[100]};
   overflow: hidden;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${spacing.sm})`)};
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${space[200]})`)};
   transition: all ${duration.fast} ${easing.easeOut};
   max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
@@ -139,7 +139,7 @@ const DropdownOption = styled.button.withConfig({
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: ${spacing.sm};
+  gap: ${space[200]};
   box-sizing: border-box; /* the min-height includes the border, without relying on a global reset */
   min-height: ${controlHeight};
   padding: ${controlPaddingY} ${controlPaddingX};
@@ -159,7 +159,7 @@ const DropdownOption = styled.button.withConfig({
   }
   
   &:not(:last-child) {
-    border-bottom: ${border.subtle};
+    border-bottom: ${border.emphasis};
   }
 `
 
@@ -170,7 +170,7 @@ const StyledHelperText = styled.div<{ $hasError?: boolean }>`
       ? field.helperText.colorError
       : field.helperText.color
   };
-  margin-top: ${spacing.sm};
+  margin-top: ${space[200]};
 `
 
 
@@ -296,7 +296,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   return (
     <DropdownContainer ref={dropdownRef} className={className} data-testid={dataTestId}>
       {label && (
-        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: spacing.sm }}>
+        <label htmlFor={dropdownId} style={{ display: 'block', marginBottom: space[200] }}>
           <Typography variant="label">{label}</Typography>
         </label>
       )}

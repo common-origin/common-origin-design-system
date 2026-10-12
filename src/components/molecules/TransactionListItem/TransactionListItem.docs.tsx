@@ -93,15 +93,15 @@ export const transactionListItemDocs: ComponentDocumentation = {
     'semantic.border.focusOffset',
     'semantic.border.width.thick',
     'semantic.border.width.thin',
-    'semantic.spacing.layout.md',
-    'semantic.spacing.layout.sm',
-    'semantic.spacing.layout.xs',
-    'semantic.color.background.default',
-    'semantic.color.background.surface',
-    'semantic.color.background.neutral',
+    'semantic.space.300',
+    'semantic.space.200',
+    'semantic.space.100',
+    'semantic.surface.base',
+    'semantic.color.fill.muted',
+    'semantic.color.fill.default',
     'semantic.color.border.default',
     'semantic.border.focus',
-    'semantic.color.icon.subdued',
+    'semantic.color.icon.muted',
     'semantic.typography.body',
     'semantic.typography.caption',
     // Motion
@@ -352,10 +352,10 @@ export const transactionListItemDocs: ComponentDocumentation = {
         name: 'StyledContainer',
         description: 'Root container with flexbox layout, min-height 72px, interactive states (hover/active/focus)',
         tokens: [
-          'semantic.spacing.layout.md',
-          'semantic.color.background.default',
-          'semantic.color.background.surface',
-          'semantic.color.background.neutral',
+          'semantic.space.300',
+          'semantic.surface.base',
+          'semantic.color.fill.muted',
+          'semantic.color.fill.default',
           'semantic.color.border.default',
           'semantic.border.focus'
         ]
@@ -378,22 +378,22 @@ export const transactionListItemDocs: ComponentDocumentation = {
       {
         name: 'StyledMainContent',
         description: 'Flexible content area with two-row layout for transaction details',
-        tokens: ['semantic.spacing.layout.xs']
+        tokens: ['semantic.space.100']
       },
       {
         name: 'TopRow',
         description: 'First row containing merchant info and amount with space-between justification',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       },
       {
         name: 'MerchantSection',
         description: 'Left section with category icon, merchant name (truncated), and failed badge',
-        tokens: ['semantic.spacing.layout.xs']
+        tokens: ['semantic.space.100']
       },
       {
         name: 'Category Icon',
         description: 'Small icon indicating transaction category',
-        tokens: ['semantic.color.icon.subdued']
+        tokens: ['semantic.color.icon.muted']
       },
       {
         name: 'Merchant Typography',
@@ -408,7 +408,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
       {
         name: 'BottomRow',
         description: 'Second row containing date/description and metadata indicators',
-        tokens: ['semantic.spacing.layout.sm']
+        tokens: ['semantic.space.200']
       },
       {
         name: 'DateFormatter',
@@ -423,7 +423,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
       {
         name: 'Metadata Icons',
         description: 'Small icons for receipt and note attachments',
-        tokens: ['semantic.spacing.layout.xs', 'semantic.color.icon.subdued']
+        tokens: ['semantic.space.100', 'semantic.color.icon.muted']
       }
     ]
   },
