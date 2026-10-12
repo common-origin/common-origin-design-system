@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 
 const { semantic } = tokens
-const { color, spacing, border, size } = semantic
+const { color, size } = semantic
 const { label } = tokens.component.badge
-const { layout } = spacing
-const { radius } = border
+const { space } = semantic
+const { radius } = semantic
 
 export interface TagProps {
   /**
@@ -60,7 +60,7 @@ const StyledTag = styled.span.withConfig({
 
   /* Size (decision 0018): small has no vertical padding so the text line fits inside 20px */
   height: ${({ $size }) => size.label[$size]};
-  padding: ${({ $size }) => $size === 'small' ? `0 ${layout.sm}` : `${layout.xs} ${layout.sm}`};
+  padding: ${({ $size }) => $size === 'small' ? `0 ${space[200]}` : `${space[100]} ${space[200]}`};
   font: ${label.typography.small};
   font-weight: ${label.fontWeight};
   
@@ -68,30 +68,30 @@ const StyledTag = styled.span.withConfig({
   background-color: ${({ $variant }) => {
     switch ($variant) {
       case 'interactive':
-        return color.background['interactive-subtle']
+        return color.fill['accent-muted']
       case 'success':
-        return color.background['success-subtle']
+        return color.fill['success-muted']
       case 'warning':
-        return color.background['warning-subtle']
+        return color.fill['warning-muted']
       case 'error':
-        return color.background['error-subtle']
+        return color.fill['danger-muted']
       case 'emphasis':
-        return color.background.emphasis
+        return color.fill.emphasis
       default:
-        return color.background.surface
+        return color.fill.muted
     }
   }};
   
   color: ${({ $variant }) => {
     switch ($variant) {
       case 'interactive':
-        return color.text.interactive
+        return color.text.accent
       case 'success':
         return color.text.success
       case 'warning':
         return color.text.warning
       case 'error':
-        return color.text.error
+        return color.text.danger
       case 'emphasis':
         return color.text.inverse
       default:
@@ -104,15 +104,15 @@ const StyledTag = styled.span.withConfig({
     
     switch ($variant) {
       case 'interactive':
-        return `${semantic.border.width.thin} solid ${color.border.interactive}`
+        return `${semantic.border.width.thin} solid ${color.border.accent}`
       case 'success':
         return `${semantic.border.width.thin} solid ${color.border.success}`
       case 'warning':
         return `${semantic.border.width.thin} solid ${color.border.warning}`
       case 'error':
-        return `${semantic.border.width.thin} solid ${color.border.error}`
+        return `${semantic.border.width.thin} solid ${color.border.danger}`
       case 'emphasis':
-        return `${semantic.border.width.thin} solid ${color.background.emphasis}`
+        return `${semantic.border.width.thin} solid ${color.fill.emphasis}`
       default:
         return `${semantic.border.width.thin} solid ${color.border.default}`
     }

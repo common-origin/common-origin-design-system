@@ -162,10 +162,10 @@ export const buttonDocs: ComponentDocumentation = {
     'semantic.size.control.md',
     'semantic.size.control.lg',
     // Horizontal padding: semantic spacing, no component spacing tokens (decision 0022)
-    'semantic.spacing.component.md',
-    'semantic.spacing.component.lg',
+    'semantic.space.inset.md',
+    'semantic.space.inset.lg',
     // Spacing and motion
-    'semantic.spacing.layout.xs',
+    'semantic.space.100',
     'semantic.motion.hover'
   ],
   
@@ -490,7 +490,7 @@ Variant Colors:
         name: 'Icon (optional)',
         description: 'Leading icon that automatically inherits text color and scales with button size (small→xs, medium→sm, large→md).',
         tokens: [
-          'semantic.spacing.layout.xs'
+          'semantic.space.100'
         ]
       },
       {

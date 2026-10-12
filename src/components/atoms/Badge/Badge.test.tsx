@@ -102,7 +102,7 @@ describe('Badge', () => {
       )
       const indicator = container.querySelector('[role="status"]') as HTMLElement
       expect(indicator).toHaveStyle({
-        backgroundColor: tokens.semantic.color.background.interactive,
+        backgroundColor: tokens.semantic.color.fill.accent,
         color: tokens.semantic.color.text.inverse,
       })
     })

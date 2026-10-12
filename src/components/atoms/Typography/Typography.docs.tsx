@@ -69,11 +69,11 @@ export const typographyDocs: ComponentDocumentation = {
     // Color variant tokens
     'semantic.color.text.default',
     'semantic.color.text.emphasis',
-    'semantic.color.text.subdued',
+    'semantic.color.text.muted',
     'semantic.color.text.inverse',
     'semantic.color.text.disabled',
-    'semantic.color.text.interactive',
-    'semantic.color.text.error',
+    'semantic.color.text.accent',
+    'semantic.color.text.danger',
     'semantic.color.text.success',
     'semantic.color.text.warning',
     // Letter spacing tokens

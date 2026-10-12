@@ -35,7 +35,7 @@ export const containerDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.spacing.layout.2xl', // Horizontal padding at every width
+    'semantic.space.600', // Horizontal padding at every width
     'semantic.breakpoint.sm', // Max width from 640px
     'semantic.breakpoint.md', // Max width from 768px
     'semantic.breakpoint.lg', // Max width from 1024px
@@ -254,7 +254,7 @@ export const containerDocs: ComponentDocumentation = {
 
   notes: [
     'Mobile-First Responsive Design: Implements progressive enhancement starting with mobile-optimized layout (100% width with padding) and adding max-width constraints at larger breakpoints: sm(640px), md(768px), lg(1024px), xl(1280px), 2xl(1536px)',
-    'Design Token Integration: All spacing and breakpoint values derive from the semantic design token system, ensuring consistency across components. Horizontal padding uses semantic.spacing.layout.2xl token for theme-wide customization',
+    'Design Token Integration: All spacing and breakpoint values derive from the semantic design token system, ensuring consistency across components. Horizontal padding uses semantic.space.600 token for theme-wide customization',
     'Automatic Centering Mechanism: Content centering achieved through margin: 0 auto combined with max-width constraints, ensuring consistent alignment regardless of content width while maintaining full width on smaller screens',
     'Styled-Components Architecture: Built with styled-components for optimal CSS-in-JS performance. Styles computed once and reused across instances with efficient min-width media queries for progressive enhancement',
     'Best Practice: Use as primary wrapper for main content areas, avoiding nested containers. Combine with semantic HTML elements (main, section, article) and appropriate ARIA landmark roles for meaningful document structure',

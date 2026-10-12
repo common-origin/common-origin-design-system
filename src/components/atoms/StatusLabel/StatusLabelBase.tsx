@@ -7,8 +7,7 @@ import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
 const { status: statusColors } = tokens.semantic.color
-const { layout: spacing } = tokens.semantic.spacing
-const { radius } = tokens.semantic.border
+const { space, radius } = tokens.semantic
 const { transition, duration, easing } = tokens.semantic.motion
 const { label: labelHeight } = tokens.semantic.size
 const { label } = tokens.component.badge
@@ -130,16 +129,16 @@ const getStatusConfig = (status: StatusType) => {
 const sizeConfig = {
   small: {
     height: labelHeight.small,
-    padding: `${spacing.xs} ${spacing.sm}`,
+    padding: `${space[100]} ${space[200]}`,
     font: label.typography.small,
-    gap: spacing.xs,
+    gap: space[100],
     iconSize: 'xs' as const
   },
   medium: {
     height: labelHeight.medium,
-    padding: `${spacing.xs} ${spacing.sm}`,
+    padding: `${space[100]} ${space[200]}`,
     font: label.typography.medium,
-    gap: spacing.xs,
+    gap: space[100],
     iconSize: 'sm' as const
   }
 }
@@ -151,7 +150,7 @@ const StyledStatusLabel = styled.span.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: ${radius.circle};
+  border-radius: ${radius.full};
   white-space: nowrap;
   user-select: none;
   animation: ${scaleIn} ${duration.normal} ${easing.easeOut};

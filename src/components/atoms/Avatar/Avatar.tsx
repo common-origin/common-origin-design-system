@@ -5,8 +5,8 @@ import tokens from '@/styles/tokens.json'
 // Destructure tokens
 const { semantic } = tokens
 const { initials } = tokens.component.avatar
-const { color, size, border } = semantic
-const { radius } = border
+const { color, size } = semantic
+const { radius } = semantic
 
 export interface AvatarProps {
   name: string
@@ -28,8 +28,8 @@ const AvatarContainer = styled.div.withConfig({
   justify-content: center;
   width: ${({ $size }) => size.avatar[$size]};
   height: ${({ $size }) => size.avatar[$size]};
-  border-radius: ${radius.circle};
-  background-color: ${color.background.surface};
+  border-radius: ${radius.full};
+  background-color: ${color.fill.muted};
   overflow: hidden;
   flex-shrink: 0;
 `
@@ -40,7 +40,7 @@ const AvatarImage = styled.img.withConfig({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: ${radius.circle};
+  border-radius: ${radius.full};
   /* Remove the img role since the container already has role="img" */
 `
 

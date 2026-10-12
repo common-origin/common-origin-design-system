@@ -44,10 +44,10 @@ export const dividerDocs: ComponentDocumentation = {
     'component.separator.variants.default.border',
     'component.separator.variants.strong.border',
     'component.separator.variants.minimal.border',
-    'semantic.spacing.separator.md',
-    'semantic.spacing.separator.sm',
-    'semantic.spacing.separator.lg',
-    'semantic.spacing.separator.xl',
+    'semantic.space.600',
+    'semantic.space.400',
+    'semantic.space.800',
+    'semantic.space.1200',
   ],
 
   examples: [

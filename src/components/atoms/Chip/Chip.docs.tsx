@@ -137,7 +137,7 @@ export const chipDocs: ComponentDocumentation = {
     'component.chip.sizes.medium.font',
     // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
     'semantic.size.label.medium',
-    'semantic.spacing.component.sm',
+    'semantic.space.inset.sm',
     // Motion
     'semantic.motion.hover',
     // Deprecated: hover, active and focus apply only to a chip with onClick
@@ -283,7 +283,7 @@ Close: InputChip with onDismiss
         name: 'Icon (optional)',
         description: 'Leading checkmark on selected BooleanChip and InputChip, in the chip text colour.',
         tokens: [
-          'semantic.spacing.layout.xs'
+          'semantic.space.100'
         ]
       },
       {
@@ -298,8 +298,8 @@ Close: InputChip with onDismiss
         name: 'Close Button (optional)',
         description: 'InputChip only: a labelled close button with its own hover and pressed overlay.',
         tokens: [
-          'semantic.spacing.layout.sm',
-          'semantic.border.radius.xs',
+          'semantic.space.200',
+          'semantic.radius.xs',
           'semantic.motion.hover'
         ]
       }

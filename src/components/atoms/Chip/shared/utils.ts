@@ -25,20 +25,20 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
       `
     }
 
-    const { background, text } = tokens.semantic.color
+    const { fill, text } = tokens.semantic.color
     const interactiveStates = $clickable
     return `
-      background-color: ${background['interactive-subtle']};
-      color: ${text.interactive};
+      background-color: ${fill['accent-muted']};
+      color: ${text.accent};
       
       &:hover {
-        background-color: ${interactiveStates ? background['interactive-subtle-hover'] : background['interactive-subtle']};
-        color: ${interactiveStates ? text['interactive-hover'] : text.interactive};
+        background-color: ${interactiveStates ? fill['accent-muted-hover'] : fill['accent-muted']};
+        color: ${interactiveStates ? text['accent-hover'] : text.accent};
       }
       
       &:active {
-        background-color: ${interactiveStates ? background['interactive-subtle-active'] : background['interactive-subtle']};
-        color: ${interactiveStates ? text['interactive-active'] : text.interactive};
+        background-color: ${interactiveStates ? fill['accent-muted-pressed'] : fill['accent-muted']};
+        color: ${interactiveStates ? text['accent-pressed'] : text.accent};
       }
     `
   }
@@ -126,6 +126,6 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
 export const sizeStyles = `
   font: ${chip.sizes.medium.font};
   min-height: ${semantic.size.label.medium};
-  padding: 0 ${semantic.spacing.component.sm};
+  padding: 0 ${semantic.space.inset.sm};
 `
 

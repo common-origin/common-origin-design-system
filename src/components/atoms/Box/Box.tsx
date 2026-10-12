@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
 import type { Tokens } from '../../../types/tokens'
+import { backgroundByKey, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
 
 // Public props interface (without $ prefix, following atomic pattern)
 export interface BoxProps {
@@ -152,36 +153,36 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$justifyContent && css`justify-content: ${props.$justifyContent};`}
   ${props => props.$alignItems && css`align-items: ${props.$alignItems};`}
   ${props => props.$flexWrap && css`flex-wrap: ${props.$flexWrap};`}
-  ${props => props.$gap && css`gap: ${tokens.semantic.spacing.layout[props.$gap]};`}
+  ${props => props.$gap && css`gap: ${spaceByLayoutKey[props.$gap]};`}
   
   // Margin
-  ${props => props.$m && css`margin: ${tokens.semantic.spacing.layout[props.$m]};`}
-  ${props => props.$mt && css`margin-top: ${tokens.semantic.spacing.layout[props.$mt]};`}
-  ${props => props.$mr && css`margin-right: ${tokens.semantic.spacing.layout[props.$mr]};`}
-  ${props => props.$mb && css`margin-bottom: ${tokens.semantic.spacing.layout[props.$mb]};`}
-  ${props => props.$ml && css`margin-left: ${tokens.semantic.spacing.layout[props.$ml]};`}
+  ${props => props.$m && css`margin: ${spaceByLayoutKey[props.$m]};`}
+  ${props => props.$mt && css`margin-top: ${spaceByLayoutKey[props.$mt]};`}
+  ${props => props.$mr && css`margin-right: ${spaceByLayoutKey[props.$mr]};`}
+  ${props => props.$mb && css`margin-bottom: ${spaceByLayoutKey[props.$mb]};`}
+  ${props => props.$ml && css`margin-left: ${spaceByLayoutKey[props.$ml]};`}
   ${props => props.$mx && css`
-    margin-left: ${tokens.semantic.spacing.layout[props.$mx]};
-    margin-right: ${tokens.semantic.spacing.layout[props.$mx]};
+    margin-left: ${spaceByLayoutKey[props.$mx]};
+    margin-right: ${spaceByLayoutKey[props.$mx]};
   `}
   ${props => props.$my && css`
-    margin-top: ${tokens.semantic.spacing.layout[props.$my]};
-    margin-bottom: ${tokens.semantic.spacing.layout[props.$my]};
+    margin-top: ${spaceByLayoutKey[props.$my]};
+    margin-bottom: ${spaceByLayoutKey[props.$my]};
   `}
   
   // Padding
-  ${props => props.$p && css`padding: ${tokens.semantic.spacing.layout[props.$p]};`}
-  ${props => props.$pt && css`padding-top: ${tokens.semantic.spacing.layout[props.$pt]};`}
-  ${props => props.$pr && css`padding-right: ${tokens.semantic.spacing.layout[props.$pr]};`}
-  ${props => props.$pb && css`padding-bottom: ${tokens.semantic.spacing.layout[props.$pb]};`}
-  ${props => props.$pl && css`padding-left: ${tokens.semantic.spacing.layout[props.$pl]};`}
+  ${props => props.$p && css`padding: ${spaceByLayoutKey[props.$p]};`}
+  ${props => props.$pt && css`padding-top: ${spaceByLayoutKey[props.$pt]};`}
+  ${props => props.$pr && css`padding-right: ${spaceByLayoutKey[props.$pr]};`}
+  ${props => props.$pb && css`padding-bottom: ${spaceByLayoutKey[props.$pb]};`}
+  ${props => props.$pl && css`padding-left: ${spaceByLayoutKey[props.$pl]};`}
   ${props => props.$px && css`
-    padding-left: ${tokens.semantic.spacing.layout[props.$px]};
-    padding-right: ${tokens.semantic.spacing.layout[props.$px]};
+    padding-left: ${spaceByLayoutKey[props.$px]};
+    padding-right: ${spaceByLayoutKey[props.$px]};
   `}
   ${props => props.$py && css`
-    padding-top: ${tokens.semantic.spacing.layout[props.$py]};
-    padding-bottom: ${tokens.semantic.spacing.layout[props.$py]};
+    padding-top: ${spaceByLayoutKey[props.$py]};
+    padding-bottom: ${spaceByLayoutKey[props.$py]};
   `}
   
   // Size
@@ -200,16 +201,16 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$left && css`left: ${props.$left};`}
   
   // Borders
-  ${props => props.$borderRadius && css`border-radius: ${tokens.semantic.border.radius[props.$borderRadius]};`}
-  ${props => props.$border && css`border: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$border]};`}
-  ${props => props.$borderTop && css`border-top: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderTop]};`}
-  ${props => props.$borderRight && css`border-right: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderRight]};`}
-  ${props => props.$borderBottom && css`border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderBottom]};`}
-  ${props => props.$borderLeft && css`border-left: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border[props.$borderLeft]};`}
+  ${props => props.$borderRadius && css`border-radius: ${radiusByKey[props.$borderRadius]};`}
+  ${props => props.$border && css`border: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$border]};`}
+  ${props => props.$borderTop && css`border-top: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderTop]};`}
+  ${props => props.$borderRight && css`border-right: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderRight]};`}
+  ${props => props.$borderBottom && css`border-bottom: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderBottom]};`}
+  ${props => props.$borderLeft && css`border-left: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderLeft]};`}
   
   // Background & Color
-  ${props => props.$bg && css`background-color: ${tokens.semantic.color.background[props.$bg]};`}
-  ${props => props.$color && css`color: ${tokens.semantic.color.text[props.$color]};`}
+  ${props => props.$bg && css`background-color: ${backgroundByKey[props.$bg]};`}
+  ${props => props.$color && css`color: ${textColorByKey[props.$color]};`}
   
   // Elevation (shadow)
   ${props => props.$shadow && css`box-shadow: ${tokens.semantic.elevation[props.$shadow]};`}

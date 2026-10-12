@@ -483,10 +483,10 @@ describe('Chip Component', () => {
         Array.from(closeButton.classList)
           .map((cls) => css.match(new RegExp(`\\.${cls}:${state}:not\\(:disabled\\)\\{background-color:([^;}]+)`)))
           .find(Boolean)?.[1]
-      const { background } = tokens.semantic.color
+      const { fill } = tokens.semantic.color
 
-      expect(ruleFor('hover')).toBe(background['hover-overlay'].replace(/\s+/g, ''))
-      expect(ruleFor('active')).toBe(background['active-overlay'].replace(/\s+/g, ''))
+      expect(ruleFor('hover')).toBe(fill['none-hover'].replace(/\s+/g, ''))
+      expect(ruleFor('active')).toBe(fill['none-pressed'].replace(/\s+/g, ''))
     })
 
     it('calls onDismiss when close button is clicked', () => {

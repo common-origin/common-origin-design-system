@@ -52,34 +52,34 @@ export const tagDocs: ComponentDocumentation = {
   tokens: [
     'semantic.border.width.thin',
     // Colors
-    'semantic.color.background.surface',
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.background.success-subtle',
-    'semantic.color.background.warning-subtle',
-    'semantic.color.background.error-subtle',
-    'semantic.color.background.emphasis',
+    'semantic.color.fill.muted',
+    'semantic.color.fill.accent-muted',
+    'semantic.color.fill.success-muted',
+    'semantic.color.fill.warning-muted',
+    'semantic.color.fill.danger-muted',
+    'semantic.color.fill.emphasis',
     'semantic.color.text.default',
-    'semantic.color.text.interactive',
+    'semantic.color.text.accent',
     'semantic.color.text.success',
     'semantic.color.text.warning',
-    'semantic.color.text.error',
+    'semantic.color.text.danger',
     'semantic.color.text.inverse',
     'semantic.color.border.default',
-    'semantic.color.border.interactive',
+    'semantic.color.border.accent',
     'semantic.color.border.success',
     'semantic.color.border.warning',
-    'semantic.color.border.error',
+    'semantic.color.border.danger',
     
     // Typography
     'component.badge.label.typography.small',
     'component.badge.label.fontWeight',
     
     // Spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
+    'semantic.space.100',
+    'semantic.space.200',
     
     // Border
-    'semantic.border.radius.sm',
+    'semantic.radius.sm',
     
     // Height (decision 0018 size scale)
     'semantic.size.label.small',
@@ -227,20 +227,20 @@ export const tagDocs: ComponentDocumentation = {
         name: 'Tag Container',
         description: 'Root span element with inline-flex display, rounded corners, and semantic color styling based on variant',
         tokens: [
-          'semantic.border.radius.sm',
+          'semantic.radius.sm',
           'semantic.size.label.small',
           'semantic.size.label.medium',
-          'semantic.color.background.surface',
-          'semantic.color.background.interactive-subtle',
-          'semantic.color.background.success-subtle',
-          'semantic.color.background.warning-subtle',
-          'semantic.color.background.error-subtle',
-          'semantic.color.background.emphasis',
+          'semantic.color.fill.muted',
+          'semantic.color.fill.accent-muted',
+          'semantic.color.fill.success-muted',
+          'semantic.color.fill.warning-muted',
+          'semantic.color.fill.danger-muted',
+          'semantic.color.fill.emphasis',
           'semantic.color.border.default',
-          'semantic.color.border.interactive',
+          'semantic.color.border.accent',
           'semantic.color.border.success',
           'semantic.color.border.warning',
-          'semantic.color.border.error'
+          'semantic.color.border.danger'
         ]
       },
       {
@@ -250,10 +250,10 @@ export const tagDocs: ComponentDocumentation = {
           'component.badge.label.typography.small',
           'component.badge.label.fontWeight',
           'semantic.color.text.default',
-          'semantic.color.text.interactive',
+          'semantic.color.text.accent',
           'semantic.color.text.success',
           'semantic.color.text.warning',
-          'semantic.color.text.error',
+          'semantic.color.text.danger',
           'semantic.color.text.inverse'
         ]
       }

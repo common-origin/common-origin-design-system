@@ -5,7 +5,7 @@ import tokens from '@/styles/tokens.json'
 // Destructure tokens for cleaner access
 const { separator: separatorTokens } = tokens.component
 // Margins come from the semantic separator spacing: no component spacing tokens (decision 0022)
-const { separator: separatorSpacing } = tokens.semantic.spacing
+const { space } = tokens.semantic
 
 export interface DividerProps {
   /** Variant style of the divider */
@@ -61,35 +61,35 @@ const StyledDivider = styled.div.withConfig({
   ${({ $size = 'large', $variant = 'default', $orientation = 'horizontal' }) => {
     if ($variant === 'minimal' && $orientation === 'horizontal') {
       // Minimal variant always uses its predefined spacing for horizontal
-      return `margin: ${separatorSpacing.md} 0;`
+      return `margin: ${space[600]} 0;`
     }
     
     if ($orientation === 'vertical') {
       // Vertical orientation uses horizontal margins (left/right)
       switch ($size) {
         case 'small':
-          return `margin: 0 ${separatorSpacing.sm};`
+          return `margin: 0 ${space[400]};`
         case 'medium':
-          return `margin: 0 ${separatorSpacing.md};`
+          return `margin: 0 ${space[600]};`
         case 'xlarge':
-          return `margin: 0 ${separatorSpacing.xl};`
+          return `margin: 0 ${space[1200]};`
         case 'large':
         default:
-          return `margin: 0 ${separatorSpacing.lg};`
+          return `margin: 0 ${space[800]};`
       }
     }
     
     // Horizontal orientation uses vertical margins (top/bottom)
     switch ($size) {
       case 'small':
-        return `margin: ${separatorSpacing.sm} 0;`
+        return `margin: ${space[400]} 0;`
       case 'medium':
-        return `margin: ${separatorSpacing.md} 0;`
+        return `margin: ${space[600]} 0;`
       case 'xlarge':
-        return `margin: ${separatorSpacing.xl} 0;`
+        return `margin: ${space[1200]} 0;`
       case 'large':
       default:
-        return `margin: ${separatorSpacing.lg} 0;`
+        return `margin: ${space[800]} 0;`
     }
   }}
 `

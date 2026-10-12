@@ -34,7 +34,7 @@ export const StyledChip = styled.span.withConfig({
 export const IconContainer = styled.span`
   display: inline-flex;
   align-items: center;
-  margin-right: ${tokens.semantic.spacing.layout.xs};
+  margin-right: ${tokens.semantic.space[100]};
 `
 
 // Close button for dismissible chips
@@ -44,23 +44,23 @@ export const CloseButton = styled.button.withConfig({
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: ${tokens.semantic.spacing.layout.sm};
+  margin-left: ${tokens.semantic.space[200]};
   background: transparent;
   border: none;
   width: ${chip.closeButton.size};
   height: ${chip.closeButton.size};
-  padding: ${tokens.semantic.spacing.layout.none};
-  border-radius: ${tokens.semantic.border.radius.xs};
+  padding: ${tokens.semantic.space[0]};
+  border-radius: ${tokens.semantic.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
   transition: ${semantic.motion.hover};
   
   &:hover:not(:disabled) {
-    background-color: ${tokens.semantic.color.background['hover-overlay']};
+    background-color: ${tokens.semantic.color.fill['none-hover']};
   }
   
   &:active:not(:disabled) {
-    background-color: ${tokens.semantic.color.background['active-overlay']};
+    background-color: ${tokens.semantic.color.fill['none-pressed']};
   }
   
   &:disabled {

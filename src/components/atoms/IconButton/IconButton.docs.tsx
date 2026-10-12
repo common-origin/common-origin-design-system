@@ -121,9 +121,9 @@ export const iconButtonDocs: ComponentDocumentation = {
     'semantic.size.control.md',
     'semantic.size.control.lg',
     // Padding: semantic spacing, no component spacing tokens (decision 0022)
-    'semantic.spacing.component.xs',
-    'semantic.spacing.component.sm',
-    'semantic.spacing.component.md',
+    'semantic.space.inset.xs',
+    'semantic.space.inset.sm',
+    'semantic.space.inset.md',
     // Focus and motion
     'component.iconButton.focus.outline',
     'semantic.border.focusOffset',

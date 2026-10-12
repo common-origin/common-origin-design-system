@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
 
-const { semantic: { motion, border, spacing, size }, component: { iconButton, button } } = tokens
+const { semantic: { motion, border, space, size }, component: { iconButton, button } } = tokens
 
 // Height and width come from size.control as a minimum (decision 0034)
 const control = {
@@ -14,9 +14,9 @@ const control = {
 
 // Padding comes from the semantic spacing scale: no component spacing tokens (decision 0022)
 const padding = {
-  small: spacing.component.xs,
-  medium: spacing.component.sm,
-  large: spacing.component.md,
+  small: space.inset.xs,
+  medium: space.inset.sm,
+  large: space.inset.md,
 } as const
 
 export interface IconButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {

@@ -46,7 +46,7 @@ const getGapValue = (gap: StackGap): string => {
   }
   
   // Fallback to medium layout spacing if token not found
-  return tokens.semantic.spacing.layout.md
+  return tokens.semantic.space[300]
 }
 
 export const Stack: React.FC<StackProps> = ({ 

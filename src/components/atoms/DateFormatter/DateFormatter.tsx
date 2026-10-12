@@ -30,7 +30,7 @@ export interface DateFormatterProps {
 
 const TimeStyled = styled.time`
   font: ${typography.label};
-  color: ${color.text.subdued};
+  color: ${color.text.muted};
 `
 
 /**

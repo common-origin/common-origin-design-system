@@ -62,11 +62,11 @@ export const iconDocs: ComponentDocumentation = {
     // Color tokens
     'semantic.color.icon.default',
     'semantic.color.icon.emphasis',
-    'semantic.color.icon.subdued',
+    'semantic.color.icon.muted',
     'semantic.color.icon.disabled',
     'semantic.color.icon.inverse',
-    'semantic.color.icon.interactive',
-    'semantic.color.icon.error',
+    'semantic.color.icon.accent',
+    'semantic.color.icon.danger',
     'semantic.color.icon.success',
     'semantic.color.icon.warning',
     // Note: 'inherit' uses currentColor (no token)

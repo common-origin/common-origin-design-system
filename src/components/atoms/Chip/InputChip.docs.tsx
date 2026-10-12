@@ -132,23 +132,23 @@ export const inputChipDocs: ComponentDocumentation = {
     'component.chip.variants.subtle.disabled.backgroundColor',
     'component.chip.variants.subtle.disabled.textColor',
     // Selected treatment (decision 0016)
-    'semantic.color.background.interactive-subtle',
-    'semantic.color.text.interactive',
+    'semantic.color.fill.accent-muted',
+    'semantic.color.text.accent',
     // Typography
     'component.chip.sizes.medium.font',
     // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing
     'semantic.size.label.medium',
-    'semantic.spacing.component.sm',
+    'semantic.space.inset.sm',
     // Icon and close button spacing
-    'semantic.spacing.layout.xs',
-    'semantic.spacing.layout.sm',
+    'semantic.space.100',
+    'semantic.space.200',
     // Close button shape and states
     'component.chip.closeButton.size',
-    'semantic.spacing.layout.none',
-    'semantic.border.radius.xs',
+    'semantic.space.0',
+    'semantic.radius.xs',
     'semantic.color.text.disabled',
-    'semantic.color.background.hover-overlay',
-    'semantic.color.background.active-overlay',
+    'semantic.color.fill.none-hover',
+    'semantic.color.fill.none-pressed',
     // Focus ring (applies to both chip and close button)
     'component.chip.focus.outline',
     'semantic.border.focusOffset',
@@ -273,12 +273,12 @@ States:
       {
         name: 'Container',
         description:
-          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected and enabled: semantic.color.background.interactive-subtle with semantic.color.text.interactive. When disabled, selected or not, it uses component.chip.variants.subtle.disabled. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
+          'Span element with role="status" (default). Uses the subtle chip variant background, switching to the selected treatment when selected and enabled: semantic.color.fill.accent-muted with semantic.color.text.accent. When disabled, selected or not, it uses component.chip.variants.subtle.disabled. Handles Delete and Backspace that bubble up from the focused close button when onDismiss is provided; the container itself is not focusable.',
         tokens: [
           'component.chip.variants.subtle.backgroundColor',
           'component.chip.variants.subtle.textColor',
-          'semantic.color.background.interactive-subtle',
-          'semantic.color.text.interactive',
+          'semantic.color.fill.accent-muted',
+          'semantic.color.text.accent',
           'component.chip.default.borderRadius',
           'semantic.motion.hover'
         ]
@@ -288,7 +288,7 @@ States:
         description:
           'Icon displayed with aria-hidden="true" when selected is true. Positioned to the left of the label via an inline-flex icon container with right margin.',
         tokens: [
-          'semantic.spacing.layout.xs'
+          'semantic.space.100'
         ]
       },
       {
@@ -298,7 +298,7 @@ States:
         tokens: [
           'component.chip.sizes.medium.font',
           'component.chip.variants.subtle.textColor',
-          'semantic.color.text.interactive'
+          'semantic.color.text.accent'
         ]
       },
       {
@@ -307,12 +307,12 @@ States:
           'Button element rendered when onDismiss is provided. Has its own hover and active states (near-black at 10% and 15%). Independently focusable. Labelled with "Remove [label]" for screen readers.',
         tokens: [
           'component.chip.closeButton.size',
-          'semantic.spacing.layout.none',
-          'semantic.spacing.layout.sm',
-          'semantic.border.radius.xs',
+          'semantic.space.0',
+          'semantic.space.200',
+          'semantic.radius.xs',
           'semantic.color.text.disabled',
-          'semantic.color.background.hover-overlay',
-          'semantic.color.background.active-overlay',
+          'semantic.color.fill.none-hover',
+          'semantic.color.fill.none-pressed',
           'component.chip.focus.outline',
           'semantic.border.focusOffset',
           'semantic.motion.hover'

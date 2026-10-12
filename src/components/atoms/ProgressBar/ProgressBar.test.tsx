@@ -34,7 +34,7 @@ describe('ProgressBar', () => {
       render(<ProgressBar value={50} data-testid="progress" />)
       const track = screen.getByTestId('progress')
       expect(track).toHaveStyle({ backgroundColor: tokens.semantic.color.background.progressTrack })
-      expect(track.firstElementChild).toHaveStyle({ backgroundColor: tokens.semantic.color.background.emphasis })
+      expect(track.firstElementChild).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.emphasis })
     })
 
     it('renders with success color variant', () => {

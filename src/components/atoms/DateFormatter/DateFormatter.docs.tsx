@@ -39,7 +39,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.typography.label',
-    'semantic.color.text.subdued'
+    'semantic.color.text.muted'
   ],
 
   examples: [
@@ -164,7 +164,7 @@ export const dateFormatterDocs: ComponentDocumentation = {
         description: 'Semantic HTML <time> element with design system typography and color tokens',
         tokens: [
           'semantic.typography.label',
-          'semantic.color.text.subdued'
+          'semantic.color.text.muted'
         ]
       }
     ]
