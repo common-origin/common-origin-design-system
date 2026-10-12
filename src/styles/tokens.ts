@@ -566,7 +566,7 @@ export type Tokens = {
     };
     chip: {
       closeButton: {
-        /** FilterChip close button width and height (20px): the 16px close icon plus 2px on each side, so the button fits inside a 24px chip. */
+        /** Width and height of a chip's close button, which fits inside the chip with room around it. */
         size: string;
       };
       default: {
@@ -722,9 +722,17 @@ export type Tokens = {
         backgroundColor: string;
         /** Corner radius of every IconButton, matching Button. */
         borderRadius: string;
-        /** Same as sizes.medium.minWidth, and not read by IconButton. Raw px until control sizes are decided in #129. */
+        /**
+         * Minimum width of the medium IconButton, duplicated from its sizes.
+         *
+         * @deprecated No IconButton reads it: sizes take their minimum width from semantic.size.control (decision 0034). Removed in 3.0. Use `semantic.size.control.md`.
+         */
         minWidth: string;
-        /** Same as sizes.medium.minHeight, and not read by IconButton. Raw px until control sizes are decided in #129. */
+        /**
+         * Minimum height of the medium IconButton, duplicated from its sizes.
+         *
+         * @deprecated No IconButton reads it: sizes take their minimum height from semantic.size.control (decision 0034). Removed in 3.0. Use `semantic.size.control.md`.
+         */
         minHeight: string;
         /**
          * Display of IconButton's content box.
@@ -987,23 +995,27 @@ export type Tokens = {
     progressBar: {
       /** ProgressBar track, behind the filled part. */
       backgroundColor: string;
-      /** Not read: ProgressBar renders its track and fill with semantic.border.radius.xs (2px). Kept so published values don't change. */
+      /**
+       * Corner radius of the ProgressBar track and fill.
+       *
+       * @deprecated ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0.
+       */
       borderRadius: string;
       sizes: {
         sm: {
-          /** Thickness of the small ProgressBar (4px). */
+          /** Thickness of the small ProgressBar, for dense layouts and inline progress. */
           height: string;
         };
         md: {
-          /** Thickness of the medium ProgressBar (8px), the default. */
+          /** Thickness of the medium ProgressBar, the default. */
           height: string;
         };
         lg: {
-          /** Thickness of the large ProgressBar (16px). */
+          /** Thickness of the large ProgressBar, for prominent progress. */
           height: string;
         };
         xl: {
-          /** Thickness of the extra-large ProgressBar (20px). */
+          /** Thickness of the extra-large ProgressBar, for hero and onboarding progress. */
           height: string;
         };
       };
@@ -1090,19 +1102,19 @@ export type Tokens = {
         cursor: string;
       };
       textarea: {
-        /** Minimum height of a multi-line text input (120px). */
+        /** Minimum height of TextArea, tall enough for a few lines of entry (decision 0034). */
         minHeight: string;
       };
     };
     badge: {
       dot: {
-        /** Width and height of the dot badge indicator (8px). */
+        /** Width and height of the dot Badge indicator on a button, tab or icon. */
         size: string;
       };
       count: {
-        /** Minimum width of the count badge indicator (16px). */
+        /** Minimum width of the count Badge, so a single digit sits in a circle. */
         minWidth: string;
-        /** Height of the count badge indicator (16px). */
+        /** Height of the count Badge indicator on a button, tab or icon. */
         height: string;
         /**
          * Horizontal padding of a count Badge.
@@ -1114,7 +1126,7 @@ export type Tokens = {
         lineHeight: string;
       };
       ring: {
-        /** Width of the ring that separates the badge indicator from its host element (2px). */
+        /** Ring that separates a Badge indicator from the element it sits on. */
         width: string;
       };
       /** Badge indicators are always fully circular. */
@@ -1240,11 +1252,11 @@ export type Tokens = {
         typography: string;
         /** Tab count badges are bold, heavier than caption. */
         fontWeight: string;
-        /** Tab count badge height and minimum width (20px). */
+        /** Height and minimum width of a tab's count badge in TabBar. */
         size: string;
       };
       scrollbar: {
-        /** Height of the horizontal scrollbar when tabs overflow (4px). */
+        /** Height of the horizontal scrollbar TabBar shows when its tabs overflow. */
         height: string;
       };
     };
@@ -1300,62 +1312,62 @@ export type Tokens = {
     };
     accountCard: {
       header: {
-        /** Minimum height of the card header row (48px). */
+        /** Minimum height of AccountCard's header row, so cards in a grid line up. */
         minHeight: string;
       };
-      /** Minimum card width (300px). */
+      /** Narrowest an AccountCard may get before its content wraps badly. */
       minWidth: string;
     };
     breadcrumbs: {
       item: {
-        /** Width at which a breadcrumb label truncates (180px). */
+        /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
         maxWidth: string;
       };
     };
     cardLarge: {
-      /** Maximum card width (768px). */
+      /** Widest a CardLarge grows, so its text keeps a readable measure. */
       maxWidth: string;
     };
     checkbox: {
       box: {
-        /** Width and height of the checkbox square (20px). */
+        /** Width and height of the Checkbox and Radio box. */
         size: string;
       };
       row: {
-        /** Minimum height of a checkbox or radio row (32px). */
+        /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */
         minHeight: string;
       };
     };
     emptyState: {
       illustration: {
-        /** Small illustration size (80px). */
+        /** Size of the small EmptyState illustration, for empty panels and cards. */
         small: string;
-        /** Medium illustration size (120px). */
+        /** Size of the medium EmptyState illustration, the default. */
         medium: string;
-        /** Large illustration size (200px). */
+        /** Size of the large EmptyState illustration, for full-page empty states. */
         large: string;
       };
-      /** Maximum width of the empty state (400px). */
+      /** Widest an EmptyState block grows inside a wide container. */
       maxWidth: string;
       text: {
-        /** Maximum width of the title and description (360px). */
+        /** Widest EmptyState's title and description run, for a readable measure. */
         maxWidth: string;
       };
       actions: {
-        /** Maximum width of the actions area (300px). */
+        /** Widest EmptyState's actions area grows, so buttons don't stretch. */
         maxWidth: string;
       };
     };
     listItem: {
       expandedIndent: {
-        /** Left indent of expanded content in compact rows, aligning it with the label (48px). */
+        /** Indent of a compact ListItem's expanded content, aligning it with the label. */
         compact: string;
-        /** Left indent of expanded content in comfortable rows (60px). */
+        /** Indent of a comfortable ListItem's expanded content, aligning it with the label. */
         comfortable: string;
       };
     };
     transactionListItem: {
-      /** Minimum row height (72px). */
+      /** Minimum height of a TransactionListItem row, so rows line up in a list. */
       minHeight: string;
     };
   };
@@ -1375,17 +1387,17 @@ export type Tokens = {
       sticky: string;
     };
     breakpoint: {
-      /** 0px: smallest viewport. */
+      /** The smallest viewport, where mobile-first styles start. */
       xs: string;
-      /** 640px: large phones. */
+      /** Breakpoint for large phones in landscape and small tablets. */
       sm: string;
-      /** 768px: tablets; below this, mobile layouts (e.g. fullscreen Modal). */
+      /** Breakpoint for tablets; below it, mobile layouts apply, such as a fullscreen Modal. */
       md: string;
-      /** 1024px: small desktops. */
+      /** Breakpoint for small desktops and landscape tablets. */
       lg: string;
-      /** 1280px: desktops. */
+      /** Breakpoint for standard desktops. */
       xl: string;
-      /** 1536px: wide desktops. */
+      /** Breakpoint for wide desktops; layouts can add columns from here. */
       '2xl': string;
     };
     opacity: {
@@ -1401,33 +1413,33 @@ export type Tokens = {
       monospace: string;
     };
     fontSize: {
-      /** 0.75rem. */
+      /** Smallest text size: captions, metadata and small labels. */
       xs: string;
-      /** 0.875rem. */
+      /** Secondary text size: labels, compact controls and supporting copy. */
       sm: string;
-      /** 1rem. */
+      /** Body text size: paragraphs, input values and most controls. */
       md: string;
-      /** 1.125rem. */
+      /** Slightly larger than body text: lead paragraphs and large controls. */
       lg: string;
-      /** 1.25rem. */
+      /** Small heading size, for short emphasised titles. */
       xl: string;
     };
     lineHeight: {
       /** 1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators. */
       none: string;
-      /** 1.25rem: compact multi-line text (Alert, CodeBlock). */
+      /** Line height for compact multi-line text, such as Alert and CodeBlock. */
       tight: string;
-      /** 1.5rem: body-text line height (TextArea). */
+      /** Line height for body text and multi-line entry, such as TextArea. */
       normal: string;
     };
     letterSpacing: {
-      /** -0.125rem: tracking for the largest headings (display, h1). */
+      /** Tightest tracking, for the largest headings: display and h1. */
       tighter: string;
-      /** -0.0625rem: tracking for h2 to h4. */
+      /** Slightly tighter tracking for mid-size headings, h2 to h4. */
       tight: string;
       /** 0: default tracking (h5, h6 and text). */
       normal: string;
-      /** 0.125rem: tracking for small uppercase labels (SearchField section headers). */
+      /** Wide tracking for small uppercase labels, such as SearchField section headers. */
       wide: string;
     };
     fontWeight: {
@@ -1481,17 +1493,17 @@ export type Tokens = {
        * @deprecated Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0.
        */
       strong: string;
-      /** The focus ring: 2px solid near-black, always used with border.focusOffset for visible keyboard focus (P2). Every component draws this ring; there is no blue focus ring (decision 0029). */
+      /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
       focus: string;
-      /** 2px dotted underline marking text that has a tooltip. */
+      /** Dotted underline marking text that has a tooltip. */
       tooltip: string;
       width: {
-        /** 0.0625rem: default hairline borders and rings. */
+        /** Hairline border: dividers, control edges and rings. */
         thin: string;
-        /** 0.125rem: emphasised borders, focus outlines and selected states. */
+        /** Thick border: focus rings, emphasised outlines and selected states. */
         thick: string;
       };
-      /** 0.125rem: magnitude of the gap between an element and its focus outline. Use it as outline-offset directly to draw the outline outside the element, or negated (calc(-1 * …)) to inset it, as TransactionListItem does. */
+      /** Gap between an element and its focus ring; negate it to inset the ring inside the element. */
       focusOffset: string;
       radius: {
         /**
@@ -1589,7 +1601,7 @@ export type Tokens = {
       '10000': string;
       /** Size step for wide content columns, such as CardLarge. */
       '19200': string;
-      /** 2.75rem (44px): minimum height of a tappable row or control. */
+      /** Minimum height of a tappable row or control on touch screens. */
       touchTarget: string;
       control: {
         /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
@@ -1600,23 +1612,23 @@ export type Tokens = {
         lg: string;
       };
       overlay: {
-        /** 25rem (400px): small overlay panel dimension: Modal small width, and the default Sheet width (left and right sheets) and height (top and bottom sheets). */
+        /** Width of a small Modal, and the default width or height of a Sheet. */
         sm: string;
-        /** 35rem (560px): medium overlay panel width (Modal medium). */
+        /** Width of a medium overlay panel, such as a medium Modal. */
         md: string;
-        /** 45rem (720px): large overlay panel width (Modal large). */
+        /** Width of a large overlay panel, such as a large Modal. */
         lg: string;
       };
       label: {
-        /** 20px label height: StatusLabel small and Tag small. Decision 0018 size scale. */
+        /** Height of a small label: StatusLabel small and Tag small (decision 0018). */
         small: string;
-        /** 24px label height: StatusLabel, Tag and CategoryLabel medium. Decision 0018 size scale. */
+        /** Height of a medium label and every chip: StatusLabel, Tag, CategoryLabel (0018, 0035). */
         medium: string;
-        /** 32px label height: CategoryLabel large. Decision 0018 size scale. */
+        /** Height of a large label: CategoryLabel large (decision 0018). */
         large: string;
       };
       menu: {
-        /** 18.75rem (300px): maximum height of a floating menu before it scrolls (Dropdown, SearchField). */
+        /** Tallest a floating menu grows before it scrolls: Dropdown, SearchField. */
         maxHeight: string;
       };
       dimension: {
@@ -1724,29 +1736,29 @@ export type Tokens = {
         '192': string;
       };
       icon: {
-        /** 0.75rem (12px): the smallest icon, for dense inline indicators. */
+        /** The smallest icon size, for dense inline indicators. */
         xs: string;
-        /** 1rem (16px): small icons in compact controls, such as the dismiss icon in Alert and small icon buttons. */
+        /** Icons in compact controls, such as Alert's dismiss icon and small icon buttons. */
         sm: string;
-        /** 1.25rem (20px): icons beside body text, such as Alert's severity icon. */
+        /** Icons beside body text, such as Alert's severity icon. */
         md: string;
-        /** 1.5rem (24px): the Icon component's default size; also list item icons. */
+        /** The Icon component's default size; also list item icons. */
         lg: string;
-        /** 2rem (32px): extra-large standalone icons. */
+        /** Extra-large standalone icons, such as feature illustrations. */
         xl: string;
-        /** 2.5rem (40px): the largest icon size, for prominent standalone icons. */
+        /** The largest icon size, for prominent standalone icons. */
         '2xl': string;
       };
       avatar: {
-        /** 1.5rem (24px): extra-small avatar, inline with text. */
+        /** Extra-small avatar, inline with text. */
         xs: string;
-        /** 2rem (32px): small avatar, in dense lists. */
+        /** Small avatar, in dense lists and tables. */
         sm: string;
-        /** 2.5rem (40px): the default avatar size. */
+        /** Medium avatar, the default size. */
         md: string;
-        /** 3rem (48px): large avatar, in headers and cards. */
+        /** Large avatar, in headers and cards. */
         lg: string;
-        /** 4rem (64px): extra-large avatar, on profile pages. */
+        /** Extra-large avatar, on profile pages. */
         xl: string;
       };
     };
@@ -2410,21 +2422,21 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.
          */
         'gray-subtle': string;
-        /** Blue category text and icon on white or blue-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted. */
         'blue-text': string;
-        /** Purple category text and icon on white or purple-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted. */
         'purple-text': string;
-        /** Pink category text and icon on white or pink-subtle (outlined and minimal labels), at least 4.5:1. One step darker than pink-emphasis, which is 4.38:1 on pink-subtle. Decision on #115. */
+        /** Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted. */
         'pink-text': string;
-        /** Yellow category text and icon on white or yellow-subtle (outlined and minimal labels), at least 4.5:1. One step darker than yellow-emphasis, which is 4.16:1 on yellow-subtle. Decision on #115. */
+        /** Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted. */
         'yellow-text': string;
-        /** Green category text and icon on white or green-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted. */
         'green-text': string;
-        /** Red category text and icon on white or red-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted. */
         'red-text': string;
-        /** Orange category text and icon on white or orange-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted. */
         'orange-text': string;
-        /** Gray category text and icon on white or gray-subtle (outlined and minimal labels), at least 4.5:1. Decision on #115. */
+        /** Text and icons of an outlined or minimal gray CategoryLabel, on white or gray-muted. */
         'gray-text': string;
         /** Light blue fill of a blue CategoryLabel, behind the blue-text colour. */
         'blue-muted': string;
@@ -2444,7 +2456,7 @@ export type Tokens = {
         'gray-muted': string;
       };
       status: {
-        /** Pending status text and icon on pending-bg (5.69:1, WCAG AA). Decision on #115. */
+        /** Text and icon of a pending StatusLabel, on its pending background. */
         pending: string;
         /** Background for pending status */
         'pending-bg': string;
@@ -2527,39 +2539,39 @@ export type Tokens = {
       };
     };
     typography: {
-      /** Display text: 5rem, weight 700. The largest heading, for hero titles. */
+      /** The largest heading, for hero titles. */
       display: string;
-      /** Heading 1: 3rem, weight 700. The page title. */
+      /** Heading 1: the page title, one per page. */
       h1: string;
-      /** Heading 2: 2rem, weight 700. Major sections. */
+      /** Heading 2: major sections of a page. */
       h2: string;
-      /** Heading 3: 1.75rem, weight 700. */
+      /** Heading 3: sections within a major section. */
       h3: string;
-      /** Heading 4: 1.5rem, weight 700. */
+      /** Heading 4: card and panel titles. */
       h4: string;
-      /** Heading 5: 1.25rem, weight 500. */
+      /** Heading 5: small titles within dense content. */
       h5: string;
-      /** Heading 6: 1.125rem, weight 500. The smallest heading; Alert's title builds on it. */
+      /** The smallest heading; Alert's title builds on it. */
       h6: string;
-      /** Subtitle: 1rem, weight 500. A short line under a heading. */
+      /** Subtitle: a short line under a heading. */
       subtitle: string;
-      /** Body text: 1rem, weight 400, 1.5rem line height. The default for paragraphs and input values. */
+      /** Body text: paragraphs and input values. The default text style. */
       body: string;
-      /** Small text: 0.875rem, weight 400. Secondary copy and compact controls. */
+      /** Small text: secondary copy and compact controls. */
       small: string;
-      /** Overline: 0.75rem, weight 700. A short label above a heading. */
+      /** A short uppercase label above a heading. */
       overline: string;
-      /** Caption: 0.75rem, weight 400. Helper text, metadata and image captions. */
+      /** Captions: helper text, metadata and image captions. */
       caption: string;
-      /** Large Button label: 1rem, weight 500. */
+      /** Label of the large Button, the default size. */
       button1: string;
-      /** Medium Button label: 0.875rem, weight 500. Also tab labels. */
+      /** Label of the medium Button, and tab labels. */
       button2: string;
-      /** Small Button label: 0.75rem, weight 500. */
+      /** Label of the small Button, for dense toolbars. */
       button3: string;
-      /** Form label: 0.875rem, weight 600. Field labels, such as TextField and Slider. */
+      /** Form labels for fields such as TextField and Slider. */
       label: string;
-      /** Breadcrumb-sized text: 0.75rem, weight 400. Not used today: Breadcrumbs renders its links with typography.caption. */
+      /** Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption. */
       breadcrumb: string;
     };
     motion: {
