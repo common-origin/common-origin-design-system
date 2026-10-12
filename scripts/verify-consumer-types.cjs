@@ -56,6 +56,9 @@ export function exportedTypesAreNotAny(t: Tokens, b: TokensBase, s: TokensSemant
 }
 
 const text: string = tokens.semantic.color.text.default
+// Token groups stay assignable to an index signature, as the inferred JSON type was (#199): the
+// generated types are type literals, not interfaces
+const textColours: Record<string, string> = tokens.semantic.color.text
 const standalone: string = namedTokens.semantic.color.text.default
 const semantic: TokensSemantic = namedTokens.semantic
 const whole: Tokens = tokens
@@ -72,7 +75,7 @@ const badIcon: IconName = 'not-an-icon'
 export const App = () => (
   <Box p="md" bg="default">
     <ResponsiveGrid cols={1} gap="4">
-      <Button variant="primary">{text}{standalone}{String(semantic)}{String(whole)}{path}</Button>
+      <Button variant="primary">{text}{textColours.default}{standalone}{String(semantic)}{String(whole)}{path}</Button>
       <Icon name={icon} />
       {/* @ts-expect-error gap must be a spacing token key */}
       <ResponsiveGrid cols={1} gap="huge">{notNumber}{badIcon}</ResponsiveGrid>

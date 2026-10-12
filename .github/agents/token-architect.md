@@ -23,7 +23,7 @@ For the Style Dictionary config and outputs, `docs/tokens/pipeline.md` is the re
 
 ## What you must know about this repository
 
-- **Style Dictionary 5** (`config/style-dictionary.config.mjs`), run via `npm run build:tokens`, with warnings as errors. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.d.ts`, `custom` → `tokens.css` (docs site only).
+- **Style Dictionary 5** (`config/style-dictionary.config.mjs`), run via `npm run build:tokens`, with warnings as errors. Three platforms: `tokens` → `src/styles/tokens.json` (what components import and the package ships), `typescript` → `tokens.ts` (the published `Tokens` types, with descriptions as JSDoc and `@deprecated`), `custom` → `tokens.css` (docs site only).
 - No value transforms: each platform names only a name transform (`name/camel`, or `name/kebab` for CSS). Style Dictionary 5's built-in `js` and `css` groups match on token type and would rewrite every colour, so they're off until a later step adds value transforms deliberately. The build resolves references and writes files.
 - Three tiers in DTCG format (`$value`, `$type` on the token or its group, `$description`), with DTCG type names: base → semantic (some descriptions) → component (real, described tokens referencing semantic only, checked by `src/tokens/componentTier.test.ts`).
 - `source` lists the three tier folders explicitly (base, component, semantic, in that order so output order is stable). Don't add other JSON under `src/tokens/`: the golden file lives in `config/`.
