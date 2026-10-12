@@ -1007,7 +1007,7 @@
         "sm": {
           "height": {
             "$value": "{semantic.size.100}",
-            "$description": "Thickness of the small ProgressBar, for dense layouts and inline progress."
+            "$description": "Thickness of the small ProgressBar, the thinnest size."
           }
         },
         "md": {
@@ -1025,7 +1025,7 @@
         "xl": {
           "height": {
             "$value": "{semantic.size.500}",
-            "$description": "Thickness of the extra-large ProgressBar, for hero and onboarding progress."
+            "$description": "Thickness of the extra-large ProgressBar, the thickest size."
           }
         }
       }
@@ -1641,7 +1641,7 @@
         },
         "comfortable": {
           "$value": "{semantic.size.1500}",
-          "$description": "Indent of a comfortable ListItem's expanded content, aligning it with the label."
+          "$description": "Left indent of a comfortable ListItem's expanded content."
         }
       }
     },

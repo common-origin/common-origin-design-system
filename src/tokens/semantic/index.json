@@ -92,11 +92,11 @@
       },
       "lg": {
         "$value": "{base.fontSize.4}",
-        "$description": "Slightly larger than body text: lead paragraphs and large controls."
+        "$description": "One step larger than body text on the type scale."
       },
       "xl": {
         "$value": "{base.fontSize.5}",
-        "$description": "Small heading size, for short emphasised titles."
+        "$description": "Two steps larger than body text on the type scale."
       }
     },
     "lineHeight": {
@@ -2056,15 +2056,15 @@
       },
       "h3": {
         "$value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
-        "$description": "Heading 3: sections within a major section."
+        "$description": "Heading 3: the third heading level in a page outline."
       },
       "h4": {
         "$value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
-        "$description": "Heading 4: card and panel titles."
+        "$description": "Heading 4: the fourth heading level in a page outline."
       },
       "h5": {
         "$value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
-        "$description": "Heading 5: small titles within dense content."
+        "$description": "Heading 5: the fifth heading level in a page outline."
       },
       "h6": {
         "$value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",

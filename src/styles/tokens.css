@@ -327,8 +327,8 @@
   --co-semantic-font-size-xs: var(--co-base-font-size-1); /** Smallest text size: captions, metadata and small labels. */
   --co-semantic-font-size-sm: var(--co-base-font-size-2); /** Secondary text size: labels, compact controls and supporting copy. */
   --co-semantic-font-size-md: var(--co-base-font-size-3); /** Body text size: paragraphs, input values and most controls. */
-  --co-semantic-font-size-lg: var(--co-base-font-size-4); /** Slightly larger than body text: lead paragraphs and large controls. */
-  --co-semantic-font-size-xl: var(--co-base-font-size-5); /** Small heading size, for short emphasised titles. */
+  --co-semantic-font-size-lg: var(--co-base-font-size-4); /** One step larger than body text on the type scale. */
+  --co-semantic-font-size-xl: var(--co-base-font-size-5); /** Two steps larger than body text on the type scale. */
   --co-semantic-line-height-none: var(--co-base-line-height-none); /** 1 (unitless): line box equals the font size. For single-line glyphs such as avatar initials and count indicators. */
   --co-semantic-line-height-tight: var(--co-base-line-height-3); /** Line height for compact multi-line text, such as Alert and CodeBlock. */
   --co-semantic-line-height-normal: var(--co-base-line-height-4); /** Line height for body text and multi-line entry, such as TextArea. */
@@ -747,10 +747,10 @@
   --co-component-separator-sizes-xlarge-margin: var(--co-semantic-space-1200) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0. */
   --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
   --co-component-progress-bar-border-radius: var(--co-semantic-radius-sm); /** Deprecated: ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0. */
-  --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-100); /** Thickness of the small ProgressBar, for dense layouts and inline progress. */
+  --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-100); /** Thickness of the small ProgressBar, the thinnest size. */
   --co-component-progress-bar-sizes-md-height: var(--co-semantic-size-200); /** Thickness of the medium ProgressBar, the default. */
   --co-component-progress-bar-sizes-lg-height: var(--co-semantic-size-400); /** Thickness of the large ProgressBar, for prominent progress. */
-  --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-500); /** Thickness of the extra-large ProgressBar, for hero and onboarding progress. */
+  --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-500); /** Thickness of the extra-large ProgressBar, the thickest size. */
   --co-component-input-default-background-color: var(--co-semantic-surface-raised); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-text-color: var(--co-semantic-color-text-default); /** Text input value colour. */
   --co-component-input-default-border-color: var(--co-semantic-color-border-input); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
@@ -835,7 +835,7 @@
   --co-component-empty-state-text-max-width: var(--co-semantic-size-9000); /** Widest EmptyState's title and description run, for a readable measure. */
   --co-component-empty-state-actions-max-width: var(--co-semantic-size-7500); /** Widest EmptyState's actions area grows, so buttons don't stretch. */
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Indent of a compact ListItem's expanded content, aligning it with the label. */
-  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Indent of a comfortable ListItem's expanded content, aligning it with the label. */
+  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of a comfortable ListItem's expanded content. */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Minimum height of a TransactionListItem row, so rows line up in a list. */
   --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
@@ -848,9 +848,9 @@
   --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** The largest heading, for hero titles. */
   --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: the page title, one per page. */
   --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: major sections of a page. */
-  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading); /** Heading 3: sections within a major section. */
-  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading); /** Heading 4: card and panel titles. */
-  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading); /** Heading 5: small titles within dense content. */
+  --co-semantic-typography-h3: var(--co-semantic-font-weight-bold) var(--co-base-font-size-7)/var(--co-base-line-height-7) var(--co-base-font-family-heading); /** Heading 3: the third heading level in a page outline. */
+  --co-semantic-typography-h4: var(--co-semantic-font-weight-bold) var(--co-base-font-size-6)/var(--co-base-line-height-6) var(--co-base-font-family-heading); /** Heading 4: the fourth heading level in a page outline. */
+  --co-semantic-typography-h5: var(--co-semantic-font-weight-medium) var(--co-base-font-size-5)/var(--co-base-line-height-5) var(--co-base-font-family-heading); /** Heading 5: the fifth heading level in a page outline. */
   --co-semantic-typography-h6: var(--co-semantic-font-weight-medium) var(--co-base-font-size-4)/var(--co-base-line-height-4) var(--co-base-font-family-heading); /** The smallest heading; Alert's title builds on it. */
   --co-semantic-typography-subtitle: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Subtitle: a short line under a heading. */
   --co-semantic-typography-body: var(--co-semantic-font-weight-regular) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Body text: paragraphs and input values. The default text style. */

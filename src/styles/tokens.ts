@@ -1003,7 +1003,7 @@ export type Tokens = {
       borderRadius: string;
       sizes: {
         sm: {
-          /** Thickness of the small ProgressBar, for dense layouts and inline progress. */
+          /** Thickness of the small ProgressBar, the thinnest size. */
           height: string;
         };
         md: {
@@ -1015,7 +1015,7 @@ export type Tokens = {
           height: string;
         };
         xl: {
-          /** Thickness of the extra-large ProgressBar, for hero and onboarding progress. */
+          /** Thickness of the extra-large ProgressBar, the thickest size. */
           height: string;
         };
       };
@@ -1362,7 +1362,7 @@ export type Tokens = {
       expandedIndent: {
         /** Indent of a compact ListItem's expanded content, aligning it with the label. */
         compact: string;
-        /** Indent of a comfortable ListItem's expanded content, aligning it with the label. */
+        /** Left indent of a comfortable ListItem's expanded content. */
         comfortable: string;
       };
     };
@@ -1419,9 +1419,9 @@ export type Tokens = {
       sm: string;
       /** Body text size: paragraphs, input values and most controls. */
       md: string;
-      /** Slightly larger than body text: lead paragraphs and large controls. */
+      /** One step larger than body text on the type scale. */
       lg: string;
-      /** Small heading size, for short emphasised titles. */
+      /** Two steps larger than body text on the type scale. */
       xl: string;
     };
     lineHeight: {
@@ -2545,11 +2545,11 @@ export type Tokens = {
       h1: string;
       /** Heading 2: major sections of a page. */
       h2: string;
-      /** Heading 3: sections within a major section. */
+      /** Heading 3: the third heading level in a page outline. */
       h3: string;
-      /** Heading 4: card and panel titles. */
+      /** Heading 4: the fourth heading level in a page outline. */
       h4: string;
-      /** Heading 5: small titles within dense content. */
+      /** Heading 5: the fifth heading level in a page outline. */
       h5: string;
       /** The smallest heading; Alert's title builds on it. */
       h6: string;
