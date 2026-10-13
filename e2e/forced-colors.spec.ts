@@ -113,6 +113,14 @@ for (const colorScheme of ['dark', 'light'] as const) {
       expect((await styles(page, 'chip-filter-selected', ':scope')).color).toBe(highlightText)
       expect((await styles(page, 'chip-input-selected', ':scope')).color).toBe(highlightText)
       expect((await styles(page, 'row-selected', 'li > *')).color).toBe(highlightText)
+      // forced-color-adjust: none is inherited, so every text inside a selected row must follow
+      const rowTexts = await page.evaluate(() =>
+        [...document.querySelectorAll('[data-fc="row-selected"] li *')]
+          .filter((el) => [...el.childNodes].some((node) => node.nodeType === 3 && node.textContent?.trim()))
+          .map((el) => getComputedStyle(el).color)
+      )
+      expect(rowTexts.length).toBeGreaterThan(1)
+      expect(new Set(rowTexts)).toEqual(new Set([highlightText]))
       // Unselected and static rows stay on the page colour, not the selection colour or GrayText
       expect((await styles(page, 'row', 'li > *')).background).not.toBe(highlight)
       expect((await styles(page, 'chip-filter', ':scope')).background).not.toBe(highlight)

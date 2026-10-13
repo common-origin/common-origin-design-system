@@ -152,8 +152,11 @@ const rowForcedColors = ({
   // A row that doesn't respond (disabled, or not interactive at all) keeps its selection but has
   // no hover outline. Disabled text is the component's to colour: callers also pass this for
   // static rows, which must stay CanvasText.
+  // forced-color-adjust: none is inherited, so every descendant (secondary text, icons) must take
+  // HighlightText too, or it keeps its author colour on the selection fill. The doubled class
+  // outranks the descendants' own colour rules.
   return `${forcedColors} {
-    ${selected ? `forced-color-adjust: none;\n    background-color: Highlight;\n    ${text('HighlightText')}` : ''}
+    ${selected ? `forced-color-adjust: none;\n    background-color: Highlight;\n    ${text('HighlightText')}\n    && * {\n      color: HighlightText;\n    }` : ''}
     ${!disabled && focused ? hover : ''}
     ${disabled ? '' : `&:hover {\n      ${hover}\n    }`}
   }`
