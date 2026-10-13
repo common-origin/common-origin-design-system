@@ -158,7 +158,8 @@ export const sliderDocs: ComponentDocumentation = {
     'component.slider.thumb.shadow.active',
     
     // Motion
-    'semantic.motion.transition.fast',
+    'semantic.motion.duration.fast',
+    'semantic.motion.easing.decelerate',
     
     // Opacity
     'semantic.opacity.disabled',
@@ -419,7 +420,8 @@ export const sliderDocs: ComponentDocumentation = {
           'semantic.color.icon.disabled',
           'semantic.border.focus',
           'semantic.border.focusOffset',
-          'semantic.motion.transition.fast',
+          'semantic.motion.duration.fast',
+          'semantic.motion.easing.decelerate',
           'component.slider.thumb.shadow.default',
           'component.slider.thumb.shadow.hover',
           'component.slider.thumb.shadow.active'

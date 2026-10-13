@@ -71,7 +71,7 @@ export const codeBlockDocs: ComponentDocumentation = {
     'component.codeBlock.lineHeight',
     // Motion
     'semantic.motion.duration.slow', // Expand and collapse
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.easing.standard',
   ],
 
   examples: [
@@ -846,7 +846,7 @@ export default config`}
           'component.codeBlock.fontSize',
           'component.codeBlock.lineHeight',
           'semantic.motion.duration.slow',
-          'semantic.motion.easing.easeInOut'
+          'semantic.motion.easing.standard'
         ]
       },
       {

@@ -15,13 +15,7 @@ describe('semantic motion tokens', () => {
   })
 
   it('never uses linear easing', () => {
-    const values = [
-      ...Object.values(motion.easing),
-      ...Object.values(motion.transition),
-      motion.hover,
-      motion.focus,
-      motion.interactive,
-    ]
+    const values = [...Object.values(motion.easing), ...Object.values(motion.transition)]
     values.forEach((value) => expect(value).not.toMatch(/\blinear\b/))
   })
 })
@@ -66,18 +60,17 @@ describe('component motion', () => {
 
   it('gives every component that moves a reduced-motion fallback', () => {
     // Moves = keyframes that transform or change size, or a transition on transform, size, or `all`
-    // (including the composite tokens, which are `all`, and motion.interactive, which transforms)
+    // (including the deprecated `all` composites, and motion.transition.press, which transforms)
     const moves = (source: string) =>
       Array.from(source.matchAll(/keyframes`([^`]*)`/g)).some((m) => /\b(transform|max-height|height|width|padding|margin|border-width)\b/.test(m[1])) ||
       motionValues(source).some((value) =>
-        /\b(transform|max-height|height|width|padding|margin|border-width|all)\b|transition\.(fast|normal|slow)|motion\.interactive/.test(value)
+        /\b(transform|max-height|height|width|padding|margin|border-width|all)\b|transition\.(fast|normal|slow|press)/.test(value)
       )
 
     // Moves only through values a consumer passes in (so the consumer owns the fallback), or
     // handles reduced motion another way, with the reason given
     const exempt: Record<string, string> = {
       'atoms/Box/Box.tsx': 'transition and hoverTransform are consumer-supplied props',
-      'molecules/Checkbox/SelectableInputBase.tsx': '`all` only ever changes colours; the box never resizes',
       // Chooses its exit when dismissed from prefers-reduced-motion (tested in Alert.test.tsx), so
       // a preference change mid-exit can't swap animations and flash the faded alert back
       'molecules/Alert/Alert.tsx': 'reduced motion is chosen in JavaScript when the exit starts',
@@ -89,5 +82,37 @@ describe('component motion', () => {
       .filter(({ source }) => !/\$\{reducedMotion\}|@media \(prefers-reduced-motion/.test(source))
       .map(({ name }) => name)
     expect(missing).toEqual([])
+  })
+})
+
+// Decision 0037: transitions name their properties, and exits accelerate
+describe('motion grammar (decision 0037)', () => {
+  const componentsDir = path.join(__dirname, '../components')
+  const sources = (dir: string): string[] =>
+    fs.readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+      const full = path.join(dir, entry.name)
+      if (entry.isDirectory()) return sources(full)
+      return /\.tsx?$/.test(entry.name) && !/\.(test|docs)\.tsx?$/.test(entry.name) ? [full] : []
+    })
+
+  it('no component transitions every property (`transition: all`)', () => {
+    const offenders = sources(componentsDir)
+      .flatMap((file) =>
+        Array.from(fs.readFileSync(file, 'utf8').matchAll(/\btransition\s*:\s*all\b|motion\.transition\.(fast|normal|slow)\b/g)).map(
+          () => path.relative(componentsDir, file)
+        )
+      )
+    expect(offenders).toEqual([])
+  })
+
+  it('the shared exit accelerates', () => {
+    const styleUtils = fs.readFileSync(path.join(__dirname, '../lib/styleUtils.ts'), 'utf8')
+    const exit = styleUtils.match(/export const exitAnimation = css`([^`]*)`/)?.[1] ?? ''
+    expect(exit).toContain('motion.easing.accelerate')
+  })
+
+  it('accelerate eases in, the opposite of decelerate', () => {
+    expect(tokens.semantic.motion.easing.accelerate).toBe('ease-in')
+    expect(tokens.semantic.motion.easing.decelerate).toBe('ease-out')
   })
 })

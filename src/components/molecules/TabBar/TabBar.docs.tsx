@@ -68,7 +68,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'semantic.space.400',
     'semantic.color.text.muted',
     'semantic.color.text.default',
-    'semantic.motion.hover',
+    'semantic.motion.transition.feedback',
     // Selected tab (decisions 0016, 0020): the text darkens with the fill
     'semantic.color.fill.accent-muted',
     'semantic.color.text.accent',
@@ -404,7 +404,7 @@ return (
         tokens: [
           'semantic.color.fill.accent',
           'semantic.border.width.thick',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       }
     ]

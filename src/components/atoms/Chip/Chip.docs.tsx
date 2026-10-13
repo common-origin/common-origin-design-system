@@ -139,7 +139,7 @@ export const chipDocs: ComponentDocumentation = {
     'semantic.size.label.medium',
     'semantic.space.inset.sm',
     // Motion
-    'semantic.motion.hover',
+    'semantic.motion.transition.feedback',
     // Deprecated: hover, active and focus apply only to a chip with onClick
     'component.chip.hover.backgroundColor',
     'component.chip.active.backgroundColor',
@@ -276,7 +276,7 @@ Close: InputChip with onDismiss
         tokens: [
           'component.chip.default.backgroundColor',
           'component.chip.default.borderRadius',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       },
       {
@@ -300,7 +300,7 @@ Close: InputChip with onDismiss
         tokens: [
           'semantic.space.200',
           'semantic.radius.xs',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       }
     ]

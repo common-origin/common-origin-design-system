@@ -185,8 +185,8 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.color.icon.muted',
     'semantic.opacity.disabled',
     'semantic.motion.duration.fast',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
     'component.listItem.expandedIndent.comfortable',
     'component.listItem.expandedIndent.compact'
   ],
@@ -294,11 +294,11 @@ export const listItemDocs: ComponentDocumentation = {
       },
       {
         name: 'Chevron Icon',
-        description: 'Decorative caret shown on expandable items. It rotates 180° when expanded over semantic.motion.duration.fast (easeOut), the same as the Dropdown chevron, and flips instantly with prefers-reduced-motion. aria-hidden="true".'
+        description: 'Decorative caret shown on expandable items. It rotates 180° when expanded over semantic.motion.duration.fast (decelerate), the same as the Dropdown chevron, and flips instantly with prefers-reduced-motion. aria-hidden="true".'
       },
       {
         name: 'Expanded Content',
-        description: 'Revealed when expanded. Height, padding and opacity animate over semantic.motion.duration.normal (easeOut); with prefers-reduced-motion it fades without the height change. Collapsed content is hidden from keyboard and screen readers.'
+        description: 'Revealed when expanded. Height, padding and opacity animate over semantic.motion.duration.moderate (decelerate); with prefers-reduced-motion it fades without the height change. Collapsed content is hidden from keyboard and screen readers.'
       }
     ]
   }

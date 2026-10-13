@@ -127,9 +127,9 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.typography.small',
     'semantic.elevation.floating',
     // Motion
-    'semantic.motion.hover',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.transition.feedback',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard',
     // Input box, shared with the text inputs
     'component.input.default.backgroundColor',
     'component.input.default.borderColor',
@@ -415,8 +415,8 @@ useEffect(() => {
           'component.input.disabled.borderColor',
           'semantic.space.200',
           'semantic.space.300',
-          'semantic.motion.duration.normal',
-          'semantic.motion.easing.easeInOut'
+          'semantic.motion.duration.moderate',
+          'semantic.motion.easing.standard'
         ]
       },
       {

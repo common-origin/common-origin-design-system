@@ -36,7 +36,7 @@ const FeatureBlockStyled = styled.div`
 
   img {
     border-radius: ${tokens.semantic.radius['2xl']};
-    transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
+    transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.decelerate};
 
     &:hover {
       opacity: 0.8;

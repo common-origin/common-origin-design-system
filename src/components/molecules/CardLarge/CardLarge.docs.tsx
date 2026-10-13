@@ -66,8 +66,8 @@ export const cardLargeDocs: ComponentDocumentation = {
     'semantic.space.300',
     'semantic.space.400',
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
 
   examples: [

@@ -61,8 +61,8 @@ export const pictureDocs: ComponentDocumentation = {
     'semantic.radius.sm',
     'semantic.space.300',
     'semantic.breakpoint.sm',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeInOut'
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard'
   ],
 
   examples: [

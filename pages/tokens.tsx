@@ -597,7 +597,7 @@ const renderGenericTokensTable = (tokenObj: any, categoryName: string, prefix: s
                 <TokenValue>{value as string}</TokenValue>
               </TableCell>
               <TableCell>
-                <TokenValue>{getGenericUsageDescription(prefix, key)}</TokenValue>
+                <TokenValue>{sourceDescription(`${prefix.startsWith('semantic.') ? prefix : `semantic.${prefix}`}.${key}`) ?? getGenericUsageDescription(prefix, key)}</TokenValue>
               </TableCell>
             </TableRow>
           ))}
@@ -715,13 +715,13 @@ const renderMotionTokensTable = (motionTokens: any) => {
           {Object.entries(motionTokens).map(([key, value]) => (
             <TableRow key={key}>
               <TableCell>
-                <Chip title={`motion.${key}`} variant="default" />
+                <Chip title={`motion.transition.${key}`} variant="default" />
               </TableCell>
               <TableCell>
                 <TokenValue>{value as string}</TokenValue>
               </TableCell>
               <TableCell>
-                <TokenValue>{getMotionUsageDescription(key)}</TokenValue>
+                <TokenValue>{sourceDescription(`semantic.motion.transition.${key}`) ?? getMotionUsageDescription(key)}</TokenValue>
               </TableCell>
               <TableCell>
                 <MotionSample $transition={value as string}>
@@ -1062,10 +1062,10 @@ export default function Tokens() {
       label: 'Motion',
       isHeader: true,
       content: [
-        { id: 'motion-transition', type: 'motion', data: tokens.semantic.motion.transition, title: 'Transition' },
-        { id: 'motion-duration', type: 'generic', data: tokens.semantic.motion.duration, title: 'Duration', prefix: 'motion.duration' },
-        { id: 'motion-easing', type: 'generic', data: tokens.semantic.motion.easing, title: 'Easing', prefix: 'motion.easing' },
-        { id: 'motion-special', type: 'generic', data: { hover: tokens.semantic.motion.hover, focus: tokens.semantic.motion.focus, interactive: tokens.semantic.motion.interactive }, title: 'Motion', prefix: 'motion' },
+        { id: 'motion-transition', type: 'motion', data: inUse('semantic.motion.transition', tokens.semantic.motion.transition), title: 'Transition' },
+        { id: 'motion-duration', type: 'generic', data: inUse('semantic.motion.duration', tokens.semantic.motion.duration), title: 'Duration', prefix: 'motion.duration' },
+        { id: 'motion-easing', type: 'generic', data: inUse('semantic.motion.easing', tokens.semantic.motion.easing), title: 'Easing', prefix: 'motion.easing' },
+        { id: 'motion-distance', type: 'generic', data: tokens.semantic.motion.distance, title: 'Distance', prefix: 'motion.distance' },
       ]
     },
     {

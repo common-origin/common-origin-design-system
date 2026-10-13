@@ -141,7 +141,7 @@ const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
   border: none;
   border-radius: ${tokens.component.button.primary.borderRadius};
   cursor: pointer;
-  transition: ${tokens.semantic.motion.hover};
+  transition: ${tokens.semantic.motion.transition.feedback};
   white-space: nowrap;
   user-select: none;
 
@@ -192,7 +192,7 @@ const SidebarItem = styled.button<{ $isActive: boolean }>`
   color: ${tokens.semantic.color.text.default};
   text-align: left;
   cursor: pointer;
-  transition: ${tokens.semantic.motion.hover};
+  transition: ${tokens.semantic.motion.transition.feedback};
   white-space: nowrap;
 
   /* The shared row states (decision 0030), with the active page as the selected row */

@@ -141,7 +141,7 @@ const StyledOverlay = styled.div.withConfig({
   bottom: 0;
   background-color: ${semantic.surface.scrim};
   z-index: ${semantic.layer.overlay};
-  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
+  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};`}
 `
 
 const StyledSheet = styled.div.withConfig({
@@ -174,7 +174,7 @@ const StyledSheet = styled.div.withConfig({
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: ${borderRadius} 0 0 ${borderRadius};
-          animation: ${slideInRight} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
+          animation: ${slideInRight} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'left':
         return css<{ $isExiting: boolean }>`
@@ -184,7 +184,7 @@ const StyledSheet = styled.div.withConfig({
           width: ${$width};
           max-width: calc(100vw - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: 0 ${borderRadius} ${borderRadius} 0;
-          animation: ${slideInLeft} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
+          animation: ${slideInLeft} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'top':
         return css<{ $isExiting: boolean }>`
@@ -194,7 +194,7 @@ const StyledSheet = styled.div.withConfig({
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: 0 0 ${borderRadius} ${borderRadius};
-          animation: ${slideInTop} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
+          animation: ${slideInTop} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};
         `
       case 'bottom':
         return css<{ $isExiting: boolean }>`
@@ -204,13 +204,13 @@ const StyledSheet = styled.div.withConfig({
           height: ${$height};
           max-height: calc(100vh - ${isDrawer ? `${semantic.space[400]} * 2` : '0px'});
           border-radius: ${borderRadius} ${borderRadius} 0 0;
-          animation: ${slideInBottom} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
+          animation: ${slideInBottom} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};
         `
     }
   }}
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeInOut}${({ $isExiting }) => $isExiting && exitAnimation};
+    animation: ${fadeIn} ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}${({ $isExiting }) => $isExiting && exitAnimation};
   }
   
   /* Focus trap styling */

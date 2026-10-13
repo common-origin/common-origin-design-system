@@ -190,8 +190,8 @@ const StyledAlert = styled.div.withConfig({
     overflow: hidden;
     pointer-events: none;
     animation: ${$reducedExit
-      ? css`${fadeOut} ${duration.fast} ${easing.easeOut} forwards`
-      : css`${fadeThenCollapse} ${EXIT_MS}ms ${easing.easeOut} forwards`};
+      ? css`${fadeOut} ${duration.fast} ${easing.accelerate} forwards`
+      : css`${fadeThenCollapse} ${EXIT_MS}ms ${easing.accelerate} forwards`};
   `}
 `
 

@@ -143,7 +143,7 @@ const MobileFiltersContainer = styled.div<{ $isExpanded: boolean }>`
     display: block;
     overflow: hidden;
 		max-height: ${props => props.$isExpanded ? '500px' : '0'};
-    transition: ${tokens.semantic.motion.transition.normal};
+    transition: max-height ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
   }
 `
 
@@ -301,7 +301,7 @@ const DrawerOverlay = styled.div<{ $isOpen: boolean }>`
   z-index: ${tokens.semantic.layer.overlay};
   opacity: ${props => props.$isOpen ? tokens.base.opacity[100] : tokens.base.opacity[0]};
   pointer-events: ${props => props.$isOpen ? 'auto' : 'none'};
-  transition: ${tokens.semantic.motion.transition.normal};
+  transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
 `
 
 const DrawerHeader = styled.div`

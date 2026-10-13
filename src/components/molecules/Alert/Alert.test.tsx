@@ -191,7 +191,7 @@ describe('Alert', () => {
         const rule = css
           .split('}')
           .find((r) => classes.some((c) => r.includes(`.${c}{`)) && /animation:/.test(r))
-        const match = rule?.match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-out\s+forwards/)
+        const match = rule?.match(/animation:\s*([\w-]+)\s+([\d.]+m?s)\s+ease-in\s+forwards/)
         if (!match) throw new Error('exit animation not found')
         return { name: match[1], duration: match[2] }
       }

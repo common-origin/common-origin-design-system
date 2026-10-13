@@ -115,7 +115,7 @@ const StyledTab = styled.button.withConfig({
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   border: none;
   background: transparent;
-  transition: ${semantic.motion.hover};
+  transition: ${semantic.motion.transition.feedback};
   position: relative;
   
   /* Selected tab: the light-blue selected treatment plus a blue underline (decisions 0016, 0020).
@@ -141,7 +141,7 @@ const StyledTab = styled.button.withConfig({
       ? semantic.color.fill.accent
       : 'transparent'
     };
-    transition: ${semantic.motion.hover};
+    transition: ${semantic.motion.transition.feedback};
   }
 
   &:hover:not(:disabled) {

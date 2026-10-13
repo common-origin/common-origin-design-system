@@ -139,7 +139,7 @@ export const alertDocs: ComponentDocumentation = {
     'semantic.breakpoint.md',
     // Motion
     'semantic.motion.duration.fast',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.decelerate',
   ],
 
   examples: [

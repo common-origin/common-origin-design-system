@@ -105,8 +105,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
     'semantic.typography.body',
     'semantic.typography.caption',
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
 
   examples: [

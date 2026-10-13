@@ -166,7 +166,7 @@ export const buttonDocs: ComponentDocumentation = {
     'semantic.space.inset.lg',
     // Spacing and motion
     'semantic.space.100',
-    'semantic.motion.hover'
+    'semantic.motion.transition.feedback'
   ],
   
   examples: [
@@ -483,7 +483,7 @@ Variant Colors:
           'component.button.hover.backgroundColor',
           'component.button.active.backgroundColor',
           'component.button.primary.borderRadius',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       },
       {

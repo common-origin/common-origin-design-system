@@ -93,8 +93,8 @@ export const badgeDocs: ComponentDocumentation = {
     // Border
     'semantic.radius.full',
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
   
   examples: [

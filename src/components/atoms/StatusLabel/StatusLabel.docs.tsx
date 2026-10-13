@@ -83,9 +83,9 @@ export const statusLabelDocs: ComponentDocumentation = {
     'semantic.size.icon.xs',
     'semantic.size.icon.sm',
     // Motion
-    'semantic.motion.transition.fast',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.transition.feedback',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
 
   examples: [

@@ -197,8 +197,8 @@ export const modalDocs: ComponentDocumentation = {
     // Breakpoint
     'semantic.breakpoint.md',
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
     'semantic.motion.duration.fast',
   ],
 

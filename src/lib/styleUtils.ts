@@ -36,7 +36,8 @@ const fadeOut = keyframes`
 // so it isn't restarted, and the fade runs on top of it. A fade is already the
 // reduced-motion form, so it needs no fallback of its own. While it fades, the backdrop
 // still catches clicks (so they can't reach the page behind it) and the panel is inert.
-export const exitAnimation = css`, ${fadeOut} ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.easeOut} forwards`
+// Exits accelerate: things leaving speed up as they go (decision 0037).
+export const exitAnimation = css`, ${fadeOut} ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.accelerate} forwards`
 
 // Content for screen readers only. The 1px size and -1px margin are part of the standard
 // visually-hidden technique, not design values, so they aren't tokens.

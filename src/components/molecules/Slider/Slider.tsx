@@ -164,7 +164,12 @@ const StyledThumb = styled.div<{
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
   transform: translateX(-50%);
-  transition: ${semantic.motion.transition.fast};
+  /* left is the thumb's position, set from the value: it glides there, as it always has (decision 0037) */
+  transition: left ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              transform ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              box-shadow ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              background-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              border-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate};
   box-shadow: ${tokens.component.slider.thumb.shadow.default};
 
   ${reducedMotion} {

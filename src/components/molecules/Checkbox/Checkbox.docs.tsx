@@ -236,7 +236,7 @@ export const checkboxDocs: ComponentDocumentation = {
     'semantic.space.900',
     // Motion
     'semantic.motion.duration.fast',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.decelerate',
   ],
 
   accessibility: {

@@ -2736,33 +2736,89 @@ export type Tokens = {
     };
     motion: {
       duration: {
-        /** 200ms: standard duration for property-specific transitions. */
+        /**
+         * 200ms: standard duration for property-specific transitions.
+         *
+         * @deprecated Renamed to semantic.motion.duration.moderate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+         */
         normal: string;
-        /** 150ms: quick responses to input such as hover, press and small indicators. */
+        /** Quick responses to input: hover, press, focus and small indicators. */
         fast: string;
-        /** 300ms: the maximum; larger movements such as sheets sliding in and long expand/collapse. */
+        /** The longest duration (P6): larger movements, such as a Sheet sliding in. */
         slow: string;
+        /** No duration: changes that should happen at once, such as movement under reduced motion. */
+        instant: string;
+        /** The default duration for state changes and short movements, such as a menu opening. */
+        moderate: string;
       };
       easing: {
-        /** ease-in-out: standard easing for property-specific transitions. */
+        /**
+         * ease-in-out: standard easing for property-specific transitions.
+         *
+         * @deprecated Renamed to semantic.motion.easing.standard by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+         */
         easeInOut: string;
-        /** ease-out: for elements responding to input or entering the page. */
+        /**
+         * ease-out: for elements responding to input or entering the page.
+         *
+         * @deprecated Renamed to semantic.motion.easing.decelerate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+         */
         easeOut: string;
+        /** Easing for change on screen: something moving or resizing in place. */
+        standard: string;
+        /** Easing for things arriving or responding: entrances, hover and press. */
+        decelerate: string;
+        /** Easing for things leaving: exits and dismissals speed up as they go (decision 0037). */
+        accelerate: string;
       };
       transition: {
-        /** All properties over duration.fast (150ms), easing out: quick feedback, such as the Slider thumb. */
+        /**
+         * All properties over duration.fast (150ms), easing out: quick feedback, such as the Slider thumb.
+         *
+         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
+         */
         fast: string;
-        /** All properties over duration.normal (200ms), easing in and out: the default state transition. */
+        /**
+         * All properties over duration.normal (200ms), easing in and out: the default state transition.
+         *
+         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
+         */
         normal: string;
-        /** All properties over duration.slow (300ms), the motion maximum (P6), easing in and out: larger changes. */
+        /**
+         * All properties over duration.slow (300ms), the motion maximum (P6), easing in and out: larger changes.
+         *
+         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
+         */
         slow: string;
+        /** Fill and text colour responding to hover and press: buttons, chips, tabs and rows. */
+        feedback: string;
+        /** How the focus ring appears: outline and outline offset. */
+        focus: string;
+        /** Small movement or fade in response to input, such as a pressed control shifting. */
+        press: string;
       };
-      /** Background and text colour over 150ms: the hover and press response of buttons, chips and tabs. */
+      /**
+       * Background and text colour over 150ms: the hover and press response of buttons, chips and tabs.
+       *
+       * @deprecated Renamed to semantic.motion.transition.feedback by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+       */
       hover: string;
-      /** Outline and outline offset over 150ms: how the focus ring appears. */
+      /**
+       * Outline and outline offset over 150ms: how the focus ring appears.
+       *
+       * @deprecated Renamed to semantic.motion.transition.focus by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+       */
       focus: string;
-      /** Transform and opacity over 150ms: small movement or fade in response to input. */
+      /**
+       * Transform and opacity over 150ms: small movement or fade in response to input.
+       *
+       * @deprecated Renamed to semantic.motion.transition.press by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
+       */
       interactive: string;
+      distance: {
+        /** How far a small element travels as it enters, such as a Dropdown menu dropping in. */
+        sm: string;
+      };
     };
     layer: {
       /** Stacking layer for chrome that stays visible while scrolling: sticky headers, navigation bars. */

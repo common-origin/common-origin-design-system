@@ -34,12 +34,13 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0028](0028-icons-decorative-by-default.md) | Icons are decorative by default; a meaningful icon gets a human-readable `aria-label`; no internal icon names are announced | Accepted | 2026-10-09 |
 | [0029](0029-accent-emphasis-audit.md) | Accent and emphasis audit: emphasis is stronger than default, focus is grey and selection light blue, one focus ring, Badge `accent`, Tag keeps `default` and `emphasis` | Accepted | 2026-10-10 |
 | [0030](0030-row-interaction-states.md) | Rows and items share one interaction pattern: the naked Button ladder, the 0016 selected ladder, one shared helper | Accepted | 2026-10-11 |
-| [0031](0031-semantic-token-grammar.md) | Semantic tokens follow one grammar: `{category}.{property}.{role-emphasis-state}`; surfaces and fills split; a 100-based spacing scale; `color.data` reserved; domain tokens move to the component tier | Accepted | 2026-10-11 |
+| [0031](0031-semantic-token-grammar.md) | Semantic tokens follow one grammar: `{category}.{property}.{role-emphasis-state}`; surfaces and fills split; a 100-based spacing scale; `color.data` reserved; domain tokens move to the component tier | Accepted; motion details settled by 0037 | 2026-10-11 |
 | [0032](0032-token-modes.md) | Density and motion are token modes scoped to an element (`data-co-density`, `data-co-motion`); amends P9 | Accepted | 2026-10-11 |
 | [0033](0033-token-descriptions.md) | Token descriptions say when to use a token in one sentence; deprecation, replacement and pairings are fields; base tokens are described per group; descriptions reach the types, a generated `TOKENS.md` and the docs site <!-- verify-docs-ignore: planned generated file --> | Accepted | 2026-10-11 |
 | [0034](0034-control-heights.md) | Controls take their height from `size.control` (32 / 40 / 48px) as a min-height and centre their content; chips stay on the label scale; density shifts the scale by 8px | Accepted; chips amended by 0035 | 2026-10-11 |
 | [0035](0035-chips-have-one-size.md) | Chips have one size, 24px (`size.label.medium`); the chip `size` prop is deprecated and ignored | Accepted | 2026-10-12 |
 | [0036](0036-domain-tokens-interim-base-references.md) | Domain component tokens moved out of the semantic tier may reference base values where no semantic token fits, listed by path; interim, resolved by #224 | Accepted (interim) | 2026-10-13 |
+| [0037](0037-motion-tokens.md) | Motion tokens: `duration.instant`, purpose-named easing (`standard`, `decelerate`, `accelerate`), `distance.sm`, `transition.feedback/focus/press`; exits accelerate; no `transition: all`; a fuller motion system later (#227) | Accepted | 2026-10-13 |
 
 ## Template
 
