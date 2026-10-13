@@ -53,7 +53,9 @@ export const StyledCheckbox = styled.span.withConfig({
     return tokens.component.input.default.borderColor
   }};
   cursor: ${(props) => (props.$state === 'disabled' ? 'not-allowed' : 'pointer')};
-  transition: all ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.easeOut};
+  transition: background-color ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.decelerate},
+              border-color ${tokens.semantic.motion.duration.fast} ${tokens.semantic.motion.easing.decelerate},
+              ${tokens.semantic.motion.transition.focus};
   flex-shrink: 0;
 
   /* Hover state */

@@ -179,9 +179,9 @@ export const agentInputDocs: ComponentDocumentation = {
     'semantic.radius.lg',
     // Motion
     'semantic.motion.duration.fast',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
+    'semantic.motion.easing.standard',
   ],
 
   examples: [

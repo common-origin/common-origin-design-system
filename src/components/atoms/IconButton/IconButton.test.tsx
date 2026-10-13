@@ -464,7 +464,7 @@ describe('IconButton', () => {
 
     it('uses Button\'s colour transition', () => {
       renderIconButton()
-      expect(rulesFor(getButton())[''].transition).toBe(tokens.semantic.motion.hover.replace(/, /g, ','))
+      expect(rulesFor(getButton())[''].transition).toBe(tokens.semantic.motion.transition.feedback.replace(/, /g, ','))
     })
 
     it('darkens secondary from rest to hover to pressed (#130)', () => {

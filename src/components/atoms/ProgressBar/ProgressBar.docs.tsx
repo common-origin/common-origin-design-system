@@ -75,7 +75,8 @@ export const progressBarDocs: ComponentDocumentation = {
     'semantic.color.fill.success',
     'semantic.color.fill.danger',
     'semantic.radius.xs',
-    'semantic.motion.transition.normal',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard',
     'component.progressBar.sizes.sm.height',
     'component.progressBar.sizes.md.height',
     'component.progressBar.sizes.lg.height',
@@ -477,7 +478,8 @@ Container
         tokens: [
           'component.track.background',
           'semantic.radius.xs',
-          'semantic.motion.transition.normal',
+          'semantic.motion.duration.moderate',
+          'semantic.motion.easing.standard',
           'component.progressBar.sizes.sm.height',
           'component.progressBar.sizes.md.height',
           'component.progressBar.sizes.lg.height',
@@ -491,7 +493,8 @@ Container
           'semantic.color.fill.emphasis',
           'semantic.color.fill.success',
           'semantic.color.fill.danger',
-          'semantic.motion.transition.normal'
+          'semantic.motion.duration.moderate',
+          'semantic.motion.easing.standard'
         ]
       }
     ]

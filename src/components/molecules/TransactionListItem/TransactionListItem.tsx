@@ -64,7 +64,7 @@ const StyledContainer = styled.div<StyledContainerProps>`
   background-color: ${tokens.semantic.surface.base};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   gap: ${tokens.semantic.space[300]};
-  transition: background-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeOut};
+  transition: background-color ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.decelerate};
   
   /* A clickable row uses the shared row states (decision 0030) */
   ${({ $clickable }) => $clickable && `

@@ -119,10 +119,10 @@ export const sheetDocs: ComponentDocumentation = {
     'semantic.color.border.default', // Scrollbar thumb
     'semantic.color.fill.inverse', // Scrollbar thumb on hover
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard',
     'semantic.motion.duration.fast',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.decelerate',
   ],
   
   examples: [

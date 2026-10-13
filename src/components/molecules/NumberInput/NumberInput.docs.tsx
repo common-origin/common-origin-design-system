@@ -156,8 +156,8 @@ export const numberInputDocs: ComponentDocumentation = {
     'semantic.space.1000',
     'semantic.fontWeight.bold',
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard',
   ],
   
   examples: [

@@ -43,7 +43,7 @@ const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
     $needsExpansion && !$isExpanded ? 'hidden' : 'auto'};
   margin: ${tokens.semantic.space[200]} 0;
   position: relative;
-  transition: max-height ${motion.duration.slow} ${motion.easing.easeInOut};
+  transition: max-height ${motion.duration.slow} ${motion.easing.standard};
 
   ${reducedMotion} {
     transition: none;
@@ -89,7 +89,7 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   width: calc(100% - 2 * ${tokens.semantic.border.width.thin});
   margin-bottom: ${tokens.semantic.space[200]};
   border-radius: ${tokens.semantic.radius.sm};
-  transition: opacity ${motion.duration.slow} ${motion.easing.easeInOut}, background ${motion.duration.slow} ${motion.easing.easeInOut};
+  transition: opacity ${motion.duration.slow} ${motion.easing.standard}, background ${motion.duration.slow} ${motion.easing.standard};
   
   ${({ $hasGradient }) => $hasGradient ? `
     margin-top: -${tokens.semantic.space[800]};

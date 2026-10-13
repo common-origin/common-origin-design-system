@@ -153,10 +153,10 @@ const StyledStatusLabel = styled.span.withConfig({
   border-radius: ${radius.full};
   white-space: nowrap;
   user-select: none;
-  animation: ${scaleIn} ${duration.normal} ${easing.easeOut};
-  transition: ${transition.fast};
+  animation: ${scaleIn} ${duration.moderate} ${easing.decelerate};
+  transition: ${transition.feedback};
 
-  /* transition.fast covers all properties, so a size change would animate the label's dimensions */
+  /* Under reduced motion the label appears without scaling in, and colours change at once */
   ${reducedMotion} {
     animation: none;
     transition: none;

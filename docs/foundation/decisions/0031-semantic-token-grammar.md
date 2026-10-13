@@ -1,6 +1,6 @@
 # 0031. Semantic tokens follow one naming grammar
 
-- **Status:** Accepted
+- **Status:** Accepted; motion details settled by [0037](0037-motion-tokens.md)
 - **Date:** 2026-10-11
 - **Decided by:** Ollie (owner)
 - **Principles:** P3, P5, P7

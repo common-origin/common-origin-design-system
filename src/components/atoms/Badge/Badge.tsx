@@ -68,7 +68,7 @@ const BadgeIndicator = styled.span.withConfig({
   line-height: ${count.lineHeight};
   white-space: nowrap;
   box-shadow: 0 0 0 ${ring.width} ${semantic.surface.base};
-  animation: ${scaleIn} ${semantic.motion.duration.normal} ${semantic.motion.easing.easeOut};
+  animation: ${scaleIn} ${semantic.motion.duration.moderate} ${semantic.motion.easing.decelerate};
 
   ${reducedMotion} {
     animation: none;

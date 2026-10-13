@@ -61,7 +61,9 @@ const ProgressBarFill = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$')
 })<StyledProgressBarFillProps>`
   height: 100%;
-  transition: ${motion.transition.normal};
+  transition: width ${motion.duration.moderate} ${motion.easing.standard},
+              height ${motion.duration.moderate} ${motion.easing.standard},
+              background-color ${motion.duration.moderate} ${motion.easing.standard};
 
   ${reducedMotion} {
     transition: none;

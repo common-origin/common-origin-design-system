@@ -59,8 +59,8 @@ const inputBaseStyles = css<StyledInputBaseProps>`
   outline: none;
   
   /* Transitions */
-  transition: border-color ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut},
-              outline ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
+  transition: border-color ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard},
+              outline ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
   
   /* Placeholder */
   &::placeholder {

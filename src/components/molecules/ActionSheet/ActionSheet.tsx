@@ -138,7 +138,7 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   inset: 0;
   background-color: ${tokens.semantic.surface.scrim};
   z-index: ${tokens.semantic.layer.modal};
-  animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+  animation: ${fadeIn} ${motion.duration.moderate} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};
 `
 
 const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
@@ -153,10 +153,10 @@ const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   max-height: 90vh;
   overflow-y: auto;
   z-index: ${tokens.semantic.layer.modal};
-  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+  animation: ${slideUp} ${motion.duration.slow} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+    animation: ${fadeIn} ${motion.duration.slow} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
 `
@@ -183,7 +183,7 @@ const StyledCloseButton = styled.button`
   color: ${color.icon.muted};
   cursor: pointer;
   border-radius: ${tokens.semantic.radius.sm};
-  transition: ${motion.hover};
+  transition: ${motion.transition.feedback};
   margin-left: ${space[200]};
   
   &:hover {

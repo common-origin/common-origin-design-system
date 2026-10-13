@@ -76,7 +76,7 @@ const IconButtonStyled = styled.button.withConfig({
   color: ${({ $variant }) => colours($variant).text};
   border: none;
   border-radius: ${iconButton.primary.borderRadius};
-  transition: ${motion.hover};
+  transition: ${motion.transition.feedback};
   box-sizing: border-box;
   display: flex;
   justify-content: center;

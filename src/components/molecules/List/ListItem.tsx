@@ -172,7 +172,7 @@ const StyledItemContent = styled.div.withConfig({
       ? `${semantic.space[200]} ${semantic.space[300]}`
       : `${semantic.space[300]} ${semantic.space[400]}`};
   border-radius: ${semantic.radius.sm};
-  transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
+  transition: background-color ${duration.fast} ${easing.decelerate}, color ${duration.fast} ${easing.decelerate};
   cursor: ${({ $interactive, $disabled }) => {
     if ($disabled) return 'not-allowed'
     if ($interactive) return 'pointer'
@@ -230,7 +230,7 @@ const StyledChevronIcon = styled.div.withConfig({
   width: ${semantic.size.icon.lg};
   height: ${semantic.size.icon.lg};
   color: ${semantic.color.icon.muted};
-  transition: transform ${duration.fast} ${easing.easeOut};
+  transition: transform ${duration.fast} ${easing.decelerate};
   transform: rotate(${({ $expanded }) => ($expanded ? '180deg' : '0deg')});
   pointer-events: none;
 
@@ -248,17 +248,17 @@ const StyledExpandedContent = styled.div.withConfig({
   overflow: hidden;
   /* Padding collapses with the height, and visibility hides the content from
      keyboard and screen readers once the collapse finishes. */
-  transition: max-height ${duration.normal} ${easing.easeOut},
-              padding ${duration.normal} ${easing.easeOut},
-              opacity ${duration.normal} ${easing.easeOut},
-              visibility ${duration.normal} ${easing.easeOut};
+  transition: max-height ${duration.moderate} ${easing.decelerate},
+              padding ${duration.moderate} ${easing.decelerate},
+              opacity ${duration.moderate} ${easing.decelerate},
+              visibility ${duration.moderate} ${easing.decelerate};
   max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
   opacity: ${({ $expanded }) => ($expanded ? '1' : '0')};
   visibility: ${({ $expanded }) => ($expanded ? 'visible' : 'hidden')};
 
   ${reducedMotion} {
-    transition: opacity ${duration.normal} ${easing.easeOut},
-                visibility ${duration.normal} ${easing.easeOut};
+    transition: opacity ${duration.moderate} ${easing.decelerate},
+                visibility ${duration.moderate} ${easing.decelerate};
   }
   
   ${({ $expanded, $spacing }) => $expanded && `

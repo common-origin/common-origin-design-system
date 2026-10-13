@@ -18,7 +18,7 @@ export const StyledChip = styled.span.withConfig({
   box-sizing: border-box;
   user-select: none;
   white-space: nowrap;
-  transition: ${semantic.motion.hover};
+  transition: ${semantic.motion.transition.feedback};
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
   
   ${getVariantStyles}
@@ -53,7 +53,7 @@ export const CloseButton = styled.button.withConfig({
   border-radius: ${tokens.semantic.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
-  transition: ${semantic.motion.hover};
+  transition: ${semantic.motion.transition.feedback};
   
   &:hover:not(:disabled) {
     background-color: ${tokens.semantic.color.fill['none-hover']};

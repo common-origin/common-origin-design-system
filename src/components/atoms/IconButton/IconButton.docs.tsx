@@ -127,7 +127,7 @@ export const iconButtonDocs: ComponentDocumentation = {
     // Focus and motion
     'component.iconButton.focus.outline',
     'semantic.border.focusOffset',
-    'semantic.motion.hover'
+    'semantic.motion.transition.feedback'
   ],
 
   examples: [

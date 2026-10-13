@@ -26,7 +26,7 @@ const PictureWrapper = styled.div`
 const ImageLink = styled.a`
   display: block;
   cursor: pointer;
-  transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
+  transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
   
   &:hover {
     opacity: 0.8;
@@ -40,7 +40,7 @@ const ImageButton = styled.button`
   cursor: pointer;
   display: block;
   width: 100%;
-  transition: opacity ${tokens.semantic.motion.duration.normal} ${tokens.semantic.motion.easing.easeInOut};
+  transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
   
   &:hover {
     opacity: 0.8;

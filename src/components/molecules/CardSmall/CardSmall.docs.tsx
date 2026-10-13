@@ -69,8 +69,8 @@ export const cardSmallDocs: ComponentDocumentation = {
     'semantic.typography.small', // Title
     'semantic.typography.label', // Subtitle
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
   
   examples: [

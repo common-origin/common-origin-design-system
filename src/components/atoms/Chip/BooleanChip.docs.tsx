@@ -177,7 +177,7 @@ export const booleanChipDocs: ComponentDocumentation = {
     'component.chip.focus.outline',
     'semantic.border.focusOffset',
     // Transition
-    'semantic.motion.hover'
+    'semantic.motion.transition.feedback'
   ],
 
   examples: [
@@ -335,7 +335,7 @@ States:
           'component.chip.variants.subtle.active.backgroundColor',
           'semantic.color.fill.accent-muted',
           'component.chip.default.borderRadius',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       },
       {

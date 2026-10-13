@@ -59,8 +59,8 @@ const DropdownTrigger = styled.button.withConfig({
   font: ${input.default.font};
   color: ${input.default.textColor};
   cursor: pointer;
-  transition: border-color ${duration.normal} ${easing.easeInOut},
-              outline ${duration.normal} ${easing.easeInOut};
+  transition: border-color ${duration.moderate} ${easing.standard},
+              outline ${duration.moderate} ${easing.standard};
   
   &:hover:not(:disabled) {
     border-color: ${({ $hasError }) =>
@@ -94,7 +94,7 @@ const DropdownIcon = styled.div.withConfig({
   display: flex;
   align-items: center;
   margin-left: ${space[200]};
-  transition: transform ${duration.fast} ${easing.easeOut};
+  transition: transform ${duration.fast} ${easing.decelerate};
   
   ${({ $isOpen }) => $isOpen && `
     transform: rotate(180deg);
@@ -122,8 +122,10 @@ const DropdownMenu = styled.div.withConfig({
   overflow: hidden;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${space[200]})`)};
-  transition: all ${duration.fast} ${easing.easeOut};
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${tokens.semantic.motion.distance.sm})`)};
+  transition: opacity ${duration.fast} ${easing.decelerate},
+              visibility ${duration.fast} ${easing.decelerate},
+              transform ${duration.fast} ${easing.decelerate};
   max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
 
@@ -148,7 +150,7 @@ const DropdownOption = styled.button.withConfig({
   color: ${input.default.textColor};
   text-align: left;
   cursor: pointer;
-  transition: background-color ${duration.fast} ${easing.easeOut}, color ${duration.fast} ${easing.easeOut};
+  transition: background-color ${duration.fast} ${easing.decelerate}, color ${duration.fast} ${easing.decelerate};
 
   /* The shared row states (decisions 0029, 0030): focus shows the hover state in grey; only the
      selected option is light blue, with its text darkening with the fill */

@@ -153,7 +153,7 @@ export const filterChipDocs: ComponentDocumentation = {
     'component.chip.focus.outline',
     'semantic.border.focusOffset',
     // Transition
-    'semantic.motion.hover'
+    'semantic.motion.transition.feedback'
   ],
 
   examples: [
@@ -280,7 +280,7 @@ States:
           'semantic.color.fill.accent-muted',
           'semantic.color.text.accent',
           'component.chip.default.borderRadius',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       },
       {
@@ -315,7 +315,7 @@ States:
           'semantic.color.fill.none-pressed',
           'component.chip.focus.outline',
           'semantic.border.focusOffset',
-          'semantic.motion.hover'
+          'semantic.motion.transition.feedback'
         ]
       }
     ]

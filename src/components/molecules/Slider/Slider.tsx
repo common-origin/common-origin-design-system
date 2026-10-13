@@ -164,7 +164,10 @@ const StyledThumb = styled.div<{
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
   transform: translateX(-50%);
-  transition: ${semantic.motion.transition.fast};
+  transition: transform ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              box-shadow ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              background-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
+              border-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate};
   box-shadow: ${tokens.component.slider.thumb.shadow.default};
 
   ${reducedMotion} {

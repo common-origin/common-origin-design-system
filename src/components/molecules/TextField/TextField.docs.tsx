@@ -166,8 +166,8 @@ export const textFieldDocs: ComponentDocumentation = {
     'semantic.radius.sm',
     
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.standard',
     
     // Input padding and focus offset, from the semantic tier (decision 0022)
     'semantic.space.inset.lg',
@@ -415,8 +415,8 @@ export const textFieldDocs: ComponentDocumentation = {
           'semantic.space.300',
           'semantic.border.width.thin',
           'semantic.radius.sm',
-          'semantic.motion.duration.normal',
-          'semantic.motion.easing.easeInOut',
+          'semantic.motion.duration.moderate',
+          'semantic.motion.easing.standard',
         ],
       },
       {

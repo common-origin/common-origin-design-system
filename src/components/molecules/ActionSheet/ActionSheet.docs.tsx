@@ -331,10 +331,10 @@ export const actionSheetDocs: ComponentDocumentation = {
     'semantic.elevation.overlay',
     'semantic.surface.scrim',
     // Motion
-    'semantic.motion.hover',
-    'semantic.motion.duration.normal',
+    'semantic.motion.transition.feedback',
+    'semantic.motion.duration.moderate',
     'semantic.motion.duration.slow',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.easing.decelerate',
     'semantic.motion.duration.fast',
   ],
   

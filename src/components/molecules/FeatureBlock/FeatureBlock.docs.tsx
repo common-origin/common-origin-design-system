@@ -80,8 +80,8 @@ export const featureBlockDocs: ComponentDocumentation = {
     'semantic.typography.h3', // Title
     'semantic.typography.small', // Excerpt
     // Motion
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
   ],
 
   examples: [

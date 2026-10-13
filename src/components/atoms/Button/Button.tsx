@@ -76,7 +76,7 @@ const baseButtonStyles = `
   cursor: pointer;
   border: none;
   text-decoration: none;
-  transition: ${semantic.motion.hover};
+  transition: ${semantic.motion.transition.feedback};
   white-space: nowrap;
   user-select: none;
   

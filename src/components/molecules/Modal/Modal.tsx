@@ -122,7 +122,7 @@ const StyledOverlay = styled.div<{ $isExiting: boolean }>`
   inset: 0;
   background-color: ${semantic.surface.scrim};
   z-index: ${semantic.layer.modal};
-  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
+  ${css<{ $isExiting: boolean }>`animation: ${fadeIn} ${motion.duration.moderate} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};`}
 `
 
 const StyledDialog = styled.div.withConfig({
@@ -146,10 +146,10 @@ const StyledDialog = styled.div.withConfig({
   box-shadow: ${elevation.overlay};
   overflow: hidden;
 
-  ${css<{ $isExiting: boolean }>`animation: ${scaleIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};`}
+  ${css<{ $isExiting: boolean }>`animation: ${scaleIn} ${motion.duration.moderate} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};`}
 
   ${reducedMotion} {
-    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+    animation: ${fadeIn} ${motion.duration.moderate} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
   /* Auto-fullscreen below md breakpoint (768px) */
@@ -162,7 +162,7 @@ const StyledDialog = styled.div.withConfig({
     top: 0;
     left: 0;
     transform: none;
-    animation: ${fadeIn} ${motion.duration.normal} ${motion.easing.easeOut}${({ $isExiting }) => $isExiting && exitAnimation};
+    animation: ${fadeIn} ${motion.duration.moderate} ${motion.easing.decelerate}${({ $isExiting }) => $isExiting && exitAnimation};
   }
 
   &:focus {

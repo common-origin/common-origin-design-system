@@ -128,9 +128,9 @@ export const dropdownDocs: ComponentDocumentation = {
     'semantic.border.emphasis',
     // Motion
     'semantic.motion.duration.fast',
-    'semantic.motion.duration.normal',
-    'semantic.motion.easing.easeOut',
-    'semantic.motion.easing.easeInOut',
+    'semantic.motion.duration.moderate',
+    'semantic.motion.easing.decelerate',
+    'semantic.motion.easing.standard',
   ],
 
   examples: [
@@ -672,7 +672,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'Performance Optimization: Dropdown menu rendered on mount but hidden via CSS for smooth animations and keyboard navigation',
     'Scroll Behavior: Menu max-height of 300px with auto-scroll. Large option lists become scrollable with proper focus management',
     'Click Outside Handling: Automatic click-outside detection closes dropdown. Escape key also closes without selection',
-    'Visual Feedback: Quick animations (semantic.motion.duration.fast, easeOut), icon rotation, and focus indicators provide clear interaction feedback',
+    'Visual Feedback: Quick animations (semantic.motion.duration.fast, semantic.motion.easing.decelerate), icon rotation, and focus indicators provide clear interaction feedback',
     'Design Token Integration: All spacing, colors, borders, shadows derive from semantic design tokens ensuring theme consistency',
     'Browser Support: Works in all modern browsers. Fallbacks ensure functionality even without CSS custom property support',
     'Form Integration: Works with form libraries (Formik, React Hook Form) via standard controlled component patterns',
