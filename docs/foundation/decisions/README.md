@@ -42,6 +42,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0036](0036-domain-tokens-interim-base-references.md) | Domain component tokens moved out of the semantic tier may reference base values where no semantic token fits, listed by path; interim, resolved by #224 | Accepted (interim) | 2026-10-13 |
 | [0037](0037-motion-tokens.md) | Motion tokens: `duration.instant`, purpose-named easing (`standard`, `decelerate`, `accelerate`), `distance.sm`, `transition.feedback/focus/press`; exits accelerate; no `transition: all`; a fuller motion system later (#227) | Accepted | 2026-10-13 |
 | [0038](0038-forced-colors.md) | Forced colours: system-colour edges and states scoped to `@media (forced-colors: active)`; `Highlight` for selected and checked; `forced-color-adjust: none` only on fills that carry state; Playwright checks | Accepted | 2026-10-13 |
+| [0039](0039-target-size.md) | Pointer targets are at least 24 × 24px; a control smaller to look at extends its hit area with a pseudo-element (the chip close button) | Accepted | 2026-10-13 |
 
 ## Template
 

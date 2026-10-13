@@ -54,9 +54,23 @@ export const CloseButton = styled.button.withConfig({
   margin-left: ${tokens.semantic.space[200]};
   background: transparent;
   border: none;
+  position: relative;
   width: ${chip.closeButton.size};
   height: ${chip.closeButton.size};
   padding: ${tokens.semantic.space[0]};
+
+  /* The pointer target is at least 24 × 24px (WCAG 2.5.8, decision 0039): an invisible hit area
+     as tall as the chip, centred on the 20px button. It stays inside the chip and its padding, so
+     it can't overlap another target. */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: ${semantic.size.label.medium};
+    height: ${semantic.size.label.medium};
+    transform: translate(-50%, -50%);
+  }
   border-radius: ${tokens.semantic.radius.xs};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
