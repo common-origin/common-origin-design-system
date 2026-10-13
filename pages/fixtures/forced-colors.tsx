@@ -116,7 +116,7 @@ export default function ForcedColorsFixture() {
             <Stack direction="column" gap="md">
               <List>
                 <Case id="row"><ListItem primary="Unselected row" interactive onClick={() => {}} /></Case>
-                <Case id="row-selected"><ListItem primary="Selected row" secondary="Secondary text" interactive selected onClick={() => {}} /></Case>
+                <Case id="row-selected"><ListItem primary="Selected row" secondary="Secondary text" badge={<Chip>3 new</Chip>} interactive selected onClick={() => {}} /></Case>
                 <Case id="row-static"><ListItem primary="Static row" /></Case>
               </List>
               <Case id="dropdown">

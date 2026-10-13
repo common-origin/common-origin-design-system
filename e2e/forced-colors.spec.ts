@@ -119,8 +119,20 @@ for (const colorScheme of ['dark', 'light'] as const) {
           .filter((el) => [...el.childNodes].some((node) => node.nodeType === 3 && node.textContent?.trim()))
           .map((el) => getComputedStyle(el).color)
       )
-      expect(rowTexts.length).toBeGreaterThan(1)
+      expect(rowTexts.length).toBeGreaterThan(2)
       expect(new Set(rowTexts)).toEqual(new Set([highlightText]))
+      // A chip inside a selected row drops its fill and keeps a HighlightText edge
+      const rowChip = await page.evaluate(() => {
+        const chip = [...document.querySelectorAll('[data-fc="row-selected"] li *')].find(
+          (el) => el.textContent?.trim() === '3 new' && el.children.length === 0
+        )?.closest('span:not(:only-child), span')
+        if (!chip) throw new Error('row chip not found')
+        const cs = getComputedStyle(chip)
+        return { background: cs.backgroundColor, color: cs.color, border: cs.borderTopStyle }
+      })
+      expect(transparent(rowChip.background)).toBe(true)
+      expect(rowChip.color).toBe(highlightText)
+      expect(rowChip.border).toBe('solid')
       // Unselected and static rows stay on the page colour, not the selection colour or GrayText
       expect((await styles(page, 'row', 'li > *')).background).not.toBe(highlight)
       expect((await styles(page, 'chip-filter', ':scope')).background).not.toBe(highlight)
