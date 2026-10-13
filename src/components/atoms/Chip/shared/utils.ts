@@ -1,4 +1,5 @@
 import tokens from '../../../../styles/tokens.json'
+import { forcedColors } from '../../../../lib/styleUtils'
 import { ChipVariant } from './types'
 
 const { component: { chip }, semantic } = tokens
@@ -39,6 +40,15 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
       &:active {
         background-color: ${interactiveStates ? fill['accent-muted-pressed'] : fill['accent-muted']};
         color: ${interactiveStates ? text['accent-pressed'] : text.accent};
+      }
+
+      /* Forced colours drop the fill, so a selected chip takes the system selection colours
+         (decision 0038); its checkmark follows the text colour */
+      ${forcedColors} {
+        forced-color-adjust: none;
+        background-color: Highlight;
+        border-color: Highlight;
+        color: HighlightText;
       }
     `
   }

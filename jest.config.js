@@ -25,6 +25,8 @@ const customJestConfig = {
     '<rootDir>/.next/',
     '<rootDir>/node_modules/',
     '<rootDir>/dist/',
+    // Playwright browser checks run with `npm run test:e2e`, not Jest
+    '<rootDir>/e2e/',
     // Claude Code worktrees are separate checkouts of this repository
     '<rootDir>/.claude/worktrees/',
   ],

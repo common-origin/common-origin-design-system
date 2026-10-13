@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { forcedColors } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 
@@ -142,6 +143,15 @@ const StyledTab = styled.button.withConfig({
       : 'transparent'
     };
     transition: ${semantic.motion.transition.feedback};
+  }
+
+  /* Forced colours drop the fill, so the selected tab's underline carries its state in the
+     system selection colour (decision 0038) */
+  ${forcedColors} {
+    &::after {
+      forced-color-adjust: none;
+      background-color: ${props => props.$isActive ? 'Highlight' : 'transparent'};
+    }
   }
 
   &:hover:not(:disabled) {

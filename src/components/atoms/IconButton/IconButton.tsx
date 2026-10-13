@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
 import tokens from '@/styles/tokens.json'
+import { forcedColorsEdge } from '../../../lib/styleUtils'
 
 const { semantic: { motion, border, space, size }, component: { iconButton, button } } = tokens
 
@@ -107,6 +108,8 @@ const IconButtonStyled = styled.button.withConfig({
     color: ${({ $variant }) => colours($variant).disabledText};
     cursor: not-allowed;
   }
+
+  ${forcedColorsEdge}
 `
 
 export const IconButton: React.FC<IconButtonProps> = ({ 

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
+import { forcedColors, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 import { Typography } from '../Typography'
 
@@ -73,6 +73,12 @@ const BadgeIndicator = styled.span.withConfig({
   ${reducedMotion} {
     animation: none;
   }
+
+  /* Forced colours drop fills (decision 0038): a dot is only a fill, so it keeps one in the
+     text colour; a count gets an edge around its number */
+  ${props => props.$isDot
+    ? `${forcedColors} { forced-color-adjust: none; background-color: CanvasText; }`
+    : `${forcedColors} { border: ${semantic.border.width.thin} solid currentColor; }`}
   
   ${props => {
     switch (props.$variant) {

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import tokens from '../../../../styles/tokens.json'
 import { InternalStyledProps } from './types'
 import { getVariantStyles, sizeStyles } from './utils'
+import { forcedColors, forcedColorsEdge } from '../../../../lib/styleUtils'
 
 const { component: { chip }, semantic } = tokens
 
@@ -21,6 +22,11 @@ export const StyledChip = styled.span.withConfig({
   transition: ${semantic.motion.transition.feedback};
   cursor: ${props => props.$disabled ? 'not-allowed' : (props.$clickable ? 'pointer' : 'default')};
   
+  /* Forced colours: an edge, and GrayText when disabled, since a span gets no system disabled
+     colour (decision 0038). Before the variant styles, so a selected chip's Highlight border wins. */
+  ${forcedColorsEdge}
+  ${props => props.$disabled ? `${forcedColors} { color: GrayText; }` : ''}
+
   ${getVariantStyles}
   ${sizeStyles}
   
@@ -28,6 +34,7 @@ export const StyledChip = styled.span.withConfig({
     outline: ${chip.focus.outline};
     outline-offset: ${semantic.border.focusOffset};
   }
+
 `
 
 // Icon container for selected indicator or leading icons

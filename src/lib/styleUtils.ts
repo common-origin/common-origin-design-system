@@ -21,6 +21,20 @@ export const media = {
   '2xl': `@media (min-width: ${breakpoints['2xl']})`,
 }
 
+// Windows Contrast Themes and other forced-colours modes (decision 0038). The browser swaps in
+// the user's system colours, drops background colours and box-shadows, and keeps borders and
+// outlines. Inside this query, give a control that shows its edge with a fill alone a border,
+// and draw selected and checked states with system colours: ButtonText for control edges,
+// Highlight and HighlightText for selected and checked, GrayText for disabled, CanvasText for
+// content. Use forced-color-adjust: none only on a fill that carries state.
+export const forcedColors = '@media (forced-colors: active)'
+
+/** A control's edge in forced colours, for a control that shows its edge with a fill alone. The
+ * border follows the text colour the browser picks: ButtonText, LinkText, or GrayText when disabled. */
+export const forcedColorsEdge = `${forcedColors} {
+  border: ${tokens.semantic.border.width.thin} solid currentColor;
+}`
+
 // Wrap fallbacks for people who ask for less motion (decision 0005): movement becomes
 // an instant change or a simple fade. Colour and opacity transitions need no fallback.
 export const reducedMotion = '@media (prefers-reduced-motion: reduce)'
@@ -104,7 +118,7 @@ export const interactiveRow = ({
   textSelector?: string
 } = {}) => {
   const states = selected ? rowStates.selected : rowStates.unselected
-  if (disabled) return rowDeclarations(states.rest, textSelector)
+  if (disabled) return `${rowDeclarations(states.rest, textSelector)}\n${rowForcedColors({ selected, focused, disabled, textSelector })}`
   return `
   ${rowDeclarations(focused ? states.hover : states.rest, textSelector)}
 
@@ -115,5 +129,32 @@ export const interactiveRow = ({
   &:active {
     ${rowDeclarations(states.pressed, textSelector)}
   }
+
+  ${rowForcedColors({ selected, focused, disabled, textSelector })}
 `
+}
+
+// Rows in forced colours (decision 0038): fills are dropped, so a selected row takes the system
+// selection colours, and a hovered or keyboard-active row is outlined in Highlight.
+const rowForcedColors = ({
+  selected,
+  focused,
+  disabled,
+  textSelector,
+}: {
+  selected: boolean
+  focused: boolean
+  disabled: boolean
+  textSelector?: string
+}) => {
+  const text = (color: string) => (textSelector ? `color: ${color};\n    ${textSelector} { color: ${color}; }` : `color: ${color};`)
+  const hover = `outline: ${tokens.semantic.border.width.thin} solid Highlight;\n      outline-offset: -${tokens.semantic.border.width.thin};`
+  // A row that doesn't respond (disabled, or not interactive at all) keeps its selection but has
+  // no hover outline. Disabled text is the component's to colour: callers also pass this for
+  // static rows, which must stay CanvasText.
+  return `${forcedColors} {
+    ${selected ? `forced-color-adjust: none;\n    background-color: Highlight;\n    ${text('HighlightText')}` : ''}
+    ${!disabled && focused ? hover : ''}
+    ${disabled ? '' : `&:hover {\n      ${hover}\n    }`}
+  }`
 }
