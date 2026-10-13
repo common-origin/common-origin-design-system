@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
+import { forcedColors } from '../../../lib/styleUtils'
 
 export type SelectableInputState = 'default' | 'error' | 'disabled'
 
@@ -111,6 +112,24 @@ export const StyledCheckbox = styled.span.withConfig({
     height: 2px;
     background-color: ${tokens.semantic.color.text.inverse};
   }
+
+  /* Forced colours drop fills (decision 0038): a checked or indeterminate box takes the system
+     selection colour, or GrayText when disabled, and its mark the matching text colour. The
+     indeterminate dash is a fill, so it needs the same treatment. */
+  ${(props) => {
+    const on = props.$checked || props.$indeterminate
+    const disabled = props.$state === 'disabled'
+    if (!on) return disabled ? `${forcedColors} { border-color: GrayText; }` : ''
+    const fill = disabled ? 'GrayText' : 'Highlight'
+    const mark = disabled ? 'Canvas' : 'HighlightText'
+    return `${forcedColors} {
+      forced-color-adjust: none;
+      background-color: ${fill};
+      border-color: ${fill};
+      &::after { border-color: ${mark}; }
+      &::before { background-color: ${mark}; }
+    }`
+  }}
 `
 
 /**

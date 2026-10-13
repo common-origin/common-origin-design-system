@@ -29,6 +29,7 @@ npm run typecheck        # tsc --noEmit
 npm run lint             # eslint; --max-warnings ratchet — never raise the number, lower it when you fix warnings
 npm run verify:docs      # docs must not reference missing files, folders or npm scripts
 npm test                 # jest (includes jest-axe)
+npm run test:e2e         # Playwright browser checks (forced colours); needs `npx playwright install chromium` once
 npm run build:package    # rollup → dist/
 npm run verify:package   # after build:package: .d.ts imports resolvable, consumer type-check, publint, attw
 npm run build            # docs site

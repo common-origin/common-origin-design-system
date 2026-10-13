@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { Icon, type IconName } from '../Icon'
+import { forcedColorsEdge } from '../../../lib/styleUtils'
 
 const { component: { button }, semantic } = tokens
 // Height comes from size.control as a minimum and the content is centred, so there is no
@@ -88,6 +89,8 @@ const baseButtonStyles = `
   &:disabled {
     cursor: not-allowed;
   }
+
+  ${forcedColorsEdge}
 `
 
 // Dynamic variant styles using component tokens

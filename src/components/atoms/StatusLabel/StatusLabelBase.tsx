@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
-import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
+import { forcedColorsEdge, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/styles/tokens.json'
 
 // Destructure tokens for cleaner access
@@ -161,6 +161,9 @@ const StyledStatusLabel = styled.span.withConfig({
     animation: none;
     transition: none;
   }
+
+  /* Forced colours drop the fill, so the label keeps its shape with an edge (decision 0038) */
+  ${forcedColorsEdge}
   
   /* Size styles */
   ${({ $size }) => {

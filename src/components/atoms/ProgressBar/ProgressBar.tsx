@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { forcedColors, forcedColorsEdge, reducedMotion } from '../../../lib/styleUtils'
 
 // Destructure tokens
 const { semantic } = tokens
@@ -46,6 +46,9 @@ const ProgressBarContainer = styled.div.withConfig({
   border-radius: ${radius.xs};
   overflow: hidden;
 
+  /* Forced colours drop the track's fill, so the track gets an edge (decision 0038) */
+  ${forcedColorsEdge}
+
   ${props => props.$variant === 'horizontal' && css`
     width: 100%;
     height: ${props.$height ? component.progressBar.sizes[props.$height].height : component.progressBar.sizes.md.height};
@@ -67,6 +70,12 @@ const ProgressBarFill = styled.div.withConfig({
 
   ${reducedMotion} {
     transition: none;
+  }
+
+  /* The fill is the value, so it keeps a fill in forced colours, in the system selection colour (decision 0038) */
+  ${forcedColors} {
+    forced-color-adjust: none;
+    background-color: Highlight;
   }
 
   ${props => {

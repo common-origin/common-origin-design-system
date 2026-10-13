@@ -1,7 +1,7 @@
 import { useRef, useState, useEffect, useId, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/styles/tokens.json'
-import { reducedMotion } from '../../../lib/styleUtils'
+import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 
@@ -129,6 +129,12 @@ const StyledTrack = styled.div<{ $disabled?: boolean }>`
   };
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
+
+  /* Forced colours drop the track's fill, so it gets an edge; the thumb stays centred on it (decision 0038).
+     A div gets no system disabled colour, so a disabled track sets GrayText itself. */
+  ${forcedColors} {
+    border: ${semantic.border.width.thin} solid ${({ $disabled }) => $disabled ? 'GrayText' : 'CanvasText'};
+  }
 `
 
 const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
@@ -141,6 +147,12 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
   };
   border-radius: ${semantic.radius.full};
   pointer-events: none;
+
+  /* The fill is the value, so it keeps a fill in forced colours (decision 0038) */
+  ${forcedColors} {
+    forced-color-adjust: none;
+    background-color: ${({ $disabled }) => $disabled ? 'GrayText' : 'Highlight'};
+  }
 `
 
 const StyledThumb = styled.div<{ 
