@@ -73,6 +73,19 @@ const FIXTURES: Record<string, string> = {
     import tokens from '@/styles/tokens.json'
     const { surface, ...others } = tokens.semantic.color.background
     export const a = [surface, others]`,
+  interfaceContainer: `
+    import tokens from '@/styles/tokens.json'
+    interface Theme { bg: typeof tokens.semantic.color.background }
+    const theme: Theme = { bg: tokens.semantic.color.background }
+    export const text = JSON.stringify(theme)`,
+  recordContainer: `
+    import tokens from '@/styles/tokens.json'
+    const byName: Record<string, typeof tokens.semantic.color.background> = { main: tokens.semantic.color.background }
+    export const text = JSON.stringify(byName)`,
+  mapContainer: `
+    import tokens from '@/styles/tokens.json'
+    const byName = new Map([['main', tokens.semantic.color.background]])
+    export const text = JSON.stringify(byName)`,
   // Controls: none of these can reach a deprecated token
   cleanDirect: `
     import tokens from '@/styles/tokens.json'
@@ -146,7 +159,7 @@ describe('findTokenReads (#229)', () => {
     expect(hits('unresolvedKey')).toContain(`unresolved key: ${subtle}`)
   })
 
-  it.each(['castToRecord', 'objectEntries', 'castToAny', 'containerEscape', 'spread', 'rest'])(
+  it.each(['castToRecord', 'objectEntries', 'castToAny', 'containerEscape', 'spread', 'rest', 'interfaceContainer', 'recordContainer', 'mapContainer'])(
     'treats a group that loses its type as reading everything under it: %s',
     (name) => {
       expect(hits(name)).toContain(`escape: ${subtle}`)

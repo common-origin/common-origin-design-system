@@ -123,14 +123,18 @@ export function findTokenReads(program: ts.Program, include: (file: ts.SourceFil
     let found = groupsOf(type)
     if (!found.length) {
       if (type.isUnion() || type.isIntersection()) found = type.types.flatMap((t) => groupsWithin(t, seen))
-      else if (checker.isArrayType(type) || checker.isTupleType(type))
-        found = checker.getTypeArguments(type as ts.TypeReference).flatMap((t) => groupsWithin(t, seen))
-      else if (
-        type.flags & ts.TypeFlags.Object &&
-        (type as ts.ObjectType).objectFlags & (ts.ObjectFlags.ObjectLiteral | ts.ObjectFlags.Anonymous) &&
-        type.getCallSignatures().length === 0
-      )
-        found = checker.getPropertiesOfType(type).flatMap((p) => groupsWithin(checker.getTypeOfSymbol(p), seen))
+      else if (type.flags & ts.TypeFlags.Object && type.getCallSignatures().length === 0) {
+        const flags = (type as ts.ObjectType).objectFlags
+        // Generic containers (arrays, tuples, Map, Promise, Record) hold groups in their type arguments
+        // and index signatures
+        if (flags & ts.ObjectFlags.Reference) found.push(...checker.getTypeArguments(type as ts.TypeReference).flatMap((t) => groupsWithin(t, seen)))
+        found.push(...checker.getIndexInfosOfType(type).flatMap((info) => groupsWithin(info.type, seen)))
+        // Object literals, type literals, and interfaces and classes declared in this project hold
+        // them in properties. Library types (React's, the DOM's) are left alone.
+        const declaredHere = (type.getSymbol()?.declarations ?? []).every((d) => !d.getSourceFile().isDeclarationFile)
+        if (flags & (ts.ObjectFlags.ObjectLiteral | ts.ObjectFlags.Anonymous | ts.ObjectFlags.Mapped) || (declaredHere && type.getSymbol()))
+          found.push(...checker.getPropertiesOfType(type).flatMap((p) => groupsWithin(checker.getTypeOfSymbol(p), seen)))
+      }
     }
     found = [...new Set(found)]
     within.set(type, found)
