@@ -86,6 +86,15 @@ const FIXTURES: Record<string, string> = {
     import tokens from '@/styles/tokens.json'
     const byName = new Map([['main', tokens.semantic.color.background]])
     export const text = JSON.stringify(byName)`,
+  // Checking A first walks B inside A's cycle; B must still be searched in full on its own
+  cyclicContainer: `
+    import tokens from '@/styles/tokens.json'
+    interface A { b: B; bg: typeof tokens.semantic.color.background }
+    interface B { a: A }
+    declare const first: A
+    declare const second: B
+    export const one = JSON.stringify(first)
+    export const two = JSON.stringify(second)`,
   // Controls: none of these can reach a deprecated token
   cleanDirect: `
     import tokens from '@/styles/tokens.json'
@@ -119,9 +128,10 @@ function fixtureProgram() {
 describe('findTokenReads (#229)', () => {
   const deprecated = deprecatedTokens()
   let found: Map<string, Set<string>>
+  let reads: ReturnType<typeof findTokenReads>
 
   beforeAll(() => {
-    const reads = findTokenReads(fixtureProgram(), (source) => source.fileName.includes('__tokenReadsFixtures__'))
+    reads = findTokenReads(fixtureProgram(), (source) => source.fileName.includes('__tokenReadsFixtures__'))
     found = new Map()
     for (const read of reads) {
       const name = path.basename(read.file, '.ts')
@@ -165,6 +175,12 @@ describe('findTokenReads (#229)', () => {
       expect(hits(name)).toContain(`escape: ${subtle}`)
     }
   )
+
+  it('searches a container in full even after meeting it inside a cycle', () => {
+    const lines = reads.filter((read) => read.file.endsWith('cyclicContainer.ts') && read.paths.includes(subtle)).map((read) => read.line)
+    // Both stringify calls: the one through A, and the one through B after A was searched
+    expect(new Set(lines).size).toBe(2)
+  })
 
   it.each(['cleanDirect', 'cleanTemplate', 'cleanEscape'])('does not flag a read that cannot reach a deprecated token: %s', (name) => {
     expect(hits(name)).toEqual([])

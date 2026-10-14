@@ -119,6 +119,8 @@ export function findTokenReads(program: ts.Program, include: (file: ts.SourceFil
     if (!type || seen.has(type)) return []
     const cached = within.get(type)
     if (cached) return cached
+    // Only a complete search is cached: one nested in another may have been cut short by a cycle
+    const outermost = seen.size === 0
     seen.add(type)
     let found = groupsOf(type)
     if (!found.length) {
@@ -137,7 +139,7 @@ export function findTokenReads(program: ts.Program, include: (file: ts.SourceFil
       }
     }
     found = [...new Set(found)]
-    within.set(type, found)
+    if (outermost) within.set(type, found)
     return found
   }
 
