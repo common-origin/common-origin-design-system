@@ -1091,7 +1091,7 @@ export default function Tokens() {
       label: 'Typography',
       isHeader: true,
       content: [
-        { id: 'semantic-typography', type: 'typography', data: tokens.semantic.typography, title: 'Typography Style' },
+        { id: 'semantic-typography', type: 'typography', data: inUse('semantic.typography', tokens.semantic.typography), title: 'Typography Style' },
         { id: 'semantic-font-weight', type: 'generic', data: tokens.semantic.fontWeight, title: 'Font Weight', prefix: 'semantic.fontWeight' },
       ]
     },

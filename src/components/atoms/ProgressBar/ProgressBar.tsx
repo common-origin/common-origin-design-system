@@ -5,8 +5,7 @@ import { forcedColors, forcedColorsEdge, reducedMotion } from '../../../lib/styl
 
 // Destructure tokens
 const { semantic } = tokens
-const { color, border, motion, component } = { ...semantic, component: tokens.component }
-const { radius } = border
+const { color, motion, radius, component } = { ...semantic, component: tokens.component }
 
 export interface ProgressBarProps {
   /** Progress value from 0 to 100 */

@@ -36,16 +36,30 @@ const StyledStack = styled.div.withConfig({
   flex-wrap: var(--stack-wrap);
 `
 
+// Each gap name maps to the space step that replaced its old spacing.layout token (decision 0031),
+// so every gap keeps its value
+const GAP_SPACE: Record<StackGap, Exclude<keyof typeof tokens.semantic.space, 'inset'>> = {
+  none: '0',
+  xs: '100',
+  sm: '200',
+  md: '300',
+  lg: '400',
+  xl: '500',
+  '2xl': '600',
+  '3xl': '700',
+  '4xl': '800',
+  '5xl': '900',
+  '6xl': '1000',
+}
+
 // Helper function to convert gap prop to CSS value
 const getGapValue = (gap: StackGap): string => {
-  // Get semantic layout spacing token
-  const semanticSpacing = tokens.semantic.spacing.layout as Record<string, string>
-  
-  if (gap in semanticSpacing) {
-    return semanticSpacing[gap as keyof typeof semanticSpacing]
+  const step = GAP_SPACE[gap]
+  if (step) {
+    return tokens.semantic.space[step]
   }
-  
-  // Fallback to medium layout spacing if token not found
+
+  // Fallback to medium spacing for an unknown gap (from untyped JavaScript)
   return tokens.semantic.space[300]
 }
 

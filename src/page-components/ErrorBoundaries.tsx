@@ -9,10 +9,10 @@ const { semantic, base } = tokens
 const ErrorContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${base.spacing[4]};
+  gap: ${semantic.space[400]};
   align-items: center;
   text-align: center;
-  padding: ${base.spacing[8]};
+  padding: ${semantic.space[800]};
   box-sizing: border-box;
 `
 
@@ -26,7 +26,7 @@ const ComponentErrorContainer = styled(ErrorContainer)`
   background-color: ${semantic.surface.raised};
   border: 1px solid ${semantic.color.border.emphasis};
   border-radius: ${base.border.radius[4]};
-  margin: ${base.spacing[2]} 0;
+  margin: ${semantic.space[200]} 0;
 `
 
 const LayoutErrorContainer = styled(ErrorContainer)`
@@ -39,7 +39,7 @@ const LayoutErrorContainer = styled(ErrorContainer)`
 const ErrorIcon = styled.div`
   font-size: 4rem;
   line-height: 1;
-  margin-bottom: ${base.spacing[4]};
+  margin-bottom: ${semantic.space[400]};
   opacity: 0.7;
 `
 
@@ -47,14 +47,14 @@ const ErrorTitle = styled.h2`
   font: ${semantic.typography.h2};
   letter-spacing: ${base.letterSpacing[1]};
   color: ${semantic.color.text.default};
-  margin: 0 0 ${base.spacing[3]} 0;
+  margin: 0 0 ${semantic.space[300]} 0;
 `
 
 const ErrorSubtitle = styled.h3`
   font: ${semantic.typography.h4};
   letter-spacing: ${base.letterSpacing[1]};
   color: ${semantic.color.text.muted};
-  margin: 0 0 ${base.spacing[2]} 0;
+  margin: 0 0 ${semantic.space[200]} 0;
 `
 
 const ErrorText = styled.p`
@@ -67,15 +67,15 @@ const ErrorText = styled.p`
 
 const ErrorActions = styled.div`
   display: flex;
-  gap: ${base.spacing[3]};
-  margin-top: ${base.spacing[6]};
+  gap: ${semantic.space[300]};
+  margin-top: ${semantic.space[600]};
   flex-wrap: wrap;
   justify-content: center;
 `
 
 const ErrorButton = styled.button`
   font: ${tokens.component.button.sizes.medium.font};
-  padding: ${base.spacing[2]} ${base.spacing[4]};
+  padding: ${semantic.space[200]} ${semantic.space[400]};
   background-color: ${semantic.color.fill.muted};
   color: ${semantic.color.text.default};
   border: 1px solid ${semantic.color.border.emphasis};
