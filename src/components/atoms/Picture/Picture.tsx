@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import tokens from '@/styles/tokens.json'
 import { media } from '../../../lib/styleUtils'
 
@@ -23,28 +23,45 @@ const PictureWrapper = styled.div`
   }
 `
 
-const ImageLink = styled.a`
+// A clickable image answers input on the image itself (decision 0029, #185): it fades on hover and
+// one step further while pressed, and draws the system focus ring around the image, following its
+// rounded corners. Fading isn't movement, so it stays under reduced motion.
+const clickableImage = css`
   display: block;
   cursor: pointer;
-  transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
-  
-  &:hover {
-    opacity: 0.8;
+
+  img {
+    transition: ${tokens.semantic.motion.transition.press};
   }
+
+  &:hover img {
+    opacity: ${tokens.semantic.opacity.hover};
+  }
+
+  &:active img {
+    opacity: ${tokens.semantic.opacity.pressed};
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible img {
+    outline: ${tokens.semantic.border.focus};
+    outline-offset: ${tokens.semantic.border.focusOffset};
+  }
+`
+
+const ImageLink = styled.a`
+  ${clickableImage}
 `
 
 const ImageButton = styled.button`
   border: none;
   background: none;
   padding: 0;
-  cursor: pointer;
-  display: block;
   width: 100%;
-  transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.standard};
-  
-  &:hover {
-    opacity: 0.8;
-  }
+  ${clickableImage}
 `
 
 const StyledImage = styled.img`

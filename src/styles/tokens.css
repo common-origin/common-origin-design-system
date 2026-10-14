@@ -393,6 +393,8 @@
   --co-semantic-breakpoint-2xl: var(--co-base-breakpoint-2xl); /** Breakpoint for wide desktops; layouts can add columns from here. */
   --co-semantic-opacity-disabled: var(--co-base-opacity-50); /** 0.5: disabled controls and items. */
   --co-semantic-opacity-full: var(--co-base-opacity-100); /** 1: fully opaque (the enabled counterpart of disabled). */
+  --co-semantic-opacity-hover: var(--co-base-opacity-80); /** Content that fades to answer hover, such as a clickable card's image. */
+  --co-semantic-opacity-pressed: var(--co-base-opacity-70); /** Content that fades while pressed, one step further than hover. */
   --co-semantic-font-family-body: var(--co-base-font-family-body); /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */
   --co-semantic-font-family-monospace: var(--co-base-font-family-monospace); /** Code and other fixed-width text (CodeBlock). */
   --co-semantic-font-size-xs: var(--co-base-font-size-1); /** Smallest text size: captions, metadata and small labels. */

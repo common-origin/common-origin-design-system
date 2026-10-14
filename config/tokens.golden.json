@@ -986,7 +986,9 @@
     },
     "opacity": {
       "disabled": "0.5",
-      "full": "1"
+      "full": "1",
+      "hover": "0.8",
+      "pressed": "0.7"
     },
     "fontFamily": {
       "body": "'Inter', sans-serif",

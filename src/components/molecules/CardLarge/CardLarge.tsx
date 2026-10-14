@@ -25,15 +25,9 @@ const CardLargeStyled = styled.div`
     text-decoration: none;
   }
 
-  &:hover {
-    img {
-      opacity: 0.8;
-    }
-  }
-
+  /* The image answers hover and press through Picture, and only when it's clickable (issue 185) */
   img {
     border-radius: ${tokens.semantic.radius['2xl']};
-    transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.decelerate};
     width: 100%;
   }
 `

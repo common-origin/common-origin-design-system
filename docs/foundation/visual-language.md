@@ -94,6 +94,7 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 |---|---|
 | Use `semantic.elevation` tokens. `raised` is the default for cards; `floating` and `overlay` are for layers above the page (menus, sheets, modals). | Enforced in tokens |
 | Image containers use generous radius (`lg`–`xl`); the image is the card, with no extra background fill behind it. | Target — to verify |
+| Clickable cards answer input one way per kind. **Surface cards** (AccountCard, a clickable Box) rise to `elevation.floating` on hover and settle to `elevation.raised` while pressed. **Image cards** (CardSmall, CardLarge with a clickable image, a clickable Picture) fade the image to `opacity.hover`, then `opacity.pressed` while pressed, and add no surface. Every clickable card draws the system focus ring (0029). Only clickable things answer hover. ([#185](https://github.com/common-origin/common-origin-design-system/issues/185), P1, P5, P6) | Enforced — `e2e/card-states.spec.ts` |
 | Content can sit directly on the page background; don't wrap everything in cards. | Guideline |
 
 ## Layout and spacing

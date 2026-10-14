@@ -60,17 +60,18 @@ export const cardSmallDocs: ComponentDocumentation = {
   ],
   
   tokens: [
-    'semantic.border.width.thick',
     'semantic.radius.sm',
-    'semantic.color.border.focus',
+    'semantic.border.focus', // Focus ring around the card
+    'semantic.border.focusOffset',
     'semantic.space.200', // Gap between the image and the text (Stack gap="sm")
     'semantic.space.100', // Gap between the title and the subtitle
     'semantic.space.0', // Between the subtitle and meta lines
     'semantic.typography.small', // Title
     'semantic.typography.label', // Subtitle
-    // Motion
-    'semantic.motion.duration.moderate',
-    'semantic.motion.easing.decelerate',
+    // Hover and pressed: the image fades
+    'semantic.motion.transition.press',
+    'semantic.opacity.hover',
+    'semantic.opacity.pressed',
   ],
   
   examples: [
@@ -195,7 +196,7 @@ export const cardSmallDocs: ComponentDocumentation = {
     'Component returns null if picture prop is missing or empty',
     'Uses Next.js Image component for optimized loading and responsive images',
     'Card images should be square (1:1 aspect ratio) for best results',
-    'Hover effect reduces image opacity to 0.8 for visual feedback',
+    'Hovering anywhere on the card fades its image (opacity.hover), and pressing fades it one step further (opacity.pressed); keyboard focus draws the system focus ring around the card',
     'Link structure ensures the entire card is clickable',
     'Responsive image sizes optimize loading across different screen sizes'
   ]

@@ -1728,6 +1728,10 @@ export type Tokens = {
       disabled: string;
       /** 1: fully opaque (the enabled counterpart of disabled). */
       full: string;
+      /** Content that fades to answer hover, such as a clickable card's image. */
+      hover: string;
+      /** Content that fades while pressed, one step further than hover. */
+      pressed: string;
     };
     fontFamily: {
       /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */

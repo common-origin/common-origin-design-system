@@ -39,7 +39,7 @@ const FeatureBlockStyled = styled.div`
     transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.decelerate};
 
     &:hover {
-      opacity: 0.8;
+      opacity: ${tokens.semantic.opacity.hover};
     }
   }
 

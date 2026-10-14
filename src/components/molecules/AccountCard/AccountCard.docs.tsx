@@ -97,6 +97,11 @@ export const accountCardDocs: ComponentDocumentation = {
     'semantic.color.text.danger',
     'semantic.typography.h4',
     'semantic.typography.caption',
+    // Clickable: rises to floating on hover, settles to raised while pressed, system focus ring
+    'semantic.elevation.floating',
+    'semantic.elevation.raised',
+    'semantic.border.focus',
+    'semantic.border.focusOffset',
     // Motion
     'semantic.motion.duration.moderate',
     'semantic.motion.easing.decelerate',

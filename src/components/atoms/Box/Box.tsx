@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 import tokens from '../../../styles/tokens.json'
 import type { Tokens } from '../../../types/tokens'
 import { backgroundByKey, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
+import { reducedMotion } from '../../../lib/styleUtils'
 
 // Public props interface (without $ prefix, following atomic pattern)
 export interface BoxProps {
@@ -228,7 +229,9 @@ const StyledBox = styled.div.withConfig({
       ${props.$hoverTransform && css`transform: ${props.$hoverTransform};`}
     }
     
+    /* Pressed settles back: the shadow drops to raised and any lift returns (issue 185) */
     &:active {
+      ${props.$hoverShadow && css`box-shadow: ${tokens.semantic.elevation.raised};`}
       transform: translateY(0);
     }
     
@@ -236,6 +239,15 @@ const StyledBox = styled.div.withConfig({
       outline: ${tokens.semantic.border.focus};
       outline-offset: ${tokens.semantic.border.focusOffset};
     }
+
+    /* Reduced motion keeps the state change and drops the movement (decision 0015) */
+    ${props.$hoverTransform && css`
+      ${reducedMotion} {
+        &:hover {
+          transform: none;
+        }
+      }
+    `}
   `}
   
   // Overflow
