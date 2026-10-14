@@ -94,6 +94,30 @@
   --co-base-size-max: max-content;
   --co-base-size-fit: fit-content;
   --co-base-color-transparent: transparent; /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
+  --co-base-color-gray-100: #fcfcfc; /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
+  --co-base-color-gray-200: #f9f9f9; /** Subtle background. oklch(0.982 0 0), 1.05:1 on white. */
+  --co-base-color-gray-300: #f2f2f2; /** Component fill at rest. oklch(0.961 0 0), 1.12:1 on white. */
+  --co-base-color-gray-400: #ebebeb; /** Component fill on hover. oklch(0.940 0 0), 1.19:1 on white. */
+  --co-base-color-gray-500: #e4e4e4; /** Component fill pressed or selected. oklch(0.918 0 0), 1.27:1 on white. */
+  --co-base-color-gray-600: #dcdcdc; /** Subtle border. oklch(0.895 0 0), 1.37:1 on white. */
+  --co-base-color-gray-700: #d1d1d1; /** Default border, for dividers and decorative outlines. oklch(0.860 0 0), 1.53:1 on white. */
+  --co-base-color-gray-800: #909090; /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0 0), 3.19:1 on white. */
+  --co-base-color-gray-900: #848484; /** Solid fill. oklch(0.615 0 0), 3.74:1 on white. */
+  --co-base-color-gray-1000: #797979; /** Solid fill on hover. oklch(0.575 0 0), 4.35:1 on white. */
+  --co-base-color-gray-1100: #636363; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.500 0 0), 6.01:1 on white. */
+  --co-base-color-gray-1200: #222222; /** Primary text, and the darkest step. oklch(0.250 0 0), 15.91:1 on white. */
+  --co-base-color-gray-alpha-100: rgba(34, 34, 34, 0.014); /** Page background. Composites to #fcfcfc over white. */
+  --co-base-color-gray-alpha-200: rgba(34, 34, 34, 0.027); /** Subtle background. Composites to #f9f9f9 over white. */
+  --co-base-color-gray-alpha-300: rgba(34, 34, 34, 0.059); /** Component fill at rest. Composites to #f2f2f2 over white. */
+  --co-base-color-gray-alpha-400: rgba(34, 34, 34, 0.09); /** Component fill on hover. Composites to #ebebeb over white. */
+  --co-base-color-gray-alpha-500: rgba(34, 34, 34, 0.122); /** Component fill pressed or selected. Composites to #e4e4e4 over white. */
+  --co-base-color-gray-alpha-600: rgba(34, 34, 34, 0.158); /** Subtle border. Composites to #dcdcdc over white. */
+  --co-base-color-gray-alpha-700: rgba(34, 34, 34, 0.208); /** Default border, for dividers and decorative outlines. Composites to #d1d1d1 over white. */
+  --co-base-color-gray-alpha-800: rgba(34, 34, 34, 0.502); /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to #909090 over white. */
+  --co-base-color-gray-alpha-900: rgba(34, 34, 34, 0.557); /** Solid fill. Composites to #848484 over white. */
+  --co-base-color-gray-alpha-1000: rgba(34, 34, 34, 0.606); /** Solid fill on hover. Composites to #797979 over white. */
+  --co-base-color-gray-alpha-1100: rgba(34, 34, 34, 0.706); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to #636363 over white. */
+  --co-base-color-gray-alpha-1200: rgba(34, 34, 34, 1); /** Primary text, and the darkest step. Composites to #222222 over white. */
   --co-base-color-neutral-100: #f8f9fa;
   --co-base-color-neutral-200: #e9ecef;
   --co-base-color-neutral-300: #dee2e6;

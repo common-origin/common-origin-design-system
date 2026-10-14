@@ -30,6 +30,43 @@ describe('token contrast', () => {
     expect(contrast(input.default.borderColor, background.default)).toBeGreaterThanOrEqual(3)
   })
 
+  // Each grey step's job sets its contrast (decision 0040): 800 can be a control edge, and 1100 can
+  // be text on every background and fill step. The ramp only darkens, step by step.
+  describe('the grey ramp', () => {
+    const { gray } = tokens.base.color
+    const white = '#ffffff'
+    const steps = Object.keys(gray).sort((a, b) => Number(a) - Number(b))
+
+    it('keeps the strong border at 3:1 or more on the page steps and white', () => {
+      for (const surface of [white, gray[100], gray[200]]) {
+        expect(contrast(gray[800], surface)).toBeGreaterThanOrEqual(3)
+      }
+    })
+
+    it('keeps secondary text at 4.5:1 or more on every background and fill step and white', () => {
+      for (const surface of [white, gray[100], gray[200], gray[300], gray[400], gray[500]]) {
+        expect(contrast(gray[1100], surface)).toBeGreaterThanOrEqual(4.5)
+      }
+    })
+
+    it('has 12 steps, each darker than the one before', () => {
+      expect(steps).toEqual(['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100', '1200'])
+      const values = steps.map((step) => luminance(gray[step as keyof typeof gray]))
+      values.slice(1).forEach((value, i) => expect(value).toBeLessThan(values[i]))
+    })
+
+    it('makes each alpha twin composite over white to its step', () => {
+      const alpha = tokens.base.color['gray-alpha']
+      for (const step of steps) {
+        const [r, g, b, a] = alpha[step as keyof typeof alpha].match(/[\d.]+/g)!.map(Number)
+        const solid = parseInt(gray[step as keyof typeof gray].slice(1, 3), 16)
+        expect([r, g, b]).toEqual([34, 34, 34])
+        // Rounded to a whole channel value, as a browser would
+        expect(Math.round(a * r + (1 - a) * 255)).toBe(solid)
+      }
+    })
+  })
+
   // Emphasis is stronger than default, never softer (decision 0029)
   it('makes emphasis text and icons darker than default', () => {
     const { text, icon } = tokens.semantic.color

@@ -118,10 +118,64 @@ export type Tokens = {
       max: string;
       fit: string;
     };
-    /** Colour palette: a neutral ramp and seven hue ramps, plus transparent. */
+    /** Colour palette: the grey ramp and its alpha twins (decision 0040), the older neutral ramp, seven hue ramps, and transparent. */
     color: {
       /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
       transparent: string;
+      /** Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040). */
+      gray: {
+        /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0 0), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.961 0 0), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.940 0 0), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.918 0 0), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.895 0 0), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.860 0 0), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0 0), 3.19:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.615 0 0), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.575 0 0), 4.35:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.500 0 0), 6.01:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.250 0 0), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of the grey ramp: gray.1200 at the opacity that composites over white to the same step. For overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds (decision 0040). */
+      'gray-alpha': {
+        /** Page background. Composites to #fcfcfc over white. */
+        '100': string;
+        /** Subtle background. Composites to #f9f9f9 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to #f2f2f2 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to #ebebeb over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to #e4e4e4 over white. */
+        '500': string;
+        /** Subtle border. Composites to #dcdcdc over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to #d1d1d1 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to #909090 over white. */
+        '800': string;
+        /** Solid fill. Composites to #848484 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to #797979 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to #636363 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to #222222 over white. */
+        '1200': string;
+      };
       /** Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black). */
       neutral: {
         '100': string;
