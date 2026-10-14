@@ -239,7 +239,8 @@ The NumberInput component uses the following design tokens from the Common Origi
 - `component.field.helperText.color` / `component.field.helperText.colorError` - Helper text colour, and for errors
 
 ### Stepper and input internals
-- `base.spacing.*` - Stepper position and gap, and room for the stepper inside the input
+- `semantic.space.200` - Stepper position and gap
+- `semantic.space.1000` - Room for the stepper inside the input
 
 ## Architecture
 

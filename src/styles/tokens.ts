@@ -75,8 +75,8 @@ export type Tokens = {
       '95': string;
       '100': string;
     };
-    /** Dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). */
-    size: {
+    /** The one dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). Replaces the parallel base.size and base.spacing scales (#188). */
+    dimension: {
       '0': string;
       '1': string;
       '2': string;
@@ -110,6 +110,145 @@ export type Tokens = {
       '100': string;
       '140': string;
       '180': string;
+      '192': string;
+    };
+    /** Size keywords (auto, full, screen, min, max, fit). The numbered steps are deprecated aliases of base.dimension. */
+    size: {
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.0`.
+       */
+      '0': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.1`.
+       */
+      '1': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.2`.
+       */
+      '2': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.3`.
+       */
+      '3': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.4`.
+       */
+      '4': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.5`.
+       */
+      '5': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.6`.
+       */
+      '6': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.7`.
+       */
+      '7': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.8`.
+       */
+      '8': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.9`.
+       */
+      '9': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.10`.
+       */
+      '10': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.11`.
+       */
+      '11': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.12`.
+       */
+      '12': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.14`.
+       */
+      '14': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.15`.
+       */
+      '15': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.16`.
+       */
+      '16': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.18`.
+       */
+      '18': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.20`.
+       */
+      '20': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.24`.
+       */
+      '24': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.28`.
+       */
+      '28': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.30`.
+       */
+      '30': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.32`.
+       */
+      '32': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.40`.
+       */
+      '40': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.45`.
+       */
+      '45': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.48`.
+       */
+      '48': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.50`.
+       */
+      '50': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.56`.
+       */
+      '56': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.64`.
+       */
+      '64': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.75`.
+       */
+      '75': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.90`.
+       */
+      '90': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.100`.
+       */
+      '100': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.140`.
+       */
+      '140': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.180`.
+       */
+      '180': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.192`.
+       */
       '192': string;
       auto: string;
       full: string;
@@ -151,29 +290,29 @@ export type Tokens = {
       };
       /** Alpha twins of the grey ramp: gray.1200 at the opacity that composites over white to the same step. For overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds (decision 0040). */
       'gray-alpha': {
-        /** Page background. Composites to #fcfcfc over white. */
+        /** Page background. Composites to gray.100 over white. */
         '100': string;
-        /** Subtle background. Composites to #f9f9f9 over white. */
+        /** Subtle background. Composites to gray.200 over white. */
         '200': string;
-        /** Component fill at rest. Composites to #f2f2f2 over white. */
+        /** Component fill at rest. Composites to gray.300 over white. */
         '300': string;
-        /** Component fill on hover. Composites to #ebebeb over white. */
+        /** Component fill on hover. Composites to gray.400 over white. */
         '400': string;
-        /** Component fill pressed or selected. Composites to #e4e4e4 over white. */
+        /** Component fill pressed or selected. Composites to gray.500 over white. */
         '500': string;
-        /** Subtle border. Composites to #dcdcdc over white. */
+        /** Subtle border. Composites to gray.600 over white. */
         '600': string;
-        /** Default border, for dividers and decorative outlines. Composites to #d1d1d1 over white. */
+        /** Default border, for dividers and decorative outlines. Composites to gray.700 over white. */
         '700': string;
-        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to #909090 over white. */
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to gray.800 over white. */
         '800': string;
-        /** Solid fill. Composites to #848484 over white. */
+        /** Solid fill. Composites to gray.900 over white. */
         '900': string;
-        /** Solid fill on hover. Composites to #797979 over white. */
+        /** Solid fill on hover. Composites to gray.1000 over white. */
         '1000': string;
-        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to #636363 over white. */
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over white. */
         '1100': string;
-        /** Primary text, and the darkest step. Composites to #222222 over white. */
+        /** Primary text, and the darkest step. Composites to gray.1200 over white. */
         '1200': string;
       };
       /** Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black). */
@@ -303,29 +442,95 @@ export type Tokens = {
         '1300': string;
       };
     };
-    /** Spacing scale on the 4px grid; the key is the multiple of 4px (4 is 1rem, 16px), plus auto. */
+    /** Spacing keyword auto. The numbered steps are deprecated aliases of base.dimension. */
     spacing: {
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.0`.
+       */
       '0': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.1`.
+       */
       '1': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.2`.
+       */
       '2': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.3`.
+       */
       '3': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.4`.
+       */
       '4': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.5`.
+       */
       '5': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.6`.
+       */
       '6': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.7`.
+       */
       '7': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.8`.
+       */
       '8': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.9`.
+       */
       '9': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.10`.
+       */
       '10': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.12`.
+       */
       '12': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.14`.
+       */
       '14': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.16`.
+       */
       '16': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.20`.
+       */
       '20': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.24`.
+       */
       '24': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.28`.
+       */
       '28': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.32`.
+       */
       '32': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.40`.
+       */
       '40': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.48`.
+       */
       '48': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.56`.
+       */
       '56': string;
+      /**
+       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.64`.
+       */
       '64': string;
       auto: string;
     };

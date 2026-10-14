@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import { execFileSync } from 'child_process'
+import base from './base/index.json'
 import semantic from './semantic/index.json'
 import component from './component/index.json'
 import grammarMigrationList from './grammarMigration.allowlist.json'
@@ -32,7 +33,7 @@ function tokens(node: Node, path: string[] = []): Token[] {
     )
 }
 
-const all = [...tokens(semantic as Node), ...tokens(component as Node)]
+const all = [...tokens(base as Node), ...tokens(semantic as Node), ...tokens(component as Node)]
 const byPath = new Map(all.map((token) => [token.path, token]))
 const deprecated = all.filter((token) => token.$deprecated !== undefined)
 const replacedBy = (token: Token) => token.$extensions?.['studio.commonorigin']?.replacedBy
