@@ -146,6 +146,8 @@ export const sliderDocs: ComponentDocumentation = {
     // Border
     'semantic.radius.sm',
     'semantic.radius.full',
+    'semantic.size.pointerTarget', // The thumb's hit area for a mouse or pen
+    'semantic.size.touchTarget', // The thumb's hit area on a touch screen
     'semantic.border.width.thick',
     
     // Typography
@@ -409,9 +411,11 @@ export const sliderDocs: ComponentDocumentation = {
       },
       {
         name: 'Thumb',
-        description: 'Draggable circular control for adjusting values with focus and hover states',
+        description: 'Draggable circular control for adjusting values with focus and hover states. It looks 20px, and an invisible hit area takes pointer input: 24px for a mouse or pen, 44px on a touch screen, split at the midpoint between a range slider\'s thumbs',
         tokens: [
           'semantic.space.500',
+          'semantic.size.pointerTarget',
+          'semantic.size.touchTarget',
           'semantic.radius.full',
           'semantic.border.width.thick',
           'component.slider.thumb.background',

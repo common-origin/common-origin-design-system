@@ -546,6 +546,35 @@ describe('Slider', () => {
     })
   })
 
+  describe('Tapping a thumb', () => {
+    // The thumb's hit area (up to 44px) is wider than the thumb, and a tap on it must not move
+    // the value to where the finger landed (#231)
+    const withTrack = (track: HTMLElement) => {
+      track.getBoundingClientRect = () => ({ left: 0, width: 200, top: 0, right: 200, bottom: 4, height: 4, x: 0, y: 0, toJSON: () => ({}) })
+      return track
+    }
+
+    it('leaves the value where it is', () => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const thumb = screen.getByRole('slider')
+      withTrack(thumb.parentElement as HTMLElement)
+
+      fireEvent.click(thumb, { clientX: 110 })
+      expect(handleChange).not.toHaveBeenCalled()
+      expect(thumb).toHaveAttribute('aria-valuenow', '50')
+    })
+
+    it('still moves the value when the track itself is clicked', () => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const track = withTrack(screen.getByRole('slider').parentElement as HTMLElement)
+
+      fireEvent.click(track, { clientX: 160 })
+      expect(handleChange).toHaveBeenCalledWith(80)
+    })
+  })
+
   describe('Mouse Interactions', () => {
     it('should not respond to pointer events when disabled', () => {
       const handleChange = jest.fn()

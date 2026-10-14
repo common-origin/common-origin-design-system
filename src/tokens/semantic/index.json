@@ -363,6 +363,10 @@
     },
     "size": {
       "$type": "dimension",
+      "pointerTarget": {
+        "$value": "{base.dimension.6}",
+        "$description": "Minimum pointer target for a control that's smaller to look at: its invisible hit area (WCAG 2.5.8, decision 0039). On touch screens, use touchTarget."
+      },
       "touchTarget": {
         "$value": "{base.dimension.11}",
         "$description": "Minimum height of a tappable row or control on touch screens."
