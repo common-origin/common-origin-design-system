@@ -229,11 +229,17 @@ const StyledBox = styled.div.withConfig({
       ${props.$hoverTransform && css`transform: ${props.$hoverTransform};`}
     }
     
-    /* Pressed settles back: the shadow drops to raised and any lift returns (issue 185) */
+    /* Pressed settles back: the shadow drops to raised and any lift returns (issue 185). Pressing a
+       control inside the card (an action button) presses that control, not the card. */
     &:active {
-      ${props.$hoverShadow && css`box-shadow: ${tokens.semantic.elevation.raised};`}
       transform: translateY(0);
     }
+
+    ${props.$hoverShadow && css`
+      &:active:not(:has(:is(button, a, [role="button"]):active)) {
+        box-shadow: ${tokens.semantic.elevation.raised};
+      }
+    `}
     
     &:focus-visible {
       outline: ${tokens.semantic.border.focus};

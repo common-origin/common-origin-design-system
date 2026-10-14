@@ -88,6 +88,14 @@ test('account-card: rises on hover, settles while pressed, and focus rings it', 
     await expect.poll(() => style(card, 'box-shadow')).toBe(raised)
   })
 
+  // Pressing the card's own action button presses the button, not the card
+  const action = card.getByRole('button', { name: 'Transfer' })
+  await action.hover()
+  await whilePressed(page, action, async () => {
+    await page.waitForTimeout(300)
+    expect(await style(card, 'box-shadow')).toBe(floating)
+  })
+
   await page.mouse.move(0, 0)
   await card.focus()
   await page.keyboard.press('Shift+Tab')

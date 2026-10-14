@@ -34,7 +34,13 @@ export default function CardsFixture() {
             <Picture title="Clickable picture" src={image} onClick={() => undefined} />
           </Case>
           <Case id="account-card">
-            <AccountCard accountType="checking" accountName="Everyday" balance={1250} onClick={() => undefined} />
+            <AccountCard
+              accountType="checking"
+              accountName="Everyday"
+              balance={1250}
+              onClick={() => undefined}
+              action={{ label: 'Transfer', onClick: () => undefined }}
+            />
           </Case>
         </Stack>
       </main>
