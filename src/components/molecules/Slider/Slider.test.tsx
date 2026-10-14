@@ -5,6 +5,18 @@ import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
+// jsdom has no PointerEvent, so fireEvent.pointer* would drop pointerId, pointerType and clientX
+class TestPointerEvent extends MouseEvent {
+  pointerId: number
+  pointerType: string
+  constructor(type: string, init: PointerEventInit = {}) {
+    super(type, init)
+    this.pointerId = init.pointerId ?? 1
+    this.pointerType = init.pointerType ?? 'mouse'
+  }
+}
+Object.defineProperty(window, 'PointerEvent', { value: TestPointerEvent, configurable: true })
+
 describe('Slider', () => {
   describe('Basic Rendering', () => {
     it('should render a single value slider', () => {
@@ -437,8 +449,105 @@ describe('Slider', () => {
     })
   })
   
+  describe('Pointer dragging', () => {
+    // The track is 200px wide from x = 0, so clientX / 2 is the value on a 0–100 slider
+    const withTrack = (thumb: HTMLElement) => {
+      const track = thumb.parentElement as HTMLElement
+      track.getBoundingClientRect = () => ({ left: 0, width: 200, top: 0, right: 200, bottom: 4, height: 4, x: 0, y: 0, toJSON: () => ({}) })
+      return thumb
+    }
+
+    it.each(['touch', 'pen', 'mouse'])('drags the thumb with %s input', (pointerType) => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+
+      fireEvent.pointerDown(thumb, { pointerId: 7, pointerType, clientX: 100 })
+      fireEvent.pointerMove(document, { pointerId: 7, pointerType, clientX: 150 })
+      expect(handleChange).toHaveBeenLastCalledWith(75)
+
+      fireEvent.pointerUp(document, { pointerId: 7, pointerType, clientX: 150 })
+      handleChange.mockClear()
+      fireEvent.pointerMove(document, { pointerId: 7, pointerType, clientX: 20 })
+      expect(handleChange).not.toHaveBeenCalled()
+    })
+
+    it('drags each thumb of a range slider on its own', () => {
+      const handleRangeChange = jest.fn()
+      render(<Slider defaultRangeValue={[20, 80]} onRangeChange={handleRangeChange} />)
+      const [minThumb, maxThumb] = screen.getAllByRole('slider').map(withTrack)
+
+      fireEvent.pointerDown(minThumb, { pointerId: 1, pointerType: 'touch', clientX: 40 })
+      fireEvent.pointerMove(document, { pointerId: 1, pointerType: 'touch', clientX: 60 })
+      fireEvent.pointerUp(document, { pointerId: 1, pointerType: 'touch' })
+      expect(handleRangeChange).toHaveBeenLastCalledWith([30, 80])
+
+      fireEvent.pointerDown(maxThumb, { pointerId: 2, pointerType: 'touch', clientX: 160 })
+      fireEvent.pointerMove(document, { pointerId: 2, pointerType: 'touch', clientX: 180 })
+      fireEvent.pointerUp(document, { pointerId: 2, pointerType: 'touch' })
+      expect(handleRangeChange).toHaveBeenLastCalledWith([30, 90])
+    })
+
+    it('ends the drag when the browser cancels the pointer', () => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+
+      fireEvent.pointerDown(thumb, { pointerId: 1, pointerType: 'touch', clientX: 100 })
+      fireEvent.pointerCancel(document, { pointerId: 1, pointerType: 'touch' })
+      fireEvent.pointerMove(document, { pointerId: 1, pointerType: 'touch', clientX: 150 })
+      expect(handleChange).not.toHaveBeenCalled()
+    })
+
+    it('ignores other pointers during a drag', () => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+
+      fireEvent.pointerDown(thumb, { pointerId: 1, pointerType: 'touch', clientX: 100 })
+      fireEvent.pointerMove(document, { pointerId: 2, pointerType: 'touch', clientX: 150 })
+      fireEvent.pointerUp(document, { pointerId: 2, pointerType: 'touch' })
+      expect(handleChange).not.toHaveBeenCalled()
+
+      fireEvent.pointerMove(document, { pointerId: 1, pointerType: 'touch', clientX: 150 })
+      expect(handleChange).toHaveBeenLastCalledWith(75)
+    })
+
+    it('drags only with the primary mouse button', () => {
+      const handleChange = jest.fn()
+      render(<Slider defaultValue={50} onChange={handleChange} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+
+      fireEvent.pointerDown(thumb, { pointerId: 1, pointerType: 'mouse', button: 2, clientX: 100 })
+      fireEvent.pointerMove(document, { pointerId: 1, pointerType: 'mouse', clientX: 150 })
+      expect(handleChange).not.toHaveBeenCalled()
+    })
+
+    it('captures the pointer on the thumb', () => {
+      render(<Slider defaultValue={50} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+      thumb.setPointerCapture = jest.fn()
+
+      fireEvent.pointerDown(thumb, { pointerId: 4, pointerType: 'touch', clientX: 100 })
+      expect(thumb.setPointerCapture).toHaveBeenCalledWith(4)
+    })
+
+    it('stops listening when unmounted mid-drag', () => {
+      const removeListener = jest.spyOn(document, 'removeEventListener')
+      const { unmount } = render(<Slider defaultValue={50} />)
+      const thumb = withTrack(screen.getByRole('slider'))
+
+      fireEvent.pointerDown(thumb, { pointerId: 1, pointerType: 'touch', clientX: 100 })
+      unmount()
+      expect(removeListener.mock.calls.map(([type]) => type)).toEqual(
+        expect.arrayContaining(['pointermove', 'pointerup', 'pointercancel'])
+      )
+      removeListener.mockRestore()
+    })
+  })
+
   describe('Mouse Interactions', () => {
-    it('should not respond to mouse events when disabled', () => {
+    it('should not respond to pointer events when disabled', () => {
       const handleChange = jest.fn()
       render(
         <Slider
@@ -450,7 +559,8 @@ describe('Slider', () => {
       )
       
       const slider = screen.getByRole('slider')
-      fireEvent.mouseDown(slider)
+      fireEvent.pointerDown(slider, { pointerId: 1, pointerType: 'touch', clientX: 0 })
+      fireEvent.pointerMove(document, { pointerId: 1, pointerType: 'touch', clientX: 150 })
       
       expect(handleChange).not.toHaveBeenCalled()
     })

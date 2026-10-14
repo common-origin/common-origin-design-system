@@ -4,7 +4,7 @@ import { Slider } from './Slider'
 export const sliderDocs: ComponentDocumentation = {
   id: 'slider',
   name: 'Slider',
-  description: 'An accessible slider component for selecting single values or ranges with keyboard and mouse support',
+  description: 'An accessible slider component for selecting single values or ranges with keyboard, mouse, touch and pen support',
   category: 'Molecules',
   
   props: [
@@ -27,7 +27,7 @@ export const sliderDocs: ComponentDocumentation = {
       type: 'number',
       required: false,
       default: '1',
-      description: 'Step increment for value changes when using keyboard navigation or mouse interactions'
+      description: 'Step increment for value changes when using the keyboard or dragging a thumb'
     },
     {
       name: 'value',

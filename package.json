@@ -55,7 +55,7 @@
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --max-warnings 174",
+    "lint": "eslint . --max-warnings 170",
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
     "verify:no-nextjs": "node scripts/verify-no-nextjs-deps.cjs",
