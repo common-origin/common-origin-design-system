@@ -7,7 +7,7 @@ import { IconButton } from '../components/atoms/IconButton'
 import { Typography } from '../components/atoms/Typography'
 import tokens from '@/styles/tokens.json'
 
-const { base: { spacing }, semantic: { border, color } } = tokens
+const { semantic: { border, color, space } } = tokens
 
 const NavigationWrapper = styled.div`
   display: flex;
@@ -24,7 +24,7 @@ const MobileNavWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: ${spacing[4]} 0;
+  padding: ${space[400]} 0;
   width: 100%;
   z-index: ${tokens.semantic.layer.sticky};
 
@@ -77,7 +77,7 @@ const DesktopNavMenu = styled.nav`
 `
 
 const DesktopNavLink = styled(Link)<{ $isActive: boolean }>`
-  padding: ${spacing[6]} ${spacing[12]};
+  padding: ${space[600]} ${space[1200]};
   border-left: ${border.default};
   background-color: ${tokens.semantic.surface.base};
   transition: background-color 0.15s ease-in-out;
@@ -123,8 +123,8 @@ const MobileMenuItems = styled.nav`
 `
 
 const MobileNavLink = styled(Link)<{ $isActive: boolean }>`
-  padding: ${spacing[2]} 0;
-  margin-bottom: ${spacing[4]};
+  padding: ${space[200]} 0;
+  margin-bottom: ${space[400]};
   text-decoration: ${props => props.$isActive ? 'underline' : 'none'};
   color: ${color.text.default};
 
@@ -136,7 +136,7 @@ const MobileNavLink = styled(Link)<{ $isActive: boolean }>`
 const MobileCloseButton = styled(IconButton)`
   position: absolute;
   right: 0;
-  top: ${spacing[4]};
+  top: ${space[400]};
 `
 
 export const Navigation: React.FC = () => {

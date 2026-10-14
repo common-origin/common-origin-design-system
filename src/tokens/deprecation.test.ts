@@ -2,11 +2,14 @@
  * @jest-environment node
  */
 import { execFileSync } from 'child_process'
+import path from 'path'
+import ts from 'typescript'
 import base from './base/index.json'
 import semantic from './semantic/index.json'
 import component from './component/index.json'
 import grammarMigrationList from './grammarMigration.allowlist.json'
 import resolved from '../styles/tokens.json'
+import { findTokenReads, projectConfig, ROOT, type TokenRead } from './tokenReads'
 
 // Deprecation is data, not prose (decision 0033, #200): a deprecated token has a DTCG
 // `$deprecated` string saying why, and `$extensions["studio.commonorigin"].replacedBy` when one
@@ -94,27 +97,92 @@ describe('grammar renames (decision 0031)', () => {
 // Button's `emphasis` variant aliases the accent tokens until 3.0 (decision 0016).
 const STILL_READ = [/^component\.button\.variants\.emphasis\./]
 
+// Reads the type checker can't follow on purpose, by file, with the reason. Each entry must still
+// match a read (checked below), so a fixed read takes its entry with it.
+const ALLOWED: { file: string; paths?: RegExp; argumentOf?: string; reason: string }[] = [
+  {
+    file: 'src/components/layout/GridSystem/GridSystem.tsx',
+    paths: /^base\.spacing\./,
+    reason: 'The gap props are typed as base.spacing keys (public API) until 3.0 moves them to base.dimension (#99)',
+  },
+  {
+    file: 'src/components/layout/GridSystem/GridSystem.test.tsx',
+    paths: /^base\.spacing\./,
+    reason: "Tests GridSystem's base.spacing gap props (above)",
+  },
+  { file: 'src/tokens.ts', reason: 'Publishes the whole token set; deprecated tokens stay in it until 3.0' },
+  {
+    file: 'src/lib/docgen/tokenPaths.ts',
+    argumentOf: 'reduce',
+    reason: 'Resolves token-path strings for docs pages; the strings themselves are checked by the text search below',
+  },
+  { file: 'src/lib/docsTokenPaths.test.ts', argumentOf: 'reduce', reason: 'Resolves the docs pages\' token-path strings (above)' },
+  { file: 'pages/tokens.tsx', argumentOf: 'inUse', reason: 'inUse() drops deprecated tokens before the tokens page lists a group' },
+]
+
 describe('deprecated tokens are not read', () => {
-  // Matches dotted paths in source text, so a read through a destructured or aliased object
-  // (`const { count } = badge`, then `count.paddingX`) isn't caught. Read tokens by full path.
-  it('by components, patterns, tests or the docs site', () => {
+  const renamed = new Set(deprecated.filter((token) => /decision 0031/.test(String(token.$deprecated))).map((token) => token.path))
+  const retired = new Set(deprecated.filter((token) => !STILL_READ.some((pattern) => pattern.test(token.path))).map((token) => token.path))
+  const allowedBy = (read: TokenRead, token: string) =>
+    ALLOWED.find(
+      (entry) =>
+        entry.file === read.file &&
+        (!entry.paths || entry.paths.test(token)) &&
+        (!entry.argumentOf || entry.argumentOf === read.argumentOf)
+    )
+  let reads: TokenRead[]
+
+  // Every read in src and pages, resolved through the TypeScript type checker (#229): through
+  // destructures, aliases, typed parameters, helpers and computed keys. A read it can't pin down
+  // (an unknown key, a group cast or passed out of the type system) counts as every token under
+  // its group, so it fails whenever it could reach a deprecated token.
+  beforeAll(() => {
+    const config = projectConfig()
+    reads = findTokenReads(ts.createProgram(config.fileNames, config.options), (source) => {
+      const file = path.relative(ROOT, source.fileName)
+      return /^(src|pages)\//.test(file) && !/^src\/(tokens|styles)\//.test(file)
+    })
+  }, 120_000)
+
+  it('by code in components, patterns, tests or the docs site', () => {
+    const problems = reads.flatMap((read) =>
+      read.paths
+        .filter((token) => retired.has(token) && !allowedBy(read, token))
+        // Files still waiting for the grammar migration may read the old semantic names (#189)
+        .filter((token) => !(renamed.has(token) && grammarMigration.includes(read.file)))
+        .map((token) => {
+          const how = read.how === 'exact' ? '' : ` (${read.how}${read.argumentOf ? ` into ${read.argumentOf}()` : ''})`
+          return `${read.file}:${read.line} reads ${token}${how}`
+        })
+    )
+    expect(problems).toEqual([])
+  })
+
+  it('keeps the allow-list current: every entry still matches a deprecated read', () => {
+    const used = new Set(reads.flatMap((read) => read.paths.filter((token) => retired.has(token)).map((token) => allowedBy(read, token))))
+    expect(ALLOWED.filter((entry) => !used.has(entry)).map((entry) => entry.file)).toEqual([])
+  })
+
+  // Token paths written as text (docs token lists, READMEs, comments) aren't reads the type
+  // checker sees, so they're found by searching for each deprecated path in the source text.
+  it('as token-path strings in components, patterns, tests or the docs site', () => {
     // Match the path after its tier and component group (`button.sizes.small.padding`,
     // `color.category.blue-emphasis`) or in full, excluding only the token sources and builds.
-    // Tests are included, so none asserts a token that 3.0 removes. No `\b`: macOS's regex lacks it.
-    const retired = deprecated.filter((token) => !STILL_READ.some((pattern) => pattern.test(token.path)))
-    const [renamed, others] = [
-      retired.filter((token) => /decision 0031/.test(String(token.$deprecated))),
-      retired.filter((token) => !/decision 0031/.test(String(token.$deprecated))),
+    // No `\b`: macOS's regex lacks it.
+    const retiredTokens = deprecated.filter((token) => retired.has(token.path))
+    const [renamedTokens, others] = [
+      retiredTokens.filter((token) => renamed.has(token.path)),
+      retiredTokens.filter((token) => !renamed.has(token.path)),
     ]
-    // Files still waiting for the grammar migration may read the old semantic names (and only
-    // those) until their family migrates (#189)
     const waiting = (hit: string) => grammarMigration.includes(hit.split(':')[0])
-    expect([...readers(others), ...readers(renamed).filter((hit) => !waiting(hit))]).toEqual([])
+    expect([...readers(others), ...readers(renamedTokens).filter((hit) => !waiting(hit))]).toEqual([])
   })
 
   it('keep the grammar migration list current: every file on it still reads an old name', () => {
-    const renamed = deprecated.filter((token) => /decision 0031/.test(String(token.$deprecated)))
-    const files = new Set(readers(renamed).map((hit) => hit.split(':')[0]))
+    const files = new Set([
+      ...readers(deprecated.filter((token) => renamed.has(token.path))).map((hit) => hit.split(':')[0]),
+      ...reads.filter((read) => read.paths.some((token) => renamed.has(token))).map((read) => read.file),
+    ])
     expect(grammarMigration.filter((file) => !files.has(file))).toEqual([])
   })
 })

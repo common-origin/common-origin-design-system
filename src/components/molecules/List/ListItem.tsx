@@ -267,7 +267,7 @@ const StyledExpandedContent = styled.div.withConfig({
         ? `${semantic.space[200]} ${semantic.space[300]} ${semantic.space[200]} ${tokens.component.listItem.expandedIndent.compact}`
         : `${semantic.space[200]} ${semantic.space[400]} ${semantic.space[300]} ${tokens.component.listItem.expandedIndent.comfortable}`
     };
-    background-color: ${semantic.color.background['subtle']};
+    background-color: ${semantic.surface.raised};
     border-radius: ${semantic.radius.sm};
     margin: 0 ${
       $spacing === 'compact' 
