@@ -12,7 +12,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0006](0006-page-background.md) | Page background is the `background.default` token | Accepted | 2026-09-25 |
 | [0007](0007-sources-of-truth.md) | Which source answers which question | Accepted | 2026-09-25 |
 | [0008](0008-framework-agnostic-components.md) | Components are framework-agnostic | Accepted | 2025-12-05 |
-| [0009](0009-styling-architecture.md) | styled-components with tokens imported as values | Accepted, under review | Recorded 2026-09-25 |
+| [0009](0009-styling-architecture.md) | styled-components with tokens imported as values | Accepted; reading values superseded by 0041 | Recorded 2026-09-25 |
 | [0010](0010-agentinput-working-ring.md) | AgentInput's working ring is a temporary exception | Accepted (temporary) | 2026-09-25 |
 | [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted | 2026-09-25 |
 | [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
@@ -44,7 +44,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0038](0038-forced-colors.md) | Forced colours: system-colour edges and states scoped to `@media (forced-colors: active)`; `Highlight` for selected and checked; `forced-color-adjust: none` only on fills that carry state; Playwright checks | Accepted | 2026-10-13 |
 | [0039](0039-target-size.md) | Pointer targets are at least 24 × 24px; a control smaller to look at extends its hit area with a pseudo-element (the chip close button) | Accepted | 2026-10-13 |
 | [0040](0040-own-oklch-palette.md) | Our own palette: a 12-step pure-grey ramp (`gray.100`–`1200`, each step with a job) with alpha twins, defined in OKLCH; Spectrum and Bootstrap are no longer sources; hues follow in #233 | Accepted | 2026-10-14 |
-| [0041](0041-components-read-css-variables.md) | Components read tokens as CSS variables with resolved fallbacks (a minor release); styled-components stays; zero-runtime deferred | Proposed | 2026-10-14 |
+| [0041](0041-components-read-css-variables.md) | Components read tokens as CSS variables with resolved fallbacks (a minor release); styled-components stays; zero-runtime deferred | Accepted | 2026-10-14 |
 
 ## Template
 

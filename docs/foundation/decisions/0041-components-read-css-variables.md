@@ -1,10 +1,10 @@
 # 0041. Components read tokens as CSS variables; styled-components stays
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-10-14
-- **Decided by:** Ollie (owner), pending
+- **Decided by:** Ollie (owner)
 - **Principles:** P3, P7, P8, P9
-- **Supersedes, if accepted:** the "token values baked in" part of [0009](0009-styling-architecture.md)
+- **Supersedes:** the "token values baked in" part of [0009](0009-styling-architecture.md)
 - **Issue:** [#41](https://github.com/common-origin/common-origin-design-system/issues/41)
 
 ## Context
@@ -27,7 +27,7 @@
 - **Bundle:** +10.7 KB gzip (+13%) with the mirror as a second JSON copy. Built from `tokens.json` at import time instead (one small function), the cost is close to nil.
 - The #229 checker keeps working, because the mirror is typed `Tokens`.
 
-## Decision (proposed)
+## Decision
 
 1. **styled-components stays** the styling engine (a peer dependency, `^6`). We revisit it when v7 is stable, or if it stops being maintained.
 2. **Components read tokens as CSS variables** through a mirror of the token object: same shape and same `Tokens` type, each value `var(--co-<name>, <resolved value>)`. The mirror is built from `tokens.json` (at build or import time), so it can't drift.
@@ -39,6 +39,6 @@
 
 ## Consequences
 
-- Follow-up issues: (a) build the mirror and move components onto it, with a browser check that the `var()` output matches the resolved tokens; (b) #191 and #226 generate mode blocks that redeclare dependent aliases, now unblocked.
+- Follow-up issues: (a) build the mirror and move components onto it, with a browser check that the `var()` output matches the resolved tokens ([#245](https://github.com/common-origin/common-origin-design-system/issues/245)); (b) [#191](https://github.com/common-origin/common-origin-design-system/issues/191) and [#226](https://github.com/common-origin/common-origin-design-system/issues/226) generate mode blocks that redeclare dependent aliases, after #245.
 - `usage.md` says that loading `tokens.css` is optional, and needed only for modes.
 - Package build and tree-shaking ([#237](https://github.com/common-origin/common-origin-design-system/issues/237)) and RSC without `'use client'` (styled-components 6.3+) are separate questions. This decision doesn't depend on them.
