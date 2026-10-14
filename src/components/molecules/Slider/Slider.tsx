@@ -218,6 +218,15 @@ const StyledThumb = styled.div<{
     pointer-events: auto;
   }
 
+  /* Without container query units the midpoint can't be measured, so the hit areas stay whole
+     (where they overlap, the thumb drawn later wins) */
+  @supports not (width: 1cqw) {
+    &::before {
+      left: calc(50% - var(--slider-hit-half));
+      width: var(--slider-hit);
+    }
+  }
+
   ${reducedMotion} {
     transition: none;
   }
