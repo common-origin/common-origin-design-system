@@ -21,6 +21,7 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | No decorative gradients in UI chrome. CodeBlock's collapse fade is functional. | Enforced |
 | AgentInput's animated blue "working" ring uses a conic gradient. | Exception ([0010](decisions/0010-agentinput-working-ring.md)) — temporary, pending [#22](https://github.com/common-origin/common-origin-design-system/issues/22) |
 | Hierarchy comes from weight and scale, not colour. | Enforced |
+| The palette is our own, defined in OKLCH: a 12-step pure-grey ramp (`gray.100`–`1200`) where every step has a job (backgrounds, fills, borders, solid fills, text) and an alpha twin; the hues follow the same lightness steps. Spectrum and Bootstrap are no longer sources. ([0040](decisions/0040-own-oklch-palette.md)) | Target — the ramp is added in [#188](https://github.com/common-origin/common-origin-design-system/issues/188), the hues in [#233](https://github.com/common-origin/common-origin-design-system/issues/233), and the semantic tokens move in [#190](https://github.com/common-origin/common-origin-design-system/issues/190) |
 
 ## Typography
 

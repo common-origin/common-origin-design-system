@@ -43,6 +43,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0037](0037-motion-tokens.md) | Motion tokens: `duration.instant`, purpose-named easing (`standard`, `decelerate`, `accelerate`), `distance.sm`, `transition.feedback/focus/press`; exits accelerate; no `transition: all`; a fuller motion system later (#227) | Accepted | 2026-10-13 |
 | [0038](0038-forced-colors.md) | Forced colours: system-colour edges and states scoped to `@media (forced-colors: active)`; `Highlight` for selected and checked; `forced-color-adjust: none` only on fills that carry state; Playwright checks | Accepted | 2026-10-13 |
 | [0039](0039-target-size.md) | Pointer targets are at least 24 × 24px; a control smaller to look at extends its hit area with a pseudo-element (the chip close button) | Accepted | 2026-10-13 |
+| [0040](0040-own-oklch-palette.md) | Our own palette: a 12-step pure-grey ramp (`gray.100`–`1200`, each step with a job) with alpha twins, defined in OKLCH; Spectrum and Bootstrap are no longer sources; hues follow in #233 | Accepted | 2026-10-14 |
 
 ## Template
 
