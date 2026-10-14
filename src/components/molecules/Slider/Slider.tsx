@@ -129,6 +129,8 @@ const StyledTrack = styled.div<{ $disabled?: boolean }>`
   };
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
+  /* A vertical swipe over the track still scrolls the page */
+  touch-action: pan-y;
 
   /* Forced colours drop the track's fill, so it gets an edge; the thumb stays centred on it (decision 0038).
      A div gets no system disabled colour, so a disabled track sets GrayText itself. */
@@ -175,6 +177,8 @@ const StyledThumb = styled.div<{
   };
   border-radius: ${semantic.radius.full};
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'grab'};
+  /* The thumb takes every touch gesture, so a drag moves the value instead of scrolling */
+  touch-action: none;
   transform: translateX(-50%);
   /* left is the thumb's position, set from the value: it glides there, as it always has (decision 0037) */
   transition: left ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
@@ -290,6 +294,10 @@ export const Slider = ({
   const generatedId = useId()
   const trackRef = useRef<HTMLDivElement>(null)
   const [activeThumb, setActiveThumb] = useState<'single' | 'min' | 'max' | null>(null)
+  // Removes the document listeners of a drag in progress
+  const endDragRef = useRef<(() => void) | null>(null)
+
+  useEffect(() => () => endDragRef.current?.(), [])
   
   // Determine if this is a range slider
   const isRange = controlledRangeValue !== undefined || defaultRangeValue !== undefined || onRangeChange !== undefined
@@ -346,7 +354,7 @@ export const Slider = ({
     onRangeChange?.([orderedMin, orderedMax])
   }
   
-  // Mouse/touch handlers
+  // Pointer handlers: mouse, touch and pen
   const handleTrackClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) return
     
@@ -367,12 +375,20 @@ export const Slider = ({
     }
   }
   
-  const handleThumbMouseDown = (thumb: 'single' | 'min' | 'max') => (event: React.MouseEvent) => {
+  const handleThumbPointerDown = (thumb: 'single' | 'min' | 'max', event: React.PointerEvent<HTMLDivElement>) => {
     if (disabled) return
+    // Only the primary button drags; a touch or pen contact always counts
+    if (event.pointerType === 'mouse' && event.button !== 0) return
     event.preventDefault()
+    endDragRef.current?.()
     setActiveThumb(thumb)
-    
-    const handleMouseMove = (e: MouseEvent) => {
+
+    const { pointerId } = event
+    // Capture keeps the drag on this thumb when the pointer leaves it, or the window
+    event.currentTarget.setPointerCapture?.(pointerId)
+
+    const handlePointerMove = (e: PointerEvent) => {
+      if (e.pointerId !== pointerId) return
       const newValue = positionToValue(e.clientX)
       
       if (isRange) {
@@ -387,14 +403,23 @@ export const Slider = ({
       }
     }
     
-    const handleMouseUp = () => {
+    const endDrag = () => {
       setActiveThumb(null)
-      document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseup', handleMouseUp)
+      document.removeEventListener('pointermove', handlePointerMove)
+      document.removeEventListener('pointerup', handlePointerEnd)
+      document.removeEventListener('pointercancel', handlePointerEnd)
+      endDragRef.current = null
+    }
+
+    // pointercancel fires when the browser takes the gesture over, so it ends the drag too
+    const handlePointerEnd = (e: PointerEvent) => {
+      if (e.pointerId === pointerId) endDrag()
     }
     
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseup', handleMouseUp)
+    document.addEventListener('pointermove', handlePointerMove)
+    document.addEventListener('pointerup', handlePointerEnd)
+    document.addEventListener('pointercancel', handlePointerEnd)
+    endDragRef.current = endDrag
   }
   
   // Keyboard navigation
@@ -519,7 +544,7 @@ export const Slider = ({
                 $disabled={disabled}
                 $active={activeThumb === 'min'}
                 style={{ left: `${minPercent}%` }}
-                onMouseDown={handleThumbMouseDown('min')}
+                onPointerDown={(event) => handleThumbPointerDown('min', event)}
                 onKeyDown={handleKeyDown('min')}
               >
                 {showValueLabel && (
@@ -543,7 +568,7 @@ export const Slider = ({
                 $disabled={disabled}
                 $active={activeThumb === 'max'}
                 style={{ left: `${maxPercent}%` }}
-                onMouseDown={handleThumbMouseDown('max')}
+                onPointerDown={(event) => handleThumbPointerDown('max', event)}
                 onKeyDown={handleKeyDown('max')}
               >
                 {showValueLabel && (
@@ -567,7 +592,7 @@ export const Slider = ({
               $disabled={disabled}
               $active={activeThumb === 'single'}
               style={{ left: `${singlePercent}%` }}
-              onMouseDown={handleThumbMouseDown('single')}
+              onPointerDown={(event) => handleThumbPointerDown('single', event)}
               onKeyDown={handleKeyDown('single')}
             >
               {showValueLabel && (
