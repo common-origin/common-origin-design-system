@@ -1,6 +1,6 @@
 # 0009. styled-components with tokens imported as values
 
-- **Status:** Accepted, under review; the token build is extended by [0017](0017-token-pipeline-dtcg-style-dictionary-5.md)
+- **Status:** Accepted; the token build is extended by [0017](0017-token-pipeline-dtcg-style-dictionary-5.md); components reading token values is superseded by [0041](0041-components-read-css-variables.md) (they read CSS variables, styled-components stays)
 - **Date:** Recorded 2026-09-25; the original decision predates the repository's records
 - **Decided by:** Unrecorded
 - **Principles:** P3, P8
@@ -19,4 +19,4 @@ Recorded retroactively so the current architecture has a documented starting poi
 
 - **Dark mode or theming would touch every component**, because token values are baked in at build time. The earlier claim that the token layer "already supports dark mode structurally" is not accurate.
 - styled-components needs server-side style collection and Client Components in React Server Component setups (see [usage](../usage.md#server-rendering)).
-- Under review: whether to move components to CSS custom properties, which would enable theming and dark mode and reduce runtime cost. Any change gets a new decision record that supersedes this one.
+- Settled by [0041](0041-components-read-css-variables.md): components read tokens as CSS variables with resolved fallbacks, and styled-components stays.
