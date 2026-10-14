@@ -7,6 +7,10 @@ const nextConfig = {
   
   // Turbopack configuration (required for Next.js 16+)
   turbopack: {},
+
+  // next dev appends a Next.js rules block to CLAUDE.md when it detects a coding agent.
+  // The repo's agent instructions live in CLAUDE.md and docs/foundation, so keep it out.
+  agentRules: false,
   
   typescript: {
     // Ignore build errors during development
