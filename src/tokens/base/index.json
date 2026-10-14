@@ -176,8 +176,9 @@
       },
       "$type": "number"
     },
-    "size": {
-      "$description": "Dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px).",
+    "dimension": {
+      "$description": "The one dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). Replaces the parallel base.size and base.spacing scales (#188).",
+      "$type": "dimension",
       "0": {
         "$value": "0"
       },
@@ -279,6 +280,315 @@
       },
       "192": {
         "$value": "48rem"
+      }
+    },
+    "size": {
+      "$description": "Size keywords (auto, full, screen, min, max, fit). The numbered steps are deprecated aliases of base.dimension.",
+      "0": {
+        "$value": "{base.dimension.0}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.0"
+          }
+        }
+      },
+      "1": {
+        "$value": "{base.dimension.1}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.1"
+          }
+        }
+      },
+      "2": {
+        "$value": "{base.dimension.2}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.2"
+          }
+        }
+      },
+      "3": {
+        "$value": "{base.dimension.3}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.3"
+          }
+        }
+      },
+      "4": {
+        "$value": "{base.dimension.4}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.4"
+          }
+        }
+      },
+      "5": {
+        "$value": "{base.dimension.5}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.5"
+          }
+        }
+      },
+      "6": {
+        "$value": "{base.dimension.6}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.6"
+          }
+        }
+      },
+      "7": {
+        "$value": "{base.dimension.7}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.7"
+          }
+        }
+      },
+      "8": {
+        "$value": "{base.dimension.8}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.8"
+          }
+        }
+      },
+      "9": {
+        "$value": "{base.dimension.9}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.9"
+          }
+        }
+      },
+      "10": {
+        "$value": "{base.dimension.10}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.10"
+          }
+        }
+      },
+      "11": {
+        "$value": "{base.dimension.11}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.11"
+          }
+        }
+      },
+      "12": {
+        "$value": "{base.dimension.12}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.12"
+          }
+        }
+      },
+      "14": {
+        "$value": "{base.dimension.14}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.14"
+          }
+        }
+      },
+      "15": {
+        "$value": "{base.dimension.15}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.15"
+          }
+        }
+      },
+      "16": {
+        "$value": "{base.dimension.16}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.16"
+          }
+        }
+      },
+      "18": {
+        "$value": "{base.dimension.18}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.18"
+          }
+        }
+      },
+      "20": {
+        "$value": "{base.dimension.20}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.20"
+          }
+        }
+      },
+      "24": {
+        "$value": "{base.dimension.24}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.24"
+          }
+        }
+      },
+      "28": {
+        "$value": "{base.dimension.28}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.28"
+          }
+        }
+      },
+      "30": {
+        "$value": "{base.dimension.30}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.30"
+          }
+        }
+      },
+      "32": {
+        "$value": "{base.dimension.32}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.32"
+          }
+        }
+      },
+      "40": {
+        "$value": "{base.dimension.40}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.40"
+          }
+        }
+      },
+      "45": {
+        "$value": "{base.dimension.45}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.45"
+          }
+        }
+      },
+      "48": {
+        "$value": "{base.dimension.48}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.48"
+          }
+        }
+      },
+      "50": {
+        "$value": "{base.dimension.50}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.50"
+          }
+        }
+      },
+      "56": {
+        "$value": "{base.dimension.56}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.56"
+          }
+        }
+      },
+      "64": {
+        "$value": "{base.dimension.64}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.64"
+          }
+        }
+      },
+      "75": {
+        "$value": "{base.dimension.75}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.75"
+          }
+        }
+      },
+      "90": {
+        "$value": "{base.dimension.90}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.90"
+          }
+        }
+      },
+      "100": {
+        "$value": "{base.dimension.100}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.100"
+          }
+        }
+      },
+      "140": {
+        "$value": "{base.dimension.140}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.140"
+          }
+        }
+      },
+      "180": {
+        "$value": "{base.dimension.180}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.180"
+          }
+        }
+      },
+      "192": {
+        "$value": "{base.dimension.192}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.192"
+          }
+        }
       },
       "$type": "dimension",
       "auto": {
@@ -301,11 +611,113 @@
       }
     },
     "color": {
-      "$description": "Colour palette: a neutral ramp and seven hue ramps, plus transparent.",
+      "$description": "Colour palette: the grey ramp and its alpha twins (decision 0040), the older neutral ramp, seven hue ramps, and transparent.",
       "$type": "color",
       "transparent": {
         "$value": "transparent",
         "$description": "Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none)."
+      },
+      "gray": {
+        "$description": "Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040).",
+        "100": {
+          "$value": "#fcfcfc",
+          "$description": "Page background. oklch(0.991 0 0), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#f9f9f9",
+          "$description": "Subtle background. oklch(0.982 0 0), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#f2f2f2",
+          "$description": "Component fill at rest. oklch(0.961 0 0), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#ebebeb",
+          "$description": "Component fill on hover. oklch(0.940 0 0), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#e4e4e4",
+          "$description": "Component fill pressed or selected. oklch(0.918 0 0), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#dcdcdc",
+          "$description": "Subtle border. oklch(0.895 0 0), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#d1d1d1",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.860 0 0), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#909090",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0 0), 3.19:1 on white."
+        },
+        "900": {
+          "$value": "#848484",
+          "$description": "Solid fill. oklch(0.615 0 0), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#797979",
+          "$description": "Solid fill on hover. oklch(0.575 0 0), 4.35:1 on white."
+        },
+        "1100": {
+          "$value": "#636363",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.500 0 0), 6.01:1 on white."
+        },
+        "1200": {
+          "$value": "#222222",
+          "$description": "Primary text, and the darkest step. oklch(0.250 0 0), 15.91:1 on white."
+        }
+      },
+      "gray-alpha": {
+        "$description": "Alpha twins of the grey ramp: gray.1200 at the opacity that composites over white to the same step. For overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds (decision 0040).",
+        "100": {
+          "$value": "rgba(34, 34, 34, 0.014)",
+          "$description": "Page background. Composites to gray.100 over white."
+        },
+        "200": {
+          "$value": "rgba(34, 34, 34, 0.027)",
+          "$description": "Subtle background. Composites to gray.200 over white."
+        },
+        "300": {
+          "$value": "rgba(34, 34, 34, 0.059)",
+          "$description": "Component fill at rest. Composites to gray.300 over white."
+        },
+        "400": {
+          "$value": "rgba(34, 34, 34, 0.09)",
+          "$description": "Component fill on hover. Composites to gray.400 over white."
+        },
+        "500": {
+          "$value": "rgba(34, 34, 34, 0.122)",
+          "$description": "Component fill pressed or selected. Composites to gray.500 over white."
+        },
+        "600": {
+          "$value": "rgba(34, 34, 34, 0.158)",
+          "$description": "Subtle border. Composites to gray.600 over white."
+        },
+        "700": {
+          "$value": "rgba(34, 34, 34, 0.208)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to gray.700 over white."
+        },
+        "800": {
+          "$value": "rgba(34, 34, 34, 0.502)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to gray.800 over white."
+        },
+        "900": {
+          "$value": "rgba(34, 34, 34, 0.557)",
+          "$description": "Solid fill. Composites to gray.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(34, 34, 34, 0.606)",
+          "$description": "Solid fill on hover. Composites to gray.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(34, 34, 34, 0.706)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(34, 34, 34, 1)",
+          "$description": "Primary text, and the darkest step. Composites to gray.1200 over white."
+        }
       },
       "neutral": {
         "$description": "Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black).",
@@ -639,72 +1051,204 @@
       }
     },
     "spacing": {
-      "$description": "Spacing scale on the 4px grid; the key is the multiple of 4px (4 is 1rem, 16px), plus auto.",
+      "$description": "Spacing keyword auto. The numbered steps are deprecated aliases of base.dimension.",
       "0": {
-        "$value": "0"
+        "$value": "{base.dimension.0}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.0"
+          }
+        }
       },
       "1": {
-        "$value": "0.25rem"
+        "$value": "{base.dimension.1}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.1"
+          }
+        }
       },
       "2": {
-        "$value": "0.5rem"
+        "$value": "{base.dimension.2}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.2"
+          }
+        }
       },
       "3": {
-        "$value": "0.75rem"
+        "$value": "{base.dimension.3}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.3"
+          }
+        }
       },
       "4": {
-        "$value": "1rem"
+        "$value": "{base.dimension.4}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.4"
+          }
+        }
       },
       "5": {
-        "$value": "1.25rem"
+        "$value": "{base.dimension.5}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.5"
+          }
+        }
       },
       "6": {
-        "$value": "1.5rem"
+        "$value": "{base.dimension.6}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.6"
+          }
+        }
       },
       "7": {
-        "$value": "1.75rem"
+        "$value": "{base.dimension.7}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.7"
+          }
+        }
       },
       "8": {
-        "$value": "2rem"
+        "$value": "{base.dimension.8}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.8"
+          }
+        }
       },
       "9": {
-        "$value": "2.25rem"
+        "$value": "{base.dimension.9}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.9"
+          }
+        }
       },
       "10": {
-        "$value": "2.5rem"
+        "$value": "{base.dimension.10}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.10"
+          }
+        }
       },
       "12": {
-        "$value": "3rem"
+        "$value": "{base.dimension.12}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.12"
+          }
+        }
       },
       "14": {
-        "$value": "3.5rem"
+        "$value": "{base.dimension.14}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.14"
+          }
+        }
       },
       "16": {
-        "$value": "4rem"
+        "$value": "{base.dimension.16}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.16"
+          }
+        }
       },
       "20": {
-        "$value": "5rem"
+        "$value": "{base.dimension.20}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.20"
+          }
+        }
       },
       "24": {
-        "$value": "6rem"
+        "$value": "{base.dimension.24}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.24"
+          }
+        }
       },
       "28": {
-        "$value": "7rem"
+        "$value": "{base.dimension.28}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.28"
+          }
+        }
       },
       "32": {
-        "$value": "8rem"
+        "$value": "{base.dimension.32}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.32"
+          }
+        }
       },
       "40": {
-        "$value": "10rem"
+        "$value": "{base.dimension.40}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.40"
+          }
+        }
       },
       "48": {
-        "$value": "12rem"
+        "$value": "{base.dimension.48}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.48"
+          }
+        }
       },
       "56": {
-        "$value": "14rem"
+        "$value": "{base.dimension.56}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.56"
+          }
+        }
       },
       "64": {
-        "$value": "16rem"
+        "$value": "{base.dimension.64}",
+        "$deprecated": "base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "base.dimension.64"
+          }
+        }
       },
       "$type": "dimension",
       "auto": {

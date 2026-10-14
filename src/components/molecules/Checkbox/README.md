@@ -188,10 +188,9 @@ The Checkbox component uses the following design tokens:
 - `semantic.color.text.muted` - Helper text color
 - `semantic.typography.small` - Helper/error text typography
 
-### Base Tokens
-- `base.spacing.1` - Gap between checkbox and helper text
-- `base.spacing.3` - Gap between checkbox and label
-- `base.spacing.9` - Left margin for helper text alignment
+- `semantic.space.100` - Gap between checkbox and helper text
+- `semantic.space.300` - Gap between checkbox and label
+- `semantic.space.900` - Left margin for helper text alignment
 
 ## Architecture
 

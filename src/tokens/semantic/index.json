@@ -364,60 +364,60 @@
     "size": {
       "$type": "dimension",
       "touchTarget": {
-        "$value": "{base.size.11}",
+        "$value": "{base.dimension.11}",
         "$description": "Minimum height of a tappable row or control on touch screens."
       },
       "control": {
         "sm": {
-          "$value": "{base.size.8}",
+          "$value": "{base.dimension.8}",
           "$description": "Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034)."
         },
         "md": {
-          "$value": "{base.size.10}",
+          "$value": "{base.dimension.10}",
           "$description": "Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034)."
         },
         "lg": {
-          "$value": "{base.size.12}",
+          "$value": "{base.dimension.12}",
           "$description": "Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034)."
         }
       },
       "overlay": {
         "sm": {
-          "$value": "{base.size.100}",
+          "$value": "{base.dimension.100}",
           "$description": "Width of a small Modal, and the default width or height of a Sheet."
         },
         "md": {
-          "$value": "{base.size.140}",
+          "$value": "{base.dimension.140}",
           "$description": "Width of a medium overlay panel, such as a medium Modal."
         },
         "lg": {
-          "$value": "{base.size.180}",
+          "$value": "{base.dimension.180}",
           "$description": "Width of a large overlay panel, such as a large Modal."
         }
       },
       "label": {
         "small": {
-          "$value": "{base.size.5}",
+          "$value": "{base.dimension.5}",
           "$description": "Height of a small label: StatusLabel small and Tag small (decision 0018)."
         },
         "medium": {
-          "$value": "{base.size.6}",
+          "$value": "{base.dimension.6}",
           "$description": "Height of a medium label and every chip: StatusLabel, Tag, CategoryLabel (0018, 0035)."
         },
         "large": {
-          "$value": "{base.size.8}",
+          "$value": "{base.dimension.8}",
           "$description": "Height of a large label: CategoryLabel large (decision 0018)."
         }
       },
       "menu": {
         "maxHeight": {
-          "$value": "{base.size.75}",
+          "$value": "{base.dimension.75}",
           "$description": "Tallest a floating menu grows before it scrolls: Dropdown, SearchField."
         }
       },
       "dimension": {
         "1": {
-          "$value": "{base.size.1}",
+          "$value": "{base.dimension.1}",
           "$description": "0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens).",
           "$deprecated": "Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -427,7 +427,7 @@
           }
         },
         "2": {
-          "$value": "{base.size.2}",
+          "$value": "{base.dimension.2}",
           "$description": "0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -437,7 +437,7 @@
           }
         },
         "4": {
-          "$value": "{base.size.4}",
+          "$value": "{base.dimension.4}",
           "$description": "1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -447,7 +447,7 @@
           }
         },
         "5": {
-          "$value": "{base.size.5}",
+          "$value": "{base.dimension.5}",
           "$description": "1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small).",
           "$deprecated": "Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -457,7 +457,7 @@
           }
         },
         "6": {
-          "$value": "{base.size.6}",
+          "$value": "{base.dimension.6}",
           "$description": "1.5rem (24px): medium label height (via size.label.medium).",
           "$deprecated": "Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -467,7 +467,7 @@
           }
         },
         "8": {
-          "$value": "{base.size.8}",
+          "$value": "{base.dimension.8}",
           "$description": "2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large).",
           "$deprecated": "Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -477,7 +477,7 @@
           }
         },
         "12": {
-          "$value": "{base.size.12}",
+          "$value": "{base.dimension.12}",
           "$description": "3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens).",
           "$deprecated": "Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -487,7 +487,7 @@
           }
         },
         "15": {
-          "$value": "{base.size.15}",
+          "$value": "{base.dimension.15}",
           "$description": "3.75rem (60px): comfortable ListItem expanded indent (via component tokens).",
           "$deprecated": "Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -497,7 +497,7 @@
           }
         },
         "18": {
-          "$value": "{base.size.18}",
+          "$value": "{base.dimension.18}",
           "$description": "4.5rem (72px): TransactionListItem minimum height (via component tokens).",
           "$deprecated": "Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -507,7 +507,7 @@
           }
         },
         "20": {
-          "$value": "{base.size.20}",
+          "$value": "{base.dimension.20}",
           "$description": "5rem (80px): small EmptyState illustration (via component tokens).",
           "$deprecated": "Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -517,7 +517,7 @@
           }
         },
         "30": {
-          "$value": "{base.size.30}",
+          "$value": "{base.dimension.30}",
           "$description": "7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens).",
           "$deprecated": "Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -527,7 +527,7 @@
           }
         },
         "45": {
-          "$value": "{base.size.45}",
+          "$value": "{base.dimension.45}",
           "$description": "11.25rem (180px): Breadcrumbs label truncation width (via component tokens).",
           "$deprecated": "Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -537,7 +537,7 @@
           }
         },
         "50": {
-          "$value": "{base.size.50}",
+          "$value": "{base.dimension.50}",
           "$description": "12.5rem (200px): large EmptyState illustration (via component tokens).",
           "$deprecated": "Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -547,7 +547,7 @@
           }
         },
         "75": {
-          "$value": "{base.size.75}",
+          "$value": "{base.dimension.75}",
           "$description": "18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens).",
           "$deprecated": "Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -557,7 +557,7 @@
           }
         },
         "90": {
-          "$value": "{base.size.90}",
+          "$value": "{base.dimension.90}",
           "$description": "22.5rem (360px): EmptyState text maximum width (via component tokens).",
           "$deprecated": "Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -567,7 +567,7 @@
           }
         },
         "100": {
-          "$value": "{base.size.100}",
+          "$value": "{base.dimension.100}",
           "$description": "25rem (400px): EmptyState maximum width (via component tokens).",
           "$deprecated": "Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -577,7 +577,7 @@
           }
         },
         "192": {
-          "$value": "{base.size.192}",
+          "$value": "{base.dimension.192}",
           "$description": "48rem (768px): CardLarge maximum width (via component tokens).",
           "$deprecated": "Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -589,118 +589,118 @@
       },
       "icon": {
         "xs": {
-          "$value": "{base.size.3}",
+          "$value": "{base.dimension.3}",
           "$description": "The smallest icon size, for dense inline indicators."
         },
         "sm": {
-          "$value": "{base.size.4}",
+          "$value": "{base.dimension.4}",
           "$description": "Icons in compact controls, such as Alert's dismiss icon and small icon buttons."
         },
         "md": {
-          "$value": "{base.size.5}",
+          "$value": "{base.dimension.5}",
           "$description": "Icons beside body text, such as Alert's severity icon."
         },
         "lg": {
-          "$value": "{base.size.6}",
+          "$value": "{base.dimension.6}",
           "$description": "The Icon component's default size; also list item icons."
         },
         "xl": {
-          "$value": "{base.size.8}",
+          "$value": "{base.dimension.8}",
           "$description": "Extra-large standalone icons, such as feature illustrations."
         },
         "2xl": {
-          "$value": "{base.size.10}",
+          "$value": "{base.dimension.10}",
           "$description": "The largest icon size, for prominent standalone icons."
         }
       },
       "avatar": {
         "xs": {
-          "$value": "{base.size.6}",
+          "$value": "{base.dimension.6}",
           "$description": "Extra-small avatar, inline with text."
         },
         "sm": {
-          "$value": "{base.size.8}",
+          "$value": "{base.dimension.8}",
           "$description": "Small avatar, in dense lists and tables."
         },
         "md": {
-          "$value": "{base.size.10}",
+          "$value": "{base.dimension.10}",
           "$description": "Medium avatar, the default size."
         },
         "lg": {
-          "$value": "{base.size.12}",
+          "$value": "{base.dimension.12}",
           "$description": "Large avatar, in headers and cards."
         },
         "xl": {
-          "$value": "{base.size.16}",
+          "$value": "{base.dimension.16}",
           "$description": "Extra-large avatar, on profile pages."
         }
       },
       "100": {
-        "$value": "{base.size.1}",
+        "$value": "{base.dimension.1}",
         "$description": "Size step for thin bars: the TabBar scrollbar, the small ProgressBar."
       },
       "200": {
-        "$value": "{base.size.2}",
+        "$value": "{base.dimension.2}",
         "$description": "Size step for small marks: the Badge dot, the medium ProgressBar."
       },
       "400": {
-        "$value": "{base.size.4}",
+        "$value": "{base.dimension.4}",
         "$description": "Size step for compact indicators: the Badge count, the large ProgressBar."
       },
       "500": {
-        "$value": "{base.size.5}",
+        "$value": "{base.dimension.5}",
         "$description": "Size step for small boxes: the Checkbox box, TabBar count badges, small labels."
       },
       "600": {
-        "$value": "{base.size.6}",
+        "$value": "{base.dimension.6}",
         "$description": "Size step for the medium label height, used by chips and StatusLabel."
       },
       "800": {
-        "$value": "{base.size.8}",
+        "$value": "{base.dimension.8}",
         "$description": "Size step for compact rows and large labels, such as the Checkbox row."
       },
       "1200": {
-        "$value": "{base.size.12}",
+        "$value": "{base.dimension.12}",
         "$description": "Size step for headers and indents, such as the AccountCard header."
       },
       "1500": {
-        "$value": "{base.size.15}",
+        "$value": "{base.dimension.15}",
         "$description": "Size step for the comfortable ListItem expanded indent."
       },
       "1800": {
-        "$value": "{base.size.18}",
+        "$value": "{base.dimension.18}",
         "$description": "Size step for tall rows, such as the TransactionListItem minimum height."
       },
       "2000": {
-        "$value": "{base.size.20}",
+        "$value": "{base.dimension.20}",
         "$description": "Size step for small illustrations, such as the small EmptyState image."
       },
       "3000": {
-        "$value": "{base.size.30}",
+        "$value": "{base.dimension.30}",
         "$description": "Size step for medium illustrations and multi-line inputs: EmptyState, TextArea."
       },
       "4500": {
-        "$value": "{base.size.45}",
+        "$value": "{base.dimension.45}",
         "$description": "Size step for truncation widths, such as a Breadcrumbs label."
       },
       "5000": {
-        "$value": "{base.size.50}",
+        "$value": "{base.dimension.50}",
         "$description": "Size step for large illustrations, such as the large EmptyState image."
       },
       "7500": {
-        "$value": "{base.size.75}",
+        "$value": "{base.dimension.75}",
         "$description": "Size step for narrow column widths: AccountCard, EmptyState actions."
       },
       "9000": {
-        "$value": "{base.size.90}",
+        "$value": "{base.dimension.90}",
         "$description": "Size step for readable text widths, such as EmptyState copy."
       },
       "10000": {
-        "$value": "{base.size.100}",
+        "$value": "{base.dimension.100}",
         "$description": "Size step for compact panel widths, such as the EmptyState block."
       },
       "19200": {
-        "$value": "{base.size.192}",
+        "$value": "{base.dimension.192}",
         "$description": "Size step for wide content columns, such as CardLarge."
       }
     },
@@ -708,7 +708,7 @@
       "$type": "dimension",
       "separator": {
         "sm": {
-          "$value": "{base.spacing.4}",
+          "$value": "{base.dimension.4}",
           "$description": "1rem: space around a small Divider, above and below when horizontal, either side when vertical.",
           "$deprecated": "Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -718,7 +718,7 @@
           }
         },
         "md": {
-          "$value": "{base.spacing.6}",
+          "$value": "{base.dimension.6}",
           "$description": "1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical.",
           "$deprecated": "Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -728,7 +728,7 @@
           }
         },
         "lg": {
-          "$value": "{base.spacing.8}",
+          "$value": "{base.dimension.8}",
           "$description": "2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical.",
           "$deprecated": "Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -738,7 +738,7 @@
           }
         },
         "xl": {
-          "$value": "{base.spacing.12}",
+          "$value": "{base.dimension.12}",
           "$description": "3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical.",
           "$deprecated": "Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -750,7 +750,7 @@
       },
       "component": {
         "xs": {
-          "$value": "{base.spacing.1}",
+          "$value": "{base.dimension.1}",
           "$description": "Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips.",
           "$deprecated": "Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -760,7 +760,7 @@
           }
         },
         "sm": {
-          "$value": "{base.spacing.2}",
+          "$value": "{base.dimension.2}",
           "$description": "Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing.",
           "$deprecated": "Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -770,7 +770,7 @@
           }
         },
         "md": {
-          "$value": "{base.spacing.3}",
+          "$value": "{base.dimension.3}",
           "$description": "Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding.",
           "$deprecated": "Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -780,7 +780,7 @@
           }
         },
         "lg": {
-          "$value": "{base.spacing.4}",
+          "$value": "{base.dimension.4}",
           "$description": "Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing.",
           "$deprecated": "Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -790,7 +790,7 @@
           }
         },
         "xl": {
-          "$value": "{base.spacing.5}",
+          "$value": "{base.dimension.5}",
           "$description": "Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs.",
           "$deprecated": "Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -800,7 +800,7 @@
           }
         },
         "2xl": {
-          "$value": "{base.spacing.6}",
+          "$value": "{base.dimension.6}",
           "$description": "2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections.",
           "$deprecated": "Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -812,7 +812,7 @@
       },
       "layout": {
         "none": {
-          "$value": "{base.spacing.0}",
+          "$value": "{base.dimension.0}",
           "$description": "0: no space, for explicit resets.",
           "$deprecated": "Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -822,7 +822,7 @@
           }
         },
         "xs": {
-          "$value": "{base.spacing.1}",
+          "$value": "{base.dimension.1}",
           "$description": "0.25rem: the tightest gap, such as between a label and its required indicator.",
           "$deprecated": "Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -832,7 +832,7 @@
           }
         },
         "sm": {
-          "$value": "{base.spacing.2}",
+          "$value": "{base.dimension.2}",
           "$description": "0.5rem: a small gap, such as between a field's label, control and helper text.",
           "$deprecated": "Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -842,7 +842,7 @@
           }
         },
         "md": {
-          "$value": "{base.spacing.3}",
+          "$value": "{base.dimension.3}",
           "$description": "0.75rem: the default gap between related elements.",
           "$deprecated": "Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -852,7 +852,7 @@
           }
         },
         "lg": {
-          "$value": "{base.spacing.4}",
+          "$value": "{base.dimension.4}",
           "$description": "1rem: space between groups of elements, and padding inside containers.",
           "$deprecated": "Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -862,7 +862,7 @@
           }
         },
         "xl": {
-          "$value": "{base.spacing.5}",
+          "$value": "{base.dimension.5}",
           "$description": "1.25rem: generous padding inside larger containers.",
           "$deprecated": "Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -872,7 +872,7 @@
           }
         },
         "2xl": {
-          "$value": "{base.spacing.6}",
+          "$value": "{base.dimension.6}",
           "$description": "1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -882,7 +882,7 @@
           }
         },
         "3xl": {
-          "$value": "{base.spacing.7}",
+          "$value": "{base.dimension.7}",
           "$description": "1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -892,7 +892,7 @@
           }
         },
         "4xl": {
-          "$value": "{base.spacing.8}",
+          "$value": "{base.dimension.8}",
           "$description": "2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -902,7 +902,7 @@
           }
         },
         "5xl": {
-          "$value": "{base.spacing.9}",
+          "$value": "{base.dimension.9}",
           "$description": "2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -912,7 +912,7 @@
           }
         },
         "6xl": {
-          "$value": "{base.spacing.10}",
+          "$value": "{base.dimension.10}",
           "$description": "2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -922,7 +922,7 @@
           }
         },
         "7xl": {
-          "$value": "{base.spacing.12}",
+          "$value": "{base.dimension.12}",
           "$description": "3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -932,7 +932,7 @@
           }
         },
         "8xl": {
-          "$value": "{base.spacing.14}",
+          "$value": "{base.dimension.14}",
           "$description": "3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -942,7 +942,7 @@
           }
         },
         "9xl": {
-          "$value": "{base.spacing.16}",
+          "$value": "{base.dimension.16}",
           "$description": "4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.",
           "$deprecated": "Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -952,7 +952,7 @@
           }
         },
         "10xl": {
-          "$value": "{base.spacing.20}",
+          "$value": "{base.dimension.20}",
           "$description": "5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl.",
           "$deprecated": "Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -962,7 +962,7 @@
           }
         },
         "11xl": {
-          "$value": "{base.spacing.24}",
+          "$value": "{base.dimension.24}",
           "$description": "6rem: the largest layout gap (FeatureBlock at wide breakpoints).",
           "$deprecated": "Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -2386,7 +2386,7 @@
       "distance": {
         "$type": "dimension",
         "sm": {
-          "$value": "{base.spacing.2}",
+          "$value": "{base.dimension.2}",
           "$description": "How far a small element travels as it enters, such as a Dropdown menu dropping in."
         }
       }
@@ -2415,7 +2415,7 @@
     },
     "radius": {
       "none": {
-        "$value": "0",
+        "$value": "{base.dimension.0}",
         "$type": "dimension",
         "$description": "No rounding: tables, dividers and sharp-edged containers."
       },
@@ -2462,114 +2462,114 @@
     },
     "space": {
       "400": {
-        "$value": "{base.spacing.4}",
+        "$value": "{base.dimension.4}",
         "$type": "dimension",
         "$description": "Space between groups of elements, around a small Divider, and inside containers."
       },
       "600": {
-        "$value": "{base.spacing.6}",
+        "$value": "{base.dimension.6}",
         "$type": "dimension",
         "$description": "Space between blocks, and around a medium or minimal Divider."
       },
       "800": {
-        "$value": "{base.spacing.8}",
+        "$value": "{base.dimension.8}",
         "$type": "dimension",
         "$description": "Space between sections, and around the default Divider."
       },
       "1200": {
-        "$value": "{base.spacing.12}",
+        "$value": "{base.dimension.12}",
         "$type": "dimension",
         "$description": "Space between major sections, and around an extra-large Divider."
       },
       "inset": {
         "xs": {
-          "$value": "{base.spacing.1}",
+          "$value": "{base.dimension.1}",
           "$type": "dimension",
           "$description": "Tightest padding inside a component, such as around an icon in a small control."
         },
         "sm": {
-          "$value": "{base.spacing.2}",
+          "$value": "{base.dimension.2}",
           "$type": "dimension",
           "$description": "Small padding inside a component: chip sides, icon-to-label gaps, compact buttons."
         },
         "md": {
-          "$value": "{base.spacing.3}",
+          "$value": "{base.dimension.3}",
           "$type": "dimension",
           "$description": "Medium padding inside a component: form field insides, medium IconButtons."
         },
         "lg": {
-          "$value": "{base.spacing.4}",
+          "$value": "{base.dimension.4}",
           "$type": "dimension",
           "$description": "Large padding inside a component: button and input sides, card insides."
         },
         "xl": {
-          "$value": "{base.spacing.5}",
+          "$value": "{base.dimension.5}",
           "$type": "dimension",
           "$description": "Generous padding inside a component, such as a prominent call to action."
         },
         "2xl": {
-          "$value": "{base.spacing.6}",
+          "$value": "{base.dimension.6}",
           "$type": "dimension",
           "$description": "Largest padding inside a component: large cards, spacious form sections."
         }
       },
       "0": {
-        "$value": "{base.spacing.0}",
+        "$value": "{base.dimension.0}",
         "$type": "dimension",
         "$description": "No space, for explicit resets of padding, margin or gap."
       },
       "100": {
-        "$value": "{base.spacing.1}",
+        "$value": "{base.dimension.1}",
         "$type": "dimension",
         "$description": "The tightest gap, such as between a label and its required indicator."
       },
       "200": {
-        "$value": "{base.spacing.2}",
+        "$value": "{base.dimension.2}",
         "$type": "dimension",
         "$description": "A small gap, such as between a field's label, control and helper text."
       },
       "300": {
-        "$value": "{base.spacing.3}",
+        "$value": "{base.dimension.3}",
         "$type": "dimension",
         "$description": "The default gap between related elements in a group."
       },
       "500": {
-        "$value": "{base.spacing.5}",
+        "$value": "{base.dimension.5}",
         "$type": "dimension",
         "$description": "Generous padding inside larger containers and cards."
       },
       "700": {
-        "$value": "{base.spacing.7}",
+        "$value": "{base.dimension.7}",
         "$type": "dimension",
         "$description": "A larger step between blocks and sections; pick the step the layout needs."
       },
       "900": {
-        "$value": "{base.spacing.9}",
+        "$value": "{base.dimension.9}",
         "$type": "dimension",
         "$description": "A larger step between blocks and sections; pick the step the layout needs."
       },
       "1000": {
-        "$value": "{base.spacing.10}",
+        "$value": "{base.dimension.10}",
         "$type": "dimension",
         "$description": "A larger step between blocks and sections; pick the step the layout needs."
       },
       "1400": {
-        "$value": "{base.spacing.14}",
+        "$value": "{base.dimension.14}",
         "$type": "dimension",
         "$description": "A large step between page sections; pick the step the layout needs."
       },
       "1600": {
-        "$value": "{base.spacing.16}",
+        "$value": "{base.dimension.16}",
         "$type": "dimension",
         "$description": "A large step between page sections; pick the step the layout needs."
       },
       "2000": {
-        "$value": "{base.spacing.20}",
+        "$value": "{base.dimension.20}",
         "$type": "dimension",
         "$description": "A very large step between page sections, second only to the largest."
       },
       "2400": {
-        "$value": "{base.spacing.24}",
+        "$value": "{base.dimension.24}",
         "$type": "dimension",
         "$description": "The largest gap between page sections, such as FeatureBlock at wide breakpoints."
       }

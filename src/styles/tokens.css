@@ -53,40 +53,40 @@
   --co-base-opacity-90: 0.9;
   --co-base-opacity-95: 0.95;
   --co-base-opacity-100: 1;
-  --co-base-size-0: 0;
-  --co-base-size-1: 0.25rem;
-  --co-base-size-2: 0.5rem;
-  --co-base-size-3: 0.75rem;
-  --co-base-size-4: 1rem;
-  --co-base-size-5: 1.25rem;
-  --co-base-size-6: 1.5rem;
-  --co-base-size-7: 1.75rem;
-  --co-base-size-8: 2rem;
-  --co-base-size-9: 2.25rem;
-  --co-base-size-10: 2.5rem;
-  --co-base-size-11: 2.75rem;
-  --co-base-size-12: 3rem;
-  --co-base-size-14: 3.5rem;
-  --co-base-size-15: 3.75rem;
-  --co-base-size-16: 4rem;
-  --co-base-size-18: 4.5rem;
-  --co-base-size-20: 5rem;
-  --co-base-size-24: 6rem;
-  --co-base-size-28: 7rem;
-  --co-base-size-30: 7.5rem;
-  --co-base-size-32: 8rem;
-  --co-base-size-40: 10rem;
-  --co-base-size-45: 11.25rem;
-  --co-base-size-48: 12rem;
-  --co-base-size-50: 12.5rem;
-  --co-base-size-56: 14rem;
-  --co-base-size-64: 16rem;
-  --co-base-size-75: 18.75rem;
-  --co-base-size-90: 22.5rem;
-  --co-base-size-100: 25rem;
-  --co-base-size-140: 35rem;
-  --co-base-size-180: 45rem;
-  --co-base-size-192: 48rem;
+  --co-base-dimension-0: 0;
+  --co-base-dimension-1: 0.25rem;
+  --co-base-dimension-2: 0.5rem;
+  --co-base-dimension-3: 0.75rem;
+  --co-base-dimension-4: 1rem;
+  --co-base-dimension-5: 1.25rem;
+  --co-base-dimension-6: 1.5rem;
+  --co-base-dimension-7: 1.75rem;
+  --co-base-dimension-8: 2rem;
+  --co-base-dimension-9: 2.25rem;
+  --co-base-dimension-10: 2.5rem;
+  --co-base-dimension-11: 2.75rem;
+  --co-base-dimension-12: 3rem;
+  --co-base-dimension-14: 3.5rem;
+  --co-base-dimension-15: 3.75rem;
+  --co-base-dimension-16: 4rem;
+  --co-base-dimension-18: 4.5rem;
+  --co-base-dimension-20: 5rem;
+  --co-base-dimension-24: 6rem;
+  --co-base-dimension-28: 7rem;
+  --co-base-dimension-30: 7.5rem;
+  --co-base-dimension-32: 8rem;
+  --co-base-dimension-40: 10rem;
+  --co-base-dimension-45: 11.25rem;
+  --co-base-dimension-48: 12rem;
+  --co-base-dimension-50: 12.5rem;
+  --co-base-dimension-56: 14rem;
+  --co-base-dimension-64: 16rem;
+  --co-base-dimension-75: 18.75rem;
+  --co-base-dimension-90: 22.5rem;
+  --co-base-dimension-100: 25rem;
+  --co-base-dimension-140: 35rem;
+  --co-base-dimension-180: 45rem;
+  --co-base-dimension-192: 48rem;
   --co-base-size-auto: auto;
   --co-base-size-full: 100%;
   --co-base-size-screen: 100vh;
@@ -94,6 +94,30 @@
   --co-base-size-max: max-content;
   --co-base-size-fit: fit-content;
   --co-base-color-transparent: transparent; /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
+  --co-base-color-gray-100: #fcfcfc; /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
+  --co-base-color-gray-200: #f9f9f9; /** Subtle background. oklch(0.982 0 0), 1.05:1 on white. */
+  --co-base-color-gray-300: #f2f2f2; /** Component fill at rest. oklch(0.961 0 0), 1.12:1 on white. */
+  --co-base-color-gray-400: #ebebeb; /** Component fill on hover. oklch(0.940 0 0), 1.19:1 on white. */
+  --co-base-color-gray-500: #e4e4e4; /** Component fill pressed or selected. oklch(0.918 0 0), 1.27:1 on white. */
+  --co-base-color-gray-600: #dcdcdc; /** Subtle border. oklch(0.895 0 0), 1.37:1 on white. */
+  --co-base-color-gray-700: #d1d1d1; /** Default border, for dividers and decorative outlines. oklch(0.860 0 0), 1.53:1 on white. */
+  --co-base-color-gray-800: #909090; /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0 0), 3.19:1 on white. */
+  --co-base-color-gray-900: #848484; /** Solid fill. oklch(0.615 0 0), 3.74:1 on white. */
+  --co-base-color-gray-1000: #797979; /** Solid fill on hover. oklch(0.575 0 0), 4.35:1 on white. */
+  --co-base-color-gray-1100: #636363; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.500 0 0), 6.01:1 on white. */
+  --co-base-color-gray-1200: #222222; /** Primary text, and the darkest step. oklch(0.250 0 0), 15.91:1 on white. */
+  --co-base-color-gray-alpha-100: rgba(34, 34, 34, 0.014); /** Page background. Composites to gray.100 over white. */
+  --co-base-color-gray-alpha-200: rgba(34, 34, 34, 0.027); /** Subtle background. Composites to gray.200 over white. */
+  --co-base-color-gray-alpha-300: rgba(34, 34, 34, 0.059); /** Component fill at rest. Composites to gray.300 over white. */
+  --co-base-color-gray-alpha-400: rgba(34, 34, 34, 0.09); /** Component fill on hover. Composites to gray.400 over white. */
+  --co-base-color-gray-alpha-500: rgba(34, 34, 34, 0.122); /** Component fill pressed or selected. Composites to gray.500 over white. */
+  --co-base-color-gray-alpha-600: rgba(34, 34, 34, 0.158); /** Subtle border. Composites to gray.600 over white. */
+  --co-base-color-gray-alpha-700: rgba(34, 34, 34, 0.208); /** Default border, for dividers and decorative outlines. Composites to gray.700 over white. */
+  --co-base-color-gray-alpha-800: rgba(34, 34, 34, 0.502); /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to gray.800 over white. */
+  --co-base-color-gray-alpha-900: rgba(34, 34, 34, 0.557); /** Solid fill. Composites to gray.900 over white. */
+  --co-base-color-gray-alpha-1000: rgba(34, 34, 34, 0.606); /** Solid fill on hover. Composites to gray.1000 over white. */
+  --co-base-color-gray-alpha-1100: rgba(34, 34, 34, 0.706); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over white. */
+  --co-base-color-gray-alpha-1200: rgba(34, 34, 34, 1); /** Primary text, and the darkest step. Composites to gray.1200 over white. */
   --co-base-color-neutral-100: #f8f9fa;
   --co-base-color-neutral-200: #e9ecef;
   --co-base-color-neutral-300: #dee2e6;
@@ -196,28 +220,6 @@
   --co-base-color-yellow-1100: #694600;
   --co-base-color-yellow-1200: #523600;
   --co-base-color-yellow-1300: #3D2800;
-  --co-base-spacing-0: 0;
-  --co-base-spacing-1: 0.25rem;
-  --co-base-spacing-2: 0.5rem;
-  --co-base-spacing-3: 0.75rem;
-  --co-base-spacing-4: 1rem;
-  --co-base-spacing-5: 1.25rem;
-  --co-base-spacing-6: 1.5rem;
-  --co-base-spacing-7: 1.75rem;
-  --co-base-spacing-8: 2rem;
-  --co-base-spacing-9: 2.25rem;
-  --co-base-spacing-10: 2.5rem;
-  --co-base-spacing-12: 3rem;
-  --co-base-spacing-14: 3.5rem;
-  --co-base-spacing-16: 4rem;
-  --co-base-spacing-20: 5rem;
-  --co-base-spacing-24: 6rem;
-  --co-base-spacing-28: 7rem;
-  --co-base-spacing-32: 8rem;
-  --co-base-spacing-40: 10rem;
-  --co-base-spacing-48: 12rem;
-  --co-base-spacing-56: 14rem;
-  --co-base-spacing-64: 16rem;
   --co-base-spacing-auto: auto;
   --co-base-font-family-heading: 'Inter', sans-serif;
   --co-base-font-family-body: 'Inter', sans-serif;
@@ -307,8 +309,63 @@
   --co-semantic-color-fill-none-hover: rgba(33, 37, 41, 0.1); /** Hover tint for a fill-less control over any background, such as a chip close button. */
   --co-semantic-color-fill-none-pressed: rgba(33, 37, 41, 0.15); /** Pressed tint for a fill-less control over any background, such as a chip close button. */
   --co-semantic-color-fill-inverse-none-hover: rgba(255, 255, 255, 0.2); /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
-  --co-semantic-radius-none: 0; /** No rounding: tables, dividers and sharp-edged containers. */
   --co-semantic-surface-scrim: rgba(33, 37, 41, 0.5); /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+  --co-base-size-0: var(--co-base-dimension-0); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-1: var(--co-base-dimension-1); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-2: var(--co-base-dimension-2); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-3: var(--co-base-dimension-3); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-4: var(--co-base-dimension-4); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-5: var(--co-base-dimension-5); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-6: var(--co-base-dimension-6); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-7: var(--co-base-dimension-7); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-8: var(--co-base-dimension-8); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-9: var(--co-base-dimension-9); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-10: var(--co-base-dimension-10); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-11: var(--co-base-dimension-11); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-12: var(--co-base-dimension-12); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-14: var(--co-base-dimension-14); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-15: var(--co-base-dimension-15); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-16: var(--co-base-dimension-16); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-18: var(--co-base-dimension-18); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-20: var(--co-base-dimension-20); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-24: var(--co-base-dimension-24); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-28: var(--co-base-dimension-28); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-30: var(--co-base-dimension-30); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-32: var(--co-base-dimension-32); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-40: var(--co-base-dimension-40); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-45: var(--co-base-dimension-45); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-48: var(--co-base-dimension-48); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-50: var(--co-base-dimension-50); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-56: var(--co-base-dimension-56); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-64: var(--co-base-dimension-64); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-75: var(--co-base-dimension-75); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-90: var(--co-base-dimension-90); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-100: var(--co-base-dimension-100); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-140: var(--co-base-dimension-140); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-180: var(--co-base-dimension-180); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-size-192: var(--co-base-dimension-192); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-0: var(--co-base-dimension-0); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-1: var(--co-base-dimension-1); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-2: var(--co-base-dimension-2); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-3: var(--co-base-dimension-3); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-4: var(--co-base-dimension-4); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-5: var(--co-base-dimension-5); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-6: var(--co-base-dimension-6); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-7: var(--co-base-dimension-7); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-8: var(--co-base-dimension-8); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-9: var(--co-base-dimension-9); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-10: var(--co-base-dimension-10); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-12: var(--co-base-dimension-12); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-14: var(--co-base-dimension-14); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-16: var(--co-base-dimension-16); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-20: var(--co-base-dimension-20); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-24: var(--co-base-dimension-24); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-28: var(--co-base-dimension-28); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-32: var(--co-base-dimension-32); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-40: var(--co-base-dimension-40); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-48: var(--co-base-dimension-48); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-56: var(--co-base-dimension-56); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
+  --co-base-spacing-64: var(--co-base-dimension-64); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
   --co-component-slider-thumb-background: var(--co-base-color-neutral-000); /** Fill of Slider's thumb: white, so it reads on both the track and the fill. */
   --co-component-status-pending-text: var(--co-base-color-yellow-1000); /** Text and icon of a pending StatusLabel, on its pending background. */
   --co-component-status-pending-background: var(--co-base-color-yellow-100); /** Fill of a pending StatusLabel, behind its pending text. */
@@ -376,88 +433,88 @@
   --co-semantic-border-radius-circle: var(--co-base-border-radius-circle); /** Deprecated: Renamed to semantic.radius.full by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-emphasis: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-emphasis); /** Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge. */
   --co-semantic-border-input-hover: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-input-hover); /** Firm hairline that must read as a boundary, such as a hovered text input. */
-  --co-semantic-size-100: var(--co-base-size-1); /** Size step for thin bars: the TabBar scrollbar, the small ProgressBar. */
-  --co-semantic-size-200: var(--co-base-size-2); /** Size step for small marks: the Badge dot, the medium ProgressBar. */
-  --co-semantic-size-400: var(--co-base-size-4); /** Size step for compact indicators: the Badge count, the large ProgressBar. */
-  --co-semantic-size-500: var(--co-base-size-5); /** Size step for small boxes: the Checkbox box, TabBar count badges, small labels. */
-  --co-semantic-size-600: var(--co-base-size-6); /** Size step for the medium label height, used by chips and StatusLabel. */
-  --co-semantic-size-800: var(--co-base-size-8); /** Size step for compact rows and large labels, such as the Checkbox row. */
-  --co-semantic-size-1200: var(--co-base-size-12); /** Size step for headers and indents, such as the AccountCard header. */
-  --co-semantic-size-1500: var(--co-base-size-15); /** Size step for the comfortable ListItem expanded indent. */
-  --co-semantic-size-1800: var(--co-base-size-18); /** Size step for tall rows, such as the TransactionListItem minimum height. */
-  --co-semantic-size-2000: var(--co-base-size-20); /** Size step for small illustrations, such as the small EmptyState image. */
-  --co-semantic-size-3000: var(--co-base-size-30); /** Size step for medium illustrations and multi-line inputs: EmptyState, TextArea. */
-  --co-semantic-size-4500: var(--co-base-size-45); /** Size step for truncation widths, such as a Breadcrumbs label. */
-  --co-semantic-size-5000: var(--co-base-size-50); /** Size step for large illustrations, such as the large EmptyState image. */
-  --co-semantic-size-7500: var(--co-base-size-75); /** Size step for narrow column widths: AccountCard, EmptyState actions. */
-  --co-semantic-size-9000: var(--co-base-size-90); /** Size step for readable text widths, such as EmptyState copy. */
-  --co-semantic-size-10000: var(--co-base-size-100); /** Size step for compact panel widths, such as the EmptyState block. */
-  --co-semantic-size-19200: var(--co-base-size-192); /** Size step for wide content columns, such as CardLarge. */
-  --co-semantic-size-touch-target: var(--co-base-size-11); /** Minimum height of a tappable row or control on touch screens. */
-  --co-semantic-size-control-sm: var(--co-base-size-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
-  --co-semantic-size-control-md: var(--co-base-size-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
-  --co-semantic-size-control-lg: var(--co-base-size-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
-  --co-semantic-size-overlay-sm: var(--co-base-size-100); /** Width of a small Modal, and the default width or height of a Sheet. */
-  --co-semantic-size-overlay-md: var(--co-base-size-140); /** Width of a medium overlay panel, such as a medium Modal. */
-  --co-semantic-size-overlay-lg: var(--co-base-size-180); /** Width of a large overlay panel, such as a large Modal. */
-  --co-semantic-size-label-small: var(--co-base-size-5); /** Height of a small label: StatusLabel small and Tag small (decision 0018). */
-  --co-semantic-size-label-medium: var(--co-base-size-6); /** Height of a medium label and every chip: StatusLabel, Tag, CategoryLabel (0018, 0035). */
-  --co-semantic-size-label-large: var(--co-base-size-8); /** Height of a large label: CategoryLabel large (decision 0018). */
-  --co-semantic-size-menu-max-height: var(--co-base-size-75); /** Tallest a floating menu grows before it scrolls: Dropdown, SearchField. */
-  --co-semantic-size-dimension-1: var(--co-base-size-1); /** Deprecated: Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-2: var(--co-base-size-2); /** Deprecated: Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-4: var(--co-base-size-4); /** Deprecated: Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-5: var(--co-base-size-5); /** Deprecated: Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-6: var(--co-base-size-6); /** Deprecated: Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-8: var(--co-base-size-8); /** Deprecated: Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-12: var(--co-base-size-12); /** Deprecated: Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-15: var(--co-base-size-15); /** Deprecated: Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-18: var(--co-base-size-18); /** Deprecated: Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-20: var(--co-base-size-20); /** Deprecated: Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-30: var(--co-base-size-30); /** Deprecated: Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-45: var(--co-base-size-45); /** Deprecated: Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-50: var(--co-base-size-50); /** Deprecated: Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-75: var(--co-base-size-75); /** Deprecated: Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-90: var(--co-base-size-90); /** Deprecated: Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-100: var(--co-base-size-100); /** Deprecated: Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-dimension-192: var(--co-base-size-192); /** Deprecated: Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-size-icon-xs: var(--co-base-size-3); /** The smallest icon size, for dense inline indicators. */
-  --co-semantic-size-icon-sm: var(--co-base-size-4); /** Icons in compact controls, such as Alert's dismiss icon and small icon buttons. */
-  --co-semantic-size-icon-md: var(--co-base-size-5); /** Icons beside body text, such as Alert's severity icon. */
-  --co-semantic-size-icon-lg: var(--co-base-size-6); /** The Icon component's default size; also list item icons. */
-  --co-semantic-size-icon-xl: var(--co-base-size-8); /** Extra-large standalone icons, such as feature illustrations. */
-  --co-semantic-size-icon-2xl: var(--co-base-size-10); /** The largest icon size, for prominent standalone icons. */
-  --co-semantic-size-avatar-xs: var(--co-base-size-6); /** Extra-small avatar, inline with text. */
-  --co-semantic-size-avatar-sm: var(--co-base-size-8); /** Small avatar, in dense lists and tables. */
-  --co-semantic-size-avatar-md: var(--co-base-size-10); /** Medium avatar, the default size. */
-  --co-semantic-size-avatar-lg: var(--co-base-size-12); /** Large avatar, in headers and cards. */
-  --co-semantic-size-avatar-xl: var(--co-base-size-16); /** Extra-large avatar, on profile pages. */
-  --co-semantic-spacing-separator-sm: var(--co-base-spacing-4); /** Deprecated: Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-separator-md: var(--co-base-spacing-6); /** Deprecated: Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-separator-lg: var(--co-base-spacing-8); /** Deprecated: Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-separator-xl: var(--co-base-spacing-12); /** Deprecated: Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-xs: var(--co-base-spacing-1); /** Deprecated: Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-sm: var(--co-base-spacing-2); /** Deprecated: Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-md: var(--co-base-spacing-3); /** Deprecated: Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-lg: var(--co-base-spacing-4); /** Deprecated: Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-xl: var(--co-base-spacing-5); /** Deprecated: Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-component-2xl: var(--co-base-spacing-6); /** Deprecated: Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-none: var(--co-base-spacing-0); /** Deprecated: Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-xs: var(--co-base-spacing-1); /** Deprecated: Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-sm: var(--co-base-spacing-2); /** Deprecated: Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-md: var(--co-base-spacing-3); /** Deprecated: Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-lg: var(--co-base-spacing-4); /** Deprecated: Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-xl: var(--co-base-spacing-5); /** Deprecated: Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-2xl: var(--co-base-spacing-6); /** Deprecated: Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-3xl: var(--co-base-spacing-7); /** Deprecated: Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-4xl: var(--co-base-spacing-8); /** Deprecated: Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-5xl: var(--co-base-spacing-9); /** Deprecated: Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-6xl: var(--co-base-spacing-10); /** Deprecated: Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-7xl: var(--co-base-spacing-12); /** Deprecated: Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-8xl: var(--co-base-spacing-14); /** Deprecated: Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-9xl: var(--co-base-spacing-16); /** Deprecated: Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-10xl: var(--co-base-spacing-20); /** Deprecated: Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-spacing-layout-11xl: var(--co-base-spacing-24); /** Deprecated: Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-100: var(--co-base-dimension-1); /** Size step for thin bars: the TabBar scrollbar, the small ProgressBar. */
+  --co-semantic-size-200: var(--co-base-dimension-2); /** Size step for small marks: the Badge dot, the medium ProgressBar. */
+  --co-semantic-size-400: var(--co-base-dimension-4); /** Size step for compact indicators: the Badge count, the large ProgressBar. */
+  --co-semantic-size-500: var(--co-base-dimension-5); /** Size step for small boxes: the Checkbox box, TabBar count badges, small labels. */
+  --co-semantic-size-600: var(--co-base-dimension-6); /** Size step for the medium label height, used by chips and StatusLabel. */
+  --co-semantic-size-800: var(--co-base-dimension-8); /** Size step for compact rows and large labels, such as the Checkbox row. */
+  --co-semantic-size-1200: var(--co-base-dimension-12); /** Size step for headers and indents, such as the AccountCard header. */
+  --co-semantic-size-1500: var(--co-base-dimension-15); /** Size step for the comfortable ListItem expanded indent. */
+  --co-semantic-size-1800: var(--co-base-dimension-18); /** Size step for tall rows, such as the TransactionListItem minimum height. */
+  --co-semantic-size-2000: var(--co-base-dimension-20); /** Size step for small illustrations, such as the small EmptyState image. */
+  --co-semantic-size-3000: var(--co-base-dimension-30); /** Size step for medium illustrations and multi-line inputs: EmptyState, TextArea. */
+  --co-semantic-size-4500: var(--co-base-dimension-45); /** Size step for truncation widths, such as a Breadcrumbs label. */
+  --co-semantic-size-5000: var(--co-base-dimension-50); /** Size step for large illustrations, such as the large EmptyState image. */
+  --co-semantic-size-7500: var(--co-base-dimension-75); /** Size step for narrow column widths: AccountCard, EmptyState actions. */
+  --co-semantic-size-9000: var(--co-base-dimension-90); /** Size step for readable text widths, such as EmptyState copy. */
+  --co-semantic-size-10000: var(--co-base-dimension-100); /** Size step for compact panel widths, such as the EmptyState block. */
+  --co-semantic-size-19200: var(--co-base-dimension-192); /** Size step for wide content columns, such as CardLarge. */
+  --co-semantic-size-touch-target: var(--co-base-dimension-11); /** Minimum height of a tappable row or control on touch screens. */
+  --co-semantic-size-control-sm: var(--co-base-dimension-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
+  --co-semantic-size-control-md: var(--co-base-dimension-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
+  --co-semantic-size-control-lg: var(--co-base-dimension-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-size-overlay-sm: var(--co-base-dimension-100); /** Width of a small Modal, and the default width or height of a Sheet. */
+  --co-semantic-size-overlay-md: var(--co-base-dimension-140); /** Width of a medium overlay panel, such as a medium Modal. */
+  --co-semantic-size-overlay-lg: var(--co-base-dimension-180); /** Width of a large overlay panel, such as a large Modal. */
+  --co-semantic-size-label-small: var(--co-base-dimension-5); /** Height of a small label: StatusLabel small and Tag small (decision 0018). */
+  --co-semantic-size-label-medium: var(--co-base-dimension-6); /** Height of a medium label and every chip: StatusLabel, Tag, CategoryLabel (0018, 0035). */
+  --co-semantic-size-label-large: var(--co-base-dimension-8); /** Height of a large label: CategoryLabel large (decision 0018). */
+  --co-semantic-size-menu-max-height: var(--co-base-dimension-75); /** Tallest a floating menu grows before it scrolls: Dropdown, SearchField. */
+  --co-semantic-size-dimension-1: var(--co-base-dimension-1); /** Deprecated: Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-2: var(--co-base-dimension-2); /** Deprecated: Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-4: var(--co-base-dimension-4); /** Deprecated: Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-5: var(--co-base-dimension-5); /** Deprecated: Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-6: var(--co-base-dimension-6); /** Deprecated: Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-8: var(--co-base-dimension-8); /** Deprecated: Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-12: var(--co-base-dimension-12); /** Deprecated: Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-15: var(--co-base-dimension-15); /** Deprecated: Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-18: var(--co-base-dimension-18); /** Deprecated: Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-20: var(--co-base-dimension-20); /** Deprecated: Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-30: var(--co-base-dimension-30); /** Deprecated: Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-45: var(--co-base-dimension-45); /** Deprecated: Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-50: var(--co-base-dimension-50); /** Deprecated: Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-75: var(--co-base-dimension-75); /** Deprecated: Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-90: var(--co-base-dimension-90); /** Deprecated: Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-100: var(--co-base-dimension-100); /** Deprecated: Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-dimension-192: var(--co-base-dimension-192); /** Deprecated: Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-size-icon-xs: var(--co-base-dimension-3); /** The smallest icon size, for dense inline indicators. */
+  --co-semantic-size-icon-sm: var(--co-base-dimension-4); /** Icons in compact controls, such as Alert's dismiss icon and small icon buttons. */
+  --co-semantic-size-icon-md: var(--co-base-dimension-5); /** Icons beside body text, such as Alert's severity icon. */
+  --co-semantic-size-icon-lg: var(--co-base-dimension-6); /** The Icon component's default size; also list item icons. */
+  --co-semantic-size-icon-xl: var(--co-base-dimension-8); /** Extra-large standalone icons, such as feature illustrations. */
+  --co-semantic-size-icon-2xl: var(--co-base-dimension-10); /** The largest icon size, for prominent standalone icons. */
+  --co-semantic-size-avatar-xs: var(--co-base-dimension-6); /** Extra-small avatar, inline with text. */
+  --co-semantic-size-avatar-sm: var(--co-base-dimension-8); /** Small avatar, in dense lists and tables. */
+  --co-semantic-size-avatar-md: var(--co-base-dimension-10); /** Medium avatar, the default size. */
+  --co-semantic-size-avatar-lg: var(--co-base-dimension-12); /** Large avatar, in headers and cards. */
+  --co-semantic-size-avatar-xl: var(--co-base-dimension-16); /** Extra-large avatar, on profile pages. */
+  --co-semantic-spacing-separator-sm: var(--co-base-dimension-4); /** Deprecated: Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-separator-md: var(--co-base-dimension-6); /** Deprecated: Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-separator-lg: var(--co-base-dimension-8); /** Deprecated: Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-separator-xl: var(--co-base-dimension-12); /** Deprecated: Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-xs: var(--co-base-dimension-1); /** Deprecated: Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-sm: var(--co-base-dimension-2); /** Deprecated: Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-md: var(--co-base-dimension-3); /** Deprecated: Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-lg: var(--co-base-dimension-4); /** Deprecated: Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-xl: var(--co-base-dimension-5); /** Deprecated: Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-component-2xl: var(--co-base-dimension-6); /** Deprecated: Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-none: var(--co-base-dimension-0); /** Deprecated: Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-xs: var(--co-base-dimension-1); /** Deprecated: Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-sm: var(--co-base-dimension-2); /** Deprecated: Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-md: var(--co-base-dimension-3); /** Deprecated: Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-lg: var(--co-base-dimension-4); /** Deprecated: Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-xl: var(--co-base-dimension-5); /** Deprecated: Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-2xl: var(--co-base-dimension-6); /** Deprecated: Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-3xl: var(--co-base-dimension-7); /** Deprecated: Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-4xl: var(--co-base-dimension-8); /** Deprecated: Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-5xl: var(--co-base-dimension-9); /** Deprecated: Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-6xl: var(--co-base-dimension-10); /** Deprecated: Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-7xl: var(--co-base-dimension-12); /** Deprecated: Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-8xl: var(--co-base-dimension-14); /** Deprecated: Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-9xl: var(--co-base-dimension-16); /** Deprecated: Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-10xl: var(--co-base-dimension-20); /** Deprecated: Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-spacing-layout-11xl: var(--co-base-dimension-24); /** Deprecated: Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
   --co-semantic-color-text-emphasis: var(--co-base-color-neutral-1000); /** Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white. */
@@ -635,11 +692,12 @@
   --co-semantic-motion-hover: background-color var(--co-base-duration-fast) var(--co-base-easing-ease-out), color var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Deprecated: Renamed to semantic.motion.transition.feedback by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0. */
   --co-semantic-motion-focus: outline var(--co-base-duration-fast) var(--co-base-easing-ease-out), outline-offset var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Deprecated: Renamed to semantic.motion.transition.focus by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0. */
   --co-semantic-motion-interactive: transform var(--co-base-duration-fast) var(--co-base-easing-ease-out), opacity var(--co-base-duration-fast) var(--co-base-easing-ease-out); /** Deprecated: Renamed to semantic.motion.transition.press by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0. */
-  --co-semantic-motion-distance-sm: var(--co-base-spacing-2); /** How far a small element travels as it enters, such as a Dropdown menu dropping in. */
+  --co-semantic-motion-distance-sm: var(--co-base-dimension-2); /** How far a small element travels as it enters, such as a Dropdown menu dropping in. */
   --co-semantic-layer-sticky: var(--co-base-z-index-1); /** Stacking layer for chrome that stays visible while scrolling: sticky headers, navigation bars. */
   --co-semantic-layer-dropdown: var(--co-base-z-index-6); /** Stacking layer for menus anchored to a control: Dropdown and SearchField lists. */
   --co-semantic-layer-overlay: var(--co-base-z-index-7); /** Stacking layer for panels that slide over the page and their backdrop, such as Sheet. */
   --co-semantic-layer-modal: var(--co-base-z-index-8); /** Stacking layer for blocking dialogs and their backdrop: Modal, ActionSheet. */
+  --co-semantic-radius-none: var(--co-base-dimension-0); /** No rounding: tables, dividers and sharp-edged containers. */
   --co-semantic-radius-xs: var(--co-base-border-radius-1); /** Minimal rounding: small badges, checkboxes, compact tags. */
   --co-semantic-radius-sm: var(--co-base-border-radius-2); /** Subtle rounding: buttons, inputs and other form controls. */
   --co-semantic-radius-md: var(--co-base-border-radius-3); /** Standard rounding: cards, dropdown menus, popovers. */
@@ -648,28 +706,28 @@
   --co-semantic-radius-2xl: var(--co-base-border-radius-6); /** Extra-large rounding: hero elements and decorative containers. */
   --co-semantic-radius-3xl: var(--co-base-border-radius-7); /** Maximum rounding short of a circle: decorative cards and marketing elements. */
   --co-semantic-radius-full: var(--co-base-border-radius-circle); /** Fully round: avatars, round icon buttons, status dots and chips. */
-  --co-semantic-space-0: var(--co-base-spacing-0); /** No space, for explicit resets of padding, margin or gap. */
-  --co-semantic-space-100: var(--co-base-spacing-1); /** The tightest gap, such as between a label and its required indicator. */
-  --co-semantic-space-200: var(--co-base-spacing-2); /** A small gap, such as between a field's label, control and helper text. */
-  --co-semantic-space-300: var(--co-base-spacing-3); /** The default gap between related elements in a group. */
-  --co-semantic-space-400: var(--co-base-spacing-4); /** Space between groups of elements, around a small Divider, and inside containers. */
-  --co-semantic-space-500: var(--co-base-spacing-5); /** Generous padding inside larger containers and cards. */
-  --co-semantic-space-600: var(--co-base-spacing-6); /** Space between blocks, and around a medium or minimal Divider. */
-  --co-semantic-space-700: var(--co-base-spacing-7); /** A larger step between blocks and sections; pick the step the layout needs. */
-  --co-semantic-space-800: var(--co-base-spacing-8); /** Space between sections, and around the default Divider. */
-  --co-semantic-space-900: var(--co-base-spacing-9); /** A larger step between blocks and sections; pick the step the layout needs. */
-  --co-semantic-space-1000: var(--co-base-spacing-10); /** A larger step between blocks and sections; pick the step the layout needs. */
-  --co-semantic-space-1200: var(--co-base-spacing-12); /** Space between major sections, and around an extra-large Divider. */
-  --co-semantic-space-1400: var(--co-base-spacing-14); /** A large step between page sections; pick the step the layout needs. */
-  --co-semantic-space-1600: var(--co-base-spacing-16); /** A large step between page sections; pick the step the layout needs. */
-  --co-semantic-space-2000: var(--co-base-spacing-20); /** A very large step between page sections, second only to the largest. */
-  --co-semantic-space-2400: var(--co-base-spacing-24); /** The largest gap between page sections, such as FeatureBlock at wide breakpoints. */
-  --co-semantic-space-inset-xs: var(--co-base-spacing-1); /** Tightest padding inside a component, such as around an icon in a small control. */
-  --co-semantic-space-inset-sm: var(--co-base-spacing-2); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
-  --co-semantic-space-inset-md: var(--co-base-spacing-3); /** Medium padding inside a component: form field insides, medium IconButtons. */
-  --co-semantic-space-inset-lg: var(--co-base-spacing-4); /** Large padding inside a component: button and input sides, card insides. */
-  --co-semantic-space-inset-xl: var(--co-base-spacing-5); /** Generous padding inside a component, such as a prominent call to action. */
-  --co-semantic-space-inset-2xl: var(--co-base-spacing-6); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-semantic-space-0: var(--co-base-dimension-0); /** No space, for explicit resets of padding, margin or gap. */
+  --co-semantic-space-100: var(--co-base-dimension-1); /** The tightest gap, such as between a label and its required indicator. */
+  --co-semantic-space-200: var(--co-base-dimension-2); /** A small gap, such as between a field's label, control and helper text. */
+  --co-semantic-space-300: var(--co-base-dimension-3); /** The default gap between related elements in a group. */
+  --co-semantic-space-400: var(--co-base-dimension-4); /** Space between groups of elements, around a small Divider, and inside containers. */
+  --co-semantic-space-500: var(--co-base-dimension-5); /** Generous padding inside larger containers and cards. */
+  --co-semantic-space-600: var(--co-base-dimension-6); /** Space between blocks, and around a medium or minimal Divider. */
+  --co-semantic-space-700: var(--co-base-dimension-7); /** A larger step between blocks and sections; pick the step the layout needs. */
+  --co-semantic-space-800: var(--co-base-dimension-8); /** Space between sections, and around the default Divider. */
+  --co-semantic-space-900: var(--co-base-dimension-9); /** A larger step between blocks and sections; pick the step the layout needs. */
+  --co-semantic-space-1000: var(--co-base-dimension-10); /** A larger step between blocks and sections; pick the step the layout needs. */
+  --co-semantic-space-1200: var(--co-base-dimension-12); /** Space between major sections, and around an extra-large Divider. */
+  --co-semantic-space-1400: var(--co-base-dimension-14); /** A large step between page sections; pick the step the layout needs. */
+  --co-semantic-space-1600: var(--co-base-dimension-16); /** A large step between page sections; pick the step the layout needs. */
+  --co-semantic-space-2000: var(--co-base-dimension-20); /** A very large step between page sections, second only to the largest. */
+  --co-semantic-space-2400: var(--co-base-dimension-24); /** The largest gap between page sections, such as FeatureBlock at wide breakpoints. */
+  --co-semantic-space-inset-xs: var(--co-base-dimension-1); /** Tightest padding inside a component, such as around an icon in a small control. */
+  --co-semantic-space-inset-sm: var(--co-base-dimension-2); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
+  --co-semantic-space-inset-md: var(--co-base-dimension-3); /** Medium padding inside a component: form field insides, medium IconButtons. */
+  --co-semantic-space-inset-lg: var(--co-base-dimension-4); /** Large padding inside a component: button and input sides, card insides. */
+  --co-semantic-space-inset-xl: var(--co-base-dimension-5); /** Generous padding inside a component, such as a prominent call to action. */
+  --co-semantic-space-inset-2xl: var(--co-base-dimension-6); /** Largest padding inside a component: large cards, spacious form sections. */
   --co-semantic-surface-base: var(--co-base-color-neutral-100); /** The page: the off-white background everything else sits on (decision 0006). */
   --co-semantic-surface-raised: var(--co-base-color-neutral-000); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Primary Button fill at rest. */
