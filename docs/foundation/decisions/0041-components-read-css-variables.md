@@ -21,9 +21,9 @@
 
 - A generated mirror of `tokens.json` with the same shape and the same `Tokens` type, where each value is `var(--co-<name>, <resolved value>)`. All 972 tokens map to an existing variable in `tokens.css`.
 - Switching the 51 component and lib files to it is a one-line import change each. Typecheck passes unchanged, because the type is identical.
-- **No consumer setup changes.** With `tokens.css` removed from the page, the fallbacks rendered every checked component identically.
+- **No consumer setup changes.** With `tokens.css` removed, the computed styles of every element on four pages (the e2e fixture page and the Button, Slider and Modal docs pages, 239 elements, 21 properties each) matched main's with `tokens.css` removed too. The only differences were three mid-transition opacity readings and Next.js's dev overlay.
 - **Modes work.** Setting `--co-semantic-size-control-*` on one element took a Button inside it from 48px to 40px, which is exactly what `data-co-density` needs.
-- **Tests:** jsdom doesn't resolve `var()` (201 style assertions failed), but mapping the mirror to `tokens.json` for Jest made all 2113 tests pass unchanged. All 13 Playwright checks passed against the real `var()` output.
+- **Tests:** jsdom doesn't resolve `var()` (201 tests failed on their style assertions), but mapping the mirror to `tokens.json` for Jest made all 2113 tests pass unchanged. All 13 Playwright checks passed against the real `var()` output.
 - **Bundle:** +10.7 KB gzip (+13%) with the mirror as a second JSON copy. Built from `tokens.json` at import time instead (one small function), the cost is close to nil.
 - The #229 checker keeps working, because the mirror is typed `Tokens`.
 
