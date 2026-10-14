@@ -1065,6 +1065,7 @@
       "9000": "22.5rem",
       "10000": "25rem",
       "19200": "48rem",
+      "pointerTarget": "1.5rem",
       "touchTarget": "2.75rem",
       "control": {
         "sm": "2rem",

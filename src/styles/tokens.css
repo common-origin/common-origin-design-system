@@ -450,6 +450,7 @@
   --co-semantic-size-9000: var(--co-base-dimension-90); /** Size step for readable text widths, such as EmptyState copy. */
   --co-semantic-size-10000: var(--co-base-dimension-100); /** Size step for compact panel widths, such as the EmptyState block. */
   --co-semantic-size-19200: var(--co-base-dimension-192); /** Size step for wide content columns, such as CardLarge. */
+  --co-semantic-size-pointer-target: var(--co-base-dimension-6); /** Minimum pointer target for a control that's smaller to look at: its invisible hit area (WCAG 2.5.8, decision 0039). On touch screens, use touchTarget. */
   --co-semantic-size-touch-target: var(--co-base-dimension-11); /** Minimum height of a tappable row or control on touch screens. */
   --co-semantic-size-control-sm: var(--co-base-dimension-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-dimension-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */

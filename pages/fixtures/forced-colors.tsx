@@ -99,6 +99,9 @@ export default function ForcedColorsFixture() {
             <Stack direction="column" gap="md">
               <Case id="progress"><ProgressBar value={60} /></Case>
               <Case id="slider"><Slider label="Volume" defaultValue={40} /></Case>
+              {/* Both thumbs on one value, so their hit areas meet at the midpoint at any width
+                  (e2e/target-size.spec.ts) */}
+              <Case id="slider-range"><Slider aria-label="Price" defaultRangeValue={[50, 50]} /></Case>
             </Stack>
           </section>
 

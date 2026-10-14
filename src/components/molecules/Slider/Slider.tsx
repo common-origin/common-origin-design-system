@@ -131,6 +131,8 @@ const StyledTrack = styled.div<{ $disabled?: boolean }>`
   cursor: ${({ $disabled }) => $disabled ? 'not-allowed' : 'pointer'};
   /* A vertical swipe over the track still scrolls the page */
   touch-action: pan-y;
+  /* The thumbs measure their distance apart in cqw (1% of the track's width) */
+  container-type: inline-size;
 
   /* Forced colours drop the track's fill, so it gets an edge; the thumb stays centred on it (decision 0038).
      A div gets no system disabled colour, so a disabled track sets GrayText itself. */
@@ -160,6 +162,8 @@ const StyledTrackFill = styled.div<{ $disabled?: boolean }>`
 const StyledThumb = styled.div<{ 
   $disabled?: boolean
   $active?: boolean
+  /** A range slider's thumb: its hit area stops at the midpoint between the two thumbs */
+  $range?: 'min' | 'max'
 }>`
   position: absolute;
   width: ${semantic.space[500]};
@@ -187,6 +191,41 @@ const StyledThumb = styled.div<{
               background-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate},
               border-color ${semantic.motion.duration.fast} ${semantic.motion.easing.decelerate};
   box-shadow: ${tokens.component.slider.thumb.shadow.default};
+
+  /* The pointer target (WCAG 2.5.8, decision 0039): the thumb keeps its 20px look, and an
+     invisible hit area centred on it takes pointer input instead, 24px for a mouse or pen and
+     44px on a touch screen. A range slider's two hit areas stop at the midpoint between the
+     thumbs (--slider-reach, set from their positions), so they never overlap and a drag always
+     takes the nearer thumb. The thumb itself takes no input, as its body can overlap the other
+     thumb's half. */
+  pointer-events: none;
+  --slider-hit: ${semantic.size.pointerTarget};
+  @media (pointer: coarse) {
+    --slider-hit: ${semantic.size.touchTarget};
+  }
+  --slider-hit-half: calc(var(--slider-hit) / 2);
+  --slider-hit-start: ${({ $range }) => $range === 'max' ? 'min(var(--slider-hit-half), var(--slider-reach))' : 'var(--slider-hit-half)'};
+  --slider-hit-end: ${({ $range }) => $range === 'min' ? 'min(var(--slider-hit-half), var(--slider-reach))' : 'var(--slider-hit-half)'};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(50% - var(--slider-hit-start));
+    width: calc(var(--slider-hit-start) + var(--slider-hit-end));
+    height: var(--slider-hit);
+    transform: translateY(-50%);
+    pointer-events: auto;
+  }
+
+  /* Without container query units the midpoint can't be measured, so the hit areas stay whole
+     (where they overlap, the thumb drawn later wins) */
+  @supports not (width: 1cqw) {
+    &::before {
+      left: calc(50% - var(--slider-hit-half));
+      width: var(--slider-hit);
+    }
+  }
 
   ${reducedMotion} {
     transition: none;
@@ -357,6 +396,8 @@ export const Slider = ({
   // Pointer handlers: mouse, touch and pen
   const handleTrackClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (disabled) return
+    // A click on a thumb (or the end of a drag) leaves the value where the thumb put it
+    if ((event.target as HTMLElement).closest('[role="slider"]')) return
     
     const newValue = positionToValue(event.clientX)
     
@@ -543,7 +584,8 @@ export const Slider = ({
                 aria-describedby={ariaDescribedBy}
                 $disabled={disabled}
                 $active={activeThumb === 'min'}
-                style={{ left: `${minPercent}%` }}
+                $range="min"
+                style={{ left: `${minPercent}%`, '--slider-reach': `${(maxPercent - minPercent) / 2}cqw` } as React.CSSProperties}
                 onPointerDown={(event) => handleThumbPointerDown('min', event)}
                 onKeyDown={handleKeyDown('min')}
               >
@@ -567,7 +609,8 @@ export const Slider = ({
                 aria-describedby={ariaDescribedBy}
                 $disabled={disabled}
                 $active={activeThumb === 'max'}
-                style={{ left: `${maxPercent}%` }}
+                $range="max"
+                style={{ left: `${maxPercent}%`, '--slider-reach': `${(maxPercent - minPercent) / 2}cqw` } as React.CSSProperties}
                 onPointerDown={(event) => handleThumbPointerDown('max', event)}
                 onKeyDown={handleKeyDown('max')}
               >

@@ -1928,6 +1928,8 @@ export type Tokens = {
       '10000': string;
       /** Size step for wide content columns, such as CardLarge. */
       '19200': string;
+      /** Minimum pointer target for a control that's smaller to look at: its invisible hit area (WCAG 2.5.8, decision 0039). On touch screens, use touchTarget. */
+      pointerTarget: string;
       /** Minimum height of a tappable row or control on touch screens. */
       touchTarget: string;
       control: {
