@@ -91,8 +91,10 @@ describe.each(Object.entries(resolver.modifiers))('the %s mode', (mode, modifier
 })
 
 describe('density (#191)', () => {
-  const control = (context: string, step: string) =>
-    rem(resolve(`var(--co-semantic-size-control-${step})`, context === 'default' ? new Map() : block('density', context)))
+  const control = (context: string, step: string) => {
+    const name = `--co-semantic-size-control-${step}`
+    return rem(resolve(`var(${name})`, context === 'default' ? new Map() : block('density', context)))
+  }
 
   it('shifts control heights one 8px step per context (decision 0034)', () => {
     expect(['sm', 'md', 'lg'].map((step) => control('compact', step))).toEqual([24, 32, 40])
