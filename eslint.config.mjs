@@ -120,6 +120,12 @@ export default tseslint.config(
           message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
         },
         {
+          // Tokens are CSS variables (decision 0041), and `-var(…)` is invalid CSS, so the browser
+          // drops the whole declaration. Negate with calc(-1 * …) instead.
+          selector: 'TemplateElement[value.raw=/[\\s:(,]-$/]',
+          message: 'A minus sign before an interpolated token makes `-var(…)`, which is invalid CSS (decision 0041). Use calc(-1 * ${token}).',
+        },
+        {
           selector: "VariableDeclarator[init.name='tokens'] > ObjectPattern > Property[key.name='base']",
           message: 'Components must not use base tokens (decision 0014). Use a semantic or component token.',
         },

@@ -148,7 +148,7 @@ const rowForcedColors = ({
   textSelector?: string
 }) => {
   const text = (color: string) => (textSelector ? `color: ${color};\n    ${textSelector} { color: ${color}; }` : `color: ${color};`)
-  const hover = `outline: ${tokens.semantic.border.width.thin} solid Highlight;\n      outline-offset: -${tokens.semantic.border.width.thin};`
+  const hover = `outline: ${tokens.semantic.border.width.thin} solid Highlight;\n      outline-offset: calc(-1 * ${tokens.semantic.border.width.thin});`
   // A row that doesn't respond (disabled, or not interactive at all) keeps its selection but has
   // no hover outline. Disabled text is the component's to colour: callers also pass this for
   // static rows, which must stay CanvasText.

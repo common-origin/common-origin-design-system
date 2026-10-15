@@ -101,3 +101,12 @@ test('a component renders its resolved values with tokens.css removed', async ({
     color: before.color,
   })
 })
+
+// `-var(…)` is invalid CSS, so a negated token must go through calc(-1 * …) or the browser drops
+// the whole declaration (a lint rule also catches it). The Slider thumb is positioned by one.
+test('a negated token still applies: the Slider thumb sits centred on its track', async ({ page }) => {
+  const thumb = page.locator('[data-fc="slider"] [role="slider"]')
+  const [thumbBox, trackBox] = [await thumb.boundingBox(), await thumb.locator('..').boundingBox()]
+  if (!thumbBox || !trackBox) throw new Error('slider not found')
+  expect(Math.abs(thumbBox.y + thumbBox.height / 2 - (trackBox.y + trackBox.height / 2))).toBeLessThan(1)
+})

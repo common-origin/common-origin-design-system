@@ -87,7 +87,7 @@ const StyledHeaderWrapper = styled.div`
   gap: ${space[0]};
 
   & > span {
-    margin-top: -${space[100]};
+    margin-top: calc(-1 * ${space[100]});
   }
 `
 

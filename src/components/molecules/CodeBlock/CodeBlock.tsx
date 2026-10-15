@@ -92,7 +92,7 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   transition: opacity ${motion.duration.slow} ${motion.easing.standard}, background ${motion.duration.slow} ${motion.easing.standard};
   
   ${({ $hasGradient }) => $hasGradient ? `
-    margin-top: -${tokens.semantic.space[800]};
+    margin-top: calc(-1 * ${tokens.semantic.space[800]});
     padding-top: ${tokens.semantic.space[800]};
     background: linear-gradient(
       to bottom,

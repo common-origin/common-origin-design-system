@@ -36,6 +36,9 @@ const flagged = [
   ['quoted zIndex key', "const a = { 'zIndex': 9999 }"],
   ['negative zIndex style property', 'const a = { zIndex: -5 }'],
   ['base token', 'const a = tokens.base.spacing'],
+  ['negated token in CSS', 'const A = styled.div`\n  top: -${space[200]};\n`'],
+  ['negated token in a transform', 'const A = styled.div`\n  transform: translateY(-${distance.sm});\n`'],
+  ['negated token in a plain template', 'const a = `outline-offset: -${width.thin};`'],
   ['resolved tokens imported by alias', "import tokens from '@/styles/tokens.json'"],
   ['resolved tokens imported by path', "import tokens from '../../../styles/tokens.json'"],
 ]
@@ -53,6 +56,10 @@ const allowed = [
   ['hash text under ARIA keys', "const a = { ariaLabel: 'Issue #123', 'aria-label': 'Issue #456' }"],
   ['hash link', "const href = '#section'"],
   ['tokens as CSS variables', "import tokens from '@/lib/cssTokens'"],
+  ['negation through calc', 'const A = styled.div`\n  top: calc(-1 * ${space[200]});\n`'],
+  ['subtraction in calc', 'const A = styled.div`\n  width: calc(100% - ${space[400]} * 2);\n`'],
+  ['hyphenated key', 'const key = `meter-${index}`'],
+  ['two values joined by a hyphen', 'const key = `${label}-${index}`'],
 ]
 
 const lintScript = `
