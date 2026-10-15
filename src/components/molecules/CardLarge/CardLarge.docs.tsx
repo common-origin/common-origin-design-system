@@ -65,9 +65,10 @@ export const cardLargeDocs: ComponentDocumentation = {
     'semantic.radius.2xl',
     'semantic.space.300',
     'semantic.space.400',
-    // Motion
-    'semantic.motion.duration.moderate',
-    'semantic.motion.easing.decelerate',
+    // A clickable image (imageHref or onImageClick) answers hover, press and focus through Picture
+    'semantic.opacity.hover',
+    'semantic.opacity.pressed',
+    'semantic.border.focus',
   ],
 
   examples: [

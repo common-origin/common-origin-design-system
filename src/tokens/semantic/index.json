@@ -63,6 +63,14 @@
       "full": {
         "$value": "{base.opacity.100}",
         "$description": "1: fully opaque (the enabled counterpart of disabled)."
+      },
+      "hover": {
+        "$value": "{base.opacity.80}",
+        "$description": "Content that fades to answer hover, such as a clickable card's image."
+      },
+      "pressed": {
+        "$value": "{base.opacity.70}",
+        "$description": "Content that fades while pressed, one step further than hover."
       }
     },
     "fontFamily": {

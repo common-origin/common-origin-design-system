@@ -20,28 +20,34 @@ export type CardSmallProps = {
   'data-testid'?: string
 }
 
+// The whole card is one link (#185): hovering anywhere fades its image, pressing fades it one step
+// further, and keyboard focus draws the system focus ring around the card (decision 0029)
 const CardSmallStyled = styled.div`
   a {
+    display: block;
     text-decoration: none;
+    border-radius: ${tokens.semantic.radius.sm};
   }
 
   img {
     border-radius: ${tokens.semantic.radius.sm};
-    transition: opacity ${tokens.semantic.motion.duration.moderate} ${tokens.semantic.motion.easing.decelerate};
+    transition: ${tokens.semantic.motion.transition.press};
     width: 100%;
     height: auto;
     display: block;
   }
 
-  &:hover {
-    img {
-      opacity: 0.8;
-    }
+  a:hover img {
+    opacity: ${tokens.semantic.opacity.hover};
   }
 
-  &:focus-within {
-    outline: none;
-    box-shadow: 0 0 0 ${tokens.semantic.border.width.thick} ${tokens.semantic.color.border.focus};
+  a:active img {
+    opacity: ${tokens.semantic.opacity.pressed};
+  }
+
+  a:focus-visible {
+    outline: ${tokens.semantic.border.focus};
+    outline-offset: ${tokens.semantic.border.focusOffset};
   }
 `
 

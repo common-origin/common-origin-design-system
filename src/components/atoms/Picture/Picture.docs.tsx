@@ -61,8 +61,12 @@ export const pictureDocs: ComponentDocumentation = {
     'semantic.radius.sm',
     'semantic.space.300',
     'semantic.breakpoint.sm',
-    'semantic.motion.duration.moderate',
-    'semantic.motion.easing.standard'
+    // A clickable image (href or onClick): hover, pressed and focus
+    'semantic.motion.transition.press',
+    'semantic.opacity.hover',
+    'semantic.opacity.pressed',
+    'semantic.border.focus',
+    'semantic.border.focusOffset',
   ],
 
   examples: [
