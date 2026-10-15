@@ -2,7 +2,7 @@
 
 How to add, use, change and test design tokens. For **why** tokens are structured this way, see [P3](../docs/foundation/principles.md#p3-tokens-not-values) and decision [0014](../docs/foundation/decisions/0014-token-tiers.md). For **how the build works** (Style Dictionary config, outputs, types, known defects and the planned migration), see the [token pipeline](../docs/tokens/pipeline.md), which is the technical reference.
 
-There is no ThemeProvider, runtime token validation or dark-mode switching. Components import resolved token values from `src/styles/tokens.json` at build time.
+There is no ThemeProvider, runtime token validation or dark-mode switching. Components read tokens as CSS variables with the resolved value as the fallback, through `src/lib/cssTokens.ts` ([0041](../docs/foundation/decisions/0041-components-read-css-variables.md)). Tests import `src/styles/tokens.json` and assert resolved values.
 
 ## Tiers
 
@@ -26,12 +26,12 @@ The source files are DTCG (`$value`, `$type`, `$description`), and every compone
 ## Using tokens in components
 
 ```tsx
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 const { semantic } = tokens
 
 const Label = styled.span`
   color: ${semantic.color.text.subdued};
-  padding: ${semantic.spacing.layout.xs};
+  padding: ${semantic.space[100]};
 `
 ```
 

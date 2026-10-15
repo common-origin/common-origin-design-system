@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 import { Picture } from '../../atoms/Picture/Picture'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 export type CardSmallProps = {
   title: string

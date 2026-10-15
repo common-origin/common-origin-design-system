@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
 import { forcedColorsEdge, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 // Destructure tokens for cleaner access
 const { status: statusColors } = tokens.component

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import tokens from '../../../styles/tokens.json'
+import tokens from '../../../lib/cssTokens'
 import type { Tokens } from '../../../types/tokens'
 import { backgroundByKey, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
 import { reducedMotion } from '../../../lib/styleUtils'

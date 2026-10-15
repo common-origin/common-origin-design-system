@@ -2,7 +2,7 @@ import { InputHTMLAttributes, forwardRef, useId, useState } from 'react'
 import styled from 'styled-components'
 import { StyledInputBase } from '../TextField/InputBase'
 import { IconButton } from '../../atoms/IconButton/IconButton'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { field } = tokens.component
 // Gaps come from the semantic spacing scale: no component spacing tokens (decision 0022)

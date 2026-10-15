@@ -8,7 +8,7 @@ import { MoneyDisplay } from '../../atoms/MoneyDisplay'
 import { Button } from '../../atoms/Button'
 import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { Avatar } from '../../atoms/Avatar'
-import tokens from '../../../styles/tokens.json'
+import tokens from '../../../lib/cssTokens'
 
 // Destructure tokens for cleaner access
 const { semantic } = tokens
@@ -87,7 +87,7 @@ const StyledHeaderWrapper = styled.div`
   gap: ${space[0]};
 
   & > span {
-    margin-top: -${space[100]};
+    margin-top: calc(-1 * ${space[100]});
   }
 `
 

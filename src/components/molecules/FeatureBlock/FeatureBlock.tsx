@@ -7,7 +7,7 @@ import { Divider } from '../../atoms/Divider'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
 import { DateFormatter } from '../../atoms/DateFormatter'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic: { space } } = tokens
 

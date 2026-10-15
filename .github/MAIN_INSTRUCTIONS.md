@@ -19,12 +19,12 @@ Update this file in the same PR as any change to the structure, build, testing a
 
 ## Tokens
 
-Components import token values from the JSON and never hard-code colours, spacing, radius, shadows, fonts, z-index or durations (P3). The exceptions recorded in the [visual language](../docs/foundation/visual-language.md) still apply: literal `-1`, `0` or `1` z-index for stacking a component's own parts (0013), AgentInput's 1300ms working ring (0010), and a few non-design px literals.
+Components import tokens from `src/lib/cssTokens.ts`, where every value is a CSS variable with the resolved value as its fallback ([0041](../docs/foundation/decisions/0041-components-read-css-variables.md); an ESLint rule stops components importing `tokens.json`), and never hard-code colours, spacing, radius, shadows, fonts, z-index or durations (P3). The exceptions recorded in the [visual language](../docs/foundation/visual-language.md) still apply: literal `-1`, `0` or `1` z-index for stacking a component's own parts (0013), AgentInput's 1300ms working ring (0010), and a few non-design px literals.
 
 ```tsx
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 const { semantic } = tokens
-// color: ${semantic.color.text.default}; padding: ${semantic.spacing.layout.md};
+// color: ${semantic.color.text.default}; padding: ${semantic.space[300]};
 ```
 
 - Components use **semantic** tokens, or **component** tokens where decision [0014](../docs/foundation/decisions/0014-token-tiers.md) allows. They never use base tokens; an ESLint rule enforces this in `src/components`. GridSystem is the one existing exception: its public `gap*` props take base spacing keys, so it reads `tokens.base.spacing` with the rule disabled on that line. Changing the prop types is a breaking change, tracked in [#34](https://github.com/common-origin/common-origin-design-system/issues/34); don't treat it as routine cleanup.

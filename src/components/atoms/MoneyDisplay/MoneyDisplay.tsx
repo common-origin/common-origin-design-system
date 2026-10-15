@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Typography, type TypographyVariant, type TypographyColor } from '../Typography'
 import { Icon, type IconProps } from '../Icon'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 export type MoneyDisplayVariant = 'default' | 'positive' | 'negative' | 'neutral'
 export type MoneyDisplaySize = 'small' | 'medium' | 'large' | 'xlarge'

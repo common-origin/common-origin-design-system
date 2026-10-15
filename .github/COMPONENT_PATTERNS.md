@@ -144,7 +144,7 @@ const ComponentName = <T extends ElementType = 'div'>({
 Prevent $ prefixed props from reaching DOM:
 ```tsx
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic } = tokens
 

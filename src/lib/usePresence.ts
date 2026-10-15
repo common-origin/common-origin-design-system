@@ -1,8 +1,11 @@
 import { useEffect, useState, type RefObject } from 'react'
-import tokens from '../styles/tokens.json'
+// The exit timer needs the resolved duration, not its CSS variable (decision 0041)
+// eslint-disable-next-line no-restricted-imports
+import tokenValues from '../styles/tokens.json'
 
-// How long an exiting element stays mounted: the duration of `exitAnimation` in styleUtils.
-export const EXIT_DURATION_MS = parseInt(tokens.semantic.motion.duration.fast, 10)
+// How long an exiting element stays mounted: the duration of `exitAnimation` in styleUtils. A timer
+// needs the resolved value, not the CSS variable (decision 0041).
+export const EXIT_DURATION_MS = parseInt(tokenValues.semantic.motion.duration.fast, 10)
 
 /**
  * Keeps an element mounted for `exitMs` after `isOpen` turns false, so its exit

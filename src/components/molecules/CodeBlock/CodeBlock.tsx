@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../atoms/Button'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 
 const { semantic: { color, border, motion } } = tokens
@@ -92,7 +92,7 @@ const ExpandButtonWrapper = styled.div<{ $hasGradient: boolean }>`
   transition: opacity ${motion.duration.slow} ${motion.easing.standard}, background ${motion.duration.slow} ${motion.easing.standard};
   
   ${({ $hasGradient }) => $hasGradient ? `
-    margin-top: -${tokens.semantic.space[800]};
+    margin-top: calc(-1 * ${tokens.semantic.space[800]});
     padding-top: ${tokens.semantic.space[800]};
     background: linear-gradient(
       to bottom,

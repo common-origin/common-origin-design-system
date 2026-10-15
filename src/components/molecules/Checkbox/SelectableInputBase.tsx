@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { forcedColors } from '../../../lib/styleUtils'
 
 export type SelectableInputState = 'default' | 'error' | 'disabled'

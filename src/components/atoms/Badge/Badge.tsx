@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { forcedColors, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { Typography } from '../Typography'
 
 const { semantic } = tokens

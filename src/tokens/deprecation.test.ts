@@ -112,6 +112,11 @@ const ALLOWED: { file: string; paths?: RegExp; argumentOf?: string; reason: stri
   },
   { file: 'src/tokens.ts', reason: 'Publishes the whole token set; deprecated tokens stay in it until 3.0' },
   {
+    file: 'src/lib/cssTokens.ts',
+    reason: 'Builds the CSS-variable mirror of the whole token set (decision 0041); reads of the mirror are traced through its Tokens type',
+  },
+  { file: 'src/lib/cssVariables.test.ts', reason: 'Checks that every token, deprecated or not, maps to a variable in tokens.css' },
+  {
     file: 'src/lib/docgen/tokenPaths.ts',
     argumentOf: 'reduce',
     reason: 'Resolves token-path strings for docs pages; the strings themselves are checked by the text search below',

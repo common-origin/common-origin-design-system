@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useId } from 'react'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
@@ -122,7 +122,7 @@ const DropdownMenu = styled.div.withConfig({
   overflow: hidden;
   opacity: ${({ $isOpen }) => ($isOpen ? 1 : 0)};
   visibility: ${({ $isOpen }) => ($isOpen ? 'visible' : 'hidden')};
-  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(-${tokens.semantic.motion.distance.sm})`)};
+  transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : `translateY(calc(-1 * ${tokens.semantic.motion.distance.sm}))`)};
   transition: opacity ${duration.fast} ${easing.decelerate},
               visibility ${duration.fast} ${easing.decelerate},
               transform ${duration.fast} ${easing.decelerate};

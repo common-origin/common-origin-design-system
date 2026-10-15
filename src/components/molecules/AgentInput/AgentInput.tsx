@@ -12,7 +12,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { IconButton } from '../../atoms/IconButton'
 import { Typography } from '../../atoms/Typography'
 import { visuallyHidden } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import {
   AgentInputSubmitSource,
   AgentInputVoiceError,
@@ -168,7 +168,7 @@ const MicListeningRing = styled.span.withConfig({
 })<{ $reducedMotion: boolean }>`
   --ring-thickness: ${semantic.border.width.thick};
   position: absolute;
-  inset: calc(-${semantic.space[100]} - ${semantic.border.focusOffset});
+  inset: calc(-1 * ${semantic.space[100]} - ${semantic.border.focusOffset});
   border-radius: ${semantic.radius.full};
   pointer-events: none;
   z-index: 0;

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { IconButton } from '../../atoms/IconButton'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 interface PageTitleProps {
   title: string

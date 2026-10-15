@@ -11,7 +11,7 @@ import { type IconName } from '../../../types/icons'
 import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 

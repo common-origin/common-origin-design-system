@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useId, KeyboardEvent } from 'react'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
@@ -168,7 +168,7 @@ const StyledThumb = styled.div<{
   position: absolute;
   width: ${semantic.space[500]};
   height: ${semantic.space[500]};
-  top: -${semantic.space[200]};
+  top: calc(-1 * ${semantic.space[200]});
   background-color: ${({ $disabled }) =>
     $disabled
       ? semantic.color.fill.disabled
@@ -254,7 +254,7 @@ const StyledThumb = styled.div<{
 
 const StyledValueLabel = styled.div<{ $disabled?: boolean }>`
   position: absolute;
-  top: -${semantic.space[800]};
+  top: calc(-1 * ${semantic.space[800]});
   left: ${semantic.space[200]};
   transform: translateX(-50%);
   padding: ${semantic.space[100]} ${semantic.space[200]};

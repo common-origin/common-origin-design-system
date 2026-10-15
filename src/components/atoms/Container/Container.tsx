@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { breakpoints, media } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic: { space } } = tokens
 
