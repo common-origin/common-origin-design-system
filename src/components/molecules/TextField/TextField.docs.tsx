@@ -1,6 +1,7 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
 import { TextField } from './TextField'
 import { Stack } from '@/components/atoms/Stack'
+import { densityGuide } from '../../../lib/docgen/densityGuide'
 
 export const textFieldDocs: ComponentDocumentation = {
   id: 'text-field',
@@ -123,6 +124,7 @@ export const textFieldDocs: ComponentDocumentation = {
     },
   ],
 
+  guides: [densityGuide],
   tokens: [
     'component.input.textarea.minHeight',
     'semantic.space.200',

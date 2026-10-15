@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { Dropdown } from './Dropdown'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
+import { densityGuide } from '../../../lib/docgen/densityGuide'
 
 /**
  * Dropdown component documentation
@@ -81,6 +82,7 @@ export const dropdownDocs: ComponentDocumentation = {
     }
   ],
 
+  guides: [densityGuide],
   tokens: [
     'semantic.size.menu.maxHeight',
     'semantic.space.200',
