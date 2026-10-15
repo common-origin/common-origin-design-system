@@ -978,3 +978,77 @@
   --co-component-tab-bar-badge-typography: var(--co-semantic-typography-caption); /** Tab count badge text. */
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */
 }
+
+/* Mode: density (decision 0032). Control heights and control insets for a region, set with data-co-density on any element (decisions 0032 and 0034, #191). Rows and layout spacing don't change. */
+
+[data-co-density="default"] {
+  --co-semantic-size-control-sm: var(--co-base-dimension-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
+  --co-semantic-size-control-md: var(--co-base-dimension-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
+  --co-semantic-size-control-lg: var(--co-base-dimension-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-space-inset-xs: var(--co-base-dimension-1); /** Tightest padding inside a component, such as around an icon in a small control. */
+  --co-semantic-space-inset-sm: var(--co-base-dimension-2); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
+  --co-semantic-space-inset-md: var(--co-base-dimension-3); /** Medium padding inside a component: form field insides, medium IconButtons. */
+  --co-semantic-space-inset-lg: var(--co-base-dimension-4); /** Large padding inside a component: button and input sides, card insides. */
+  --co-semantic-space-inset-xl: var(--co-base-dimension-5); /** Generous padding inside a component, such as a prominent call to action. */
+  --co-semantic-space-inset-2xl: var(--co-base-dimension-6); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-component-button-primary-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-button-sizes-small-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-button-sizes-medium-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
+  --co-component-button-sizes-large-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-chip-default-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0. */
+  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-large-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-icon-button-sizes-small-padding: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-padding: var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-padding: var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0. */
+  --co-component-input-default-padding-x: var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0. */
+  --co-component-badge-count-padding-x: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
+}
+
+[data-co-density="compact"] {
+  --co-semantic-size-control-sm: var(--co-base-dimension-6); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
+  --co-semantic-size-control-md: var(--co-base-dimension-8); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
+  --co-semantic-size-control-lg: var(--co-base-dimension-10); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-space-inset-sm: var(--co-base-dimension-1); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
+  --co-semantic-space-inset-md: var(--co-base-dimension-2); /** Medium padding inside a component: form field insides, medium IconButtons. */
+  --co-semantic-space-inset-lg: var(--co-base-dimension-3); /** Large padding inside a component: button and input sides, card insides. */
+  --co-semantic-space-inset-xl: var(--co-base-dimension-4); /** Generous padding inside a component, such as a prominent call to action. */
+  --co-semantic-space-inset-2xl: var(--co-base-dimension-5); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-component-button-primary-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-button-sizes-small-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-button-sizes-medium-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
+  --co-component-button-sizes-large-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-chip-default-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0. */
+  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-large-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-padding: var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-padding: var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0. */
+  --co-component-input-default-padding-x: var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0. */
+}
+
+[data-co-density="comfortable"] {
+  --co-semantic-size-control-sm: var(--co-base-dimension-10); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
+  --co-semantic-size-control-md: var(--co-base-dimension-12); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
+  --co-semantic-size-control-lg: var(--co-base-dimension-14); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-space-inset-xs: var(--co-base-dimension-2); /** Tightest padding inside a component, such as around an icon in a small control. */
+  --co-semantic-space-inset-sm: var(--co-base-dimension-3); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
+  --co-semantic-space-inset-md: var(--co-base-dimension-4); /** Medium padding inside a component: form field insides, medium IconButtons. */
+  --co-semantic-space-inset-lg: var(--co-base-dimension-5); /** Large padding inside a component: button and input sides, card insides. */
+  --co-semantic-space-inset-xl: var(--co-base-dimension-6); /** Generous padding inside a component, such as a prominent call to action. */
+  --co-semantic-space-inset-2xl: var(--co-base-dimension-7); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-component-button-primary-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-button-sizes-small-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-button-sizes-medium-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
+  --co-component-button-sizes-large-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
+  --co-component-chip-default-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0. */
+  --co-component-chip-sizes-small-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-medium-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0. */
+  --co-component-chip-sizes-large-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
+  --co-component-icon-button-sizes-small-padding: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
+  --co-component-icon-button-sizes-medium-padding: var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0. */
+  --co-component-icon-button-sizes-large-padding: var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0. */
+  --co-component-input-default-padding-x: var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0. */
+  --co-component-badge-count-padding-x: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
+}

@@ -1,6 +1,6 @@
 // Token build on Style Dictionary 5 (decision 0017; steps 4 and 5 of #24). The token source is DTCG:
 // `$value`, `$type` (on the group where its tokens share one) and `$description`.
-import { readFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import StyleDictionary from 'style-dictionary'
 
 const SOURCES = ['base', 'component', 'semantic'].map((tier) => `src/tokens/${tier}/index.json`)
@@ -117,3 +117,78 @@ const sd = new StyleDictionary({
 })
 
 await sd.buildAllPlatforms()
+
+// Token modes (decision 0032). src/tokens/resolver.json describes them as DTCG Resolver modifiers;
+// each context is a file that overrides only the $value of tokens in the groups the mode may change.
+// tokens.css gets one block per context. A CSS variable that references another is resolved where
+// it's declared (decision 0041), so a block redeclares every token whose resolved value changes in
+// that context, the overridden tokens and the aliases built on them alike, keeping references as
+// var(). A `default` block resets a region nested inside another context.
+const resolver = JSON.parse(readFileSync('src/tokens/resolver.json', 'utf8'))
+const tiers = () => Object.assign({}, ...SOURCES.map((file) => JSON.parse(readFileSync(file, 'utf8'))))
+
+// Each context is merged in memory: as a second source, an overridden token would collide
+function withContext(sources) {
+  const tokens = tiers()
+  const apply = (node, target, path) => {
+    for (const [key, child] of Object.entries(node)) {
+      if (key.startsWith('$') || !child || typeof child !== 'object') continue
+      const next = target?.[key]
+      if (!next) throw new Error(`Mode override ${[...path, key].join('.')} has no token to override`)
+      if ('$value' in child) next.$value = child.$value
+      else apply(child, next, [...path, key])
+    }
+  }
+  for (const { $ref } of sources) apply(JSON.parse(readFileSync(`src/tokens/${$ref}`, 'utf8')), tokens, [])
+  return tokens
+}
+
+const modeDictionary = (tokens, files = []) =>
+  new StyleDictionary({
+    tokens,
+    usesDtcg: true,
+    // A block filters to the changed tokens, so its var() references point at variables declared in
+    // the :root block of the same file. Style Dictionary warns about every such reference.
+    log: { warnings: 'disabled', verbosity: 'silent' },
+    hooks: { preprocessors: { 'deprecation-comments': deprecationComments } },
+    platforms: {
+      css: { transforms: ['name/kebab'], prefix: 'co', preprocessors: ['deprecation-comments'], files },
+    },
+  })
+
+async function resolvedValues(tokens) {
+  const { allTokens } = await modeDictionary(tokens).getPlatformTokens('css')
+  return new Map(allTokens.map((token) => [token.path.join('.'), JSON.stringify(token.$value)]))
+}
+
+async function modeBlock(selector, tokens, changed) {
+  const [{ output }] = await modeDictionary(tokens, [
+    {
+      format: 'css/variables',
+      destination: 'mode.css',
+      filter: (token) => changed.has(token.path.join('.')),
+      options: { outputReferences: true, selector, showFileHeader: false },
+    },
+  ]).formatPlatform('css')
+  return output
+}
+
+const blocks = []
+for (const [name, modifier] of Object.entries(resolver.modifiers)) {
+  const baseline = await resolvedValues(tiers())
+  const contexts = []
+  for (const [context, sources] of Object.entries(modifier.contexts)) {
+    if (context === modifier.default) continue
+    const tokens = withContext(sources)
+    const values = await resolvedValues(tokens)
+    const changed = new Set([...values].filter(([path, value]) => baseline.get(path) !== value).map(([path]) => path))
+    contexts.push({ context, tokens, changed })
+  }
+  const all = new Set(contexts.flatMap(({ changed }) => [...changed]))
+  blocks.push(`/* Mode: ${name} (decision 0032). ${modifier.description} */`)
+  blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, tiers(), all))
+  for (const { context, tokens, changed } of contexts) blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, changed))
+}
+
+const css = readFileSync('src/styles/tokens.css', 'utf8')
+writeFileSync('src/styles/tokens.css', `${css.trimEnd()}\n\n${blocks.map((block) => block.trim()).join('\n\n')}\n`)
