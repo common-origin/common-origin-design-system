@@ -71,12 +71,14 @@ for (const id of ['card-small', 'card-large', 'picture-button']) {
   })
 }
 
-test('an image that isn\'t clickable doesn\'t answer hover', async ({ page }) => {
-  const card = page.locator('[data-card="card-large-static"]')
-  await card.locator('img').hover()
-  await page.waitForTimeout(400)
-  expect(await style(card.locator('img'), 'opacity')).toBe('1')
-})
+for (const id of ['card-large-static', 'feature-block']) {
+  test(`${id}: an image that isn't clickable doesn't answer hover`, async ({ page }) => {
+    const image = page.locator(`[data-card="${id}"] img`).first()
+    await image.hover()
+    await page.waitForTimeout(400)
+    expect(await style(image, 'opacity')).toBe('1')
+  })
+}
 
 test('account-card: rises on hover, settles while pressed, and focus rings it', async ({ page }, info) => {
   const card = page.locator('[data-card="account-card"] [role="button"]')

@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import type { ReactNode } from 'react'
-import { AccountCard, CardLarge, CardSmall, Picture, Stack, Typography } from '../../src/components'
+import { AccountCard, CardLarge, CardSmall, FeatureBlock, Picture, Stack, Typography } from '../../src/components'
 
-// Test fixture for e2e/card-states.spec.ts (#185): every clickable card, and a CardLarge whose image
-// isn't clickable, so the spec can check hover, pressed and focus in a browser. Each case is wrapped
+// Test fixture for e2e/card-states.spec.ts (#185): every clickable card, and images that aren't
+// clickable (CardLarge without a link, FeatureBlock), so the spec can check hover, pressed and focus in a browser. Each case is wrapped
 // in a `data-card` element. Not part of the docs navigation, and not indexed.
 const Case = ({ id, children }: { id: string; children: ReactNode }) => (
   <div data-card={id} style={{ width: 320 }}>{children}</div>
@@ -43,6 +43,9 @@ export default function CardsFixture() {
             />
           </Case>
         </Stack>
+        <div data-card="feature-block">
+          <FeatureBlock title="Feature" excerpt="Its image is not a link." labels={['Label']} coverImage={image} date="2026-10-15" />
+        </div>
       </main>
     </>
   )
