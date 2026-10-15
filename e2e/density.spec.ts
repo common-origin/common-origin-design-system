@@ -40,6 +40,14 @@ test('a region changes only what is inside it, and a nested default resets it', 
   expect(await height(page.locator('[data-nested-reset]').getByRole('button'))).toBe(40)
 })
 
+test('contexts nest: compact inside comfortable takes compact values throughout', async ({ page }) => {
+  // A small IconButton's padding is space.inset.xs: 4px in compact and default, 8px in comfortable
+  const nested = page.locator('[data-nested-compact]').getByRole('button', { name: 'Nested search' })
+  const compact = region(page, 'compact').getByRole('button', { name: 'Search' })
+  expect(await paddingLeft(nested)).toBe(await paddingLeft(compact))
+  expect(await height(nested)).toBe(24)
+})
+
 test('compact keeps every control at least 24 × 24px (WCAG 2.5.8)', async ({ page }) => {
   const controls = region(page, 'compact').locator('button, input, [role="combobox"]')
   const sizes = await controls.evaluateAll((elements) =>

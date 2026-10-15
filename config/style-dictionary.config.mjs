@@ -123,7 +123,8 @@ await sd.buildAllPlatforms()
 // tokens.css gets one block per context. A CSS variable that references another is resolved where
 // it's declared (decision 0041), so a block redeclares every token whose resolved value changes in
 // that context, the overridden tokens and the aliases built on them alike, keeping references as
-// var(). A `default` block resets a region nested inside another context.
+// var(). Every block declares the same tokens, so contexts nest, and a `default` block resets a
+// region nested inside another context.
 const resolver = JSON.parse(readFileSync('src/tokens/resolver.json', 'utf8'))
 const tiers = () => Object.assign({}, ...SOURCES.map((file) => JSON.parse(readFileSync(file, 'utf8'))))
 
@@ -187,7 +188,9 @@ for (const [name, modifier] of Object.entries(resolver.modifiers)) {
   const all = new Set(contexts.flatMap(({ changed }) => [...changed]))
   blocks.push(`/* Mode: ${name} (decision 0032). ${modifier.description} */`)
   blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, tiers(), all))
-  for (const { context, tokens, changed } of contexts) blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, changed))
+  // Every block declares every token any context changes, so contexts nest: a compact region
+  // inside a comfortable one gets compact's value even where compact matches the default
+  for (const { context, tokens } of contexts) blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all))
 }
 
 const css = readFileSync('src/styles/tokens.css', 'utf8')

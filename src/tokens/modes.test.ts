@@ -82,6 +82,13 @@ describe.each(Object.entries(resolver.modifiers))('the %s mode', (mode, modifier
     }
   })
 
+  // A context nested inside another must override everything the outer one set, or it inherits
+  // the outer context's value for tokens it leaves at the default
+  it('declares the same variables in every context, so contexts nest', () => {
+    const sets = contexts.map(([context]) => [...block(mode, context).keys()].sort().join(' '))
+    expect(new Set(sets).size).toBe(1)
+  })
+
   it('resets every redeclared variable to its :root value in the default block', () => {
     const reset = block(mode, modifier.default)
     const others = new Set(contexts.flatMap(([context]) => (context === modifier.default ? [] : [...block(mode, context).keys()])))
