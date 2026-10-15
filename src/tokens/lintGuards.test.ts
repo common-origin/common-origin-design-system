@@ -36,6 +36,8 @@ const flagged = [
   ['quoted zIndex key', "const a = { 'zIndex': 9999 }"],
   ['negative zIndex style property', 'const a = { zIndex: -5 }'],
   ['base token', 'const a = tokens.base.spacing'],
+  ['resolved tokens imported by alias', "import tokens from '@/styles/tokens.json'"],
+  ['resolved tokens imported by path', "import tokens from '../../../styles/tokens.json'"],
 ]
 
 const allowed = [
@@ -50,6 +52,7 @@ const allowed = [
   ['string local zIndex style property', "const a = { zIndex: '1' }"],
   ['hash text under ARIA keys', "const a = { ariaLabel: 'Issue #123', 'aria-label': 'Issue #456' }"],
   ['hash link', "const href = '#section'"],
+  ['tokens as CSS variables', "import tokens from '@/lib/cssTokens'"],
 ]
 
 const lintScript = `
@@ -59,7 +62,7 @@ const lintScript = `
   const counts = {}
   for (const [name, code] of fixtures) {
     const [result] = await eslint.lintText(code, { filePath: 'src/components/atoms/Fixture/Fixture.tsx' })
-    counts[name] = result.messages.filter((m) => m.ruleId === 'no-restricted-syntax').length
+    counts[name] = result.messages.filter((m) => m.ruleId === 'no-restricted-syntax' || m.ruleId === 'no-restricted-imports').length
   }
   console.log(JSON.stringify(counts))
 `

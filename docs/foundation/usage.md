@@ -58,11 +58,13 @@ import '@common-origin/design-system/tokens.css'
 ```css
 .panel {
   color: var(--co-semantic-color-text-default);
-  padding: var(--co-semantic-spacing-layout-md);
+  padding: var(--co-semantic-space-300);
 }
 ```
 
-Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Most semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. Six semantic tokens hold their own value instead (`elevation.inset`, `border.radius.none` and the four background overlays), so overriding a base variable doesn't change them. The components themselves still use the JS tokens ([0009](decisions/0009-styling-architecture.md)).
+Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Most semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. Six semantic tokens hold their own value instead (`elevation.inset`, `border.radius.none` and the four background overlays), so overriding a base variable doesn't change them. 
+
+The components read these same variables, each with its resolved value as the fallback (`var(--co-semantic-color-text-default, #212529)`, [0041](decisions/0041-components-read-css-variables.md)). So **loading `tokens.css` is optional**: without it, components render exactly the resolved values. It's needed for your own CSS above, and for the density and motion modes when they arrive ([#191](https://github.com/common-origin/common-origin-design-system/issues/191), [#226](https://github.com/common-origin/common-origin-design-system/issues/226)). Don't override the variables yourself to restyle components: a variable that references another is resolved where `tokens.css` declares it, so an override on an element doesn't reach the variables built on it, and the modes will be the supported way.
 
 ## Fonts
 
