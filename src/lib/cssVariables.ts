@@ -5,7 +5,7 @@
 /**
  * The CSS variable tokens.css declares for a token path: Style Dictionary's `name/kebab` with the
  * `co` prefix. `semantic.color.text.default` is `--co-semantic-color-text-default`, and
- * `component.button.focus.outlineOffset` is `--co-component-button-focus-outline-offset`.
+ * `semantic.border.focusOffset` is `--co-semantic-border-focus-offset`.
  */
 export function cssVariableName(path: string[]): string {
   return `--${['co', ...path]

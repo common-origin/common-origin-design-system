@@ -29,7 +29,7 @@ describe('cssVariableName', () => {
   })
 
   it('splits camelCase keys and keeps digits with their word', () => {
-    expect(cssVariableName(['component', 'button', 'focus', 'outlineOffset'])).toBe('--co-component-button-focus-outline-offset')
+    expect(cssVariableName(['semantic', 'border', 'focusOffset'])).toBe('--co-semantic-border-focus-offset')
     expect(cssVariableName(['semantic', 'typography', 'h1'])).toBe('--co-semantic-typography-h1')
     expect(cssVariableName(['semantic', 'radius', '2xl'])).toBe('--co-semantic-radius-2xl')
   })
