@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react'
 import styled from 'styled-components'
 import { Button } from '../../atoms/Button'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 
 const { semantic: { color, border, motion } } = tokens

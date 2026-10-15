@@ -3,7 +3,7 @@ import { Chip } from '../../atoms/Chip'
 import { Picture } from '../../atoms/Picture'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 
 export type CardLargeProps = {

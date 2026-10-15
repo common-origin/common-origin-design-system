@@ -1,4 +1,4 @@
-import tokens from '../../../../styles/tokens.json'
+import tokens from '../../../../lib/cssTokens'
 import { forcedColors } from '../../../../lib/styleUtils'
 import { ChipVariant } from './types'
 

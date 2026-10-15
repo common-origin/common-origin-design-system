@@ -1,6 +1,9 @@
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
+// The dismiss timer needs the resolved duration, not its CSS variable (decision 0041)
+// eslint-disable-next-line no-restricted-imports
+import tokenValues from '@/styles/tokens.json'
 import { Icon } from '../../atoms/Icon'
 import { IconButton } from '../../atoms/IconButton'
 import type { IconName } from '../../../types/icons'
@@ -11,8 +14,9 @@ const { alert } = tokens.component
 const { duration, easing } = semantic.motion
 
 // Dismissing fades the alert out, then collapses the space it took (Ollie's call, #35).
-// Each half takes duration.fast, so the whole exit stays within the 300ms maximum (P6).
-const FADE_MS = parseInt(duration.fast, 10)
+// Each half takes duration.fast, so the whole exit stays within the 300ms maximum (P6). The timer
+// needs the resolved value, not the CSS variable (decision 0041).
+const FADE_MS = parseInt(tokenValues.semantic.motion.duration.fast, 10)
 const EXIT_MS = FADE_MS * 2
 
 // The --alert-exit-* properties are the alert's height and vertical padding, measured

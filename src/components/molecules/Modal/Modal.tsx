@@ -7,7 +7,7 @@ import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
 import { Divider } from '../../atoms/Divider'
 import { type IconName } from '../../../types/icons'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { exitAnimation, reducedMotion } from '../../../lib/styleUtils'
 import { useInert, usePresence } from '../../../lib/usePresence'
 

@@ -4,7 +4,7 @@ import { DateFormatter, DateFormatMode } from '../../atoms/DateFormatter'
 import { MoneyDisplay, MoneyDisplayVariant } from '../../atoms/MoneyDisplay'
 import { Stack } from '../../atoms/Stack'
 import { Typography } from '../../atoms/Typography'
-import tokens from '../../../styles/tokens.json'
+import tokens from '../../../lib/cssTokens'
 
 export interface DateGroupProps {
   /** The date for this group (used for formatting the header) */

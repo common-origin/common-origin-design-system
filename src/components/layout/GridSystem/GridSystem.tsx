@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import tokens from '../../../styles/tokens.json'
+import tokens from '../../../lib/cssTokens'
 
 // Exception to decision 0014: the gap props are typed as base spacing keys (public API),
 // so they are looked up in base.spacing until they accept semantic keys.

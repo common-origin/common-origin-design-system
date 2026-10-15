@@ -8,7 +8,7 @@ import { Icon, IconName } from '../../atoms/Icon'
 import { DateFormatter } from '../../atoms/DateFormatter'
 import { Typography } from '../../atoms/Typography'
 import { Stack } from '../../atoms/Stack'
-import tokens from '../../../styles/tokens.json'
+import tokens from '../../../lib/cssTokens'
 import { interactiveRow } from '../../../lib/styleUtils'
 
 export type TransactionStatus = 'completed' | 'pending' | 'failed'

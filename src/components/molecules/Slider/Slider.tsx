@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect, useId, KeyboardEvent } from 'react'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
 
 const { semantic } = tokens

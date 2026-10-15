@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useId } from 'react'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'

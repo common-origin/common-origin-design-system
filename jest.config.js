@@ -11,6 +11,9 @@ const customJestConfig = {
   moduleNameMapper: {
     // Mirrors tsconfig.json "paths": every @/ alias resolves under src/
     '^@/tokens$': '<rootDir>/src/styles/tokens.json',
+    // Components read tokens as CSS variables (decision 0041), which jsdom can't resolve, so unit
+    // tests see the resolved values; the browser specs check the variables
+    '^(@/lib|.*/lib|\\.)/cssTokens$': '<rootDir>/src/styles/tokens.json',
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   testEnvironment: 'jest-environment-jsdom',

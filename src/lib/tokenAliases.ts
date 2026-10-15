@@ -1,4 +1,4 @@
-import tokens from '../styles/tokens.json'
+import tokens from './cssTokens'
 import type { Tokens } from '../types/tokens'
 
 // Props whose values are token keys keep their published vocabulary in 2.x (P7), but read the

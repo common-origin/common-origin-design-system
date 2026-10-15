@@ -1,7 +1,7 @@
 import React from 'react'
 import { parseISO, format, isToday, isYesterday, isThisWeek, startOfWeek } from 'date-fns'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic: { typography, color } } = tokens
 

@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { component: { input }, semantic } = tokens
 

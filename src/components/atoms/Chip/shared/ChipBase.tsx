@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import tokens from '../../../../styles/tokens.json'
+import tokens from '../../../../lib/cssTokens'
 import { InternalStyledProps } from './types'
 import { getVariantStyles, sizeStyles } from './utils'
 import { forcedColors, forcedColorsEdge } from '../../../../lib/styleUtils'

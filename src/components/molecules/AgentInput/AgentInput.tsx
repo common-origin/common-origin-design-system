@@ -12,7 +12,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { IconButton } from '../../atoms/IconButton'
 import { Typography } from '../../atoms/Typography'
 import { visuallyHidden } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import {
   AgentInputSubmitSource,
   AgentInputVoiceError,

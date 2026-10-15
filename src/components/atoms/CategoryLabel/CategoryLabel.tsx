@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
 import { visuallyHidden } from '../../../lib/styleUtils'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic } = tokens
 const { color } = semantic

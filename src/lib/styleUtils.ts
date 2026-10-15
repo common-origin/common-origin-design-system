@@ -1,5 +1,5 @@
 import { css, keyframes } from 'styled-components'
-import tokens from '../styles/tokens.json'
+import tokens from './cssTokens'
 
 // Breakpoints from the semantic tokens (decision 0014)
 export const breakpoints = {

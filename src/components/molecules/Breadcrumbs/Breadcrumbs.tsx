@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Container } from '../../atoms/Container'
 import { Typography } from '../../atoms/Typography'
 import { Icon } from '../../atoms/Icon'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 interface Breadcrumb {
   label: string

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Icon, type IconName } from '../Icon'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { forcedColorsEdge } from '../../../lib/styleUtils'
 
 const { semantic: { motion, border, space, size }, component: { iconButton, button } } = tokens

@@ -15,7 +15,7 @@ import { IconButton } from '../../atoms/IconButton/IconButton'
 import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { rowStates } from '../../../lib/styleUtils'
 
 const { semantic, component } = tokens

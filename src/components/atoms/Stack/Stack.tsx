@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 export type StackDirection = 'column' | 'row'
 export type StackAlign = 'center' | 'flex-start' | 'flex-end' | 'stretch' | 'baseline'
