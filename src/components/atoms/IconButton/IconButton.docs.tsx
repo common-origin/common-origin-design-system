@@ -2,6 +2,7 @@ import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { IconButton } from './IconButton'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
+import { densityGuide } from '../../../lib/docgen/densityGuide'
 
 export const iconButtonDocs: ComponentDocumentation = {
   id: 'iconbutton',
@@ -94,6 +95,7 @@ export const iconButtonDocs: ComponentDocumentation = {
     }
   ],
 
+  guides: [densityGuide],
   tokens: [
     // Colours per variant and state, shared with Button (decision 0027)
     'component.button.primary.backgroundColor',

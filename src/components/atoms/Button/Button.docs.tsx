@@ -3,6 +3,7 @@ import React from 'react'
 import { Button } from './Button'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
+import { densityGuide } from '../../../lib/docgen/densityGuide'
 
 /**
  * Button component documentation
@@ -103,6 +104,7 @@ export const buttonDocs: ComponentDocumentation = {
   
   // Props will be auto-extracted from ButtonProps/LinkProps interfaces
   // We can enhance with better descriptions and examples
+  guides: [densityGuide],
   tokens: [
     // Primary variant
     'component.button.primary.backgroundColor',

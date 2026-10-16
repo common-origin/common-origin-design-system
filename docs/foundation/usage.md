@@ -66,6 +66,18 @@ Every variable is `--co-` plus the token's tier and path in kebab case ([0024](d
 
 The components read these same variables, each with its resolved value as the fallback (`var(--co-semantic-color-text-default, #212529)`, [0041](decisions/0041-components-read-css-variables.md)). So **loading `tokens.css` is optional**: without it, components render exactly the resolved values. It's needed for your own CSS above, and for the density and motion modes when they arrive ([#191](https://github.com/common-origin/common-origin-design-system/issues/191), [#226](https://github.com/common-origin/common-origin-design-system/issues/226)). Don't override the variables yourself to restyle components: a variable that references another is resolved where `tokens.css` declares it, so an override on an element doesn't reach the variables built on it, and the modes will be the supported way.
 
+### Density
+
+A product can make any region compact or comfortable: load `tokens.css` once, then set `data-co-density` on an element, and every control inside it takes that density. Regions nest, and `data-co-density="default"` resets one.
+
+```tsx
+<section data-co-density="compact">
+  <TransactionsTable />
+</section>
+```
+
+Density changes control heights by one 8px step (compact 24 / 32 / 40px, default 32 / 40 / 48px, comfortable 40 / 48 / 56px) and the padding inside controls by one step. Text, colour, rows and layout spacing don't change, and compact never goes below the 24px pointer target ([0032](decisions/0032-token-modes.md), [0034](decisions/0034-control-heights.md)). Without `tokens.css`, everything renders at the default density. The docs site's density guide shows the three side by side.
+
 ## Fonts
 
 The tokens specify **Inter** (weights 400, 500, 600, 700) for all UI text, as the literal family name `'Inter'`. The package does not load any fonts, so each product must load Inter itself **under the family name `Inter`**. Without it, text falls back to the system sans-serif.

@@ -61,6 +61,10 @@ Until step 2, every platform also set `transforms`, which in v3 replaced the gro
 
 In practice the build **resolves references and writes files**; no value is transformed.
 
+### Token modes
+
+`src/tokens/resolver.json` describes the token sets and the modes in the DTCG 2025.10 Resolver format ([0032](../foundation/decisions/0032-token-modes.md)). Each mode context is a file under `src/tokens/modes/` that overrides only the `$value` of tokens in the groups that mode may change (density: `semantic.size.control.*` and `semantic.space.inset.*`, [#191](https://github.com/common-origin/common-origin-design-system/issues/191)). After the main build, the config merges each context over the tiers in memory, resolves it, and compares every token's resolved value with the default. Each token that changes, the overridden tokens and every alias built on them, is redeclared in a `[data-co-<mode>="<context>"]` block appended to `tokens.css`, with references kept as `var()`. Aliases have to be redeclared because a CSS variable is resolved where it's declared ([0041](../foundation/decisions/0041-components-read-css-variables.md)). A `default` block resets a nested region. `tokens.json` and `tokens.ts` are unaffected. `src/tokens/modes.test.ts` keeps each mode to its groups, checks that every block is complete, and checks the density values; `e2e/density.spec.ts` checks them in a browser.
+
 ---
 
 ## 2. Known defects

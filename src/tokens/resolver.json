@@ -1,0 +1,27 @@
+{
+  "name": "Common Origin design tokens",
+  "version": "2025.10",
+  "description": "How the token sets and modes combine, in the DTCG 2025.10 Resolver format (decision 0032). config/style-dictionary.config.mjs builds tokens.json, tokens.ts and the :root block of tokens.css from the sets, and a [data-co-density] block in tokens.css for each density context.",
+  "sets": {
+    "base": { "sources": [{ "$ref": "base/index.json" }] },
+    "component": { "sources": [{ "$ref": "component/index.json" }] },
+    "semantic": { "sources": [{ "$ref": "semantic/index.json" }] }
+  },
+  "modifiers": {
+    "density": {
+      "description": "Control heights and control insets for a region, set with data-co-density on any element (decisions 0032 and 0034, #191). Rows and layout spacing don't change.",
+      "contexts": {
+        "compact": [{ "$ref": "modes/density/compact.json" }],
+        "default": [],
+        "comfortable": [{ "$ref": "modes/density/comfortable.json" }]
+      },
+      "default": "default"
+    }
+  },
+  "resolutionOrder": [
+    { "$ref": "#/sets/base" },
+    { "$ref": "#/sets/component" },
+    { "$ref": "#/sets/semantic" },
+    { "$ref": "#/modifiers/density" }
+  ]
+}

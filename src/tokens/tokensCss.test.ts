@@ -8,7 +8,8 @@ import tokens from '@/styles/tokens.json'
 
 // tokens.css is published as @common-origin/design-system/tokens.css (decision 0017 §4), with
 // names that keep their tier (decision 0024) and var() references between variables
-const css = readFileSync(join(__dirname, '../styles/tokens.css'), 'utf8')
+// The :root block; the mode blocks after it (decision 0032) are checked in modes.test.ts
+const css = readFileSync(join(__dirname, '../styles/tokens.css'), 'utf8').split('/* Mode:')[0]
 const declared = new Map(
   [...css.matchAll(/^\s*(--[a-z0-9-]+):\s*(.*?);(?:\s*\/\*\*.*\*\/)?\s*$/gm)].map((match) => [match[1], match[2]])
 )
