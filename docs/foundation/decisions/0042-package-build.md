@@ -1,8 +1,8 @@
 # 0042. Package build: per-module ESM that tree-shakes and loads in Node
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-10-17
-- **Decided by:** Ollie (owner), pending
+- **Decided by:** Ollie (owner)
 - **Principles:** P7, P8
 - **Issue:** [#237](https://github.com/common-origin/common-origin-design-system/issues/237)
 
@@ -39,7 +39,7 @@ What's left for the real build, all found by the prototype:
 
 The largest cost left in a Button-only bundle is data, not code: `icons.json` (62 KB raw, every icon, because Icon looks icons up by name at run time) and `tokens.json` (29 KB).
 
-## Decision (proposed)
+## Decision
 
 1. **ESM ships per module as `.mjs`**, with .d.mts declarations for the `import` condition, for both `.` and `./tokens`. CommonJS stays as it is (`.js`, bundled).
 2. **The package declares `"sideEffects": ["*.css"]`**, and the build marks `styled()` calls pure.
@@ -50,6 +50,6 @@ The largest cost left in a Button-only bundle is data, not code: `icons.json` (6
 
 ## Consequences
 
-- Follow-up issue: implement 1–3, including .d.mts generation, the `vendor/` helper path, updated `verify:*` scripts, removing the `attw` ignore, a native-Node-ESM render in `verify:load`, a bundle-size check for a Button-only consumer, and the three consumer smoke tests.
-- Follow-up research: icon data that tree-shakes, weighed against keeping `iconName` strings.
+- Follow-up issue ([#252](https://github.com/common-origin/common-origin-design-system/issues/252)): implement 1–3, including .d.mts generation, the `vendor/` helper path, updated `verify:*` scripts, removing the `attw` ignore, a native-Node-ESM render in `verify:load`, a bundle-size check for a Button-only consumer, and the three consumer smoke tests.
+- Follow-up research ([#253](https://github.com/common-origin/common-origin-design-system/issues/253)): icon data that tree-shakes, weighed against keeping `iconName` strings.
 - 3.0 no longer needs the build change, so it stays the deprecation removals ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)) and [#224](https://github.com/common-origin/common-origin-design-system/issues/224).
