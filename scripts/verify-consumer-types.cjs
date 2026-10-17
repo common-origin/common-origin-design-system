@@ -19,8 +19,8 @@ if (!existsSync(join(ROOT, 'dist', 'index.d.ts'))) {
   process.exit(1)
 }
 
-// Default import of the tokens entry. Excluded under node16 ESM: the ESM build is `.js` in a package
-// without "type": "module", so Node-native ESM types it as CJS. Tracked in #41 (package build).
+// Default import of the tokens entry, in every mode. Node-native ESM typed it as the whole module
+// until the ESM build shipped as .mjs with .d.mts types (decision 0042, #252).
 const defaultImportSource = `
 import tokensOnly from '@common-origin/design-system/tokens'
 
@@ -89,7 +89,7 @@ export const App = () => (
 const modes = [
   { name: 'node10', module: 'commonjs', moduleResolution: 'node10', type: 'commonjs', defaultImport: true },
   { name: 'node16 (CJS)', module: 'node16', moduleResolution: 'node16', type: 'commonjs', defaultImport: true },
-  { name: 'node16 (ESM)', module: 'node16', moduleResolution: 'node16', type: 'module', defaultImport: false },
+  { name: 'node16 (ESM)', module: 'node16', moduleResolution: 'node16', type: 'module', defaultImport: true },
   { name: 'bundler', module: 'esnext', moduleResolution: 'bundler', type: 'module', defaultImport: true },
 ]
 

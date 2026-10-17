@@ -4,7 +4,7 @@
   "description": "Common Origin Design System - Framework-agnostic atomic design components with comprehensive WCAG 2.2 AA testing",
   "private": false,
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist/",
@@ -20,14 +20,24 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./tokens": {
-      "types": "./dist/tokens/tokens.d.ts",
-      "import": "./dist/tokens/index.esm.js",
-      "require": "./dist/tokens/index.js"
+      "import": {
+        "types": "./dist/tokens/tokens.d.mts",
+        "default": "./dist/tokens/index.mjs"
+      },
+      "require": {
+        "types": "./dist/tokens/tokens.d.ts",
+        "default": "./dist/tokens/index.js"
+      }
     },
     "./tokens.css": {
       "types": "./dist/tokens.css.d.ts",
@@ -47,7 +57,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:package": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c",
+    "build:package": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c && node scripts/build-dmts.cjs",
     "build:tokens": "node config/style-dictionary.config.mjs",
     "start": "next start",
     "test": "jest",
@@ -63,13 +73,14 @@
     "verify:directives": "node scripts/verify-directives.cjs",
     "verify:load": "node scripts/verify-load.cjs",
     "verify:docs": "node scripts/verify-docs.cjs",
-    "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:directives && npm run verify:load && npm run verify:consumer && publint && attw --pack . --ignore-rules unexpected-module-syntax",
+    "verify:package": "npm run verify:types && npm run verify:no-nextjs && npm run verify:directives && npm run verify:load && npm run verify:consumer && npm run verify:size && publint && attw --pack .",
     "prepublishOnly": "npm run build:tokens && npm run build:package && npm run verify:package",
     "version": "auto-changelog -p && git add CHANGELOG.md",
     "release": "npm publish --provenance --access public",
     "release:create": "./scripts/release.sh",
     "release:tag": "./scripts/release.sh tag",
-    "tokens:golden": "node scripts/tokens-golden.cjs"
+    "tokens:golden": "node scripts/tokens-golden.cjs",
+    "verify:size": "node scripts/verify-size.mjs"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -144,5 +155,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/common-origin/common-origin-design-system.git"
-  }
+  },
+  "sideEffects": [
+    "*.css"
+  ]
 }

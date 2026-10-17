@@ -31,6 +31,38 @@ const copyFiles = (files, dest) => ({
 // read `tokens` and `iconsData` from the main entry as plain data. The separate
 // tokens entry below stays directive-free too.
 const USE_CLIENT = "'use client';"
+
+// The ESM build ships one module per source file (decision 0042), so a consumer bundles only the
+// components it imports. Component and lib modules start with 'use client'; the entry, data and
+// tokens modules don't, so Server Components can read them.
+const isClientModule = (id) => Boolean(id) && /[\\/]src[\\/](components|lib)[\\/]/.test(id)
+
+// styled-components has no ESM entry for Node, so Node's own ESM loader hands a default import
+// the CommonJS module object, with the function on its `default` property; bundlers hand over the
+// function. Normalise the default import in the ESM output so native Node ESM works too (decision
+// 0042). ES5-safe: the function is always truthy.
+const styledDefaultInterop = () => ({
+  name: 'styled-default-interop',
+  renderChunk(code) {
+    const match = code.match(/import ([\w$]+)((?:, \{[^}]*\})?) from 'styled-components';/)
+    if (!match) return null
+    const [statement, name, named] = match
+    // A function, so `$` in a binding name (styled$1) isn't read as a replacement pattern
+    return code.replace(statement, () => `import ${name}$module${named} from 'styled-components';\nconst ${name} = ${name}$module.default || ${name}$module;`)
+  },
+})
+
+const esmModules = {
+  dir: 'dist',
+  format: 'esm',
+  sourcemap: true,
+  preserveModules: true,
+  preserveModulesRoot: 'src',
+  // npm pack drops nested node_modules folders, so bundled helpers (tslib) go to vendor/
+  entryFileNames: (chunk) => `${chunk.name.replace(/(^|\/)node_modules\//g, '$1vendor/')}.mjs`,
+  banner: (chunk) => (isClientModule(chunk.facadeModuleId) ? USE_CLIENT : ''),
+  plugins: [styledDefaultInterop()],
+}
 const DATA_MODULES = /[\\/]src[\\/](styles[\\/][^\\/]+\.json|types[\\/](tokens|icons)\.ts)$/
 
 const mainChunks = (id) => {
@@ -58,7 +90,8 @@ export default [
   // Main package build
   {
     input: 'src/index.ts',
-    output: [mainOutput('cjs', ''), mainOutput('esm', '.esm')],
+    // CommonJS stays one bundle; ESM is per module (decision 0042)
+    output: [mainOutput('cjs', ''), esmModules],
   external: [
     'react',
     'react-dom',
@@ -124,7 +157,7 @@ export default [
       ],
       // Stable displayName and componentId on every styled component (consumers' SSR relies on them)
       plugins: [
-        ['babel-plugin-styled-components', { ssr: true, displayName: true, preprocess: false }],
+        ['babel-plugin-styled-components', { ssr: true, displayName: true, preprocess: false, pure: true }],
       ],
     }),
   ],
@@ -140,7 +173,7 @@ export default [
         sourcemap: true,
       },
       {
-        file: 'dist/tokens/index.esm.js',
+        file: 'dist/tokens/index.mjs',
         format: 'esm',
         exports: 'named',
         sourcemap: true,
