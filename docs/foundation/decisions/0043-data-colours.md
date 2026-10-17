@@ -1,59 +1,61 @@
-# 0043. Data colours: one hue set, categorical colours on ramp steps, green and red for good and bad
+# 0043. Colour by meaning: role ramps, display ramps, and how data uses each
 
 - **Status:** Proposed
-- **Date:** 2026-10-17
+- **Date:** 2026-10-18
 - **Decided by:** Ollie (owner), pending
-- **Principles:** P1, P2, P4
+- **Principles:** P1, P2, P4, P5
 - **Issue:** [#196](https://github.com/common-origin/common-origin-design-system/issues/196), part of [#187](https://github.com/common-origin/common-origin-design-system/issues/187)
 
 ## Context
 
-[0031](0031-semantic-token-grammar.md) reserves `color.data.*` (categorical, sequential, diverging) for charts and other data display, separate from status. [0040](0040-own-oklch-palette.md) makes the palette our own, in OKLCH, with hue ramps that reuse the grey ramp's 12 lightness steps; the hues wait for this research ([#233](https://github.com/common-origin/common-origin-design-system/issues/233)). Nothing in the package draws charts yet; A2UI will (money in and out over time, spending by category).
+[0040](0040-own-oklch-palette.md) makes the palette our own, in OKLCH, with a 12-step structure where every step has one job; the hue ramps wait for this research ([#233](https://github.com/common-origin/common-origin-design-system/issues/233)). [0031](0031-semantic-token-grammar.md) reserves `color.data.*` for charts and other data display. Nothing in the package draws charts yet; A2UI will (money in and out, spending by category).
 
-Measured on 2026-10-17 with OKLCH, WCAG contrast, colour-vision simulation (Machado, Oliveira and Fernandes 2009, protan, deutan and tritan at full severity) and distance in OKLab. "Separation" is the smallest distance between any two colours in a set, under the worst of the four kinds of vision.
+The owner's direction (2026-10-18): **colour starts from meaning, not from the palette we have.** Every hue means one thing everywhere, and every step does the same job in every ramp. Today's hues are free to change.
 
-- **Today's category hues** (`color.category.*`, from Adobe Spectrum 1) sit at almost the same lightness (L 0.64–0.72). Under deuteranopia, blue and purple are 0.019 apart: the same colour. Yellow fails 3:1 on white.
-- **Okabe and Ito's colour-blind-safe set**, a common reference, separates by 0.076, but three of its seven colours fail 3:1 on white, so they can't mark a line or bar (WCAG 1.4.11).
-- **Status:** warning (orange.900) and danger (red.900) are 0.017 apart under deuteranopia. They're always paired with an icon, so nothing fails today, but the hue ramps should separate them by lightness.
-- **Money in and out:** today's credit and debit colours (green.700, red.900) drop to 0.105 under deuteranopia. Blue against orange stays at 0.27 or more under every kind of vision.
+**How the systems we compared do it:**
 
-A search for categorical sets (hues at least 35° apart, chroma at least 0.10, every colour at least 3:1 on the page), with lightness limited to the ramp steps 800, 900, 1000 and 1100 that clear 3:1:
+- **GitHub's Primer gives each role one hue, one to one**: accent is blue (links, selected, focus, neutral information), success is green, attention is yellow, danger is red, done is purple, sponsors is magenta. Labels and charts use a separate display palette that carries no meaning.
+- **Vercel's Geist gives every step the same job on every scale**: 100–300 component backgrounds, 400–600 borders, 700–800 solid fills, 900–1000 text.
+- **Charts follow the roles.** SAP Fiori's chart palette uses green for good and red for bad, Shopify Polaris Viz uses green for positive and red for negative, and Atlassian has `color.chart.success` and `color.chart.danger` beside its categorical set. IBM Carbon keeps its alert colours for status and uses neutral pairs (purple–teal, red–cyan for temperature) where values aren't good or bad.
+- **Accessibility comes from a second channel** (an icon, a sign, a label), not from giving up meaning: Material, Carbon and financial UI guidance agree.
 
-| Colours | Separation | Lowest contrast on the page |
-|---|---|---|
-| 6 | 0.109 | 3.15:1 |
-| **7** | **0.082** | **3.13:1** |
-| 8 | 0.050 | 3.11:1 |
-| 8, free lightness (a separate data palette) | 0.086 | 3.10:1 |
+**Measured** (OKLCH; WCAG contrast; colour-vision simulation per Machado, Oliveira and Fernandes 2009, protan, deutan and tritan at full severity; "separation" is the smallest OKLab distance between any two colours, under the worst of the four kinds of vision; candidates use the ramp steps 800–1100, the ones that clear 3:1 on the page):
 
-**Enterprise practice**, overlaid on the measurements (checked on 2026-10-18):
+- **Today's colours don't carry meaning cleanly.** Category labels use the same red, green, yellow and orange as status, so a "red" category reads as an error. Blue and purple categories are 0.019 apart under deuteranopia, and warning and danger 0.017.
+- **Display colours, kept at least 20° from the role hues** (danger 25°, warning 90°, success 150°, accent 255°):
 
-- **Charts separate two jobs.** Values that are good or bad (gains and losses, money in and out, above or below target) use the conventional green and red. That's SAP Fiori's semantic chart palette ("red=negative, green=positive"), Shopify Polaris Viz (green positive, red negative), and Atlassian's chart-specific `color.chart.success` and `color.chart.danger` beside its categorical set. Financial UI guidance keeps red and green because breaking the convention erodes trust, and makes the meaning accessible with a second channel instead: a sign, an arrow, parentheses or a label.
-- **Values with no good or bad use a neutral diverging pair.** IBM Carbon's diverging palettes are purple–teal (performance, sales, rates of change) and red–cyan (temperature), and its red, orange, yellow and green alert colours are kept for status.
-- **Categorical sets are ordered and carry no meaning**: Carbon has 14 colours in a fixed order "to maximize contrast between neighboring colors", Atlassian has 8, and SAP Fiori and Salesforce have their own qualitative palettes.
-- **Accessibility comes from redundant encoding, not from swapping hues.** Material, Carbon and the financial guidance all say never colour alone.
+  | Display colours | Separation | Lowest contrast on the page |
+  |---|---|---|
+  | 5 | 0.114 | 3.37:1 |
+  | **6** | **0.089** | **3.41:1** |
+  | 7 | no set fits | |
 
-So a blue–orange money pair would have over-indexed on colour vision at the cost of a convention every user reads. Measured on the ramp steps:
-
-- **Green and red on the same step collapse under deuteranopia** (900 and 900: 0.031). A naive OKLCH ramp would do exactly that.
-- **Splitting their lightness keeps today's separation**: green 900 with red 1100 is 0.104 (today: 0.105), both at least 3.39:1 on the page. A wider split (green 800) reaches 0.143 but drops green below 3:1.
-- So the second channel does the accessibility work, and it already exists: MoneyDisplay shows a plus or minus icon with every coloured amount.
-
-The best seven, in the order a chart should use them (each next colour is the furthest from those before it): blue (hue 261, step 1100), ochre (80, 800), magenta (343, 1100), teal (179, 900), violet (300, 800), olive (123, 1100), red (18, 1000). The first two are 0.235 apart, the first three 0.137, the first four 0.107. The exact values are set with the hue ramps in #233.
+  For reference, Okabe and Ito's colour-blind-safe set separates by 0.076, with three colours under 3:1. With warning at amber (75°) instead of yellow, the sixth display colour is an orange that sits between danger and warning. With a 25° margin, six don't fit and five drop to 0.051.
+- The six, in chart order: orchid (hue 322, step 800), rose (357, 1100), lime (122, 900), indigo (282, 1100), teal (180, 900), umber (61, 1100).
+- **Role pairs:** danger against warning goes from 0.017 today to 0.152 or more. Warning against success (yellow and green) is 0.038 under protanopia at equal-ish steps, and success against danger drops to 0.031 on the *same* step. Both pairs need deliberate lightness splits in #233; green 900 with red 1100 gives 0.104.
 
 ## Decision (proposed)
 
-1. **One hue set.** The base hue ramps (#233) are designed for status, category labels and data together: red, orange, yellow (ochre), olive, green, teal, blue, violet and magenta, each on the 12-step structure. No separate data palette (P4).
-2. **Categorical: seven colours plus "other".** `color.data.categorical.1`–`7` point at ramp steps in the order above; `color.data.categorical.other` is neutral (`gray.900`) for a remainder series. A chart with more than seven coloured series groups the rest into "other" or labels them directly. Every categorical colour is at least 3:1 on the page and white.
-3. **Category labels keep their names.** `color.category.*` (blue, purple, pink, yellow, green, red, orange, gray) is CategoryLabel's public API, so it stays, re-pointed at the same ramps (purple to violet, pink to magenta, yellow to ochre) in the retune ([#190](https://github.com/common-origin/common-origin-design-system/issues/190)).
-4. **Good and bad values use green and red**, as every enterprise system does: `color.data.positive` (green, step 900) for gains and money in, and `color.data.negative` (red, step 1100) for losses and money out. The different lightness steps are deliberate. On the same step they'd be indistinguishable under deuteranopia. They're never shown by colour alone: a sign, an arrow or a label always goes with them (MoneyDisplay already shows a plus or minus icon).
-5. **Comparisons with no good or bad use a neutral diverging pair**: `color.data.diverging.balance.{1…5}`, blue through neutral to orange (0.27 or more apart under every kind of vision), for differences from an average, or change that isn't a judgement. Like Carbon's purple–teal, it avoids reading as good or bad.
-6. **Sequential is one hue**: `color.data.sequential.blue.{1…5}`, five steps of the blue ramp, for magnitude (heatmaps, spend intensity).
-7. **Never colour alone** (WCAG 1.4.1): charts carry direct labels or a legend, and line series also differ by marker or dash. The rule goes in `visual-language.md`.
-8. **Dark values come later.** When a theme mode exists, the data tokens get dark contexts from the same ramps; nothing is built for it now.
+1. **Two kinds of hue ramp, both on 0040's 12-step structure, where each step has the same job in every ramp.**
+   - **Role ramps carry meaning, and the same meaning everywhere:** UI, status and data.
+     - accent: blue (links, focus, selected, information, the accent action; [0003](0003-use-of-blue.md), [0016](0016-accent-selection-and-chip-types.md))
+     - success: green (success, positive values, money in)
+     - warning: yellow (attention, in progress)
+     - danger: red (errors, destructive actions, negative values, money out)
+     - neutral: grey
+   - **Display ramps carry no meaning**, and are for categories and categorical data only: orchid, rose, lime, indigo, teal and umber. Each sits at least 20° from every role hue, so a category never reads as a status.
+2. **Data uses the ramp that matches its meaning.**
+   - Good and bad values (gains and losses, money in and out, on or off target) use the role ramps: `color.data.positive` (success) and `color.data.negative` (danger), on lightness steps chosen so they stay apart under colour blindness. They always come with a second channel, such as a sign, an arrow or a label (MoneyDisplay already shows a plus or minus icon).
+   - Categories use the display ramps: `color.data.categorical.1`–`6` in the order above, plus `color.data.categorical.other` (neutral). More than six coloured series are grouped into "other" or labelled directly.
+   - Comparisons with no good or bad use two display hues: `color.data.diverging.balance.{1…5}`, indigo through neutral to umber.
+   - Magnitude uses one display hue: `color.data.sequential.indigo.{1…5}`.
+3. **Category labels move onto the display ramps.** CategoryLabel's colour names (blue, purple, pink, yellow, green, red, orange) are role or near-role hues today. In 2.x the new display names are added and the old ones become deprecated aliases. The old names are removed in 3.0, with the palette ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)).
+4. **Never colour alone** (WCAG 1.4.1): status carries an icon, good and bad values a sign or arrow, and charts direct labels or a legend.
+5. **Dark values come later**, from the same ramps, when a theme mode exists.
 
 ## Consequences
 
-- #233 designs the nine hue ramps with the categorical steps above as fixed points, keeps green and red apart in lightness at the steps positive and negative use, separates warning from danger by lightness, and gets the values signed off (0022).
-- After #233: the `color.data.*` tokens are added (seven categorical plus other, positive and negative, five neutral diverging and five sequential: 20 tokens) with descriptions saying they're for data only, never status, and the order rule.
-- #190 re-points `color.category.*`, the status roles and the transaction colours at the new ramps. The transaction credit and debit tokens follow `color.data.positive` and `color.data.negative`.
+- #233 designs four role ramps and six display ramps. It splits success from danger and warning from success by lightness, and gets the values signed off (0022).
+- After #233: 15 `color.data.*` tokens (six categorical plus other, positive and negative, five diverging, five sequential) and the CategoryLabel display names are added.
+- #190 re-points the status roles, the transaction colours (credit to positive, debit to negative) and `color.category.*` at the new ramps.
+- 3.0 removes the old category names with the old base palette.
