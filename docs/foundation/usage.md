@@ -141,6 +141,4 @@ Wrap `{children}` in `<StyledComponentsRegistry>` inside `<body>` in `app/layout
 
 | Issue | Workaround |
 |---|---|
-| Under Node-native ESM resolution (`module`/`moduleResolution: node16` or `nodenext` in an ESM project, no bundler), the **default** import of `@common-origin/design-system/tokens` is typed as the whole module | Use the named export: `import { tokens } from '@common-origin/design-system/tokens'`. Bundler and CommonJS setups are unaffected. Tracked in [#41](https://github.com/common-origin/common-origin-design-system/issues/41) |
-| Loading the package with native Node ESM and no bundler (`import` in a plain Node `.mjs` script or server) fails: styled-components has no ESM entry for Node, so its default import resolves to the whole CommonJS module | Use a bundler or test runner (Next.js, Vite, webpack, Vitest), or load the CommonJS build with `require`. Jest and other `require()` consumers work. Tracked in [#41](https://github.com/common-origin/common-origin-design-system/issues/41) |
-| Everything ships as a single bundle, including all icon data | None yet |
+| Every bundle that uses Icon (Button, IconButton, Alert and more) includes all icon data, because icons are looked up by name at run time. Components themselves tree-shake ([0042](decisions/0042-package-build.md)) | None yet. Research in [#253](https://github.com/common-origin/common-origin-design-system/issues/253) |

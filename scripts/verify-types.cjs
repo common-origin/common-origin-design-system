@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Pre-publish check: every module specifier in dist/**\/*.d.ts must resolve for consumers.
+ * Pre-publish check: every module specifier in dist/**\/*.d.ts and *.d.mts (the ESM types,
+ * decision 0042) must resolve for consumers.
  * Fails on path aliases, JSON imports, relative imports to files that aren't shipped,
  * and packages that aren't declared dependencies or peer dependencies.
  */
@@ -25,14 +26,19 @@ if (!existsSync(DIST)) {
 const walk = (dir) =>
   readdirSync(dir).flatMap((name) => {
     const path = join(dir, name)
-    return statSync(path).isDirectory() ? walk(path) : path.endsWith('.d.ts') ? [path] : []
+    return statSync(path).isDirectory() ? walk(path) : /\.d\.m?ts$/.test(path) ? [path] : []
   })
 
 const SPECIFIER = /(?:\bfrom\s+|\bimport\s*\(\s*|\bimport\s+)['"]([^'"]+)['"]/g
 
 const packageName = (spec) => (spec.startsWith('@') ? spec.split('/').slice(0, 2).join('/') : spec.split('/')[0])
 
+// A .d.ts resolves like CommonJS (extensionless, or a directory's index). A .d.mts resolves like
+// ESM: the specifier must name the .mjs file, whose types are the .d.mts beside it.
 const resolvesRelative = (fromFile, spec) => {
+  if (fromFile.endsWith('.d.mts')) {
+    return spec.endsWith('.mjs') && existsSync(resolve(dirname(fromFile), spec.replace(/\.mjs$/, '.d.mts')))
+  }
   const base = resolve(dirname(fromFile), spec.replace(/\.js$/, ''))
   return [`${base}.d.ts`, join(base, 'index.d.ts'), base].some((p) => existsSync(p) && p.endsWith('.d.ts'))
 }
@@ -40,9 +46,11 @@ const resolvesRelative = (fromFile, spec) => {
 const problems = []
 const files = walk(DIST)
 
-if (!files.includes(join(DIST, 'index.d.ts'))) {
-  console.error('❌ dist/index.d.ts not found. Run npm run build:package first.')
-  process.exit(1)
+for (const entry of ['index.d.ts', 'index.d.mts']) {
+  if (!files.includes(join(DIST, entry))) {
+    console.error(`❌ dist/${entry} not found. Run npm run build:package first.`)
+    process.exit(1)
+  }
 }
 
 for (const file of files) {
@@ -54,7 +62,7 @@ for (const file of files) {
     } else if (spec.endsWith('.json')) {
       problems.push(`${where}: JSON import "${spec}" (consumers need resolveJsonModule; declare a typed const instead)`)
     } else if (spec.startsWith('.')) {
-      if (!resolvesRelative(file, spec)) problems.push(`${where}: "${spec}" does not resolve to a shipped .d.ts`)
+      if (!resolvesRelative(file, spec)) problems.push(`${where}: "${spec}" does not resolve to a shipped declaration`)
     } else if (!declaredPackages.has(packageName(spec))) {
       problems.push(`${where}: "${spec}" is not a dependency or peer dependency`)
     }
@@ -68,4 +76,4 @@ if (problems.length) {
   process.exit(1)
 }
 
-console.log(`✅ Type definitions OK: ${files.length} .d.ts files, all imports resolvable by consumers`)
+console.log(`✅ Type definitions OK: ${files.length} .d.ts and .d.mts files, all imports resolvable by consumers`)

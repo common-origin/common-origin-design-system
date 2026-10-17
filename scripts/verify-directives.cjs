@@ -2,20 +2,41 @@
 
 /**
  * Pre-publish check for React Server Components support (see rollup.config.mjs):
- * - the component chunk starts with 'use client', so components render from Server Components
- * - the entry, data and tokens bundles don't, so `tokens` and `iconsData` stay plain data
- *   that Server Components can read
+ * - the CommonJS component chunk, and every ESM component and lib module (decision 0042), starts
+ *   with 'use client', so components render from Server Components
+ * - the entries, the data and the tokens don't, so `tokens` and `iconsData` stay plain data that
+ *   Server Components can read
  */
 
-const { existsSync, readFileSync } = require('fs')
-const { join } = require('path')
+const { existsSync, readdirSync, readFileSync, statSync } = require('fs')
+const { join, relative } = require('path')
 
 const DIST = join(__dirname, '..', 'dist')
-const CLIENT = ['client.js', 'client.esm.js']
-const SERVER = ['index.js', 'index.esm.js', 'data.js', 'data.esm.js', 'tokens/index.js', 'tokens/index.esm.js']
 const USE_CLIENT = /^\s*['"]use client['"]/
 
+const walk = (dir) =>
+  existsSync(dir)
+    ? readdirSync(dir).flatMap((name) => {
+        const path = join(dir, name)
+        return statSync(path).isDirectory() ? walk(path) : path.endsWith('.mjs') ? [path] : []
+      })
+    : []
+
+const esmModules = walk(DIST).map((path) => relative(DIST, path))
+const isClientModule = (file) => /^(components|lib)\//.test(file)
+
+const CLIENT = ['client.js', ...esmModules.filter(isClientModule)]
+const SERVER = [
+  'index.js',
+  'index.mjs',
+  'data.js',
+  'tokens/index.js',
+  'tokens/index.mjs',
+  ...esmModules.filter((file) => /^(styles|types)\//.test(file)),
+]
+
 const problems = []
+if (esmModules.filter(isClientModule).length === 0) problems.push('no ESM component modules found (run npm run build:package first)')
 for (const file of [...CLIENT, ...SERVER]) {
   const path = join(DIST, file)
   if (!existsSync(path)) {
@@ -33,4 +54,4 @@ if (problems.length) {
   process.exit(1)
 }
 
-console.log("✅ Component chunks start with 'use client'; entry, data and tokens bundles don't")
+console.log(`✅ Component modules start with 'use client' (${CLIENT.length}); entries, data and tokens don't (${SERVER.length})`)

@@ -1,14 +1,16 @@
 #!/usr/bin/env node
 
 /**
- * Pre-publish smoke test: load the built CommonJS package with plain Node (as Jest and
- * unbundled SSR do) and server-render a component. Catches interop bugs such as a
- * styled-components default import resolving to the whole module (#53), which bundlers
- * hide and the repo's own tests (which import src/) can't see.
+ * Pre-publish smoke test: load the built package with plain Node, both as CommonJS (as Jest does)
+ * and as native ESM (as unbundled server rendering does, such as Vite's dev server), and
+ * server-render a component from each. Catches interop bugs such as a styled-components default
+ * import resolving to the whole module (#53, decision 0042), which bundlers hide and the repo's
+ * own tests (which import src/) can't see.
  */
 
 const { existsSync } = require('fs')
 const { join } = require('path')
+const { pathToFileURL } = require('url')
 
 const DIST = join(__dirname, '..', 'dist')
 if (!existsSync(join(DIST, 'index.js'))) {
@@ -47,10 +49,39 @@ if (tokensEntry && tokensEntry.tokens?.semantic?.color?.background?.default === 
   problems.push('dist/tokens/index.js: tokens are missing')
 }
 
-if (problems.length) {
-  console.error('❌ Package load smoke test failed:\n')
-  problems.forEach((p) => console.error(`  - ${p}`))
-  process.exit(1)
+// The same through Node's own ESM loader, from the .mjs build
+async function checkEsm() {
+  const load = async (file) => {
+    try {
+      return await import(pathToFileURL(join(DIST, file)).href)
+    } catch (error) {
+      problems.push(`import('dist/${file}') threw: ${error.message}`)
+      return null
+    }
+  }
+  const esm = await load('index.mjs')
+  if (esm) {
+    if (esm.tokens?.semantic?.color?.background?.default === undefined) problems.push('dist/index.mjs: tokens are missing')
+    try {
+      const React = require('react')
+      const { renderToString } = require('react-dom/server')
+      const html = renderToString(React.createElement(esm.Button, { variant: 'primary' }, 'ESM smoke test'))
+      if (!html.includes('ESM smoke test')) problems.push('dist/index.mjs: Button rendered without its label')
+    } catch (error) {
+      problems.push(`dist/index.mjs: rendering Button threw: ${error.message}`)
+    }
+  }
+  const esmTokens = await load('tokens/index.mjs')
+  if (esmTokens && esmTokens.tokens?.semantic?.color?.background?.default === undefined) {
+    problems.push('dist/tokens/index.mjs: tokens are missing')
+  }
 }
 
-console.log('✅ CommonJS build loads in plain Node and renders a component')
+checkEsm().then(() => {
+  if (problems.length) {
+    console.error('❌ Package load smoke test failed:\n')
+    problems.forEach((p) => console.error(`  - ${p}`))
+    process.exit(1)
+  }
+  console.log('✅ CommonJS and native ESM builds load in plain Node and render a component')
+})

@@ -6,29 +6,61 @@ This guide documents the **current** bundle/distribution setup for `@common-orig
 
 ## Current Distribution (Source of Truth)
 
-The package currently publishes from `dist/` with these `package.json` fields:
+The package publishes from `dist/` with these `package.json` fields:
 
 ```json
 {
   "main": "dist/index.js",
-  "module": "dist/index.esm.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "sideEffects": [
+    "*.css"
+  ],
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.esm.js",
-      "require": "./dist/index.js"
+      "import": {
+        "types": "./dist/index.d.mts",
+        "default": "./dist/index.mjs"
+      },
+      "require": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
     },
     "./tokens": {
-      "types": "./dist/tokens/tokens.d.ts",
-      "import": "./dist/tokens/index.esm.js",
-      "require": "./dist/tokens/index.js"
+      "import": {
+        "types": "./dist/tokens/tokens.d.mts",
+        "default": "./dist/tokens/index.mjs"
+      },
+      "require": {
+        "types": "./dist/tokens/tokens.d.ts",
+        "default": "./dist/tokens/index.js"
+      }
+    },
+    "./tokens.css": {
+      "types": "./dist/tokens.css.d.ts",
+      "default": "./dist/tokens.css"
     }
   },
-  "typesVersions": { "*": { "tokens": ["./dist/tokens/tokens.d.ts"] } },
-  "files": ["dist/", "README.md", "LICENSE"]
+  "typesVersions": {
+    "*": {
+      "tokens": [
+        "./dist/tokens/tokens.d.ts"
+      ],
+      "tokens.css": [
+        "./dist/tokens.css.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ]
 }
 ```
+
+Since [decision 0042](../docs/foundation/decisions/0042-package-build.md) the ESM build ships **one `.mjs` module per source file** with .d.mts types, so a consumer's bundler keeps only the components it imports; CommonJS stays one bundle. Component and lib modules start with `'use client'`. `"sideEffects": ["*.css"]` and pure-annotated `styled()` calls let bundlers drop unused modules. `npm run verify:size` (part of `verify:package`) fails if a Button-only consumer bundle grows past its budget.
 
 ## Build Pipeline
 
