@@ -44,10 +44,11 @@ const isClientModule = (id) => Boolean(id) && /[\\/]src[\\/](components|lib)[\\/
 const styledDefaultInterop = () => ({
   name: 'styled-default-interop',
   renderChunk(code) {
-    const match = code.match(/import (\w+)((?:, \{[^}]*\})?) from 'styled-components';/)
+    const match = code.match(/import ([\w$]+)((?:, \{[^}]*\})?) from 'styled-components';/)
     if (!match) return null
     const [statement, name, named] = match
-    return code.replace(statement, `import ${name}$module${named} from 'styled-components';\nconst ${name} = ${name}$module.default || ${name}$module;`)
+    // A function, so `$` in a binding name (styled$1) isn't read as a replacement pattern
+    return code.replace(statement, () => `import ${name}$module${named} from 'styled-components';\nconst ${name} = ${name}$module.default || ${name}$module;`)
   },
 })
 
