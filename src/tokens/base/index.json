@@ -611,7 +611,7 @@
       }
     },
     "color": {
-      "$description": "Colour palette: the grey ramp and its alpha twins (decision 0040), the older neutral ramp, seven hue ramps, and transparent.",
+      "$description": "Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent.",
       "$type": "color",
       "transparent": {
         "$value": "transparent",
@@ -717,6 +717,1026 @@
         "1200": {
           "$value": "rgba(34, 34, 34, 1)",
           "$description": "Primary text, and the darkest step. Composites to gray.1200 over white."
+        }
+      },
+      "accent": {
+        "$description": "Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fbfcfd",
+          "$description": "Page background. oklch(0.991 0.002 248), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#f7f9fc",
+          "$description": "Subtle background. oklch(0.981 0.005 258), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#edf3fa",
+          "$description": "Component fill at rest. oklch(0.962 0.011 252), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#e3ecf8",
+          "$description": "Component fill on hover. oklch(0.940 0.019 256), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#d8e5f6",
+          "$description": "Component fill pressed or selected. oklch(0.917 0.027 255), 1.28:1 on white."
+        },
+        "600": {
+          "$value": "#cbdef7",
+          "$description": "Subtle border. oklch(0.894 0.040 255), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#b9d3f5",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.859 0.055 255), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#3190fe",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0.185 255), 3.21:1 on white."
+        },
+        "900": {
+          "$value": "#0082fc",
+          "$description": "Solid fill. oklch(0.617 0.205 255), 3.75:1 on white."
+        },
+        "1000": {
+          "$value": "#0278e7",
+          "$description": "Solid fill on hover. oklch(0.581 0.190 255), 4.34:1 on white."
+        },
+        "1100": {
+          "$value": "#0162bf",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.504 0.165 255), 6.00:1 on white."
+        },
+        "1200": {
+          "$value": "#0f2339",
+          "$description": "Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white."
+        }
+      },
+      "accent-alpha": {
+        "$description": "Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(5, 68, 130, 0.016)",
+          "$description": "Page background. Composites to accent.100 over white."
+        },
+        "200": {
+          "$value": "rgba(5, 68, 161, 0.032)",
+          "$description": "Subtle background. Composites to accent.200 over white."
+        },
+        "300": {
+          "$value": "rgba(1, 86, 185, 0.071)",
+          "$description": "Component fill at rest. Composites to accent.300 over white."
+        },
+        "400": {
+          "$value": "rgba(0, 82, 191, 0.11)",
+          "$description": "Component fill on hover. Composites to accent.400 over white."
+        },
+        "500": {
+          "$value": "rgba(0, 85, 196, 0.153)",
+          "$description": "Component fill pressed or selected. Composites to accent.500 over white."
+        },
+        "600": {
+          "$value": "rgba(0, 93, 216, 0.204)",
+          "$description": "Subtle border. Composites to accent.600 over white."
+        },
+        "700": {
+          "$value": "rgba(0, 95, 219, 0.275)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to accent.700 over white."
+        },
+        "800": {
+          "$value": "rgba(0, 118, 254, 0.808)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to accent.800 over white."
+        },
+        "900": {
+          "$value": "rgba(0, 130, 252, 1)",
+          "$description": "Solid fill. Composites to accent.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(0, 119, 231, 0.993)",
+          "$description": "Solid fill on hover. Composites to accent.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(0, 98, 191, 0.997)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to accent.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(0, 21, 45, 0.942)",
+          "$description": "Primary text, and the darkest step. Composites to accent.1200 over white."
+        }
+      },
+      "success": {
+        "$description": "Success role (decision 0043): success, positive values, money in. Defined in OKLCH at hue 160°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#f9fdfa",
+          "$description": "Page background. oklch(0.990 0.006 154), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#f0fcf5",
+          "$description": "Subtle background. oklch(0.980 0.016 161), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#dbf9e8",
+          "$description": "Component fill at rest. oklch(0.956 0.039 161), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#c4f7da",
+          "$description": "Component fill on hover. oklch(0.933 0.065 160), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#aff3ce",
+          "$description": "Component fill pressed or selected. oklch(0.909 0.085 160), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#98eec0",
+          "$description": "Subtle border. oklch(0.882 0.106 160), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#77e6af",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.844 0.130 160), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#02a56c",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.637 0.144 160), 3.18:1 on white."
+        },
+        "900": {
+          "$value": "#009762",
+          "$description": "Solid fill. oklch(0.597 0.136 160), 3.75:1 on white."
+        },
+        "1000": {
+          "$value": "#018b5a",
+          "$description": "Solid fill on hover. oklch(0.562 0.127 160), 4.34:1 on white."
+        },
+        "1100": {
+          "$value": "#017249",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.487 0.110 160), 5.99:1 on white."
+        },
+        "1200": {
+          "$value": "#12261b",
+          "$description": "Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white."
+        }
+      },
+      "success-alpha": {
+        "$description": "Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(5, 172, 47, 0.024)",
+          "$description": "Page background. Composites to success.100 over white."
+        },
+        "200": {
+          "$value": "rgba(1, 204, 86, 0.059)",
+          "$description": "Subtle background. Composites to success.200 over white."
+        },
+        "300": {
+          "$value": "rgba(1, 213, 93, 0.142)",
+          "$description": "Component fill at rest. Composites to success.300 over white."
+        },
+        "400": {
+          "$value": "rgba(1, 221, 96, 0.232)",
+          "$description": "Component fill on hover. Composites to success.400 over white."
+        },
+        "500": {
+          "$value": "rgba(0, 217, 99, 0.314)",
+          "$description": "Component fill pressed or selected. Composites to success.500 over white."
+        },
+        "600": {
+          "$value": "rgba(0, 213, 99, 0.404)",
+          "$description": "Subtle border. Composites to success.600 over white."
+        },
+        "700": {
+          "$value": "rgba(0, 208, 105, 0.534)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to success.700 over white."
+        },
+        "800": {
+          "$value": "rgba(0, 164, 107, 0.993)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to success.800 over white."
+        },
+        "900": {
+          "$value": "rgba(0, 151, 98, 1)",
+          "$description": "Solid fill. Composites to success.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(0, 139, 90, 0.997)",
+          "$description": "Solid fill on hover. Composites to success.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(0, 114, 72, 0.997)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to success.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(0, 22, 10, 0.93)",
+          "$description": "Primary text, and the darkest step. Composites to success.1200 over white."
+        }
+      },
+      "warning": {
+        "$description": "Warning role (decision 0043): attention, a regular warning. Defined in OKLCH at hue 80°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fdfcfa",
+          "$description": "Page background. oklch(0.991 0.003 85), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#fcf9f4",
+          "$description": "Subtle background. oklch(0.983 0.007 81), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#faf1e3",
+          "$description": "Component fill at rest. oklch(0.961 0.021 79), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#f8e9d1",
+          "$description": "Component fill on hover. oklch(0.940 0.036 80), 1.20:1 on white."
+        },
+        "500": {
+          "$value": "#f7e1be",
+          "$description": "Component fill pressed or selected. oklch(0.919 0.052 79), 1.28:1 on white."
+        },
+        "600": {
+          "$value": "#f7d8a5",
+          "$description": "Subtle border. oklch(0.896 0.074 80), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#f7cb80",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.864 0.106 80), 1.52:1 on white."
+        },
+        "800": {
+          "$value": "#bd8600",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.658 0.136 80), 3.19:1 on white."
+        },
+        "900": {
+          "$value": "#ad7b00",
+          "$description": "Solid fill. oklch(0.617 0.128 80), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#9f7102",
+          "$description": "Solid fill on hover. oklch(0.580 0.120 80), 4.34:1 on white."
+        },
+        "1100": {
+          "$value": "#835c00",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.503 0.104 80), 6.01:1 on white."
+        },
+        "1200": {
+          "$value": "#292111",
+          "$description": "Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white."
+        }
+      },
+      "warning-alpha": {
+        "$description": "Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(155, 105, 5, 0.02)",
+          "$description": "Page background. Composites to warning.100 over white."
+        },
+        "200": {
+          "$value": "rgba(187, 119, 5, 0.044)",
+          "$description": "Subtle background. Composites to warning.200 over white."
+        },
+        "300": {
+          "$value": "rgba(210, 128, 0, 0.11)",
+          "$description": "Component fill at rest. Composites to warning.300 over white."
+        },
+        "400": {
+          "$value": "rgba(216, 133, 1, 0.181)",
+          "$description": "Component fill on hover. Composites to warning.400 over white."
+        },
+        "500": {
+          "$value": "rgba(224, 137, 0, 0.255)",
+          "$description": "Component fill pressed or selected. Composites to warning.500 over white."
+        },
+        "600": {
+          "$value": "rgba(232, 145, 0, 0.353)",
+          "$description": "Subtle border. Composites to warning.600 over white."
+        },
+        "700": {
+          "$value": "rgba(239, 151, 0, 0.499)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to warning.700 over white."
+        },
+        "800": {
+          "$value": "rgba(189, 134, 0, 1)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to warning.800 over white."
+        },
+        "900": {
+          "$value": "rgba(173, 123, 0, 1)",
+          "$description": "Solid fill. Composites to warning.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(158, 112, 0, 0.993)",
+          "$description": "Solid fill on hover. Composites to warning.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(131, 92, 0, 1)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to warning.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(26, 17, 0, 0.934)",
+          "$description": "Primary text, and the darkest step. Composites to warning.1200 over white."
+        }
+      },
+      "serious": {
+        "$description": "Serious role (decision 0043): a serious warning, between warning and danger. Defined in OKLCH at hue 47°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fefcfb",
+          "$description": "Page background. oklch(0.992 0.003 49), 1.02:1 on white."
+        },
+        "200": {
+          "$value": "#fcf8f6",
+          "$description": "Subtle background. oklch(0.982 0.005 49), 1.06:1 on white."
+        },
+        "300": {
+          "$value": "#faf0eb",
+          "$description": "Component fill at rest. oklch(0.962 0.013 49), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#f8e8e0",
+          "$description": "Component fill on hover. oklch(0.942 0.021 48), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#f7dfd4",
+          "$description": "Component fill pressed or selected. oklch(0.920 0.030 46), 1.28:1 on white."
+        },
+        "600": {
+          "$value": "#f6d5c5",
+          "$description": "Subtle border. oklch(0.896 0.043 47), 1.38:1 on white."
+        },
+        "700": {
+          "$value": "#f7c7b0",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.866 0.063 47), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#ed6800",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.671 0.186 47), 3.19:1 on white."
+        },
+        "900": {
+          "$value": "#da5f00",
+          "$description": "Solid fill. oklch(0.630 0.175 47), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#c85701",
+          "$description": "Solid fill on hover. oklch(0.592 0.163 47), 4.36:1 on white."
+        },
+        "1100": {
+          "$value": "#a54703",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.514 0.141 47), 6.00:1 on white."
+        },
+        "1200": {
+          "$value": "#341c10",
+          "$description": "Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white."
+        }
+      },
+      "serious-alpha": {
+        "$description": "Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(193, 68, 5, 0.016)",
+          "$description": "Page background. Composites to serious.100 over white."
+        },
+        "200": {
+          "$value": "rgba(172, 61, 5, 0.036)",
+          "$description": "Subtle background. Composites to serious.200 over white."
+        },
+        "300": {
+          "$value": "rgba(192, 65, 2, 0.079)",
+          "$description": "Component fill at rest. Composites to serious.300 over white."
+        },
+        "400": {
+          "$value": "rgba(198, 66, 1, 0.122)",
+          "$description": "Component fill on hover. Composites to serious.400 over white."
+        },
+        "500": {
+          "$value": "rgba(208, 66, 1, 0.169)",
+          "$description": "Component fill pressed or selected. Composites to serious.500 over white."
+        },
+        "600": {
+          "$value": "rgba(216, 71, 1, 0.228)",
+          "$description": "Subtle border. Composites to serious.600 over white."
+        },
+        "700": {
+          "$value": "rgba(229, 74, 0, 0.31)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to serious.700 over white."
+        },
+        "800": {
+          "$value": "rgba(237, 104, 0, 1)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to serious.800 over white."
+        },
+        "900": {
+          "$value": "rgba(218, 95, 0, 1)",
+          "$description": "Solid fill. Composites to serious.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(200, 86, 0, 0.997)",
+          "$description": "Solid fill on hover. Composites to serious.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(164, 69, 0, 0.989)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to serious.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(39, 13, 0, 0.938)",
+          "$description": "Primary text, and the darkest step. Composites to serious.1200 over white."
+        }
+      },
+      "danger": {
+        "$description": "Danger role (decision 0043): errors, destructive actions, negative values, money out. Defined in OKLCH at hue 29°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fefcfc",
+          "$description": "Page background. oklch(0.993 0.002 17), 1.02:1 on white."
+        },
+        "200": {
+          "$value": "#fcf8f7",
+          "$description": "Subtle background. oklch(0.982 0.004 34), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#faf0ee",
+          "$description": "Component fill at rest. oklch(0.962 0.011 31), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#f8e7e4",
+          "$description": "Component fill on hover. oklch(0.941 0.019 30), 1.20:1 on white."
+        },
+        "500": {
+          "$value": "#f8dfdb",
+          "$description": "Component fill pressed or selected. oklch(0.923 0.028 29), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#f7d4ce",
+          "$description": "Subtle border. oklch(0.898 0.040 29), 1.38:1 on white."
+        },
+        "700": {
+          "$value": "#f7c6be",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.867 0.057 29), 1.52:1 on white."
+        },
+        "800": {
+          "$value": "#ff5444",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.679 0.210 29), 3.18:1 on white."
+        },
+        "900": {
+          "$value": "#ff2b21",
+          "$description": "Solid fill. oklch(0.643 0.243 29), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#f30004",
+          "$description": "Solid fill on hover. oklch(0.606 0.248 29), 4.36:1 on white."
+        },
+        "1100": {
+          "$value": "#c90002",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.525 0.215 29), 6.03:1 on white."
+        },
+        "1200": {
+          "$value": "#3d1611",
+          "$description": "Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white."
+        }
+      },
+      "danger-alpha": {
+        "$description": "Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(172, 5, 5, 0.012)",
+          "$description": "Page background. Composites to danger.100 over white."
+        },
+        "200": {
+          "$value": "rgba(161, 36, 5, 0.032)",
+          "$description": "Subtle background. Composites to danger.200 over white."
+        },
+        "300": {
+          "$value": "rgba(180, 31, 1, 0.067)",
+          "$description": "Component fill at rest. Composites to danger.300 over white."
+        },
+        "400": {
+          "$value": "rgba(189, 29, 0, 0.106)",
+          "$description": "Component fill on hover. Composites to danger.400 over white."
+        },
+        "500": {
+          "$value": "rgba(206, 30, 1, 0.142)",
+          "$description": "Component fill pressed or selected. Composites to danger.500 over white."
+        },
+        "600": {
+          "$value": "rgba(214, 32, 1, 0.193)",
+          "$description": "Subtle border. Composites to danger.600 over white."
+        },
+        "700": {
+          "$value": "rgba(224, 31, 0, 0.255)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to danger.700 over white."
+        },
+        "800": {
+          "$value": "rgba(255, 22, 0, 0.734)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to danger.800 over white."
+        },
+        "900": {
+          "$value": "rgba(255, 12, 0, 0.871)",
+          "$description": "Solid fill. Composites to danger.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(243, 0, 4, 1)",
+          "$description": "Solid fill on hover. Composites to danger.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(201, 0, 2, 1)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to danger.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(47, 6, 0, 0.934)",
+          "$description": "Primary text, and the darkest step. Composites to danger.1200 over white."
+        }
+      },
+      "ai": {
+        "$description": "AI role (decision 0043): AI-generated content, agent actions, working states. Defined in OKLCH at hue 305°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fdfcfe",
+          "$description": "Page background. oklch(0.992 0.003 308), 1.02:1 on white."
+        },
+        "200": {
+          "$value": "#faf8fc",
+          "$description": "Subtle background. oklch(0.982 0.006 308), 1.06:1 on white."
+        },
+        "300": {
+          "$value": "#f4f0fa",
+          "$description": "Component fill at rest. oklch(0.961 0.014 304), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#efe8f8",
+          "$description": "Component fill on hover. oklch(0.941 0.023 306), 1.20:1 on white."
+        },
+        "500": {
+          "$value": "#eae0f7",
+          "$description": "Component fill pressed or selected. oklch(0.921 0.033 305), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#e4d6f6",
+          "$description": "Subtle border. oklch(0.897 0.046 305), 1.38:1 on white."
+        },
+        "700": {
+          "$value": "#ddc9f7",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.867 0.066 305), 1.52:1 on white."
+        },
+        "800": {
+          "$value": "#b76bff",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.677 0.215 305), 3.20:1 on white."
+        },
+        "900": {
+          "$value": "#b056ff",
+          "$description": "Solid fill. oklch(0.642 0.241 305), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#aa3dff",
+          "$description": "Solid fill on hover. oklch(0.610 0.267 305), 4.36:1 on white."
+        },
+        "1100": {
+          "$value": "#9602eb",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.539 0.279 305), 5.99:1 on white."
+        },
+        "1200": {
+          "$value": "#2e1743",
+          "$description": "Primary text, and the darkest step. oklch(0.261 0.082 306), 15.91:1 on white."
+        }
+      },
+      "ai-alpha": {
+        "$description": "Alpha twins of ai: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(88, 5, 172, 0.012)",
+          "$description": "Page background. Composites to ai.100 over white."
+        },
+        "200": {
+          "$value": "rgba(76, 5, 148, 0.028)",
+          "$description": "Subtle background. Composites to ai.200 over white."
+        },
+        "300": {
+          "$value": "rgba(69, 1, 170, 0.059)",
+          "$description": "Component fill at rest. Composites to ai.300 over white."
+        },
+        "400": {
+          "$value": "rgba(79, 2, 178, 0.091)",
+          "$description": "Component fill on hover. Composites to ai.400 over white."
+        },
+        "500": {
+          "$value": "rgba(83, 1, 189, 0.122)",
+          "$description": "Component fill pressed or selected. Composites to ai.500 over white."
+        },
+        "600": {
+          "$value": "rgba(87, 0, 199, 0.161)",
+          "$description": "Subtle border. Composites to ai.600 over white."
+        },
+        "700": {
+          "$value": "rgba(95, 0, 217, 0.212)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to ai.700 over white."
+        },
+        "800": {
+          "$value": "rgba(131, 0, 255, 0.581)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to ai.800 over white."
+        },
+        "900": {
+          "$value": "rgba(136, 0, 255, 0.663)",
+          "$description": "Solid fill. Composites to ai.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(143, 0, 255, 0.761)",
+          "$description": "Solid fill on hover. Composites to ai.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(149, 0, 235, 0.993)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to ai.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(25, 0, 48, 0.91)",
+          "$description": "Primary text, and the darkest step. Composites to ai.1200 over white."
+        }
+      },
+      "olive": {
+        "$description": "Olive display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 117°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fbfdf4",
+          "$description": "Page background. oklch(0.990 0.012 117), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#f7fbe8",
+          "$description": "Subtle background. oklch(0.980 0.025 117), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#eff6d4",
+          "$description": "Component fill at rest. oklch(0.959 0.045 117), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#e6f0bf",
+          "$description": "Component fill on hover. oklch(0.935 0.065 117), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#deebaa",
+          "$description": "Component fill pressed or selected. oklch(0.915 0.085 117), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#d5e493",
+          "$description": "Subtle border. oklch(0.889 0.105 117), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#c9da73",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.854 0.130 117), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#889903",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.647 0.149 117), 3.18:1 on white."
+        },
+        "900": {
+          "$value": "#7d8c02",
+          "$description": "Solid fill. oklch(0.607 0.139 117), 3.73:1 on white."
+        },
+        "1000": {
+          "$value": "#738000",
+          "$description": "Solid fill on hover. oklch(0.569 0.131 117), 4.36:1 on white."
+        },
+        "1100": {
+          "$value": "#5d6900",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.493 0.114 117), 6.02:1 on white."
+        },
+        "1200": {
+          "$value": "#202410",
+          "$description": "Primary text, and the darkest step. oklch(0.250 0.035 118), 15.89:1 on white."
+        }
+      },
+      "olive-alpha": {
+        "$description": "Alpha twins of olive: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(164, 210, 5, 0.044)",
+          "$description": "Page background. Composites to olive.100 over white."
+        },
+        "200": {
+          "$value": "rgba(167, 211, 2, 0.091)",
+          "$description": "Subtle background. Composites to olive.200 over white."
+        },
+        "300": {
+          "$value": "rgba(160, 202, 1, 0.169)",
+          "$description": "Component fill at rest. Composites to olive.300 over white."
+        },
+        "400": {
+          "$value": "rgba(155, 195, 0, 0.251)",
+          "$description": "Component fill on hover. Composites to olive.400 over white."
+        },
+        "500": {
+          "$value": "rgba(156, 195, 1, 0.334)",
+          "$description": "Component fill pressed or selected. Composites to olive.500 over white."
+        },
+        "600": {
+          "$value": "rgba(156, 191, 0, 0.424)",
+          "$description": "Subtle border. Composites to olive.600 over white."
+        },
+        "700": {
+          "$value": "rgba(157, 188, 0, 0.55)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to olive.700 over white."
+        },
+        "800": {
+          "$value": "rgba(135, 152, 0, 0.989)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to olive.800 over white."
+        },
+        "900": {
+          "$value": "rgba(124, 139, 0, 0.993)",
+          "$description": "Solid fill. Composites to olive.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(115, 128, 0, 1)",
+          "$description": "Solid fill on hover. Composites to olive.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(93, 105, 0, 1)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to olive.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(17, 22, 0, 0.938)",
+          "$description": "Primary text, and the darkest step. Composites to olive.1200 over white."
+        }
+      },
+      "periwinkle": {
+        "$description": "Periwinkle display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 277°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fcfcfd",
+          "$description": "Page background. oklch(0.991 0.001 286), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#f8f9fc",
+          "$description": "Subtle background. oklch(0.982 0.004 271), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#f0f2fa",
+          "$description": "Component fill at rest. oklch(0.962 0.011 275), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#e8ebf9",
+          "$description": "Component fill on hover. oklch(0.942 0.019 276), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#dfe3f7",
+          "$description": "Component fill pressed or selected. oklch(0.919 0.027 277), 1.28:1 on white."
+        },
+        "600": {
+          "$value": "#d6dbf7",
+          "$description": "Subtle border. oklch(0.896 0.039 278), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#c8cff6",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.862 0.055 277), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#7a84ff",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.665 0.180 277), 3.20:1 on white."
+        },
+        "900": {
+          "$value": "#6e74fe",
+          "$description": "Solid fill. oklch(0.627 0.201 277), 3.76:1 on white."
+        },
+        "1000": {
+          "$value": "#6464ff",
+          "$description": "Solid fill on hover. oklch(0.593 0.224 277), 4.37:1 on white."
+        },
+        "1100": {
+          "$value": "#533eff",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.528 0.267 277), 6.00:1 on white."
+        },
+        "1200": {
+          "$value": "#1a1b51",
+          "$description": "Primary text, and the darkest step. oklch(0.259 0.096 277), 15.91:1 on white."
+        }
+      },
+      "periwinkle-alpha": {
+        "$description": "Alpha twins of periwinkle: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(5, 5, 88, 0.012)",
+          "$description": "Page background. Composites to periwinkle.100 over white."
+        },
+        "200": {
+          "$value": "rgba(5, 41, 148, 0.028)",
+          "$description": "Subtle background. Composites to periwinkle.200 over white."
+        },
+        "300": {
+          "$value": "rgba(1, 35, 170, 0.059)",
+          "$description": "Component fill at rest. Composites to periwinkle.300 over white."
+        },
+        "400": {
+          "$value": "rgba(2, 35, 189, 0.091)",
+          "$description": "Component fill on hover. Composites to periwinkle.400 over white."
+        },
+        "500": {
+          "$value": "rgba(1, 33, 192, 0.126)",
+          "$description": "Component fill pressed or selected. Composites to periwinkle.500 over white."
+        },
+        "600": {
+          "$value": "rgba(0, 31, 205, 0.161)",
+          "$description": "Subtle border. Composites to periwinkle.600 over white."
+        },
+        "700": {
+          "$value": "rgba(0, 33, 213, 0.216)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to periwinkle.700 over white."
+        },
+        "800": {
+          "$value": "rgba(0, 19, 255, 0.522)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to periwinkle.800 over white."
+        },
+        "900": {
+          "$value": "rgba(0, 11, 253, 0.569)",
+          "$description": "Solid fill. Composites to periwinkle.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(0, 0, 255, 0.608)",
+          "$description": "Solid fill on hover. Composites to periwinkle.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(28, 0, 255, 0.757)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to periwinkle.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(0, 1, 61, 0.899)",
+          "$description": "Primary text, and the darkest step. Composites to periwinkle.1200 over white."
+        }
+      },
+      "rose": {
+        "$description": "Rose display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 4°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fefcfc",
+          "$description": "Page background. oklch(0.993 0.002 17), 1.02:1 on white."
+        },
+        "200": {
+          "$value": "#fcf8f9",
+          "$description": "Subtle background. oklch(0.982 0.004 360), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#faeff1",
+          "$description": "Component fill at rest. oklch(0.961 0.012 5), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#f8e7ea",
+          "$description": "Component fill on hover. oklch(0.942 0.019 5), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#f8dee3",
+          "$description": "Component fill pressed or selected. oklch(0.923 0.029 5), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#f7d3da",
+          "$description": "Subtle border. oklch(0.899 0.041 5), 1.37:1 on white."
+        },
+        "700": {
+          "$value": "#f7c4cf",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.868 0.060 4), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#ff4989",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.682 0.221 4), 3.20:1 on white."
+        },
+        "900": {
+          "$value": "#ff0f7c",
+          "$description": "Solid fill. oklch(0.647 0.256 4), 3.74:1 on white."
+        },
+        "1000": {
+          "$value": "#ec0071",
+          "$description": "Solid fill on hover. oklch(0.607 0.244 4), 4.37:1 on white."
+        },
+        "1100": {
+          "$value": "#c4005d",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.528 0.213 4), 5.99:1 on white."
+        },
+        "1200": {
+          "$value": "#3c1520",
+          "$description": "Primary text, and the darkest step. oklch(0.260 0.063 5), 15.91:1 on white."
+        }
+      },
+      "rose-alpha": {
+        "$description": "Alpha twins of rose: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(172, 5, 5, 0.012)",
+          "$description": "Page background. Composites to rose.100 over white."
+        },
+        "200": {
+          "$value": "rgba(148, 5, 41, 0.028)",
+          "$description": "Subtle background. Composites to rose.200 over white."
+        },
+        "300": {
+          "$value": "rgba(176, 1, 33, 0.063)",
+          "$description": "Component fill at rest. Composites to rose.300 over white."
+        },
+        "400": {
+          "$value": "rgba(181, 2, 34, 0.095)",
+          "$description": "Component fill on hover. Composites to rose.400 over white."
+        },
+        "500": {
+          "$value": "rgba(201, 1, 40, 0.13)",
+          "$description": "Component fill pressed or selected. Composites to rose.500 over white."
+        },
+        "600": {
+          "$value": "rgba(209, 1, 41, 0.173)",
+          "$description": "Subtle border. Composites to rose.600 over white."
+        },
+        "700": {
+          "$value": "rgba(221, 1, 48, 0.232)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to rose.700 over white."
+        },
+        "800": {
+          "$value": "rgba(255, 0, 90, 0.714)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to rose.800 over white."
+        },
+        "900": {
+          "$value": "rgba(255, 0, 116, 0.942)",
+          "$description": "Solid fill. Composites to rose.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(236, 0, 113, 1)",
+          "$description": "Solid fill on hover. Composites to rose.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(196, 0, 93, 1)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to rose.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(43, 0, 12, 0.918)",
+          "$description": "Primary text, and the darkest step. Composites to rose.1200 over white."
+        }
+      },
+      "magenta": {
+        "$description": "Magenta display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 329°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
+        "100": {
+          "$value": "#fdfbfd",
+          "$description": "Page background. oklch(0.990 0.003 326), 1.03:1 on white."
+        },
+        "200": {
+          "$value": "#fdf8fc",
+          "$description": "Subtle background. oklch(0.984 0.007 332), 1.05:1 on white."
+        },
+        "300": {
+          "$value": "#faeff9",
+          "$description": "Component fill at rest. oklch(0.964 0.018 328), 1.12:1 on white."
+        },
+        "400": {
+          "$value": "#f9e6f7",
+          "$description": "Component fill on hover. oklch(0.945 0.030 329), 1.19:1 on white."
+        },
+        "500": {
+          "$value": "#f8dcf5",
+          "$description": "Component fill pressed or selected. oklch(0.925 0.045 329), 1.27:1 on white."
+        },
+        "600": {
+          "$value": "#f7d0f3",
+          "$description": "Subtle border. oklch(0.901 0.063 329), 1.38:1 on white."
+        },
+        "700": {
+          "$value": "#f7bff2",
+          "$description": "Default border, for dividers and decorative outlines. oklch(0.870 0.092 329), 1.53:1 on white."
+        },
+        "800": {
+          "$value": "#fd00fa",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.696 0.319 329), 3.20:1 on white."
+        },
+        "900": {
+          "$value": "#e900e6",
+          "$description": "Solid fill. oklch(0.654 0.299 329), 3.75:1 on white."
+        },
+        "1000": {
+          "$value": "#d700d4",
+          "$description": "Solid fill on hover. oklch(0.615 0.282 329), 4.34:1 on white."
+        },
+        "1100": {
+          "$value": "#b100af",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.532 0.244 329), 6.02:1 on white."
+        },
+        "1200": {
+          "$value": "#371535",
+          "$description": "Primary text, and the darkest step. oklch(0.262 0.073 330), 15.90:1 on white."
+        }
+      },
+      "magenta-alpha": {
+        "$description": "Alpha twins of magenta: each is the smallest opacity that composites over white to the solid step (decision 0044).",
+        "100": {
+          "$value": "rgba(130, 5, 130, 0.016)",
+          "$description": "Page background. Composites to magenta.100 over white."
+        },
+        "200": {
+          "$value": "rgba(184, 5, 148, 0.028)",
+          "$description": "Subtle background. Composites to magenta.200 over white."
+        },
+        "300": {
+          "$value": "rgba(176, 1, 160, 0.063)",
+          "$description": "Component fill at rest. Composites to magenta.300 over white."
+        },
+        "400": {
+          "$value": "rgba(194, 2, 174, 0.099)",
+          "$description": "Component fill on hover. Composites to magenta.400 over white."
+        },
+        "500": {
+          "$value": "rgba(204, 1, 183, 0.138)",
+          "$description": "Component fill pressed or selected. Composites to magenta.500 over white."
+        },
+        "600": {
+          "$value": "rgba(212, 1, 190, 0.185)",
+          "$description": "Subtle border. Composites to magenta.600 over white."
+        },
+        "700": {
+          "$value": "rgba(223, 0, 203, 0.251)",
+          "$description": "Default border, for dividers and decorative outlines. Composites to magenta.700 over white."
+        },
+        "800": {
+          "$value": "rgba(253, 0, 250, 1)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to magenta.800 over white."
+        },
+        "900": {
+          "$value": "rgba(233, 0, 230, 1)",
+          "$description": "Solid fill. Composites to magenta.900 over white."
+        },
+        "1000": {
+          "$value": "rgba(215, 0, 212, 1)",
+          "$description": "Solid fill on hover. Composites to magenta.1000 over white."
+        },
+        "1100": {
+          "$value": "rgba(177, 0, 175, 1)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to magenta.1100 over white."
+        },
+        "1200": {
+          "$value": "rgba(37, 0, 35, 0.918)",
+          "$description": "Primary text, and the darkest step. Composites to magenta.1200 over white."
         }
       },
       "neutral": {

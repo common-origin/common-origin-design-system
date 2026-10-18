@@ -43,10 +43,11 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0037](0037-motion-tokens.md) | Motion tokens: `duration.instant`, purpose-named easing (`standard`, `decelerate`, `accelerate`), `distance.sm`, `transition.feedback/focus/press`; exits accelerate; no `transition: all`; a fuller motion system later (#227) | Accepted | 2026-10-13 |
 | [0038](0038-forced-colors.md) | Forced colours: system-colour edges and states scoped to `@media (forced-colors: active)`; `Highlight` for selected and checked; `forced-color-adjust: none` only on fills that carry state; Playwright checks | Accepted | 2026-10-13 |
 | [0039](0039-target-size.md) | Pointer targets are at least 24 × 24px; a control smaller to look at extends its hit area with a pseudo-element (the chip close button) | Accepted | 2026-10-13 |
-| [0040](0040-own-oklch-palette.md) | Our own palette: a 12-step pure-grey ramp (`gray.100`–`1200`, each step with a job) with alpha twins, defined in OKLCH; Spectrum and Bootstrap are no longer sources; hues follow in #233 | Accepted | 2026-10-14 |
+| [0040](0040-own-oklch-palette.md) | Our own palette: a 12-step pure-grey ramp (`gray.100`–`1200`, each step with a job) with alpha twins, defined in OKLCH; Spectrum and Bootstrap are no longer sources; hues follow in #233 | Accepted; amended by 0044 | 2026-10-14 |
 | [0041](0041-components-read-css-variables.md) | Components read tokens as CSS variables with resolved fallbacks (a minor release); styled-components stays; zero-runtime deferred | Accepted | 2026-10-14 |
 | [0042](0042-package-build.md) | Package build: per-module `.mjs` ESM with .d.mts types, `sideEffects`, pure styled calls, and a Node ESM fix for styled-components; Rollup stays; ships in a 2.x minor | Accepted | 2026-10-17 |
 | [0043](0043-data-colours.md) | Colour by meaning: six role hues (accent, success, warning, serious, danger, AI) plus neutral mean the same everywhere; four display hues with no meaning for categories and chart categories; never colour alone; amends 0003 and 0010 | Accepted | 2026-10-18 |
+| [0044](0044-hue-ramps.md) | Hue ramps: each step matches the grey step's contrast with white, full chroma on 800–1100, named by role (`accent`, `success`, `warning`, `serious`, `danger`, `ai`) and display hue (`olive`, `periwinkle`, `rose`, `magenta`), per-step alpha twins; amends 0040 | Accepted | 2026-10-18 |
 
 ## Template
 

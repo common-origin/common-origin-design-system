@@ -1,6 +1,6 @@
 # 0040. Our own palette: a 12-step pure-grey ramp with alpha twins, defined in OKLCH
 
-- **Status:** Accepted
+- **Status:** Accepted; amended by [0044](0044-hue-ramps.md): a hue step matches the grey step's contrast with white (its luminance), not its OKLCH lightness
 - **Date:** 2026-10-14
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P3, P9
@@ -30,7 +30,7 @@ The token architecture review ([#187](https://github.com/common-origin/common-or
    - `1100` is at least 4.5:1 against every background and fill step (`100`–`500`) and white.
    - `1200` is the primary text and the darkest step. Pure black stays reserved for the logo.
 4. **Every step has an alpha twin**, `gray-alpha.100`–`1200`. It's `gray.1200` at the opacity that composites over white to the solid step, so `gray-alpha.1200` is opaque. Alpha twins are for overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds. The scrim and overlay tokens (today's literal `rgba(33, 37, 41, …)` values) keep their own opacities, which aren't ramp steps, but take their colour from `gray.1200`. That changes their colour slightly, so it happens in the palette retune, not as a zero-change alias. Shadows keep their pure-black alpha ([0012](0012-shadows-use-black.md)).
-5. **Values are defined in OKLCH.** Each step is a fixed OKLCH lightness. The hue ramps reuse the grey ramp's lightness steps, and the dark-mode values and data-visualisation colours are generated the same way, so all of them follow from one structure.
+5. **Values are defined in OKLCH.** Each step is a fixed OKLCH lightness. The hue ramps reuse the grey ramp's lightness steps (amended by [0044](0044-hue-ramps.md): each hue step matches the grey step's contrast with white instead), and the dark-mode values and data-visualisation colours are generated the same way, so all of them follow from one structure.
 6. **The new ramps are additive in 2.x.** `gray.*` and `gray-alpha.*` sit beside `neutral.*` with no visual change ([#188](https://github.com/common-origin/common-origin-design-system/issues/188)). The hue ramps move onto the 12-step OKLCH structure in their own step ([#233](https://github.com/common-origin/common-origin-design-system/issues/233)), after the data-visualisation research ([#196](https://github.com/common-origin/common-origin-design-system/issues/196)). The semantic tokens move onto the new ramps in the palette retune ([#190](https://github.com/common-origin/common-origin-design-system/issues/190)), the one visible step. `neutral.*` and the old hue values are removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)).
 
 ## Consequences
