@@ -1,6 +1,6 @@
 # 0003. Blue is for links, focus, and deliberate highlight
 
-- **Status:** Accepted; the open question about blue, selection and emphasis is resolved by [0016](0016-accent-selection-and-chip-types.md)
+- **Status:** Accepted; the open question about blue, selection and emphasis is resolved by [0016](0016-accent-selection-and-chip-types.md); amended by [0043](0043-data-colours.md): blue also means information and in progress
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P1
