@@ -1,6 +1,6 @@
 # 0018. Indicators and labels: Badge counts, StatusLabel, CategoryLabel, Tag
 
-- **Status:** Accepted
+- **Status:** Accepted; amended by [0045](0045-status-indication.md): Badge means new or unread items in accent (its status colours are deprecated), and the status set is defined in 0045
 - **Date:** 2026-10-01
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P4, P5, P7, P9

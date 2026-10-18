@@ -21,7 +21,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
 | [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
 | [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted; step order amended by 0023, CSS variable names by 0024 | 2026-10-01 |
-| [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted | 2026-10-01 |
+| [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted; amended by 0045 | 2026-10-01 |
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
 | [0020](0020-tabbar-single-variant.md) | TabBar has one variant, underline, with the light-blue selected treatment; `default` and `pills` are deprecated | Accepted | 2026-10-01 |
 | [0021](0021-alert-action-below-content.md) | Alert's action follows the content, left-aligned with it; the dismiss button stays top right | Accepted | 2026-10-03 |
@@ -48,6 +48,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0042](0042-package-build.md) | Package build: per-module `.mjs` ESM with .d.mts types, `sideEffects`, pure styled calls, and a Node ESM fix for styled-components; Rollup stays; ships in a 2.x minor | Accepted | 2026-10-17 |
 | [0043](0043-data-colours.md) | Colour by meaning: six role hues (accent, success, warning, serious, danger, AI) plus neutral mean the same everywhere; four display hues with no meaning for categories and chart categories; never colour alone; amends 0003 and 0010 | Accepted | 2026-10-18 |
 | [0044](0044-hue-ramps.md) | Hue ramps: each step matches the grey step's contrast with white, full chroma on 800–1100, named by role (`accent`, `success`, `warning`, `serious`, `danger`, `ai`) and display hue (`olive`, `periwinkle`, `rose`, `magenta`), per-step alpha twins; amends 0040 | Accepted | 2026-10-18 |
+| [0045](0045-status-indication.md) | Status indication: ten statuses with one meaning, role and shape each; outline icons on the shapes, shape indicators (12px minimum) for the six coloured statuses; always a visible label; Badge means new or unread in accent; signs are text; amends 0018 | Accepted | 2026-10-18 |
 
 ## Template
 
