@@ -46,6 +46,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0040](0040-own-oklch-palette.md) | Our own palette: a 12-step pure-grey ramp (`gray.100`–`1200`, each step with a job) with alpha twins, defined in OKLCH; Spectrum and Bootstrap are no longer sources; hues follow in #233 | Accepted | 2026-10-14 |
 | [0041](0041-components-read-css-variables.md) | Components read tokens as CSS variables with resolved fallbacks (a minor release); styled-components stays; zero-runtime deferred | Accepted | 2026-10-14 |
 | [0042](0042-package-build.md) | Package build: per-module `.mjs` ESM with .d.mts types, `sideEffects`, pure styled calls, and a Node ESM fix for styled-components; Rollup stays; ships in a 2.x minor | Accepted | 2026-10-17 |
+| [0043](0043-data-colours.md) | Colour by meaning: six role hues (accent, success, warning, serious, danger, AI) plus neutral mean the same everywhere; four display hues with no meaning for categories and chart categories; never colour alone; amends 0003 and 0010 | Accepted | 2026-10-18 |
 
 ## Template
 

@@ -1,6 +1,6 @@
 # 0010. AgentInput's working ring is a temporary exception
 
-- **Status:** Accepted (temporary — to be revisited in #22)
+- **Status:** Accepted (temporary — to be revisited in #22); amended by [0043](0043-data-colours.md): the ring moves to the AI role (purple) when the role ramps land
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P6
