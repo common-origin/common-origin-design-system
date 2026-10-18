@@ -62,7 +62,11 @@ Its shape indicators are 16px.
 
 The one exception is where the surrounding content already says the status in words. An Alert's title and message say it's an error, so its icon is decorative (`aria-hidden`, [0028](0028-icons-decorative-by-default.md)). In dense tables the label can be a single word, but it's still shown.
 
-### 4. Colour
+### 4. The pattern defines the components, not the other way round
+
+The status family carries the pattern: StatusLabel, the shape indicator, Alert and InlineAlert, Badge (counts only) and MoneyDisplay (signs). Any other component that shows a status composes these and follows this record. It doesn't draw its own status indicator, such as a coloured dot. A component's current behaviour is never a reason to change the pattern; if the pattern doesn't cover a case, the pattern is extended first.
+
+### 5. Colour
 
 Indicators use the role ramps from [0044](0044-hue-ramps.md). Icon and shape colours are at least 3:1 against their background (SC 1.4.11), and label text is at least 4.5:1. [#190](https://github.com/common-origin/common-origin-design-system/issues/190) sets the semantic tokens and steps, including the colour changes below.
 
@@ -75,8 +79,8 @@ Indicators use the role ramps from [0044](0044-hue-ramps.md). Icon and shape col
   - Warning's `bell` becomes a triangle, and `refresh` (which means reload) becomes the half-filled circle.
 - **Status icons need drawing as a set:** ten outline icons and six shape indicators on our 24px grid, signed off before use. That absorbs [#87](https://github.com/common-origin/common-origin-design-system/issues/87)'s clock and calendar ([#259](https://github.com/common-origin/common-origin-design-system/issues/259)).
 - **Follow-up issues:** the status icon set ([#259](https://github.com/common-origin/common-origin-design-system/issues/259)), StatusLabel ([#260](https://github.com/common-origin/common-origin-design-system/issues/260)), Alert and InlineAlert ([#261](https://github.com/common-origin/common-origin-design-system/issues/261)), MoneyDisplay's sign ([#262](https://github.com/common-origin/common-origin-design-system/issues/262)), Badge's variants ([#263](https://github.com/common-origin/common-origin-design-system/issues/263)), and a shape indicator for dense layouts ([#264](https://github.com/common-origin/common-origin-design-system/issues/264)).
-- **Small sizes and one open question:**
+- **Small sizes and TransactionListItem:**
   - StatusLabel `small` and InlineAlert `small` draw their icons at 12px (`size.icon.xs`), below the 16px an outline icon needs. **Decided (Ollie, 2026-10-19): the small sizes use the shape indicator** for the six coloured statuses and plain text for the neutral ones, at the same label height ([#260](https://github.com/common-origin/common-origin-design-system/issues/260), [#261](https://github.com/common-origin/common-origin-design-system/issues/261)).
-  - TransactionListItem shows `pending` as a warning-coloured dot Badge on the avatar, which is a status in colour alone. [#263](https://github.com/common-origin/common-origin-design-system/issues/263) moves it to the status pattern.
+  - TransactionListItem shows `pending` as a warning-coloured dot Badge on the avatar, which is a status in colour alone. Under §4 it composes the status family instead of drawing its own indicator ([#263](https://github.com/common-origin/common-origin-design-system/issues/263)), so no separate decision is needed.
 - **Serious** has a meaning, an icon and a shape, but no component uses it until one is built or updated to show it.
 - **Dark mode** uses the same shapes and roles with dark values (0043, point 7).
