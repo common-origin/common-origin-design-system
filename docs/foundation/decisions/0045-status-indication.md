@@ -34,7 +34,7 @@ Its shape indicators are 16px.
 
 | Status | Means | Role | Icon (outline) | Shape indicator |
 |---|---|---|---|---|
-| error | Failed or blocked; act now | danger | ✕ in a hexagon | hexagon |
+| error | Failed or blocked; act now | danger | ✕ in a hexagon (flat edge at the top) | hexagon (flat edge at the top) |
 | serious | Will fail or cause harm without action | serious | `!` in a diamond | diamond |
 | warning | Needs attention; not blocking | warning | `!` in a triangle | triangle |
 | success | Done as intended | success | tick in a circle | circle |
