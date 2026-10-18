@@ -257,7 +257,7 @@ export type Tokens = {
       max: string;
       fit: string;
     };
-    /** Colour palette: the grey ramp and its alpha twins (decision 0040), the older neutral ramp, seven hue ramps, and transparent. */
+    /** Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040 and 0043); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent. */
     color: {
       /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
       transparent: string;
@@ -313,6 +313,546 @@ export type Tokens = {
         /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over white. */
         '1100': string;
         /** Primary text, and the darkest step. Composites to gray.1200 over white. */
+        '1200': string;
+      };
+      /** Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      accent: {
+        /** Page background. oklch(0.991 0.002 248), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.981 0.005 258), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.962 0.011 252), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.940 0.019 256), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.917 0.027 255), 1.28:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.894 0.040 255), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.859 0.055 255), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.655 0.185 255), 3.21:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.617 0.205 255), 3.75:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.581 0.190 255), 4.34:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.504 0.165 255), 6.00:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'accent-alpha': {
+        /** Page background. Composites to accent.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to accent.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to accent.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to accent.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to accent.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to accent.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to accent.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to accent.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to accent.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to accent.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to accent.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to accent.1200 over white. */
+        '1200': string;
+      };
+      /** Success role (decision 0043): success, positive values, money in. Defined in OKLCH at hue 160°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      success: {
+        /** Page background. oklch(0.990 0.006 154), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.980 0.016 161), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.956 0.039 161), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.933 0.065 160), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.909 0.085 160), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.882 0.106 160), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.844 0.130 160), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.637 0.144 160), 3.18:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.597 0.136 160), 3.75:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.562 0.127 160), 4.34:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.487 0.110 160), 5.99:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'success-alpha': {
+        /** Page background. Composites to success.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to success.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to success.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to success.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to success.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to success.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to success.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to success.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to success.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to success.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to success.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to success.1200 over white. */
+        '1200': string;
+      };
+      /** Warning role (decision 0043): attention, a regular warning. Defined in OKLCH at hue 80°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      warning: {
+        /** Page background. oklch(0.991 0.003 85), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.983 0.007 81), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.961 0.021 79), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.940 0.036 80), 1.20:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.919 0.052 79), 1.28:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.896 0.074 80), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.864 0.106 80), 1.52:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.658 0.136 80), 3.19:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.617 0.128 80), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.580 0.120 80), 4.34:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.503 0.104 80), 6.01:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'warning-alpha': {
+        /** Page background. Composites to warning.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to warning.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to warning.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to warning.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to warning.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to warning.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to warning.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to warning.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to warning.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to warning.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to warning.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to warning.1200 over white. */
+        '1200': string;
+      };
+      /** Serious role (decision 0043): a serious warning, between warning and danger. Defined in OKLCH at hue 47°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      serious: {
+        /** Page background. oklch(0.992 0.003 49), 1.02:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0.005 49), 1.06:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.962 0.013 49), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.942 0.021 48), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.920 0.030 46), 1.28:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.896 0.043 47), 1.38:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.866 0.063 47), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.671 0.186 47), 3.19:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.630 0.175 47), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.592 0.163 47), 4.36:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.514 0.141 47), 6.00:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'serious-alpha': {
+        /** Page background. Composites to serious.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to serious.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to serious.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to serious.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to serious.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to serious.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to serious.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to serious.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to serious.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to serious.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to serious.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to serious.1200 over white. */
+        '1200': string;
+      };
+      /** Danger role (decision 0043): errors, destructive actions, negative values, money out. Defined in OKLCH at hue 29°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      danger: {
+        /** Page background. oklch(0.993 0.002 17), 1.02:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0.004 34), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.962 0.011 31), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.941 0.019 30), 1.20:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.923 0.028 29), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.898 0.040 29), 1.38:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.867 0.057 29), 1.52:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.679 0.210 29), 3.18:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.643 0.243 29), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.606 0.248 29), 4.36:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.525 0.215 29), 6.03:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'danger-alpha': {
+        /** Page background. Composites to danger.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to danger.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to danger.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to danger.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to danger.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to danger.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to danger.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to danger.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to danger.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to danger.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to danger.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to danger.1200 over white. */
+        '1200': string;
+      };
+      /** AI role (decision 0043): AI-generated content, agent actions, working states. Defined in OKLCH at hue 305°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      ai: {
+        /** Page background. oklch(0.992 0.003 308), 1.02:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0.006 308), 1.06:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.961 0.014 304), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.941 0.023 306), 1.20:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.921 0.033 305), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.897 0.046 305), 1.38:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.867 0.066 305), 1.52:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.677 0.215 305), 3.20:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.642 0.241 305), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.610 0.267 305), 4.36:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.539 0.279 305), 5.99:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.261 0.082 306), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of ai: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'ai-alpha': {
+        /** Page background. Composites to ai.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to ai.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to ai.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to ai.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to ai.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to ai.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to ai.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to ai.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to ai.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to ai.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to ai.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to ai.1200 over white. */
+        '1200': string;
+      };
+      /** Olive display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 117°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      olive: {
+        /** Page background. oklch(0.990 0.012 117), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.980 0.025 117), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.959 0.045 117), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.935 0.065 117), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.915 0.085 117), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.889 0.105 117), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.854 0.130 117), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.647 0.149 117), 3.18:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.607 0.139 117), 3.73:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.569 0.131 117), 4.36:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.493 0.114 117), 6.02:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.250 0.035 118), 15.89:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of olive: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'olive-alpha': {
+        /** Page background. Composites to olive.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to olive.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to olive.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to olive.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to olive.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to olive.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to olive.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to olive.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to olive.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to olive.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to olive.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to olive.1200 over white. */
+        '1200': string;
+      };
+      /** Periwinkle display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 277°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      periwinkle: {
+        /** Page background. oklch(0.991 0.001 286), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0.004 271), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.962 0.011 275), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.942 0.019 276), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.919 0.027 277), 1.28:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.896 0.039 278), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.862 0.055 277), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.665 0.180 277), 3.20:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.627 0.201 277), 3.76:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.593 0.224 277), 4.37:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.528 0.267 277), 6.00:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.259 0.096 277), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of periwinkle: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'periwinkle-alpha': {
+        /** Page background. Composites to periwinkle.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to periwinkle.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to periwinkle.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to periwinkle.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to periwinkle.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to periwinkle.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to periwinkle.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to periwinkle.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to periwinkle.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to periwinkle.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to periwinkle.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to periwinkle.1200 over white. */
+        '1200': string;
+      };
+      /** Rose display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 4°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      rose: {
+        /** Page background. oklch(0.993 0.002 17), 1.02:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.982 0.004 360), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.961 0.012 5), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.942 0.019 5), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.923 0.029 5), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.899 0.041 5), 1.37:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.868 0.060 4), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.682 0.221 4), 3.20:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.647 0.256 4), 3.74:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.607 0.244 4), 4.37:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.528 0.213 4), 5.99:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.260 0.063 5), 15.91:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of rose: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'rose-alpha': {
+        /** Page background. Composites to rose.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to rose.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to rose.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to rose.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to rose.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to rose.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to rose.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to rose.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to rose.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to rose.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to rose.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to rose.1200 over white. */
+        '1200': string;
+      };
+      /** Magenta display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 329°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      magenta: {
+        /** Page background. oklch(0.990 0.003 326), 1.03:1 on white. */
+        '100': string;
+        /** Subtle background. oklch(0.984 0.007 332), 1.05:1 on white. */
+        '200': string;
+        /** Component fill at rest. oklch(0.964 0.018 328), 1.12:1 on white. */
+        '300': string;
+        /** Component fill on hover. oklch(0.945 0.030 329), 1.19:1 on white. */
+        '400': string;
+        /** Component fill pressed or selected. oklch(0.925 0.045 329), 1.27:1 on white. */
+        '500': string;
+        /** Subtle border. oklch(0.901 0.063 329), 1.38:1 on white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. oklch(0.870 0.092 329), 1.53:1 on white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). oklch(0.696 0.319 329), 3.20:1 on white. */
+        '800': string;
+        /** Solid fill. oklch(0.654 0.299 329), 3.75:1 on white. */
+        '900': string;
+        /** Solid fill on hover. oklch(0.615 0.282 329), 4.34:1 on white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.532 0.244 329), 6.02:1 on white. */
+        '1100': string;
+        /** Primary text, and the darkest step. oklch(0.262 0.073 330), 15.90:1 on white. */
+        '1200': string;
+      };
+      /** Alpha twins of magenta: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      'magenta-alpha': {
+        /** Page background. Composites to magenta.100 over white. */
+        '100': string;
+        /** Subtle background. Composites to magenta.200 over white. */
+        '200': string;
+        /** Component fill at rest. Composites to magenta.300 over white. */
+        '300': string;
+        /** Component fill on hover. Composites to magenta.400 over white. */
+        '400': string;
+        /** Component fill pressed or selected. Composites to magenta.500 over white. */
+        '500': string;
+        /** Subtle border. Composites to magenta.600 over white. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. Composites to magenta.700 over white. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). Composites to magenta.800 over white. */
+        '800': string;
+        /** Solid fill. Composites to magenta.900 over white. */
+        '900': string;
+        /** Solid fill on hover. Composites to magenta.1000 over white. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to magenta.1100 over white. */
+        '1100': string;
+        /** Primary text, and the darkest step. Composites to magenta.1200 over white. */
         '1200': string;
       };
       /** Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black). */

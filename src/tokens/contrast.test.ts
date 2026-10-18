@@ -67,6 +67,48 @@ describe('token contrast', () => {
     })
   })
 
+  // Each hue step has the grey step's job and its contrast with white (decision 0044), so the grey
+  // ramp's floors hold in every hue
+  describe.each(['accent', 'success', 'warning', 'serious', 'danger', 'ai', 'olive', 'periwinkle', 'rose', 'magenta'] as const)(
+    'the %s ramp',
+    (name) => {
+      const { gray } = tokens.base.color
+      const ramp = tokens.base.color[name]
+      const white = '#ffffff'
+      const steps = Object.keys(ramp).sort((a, b) => Number(a) - Number(b)) as (keyof typeof ramp)[]
+
+      it('matches the grey ramp’s contrast with white at every step, within 2%', () => {
+        expect(steps).toEqual(Object.keys(gray).sort((a, b) => Number(a) - Number(b)))
+        for (const step of steps) {
+          expect(Math.abs(contrast(ramp[step], white) / contrast(gray[step], white) - 1)).toBeLessThan(0.02)
+        }
+      })
+
+      it('keeps the strong border at 3:1 or more on its own and the grey page steps and white', () => {
+        for (const surface of [white, ramp[100], ramp[200], gray[100], gray[200]]) {
+          expect(contrast(ramp[800], surface)).toBeGreaterThanOrEqual(3)
+        }
+      })
+
+      it('keeps secondary text at 4.5:1 or more on its own and the grey background and fill steps and white', () => {
+        const fills = ['100', '200', '300', '400', '500'] as const
+        for (const surface of [white, ...fills.map((step) => ramp[step]), ...fills.map((step) => gray[step])]) {
+          expect(contrast(ramp[1100], surface)).toBeGreaterThanOrEqual(4.5)
+        }
+      })
+
+      it('makes each alpha twin composite over white to its step', () => {
+        const alpha = tokens.base.color[`${name}-alpha`]
+        for (const step of steps) {
+          const [r, g, b, a] = alpha[step].match(/[\d.]+/g)!.map(Number)
+          const solid = [1, 3, 5].map((i) => parseInt(ramp[step].slice(i, i + 2), 16))
+          // Rounded to a whole channel value, as a browser would
+          expect([r, g, b].map((channel) => Math.round(a * channel + (1 - a) * 255))).toEqual(solid)
+        }
+      })
+    }
+  )
+
   // Emphasis is stronger than default, never softer (decision 0029)
   it('makes emphasis text and icons darker than default', () => {
     const { text, icon } = tokens.semantic.color
