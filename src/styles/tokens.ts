@@ -257,7 +257,7 @@ export type Tokens = {
       max: string;
       fit: string;
     };
-    /** Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040 and 0043); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent. */
+    /** Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent. */
     color: {
       /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
       transparent: string;
@@ -315,7 +315,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to gray.1200 over white. */
         '1200': string;
       };
-      /** Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       accent: {
         /** Page background. oklch(0.991 0.002 248), 1.03:1 on white. */
         '100': string;
@@ -342,7 +342,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'accent-alpha': {
         /** Page background. Composites to accent.100 over white. */
         '100': string;
@@ -369,7 +369,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to accent.1200 over white. */
         '1200': string;
       };
-      /** Success role (decision 0043): success, positive values, money in. Defined in OKLCH at hue 160°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Success role (decision 0043): success, positive values, money in. Defined in OKLCH at hue 160°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       success: {
         /** Page background. oklch(0.990 0.006 154), 1.03:1 on white. */
         '100': string;
@@ -396,7 +396,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'success-alpha': {
         /** Page background. Composites to success.100 over white. */
         '100': string;
@@ -423,7 +423,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to success.1200 over white. */
         '1200': string;
       };
-      /** Warning role (decision 0043): attention, a regular warning. Defined in OKLCH at hue 80°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Warning role (decision 0043): attention, a regular warning. Defined in OKLCH at hue 80°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       warning: {
         /** Page background. oklch(0.991 0.003 85), 1.03:1 on white. */
         '100': string;
@@ -450,7 +450,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'warning-alpha': {
         /** Page background. Composites to warning.100 over white. */
         '100': string;
@@ -477,7 +477,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to warning.1200 over white. */
         '1200': string;
       };
-      /** Serious role (decision 0043): a serious warning, between warning and danger. Defined in OKLCH at hue 47°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Serious role (decision 0043): a serious warning, between warning and danger. Defined in OKLCH at hue 47°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       serious: {
         /** Page background. oklch(0.992 0.003 49), 1.02:1 on white. */
         '100': string;
@@ -504,7 +504,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'serious-alpha': {
         /** Page background. Composites to serious.100 over white. */
         '100': string;
@@ -531,7 +531,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to serious.1200 over white. */
         '1200': string;
       };
-      /** Danger role (decision 0043): errors, destructive actions, negative values, money out. Defined in OKLCH at hue 29°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Danger role (decision 0043): errors, destructive actions, negative values, money out. Defined in OKLCH at hue 29°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       danger: {
         /** Page background. oklch(0.993 0.002 17), 1.02:1 on white. */
         '100': string;
@@ -558,7 +558,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'danger-alpha': {
         /** Page background. Composites to danger.100 over white. */
         '100': string;
@@ -585,7 +585,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to danger.1200 over white. */
         '1200': string;
       };
-      /** AI role (decision 0043): AI-generated content, agent actions, working states. Defined in OKLCH at hue 305°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** AI role (decision 0043): AI-generated content, agent actions, working states. Defined in OKLCH at hue 305°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       ai: {
         /** Page background. oklch(0.992 0.003 308), 1.02:1 on white. */
         '100': string;
@@ -612,7 +612,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.261 0.082 306), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of ai: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of ai: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'ai-alpha': {
         /** Page background. Composites to ai.100 over white. */
         '100': string;
@@ -639,7 +639,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to ai.1200 over white. */
         '1200': string;
       };
-      /** Olive display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 117°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Olive display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 117°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       olive: {
         /** Page background. oklch(0.990 0.012 117), 1.03:1 on white. */
         '100': string;
@@ -666,7 +666,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.250 0.035 118), 15.89:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of olive: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of olive: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'olive-alpha': {
         /** Page background. Composites to olive.100 over white. */
         '100': string;
@@ -693,7 +693,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to olive.1200 over white. */
         '1200': string;
       };
-      /** Periwinkle display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 277°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Periwinkle display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 277°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       periwinkle: {
         /** Page background. oklch(0.991 0.001 286), 1.03:1 on white. */
         '100': string;
@@ -720,7 +720,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.259 0.096 277), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of periwinkle: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of periwinkle: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'periwinkle-alpha': {
         /** Page background. Composites to periwinkle.100 over white. */
         '100': string;
@@ -747,7 +747,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to periwinkle.1200 over white. */
         '1200': string;
       };
-      /** Rose display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 4°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Rose display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 4°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       rose: {
         /** Page background. oklch(0.993 0.002 17), 1.02:1 on white. */
         '100': string;
@@ -774,7 +774,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.260 0.063 5), 15.91:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of rose: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of rose: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'rose-alpha': {
         /** Page background. Composites to rose.100 over white. */
         '100': string;
@@ -801,7 +801,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to rose.1200 over white. */
         '1200': string;
       };
-      /** Magenta display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 329°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decision 0040). */
+      /** Magenta display ramp (decision 0043): no meaning; category labels and chart categories. Defined in OKLCH at hue 329°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       magenta: {
         /** Page background. oklch(0.990 0.003 326), 1.03:1 on white. */
         '100': string;
@@ -828,7 +828,7 @@ export type Tokens = {
         /** Primary text, and the darkest step. oklch(0.262 0.073 330), 15.90:1 on white. */
         '1200': string;
       };
-      /** Alpha twins of magenta: each is the smallest opacity that composites over white to the solid step (decision 0040). */
+      /** Alpha twins of magenta: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'magenta-alpha': {
         /** Page background. Composites to magenta.100 over white. */
         '100': string;
