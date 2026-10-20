@@ -136,6 +136,20 @@ describe('AgentInput', () => {
       })
     })
 
+    it('does not submit on Enter while an IME composition is active', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ onSubmit })
+
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+      fireEvent.change(input, { target: { value: 'にほんご' } })
+      fireEvent.keyDown(input, { key: 'Enter', isComposing: true })
+      fireEvent.keyDown(input, { key: 'Enter', keyCode: 229 })
+
+      await act(async () => {})
+      expect(onSubmit).not.toHaveBeenCalled()
+      expect(input).toHaveValue('にほんご')
+    })
+
     it('submits text on Send button click with source text', async () => {
       const onSubmit = jest.fn().mockResolvedValue(undefined)
       renderComponent({ onSubmit })
@@ -153,6 +167,55 @@ describe('AgentInput', () => {
           })
         )
       })
+    })
+  })
+
+  describe('Status line', () => {
+    it('has no default copy when neither helperText nor statusMessage is set', () => {
+      renderComponent()
+
+      expect(screen.getByRole('status')).toHaveTextContent('')
+      expect(screen.queryByText(/transactions/i)).not.toBeInTheDocument()
+    })
+
+    it('shows helperText while idle and typing', () => {
+      renderComponent({ helperText: 'Tell me what to change' })
+
+      expect(screen.getByRole('status')).toHaveTextContent('Tell me what to change')
+
+      fireEvent.change(screen.getByRole('textbox', { name: /agent input/i }), { target: { value: 'Swap Tuesday' } })
+
+      expect(screen.getByRole('status')).toHaveTextContent('Tell me what to change')
+    })
+
+    it('lets statusMessage override helperText', () => {
+      renderComponent({ helperText: 'Tell me what to change', statusMessage: 'Moved Tuesday to Wednesday' })
+
+      expect(screen.getByRole('status')).toHaveTextContent('Moved Tuesday to Wednesday')
+    })
+
+    it('shows a product-set errorMessage on an idle input, announced in the live region', () => {
+      renderComponent({ helperText: 'Tell me what to change', errorMessage: "Couldn't update the plan. Try again." })
+
+      const status = screen.getByRole('status')
+      expect(status).toHaveAttribute('aria-live', 'polite')
+      expect(status).toHaveTextContent("Couldn't update the plan. Try again.")
+      expect(screen.queryByText('Tell me what to change')).not.toBeInTheDocument()
+    })
+
+    it('styles a product-set errorMessage the same as an internal error', async () => {
+      const onSubmit = jest.fn().mockRejectedValue(new Error('failed'))
+      const { rerender } = renderComponent({ onSubmit })
+
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+      fireEvent.change(input, { target: { value: 'Swap Tuesday' } })
+      fireEvent.keyDown(input, { key: 'Enter' })
+      const internalError = await screen.findByText(/submission failed/i)
+      const internalClass = internalError.className
+
+      rerender(<AgentInput onSubmit={onSubmit} errorMessage="Couldn't update the plan." />)
+
+      expect(screen.getByText("Couldn't update the plan.").className).toBe(internalClass)
     })
   })
 
@@ -315,7 +378,8 @@ describe('AgentInput', () => {
       renderComponent({ onSubmit })
 
       expect(screen.queryByRole('button', { name: /voice input/i })).not.toBeInTheDocument()
-      expect(screen.getByText(/voice input is not supported/i)).toBeInTheDocument()
+      expect(screen.queryByText(/not supported/i)).not.toBeInTheDocument()
+      expect(screen.getByRole('status')).toHaveTextContent('')
 
       const input = screen.getByRole('textbox', { name: /agent input/i })
       fireEvent.change(input, { target: { value: 'Show my recent transfers' } })
