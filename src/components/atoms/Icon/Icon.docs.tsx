@@ -199,7 +199,7 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (51 icons total)',
+      description: 'Complete icon library organized by category with names (52 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
@@ -222,7 +222,7 @@ export const iconDocs: ComponentDocumentation = {
 
 {/* Interface Icons */}
 <Stack direction="row" gap="lg" wrap>
-  <Icon name="bell" /> <Icon name="fileDocSearch" /> <Icon name="info" />
+  <Icon name="ai" /> <Icon name="bell" /> <Icon name="fileDocSearch" /> <Icon name="info" />
   <Icon name="lamp" /> <Icon name="menu" /> <Icon name="paper" />
   <Icon name="table" /> <Icon name="view" /> <Icon name="viewHide" />
 </Stack>
@@ -378,8 +378,12 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Interface Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">INTERFACE ICONS (9)</Typography>
+            <Typography variant="label" color="subdued">INTERFACE ICONS (10)</Typography>
             <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="ai" />
+                <Typography variant="caption">ai</Typography>
+              </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="bell" />
                 <Typography variant="caption">bell</Typography>
