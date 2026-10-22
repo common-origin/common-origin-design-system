@@ -729,11 +729,19 @@ function AgentInputWithRef({
     return normalizeMessage([currentValue, interimTranscript].filter(Boolean).join(' '))
   }, [currentValue, interimTranscript])
 
+  const lastFieldWidthRef = useRef(0)
+
   const resizeField = useCallback(() => {
     const field = inputRef.current
-    if (!field) return
+    // Hidden (for example in a closed sheet): measure when it's shown, via the observer below
+    if (!field || field.clientWidth === 0) return
+    lastFieldWidthRef.current = field.clientWidth
+    // Collapsing the field to measure it shrinks the page for a moment; some engines clamp a page
+    // scrolled to the bottom when that happens, so restore its scroll position
+    const { scrollX, scrollY } = window
     field.style.height = 'auto'
     field.style.height = `${field.scrollHeight}px`
+    if (window.scrollY !== scrollY) window.scrollTo(scrollX, scrollY)
     // Scroll only once max-height (six rows) clips the content
     field.style.overflowY = field.scrollHeight > field.clientHeight ? 'auto' : 'hidden'
   }, [])
@@ -742,9 +750,16 @@ function AgentInputWithRef({
     resizeField()
   }, [displayedValue, resizeField])
 
+  // Text rewraps when the field's width changes (layout, or being shown), not only the window's
   useEffect(() => {
-    window.addEventListener('resize', resizeField)
-    return () => window.removeEventListener('resize', resizeField)
+    const field = inputRef.current
+    if (!field || typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(() => {
+      // Its own height changes trigger this too; only a width change can rewrap the text
+      if (field.clientWidth !== lastFieldWidthRef.current) resizeField()
+    })
+    observer.observe(field)
+    return () => observer.disconnect()
   }, [resizeField])
 
   const onTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {

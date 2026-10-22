@@ -74,3 +74,11 @@ test('compact density keeps one row at the compact control height, and still gro
   await typeLines(input, 2)
   expect((await box(input)).height).toBe(40 + 24)
 })
+
+test('a prefilled field that starts hidden takes its full height when shown', async ({ page }) => {
+  // Shown through the page script: the dev overlay can cover pointer targets
+  await page.locator('[data-show-hidden]').evaluate((button: HTMLButtonElement) => button.click())
+  const input = field(page, 'hidden')
+
+  await expect.poll(async () => (await box(input)).height).toBe(48 + 2 * 24)
+})
