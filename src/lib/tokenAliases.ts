@@ -94,6 +94,7 @@ export const textColorByKey: Record<keyof Semantic['color']['text'], string> = {
   'accent-hover': color.text['accent-hover'],
   'accent-pressed': color.text['accent-pressed'],
   danger: color.text.danger,
+  ai: color.text.ai,
   subdued: color.text.muted,
   interactive: color.text.accent,
   'interactive-hover': color.text['accent-hover'],

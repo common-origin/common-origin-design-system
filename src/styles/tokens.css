@@ -775,6 +775,7 @@
   --co-semantic-color-text-accent-hover: var(--co-base-color-blue-1000); /** Text of a hovered selected item, on the accent-muted-hover fill. */
   --co-semantic-color-text-accent-pressed: var(--co-base-color-blue-1100); /** Text of a pressed selected item, on the accent-muted-pressed fill. */
   --co-semantic-color-text-danger: var(--co-base-color-red-900); /** Error text: field error messages, InlineAlert errors. */
+  --co-semantic-color-text-ai: var(--co-base-color-ai-1100); /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
   --co-semantic-color-background-default: var(--co-base-color-neutral-100); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-subtle: var(--co-base-color-neutral-000); /** Deprecated: Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0. */
   --co-semantic-color-background-emphasis: var(--co-base-color-neutral-900); /** Deprecated: Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -834,6 +835,7 @@
   --co-semantic-color-icon-accent-hover: var(--co-base-color-blue-1000); /** Icon of a hovered selected item, matching color.text.accent-hover. */
   --co-semantic-color-icon-accent-pressed: var(--co-base-color-blue-1100); /** Icon of a pressed selected item, matching color.text.accent-pressed. */
   --co-semantic-color-icon-danger: var(--co-base-color-red-900); /** Error icons, such as in Alert and EmptyState. */
+  --co-semantic-color-icon-ai: var(--co-base-color-ai-1100); /** The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page. */
   --co-semantic-color-financial-credit: var(--co-base-color-green-700); /** Deprecated: Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-financial-credit-hover: var(--co-base-color-green-800); /** Deprecated: Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-financial-debit: var(--co-base-color-red-900); /** Deprecated: Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0. */
