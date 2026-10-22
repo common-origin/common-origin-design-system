@@ -1,4 +1,20 @@
 {
+	"ai": {
+		"path": "M10 6C10.6 11 13 13.4 18 14C13 14.6 10.6 17 10 22C9.4 17 7 14.6 2 14C7 13.4 9.4 11 10 6Z M18 2C18.3 4.5 19.5 5.7 22 6C19.5 6.3 18.3 7.5 18 10C17.7 7.5 16.5 6.3 14 6C16.5 5.7 17.7 4.5 18 2Z",
+		"name": "ai",
+		"description": "Two solid four-point sparkles, one large and one small",
+		"category": "content",
+		"aliases": [
+			"sparkle",
+			"sparkles",
+			"generated",
+			"agent",
+			"magic"
+		],
+		"intent": "Use to mark AI-generated content and agent actions, always with a text label (decisions 0043 and 0046)",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "AI"
+	},
 	"add": {
 		"path": "M13 11H19V13H13V19H11V13H5V11H11V5H13V11Z",
 		"name": "add",

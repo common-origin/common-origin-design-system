@@ -6,6 +6,7 @@ import iconsJson from '../styles/icons.json'
 
 export type IconName =
   | 'add'
+  | 'ai'
   | 'addRing'
   | 'arrowDown'
   | 'arrowLeft'
