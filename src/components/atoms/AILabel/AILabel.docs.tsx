@@ -61,7 +61,7 @@ export const aiLabelDocs: ComponentDocumentation = {
     },
     {
       name: 'Will Be Removed',
-      description: 'An item the agent proposes to remove. Keep the item readable; dimming it is fine, but the label carries the meaning.',
+      description: 'An item the agent proposes to remove. Keep the item readable. To quieten it, set its text to the muted text colour; never lower the opacity, which takes the label below 4.5:1 with it.',
       code: `<AILabel kind="removal" />`,
       renderComponent: () => <AILabel kind="removal" />,
     },
@@ -71,8 +71,9 @@ export const aiLabelDocs: ComponentDocumentation = {
       code: `<li>
   Tuesday: Lemon fish and rice <AILabel size="small" />
 </li>
-<li style={{ opacity: 0.7 }}>
-  Wednesday: Leftovers <AILabel kind="removal" size="small" />
+<li>
+  <Typography variant="small" color="subdued">Wednesday: Leftovers</Typography>
+  <AILabel kind="removal" size="small" />
 </li>`,
       renderComponent: () => (
         <Stack direction="column" gap="sm">
@@ -95,6 +96,7 @@ export const aiLabelDocs: ComponentDocumentation = {
       'The AI icon is decorative (aria-hidden, decision 0028), because the label says it.',
       'Text and icon use color.text.ai and color.icon.ai: 5.99:1 on white and 5.68:1 on the page.',
       'Strikethrough on removed content is not required: screen readers don\'t announce it and it is harder to read. "Will be removed" carries the meaning.',
+      'To quieten a removed item, give its text the muted text colour (still 4.5:1). Never lower its opacity: the marker inside would drop below 4.5:1 (3.93:1 at 70% on white).',
       'Not interactive. An explanation popover, as in Carbon for AI, is left to #22.',
     ],
     keyboardNavigation: 'Not focusable: it is a label, not a control.',
