@@ -1,6 +1,6 @@
 # 0046. Agent proposals are reviewed or undone by one rule; suggestions fill the input
 
-- **Status:** Proposed
+- **Status:** Accepted
 - **Date:** 2026-10-22
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P4, P5, P7
@@ -63,7 +63,7 @@ When a proposal is ready, focus stays where it is. The field stays editable whil
 
 ### 7. Suggestions belong to the input and fill it
 
-Suggestions are prompt starters and follow-ups. They show above the field when it's empty and after the agent replies. **While a proposal is open, suggestions are hidden**: there's one decision in front of the user at a time, and a follow-up during a proposal is the open question below. When the bar shows Undo, suggestions show below it, so the region reads top to bottom as bar, then suggestions, then field. Picking one **fills the field and focuses it**, with the caret at the end; it never sends. The user can edit before sending, so the agent acts only on a deliberate submit.
+Suggestions are prompt starters and follow-ups. They show above the field when it's empty and after the agent replies. **While a proposal is open, suggestions are hidden**: there's one decision in front of the user at a time, and a follow-up during a proposal refines it (point 9). When the bar shows Undo, suggestions show below it, so the region reads top to bottom as bar, then suggestions, then field. Picking one **fills the field and focuses it**, with the caret at the end; it never sends. The user can edit before sending, so the agent acts only on a deliberate submit.
 
 They are a fourth chip type, **Suggestion**, amending 0016's table:
 
@@ -82,15 +82,9 @@ AgentInput owns the region above the field and renders both parts itself:
 
 These are data props, not slots: products supply content and callbacks, and the system renders the controls, labels, order and announcements. Products can't restyle or rearrange them, so the pattern can't drift (P5). It also keeps the bar with the field when docked. The marker on changed content (point 4) is the product's to place, using the system's AI marker.
 
-## Open question
+### 9. A follow-up refines the open proposal
 
-**A follow-up request while a proposal is open.** The user types "make Tuesday fish instead" while three changes are still waiting. Options:
-
-- **a) Refine:** the follow-up goes to the agent with the open proposal as context, and the agent returns a replacement proposal. Nothing is accepted on the user's behalf.
-- **b) Commit first:** the open proposal is accepted implicitly, and the follow-up starts from the result.
-- **c) Block:** the field asks the user to accept or discard first.
-
-*Recommendation: a.* It matches how people revise a request, and it never commits a change the user didn't accept. Option b breaks point 1, and c contradicts the field staying editable (#267).
+When the user sends a request while a proposal is open (for example "make Tuesday fish instead" while three changes are waiting), the request goes to the agent with the open proposal as context, and the agent returns a **replacement proposal**. Nothing is accepted on the user's behalf. Until the replacement arrives, the open proposal stays in view with its bar, so the user can still accept or discard it. Accepting or discarding first means the follow-up starts from that result. Committing the open proposal implicitly would break point 1. Blocking the field until the user decides would contradict the field staying editable (#267).
 
 ## Consequences
 
@@ -99,4 +93,4 @@ These are data props, not slots: products supply content and callbacks, and the 
 - **New AI semantic tokens and an AI icon** are needed for the marker. The `ai` base ramp exists ([0044](0044-hue-ramps.md)), but there are no semantic AI colours yet. Each new token needs the owner's sign-off with a reason ([0022](0022-no-component-spacing-tokens.md)). The icon comes from the owner's Figma file.
 - **The AI marker** needs a component, or an extension of an existing label, decided when it's built and checked against [0045](0045-status-indication.md) so it doesn't read as a status.
 - **The AI-labelling question on #22** narrows to the explainability part: whether the marker opens an explanation, as Carbon's does.
-- Implementation issues are raised under #22 once this decision is accepted.
+- Implementation issues are raised under #22.

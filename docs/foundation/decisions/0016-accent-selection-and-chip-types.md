@@ -1,6 +1,6 @@
 # 0016. Accent, selection and chip types
 
-- **Status:** Accepted
+- **Status:** Accepted; chip types amended by [0046](0046-agent-proposals-and-suggestions.md) (adds the Suggestion chip)
 - **Date:** 2026-10-01
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P3, P4, P5, P7
