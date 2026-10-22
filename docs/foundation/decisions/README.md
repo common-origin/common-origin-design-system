@@ -19,7 +19,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted; rule 4 has an interim exception (0036) | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
-| [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted | 2026-10-01 |
+| [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted; chip types amended by 0046 | 2026-10-01 |
 | [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted; step order amended by 0023, CSS variable names by 0024 | 2026-10-01 |
 | [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted; amended by 0045 | 2026-10-01 |
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
@@ -49,6 +49,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0043](0043-data-colours.md) | Colour by meaning: six role hues (accent, success, warning, serious, danger, AI) plus neutral mean the same everywhere; four display hues with no meaning for categories and chart categories; never colour alone; amends 0003 and 0010 | Accepted | 2026-10-18 |
 | [0044](0044-hue-ramps.md) | Hue ramps: each step matches the grey step's contrast with white, full chroma on 800–1100, named by role (`accent`, `success`, `warning`, `serious`, `danger`, `ai`) and display hue (`olive`, `periwinkle`, `rose`, `magenta`), per-step alpha twins; amends 0040 | Accepted | 2026-10-18 |
 | [0045](0045-status-indication.md) | Status indication: ten statuses with one meaning, role and shape each; outline icons on the shapes, shape indicators (12px minimum) for the six coloured statuses; always a visible label; Badge means new or unread in accent; signs are text; amends 0018 | Accepted | 2026-10-18 |
+| [0046](0046-agent-proposals-and-suggestions.md) | Agent proposals: review first when the change edits the user's content or several items, otherwise apply with Undo; a review bar above the input (Accept, Discard, Undo); AI marker on proposed content; no Undo timer; suggestions are a Suggestion chip that fills the input; AgentInput renders both from data; amends 0016 | Accepted | 2026-10-22 |
 
 ## Template
 
