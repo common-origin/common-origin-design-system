@@ -59,11 +59,11 @@ Undo stays available until the next change to the same content, a new request, o
 
 ### 6. Focus stays put; changes are announced
 
-When a proposal is ready, focus stays where it is. The field stays editable while the agent works, as decided on [#267](https://github.com/common-origin/common-origin-design-system/issues/267). A polite announcement says what's ready and what to do, for example "3 changes suggested. Accept or discard." Accepting announces "Changes applied. Undo available.", discarding "Suggestion discarded.", and undoing "Changes undone." Accept, Discard and Undo are reachable by Tab, in that order, before the field.
+When a proposal is ready, focus stays where it is. The field stays editable while the agent works, as decided on [#267](https://github.com/common-origin/common-origin-design-system/issues/267). A polite announcement says what's ready and what to do, for example "3 changes suggested. Accept or discard." Accepting announces "Changes applied. Undo available.", discarding "Suggestion discarded.", and undoing "Changes undone." Everything in the region comes before the field in Tab order: the bar's buttons (Accept then Discard, or Undo alone), then the suggestions.
 
 ### 7. Suggestions belong to the input and fill it
 
-Suggestions are prompt starters and follow-ups. They show above the field when it's empty and after the agent replies. Picking one **fills the field and focuses it**, with the caret at the end; it never sends. The user can edit before sending, so the agent acts only on a deliberate submit.
+Suggestions are prompt starters and follow-ups. They show above the field when it's empty and after the agent replies. **While a proposal is open, suggestions are hidden**: there's one decision in front of the user at a time, and a follow-up during a proposal is the open question below. When the bar shows Undo, suggestions show below it, so the region reads top to bottom as bar, then suggestions, then field. Picking one **fills the field and focuses it**, with the caret at the end; it never sends. The user can edit before sending, so the agent acts only on a deliberate submit.
 
 They are a fourth chip type, **Suggestion**, amending 0016's table:
 
