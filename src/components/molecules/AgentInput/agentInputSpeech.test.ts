@@ -2,6 +2,7 @@ import {
   defaultVoiceErrorMessage,
   detectSpeechRecognitionConstructor,
   mapSpeechErrorCode,
+  normalizeMessage,
   normalizeTranscript,
 } from './agentInputSpeech'
 
@@ -32,6 +33,12 @@ describe('agentInputSpeech', () => {
     it('returns null when neither constructor exists', () => {
       const constructor = detectSpeechRecognitionConstructor({} as any)
       expect(constructor).toBeNull()
+    })
+  })
+
+  describe('normalizeMessage', () => {
+    it('collapses spaces and trims, but keeps line breaks', () => {
+      expect(normalizeMessage('  swap   Tuesday \t \n  drop Wednesday  \n')).toBe('swap Tuesday\ndrop Wednesday')
     })
   })
 

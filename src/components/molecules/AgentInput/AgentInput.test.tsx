@@ -171,6 +171,134 @@ describe('AgentInput', () => {
     })
   })
 
+  describe('Multiline', () => {
+    it('renders a one-row textarea with a Send key hint', () => {
+      renderComponent()
+      const field = screen.getByRole('textbox', { name: /agent input/i })
+
+      expect(field.tagName).toBe('TEXTAREA')
+      expect(field).toHaveAttribute('rows', '1')
+      expect(field).toHaveAttribute('enterkeyhint', 'send')
+    })
+
+    it('adds a line on Shift+Enter without submitting', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ onSubmit })
+      const field = screen.getByRole('textbox', { name: /agent input/i })
+      fireEvent.change(field, { target: { value: 'Swap Tuesday' } })
+
+      // Not prevented, so the browser inserts the line break
+      expect(fireEvent.keyDown(field, { key: 'Enter', shiftKey: true })).toBe(true)
+
+      await act(async () => {})
+      expect(onSubmit).not.toHaveBeenCalled()
+    })
+
+    it('keeps line breaks in the submitted text', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ onSubmit })
+      const field = screen.getByRole('textbox', { name: /agent input/i })
+
+      fireEvent.change(field, { target: { value: '  Swap Tuesday  \n  drop   Wednesday \n' } })
+      fireEvent.keyDown(field, { key: 'Enter' })
+
+      await waitFor(() => {
+        expect(onSubmit).toHaveBeenCalledWith(expect.objectContaining({ text: 'Swap Tuesday\ndrop Wednesday' }))
+      })
+      await waitFor(() => expect(field).toHaveValue(''))
+    })
+  })
+
+  describe('Length limit', () => {
+    const type = (value: string) =>
+      fireEvent.change(screen.getByRole('textbox', { name: /agent input/i }), { target: { value } })
+
+    it('shows the counter from 80% of the limit', () => {
+      renderComponent({ maxLength: 10 })
+
+      type('1234567')
+      expect(screen.queryByTestId('agent-input-counter')).not.toBeInTheDocument()
+
+      type('12345678')
+      expect(screen.getByTestId('agent-input-counter')).toHaveTextContent('8/10 characters')
+      expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveAccessibleDescription(/8\/10 characters/)
+    })
+
+    it('announces reaching the limit once, without a per-keystroke announcement', () => {
+      renderComponent({ maxLength: 10 })
+      const announcer = screen.getByTestId('agent-input-limit-announcement')
+
+      type('123456789')
+      expect(announcer).toHaveTextContent('')
+
+      type('1234567890')
+      expect(announcer).toHaveTextContent('Character limit reached: 10 characters')
+    })
+
+    it('allows typing past the limit but blocks sending, and says why', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ maxLength: 10, onSubmit, helperText: 'Tell me what to change' })
+      const field = screen.getByRole('textbox', { name: /agent input/i })
+
+      type('12345678901')
+      expect(field).toHaveValue('12345678901')
+      expect(field).toHaveAttribute('aria-invalid', 'true')
+      expect(screen.getByTestId('agent-input-counter')).toHaveTextContent('11/10')
+      expect(screen.getByText('Over the 10-character limit. Shorten your message to send.')).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: /send message/i })).toBeDisabled()
+
+      fireEvent.keyDown(field, { key: 'Enter' })
+      await act(async () => {})
+      expect(onSubmit).not.toHaveBeenCalled()
+
+      type('1234567890')
+      expect(field).not.toHaveAttribute('aria-invalid')
+      expect(screen.getByRole('button', { name: /send message/i })).toBeEnabled()
+    })
+
+    it('styles the over-limit counter and message as errors, like a product error', () => {
+      const { rerender } = renderComponent({ maxLength: 10, errorMessage: 'Product error' })
+      const errorClass = screen.getByText('Product error').className
+
+      rerender(<AgentInput onSubmit={jest.fn()} maxLength={10} />)
+      type('12345678901')
+
+      expect(screen.getByText(/over the 10-character limit/i).className).toBe(errorClass)
+      expect(screen.getByTestId('agent-input-counter').parentElement?.className).toBe(errorClass)
+    })
+
+    it('counts the text that would be sent, not surrounding spaces', () => {
+      renderComponent({ maxLength: 10 })
+      type('   1234567890   ')
+
+      expect(screen.getByTestId('agent-input-counter')).toHaveTextContent('10/10')
+      expect(screen.getByRole('button', { name: /send message/i })).toBeEnabled()
+    })
+
+    it('puts an over-limit voice transcript in the field instead of sending it', async () => {
+      const onSubmit = jest.fn().mockResolvedValue(undefined)
+      renderComponent({ maxLength: 10, onSubmit })
+
+      fireEvent.click(screen.getByRole('button', { name: /start voice input/i }))
+      await waitFor(() => expect(MockSpeechRecognition.instance).toBeTruthy())
+
+      await act(async () => {
+        MockSpeechRecognition.instance?.emitResult([{ transcript: 'swap tuesday for pasta', isFinal: true }])
+      })
+
+      expect(onSubmit).not.toHaveBeenCalled()
+      await waitFor(() => {
+        expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveValue('swap tuesday for pasta')
+      })
+    })
+
+    it('has no accessibility violations over the limit', async () => {
+      const { container } = renderComponent({ maxLength: 10 })
+      type('12345678901')
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
   describe('While submitting', () => {
     const deferred = () => {
       let resolve!: () => void

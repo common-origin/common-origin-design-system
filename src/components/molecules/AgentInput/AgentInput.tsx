@@ -5,6 +5,7 @@ import {
   forwardRef,
   useCallback,
   useImperativeHandle,
+  useLayoutEffect,
   useEffect,
   useMemo,
   useRef,
@@ -24,6 +25,7 @@ import {
   defaultVoiceErrorMessage,
   detectSpeechRecognitionConstructor,
   mapSpeechErrorCode,
+  normalizeMessage,
   normalizeTranscript,
 } from './agentInputSpeech'
 import { AgentInputMachineState, agentInputStateTransition } from './agentInputStateMachine'
@@ -32,6 +34,11 @@ const { semantic, component } = tokens
 
 const DEFAULT_LISTENING_MESSAGE = 'Listening… speak now'
 const DEFAULT_PROCESSING_MESSAGE = 'Finishing voice input…'
+// The counter appears from this share of maxLength
+const COUNTER_THRESHOLD = 0.8
+
+// Layout effects warn during server rendering in React 18
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 interface SubmitPayload {
   text: string
@@ -53,6 +60,11 @@ export interface AgentInputProps {
   onStop?: () => void
 
   placeholder?: string
+  /**
+   * Soft character limit for the submitted text. Typing past it is allowed, but Send is disabled and
+   * the counter and status line show the message is too long. A counter appears from 80% of the limit.
+   */
+  maxLength?: number
   disabled?: boolean
   isSubmitting?: boolean
 
@@ -110,7 +122,8 @@ const ControlsRow = styled.div`
 
 const InputShell = styled.div`
   display: flex;
-  align-items: center;
+  /* Actions sit beside the last line as the field grows */
+  align-items: flex-end;
   gap: ${semantic.space[200]};
   width: 100%;
   padding: ${semantic.space[100]} ${semantic.space[200]} ${semantic.space[100]} ${semantic.space.inset.lg};
@@ -132,10 +145,20 @@ const InputShell = styled.div`
   }
 `
 
-const Input = styled.input`
+// One row is a control-height field; it grows with its content to six rows, then scrolls.
+// The height is set from scrollHeight in resizeField; 1lh is the body line height.
+const Input = styled.textarea`
+  display: block;
   flex: 1;
   min-width: 0;
+  box-sizing: border-box;
+  height: ${semantic.size.control.lg};
   min-height: ${semantic.size.control.lg};
+  max-height: calc(5lh + ${semantic.size.control.lg});
+  margin: 0;
+  padding: calc((${semantic.size.control.lg} - 1lh) / 2) 0;
+  resize: none;
+  overflow-y: hidden;
   border: none;
   background: transparent;
   font: ${semantic.typography.body};
@@ -158,6 +181,8 @@ const InputActions = styled.div`
   display: inline-flex;
   align-items: center;
   gap: ${semantic.space[200]};
+  /* Centres the buttons on a one-row field, and keeps them level with the last line as it grows */
+  padding-bottom: calc((${semantic.size.control.lg} - ${semantic.size.control.md}) / 2);
 `
 
 const CircularActionIconButton = styled(IconButton)`
@@ -233,6 +258,16 @@ const StatusText = styled.div.withConfig({
 
 const StatusAnnouncement = styled.div``
 
+const StatusEnd = styled.div`
+  display: inline-flex;
+  align-items: center;
+  gap: ${semantic.space[300]};
+`
+
+const VisuallyHidden = styled.span`
+  ${visuallyHidden}
+`
+
 const MeterContainer = styled.div`
   display: inline-flex;
   align-items: flex-end;
@@ -276,6 +311,7 @@ function AgentInputWithRef({
   onSubmit,
   onStop,
   placeholder = 'Ask a question',
+  maxLength,
   disabled = false,
   isSubmitting,
   enableVoice = true,
@@ -312,9 +348,10 @@ function AgentInputWithRef({
   const audioStreamRef = useRef<MediaStream | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
   const meterRafRef = useRef<number | null>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLTextAreaElement>(null)
   const inputId = useId()
   const statusId = `${inputId}-status`
+  const counterId = `${inputId}-counter`
 
   const currentValue = isControlled ? value ?? '' : internalValue
   // Read after onSubmit settles, when the closure's value may be stale
@@ -323,6 +360,8 @@ function AgentInputWithRef({
     currentValueRef.current = currentValue
   }, [currentValue])
   const hasText = normalizeTranscript(currentValue).length > 0
+  const messageLength = normalizeMessage(currentValue).length
+  const isOverLimit = maxLength !== undefined && messageLength > maxLength
   const effectiveSubmitting = isSubmitting ?? internalSubmitting
   const effectiveState = disabled ? 'disabled' : machineState
   const isListening = effectiveState === 'listening'
@@ -419,8 +458,16 @@ function AgentInputWithRef({
 
   const submitPayload = useCallback(
     async (rawText: string, source: AgentInputSubmitSource) => {
-      const text = normalizeTranscript(rawText)
+      const text = source === 'text' ? normalizeMessage(rawText) : normalizeTranscript(rawText)
       if (!text || disabled || effectiveSubmitting) {
+        return
+      }
+
+      if (maxLength !== undefined && text.length > maxLength) {
+        // A long transcript goes into the field to be shortened, unless the user has typed since
+        if (source === 'voice-final' && !normalizeMessage(currentValueRef.current)) {
+          updateValue(text)
+        }
         return
       }
 
@@ -440,13 +487,13 @@ function AgentInputWithRef({
         updateMachineState({ type: 'SUBMIT_SUCCESS' })
         setInterimTranscript('')
         // Keep a follow-up typed while submitting
-        if (normalizeTranscript(currentValueRef.current) === text) {
+        if (normalizeMessage(currentValueRef.current) === text) {
           updateValue('')
         }
       } catch {
         updateMachineState({ type: 'SUBMIT_ERROR' })
         // Restore the transcript unless the user has typed something since
-        if (source === 'voice-final' && !normalizeTranscript(currentValueRef.current)) {
+        if (source === 'voice-final' && !normalizeMessage(currentValueRef.current)) {
           updateValue(text)
         }
         setInternalErrorMessage('Submission failed. Please try again.')
@@ -456,7 +503,7 @@ function AgentInputWithRef({
         }
       }
     },
-    [disabled, effectiveSubmitting, isSubmitting, onSubmit, updateMachineState, updateValue]
+    [disabled, effectiveSubmitting, isSubmitting, maxLength, onSubmit, updateMachineState, updateValue]
   )
 
   const stopListening = useCallback(
@@ -679,10 +726,43 @@ function AgentInputWithRef({
       return currentValue
     }
 
-    return normalizeTranscript([currentValue, interimTranscript].filter(Boolean).join(' '))
+    return normalizeMessage([currentValue, interimTranscript].filter(Boolean).join(' '))
   }, [currentValue, interimTranscript])
 
-  const onTextChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const lastFieldWidthRef = useRef(0)
+
+  const resizeField = useCallback(() => {
+    const field = inputRef.current
+    // Hidden (for example in a closed sheet): measure when it's shown, via the observer below
+    if (!field || field.clientWidth === 0) return
+    lastFieldWidthRef.current = field.clientWidth
+    // Collapsing the field to measure it shrinks the page for a moment; some engines clamp a page
+    // scrolled to the bottom when that happens, so restore its scroll position
+    const { scrollX, scrollY } = window
+    field.style.height = 'auto'
+    field.style.height = `${field.scrollHeight}px`
+    if (window.scrollY !== scrollY) window.scrollTo(scrollX, scrollY)
+    // Scroll only once max-height (six rows) clips the content
+    field.style.overflowY = field.scrollHeight > field.clientHeight ? 'auto' : 'hidden'
+  }, [])
+
+  useIsomorphicLayoutEffect(() => {
+    resizeField()
+  }, [displayedValue, resizeField])
+
+  // Text rewraps when the field's width changes (layout, or being shown), not only the window's
+  useEffect(() => {
+    const field = inputRef.current
+    if (!field || typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(() => {
+      // Its own height changes trigger this too; only a width change can rewrap the text
+      if (field.clientWidth !== lastFieldWidthRef.current) resizeField()
+    })
+    observer.observe(field)
+    return () => observer.disconnect()
+  }, [resizeField])
+
+  const onTextChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
     updateValue(event.target.value)
     if (effectiveState === 'error') {
       setInternalErrorMessage(undefined)
@@ -690,7 +770,7 @@ function AgentInputWithRef({
     }
   }
 
-  const onInputKeyDown = async (event: KeyboardEvent<HTMLInputElement>) => {
+  const onInputKeyDown = async (event: KeyboardEvent<HTMLTextAreaElement>) => {
     const isComposing = event.nativeEvent.isComposing || event.keyCode === 229
 
     // Escape during an IME composition cancels the composition, not the request
@@ -706,8 +786,9 @@ function AgentInputWithRef({
       return
     }
 
-    // Enter also confirms an IME composition (Japanese, Chinese, Korean); only submit once it ends
-    if (event.key === 'Enter' && !isComposing) {
+    // Shift+Enter adds a line. Enter also confirms an IME composition (Japanese, Chinese, Korean);
+    // only submit once it ends
+    if (event.key === 'Enter' && !event.shiftKey && !isComposing) {
       event.preventDefault()
       await submitPayload(currentValue, 'text')
     }
@@ -734,12 +815,21 @@ function AgentInputWithRef({
     disabled: statusMessage || helperText,
   }
 
+  const overLimitMessage =
+    isOverLimit && maxLength !== undefined
+      ? `Over the ${maxLength}-character limit. Shorten your message to send.`
+      : undefined
+
   // A product-set error shows in any state. Unsupported voice hides the mic without a message.
-  const resolvedStatus = errorMessage || statusByState[effectiveState]
-  const isStatusError = Boolean(errorMessage) || effectiveState === 'error'
+  const resolvedStatus = errorMessage || overLimitMessage || statusByState[effectiveState]
+  const isStatusError = Boolean(errorMessage) || isOverLimit || effectiveState === 'error'
   const meterBars = createMeterBars(meterLevel)
   const showStop = Boolean(onStop) && effectiveSubmitting
-  const sendDisabled = disabled || effectiveSubmitting || normalizeTranscript(currentValue).length === 0
+  const sendDisabled = disabled || effectiveSubmitting || isOverLimit || messageLength === 0
+  const showCounter = maxLength !== undefined && messageLength >= maxLength * COUNTER_THRESHOLD
+  // Announced once when the limit is reached; going over is announced by the status line
+  const limitAnnouncement =
+    maxLength !== undefined && messageLength === maxLength ? `Character limit reached: ${maxLength} characters` : ''
 
   return (
     <Container data-testid={dataTestId}>
@@ -752,7 +842,8 @@ function AgentInputWithRef({
             <Input
               ref={inputRef}
               id={inputId}
-              type="text"
+              rows={1}
+              enterKeyHint="send"
               aria-label={label}
               value={displayedValue}
               onChange={onTextChange}
@@ -760,7 +851,8 @@ function AgentInputWithRef({
               placeholder={placeholder}
               disabled={disabled}
               readOnly={isListening}
-              aria-describedby={statusId}
+              aria-describedby={showCounter ? `${statusId} ${counterId}` : statusId}
+              aria-invalid={isOverLimit || undefined}
             />
 
             <InputActions>
@@ -824,12 +916,29 @@ function AgentInputWithRef({
           </StatusAnnouncement>
         </StatusText>
 
-        {isListening && !prefersReducedMotion && (
-          <MeterContainer aria-hidden="true">
-            {meterBars.map((barHeight, index) => (
-              <MeterBar key={`meter-${index}`} $height={barHeight} />
-            ))}
-          </MeterContainer>
+        <StatusEnd>
+          {isListening && !prefersReducedMotion && (
+            <MeterContainer aria-hidden="true">
+              {meterBars.map((barHeight, index) => (
+                <MeterBar key={`meter-${index}`} $height={barHeight} />
+              ))}
+            </MeterContainer>
+          )}
+
+          {showCounter && (
+            <Typography variant="small" color={isOverLimit ? 'error' : 'subdued'}>
+              <span id={counterId} data-testid="agent-input-counter">
+                {messageLength}/{maxLength}
+                <VisuallyHidden> characters</VisuallyHidden>
+              </span>
+            </Typography>
+          )}
+        </StatusEnd>
+
+        {maxLength !== undefined && (
+          <VisuallyHidden role="status" aria-live="polite" aria-atomic="true" data-testid="agent-input-limit-announcement">
+            {limitAnnouncement}
+          </VisuallyHidden>
         )}
       </StatusRow>
     </Container>
