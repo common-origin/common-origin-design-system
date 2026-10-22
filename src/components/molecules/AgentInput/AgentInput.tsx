@@ -114,7 +114,12 @@ export interface AgentInputProps {
 export type AgentInputReview =
   | {
       state: 'proposal'
-      /** What the agent proposes, for example "3 changes suggested" */
+      /**
+       * Identifies this proposal. A new id while a proposal is open announces it as a replacement
+       * ("Proposal updated."), even when the summary is the same (decision 0047).
+       */
+      id: string
+      /** What the agent proposes. Say what changed, for example "3 changes: Tuesday is now fish" */
       summary: string
       onAccept: () => void
       onDiscard: () => void
@@ -875,6 +880,17 @@ function AgentInputWithRef({
     if (lastReviewAction) setLastReviewAction(null)
   }
 
+  // A proposal replacing an open one is announced as an update (decision 0047). Consecutive
+  // replacements alternate a trailing no-break space, so the live region's text changes each time
+  // even when the summary doesn't; screen readers don't speak it.
+  const openProposalId = review?.state === 'proposal' ? review.id : null
+  const [announcedProposalId, setAnnouncedProposalId] = useState(openProposalId)
+  const [replacementCount, setReplacementCount] = useState(0)
+  if (openProposalId !== announcedProposalId) {
+    setAnnouncedProposalId(openProposalId)
+    setReplacementCount(openProposalId !== null && announcedProposalId !== null ? replacementCount + 1 : 0)
+  }
+
   const cappedSuggestions = useMemo(() => (suggestions ?? []).slice(0, MAX_SUGGESTIONS), [suggestions])
   const showSuggestions = cappedSuggestions.length > 0 && !hasText && review?.state !== 'proposal'
   const [shownSuggestions, setShownSuggestions] = useState(cappedSuggestions)
@@ -893,7 +909,9 @@ function AgentInputWithRef({
 
   const reviewAnnouncement = review
     ? review.state === 'proposal'
-      ? `${review.summary}. Accept or discard.`
+      ? `${replacementCount > 0 ? 'Proposal updated. ' : ''}${review.summary}. Accept or discard.${
+          replacementCount > 0 && replacementCount % 2 === 0 ? '\u00A0' : ''
+        }`
       : 'Changes applied. Undo available.'
     : lastReviewAction === 'discarded'
       ? 'Suggestion discarded.'

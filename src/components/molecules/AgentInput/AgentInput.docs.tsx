@@ -15,6 +15,7 @@ const ReviewExample = () => {
           state === 'proposal'
             ? {
                 state: 'proposal',
+                id: 'proposal-1',
                 summary: '3 changes suggested',
                 onAccept: () => setState('applied'),
                 onDiscard: () => setState('none'),
@@ -83,11 +84,11 @@ export const agentInputDocs: ComponentDocumentation = {
     },
     {
       name: 'review',
-      type: "{ state: 'proposal'; summary: string; onAccept: () => void; onDiscard: () => void } | { state: 'applied'; onUndo: () => void }",
+      type: "{ state: 'proposal'; id: string; summary: string; onAccept: () => void; onDiscard: () => void } | { state: 'applied'; onUndo: () => void }",
       required: false,
       default: undefined,
       description:
-        "The review bar above the field (decision 0046). In the proposal state it shows your summary, then Accept (primary) and Discard (secondary); once applied, \"Changes applied\" with Undo (naked). Review first when the agent's change edits or removes something the user wrote or chose, or touches several items; apply straight away with Undo only for one item when nothing the user wrote is removed. Undo has no timer: remove it on the next change, a new request, or leaving the view. Mark the proposed content itself with the AI marker. Focus doesn't move when a proposal arrives; it is announced politely.",
+        "The review bar above the field (decision 0046). In the proposal state it shows your summary, then Accept (primary) and Discard (secondary); once applied, \"Changes applied\" with Undo (naked). Review first when the agent's change edits or removes something the user wrote or chose, or touches several items; apply straight away with Undo only for one item when nothing the user wrote is removed. Undo has no timer: remove it on the next change, a new request, or leaving the view. Mark the proposed content itself with the AI marker. Focus doesn't move when a proposal arrives; it is announced politely. Give each proposal a new id (a request or response id works): a new id while a proposal is open is announced as \"Proposal updated.\", even when the summary is the same (decision 0047). Write summaries that say what changed, such as \"3 changes: Tuesday is now fish\", so sighted users can tell proposals apart too.",
     },
     {
       name: 'suggestions',
@@ -440,7 +441,7 @@ const [value, setValue] = useState('')
       code: `<AgentInput
   review={
     proposal
-      ? { state: 'proposal', summary: '3 changes suggested', onAccept: accept, onDiscard: discard }
+      ? { state: 'proposal', id: proposal.id, summary: '3 changes suggested', onAccept: accept, onDiscard: discard }
       : applied
         ? { state: 'applied', onUndo: undo }
         : undefined
@@ -497,7 +498,7 @@ const [value, setValue] = useState('')
       'The field keeps focus and stays editable while submitting, so keyboard and screen reader users are not moved away mid-task.',
       'Stop is an icon-only button labelled "Stop" that replaces Send in the same position, so focus order does not change.',
       'The review bar and suggestions come before the field in Tab order: Accept then Discard (or Undo), then the suggestions, then the field.',
-      'A new proposal is announced politely ("3 changes suggested. Accept or discard.") without moving focus. Accepting announces "Changes applied. Undo available." and keeps focus on the same button, now Undo; discarding and undoing announce "Suggestion discarded." and "Changes undone." and move focus to the field, since the bar leaves.',
+      'A new proposal is announced politely ("3 changes suggested. Accept or discard.") without moving focus. One that replaces an open proposal (a new id) is announced as "Proposal updated. 3 changes suggested. Accept or discard.", even when its summary is the same. Accepting announces "Changes applied. Undo available." and keeps focus on the same button, now Undo; discarding and undoing announce "Suggestion discarded." and "Changes undone." and move focus to the field, since the bar leaves.',
       'Suggestions are a list named "Suggestions" of buttons named by their text. Picking one moves focus to the field with the caret at the end.',
       'The bar and suggestions fade in and rise slightly; leaving, they fade and then close their space, and are inert meanwhile. Under reduced motion they only fade.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',

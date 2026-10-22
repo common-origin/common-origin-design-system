@@ -1,6 +1,6 @@
 # 0046. Agent proposals are reviewed or undone by one rule; suggestions fill the input
 
-- **Status:** Accepted
+- **Status:** Accepted; points 6 and 8 amended by [0047](0047-agent-proposal-ids.md) (proposal ids, "Proposal updated.")
 - **Date:** 2026-10-22
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P4, P5, P7

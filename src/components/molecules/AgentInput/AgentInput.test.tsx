@@ -175,6 +175,7 @@ describe('AgentInput', () => {
   describe('Review bar (decision 0046)', () => {
     const proposal = (overrides: Partial<{ onAccept: () => void; onDiscard: () => void }> = {}) => ({
       state: 'proposal' as const,
+      id: 'proposal-1',
       summary: '3 changes suggested',
       onAccept: jest.fn(),
       onDiscard: jest.fn(),
@@ -205,6 +206,50 @@ describe('AgentInput', () => {
       const announcer = screen.getByTestId('agent-input-review-announcement')
       expect(announcer).toHaveAttribute('aria-live', 'polite')
       expect(announcer).toHaveTextContent('3 changes suggested. Accept or discard.')
+    })
+
+    describe('replacing an open proposal (decision 0047)', () => {
+      const withId = (id: string) => ({ ...proposal(), id })
+      const announcer = () => screen.getByTestId('agent-input-review-announcement')
+
+      it('announces "Proposal updated." when a new id replaces an open proposal, even with the same summary', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        expect(announcer().textContent).toBe('Proposal updated. 3 changes suggested. Accept or discard.')
+      })
+
+      it('changes the live text for each consecutive replacement, without changing what is spoken', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        const first = announcer().textContent
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('c')} />)
+        const second = announcer().textContent
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('d')} />)
+
+        expect(second).not.toBe(first)
+        expect(announcer().textContent).not.toBe(second)
+        expect(second?.trim()).toBe(first?.trim())
+      })
+
+      it('does not re-announce a re-render of the same proposal', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        // A new object with the same id, as a parent re-render passes
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('a')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+      })
+
+      it('announces a proposal without the prefix after the last one was removed or applied', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        rerender(<AgentInput onSubmit={jest.fn()} />)
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+
+        rerender(<AgentInput onSubmit={jest.fn()} review={{ state: 'applied', onUndo: jest.fn() }} />)
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('c')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+      })
     })
 
     it('calls onAccept, then keeps focus on the same button as it becomes Undo', async () => {
@@ -354,7 +399,7 @@ describe('AgentInput', () => {
       jest.useFakeTimers()
       const { rerender } = renderComponent({
         suggestions: three,
-        review: { state: 'proposal', summary: '1 change suggested', onAccept: jest.fn(), onDiscard: jest.fn() },
+        review: { state: 'proposal', id: 'p1', summary: '1 change suggested', onAccept: jest.fn(), onDiscard: jest.fn() },
       })
       expect(screen.queryByRole('list', { name: 'Suggestions' })).not.toBeInTheDocument()
 
