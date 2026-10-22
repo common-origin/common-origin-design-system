@@ -63,7 +63,7 @@ export const agentInputDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: 'true',
-      description: 'Enables Web Speech API voice capture path when supported by the browser. When supported, a voice icon control appears inside the input on the right.',
+      description: 'Enables Web Speech API voice capture when the browser supports it, with a voice icon control inside the input on the right. Where the API is unsupported (Firefox, many WebViews) the mic is hidden and nothing is shown in its place. The default changes to false in 3.0.',
     },
     {
       name: 'autoSubmitOnVoiceFinal',
@@ -87,18 +87,25 @@ export const agentInputDocs: ComponentDocumentation = {
       description: 'Milliseconds to wait before no-speech guidance is shown and listening is stopped.',
     },
     {
+      name: 'helperText',
+      type: 'string',
+      required: false,
+      default: "''",
+      description: 'Hint in the status line while idle or typing, in the product\'s voice. The status line is empty by default.',
+    },
+    {
       name: 'statusMessage',
       type: 'string',
       required: false,
       default: undefined,
-      description: 'Optional custom status text override for non-error states.',
+      description: 'Overrides the status line in every non-error state (idle, typing, listening, submitting), for example to report what the agent changed.',
     },
     {
       name: 'errorMessage',
       type: 'string',
       required: false,
       default: undefined,
-      description: 'Optional custom error text override for error state.',
+      description: 'Shown whenever it is set, in any state, styled as an error and announced by the status live region. Use it for request errors; clear it when the user retries. It also replaces the built-in submission and voice error text.',
     },
     {
       name: 'onVoiceStart',
@@ -187,11 +194,27 @@ export const agentInputDocs: ComponentDocumentation = {
   examples: [
     {
       name: 'Idle State',
-      description: 'Default state with typing and send actions enabled.',
+      description: 'Default state with typing and send actions enabled. The status line is empty until a product sets helperText or statusMessage.',
       code: `<AgentInput onSubmit={async ({ text, source }) => {
   console.log('submitted', { text, source })
 }} />`,
       renderComponent: () => <AgentInput onSubmit={async () => {}} />,
+    },
+    {
+      name: 'Helper Text',
+      description: 'A hint in the product\'s voice, shown while idle and typing.',
+      code: `<AgentInput
+  helperText="Tell me what to change, like “swap Tuesday for something lighter”"
+  onSubmit={async ({ text }) => {
+    await updatePlan(text)
+  }}
+/>`,
+      renderComponent: () => (
+        <AgentInput
+          helperText="Tell me what to change, like “swap Tuesday for something lighter”"
+          onSubmit={async () => {}}
+        />
+      ),
     },
     {
       name: 'Listening (Animated Ring)',
@@ -227,16 +250,20 @@ export const agentInputDocs: ComponentDocumentation = {
     },
     {
       name: 'Error State',
-      description: 'Custom actionable error message for recovery guidance.',
-      code: `<AgentInput
-  errorMessage="Microphone permission denied. Allow access and try again."
-  onSubmit={async ({ text, source }) => {
-    console.log(text, source)
+      description: 'A product-set error shows in any state, so a failed request can be reported without making onSubmit throw.',
+      code: `const [error, setError] = useState<string>()
+
+<AgentInput
+  errorMessage={error}
+  onSubmit={async ({ text }) => {
+    setError(undefined)
+    const response = await updatePlan(text)
+    if (!response.ok) setError("Couldn't update the plan. Try again.")
   }}
 />`,
       renderComponent: () => (
         <AgentInput
-          errorMessage="Microphone permission denied. Allow access and try again."
+          errorMessage="Couldn't update the plan. Try again."
           onSubmit={async () => {}}
         />
       ),
@@ -267,14 +294,15 @@ export const agentInputDocs: ComponentDocumentation = {
       'Voice toggle uses aria-pressed to communicate active listening state.',
       'While listening, the mic control shows a circular blue ring and remains visually distinct from idle state even without motion.',
       'Voice and send controls are icon-only buttons with explicit aria-labels for screen readers.',
-      'Status line is exposed as a polite live region for listening/submitting/error announcements.',
+      'Status line is exposed as a polite live region for listening/submitting/error announcements. A product-set errorMessage is announced whenever it appears.',
+      'Enter does not submit while an IME composition is in progress, so Japanese, Chinese and Korean input is confirmed before sending.',
       'Escape stops active listening and returns to idle or typing flow.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',
       'When reduced motion is enabled, the listening ring remains visible as a static blue ring.',
     ],
     keyboardNavigation: 'Tab order is input → voice toggle (when available) → send. Enter submits text, Escape stops listening.',
     screenReader:
-      'Live region announces listening, processing, submitting, unsupported voice guidance, and recoverable error feedback.',
+      'Live region announces helper text, listening, processing, submitting, and recoverable error feedback. Unsupported voice is not announced: the mic is simply absent.',
   },
 
   anatomy: {

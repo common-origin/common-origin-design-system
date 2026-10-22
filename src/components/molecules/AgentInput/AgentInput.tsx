@@ -27,7 +27,6 @@ import { AgentInputMachineState, agentInputStateTransition } from './agentInputS
 
 const { semantic, component } = tokens
 
-const DEFAULT_IDLE_HELPER = 'Ask about transactions, spending, or transfers'
 const DEFAULT_LISTENING_MESSAGE = 'Listening… speak now'
 const DEFAULT_PROCESSING_MESSAGE = 'Finishing voice input…'
 
@@ -59,7 +58,11 @@ export interface AgentInputProps {
   onVoiceFinal?: (text: string) => void
   onVoiceError?: (error: AgentInputVoiceError) => void
 
+  /** Hint shown in the status line while idle or typing. Empty by default. */
+  helperText?: string
+  /** Overrides the status line in every non-error state. */
   statusMessage?: string
+  /** Shown in the status line, styled and announced as an error, whenever it is set. */
   errorMessage?: string
   label?: string
   'data-testid'?: string
@@ -262,6 +265,7 @@ export const AgentInput = ({
   onVoiceInterim,
   onVoiceFinal,
   onVoiceError,
+  helperText = '',
   statusMessage,
   errorMessage,
   label = 'Agent input',
@@ -632,7 +636,8 @@ export const AgentInput = ({
       return
     }
 
-    if (event.key === 'Enter') {
+    // Enter also confirms an IME composition (Japanese, Chinese, Korean); only submit once it ends
+    if (event.key === 'Enter' && !event.nativeEvent.isComposing && event.keyCode !== 229) {
       event.preventDefault()
       await submitPayload(currentValue, 'text')
     }
@@ -650,19 +655,18 @@ export const AgentInput = ({
   }
 
   const statusByState: Record<AgentInputMachineState, string> = {
-    idle: statusMessage || DEFAULT_IDLE_HELPER,
-    typing: statusMessage || DEFAULT_IDLE_HELPER,
+    idle: statusMessage || helperText,
+    typing: statusMessage || helperText,
     listening: statusMessage || DEFAULT_LISTENING_MESSAGE,
     processingFinalTranscript: statusMessage || DEFAULT_PROCESSING_MESSAGE,
     submitting: statusMessage || 'Submitting…',
     error: errorMessage || internalErrorMessage || 'Voice input failed. Try again.',
-    disabled: statusMessage || DEFAULT_IDLE_HELPER,
+    disabled: statusMessage || helperText,
   }
 
-  const unsupportedMessage = defaultVoiceErrorMessage('not-supported')
-  const shouldShowUnsupported = enableVoice && !hasVoice
-  const resolvedStatus = shouldShowUnsupported ? unsupportedMessage : statusByState[effectiveState]
-  const isStatusError = effectiveState === 'error' || shouldShowUnsupported
+  // A product-set error shows in any state. Unsupported voice hides the mic without a message.
+  const resolvedStatus = errorMessage || statusByState[effectiveState]
+  const isStatusError = Boolean(errorMessage) || effectiveState === 'error'
   const meterBars = createMeterBars(meterLevel)
   const sendDisabled = disabled || effectiveSubmitting || normalizeTranscript(currentValue).length === 0
 
@@ -728,9 +732,11 @@ export const AgentInput = ({
       <StatusRow>
         <StatusText $isError={isStatusError}>
           <StatusAnnouncement id={statusId} role="status" aria-live="polite" aria-atomic="true">
-            <Typography variant="small" color={isStatusError ? 'error' : 'subdued'}>
-              {resolvedStatus}
-            </Typography>
+            {resolvedStatus && (
+              <Typography variant="small" color={isStatusError ? 'error' : 'subdued'}>
+                {resolvedStatus}
+              </Typography>
+            )}
           </StatusAnnouncement>
         </StatusText>
 
