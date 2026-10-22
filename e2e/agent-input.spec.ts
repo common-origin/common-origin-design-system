@@ -82,3 +82,29 @@ test('a prefilled field that starts hidden takes its full height when shown', as
 
   await expect.poll(async () => (await box(input)).height).toBe(48 + 2 * 24)
 })
+
+test.describe('review bar (#280)', () => {
+  const bar = (page: Page, id: string) => page.locator(`[data-agent-input="${id}"] [data-testid="agent-input-review"]`)
+
+  test('the actions follow the summary on one row when there is room', async ({ page }) => {
+    const summary = await box(bar(page, 'review-wide').getByText('3 changes suggested'))
+    const accept = await box(bar(page, 'review-wide').getByRole('button', { name: 'Accept' }))
+
+    expect(accept.x).toBeGreaterThan(summary.x + summary.width)
+    expect(Math.abs(accept.y + accept.height / 2 - (summary.y + summary.height / 2))).toBeLessThanOrEqual(2)
+  })
+
+  test('the actions wrap below the summary, left-aligned with it, on a narrow width', async ({ page }) => {
+    const summary = await box(bar(page, 'review-narrow').getByText(/Tuesday swapped/))
+    const accept = await box(bar(page, 'review-narrow').getByRole('button', { name: 'Accept' }))
+
+    expect(accept.y).toBeGreaterThanOrEqual(summary.y + summary.height)
+    expect(Math.round(accept.x)).toBe(Math.round(summary.x))
+  })
+
+  test('the bar sits above the field', async ({ page }) => {
+    const barBox = await box(bar(page, 'review-wide'))
+    const input = await box(field(page, 'review-wide'))
+    expect(barBox.y + barBox.height).toBeLessThanOrEqual(input.y)
+  })
+})
