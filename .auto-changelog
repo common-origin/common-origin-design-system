@@ -1,3 +1,4 @@
 {
-  "template": "scripts/changelog-template.hbs"
+  "template": "scripts/changelog-template.hbs",
+  "handlebarsSetup": "scripts/changelog-handlebars.cjs"
 }

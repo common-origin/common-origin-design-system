@@ -21,6 +21,9 @@ All notable changes to this project will be documented in this file. Dates are r
     {{summary}}
   {{/if}}
 
+  {{!-- Hand-written notes for a release, from docs/release-notes/<title>.md (see RELEASE.md) --}}
+  {{releaseNotes title}}
+
   {{#each merges}}
     - {{#if commit.breaking}}**Breaking change:** {{/if}}{{message}}{{#if href}} [`#{{id}}`]({{href}}){{/if}}
   {{/each}}
