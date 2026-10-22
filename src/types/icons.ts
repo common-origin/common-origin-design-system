@@ -49,6 +49,7 @@ export type IconName =
   | 'search'
   | 'star'
   | 'starFilled'
+  | 'stop'
   | 'table'
   | 'trash'
   | 'userBox'
