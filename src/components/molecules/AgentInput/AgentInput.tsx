@@ -2,6 +2,7 @@ import {
   ChangeEvent,
   ForwardedRef,
   KeyboardEvent,
+  ReactNode,
   forwardRef,
   useCallback,
   useImperativeHandle,
@@ -13,9 +14,12 @@ import {
   useId,
 } from 'react'
 import styled, { css, keyframes } from 'styled-components'
+import { Button } from '../../atoms/Button'
+import { SuggestionChip } from '../../atoms/Chip'
 import { IconButton } from '../../atoms/IconButton'
 import { Typography } from '../../atoms/Typography'
-import { visuallyHidden } from '../../../lib/styleUtils'
+import { reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
+import { EXIT_DURATION_MS, useInert, usePresence } from '../../../lib/usePresence'
 import tokens from '@/lib/cssTokens'
 import {
   AgentInputSubmitSource,
@@ -59,6 +63,19 @@ export interface AgentInputProps {
   /** While submitting, turns Send into Stop and lets Escape stop. */
   onStop?: () => void
 
+  /**
+   * The review bar above the field, for an agent's proposal or an applied change (decision 0046).
+   * Omit it when there's nothing to review or undo.
+   */
+  review?: AgentInputReview
+  /**
+   * Prompt starters or follow-ups, shown above the field while it's empty and no proposal is open.
+   * At most three are shown. Picking one fills the field and focuses it; it never sends.
+   */
+  suggestions?: string[]
+  /** Called with a suggestion's text when it's picked, after it fills the field */
+  onSuggestionSelect?: (text: string) => void
+
   placeholder?: string
   /**
    * Soft character limit for the submitted text. Typing past it is allowed, but Send is disabled and
@@ -88,6 +105,24 @@ export interface AgentInputProps {
   label?: string
   'data-testid'?: string
 }
+
+/**
+ * An agent's proposal waiting for review, or a change already applied (decision 0046). In the
+ * proposal state the bar shows the summary with Accept and Discard; once applied, "Changes applied"
+ * with Undo.
+ */
+export type AgentInputReview =
+  | {
+      state: 'proposal'
+      /** What the agent proposes, for example "3 changes suggested" */
+      summary: string
+      onAccept: () => void
+      onDiscard: () => void
+    }
+  | {
+      state: 'applied'
+      onUndo: () => void
+    }
 
 export interface AgentInputFocusOptions {
   /** Where to put the caret. Omit to keep the browser's default. */
@@ -242,6 +277,103 @@ const MicListeningRing = styled.span.withConfig({
   }
 `
 
+// Maximum suggestions shown (decision 0046, #280)
+const MAX_SUGGESTIONS = 3
+
+const regionEnter = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(${semantic.motion.distance.sm});
+  }
+`
+
+const regionFadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+`
+
+// Leaving content fades, then its space closes, as with Alert's dismiss (decision 0015). A grid
+// row from 1fr to 0fr collapses to the content's own height without measuring it.
+const regionFadeThenCollapse = keyframes`
+  0%, 50% {
+    grid-template-rows: 1fr;
+  }
+  0% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+  100% {
+    grid-template-rows: 0fr;
+  }
+`
+
+const regionFadeOut = keyframes`
+  to {
+    opacity: 0;
+  }
+`
+
+// One part of the region above the field: the review bar or the suggestions
+const RegionItem = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{ $exiting: boolean; $reducedExit: boolean }>`
+  display: grid;
+  grid-template-rows: 1fr;
+  animation: ${regionEnter} ${semantic.motion.duration.moderate} ${semantic.motion.easing.decelerate};
+
+  ${reducedMotion} {
+    animation-name: ${regionFadeIn};
+  }
+
+  ${({ $exiting, $reducedExit }) =>
+    $exiting &&
+    css`
+      pointer-events: none;
+      animation: ${$reducedExit
+        ? css`${regionFadeOut} ${semantic.motion.duration.fast} ${semantic.motion.easing.accelerate} forwards`
+        : css`${regionFadeThenCollapse} calc(2 * ${semantic.motion.duration.fast}) ${semantic.motion.easing.accelerate} forwards`};
+    `}
+`
+
+// Clips while the row collapses. Its bottom padding is the space to the next part, so it closes too.
+const RegionItemContent = styled.div`
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: ${semantic.space[200]};
+  padding-left: ${semantic.space[500]};
+`
+
+// The summary first, then the actions, left-aligned after it; they wrap below on narrow screens (0021)
+const ReviewBar = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: ${semantic.space[300]};
+  row-gap: ${semantic.space[200]};
+`
+
+const ReviewActions = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${semantic.space[200]};
+`
+
+const SuggestionList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  gap: ${semantic.space[200]};
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  & > li {
+    max-width: 100%;
+  }
+`
+
 const StatusRow = styled.div`
   display: flex;
   align-items: center;
@@ -304,12 +436,42 @@ function createMeterBars(level: number): number[] {
 }
 
 // Declared separately so the react-hooks lint rules analyse it (they skip functions inline in forwardRef)
+// Development builds warn about props that break the pattern. Bundlers replace process.env.NODE_ENV
+// with a literal; without a bundler, a browser has no process, so reading it throws.
+function readIsProduction(): boolean {
+  try {
+    return process.env.NODE_ENV === 'production'
+  } catch {
+    return false
+  }
+}
+const isProduction = readIsProduction()
+
+// A part of the region above the field. It stays mounted while it fades out and its space closes.
+function RegionPart({ show, reducedExit, children }: { show: boolean; reducedExit: boolean; children: ReactNode }) {
+  const { isPresent, isExiting } = usePresence(show, reducedExit ? EXIT_DURATION_MS : EXIT_DURATION_MS * 2)
+  const ref = useRef<HTMLDivElement>(null)
+  // Leaving controls drop out of the tab order and can't be activated
+  useInert(ref, isExiting)
+
+  if (!isPresent) return null
+
+  return (
+    <RegionItem ref={ref} $exiting={isExiting} $reducedExit={reducedExit} aria-hidden={isExiting || undefined}>
+      <RegionItemContent>{children}</RegionItemContent>
+    </RegionItem>
+  )
+}
+
 function AgentInputWithRef({
   value,
   defaultValue = '',
   onChange,
   onSubmit,
   onStop,
+  review,
+  suggestions,
+  onSuggestionSelect,
   placeholder = 'Ask a question',
   maxLength,
   disabled = false,
@@ -672,34 +834,92 @@ function AgentInputWithRef({
     voiceLanguage,
   ])
 
+  const focusField = useCallback((cursor?: AgentInputFocusOptions['cursor']) => {
+    const input = inputRef.current
+    if (!input) return
+    input.focus()
+    if (!cursor) return
+
+    const placeCursor = () => {
+      if (cursor === 'all') {
+        input.select()
+        return
+      }
+      const position = cursor === 'start' ? 0 : input.value.length
+      input.setSelectionRange(position, position)
+    }
+    placeCursor()
+    // Again after the render a prefill in the same handler triggers, so 'end' lands after the new text
+    window.setTimeout(placeCursor, 0)
+  }, [])
+
   useImperativeHandle(
     ref,
     () => ({
-      focus: (options) => {
-        const input = inputRef.current
-        if (!input) return
-        input.focus()
-        if (!options?.cursor) return
-
-        const placeCursor = () => {
-          if (options.cursor === 'all') {
-            input.select()
-            return
-          }
-          const position = options.cursor === 'start' ? 0 : input.value.length
-          input.setSelectionRange(position, position)
-        }
-        placeCursor()
-        // Again after the render a prefill in the same handler triggers, so 'end' lands after the new text
-        window.setTimeout(placeCursor, 0)
-      },
+      focus: (options) => focusField(options?.cursor),
       clear: () => {
         setInterimTranscript('')
         updateValue('')
       },
     }),
-    [updateValue]
+    [focusField, updateValue]
   )
+
+  // The region above the field (decision 0046). The last review and suggestions shown are kept, so
+  // they can fade out after the product removes them.
+  const [shownReview, setShownReview] = useState(review)
+  const [lastReviewAction, setLastReviewAction] = useState<'discarded' | 'undone' | null>(null)
+  if (review && review !== shownReview) {
+    setShownReview(review)
+    // A new proposal or change replaces what the last Discard or Undo announced
+    if (lastReviewAction) setLastReviewAction(null)
+  }
+
+  const cappedSuggestions = useMemo(() => (suggestions ?? []).slice(0, MAX_SUGGESTIONS), [suggestions])
+  const showSuggestions = cappedSuggestions.length > 0 && !hasText && review?.state !== 'proposal'
+  const [shownSuggestions, setShownSuggestions] = useState(cappedSuggestions)
+  if (showSuggestions && cappedSuggestions !== shownSuggestions) {
+    setShownSuggestions(cappedSuggestions)
+  }
+
+  const suggestionCount = suggestions?.length ?? 0
+  useEffect(() => {
+    if (!isProduction && suggestionCount > MAX_SUGGESTIONS) {
+      console.warn(
+        `AgentInput shows at most ${MAX_SUGGESTIONS} suggestions (decision 0046); ${suggestionCount} were passed, so the rest are hidden.`
+      )
+    }
+  }, [suggestionCount])
+
+  const reviewAnnouncement = review
+    ? review.state === 'proposal'
+      ? `${review.summary}. Accept or discard.`
+      : 'Changes applied. Undo available.'
+    : lastReviewAction === 'discarded'
+      ? 'Suggestion discarded.'
+      : lastReviewAction === 'undone'
+        ? 'Changes undone.'
+        : ''
+
+  const onReviewDiscard = (onDiscard: () => void) => {
+    setLastReviewAction('discarded')
+    onDiscard()
+    // The bar is leaving, so focus goes to the field rather than being lost
+    focusField()
+  }
+
+  const onReviewUndo = (onUndo: () => void) => {
+    setLastReviewAction('undone')
+    onUndo()
+    focusField()
+  }
+
+  const onPickSuggestion = (text: string) => {
+    updateValue(text)
+    onSuggestionSelect?.(text)
+    // Fills, never sends: the user reviews the text in the field first
+    focusField('end')
+  }
 
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
@@ -837,6 +1057,48 @@ function AgentInputWithRef({
         {label}
       </VisuallyHiddenLabel>
       <ControlsRow>
+        <RegionPart show={Boolean(review)} reducedExit={prefersReducedMotion}>
+          {shownReview && (
+            <ReviewBar data-testid="agent-input-review">
+              <Typography variant="small" color="default">
+                {shownReview.state === 'proposal' ? shownReview.summary : 'Changes applied'}
+              </Typography>
+              {/* Accept, then Undo, render as the same first button, so focus stays on it after Accept */}
+              <ReviewActions>
+                {shownReview.state === 'proposal' ? (
+                  <>
+                    <Button variant="primary" size="small" onClick={shownReview.onAccept}>
+                      Accept
+                    </Button>
+                    <Button variant="secondary" size="small" onClick={() => onReviewDiscard(shownReview.onDiscard)}>
+                      Discard
+                    </Button>
+                  </>
+                ) : (
+                  <Button variant="naked" size="small" onClick={() => onReviewUndo(shownReview.onUndo)}>
+                    Undo
+                  </Button>
+                )}
+              </ReviewActions>
+            </ReviewBar>
+          )}
+        </RegionPart>
+
+        <RegionPart show={showSuggestions} reducedExit={prefersReducedMotion}>
+          <SuggestionList aria-label="Suggestions" data-testid="agent-input-suggestions">
+            {/* Keyed by position too: an agent can return the same suggestion twice */}
+            {shownSuggestions.map((suggestion, index) => (
+              <li key={`${index}-${suggestion}`}>
+                <SuggestionChip onClick={() => onPickSuggestion(suggestion)}>{suggestion}</SuggestionChip>
+              </li>
+            ))}
+          </SuggestionList>
+        </RegionPart>
+
+        <VisuallyHidden aria-live="polite" aria-atomic="true" data-testid="agent-input-review-announcement">
+          {reviewAnnouncement}
+        </VisuallyHidden>
+
         <InputWrapper>
           <InputShell data-disabled={disabled}>
             <Input

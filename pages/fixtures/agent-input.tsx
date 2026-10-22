@@ -3,7 +3,8 @@ import { useState } from 'react'
 import { AgentInput } from '../../src/components'
 
 // Test fixture for e2e/agent-input.spec.ts (#268): AgentInput's auto-growing field at default and
-// compact density, and a prefilled field that starts hidden, none of which jsdom can lay out. Not part of the docs navigation, and not indexed.
+// compact density, a prefilled field that starts hidden, and the review bar at two widths (#280),
+// none of which jsdom can lay out. Not part of the docs navigation, and not indexed.
 export default function AgentInputFixture() {
   const [shown, setShown] = useState(false)
 
@@ -19,6 +20,27 @@ export default function AgentInputFixture() {
         </div>
         <div data-agent-input="compact" data-co-density="compact">
           <AgentInput label="Compact input" enableVoice={false} onSubmit={() => undefined} />
+        </div>
+        <div data-agent-input="review-wide" style={{ width: 480 }}>
+          <AgentInput
+            label="Wide review input"
+            enableVoice={false}
+            review={{ state: 'proposal', summary: '3 changes suggested', onAccept: () => undefined, onDiscard: () => undefined }}
+            onSubmit={() => undefined}
+          />
+        </div>
+        <div data-agent-input="review-narrow" style={{ width: 240 }}>
+          <AgentInput
+            label="Narrow review input"
+            enableVoice={false}
+            review={{
+              state: 'proposal',
+              summary: 'Tuesday swapped for a lighter dinner and Wednesday dropped',
+              onAccept: () => undefined,
+              onDiscard: () => undefined,
+            }}
+            onSubmit={() => undefined}
+          />
         </div>
         <button type="button" data-show-hidden onClick={() => setShown(true)}>
           Show
