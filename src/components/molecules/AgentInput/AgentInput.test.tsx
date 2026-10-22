@@ -171,6 +171,29 @@ describe('AgentInput', () => {
     })
   })
 
+  describe('Docked', () => {
+    it('sticks to the bottom on the sticky layer when docked', () => {
+      renderComponent({ docked: true, 'data-testid': 'docked-input' })
+      const container = screen.getByTestId('docked-input')
+
+      expect(container).toHaveStyle({ position: 'sticky', bottom: '0px' })
+      expect(container).toHaveAttribute('data-docked', 'true')
+    })
+
+    it('is not sticky by default', () => {
+      renderComponent({ 'data-testid': 'inline-input' })
+      const container = screen.getByTestId('inline-input')
+
+      expect(container).not.toHaveStyle({ position: 'sticky' })
+      expect(container).not.toHaveAttribute('data-docked')
+    })
+
+    it('has no accessibility violations when docked', async () => {
+      const { container } = renderComponent({ docked: true })
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
   describe('Multiline', () => {
     it('renders a one-row textarea with a Send key hint', () => {
       renderComponent()
