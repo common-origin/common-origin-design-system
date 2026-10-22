@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useState, type ReactNode } from 'react'
 import {
+  AILabel,
   Badge,
   BooleanChip,
   SuggestionChip,
@@ -74,6 +75,7 @@ export default function ForcedColorsFixture() {
               <Case id="chip-input"><InputChip onDismiss={() => {}}>Removable value</InputChip></Case>
               <Case id="chip-input-selected"><InputChip selected onDismiss={() => {}}>Selected value</InputChip></Case>
               <Case id="chip-suggestion"><SuggestionChip onClick={() => {}}>Suggestion</SuggestionChip></Case>
+              <Case id="ai-label"><AILabel /></Case>
               <Case id="chip-suggestion-disabled"><SuggestionChip onClick={() => {}} disabled>Disabled suggestion</SuggestionChip></Case>
             </Stack>
           </section>

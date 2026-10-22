@@ -49,6 +49,7 @@ import { accountCardDocs } from '@/components/molecules/AccountCard/AccountCard.
 import { categoryBadgeDocs } from '@/components/atoms/CategoryBadge/CategoryBadge.docs'
 import { categoryLabelDocs } from '@/components/atoms/CategoryLabel/CategoryLabel.docs'
 import { statusBadgeDocs } from '@/components/atoms/StatusBadge/StatusBadge.docs'
+import { aiLabelDocs } from '@/components/atoms/AILabel/AILabel.docs'
 import { statusLabelDocs } from '@/components/atoms/StatusLabel/StatusLabel.docs'
 import { tabBarDocs } from '@/components/molecules/TabBar/TabBar.docs'
 import { searchFieldDocs } from '@/components/molecules/SearchField/SearchField.docs'
@@ -130,6 +131,7 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
 
 // Static components data for immediate use (transition approach)
 export const staticComponentsData: ComponentData[] = [
+  convertDocumentationToLegacyFormat(aiLabelDocs),
   convertDocumentationToLegacyFormat(alertDocs),
   convertDocumentationToLegacyFormat(inlineAlertDocs),
   convertDocumentationToLegacyFormat(avatarDocs),
