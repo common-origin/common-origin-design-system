@@ -94,6 +94,21 @@ for (const colorScheme of ['dark', 'light'] as const) {
       expect(missing).toEqual([])
     })
 
+    test('the AI marker keeps its icon and label in the system text colour', async ({ page }) => {
+      const canvasText = await page.evaluate(() => {
+        const probe = document.createElement('div')
+        probe.style.cssText = 'forced-color-adjust: none; color: CanvasText'
+        document.body.appendChild(probe)
+        const value = getComputedStyle(probe).color
+        probe.remove()
+        return value
+      })
+      // Purple is dropped; the icon and the words carry the meaning (decision 0043)
+      expect((await styles(page, 'ai-label', ':scope')).color).toBe(canvasText)
+      expect((await styles(page, 'ai-label', 'svg')).color).toBe(canvasText)
+      await expect(page.locator('[data-fc="ai-label"] svg')).toBeVisible()
+    })
+
     test('selected and checked states use the system selection colour', async ({ page }) => {
       const highlight = await systemColor(page, 'Highlight')
       expect((await styles(page, 'chip-filter-selected', ':scope')).background).toBe(highlight)
