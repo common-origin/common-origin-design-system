@@ -247,6 +247,14 @@ export const agentInputDocs: ComponentDocumentation = {
       description: 'Fires when voice recognition fails or times out.',
     },
     {
+      name: 'docked',
+      type: 'boolean',
+      required: false,
+      default: 'false',
+      description:
+        "Sticks the input to the bottom of its scroll container on the sticky layer (decision 0013), over a full-width band of page background (decision 0006) so content scrolling behind it doesn't show beside the field or under the status line. Render it as the last child of the scrolling content, so the content's end stays visible above it. Its bottom padding clears the phone's home indicator when the page's viewport meta sets viewport-fit=cover.",
+    },
+    {
       name: 'label',
       type: 'string',
       required: false,
@@ -373,6 +381,26 @@ export const agentInputDocs: ComponentDocumentation = {
       ),
     },
     {
+      name: 'Docked',
+      description: 'Docked to the bottom of a scrolling list, as on a plan or chat page. Scroll the list: the input stays in view on its page-background band.',
+      code: `<main>
+  <List items={plan} />
+  <AgentInput docked helperText="Tell me what to change" onSubmit={updatePlan} />
+</main>`,
+      renderComponent: () => (
+        <div style={{ height: 280, overflowY: 'auto' }}>
+          <ol style={{ margin: 0 }}>
+            {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
+              <li key={day} style={{ padding: '12px 0' }}>
+                {day}: something tasty
+              </li>
+            ))}
+          </ol>
+          <AgentInput docked helperText="Tell me what to change" onSubmit={async () => {}} />
+        </div>
+      ),
+    },
+    {
       name: 'Multiline',
       description: 'The field starts at one line and grows to six as the user types, then scrolls. Enter sends; Shift+Enter adds a line, and the submitted text keeps its line breaks.',
       code: `<AgentInput
@@ -495,6 +523,7 @@ const [value, setValue] = useState('')
       'The field is a textarea: Shift+Enter adds a line and Enter sends. Mobile keyboards show a Send key (enterkeyhint).',
       'With maxLength, the counter is part of the field\'s description, so it is read on focus. Reaching the limit is announced once, and going over is announced by the status line, not on every keystroke. Over the limit the field is aria-invalid.',
       'Escape stops active listening and returns to idle or typing flow. While submitting with onStop, Escape stops the request.',
+      'Docked, the input stays reachable at the bottom of the screen; it is the last thing in the content, so its place in the reading and Tab order is unchanged.',
       'The field keeps focus and stays editable while submitting, so keyboard and screen reader users are not moved away mid-task.',
       'Stop is an icon-only button labelled "Stop" that replaces Send in the same position, so focus order does not change.',
       'The review bar and suggestions come before the field in Tab order: Accept then Discard (or Undo), then the suggestions, then the field.',
@@ -552,6 +581,11 @@ const [value, setValue] = useState('')
         name: 'Waveform Meter',
         description: 'Optional real-time audio level visualization shown while listening when reduced motion is not enabled.',
         tokens: ['semantic.color.fill.accent'],
+      },
+      {
+        name: 'Docked Band',
+        description: 'With docked, a full-width page-background band behind the field and status line, with spacing above and safe-area padding below. No shadow or border: the field keeps its own raised shadow.',
+        tokens: ['semantic.surface.base', 'semantic.layer.sticky', 'semantic.space.300'],
       },
       {
         name: 'Review Bar',

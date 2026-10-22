@@ -103,6 +103,12 @@ export interface AgentInputProps {
   /** Shown in the status line, styled and announced as an error, whenever it is set. */
   errorMessage?: string
   label?: string
+  /**
+   * Sticks the input to the bottom of its scroll container, on the sticky layer, over a band of page
+   * background with room for the phone's home indicator. Render it as the last child of the
+   * scrolling content.
+   */
+  docked?: boolean
   'data-testid'?: string
 }
 
@@ -149,11 +155,26 @@ const rotateRing = keyframes`
   }
 `
 
-const Container = styled.div`
+const Container = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$')
+})<{ $docked: boolean }>`
   display: flex;
   flex-direction: column;
   gap: ${semantic.space[200]};
   width: 100%;
+
+  ${({ $docked }) =>
+    $docked &&
+    css`
+      position: sticky;
+      bottom: 0;
+      z-index: ${semantic.layer.sticky};
+      /* The band hides content scrolling past the field and status line (decisions 0006, 0031) */
+      background-color: ${semantic.surface.base};
+      padding-top: ${semantic.space[300]};
+      /* Clears the home indicator; zero unless the page sets viewport-fit=cover */
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    `}
 `
 
 const ControlsRow = styled.div`
@@ -494,6 +515,7 @@ function AgentInputWithRef({
   statusMessage,
   errorMessage,
   label = 'Agent input',
+  docked = false,
   'data-testid': dataTestId,
 }: AgentInputProps, ref: ForwardedRef<AgentInputHandle>) {
   const isControlled = value !== undefined
@@ -1070,7 +1092,7 @@ function AgentInputWithRef({
     maxLength !== undefined && messageLength === maxLength ? `Character limit reached: ${maxLength} characters` : ''
 
   return (
-    <Container data-testid={dataTestId}>
+    <Container data-testid={dataTestId} $docked={docked} data-docked={docked || undefined}>
       <VisuallyHiddenLabel htmlFor={inputId}>
         {label}
       </VisuallyHiddenLabel>

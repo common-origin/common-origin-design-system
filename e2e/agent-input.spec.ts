@@ -83,6 +83,45 @@ test('a prefilled field that starts hidden takes its full height when shown', as
   await expect.poll(async () => (await box(input)).height).toBe(48 + 2 * 24)
 })
 
+test.describe('docked, on a 375px phone viewport', () => {
+  test.use({ viewport: { width: 375, height: 667 }, hasTouch: true, isMobile: true })
+
+  const docked = (page: Page) => page.locator('[data-docked]')
+
+  test('stays at the bottom of the viewport while the list scrolls', async ({ page }) => {
+    await page.goto('/fixtures/agent-input-docked')
+    const viewport = page.viewportSize()!
+
+    for (const scrollY of [0, 600]) {
+      await page.evaluate((y) => window.scrollTo(0, y), scrollY)
+      const rect = await box(docked(page))
+      expect(Math.round(rect.y + rect.height)).toBe(viewport.height)
+      await expect(page.getByRole('textbox', { name: 'Change the plan' })).toBeInViewport()
+    }
+  })
+
+  test('the suggestions above the field stay inside the docked band, in view', async ({ page }) => {
+    await page.goto('/fixtures/agent-input-docked')
+    const suggestions = page.getByRole('list', { name: 'Suggestions' })
+
+    await expect(docked(page).getByRole('list', { name: 'Suggestions' })).toHaveCount(1)
+    await expect(suggestions).toBeInViewport()
+    const list = await box(suggestions)
+    const dock = await box(docked(page))
+    expect(list.y).toBeGreaterThanOrEqual(dock.y)
+  })
+
+  test('the band hides the list behind it, and the last item is fully visible at the end', async ({ page }) => {
+    await page.goto('/fixtures/agent-input-docked')
+    await expect(docked(page)).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
+
+    await page.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight))
+    const last = await box(page.locator('[data-plan-item="40"]'))
+    const dock = await box(docked(page))
+    expect(last.y + last.height).toBeLessThanOrEqual(dock.y)
+  })
+})
+
 test.describe('review bar (#280)', () => {
   const bar = (page: Page, id: string) => page.locator(`[data-agent-input="${id}"] [data-testid="agent-input-review"]`)
 
