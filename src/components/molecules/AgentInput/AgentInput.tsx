@@ -1086,8 +1086,9 @@ function AgentInputWithRef({
 
         <RegionPart show={showSuggestions} reducedExit={prefersReducedMotion}>
           <SuggestionList aria-label="Suggestions" data-testid="agent-input-suggestions">
-            {shownSuggestions.map((suggestion) => (
-              <li key={suggestion}>
+            {/* Keyed by position too: an agent can return the same suggestion twice */}
+            {shownSuggestions.map((suggestion, index) => (
+              <li key={`${index}-${suggestion}`}>
                 <SuggestionChip onClick={() => onPickSuggestion(suggestion)}>{suggestion}</SuggestionChip>
               </li>
             ))}

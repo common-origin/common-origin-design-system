@@ -377,6 +377,15 @@ describe('AgentInput', () => {
       warn.mockRestore()
     })
 
+    it('renders duplicate suggestions without a key warning', () => {
+      const error = jest.spyOn(console, 'error').mockImplementation(() => {})
+      renderComponent({ suggestions: ['Add a fish night', 'Add a fish night'] })
+
+      expect(screen.getAllByRole('button', { name: 'Add a fish night' })).toHaveLength(2)
+      expect(error.mock.calls.some((call) => call.join(' ').includes('same key'))).toBe(false)
+      error.mockRestore()
+    })
+
     it('has no accessibility violations', async () => {
       const { container } = renderComponent({ suggestions: three })
       expect(await axe(container)).toHaveNoViolations()
