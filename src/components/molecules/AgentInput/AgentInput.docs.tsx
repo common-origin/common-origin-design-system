@@ -4,6 +4,39 @@ import { AgentInput, AgentInputHandle } from './AgentInput'
 import { Button } from '../../atoms/Button'
 import { Stack } from '../../atoms/Stack'
 
+// A proposal, accepted to an applied change with Undo, or discarded (decision 0046)
+const ReviewExample = () => {
+  const [state, setState] = useState<'proposal' | 'applied' | 'none'>('proposal')
+
+  return (
+    <Stack direction="column" gap="md">
+      <AgentInput
+        review={
+          state === 'proposal'
+            ? {
+                state: 'proposal',
+                id: 'proposal-1',
+                summary: '3 changes suggested',
+                onAccept: () => setState('applied'),
+                onDiscard: () => setState('none'),
+              }
+            : state === 'applied'
+              ? { state: 'applied', onUndo: () => setState('none') }
+              : undefined
+        }
+        onSubmit={async () => setState('proposal')}
+      />
+      {state === 'none' && (
+        <div>
+          <Button variant="secondary" size="small" onClick={() => setState('proposal')}>
+            Show the proposal again
+          </Button>
+        </div>
+      )}
+    </Stack>
+  )
+}
+
 const FocusFromCodeExample = () => {
   const inputRef = useRef<AgentInputHandle>(null)
   const [value, setValue] = useState('')
@@ -48,6 +81,29 @@ export const agentInputDocs: ComponentDocumentation = {
       required: false,
       default: undefined,
       description: 'While submitting, turns Send into a Stop button and lets Escape in the field stop. Cancel the request here; onSubmit then settles as usual. Without it, Send is disabled while submitting.',
+    },
+    {
+      name: 'review',
+      type: "{ state: 'proposal'; id: string; summary: string; onAccept: () => void; onDiscard: () => void } | { state: 'applied'; onUndo: () => void }",
+      required: false,
+      default: undefined,
+      description:
+        "The review bar above the field (decision 0046). In the proposal state it shows your summary, then Accept (primary) and Discard (secondary); once applied, \"Changes applied\" with Undo (naked). Review first when the agent's change edits or removes something the user wrote or chose, or touches several items; apply straight away with Undo only for one item when nothing the user wrote is removed. Undo has no timer: remove it on the next change, a new request, or leaving the view. Mark the proposed content itself with the AI marker. Focus doesn't move when a proposal arrives; it is announced politely. Give each proposal a new id (a request or response id works): a new id while a proposal is open is announced as \"Proposal updated.\", even when the summary is the same (decision 0047). Write summaries that say what changed, such as \"3 changes: Tuesday is now fish\", so sighted users can tell proposals apart too.",
+    },
+    {
+      name: 'suggestions',
+      type: 'string[]',
+      required: false,
+      default: undefined,
+      description:
+        'Prompt starters or follow-ups, rendered as SuggestionChips above the field while it is empty and no proposal is open. At most three are shown (more log a development warning). Picking one fills the field and focuses it with the caret at the end; it never sends.',
+    },
+    {
+      name: 'onSuggestionSelect',
+      type: '(text: string) => void',
+      required: false,
+      default: undefined,
+      description: 'Called with a suggestion\'s text after it fills the field. Optional: filling happens without it (through onChange when the field is controlled).',
     },
     {
       name: 'ref',
@@ -407,6 +463,36 @@ const [value, setValue] = useState('')
       renderComponent: () => <AgentInput isSubmitting onStop={() => {}} onSubmit={async () => {}} />,
     },
     {
+      name: 'Review a Proposal',
+      description:
+        "The agent's proposal waits for review in the bar above the field. Accept turns it into an applied change with Undo; Discard removes it. Try both.",
+      code: `<AgentInput
+  review={
+    proposal
+      ? { state: 'proposal', id: proposal.id, summary: '3 changes suggested', onAccept: accept, onDiscard: discard }
+      : applied
+        ? { state: 'applied', onUndo: undo }
+        : undefined
+  }
+  onSubmit={({ text }) => propose(text)}
+/>`,
+      renderComponent: () => <ReviewExample />,
+    },
+    {
+      name: 'Suggestions',
+      description: 'Up to three prompt starters above an empty field. Picking one fills the field for the user to edit and send.',
+      code: `<AgentInput
+  suggestions={['Swap Tuesday for something lighter', 'Drop Wednesday', 'Add a fish night']}
+  onSubmit={({ text }) => propose(text)}
+/>`,
+      renderComponent: () => (
+        <AgentInput
+          suggestions={['Swap Tuesday for something lighter', 'Drop Wednesday', 'Add a fish night']}
+          onSubmit={async () => {}}
+        />
+      ),
+    },
+    {
       name: 'Submitting State',
       description: 'External loading control while parent request is in flight.',
       code: `<AgentInput
@@ -440,6 +526,10 @@ const [value, setValue] = useState('')
       'Docked, the input stays reachable at the bottom of the screen; it is the last thing in the content, so its place in the reading and Tab order is unchanged.',
       'The field keeps focus and stays editable while submitting, so keyboard and screen reader users are not moved away mid-task.',
       'Stop is an icon-only button labelled "Stop" that replaces Send in the same position, so focus order does not change.',
+      'The review bar and suggestions come before the field in Tab order: Accept then Discard (or Undo), then the suggestions, then the field.',
+      'A new proposal is announced politely ("3 changes suggested. Accept or discard.") without moving focus. One that replaces an open proposal (a new id) is announced as "Proposal updated. 3 changes suggested. Accept or discard.", even when its summary is the same. Accepting announces "Changes applied. Undo available." and keeps focus on the same button, now Undo; discarding and undoing announce "Suggestion discarded." and "Changes undone." and move focus to the field, since the bar leaves.',
+      'Suggestions are a list named "Suggestions" of buttons named by their text. Picking one moves focus to the field with the caret at the end.',
+      'The bar and suggestions fade in and rise slightly; leaving, they fade and then close their space, and are inert meanwhile. Under reduced motion they only fade.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',
       'When reduced motion is enabled, the listening ring remains visible as a static blue ring.',
     ],
@@ -496,6 +586,17 @@ const [value, setValue] = useState('')
         name: 'Docked Band',
         description: 'With docked, a full-width page-background band behind the field and status line, with spacing above and safe-area padding below. No shadow or border: the field keeps its own raised shadow.',
         tokens: ['semantic.surface.base', 'semantic.layer.sticky', 'semantic.space.300'],
+      },
+      {
+        name: 'Review Bar',
+        description:
+          'Above the field: the summary in small text, then small Accept and Discard buttons (or Undo), left-aligned after it and wrapping below on narrow widths (decision 0021). No fill or border (decision 0046).',
+        tokens: ['semantic.space.200', 'semantic.space.300', 'semantic.space.500', 'semantic.motion.duration.moderate', 'semantic.motion.duration.fast', 'semantic.motion.distance.sm'],
+      },
+      {
+        name: 'Suggestions',
+        description: 'Up to three SuggestionChips in a wrapping list above the field, below the bar when it offers Undo.',
+        tokens: ['semantic.space.200'],
       },
       {
         name: 'Character Counter',

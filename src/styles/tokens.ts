@@ -2855,6 +2855,8 @@ export type Tokens = {
         'accent-pressed': string;
         /** Error text: field error messages, InlineAlert errors. */
         danger: string;
+        /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
+        ai: string;
       };
       background: {
         /**
@@ -3155,6 +3157,8 @@ export type Tokens = {
         'accent-pressed': string;
         /** Error icons, such as in Alert and EmptyState. */
         danger: string;
+        /** The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page. */
+        ai: string;
       };
       financial: {
         /**

@@ -67,6 +67,16 @@ describe('token contrast', () => {
     })
   })
 
+  // The AI marker's text and icon (decision 0046) on white, the page and the AI role's light fills
+  it('keeps AI text at 4.5:1 and the AI icon at 3:1 or more on white, the page and the AI fills', () => {
+    const { text, icon } = tokens.semantic.color
+    const { ai } = tokens.base.color
+    for (const surface of ['#ffffff', tokens.semantic.surface.base, ai[100], ai[200], ai[300], ai[400], ai[500]]) {
+      expect(contrast(text.ai, surface)).toBeGreaterThanOrEqual(4.5)
+      expect(contrast(icon.ai, surface)).toBeGreaterThanOrEqual(3)
+    }
+  })
+
   // Each hue step has the grey step's job and its contrast with white (decision 0044), so the grey
   // ramp's floors hold in every hue
   describe.each(['accent', 'success', 'warning', 'serious', 'danger', 'ai', 'olive', 'periwinkle', 'rose', 'magenta'] as const)(

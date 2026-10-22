@@ -1,5 +1,6 @@
 import { createRef, useState } from 'react'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
 import { axe } from 'jest-axe'
 import { AgentInput, AgentInputHandle, AgentInputProps } from './AgentInput'
 
@@ -190,6 +191,271 @@ describe('AgentInput', () => {
 
     it('has no accessibility violations when docked', async () => {
       const { container } = renderComponent({ docked: true })
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
+  describe('Review bar (decision 0046)', () => {
+    const proposal = (overrides: Partial<{ onAccept: () => void; onDiscard: () => void }> = {}) => ({
+      state: 'proposal' as const,
+      id: 'proposal-1',
+      summary: '3 changes suggested',
+      onAccept: jest.fn(),
+      onDiscard: jest.fn(),
+      ...overrides,
+    })
+
+    it('shows the summary with Accept and Discard, before the field in Tab order', async () => {
+      const user = userEvent.setup()
+      renderComponent({ review: proposal() })
+
+      expect(screen.getByText('3 changes suggested')).toBeInTheDocument()
+      await user.tab()
+      expect(screen.getByRole('button', { name: 'Accept' })).toHaveFocus()
+      await user.tab()
+      expect(screen.getByRole('button', { name: 'Discard' })).toHaveFocus()
+      await user.tab()
+      expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveFocus()
+    })
+
+    it('announces a proposal politely without moving focus', () => {
+      const { rerender } = renderComponent()
+      const field = screen.getByRole('textbox', { name: /agent input/i })
+      field.focus()
+
+      rerender(<AgentInput onSubmit={jest.fn()} review={proposal()} />)
+
+      expect(field).toHaveFocus()
+      const announcer = screen.getByTestId('agent-input-review-announcement')
+      expect(announcer).toHaveAttribute('aria-live', 'polite')
+      expect(announcer).toHaveTextContent('3 changes suggested. Accept or discard.')
+    })
+
+    describe('replacing an open proposal (decision 0047)', () => {
+      const withId = (id: string) => ({ ...proposal(), id })
+      const announcer = () => screen.getByTestId('agent-input-review-announcement')
+
+      it('announces "Proposal updated." when a new id replaces an open proposal, even with the same summary', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        expect(announcer().textContent).toBe('Proposal updated. 3 changes suggested. Accept or discard.')
+      })
+
+      it('changes the live text for each consecutive replacement, without changing what is spoken', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        const first = announcer().textContent
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('c')} />)
+        const second = announcer().textContent
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('d')} />)
+
+        expect(second).not.toBe(first)
+        expect(announcer().textContent).not.toBe(second)
+        expect(second?.trim()).toBe(first?.trim())
+      })
+
+      it('does not re-announce a re-render of the same proposal', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        // A new object with the same id, as a parent re-render passes
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('a')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+      })
+
+      it('announces a proposal without the prefix after the last one was removed or applied', () => {
+        const { rerender } = renderComponent({ review: withId('a') })
+        rerender(<AgentInput onSubmit={jest.fn()} />)
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('b')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+
+        rerender(<AgentInput onSubmit={jest.fn()} review={{ state: 'applied', onUndo: jest.fn() }} />)
+        rerender(<AgentInput onSubmit={jest.fn()} review={withId('c')} />)
+        expect(announcer().textContent).toBe('3 changes suggested. Accept or discard.')
+      })
+    })
+
+    it('calls onAccept, then keeps focus on the same button as it becomes Undo', async () => {
+      const user = userEvent.setup()
+      const onAccept = jest.fn()
+      const onUndo = jest.fn()
+      const { rerender } = renderComponent({ review: proposal({ onAccept }) })
+
+      await user.click(screen.getByRole('button', { name: 'Accept' }))
+      expect(onAccept).toHaveBeenCalledTimes(1)
+
+      rerender(<AgentInput onSubmit={jest.fn()} review={{ state: 'applied', onUndo }} />)
+
+      expect(screen.getByText('Changes applied')).toBeInTheDocument()
+      expect(screen.getByRole('button', { name: 'Undo' })).toHaveFocus()
+      expect(screen.queryByRole('button', { name: 'Accept' })).not.toBeInTheDocument()
+      expect(screen.getByTestId('agent-input-review-announcement')).toHaveTextContent('Changes applied. Undo available.')
+    })
+
+    it('calls onDiscard, announces it and moves focus to the field', async () => {
+      const user = userEvent.setup()
+      const onDiscard = jest.fn()
+      renderComponent({ review: proposal({ onDiscard }) })
+
+      await user.click(screen.getByRole('button', { name: 'Discard' }))
+
+      expect(onDiscard).toHaveBeenCalledTimes(1)
+      expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveFocus()
+    })
+
+    it('announces Discard and Undo once the bar is removed', async () => {
+      const user = userEvent.setup()
+      const onUndo = jest.fn()
+      const { rerender } = renderComponent({ review: proposal() })
+      await user.click(screen.getByRole('button', { name: 'Discard' }))
+      rerender(<AgentInput onSubmit={jest.fn()} />)
+      expect(screen.getByTestId('agent-input-review-announcement')).toHaveTextContent('Suggestion discarded.')
+
+      rerender(<AgentInput onSubmit={jest.fn()} review={{ state: 'applied', onUndo }} />)
+      await user.click(screen.getByRole('button', { name: 'Undo' }))
+      expect(onUndo).toHaveBeenCalledTimes(1)
+      expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveFocus()
+      rerender(<AgentInput onSubmit={jest.fn()} />)
+      expect(screen.getByTestId('agent-input-review-announcement')).toHaveTextContent('Changes undone.')
+    })
+
+    it('fades the bar out before removing it, and makes it inert meanwhile', async () => {
+      jest.useFakeTimers()
+      const { rerender } = renderComponent({ review: proposal() })
+
+      rerender(<AgentInput onSubmit={jest.fn()} />)
+      const bar = screen.getByTestId('agent-input-review')
+      expect(bar.closest('[inert]')).not.toBeNull()
+
+      act(() => {
+        jest.advanceTimersByTime(400)
+      })
+      expect(screen.queryByTestId('agent-input-review')).not.toBeInTheDocument()
+      jest.useRealTimers()
+    })
+
+    it('fades then closes its space (300ms), or only fades under reduced motion (150ms)', () => {
+      jest.useFakeTimers()
+      const { rerender, unmount } = renderComponent({ review: proposal() })
+      rerender(<AgentInput onSubmit={jest.fn()} />)
+      act(() => {
+        jest.advanceTimersByTime(200)
+      })
+      // Still collapsing after the fade
+      expect(screen.getByTestId('agent-input-review')).toBeInTheDocument()
+      unmount()
+
+      ;(window.matchMedia as jest.Mock).mockImplementation(() => ({
+        matches: true,
+        media: '(prefers-reduced-motion: reduce)',
+        addEventListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      }))
+      const reduced = renderComponent({ review: proposal() })
+      reduced.rerender(<AgentInput onSubmit={jest.fn()} />)
+      act(() => {
+        jest.advanceTimersByTime(200)
+      })
+      expect(screen.queryByTestId('agent-input-review')).not.toBeInTheDocument()
+      jest.useRealTimers()
+    })
+
+    it('has no accessibility violations with a proposal or an applied change', async () => {
+      const { container, rerender } = renderComponent({ review: proposal() })
+      expect(await axe(container)).toHaveNoViolations()
+      rerender(<AgentInput onSubmit={jest.fn()} review={{ state: 'applied', onUndo: jest.fn() }} />)
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
+  describe('Suggestions (decision 0046)', () => {
+    const three = ['Swap Tuesday', 'Drop Wednesday', 'Add a fish night']
+
+    it('fills the field and focuses it with the caret at the end, without sending', async () => {
+      const onSubmit = jest.fn()
+      const onSuggestionSelect = jest.fn()
+      renderComponent({ onSubmit, suggestions: three, onSuggestionSelect })
+
+      fireEvent.click(screen.getByRole('button', { name: 'Drop Wednesday' }))
+
+      const field = screen.getByRole('textbox', { name: /agent input/i }) as HTMLTextAreaElement
+      expect(field).toHaveValue('Drop Wednesday')
+      expect(field).toHaveFocus()
+      await waitFor(() => expect(field.selectionStart).toBe('Drop Wednesday'.length))
+      expect(onSuggestionSelect).toHaveBeenCalledWith('Drop Wednesday')
+      expect(onSubmit).not.toHaveBeenCalled()
+    })
+
+    it('fills a controlled field through onChange', () => {
+      const onChange = jest.fn()
+      renderComponent({ value: '', onChange, suggestions: three })
+
+      fireEvent.click(screen.getByRole('button', { name: 'Swap Tuesday' }))
+
+      expect(onChange).toHaveBeenCalledWith('Swap Tuesday')
+    })
+
+    it('is a named list before the field', () => {
+      renderComponent({ suggestions: three })
+
+      const list = screen.getByRole('list', { name: 'Suggestions' })
+      expect(list).toContainElement(screen.getByRole('button', { name: 'Swap Tuesday' }))
+      expect(list.compareDocumentPosition(screen.getByRole('textbox', { name: /agent input/i }))).toBe(
+        Node.DOCUMENT_POSITION_FOLLOWING
+      )
+    })
+
+    it('is hidden while the field has text', () => {
+      jest.useFakeTimers()
+      renderComponent({ suggestions: three })
+
+      fireEvent.change(screen.getByRole('textbox', { name: /agent input/i }), { target: { value: 'Swap' } })
+      act(() => {
+        jest.advanceTimersByTime(400)
+      })
+
+      expect(screen.queryByRole('list', { name: 'Suggestions' })).not.toBeInTheDocument()
+      jest.useRealTimers()
+    })
+
+    it('is hidden while a proposal is open, and shown below the bar when it offers Undo', () => {
+      jest.useFakeTimers()
+      const { rerender } = renderComponent({
+        suggestions: three,
+        review: { state: 'proposal', id: 'p1', summary: '1 change suggested', onAccept: jest.fn(), onDiscard: jest.fn() },
+      })
+      expect(screen.queryByRole('list', { name: 'Suggestions' })).not.toBeInTheDocument()
+
+      rerender(<AgentInput onSubmit={jest.fn()} suggestions={three} review={{ state: 'applied', onUndo: jest.fn() }} />)
+
+      const list = screen.getByRole('list', { name: 'Suggestions' })
+      expect(screen.getByTestId('agent-input-review').compareDocumentPosition(list)).toBe(
+        Node.DOCUMENT_POSITION_FOLLOWING
+      )
+      jest.useRealTimers()
+    })
+
+    it('shows at most three, and warns in development when given more', () => {
+      const warn = jest.spyOn(console, 'warn').mockImplementation(() => {})
+      renderComponent({ suggestions: [...three, 'A fourth'] })
+
+      expect(screen.getAllByRole('listitem')).toHaveLength(3)
+      expect(screen.queryByRole('button', { name: 'A fourth' })).not.toBeInTheDocument()
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('at most 3 suggestions'))
+      warn.mockRestore()
+    })
+
+    it('renders duplicate suggestions without a key warning', () => {
+      const error = jest.spyOn(console, 'error').mockImplementation(() => {})
+      renderComponent({ suggestions: ['Add a fish night', 'Add a fish night'] })
+
+      expect(screen.getAllByRole('button', { name: 'Add a fish night' })).toHaveLength(2)
+      expect(error.mock.calls.some((call) => call.join(' ').includes('same key'))).toBe(false)
+      error.mockRestore()
+    })
+
+    it('has no accessibility violations', async () => {
+      const { container } = renderComponent({ suggestions: three })
       expect(await axe(container)).toHaveNoViolations()
     })
   })

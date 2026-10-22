@@ -19,7 +19,13 @@ export default function AgentInputDockedFixture() {
             </li>
           ))}
         </ol>
-        <AgentInput docked label="Change the plan" enableVoice={false} onSubmit={() => undefined} />
+        <AgentInput
+          docked
+          label="Change the plan"
+          enableVoice={false}
+          suggestions={['Swap Tuesday for something lighter', 'Drop Wednesday']}
+          onSubmit={() => undefined}
+        />
       </main>
     </>
   )

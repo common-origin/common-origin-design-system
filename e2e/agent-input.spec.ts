@@ -100,6 +100,17 @@ test.describe('docked, on a 375px phone viewport', () => {
     }
   })
 
+  test('the suggestions above the field stay inside the docked band, in view', async ({ page }) => {
+    await page.goto('/fixtures/agent-input-docked')
+    const suggestions = page.getByRole('list', { name: 'Suggestions' })
+
+    await expect(docked(page).getByRole('list', { name: 'Suggestions' })).toHaveCount(1)
+    await expect(suggestions).toBeInViewport()
+    const list = await box(suggestions)
+    const dock = await box(docked(page))
+    expect(list.y).toBeGreaterThanOrEqual(dock.y)
+  })
+
   test('the band hides the list behind it, and the last item is fully visible at the end', async ({ page }) => {
     await page.goto('/fixtures/agent-input-docked')
     await expect(docked(page)).not.toHaveCSS('background-color', 'rgba(0, 0, 0, 0)')
@@ -108,5 +119,31 @@ test.describe('docked, on a 375px phone viewport', () => {
     const last = await box(page.locator('[data-plan-item="40"]'))
     const dock = await box(docked(page))
     expect(last.y + last.height).toBeLessThanOrEqual(dock.y)
+  })
+})
+
+test.describe('review bar (#280)', () => {
+  const bar = (page: Page, id: string) => page.locator(`[data-agent-input="${id}"] [data-testid="agent-input-review"]`)
+
+  test('the actions follow the summary on one row when there is room', async ({ page }) => {
+    const summary = await box(bar(page, 'review-wide').getByText('3 changes suggested'))
+    const accept = await box(bar(page, 'review-wide').getByRole('button', { name: 'Accept' }))
+
+    expect(accept.x).toBeGreaterThan(summary.x + summary.width)
+    expect(Math.abs(accept.y + accept.height / 2 - (summary.y + summary.height / 2))).toBeLessThanOrEqual(2)
+  })
+
+  test('the actions wrap below the summary, left-aligned with it, on a narrow width', async ({ page }) => {
+    const summary = await box(bar(page, 'review-narrow').getByText(/Tuesday swapped/))
+    const accept = await box(bar(page, 'review-narrow').getByRole('button', { name: 'Accept' }))
+
+    expect(accept.y).toBeGreaterThanOrEqual(summary.y + summary.height)
+    expect(Math.round(accept.x)).toBe(Math.round(summary.x))
+  })
+
+  test('the bar sits above the field', async ({ page }) => {
+    const barBox = await box(bar(page, 'review-wide'))
+    const input = await box(field(page, 'review-wide'))
+    expect(barBox.y + barBox.height).toBeLessThanOrEqual(input.y)
   })
 })
