@@ -3,6 +3,7 @@ import { useState, type ReactNode } from 'react'
 import {
   Badge,
   BooleanChip,
+  SuggestionChip,
   Button,
   CategoryLabel,
   Checkbox,
@@ -72,6 +73,8 @@ export default function ForcedColorsFixture() {
               <Case id="chip-filter-selected"><BooleanChip selected onClick={() => {}}>Selected filter</BooleanChip></Case>
               <Case id="chip-input"><InputChip onDismiss={() => {}}>Removable value</InputChip></Case>
               <Case id="chip-input-selected"><InputChip selected onDismiss={() => {}}>Selected value</InputChip></Case>
+              <Case id="chip-suggestion"><SuggestionChip onClick={() => {}}>Suggestion</SuggestionChip></Case>
+              <Case id="chip-suggestion-disabled"><SuggestionChip onClick={() => {}} disabled>Disabled suggestion</SuggestionChip></Case>
             </Stack>
           </section>
 

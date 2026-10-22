@@ -114,3 +114,12 @@ test.describe('on a touch screen', () => {
     await checkThumbs(page, TOUCH_TARGET)
   })
 })
+
+test('the suggestion chip is a 24px-high target at least', async ({ page }) => {
+  await page.goto('/fixtures/forced-colors')
+  const chip = page.locator('[data-fc="chip-suggestion"] button')
+  const box = await chip.boundingBox()
+  if (!box) throw new Error('chip-suggestion: no box')
+  expect(box.height).toBeGreaterThanOrEqual(TARGET)
+  expect(box.width).toBeGreaterThanOrEqual(TARGET)
+})
