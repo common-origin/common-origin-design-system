@@ -30,7 +30,7 @@ export const agentInputDocs: ComponentDocumentation = {
   id: 'agent-input',
   name: 'AgentInput',
   description:
-    'A chat-style single-line input with right-aligned in-field icon controls for voice capture and send, plus live status feedback, an active listening ring around the mic button, and auto-submit on final transcripts.',
+    'A chat-style input that grows from one line to six as the user types, with right-aligned in-field icon controls for voice capture and send, an optional soft character limit, live status feedback, an active listening ring around the mic button, and auto-submit on final transcripts.',
   category: 'Molecules',
 
   props: [
@@ -83,6 +83,14 @@ export const agentInputDocs: ComponentDocumentation = {
       required: false,
       default: "'Ask a question'",
       description: 'Placeholder shown in the text input.',
+    },
+    {
+      name: 'maxLength',
+      type: 'number',
+      required: false,
+      default: undefined,
+      description:
+        'Soft character limit for the submitted text (trimmed, spaces collapsed). Typing and pasting past it are allowed, so nothing is silently cut off; over the limit, Send and Enter do nothing, the field is aria-invalid, and the status line asks the user to shorten the message. A counter appears from 80% of the limit. Unlike TextField, which uses the native hard limit, a prompt keeps everything the user pasted (P2).',
     },
     {
       name: 'disabled',
@@ -309,6 +317,40 @@ export const agentInputDocs: ComponentDocumentation = {
       ),
     },
     {
+      name: 'Multiline',
+      description: 'The field starts at one line and grows to six as the user types, then scrolls. Enter sends; Shift+Enter adds a line, and the submitted text keeps its line breaks.',
+      code: `<AgentInput
+  defaultValue={"Swap Tuesday for something lighter\nDrop Wednesday, we're out\nKeep Friday as pizza night"}
+  onSubmit={async ({ text }) => {
+    await updatePlan(text)
+  }}
+/>`,
+      renderComponent: () => (
+        <AgentInput
+          defaultValue={"Swap Tuesday for something lighter\nDrop Wednesday, we're out\nKeep Friday as pizza night"}
+          onSubmit={async () => {}}
+        />
+      ),
+    },
+    {
+      name: 'Length Limit',
+      description: 'With maxLength, a counter appears from 80% of the limit. Over it, the counter and status line turn to the error colour and Send is disabled until the message is shortened.',
+      code: `<AgentInput
+  maxLength={60}
+  defaultValue="Swap Tuesday for something lighter and drop Wednesday, we're out"
+  onSubmit={async ({ text }) => {
+    await updatePlan(text)
+  }}
+/>`,
+      renderComponent: () => (
+        <AgentInput
+          maxLength={60}
+          defaultValue="Swap Tuesday for something lighter and drop Wednesday, we're out"
+          onSubmit={async () => {}}
+        />
+      ),
+    },
+    {
       name: 'Focus From Code',
       description: 'A product control prefills the field through value and focuses it with the caret at the end, using the ref handle.',
       code: `const inputRef = useRef<AgentInputHandle>(null)
@@ -364,13 +406,15 @@ const [value, setValue] = useState('')
       'Voice and send controls are icon-only buttons with explicit aria-labels for screen readers.',
       'Status line is exposed as a polite live region for listening/submitting/error announcements. A product-set errorMessage is announced whenever it appears.',
       'Enter does not submit while an IME composition is in progress, so Japanese, Chinese and Korean input is confirmed before sending.',
+      'The field is a textarea: Shift+Enter adds a line and Enter sends. Mobile keyboards show a Send key (enterkeyhint).',
+      'With maxLength, the counter is part of the field\'s description, so it is read on focus. Reaching the limit is announced once, and going over is announced by the status line, not on every keystroke. Over the limit the field is aria-invalid.',
       'Escape stops active listening and returns to idle or typing flow. While submitting with onStop, Escape stops the request.',
       'The field keeps focus and stays editable while submitting, so keyboard and screen reader users are not moved away mid-task.',
       'Stop is an icon-only button labelled "Stop" that replaces Send in the same position, so focus order does not change.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',
       'When reduced motion is enabled, the listening ring remains visible as a static blue ring.',
     ],
-    keyboardNavigation: 'Tab order is input → voice toggle (when available) → send (or Stop while submitting with onStop). Enter submits text, Escape stops listening or, with onStop, stops a submission.',
+    keyboardNavigation: 'Tab order is input → voice toggle (when available) → send (or Stop while submitting with onStop). Enter submits text, Shift+Enter adds a line, Escape stops listening or, with onStop, stops a submission.',
     screenReader:
       'Live region announces helper text, listening, processing, submitting, and recoverable error feedback. Unsupported voice is not announced: the mic is simply absent.',
   },
@@ -391,7 +435,7 @@ const [value, setValue] = useState('')
     parts: [
       {
         name: 'Text Input',
-        description: 'Primary single-line entry point for typed and interim voice transcript text.',
+        description: 'Primary entry point for typed and interim voice transcript text. A textarea that is one control height tall when empty, grows by line height to six rows, then scrolls; the buttons stay beside the last line.',
         tokens: ['semantic.size.control.lg'],
       },
       {
@@ -418,6 +462,11 @@ const [value, setValue] = useState('')
         name: 'Waveform Meter',
         description: 'Optional real-time audio level visualization shown while listening when reduced motion is not enabled.',
         tokens: ['semantic.color.fill.accent'],
+      },
+      {
+        name: 'Character Counter',
+        description: 'Shown at the right of the status row from 80% of maxLength; subdued, then the error colour when over the limit.',
+        tokens: ['semantic.color.text.muted', 'semantic.color.text.danger'],
       },
     ],
   },

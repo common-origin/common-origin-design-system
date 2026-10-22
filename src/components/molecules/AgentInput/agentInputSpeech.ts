@@ -79,6 +79,14 @@ export function normalizeTranscript(input: string): string {
   return input.replace(/\s+/g, ' ').trim()
 }
 
+/** Typed text: like a transcript, but line breaks are kept (spaces around them are dropped). */
+export function normalizeMessage(input: string): string {
+  return input
+    .replace(/[^\S\n]+/g, ' ')
+    .replace(/ ?\n ?/g, '\n')
+    .trim()
+}
+
 export function mapSpeechErrorCode(error?: string): AgentInputVoiceErrorCode {
   switch (error) {
     case 'not-allowed':
