@@ -49,6 +49,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0043](0043-data-colours.md) | Colour by meaning: six role hues (accent, success, warning, serious, danger, AI) plus neutral mean the same everywhere; four display hues with no meaning for categories and chart categories; never colour alone; amends 0003 and 0010 | Accepted | 2026-10-18 |
 | [0044](0044-hue-ramps.md) | Hue ramps: each step matches the grey step's contrast with white, full chroma on 800–1100, named by role (`accent`, `success`, `warning`, `serious`, `danger`, `ai`) and display hue (`olive`, `periwinkle`, `rose`, `magenta`), per-step alpha twins; amends 0040 | Accepted | 2026-10-18 |
 | [0045](0045-status-indication.md) | Status indication: ten statuses with one meaning, role and shape each; outline icons on the shapes, shape indicators (12px minimum) for the six coloured statuses; always a visible label; Badge means new or unread in accent; signs are text; amends 0018 | Accepted | 2026-10-18 |
+| [0046](0046-agent-proposals-and-suggestions.md) | Agent proposals: review first when the change edits the user's content or several items, otherwise apply with Undo; a review bar above the input (Accept, Discard, Undo); AI marker on proposed content; no Undo timer; suggestions are a Suggestion chip that fills the input; AgentInput renders both from data; amends 0016 | Proposed | 2026-10-22 |
 
 ## Template
 
