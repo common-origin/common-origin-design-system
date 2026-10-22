@@ -1,5 +1,30 @@
 import type { ComponentDocumentation } from '@/lib/docgen/types'
-import { AgentInput } from './AgentInput'
+import { useRef, useState } from 'react'
+import { AgentInput, AgentInputHandle } from './AgentInput'
+import { Button } from '../../atoms/Button'
+import { Stack } from '../../atoms/Stack'
+
+const FocusFromCodeExample = () => {
+  const inputRef = useRef<AgentInputHandle>(null)
+  const [value, setValue] = useState('')
+
+  return (
+    <Stack direction="column" gap="md">
+      <div>
+        <Button
+          variant="secondary"
+          onClick={() => {
+            setValue('Friday: ')
+            inputRef.current?.focus({ cursor: 'end' })
+          }}
+        >
+          Change
+        </Button>
+      </div>
+      <AgentInput ref={inputRef} value={value} onChange={setValue} onSubmit={async () => {}} />
+    </Stack>
+  )
+}
 
 export const agentInputDocs: ComponentDocumentation = {
   id: 'agent-input',
@@ -14,7 +39,22 @@ export const agentInputDocs: ComponentDocumentation = {
       type: "(payload: { text: string; source: 'text' | 'voice-final'; timestamp: string }) => void | Promise<void>",
       required: true,
       default: undefined,
-      description: 'Submission callback for text and voice-final sends. Called on Enter, Send click, and successful voice final capture when enabled.',
+      description:
+        'Submission callback for text and voice-final sends, called on Enter, Send click, and a final voice transcript when enabled. Submit contract: when it resolves, the field clears if it still holds the submitted text (a follow-up typed while submitting is kept); when it rejects, the text stays so the user can retry. The field stays editable while it runs.',
+    },
+    {
+      name: 'onStop',
+      type: '() => void',
+      required: false,
+      default: undefined,
+      description: 'While submitting, turns Send into a Stop button and lets Escape in the field stop. Cancel the request here; onSubmit then settles as usual. Without it, Send is disabled while submitting.',
+    },
+    {
+      name: 'ref',
+      type: "Ref<{ focus: (options?: { cursor?: 'start' | 'end' | 'all' }) => void; clear: () => void }>",
+      required: false,
+      default: undefined,
+      description: 'Imperative handle (AgentInputHandle) for focusing or clearing the field from product controls. focus({ cursor: \'end\' }) puts the caret after text prefilled through value in the same handler.',
     },
     {
       name: 'value',
@@ -56,7 +96,7 @@ export const agentInputDocs: ComponentDocumentation = {
       type: 'boolean',
       required: false,
       default: undefined,
-      description: 'External submitting state. If omitted, submitting state is inferred from async onSubmit resolution.',
+      description: 'External submitting state. If omitted, submitting state is inferred from async onSubmit resolution. The field stays editable while submitting; only Send is disabled (or becomes Stop with onStop).',
     },
     {
       name: 'enableVoice',
@@ -269,6 +309,34 @@ export const agentInputDocs: ComponentDocumentation = {
       ),
     },
     {
+      name: 'Focus From Code',
+      description: 'A product control prefills the field through value and focuses it with the caret at the end, using the ref handle.',
+      code: `const inputRef = useRef<AgentInputHandle>(null)
+const [value, setValue] = useState('')
+
+<Button
+  variant="secondary"
+  onClick={() => {
+    setValue('Friday: ')
+    inputRef.current?.focus({ cursor: 'end' })
+  }}
+>
+  Change
+</Button>
+<AgentInput ref={inputRef} value={value} onChange={setValue} onSubmit={updatePlan} />`,
+      renderComponent: () => <FocusFromCodeExample />,
+    },
+    {
+      name: 'Stop While Working',
+      description: 'With onStop, Send becomes Stop while submitting, and Escape also stops. The field stays editable for a follow-up.',
+      code: `<AgentInput
+  isSubmitting={isGenerating}
+  onStop={() => controller.abort()}
+  onSubmit={({ text }) => generate(text)}
+/>`,
+      renderComponent: () => <AgentInput isSubmitting onStop={() => {}} onSubmit={async () => {}} />,
+    },
+    {
       name: 'Submitting State',
       description: 'External loading control while parent request is in flight.',
       code: `<AgentInput
@@ -296,11 +364,13 @@ export const agentInputDocs: ComponentDocumentation = {
       'Voice and send controls are icon-only buttons with explicit aria-labels for screen readers.',
       'Status line is exposed as a polite live region for listening/submitting/error announcements. A product-set errorMessage is announced whenever it appears.',
       'Enter does not submit while an IME composition is in progress, so Japanese, Chinese and Korean input is confirmed before sending.',
-      'Escape stops active listening and returns to idle or typing flow.',
+      'Escape stops active listening and returns to idle or typing flow. While submitting with onStop, Escape stops the request.',
+      'The field keeps focus and stays editable while submitting, so keyboard and screen reader users are not moved away mid-task.',
+      'Stop is an icon-only button labelled "Stop" that replaces Send in the same position, so focus order does not change.',
       'Reduced motion preference disables non-essential pulse and meter animation while preserving textual status updates.',
       'When reduced motion is enabled, the listening ring remains visible as a static blue ring.',
     ],
-    keyboardNavigation: 'Tab order is input → voice toggle (when available) → send. Enter submits text, Escape stops listening.',
+    keyboardNavigation: 'Tab order is input → voice toggle (when available) → send (or Stop while submitting with onStop). Enter submits text, Escape stops listening or, with onStop, stops a submission.',
     screenReader:
       'Live region announces helper text, listening, processing, submitting, and recoverable error feedback. Unsupported voice is not announced: the mic is simply absent.',
   },

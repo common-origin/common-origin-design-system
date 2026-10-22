@@ -1,7 +1,10 @@
 import {
   ChangeEvent,
+  ForwardedRef,
   KeyboardEvent,
+  forwardRef,
   useCallback,
+  useImperativeHandle,
   useEffect,
   useMemo,
   useRef,
@@ -41,7 +44,13 @@ export interface AgentInputProps {
   defaultValue?: string
   onChange?: (value: string) => void
 
+  /**
+   * Called on Enter, Send, or a final voice transcript. When it resolves, the field clears if it
+   * still holds the submitted text (a follow-up typed meanwhile is kept). When it rejects, the text stays.
+   */
   onSubmit: (payload: SubmitPayload) => void | Promise<void>
+  /** While submitting, turns Send into Stop and lets Escape stop. */
+  onStop?: () => void
 
   placeholder?: string
   disabled?: boolean
@@ -66,6 +75,17 @@ export interface AgentInputProps {
   errorMessage?: string
   label?: string
   'data-testid'?: string
+}
+
+export interface AgentInputFocusOptions {
+  /** Where to put the caret. Omit to keep the browser's default. */
+  cursor?: 'start' | 'end' | 'all'
+}
+
+/** Imperative handle, for products that focus or clear the field from their own controls. */
+export interface AgentInputHandle {
+  focus: (options?: AgentInputFocusOptions) => void
+  clear: () => void
 }
 
 const rotateRing = keyframes`
@@ -248,11 +268,13 @@ function createMeterBars(level: number): number[] {
   ]
 }
 
-export const AgentInput = ({
+// Declared separately so the react-hooks lint rules analyse it (they skip functions inline in forwardRef)
+function AgentInputWithRef({
   value,
   defaultValue = '',
   onChange,
   onSubmit,
+  onStop,
   placeholder = 'Ask a question',
   disabled = false,
   isSubmitting,
@@ -270,7 +292,7 @@ export const AgentInput = ({
   errorMessage,
   label = 'Agent input',
   'data-testid': dataTestId,
-}: AgentInputProps) => {
+}: AgentInputProps, ref: ForwardedRef<AgentInputHandle>) {
   const isControlled = value !== undefined
   const [internalValue, setInternalValue] = useState(defaultValue)
   const [machineState, setMachineState] = useState<AgentInputMachineState>(
@@ -290,10 +312,16 @@ export const AgentInput = ({
   const audioStreamRef = useRef<MediaStream | null>(null)
   const audioContextRef = useRef<AudioContext | null>(null)
   const meterRafRef = useRef<number | null>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
   const inputId = useId()
   const statusId = `${inputId}-status`
 
   const currentValue = isControlled ? value ?? '' : internalValue
+  // Read after onSubmit settles, when the closure's value may be stale
+  const currentValueRef = useRef(currentValue)
+  useEffect(() => {
+    currentValueRef.current = currentValue
+  }, [currentValue])
   const hasText = normalizeTranscript(currentValue).length > 0
   const effectiveSubmitting = isSubmitting ?? internalSubmitting
   const effectiveState = disabled ? 'disabled' : machineState
@@ -411,10 +439,14 @@ export const AgentInput = ({
 
         updateMachineState({ type: 'SUBMIT_SUCCESS' })
         setInterimTranscript('')
-        updateValue('')
+        // Keep a follow-up typed while submitting
+        if (normalizeTranscript(currentValueRef.current) === text) {
+          updateValue('')
+        }
       } catch {
         updateMachineState({ type: 'SUBMIT_ERROR' })
-        if (source === 'voice-final') {
+        // Restore the transcript unless the user has typed something since
+        if (source === 'voice-final' && !normalizeTranscript(currentValueRef.current)) {
           updateValue(text)
         }
         setInternalErrorMessage('Submission failed. Please try again.')
@@ -593,6 +625,35 @@ export const AgentInput = ({
     voiceLanguage,
   ])
 
+  useImperativeHandle(
+    ref,
+    () => ({
+      focus: (options) => {
+        const input = inputRef.current
+        if (!input) return
+        input.focus()
+        if (!options?.cursor) return
+
+        const placeCursor = () => {
+          if (options.cursor === 'all') {
+            input.select()
+            return
+          }
+          const position = options.cursor === 'start' ? 0 : input.value.length
+          input.setSelectionRange(position, position)
+        }
+        placeCursor()
+        // Again after the render a prefill in the same handler triggers, so 'end' lands after the new text
+        window.setTimeout(placeCursor, 0)
+      },
+      clear: () => {
+        setInterimTranscript('')
+        updateValue('')
+      },
+    }),
+    [updateValue]
+  )
+
   useEffect(() => {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
     const sync = () => setPrefersReducedMotion(mediaQuery.matches)
@@ -630,6 +691,12 @@ export const AgentInput = ({
   }
 
   const onInputKeyDown = async (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Escape' && onStop && effectiveSubmitting) {
+      event.preventDefault()
+      onStop()
+      return
+    }
+
     if (event.key === 'Escape' && isListening) {
       event.preventDefault()
       await stopListening(true)
@@ -668,6 +735,7 @@ export const AgentInput = ({
   const resolvedStatus = errorMessage || statusByState[effectiveState]
   const isStatusError = Boolean(errorMessage) || effectiveState === 'error'
   const meterBars = createMeterBars(meterLevel)
+  const showStop = Boolean(onStop) && effectiveSubmitting
   const sendDisabled = disabled || effectiveSubmitting || normalizeTranscript(currentValue).length === 0
 
   return (
@@ -677,8 +745,9 @@ export const AgentInput = ({
       </VisuallyHiddenLabel>
       <ControlsRow>
         <InputWrapper>
-          <InputShell data-disabled={disabled || effectiveSubmitting}>
+          <InputShell data-disabled={disabled}>
             <Input
+              ref={inputRef}
               id={inputId}
               type="text"
               aria-label={label}
@@ -686,7 +755,7 @@ export const AgentInput = ({
               onChange={onTextChange}
               onKeyDown={onInputKeyDown}
               placeholder={placeholder}
-              disabled={disabled || effectiveSubmitting}
+              disabled={disabled}
               readOnly={isListening}
               aria-describedby={statusId}
             />
@@ -715,15 +784,27 @@ export const AgentInput = ({
                 </MicButtonWrapper>
               )}
 
-              <CircularActionIconButton
-                variant="secondary"
-                size="medium"
-                iconName="directionUp"
-                onClick={() => submitPayload(currentValue, 'text')}
-                disabled={sendDisabled}
-                aria-label="Send message"
-                type="button"
-              />
+              {showStop ? (
+                <CircularActionIconButton
+                  variant="secondary"
+                  size="medium"
+                  iconName="stop"
+                  onClick={onStop}
+                  disabled={disabled}
+                  aria-label="Stop"
+                  type="button"
+                />
+              ) : (
+                <CircularActionIconButton
+                  variant="secondary"
+                  size="medium"
+                  iconName="directionUp"
+                  onClick={() => submitPayload(currentValue, 'text')}
+                  disabled={sendDisabled}
+                  aria-label="Send message"
+                  type="button"
+                />
+              )}
             </InputActions>
           </InputShell>
         </InputWrapper>
@@ -751,3 +832,7 @@ export const AgentInput = ({
     </Container>
   )
 }
+
+export const AgentInput = forwardRef(AgentInputWithRef)
+
+AgentInput.displayName = 'AgentInput'

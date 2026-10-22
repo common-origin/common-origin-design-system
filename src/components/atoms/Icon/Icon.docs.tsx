@@ -199,7 +199,7 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (50 icons total)',
+      description: 'Complete icon library organized by category with names (51 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
@@ -229,7 +229,7 @@ export const iconDocs: ComponentDocumentation = {
 
 {/* Media & Communication */}
 <Stack direction="row" gap="lg" wrap>
-  <Icon name="play" /> <Icon name="pause" /> <Icon name="playBack" />
+  <Icon name="play" /> <Icon name="pause" /> <Icon name="stop" /> <Icon name="playBack" />
   <Icon name="message" /> <Icon name="link" /> <Icon name="mic" />
 </Stack>
 
@@ -421,7 +421,7 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Media & Communication Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (6)</Typography>
+            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (7)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="play" />
@@ -430,6 +430,10 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="pause" />
                 <Typography variant="caption">pause</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="stop" />
+                <Typography variant="caption">stop</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="playBack" />

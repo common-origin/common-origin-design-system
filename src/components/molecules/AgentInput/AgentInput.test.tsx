@@ -1,6 +1,7 @@
+import { createRef, useState } from 'react'
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { axe } from 'jest-axe'
-import { AgentInput, AgentInputProps } from './AgentInput'
+import { AgentInput, AgentInputHandle, AgentInputProps } from './AgentInput'
 
 type MockSpeechResult = {
   transcript: string
@@ -167,6 +168,155 @@ describe('AgentInput', () => {
           })
         )
       })
+    })
+  })
+
+  describe('While submitting', () => {
+    const deferred = () => {
+      let resolve!: () => void
+      let reject!: (error: Error) => void
+      const promise = new Promise<void>((res, rej) => {
+        resolve = res
+        reject = rej
+      })
+      return { promise, resolve, reject }
+    }
+
+    it('keeps the field editable and focused, and only disables Send', async () => {
+      const pending = deferred()
+      const onSubmit = jest.fn(() => pending.promise)
+      renderComponent({ onSubmit })
+
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+      input.focus()
+      fireEvent.change(input, { target: { value: 'Swap Tuesday' } })
+      fireEvent.keyDown(input, { key: 'Enter' })
+
+      await waitFor(() => expect(screen.getByRole('button', { name: /send message/i })).toBeDisabled())
+      expect(input).toBeEnabled()
+      expect(input).toHaveFocus()
+
+      fireEvent.change(input, { target: { value: 'Swap Tuesday, and drop Wednesday' } })
+      expect(input).toHaveValue('Swap Tuesday, and drop Wednesday')
+
+      fireEvent.keyDown(input, { key: 'Enter' })
+      expect(onSubmit).toHaveBeenCalledTimes(1)
+
+      await act(async () => pending.resolve())
+    })
+
+    it('keeps a follow-up typed while submitting when onSubmit resolves', async () => {
+      const pending = deferred()
+      renderComponent({ onSubmit: jest.fn(() => pending.promise) })
+
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+      fireEvent.change(input, { target: { value: 'Swap Tuesday' } })
+      fireEvent.keyDown(input, { key: 'Enter' })
+      fireEvent.change(input, { target: { value: 'Drop Wednesday' } })
+
+      await act(async () => pending.resolve())
+
+      expect(input).toHaveValue('Drop Wednesday')
+    })
+
+    it('clears unchanged text when onSubmit resolves and keeps it when it rejects', async () => {
+      const onSubmit = jest.fn().mockResolvedValueOnce(undefined).mockRejectedValueOnce(new Error('failed'))
+      renderComponent({ onSubmit })
+
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+      fireEvent.change(input, { target: { value: 'Swap Tuesday' } })
+      fireEvent.keyDown(input, { key: 'Enter' })
+      await waitFor(() => expect(input).toHaveValue(''))
+
+      fireEvent.change(input, { target: { value: 'Drop Wednesday' } })
+      fireEvent.keyDown(input, { key: 'Enter' })
+      await screen.findByText(/submission failed/i)
+      expect(input).toHaveValue('Drop Wednesday')
+    })
+
+    it('turns Send into Stop when onStop is set, and Stop or Escape calls it', () => {
+      const onStop = jest.fn()
+      renderComponent({ onStop, isSubmitting: true, defaultValue: 'Swap Tuesday' })
+
+      expect(screen.queryByRole('button', { name: /send message/i })).not.toBeInTheDocument()
+      const stop = screen.getByRole('button', { name: 'Stop' })
+      expect(stop).toBeEnabled()
+
+      fireEvent.click(stop)
+      fireEvent.keyDown(screen.getByRole('textbox', { name: /agent input/i }), { key: 'Escape' })
+
+      expect(onStop).toHaveBeenCalledTimes(2)
+    })
+
+    it('keeps a disabled Send without onStop', () => {
+      renderComponent({ isSubmitting: true, defaultValue: 'Swap Tuesday' })
+
+      expect(screen.getByRole('button', { name: /send message/i })).toBeDisabled()
+      expect(screen.queryByRole('button', { name: 'Stop' })).not.toBeInTheDocument()
+    })
+
+    it('has no accessibility violations while submitting with Stop', async () => {
+      const { container } = renderComponent({ onStop: jest.fn(), isSubmitting: true, defaultValue: 'Swap Tuesday' })
+      expect(await axe(container)).toHaveNoViolations()
+    })
+  })
+
+  describe('Imperative handle', () => {
+    it('focuses with the caret after prefilled text', async () => {
+      const ref = createRef<AgentInputHandle>()
+      const Prefill = () => {
+        const [value, setValue] = useState('')
+        return (
+          <>
+            <button
+              type="button"
+              onClick={() => {
+                setValue('Friday: ')
+                ref.current?.focus({ cursor: 'end' })
+              }}
+            >
+              Change
+            </button>
+            <AgentInput ref={ref} value={value} onChange={setValue} onSubmit={jest.fn()} />
+          </>
+        )
+      }
+      render(<Prefill />)
+
+      fireEvent.click(screen.getByRole('button', { name: 'Change' }))
+      const input = screen.getByRole('textbox', { name: /agent input/i }) as HTMLInputElement
+
+      expect(input).toHaveFocus()
+      await waitFor(() => {
+        expect(input.value).toBe('Friday: ')
+        expect(input.selectionStart).toBe(8)
+        expect(input.selectionEnd).toBe(8)
+      })
+    })
+
+    it('places the caret at the start or selects all', () => {
+      const ref = createRef<AgentInputHandle>()
+      render(<AgentInput ref={ref} defaultValue="Friday: pasta" onSubmit={jest.fn()} />)
+      const input = screen.getByRole('textbox', { name: /agent input/i }) as HTMLInputElement
+
+      act(() => ref.current?.focus({ cursor: 'start' }))
+      expect(input).toHaveFocus()
+      expect([input.selectionStart, input.selectionEnd]).toEqual([0, 0])
+
+      act(() => ref.current?.focus({ cursor: 'all' }))
+      expect([input.selectionStart, input.selectionEnd]).toEqual([0, 13])
+    })
+
+    it('clears in uncontrolled and controlled modes', () => {
+      const ref = createRef<AgentInputHandle>()
+      const { rerender } = render(<AgentInput ref={ref} defaultValue="Friday: pasta" onSubmit={jest.fn()} />)
+      act(() => ref.current?.clear())
+      expect(screen.getByRole('textbox', { name: /agent input/i })).toHaveValue('')
+
+      const onChange = jest.fn()
+      rerender(<AgentInput key="controlled" ref={ref} value="Friday: pasta" onChange={onChange} onSubmit={jest.fn()} />)
+      act(() => ref.current?.clear())
+      expect(onChange).toHaveBeenCalledWith('')
     })
   })
 
