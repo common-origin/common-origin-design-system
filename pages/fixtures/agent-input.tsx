@@ -25,7 +25,7 @@ export default function AgentInputFixture() {
           <AgentInput
             label="Wide review input"
             enableVoice={false}
-            review={{ state: 'proposal', summary: '3 changes suggested', onAccept: () => undefined, onDiscard: () => undefined }}
+            review={{ state: 'proposal', id: 'wide', summary: '3 changes suggested', onAccept: () => undefined, onDiscard: () => undefined }}
             onSubmit={() => undefined}
           />
         </div>
@@ -35,6 +35,7 @@ export default function AgentInputFixture() {
             enableVoice={false}
             review={{
               state: 'proposal',
+              id: 'narrow',
               summary: 'Tuesday swapped for a lighter dinner and Wednesday dropped',
               onAccept: () => undefined,
               onDiscard: () => undefined,
