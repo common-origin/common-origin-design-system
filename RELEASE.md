@@ -73,6 +73,8 @@ The publish workflow uses no npm token. npm trusts `.github/workflows/publish.ym
 
 The template is `scripts/changelog-template.hbs` (auto-changelog's compact template, changed to print the date for the not-yet-tagged release), configured in `.auto-changelog`.
 
+**Release notes.** auto-changelog rebuilds `CHANGELOG.md` from git history every release, so hand-written text in it would be lost. For a release that needs more than its PR titles, such as behaviour changes consumers should know about, write `docs/release-notes/vX.Y.Z.md` in the version-bump PR and run `npx auto-changelog -p` again. `scripts/changelog-handlebars.cjs` includes the file at the top of that version's entry, and keeps it there in every later rebuild.
+
 There is no post-release changelog workflow: a PR opened by the workflow's `GITHUB_TOKEN` can't trigger the required CI checks, so it could never merge unattended.
 
 ## Troubleshooting
