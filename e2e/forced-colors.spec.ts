@@ -65,6 +65,8 @@ const edges: [string, string][] = [
   ['chip-filter-selected', ':scope'],
   ['chip-input', ':scope'],
   ['chip-input-selected', ':scope'],
+  ['chip-suggestion', 'button'],
+  ['chip-suggestion-disabled', 'button'],
   ['checkbox', 'input + *'],
   ['checkbox-checked', 'input + *'],
   ['checkbox-disabled', 'input + *'],
