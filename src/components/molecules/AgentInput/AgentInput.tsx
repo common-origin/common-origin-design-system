@@ -691,7 +691,10 @@ function AgentInputWithRef({
   }
 
   const onInputKeyDown = async (event: KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Escape' && onStop && effectiveSubmitting) {
+    const isComposing = event.nativeEvent.isComposing || event.keyCode === 229
+
+    // Escape during an IME composition cancels the composition, not the request
+    if (event.key === 'Escape' && onStop && effectiveSubmitting && !isComposing) {
       event.preventDefault()
       onStop()
       return
@@ -704,7 +707,7 @@ function AgentInputWithRef({
     }
 
     // Enter also confirms an IME composition (Japanese, Chinese, Korean); only submit once it ends
-    if (event.key === 'Enter' && !event.nativeEvent.isComposing && event.keyCode !== 229) {
+    if (event.key === 'Enter' && !isComposing) {
       event.preventDefault()
       await submitPayload(currentValue, 'text')
     }
@@ -789,7 +792,7 @@ function AgentInputWithRef({
                   variant="secondary"
                   size="medium"
                   iconName="stop"
-                  onClick={onStop}
+                  onClick={() => onStop?.()}
                   disabled={disabled}
                   aria-label="Stop"
                   type="button"

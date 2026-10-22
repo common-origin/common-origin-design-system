@@ -248,6 +248,19 @@ describe('AgentInput', () => {
       expect(onStop).toHaveBeenCalledTimes(2)
     })
 
+    it('calls onStop with no arguments, and ignores Escape during an IME composition', () => {
+      const onStop = jest.fn()
+      renderComponent({ onStop, isSubmitting: true })
+      const input = screen.getByRole('textbox', { name: /agent input/i })
+
+      fireEvent.keyDown(input, { key: 'Escape', isComposing: true })
+      fireEvent.keyDown(input, { key: 'Escape', keyCode: 229 })
+      expect(onStop).not.toHaveBeenCalled()
+
+      fireEvent.click(screen.getByRole('button', { name: 'Stop' }))
+      expect(onStop).toHaveBeenCalledWith()
+    })
+
     it('keeps a disabled Send without onStop', () => {
       renderComponent({ isSubmitting: true, defaultValue: 'Swap Tuesday' })
 
