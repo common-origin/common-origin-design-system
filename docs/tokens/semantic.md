@@ -30,8 +30,15 @@ Colour is split by **property**: what the colour is painted on.
   - **AI** always comes with the AI icon and a label.
   - **Status** follows the status indication pattern: text and a shape or symbol as well as colour ([decision 0045](../foundation/decisions/0045-status-indication.md)).
 
+**Category colours.** `color.category.*` serves CategoryLabel. It uses the four display hues (`olive`, `periwinkle`, `rose`, `magenta`), which carry no meaning, plus `gray` for uncategorised or "other" ([decision 0043](../foundation/decisions/0043-data-colours.md)). Each colour has the same four jobs:
+- the plain key is the outline (step 800)
+- `-strong` is the filled background, with white text (1100)
+- `-text` is the outlined and minimal text (1100)
+- `-muted` is the minimal fill (300)
+
+A category never uses a role colour, and a role is never shown with a category colour. A trend, for example, is a differential indicator in the success or danger role, not a green or red label ([decision 0045](../foundation/decisions/0045-status-indication.md)). Beyond five categories, the icon and text tell them apart. The old hue names are deprecated aliases of the nearest display hue until 3.0.
+
 **Moving:**
-- `color.category.*` (category labels) moves onto the display ramps, with CategoryLabel's display names.
 - `color.data.*` (charts) is added.
 
 ## Surface

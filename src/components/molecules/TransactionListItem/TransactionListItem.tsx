@@ -133,11 +133,13 @@ const StyledTruncatedText = styled.span`
 
 // Map categories to CategoryLabel configurations
 const categoryConfig: Record<TransactionCategory, { color: CategoryColor; icon: IconName; label: string }> = {
-  shopping: { color: 'purple', icon: 'paper', label: 'Shopping' },
-  dining: { color: 'orange', icon: 'paper', label: 'Dining' },
-  transport: { color: 'blue', icon: 'paper', label: 'Transport' },
-  entertainment: { color: 'pink', icon: 'star', label: 'Entertainment' },
-  bills: { color: 'red', icon: 'paper', label: 'Bills' },
+  // Display colours carry no meaning (decision 0043); five coloured categories share four colours,
+  // so the icon and label tell dining and bills apart
+  shopping: { color: 'magenta', icon: 'paper', label: 'Shopping' },
+  dining: { color: 'rose', icon: 'paper', label: 'Dining' },
+  transport: { color: 'periwinkle', icon: 'paper', label: 'Transport' },
+  entertainment: { color: 'olive', icon: 'star', label: 'Entertainment' },
+  bills: { color: 'rose', icon: 'paper', label: 'Bills' },
   other: { color: 'gray', icon: 'paper', label: 'Other' }
 }
 

@@ -3247,121 +3247,177 @@ export type Tokens = {
         neutral: string;
       };
       category: {
-        /** Blue category color for general/miscellaneous */
+        /**
+         * Blue category color for general/miscellaneous
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle`.
+         */
         blue: string;
-        /** Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-strong`.
+         */
         'blue-strong': string;
         /**
          * Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.periwinkle-strong`.
          */
         'blue-emphasis': string;
         /**
          * Subtle blue background
          *
-         * @deprecated Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.periwinkle-muted`.
          */
         'blue-subtle': string;
-        /** Purple category color for entertainment */
+        /**
+         * Purple category color for entertainment
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta`.
+         */
         purple: string;
-        /** Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-strong`.
+         */
         'purple-strong': string;
         /**
          * Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.magenta-strong`.
          */
         'purple-emphasis': string;
         /**
          * Subtle purple background
          *
-         * @deprecated Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.magenta-muted`.
          */
         'purple-subtle': string;
-        /** Pink category color for health/wellness */
+        /**
+         * Pink category color for health/wellness
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
+         */
         pink: string;
-        /** Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
+         */
         'pink-strong': string;
         /**
          * Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
          */
         'pink-emphasis': string;
         /**
          * Subtle pink background
          *
-         * @deprecated Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
          */
         'pink-subtle': string;
-        /** Yellow category color for utilities */
+        /**
+         * Yellow category color for utilities
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive`.
+         */
         yellow: string;
-        /** Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-strong`.
+         */
         'yellow-strong': string;
         /**
          * Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.olive-strong`.
          */
         'yellow-emphasis': string;
         /**
          * Subtle yellow background
          *
-         * @deprecated Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.olive-muted`.
          */
         'yellow-subtle': string;
-        /** Green category color for income */
+        /**
+         * Green category color for income
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive`.
+         */
         green: string;
-        /** Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-strong`.
+         */
         'green-strong': string;
         /**
          * Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.olive-strong`.
          */
         'green-emphasis': string;
         /**
          * Subtle green background
          *
-         * @deprecated Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.olive-muted`.
          */
         'green-subtle': string;
-        /** Red category color for expenses */
+        /**
+         * Red category color for expenses
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
+         */
         red: string;
-        /** Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
+         */
         'red-strong': string;
         /**
          * Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
          */
         'red-emphasis': string;
         /**
          * Subtle red background
          *
-         * @deprecated Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
          */
         'red-subtle': string;
-        /** Orange category color for food & dining */
+        /**
+         * Orange category color for food & dining
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
+         */
         orange: string;
-        /** Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /**
+         * Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
+         */
         'orange-strong': string;
         /**
          * Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).
          *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0.
+         * @deprecated "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
          */
         'orange-emphasis': string;
         /**
          * Subtle orange background
          *
-         * @deprecated Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
          */
         'orange-subtle': string;
-        /** Gray category color for uncategorized */
+        /** Gray category (decision 0043: neutral, for uncategorised or "other"): the outline of an outlined CategoryLabel. 3.19:1 on white. */
         gray: string;
-        /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029). */
+        /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1. */
         'gray-strong': string;
         /**
          * Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029).
@@ -3375,38 +3431,126 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.
          */
         'gray-subtle': string;
-        /** Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted. */
+        /**
+         * Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-text`.
+         */
         'blue-text': string;
-        /** Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted. */
+        /**
+         * Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-text`.
+         */
         'purple-text': string;
-        /** Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted. */
+        /**
+         * Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
+         */
         'pink-text': string;
-        /** Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted. */
+        /**
+         * Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-text`.
+         */
         'yellow-text': string;
-        /** Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted. */
+        /**
+         * Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-text`.
+         */
         'green-text': string;
-        /** Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted. */
+        /**
+         * Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
+         */
         'red-text': string;
-        /** Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted. */
+        /**
+         * Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
+         */
         'orange-text': string;
-        /** Text and icons of an outlined or minimal gray CategoryLabel, on white or gray-muted. */
+        /** Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted. */
         'gray-text': string;
-        /** Light blue fill of a blue CategoryLabel, behind the blue-text colour. */
+        /**
+         * Light blue fill of a blue CategoryLabel, behind the blue-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-muted`.
+         */
         'blue-muted': string;
-        /** Light purple fill of a purple CategoryLabel, behind the purple-text colour. */
+        /**
+         * Light purple fill of a purple CategoryLabel, behind the purple-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-muted`.
+         */
         'purple-muted': string;
-        /** Light pink fill of a pink CategoryLabel, behind the pink-text colour. */
+        /**
+         * Light pink fill of a pink CategoryLabel, behind the pink-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
+         */
         'pink-muted': string;
-        /** Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour. */
+        /**
+         * Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-muted`.
+         */
         'yellow-muted': string;
-        /** Light green fill of a green CategoryLabel, behind the green-text colour. */
+        /**
+         * Light green fill of a green CategoryLabel, behind the green-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-muted`.
+         */
         'green-muted': string;
-        /** Light red fill of a red CategoryLabel, behind the red-text colour. */
+        /**
+         * Light red fill of a red CategoryLabel, behind the red-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
+         */
         'red-muted': string;
-        /** Light orange fill of a orange CategoryLabel, behind the orange-text colour. */
+        /**
+         * Light orange fill of a orange CategoryLabel, behind the orange-text colour.
+         *
+         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
+         */
         'orange-muted': string;
-        /** Light gray fill of a gray CategoryLabel, behind the gray-text colour. */
+        /** Light gray fill of a minimal CategoryLabel, behind the gray-text colour. */
         'gray-muted': string;
+        /** Olive category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.18:1 on white. */
+        olive: string;
+        /** Strong step of the olive category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
+        'olive-strong': string;
+        /** Text and icons of an outlined or minimal olive CategoryLabel. 6.02:1 on white, 5.39:1 on olive-muted. */
+        'olive-text': string;
+        /** Light olive fill of a minimal CategoryLabel, behind the olive-text colour. */
+        'olive-muted': string;
+        /** Periwinkle category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+        periwinkle: string;
+        /** Strong step of the periwinkle category: the fill of a filled CategoryLabel, with white text at 6.00:1. */
+        'periwinkle-strong': string;
+        /** Text and icons of an outlined or minimal periwinkle CategoryLabel. 6.00:1 on white, 5.37:1 on periwinkle-muted. */
+        'periwinkle-text': string;
+        /** Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour. */
+        'periwinkle-muted': string;
+        /** Rose category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+        rose: string;
+        /** Strong step of the rose category: the fill of a filled CategoryLabel, with white text at 5.99:1. */
+        'rose-strong': string;
+        /** Text and icons of an outlined or minimal rose CategoryLabel. 5.99:1 on white, 5.33:1 on rose-muted. */
+        'rose-text': string;
+        /** Light rose fill of a minimal CategoryLabel, behind the rose-text colour. */
+        'rose-muted': string;
+        /** Magenta category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+        magenta: string;
+        /** Strong step of the magenta category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
+        'magenta-strong': string;
+        /** Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted. */
+        'magenta-text': string;
+        /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
+        'magenta-muted': string;
       };
       status: {
         /**

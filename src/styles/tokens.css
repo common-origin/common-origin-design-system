@@ -803,46 +803,26 @@
   --co-semantic-color-financial-debit-hover: var(--co-base-color-red-1000); /** Deprecated: Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-financial-pending: var(--co-base-color-orange-600); /** Deprecated: Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-financial-neutral: var(--co-base-color-neutral-600); /** Deprecated: Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-category-blue: var(--co-base-color-blue-700); /** Blue category color for general/miscellaneous */
-  --co-semantic-color-category-blue-strong: var(--co-base-color-blue-900); /** Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-blue-subtle: var(--co-base-color-blue-100); /** Deprecated: Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-purple: var(--co-base-color-purple-700); /** Purple category color for entertainment */
-  --co-semantic-color-category-purple-strong: var(--co-base-color-purple-900); /** Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-purple-subtle: var(--co-base-color-purple-100); /** Deprecated: Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-pink: var(--co-base-color-pink-700); /** Pink category color for health/wellness */
-  --co-semantic-color-category-pink-strong: var(--co-base-color-pink-900); /** Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-pink-subtle: var(--co-base-color-pink-100); /** Deprecated: Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-yellow: var(--co-base-color-yellow-700); /** Yellow category color for utilities */
-  --co-semantic-color-category-yellow-strong: var(--co-base-color-yellow-900); /** Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-yellow-subtle: var(--co-base-color-yellow-100); /** Deprecated: Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-green: var(--co-base-color-green-700); /** Green category color for income */
-  --co-semantic-color-category-green-strong: var(--co-base-color-green-900); /** Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-green-subtle: var(--co-base-color-green-100); /** Deprecated: Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-red: var(--co-base-color-red-700); /** Red category color for expenses */
-  --co-semantic-color-category-red-strong: var(--co-base-color-red-900); /** Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-red-subtle: var(--co-base-color-red-100); /** Deprecated: Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-orange: var(--co-base-color-orange-700); /** Orange category color for food & dining */
-  --co-semantic-color-category-orange-strong: var(--co-base-color-orange-900); /** Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-orange-subtle: var(--co-base-color-orange-100); /** Deprecated: Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-gray: var(--co-base-color-neutral-700); /** Gray category color for uncategorized */
-  --co-semantic-color-category-gray-strong: var(--co-base-color-neutral-900); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029). */
-  --co-semantic-color-category-gray-subtle: var(--co-base-color-neutral-200); /** Deprecated: Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-category-blue-text: var(--co-base-color-blue-900); /** Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted. */
-  --co-semantic-color-category-purple-text: var(--co-base-color-purple-900); /** Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted. */
-  --co-semantic-color-category-pink-text: var(--co-base-color-pink-1000); /** Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted. */
-  --co-semantic-color-category-yellow-text: var(--co-base-color-yellow-1000); /** Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted. */
-  --co-semantic-color-category-green-text: var(--co-base-color-green-900); /** Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted. */
-  --co-semantic-color-category-red-text: var(--co-base-color-red-900); /** Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted. */
-  --co-semantic-color-category-orange-text: var(--co-base-color-orange-900); /** Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted. */
-  --co-semantic-color-category-gray-text: var(--co-base-color-neutral-900); /** Text and icons of an outlined or minimal gray CategoryLabel, on white or gray-muted. */
-  --co-semantic-color-category-blue-muted: var(--co-base-color-blue-100); /** Light blue fill of a blue CategoryLabel, behind the blue-text colour. */
-  --co-semantic-color-category-purple-muted: var(--co-base-color-purple-100); /** Light purple fill of a purple CategoryLabel, behind the purple-text colour. */
-  --co-semantic-color-category-pink-muted: var(--co-base-color-pink-100); /** Light pink fill of a pink CategoryLabel, behind the pink-text colour. */
-  --co-semantic-color-category-yellow-muted: var(--co-base-color-yellow-100); /** Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour. */
-  --co-semantic-color-category-green-muted: var(--co-base-color-green-100); /** Light green fill of a green CategoryLabel, behind the green-text colour. */
-  --co-semantic-color-category-red-muted: var(--co-base-color-red-100); /** Light red fill of a red CategoryLabel, behind the red-text colour. */
-  --co-semantic-color-category-orange-muted: var(--co-base-color-orange-100); /** Light orange fill of a orange CategoryLabel, behind the orange-text colour. */
-  --co-semantic-color-category-gray-muted: var(--co-base-color-neutral-200); /** Light gray fill of a gray CategoryLabel, behind the gray-text colour. */
+  --co-semantic-color-category-gray: var(--co-base-color-gray-800); /** Gray category (decision 0043: neutral, for uncategorised or "other"): the outline of an outlined CategoryLabel. 3.19:1 on white. */
+  --co-semantic-color-category-gray-strong: var(--co-base-color-gray-1100); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1. */
+  --co-semantic-color-category-gray-text: var(--co-base-color-gray-1100); /** Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted. */
+  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-300); /** Light gray fill of a minimal CategoryLabel, behind the gray-text colour. */
+  --co-semantic-color-category-olive: var(--co-base-color-olive-800); /** Olive category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.18:1 on white. */
+  --co-semantic-color-category-olive-strong: var(--co-base-color-olive-1100); /** Strong step of the olive category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
+  --co-semantic-color-category-olive-text: var(--co-base-color-olive-1100); /** Text and icons of an outlined or minimal olive CategoryLabel. 6.02:1 on white, 5.39:1 on olive-muted. */
+  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-300); /** Light olive fill of a minimal CategoryLabel, behind the olive-text colour. */
+  --co-semantic-color-category-periwinkle: var(--co-base-color-periwinkle-800); /** Periwinkle category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+  --co-semantic-color-category-periwinkle-strong: var(--co-base-color-periwinkle-1100); /** Strong step of the periwinkle category: the fill of a filled CategoryLabel, with white text at 6.00:1. */
+  --co-semantic-color-category-periwinkle-text: var(--co-base-color-periwinkle-1100); /** Text and icons of an outlined or minimal periwinkle CategoryLabel. 6.00:1 on white, 5.37:1 on periwinkle-muted. */
+  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-300); /** Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour. */
+  --co-semantic-color-category-rose: var(--co-base-color-rose-800); /** Rose category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+  --co-semantic-color-category-rose-strong: var(--co-base-color-rose-1100); /** Strong step of the rose category: the fill of a filled CategoryLabel, with white text at 5.99:1. */
+  --co-semantic-color-category-rose-text: var(--co-base-color-rose-1100); /** Text and icons of an outlined or minimal rose CategoryLabel. 5.99:1 on white, 5.33:1 on rose-muted. */
+  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-300); /** Light rose fill of a minimal CategoryLabel, behind the rose-text colour. */
+  --co-semantic-color-category-magenta: var(--co-base-color-magenta-800); /** Magenta category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
+  --co-semantic-color-category-magenta-strong: var(--co-base-color-magenta-1100); /** Strong step of the magenta category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
+  --co-semantic-color-category-magenta-text: var(--co-base-color-magenta-1100); /** Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted. */
+  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-300); /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
   --co-semantic-color-status-pending: var(--co-base-color-yellow-1000); /** Deprecated: Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-pending-bg: var(--co-base-color-yellow-100); /** Deprecated: Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-processing: var(--co-base-color-blue-900); /** Deprecated: Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0. */
@@ -1165,14 +1145,50 @@
   --co-semantic-color-icon-error: var(--co-semantic-color-icon-danger); /** Deprecated: Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-icon-accent-hover: var(--co-semantic-color-icon-accent); /** Deprecated: Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. */
   --co-semantic-color-icon-accent-pressed: var(--co-semantic-color-icon-accent); /** Deprecated: Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. */
-  --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-yellow-emphasis: var(--co-semantic-color-category-yellow-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-green-emphasis: var(--co-semantic-color-category-green-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. */
-  --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-blue: var(--co-semantic-color-category-periwinkle); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
+  --co-semantic-color-category-blue-strong: var(--co-semantic-color-category-periwinkle-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
+  --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-periwinkle-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-blue-subtle: var(--co-semantic-color-category-periwinkle-muted); /** Deprecated: Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-purple: var(--co-semantic-color-category-magenta); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. */
+  --co-semantic-color-category-purple-strong: var(--co-semantic-color-category-magenta-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. */
+  --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-magenta-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-purple-subtle: var(--co-semantic-color-category-magenta-muted); /** Deprecated: Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-pink: var(--co-semantic-color-category-rose); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. */
+  --co-semantic-color-category-pink-strong: var(--co-semantic-color-category-rose-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. */
+  --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-rose-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-pink-subtle: var(--co-semantic-color-category-rose-muted); /** Deprecated: Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-yellow: var(--co-semantic-color-category-olive); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. */
+  --co-semantic-color-category-yellow-strong: var(--co-semantic-color-category-olive-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. */
+  --co-semantic-color-category-yellow-emphasis: var(--co-semantic-color-category-olive-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-yellow-subtle: var(--co-semantic-color-category-olive-muted); /** Deprecated: Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-green: var(--co-semantic-color-category-olive); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. */
+  --co-semantic-color-category-green-strong: var(--co-semantic-color-category-olive-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. */
+  --co-semantic-color-category-green-emphasis: var(--co-semantic-color-category-olive-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-green-subtle: var(--co-semantic-color-category-olive-muted); /** Deprecated: Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-red: var(--co-semantic-color-category-rose); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. */
+  --co-semantic-color-category-red-strong: var(--co-semantic-color-category-rose-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. */
+  --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-rose-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-red-subtle: var(--co-semantic-color-category-rose-muted); /** Deprecated: Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-orange: var(--co-semantic-color-category-rose); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. */
+  --co-semantic-color-category-orange-strong: var(--co-semantic-color-category-rose-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. */
+  --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-rose-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-orange-subtle: var(--co-semantic-color-category-rose-muted); /** Deprecated: Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-category-gray-subtle: var(--co-semantic-color-category-gray-muted); /** Deprecated: Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-category-blue-text: var(--co-semantic-color-category-periwinkle-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
+  --co-semantic-color-category-purple-text: var(--co-semantic-color-category-magenta-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. */
+  --co-semantic-color-category-pink-text: var(--co-semantic-color-category-rose-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. */
+  --co-semantic-color-category-yellow-text: var(--co-semantic-color-category-olive-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. */
+  --co-semantic-color-category-green-text: var(--co-semantic-color-category-olive-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. */
+  --co-semantic-color-category-red-text: var(--co-semantic-color-category-rose-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. */
+  --co-semantic-color-category-orange-text: var(--co-semantic-color-category-rose-text); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. */
+  --co-semantic-color-category-blue-muted: var(--co-semantic-color-category-periwinkle-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
+  --co-semantic-color-category-purple-muted: var(--co-semantic-color-category-magenta-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. */
+  --co-semantic-color-category-pink-muted: var(--co-semantic-color-category-rose-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. */
+  --co-semantic-color-category-yellow-muted: var(--co-semantic-color-category-olive-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. */
+  --co-semantic-color-category-green-muted: var(--co-semantic-color-category-olive-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. */
+  --co-semantic-color-category-red-muted: var(--co-semantic-color-category-rose-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. */
+  --co-semantic-color-category-orange-muted: var(--co-semantic-color-category-rose-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. */
   --co-semantic-color-status-completed: var(--co-semantic-color-text-success); /** Deprecated: Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-completed-bg: var(--co-semantic-color-fill-success-muted); /** Deprecated: Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-failed: var(--co-semantic-color-text-danger); /** Deprecated: Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0. */

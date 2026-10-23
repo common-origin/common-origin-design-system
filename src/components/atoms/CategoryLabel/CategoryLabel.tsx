@@ -14,17 +14,39 @@ const { space } = semantic
 const { label: labelHeight } = semantic.size
 
 /**
- * Category color options for CategoryLabel
+ * The category colours: four display colours with no meaning, and grey for "other" (decision 0043).
+ * They never mean status; for status use StatusLabel.
  */
-export type CategoryColor = 
-  | 'blue' 
-  | 'purple' 
-  | 'pink' 
-  | 'yellow' 
-  | 'green' 
-  | 'red' 
-  | 'orange' 
-  | 'gray'
+export type CategoryDisplayColor = 'olive' | 'periwinkle' | 'rose' | 'magenta' | 'gray'
+
+/**
+ * Deprecated category colour names, each an alias of the nearest display colour until 3.0
+ * (decision 0043): blue is periwinkle; purple is magenta; pink, red and orange are rose; yellow and
+ * green are olive.
+ * @deprecated Use a CategoryDisplayColor: 'olive', 'periwinkle', 'rose', 'magenta' or 'gray'.
+ */
+export type DeprecatedCategoryColor = 'blue' | 'purple' | 'pink' | 'yellow' | 'green' | 'red' | 'orange'
+
+/**
+ * Category color options for CategoryLabel. The old hue names still work, as aliases of the
+ * nearest display colour, until 3.0.
+ */
+export type CategoryColor = CategoryDisplayColor | DeprecatedCategoryColor
+
+const displayColor: Record<CategoryColor, CategoryDisplayColor> = {
+  olive: 'olive',
+  periwinkle: 'periwinkle',
+  rose: 'rose',
+  magenta: 'magenta',
+  gray: 'gray',
+  blue: 'periwinkle',
+  purple: 'magenta',
+  pink: 'rose',
+  yellow: 'olive',
+  green: 'olive',
+  red: 'rose',
+  orange: 'rose',
+}
 
 /**
  * Visual variant options for CategoryLabel
@@ -46,8 +68,9 @@ export interface CategoryLabelProps {
   children: ReactNode
   
   /**
-   * Color scheme for the label
-   * @default 'blue'
+   * Category colour: 'olive', 'periwinkle', 'rose', 'magenta' or 'gray'. The old hue names are
+   * deprecated aliases (decision 0043).
+   * @default 'periwinkle'
    */
   color?: CategoryColor
   
@@ -80,20 +103,17 @@ export interface CategoryLabelProps {
   'aria-label'?: string
 }
 
-// Text on white or the -subtle fill (outlined and minimal), at least 4.5:1 (#115)
-const categoryText: Record<CategoryColor, string> = {
-  blue: category['blue-text'],
-  purple: category['purple-text'],
-  pink: category['pink-text'],
-  yellow: category['yellow-text'],
-  green: category['green-text'],
-  red: category['red-text'],
-  orange: category['orange-text'],
+// Text on white or the -muted fill (outlined and minimal), at least 4.5:1 (#115)
+const categoryText: Record<CategoryDisplayColor, string> = {
+  olive: category['olive-text'],
+  periwinkle: category['periwinkle-text'],
+  rose: category['rose-text'],
+  magenta: category['magenta-text'],
   gray: category['gray-text']
 }
 
 interface StyledLabelProps {
-  $color: CategoryColor
+  $color: CategoryDisplayColor
   $variant: CategoryVariant
   $size: CategoryLabelSize
 }
@@ -163,23 +183,24 @@ const HiddenLabel = styled.span`
 /**
  * CategoryLabel colour-codes an item's category, such as a transaction's (decision 0018).
  *
- * A static, chip-like label with 8 category colours, 3 visual variants and an optional icon.
- * Category colours carry no status meaning; for status use StatusLabel.
+ * A static, chip-like label with 4 display colours plus grey, 3 visual variants and an optional
+ * icon. Category colours carry no meaning (decision 0043); for status use StatusLabel. Beyond five
+ * categories, the icon and text tell them apart.
  *
  * @example
  * ```tsx
- * <CategoryLabel color="orange" icon="creditCard">
+ * <CategoryLabel color="rose" icon="creditCard">
  *   Shopping
  * </CategoryLabel>
  *
- * <CategoryLabel color="blue" variant="outlined" size="medium">
+ * <CategoryLabel color="periwinkle" variant="outlined" size="medium">
  *   Travel
  * </CategoryLabel>
  * ```
  */
 export const CategoryLabel: React.FC<CategoryLabelProps> = ({
   children,
-  color = 'blue',
+  color = 'periwinkle',
   variant = 'filled',
   size = 'large',
   icon,
@@ -192,7 +213,7 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
 
   return (
     <StyledCategoryLabel
-      $color={color}
+      $color={displayColor[color]}
       $variant={variant}
       $size={size}
       data-testid={dataTestId}

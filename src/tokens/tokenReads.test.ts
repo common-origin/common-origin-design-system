@@ -103,7 +103,7 @@ const FIXTURES: Record<string, string> = {
   cleanTemplate: `
     import tokens from '@/styles/tokens.json'
     const { category } = tokens.semantic.color
-    export const read = (hue: 'blue' | 'purple') => category[\`\${hue}-strong\` as keyof typeof category]`,
+    export const read = (hue: 'olive' | 'rose') => category[\`\${hue}-strong\` as keyof typeof category]`,
   cleanEscape: `
     import tokens from '@/styles/tokens.json'
     export const all = Object.entries(tokens.semantic.surface)`,

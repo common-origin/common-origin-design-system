@@ -1723,208 +1723,292 @@
       },
       "category": {
         "blue": {
-          "$value": "{base.color.blue.700}",
-          "$description": "Blue category color for general/miscellaneous"
+          "$value": "{semantic.color.category.periwinkle}",
+          "$description": "Blue category color for general/miscellaneous",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.periwinkle"
+            }
+          }
         },
         "blue-strong": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.periwinkle-strong}",
+          "$description": "Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.periwinkle-strong"
+            }
+          }
         },
         "blue-emphasis": {
-          "$value": "{semantic.color.category.blue-strong}",
+          "$value": "{semantic.color.category.periwinkle-strong}",
           "$description": "Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.blue-strong"
+              "replacedBy": "semantic.color.category.periwinkle-strong"
             }
           }
         },
         "blue-subtle": {
-          "$value": "{base.color.blue.100}",
+          "$value": "{semantic.color.category.periwinkle-muted}",
           "$description": "Subtle blue background",
           "$deprecated": "Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.blue-muted"
+              "replacedBy": "semantic.color.category.periwinkle-muted"
             }
           }
         },
         "purple": {
-          "$value": "{base.color.purple.700}",
-          "$description": "Purple category color for entertainment"
+          "$value": "{semantic.color.category.magenta}",
+          "$description": "Purple category color for entertainment",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.magenta"
+            }
+          }
         },
         "purple-strong": {
-          "$value": "{base.color.purple.900}",
-          "$description": "Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.magenta-strong}",
+          "$description": "Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.magenta-strong"
+            }
+          }
         },
         "purple-emphasis": {
-          "$value": "{semantic.color.category.purple-strong}",
+          "$value": "{semantic.color.category.magenta-strong}",
           "$description": "Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.purple-strong"
+              "replacedBy": "semantic.color.category.magenta-strong"
             }
           }
         },
         "purple-subtle": {
-          "$value": "{base.color.purple.100}",
+          "$value": "{semantic.color.category.magenta-muted}",
           "$description": "Subtle purple background",
           "$deprecated": "Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.purple-muted"
+              "replacedBy": "semantic.color.category.magenta-muted"
             }
           }
         },
         "pink": {
-          "$value": "{base.color.pink.700}",
-          "$description": "Pink category color for health/wellness"
+          "$value": "{semantic.color.category.rose}",
+          "$description": "Pink category color for health/wellness",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose"
+            }
+          }
         },
         "pink-strong": {
-          "$value": "{base.color.pink.900}",
-          "$description": "Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.rose-strong}",
+          "$description": "Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-strong"
+            }
+          }
         },
         "pink-emphasis": {
-          "$value": "{semantic.color.category.pink-strong}",
+          "$value": "{semantic.color.category.rose-strong}",
           "$description": "Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.pink-strong"
+              "replacedBy": "semantic.color.category.rose-strong"
             }
           }
         },
         "pink-subtle": {
-          "$value": "{base.color.pink.100}",
+          "$value": "{semantic.color.category.rose-muted}",
           "$description": "Subtle pink background",
           "$deprecated": "Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.pink-muted"
+              "replacedBy": "semantic.color.category.rose-muted"
             }
           }
         },
         "yellow": {
-          "$value": "{base.color.yellow.700}",
-          "$description": "Yellow category color for utilities"
+          "$value": "{semantic.color.category.olive}",
+          "$description": "Yellow category color for utilities",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive"
+            }
+          }
         },
         "yellow-strong": {
-          "$value": "{base.color.yellow.900}",
-          "$description": "Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.olive-strong}",
+          "$description": "Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-strong"
+            }
+          }
         },
         "yellow-emphasis": {
-          "$value": "{semantic.color.category.yellow-strong}",
+          "$value": "{semantic.color.category.olive-strong}",
           "$description": "Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.yellow-strong"
+              "replacedBy": "semantic.color.category.olive-strong"
             }
           }
         },
         "yellow-subtle": {
-          "$value": "{base.color.yellow.100}",
+          "$value": "{semantic.color.category.olive-muted}",
           "$description": "Subtle yellow background",
           "$deprecated": "Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.yellow-muted"
+              "replacedBy": "semantic.color.category.olive-muted"
             }
           }
         },
         "green": {
-          "$value": "{base.color.green.700}",
-          "$description": "Green category color for income"
+          "$value": "{semantic.color.category.olive}",
+          "$description": "Green category color for income",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive"
+            }
+          }
         },
         "green-strong": {
-          "$value": "{base.color.green.900}",
-          "$description": "Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.olive-strong}",
+          "$description": "Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-strong"
+            }
+          }
         },
         "green-emphasis": {
-          "$value": "{semantic.color.category.green-strong}",
+          "$value": "{semantic.color.category.olive-strong}",
           "$description": "Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.green-strong"
+              "replacedBy": "semantic.color.category.olive-strong"
             }
           }
         },
         "green-subtle": {
-          "$value": "{base.color.green.100}",
+          "$value": "{semantic.color.category.olive-muted}",
           "$description": "Subtle green background",
           "$deprecated": "Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.green-muted"
+              "replacedBy": "semantic.color.category.olive-muted"
             }
           }
         },
         "red": {
-          "$value": "{base.color.red.700}",
-          "$description": "Red category color for expenses"
+          "$value": "{semantic.color.category.rose}",
+          "$description": "Red category color for expenses",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose"
+            }
+          }
         },
         "red-strong": {
-          "$value": "{base.color.red.900}",
-          "$description": "Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.rose-strong}",
+          "$description": "Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-strong"
+            }
+          }
         },
         "red-emphasis": {
-          "$value": "{semantic.color.category.red-strong}",
+          "$value": "{semantic.color.category.rose-strong}",
           "$description": "Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.red-strong"
+              "replacedBy": "semantic.color.category.rose-strong"
             }
           }
         },
         "red-subtle": {
-          "$value": "{base.color.red.100}",
+          "$value": "{semantic.color.category.rose-muted}",
           "$description": "Subtle red background",
           "$deprecated": "Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.red-muted"
+              "replacedBy": "semantic.color.category.rose-muted"
             }
           }
         },
         "orange": {
-          "$value": "{base.color.orange.700}",
-          "$description": "Orange category color for food & dining"
+          "$value": "{semantic.color.category.rose}",
+          "$description": "Orange category color for food & dining",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose"
+            }
+          }
         },
         "orange-strong": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{semantic.color.category.rose-strong}",
+          "$description": "Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-strong"
+            }
+          }
         },
         "orange-emphasis": {
-          "$value": "{semantic.color.category.orange-strong}",
+          "$value": "{semantic.color.category.rose-strong}",
           "$description": "Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).",
           "$deprecated": "\"emphasis\" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.orange-strong"
+              "replacedBy": "semantic.color.category.rose-strong"
             }
           }
         },
         "orange-subtle": {
-          "$value": "{base.color.orange.100}",
+          "$value": "{semantic.color.category.rose-muted}",
           "$description": "Subtle orange background",
           "$deprecated": "Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.category.orange-muted"
+              "replacedBy": "semantic.color.category.rose-muted"
             }
           }
         },
         "gray": {
-          "$value": "{base.color.neutral.700}",
-          "$description": "Gray category color for uncategorized"
+          "$value": "{base.color.gray.800}",
+          "$description": "Gray category (decision 0043: neutral, for uncategorised or \"other\"): the outline of an outlined CategoryLabel. 3.19:1 on white."
         },
         "gray-strong": {
-          "$value": "{base.color.neutral.900}",
-          "$description": "Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029)."
+          "$value": "{base.color.gray.1100}",
+          "$description": "Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1."
         },
         "gray-emphasis": {
           "$value": "{semantic.color.category.gray-strong}",
@@ -1937,7 +2021,7 @@
           }
         },
         "gray-subtle": {
-          "$value": "{base.color.neutral.200}",
+          "$value": "{semantic.color.category.gray-muted}",
           "$description": "Subtle gray background",
           "$deprecated": "Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1947,68 +2031,216 @@
           }
         },
         "blue-text": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted."
+          "$value": "{semantic.color.category.periwinkle-text}",
+          "$description": "Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.periwinkle-text"
+            }
+          }
         },
         "purple-text": {
-          "$value": "{base.color.purple.900}",
-          "$description": "Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted."
+          "$value": "{semantic.color.category.magenta-text}",
+          "$description": "Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.magenta-text"
+            }
+          }
         },
         "pink-text": {
-          "$value": "{base.color.pink.1000}",
-          "$description": "Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted."
+          "$value": "{semantic.color.category.rose-text}",
+          "$description": "Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-text"
+            }
+          }
         },
         "yellow-text": {
-          "$value": "{base.color.yellow.1000}",
-          "$description": "Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted."
+          "$value": "{semantic.color.category.olive-text}",
+          "$description": "Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-text"
+            }
+          }
         },
         "green-text": {
-          "$value": "{base.color.green.900}",
-          "$description": "Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted."
+          "$value": "{semantic.color.category.olive-text}",
+          "$description": "Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-text"
+            }
+          }
         },
         "red-text": {
-          "$value": "{base.color.red.900}",
-          "$description": "Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted."
+          "$value": "{semantic.color.category.rose-text}",
+          "$description": "Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-text"
+            }
+          }
         },
         "orange-text": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted."
+          "$value": "{semantic.color.category.rose-text}",
+          "$description": "Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-text"
+            }
+          }
         },
         "gray-text": {
-          "$value": "{base.color.neutral.900}",
-          "$description": "Text and icons of an outlined or minimal gray CategoryLabel, on white or gray-muted."
+          "$value": "{base.color.gray.1100}",
+          "$description": "Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted."
         },
         "blue-muted": {
-          "$value": "{base.color.blue.100}",
-          "$description": "Light blue fill of a blue CategoryLabel, behind the blue-text colour."
+          "$value": "{semantic.color.category.periwinkle-muted}",
+          "$description": "Light blue fill of a blue CategoryLabel, behind the blue-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.periwinkle-muted"
+            }
+          }
         },
         "purple-muted": {
-          "$value": "{base.color.purple.100}",
-          "$description": "Light purple fill of a purple CategoryLabel, behind the purple-text colour."
+          "$value": "{semantic.color.category.magenta-muted}",
+          "$description": "Light purple fill of a purple CategoryLabel, behind the purple-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.magenta-muted"
+            }
+          }
         },
         "pink-muted": {
-          "$value": "{base.color.pink.100}",
-          "$description": "Light pink fill of a pink CategoryLabel, behind the pink-text colour."
+          "$value": "{semantic.color.category.rose-muted}",
+          "$description": "Light pink fill of a pink CategoryLabel, behind the pink-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-muted"
+            }
+          }
         },
         "yellow-muted": {
-          "$value": "{base.color.yellow.100}",
-          "$description": "Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour."
+          "$value": "{semantic.color.category.olive-muted}",
+          "$description": "Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-muted"
+            }
+          }
         },
         "green-muted": {
-          "$value": "{base.color.green.100}",
-          "$description": "Light green fill of a green CategoryLabel, behind the green-text colour."
+          "$value": "{semantic.color.category.olive-muted}",
+          "$description": "Light green fill of a green CategoryLabel, behind the green-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.olive-muted"
+            }
+          }
         },
         "red-muted": {
-          "$value": "{base.color.red.100}",
-          "$description": "Light red fill of a red CategoryLabel, behind the red-text colour."
+          "$value": "{semantic.color.category.rose-muted}",
+          "$description": "Light red fill of a red CategoryLabel, behind the red-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-muted"
+            }
+          }
         },
         "orange-muted": {
-          "$value": "{base.color.orange.100}",
-          "$description": "Light orange fill of a orange CategoryLabel, behind the orange-text colour."
+          "$value": "{semantic.color.category.rose-muted}",
+          "$description": "Light orange fill of a orange CategoryLabel, behind the orange-text colour.",
+          "$deprecated": "Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.category.rose-muted"
+            }
+          }
         },
         "gray-muted": {
-          "$value": "{base.color.neutral.200}",
-          "$description": "Light gray fill of a gray CategoryLabel, behind the gray-text colour."
+          "$value": "{base.color.gray.300}",
+          "$description": "Light gray fill of a minimal CategoryLabel, behind the gray-text colour."
+        },
+        "olive": {
+          "$value": "{base.color.olive.800}",
+          "$description": "Olive category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.18:1 on white."
+        },
+        "olive-strong": {
+          "$value": "{base.color.olive.1100}",
+          "$description": "Strong step of the olive category: the fill of a filled CategoryLabel, with white text at 6.02:1."
+        },
+        "olive-text": {
+          "$value": "{base.color.olive.1100}",
+          "$description": "Text and icons of an outlined or minimal olive CategoryLabel. 6.02:1 on white, 5.39:1 on olive-muted."
+        },
+        "olive-muted": {
+          "$value": "{base.color.olive.300}",
+          "$description": "Light olive fill of a minimal CategoryLabel, behind the olive-text colour."
+        },
+        "periwinkle": {
+          "$value": "{base.color.periwinkle.800}",
+          "$description": "Periwinkle category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white."
+        },
+        "periwinkle-strong": {
+          "$value": "{base.color.periwinkle.1100}",
+          "$description": "Strong step of the periwinkle category: the fill of a filled CategoryLabel, with white text at 6.00:1."
+        },
+        "periwinkle-text": {
+          "$value": "{base.color.periwinkle.1100}",
+          "$description": "Text and icons of an outlined or minimal periwinkle CategoryLabel. 6.00:1 on white, 5.37:1 on periwinkle-muted."
+        },
+        "periwinkle-muted": {
+          "$value": "{base.color.periwinkle.300}",
+          "$description": "Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour."
+        },
+        "rose": {
+          "$value": "{base.color.rose.800}",
+          "$description": "Rose category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white."
+        },
+        "rose-strong": {
+          "$value": "{base.color.rose.1100}",
+          "$description": "Strong step of the rose category: the fill of a filled CategoryLabel, with white text at 5.99:1."
+        },
+        "rose-text": {
+          "$value": "{base.color.rose.1100}",
+          "$description": "Text and icons of an outlined or minimal rose CategoryLabel. 5.99:1 on white, 5.33:1 on rose-muted."
+        },
+        "rose-muted": {
+          "$value": "{base.color.rose.300}",
+          "$description": "Light rose fill of a minimal CategoryLabel, behind the rose-text colour."
+        },
+        "magenta": {
+          "$value": "{base.color.magenta.800}",
+          "$description": "Magenta category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white."
+        },
+        "magenta-strong": {
+          "$value": "{base.color.magenta.1100}",
+          "$description": "Strong step of the magenta category: the fill of a filled CategoryLabel, with white text at 6.02:1."
+        },
+        "magenta-text": {
+          "$value": "{base.color.magenta.1100}",
+          "$description": "Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted."
+        },
+        "magenta-muted": {
+          "$value": "{base.color.magenta.300}",
+          "$description": "Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour."
         }
       },
       "status": {

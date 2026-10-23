@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { CategoryLabel, CategoryLabelProps, CategoryColor, CategoryVariant, CategoryLabelSize } from './CategoryLabel'
+import { CategoryLabel, CategoryLabelProps, CategoryColor, CategoryDisplayColor, CategoryVariant, CategoryLabelSize } from './CategoryLabel'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio } from '@/test-utils/contrast'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
@@ -58,7 +58,7 @@ describe('CategoryLabel Component', () => {
   })
 
   describe('Color Variants', () => {
-    const colors: CategoryColor[] = ['blue', 'purple', 'pink', 'yellow', 'green', 'red', 'orange', 'gray']
+    const colors: CategoryColor[] = ['olive', 'periwinkle', 'rose', 'magenta', 'gray']
 
     colors.forEach((color) => {
       it(`renders with ${color} color`, () => {
@@ -148,7 +148,7 @@ describe('CategoryLabel Component', () => {
     })
 
     it('should have no accessibility violations across all color variants', async () => {
-      const colors: CategoryColor[] = ['blue', 'purple', 'pink', 'yellow', 'green', 'red', 'orange', 'gray']
+      const colors: CategoryColor[] = ['olive', 'periwinkle', 'rose', 'magenta', 'gray']
       
       for (const color of colors) {
         const { container, unmount } = renderCategoryLabel({ color })
@@ -247,8 +247,8 @@ describe('CategoryLabel Component', () => {
 
 describe('CategoryLabel contrast (WCAG AA, #115)', () => {
   const { category, text } = tokens.semantic.color
-  const colors: CategoryColor[] = ['blue', 'purple', 'pink', 'yellow', 'green', 'red', 'orange', 'gray']
-  const backgrounds: Record<CategoryVariant, (c: CategoryColor) => string> = {
+  const colors: CategoryDisplayColor[] = ['olive', 'periwinkle', 'rose', 'magenta', 'gray']
+  const backgrounds: Record<CategoryVariant, (c: CategoryDisplayColor) => string> = {
     filled: (c) => category[`${c}-strong`],
     outlined: () => '#ffffff',
     minimal: (c) => category[`${c}-muted`],
@@ -263,8 +263,17 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
   })
 
   it('keeps the base colour for the outlined border', () => {
-    render(<CategoryLabel color="yellow" variant="outlined">Label</CategoryLabel>)
-    expect(labelRoot('Label')).toHaveStyle({ borderColor: category.yellow })
+    render(<CategoryLabel color="olive" variant="outlined">Label</CategoryLabel>)
+    expect(labelRoot('Label')).toHaveStyle({ borderColor: category.olive })
+  })
+
+  // The old hue names are aliases of the nearest display colour until 3.0 (decision 0043)
+  it.each([
+    ['blue', 'periwinkle'], ['purple', 'magenta'], ['pink', 'rose'], ['red', 'rose'],
+    ['orange', 'rose'], ['yellow', 'olive'], ['green', 'olive'],
+  ] as const)('renders the deprecated %s as %s', (old, display) => {
+    render(<CategoryLabel color={old} variant="filled">Label</CategoryLabel>)
+    expect(labelRoot('Label')).toHaveStyle({ backgroundColor: category[`${display}-strong`] })
   })
 })
 
