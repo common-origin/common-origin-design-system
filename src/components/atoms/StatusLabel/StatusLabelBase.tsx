@@ -2,6 +2,7 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
+import { statusShapes, type StatusShape } from '../../../lib/statusShapes'
 import { forcedColorsEdge, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/lib/cssTokens'
 
@@ -83,41 +84,46 @@ const scaleIn = keyframes`
 `
 
 const getStatusConfig = (status: StatusType) => {
-  const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; label: string }> = {
+  // Each status's icon and, for the coloured statuses, its shape indicator (decision 0045). The
+  // neutral statuses have no shape: at the small size they're plain text.
+  const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; shape?: StatusShape; label: string }> = {
     pending: {
       color: statusColors.pending.text,
       bgColor: statusColors.pending.background,
-      icon: 'refresh', // Fallback until 'clock' icon is added
+      icon: 'statusPending',
       label: 'Pending'
     },
     completed: {
       color: statusColors.completed.text,
       bgColor: statusColors.completed.background,
-      icon: 'check',
+      icon: 'statusSuccess',
+      shape: 'success',
       label: 'Completed'
     },
     failed: {
       color: statusColors.failed.text,
       bgColor: statusColors.failed.background,
-      icon: 'close',
+      icon: 'statusError',
+      shape: 'error',
       label: 'Failed'
     },
     cancelled: {
       color: statusColors.cancelled.text,
       bgColor: statusColors.cancelled.background,
-      icon: 'cancel',
+      icon: 'statusCancelled',
       label: 'Cancelled'
     },
     processing: {
       color: statusColors.processing.text,
       bgColor: statusColors.processing.background,
-      icon: 'refresh',
+      icon: 'statusInProgress',
+      shape: 'inProgress',
       label: 'Processing'
     },
     scheduled: {
       color: statusColors.scheduled.text,
       bgColor: statusColors.scheduled.background,
-      icon: 'bell', // Fallback until 'calendar' icon is added
+      icon: 'statusScheduled',
       label: 'Scheduled'
     }
   }
@@ -187,6 +193,15 @@ const StyledStatusLabel = styled.span.withConfig({
   }}
 `
 
+// The shape indicator: at least 12px (decision 0045), filled with the label's text colour, which is
+// 5.3:1 or more on the label's tint, so it needs no edge
+const StatusShapeMark = styled.svg`
+  flex: none;
+  width: ${tokens.semantic.size.icon.xs};
+  height: ${tokens.semantic.size.icon.xs};
+  fill: currentColor;
+`
+
 const ScreenReaderOnly = styled.span`
   ${visuallyHidden}
 `
@@ -199,8 +214,8 @@ const VisibleContent = styled.span`
 
 /**
  * Shared implementation of StatusLabel and the deprecated StatusBadge. Internal: not exported
- * from the package. `showIcon` exists only for StatusBadge; StatusLabel always shows the icon
- * (decision 0018).
+ * from the package. `showIcon` exists only for StatusBadge. StatusLabel always shows the status icon
+ * at the medium size, and at the small size the shape for coloured statuses (decisions 0018, 0045).
  */
 export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }> = ({
   status,
@@ -231,12 +246,19 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
       {/* A live region announces its content, not its name, so a provided aria-label replaces the
           content for assistive technology as well (#78) */}
       <VisibleContent aria-hidden={accessibleLabel ? 'true' : undefined}>
-        {showIcon && (
+        {/* A 12px outline icon is too small to read, so the small size shows the status's shape
+            instead, in the label's colour (decision 0045); neutral statuses show text only */}
+        {showIcon && size === 'medium' && (
           <Icon
             name={statusConfig.icon}
             size={sizeStyles.iconSize}
             iconColor="inherit"
           />
+        )}
+        {showIcon && size === 'small' && statusConfig.shape && (
+          <StatusShapeMark viewBox="0 0 24 24" aria-hidden="true" focusable="false" data-shape={statusConfig.shape}>
+            <path d={statusShapes[statusConfig.shape]} />
+          </StatusShapeMark>
         )}
         {displayLabel}
         <ScreenReaderOnly>

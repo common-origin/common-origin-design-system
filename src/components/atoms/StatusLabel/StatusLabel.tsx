@@ -6,8 +6,11 @@ export type { StatusLabelProps, StatusType, StatusSize } from './StatusLabelBase
 /**
  * StatusLabel conveys the status of something, such as a transaction or task (decision 0018).
  *
- * Uses only the status colour tokens and always shows an icon with its text, so status is never
- * conveyed by colour alone. Not interactive. Announces changes politely to screen readers.
+ * Uses only the status colour tokens and always shows its text, so status is never conveyed by
+ * colour alone (decision 0045). Medium shows the status icon. Small shows the status shape for
+ * completed, failed and processing, and text only for the neutral pending, scheduled and
+ * cancelled, so keep the label visible. Not interactive. Announces changes politely to screen
+ * readers.
  *
  * @example
  * ```tsx

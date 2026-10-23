@@ -129,6 +129,7 @@ export default [
         // Components read tokens as CSS variables through these two (decision 0041)
         'src/lib/cssTokens.ts',
         'src/lib/cssVariables.ts',
+        'src/lib/statusShapes.ts',
         'src/lib/styleUtils.ts',
         'src/lib/tokenAliases.ts',
         'src/lib/usePresence.ts',

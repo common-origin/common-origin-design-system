@@ -6,6 +6,8 @@ import { StatusLabel, StatusLabelProps, StatusType, StatusSize } from './StatusL
 import tokens from '@/styles/tokens.json'
 import { contrastRatio } from '@/test-utils/contrast'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
+import { iconsData, type IconName } from '../../../types/icons'
+import { statusShapes } from '../../../lib/statusShapes'
 
 expect.extend(toHaveNoViolations)
 
@@ -116,7 +118,7 @@ describe('StatusLabel Component', () => {
 
   describe('Icon Display', () => {
     // The icon is not yet hidden from assistive technology: Icon ignores aria-hidden (#85)
-    it('always shows an icon with the text, for every status (decision 0018)', () => {
+    it('always shows an icon with the text at the medium size, for every status (decision 0018)', () => {
       const statuses: StatusType[] = ['pending', 'completed', 'failed', 'cancelled', 'processing', 'scheduled']
 
       statuses.forEach((status) => {
@@ -323,5 +325,51 @@ describe('StatusLabel blank aria-label (#78)', () => {
     // The visible content isn't hidden (its decorative icon is, inside it: #85)
     expect(label.querySelector(':scope > [aria-hidden="true"]')).not.toBeInTheDocument()
     expect(label).toHaveTextContent('Pending')
+  })
+})
+
+// The status pattern (decision 0045): each status has its own outline icon, and at the small size
+// a coloured status shows its shape indicator while a neutral status is plain text
+describe('StatusLabel status pattern (decision 0045)', () => {
+  const icons: Record<StatusType, IconName> = {
+    completed: 'statusSuccess',
+    failed: 'statusError',
+    processing: 'statusInProgress',
+    pending: 'statusPending',
+    scheduled: 'statusScheduled',
+    cancelled: 'statusCancelled',
+  }
+
+  it.each(Object.entries(icons) as [StatusType, IconName][])('shows the %s status icon at the medium size', (status, icon) => {
+    render(<StatusLabel status={status} />)
+    const path = screen.getByRole('status').querySelector('svg path')
+    expect(path).toHaveAttribute('d', iconsData[icon].path)
+  })
+
+  it.each([
+    ['completed', 'success'],
+    ['failed', 'error'],
+    ['processing', 'inProgress'],
+  ] as const)('shows the %s shape indicator at the small size', (status, shape) => {
+    render(<StatusLabel status={status} size="small" />)
+    const mark = screen.getByRole('status').querySelector('svg')
+    expect(mark).toHaveAttribute('data-shape', shape)
+    expect(mark?.querySelector('path')).toHaveAttribute('d', statusShapes[shape])
+    expect(mark).toHaveAttribute('aria-hidden', 'true')
+  })
+
+  it.each(['pending', 'scheduled', 'cancelled'] as const)('shows the neutral %s status as text only at the small size', (status) => {
+    render(<StatusLabel status={status} size="small" />)
+    expect(screen.getByRole('status').querySelector('svg')).not.toBeInTheDocument()
+    expect(screen.getByText(new RegExp(`^${status}$`, 'i'))).toBeInTheDocument()
+  })
+
+  it('has no accessibility violations at the small size', async () => {
+    const { container } = render(
+      <>
+        {(Object.keys(icons) as StatusType[]).map((status) => <StatusLabel key={status} status={status} size="small" />)}
+      </>
+    )
+    expect(await axe(container)).toHaveNoViolations()
   })
 })
