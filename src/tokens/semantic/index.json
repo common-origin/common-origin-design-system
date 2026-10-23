@@ -1041,7 +1041,7 @@
           "$description": "Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}",
+          "$value": "{semantic.color.text.accent}",
           "$description": "Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page.",
           "$deprecated": "Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1051,27 +1051,27 @@
           }
         },
         "interactive-hover": {
-          "$value": "{base.color.blue.1000}",
+          "$value": "{semantic.color.text.accent}",
           "$description": "Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016.",
           "$deprecated": "Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.text.accent-hover"
+              "replacedBy": "semantic.color.text.accent"
             }
           }
         },
         "interactive-active": {
-          "$value": "{base.color.blue.1100}",
+          "$value": "{semantic.color.text.accent}",
           "$description": "Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016.",
           "$deprecated": "Renamed to semantic.color.text.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.text.accent-pressed"
+              "replacedBy": "semantic.color.text.accent"
             }
           }
         },
         "error": {
-          "$value": "{base.color.red.900}",
+          "$value": "{semantic.color.text.danger}",
           "$description": "Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page.",
           "$deprecated": "Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1081,36 +1081,52 @@
           }
         },
         "success": {
-          "$value": "{base.color.green.900}",
-          "$description": "Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page."
+          "$value": "{base.color.success.1100}",
+          "$description": "Success text, such as InlineAlert success messages. 5.99:1 on white."
         },
         "warning": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page."
+          "$value": "{base.color.warning.1100}",
+          "$description": "Warning text, such as InlineAlert warnings (0043: warning is yellow). 6.01:1 on white."
         },
         "muted": {
           "$value": "{base.color.gray.1100}",
           "$description": "Secondary text: helper text, metadata, timestamps. 6.01:1 on white, and at least 4.5:1 on every background and fill step (decision 0040)."
         },
         "accent": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Blue text for links and selected items; never decoration, see 0003."
+          "$value": "{base.color.accent.1100}",
+          "$description": "Blue text for links and selected items, in every state: the fill shows hover and pressed. Never decoration (0003). 6.00:1 on white."
         },
         "accent-hover": {
-          "$value": "{base.color.blue.1000}",
-          "$description": "Text of a hovered selected item, on the accent-muted-hover fill."
+          "$value": "{semantic.color.text.accent}",
+          "$description": "Text of a hovered selected item, on the accent-muted-hover fill.",
+          "$deprecated": "Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.accent"
+            }
+          }
         },
         "accent-pressed": {
-          "$value": "{base.color.blue.1100}",
-          "$description": "Text of a pressed selected item, on the accent-muted-pressed fill."
+          "$value": "{semantic.color.text.accent}",
+          "$description": "Text of a pressed selected item, on the accent-muted-pressed fill.",
+          "$deprecated": "Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.accent"
+            }
+          }
         },
         "danger": {
-          "$value": "{base.color.red.900}",
-          "$description": "Error text: field error messages, InlineAlert errors."
+          "$value": "{base.color.danger.1100}",
+          "$description": "Error text: field error messages, InlineAlert errors. 6.03:1 on white."
         },
         "ai": {
           "$value": "{base.color.ai.1100}",
           "$description": "AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page."
+        },
+        "serious": {
+          "$value": "{base.color.serious.1100}",
+          "$description": "Serious-warning text: between warning and danger (decisions 0043, 0045). 6.04:1 on white."
         }
       },
       "background": {
@@ -1170,7 +1186,7 @@
           }
         },
         "interactive": {
-          "$value": "{base.color.blue.900}",
+          "$value": "{semantic.color.fill.accent}",
           "$description": "Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1).",
           "$deprecated": "Renamed to semantic.color.fill.accent by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1180,7 +1196,7 @@
           }
         },
         "interactive-subtle": {
-          "$value": "{base.color.blue.100}",
+          "$value": "{semantic.color.fill.accent-muted}",
           "$description": "Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive.",
           "$deprecated": "Renamed to semantic.color.fill.accent-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1190,7 +1206,7 @@
           }
         },
         "interactive-subtle-hover": {
-          "$value": "{base.color.blue.200}",
+          "$value": "{semantic.color.fill.accent-muted-hover}",
           "$description": "Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016.",
           "$deprecated": "Renamed to semantic.color.fill.accent-muted-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1200,7 +1216,7 @@
           }
         },
         "interactive-subtle-active": {
-          "$value": "{base.color.blue.300}",
+          "$value": "{semantic.color.fill.accent-muted-pressed}",
           "$description": "Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016.",
           "$deprecated": "Renamed to semantic.color.fill.accent-muted-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1210,7 +1226,7 @@
           }
         },
         "interactive-hover": {
-          "$value": "{base.color.blue.1000}",
+          "$value": "{semantic.color.fill.accent-hover}",
           "$description": "Blue fill on hover, for controls that use background.interactive.",
           "$deprecated": "Renamed to semantic.color.fill.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1220,7 +1236,7 @@
           }
         },
         "interactive-active": {
-          "$value": "{base.color.blue.1100}",
+          "$value": "{semantic.color.fill.accent-pressed}",
           "$description": "Blue fill while pressed, for controls that use background.interactive.",
           "$deprecated": "Renamed to semantic.color.fill.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1230,7 +1246,7 @@
           }
         },
         "error": {
-          "$value": "{base.color.red.900}",
+          "$value": "{semantic.color.fill.danger}",
           "$description": "Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1).",
           "$deprecated": "Renamed to semantic.color.fill.danger by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1240,7 +1256,7 @@
           }
         },
         "error-hover": {
-          "$value": "{base.color.red.1000}",
+          "$value": "{semantic.color.fill.danger-hover}",
           "$description": "Fill of a hovered error control, such as the danger Button. Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.color.fill.danger-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1250,7 +1266,7 @@
           }
         },
         "error-active": {
-          "$value": "{base.color.red.1100}",
+          "$value": "{semantic.color.fill.danger-pressed}",
           "$description": "Fill of a pressed error control. Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.color.fill.danger-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1260,7 +1276,7 @@
           }
         },
         "error-subtle": {
-          "$value": "{base.color.red.100}",
+          "$value": "{semantic.color.fill.danger-muted}",
           "$description": "Light red tint behind error messages, such as an error Alert.",
           "$deprecated": "Renamed to semantic.color.fill.danger-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1270,7 +1286,7 @@
           }
         },
         "success": {
-          "$value": "{base.color.green.900}",
+          "$value": "{semantic.color.fill.success}",
           "$description": "Strong green fill for success states.",
           "$deprecated": "Renamed to semantic.color.fill.success by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1280,7 +1296,7 @@
           }
         },
         "success-subtle": {
-          "$value": "{base.color.green.100}",
+          "$value": "{semantic.color.fill.success-muted}",
           "$description": "Light green tint behind success messages, such as a success Alert.",
           "$deprecated": "Renamed to semantic.color.fill.success-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1290,7 +1306,7 @@
           }
         },
         "warning": {
-          "$value": "{base.color.orange.900}",
+          "$value": "{semantic.color.fill.warning}",
           "$description": "Strong orange fill for warning states.",
           "$deprecated": "Renamed to semantic.color.fill.warning by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1300,7 +1316,7 @@
           }
         },
         "warning-subtle": {
-          "$value": "{base.color.orange.100}",
+          "$value": "{semantic.color.fill.warning-muted}",
           "$description": "Light orange tint behind warning messages, such as a warning Alert.",
           "$deprecated": "Renamed to semantic.color.fill.warning-muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1451,7 +1467,7 @@
           "$deprecated": "Split by use (decision 0031): semantic.color.border.input-hover for a hovered control, semantic.color.border.focus for the focus ring and CardSmall's ring, semantic.color.fill.inverse for drag handles. Removed in 3.0."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}",
+          "$value": "{semantic.color.border.accent}",
           "$description": "Blue border for selected and interactive states (decision 0003). 5.39:1 on white.",
           "$deprecated": "Renamed to semantic.color.border.accent by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1461,7 +1477,7 @@
           }
         },
         "error": {
-          "$value": "{base.color.red.900}",
+          "$value": "{semantic.color.border.danger}",
           "$description": "Red border for invalid fields and error outlines. 5.41:1 on white.",
           "$deprecated": "Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1471,12 +1487,12 @@
           }
         },
         "success": {
-          "$value": "{base.color.green.900}",
-          "$description": "Green border for success outlines, such as an outlined success Alert."
+          "$value": "{base.color.success.800}",
+          "$description": "Green border for success outlines, such as an outlined success Alert. 3.18:1 on white (decision 0025)."
         },
         "warning": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Orange border for warning outlines, such as an outlined warning Alert."
+          "$value": "{base.color.warning.800}",
+          "$description": "Yellow border for warning outlines, such as an outlined warning Alert. 3.19:1 on white (decision 0025)."
         },
         "none": {
           "$value": "{base.color.transparent}",
@@ -1505,12 +1521,20 @@
           "$description": "The focus ring, and rings that mark the current item, such as on CardSmall (0029). 15.91:1 on white."
         },
         "accent": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Blue border for selected items; never decoration, see 0003."
+          "$value": "{base.color.accent.800}",
+          "$description": "Blue border for selected items; never decoration (0003). 3.21:1 on white (decision 0025)."
         },
         "danger": {
-          "$value": "{base.color.red.900}",
-          "$description": "Border of an invalid field and other error outlines."
+          "$value": "{base.color.danger.800}",
+          "$description": "Border of an invalid field and other error outlines. 3.18:1 on white (decision 0025)."
+        },
+        "serious": {
+          "$value": "{base.color.serious.800}",
+          "$description": "Orange border for serious-warning outlines. 3.21:1 on white (decision 0025)."
+        },
+        "ai": {
+          "$value": "{base.color.ai.800}",
+          "$description": "Purple border for AI-generated content and agent actions, always with the AI icon and a label (0043). 3.20:1 on white."
         }
       },
       "icon": {
@@ -1547,7 +1571,7 @@
           "$description": "Icons on dark or coloured fills, matching text.inverse."
         },
         "interactive": {
-          "$value": "{base.color.blue.900}",
+          "$value": "{semantic.color.icon.accent}",
           "$description": "Blue icons in links and selected items, matching text.interactive. 5.39:1 on white.",
           "$deprecated": "Renamed to semantic.color.icon.accent by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1557,27 +1581,27 @@
           }
         },
         "interactive-hover": {
-          "$value": "{base.color.blue.1000}",
+          "$value": "{semantic.color.icon.accent}",
           "$description": "Blue icon on hover, matching text.interactive-hover.",
           "$deprecated": "Renamed to semantic.color.icon.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.icon.accent-hover"
+              "replacedBy": "semantic.color.icon.accent"
             }
           }
         },
         "interactive-active": {
-          "$value": "{base.color.blue.1100}",
+          "$value": "{semantic.color.icon.accent}",
           "$description": "Blue icon while pressed, matching text.interactive-active.",
           "$deprecated": "Renamed to semantic.color.icon.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.icon.accent-pressed"
+              "replacedBy": "semantic.color.icon.accent"
             }
           }
         },
         "error": {
-          "$value": "{base.color.red.900}",
+          "$value": "{semantic.color.icon.danger}",
           "$description": "Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)",
           "$deprecated": "Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1587,36 +1611,52 @@
           }
         },
         "success": {
-          "$value": "{base.color.green.900}",
-          "$description": "Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.)"
+          "$value": "{base.color.success.1100}",
+          "$description": "Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.)"
         },
         "warning": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.)"
+          "$value": "{base.color.warning.1100}",
+          "$description": "Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.)"
         },
         "muted": {
           "$value": "{base.color.gray.1100}",
           "$description": "Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white."
         },
         "accent": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Blue icons in links and selected items, matching color.text.accent."
+          "$value": "{base.color.accent.1100}",
+          "$description": "Blue icons in links and selected items, in every state, matching color.text.accent. 6.00:1 on white."
         },
         "accent-hover": {
-          "$value": "{base.color.blue.1000}",
-          "$description": "Icon of a hovered selected item, matching color.text.accent-hover."
+          "$value": "{semantic.color.icon.accent}",
+          "$description": "Icon of a hovered selected item, matching color.text.accent-hover.",
+          "$deprecated": "Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.accent"
+            }
+          }
         },
         "accent-pressed": {
-          "$value": "{base.color.blue.1100}",
-          "$description": "Icon of a pressed selected item, matching color.text.accent-pressed."
+          "$value": "{semantic.color.icon.accent}",
+          "$description": "Icon of a pressed selected item, matching color.text.accent-pressed.",
+          "$deprecated": "Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.accent"
+            }
+          }
         },
         "danger": {
-          "$value": "{base.color.red.900}",
-          "$description": "Error icons, such as in Alert and EmptyState."
+          "$value": "{base.color.danger.1100}",
+          "$description": "Error icons, such as in Alert and EmptyState. 6.03:1 on white."
         },
         "ai": {
           "$value": "{base.color.ai.1100}",
           "$description": "The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page."
+        },
+        "serious": {
+          "$value": "{base.color.serious.1100}",
+          "$description": "Serious-warning icons, matching color.text.serious. 6.04:1 on white."
         }
       },
       "financial": {
@@ -1993,7 +2033,7 @@
           }
         },
         "completed": {
-          "$value": "{base.color.green.900}",
+          "$value": "{semantic.color.text.success}",
           "$description": "Green color for completed status",
           "$deprecated": "Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2003,7 +2043,7 @@
           }
         },
         "completed-bg": {
-          "$value": "{base.color.green.100}",
+          "$value": "{semantic.color.fill.success-muted}",
           "$description": "Background for completed status",
           "$deprecated": "Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2013,7 +2053,7 @@
           }
         },
         "failed": {
-          "$value": "{base.color.red.900}",
+          "$value": "{semantic.color.text.danger}",
           "$description": "Red color for failed/error status",
           "$deprecated": "Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2023,7 +2063,7 @@
           }
         },
         "failed-bg": {
-          "$value": "{base.color.red.100}",
+          "$value": "{semantic.color.fill.danger-muted}",
           "$description": "Background for failed status",
           "$deprecated": "Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2117,60 +2157,60 @@
           "$description": "Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles."
         },
         "accent": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Blue fill for the accent Button and other deliberate highlights; see 0003."
+          "$value": "{base.color.accent.1100}",
+          "$description": "Blue fill for the accent Button and other deliberate highlights (0003), with text.inverse on it at 6.00:1."
         },
         "accent-muted": {
-          "$value": "{base.color.blue.100}",
-          "$description": "Light blue fill for selected items: a selected chip, tab or row; see 0016."
+          "$value": "{base.color.accent.300}",
+          "$description": "Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1."
         },
         "accent-muted-hover": {
-          "$value": "{base.color.blue.200}",
+          "$value": "{base.color.accent.400}",
           "$description": "Fill of a hovered selected item, such as a selected filter chip."
         },
         "accent-muted-pressed": {
-          "$value": "{base.color.blue.300}",
+          "$value": "{base.color.accent.500}",
           "$description": "Fill of a pressed selected item, such as a selected filter chip."
         },
         "accent-hover": {
-          "$value": "{base.color.blue.1000}",
-          "$description": "Blue fill of a hovered accent control, such as the accent Button."
+          "$value": "color-mix(in srgb, {semantic.color.fill.accent}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
+          "$description": "Blue fill of a hovered accent control: fill.accent with text.inverse mixed in at opacity.state.hover (decision 0048)."
         },
         "accent-pressed": {
-          "$value": "{base.color.blue.1100}",
-          "$description": "Blue fill of a pressed accent control, such as the accent Button."
+          "$value": "color-mix(in srgb, {semantic.color.fill.accent}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
+          "$description": "Blue fill of a pressed accent control: fill.accent with text.inverse mixed in at opacity.state.pressed (decision 0048)."
         },
         "danger": {
-          "$value": "{base.color.red.900}",
-          "$description": "Strong red fill for destructive actions, such as the danger Button."
+          "$value": "{base.color.danger.1100}",
+          "$description": "Strong red fill for destructive actions, such as the danger Button, with text.inverse on it at 6.03:1."
         },
         "danger-hover": {
-          "$value": "{base.color.red.1000}",
-          "$description": "Fill of a hovered destructive control, such as the danger Button."
+          "$value": "color-mix(in srgb, {semantic.color.fill.danger}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
+          "$description": "Fill of a hovered destructive control: fill.danger with text.inverse mixed in at opacity.state.hover (decision 0048)."
         },
         "danger-pressed": {
-          "$value": "{base.color.red.1100}",
-          "$description": "Fill of a pressed destructive control, such as the danger Button."
+          "$value": "color-mix(in srgb, {semantic.color.fill.danger}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
+          "$description": "Fill of a pressed destructive control: fill.danger with text.inverse mixed in at opacity.state.pressed (decision 0048)."
         },
         "danger-muted": {
-          "$value": "{base.color.red.100}",
-          "$description": "Light red tint behind error messages, such as an error Alert."
+          "$value": "{base.color.danger.300}",
+          "$description": "Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1."
         },
         "success": {
-          "$value": "{base.color.green.900}",
-          "$description": "Strong green fill for success states, such as a success indicator."
+          "$value": "{base.color.success.1100}",
+          "$description": "Strong green fill for success states, such as a success indicator, with text.inverse on it at 5.99:1."
         },
         "success-muted": {
-          "$value": "{base.color.green.100}",
-          "$description": "Light green tint behind success messages, such as a success Alert."
+          "$value": "{base.color.success.300}",
+          "$description": "Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1."
         },
         "warning": {
-          "$value": "{base.color.orange.900}",
-          "$description": "Strong orange fill for warning states, such as a warning indicator."
+          "$value": "{base.color.warning.1100}",
+          "$description": "Strong yellow fill for warning states, such as a warning indicator, with text.inverse on it at 6.01:1."
         },
         "warning-muted": {
-          "$value": "{base.color.orange.100}",
-          "$description": "Light orange tint behind warning messages, such as a warning Alert."
+          "$value": "{base.color.warning.300}",
+          "$description": "Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1."
         },
         "disabled": {
           "$value": "{base.color.gray.300}",
@@ -2203,6 +2243,18 @@
         "inverse-none-hover": {
           "$value": "rgba(255, 255, 255, 0.2)",
           "$description": "Hover tint for a fill-less element on a dark background, such as a count on a dark tab."
+        },
+        "serious": {
+          "$value": "{base.color.serious.1100}",
+          "$description": "Strong orange fill for serious-warning states, with text.inverse on it at 6.04:1."
+        },
+        "serious-muted": {
+          "$value": "{base.color.serious.300}",
+          "$description": "Light orange tint behind serious-warning messages."
+        },
+        "ai-muted": {
+          "$value": "{base.color.ai.300}",
+          "$description": "Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043)."
         }
       }
     },

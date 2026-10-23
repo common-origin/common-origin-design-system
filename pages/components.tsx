@@ -216,7 +216,7 @@ const GuideLink = styled(Link)`
   text-decoration: underline;
 
   &:hover {
-    color: ${tokens.semantic.color.text['accent-hover']};
+    color: ${tokens.semantic.color.text.accent};
   }
 `
 

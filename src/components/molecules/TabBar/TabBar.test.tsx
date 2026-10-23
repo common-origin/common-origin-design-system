@@ -77,10 +77,10 @@ describe('TabBar Component', () => {
       renderTabBar()
       const selected = tab(/Overview/i)
       expect(pseudoClassDeclarations(selected, ':hover:not(:disabled)')).toContain(
-        `background-color:${tokens.semantic.color.fill['accent-muted-hover']};color:${text['accent-hover']};`
+        `background-color:${tokens.semantic.color.fill['accent-muted-hover']};color:${text.accent};`
       )
       expect(pseudoClassDeclarations(selected, ':active:not(:disabled)')).toContain(
-        `background-color:${tokens.semantic.color.fill['accent-muted-pressed']};color:${text['accent-pressed']};`
+        `background-color:${tokens.semantic.color.fill['accent-muted-pressed']};color:${text.accent};`
       )
     })
 
@@ -104,8 +104,8 @@ describe('TabBar Component', () => {
 
     it.each([
       ['selected', text.accent, tokens.semantic.color.fill['accent-muted']],
-      ['hover', text['accent-hover'], tokens.semantic.color.fill['accent-muted-hover']],
-      ['pressed', text['accent-pressed'], tokens.semantic.color.fill['accent-muted-pressed']],
+      ['hover', text.accent, tokens.semantic.color.fill['accent-muted-hover']],
+      ['pressed', text.accent, tokens.semantic.color.fill['accent-muted-pressed']],
     ])('meets 4.5:1 text contrast when %s', (_state, foreground, fill) => {
       expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
     })

@@ -93,10 +93,10 @@ describe('Selected chip treatment (decision 0016)', () => {
 
     expect(chip).toHaveStyle({ backgroundColor: fill['accent-muted'], color: text.accent })
     expect(pseudoClassDeclarations(chip, ':hover')).toContain(
-      `background-color:${fill['accent-muted-hover']};color:${text['accent-hover']};`
+      `background-color:${fill['accent-muted-hover']};color:${text.accent};`
     )
     expect(pseudoClassDeclarations(chip, ':active')).toContain(
-      `background-color:${fill['accent-muted-pressed']};color:${text['accent-pressed']};`
+      `background-color:${fill['accent-muted-pressed']};color:${text.accent};`
     )
   })
 
@@ -115,8 +115,8 @@ describe('Selected chip treatment (decision 0016)', () => {
 
   it.each([
     ['selected', text.accent, fill['accent-muted']],
-    ['hover', text['accent-hover'], fill['accent-muted-hover']],
-    ['pressed', text['accent-pressed'], fill['accent-muted-pressed']],
+    ['hover', text.accent, fill['accent-muted-hover']],
+    ['pressed', text.accent, fill['accent-muted-pressed']],
   ])('meets 4.5:1 text contrast when %s', (_state, foreground, fill) => {
     expect(contrastRatio(foreground, fill)).toBeGreaterThanOrEqual(4.5)
   })
@@ -141,8 +141,8 @@ describe('Selected and disabled chips (#110)', () => {
       fill['accent-muted-hover'],
       fill['accent-muted-pressed'],
       text.accent,
-      text['accent-hover'],
-      text['accent-pressed'],
+      text.accent,
+      text.accent,
     ]
     for (const pseudoClass of [':hover', ':active']) {
       const declarations = pseudoClassDeclarations(chip, pseudoClass)

@@ -86,8 +86,8 @@ export const rowStates: Record<'unselected' | 'selected', Record<'rest' | 'hover
   },
   selected: {
     rest: { background: rowFill['accent-muted'], text: rowText.accent },
-    hover: { background: rowFill['accent-muted-hover'], text: rowText['accent-hover'] },
-    pressed: { background: rowFill['accent-muted-pressed'], text: rowText['accent-pressed'] },
+    hover: { background: rowFill['accent-muted-hover'], text: rowText.accent },
+    pressed: { background: rowFill['accent-muted-pressed'], text: rowText.accent },
   },
 }
 

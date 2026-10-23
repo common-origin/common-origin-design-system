@@ -34,12 +34,12 @@ export const getVariantStyles = ({ $variant, $selected, $clickable, $disabled }:
       
       &:hover {
         background-color: ${interactiveStates ? fill['accent-muted-hover'] : fill['accent-muted']};
-        color: ${interactiveStates ? text['accent-hover'] : text.accent};
+        color: ${interactiveStates ? text.accent : text.accent};
       }
       
       &:active {
         background-color: ${interactiveStates ? fill['accent-muted-pressed'] : fill['accent-muted']};
-        color: ${interactiveStates ? text['accent-pressed'] : text.accent};
+        color: ${interactiveStates ? text.accent : text.accent};
       }
 
       /* Forced colours drop the fill, so a selected chip takes the system selection colours

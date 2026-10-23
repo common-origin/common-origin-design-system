@@ -610,7 +610,7 @@ describe('Dropdown option states', () => {
     // Opening focuses the selected option, which darkens like a hovered selected option
     expect(optionNamed('Option 2')).toHaveStyle({
       backgroundColor: tokens.semantic.color.fill['accent-muted-hover'],
-      color: text['accent-hover'],
+      color: text.accent,
     })
     expect(optionNamed('Option 2')).toContainElement(screen.getByTestId('icon-check'))
     expect(screen.getAllByTestId('icon-check')).toHaveLength(1)

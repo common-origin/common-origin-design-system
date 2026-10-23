@@ -160,7 +160,7 @@ const StyledTab = styled.button.withConfig({
       : 'transparent'
     };
     color: ${props => props.$isActive
-      ? semantic.color.text['accent-hover']
+      ? semantic.color.text.accent
       : semantic.color.text.default
     };
   }
@@ -171,7 +171,7 @@ const StyledTab = styled.button.withConfig({
       : 'transparent'
     };
     color: ${props => props.$isActive
-      ? semantic.color.text['accent-pressed']
+      ? semantic.color.text.accent
       : semantic.color.text.default
     };
   }

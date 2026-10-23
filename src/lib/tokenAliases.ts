@@ -92,14 +92,15 @@ export const textColorByKey: Record<keyof Semantic['color']['text'], string> = {
   warning: color.text.warning,
   muted: color.text.muted,
   accent: color.text.accent,
-  'accent-hover': color.text['accent-hover'],
-  'accent-pressed': color.text['accent-pressed'],
+  'accent-hover': color.text.accent,
+  'accent-pressed': color.text.accent,
   danger: color.text.danger,
+  serious: color.text.serious,
   ai: color.text.ai,
   subdued: color.text.muted,
   interactive: color.text.accent,
-  'interactive-hover': color.text['accent-hover'],
-  'interactive-active': color.text['accent-pressed'],
+  'interactive-hover': color.text.accent,
+  'interactive-active': color.text.accent,
   error: color.text.danger,
 }
 
@@ -115,6 +116,8 @@ export const borderColorByKey: Record<keyof Semantic['color']['border'], string>
   focus: color.border.focus,
   accent: color.border.accent,
   danger: color.border.danger,
+  serious: color.border.serious,
+  ai: color.border.ai,
   subtle: color.border.default,
   control: color.border.input,
   // `strong` split by use (0031); as a generic firm outline it is the hovered-input border

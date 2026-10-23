@@ -179,8 +179,6 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.color.fill.accent-muted-hover',
     'semantic.color.fill.accent-muted-pressed',
     'semantic.color.text.accent',
-    'semantic.color.text.accent-hover',
-    'semantic.color.text.accent-pressed',
     'semantic.color.text.danger',
     'semantic.color.icon.muted',
     'semantic.opacity.disabled',
