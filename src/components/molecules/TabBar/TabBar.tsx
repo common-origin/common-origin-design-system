@@ -84,7 +84,7 @@ interface StyledTabProps {
 const StyledTabList = styled.div`
   display: flex;
   align-items: center;
-  border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.emphasis};
+  border-bottom: ${semantic.border.width.thin} solid ${semantic.color.border.default};
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;

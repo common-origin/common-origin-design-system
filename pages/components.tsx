@@ -69,7 +69,7 @@ const MainContent = styled.main`
 
 const ComponentSection = styled.div`
   margin-bottom: ${tokens.semantic.space[800]};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[4]};
   padding: ${tokens.semantic.space[600]};
   background-color: ${tokens.semantic.surface.raised};
@@ -77,7 +77,7 @@ const ComponentSection = styled.div`
 
 const ComponentShowcase = styled.div`
   background-color: ${tokens.semantic.surface.base};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[3]};
   padding: ${tokens.semantic.space[600]};
   margin: ${tokens.semantic.space[400]} 0;
@@ -90,27 +90,27 @@ const PropsTable = styled.table`
   margin-top: ${tokens.semantic.space[400]};
   border-radius: ${tokens.base.border.radius[3]};
   overflow: hidden;
-  border: ${border.emphasis};
+  border: ${border.default};
   background-color: ${tokens.semantic.surface.base};
 `
 
 const TableHeader = styled.th`
   background-color: ${tokens.semantic.surface.raised};
-  border-bottom: ${border.emphasis};  
+  border-bottom: ${border.default};  
   padding: ${tokens.semantic.space[300]};
   text-align: left;
   font: ${tokens.semantic.typography.label};
-  color: ${color.text.emphasis};
+  color: ${color.text.default};
   font-weight: 600;
   
   &:not(:last-child) {
-    border-right: ${border.emphasis};
+    border-right: ${border.default};
   }
 `
 
 const TableRow = styled.tr`
   &:not(:last-child) td {
-    border-bottom: ${border.emphasis};
+    border-bottom: ${border.default};
   }
 `
 
@@ -119,7 +119,7 @@ const TableCell = styled.td`
   vertical-align: top;
   
   &:not(:last-child) {
-    border-right: ${border.emphasis};
+    border-right: ${border.default};
   }
 `
 

@@ -50,7 +50,7 @@ const IconStyled = styled.span.withConfig({
       case 'default':
         return tokens.semantic.color.icon.default
       case 'emphasis':
-        return tokens.semantic.color.icon.emphasis
+        return tokens.semantic.color.icon.default
       case 'subdued':
         return tokens.semantic.color.icon.muted
       case 'disabled':

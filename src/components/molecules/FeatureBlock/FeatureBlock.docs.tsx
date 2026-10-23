@@ -67,7 +67,7 @@ export const featureBlockDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.surface.raised',
-    'semantic.border.emphasis',
+    'semantic.border.default',
     'semantic.radius.2xl',
     'semantic.space.400',
     'semantic.space.600',

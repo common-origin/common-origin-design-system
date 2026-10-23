@@ -115,7 +115,7 @@ const DropdownMenu = styled.div.withConfig({
   z-index: ${tokens.semantic.layer.dropdown};
   background-color: ${input.default.backgroundColor};
   /* A decorative outline: elevation separates the menu, and only the trigger is a control edge (decision 0025) */
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${input.default.borderRadius};
   box-shadow: ${elevation.floating};
   margin-top: ${space[100]};
@@ -161,7 +161,7 @@ const DropdownOption = styled.button.withConfig({
   }
   
   &:not(:last-child) {
-    border-bottom: ${border.emphasis};
+    border-bottom: ${border.default};
   }
 `
 

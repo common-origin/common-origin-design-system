@@ -27,7 +27,7 @@ const ErrorContainer = styled.div`
   align-items: center;
   justify-content: center;
   background-color: ${semantic.surface.raised};
-  border: ${semantic.border.emphasis};
+  border: ${semantic.border.default};
   border-radius: ${tokens.base.border.radius[4]};
   padding: ${tokens.semantic.space[800]};
   margin: ${tokens.semantic.space[400]} 0;
@@ -49,7 +49,7 @@ const ErrorDetails = styled.details`
   padding: ${tokens.semantic.space[400]};
   background-color: ${semantic.color.fill.muted};
   border-radius: ${tokens.base.border.radius[3]};
-  border: ${semantic.border.emphasis};
+  border: ${semantic.border.default};
   
   summary {
     cursor: pointer;

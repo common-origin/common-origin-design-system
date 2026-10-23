@@ -75,7 +75,7 @@ export const suggestionChipDocs: ComponentDocumentation = {
     'semantic.border.width.thin',
     'semantic.border.focusOffset',
     'semantic.color.border.input',
-    'semantic.color.border.emphasis',
+    'semantic.color.border.default',
     'semantic.color.fill.none',
     'semantic.color.fill.none-hover',
     'semantic.color.fill.none-pressed',

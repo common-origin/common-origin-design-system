@@ -31,7 +31,7 @@ interface StyledCodeBlockProps {
 
 const StyledCodeBlock = styled.pre<StyledCodeBlockProps>`
   background-color: ${tokens.semantic.surface.raised};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.semantic.radius.sm};
   padding: ${tokens.semantic.space[300]};
   font-family: ${tokens.component.codeBlock.fontFamily};

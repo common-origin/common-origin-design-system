@@ -32,14 +32,14 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.emphasis-hover}",
+          "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
           "$description": "Primary Button fill on hover."
         }
       },
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.emphasis-pressed}",
+          "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
           "$description": "Primary Button fill while pressed."
         }
       },
@@ -117,13 +117,13 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.fill.muted}",
+              "$value": "{semantic.color.fill.default}",
               "$description": "Naked Button fill on hover."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.fill.default}",
+              "$value": "{semantic.color.fill.default-hover}",
               "$description": "Naked Button fill while pressed."
             }
           },
@@ -352,14 +352,14 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.default}",
+          "$value": "{semantic.color.fill.default-hover}",
           "$description": "Default chip fill on hover, when it's clickable."
         }
       },
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.default-hover}",
+          "$value": "{semantic.color.fill.default-pressed}",
           "$description": "Default chip fill while pressed, when it's clickable."
         }
       },
@@ -405,13 +405,13 @@
           },
           "hover": {
             "backgroundColor": {
-              "$value": "{semantic.color.fill.emphasis-hover}",
+              "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
               "$description": "Emphasis chip fill on hover, when it's clickable."
             }
           },
           "active": {
             "backgroundColor": {
-              "$value": "{semantic.color.fill.emphasis-pressed}",
+              "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
               "$description": "Emphasis chip fill while pressed, when it's clickable."
             }
           },
@@ -607,7 +607,7 @@
       "hover": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.emphasis-hover}",
+          "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
           "$description": "Fill of the primary IconButton on hover.",
           "$deprecated": "IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
           "$extensions": {
@@ -620,7 +620,7 @@
       "active": {
         "$type": "color",
         "backgroundColor": {
-          "$value": "{semantic.color.fill.emphasis-pressed}",
+          "$value": "color-mix(in srgb, {semantic.color.fill.emphasis}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
           "$description": "Fill of the primary IconButton while pressed.",
           "$deprecated": "IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.",
           "$extensions": {
@@ -862,7 +862,7 @@
     },
     "separator": {
       "border": {
-        "$value": "{semantic.border.emphasis}",
+        "$value": "{semantic.border.default}",
         "$type": "border",
         "$description": "Divider line, the same as variants.default.border."
       },
@@ -880,7 +880,7 @@
       "variants": {
         "default": {
           "border": {
-            "$value": "{semantic.border.emphasis}",
+            "$value": "{semantic.border.default}",
             "$type": "border",
             "$description": "Default Divider line."
           },
@@ -916,7 +916,7 @@
         },
         "minimal": {
           "border": {
-            "$value": "{semantic.border.emphasis}",
+            "$value": "{semantic.border.default}",
             "$type": "border",
             "$description": "Minimal Divider line."
           },
@@ -1166,7 +1166,7 @@
           "$description": "Disabled text input value colour."
         },
         "borderColor": {
-          "$value": "{semantic.color.border.emphasis}",
+          "$value": "{semantic.color.border.default}",
           "$type": "color",
           "$description": "Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025)."
         },
@@ -1762,7 +1762,7 @@
     "tooltip": {
       "$type": "border",
       "border": {
-        "$value": "{semantic.border.width.thick} {base.border.style.dotted} {semantic.color.border.emphasis}",
+        "$value": "{semantic.border.width.thick} {base.border.style.dotted} {semantic.color.border.default}",
         "$description": "Dotted underline marking text that has a tooltip."
       }
     }

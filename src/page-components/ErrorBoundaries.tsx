@@ -24,7 +24,7 @@ const PageErrorContainer = styled(ErrorContainer)`
 const ComponentErrorContainer = styled(ErrorContainer)`
   min-height: 200px;
   background-color: ${semantic.surface.raised};
-  border: 1px solid ${semantic.color.border.emphasis};
+  border: 1px solid ${semantic.color.border.default};
   border-radius: ${base.border.radius[4]};
   margin: ${semantic.space[200]} 0;
 `
@@ -78,7 +78,7 @@ const ErrorButton = styled.button`
   padding: ${semantic.space[200]} ${semantic.space[400]};
   background-color: ${semantic.color.fill.muted};
   color: ${semantic.color.text.default};
-  border: 1px solid ${semantic.color.border.emphasis};
+  border: 1px solid ${semantic.color.border.default};
   border-radius: ${base.border.radius[3]};
   cursor: pointer;
   transition: all 0.2s ease;

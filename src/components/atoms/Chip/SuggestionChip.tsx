@@ -52,7 +52,7 @@ const StyledSuggestionChip = styled.button`
   }
 
   &:disabled {
-    border-color: ${color.border.emphasis};
+    border-color: ${color.border.default};
     color: ${color.text.disabled};
     cursor: not-allowed;
   }

@@ -40,7 +40,9 @@
   --co-base-z-index-8: 1020;
   --co-base-opacity-0: 0;
   --co-base-opacity-5: 0.05;
+  --co-base-opacity-8: 0.08;
   --co-base-opacity-10: 0.1;
+  --co-base-opacity-12: 0.12;
   --co-base-opacity-20: 0.2;
   --co-base-opacity-25: 0.25;
   --co-base-opacity-30: 0.3;
@@ -542,14 +544,11 @@
   --co-component-input-disabled-cursor: not-allowed; /** Deprecated: Behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0. */
   --co-semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /** Sunken/pressed states, input fields, wells */
   --co-semantic-border-radius-none: 0; /** Deprecated: Renamed to semantic.radius.none by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-overlay: rgba(33, 37, 41, 0.5); /** Deprecated: Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-hover-overlay: rgba(33, 37, 41, 0.1); /** Deprecated: Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-active-overlay: rgba(33, 37, 41, 0.15); /** Deprecated: Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-inverse-overlay: rgba(255, 255, 255, 0.2); /** Deprecated: Renamed to semantic.color.fill.inverse-none-hover by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-fill-none-hover: rgba(33, 37, 41, 0.1); /** Hover tint for a fill-less control over any background, such as a chip close button. */
-  --co-semantic-color-fill-none-pressed: rgba(33, 37, 41, 0.15); /** Pressed tint for a fill-less control over any background, such as a chip close button. */
+  --co-semantic-color-fill-none-hover: rgba(34, 34, 34, 0.1); /** Hover tint for a fill-less control over any background, such as a chip close button. */
+  --co-semantic-color-fill-none-pressed: rgba(34, 34, 34, 0.15); /** Pressed tint for a fill-less control over any background, such as a chip close button. */
   --co-semantic-color-fill-inverse-none-hover: rgba(255, 255, 255, 0.2); /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
-  --co-semantic-surface-scrim: rgba(33, 37, 41, 0.5); /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+  --co-semantic-surface-scrim: rgba(34, 34, 34, 0.5); /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
   --co-base-size-0: var(--co-base-dimension-0); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
   --co-base-size-1: var(--co-base-dimension-1); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
   --co-base-size-2: var(--co-base-dimension-2); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
@@ -635,6 +634,8 @@
   --co-semantic-opacity-full: var(--co-base-opacity-100); /** 1: fully opaque (the enabled counterpart of disabled). */
   --co-semantic-opacity-hover: var(--co-base-opacity-80); /** Content that fades to answer hover, such as a clickable card's image. */
   --co-semantic-opacity-pressed: var(--co-base-opacity-70); /** Content that fades while pressed, one step further than hover. */
+  --co-semantic-opacity-state-hover: var(--co-base-opacity-8); /** State layer for a hovered solid fill: its content colour mixed in at 8%, as in Material 3 (decision 0048). */
+  --co-semantic-opacity-state-pressed: var(--co-base-opacity-12); /** State layer for a pressed solid fill: its content colour mixed in at 12% (decision 0048). */
   --co-semantic-font-family-body: var(--co-base-font-family-body); /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */
   --co-semantic-font-family-monospace: var(--co-base-font-family-monospace); /** Code and other fixed-width text (CodeBlock). */
   --co-semantic-font-size-xs: var(--co-base-font-size-1); /** Smallest text size: captions, metadata and small labels. */
@@ -657,9 +658,7 @@
   --co-semantic-z-index-dropdown: var(--co-base-z-index-6); /** Deprecated: Renamed to semantic.layer.dropdown by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-z-index-overlay: var(--co-base-z-index-7); /** Deprecated: Renamed to semantic.layer.overlay by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-z-index-modal: var(--co-base-z-index-8); /** Deprecated: Renamed to semantic.layer.modal by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025). */
-  --co-semantic-border-subtle: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-subtle); /** Deprecated: Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-border-strong: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-strong); /** Deprecated: Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025). */
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus); /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
   --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-emphasis); /** Deprecated: Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0. */
   --co-semantic-border-width-thin: var(--co-base-border-width-1); /** Hairline border: dividers, control edges and rings. */
@@ -673,7 +672,6 @@
   --co-semantic-border-radius-2xl: var(--co-base-border-radius-6); /** Deprecated: Renamed to semantic.radius.2xl by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-radius-3xl: var(--co-base-border-radius-7); /** Deprecated: Renamed to semantic.radius.3xl by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-radius-circle: var(--co-base-border-radius-circle); /** Deprecated: Renamed to semantic.radius.full by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-border-emphasis: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-emphasis); /** Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge. */
   --co-semantic-border-input-hover: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-input-hover); /** Firm hairline that must read as a boundary, such as a hovered text input. */
   --co-semantic-size-100: var(--co-base-dimension-1); /** Size step for thin bars: the TabBar scrollbar, the small ProgressBar. */
   --co-semantic-size-200: var(--co-base-dimension-2); /** Size step for small marks: the Badge dot, the medium ProgressBar. */
@@ -759,30 +757,24 @@
   --co-semantic-spacing-layout-10xl: var(--co-base-dimension-20); /** Deprecated: Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-layout-11xl: var(--co-base-dimension-24); /** Deprecated: Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
-  --co-semantic-color-text-default: var(--co-base-color-neutral-900); /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
-  --co-semantic-color-text-emphasis: var(--co-base-color-neutral-1000); /** Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white. */
-  --co-semantic-color-text-subdued: var(--co-base-color-neutral-700); /** Deprecated: Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-text-default: var(--co-base-color-gray-1200); /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
   --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
-  --co-semantic-color-text-disabled: var(--co-base-color-neutral-500); /** Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
+  --co-semantic-color-text-disabled: var(--co-base-color-gray-alpha-700); /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
   --co-semantic-color-text-interactive: var(--co-base-color-blue-900); /** Deprecated: Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-text-interactive-hover: var(--co-base-color-blue-1000); /** Deprecated: Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-text-interactive-active: var(--co-base-color-blue-1100); /** Deprecated: Renamed to semantic.color.text.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-text-error: var(--co-base-color-red-900); /** Deprecated: Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-text-success: var(--co-base-color-green-900); /** Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page. */
   --co-semantic-color-text-warning: var(--co-base-color-orange-900); /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
-  --co-semantic-color-text-muted: var(--co-base-color-neutral-700); /** Secondary text: helper text, metadata, timestamps. */
+  --co-semantic-color-text-muted: var(--co-base-color-gray-1100); /** Secondary text: helper text, metadata, timestamps. 6.01:1 on white, and at least 4.5:1 on every background and fill step (decision 0040). */
   --co-semantic-color-text-accent: var(--co-base-color-blue-900); /** Blue text for links and selected items; never decoration, see 0003. */
   --co-semantic-color-text-accent-hover: var(--co-base-color-blue-1000); /** Text of a hovered selected item, on the accent-muted-hover fill. */
   --co-semantic-color-text-accent-pressed: var(--co-base-color-blue-1100); /** Text of a pressed selected item, on the accent-muted-pressed fill. */
   --co-semantic-color-text-danger: var(--co-base-color-red-900); /** Error text: field error messages, InlineAlert errors. */
   --co-semantic-color-text-ai: var(--co-base-color-ai-1100); /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
-  --co-semantic-color-background-default: var(--co-base-color-neutral-100); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-subtle: var(--co-base-color-neutral-000); /** Deprecated: Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0. */
-  --co-semantic-color-background-emphasis: var(--co-base-color-neutral-900); /** Deprecated: Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-emphasis-hover: var(--co-base-color-neutral-800); /** Deprecated: Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-emphasis-active: var(--co-base-color-neutral-1000); /** Deprecated: Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-surface: var(--co-base-color-neutral-200); /** Deprecated: Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-inverse: var(--co-base-color-neutral-800); /** Deprecated: Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-interactive: var(--co-base-color-blue-900); /** Deprecated: Renamed to semantic.color.fill.accent by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-interactive-subtle: var(--co-base-color-blue-100); /** Deprecated: Renamed to semantic.color.fill.accent-muted by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-interactive-subtle-hover: var(--co-base-color-blue-200); /** Deprecated: Renamed to semantic.color.fill.accent-muted-hover by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -797,32 +789,25 @@
   --co-semantic-color-background-success-subtle: var(--co-base-color-green-100); /** Deprecated: Renamed to semantic.color.fill.success-muted by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-warning: var(--co-base-color-orange-900); /** Deprecated: Renamed to semantic.color.fill.warning by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-warning-subtle: var(--co-base-color-orange-100); /** Deprecated: Renamed to semantic.color.fill.warning-muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-disabled: var(--co-base-color-neutral-300); /** Deprecated: Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-neutral: var(--co-base-color-neutral-300); /** Deprecated: Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-neutral-hover: var(--co-base-color-neutral-400); /** Deprecated: Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-neutral-active: var(--co-base-color-neutral-500); /** Deprecated: Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** Deprecated: Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Deprecated: Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-background-page: var(--co-base-color-neutral-100); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-border-default: var(--co-base-color-neutral-200); /** Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025). */
-  --co-semantic-color-border-subtle: var(--co-base-color-neutral-300); /** Deprecated: Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-border-control: var(--co-base-color-neutral-600); /** Deprecated: Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-overlay: var(--co-semantic-surface-scrim); /** Deprecated: Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-hover-overlay: var(--co-semantic-color-fill-none-hover); /** Deprecated: Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-active-overlay: var(--co-semantic-color-fill-none-pressed); /** Deprecated: Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-border-default: var(--co-base-color-gray-700); /** Default border colour for dividers and decorative outlines only (decision 0040). 1.53:1 on white, below the 3:1 a control edge needs; use color.border.input for that (decision 0025). */
   --co-semantic-color-border-strong: var(--co-base-color-neutral-800); /** Deprecated: Split by use (decision 0031): semantic.color.border.input-hover for a hovered control, semantic.color.border.focus for the focus ring and CardSmall's ring, semantic.color.fill.inverse for drag handles. Removed in 3.0. */
   --co-semantic-color-border-interactive: var(--co-base-color-blue-900); /** Deprecated: Renamed to semantic.color.border.accent by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-border-error: var(--co-base-color-red-900); /** Deprecated: Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-border-success: var(--co-base-color-green-900); /** Green border for success outlines, such as an outlined success Alert. */
   --co-semantic-color-border-warning: var(--co-base-color-orange-900); /** Orange border for warning outlines, such as an outlined warning Alert. */
   --co-semantic-color-border-none: var(--co-base-color-transparent); /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
-  --co-semantic-color-border-emphasis: var(--co-base-color-neutral-300); /** Border for dividers, decorative outlines and disabled controls; never a resting control edge. */
-  --co-semantic-color-border-input: var(--co-base-color-neutral-600); /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. */
-  --co-semantic-color-border-input-hover: var(--co-base-color-neutral-800); /** Edge of a hovered control, such as a hovered text input or Dropdown. */
-  --co-semantic-color-border-focus: var(--co-base-color-neutral-800); /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). */
+  --co-semantic-color-border-input: var(--co-base-color-gray-800); /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. 3.19:1 on white and the page (decision 0025). */
+  --co-semantic-color-border-input-hover: var(--co-base-color-gray-1100); /** Edge of a hovered control, such as a hovered text input or Dropdown. 6.01:1 on white, a clear step from rest that stays apart from the focus ring. */
+  --co-semantic-color-border-focus: var(--co-base-color-gray-1200); /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). 15.91:1 on white. */
   --co-semantic-color-border-accent: var(--co-base-color-blue-900); /** Blue border for selected items; never decoration, see 0003. */
   --co-semantic-color-border-danger: var(--co-base-color-red-900); /** Border of an invalid field and other error outlines. */
-  --co-semantic-color-icon-default: var(--co-base-color-neutral-900); /** Default icon colour, matching text.default. 15.43:1 on white. */
-  --co-semantic-color-icon-emphasis: var(--co-base-color-neutral-1000); /** Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029). */
-  --co-semantic-color-icon-subdued: var(--co-base-color-neutral-600); /** Deprecated: Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-icon-disabled: var(--co-base-color-neutral-500); /** Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled. */
+  --co-semantic-color-icon-default: var(--co-base-color-gray-1200); /** Default icon colour, matching text.default. 15.91:1 on white. */
+  --co-semantic-color-icon-disabled: var(--co-base-color-gray-alpha-700); /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
   --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000); /** Icons on dark or coloured fills, matching text.inverse. */
   --co-semantic-color-icon-interactive: var(--co-base-color-blue-900); /** Deprecated: Renamed to semantic.color.icon.accent by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-icon-interactive-hover: var(--co-base-color-blue-1000); /** Deprecated: Renamed to semantic.color.icon.accent-hover by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -830,7 +815,7 @@
   --co-semantic-color-icon-error: var(--co-base-color-red-900); /** Deprecated: Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-icon-success: var(--co-base-color-green-900); /** Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.) */
   --co-semantic-color-icon-warning: var(--co-base-color-orange-900); /** Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.) */
-  --co-semantic-color-icon-muted: var(--co-base-color-neutral-600); /** Secondary icons, such as list item and empty-state icons. */
+  --co-semantic-color-icon-muted: var(--co-base-color-gray-1100); /** Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white. */
   --co-semantic-color-icon-accent: var(--co-base-color-blue-900); /** Blue icons in links and selected items, matching color.text.accent. */
   --co-semantic-color-icon-accent-hover: var(--co-base-color-blue-1000); /** Icon of a hovered selected item, matching color.text.accent-hover. */
   --co-semantic-color-icon-accent-pressed: var(--co-base-color-blue-1100); /** Icon of a pressed selected item, matching color.text.accent-pressed. */
@@ -888,17 +873,15 @@
   --co-semantic-color-status-completed-bg: var(--co-base-color-green-100); /** Deprecated: Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-failed: var(--co-base-color-red-900); /** Deprecated: Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-failed-bg: var(--co-base-color-red-100); /** Deprecated: Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-cancelled: var(--co-base-color-neutral-700); /** Deprecated: Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-cancelled-bg: var(--co-base-color-neutral-200); /** Deprecated: Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-processing: var(--co-base-color-blue-900); /** Deprecated: Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-processing-bg: var(--co-base-color-blue-100); /** Deprecated: Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-scheduled: var(--co-base-color-purple-900); /** Deprecated: Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-scheduled-bg: var(--co-base-color-purple-100); /** Deprecated: Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-fill-emphasis: var(--co-base-color-neutral-900); /** Near-black fill for emphasis controls, such as the primary Button and IconButton. */
-  --co-semantic-color-fill-emphasis-hover: var(--co-base-color-neutral-800); /** Fill of a hovered emphasis control, such as the primary Button. */
-  --co-semantic-color-fill-emphasis-pressed: var(--co-base-color-neutral-1000); /** Fill of a pressed emphasis control, such as the primary Button. */
-  --co-semantic-color-fill-muted: var(--co-base-color-neutral-200); /** Light grey fill for quiet grouped content, such as the default Chip. */
-  --co-semantic-color-fill-inverse: var(--co-base-color-neutral-800); /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
+  --co-semantic-color-fill-emphasis: var(--co-base-color-gray-1200); /** Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048). */
+  --co-semantic-color-fill-emphasis-hover: var(--co-base-color-neutral-800); /** Deprecated: Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0. */
+  --co-semantic-color-fill-emphasis-pressed: var(--co-base-color-neutral-1000); /** Deprecated: Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0. */
+  --co-semantic-color-fill-muted: var(--co-base-color-gray-300); /** Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page. */
+  --co-semantic-color-fill-inverse: var(--co-base-color-gray-1200); /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
   --co-semantic-color-fill-accent: var(--co-base-color-blue-900); /** Blue fill for the accent Button and other deliberate highlights; see 0003. */
   --co-semantic-color-fill-accent-muted: var(--co-base-color-blue-100); /** Light blue fill for selected items: a selected chip, tab or row; see 0016. */
   --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-blue-200); /** Fill of a hovered selected item, such as a selected filter chip. */
@@ -913,10 +896,10 @@
   --co-semantic-color-fill-success-muted: var(--co-base-color-green-100); /** Light green tint behind success messages, such as a success Alert. */
   --co-semantic-color-fill-warning: var(--co-base-color-orange-900); /** Strong orange fill for warning states, such as a warning indicator. */
   --co-semantic-color-fill-warning-muted: var(--co-base-color-orange-100); /** Light orange tint behind warning messages, such as a warning Alert. */
-  --co-semantic-color-fill-disabled: var(--co-base-color-neutral-300); /** Fill of a disabled control, such as a disabled Button or Switch. */
-  --co-semantic-color-fill-default: var(--co-base-color-neutral-300); /** Fill of a neutral control at rest, such as the secondary Button. */
-  --co-semantic-color-fill-default-hover: var(--co-base-color-neutral-400); /** Fill of a hovered neutral control, such as the secondary Button. */
-  --co-semantic-color-fill-default-pressed: var(--co-base-color-neutral-500); /** Fill of a pressed neutral control, such as the secondary Button. */
+  --co-semantic-color-fill-disabled: var(--co-base-color-gray-300); /** Fill of a disabled control, such as a disabled Button or Switch. */
+  --co-semantic-color-fill-default: var(--co-base-color-gray-300); /** Fill of a neutral control at rest, such as the secondary Button (decision 0040). */
+  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-400); /** Fill of a hovered neutral control, such as the secondary Button. */
+  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-500); /** Fill of a pressed neutral control, such as the secondary Button. */
   --co-semantic-color-fill-none: var(--co-base-color-transparent); /** No fill, for controls without a background at rest: the naked Button and IconButton. */
   --co-semantic-motion-duration-normal: var(--co-base-duration-normal); /** Deprecated: Renamed to semantic.motion.duration.moderate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0. */
   --co-semantic-motion-duration-fast: var(--co-base-duration-fast); /** Quick responses to input: hover, press, focus and small indicators. */
@@ -973,14 +956,14 @@
   --co-semantic-space-inset-lg: var(--co-base-dimension-4); /** Large padding inside a component: button and input sides, card insides. */
   --co-semantic-space-inset-xl: var(--co-base-dimension-5); /** Generous padding inside a component, such as a prominent call to action. */
   --co-semantic-space-inset-2xl: var(--co-base-dimension-6); /** Largest padding inside a component: large cards, spacious form sections. */
-  --co-semantic-surface-base: var(--co-base-color-neutral-100); /** The page: the off-white background everything else sits on (decision 0006). */
+  --co-semantic-surface-base: var(--co-base-color-gray-100); /** The page: the off-white background everything else sits on (decision 0006). */
   --co-semantic-surface-raised: var(--co-base-color-neutral-000); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
   --co-component-button-primary-border-radius: var(--co-semantic-radius-sm); /** Corner radius of every Button (visual language: Button uses sm). */
   --co-component-button-primary-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
-  --co-component-button-hover-background-color: var(--co-semantic-color-fill-emphasis-hover); /** Primary Button fill on hover. */
-  --co-component-button-active-background-color: var(--co-semantic-color-fill-emphasis-pressed); /** Primary Button fill while pressed. */
+  --co-component-button-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Primary Button fill on hover. */
+  --co-component-button-active-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Primary Button fill while pressed. */
   --co-component-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every Button. */
   --co-component-button-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled primary Button fill. */
   --co-component-button-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled primary Button text and icon colour. */
@@ -992,8 +975,8 @@
   --co-component-button-variants-secondary-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled secondary Button text and icon colour. */
   --co-component-button-variants-naked-background-color: var(--co-semantic-color-fill-none); /** Naked Button has no fill at rest. */
   --co-component-button-variants-naked-text-color: var(--co-semantic-color-text-default); /** Text and icon colour on the naked Button. */
-  --co-component-button-variants-naked-hover-background-color: var(--co-semantic-color-fill-muted); /** Naked Button fill on hover. */
-  --co-component-button-variants-naked-active-background-color: var(--co-semantic-color-fill-default); /** Naked Button fill while pressed. */
+  --co-component-button-variants-naked-hover-background-color: var(--co-semantic-color-fill-default); /** Naked Button fill on hover. */
+  --co-component-button-variants-naked-active-background-color: var(--co-semantic-color-fill-default-hover); /** Naked Button fill while pressed. */
   --co-component-button-variants-naked-disabled-background-color: var(--co-semantic-color-fill-none); /** Disabled naked Button has no fill. */
   --co-component-button-variants-naked-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled naked Button text and icon colour. */
   --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent); /** Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016). */
@@ -1019,15 +1002,15 @@
   --co-component-chip-default-text-color: var(--co-semantic-color-text-default); /** Default chip text and icon colour. */
   --co-component-chip-default-border-radius: var(--co-semantic-radius-lg); /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
   --co-component-chip-default-padding: 2px var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0. */
-  --co-component-chip-hover-background-color: var(--co-semantic-color-fill-default); /** Default chip fill on hover, when it's clickable. */
-  --co-component-chip-active-background-color: var(--co-semantic-color-fill-default-hover); /** Default chip fill while pressed, when it's clickable. */
+  --co-component-chip-hover-background-color: var(--co-semantic-color-fill-default-hover); /** Default chip fill on hover, when it's clickable. */
+  --co-component-chip-active-background-color: var(--co-semantic-color-fill-default-pressed); /** Default chip fill while pressed, when it's clickable. */
   --co-component-chip-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every chip and its close button. */
   --co-component-chip-disabled-background-color: var(--co-semantic-color-fill-muted); /** Disabled default chip fill. */
   --co-component-chip-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled default chip text and icon colour. */
   --co-component-chip-variants-emphasis-background-color: var(--co-semantic-color-fill-emphasis); /** Emphasis chip fill at rest. */
   --co-component-chip-variants-emphasis-text-color: var(--co-semantic-color-text-inverse); /** Emphasis chip text and icon colour. */
-  --co-component-chip-variants-emphasis-hover-background-color: var(--co-semantic-color-fill-emphasis-hover); /** Emphasis chip fill on hover, when it's clickable. */
-  --co-component-chip-variants-emphasis-active-background-color: var(--co-semantic-color-fill-emphasis-pressed); /** Emphasis chip fill while pressed, when it's clickable. */
+  --co-component-chip-variants-emphasis-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Emphasis chip fill on hover, when it's clickable. */
+  --co-component-chip-variants-emphasis-active-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Emphasis chip fill while pressed, when it's clickable. */
   --co-component-chip-variants-emphasis-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled emphasis chip fill. */
   --co-component-chip-variants-emphasis-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled emphasis chip text and icon colour. */
   --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised); /** Subtle chip fill at rest. */
@@ -1047,8 +1030,8 @@
   --co-component-chip-sizes-large-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
   --co-component-icon-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Deprecated: IconButton reads component.button.primary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
   --co-component-icon-button-primary-border-radius: var(--co-semantic-radius-sm); /** Corner radius of every IconButton, matching Button. */
-  --co-component-icon-button-hover-background-color: var(--co-semantic-color-fill-emphasis-hover); /** Deprecated: IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
-  --co-component-icon-button-active-background-color: var(--co-semantic-color-fill-emphasis-pressed); /** Deprecated: IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Deprecated: IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
+  --co-component-icon-button-active-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Deprecated: IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every IconButton. */
   --co-component-icon-button-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Deprecated: IconButton reads component.button.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
   --co-component-icon-button-variants-secondary-background-color: var(--co-semantic-color-fill-muted); /** Deprecated: IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0. */
@@ -1062,13 +1045,13 @@
   --co-component-icon-button-sizes-small-padding: var(--co-semantic-space-inset-xs); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0. */
   --co-component-icon-button-sizes-medium-padding: var(--co-semantic-space-inset-sm); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0. */
   --co-component-icon-button-sizes-large-padding: var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0. */
-  --co-component-separator-border: var(--co-semantic-border-emphasis); /** Divider line, the same as variants.default.border. */
+  --co-component-separator-border: var(--co-semantic-border-default); /** Divider line, the same as variants.default.border. */
   --co-component-separator-margin: var(--co-semantic-space-800) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0. */
-  --co-component-separator-variants-default-border: var(--co-semantic-border-emphasis); /** Default Divider line. */
+  --co-component-separator-variants-default-border: var(--co-semantic-border-default); /** Default Divider line. */
   --co-component-separator-variants-default-margin: var(--co-semantic-space-800) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0. */
   --co-component-separator-variants-strong-border: var(--co-semantic-border-input-hover); /** Strong Divider line, for a firmer break. */
   --co-component-separator-variants-strong-margin: var(--co-semantic-space-800) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0. */
-  --co-component-separator-variants-minimal-border: var(--co-semantic-border-emphasis); /** Minimal Divider line. */
+  --co-component-separator-variants-minimal-border: var(--co-semantic-border-default); /** Minimal Divider line. */
   --co-component-separator-variants-minimal-margin: var(--co-semantic-space-600) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0. */
   --co-component-separator-sizes-small-margin: var(--co-semantic-space-400) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.400 (vertical margin). Removed in 3.0. */
   --co-component-separator-sizes-medium-margin: var(--co-semantic-space-600) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0. */
@@ -1096,7 +1079,7 @@
   --co-component-input-error-hover-border-color: var(--co-semantic-color-border-danger); /** Invalid text input border on hover. */
   --co-component-input-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled text input fill. */
   --co-component-input-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled text input value colour. */
-  --co-component-input-disabled-border-color: var(--co-semantic-color-border-emphasis); /** Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025). */
+  --co-component-input-disabled-border-color: var(--co-semantic-color-border-default); /** Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025). */
   --co-component-input-textarea-min-height: var(--co-semantic-size-3000); /** Minimum height of TextArea, tall enough for a few lines of entry (decision 0034). */
   --co-component-badge-dot-size: var(--co-semantic-size-200); /** Width and height of the dot Badge indicator on a button, tab or icon. */
   --co-component-badge-count-min-width: var(--co-semantic-size-400); /** Minimum width of the count Badge, so a single digit sits in a circle. */
@@ -1173,7 +1156,26 @@
   --co-component-status-failed-background: var(--co-semantic-color-fill-danger-muted); /** Fill of a failed StatusLabel, behind its failed text. */
   --co-component-status-cancelled-text: var(--co-semantic-color-text-muted); /** Text and icon of a cancelled StatusLabel, on its cancelled background. */
   --co-component-status-cancelled-background: var(--co-semantic-color-fill-muted); /** Fill of a cancelled StatusLabel, behind its cancelled text. */
-  --co-component-tooltip-border: var(--co-semantic-border-width-thick) var(--co-base-border-style-dotted) var(--co-semantic-color-border-emphasis); /** Dotted underline marking text that has a tooltip. */
+  --co-component-tooltip-border: var(--co-semantic-border-width-thick) var(--co-base-border-style-dotted) var(--co-semantic-color-border-default); /** Dotted underline marking text that has a tooltip. */
+  --co-semantic-border-subtle: var(--co-semantic-border-default); /** Deprecated: Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-border-strong: var(--co-semantic-border-input-hover); /** Deprecated: Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-border-emphasis: var(--co-semantic-border-default); /** Deprecated: Dividers have one border (decision 0048). Removed in 3.0. */
+  --co-semantic-color-text-emphasis: var(--co-semantic-color-text-default); /** Deprecated: Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. */
+  --co-semantic-color-text-subdued: var(--co-semantic-color-text-muted); /** Deprecated: Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-default: var(--co-semantic-surface-base); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-emphasis: var(--co-semantic-color-fill-emphasis); /** Deprecated: Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-surface: var(--co-semantic-color-fill-muted); /** Deprecated: Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-inverse: var(--co-semantic-color-fill-inverse); /** Deprecated: Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-disabled: var(--co-semantic-color-fill-disabled); /** Deprecated: Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-neutral: var(--co-semantic-color-fill-default); /** Deprecated: Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-neutral-hover: var(--co-semantic-color-fill-default-hover); /** Deprecated: Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-neutral-active: var(--co-semantic-color-fill-default-pressed); /** Deprecated: Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-page: var(--co-semantic-surface-base); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-border-subtle: var(--co-semantic-color-border-default); /** Deprecated: Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-border-control: var(--co-semantic-color-border-input); /** Deprecated: Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-border-emphasis: var(--co-semantic-color-border-default); /** Deprecated: Dividers have one border colour (decision 0048). Removed in 3.0. */
+  --co-semantic-color-icon-emphasis: var(--co-semantic-color-icon-default); /** Deprecated: Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. */
+  --co-semantic-color-icon-subdued: var(--co-semantic-color-icon-muted); /** Deprecated: Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-blue-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-purple-emphasis: var(--co-semantic-color-category-purple-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-pink-emphasis: var(--co-semantic-color-category-pink-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. */
@@ -1182,6 +1184,8 @@
   --co-semantic-color-category-red-emphasis: var(--co-semantic-color-category-red-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-orange-emphasis: var(--co-semantic-color-category-orange-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. */
   --co-semantic-color-category-gray-emphasis: var(--co-semantic-color-category-gray-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0. */
+  --co-semantic-color-status-cancelled: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-cancelled-bg: var(--co-semantic-color-fill-muted); /** Deprecated: Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** The largest heading, for hero titles. */
   --co-semantic-typography-h1: var(--co-semantic-font-weight-bold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: the page title, one per page. */
   --co-semantic-typography-h2: var(--co-semantic-font-weight-bold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: major sections of a page. */

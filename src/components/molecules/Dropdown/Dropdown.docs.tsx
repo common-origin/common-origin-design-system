@@ -127,7 +127,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'semantic.color.text.danger',
     'semantic.color.text.muted',
     'semantic.typography.caption',
-    'semantic.border.emphasis',
+    'semantic.border.default',
     // Motion
     'semantic.motion.duration.fast',
     'semantic.motion.duration.moderate',

@@ -68,6 +68,6 @@ describe('tokens.css', () => {
   })
 
   it('keeps references, so semantic variables point at base variables', () => {
-    expect(declared.get('--co-semantic-color-text-default')).toBe('var(--co-base-color-neutral-900)')
+    expect(declared.get('--co-semantic-color-text-default')).toBe('var(--co-base-color-gray-1200)')
   })
 })
