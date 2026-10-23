@@ -1,6 +1,6 @@
 # 0040. Our own palette: a 12-step pure-grey ramp with alpha twins, defined in OKLCH
 
-- **Status:** Accepted; amended by [0044](0044-hue-ramps.md): a hue step matches the grey step's contrast with white (its luminance), not its OKLCH lightness
+- **Status:** Accepted; amended by [0044](0044-hue-ramps.md): a hue step matches the grey step's contrast with white (its luminance), not its OKLCH lightness; amended by [0048](0048-emphasis-leaves-the-colour-tokens.md): a strong fill (`gray.1200`) takes its hover and pressed states from translucent white overlays
 - **Date:** 2026-10-14
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P3, P9
