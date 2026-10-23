@@ -26,7 +26,7 @@ The rules:
 
 1. **Components never read base tokens.** Base tokens exist only to build semantic tokens. If a component needs something the semantic tier lacks, a semantic token is added first. A lint rule enforces this (see [Pipeline](pipeline.md#token-tiers)).
 2. **Components use semantic tokens by default.**
-3. **A component token exists only when** the component departs from the semantic tier (Alert's semibold title), a family shares the decision (`component.badge`, `component.input`), or there's a variant-and-state matrix (Button). Component tokens reference semantic tokens, never base tokens. The domain tokens listed in [decision 0036](../foundation/decisions/0036-domain-tokens-interim-base-references.md) are an interim exception, until [#224](https://github.com/common-origin/common-origin-design-system/issues/224) resolves them.
+3. **A component token exists only when** the component departs from the semantic tier (Alert's semibold title), a family shares the decision (`component.badge`, `component.input`), or there's a variant-and-state matrix (Button). Component tokens reference semantic tokens, never base tokens. Decision 0036's interim exception for domain tokens is resolved: none references a base token.
 4. **No component spacing tokens.** Padding, margins and gaps come from the semantic `space` scales, so density can change them in one place ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)).
 5. **Tokens hold design decisions only:** colour, typography, spacing, size, radius, border, shadow, motion and layer. Layout mechanics such as `display` and flex alignment stay in component code.
 6. **Every new token needs the owner's sign-off**, with a reason no existing token does the job ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)).
@@ -75,6 +75,6 @@ Numbered scales use the multiple of the 4px grid unit × 100: `space.400` is 16p
 The palette retune ([#190](https://github.com/common-origin/common-origin-design-system/issues/190)) is moving the semantic tier onto the new ramps in parts:
 
 - **Done:** the neutrals; the role colours (accent, danger, success, warning to yellow, and the new serious and AI tokens); the category labels, on the display ramps; and the `color.data.*` chart colours.
-- **Still to come:** the component status and transaction tokens.
+- **Also done:** the component status and transaction tokens, which resolve decision 0036's interim exception.
 
 [Semantic tokens](semantic.md) marks the categories still moving.

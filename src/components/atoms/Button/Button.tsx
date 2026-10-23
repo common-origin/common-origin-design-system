@@ -174,6 +174,7 @@ const getSizeStyles = ({ $size }: StyledButtonProps) => {
     case 'small':
       return `
         font: ${button.sizes.small.font};
+        font-weight: ${button.sizes.small.fontWeight};
         min-height: ${control.sm};
         padding: 0 ${inset.md};
       `
