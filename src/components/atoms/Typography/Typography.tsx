@@ -68,7 +68,7 @@ const getTypographyStyles = (variant: TypographyVariant) => {
 const getTextColor = (colorVariant: TypographyColor) => {
   const colorMap = {
     default: color.text.default,
-    emphasis: color.text.emphasis,
+    emphasis: color.text.default,
     subdued: color.text.muted,
     inverse: color.text.inverse,
     disabled: color.text.disabled,

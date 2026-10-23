@@ -119,11 +119,26 @@ describe('token contrast', () => {
     }
   )
 
-  // Emphasis is stronger than default, never softer (decision 0029)
-  it('makes emphasis text and icons darker than default', () => {
+  // Text and icons have two levels from the grey ramp, and emphasis comes from weight (decision 0048)
+  it('keeps primary and secondary text and icons at their contrast floors', () => {
     const { text, icon } = tokens.semantic.color
-    expect(luminance(text.emphasis)).toBeLessThan(luminance(text.default))
-    expect(luminance(icon.emphasis)).toBeLessThan(luminance(icon.default))
+    const { surface } = tokens.semantic
+    for (const background of ['#ffffff', surface.base]) {
+      expect(contrast(text.default, background)).toBeGreaterThanOrEqual(15)
+      expect(contrast(text.muted, background)).toBeGreaterThanOrEqual(4.5)
+      expect(contrast(icon.muted, background)).toBeGreaterThanOrEqual(4.5)
+    }
+    expect(text.emphasis).toBe(text.default)
+    expect(icon.emphasis).toBe(icon.default)
+  })
+
+  // A strong fill's states mix its content colour in at the state-layer opacity (decision 0048)
+  it('builds the strong fill states from fill.emphasis, text.inverse and opacity.state', () => {
+    const { button } = tokens.component
+    const { opacity } = tokens.semantic
+    expect(opacity.state).toEqual({ hover: '0.08', pressed: '0.12' })
+    expect(button.hover.backgroundColor).toBe('color-mix(in srgb, #222222, #ffffff calc(0.08 * 100%))')
+    expect(button.active.backgroundColor).toBe('color-mix(in srgb, #222222, #ffffff calc(0.12 * 100%))')
   })
 
   // Firefox renders placeholders at 0.54 opacity by default, which would cut that contrast to about

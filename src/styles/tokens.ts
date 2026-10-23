@@ -61,7 +61,9 @@ export type Tokens = {
     opacity: {
       '0': string;
       '5': string;
+      '8': string;
       '10': string;
+      '12': string;
       '20': string;
       '25': string;
       '30': string;
@@ -2272,6 +2274,12 @@ export type Tokens = {
       hover: string;
       /** Content that fades while pressed, one step further than hover. */
       pressed: string;
+      state: {
+        /** State layer for a hovered solid fill: its content colour mixed in at 8%, as in Material 3 (decision 0048). */
+        hover: string;
+        /** State layer for a pressed solid fill: its content colour mixed in at 12% (decision 0048). */
+        pressed: string;
+      };
     };
     fontFamily: {
       /** UI text (Inter). Use a typography style where one fits; this is for components that set the family on its own. */
@@ -2346,12 +2354,12 @@ export type Tokens = {
       modal: string;
     };
     border: {
-      /** Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025). */
+      /** Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025). */
       default: string;
       /**
        * Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025).
        *
-       * @deprecated Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
+       * @deprecated Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.border.default`.
        */
       subtle: string;
       /**
@@ -2432,7 +2440,11 @@ export type Tokens = {
          */
         circle: string;
       };
-      /** Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge. */
+      /**
+       * Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge.
+       *
+       * @deprecated Dividers have one border (decision 0048). Removed in 3.0. Use `semantic.border.default`.
+       */
       emphasis: string;
       /** Firm hairline that must read as a boundary, such as a hovered text input. */
       'input-hover': string;
@@ -2803,9 +2815,13 @@ export type Tokens = {
     };
     color: {
       text: {
-        /** Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page. */
+        /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
         default: string;
-        /** Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white. */
+        /**
+         * Emphasised text.
+         *
+         * @deprecated Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. Use `semantic.color.text.default`.
+         */
         emphasis: string;
         /**
          * Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page.
@@ -2815,7 +2831,7 @@ export type Tokens = {
         subdued: string;
         /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
         inverse: string;
-        /** Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
+        /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
         /**
          * Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page.
@@ -2845,7 +2861,7 @@ export type Tokens = {
         success: string;
         /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
         warning: string;
-        /** Secondary text: helper text, metadata, timestamps. */
+        /** Secondary text: helper text, metadata, timestamps. 6.01:1 on white, and at least 4.5:1 on every background and fill step (decision 0040). */
         muted: string;
         /** Blue text for links and selected items; never decoration, see 0003. */
         accent: string;
@@ -3053,12 +3069,12 @@ export type Tokens = {
         'inverse-overlay': string;
       };
       border: {
-        /** Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025). */
+        /** Default border colour for dividers and decorative outlines only (decision 0040). 1.53:1 on white, below the 3:1 a control edge needs; use color.border.input for that (decision 0025). */
         default: string;
         /**
          * Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025).
          *
-         * @deprecated Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
+         * @deprecated Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.border.default`.
          */
         subtle: string;
         /**
@@ -3091,13 +3107,17 @@ export type Tokens = {
         warning: string;
         /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
         none: string;
-        /** Border for dividers, decorative outlines and disabled controls; never a resting control edge. */
+        /**
+         * Border for dividers, decorative outlines and disabled controls.
+         *
+         * @deprecated Dividers have one border colour (decision 0048). Removed in 3.0. Use `semantic.color.border.default`.
+         */
         emphasis: string;
-        /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. */
+        /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. 3.19:1 on white and the page (decision 0025). */
         input: string;
-        /** Edge of a hovered control, such as a hovered text input or Dropdown. */
+        /** Edge of a hovered control, such as a hovered text input or Dropdown. 6.01:1 on white, a clear step from rest that stays apart from the focus ring. */
         'input-hover': string;
-        /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). */
+        /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). 15.91:1 on white. */
         focus: string;
         /** Blue border for selected items; never decoration, see 0003. */
         accent: string;
@@ -3105,9 +3125,13 @@ export type Tokens = {
         danger: string;
       };
       icon: {
-        /** Default icon colour, matching text.default. 15.43:1 on white. */
+        /** Default icon colour, matching text.default. 15.91:1 on white. */
         default: string;
-        /** Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029). */
+        /**
+         * Emphasised icons.
+         *
+         * @deprecated Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. Use `semantic.color.icon.default`.
+         */
         emphasis: string;
         /**
          * Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1).
@@ -3115,7 +3139,7 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0.
          */
         subdued: string;
-        /** Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled. */
+        /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
         disabled: string;
         /** Icons on dark or coloured fills, matching text.inverse. */
         inverse: string;
@@ -3147,7 +3171,7 @@ export type Tokens = {
         success: string;
         /** Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.) */
         warning: string;
-        /** Secondary icons, such as list item and empty-state icons. */
+        /** Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white. */
         muted: string;
         /** Blue icons in links and selected items, matching color.text.accent. */
         accent: string;
@@ -3435,13 +3459,21 @@ export type Tokens = {
         'scheduled-bg': string;
       };
       fill: {
-        /** Near-black fill for emphasis controls, such as the primary Button and IconButton. */
+        /** Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048). */
         emphasis: string;
-        /** Fill of a hovered emphasis control, such as the primary Button. */
+        /**
+         * Fill of a hovered emphasis control, such as the primary Button.
+         *
+         * @deprecated Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0.
+         */
         'emphasis-hover': string;
-        /** Fill of a pressed emphasis control, such as the primary Button. */
+        /**
+         * Fill of a pressed emphasis control, such as the primary Button.
+         *
+         * @deprecated Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0.
+         */
         'emphasis-pressed': string;
-        /** Light grey fill for quiet grouped content, such as the default Chip. */
+        /** Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page. */
         muted: string;
         /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
         inverse: string;
@@ -3475,7 +3507,7 @@ export type Tokens = {
         'warning-muted': string;
         /** Fill of a disabled control, such as a disabled Button or Switch. */
         disabled: string;
-        /** Fill of a neutral control at rest, such as the secondary Button. */
+        /** Fill of a neutral control at rest, such as the secondary Button (decision 0040). */
         default: string;
         /** Fill of a hovered neutral control, such as the secondary Button. */
         'default-hover': string;

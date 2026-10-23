@@ -71,6 +71,16 @@
       "pressed": {
         "$value": "{base.opacity.70}",
         "$description": "Content that fades while pressed, one step further than hover."
+      },
+      "state": {
+        "hover": {
+          "$value": "{base.opacity.8}",
+          "$description": "State layer for a hovered solid fill: its content colour mixed in at 8%, as in Material 3 (decision 0048)."
+        },
+        "pressed": {
+          "$value": "{base.opacity.12}",
+          "$description": "State layer for a pressed solid fill: its content colour mixed in at 12% (decision 0048)."
+        }
       }
     },
     "fontFamily": {
@@ -209,22 +219,22 @@
       "default": {
         "$type": "border",
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.default}",
-        "$description": "Hairline in the default border colour: dividers that separate content, such as Breadcrumbs. 1.19:1 on white, so never a control's edge (decision 0025)."
+        "$description": "Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025)."
       },
       "subtle": {
         "$type": "border",
-        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.subtle}",
+        "$value": "{semantic.border.default}",
         "$description": "Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025).",
         "$deprecated": "Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
         "$extensions": {
           "studio.commonorigin": {
-            "replacedBy": "semantic.border.emphasis"
+            "replacedBy": "semantic.border.default"
           }
         }
       },
       "strong": {
         "$type": "border",
-        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.strong}",
+        "$value": "{semantic.border.input-hover}",
         "$description": "Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white.",
         "$deprecated": "Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0.",
         "$extensions": {
@@ -359,9 +369,15 @@
         }
       },
       "emphasis": {
-        "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.emphasis}",
+        "$value": "{semantic.border.default}",
         "$type": "border",
-        "$description": "Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge."
+        "$description": "Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge.",
+        "$deprecated": "Dividers have one border (decision 0048). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.border.default"
+          }
+        }
       },
       "input-hover": {
         "$value": "{base.border.width.1} {base.border.style.solid} {semantic.color.border.input-hover}",
@@ -993,15 +1009,21 @@
       "$type": "color",
       "text": {
         "default": {
-          "$value": "{base.color.neutral.900}",
-          "$description": "Primary text: body copy, labels and headings. 15.43:1 on white, 14.63:1 on the page."
+          "$value": "{base.color.gray.1200}",
+          "$description": "Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.1000}",
-          "$description": "Emphasised text: one step darker than text.default, so it reads stronger (decision 0029). 17.65:1 on white."
+          "$value": "{semantic.color.text.default}",
+          "$description": "Emphasised text.",
+          "$deprecated": "Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.text.default"
+            }
+          }
         },
         "subdued": {
-          "$value": "{base.color.neutral.700}",
+          "$value": "{semantic.color.text.muted}",
           "$description": "Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page.",
           "$deprecated": "Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1015,8 +1037,8 @@
           "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive."
         },
         "disabled": {
-          "$value": "{base.color.neutral.500}",
-          "$description": "Text of disabled controls. 2.07:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders."
+          "$value": "{base.color.gray-alpha.700}",
+          "$description": "Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders."
         },
         "interactive": {
           "$value": "{base.color.blue.900}",
@@ -1067,8 +1089,8 @@
           "$description": "Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page."
         },
         "muted": {
-          "$value": "{base.color.neutral.700}",
-          "$description": "Secondary text: helper text, metadata, timestamps."
+          "$value": "{base.color.gray.1100}",
+          "$description": "Secondary text: helper text, metadata, timestamps. 6.01:1 on white, and at least 4.5:1 on every background and fill step (decision 0040)."
         },
         "accent": {
           "$value": "{base.color.blue.900}",
@@ -1093,7 +1115,7 @@
       },
       "background": {
         "default": {
-          "$value": "{base.color.neutral.100}",
+          "$value": "{semantic.surface.base}",
           "$description": "Page background: a cool off-white (#f8f9fa), never pure white (decision 0006).",
           "$deprecated": "Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1108,7 +1130,7 @@
           "$deprecated": "Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.900}",
+          "$value": "{semantic.color.fill.emphasis}",
           "$description": "Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip.",
           "$deprecated": "Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1120,25 +1142,15 @@
         "emphasis-hover": {
           "$value": "{base.color.neutral.800}",
           "$description": "Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022.",
-          "$deprecated": "Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0.",
-          "$extensions": {
-            "studio.commonorigin": {
-              "replacedBy": "semantic.color.fill.emphasis-hover"
-            }
-          }
+          "$deprecated": "Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0."
         },
         "emphasis-active": {
           "$value": "{base.color.neutral.1000}",
           "$description": "Fill of a pressed emphasis control. Approved under decision 0022.",
-          "$deprecated": "Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
-          "$extensions": {
-            "studio.commonorigin": {
-              "replacedBy": "semantic.color.fill.emphasis-pressed"
-            }
-          }
+          "$deprecated": "Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0."
         },
         "surface": {
-          "$value": "{base.color.neutral.200}",
+          "$value": "{semantic.color.fill.muted}",
           "$description": "Light grey fill for quiet surfaces and grouped content, such as the default Chip.",
           "$deprecated": "Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1148,7 +1160,7 @@
           }
         },
         "inverse": {
-          "$value": "{base.color.neutral.800}",
+          "$value": "{semantic.color.fill.inverse}",
           "$description": "Dark grey fill for inverse surfaces, such as a checked Checkbox box.",
           "$deprecated": "Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1298,7 +1310,7 @@
           }
         },
         "disabled": {
-          "$value": "{base.color.neutral.300}",
+          "$value": "{semantic.color.fill.disabled}",
           "$description": "Fill of disabled controls.",
           "$deprecated": "Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1308,7 +1320,7 @@
           }
         },
         "neutral": {
-          "$value": "{base.color.neutral.300}",
+          "$value": "{semantic.color.fill.default}",
           "$description": "Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1318,7 +1330,7 @@
           }
         },
         "neutral-hover": {
-          "$value": "{base.color.neutral.400}",
+          "$value": "{semantic.color.fill.default-hover}",
           "$description": "Fill of a hovered neutral control. Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1328,7 +1340,7 @@
           }
         },
         "neutral-active": {
-          "$value": "{base.color.neutral.500}",
+          "$value": "{semantic.color.fill.default-pressed}",
           "$description": "Fill of a pressed neutral control. Approved under decision 0022.",
           "$deprecated": "Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1358,7 +1370,7 @@
           }
         },
         "page": {
-          "$value": "{base.color.neutral.100}",
+          "$value": "{semantic.surface.base}",
           "$description": "The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that.",
           "$deprecated": "Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1368,7 +1380,7 @@
           }
         },
         "overlay": {
-          "$value": "rgba(33, 37, 41, 0.5)",
+          "$value": "{semantic.surface.scrim}",
           "$description": "Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content.",
           "$deprecated": "Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1378,7 +1390,7 @@
           }
         },
         "hover-overlay": {
-          "$value": "rgba(33, 37, 41, 0.1)",
+          "$value": "{semantic.color.fill.none-hover}",
           "$description": "Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL.",
           "$deprecated": "Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1388,7 +1400,7 @@
           }
         },
         "active-overlay": {
-          "$value": "rgba(33, 37, 41, 0.15)",
+          "$value": "{semantic.color.fill.none-pressed}",
           "$description": "Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth.",
           "$deprecated": "Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1410,21 +1422,21 @@
       },
       "border": {
         "default": {
-          "$value": "{base.color.neutral.200}",
-          "$description": "Default border colour for dividers and decorative outlines only. 1.19:1 on white, below the 3:1 a control's edge needs (WCAG 1.4.11); use color.border.control for that (decision 0025)."
+          "$value": "{base.color.gray.700}",
+          "$description": "Default border colour for dividers and decorative outlines only (decision 0040). 1.53:1 on white, below the 3:1 a control edge needs; use color.border.input for that (decision 0025)."
         },
         "subtle": {
-          "$value": "{base.color.neutral.300}",
+          "$value": "{semantic.color.border.default}",
           "$description": "Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025).",
           "$deprecated": "Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
             "studio.commonorigin": {
-              "replacedBy": "semantic.color.border.emphasis"
+              "replacedBy": "semantic.color.border.default"
             }
           }
         },
         "control": {
-          "$value": "{base.color.neutral.600}",
+          "$value": "{semantic.color.border.input}",
           "$description": "Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025).",
           "$deprecated": "Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1471,20 +1483,26 @@
           "$description": "An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019)."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.300}",
-          "$description": "Border for dividers, decorative outlines and disabled controls; never a resting control edge."
+          "$value": "{semantic.color.border.default}",
+          "$description": "Border for dividers, decorative outlines and disabled controls.",
+          "$deprecated": "Dividers have one border colour (decision 0048). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.border.default"
+            }
+          }
         },
         "input": {
-          "$value": "{base.color.neutral.600}",
-          "$description": "Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox."
+          "$value": "{base.color.gray.800}",
+          "$description": "Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. 3.19:1 on white and the page (decision 0025)."
         },
         "input-hover": {
-          "$value": "{base.color.neutral.800}",
-          "$description": "Edge of a hovered control, such as a hovered text input or Dropdown."
+          "$value": "{base.color.gray.1100}",
+          "$description": "Edge of a hovered control, such as a hovered text input or Dropdown. 6.01:1 on white, a clear step from rest that stays apart from the focus ring."
         },
         "focus": {
-          "$value": "{base.color.neutral.800}",
-          "$description": "The focus ring, and rings that mark the current item, such as on CardSmall (0029)."
+          "$value": "{base.color.gray.1200}",
+          "$description": "The focus ring, and rings that mark the current item, such as on CardSmall (0029). 15.91:1 on white."
         },
         "accent": {
           "$value": "{base.color.blue.900}",
@@ -1497,15 +1515,21 @@
       },
       "icon": {
         "default": {
-          "$value": "{base.color.neutral.900}",
-          "$description": "Default icon colour, matching text.default. 15.43:1 on white."
+          "$value": "{base.color.gray.1200}",
+          "$description": "Default icon colour, matching text.default. 15.91:1 on white."
         },
         "emphasis": {
-          "$value": "{base.color.neutral.1000}",
-          "$description": "Emphasised icons, matching text.emphasis: one step darker than icon.default (decision 0029)."
+          "$value": "{semantic.color.icon.default}",
+          "$description": "Emphasised icons.",
+          "$deprecated": "Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.color.icon.default"
+            }
+          }
         },
         "subdued": {
-          "$value": "{base.color.neutral.600}",
+          "$value": "{semantic.color.icon.muted}",
           "$description": "Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1).",
           "$deprecated": "Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0.",
           "$extensions": {
@@ -1515,8 +1539,8 @@
           }
         },
         "disabled": {
-          "$value": "{base.color.neutral.500}",
-          "$description": "Icons and other foreground marks in disabled controls, such as a disabled Slider's fill and thumb ring. Exempt from the contrast minimum, like text.disabled."
+          "$value": "{base.color.gray-alpha.700}",
+          "$description": "Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white."
         },
         "inverse": {
           "$value": "{base.color.neutral.000}",
@@ -1571,8 +1595,8 @@
           "$description": "Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.)"
         },
         "muted": {
-          "$value": "{base.color.neutral.600}",
-          "$description": "Secondary icons, such as list item and empty-state icons."
+          "$value": "{base.color.gray.1100}",
+          "$description": "Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white."
         },
         "accent": {
           "$value": "{base.color.blue.900}",
@@ -2009,7 +2033,7 @@
           }
         },
         "cancelled": {
-          "$value": "{base.color.neutral.700}",
+          "$value": "{semantic.color.text.muted}",
           "$description": "Gray color for cancelled status",
           "$deprecated": "Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2019,7 +2043,7 @@
           }
         },
         "cancelled-bg": {
-          "$value": "{base.color.neutral.200}",
+          "$value": "{semantic.color.fill.muted}",
           "$description": "Background for cancelled status",
           "$deprecated": "Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0.",
           "$extensions": {
@@ -2071,23 +2095,25 @@
       },
       "fill": {
         "emphasis": {
-          "$value": "{base.color.neutral.900}",
-          "$description": "Near-black fill for emphasis controls, such as the primary Button and IconButton."
+          "$value": "{base.color.gray.1200}",
+          "$description": "Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048)."
         },
         "emphasis-hover": {
           "$value": "{base.color.neutral.800}",
-          "$description": "Fill of a hovered emphasis control, such as the primary Button."
+          "$description": "Fill of a hovered emphasis control, such as the primary Button.",
+          "$deprecated": "Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0."
         },
         "emphasis-pressed": {
           "$value": "{base.color.neutral.1000}",
-          "$description": "Fill of a pressed emphasis control, such as the primary Button."
+          "$description": "Fill of a pressed emphasis control, such as the primary Button.",
+          "$deprecated": "Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0."
         },
         "muted": {
-          "$value": "{base.color.neutral.200}",
-          "$description": "Light grey fill for quiet grouped content, such as the default Chip."
+          "$value": "{base.color.gray.300}",
+          "$description": "Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page."
         },
         "inverse": {
-          "$value": "{base.color.neutral.800}",
+          "$value": "{base.color.gray.1200}",
           "$description": "Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles."
         },
         "accent": {
@@ -2147,19 +2173,19 @@
           "$description": "Light orange tint behind warning messages, such as a warning Alert."
         },
         "disabled": {
-          "$value": "{base.color.neutral.300}",
+          "$value": "{base.color.gray.300}",
           "$description": "Fill of a disabled control, such as a disabled Button or Switch."
         },
         "default": {
-          "$value": "{base.color.neutral.300}",
-          "$description": "Fill of a neutral control at rest, such as the secondary Button."
+          "$value": "{base.color.gray.300}",
+          "$description": "Fill of a neutral control at rest, such as the secondary Button (decision 0040)."
         },
         "default-hover": {
-          "$value": "{base.color.neutral.400}",
+          "$value": "{base.color.gray.400}",
           "$description": "Fill of a hovered neutral control, such as the secondary Button."
         },
         "default-pressed": {
-          "$value": "{base.color.neutral.500}",
+          "$value": "{base.color.gray.500}",
           "$description": "Fill of a pressed neutral control, such as the secondary Button."
         },
         "none": {
@@ -2167,11 +2193,11 @@
           "$description": "No fill, for controls without a background at rest: the naked Button and IconButton."
         },
         "none-hover": {
-          "$value": "rgba(33, 37, 41, 0.1)",
+          "$value": "rgba(34, 34, 34, 0.1)",
           "$description": "Hover tint for a fill-less control over any background, such as a chip close button."
         },
         "none-pressed": {
-          "$value": "rgba(33, 37, 41, 0.15)",
+          "$value": "rgba(34, 34, 34, 0.15)",
           "$description": "Pressed tint for a fill-less control over any background, such as a chip close button."
         },
         "inverse-none-hover": {
@@ -2596,7 +2622,7 @@
     },
     "surface": {
       "base": {
-        "$value": "{base.color.neutral.100}",
+        "$value": "{base.color.gray.100}",
         "$type": "color",
         "$description": "The page: the off-white background everything else sits on (decision 0006)."
       },
@@ -2606,7 +2632,7 @@
         "$description": "Content raised off the page: cards, inputs, sheets, dialogs, code blocks."
       },
       "scrim": {
-        "$value": "rgba(33, 37, 41, 0.5)",
+        "$value": "rgba(34, 34, 34, 0.5)",
         "$type": "color",
         "$description": "Backdrop behind a modal surface: Modal, Sheet, ActionSheet."
       }

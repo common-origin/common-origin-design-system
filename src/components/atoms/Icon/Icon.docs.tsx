@@ -61,7 +61,6 @@ export const iconDocs: ComponentDocumentation = {
     'semantic.size.icon.2xl',   // 48px
     // Color tokens
     'semantic.color.icon.default',
-    'semantic.color.icon.emphasis',
     'semantic.color.icon.muted',
     'semantic.color.icon.disabled',
     'semantic.color.icon.inverse',

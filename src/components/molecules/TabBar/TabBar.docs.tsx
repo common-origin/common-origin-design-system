@@ -56,10 +56,9 @@ export const tabBarDocs: ComponentDocumentation = {
   tokens: [
     // Tab list
     'semantic.border.width.thin',
-    'semantic.color.border.emphasis',
+    'semantic.color.border.default',
     'component.tabBar.scrollbar.height',
     'semantic.surface.raised',
-    'semantic.color.border.default',
     'semantic.radius.sm',
     // Tab
     'component.button.sizes.medium.font',
@@ -366,7 +365,7 @@ return (
         description: 'Horizontal scrollable container with role="tablist". Displays tabs in a row with optional overflow scrolling. Styled scrollbar for better UX.',
         tokens: [
           'semantic.border.width.thin',
-          'semantic.color.border.emphasis',
+          'semantic.color.border.default',
           'component.tabBar.scrollbar.height'
         ]
       },

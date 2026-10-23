@@ -56,7 +56,7 @@ export const codeBlockDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.surface.raised', // Container, and the fade over collapsed code
-    'semantic.border.emphasis', // Container border
+    'semantic.border.default', // Container border
     'semantic.border.width.thin', // Insets the expand-button bar inside the border
     'semantic.radius.sm', // Container and expand-button bar
     'semantic.border.focus', // Focus ring on the expand button
@@ -838,7 +838,7 @@ export default config`}
         description: 'The <pre> element containing code with preserved whitespace, monospace font, and optional max-height constraint with smooth transitions',
         tokens: [
           'semantic.surface.raised',
-          'semantic.border.emphasis',
+          'semantic.border.default',
           'semantic.radius.sm',
           'semantic.space.300',
           'component.codeBlock.fontFamily',

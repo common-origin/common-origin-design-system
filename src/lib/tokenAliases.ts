@@ -5,7 +5,7 @@ import type { Tokens } from '../types/tokens'
 // semantic grammar's names (decision 0031, #189). Each map covers every key the prop type allows,
 // so TypeScript fails here if a key is added without a mapping.
 const { semantic } = tokens
-const { color, space, radius, surface } = semantic
+const { color, space, radius, surface, opacity } = semantic
 
 type Semantic = Tokens['semantic']
 
@@ -51,8 +51,9 @@ export const backgroundByKey: Record<keyof Semantic['color']['background'], stri
   subtle: surface.raised,
   overlay: surface.scrim,
   emphasis: color.fill.emphasis,
-  'emphasis-hover': color.fill['emphasis-hover'],
-  'emphasis-active': color.fill['emphasis-pressed'],
+  // A strong fill's states mix its content colour in at the state-layer opacity (decision 0048)
+  'emphasis-hover': `color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(${opacity.state.hover} * 100%))`,
+  'emphasis-active': `color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(${opacity.state.pressed} * 100%))`,
   surface: color.fill.muted,
   inverse: color.fill.inverse,
   interactive: color.fill.accent,
@@ -84,7 +85,7 @@ export const backgroundByKey: Record<keyof Semantic['color']['background'], stri
 /** Box's `color` prop: text colours, old and new keys. */
 export const textColorByKey: Record<keyof Semantic['color']['text'], string> = {
   default: color.text.default,
-  emphasis: color.text.emphasis,
+  emphasis: color.text.default,
   inverse: color.text.inverse,
   disabled: color.text.disabled,
   success: color.text.success,
@@ -108,13 +109,13 @@ export const borderColorByKey: Record<keyof Semantic['color']['border'], string>
   success: color.border.success,
   warning: color.border.warning,
   none: color.border.none,
-  emphasis: color.border.emphasis,
+  emphasis: color.border.default,
   input: color.border.input,
   'input-hover': color.border['input-hover'],
   focus: color.border.focus,
   accent: color.border.accent,
   danger: color.border.danger,
-  subtle: color.border.emphasis,
+  subtle: color.border.default,
   control: color.border.input,
   // `strong` split by use (0031); as a generic firm outline it is the hovered-input border
   strong: color.border['input-hover'],

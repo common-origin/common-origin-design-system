@@ -26,7 +26,7 @@ const SearchInput = styled.input`
   width: 100%;
   max-width: 400px;
   padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[400]};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[6]};
   font-size: ${tokens.base.fontSize[2]};
   background-color: ${tokens.semantic.surface.raised};
@@ -85,7 +85,7 @@ const ActiveFiltersLabel = styled.div`
   display: flex;
   align-items: center;
   padding-left: ${tokens.semantic.space[300]};
-  border-left: ${border.emphasis};
+  border-left: ${border.default};
   height: ${tokens.semantic.space[600]};
 
   @media (max-width: ${breakpoint.md}) {
@@ -172,7 +172,7 @@ const ItemsCount = styled.div`
   color: ${color.text.muted};
   font-size: ${tokens.base.fontSize[1]};
   padding-bottom: ${tokens.semantic.space[300]};
-	border-bottom: ${border.emphasis};
+	border-bottom: ${border.default};
 
 	@media (max-width: ${breakpoint.md}) {
     border-bottom: none;
@@ -194,19 +194,19 @@ const Table = styled.table`
 `
 
 const TableHeader = styled.thead`
-  border-bottom: ${border.emphasis};
+  border-bottom: ${border.default};
 `
 
 const TableHeaderCell = styled.th`
   padding: ${tokens.semantic.space[300]};
   text-align: left;
   font-weight: 600;
-  color: ${color.text.emphasis};
+  color: ${color.text.default};
 	font: ${tokens.semantic.typography.overline};
 `
 
 const TableRow = styled.tr`
-  border-bottom: ${border.emphasis};
+  border-bottom: ${border.default};
   
   &:last-child {
     border-bottom: none;
@@ -234,7 +234,7 @@ const ListView = styled.div`
 
 const ListItem = styled.div`
   background-color: ${tokens.semantic.surface.raised};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[3]};
   padding: ${tokens.semantic.space[300]};
   margin-bottom: ${tokens.semantic.space[400]};
@@ -318,7 +318,7 @@ const DrawerContent = styled.div`
 
 const DemoContainer = styled.div`
   background-color: ${tokens.semantic.surface.base};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[3]};
   padding: ${tokens.semantic.space[600]};
   margin: ${tokens.semantic.space[400]} 0;

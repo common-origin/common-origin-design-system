@@ -50,7 +50,7 @@ const MainContent = styled.main`
 
 const PatternSection = styled.div`
   margin-bottom: ${tokens.semantic.space[800]};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[4]};
   padding: ${tokens.semantic.space[600]};
   background-color: ${tokens.semantic.surface.raised};

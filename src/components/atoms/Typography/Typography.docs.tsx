@@ -68,7 +68,6 @@ export const typographyDocs: ComponentDocumentation = {
     'semantic.typography.label',
     // Color variant tokens
     'semantic.color.text.default',
-    'semantic.color.text.emphasis',
     'semantic.color.text.muted',
     'semantic.color.text.inverse',
     'semantic.color.text.disabled',

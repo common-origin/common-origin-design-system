@@ -91,15 +91,15 @@ const TokenTable = styled.table`
 
 const TableHeader = styled.th`
   background-color: ${tokens.semantic.surface.base};
-  border-bottom: ${border.emphasis};
+  border-bottom: ${border.default};
   padding: ${tokens.semantic.space[300]};
   text-align: left;
   font: ${tokens.semantic.typography.label};
-  color: ${color.text.emphasis};
+  color: ${color.text.default};
   font-weight: 600;
   
   &:not(:last-child) {
-    border-right: ${border.emphasis};
+    border-right: ${border.default};
   }
   
   @media (max-width: ${breakpoint.md}) {
@@ -110,7 +110,7 @@ const TableHeader = styled.th`
 
 const TableRow = styled.tr`
   &:not(:last-child) td {
-    border-bottom: ${border.emphasis};
+    border-bottom: ${border.default};
   }
 `
 
@@ -119,7 +119,7 @@ const TableCell = styled.td`
   vertical-align: top;
   
   &:not(:last-child) {
-    border-right: ${border.emphasis};
+    border-right: ${border.default};
   }
   
   @media (max-width: ${breakpoint.md}) {
@@ -136,7 +136,7 @@ const ColorSwatch = styled.div<{ $color: string }>`
   width: 40px;
   height: 40px;
   background-color: ${props => props.$color};
-  border: ${border.emphasis};
+  border: ${border.default};
   border-radius: ${tokens.base.border.radius[2]};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
@@ -1052,7 +1052,7 @@ export default function Tokens() {
       content: [
         { id: 'surface', type: 'color', data: tokens.semantic.surface, title: 'Surface', path: 'semantic.surface' },
         { id: 'color-text', type: 'color', data: inUse('semantic.color.text', tokens.semantic.color.text), title: 'Text', path: 'semantic.color.text' },
-        { id: 'color-fill', type: 'color', data: tokens.semantic.color.fill, title: 'Fill', path: 'semantic.color.fill' },
+        { id: 'color-fill', type: 'color', data: inUse('semantic.color.fill', tokens.semantic.color.fill), title: 'Fill', path: 'semantic.color.fill' },
         { id: 'color-border', type: 'color', data: inUse('semantic.color.border', tokens.semantic.color.border), title: 'Border', path: 'semantic.color.border' },
         { id: 'color-icon', type: 'color', data: inUse('semantic.color.icon', tokens.semantic.color.icon), title: 'Icon', path: 'semantic.color.icon' },
       ]

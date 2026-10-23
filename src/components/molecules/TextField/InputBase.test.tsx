@@ -9,7 +9,7 @@ describe('InputBase', () => {
     const { container } = render(<StyledTextAreaBase aria-label="Notes" />)
     const style = getComputedStyle(container.querySelector('textarea')!)
 
-    expect(style.border).toBe(`${input.default.borderWidth} solid rgb(108, 117, 125)`)
+    expect(style.border).toBe(`${input.default.borderWidth} solid rgb(144, 144, 144)`) // gray.800, the control edge (#190)
     expect(style.borderRadius).toBe(input.default.borderRadius)
     expect(style.font).toBe(`400 1rem / 1.5rem "Inter", sans-serif`)
     expect(style.minHeight).toBe(input.textarea.minHeight)
