@@ -767,5 +767,146 @@
 		"intent": "Use to indicate that an element can be moved, dragged, or repositioned",
 		"decorativeDefault": false,
 		"ariaLabelDefault": "Move"
+	},
+	"statusError": {
+		"path": "M22.5 12L17.25 21.0933L6.75 21.0933L1.5 12L6.75 2.9067L17.25 2.9067ZM16.0953 4.9067L7.9047 4.9067L3.8094 12L7.9047 19.0933L16.0953 19.0933L20.1906 12ZM9.2071 7.7929L16.2071 14.7929L14.7929 16.2071L7.7929 9.2071ZM16.2071 9.2071L9.2071 16.2071L7.7929 14.7929L14.7929 7.7929Z",
+		"name": "statusError",
+		"description": "X inside a hexagon with a flat top edge",
+		"category": "status",
+		"aliases": [
+			"error",
+			"failed",
+			"blocked",
+			"danger"
+		],
+		"intent": "Use for the error status: failed or blocked, needs action now (decision 0045). Shows in the danger colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Error"
+	},
+	"statusSerious": {
+		"path": "M12 2L22 12L12 22L2 12ZM4.8284 12L12 19.1716L19.1716 12L12 4.8284ZM13 7.5L13 13L11 13L11 7.5ZM12 15.25A1 1 0 1 1 12 17.25A1 1 0 1 1 12 15.25Z",
+		"name": "statusSerious",
+		"description": "Exclamation mark inside a diamond",
+		"category": "status",
+		"aliases": [
+			"serious",
+			"severe",
+			"critical-warning"
+		],
+		"intent": "Use for the serious status: will fail or cause harm without action (decision 0045). Shows in the serious colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Serious"
+	},
+	"statusWarning": {
+		"path": "M12 2.5L22 20.5L2 20.5ZM5.399 18.5L18.601 18.5L12 6.6183ZM13 10.5L13 13.5L11 13.5L11 10.5ZM12 15.5A1 1 0 1 1 12 17.5A1 1 0 1 1 12 15.5Z",
+		"name": "statusWarning",
+		"description": "Exclamation mark inside a triangle",
+		"category": "status",
+		"aliases": [
+			"warning",
+			"caution",
+			"attention"
+		],
+		"intent": "Use for the warning status: needs attention, not blocking (decision 0045). Shows in the warning colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Warning"
+	},
+	"statusSuccess": {
+		"path": "M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2ZM12 4A8 8 0 1 0 12 20A8 8 0 1 0 12 4ZM11.0674 16.4814L7.29297 12.707L8.70703 11.293L10.9326 13.5176L15.2314 8.35937L16.7686 9.64062L11.0674 16.4814Z",
+		"name": "statusSuccess",
+		"description": "Checkmark inside a circle",
+		"category": "status",
+		"aliases": [
+			"success",
+			"completed",
+			"done"
+		],
+		"intent": "Use for the success status: done as intended (decision 0045). Shows in the success colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Success"
+	},
+	"statusInfo": {
+		"path": "M7 2H17A5 5 0 0 1 22 7V17A5 5 0 0 1 17 22H7A5 5 0 0 1 2 17V7A5 5 0 0 1 7 2ZM7 4A3 3 0 0 0 4 7V17A3 3 0 0 0 7 20H17A3 3 0 0 0 20 17V7A3 3 0 0 0 17 4ZM13 10L13 17L11 17L11 10ZM12 6.5A1 1 0 1 1 12 8.5A1 1 0 1 1 12 6.5Z",
+		"name": "statusInfo",
+		"description": "Letter i inside a rounded square",
+		"category": "status",
+		"aliases": [
+			"info",
+			"information",
+			"notice"
+		],
+		"intent": "Use for the info status: neutral information (decision 0045). Shows in the accent colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Information"
+	},
+	"statusInProgress": {
+		"path": "M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2ZM12 4A8 8 0 1 0 12 20A8 8 0 1 0 12 4ZM12 6A6 6 0 0 1 12 18Z",
+		"name": "statusInProgress",
+		"description": "Circle with its right half filled",
+		"category": "status",
+		"aliases": [
+			"in progress",
+			"processing",
+			"running"
+		],
+		"intent": "Use for the in-progress status: running now (decision 0045). Shows in the accent colour with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "In progress"
+	},
+	"statusPending": {
+		"path": "M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2ZM12 4A8 8 0 1 0 12 20A8 8 0 1 0 12 4ZM13 6.5L13 13L11 13L11 6.5ZM11.8318 11.4531L16.1318 14.1531L15.0682 15.8469L10.7682 13.1469Z",
+		"name": "statusPending",
+		"description": "Clock face",
+		"category": "status",
+		"aliases": [
+			"pending",
+			"waiting",
+			"clock"
+		],
+		"intent": "Use for the pending status: waiting on someone or something else (decision 0045). Neutral colour, with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Pending"
+	},
+	"statusScheduled": {
+		"path": "M6 4H18A3 3 0 0 1 21 7V18A3 3 0 0 1 18 21H6A3 3 0 0 1 3 18V7A3 3 0 0 1 6 4ZM6 6A1 1 0 0 0 5 7V18A1 1 0 0 0 6 19H18A1 1 0 0 0 19 18V7A1 1 0 0 0 18 6ZM4 9L20 9L20 11L4 11ZM9 2L9 6.5L7 6.5L7 2ZM17 2L17 6.5L15 6.5L15 2Z",
+		"name": "statusScheduled",
+		"description": "Calendar page",
+		"category": "status",
+		"aliases": [
+			"scheduled",
+			"calendar",
+			"planned"
+		],
+		"intent": "Use for the scheduled status: starts at a set time (decision 0045). Neutral colour, with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Scheduled"
+	},
+	"statusNotStarted": {
+		"path": "M13.4781 2.1098A10 10 0 0 1 17.9482 3.9614L16.7586 5.5691A8 8 0 0 0 13.1825 4.0879ZM20.0386 6.0518A10 10 0 0 1 21.8902 10.5219L19.9121 10.8175A8 8 0 0 0 18.4309 7.2414ZM21.8902 13.4781A10 10 0 0 1 20.0386 17.9482L18.4309 16.7586A8 8 0 0 0 19.9121 13.1825ZM17.9482 20.0386A10 10 0 0 1 13.4781 21.8902L13.1825 19.9121A8 8 0 0 0 16.7586 18.4309ZM10.5219 21.8902A10 10 0 0 1 6.0518 20.0386L7.2414 18.4309A8 8 0 0 0 10.8175 19.9121ZM3.9614 17.9482A10 10 0 0 1 2.1098 13.4781L4.0879 13.1825A8 8 0 0 0 5.5691 16.7586ZM2.1098 10.5219A10 10 0 0 1 3.9614 6.0518L5.5691 7.2414A8 8 0 0 0 4.0879 10.8175ZM6.0518 3.9614A10 10 0 0 1 10.5219 2.1098L10.8175 4.0879A8 8 0 0 0 7.2414 5.5691Z",
+		"name": "statusNotStarted",
+		"description": "Dashed circle",
+		"category": "status",
+		"aliases": [
+			"not started",
+			"draft",
+			"to do"
+		],
+		"intent": "Use for the not-started status: exists but not begun or submitted, such as a draft (decision 0045). Neutral colour, with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Not started"
+	},
+	"statusCancelled": {
+		"path": "M12 2A10 10 0 1 1 12 22A10 10 0 1 1 12 2ZM12 4A8 8 0 1 0 12 20A8 8 0 1 0 12 4ZM6.3071 4.8929L19.1071 17.6929L17.6929 19.1071L4.8929 6.3071Z",
+		"name": "statusCancelled",
+		"description": "Circle with a diagonal line through it",
+		"category": "status",
+		"aliases": [
+			"cancelled",
+			"canceled",
+			"stopped"
+		],
+		"intent": "Use for the cancelled status: stopped on purpose (decision 0045). Neutral colour, with a label",
+		"decorativeDefault": false,
+		"ariaLabelDefault": "Cancelled"
 	}
 }

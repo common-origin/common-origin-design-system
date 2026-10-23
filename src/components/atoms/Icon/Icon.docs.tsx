@@ -199,7 +199,7 @@ export const iconDocs: ComponentDocumentation = {
     },
     {
       name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (52 icons total)',
+      description: 'Complete icon library organized by category with names (62 icons total)',
       code: `{/* Action Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
@@ -243,6 +243,14 @@ export const iconDocs: ComponentDocumentation = {
 {/* User Icons */}
 <Stack direction="row" gap="lg" wrap>
   <Icon name="userBox" />
+</Stack>
+
+{/* Status Icons: one per status, always with a visible label (decision 0045) */}
+<Stack direction="row" gap="lg" wrap>
+  <Icon name="statusError" /> <Icon name="statusSerious" /> <Icon name="statusWarning" />
+  <Icon name="statusSuccess" /> <Icon name="statusInfo" /> <Icon name="statusInProgress" />
+  <Icon name="statusPending" /> <Icon name="statusScheduled" /> <Icon name="statusNotStarted" />
+  <Icon name="statusCancelled" />
 </Stack>`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
@@ -492,6 +500,54 @@ export const iconDocs: ComponentDocumentation = {
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="userBox" />
                 <Typography variant="caption">userBox</Typography>
+              </Stack>
+            </Stack>
+          </Stack>
+
+          {/* Status Icons */}
+          <Stack direction="column" gap="md">
+            <Typography variant="label" color="subdued">STATUS ICONS (10)</Typography>
+            <Typography variant="caption" color="subdued">One per status, in its role colour and always with a visible label (decision 0045)</Typography>
+            <Stack direction="row" gap="lg" wrap>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusError" />
+                <Typography variant="caption">statusError</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusSerious" />
+                <Typography variant="caption">statusSerious</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusWarning" />
+                <Typography variant="caption">statusWarning</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusSuccess" />
+                <Typography variant="caption">statusSuccess</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusInfo" />
+                <Typography variant="caption">statusInfo</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusInProgress" />
+                <Typography variant="caption">statusInProgress</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusPending" />
+                <Typography variant="caption">statusPending</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusScheduled" />
+                <Typography variant="caption">statusScheduled</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusNotStarted" />
+                <Typography variant="caption">statusNotStarted</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="statusCancelled" />
+                <Typography variant="caption">statusCancelled</Typography>
               </Stack>
             </Stack>
           </Stack>
