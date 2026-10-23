@@ -118,7 +118,7 @@ describe('StatusLabel Component', () => {
 
   describe('Icon Display', () => {
     // The icon is not yet hidden from assistive technology: Icon ignores aria-hidden (#85)
-    it('always shows an icon with the text, for every status (decision 0018)', () => {
+    it('always shows an icon with the text at the medium size, for every status (decision 0018)', () => {
       const statuses: StatusType[] = ['pending', 'completed', 'failed', 'cancelled', 'processing', 'scheduled']
 
       statuses.forEach((status) => {

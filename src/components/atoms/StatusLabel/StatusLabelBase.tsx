@@ -214,8 +214,8 @@ const VisibleContent = styled.span`
 
 /**
  * Shared implementation of StatusLabel and the deprecated StatusBadge. Internal: not exported
- * from the package. `showIcon` exists only for StatusBadge; StatusLabel always shows the icon
- * (decision 0018).
+ * from the package. `showIcon` exists only for StatusBadge. StatusLabel always shows the status icon
+ * at the medium size, and at the small size the shape for coloured statuses (decisions 0018, 0045).
  */
 export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }> = ({
   status,

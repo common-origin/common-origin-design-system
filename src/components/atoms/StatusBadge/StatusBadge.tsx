@@ -12,7 +12,8 @@ export interface StatusBadgeProps extends StatusLabelProps {
   /**
    * Whether to show the icon
    * @default true
-   * @deprecated StatusLabel always shows the icon, so status is never conveyed by colour alone.
+   * @deprecated StatusLabel always shows its status icon or shape with the text, so status is
+   * never conveyed by colour alone (decision 0045).
    */
   showIcon?: boolean
 }
@@ -21,7 +22,7 @@ export interface StatusBadgeProps extends StatusLabelProps {
  * StatusBadge displays a transaction or task status.
  *
  * @deprecated Renamed to `StatusLabel` (same `status`, `size`, `label`, `liveRegion`), which always
- * shows the icon. StatusBadge is removed in 3.0 (decision 0018).
+ * shows its status icon or shape. StatusBadge is removed in 3.0 (decision 0018).
  */
 export const StatusBadge: React.FC<StatusBadgeProps> = (props) => <StatusLabelBase {...props} />
 
