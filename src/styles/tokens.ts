@@ -1340,8 +1340,10 @@ export type Tokens = {
            * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0.
            */
           padding: string;
-          /** Small Button label typography. */
+          /** Small Button text: the caption style, with button.sizes.small.fontWeight after it. */
           font: string;
+          /** Weight of small Button text, set after the font: medium, as the other sizes. */
+          fontWeight: string;
         };
         medium: {
           /**
@@ -2109,7 +2111,7 @@ export type Tokens = {
           /** Slider thumb while dragging: deepest. */
           active: string;
         };
-        /** Fill of Slider's thumb: white, so it reads on both the track and the fill. */
+        /** Fill of the Slider thumb: the raised surface, white. */
         background: string;
       };
     };
@@ -2126,7 +2128,11 @@ export type Tokens = {
         /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
         maxWidth: string;
       };
-      /** Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today. */
+      /**
+       * Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.typography.caption`.
+       */
       font: string;
     };
     cardLarge: {
@@ -2177,9 +2183,9 @@ export type Tokens = {
     };
     status: {
       pending: {
-        /** Text and icon of a pending StatusLabel, on its pending background. */
+        /** Text and icon of a pending StatusLabel: neutral, because waiting needs no attention (decision 0045). 6.01:1 on white. */
         text: string;
-        /** Fill of a pending StatusLabel, behind its pending text. */
+        /** Fill of a pending StatusLabel (decision 0045). */
         background: string;
       };
       completed: {
@@ -2201,38 +2207,66 @@ export type Tokens = {
         background: string;
       };
       processing: {
-        /** Text and icon of a processing StatusLabel, on its processing background. */
+        /** Text and icon of a processing StatusLabel: in progress is accent (decisions 0043, 0045). 6.00:1 on white. */
         text: string;
-        /** Fill of a processing StatusLabel, behind its processing text. */
+        /** Fill of a processing StatusLabel (decision 0045). */
         background: string;
       };
       scheduled: {
-        /** Text and icon of a scheduled StatusLabel, on its scheduled background. */
+        /** Text and icon of a scheduled StatusLabel: neutral, because a future item needs no attention (decision 0045). 6.01:1 on white. */
         text: string;
-        /** Fill of a scheduled StatusLabel, behind its scheduled text. */
+        /** Fill of a scheduled StatusLabel (decision 0045). */
         background: string;
       };
     };
     transaction: {
-      /** Positive amounts and credits in MoneyDisplay and TransactionListItem. */
+      /**
+       * Positive amounts and credits in MoneyDisplay and TransactionListItem.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.positive`.
+       */
       credit: string;
-      /** A credit amount on a hovered interactive row. */
+      /**
+       * A credit amount on a hovered interactive row.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.positive`.
+       */
       'credit-hover': string;
-      /** Negative amounts and debits in MoneyDisplay and TransactionListItem. */
+      /**
+       * Negative amounts and debits in MoneyDisplay and TransactionListItem.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.negative`.
+       */
       debit: string;
-      /** A debit amount on a hovered interactive row. */
+      /**
+       * A debit amount on a hovered interactive row.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.negative`.
+       */
       'debit-hover': string;
-      /** Amounts of pending or processing transactions. */
+      /**
+       * Amounts of pending or processing transactions.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.text.muted`.
+       */
       pending: string;
-      /** Informational amounts that are neither credit nor debit. */
+      /**
+       * Informational amounts that are neither credit nor debit.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.text.muted`.
+       */
       neutral: string;
     };
     track: {
-      /** Unfilled track of ProgressBar and Slider; the fill and thumb show the value (decision 0026). */
+      /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
       background: string;
     };
     tooltip: {
-      /** Dotted underline marking text that has a tooltip. */
+      /**
+       * Dotted underline marking text that has a tooltip.
+       *
+       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.border.default`.
+       */
       border: string;
     };
   };
@@ -2373,7 +2407,7 @@ export type Tokens = {
       /**
        * Dotted underline marking text that has a tooltip.
        *
-       * @deprecated Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0.
+       * @deprecated Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0. Use `semantic.border.default`.
        */
       tooltip: string;
       width: {
@@ -3212,37 +3246,37 @@ export type Tokens = {
         /**
          * Color for positive monetary values, credits, income
          *
-         * @deprecated Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.positive`.
          */
         credit: string;
         /**
          * Hover state for credit-colored interactive elements
          *
-         * @deprecated Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.positive`.
          */
         'credit-hover': string;
         /**
          * Color for negative monetary values, debits, expenses
          *
-         * @deprecated Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.negative`.
          */
         debit: string;
         /**
          * Hover state for debit-colored interactive elements
          *
-         * @deprecated Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.negative`.
          */
         'debit-hover': string;
         /**
          * Color for pending or processing financial transactions
          *
-         * @deprecated Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0. Use `semantic.color.text.muted`.
          */
         pending: string;
         /**
          * Neutral color for informational monetary amounts
          *
-         * @deprecated Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0.
+         * @deprecated Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0. Use `semantic.color.text.muted`.
          */
         neutral: string;
       };
@@ -3795,7 +3829,7 @@ export type Tokens = {
       /**
        * Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption.
        *
-       * @deprecated Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0.
+       * @deprecated Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0. Use `semantic.typography.caption`.
        */
       breadcrumb: string;
     };

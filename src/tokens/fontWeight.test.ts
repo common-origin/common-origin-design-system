@@ -16,8 +16,9 @@ describe('semantic font weights', () => {
     // Check the source, not the resolved output: a base reference with the same value
     // would resolve identically but skip the semantic tier
     // DTCG: `$type` sits on the group, so skip `$` keys
-    Object.entries(source.semantic.typography as Record<string, { $value?: string }>)
-      .filter(([name]) => !name.startsWith('$'))
+    // A deprecated style that aliases its replacement has no weight of its own (#224)
+    Object.entries(source.semantic.typography as Record<string, { $value?: string; $deprecated?: string }>)
+      .filter(([name, token]) => !name.startsWith('$') && !token.$deprecated)
       .forEach(([name, token]) => {
         expect([name, token.$value]).toEqual([name, expect.stringMatching(/^\{semantic\.fontWeight\.(regular|medium|semibold|bold)\} /)])
       })

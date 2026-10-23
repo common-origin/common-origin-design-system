@@ -1,6 +1,6 @@
 # 0036. Domain component tokens may reference base values, for now
 
-- **Status:** Accepted (interim; to be resolved in [#224](https://github.com/common-origin/common-origin-design-system/issues/224))
+- **Status:** Resolved (2026-10-24, [#224](https://github.com/common-origin/common-origin-design-system/issues/224) with part (e) of [#190](https://github.com/common-origin/common-origin-design-system/issues/190)): every listed token now references a semantic token or is a deprecated alias of one. The exception list is empty, and rule 4 of [0014](0014-token-tiers.md) holds with no exceptions besides Button's `emphasis` aliases
 - **Date:** 2026-10-13
 - **Decided by:** Ollie (owner)
 - **Principles:** P3, P7

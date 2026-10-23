@@ -58,7 +58,7 @@ const getTypographyStyles = (variant: TypographyVariant) => {
     caption: `font: ${typography.caption}; text-transform: uppercase;`,
     button1: `font: ${tokens.component.button.sizes.large.font};`,
     button2: `font: ${tokens.component.button.sizes.medium.font};`,
-    button3: `font: ${tokens.component.button.sizes.small.font};`,
+    button3: `font: ${tokens.component.button.sizes.small.font}; font-weight: ${tokens.component.button.sizes.small.fontWeight};`,
     label: `font: ${typography.label};`,
   }
   

@@ -605,20 +605,6 @@
   --co-base-spacing-48: var(--co-base-dimension-48); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
   --co-base-spacing-56: var(--co-base-dimension-56); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
   --co-base-spacing-64: var(--co-base-dimension-64); /** Deprecated: base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. */
-  --co-component-slider-thumb-background: var(--co-base-color-neutral-000); /** Fill of Slider's thumb: white, so it reads on both the track and the fill. */
-  --co-component-status-pending-text: var(--co-base-color-yellow-1000); /** Text and icon of a pending StatusLabel, on its pending background. */
-  --co-component-status-pending-background: var(--co-base-color-yellow-100); /** Fill of a pending StatusLabel, behind its pending text. */
-  --co-component-status-processing-text: var(--co-base-color-blue-900); /** Text and icon of a processing StatusLabel, on its processing background. */
-  --co-component-status-processing-background: var(--co-base-color-blue-100); /** Fill of a processing StatusLabel, behind its processing text. */
-  --co-component-status-scheduled-text: var(--co-base-color-purple-900); /** Text and icon of a scheduled StatusLabel, on its scheduled background. */
-  --co-component-status-scheduled-background: var(--co-base-color-purple-100); /** Fill of a scheduled StatusLabel, behind its scheduled text. */
-  --co-component-transaction-credit: var(--co-base-color-green-700); /** Positive amounts and credits in MoneyDisplay and TransactionListItem. */
-  --co-component-transaction-credit-hover: var(--co-base-color-green-800); /** A credit amount on a hovered interactive row. */
-  --co-component-transaction-debit: var(--co-base-color-red-900); /** Negative amounts and debits in MoneyDisplay and TransactionListItem. */
-  --co-component-transaction-debit-hover: var(--co-base-color-red-1000); /** A debit amount on a hovered interactive row. */
-  --co-component-transaction-pending: var(--co-base-color-orange-600); /** Amounts of pending or processing transactions. */
-  --co-component-transaction-neutral: var(--co-base-color-neutral-600); /** Informational amounts that are neither credit nor debit. */
-  --co-component-track-background: var(--co-base-color-neutral-300); /** Unfilled track of ProgressBar and Slider; the fill and thumb show the value (decision 0026). */
   --co-semantic-elevation-none: var(--co-base-shadow-none); /** No elevation - flat surfaces, default state */
   --co-semantic-elevation-raised: var(--co-base-shadow-2); /** Subtle lift - cards, buttons with depth */
   --co-semantic-elevation-floating: var(--co-base-shadow-4); /** Moderate lift - tooltips, popovers, dropdowns */
@@ -660,7 +646,6 @@
   --co-semantic-z-index-modal: var(--co-base-z-index-8); /** Deprecated: Renamed to semantic.layer.modal by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025). */
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus); /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
-  --co-semantic-border-tooltip: var(--co-base-border-width-2) var(--co-base-border-style-dotted) var(--co-semantic-color-border-emphasis); /** Deprecated: Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0. */
   --co-semantic-border-width-thin: var(--co-base-border-width-1); /** Hairline border: dividers, control edges and rings. */
   --co-semantic-border-width-thick: var(--co-base-border-width-2); /** Thick border: focus rings, emphasised outlines and selected states. */
   --co-semantic-border-focus-offset: var(--co-base-border-width-2); /** Gap between an element and its focus ring; negate it to inset the ring inside the element. */
@@ -771,7 +756,6 @@
   --co-semantic-color-background-emphasis-hover: var(--co-base-color-neutral-800); /** Deprecated: Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-emphasis-active: var(--co-base-color-neutral-1000); /** Deprecated: Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** Deprecated: Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0. */
-  --co-semantic-color-background-progress-track: var(--co-base-color-neutral-300); /** Deprecated: Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-background-overlay: var(--co-semantic-surface-scrim); /** Deprecated: Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-hover-overlay: var(--co-semantic-color-fill-none-hover); /** Deprecated: Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-active-overlay: var(--co-semantic-color-fill-none-pressed); /** Deprecated: Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -797,12 +781,6 @@
   --co-semantic-color-icon-danger: var(--co-base-color-danger-1100); /** Error icons, such as in Alert and EmptyState. 6.03:1 on white. */
   --co-semantic-color-icon-ai: var(--co-base-color-ai-1100); /** The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page. */
   --co-semantic-color-icon-serious: var(--co-base-color-serious-1100); /** Serious-warning icons, matching color.text.serious. 6.04:1 on white. */
-  --co-semantic-color-financial-credit: var(--co-base-color-green-700); /** Deprecated: Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-financial-credit-hover: var(--co-base-color-green-800); /** Deprecated: Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-financial-debit: var(--co-base-color-red-900); /** Deprecated: Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-financial-debit-hover: var(--co-base-color-red-1000); /** Deprecated: Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-financial-pending: var(--co-base-color-orange-600); /** Deprecated: Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-financial-neutral: var(--co-base-color-neutral-600); /** Deprecated: Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-category-gray: var(--co-base-color-gray-800); /** Gray category (decision 0043: neutral, for uncategorised or "other"): the outline of an outlined CategoryLabel. 3.19:1 on white. */
   --co-semantic-color-category-gray-strong: var(--co-base-color-gray-1100); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1. */
   --co-semantic-color-category-gray-text: var(--co-base-color-gray-1100); /** Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted. */
@@ -823,12 +801,6 @@
   --co-semantic-color-category-magenta-strong: var(--co-base-color-magenta-1100); /** Strong step of the magenta category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
   --co-semantic-color-category-magenta-text: var(--co-base-color-magenta-1100); /** Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted. */
   --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-300); /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
-  --co-semantic-color-status-pending: var(--co-base-color-yellow-1000); /** Deprecated: Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-pending-bg: var(--co-base-color-yellow-100); /** Deprecated: Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-processing: var(--co-base-color-blue-900); /** Deprecated: Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-processing-bg: var(--co-base-color-blue-100); /** Deprecated: Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-scheduled: var(--co-base-color-purple-900); /** Deprecated: Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-color-status-scheduled-bg: var(--co-base-color-purple-100); /** Deprecated: Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-fill-emphasis: var(--co-base-color-gray-1200); /** Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048). */
   --co-semantic-color-fill-emphasis-hover: var(--co-base-color-neutral-800); /** Deprecated: Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0. */
   --co-semantic-color-fill-emphasis-pressed: var(--co-base-color-neutral-1000); /** Deprecated: Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0. */
@@ -956,7 +928,7 @@
   --co-component-button-variants-danger-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled danger Button fill. */
   --co-component-button-variants-danger-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled danger Button text and icon colour. */
   --co-component-button-sizes-small-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-md); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0. */
-  --co-component-button-sizes-small-font: var(--co-semantic-font-weight-medium) var(--co-semantic-font-size-xs)/var(--co-base-line-height-1) var(--co-semantic-font-family-body); /** Small Button label typography. */
+  --co-component-button-sizes-small-font-weight: var(--co-semantic-font-weight-medium); /** Weight of small Button text, set after the font: medium, as the other sizes. */
   --co-component-button-sizes-medium-padding: var(--co-semantic-space-inset-sm) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0. */
   --co-component-button-sizes-medium-font: var(--co-semantic-font-weight-medium) var(--co-semantic-font-size-sm)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Medium Button label typography. */
   --co-component-button-sizes-large-padding: var(--co-semantic-space-inset-md) var(--co-semantic-space-inset-lg); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0. */
@@ -1019,7 +991,6 @@
   --co-component-separator-sizes-medium-margin: var(--co-semantic-space-600) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0. */
   --co-component-separator-sizes-large-margin: var(--co-semantic-space-800) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0. */
   --co-component-separator-sizes-xlarge-margin: var(--co-semantic-space-1200) 0; /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0. */
-  --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
   --co-component-progress-bar-border-radius: var(--co-semantic-radius-sm); /** Deprecated: ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0. */
   --co-component-progress-bar-sizes-sm-height: var(--co-semantic-size-100); /** Thickness of the small ProgressBar, the thinnest size. */
   --co-component-progress-bar-sizes-md-height: var(--co-semantic-size-200); /** Thickness of the medium ProgressBar, the default. */
@@ -1096,10 +1067,10 @@
   --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised); /** Slider thumb at rest. */
   --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky); /** Slider thumb on hover: one step deeper. */
   --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating); /** Slider thumb while dragging: deepest. */
+  --co-component-slider-thumb-background: var(--co-semantic-surface-raised); /** Fill of the Slider thumb: the raised surface, white. */
   --co-component-account-card-header-min-height: var(--co-semantic-size-1200); /** Minimum height of AccountCard's header row, so cards in a grid line up. */
   --co-component-account-card-min-width: var(--co-semantic-size-7500); /** Narrowest an AccountCard may get before its content wraps badly. */
   --co-component-breadcrumbs-item-max-width: var(--co-semantic-size-4500); /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
-  --co-component-breadcrumbs-font: var(--co-semantic-font-weight-regular) var(--co-semantic-font-size-xs)/var(--co-base-line-height-2) var(--co-semantic-font-family-body); /** Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today. */
   --co-component-card-large-max-width: var(--co-semantic-size-19200); /** Widest a CardLarge grows, so its text keeps a readable measure. */
   --co-component-checkbox-box-size: var(--co-semantic-size-500); /** Width and height of the Checkbox and Radio box. */
   --co-component-checkbox-row-min-height: var(--co-semantic-size-800); /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */
@@ -1112,15 +1083,29 @@
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Indent of a compact ListItem's expanded content, aligning it with the label. */
   --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of a comfortable ListItem's expanded content. */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Minimum height of a TransactionListItem row, so rows line up in a list. */
+  --co-component-status-pending-text: var(--co-semantic-color-text-muted); /** Text and icon of a pending StatusLabel: neutral, because waiting needs no attention (decision 0045). 6.01:1 on white. */
+  --co-component-status-pending-background: var(--co-semantic-color-fill-muted); /** Fill of a pending StatusLabel (decision 0045). */
   --co-component-status-completed-text: var(--co-semantic-color-text-success); /** Text and icon of a completed StatusLabel, on its completed background. */
   --co-component-status-completed-background: var(--co-semantic-color-fill-success-muted); /** Fill of a completed StatusLabel, behind its completed text. */
   --co-component-status-failed-text: var(--co-semantic-color-text-danger); /** Text and icon of a failed StatusLabel, on its failed background. */
   --co-component-status-failed-background: var(--co-semantic-color-fill-danger-muted); /** Fill of a failed StatusLabel, behind its failed text. */
   --co-component-status-cancelled-text: var(--co-semantic-color-text-muted); /** Text and icon of a cancelled StatusLabel, on its cancelled background. */
   --co-component-status-cancelled-background: var(--co-semantic-color-fill-muted); /** Fill of a cancelled StatusLabel, behind its cancelled text. */
-  --co-component-tooltip-border: var(--co-semantic-border-width-thick) var(--co-base-border-style-dotted) var(--co-semantic-color-border-default); /** Dotted underline marking text that has a tooltip. */
+  --co-component-status-processing-text: var(--co-semantic-color-text-accent); /** Text and icon of a processing StatusLabel: in progress is accent (decisions 0043, 0045). 6.00:1 on white. */
+  --co-component-status-processing-background: var(--co-semantic-color-fill-accent-muted); /** Fill of a processing StatusLabel (decision 0045). */
+  --co-component-status-scheduled-text: var(--co-semantic-color-text-muted); /** Text and icon of a scheduled StatusLabel: neutral, because a future item needs no attention (decision 0045). 6.01:1 on white. */
+  --co-component-status-scheduled-background: var(--co-semantic-color-fill-muted); /** Fill of a scheduled StatusLabel (decision 0045). */
+  --co-component-transaction-credit: var(--co-semantic-color-data-positive); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-transaction-credit-hover: var(--co-semantic-color-data-positive); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-transaction-debit: var(--co-semantic-color-data-negative); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-transaction-debit-hover: var(--co-semantic-color-data-negative); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-transaction-pending: var(--co-semantic-color-text-muted); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-transaction-neutral: var(--co-semantic-color-text-muted); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
+  --co-component-track-background: var(--co-semantic-color-fill-default); /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
+  --co-component-tooltip-border: var(--co-semantic-border-default); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
   --co-semantic-border-subtle: var(--co-semantic-border-default); /** Deprecated: Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-border-strong: var(--co-semantic-border-input-hover); /** Deprecated: Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-border-tooltip: var(--co-semantic-border-default); /** Deprecated: Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0. */
   --co-semantic-border-emphasis: var(--co-semantic-border-default); /** Deprecated: Dividers have one border (decision 0048). Removed in 3.0. */
   --co-semantic-color-text-emphasis: var(--co-semantic-color-text-default); /** Deprecated: Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. */
   --co-semantic-color-text-subdued: var(--co-semantic-color-text-muted); /** Deprecated: Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -1148,6 +1133,7 @@
   --co-semantic-color-background-neutral: var(--co-semantic-color-fill-default); /** Deprecated: Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-neutral-hover: var(--co-semantic-color-fill-default-hover); /** Deprecated: Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-neutral-active: var(--co-semantic-color-fill-default-pressed); /** Deprecated: Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-color-background-progress-track: var(--co-semantic-color-fill-default); /** Deprecated: Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-background-page: var(--co-semantic-surface-base); /** Deprecated: Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-border-subtle: var(--co-semantic-color-border-default); /** Deprecated: Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-border-control: var(--co-semantic-color-border-input); /** Deprecated: Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -1162,6 +1148,12 @@
   --co-semantic-color-icon-error: var(--co-semantic-color-icon-danger); /** Deprecated: Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-icon-accent-hover: var(--co-semantic-color-icon-accent); /** Deprecated: Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. */
   --co-semantic-color-icon-accent-pressed: var(--co-semantic-color-icon-accent); /** Deprecated: Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. */
+  --co-semantic-color-financial-credit: var(--co-semantic-color-data-positive); /** Deprecated: Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-financial-credit-hover: var(--co-semantic-color-data-positive); /** Deprecated: Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-financial-debit: var(--co-semantic-color-data-negative); /** Deprecated: Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-financial-debit-hover: var(--co-semantic-color-data-negative); /** Deprecated: Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-financial-pending: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-financial-neutral: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-category-blue: var(--co-semantic-color-category-periwinkle); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
   --co-semantic-color-category-blue-strong: var(--co-semantic-color-category-periwinkle-strong); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. */
   --co-semantic-color-category-blue-emphasis: var(--co-semantic-color-category-periwinkle-strong); /** Deprecated: "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. */
@@ -1206,12 +1198,18 @@
   --co-semantic-color-category-green-muted: var(--co-semantic-color-category-olive-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. */
   --co-semantic-color-category-red-muted: var(--co-semantic-color-category-rose-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. */
   --co-semantic-color-category-orange-muted: var(--co-semantic-color-category-rose-muted); /** Deprecated: Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. */
+  --co-semantic-color-status-pending: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-pending-bg: var(--co-semantic-color-fill-muted); /** Deprecated: Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-completed: var(--co-semantic-color-text-success); /** Deprecated: Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-completed-bg: var(--co-semantic-color-fill-success-muted); /** Deprecated: Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-failed: var(--co-semantic-color-text-danger); /** Deprecated: Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-failed-bg: var(--co-semantic-color-fill-danger-muted); /** Deprecated: Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-cancelled: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-status-cancelled-bg: var(--co-semantic-color-fill-muted); /** Deprecated: Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-processing: var(--co-semantic-color-text-accent); /** Deprecated: Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-processing-bg: var(--co-semantic-color-fill-accent-muted); /** Deprecated: Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-scheduled: var(--co-semantic-color-text-muted); /** Deprecated: Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-color-status-scheduled-bg: var(--co-semantic-color-fill-muted); /** Deprecated: Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0. */
   --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Blue fill of a hovered accent control: fill.accent with text.inverse mixed in at opacity.state.hover (decision 0048). */
   --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Blue fill of a pressed accent control: fill.accent with text.inverse mixed in at opacity.state.pressed (decision 0048). */
   --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Fill of a hovered destructive control: fill.danger with text.inverse mixed in at opacity.state.hover (decision 0048). */
@@ -1228,11 +1226,9 @@
   --co-semantic-typography-small: var(--co-semantic-font-weight-regular) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Small text: secondary copy and compact controls. */
   --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** A short uppercase label above a heading. */
   --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Captions: helper text, metadata and image captions. */
-  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-base-font-size-3)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Deprecated: Moved to the component tier as component.button.sizes.large.font (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-base-font-size-2)/var(--co-base-line-height-4) var(--co-base-font-family-body); /** Deprecated: Moved to the component tier as component.button.sizes.medium.font (decision 0031 §6). Removed in 3.0. */
-  --co-semantic-typography-button3: var(--co-semantic-font-weight-medium) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Deprecated: Moved to the component tier as component.button.sizes.small.font (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-typography-button1: var(--co-semantic-font-weight-medium) var(--co-semantic-font-size-md)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Deprecated: Moved to the component tier as component.button.sizes.large.font (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-typography-button2: var(--co-semantic-font-weight-medium) var(--co-semantic-font-size-sm)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Deprecated: Moved to the component tier as component.button.sizes.medium.font (decision 0031 §6). Removed in 3.0. */
   --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form labels for fields such as TextField and Slider. */
-  --co-semantic-typography-breadcrumb: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-2) var(--co-base-font-family-body); /** Deprecated: Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0. */
   --co-component-button-primary-font: var(--co-semantic-typography-button1); /** Button label typography, the same as sizes.large.font. */
   --co-component-button-variants-accent-hover-background-color: var(--co-semantic-color-fill-accent-hover); /** Accent Button fill on hover. */
   --co-component-button-variants-accent-active-background-color: var(--co-semantic-color-fill-accent-pressed); /** Accent Button fill while pressed. */
@@ -1242,12 +1238,14 @@
   --co-component-button-variants-emphasis-disabled-text-color: var(--co-component-button-variants-accent-disabled-text-color); /** Deprecated: Use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-variants-danger-hover-background-color: var(--co-semantic-color-fill-danger-hover); /** Danger Button fill on hover. */
   --co-component-button-variants-danger-active-background-color: var(--co-semantic-color-fill-danger-pressed); /** Danger Button fill while pressed. */
+  --co-component-button-sizes-small-font: var(--co-semantic-typography-caption); /** Small Button text: the caption style, with button.sizes.small.fontWeight after it. */
   --co-component-chip-default-font: var(--co-semantic-typography-body); /** Chip label typography, the same as sizes.large.font. */
   --co-component-chip-variants-interactive-hover-background-color: var(--co-semantic-color-fill-accent-hover); /** Interactive chip fill on hover, when it's clickable. */
   --co-component-chip-variants-interactive-active-background-color: var(--co-semantic-color-fill-accent-pressed); /** Interactive chip fill while pressed, when it's clickable. */
   --co-component-chip-sizes-small-font: var(--co-semantic-typography-caption); /** Deprecated: Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0. */
   --co-component-chip-sizes-medium-font: var(--co-semantic-typography-small); /** Chip label typography. Every chip uses it: chips have one size (decision 0035). */
   --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Deprecated: Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0. */
+  --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
   --co-component-input-default-font: var(--co-semantic-typography-body); /** Text input value typography. */
   --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
   --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */
@@ -1257,10 +1255,13 @@
   --co-component-alert-message-typography: var(--co-semantic-typography-body); /** Alert message style (body), adjusted by message.lineHeight. */
   --co-component-tab-bar-badge-typography: var(--co-semantic-typography-caption); /** Tab count badge text. */
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */
+  --co-component-breadcrumbs-font: var(--co-semantic-typography-caption); /** Deprecated: Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. */
   --co-semantic-color-background-interactive-hover: var(--co-semantic-color-fill-accent-hover); /** Deprecated: Renamed to semantic.color.fill.accent-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-interactive-active: var(--co-semantic-color-fill-accent-pressed); /** Deprecated: Renamed to semantic.color.fill.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-error-hover: var(--co-semantic-color-fill-danger-hover); /** Deprecated: Renamed to semantic.color.fill.danger-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-error-active: var(--co-semantic-color-fill-danger-pressed); /** Deprecated: Renamed to semantic.color.fill.danger-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
+  --co-semantic-typography-button3: var(--co-semantic-typography-caption); /** Deprecated: Moved to the component tier as component.button.sizes.small.font (decision 0031 §6). Removed in 3.0. */
+  --co-semantic-typography-breadcrumb: var(--co-semantic-typography-caption); /** Deprecated: Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0. */
   --co-component-button-variants-emphasis-hover-background-color: var(--co-component-button-variants-accent-hover-background-color); /** Deprecated: Use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016). */
   --co-component-button-variants-emphasis-active-background-color: var(--co-component-button-variants-accent-active-background-color); /** Deprecated: Use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016). */
 }

@@ -1,6 +1,6 @@
 # 0026. Slider's unfilled track stays light
 
-- **Status:** Accepted
+- **Status:** Accepted; the track's value is `fill.default` (1.12:1) since #190 part (e)
 - **Date:** 2026-10-08
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P1, P5

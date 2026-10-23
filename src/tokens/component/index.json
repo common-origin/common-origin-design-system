@@ -280,9 +280,14 @@
             "$deprecated": "No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0."
           },
           "font": {
-            "$value": "{semantic.fontWeight.medium} {semantic.fontSize.xs}/{base.lineHeight.1} {semantic.fontFamily.body}",
+            "$value": "{semantic.typography.caption}",
             "$type": "typography",
-            "$description": "Small Button label typography."
+            "$description": "Small Button text: the caption style, with button.sizes.small.fontWeight after it."
+          },
+          "fontWeight": {
+            "$value": "{semantic.fontWeight.medium}",
+            "$type": "fontWeight",
+            "$description": "Weight of small Button text, set after the font: medium, as the other sizes."
           }
         },
         "medium": {
@@ -1554,9 +1559,9 @@
           }
         },
         "background": {
-          "$value": "{base.color.neutral.000}",
+          "$value": "{semantic.surface.raised}",
           "$type": "color",
-          "$description": "Fill of Slider's thumb: white, so it reads on both the track and the fill."
+          "$description": "Fill of the Slider thumb: the raised surface, white."
         }
       }
     },
@@ -1582,9 +1587,15 @@
         }
       },
       "font": {
-        "$value": "{semantic.fontWeight.regular} {semantic.fontSize.xs}/{base.lineHeight.2} {semantic.fontFamily.body}",
+        "$value": "{semantic.typography.caption}",
         "$type": "typography",
-        "$description": "Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today."
+        "$description": "Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.typography.caption"
+          }
+        }
       }
     },
     "cardLarge": {
@@ -1666,12 +1677,12 @@
       "$type": "color",
       "pending": {
         "text": {
-          "$value": "{base.color.yellow.1000}",
-          "$description": "Text and icon of a pending StatusLabel, on its pending background."
+          "$value": "{semantic.color.text.muted}",
+          "$description": "Text and icon of a pending StatusLabel: neutral, because waiting needs no attention (decision 0045). 6.01:1 on white."
         },
         "background": {
-          "$value": "{base.color.yellow.100}",
-          "$description": "Fill of a pending StatusLabel, behind its pending text."
+          "$value": "{semantic.color.fill.muted}",
+          "$description": "Fill of a pending StatusLabel (decision 0045)."
         }
       },
       "completed": {
@@ -1706,64 +1717,106 @@
       },
       "processing": {
         "text": {
-          "$value": "{base.color.blue.900}",
-          "$description": "Text and icon of a processing StatusLabel, on its processing background."
+          "$value": "{semantic.color.text.accent}",
+          "$description": "Text and icon of a processing StatusLabel: in progress is accent (decisions 0043, 0045). 6.00:1 on white."
         },
         "background": {
-          "$value": "{base.color.blue.100}",
-          "$description": "Fill of a processing StatusLabel, behind its processing text."
+          "$value": "{semantic.color.fill.accent-muted}",
+          "$description": "Fill of a processing StatusLabel (decision 0045)."
         }
       },
       "scheduled": {
         "text": {
-          "$value": "{base.color.purple.900}",
-          "$description": "Text and icon of a scheduled StatusLabel, on its scheduled background."
+          "$value": "{semantic.color.text.muted}",
+          "$description": "Text and icon of a scheduled StatusLabel: neutral, because a future item needs no attention (decision 0045). 6.01:1 on white."
         },
         "background": {
-          "$value": "{base.color.purple.100}",
-          "$description": "Fill of a scheduled StatusLabel, behind its scheduled text."
+          "$value": "{semantic.color.fill.muted}",
+          "$description": "Fill of a scheduled StatusLabel (decision 0045)."
         }
       }
     },
     "transaction": {
       "$type": "color",
       "credit": {
-        "$value": "{base.color.green.700}",
-        "$description": "Positive amounts and credits in MoneyDisplay and TransactionListItem."
+        "$value": "{semantic.color.data.positive}",
+        "$description": "Positive amounts and credits in MoneyDisplay and TransactionListItem.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.data.positive"
+          }
+        }
       },
       "credit-hover": {
-        "$value": "{base.color.green.800}",
-        "$description": "A credit amount on a hovered interactive row."
+        "$value": "{semantic.color.data.positive}",
+        "$description": "A credit amount on a hovered interactive row.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.data.positive"
+          }
+        }
       },
       "debit": {
-        "$value": "{base.color.red.900}",
-        "$description": "Negative amounts and debits in MoneyDisplay and TransactionListItem."
+        "$value": "{semantic.color.data.negative}",
+        "$description": "Negative amounts and debits in MoneyDisplay and TransactionListItem.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.data.negative"
+          }
+        }
       },
       "debit-hover": {
-        "$value": "{base.color.red.1000}",
-        "$description": "A debit amount on a hovered interactive row."
+        "$value": "{semantic.color.data.negative}",
+        "$description": "A debit amount on a hovered interactive row.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.data.negative"
+          }
+        }
       },
       "pending": {
-        "$value": "{base.color.orange.600}",
-        "$description": "Amounts of pending or processing transactions."
+        "$value": "{semantic.color.text.muted}",
+        "$description": "Amounts of pending or processing transactions.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.text.muted"
+          }
+        }
       },
       "neutral": {
-        "$value": "{base.color.neutral.600}",
-        "$description": "Informational amounts that are neither credit nor debit."
+        "$value": "{semantic.color.text.muted}",
+        "$description": "Informational amounts that are neither credit nor debit.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.color.text.muted"
+          }
+        }
       }
     },
     "track": {
       "$type": "color",
       "background": {
-        "$value": "{base.color.neutral.300}",
-        "$description": "Unfilled track of ProgressBar and Slider; the fill and thumb show the value (decision 0026)."
+        "$value": "{semantic.color.fill.default}",
+        "$description": "Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white."
       }
     },
     "tooltip": {
       "$type": "border",
       "border": {
-        "$value": "{semantic.border.width.thick} {base.border.style.dotted} {semantic.color.border.default}",
-        "$description": "Dotted underline marking text that has a tooltip."
+        "$value": "{semantic.border.default}",
+        "$description": "Dotted underline marking text that has a tooltip.",
+        "$deprecated": "Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0.",
+        "$extensions": {
+          "studio.commonorigin": {
+            "replacedBy": "semantic.border.default"
+          }
+        }
       }
     }
   }

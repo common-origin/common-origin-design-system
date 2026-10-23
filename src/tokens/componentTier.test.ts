@@ -48,25 +48,7 @@ describe('component tier (decisions 0014 and 0022)', () => {
   const ALIAS = /^component\.button\.variants\.emphasis\.(.+)$/
   // Decision 0036 (interim, #224): domain tokens that 0031 §6 moved out of the semantic tier may
   // reference base values where no semantic token fits, listed by exact path. #224 empties this.
-  const BASE_INTERIM = [
-    'component.status.pending.text',
-    'component.status.pending.background',
-    'component.status.processing.text',
-    'component.status.processing.background',
-    'component.status.scheduled.text',
-    'component.status.scheduled.background',
-    'component.transaction.credit',
-    'component.transaction.credit-hover',
-    'component.transaction.debit',
-    'component.transaction.debit-hover',
-    'component.transaction.pending',
-    'component.transaction.neutral',
-    'component.track.background',
-    'component.tooltip.border',
-    'component.breadcrumbs.font',
-    'component.button.sizes.small.font',
-    'component.slider.thumb.background',
-  ]
+  const BASE_INTERIM: string[] = []
 
   it('lists only interim base references that still exist and still need it', () => {
     const byPath = new Map(converted.map(({ path, node }) => [path, node]))
