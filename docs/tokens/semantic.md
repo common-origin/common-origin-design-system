@@ -38,8 +38,16 @@ Colour is split by **property**: what the colour is painted on.
 
 A category never uses a role colour, and a role is never shown with a category colour. A trend, for example, is a differential indicator in the success or danger role, not a green or red label ([decision 0045](../foundation/decisions/0045-status-indication.md)). Beyond five categories, the icon and text tell them apart. The old hue names are deprecated aliases of the nearest display hue until 3.0.
 
-**Moving:**
-- `color.data.*` (charts) is added.
+**Data colours.** `color.data.*` is for charts and other data display. Each chart type has its own set, and a chart never mixes sets ([decision 0043](../foundation/decisions/0043-data-colours.md)):
+
+| Set | Tokens | Use for |
+|---|---|---|
+| Good and bad | `data.positive` (success 900), `data.negative` (danger 900) | gains and losses, money in and out. Equal steps give equal weight, and every value carries a sign or arrow |
+| Categories | `data.categorical.1`–`4` (olive, periwinkle, rose, magenta), `data.categorical.other` (grey) | series with no meaning, in order. More than four coloured series are grouped into "other" or labelled directly |
+| Comparison | `data.diverging.balance.1`–`5` (olive through neutral grey to magenta) | differences from a midpoint with no good or bad |
+| Magnitude | `data.sequential.periwinkle.1`–`5` (light to dark) | how much, as in heatmaps and maps |
+
+Every series also has a legend or a direct label. Positive green and categorical olive are close under colour blindness, which is one more reason a chart doesn't mix sets.
 
 ## Surface
 

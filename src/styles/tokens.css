@@ -852,6 +852,23 @@
   --co-semantic-color-fill-serious: var(--co-base-color-serious-1100); /** Strong orange fill for serious-warning states, with text.inverse on it at 6.04:1. */
   --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-300); /** Light orange tint behind serious-warning messages. */
   --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-300); /** Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043). */
+  --co-semantic-color-data-positive: var(--co-base-color-success-900); /** Good values and money in: gains, rises, credits. Always with a sign or arrow. 3.75:1 on white, the same step as negative so neither looks heavier. */
+  --co-semantic-color-data-negative: var(--co-base-color-danger-900); /** Bad values and money out: losses, falls, debits. Always with a sign or arrow. 3.74:1 on white, 0.118 apart from positive under every kind of colour vision. */
+  --co-semantic-color-data-categorical-1: var(--co-base-color-olive-1100); /** Category series 1 (olive). 6.02:1 on white. */
+  --co-semantic-color-data-categorical-2: var(--co-base-color-periwinkle-800); /** Category series 2 (periwinkle). 3.20:1 on white. */
+  --co-semantic-color-data-categorical-3: var(--co-base-color-rose-800); /** Category series 3 (rose). 3.20:1 on white. */
+  --co-semantic-color-data-categorical-4: var(--co-base-color-magenta-1100); /** Category series 4 (magenta). 6.02:1 on white. */
+  --co-semantic-color-data-categorical-other: var(--co-base-color-gray-800); /** The other or remaining series, always last and labelled. 3.19:1 on white. */
+  --co-semantic-color-data-diverging-balance-1: var(--co-base-color-olive-1100); /** Diverging step 1 of 5. The strongest olive end. 6.02:1 on white. */
+  --co-semantic-color-data-diverging-balance-2: var(--co-base-color-olive-800); /** Diverging step 2 of 5. The lighter olive side. 3.18:1 on white. */
+  --co-semantic-color-data-diverging-balance-3: var(--co-base-color-gray-300); /** Diverging step 3 of 5. The neutral centre: no difference. */
+  --co-semantic-color-data-diverging-balance-4: var(--co-base-color-magenta-800); /** Diverging step 4 of 5. The lighter magenta side. 3.20:1 on white. */
+  --co-semantic-color-data-diverging-balance-5: var(--co-base-color-magenta-1100); /** Diverging step 5 of 5. The strongest magenta end. 6.02:1 on white. */
+  --co-semantic-color-data-sequential-periwinkle-1: var(--co-base-color-periwinkle-300); /** Sequential step 1 of 5. 1.12:1 on white. */
+  --co-semantic-color-data-sequential-periwinkle-2: var(--co-base-color-periwinkle-600); /** Sequential step 2 of 5. 1.37:1 on white. */
+  --co-semantic-color-data-sequential-periwinkle-3: var(--co-base-color-periwinkle-800); /** Sequential step 3 of 5. 3.20:1 on white. */
+  --co-semantic-color-data-sequential-periwinkle-4: var(--co-base-color-periwinkle-1000); /** Sequential step 4 of 5. 4.37:1 on white. */
+  --co-semantic-color-data-sequential-periwinkle-5: var(--co-base-color-periwinkle-1200); /** Sequential step 5 of 5. 15.91:1 on white. */
   --co-semantic-motion-duration-normal: var(--co-base-duration-normal); /** Deprecated: Renamed to semantic.motion.duration.moderate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0. */
   --co-semantic-motion-duration-fast: var(--co-base-duration-fast); /** Quick responses to input: hover, press, focus and small indicators. */
   --co-semantic-motion-duration-slow: var(--co-base-duration-moderate); /** The longest duration (P6): larger movements, such as a Sheet sliding in. */

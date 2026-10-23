@@ -119,6 +119,31 @@ describe('token contrast', () => {
     }
   )
 
+  // Chart colours (decision 0043): marks that carry a series or a value clear 3:1 on white, so
+  // they meet SC 1.4.11. The pale ends of the sequential and diverging scales are exempt: they
+  // stand for values near the bottom or the middle, and charts label them.
+  describe('the data colours', () => {
+    const { data } = tokens.semantic.color
+    const white = '#ffffff'
+
+    it('keeps positive, negative and every categorical series at 3:1 or more on white', () => {
+      for (const colour of [data.positive, data.negative, ...Object.values(data.categorical)]) {
+        expect(contrast(colour, white)).toBeGreaterThanOrEqual(3)
+      }
+    })
+
+    it('keeps the coloured diverging steps at 3:1 or more, around a neutral centre', () => {
+      const { balance } = data.diverging
+      for (const step of ['1', '2', '4', '5'] as const) expect(contrast(balance[step], white)).toBeGreaterThanOrEqual(3)
+      expect(balance['3']).toBe(tokens.base.color.gray[300])
+    })
+
+    it('darkens the sequential scale step by step', () => {
+      const steps = (['1', '2', '3', '4', '5'] as const).map((step) => luminance(data.sequential.periwinkle[step]))
+      steps.slice(1).forEach((value, i) => expect(value).toBeLessThan(steps[i]))
+    })
+  })
+
   // Text and icons have two levels from the grey ramp, and emphasis comes from weight (decision 0048)
   it('keeps primary and secondary text and icons at their contrast floors', () => {
     const { text, icon } = tokens.semantic.color
