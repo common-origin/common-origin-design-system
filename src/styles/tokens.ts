@@ -3696,6 +3696,56 @@ export type Tokens = {
         /** Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043). */
         'ai-muted': string;
       };
+      /** Colours for charts and other data display (decision 0043). Each chart type has its own set; a chart never mixes them, and every value or series also carries a label, sign or legend. */
+      data: {
+        /** Good values and money in: gains, rises, credits. Always with a sign or arrow. 3.75:1 on white, the same step as negative so neither looks heavier. */
+        positive: string;
+        /** Bad values and money out: losses, falls, debits. Always with a sign or arrow. 3.74:1 on white, 0.118 apart from positive under every kind of colour vision. */
+        negative: string;
+        /** Category series, in order, with no meaning; group more than four coloured series into other, or label them directly. */
+        categorical: {
+          /** Category series 1 (olive). 6.02:1 on white. */
+          '1': string;
+          /** Category series 2 (periwinkle). 3.20:1 on white. */
+          '2': string;
+          /** Category series 3 (rose). 3.20:1 on white. */
+          '3': string;
+          /** Category series 4 (magenta). 6.02:1 on white. */
+          '4': string;
+          /** The other or remaining series, always last and labelled. 3.19:1 on white. */
+          other: string;
+        };
+        diverging: {
+          /** A comparison with no good or bad, from olive through neutral grey to magenta. */
+          balance: {
+            /** Diverging step 1 of 5. The strongest olive end. 6.02:1 on white. */
+            '1': string;
+            /** Diverging step 2 of 5. The lighter olive side. 3.18:1 on white. */
+            '2': string;
+            /** Diverging step 3 of 5. The neutral centre: no difference. */
+            '3': string;
+            /** Diverging step 4 of 5. The lighter magenta side. 3.20:1 on white. */
+            '4': string;
+            /** Diverging step 5 of 5. The strongest magenta end. 6.02:1 on white. */
+            '5': string;
+          };
+        };
+        sequential: {
+          /** Magnitude, from the lowest value (1) to the highest (5), in periwinkle. */
+          periwinkle: {
+            /** Sequential step 1 of 5. 1.12:1 on white. */
+            '1': string;
+            /** Sequential step 2 of 5. 1.37:1 on white. */
+            '2': string;
+            /** Sequential step 3 of 5. 3.20:1 on white. */
+            '3': string;
+            /** Sequential step 4 of 5. 4.37:1 on white. */
+            '4': string;
+            /** Sequential step 5 of 5. 15.91:1 on white. */
+            '5': string;
+          };
+        };
+      };
     };
     typography: {
       /** The largest heading, for hero titles. */

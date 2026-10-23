@@ -1656,6 +1656,35 @@
         "serious": "#a54703",
         "serious-muted": "#faf0eb",
         "ai-muted": "#f4f0fa"
+      },
+      "data": {
+        "positive": "#009762",
+        "negative": "#ff2b21",
+        "categorical": {
+          "1": "#5d6900",
+          "2": "#7a84ff",
+          "3": "#ff4989",
+          "4": "#b100af",
+          "other": "#909090"
+        },
+        "diverging": {
+          "balance": {
+            "1": "#5d6900",
+            "2": "#889903",
+            "3": "#f2f2f2",
+            "4": "#fd00fa",
+            "5": "#b100af"
+          }
+        },
+        "sequential": {
+          "periwinkle": {
+            "1": "#f0f2fa",
+            "2": "#d6dbf7",
+            "3": "#7a84ff",
+            "4": "#6464ff",
+            "5": "#1a1b51"
+          }
+        }
       }
     },
     "typography": {

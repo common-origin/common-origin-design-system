@@ -74,7 +74,7 @@ Numbered scales use the multiple of the 4px grid unit × 100: `space.400` is 16p
 
 The palette retune ([#190](https://github.com/common-origin/common-origin-design-system/issues/190)) is moving the semantic tier onto the new ramps in parts:
 
-- **Done:** the neutrals; the role colours (accent, danger, success, warning to yellow, and the new serious and AI tokens); and the category labels, on the display ramps.
-- **Still to come:** the `color.data.*` chart colours, and the component status and transaction tokens.
+- **Done:** the neutrals; the role colours (accent, danger, success, warning to yellow, and the new serious and AI tokens); the category labels, on the display ramps; and the `color.data.*` chart colours.
+- **Still to come:** the component status and transaction tokens.
 
 [Semantic tokens](semantic.md) marks the categories still moving.
