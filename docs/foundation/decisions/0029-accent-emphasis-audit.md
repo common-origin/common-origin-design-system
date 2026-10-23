@@ -1,6 +1,6 @@
 # 0029. Accent and emphasis audit: emphasis, selection, focus and labels
 
-- **Status:** Accepted
+- **Status:** Accepted; §1 amended by [0048](0048-emphasis-leaves-the-colour-tokens.md): emphasis is weight and scale, not a darker text colour, and `text.emphasis` and `icon.emphasis` become aliases of default
 - **Date:** 2026-10-10
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P5, P7
