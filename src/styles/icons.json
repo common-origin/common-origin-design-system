@@ -784,7 +784,7 @@
 		"ariaLabelDefault": "Error"
 	},
 	"statusSerious": {
-		"path": "M12 2L22 12L12 22L2 12ZM4.8284 12L12 19.1716L19.1716 12L12 4.8284ZM13 7.5L13 13L11 13L11 7.5ZM12 15.25A1 1 0 1 1 12 17.25A1 1 0 1 1 12 15.25Z",
+		"path": "M12 2L22 12L12 22L2 12ZM4.8284 12L12 19.1716L19.1716 12L12 4.8284ZM13 7.5L13 13.75L11 13.75L11 7.5ZM12 15.25A1 1 0 1 1 12 17.25A1 1 0 1 1 12 15.25Z",
 		"name": "statusSerious",
 		"description": "Exclamation mark inside a diamond",
 		"category": "status",
@@ -798,7 +798,7 @@
 		"ariaLabelDefault": "Serious"
 	},
 	"statusWarning": {
-		"path": "M12 2.5L22 20.5L2 20.5ZM5.399 18.5L18.601 18.5L12 6.6183ZM13 10.5L13 13.5L11 13.5L11 10.5ZM12 15.5A1 1 0 1 1 12 17.5A1 1 0 1 1 12 15.5Z",
+		"path": "M12 2.5L22 20.5L2 20.5ZM5.399 18.5L18.601 18.5L12 6.6183ZM13 10.5L13 14.5L11 14.5L11 10.5ZM12 16A1 1 0 1 1 12 18A1 1 0 1 1 12 16Z",
 		"name": "statusWarning",
 		"description": "Exclamation mark inside a triangle",
 		"category": "status",
