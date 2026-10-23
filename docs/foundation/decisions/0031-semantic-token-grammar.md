@@ -1,6 +1,6 @@
 # 0031. Semantic tokens follow one naming grammar
 
-- **Status:** Accepted; motion details settled by [0037](0037-motion-tokens.md)
+- **Status:** Accepted; motion details settled by [0037](0037-motion-tokens.md); `emphasis` narrowed by [0048](0048-emphasis-leaves-the-colour-tokens.md): it names only the strong solid fill (`fill.emphasis` and its states), not a darker text, icon or border colour
 - **Date:** 2026-10-11
 - **Decided by:** Ollie (owner)
 - **Principles:** P3, P5, P7

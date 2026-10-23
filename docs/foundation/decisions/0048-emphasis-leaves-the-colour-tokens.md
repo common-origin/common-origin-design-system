@@ -4,7 +4,7 @@
 - **Date:** 2026-10-23
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P3, P5, P7
-- **Amends:** [0029](0029-accent-emphasis-audit.md) §1 (emphasis is no longer a darker text colour); [0040](0040-own-oklch-palette.md) §4 (alpha overlays give a strong fill its states)
+- **Amends:** [0029](0029-accent-emphasis-audit.md) §1 (emphasis is no longer a darker text colour); [0031](0031-semantic-token-grammar.md) (in the grammar, `emphasis` names only the strong solid fill); [0040](0040-own-oklch-palette.md) §4 (alpha overlays give a strong fill its states)
 - **Issue:** [#190](https://github.com/common-origin/common-origin-design-system/issues/190), question 24
 
 ## Context
@@ -28,7 +28,7 @@
    - Pressed is a little *lighter* than hover, as in Material, because the ramp has nothing darker than 1200.
    - The two overlay values are new tokens, signed off in part (a) of #190 (decision 0022).
 4. **`border.emphasis` becomes a deprecated alias of the border role** that part (a) gives dividers, removed in 3.0. Its meaning doesn't change.
-5. **"Emphasis" stays only as a component variant name**, where it already exists in the public API (Chip, Tag): the strong near-black treatment. It isn't a colour token.
+5. **"Emphasis" now names one thing: the strong solid fill.** That's the `fill.emphasis` token and its hover and pressed states, and the component variants that use it (Chip and Tag `emphasis`). The token keeps its name (P7). In [0031](0031-semantic-token-grammar.md)'s grammar, `emphasis` no longer means a darker text, icon or border colour, so no new neutral token takes an `emphasis` key for those.
 
 ## Consequences
 
