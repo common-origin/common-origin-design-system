@@ -19,7 +19,8 @@ Colour is split by **property**: what the colour is painted on.
 
 - **Pick the property first, then the role, then the emphasis and state.** A selected tab's background is `fill.accent-muted`, and the same tab hovered is `fill.accent-muted-hover`.
 - **Text and icons have two levels: primary (`default`) and secondary (`muted`).** Emphasis comes from weight and scale, never a darker colour ([decision 0048](../foundation/decisions/0048-emphasis-leaves-the-colour-tokens.md)).
-- **Neutral controls step along the fill ladder:** `fill.default`, `fill.default-hover`, `fill.default-pressed`. A control with no fill at rest uses `none`, then `default` on hover and `default-hover` on press. Every state has a different value.
+- **Neutral controls step along the fill ladder:** `fill.default`, `fill.default-hover`, `fill.default-pressed`. Every state has a different value.
+- **A control with no fill at rest** uses `none`. On the page or a raised surface, it steps onto the ladder: `default` on hover and `default-hover` on press, as the naked Button does. Over a tinted or image background, it uses the translucent `none-hover` and `none-pressed` instead, so the tint works on any surface (for example a chip's close button).
 - **The strong near-black fill** (`fill.emphasis`: the primary Button, IconButton and the emphasis Chip) has no ramp steps above it. Its hover and pressed states mix `text.inverse` into it at `opacity.state.hover` and `opacity.state.pressed` (8% and 12%), as Material 3's state layers do ([decision 0048](../foundation/decisions/0048-emphasis-leaves-the-colour-tokens.md)).
 - **A control's edge is `border.input`** (at least 3:1). `border.default` is for dividers and decorative outlines only, and never marks a control ([decision 0025](../foundation/decisions/0025-control-borders-meet-3-to-1.md)).
 - **There is one focus ring,** `border.focus`. It's near-black, never blue ([decision 0029](../foundation/decisions/0029-accent-emphasis-audit.md)).
