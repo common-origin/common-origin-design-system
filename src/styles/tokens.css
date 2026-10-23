@@ -758,7 +758,7 @@
   --co-semantic-spacing-layout-11xl: var(--co-base-dimension-24); /** Deprecated: Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-gray-1200); /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
-  --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
+  --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis. */
   --co-semantic-color-text-disabled: var(--co-base-color-gray-alpha-700); /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
   --co-semantic-color-text-interactive: var(--co-base-color-blue-900); /** Deprecated: Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-text-interactive-hover: var(--co-base-color-blue-1000); /** Deprecated: Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0. */

@@ -1034,7 +1034,7 @@
         },
         "inverse": {
           "$value": "{base.color.neutral.000}",
-          "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive."
+          "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis."
         },
         "disabled": {
           "$value": "{base.color.gray-alpha.700}",

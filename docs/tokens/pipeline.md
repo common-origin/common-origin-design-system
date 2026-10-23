@@ -1,6 +1,6 @@
 # Token pipeline
 
-How design tokens go from source JSON to what components, the docs site, and consumers use. This is the technical reference for anyone (human or agent) changing tokens or the Style Dictionary build. For *why* tokens are structured the way they are, see [P3](../foundation/principles.md#p3-tokens-not-values) and [decision 0009](../foundation/decisions/0009-styling-architecture.md).
+How design tokens go from source JSON to what components, the docs site, and consumers use. This is the technical reference for anyone (human or agent) changing tokens or the Style Dictionary build. For *why* tokens are structured the way they are (the tiers, the grammar, the ramps and every semantic category), see the [token documentation](README.md).
 
 Verified against the code on 2026-09-25.
 

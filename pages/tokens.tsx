@@ -1030,6 +1030,8 @@ export default function Tokens() {
   const navigationTabs = [
     {
       id: 'border',
+      intent: "Borders separate content and mark edges. A divider uses the default border, which is quiet (1.53:1). A control's edge uses the input border, which is at least 3:1, so it shows where the control is. There is one near-black focus ring. Radius matches the size of the object: small controls, cards, then modals.",
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#border',
       label: 'Border',
       isHeader: true,
       content: [
@@ -1038,6 +1040,8 @@ export default function Tokens() {
     },
     {
       id: 'elevation',
+      intent: 'Elevation lifts a surface off the page, and each level pairs with a surface. Layers set stacking order by name, so menus, sheets and modals stack correctly without numbers.',
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#elevation-and-layer',
       label: 'Elevation',
       isHeader: true,
       content: [
@@ -1047,6 +1051,8 @@ export default function Tokens() {
     },
     {
       id: 'color',
+      intent: 'Colour carries meaning, never decoration. Each role hue means one thing everywhere: accent, success, warning, serious, danger and AI, plus neutral grey. Tokens are split by what they paint: text, icon, border, fill and surface. Text has two levels, primary and secondary, and emphasis comes from weight, not a darker colour. Status always adds text and a shape or symbol.',
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#colour',
       label: 'Color',
       isHeader: true,
       content: [
@@ -1059,6 +1065,8 @@ export default function Tokens() {
     },
     {
       id: 'motion',
+      intent: "Motion explains change. It's quick, eased and never decorative. Durations run from instant to 300ms, curves are named by their job (standard, decelerate, accelerate), and transitions name the properties they animate.",
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#motion',
       label: 'Motion',
       isHeader: true,
       content: [
@@ -1070,6 +1078,8 @@ export default function Tokens() {
     },
     {
       id: 'size',
+      intent: 'Sizes come from one 4px scale, plus named roles shared across components: control heights (32, 40 and 48px), label heights, icons, avatars and overlays. Small controls keep a 24px hit area, and touch rows a 44px one.',
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#size',
       label: 'Size',
       isHeader: true,
       content: [
@@ -1079,6 +1089,8 @@ export default function Tokens() {
     },
     {
       id: 'spacing',
+      intent: "Space comes from one 4px scale: small steps inside groups, larger ones between sections. Inset tokens are the padding inside components, and they're what density changes. Components have no spacing tokens of their own.",
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#space',
       label: 'Spacing',
       isHeader: true,
       content: [
@@ -1088,6 +1100,8 @@ export default function Tokens() {
     },
     {
       id: 'typography',
+      intent: 'Use a complete text style wherever one fits, with heading levels that follow the page outline. The named parts (sizes, weights, line heights) are for the rare component that departs from a style. Hierarchy comes from weight and scale, not colour.',
+      docs: 'https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/semantic.md#typography',
       label: 'Typography',
       isHeader: true,
       content: [
@@ -1181,11 +1195,28 @@ export default function Tokens() {
                 <Box my="4xl">
                   <Typography variant="h1">Design Tokens</Typography>
                   <Box mt="md">
-                    <Typography variant="body" color="emphasis">
-                      A comprehensive reference of all design tokens used throughout the Common Origin design system.
-                    </Typography>
+                    <Stack direction="column" gap="sm">
+                      <Typography variant="body">
+                        Tokens are the named decisions the system is built from, in three tiers. Base tokens are the raw palette and scales. Semantic tokens say what a value is for, and they're what components read. Component tokens hold a component&apos;s own departures. This page lists the semantic tokens.
+                      </Typography>
+                      <Typography variant="body" color="subdued">
+                        For the theory behind them (the tiers, the naming grammar and how the colour ramps work), read the 
+                        <a href="https://github.com/common-origin/common-origin-design-system/blob/main/docs/tokens/README.md">token documentation</a>.
+                      </Typography>
+                    </Stack>
                   </Box>
                 </Box>
+
+                {activeTabData?.intent && (
+                  <Box mb="2xl">
+                    <Stack direction="column" gap="xs">
+                      <Typography variant="body">{activeTabData.intent}</Typography>
+                      <Typography variant="small" color="subdued">
+                        <a href={activeTabData.docs}>How to choose {activeTabData.label.toLowerCase()} tokens</a>
+                      </Typography>
+                    </Stack>
+                  </Box>
+                )}
 
                 {/* Render active tab content */}
                 {activeTabData && renderTabContent(activeTabData.content)}
