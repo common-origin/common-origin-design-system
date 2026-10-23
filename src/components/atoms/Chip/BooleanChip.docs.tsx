@@ -163,9 +163,7 @@ export const booleanChipDocs: ComponentDocumentation = {
     'semantic.color.fill.accent-muted',
     'semantic.color.text.accent',
     'semantic.color.fill.accent-muted-hover',
-    'semantic.color.text.accent-hover',
     'semantic.color.fill.accent-muted-pressed',
-    'semantic.color.text.accent-pressed',
     // Typography
     'component.chip.sizes.medium.font',
     // Height: one 24px size as a minimum (decisions 0034 and 0035); horizontal padding: semantic spacing

@@ -72,9 +72,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'semantic.color.fill.accent-muted',
     'semantic.color.text.accent',
     'semantic.color.fill.accent-muted-hover',
-    'semantic.color.text.accent-hover',
     'semantic.color.fill.accent-muted-pressed',
-    'semantic.color.text.accent-pressed',
     // Underline
     'semantic.color.fill.accent',
     'semantic.border.width.thick',
@@ -378,9 +376,7 @@ return (
           'semantic.color.fill.accent-muted',
           'semantic.color.text.accent',
           'semantic.color.fill.accent-muted-hover',
-          'semantic.color.text.accent-hover',
           'semantic.color.fill.accent-muted-pressed',
-          'semantic.color.text.accent-pressed',
           'component.button.sizes.medium.font',
           'semantic.space.300',
           'semantic.space.400'

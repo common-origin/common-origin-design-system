@@ -2857,22 +2857,32 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0.
          */
         error: string;
-        /** Success text, such as InlineAlert success messages. 5.40:1 on white, 5.12:1 on the page. */
+        /** Success text, such as InlineAlert success messages. 5.99:1 on white. */
         success: string;
-        /** Warning text, such as InlineAlert warnings. 5.38:1 on white, 5.10:1 on the page. */
+        /** Warning text, such as InlineAlert warnings (0043: warning is yellow). 6.01:1 on white. */
         warning: string;
         /** Secondary text: helper text, metadata, timestamps. 6.01:1 on white, and at least 4.5:1 on every background and fill step (decision 0040). */
         muted: string;
-        /** Blue text for links and selected items; never decoration, see 0003. */
+        /** Blue text for links and selected items, in every state: the fill shows hover and pressed. Never decoration (0003). 6.00:1 on white. */
         accent: string;
-        /** Text of a hovered selected item, on the accent-muted-hover fill. */
+        /**
+         * Text of a hovered selected item, on the accent-muted-hover fill.
+         *
+         * @deprecated Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.text.accent`.
+         */
         'accent-hover': string;
-        /** Text of a pressed selected item, on the accent-muted-pressed fill. */
+        /**
+         * Text of a pressed selected item, on the accent-muted-pressed fill.
+         *
+         * @deprecated Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.text.accent`.
+         */
         'accent-pressed': string;
-        /** Error text: field error messages, InlineAlert errors. */
+        /** Error text: field error messages, InlineAlert errors. 6.03:1 on white. */
         danger: string;
         /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
         ai: string;
+        /** Serious-warning text: between warning and danger (decisions 0043, 0045). 6.04:1 on white. */
+        serious: string;
       };
       background: {
         /**
@@ -3101,9 +3111,9 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0.
          */
         error: string;
-        /** Green border for success outlines, such as an outlined success Alert. */
+        /** Green border for success outlines, such as an outlined success Alert. 3.18:1 on white (decision 0025). */
         success: string;
-        /** Orange border for warning outlines, such as an outlined warning Alert. */
+        /** Yellow border for warning outlines, such as an outlined warning Alert. 3.19:1 on white (decision 0025). */
         warning: string;
         /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
         none: string;
@@ -3119,10 +3129,14 @@ export type Tokens = {
         'input-hover': string;
         /** The focus ring, and rings that mark the current item, such as on CardSmall (0029). 15.91:1 on white. */
         focus: string;
-        /** Blue border for selected items; never decoration, see 0003. */
+        /** Blue border for selected items; never decoration (0003). 3.21:1 on white (decision 0025). */
         accent: string;
-        /** Border of an invalid field and other error outlines. */
+        /** Border of an invalid field and other error outlines. 3.18:1 on white (decision 0025). */
         danger: string;
+        /** Orange border for serious-warning outlines. 3.21:1 on white (decision 0025). */
+        serious: string;
+        /** Purple border for AI-generated content and agent actions, always with the AI icon and a label (0043). 3.20:1 on white. */
+        ai: string;
       };
       icon: {
         /** Default icon colour, matching text.default. 15.91:1 on white. */
@@ -3167,22 +3181,32 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0.
          */
         error: string;
-        /** Success icons, such as in Alert and EmptyState. 5.40:1 on white. (InlineAlert's icon takes the text colour instead.) */
+        /** Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.) */
         success: string;
-        /** Warning icons, such as in Alert. 5.38:1 on white. (InlineAlert's icon takes the text colour instead.) */
+        /** Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.) */
         warning: string;
         /** Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white. */
         muted: string;
-        /** Blue icons in links and selected items, matching color.text.accent. */
+        /** Blue icons in links and selected items, in every state, matching color.text.accent. 6.00:1 on white. */
         accent: string;
-        /** Icon of a hovered selected item, matching color.text.accent-hover. */
+        /**
+         * Icon of a hovered selected item, matching color.text.accent-hover.
+         *
+         * @deprecated Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.icon.accent`.
+         */
         'accent-hover': string;
-        /** Icon of a pressed selected item, matching color.text.accent-pressed. */
+        /**
+         * Icon of a pressed selected item, matching color.text.accent-pressed.
+         *
+         * @deprecated Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.icon.accent`.
+         */
         'accent-pressed': string;
-        /** Error icons, such as in Alert and EmptyState. */
+        /** Error icons, such as in Alert and EmptyState. 6.03:1 on white. */
         danger: string;
         /** The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page. */
         ai: string;
+        /** Serious-warning icons, matching color.text.serious. 6.04:1 on white. */
+        serious: string;
       };
       financial: {
         /**
@@ -3477,33 +3501,33 @@ export type Tokens = {
         muted: string;
         /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
         inverse: string;
-        /** Blue fill for the accent Button and other deliberate highlights; see 0003. */
+        /** Blue fill for the accent Button and other deliberate highlights (0003), with text.inverse on it at 6.00:1. */
         accent: string;
-        /** Light blue fill for selected items: a selected chip, tab or row; see 0016. */
+        /** Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1. */
         'accent-muted': string;
         /** Fill of a hovered selected item, such as a selected filter chip. */
         'accent-muted-hover': string;
         /** Fill of a pressed selected item, such as a selected filter chip. */
         'accent-muted-pressed': string;
-        /** Blue fill of a hovered accent control, such as the accent Button. */
+        /** Blue fill of a hovered accent control: fill.accent with text.inverse mixed in at opacity.state.hover (decision 0048). */
         'accent-hover': string;
-        /** Blue fill of a pressed accent control, such as the accent Button. */
+        /** Blue fill of a pressed accent control: fill.accent with text.inverse mixed in at opacity.state.pressed (decision 0048). */
         'accent-pressed': string;
-        /** Strong red fill for destructive actions, such as the danger Button. */
+        /** Strong red fill for destructive actions, such as the danger Button, with text.inverse on it at 6.03:1. */
         danger: string;
-        /** Fill of a hovered destructive control, such as the danger Button. */
+        /** Fill of a hovered destructive control: fill.danger with text.inverse mixed in at opacity.state.hover (decision 0048). */
         'danger-hover': string;
-        /** Fill of a pressed destructive control, such as the danger Button. */
+        /** Fill of a pressed destructive control: fill.danger with text.inverse mixed in at opacity.state.pressed (decision 0048). */
         'danger-pressed': string;
-        /** Light red tint behind error messages, such as an error Alert. */
+        /** Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1. */
         'danger-muted': string;
-        /** Strong green fill for success states, such as a success indicator. */
+        /** Strong green fill for success states, such as a success indicator, with text.inverse on it at 5.99:1. */
         success: string;
-        /** Light green tint behind success messages, such as a success Alert. */
+        /** Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1. */
         'success-muted': string;
-        /** Strong orange fill for warning states, such as a warning indicator. */
+        /** Strong yellow fill for warning states, such as a warning indicator, with text.inverse on it at 6.01:1. */
         warning: string;
-        /** Light orange tint behind warning messages, such as a warning Alert. */
+        /** Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1. */
         'warning-muted': string;
         /** Fill of a disabled control, such as a disabled Button or Switch. */
         disabled: string;
@@ -3521,6 +3545,12 @@ export type Tokens = {
         'none-pressed': string;
         /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
         'inverse-none-hover': string;
+        /** Strong orange fill for serious-warning states, with text.inverse on it at 6.04:1. */
+        serious: string;
+        /** Light orange tint behind serious-warning messages. */
+        'serious-muted': string;
+        /** Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043). */
+        'ai-muted': string;
       };
     };
     typography: {
