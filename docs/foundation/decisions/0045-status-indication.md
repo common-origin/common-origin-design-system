@@ -1,6 +1,6 @@
 # 0045. Status indication: ten statuses, one shape each, never colour alone
 
-- **Status:** Accepted
+- **Status:** Accepted; §2 amended on 2026-10-24 (#260, Ollie): a shape indicator is filled with its label's text colour (step 1100), which is 5.3:1 or more on the label's tint, so it has no darker edge
 - **Date:** 2026-10-18
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P4, P5, P7
@@ -53,7 +53,7 @@ Its shape indicators are 16px.
 ### 2. Indicator types
 
 - **Icon indicator:** an outline icon (today's 2px outline style) and a label, in the status's role colour. This is the default wherever a 16px icon fits.
-- **Shape indicator:** a filled shape with a darker edge and a label. It's for small spaces and dense lists, and only for the six coloured statuses; there, the four neutral statuses are plain text (P1). Shape indicators are at least 12px, the size at which the error hexagon stops reading as a circle beside success.
+- **Shape indicator:** a filled shape and a label. The shape takes the label's text colour (step 1100 of its role), 5.3:1 or more on the label's tint, so it needs no darker edge (amended 2026-10-24). It's for small spaces and dense lists, and only for the six coloured statuses; there, the four neutral statuses are plain text (P1). Shape indicators are at least 12px, the size at which the error hexagon stops reading as a circle beside success.
 - **One shape per status:** a status's icon sits on its shape-indicator shape, so it keeps one outline at every size. The general icons `crossCircle` and `info` stay unchanged; status components move to the new status icons.
 - **Badge indicator:** a count or dot that means new or unread items, in accent, or a quiet grey count (`default`). Unread isn't an error, so a badge isn't red. A count of items with a status says it in words ("3 failed", with the error icon). Badge's `error`, `warning` and `success` become deprecated aliases of `accent`, removed in 3.0 (P7).
 - **Differential indicator:** the sign is text. Amounts show `+$20.00` and `−$20.00` (U+2212 minus) in the success or danger role. A change over time adds a caret or arrow to its sign (`▲ +3.2%`), so it reads as a trend rather than an amount. MoneyDisplay's circled plus and minus icons go: they lose the sign on copy and borrow success's circle.

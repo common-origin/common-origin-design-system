@@ -5,7 +5,7 @@ import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 export const statusLabelDocs: ComponentDocumentation = {
   id: 'status-label',
   name: 'StatusLabel',
-  description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows an icon with its text, so status is never conveyed by colour alone. Not interactive. Announces status changes through an ARIA live region. Replaces the deprecated StatusBadge, with the same props apart from showIcon.',
+  description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows its text, with the status icon (or, at the small size, the status shape), so status is never conveyed by colour alone (decision 0045). Not interactive. Announces status changes through an ARIA live region. Replaces the deprecated StatusBadge, with the same props apart from showIcon.',
   category: 'Atoms',
   
   props: [
@@ -14,7 +14,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       type: "'pending' | 'completed' | 'failed' | 'cancelled' | 'processing' | 'scheduled'",
       required: true,
       default: 'undefined',
-      description: 'The status type determining color, icon, and default label. Maps to semantic status colors and appropriate iconography for clear visual communication.'
+      description: 'The status, which sets the colour, the icon and the default label (decision 0045). Completed is success, failed is danger and processing is accent (in progress). Pending, scheduled and cancelled are neutral, told apart by their icon and label.'
     },
     {
       name: 'label',
@@ -28,7 +28,7 @@ export const statusLabelDocs: ComponentDocumentation = {
       type: "'small' | 'medium'",
       required: false,
       default: "'medium'",
-      description: 'Size variant affecting height, padding, typography, and icon size. Small (20px) for compact layouts, medium (24px) for standard visibility.'
+      description: 'Height: small (20px) for compact layouts, medium (24px) for standard use. Medium shows the status icon. A 12px outline icon is too small to read, so small shows the status shape instead (a circle for completed, a hexagon for failed, a half-filled circle for processing), and the neutral statuses show text only (decision 0045).'
     },
     {
       name: 'liveRegion',
@@ -91,7 +91,7 @@ export const statusLabelDocs: ComponentDocumentation = {
   examples: [
     {
       name: 'All Status Types',
-      description: 'Six semantic status types with color-coded visual feedback and appropriate iconography. Each status has distinct meaning for transaction or task states.',
+      description: 'The six statuses, each with one meaning, role and icon (decision 0045). Colour only repeats what the icon and label already say.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
     <StatusLabel status="pending" />
@@ -139,7 +139,7 @@ export const statusLabelDocs: ComponentDocumentation = {
     },
     {
       name: 'Size Variants',
-      description: 'Two size options for different layout contexts. Small for compact transaction lists, medium for prominent status displays.',
+      description: 'Medium shows the status icon. Small shows the shape indicator for the coloured statuses and text only for the neutral ones.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', }}>Small (20px height)</p>
