@@ -1,2 +1,2 @@
 export { CategoryLabel } from './CategoryLabel'
-export type { CategoryLabelProps, CategoryColor, CategoryVariant, CategoryLabelSize } from './CategoryLabel'
+export type { CategoryLabelProps, CategoryColor, CategoryDisplayColor, CategoryVariant, CategoryLabelSize } from './CategoryLabel'

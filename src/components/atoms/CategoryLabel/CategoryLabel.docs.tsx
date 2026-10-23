@@ -5,7 +5,7 @@ import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 export const categoryLabelDocs: ComponentDocumentation = {
   id: 'category-label',
   name: 'CategoryLabel',
-  description: 'Colour-codes an item\'s category, such as a transaction\'s (decision 0018). A static, display-only label with 8 category colours, filled, outlined and minimal styles, and an optional icon. Category colours carry no status meaning: for status use StatusLabel. For a selectable or removable value use a chip. Replaces the deprecated CategoryBadge; it defaults to large (32px), so swapping the name doesn\'t change how anything looks.',
+  description: 'Colour-codes an item\'s category, such as a transaction\'s (decision 0018). A static, display-only label with four display colours plus grey, filled, outlined and minimal styles, and an optional icon. Category colours carry no meaning (decision 0043): for status use StatusLabel. For a selectable or removable value use a chip. Replaces the deprecated CategoryBadge; it defaults to large (32px), so swapping the name doesn\'t change how anything looks.',
   category: 'Atoms',
   
   props: [
@@ -18,10 +18,10 @@ export const categoryLabelDocs: ComponentDocumentation = {
     },
     {
       name: 'color',
-      type: "'blue' | 'purple' | 'pink' | 'yellow' | 'green' | 'red' | 'orange' | 'gray'",
+      type: "'olive' | 'periwinkle' | 'rose' | 'magenta' | 'gray'",
       required: false,
-      default: "'blue'",
-      description: 'The semantic color of the label, typically mapped to specific category types. Blue for general, purple for entertainment, pink for personal, yellow for transport, green for income, red for bills, orange for food, gray for uncategorized.'
+      default: "'periwinkle'",
+      description: 'The category colour: one of four display colours, which carry no meaning, or gray for uncategorised items (decision 0043). Pick any colour per category, and keep it consistent across a product. The old names (blue, purple, pink, yellow, green, red, orange) still work until 3.0, as deprecated aliases of the nearest display colour.'
     },
     {
       name: 'variant',
@@ -61,38 +61,26 @@ export const categoryLabelDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.category.blue', // Primary category color for general/default categories
-    'semantic.color.category.blue-strong', // High contrast background for filled blue labels
-    'semantic.color.category.blue-muted', // Light background for minimal blue labels
-    'semantic.color.category.purple', // Purple for entertainment and leisure categories
-    'semantic.color.category.purple-strong', // Filled purple label background
-    'semantic.color.category.purple-muted', // Minimal purple label background
-    'semantic.color.category.pink', // Pink for personal and lifestyle categories
-    'semantic.color.category.pink-strong', // Filled pink label background
-    'semantic.color.category.pink-muted', // Minimal pink label background
-    'semantic.color.category.yellow', // Yellow for transport and travel categories
-    'semantic.color.category.yellow-strong', // Filled yellow label background
-    'semantic.color.category.yellow-muted', // Minimal yellow label background
-    'semantic.color.category.green', // Green for income and positive financial categories
-    'semantic.color.category.green-strong', // Filled green label background
-    'semantic.color.category.green-muted', // Minimal green label background
-    'semantic.color.category.red', // Red for bills and required expenses
-    'semantic.color.category.red-strong', // Filled red label background
-    'semantic.color.category.red-muted', // Minimal red label background
-    'semantic.color.category.orange', // Orange for food and dining categories
-    'semantic.color.category.orange-strong', // Filled orange label background
-    'semantic.color.category.orange-muted', // Minimal orange label background
-    'semantic.color.category.gray', // Gray for uncategorized or neutral categories
-    'semantic.color.category.gray-strong', // Filled gray label background
-    'semantic.color.category.gray-muted', // Minimal gray label background
-    'semantic.color.category.blue-text', // blue text on white or blue-subtle (outlined, minimal)
-    'semantic.color.category.purple-text', // purple text on white or purple-subtle (outlined, minimal)
-    'semantic.color.category.pink-text', // pink text on white or pink-subtle (outlined, minimal)
-    'semantic.color.category.yellow-text', // yellow text on white or yellow-subtle (outlined, minimal)
-    'semantic.color.category.green-text', // green text on white or green-subtle (outlined, minimal)
-    'semantic.color.category.red-text', // red text on white or red-subtle (outlined, minimal)
-    'semantic.color.category.orange-text', // orange text on white or orange-subtle (outlined, minimal)
-    'semantic.color.category.gray-text', // gray text on white or gray-subtle (outlined, minimal)
+    'semantic.color.category.olive', // Outline of an outlined olive label
+    'semantic.color.category.olive-strong', // Fill of a filled olive label, with white text
+    'semantic.color.category.olive-text', // Text of an outlined or minimal olive label
+    'semantic.color.category.olive-muted', // Fill of a minimal olive label
+    'semantic.color.category.periwinkle', // Outline of an outlined periwinkle label
+    'semantic.color.category.periwinkle-strong', // Fill of a filled periwinkle label, with white text
+    'semantic.color.category.periwinkle-text', // Text of an outlined or minimal periwinkle label
+    'semantic.color.category.periwinkle-muted', // Fill of a minimal periwinkle label
+    'semantic.color.category.rose', // Outline of an outlined rose label
+    'semantic.color.category.rose-strong', // Fill of a filled rose label, with white text
+    'semantic.color.category.rose-text', // Text of an outlined or minimal rose label
+    'semantic.color.category.rose-muted', // Fill of a minimal rose label
+    'semantic.color.category.magenta', // Outline of an outlined magenta label
+    'semantic.color.category.magenta-strong', // Fill of a filled magenta label, with white text
+    'semantic.color.category.magenta-text', // Text of an outlined or minimal magenta label
+    'semantic.color.category.magenta-muted', // Fill of a minimal magenta label
+    'semantic.color.category.gray', // Outline of an outlined gray label
+    'semantic.color.category.gray-strong', // Fill of a filled gray label, with white text
+    'semantic.color.category.gray-text', // Text of an outlined or minimal gray label
+    'semantic.color.category.gray-muted', // Fill of a minimal gray label
     'semantic.color.text.inverse', // White text for filled variant labels
     'semantic.size.label.medium', // 24px height for medium labels
     'semantic.size.label.large', // 32px height for large labels
@@ -116,30 +104,30 @@ export const categoryLabelDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Filled (High Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" variant="filled">General</CategoryLabel>
-      <CategoryLabel color="purple" variant="filled">Entertainment</CategoryLabel>
-      <CategoryLabel color="green" variant="filled">Income</CategoryLabel>
-      <CategoryLabel color="red" variant="filled">Bills</CategoryLabel>
+      <CategoryLabel color="periwinkle" variant="filled">General</CategoryLabel>
+      <CategoryLabel color="magenta" variant="filled">Entertainment</CategoryLabel>
+      <CategoryLabel color="olive" variant="filled">Income</CategoryLabel>
+      <CategoryLabel color="rose" variant="filled">Bills</CategoryLabel>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Outlined (Medium Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" variant="outlined">General</CategoryLabel>
-      <CategoryLabel color="purple" variant="outlined">Entertainment</CategoryLabel>
-      <CategoryLabel color="green" variant="outlined">Income</CategoryLabel>
-      <CategoryLabel color="red" variant="outlined">Bills</CategoryLabel>
+      <CategoryLabel color="periwinkle" variant="outlined">General</CategoryLabel>
+      <CategoryLabel color="magenta" variant="outlined">Entertainment</CategoryLabel>
+      <CategoryLabel color="olive" variant="outlined">Income</CategoryLabel>
+      <CategoryLabel color="rose" variant="outlined">Bills</CategoryLabel>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Minimal (Low Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" variant="minimal">General</CategoryLabel>
-      <CategoryLabel color="purple" variant="minimal">Entertainment</CategoryLabel>
-      <CategoryLabel color="green" variant="minimal">Income</CategoryLabel>
-      <CategoryLabel color="red" variant="minimal">Bills</CategoryLabel>
+      <CategoryLabel color="periwinkle" variant="minimal">General</CategoryLabel>
+      <CategoryLabel color="magenta" variant="minimal">Entertainment</CategoryLabel>
+      <CategoryLabel color="olive" variant="minimal">Income</CategoryLabel>
+      <CategoryLabel color="rose" variant="minimal">Bills</CategoryLabel>
     </div>
   </div>
 </div>`,
@@ -148,30 +136,30 @@ export const categoryLabelDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Filled (High Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" variant="filled">General</CategoryLabel>
-              <CategoryLabel color="purple" variant="filled">Entertainment</CategoryLabel>
-              <CategoryLabel color="green" variant="filled">Income</CategoryLabel>
-              <CategoryLabel color="red" variant="filled">Bills</CategoryLabel>
+              <CategoryLabel color="periwinkle" variant="filled">General</CategoryLabel>
+              <CategoryLabel color="magenta" variant="filled">Entertainment</CategoryLabel>
+              <CategoryLabel color="olive" variant="filled">Income</CategoryLabel>
+              <CategoryLabel color="rose" variant="filled">Bills</CategoryLabel>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Outlined (Medium Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" variant="outlined">General</CategoryLabel>
-              <CategoryLabel color="purple" variant="outlined">Entertainment</CategoryLabel>
-              <CategoryLabel color="green" variant="outlined">Income</CategoryLabel>
-              <CategoryLabel color="red" variant="outlined">Bills</CategoryLabel>
+              <CategoryLabel color="periwinkle" variant="outlined">General</CategoryLabel>
+              <CategoryLabel color="magenta" variant="outlined">Entertainment</CategoryLabel>
+              <CategoryLabel color="olive" variant="outlined">Income</CategoryLabel>
+              <CategoryLabel color="rose" variant="outlined">Bills</CategoryLabel>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Minimal (Low Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" variant="minimal">General</CategoryLabel>
-              <CategoryLabel color="purple" variant="minimal">Entertainment</CategoryLabel>
-              <CategoryLabel color="green" variant="minimal">Income</CategoryLabel>
-              <CategoryLabel color="red" variant="minimal">Bills</CategoryLabel>
+              <CategoryLabel color="periwinkle" variant="minimal">General</CategoryLabel>
+              <CategoryLabel color="magenta" variant="minimal">Entertainment</CategoryLabel>
+              <CategoryLabel color="olive" variant="minimal">Income</CategoryLabel>
+              <CategoryLabel color="rose" variant="minimal">Bills</CategoryLabel>
             </div>
           </div>
         </div>
@@ -179,33 +167,27 @@ export const categoryLabelDocs: ComponentDocumentation = {
     },
     {
       name: 'All Category Colors',
-      description: 'Eight semantic colors designed for common financial transaction categories. Each color has distinct meaning and meets WCAG AA text contrast in every variant.',
+      description: 'Four display colours and grey. They carry no meaning, so a category never reads as a status; beyond five categories, the icon and text tell them apart. Every variant meets WCAG AA text contrast.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <CategoryLabel color="blue">General</CategoryLabel>
-    <CategoryLabel color="purple">Entertainment</CategoryLabel>
-    <CategoryLabel color="pink">Personal</CategoryLabel>
-    <CategoryLabel color="yellow">Transport</CategoryLabel>
+    <CategoryLabel color="periwinkle">General</CategoryLabel>
+    <CategoryLabel color="magenta">Entertainment</CategoryLabel>
   </div>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <CategoryLabel color="green">Income</CategoryLabel>
-    <CategoryLabel color="red">Bills</CategoryLabel>
-    <CategoryLabel color="orange">Food</CategoryLabel>
+    <CategoryLabel color="olive">Income</CategoryLabel>
+    <CategoryLabel color="rose">Bills</CategoryLabel>
     <CategoryLabel color="gray">Uncategorized</CategoryLabel>
   </div>
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <CategoryLabel color="blue">General</CategoryLabel>
-            <CategoryLabel color="purple">Entertainment</CategoryLabel>
-            <CategoryLabel color="pink">Personal</CategoryLabel>
-            <CategoryLabel color="yellow">Transport</CategoryLabel>
+            <CategoryLabel color="periwinkle">General</CategoryLabel>
+            <CategoryLabel color="magenta">Entertainment</CategoryLabel>
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <CategoryLabel color="green">Income</CategoryLabel>
-            <CategoryLabel color="red">Bills</CategoryLabel>
-            <CategoryLabel color="orange">Food</CategoryLabel>
+            <CategoryLabel color="olive">Income</CategoryLabel>
+            <CategoryLabel color="rose">Bills</CategoryLabel>
             <CategoryLabel color="gray">Uncategorized</CategoryLabel>
           </div>
         </div>
@@ -218,20 +200,16 @@ export const categoryLabelDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Large Size with Icons</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" icon="filter">Shopping</CategoryLabel>
-      <CategoryLabel color="orange" icon="refresh">Food & Dining</CategoryLabel>
-      <CategoryLabel color="yellow" icon="bell">Transport</CategoryLabel>
-      <CategoryLabel color="green" icon="check">Income</CategoryLabel>
+      <CategoryLabel color="periwinkle" icon="filter">Shopping</CategoryLabel>
+      <CategoryLabel color="olive" icon="check">Income</CategoryLabel>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Medium Size with Icons</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" icon="filter" size="medium">Shopping</CategoryLabel>
-      <CategoryLabel color="orange" icon="refresh" size="medium">Food</CategoryLabel>
-      <CategoryLabel color="yellow" icon="bell" size="medium">Transport</CategoryLabel>
-      <CategoryLabel color="green" icon="check" size="medium">Income</CategoryLabel>
+      <CategoryLabel color="periwinkle" icon="filter" size="medium">Shopping</CategoryLabel>
+      <CategoryLabel color="olive" icon="check" size="medium">Income</CategoryLabel>
     </div>
   </div>
 </div>`,
@@ -240,20 +218,16 @@ export const categoryLabelDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Large Size with Icons</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" icon="filter">Shopping</CategoryLabel>
-              <CategoryLabel color="orange" icon="refresh">Food & Dining</CategoryLabel>
-              <CategoryLabel color="yellow" icon="bell">Transport</CategoryLabel>
-              <CategoryLabel color="green" icon="check">Income</CategoryLabel>
+              <CategoryLabel color="periwinkle" icon="filter">Shopping</CategoryLabel>
+              <CategoryLabel color="olive" icon="check">Income</CategoryLabel>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Medium Size with Icons</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" icon="filter" size="medium">Shopping</CategoryLabel>
-              <CategoryLabel color="orange" icon="refresh" size="medium">Food</CategoryLabel>
-              <CategoryLabel color="yellow" icon="bell" size="medium">Transport</CategoryLabel>
-              <CategoryLabel color="green" icon="check" size="medium">Income</CategoryLabel>
+              <CategoryLabel color="periwinkle" icon="filter" size="medium">Shopping</CategoryLabel>
+              <CategoryLabel color="olive" icon="check" size="medium">Income</CategoryLabel>
             </div>
           </div>
         </div>
@@ -266,18 +240,16 @@ export const categoryLabelDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Medium (24px height) - Compact layouts</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" size="medium">Shopping</CategoryLabel>
-      <CategoryLabel color="orange" size="medium" icon="refresh">Food</CategoryLabel>
-      <CategoryLabel color="green" size="medium" variant="outlined">Income</CategoryLabel>
+      <CategoryLabel color="periwinkle" size="medium">Shopping</CategoryLabel>
+      <CategoryLabel color="olive" size="medium" variant="outlined">Income</CategoryLabel>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px' }}>Large (32px height) - Standard layouts</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryLabel color="blue" size="large">Shopping</CategoryLabel>
-      <CategoryLabel color="orange" size="large" icon="refresh">Food & Dining</CategoryLabel>
-      <CategoryLabel color="green" size="large" variant="outlined">Income</CategoryLabel>
+      <CategoryLabel color="periwinkle" size="large">Shopping</CategoryLabel>
+      <CategoryLabel color="olive" size="large" variant="outlined">Income</CategoryLabel>
     </div>
   </div>
 </div>`,
@@ -286,18 +258,16 @@ export const categoryLabelDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Medium (24px height) - Compact layouts</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" size="medium">Shopping</CategoryLabel>
-              <CategoryLabel color="orange" size="medium" icon="refresh">Food</CategoryLabel>
-              <CategoryLabel color="green" size="medium" variant="outlined">Income</CategoryLabel>
+              <CategoryLabel color="periwinkle" size="medium">Shopping</CategoryLabel>
+              <CategoryLabel color="olive" size="medium" variant="outlined">Income</CategoryLabel>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px' }}>Large (32px height) - Standard layouts</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryLabel color="blue" size="large">Shopping</CategoryLabel>
-              <CategoryLabel color="orange" size="large" icon="refresh">Food & Dining</CategoryLabel>
-              <CategoryLabel color="green" size="large" variant="outlined">Income</CategoryLabel>
+              <CategoryLabel color="periwinkle" size="large">Shopping</CategoryLabel>
+              <CategoryLabel color="olive" size="large" variant="outlined">Income</CategoryLabel>
             </div>
           </div>
         </div>
@@ -336,30 +306,26 @@ export const categoryLabelDocs: ComponentDocumentation = {
         name: 'Container',
         description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border.',
         tokens: [
-          'semantic.color.category.blue',
-          'semantic.color.category.purple',
-          'semantic.color.category.pink',
-          'semantic.color.category.yellow',
-          'semantic.color.category.green',
-          'semantic.color.category.red',
-          'semantic.color.category.orange',
-          'semantic.color.category.gray',
-          'semantic.color.category.blue-strong',
-          'semantic.color.category.purple-strong',
-          'semantic.color.category.pink-strong',
-          'semantic.color.category.yellow-strong',
-          'semantic.color.category.green-strong',
-          'semantic.color.category.red-strong',
-          'semantic.color.category.orange-strong',
-          'semantic.color.category.gray-strong',
-          'semantic.color.category.blue-muted',
-          'semantic.color.category.purple-muted',
-          'semantic.color.category.pink-muted',
-          'semantic.color.category.yellow-muted',
-          'semantic.color.category.green-muted',
-          'semantic.color.category.red-muted',
-          'semantic.color.category.orange-muted',
-          'semantic.color.category.gray-muted',
+          'semantic.color.category.olive', // Outline of an outlined olive label
+          'semantic.color.category.olive-strong', // Fill of a filled olive label, with white text
+          'semantic.color.category.olive-text', // Text of an outlined or minimal olive label
+          'semantic.color.category.olive-muted', // Fill of a minimal olive label
+          'semantic.color.category.periwinkle', // Outline of an outlined periwinkle label
+          'semantic.color.category.periwinkle-strong', // Fill of a filled periwinkle label, with white text
+          'semantic.color.category.periwinkle-text', // Text of an outlined or minimal periwinkle label
+          'semantic.color.category.periwinkle-muted', // Fill of a minimal periwinkle label
+          'semantic.color.category.rose', // Outline of an outlined rose label
+          'semantic.color.category.rose-strong', // Fill of a filled rose label, with white text
+          'semantic.color.category.rose-text', // Text of an outlined or minimal rose label
+          'semantic.color.category.rose-muted', // Fill of a minimal rose label
+          'semantic.color.category.magenta', // Outline of an outlined magenta label
+          'semantic.color.category.magenta-strong', // Fill of a filled magenta label, with white text
+          'semantic.color.category.magenta-text', // Text of an outlined or minimal magenta label
+          'semantic.color.category.magenta-muted', // Fill of a minimal magenta label
+          'semantic.color.category.gray', // Outline of an outlined gray label
+          'semantic.color.category.gray-strong', // Fill of a filled gray label, with white text
+          'semantic.color.category.gray-text', // Text of an outlined or minimal gray label
+          'semantic.color.category.gray-muted', // Fill of a minimal gray label
           'semantic.radius.full',
           'semantic.border.width.thin'
         ]

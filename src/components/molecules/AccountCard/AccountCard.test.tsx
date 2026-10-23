@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render, screen, fireEvent, within } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { AccountCard } from './AccountCard'
@@ -150,37 +150,18 @@ describe('AccountCard', () => {
       expect(screen.getByText('0.0%')).toBeInTheDocument()
     })
 
-    it('maps up trend to green category badge colors', () => {
-      render(<AccountCard {...defaultProps} trend="up" trendValue="+2.5%" />)
+    // A trend is a differential indicator (decision 0045): an arrow and the signed value, in the
+    // role colour for its direction, never a category colour
+    it.each([
+      ['up', '+2.5%', tokens.semantic.color.text.success],
+      ['down', '-1.2%', tokens.semantic.color.text.danger],
+      ['neutral', '0.0%', tokens.semantic.color.text.muted],
+    ] as const)('shows a %s trend in its role colour, with the value readable', (trend, value, expected) => {
+      render(<AccountCard {...defaultProps} trend={trend} trendValue={value} />)
 
-      // The label's root element: its text sits in an inner content wrapper
-      const badge = screen.getByText('+2.5%').parentElement as HTMLElement
-      const styles = window.getComputedStyle(badge)
-
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['green-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['green-muted']))
-    })
-
-    it('maps down trend to red category badge colors', () => {
-      render(<AccountCard {...defaultProps} trend="down" trendValue="-1.2%" />)
-
-      // The label's root element: its text sits in an inner content wrapper
-      const badge = screen.getByText('-1.2%').parentElement as HTMLElement
-      const styles = window.getComputedStyle(badge)
-
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['red-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['red-muted']))
-    })
-
-    it('maps neutral trend to blue category badge colors', () => {
-      render(<AccountCard {...defaultProps} trend="neutral" trendValue="0.0%" />)
-
-      // The label's root element: its text sits in an inner content wrapper
-      const badge = screen.getByText('0.0%').parentElement as HTMLElement
-      const styles = window.getComputedStyle(badge)
-
-      expect(styles.color).toBe(hexToRgb(tokens.semantic.color.category['blue-text']))
-      expect(styles.backgroundColor).toBe(hexToRgb(tokens.semantic.color.category['blue-muted']))
+      const group = screen.getByRole('group', { name: `Trend ${trend}` })
+      expect(window.getComputedStyle(group).color).toBe(hexToRgb(expected))
+      expect(within(group).getByText(value)).toBeInTheDocument()
     })
 
     it('does not display trend when not provided', () => {

@@ -2,11 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 import { Stack } from '../../atoms/Stack'
 import { Box } from '../../atoms/Box'
-import { type IconName } from '../../atoms/Icon'
+import { Icon, type IconName } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
 import { MoneyDisplay } from '../../atoms/MoneyDisplay'
 import { Button } from '../../atoms/Button'
-import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { Avatar } from '../../atoms/Avatar'
 import tokens from '../../../lib/cssTokens'
 
@@ -63,10 +62,12 @@ const StyledBalanceSection = styled.div`
   margin-bottom: ${space[400]};
 `
 
-const StyledTrendSection = styled.div`
+const StyledTrendSection = styled.div<{ $color: string }>`
   display: flex;
   align-items: center;
   gap: ${space[100]};
+  color: ${({ $color }) => $color};
+  font: ${semantic.typography.small};
 `
 
 const StyledActions = styled.div`
@@ -98,10 +99,12 @@ const trendToIcon: Record<TrendDirection, IconName> = {
   neutral: 'arrowRight'
 }
 
-const trendToColor: Record<TrendDirection, CategoryColor> = {
-  up: 'green',
-  down: 'red',
-  neutral: 'blue'
+// A trend is a differential indicator (decision 0045): the arrow and the signed value carry the
+// direction, and the role colour repeats it. Category colours carry no meaning, so they aren't used.
+const trendToColor: Record<TrendDirection, string> = {
+  up: semantic.color.text.success,
+  down: semantic.color.text.danger,
+  neutral: semantic.color.text.muted
 }
 
 /**
@@ -196,8 +199,10 @@ export const AccountCard: React.FC<AccountCardProps> = ({
                     Available
                   </Typography>
                   {trend && trendValue && (
-                    <StyledTrendSection aria-label={`Trend ${trend}`} role="img">
-                      <CategoryLabel size="medium" icon={trendIcon} color={trendColor} variant="minimal">{trendValue}</CategoryLabel>
+                    // A group rather than an image, so screen readers read the value as well as the direction
+                    <StyledTrendSection role="group" aria-label={`Trend ${trend}`} $color={trendColor!}>
+                      <Icon name={trendIcon!} size="sm" iconColor="inherit" />
+                      <span>{trendValue}</span>
                     </StyledTrendSection>
                   )}
                 </Stack>

@@ -10,7 +10,7 @@ describe('category tokens', () => {
     .map((key) => key.replace(/-strong$/, ''))
 
   it('has a strong step for every hue', () => {
-    expect(hues.sort()).toEqual(['blue', 'gray', 'green', 'orange', 'pink', 'purple', 'red', 'yellow'])
+    expect(hues.sort()).toEqual(['blue', 'gray', 'green', 'magenta', 'olive', 'orange', 'periwinkle', 'pink', 'purple', 'red', 'rose', 'yellow'])
   })
 
   it.each(['blue', 'gray', 'green', 'orange', 'pink', 'purple', 'red', 'yellow'])(

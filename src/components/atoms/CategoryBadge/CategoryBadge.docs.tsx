@@ -19,10 +19,10 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     },
     {
       name: 'color',
-      type: "'blue' | 'purple' | 'pink' | 'yellow' | 'green' | 'red' | 'orange' | 'gray'",
+      type: "'olive' | 'periwinkle' | 'rose' | 'magenta' | 'gray'",
       required: false,
-      default: "'blue'",
-      description: 'The semantic color of the badge, typically mapped to specific category types. Blue for general, purple for entertainment, pink for personal, yellow for transport, green for income, red for bills, orange for food, gray for uncategorized.'
+      default: "'periwinkle'",
+      description: 'The category colour: one of four display colours, which carry no meaning, or gray for uncategorised items (decision 0043). Pick any colour per category, and keep it consistent across a product. The old names (blue, purple, pink, yellow, green, red, orange) still work until 3.0, as deprecated aliases of the nearest display colour.'
     },
     {
       name: 'variant',
@@ -62,38 +62,26 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.color.category.blue', // Primary category color for general/default categories
-    'semantic.color.category.blue-strong', // High contrast background for filled blue badges
-    'semantic.color.category.blue-muted', // Light background for minimal blue badges
-    'semantic.color.category.purple', // Purple for entertainment and leisure categories
-    'semantic.color.category.purple-strong', // Filled purple badge background
-    'semantic.color.category.purple-muted', // Minimal purple badge background
-    'semantic.color.category.pink', // Pink for personal and lifestyle categories
-    'semantic.color.category.pink-strong', // Filled pink badge background
-    'semantic.color.category.pink-muted', // Minimal pink badge background
-    'semantic.color.category.yellow', // Yellow for transport and travel categories
-    'semantic.color.category.yellow-strong', // Filled yellow badge background
-    'semantic.color.category.yellow-muted', // Minimal yellow badge background
-    'semantic.color.category.green', // Green for income and positive financial categories
-    'semantic.color.category.green-strong', // Filled green badge background
-    'semantic.color.category.green-muted', // Minimal green badge background
-    'semantic.color.category.red', // Red for bills and required expenses
-    'semantic.color.category.red-strong', // Filled red badge background
-    'semantic.color.category.red-muted', // Minimal red badge background
-    'semantic.color.category.orange', // Orange for food and dining categories
-    'semantic.color.category.orange-strong', // Filled orange badge background
-    'semantic.color.category.orange-muted', // Minimal orange badge background
-    'semantic.color.category.gray', // Gray for uncategorized or neutral categories
-    'semantic.color.category.gray-strong', // Filled gray badge background
-    'semantic.color.category.gray-muted', // Minimal gray badge background
-    'semantic.color.category.blue-text', // blue text on white or blue-subtle (outlined, minimal)
-    'semantic.color.category.purple-text', // purple text on white or purple-subtle (outlined, minimal)
-    'semantic.color.category.pink-text', // pink text on white or pink-subtle (outlined, minimal)
-    'semantic.color.category.yellow-text', // yellow text on white or yellow-subtle (outlined, minimal)
-    'semantic.color.category.green-text', // green text on white or green-subtle (outlined, minimal)
-    'semantic.color.category.red-text', // red text on white or red-subtle (outlined, minimal)
-    'semantic.color.category.orange-text', // orange text on white or orange-subtle (outlined, minimal)
-    'semantic.color.category.gray-text', // gray text on white or gray-subtle (outlined, minimal)
+    'semantic.color.category.olive', // Outline of an outlined olive badge
+    'semantic.color.category.olive-strong', // Fill of a filled olive badge, with white text
+    'semantic.color.category.olive-text', // Text of an outlined or minimal olive badge
+    'semantic.color.category.olive-muted', // Fill of a minimal olive badge
+    'semantic.color.category.periwinkle', // Outline of an outlined periwinkle badge
+    'semantic.color.category.periwinkle-strong', // Fill of a filled periwinkle badge, with white text
+    'semantic.color.category.periwinkle-text', // Text of an outlined or minimal periwinkle badge
+    'semantic.color.category.periwinkle-muted', // Fill of a minimal periwinkle badge
+    'semantic.color.category.rose', // Outline of an outlined rose badge
+    'semantic.color.category.rose-strong', // Fill of a filled rose badge, with white text
+    'semantic.color.category.rose-text', // Text of an outlined or minimal rose badge
+    'semantic.color.category.rose-muted', // Fill of a minimal rose badge
+    'semantic.color.category.magenta', // Outline of an outlined magenta badge
+    'semantic.color.category.magenta-strong', // Fill of a filled magenta badge, with white text
+    'semantic.color.category.magenta-text', // Text of an outlined or minimal magenta badge
+    'semantic.color.category.magenta-muted', // Fill of a minimal magenta badge
+    'semantic.color.category.gray', // Outline of an outlined gray badge
+    'semantic.color.category.gray-strong', // Fill of a filled gray badge, with white text
+    'semantic.color.category.gray-text', // Text of an outlined or minimal gray badge
+    'semantic.color.category.gray-muted', // Fill of a minimal gray badge
     'semantic.color.text.inverse', // White text for filled variant badges
     'semantic.size.label.medium', // 24px height for size="small"
     'semantic.size.label.large', // 32px height for size="medium"
@@ -118,30 +106,30 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Filled (High Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" variant="filled">General</CategoryBadge>
-      <CategoryBadge color="purple" variant="filled">Entertainment</CategoryBadge>
-      <CategoryBadge color="green" variant="filled">Income</CategoryBadge>
-      <CategoryBadge color="red" variant="filled">Bills</CategoryBadge>
+      <CategoryBadge color="periwinkle" variant="filled">General</CategoryBadge>
+      <CategoryBadge color="magenta" variant="filled">Entertainment</CategoryBadge>
+      <CategoryBadge color="olive" variant="filled">Income</CategoryBadge>
+      <CategoryBadge color="rose" variant="filled">Bills</CategoryBadge>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Outlined (Medium Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" variant="outlined">General</CategoryBadge>
-      <CategoryBadge color="purple" variant="outlined">Entertainment</CategoryBadge>
-      <CategoryBadge color="green" variant="outlined">Income</CategoryBadge>
-      <CategoryBadge color="red" variant="outlined">Bills</CategoryBadge>
+      <CategoryBadge color="periwinkle" variant="outlined">General</CategoryBadge>
+      <CategoryBadge color="magenta" variant="outlined">Entertainment</CategoryBadge>
+      <CategoryBadge color="olive" variant="outlined">Income</CategoryBadge>
+      <CategoryBadge color="rose" variant="outlined">Bills</CategoryBadge>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Minimal (Low Emphasis)</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" variant="minimal">General</CategoryBadge>
-      <CategoryBadge color="purple" variant="minimal">Entertainment</CategoryBadge>
-      <CategoryBadge color="green" variant="minimal">Income</CategoryBadge>
-      <CategoryBadge color="red" variant="minimal">Bills</CategoryBadge>
+      <CategoryBadge color="periwinkle" variant="minimal">General</CategoryBadge>
+      <CategoryBadge color="magenta" variant="minimal">Entertainment</CategoryBadge>
+      <CategoryBadge color="olive" variant="minimal">Income</CategoryBadge>
+      <CategoryBadge color="rose" variant="minimal">Bills</CategoryBadge>
     </div>
   </div>
 </div>`,
@@ -150,30 +138,30 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Filled (High Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" variant="filled">General</CategoryBadge>
-              <CategoryBadge color="purple" variant="filled">Entertainment</CategoryBadge>
-              <CategoryBadge color="green" variant="filled">Income</CategoryBadge>
-              <CategoryBadge color="red" variant="filled">Bills</CategoryBadge>
+              <CategoryBadge color="periwinkle" variant="filled">General</CategoryBadge>
+              <CategoryBadge color="magenta" variant="filled">Entertainment</CategoryBadge>
+              <CategoryBadge color="olive" variant="filled">Income</CategoryBadge>
+              <CategoryBadge color="rose" variant="filled">Bills</CategoryBadge>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Outlined (Medium Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" variant="outlined">General</CategoryBadge>
-              <CategoryBadge color="purple" variant="outlined">Entertainment</CategoryBadge>
-              <CategoryBadge color="green" variant="outlined">Income</CategoryBadge>
-              <CategoryBadge color="red" variant="outlined">Bills</CategoryBadge>
+              <CategoryBadge color="periwinkle" variant="outlined">General</CategoryBadge>
+              <CategoryBadge color="magenta" variant="outlined">Entertainment</CategoryBadge>
+              <CategoryBadge color="olive" variant="outlined">Income</CategoryBadge>
+              <CategoryBadge color="rose" variant="outlined">Bills</CategoryBadge>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Minimal (Low Emphasis)</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" variant="minimal">General</CategoryBadge>
-              <CategoryBadge color="purple" variant="minimal">Entertainment</CategoryBadge>
-              <CategoryBadge color="green" variant="minimal">Income</CategoryBadge>
-              <CategoryBadge color="red" variant="minimal">Bills</CategoryBadge>
+              <CategoryBadge color="periwinkle" variant="minimal">General</CategoryBadge>
+              <CategoryBadge color="magenta" variant="minimal">Entertainment</CategoryBadge>
+              <CategoryBadge color="olive" variant="minimal">Income</CategoryBadge>
+              <CategoryBadge color="rose" variant="minimal">Bills</CategoryBadge>
             </div>
           </div>
         </div>
@@ -181,33 +169,27 @@ export const categoryBadgeDocs: ComponentDocumentation = {
     },
     {
       name: 'All Category Colors',
-      description: 'Eight semantic colors designed for common financial transaction categories. Each color has distinct meaning and meets WCAG AA text contrast in every variant.',
+      description: 'Four display colours and grey. They carry no meaning, so a category never reads as a status; beyond five categories, the icon and text tell them apart. Every variant meets WCAG AA text contrast.',
       code: `<div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <CategoryBadge color="blue">General</CategoryBadge>
-    <CategoryBadge color="purple">Entertainment</CategoryBadge>
-    <CategoryBadge color="pink">Personal</CategoryBadge>
-    <CategoryBadge color="yellow">Transport</CategoryBadge>
+    <CategoryBadge color="periwinkle">General</CategoryBadge>
+    <CategoryBadge color="magenta">Entertainment</CategoryBadge>
   </div>
   <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-    <CategoryBadge color="green">Income</CategoryBadge>
-    <CategoryBadge color="red">Bills</CategoryBadge>
-    <CategoryBadge color="orange">Food</CategoryBadge>
+    <CategoryBadge color="olive">Income</CategoryBadge>
+    <CategoryBadge color="rose">Bills</CategoryBadge>
     <CategoryBadge color="gray">Uncategorized</CategoryBadge>
   </div>
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <CategoryBadge color="blue">General</CategoryBadge>
-            <CategoryBadge color="purple">Entertainment</CategoryBadge>
-            <CategoryBadge color="pink">Personal</CategoryBadge>
-            <CategoryBadge color="yellow">Transport</CategoryBadge>
+            <CategoryBadge color="periwinkle">General</CategoryBadge>
+            <CategoryBadge color="magenta">Entertainment</CategoryBadge>
           </div>
           <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            <CategoryBadge color="green">Income</CategoryBadge>
-            <CategoryBadge color="red">Bills</CategoryBadge>
-            <CategoryBadge color="orange">Food</CategoryBadge>
+            <CategoryBadge color="olive">Income</CategoryBadge>
+            <CategoryBadge color="rose">Bills</CategoryBadge>
             <CategoryBadge color="gray">Uncategorized</CategoryBadge>
           </div>
         </div>
@@ -220,20 +202,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium Size with Icons</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" icon="filter">Shopping</CategoryBadge>
-      <CategoryBadge color="orange" icon="refresh">Food & Dining</CategoryBadge>
-      <CategoryBadge color="yellow" icon="bell">Transport</CategoryBadge>
-      <CategoryBadge color="green" icon="check">Income</CategoryBadge>
+      <CategoryBadge color="periwinkle" icon="filter">Shopping</CategoryBadge>
+      <CategoryBadge color="olive" icon="check">Income</CategoryBadge>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small Size with Icons</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" icon="filter" size="small">Shopping</CategoryBadge>
-      <CategoryBadge color="orange" icon="refresh" size="small">Food</CategoryBadge>
-      <CategoryBadge color="yellow" icon="bell" size="small">Transport</CategoryBadge>
-      <CategoryBadge color="green" icon="check" size="small">Income</CategoryBadge>
+      <CategoryBadge color="periwinkle" icon="filter" size="small">Shopping</CategoryBadge>
+      <CategoryBadge color="olive" icon="check" size="small">Income</CategoryBadge>
     </div>
   </div>
 </div>`,
@@ -242,20 +220,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium Size with Icons</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" icon="filter">Shopping</CategoryBadge>
-              <CategoryBadge color="orange" icon="refresh">Food & Dining</CategoryBadge>
-              <CategoryBadge color="yellow" icon="bell">Transport</CategoryBadge>
-              <CategoryBadge color="green" icon="check">Income</CategoryBadge>
+              <CategoryBadge color="periwinkle" icon="filter">Shopping</CategoryBadge>
+              <CategoryBadge color="olive" icon="check">Income</CategoryBadge>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small Size with Icons</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" icon="filter" size="small">Shopping</CategoryBadge>
-              <CategoryBadge color="orange" icon="refresh" size="small">Food</CategoryBadge>
-              <CategoryBadge color="yellow" icon="bell" size="small">Transport</CategoryBadge>
-              <CategoryBadge color="green" icon="check" size="small">Income</CategoryBadge>
+              <CategoryBadge color="periwinkle" icon="filter" size="small">Shopping</CategoryBadge>
+              <CategoryBadge color="olive" icon="check" size="small">Income</CategoryBadge>
             </div>
           </div>
         </div>
@@ -268,18 +242,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small (24px height) - Compact layouts</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" size="small">Shopping</CategoryBadge>
-      <CategoryBadge color="orange" size="small" icon="refresh">Food</CategoryBadge>
-      <CategoryBadge color="green" size="small" variant="outlined">Income</CategoryBadge>
+      <CategoryBadge color="periwinkle" size="small">Shopping</CategoryBadge>
+      <CategoryBadge color="olive" size="small" variant="outlined">Income</CategoryBadge>
     </div>
   </div>
   
   <div>
     <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium (32px height) - Standard layouts</p>
     <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-      <CategoryBadge color="blue" size="medium">Shopping</CategoryBadge>
-      <CategoryBadge color="orange" size="medium" icon="refresh">Food & Dining</CategoryBadge>
-      <CategoryBadge color="green" size="medium" variant="outlined">Income</CategoryBadge>
+      <CategoryBadge color="periwinkle" size="medium">Shopping</CategoryBadge>
+      <CategoryBadge color="olive" size="medium" variant="outlined">Income</CategoryBadge>
     </div>
   </div>
 </div>`,
@@ -288,18 +260,16 @@ export const categoryBadgeDocs: ComponentDocumentation = {
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Small (24px height) - Compact layouts</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" size="small">Shopping</CategoryBadge>
-              <CategoryBadge color="orange" size="small" icon="refresh">Food</CategoryBadge>
-              <CategoryBadge color="green" size="small" variant="outlined">Income</CategoryBadge>
+              <CategoryBadge color="periwinkle" size="small">Shopping</CategoryBadge>
+              <CategoryBadge color="olive" size="small" variant="outlined">Income</CategoryBadge>
             </div>
           </div>
           
           <div>
             <p style={{ marginBottom: '8px', fontSize: '14px', color: '#666' }}>Medium (32px height) - Standard layouts</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              <CategoryBadge color="blue" size="medium">Shopping</CategoryBadge>
-              <CategoryBadge color="orange" size="medium" icon="refresh">Food & Dining</CategoryBadge>
-              <CategoryBadge color="green" size="medium" variant="outlined">Income</CategoryBadge>
+              <CategoryBadge color="periwinkle" size="medium">Shopping</CategoryBadge>
+              <CategoryBadge color="olive" size="medium" variant="outlined">Income</CategoryBadge>
             </div>
           </div>
         </div>
@@ -338,30 +308,26 @@ export const categoryBadgeDocs: ComponentDocumentation = {
         name: 'Container',
         description: 'Root element with rounded corners, variant-specific styling (filled/outlined/minimal), and color-based background or border.',
         tokens: [
-          'semantic.color.category.blue',
-          'semantic.color.category.purple',
-          'semantic.color.category.pink',
-          'semantic.color.category.yellow',
-          'semantic.color.category.green',
-          'semantic.color.category.red',
-          'semantic.color.category.orange',
-          'semantic.color.category.gray',
-          'semantic.color.category.blue-strong',
-          'semantic.color.category.purple-strong',
-          'semantic.color.category.pink-strong',
-          'semantic.color.category.yellow-strong',
-          'semantic.color.category.green-strong',
-          'semantic.color.category.red-strong',
-          'semantic.color.category.orange-strong',
-          'semantic.color.category.gray-strong',
-          'semantic.color.category.blue-muted',
-          'semantic.color.category.purple-muted',
-          'semantic.color.category.pink-muted',
-          'semantic.color.category.yellow-muted',
-          'semantic.color.category.green-muted',
-          'semantic.color.category.red-muted',
-          'semantic.color.category.orange-muted',
-          'semantic.color.category.gray-muted',
+          'semantic.color.category.olive', // Outline of an outlined olive badge
+          'semantic.color.category.olive-strong', // Fill of a filled olive badge, with white text
+          'semantic.color.category.olive-text', // Text of an outlined or minimal olive badge
+          'semantic.color.category.olive-muted', // Fill of a minimal olive badge
+          'semantic.color.category.periwinkle', // Outline of an outlined periwinkle badge
+          'semantic.color.category.periwinkle-strong', // Fill of a filled periwinkle badge, with white text
+          'semantic.color.category.periwinkle-text', // Text of an outlined or minimal periwinkle badge
+          'semantic.color.category.periwinkle-muted', // Fill of a minimal periwinkle badge
+          'semantic.color.category.rose', // Outline of an outlined rose badge
+          'semantic.color.category.rose-strong', // Fill of a filled rose badge, with white text
+          'semantic.color.category.rose-text', // Text of an outlined or minimal rose badge
+          'semantic.color.category.rose-muted', // Fill of a minimal rose badge
+          'semantic.color.category.magenta', // Outline of an outlined magenta badge
+          'semantic.color.category.magenta-strong', // Fill of a filled magenta badge, with white text
+          'semantic.color.category.magenta-text', // Text of an outlined or minimal magenta badge
+          'semantic.color.category.magenta-muted', // Fill of a minimal magenta badge
+          'semantic.color.category.gray', // Outline of an outlined gray badge
+          'semantic.color.category.gray-strong', // Fill of a filled gray badge, with white text
+          'semantic.color.category.gray-text', // Text of an outlined or minimal gray badge
+          'semantic.color.category.gray-muted', // Fill of a minimal gray badge
           'semantic.radius.full',
           'semantic.border.width.thin'
         ]
