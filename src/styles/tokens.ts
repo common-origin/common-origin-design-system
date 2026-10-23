@@ -2829,7 +2829,7 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.
          */
         subdued: string;
-        /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.43:1 on background.emphasis, 5.39:1 on background.interactive. */
+        /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis. */
         inverse: string;
         /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
