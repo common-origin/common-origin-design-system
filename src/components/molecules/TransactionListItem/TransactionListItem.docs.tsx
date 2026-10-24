@@ -6,7 +6,7 @@ import { Stack } from '../../atoms/Stack'
 export const transactionListItemDocs: ComponentDocumentation = {
   id: 'transaction-list-item',
   name: 'TransactionListItem',
-  description: 'Comprehensive transaction list item displaying merchant info, amount, date, status, and metadata. Supports interactive states, status badges, category icons, and attachment indicators. Minimum height 72px with full keyboard accessibility.',
+  description: 'Comprehensive transaction list item displaying merchant info, amount, date, status, and metadata. Supports interactive states, a status label for pending and failed transactions (decision 0045), category labels and attachment indicators. Minimum height 72px with full keyboard accessibility.',
   category: 'Molecules',
   
   props: [
@@ -33,7 +33,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
       type: "'completed' | 'pending' | 'failed'",
       required: false,
       default: "'completed'",
-      description: 'Transaction status. Pending shows orange badge dot, failed shows red badge, completed shows no badge'
+      description: 'Transaction status, shown with a small StatusLabel next to the merchant (decision 0045): failed with its shape and label, pending as neutral text. Completed, the default, shows nothing.'
     },
     {
       name: 'category',
@@ -146,7 +146,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
     },
     {
       name: 'Pending Transaction',
-      description: 'Transaction with pending status showing orange badge dot.',
+      description: 'A pending transaction shows a neutral Pending label.',
       code: `<TransactionListItem
   merchant="Online Store"
   amount={-125.99}
@@ -168,7 +168,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
     },
     {
       name: 'Failed Transaction',
-      description: 'Transaction with failed status showing red error badge.',
+      description: 'A failed transaction shows the Failed label with the error shape.',
       code: `<TransactionListItem
   merchant="Gas Station"
   amount={-65.00}
@@ -313,11 +313,11 @@ export const transactionListItemDocs: ComponentDocumentation = {
       'Uses role="button" for interactive items with onClick handler',
       'Keyboard accessible with Tab, Enter, and Space key support',
       'Descriptive aria-label on clickable items includes merchant, type (expense/income), and amount',
-      'Status badges have descriptive aria-labels (Pending/Failed transaction)',
+      'Pending and failed transactions show a StatusLabel with visible text, so status is never colour alone (decision 0045)',
       'Category icons have aria-labels describing the category',
       'Metadata icons (receipt, note) have aria-labels for screen reader users',
       'Focus visible outline meets WCAG 2.2 AA requirements',
-      'Color is not sole indicator - badges, icons, and text provide redundant information',
+      'Colour is never the only cue: the status label has text (and a shape for failed), and the category label has an icon and text',
       'Text truncation preserves readability for long merchant names and descriptions'
     ],
     keyboardNavigation: 'Tab: Focus item (if clickable) | Enter/Space: Activate onClick handler',
@@ -338,7 +338,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
 │  │         │  │  ┌──────────────────────────┐  │   │
 │  │ [Logo/  │  │  │ TopRow                   │  │   │
 │  │ Initials│  │  │ [Icon] Merchant  Amount  │  │   │
-│  │ +Badge] │  │  └──────────────────────────┘  │   │
+│  │       ] │  │  └──────────────────────────┘  │   │
 │  │         │  │                                │   │
 │  └─────────┘  │  ┌──────────────────────────┐  │   │
 │               │  │ BottomRow                │  │   │
@@ -362,7 +362,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
       },
       {
         name: 'StyledAvatarSection',
-        description: 'Fixed-width section containing Avatar with optional status Badge overlay',
+        description: 'Fixed-width section containing the Avatar',
         tokens: []
       },
       {
@@ -371,8 +371,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
         tokens: []
       },
       {
-        name: 'Badge (Status)',
-        description: 'Dot badge overlay on avatar for pending status, inline badge for failed status',
+        name: 'StatusLabel',
+        description: 'Small status label beside the merchant for pending (neutral text) and failed (error shape and text); none for completed',
         tokens: []
       },
       {
@@ -387,7 +387,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
       },
       {
         name: 'MerchantSection',
-        description: 'Left section with category icon, merchant name (truncated), and failed badge',
+        description: 'Left section with the merchant name (truncated), its category label and, for pending or failed, a status label',
         tokens: ['semantic.space.100']
       },
       {
@@ -429,7 +429,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
   },
 
   notes: [
-    'Composes from Avatar, Badge, MoneyDisplay, Icon, DateFormatter, Typography',
+    'Composes from Avatar, CategoryLabel, StatusLabel, MoneyDisplay, Icon, DateFormatter, Typography',
     'Minimum height 72px ensures consistent touch targets and visual rhythm',
     'Interactive items have hover, active, and focus states with proper styling',
     'Keyboard navigation supports Enter and Space for activation',

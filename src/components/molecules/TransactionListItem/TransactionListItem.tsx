@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Avatar } from '../../atoms/Avatar'
-import { Badge, type BadgeProps } from '../../atoms/Badge'
+import { StatusLabel } from '../../atoms/StatusLabel'
 import { CategoryLabel, type CategoryColor } from '../../atoms/CategoryLabel'
 import { MoneyDisplay, MoneyDisplayVariant } from '../../atoms/MoneyDisplay'
 import { Icon, IconName } from '../../atoms/Icon'
@@ -143,12 +143,6 @@ const categoryConfig: Record<TransactionCategory, { color: CategoryColor; icon: 
   other: { color: 'gray', icon: 'paper', label: 'Other' }
 }
 
-// Map status to badge variant
-const statusToBadgeVariant: Record<TransactionStatus, NonNullable<BadgeProps['variant']>> = {
-  completed: 'success',
-  pending: 'warning',
-  failed: 'error'
-}
 
 /**
  * TransactionListItem component
@@ -157,7 +151,7 @@ const statusToBadgeVariant: Record<TransactionStatus, NonNullable<BadgeProps['va
  * status, and optional metadata (category, receipt, notes). Minimum height 72px
  * with interactive states for clickable items.
  * 
- * Composes: Avatar, Badge, MoneyDisplay, Icon, DateFormatter, Typography, Stack
+ * Composes: Avatar, CategoryLabel, StatusLabel, MoneyDisplay, Icon, DateFormatter, Typography, Stack
  */
 export const TransactionListItem: React.FC<TransactionListItemProps> = ({
   merchant,
@@ -181,8 +175,6 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
   // Get category configuration
   const categoryData = category ? categoryConfig[category] : undefined
   
-  // Get badge variant from status
-  const badgeVariant = statusToBadgeVariant[status]
   
   const handleClick = () => {
     if (isClickable && onClick) {
@@ -204,25 +196,16 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={isClickable ? 0 : undefined}
       role={isClickable ? 'button' : undefined}
-      aria-label={isClickable ? `${merchant} transaction, ${amount < 0 ? 'expense' : 'income'} of ${Math.abs(amount)}` : undefined}
+      // The name replaces the row's content, so it repeats a status the row shows (pending, failed)
+      aria-label={isClickable ? `${merchant} transaction, ${amount < 0 ? 'expense' : 'income'} of ${Math.abs(amount)}${status === 'completed' ? '' : `, ${status}`}` : undefined}
       data-testid={dataTestId}
     >
       <StyledAvatarSection>
-        {status === 'pending' ? (
-          <Badge variant={badgeVariant} dot aria-label="Pending transaction">
-            <Avatar 
-              name={merchant}
-              picture={merchantLogo}
-              size="md"
-            />
-          </Badge>
-        ) : (
-          <Avatar 
-            name={merchant}
-            picture={merchantLogo}
-            size="md"
-          />
-        )}
+        <Avatar 
+          name={merchant}
+          picture={merchantLogo}
+          size="md"
+        />
       </StyledAvatarSection>
       
       <StyledMainContent>
@@ -244,10 +227,10 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
                 {categoryData.label}
               </CategoryLabel>
             )}
-            {status === 'failed' && (
-              <Badge variant="error" dot aria-label="Failed transaction">
-                <span />
-              </Badge>
+            {/* The status pattern shows a status that needs a look (decision 0045 §4): failed with its
+                shape and label, pending as neutral text. Completed is the quiet default. */}
+            {status !== 'completed' && (
+              <StatusLabel status={status} size="small" liveRegion={false} />
             )}
           </StyledMerchantSection>
           

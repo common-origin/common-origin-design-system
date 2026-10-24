@@ -89,20 +89,22 @@ describe('TransactionListItem', () => {
       render(<TransactionListItem {...defaultProps} />)
       
       // Completed status shows no badge
-      expect(screen.queryByText('Pending transaction')).not.toBeInTheDocument()
-      expect(screen.queryByText('Failed transaction')).not.toBeInTheDocument()
+      // Completed is the quiet default: no status label
+      expect(screen.queryByRole('status')).not.toBeInTheDocument()
     })
 
-    it('displays pending status with badge', () => {
+    // The status pattern (decision 0045): a visible StatusLabel, not a coloured dot
+    it('shows a pending transaction with a neutral, text-only status label', () => {
       render(<TransactionListItem {...defaultProps} status="pending" />)
       
-      expect(screen.getByText('Pending transaction')).toBeInTheDocument()
+      expect(screen.getByRole('status', { name: 'Status: Pending' })).toBeInTheDocument()
     })
 
-    it('displays failed status with badge', () => {
+    it('shows a failed transaction with its status label and shape', () => {
       render(<TransactionListItem {...defaultProps} status="failed" />)
       
-      expect(screen.getByText('Failed transaction')).toBeInTheDocument()
+      const label = screen.getByRole('status', { name: 'Status: Failed' })
+      expect(label.querySelector('[data-shape="error"]')).toBeInTheDocument()
     })
   })
 
@@ -341,10 +343,10 @@ describe('TransactionListItem', () => {
       expect(container.getAttribute('aria-label')).toContain('income')
     })
 
-    it('status badges have descriptive labels', () => {
+    it('status labels have visible text, not colour alone', () => {
       render(<TransactionListItem {...defaultProps} status="pending" />)
       
-      expect(screen.getByText('Pending transaction')).toBeInTheDocument()
+      expect(screen.getByRole('status', { name: 'Status: Pending' })).toBeInTheDocument()
     })
 
     it('category icons have descriptive labels', () => {
@@ -412,7 +414,7 @@ describe('TransactionListItem', () => {
       
       expect(screen.getByTestId('full-transaction')).toBeInTheDocument()
       expect(screen.getByText('Test Merchant')).toBeInTheDocument()
-      expect(screen.getByText('Pending transaction')).toBeInTheDocument()
+      expect(screen.getByRole('status', { name: 'Status: Pending' })).toBeInTheDocument()
       // Announced as visually hidden text; the visible label is aria-hidden (#78)
       expect(screen.getByText('Category: Shopping')).toBeInTheDocument()
       expect(screen.getByText('Shopping').closest('[aria-hidden="true"]')).toBeInTheDocument()
@@ -421,5 +423,19 @@ describe('TransactionListItem', () => {
       expect(screen.getByLabelText('Has receipt')).toBeInTheDocument()
       expect(screen.getByLabelText('Has note')).toBeInTheDocument()
     })
+  })
+})
+
+
+// A clickable row's name replaces its content, so it carries the status the row shows (#300)
+describe('TransactionListItem clickable status', () => {
+  it.each(['pending', 'failed'] as const)('names a clickable %s transaction with its status', (status) => {
+    render(<TransactionListItem merchant="Coffee Shop" amount={-4.5} date="2026-10-24" status={status} onClick={() => {}} />)
+    expect(screen.getByRole('button', { name: `Coffee Shop transaction, expense of 4.5, ${status}` })).toBeInTheDocument()
+  })
+
+  it('leaves the status out of a completed transaction\'s name', () => {
+    render(<TransactionListItem merchant="Coffee Shop" amount={-4.5} date="2026-10-24" onClick={() => {}} />)
+    expect(screen.getByRole('button', { name: 'Coffee Shop transaction, expense of 4.5' })).toBeInTheDocument()
   })
 })

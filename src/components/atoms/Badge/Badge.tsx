@@ -9,6 +9,17 @@ const { color } = semantic
 const { radius } = semantic
 const { dot, count, ring } = tokens.component.badge
 
+/**
+ * Badge variants: `default` and `accent`, plus deprecated aliases of `accent` kept until 3.0.
+ */
+export type BadgeVariant = 'default' | 'accent' | DeprecatedBadgeVariant
+
+/**
+ * Deprecated Badge variants, each rendered as `accent` until 3.0 (decisions 0029, 0045).
+ * @deprecated Use `accent`. For a count of items with a status, use StatusLabel.
+ */
+export type DeprecatedBadgeVariant = 'primary' | 'error' | 'warning' | 'success'
+
 export interface BadgeProps {
   /** Content to wrap with the badge */
   children: React.ReactNode
@@ -17,12 +28,15 @@ export interface BadgeProps {
   /** Maximum number to display before showing "99+" */
   max?: number
   /**
-   * Visual variant of the badge. `accent` is the blue highlight. `primary` is a deprecated alias
-   * for `accent`, because Button's `primary` is near-black (decision 0029). It keeps working
-   * until it is removed in 3.0.
+   * Visual variant of the badge. A badge means new or unread items (decision 0045): `accent` is
+   * the blue highlight, and `default` the near-black count. `primary` is a deprecated alias for
+   * `accent`, because Button's `primary` is near-black (decision 0029). `error`, `warning` and
+   * `success` are deprecated aliases for `accent`: a badge's colour alone can't carry a status, so
+   * a count of items with a status uses the status pattern instead ("3 failed" with StatusLabel).
+   * All four keep working until they are removed in 3.0.
    * @default 'default'
    */
-  variant?: 'default' | 'accent' | 'primary' | 'error' | 'warning' | 'success'
+  variant?: BadgeVariant
   /** Show only a dot indicator instead of count */
   dot?: boolean
   /** Screen reader label for the badge */
@@ -82,25 +96,16 @@ const BadgeIndicator = styled.span.withConfig({
   
   ${props => {
     switch (props.$variant) {
+      // 'primary', 'error', 'warning' and 'success' are deprecated aliases for 'accent', removed in
+      // 3.0: 'primary' (#169), and the status colours, because a badge's colour alone can't carry a
+      // status (decision 0045, #263)
       case 'accent':
-      case 'primary': // Deprecated alias for 'accent', removed in 3.0 (#169)
-        return `
-          background-color: ${color.fill.accent};
-          color: ${color.text.inverse};
-        `
+      case 'primary':
       case 'error':
-        return `
-          background-color: ${color.fill.danger};
-          color: ${color.text.inverse};
-        `
       case 'warning':
-        return `
-          background-color: ${color.fill.warning};
-          color: ${color.text.inverse};
-        `
       case 'success':
         return `
-          background-color: ${color.fill.success};
+          background-color: ${color.fill.accent};
           color: ${color.text.inverse};
         `
       default:
