@@ -196,7 +196,8 @@ export const TransactionListItem: React.FC<TransactionListItemProps> = ({
       onKeyDown={handleKeyDown}
       tabIndex={isClickable ? 0 : undefined}
       role={isClickable ? 'button' : undefined}
-      aria-label={isClickable ? `${merchant} transaction, ${amount < 0 ? 'expense' : 'income'} of ${Math.abs(amount)}` : undefined}
+      // The name replaces the row's content, so it repeats a status the row shows (pending, failed)
+      aria-label={isClickable ? `${merchant} transaction, ${amount < 0 ? 'expense' : 'income'} of ${Math.abs(amount)}${status === 'completed' ? '' : `, ${status}`}` : undefined}
       data-testid={dataTestId}
     >
       <StyledAvatarSection>

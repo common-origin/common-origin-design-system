@@ -425,3 +425,17 @@ describe('TransactionListItem', () => {
     })
   })
 })
+
+
+// A clickable row's name replaces its content, so it carries the status the row shows (#300)
+describe('TransactionListItem clickable status', () => {
+  it.each(['pending', 'failed'] as const)('names a clickable %s transaction with its status', (status) => {
+    render(<TransactionListItem merchant="Coffee Shop" amount={-4.5} date="2026-10-24" status={status} onClick={() => {}} />)
+    expect(screen.getByRole('button', { name: `Coffee Shop transaction, expense of 4.5, ${status}` })).toBeInTheDocument()
+  })
+
+  it('leaves the status out of a completed transaction\'s name', () => {
+    render(<TransactionListItem merchant="Coffee Shop" amount={-4.5} date="2026-10-24" onClick={() => {}} />)
+    expect(screen.getByRole('button', { name: 'Coffee Shop transaction, expense of 4.5' })).toBeInTheDocument()
+  })
+})
