@@ -20,7 +20,7 @@ export const alertDocs: ComponentDocumentation = {
       required: false,
       default: "'info'",
       description:
-        'Severity, affecting the background, border colour, text and icon. Error (crossCircle icon) for critical issues, warning (bell icon) for cautions, info (info icon) for tips, success (checkRing icon) for confirmations. Each variant has a fixed icon that always displays.'
+        'Severity, affecting the background, border colour, text and icon (decision 0045). Error (a cross in a hexagon, danger) for critical issues, warning (`!` in a triangle, yellow) for cautions, info (`i` in a square, accent) for tips, success (a tick in a circle) for confirmations. Each variant has a fixed status icon that always displays; it is decorative, because the title and message say the status.'
     },
     {
       name: 'appearance',
@@ -236,7 +236,7 @@ export const alertDocs: ComponentDocumentation = {
     },
     {
       name: 'Variant-Specific Icons',
-      description: 'Each alert variant displays a unique icon: error (crossCircle), warning (bell), info (info), success (checkRing)',
+      description: 'Each variant shows its status icon (decision 0045): error statusError, warning statusWarning, info statusInfo, success statusSuccess. Each sits on its status shape, so the icons stay distinct without colour.',
       code: `<Stack direction="column" gap="md">
   <Alert variant="error">
     Form validation failed: Email address is required.

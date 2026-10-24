@@ -5,6 +5,7 @@ import { Alert, type AlertProps } from './Alert'
 import tokens from '@/styles/tokens.json'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 import { Button } from '../../atoms/Button'
+import { iconsData } from '../../../types/icons'
 
 expect.extend(toHaveNoViolations)
 
@@ -616,5 +617,20 @@ describe('Alert appearance (decision 0019)', () => {
   it('works alongside the deprecated inline prop', () => {
     render(<Alert inline appearance="borderless" variant="warning" data-testid="alert">Message</Alert>)
     expect(screen.getByTestId('alert')).toHaveStyle({ borderColor: 'transparent' })
+  })
+})
+
+// Each severity shows its status icon (decision 0045), hidden from assistive technology because the
+// title and message say the status in words (0028)
+describe('Alert status icons (decision 0045)', () => {
+  it.each([
+    ['error', 'statusError'],
+    ['warning', 'statusWarning'],
+    ['info', 'statusInfo'],
+    ['success', 'statusSuccess'],
+  ] as const)('shows the %s status icon, decoratively', (variant, icon) => {
+    const { container } = render(<Alert variant={variant} title="Title">Message</Alert>)
+    const path = container.querySelector('[aria-hidden="true"] svg path')
+    expect(path).toHaveAttribute('d', iconsData[icon].path)
   })
 })

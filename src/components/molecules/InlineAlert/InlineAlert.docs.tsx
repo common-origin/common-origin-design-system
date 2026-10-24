@@ -38,7 +38,7 @@ export const inlineAlertDocs: ComponentDocumentation = {
       type: "'small' | 'medium'",
       required: false,
       default: "'medium'",
-      description: 'Size on the label scale (decision 0018): small (20px minimum height, 12px text) for dense places such as tables; medium (24px, 14px text) for forms and content. The message can wrap.'
+      description: 'Size on the label scale (decision 0018): small (20px minimum height, 12px text) for dense places such as tables; medium (24px, 14px text) for forms and content. Medium shows the status icon; small shows the status shape, because a 12px outline icon is too small to read (decision 0045). The message can wrap.'
     },
     {
       name: 'children',
@@ -81,7 +81,7 @@ export const inlineAlertDocs: ComponentDocumentation = {
     'semantic.size.label.medium',
     'semantic.typography.caption', // small text
     'semantic.typography.small', // medium text
-    'semantic.size.icon.xs', // small icon
+    'semantic.size.icon.xs', // small size: the status shape
     'semantic.size.icon.sm', // medium icon
     'semantic.space.100', // small gap
     'semantic.space.200' // medium gap

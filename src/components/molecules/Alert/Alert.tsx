@@ -58,10 +58,10 @@ const EXIT_ANIMATION_NAMES = [fadeThenCollapse.getName(), fadeOut.getName()]
 export interface AlertProps {
   /**
    * Visual style variant affecting background, border, and icon colors
-   * - error: Critical issues, validation errors (crossCircle icon)
-   * - warning: Cautions, potential issues (bell icon)
-   * - info: Tips, helper text, neutral information (info icon)
-   * - success: Confirmations, successful operations (checkRing icon)
+   * - error: Critical issues, validation errors (cross in a hexagon)
+   * - warning: Cautions, potential issues (`!` in a triangle)
+   * - info: Tips, helper text, neutral information (`i` in a square)
+   * - success: Confirmations, successful operations (tick in a circle)
    * @default 'info'
    */
   variant?: 'error' | 'warning' | 'info' | 'success'
@@ -129,11 +129,12 @@ export interface AlertProps {
 }
 
 // Default icons by variant
+// Each severity's status icon (decision 0045): decorative, because the title and message say it
 const variantIcons: Record<string, IconName> = {
-  error: 'crossCircle',
-  warning: 'bell',
-  info: 'info',
-  success: 'checkRing'
+  error: 'statusError',
+  warning: 'statusWarning',
+  info: 'statusInfo',
+  success: 'statusSuccess'
 }
 
 // Icon colors by variant (using semantic icon color tokens)
