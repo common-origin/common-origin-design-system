@@ -66,11 +66,13 @@ describe('icon announcements', () => {
     expect(await axe(container)).toHaveNoViolations()
   })
 
-  it('MoneyDisplay names its sign icon, because the amount is shown without a sign', () => {
+  // The sign is text, read as minus or plus, so there's no sign icon to name (decision 0045, #262)
+  it('MoneyDisplay shows its sign as text, with no icon', () => {
     const { container, rerender } = render(<MoneyDisplay amount={-25} />)
-    expect(screen.getByRole('img', { name: 'Minus' })).toBeInTheDocument()
+    expect(container).toHaveTextContent('\u2212$25.00')
+    expect(announcedImages(container)).toEqual([])
     rerender(<MoneyDisplay amount={25} showSign />)
-    expect(screen.getByRole('img', { name: 'Plus' })).toBeInTheDocument()
+    expect(container).toHaveTextContent('+$25.00')
     expectNoInternalNames(container)
   })
 

@@ -7,6 +7,11 @@ import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
+const hexToRgbString = (hex: string) => {
+  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16))
+  return `rgb(${r}, ${g}, ${b})`
+}
+
 const defaultProps: MoneyDisplayProps = {
   amount: 100.50
 }
@@ -67,26 +72,37 @@ describe('MoneyDisplay', () => {
     })
   })
 
+  // The sign is text (decision 0045): it copies and reads as part of the amount, in the role colour
   describe('Sign Display', () => {
-    it('shows positive icon when showSign is true and amount is positive', () => {
-      renderComponent({ amount: 100, showSign: true })
-      expect(screen.getByRole('img', { name: 'Plus' })).toBeInTheDocument()
+    it('shows a typed minus sign (U+2212) for negative amounts, even without showSign', () => {
+      renderComponent({ amount: -20 })
+      expect(screen.getByText('\u2212$20.00')).toBeInTheDocument()
     })
 
-    it('shows negative icon when showSign is true and amount is negative', () => {
-      renderComponent({ amount: -100, showSign: true })
-      expect(screen.getByRole('img', { name: 'Minus' })).toBeInTheDocument()
+    it('shows a plus sign for positive amounts when showSign is true', () => {
+      renderComponent({ amount: 20, showSign: true })
+      expect(screen.getByText('+$20.00')).toBeInTheDocument()
     })
 
-    it('shows negative icon for negative amounts even without showSign', () => {
-      renderComponent({ amount: -50 })
-      expect(screen.getByRole('img', { name: 'Minus' })).toBeInTheDocument()
+    it('shows no sign for positive amounts by default', () => {
+      renderComponent({ amount: 20 })
+      expect(screen.getByText('$20.00')).toBeInTheDocument()
     })
 
-    it('does not show sign icon for zero amount', () => {
-      renderComponent({ amount: 0, showSign: true })
-      expect(screen.queryByRole('img', { name: 'Plus' })).not.toBeInTheDocument()
-      expect(screen.queryByRole('img', { name: 'Minus' })).not.toBeInTheDocument()
+    it('draws no sign icon', () => {
+      const { container } = renderComponent({ amount: -20 })
+      expect(container.querySelector('svg')).not.toBeInTheDocument()
+    })
+
+    it.each([
+      [-20, {}, tokens.semantic.color.text.danger],
+      [20, { showSign: true }, tokens.semantic.color.text.success],
+      [20, { variant: 'positive' as const }, tokens.semantic.color.text.success],
+      [20, {}, tokens.semantic.color.text.default],
+    ])('colours %s with its role', (amount, props, colour) => {
+      renderComponent({ amount, ...props })
+      const text = screen.getByText(/\$20\.00/)
+      expect(window.getComputedStyle(text).color).toBe(hexToRgbString(colour))
     })
   })
 
@@ -190,22 +206,12 @@ describe('MoneyDisplay', () => {
       }
     })
 
-    it('provides aria-label with spelled out amount', () => {
-      renderComponent({ amount: 45.50 })
-      const element = screen.getByLabelText(/45 dollars and 50 cents/)
-      expect(element).toBeInTheDocument()
-    })
-
-    it('provides aria-label for negative amounts', () => {
-      renderComponent({ amount: -100.25 })
-      const element = screen.getByLabelText(/negative 100 dollars and 25 cents/)
-      expect(element).toBeInTheDocument()
-    })
-
-    it('provides aria-label for positive amounts', () => {
-      renderComponent({ amount: 250.75 })
-      const element = screen.getByLabelText(/250 dollars and 75 cents/)
-      expect(element).toBeInTheDocument()
+    // The visible text is the accessible text: a generic span can't be named (ARIA), and the typed
+    // sign is read as plus or minus
+    it('exposes the signed amount as text, with no aria-label', () => {
+      const { container } = renderComponent({ amount: -1234.56 })
+      expect(container.firstElementChild).not.toHaveAttribute('aria-label')
+      expect(container).toHaveTextContent('\u2212$1,234.56')
     })
   })
 

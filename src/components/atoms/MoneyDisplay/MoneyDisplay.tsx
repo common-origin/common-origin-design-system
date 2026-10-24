@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Typography, type TypographyVariant, type TypographyColor } from '../Typography'
-import { Icon, type IconProps } from '../Icon'
 import tokens from '@/lib/cssTokens'
 
 export type MoneyDisplayVariant = 'default' | 'positive' | 'negative' | 'neutral'
@@ -40,7 +39,6 @@ const StyledWrapper = styled.span.withConfig({
 })<StyledWrapperProps>`
   display: inline-flex;
   align-items: center;
-  gap: 0.25rem;
   text-align: ${({ $align }) => $align};
   font-weight: ${({ $weight }) => tokens.semantic.fontWeight[$weight]};
 `
@@ -53,33 +51,8 @@ const sizeToTypographyVariant: Record<MoneyDisplaySize, TypographyVariant> = {
   xlarge: 'h2'
 }
 
-// Map size to Icon size for consistent visual alignment
-const sizeToIconSize: Record<MoneyDisplaySize, IconProps['size']> = {
-  small: 'xs',
-  medium: 'sm',
-  large: 'md',
-  xlarge: 'lg'
-}
-
-/**
- * Generates aria-label with spelled out amount
- */
-const generateAriaLabel = (amount: number, currency: string, locale: string): string => {
-  const formatter = new Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: currency,
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 2,
-  })
-  
-  // Get parts to spell out the amount
-  const parts = formatter.formatToParts(Math.abs(amount))
-  const integerPart = parts.find(p => p.type === 'integer')?.value || '0'
-  const fractionPart = parts.find(p => p.type === 'fraction')?.value || '00'
-  
-  const sign = amount < 0 ? 'negative ' : ''
-  return `${sign}${integerPart} dollars and ${fractionPart} cents`
-}
+// The minus sign, not a hyphen, so it reads and copies as minus (decision 0045)
+const MINUS = '\u2212'
 
 export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
   amount,
@@ -102,47 +75,31 @@ export const MoneyDisplay: React.FC<MoneyDisplayProps> = ({
   
   const formattedAmount = formatter.format(Math.abs(amount))
   
-  // Determine if we need to show a sign icon
-  const showPositiveIcon = (showSign && amount > 0) || variant === 'positive'
-  const showNegativeIcon = amount < 0 || variant === 'negative'
-  
-  // Generate accessibility label
-  const ariaLabel = generateAriaLabel(amount, currency, locale)
-  
-  // Get typography variant and icon size
+  // A signed amount carries its sign as text, so the sign survives copying and is read aloud, and the
+  // role colour repeats it (decision 0045). Negative amounts always show their sign.
+  const isNegative = amount < 0 || variant === 'negative'
+  const isPositive = !isNegative && ((showSign && amount > 0) || variant === 'positive')
+  const sign = isNegative ? MINUS : isPositive ? '+' : ''
+
   const typographyVariant = sizeToTypographyVariant[size]
-  const iconSize = sizeToIconSize[size]
-  
-  // Determine icon color based on variant
-  const iconColor: IconProps['iconColor'] = 
-    variant === 'positive' || showPositiveIcon ? 'success' :
-    variant === 'negative' || showNegativeIcon ? 'error' :
+  const amountColor: TypographyColor =
+    isNegative ? 'error' :
+    isPositive ? 'success' :
     variant === 'neutral' ? 'subdued' :
     'default'
-  
-  // Amount always uses default color (except neutral which stays subdued)
-  const amountColor: TypographyColor = variant === 'neutral' ? 'subdued' : 'default'
-  
+
   return (
-    <StyledWrapper 
-      $align={align} 
+    <StyledWrapper
+      $align={align}
       $weight={weight}
-      aria-label={ariaLabel}
       data-testid={dataTestId}
     >
-      {showPositiveIcon && !showNegativeIcon && (
-        // The amount is shown without a sign, so the icon is the sign and needs a name (#85)
-        <Icon name="addRing" size={iconSize} iconColor={iconColor} aria-label="Plus" />
-      )}
-      {showNegativeIcon && (
-        <Icon name="remove" size={iconSize} iconColor={iconColor} aria-label="Minus" />
-      )}
       <Typography
         variant={typographyVariant}
         color={amountColor}
         as="span"
       >
-        {formattedAmount}
+        {sign}{formattedAmount}
       </Typography>
     </StyledWrapper>
   )
