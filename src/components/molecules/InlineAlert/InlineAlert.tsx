@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
 import { Icon } from '../../atoms/Icon'
 import type { IconName } from '../../../types/icons'
+import { StatusShape } from '../../atoms/StatusLabel/StatusShape'
+import type { StatusShape as StatusShapeName } from '../../../lib/statusShapes'
 
 const { semantic } = tokens
 const { color, typography, size } = semantic
@@ -52,11 +54,12 @@ export interface InlineAlertProps {
   'data-testid'?: string
 }
 
+// Each severity's status icon and, at the small size, its shape (decision 0045)
 const variantIcons: Record<InlineAlertVariant, IconName> = {
-  error: 'crossCircle',
-  warning: 'bell',
-  info: 'info',
-  success: 'checkRing'
+  error: 'statusError',
+  warning: 'statusWarning',
+  info: 'statusInfo',
+  success: 'statusSuccess'
 }
 
 const variantTextColors: Record<InlineAlertVariant, string> = {
@@ -64,6 +67,13 @@ const variantTextColors: Record<InlineAlertVariant, string> = {
   warning: color.text.warning,
   info: color.text.accent,
   success: color.text.success
+}
+
+const variantShapes: Record<InlineAlertVariant, StatusShapeName> = {
+  error: 'error',
+  warning: 'warning',
+  info: 'info',
+  success: 'success'
 }
 
 const sizeConfig = {
@@ -140,7 +150,10 @@ export const InlineAlert: React.FC<InlineAlertProps> = ({
         <>
           <StyledIconLine aria-hidden="true">
             {/* The icon takes the text colour, so the two can't diverge */}
-            <Icon name={variantIcons[variant]} size={sizeConfig[alertSize].icon} iconColor="inherit" />
+            {/* A 12px outline icon is too small to read, so the small size shows the status shape (0045) */}
+            {alertSize === 'small'
+              ? <StatusShape shape={variantShapes[variant]} />
+              : <Icon name={variantIcons[variant]} size={sizeConfig[alertSize].icon} iconColor="inherit" />}
           </StyledIconLine>
           <StyledMessage>{children}</StyledMessage>
         </>

@@ -5,6 +5,8 @@ import { InlineAlert, type InlineAlertSize, type InlineAlertVariant } from './In
 import { Alert } from '../Alert'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio } from '@/test-utils/contrast'
+import { iconsData, type IconName } from '../../../types/icons'
+import { statusShapes, type StatusShape as StatusShapeName } from '../../../lib/statusShapes'
 
 expect.extend(toHaveNoViolations)
 
@@ -135,5 +137,33 @@ describe('Alert inline (deprecated)', () => {
   it('still renders', () => {
     render(<Alert inline variant="warning">Careful</Alert>)
     expect(screen.getByRole('status')).toHaveTextContent('Careful')
+  })
+})
+
+// The status pattern (decision 0045): each severity's status icon at the medium size, and its shape
+// indicator at the small size, where a 12px outline icon is too small to read
+describe('InlineAlert status pattern (decision 0045)', () => {
+  const pattern: [InlineAlertVariant, IconName, StatusShapeName][] = [
+    ['error', 'statusError', 'error'],
+    ['warning', 'statusWarning', 'warning'],
+    ['info', 'statusInfo', 'info'],
+    ['success', 'statusSuccess', 'success'],
+  ]
+
+  it.each(pattern)('shows the %s status icon at the medium size', (variant, icon) => {
+    render(<InlineAlert variant={variant} data-testid="alert">Message</InlineAlert>)
+    expect(screen.getByTestId('alert').querySelector('svg path')).toHaveAttribute('d', iconsData[icon].path)
+  })
+
+  it.each(pattern)('shows the %s shape at the small size', (variant, _icon, shape) => {
+    render(<InlineAlert variant={variant} size="small" data-testid="alert">Message</InlineAlert>)
+    const mark = screen.getByTestId('alert').querySelector('svg')
+    expect(mark).toHaveAttribute('data-shape', shape)
+    expect(mark?.querySelector('path')).toHaveAttribute('d', statusShapes[shape])
+  })
+
+  it('has no accessibility violations at the small size', async () => {
+    const { container } = render(<>{pattern.map(([variant]) => <InlineAlert key={variant} variant={variant} size="small">Message</InlineAlert>)}</>)
+    expect(await axe(container)).toHaveNoViolations()
   })
 })

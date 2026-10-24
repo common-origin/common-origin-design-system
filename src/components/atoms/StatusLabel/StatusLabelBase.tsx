@@ -2,7 +2,8 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { Icon } from '../Icon/Icon'
 import type { IconName } from '../../../types/icons'
-import { statusShapes, type StatusShape } from '../../../lib/statusShapes'
+import type { StatusShape as StatusShapeName } from '../../../lib/statusShapes'
+import { StatusShape } from './StatusShape'
 import { forcedColorsEdge, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/lib/cssTokens'
 
@@ -86,7 +87,7 @@ const scaleIn = keyframes`
 const getStatusConfig = (status: StatusType) => {
   // Each status's icon and, for the coloured statuses, its shape indicator (decision 0045). The
   // neutral statuses have no shape: at the small size they're plain text.
-  const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; shape?: StatusShape; label: string }> = {
+  const configs: Record<StatusType, { color: string; bgColor: string; icon: IconName; shape?: StatusShapeName; label: string }> = {
     pending: {
       color: statusColors.pending.text,
       bgColor: statusColors.pending.background,
@@ -193,15 +194,6 @@ const StyledStatusLabel = styled.span.withConfig({
   }}
 `
 
-// The shape indicator: at least 12px (decision 0045), filled with the label's text colour, which is
-// 5.3:1 or more on the label's tint, so it needs no edge
-const StatusShapeMark = styled.svg`
-  flex: none;
-  width: ${tokens.semantic.size.icon.xs};
-  height: ${tokens.semantic.size.icon.xs};
-  fill: currentColor;
-`
-
 const ScreenReaderOnly = styled.span`
   ${visuallyHidden}
 `
@@ -256,9 +248,7 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
           />
         )}
         {showIcon && size === 'small' && statusConfig.shape && (
-          <StatusShapeMark viewBox="0 0 24 24" aria-hidden="true" focusable="false" data-shape={statusConfig.shape}>
-            <path d={statusShapes[statusConfig.shape]} />
-          </StatusShapeMark>
+          <StatusShape shape={statusConfig.shape} />
         )}
         {displayLabel}
         <ScreenReaderOnly>
