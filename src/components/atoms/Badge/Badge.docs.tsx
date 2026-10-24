@@ -34,10 +34,10 @@ export const badgeDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: '"default" | "accent" | "error" | "warning" | "success" | "primary" (deprecated)',
+      type: '"default" | "accent" | "primary" | "error" | "warning" | "success" (the last four deprecated)',
       required: false,
       default: '"default"',
-      description: 'Visual style. "accent" is the blue highlight. "primary" is a deprecated alias for "accent" (Button\'s primary is near-black, decision 0029) and will be removed in 3.0.'
+      description: 'Visual style. A badge means new or unread items (decision 0045): "accent" is the blue highlight and "default" the near-black count. "primary", "error", "warning" and "success" are deprecated aliases for "accent", removed in 3.0: a badge\'s colour alone can\'t carry a status, so a count of items with a status uses StatusLabel ("3 failed").'
     },
     {
       name: 'dot',
@@ -73,9 +73,6 @@ export const badgeDocs: ComponentDocumentation = {
     // Colors
     'semantic.color.fill.emphasis',
     'semantic.color.fill.accent',
-    'semantic.color.fill.danger',
-    'semantic.color.fill.warning',
-    'semantic.color.fill.success',
     'semantic.color.text.inverse',
     'semantic.surface.base',
     
@@ -132,15 +129,6 @@ export const badgeDocs: ComponentDocumentation = {
   <Badge count={5} variant="accent">
     <Button>Accent</Button>
   </Badge>
-  <Badge count={2} variant="error">
-    <Button>Error</Button>
-  </Badge>
-  <Badge count={4} variant="warning">
-    <Button>Warning</Button>
-  </Badge>
-  <Badge count={1} variant="success">
-    <Button>Success</Button>
-  </Badge>
 </div>`,
       renderComponent: () => (
         <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
@@ -149,15 +137,6 @@ export const badgeDocs: ComponentDocumentation = {
           </Badge>
           <Badge count={5} variant="accent">
             <Button>Accent</Button>
-          </Badge>
-          <Badge count={2} variant="error">
-            <Button>Error</Button>
-          </Badge>
-          <Badge count={4} variant="warning">
-            <Button>Warning</Button>
-          </Badge>
-          <Badge count={1} variant="success">
-            <Button>Success</Button>
           </Badge>
         </div>
       )
@@ -197,7 +176,7 @@ export const badgeDocs: ComponentDocumentation = {
   <Badge count={3}>
     <IconButton iconName="message" variant="secondary" aria-label="Notifications" />
   </Badge>
-  <Badge dot variant="error">
+  <Badge dot variant="accent">
     <IconButton iconName="message" variant="secondary" aria-label="Messages" />
   </Badge>
   <Badge count={12} variant="accent">
@@ -209,7 +188,7 @@ export const badgeDocs: ComponentDocumentation = {
           <Badge count={3}>
             <IconButton iconName="message" variant="secondary" aria-label="Notifications" />
           </Badge>
-          <Badge dot variant="error">
+          <Badge dot variant="accent">
             <IconButton iconName="message" variant="secondary" aria-label="Messages" />
           </Badge>
           <Badge count={12} variant="accent">
@@ -250,7 +229,7 @@ export const badgeDocs: ComponentDocumentation = {
   <Badge dot aria-label="Online status indicator">
     <Button>User Status</Button>
   </Badge>
-  <Badge count={3} variant="error" aria-label="3 critical alerts">
+  <Badge count={3} variant="accent" aria-label="3 critical alerts">
     <Button>Alerts</Button>
   </Badge>
 </div>`,
@@ -262,7 +241,7 @@ export const badgeDocs: ComponentDocumentation = {
           <Badge dot aria-label="Online status indicator">
             <Button>User Status</Button>
           </Badge>
-          <Badge count={3} variant="error" aria-label="3 critical alerts">
+          <Badge count={3} variant="accent" aria-label="3 critical alerts">
             <Button>Alerts</Button>
           </Badge>
         </div>
