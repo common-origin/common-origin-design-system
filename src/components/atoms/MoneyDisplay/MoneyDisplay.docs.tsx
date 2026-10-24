@@ -6,7 +6,7 @@ import { Stack } from '../Stack'
 export const moneyDisplayDocs: ComponentDocumentation = {
   id: 'money-display',
   name: 'MoneyDisplay',
-  description: 'Displays monetary amounts with consistent formatting, currency symbols, and semantic color coding. Uses icons (addRing/remove) for positive/negative indicators with colored styling. Uses Intl.NumberFormat for proper locale-based currency formatting with comprehensive accessibility support.',
+  description: 'Displays monetary amounts with locale-aware currency formatting (Intl.NumberFormat). A signed amount carries its sign as text, + or − (a true minus, U+2212), so the sign survives copying and is read as plus or minus; the success or danger colour repeats it, and colour is never the only cue (decision 0045).',
   category: 'Atoms',
   
   props: [
@@ -28,14 +28,14 @@ export const moneyDisplayDocs: ComponentDocumentation = {
       type: "'default' | 'positive' | 'negative' | 'neutral'",
       required: false,
       default: "'default'",
-      description: 'Visual variant affecting icon color: default (no icon), positive (green addRing icon for credits/income), negative (red remove icon for debits/expenses), neutral (gray text for informational)'
+      description: 'Visual variant: default (no sign unless showSign), positive (a + sign in the success colour, for credits and income), negative (a − sign in the danger colour, for debits and expenses), neutral (muted text, for information).'
     },
     {
       name: 'showSign',
       type: 'boolean',
       required: false,
       default: 'false',
-      description: 'Show icon indicator for positive/negative amounts. Positive shows green addRing icon, negative shows red remove icon. Negative amounts always show icon regardless.'
+      description: 'Show a + sign, in the success colour, on positive amounts. Negative amounts always show their − sign, in the danger colour.'
     },
     {
       name: 'size',
@@ -76,12 +76,8 @@ export const moneyDisplayDocs: ComponentDocumentation = {
   tokens: [
     'semantic.color.text.default',
     'semantic.color.text.muted',
-    'semantic.color.icon.success', // Plus icon on positive amounts
-    'semantic.color.icon.danger', // Minus icon on negative amounts
-    'semantic.size.icon.xs', // size="small"
-    'semantic.size.icon.sm', // size="medium"
-    'semantic.size.icon.md', // size="large"
-    'semantic.size.icon.lg', // size="xlarge"
+    'semantic.color.text.success', // Positive, signed amounts
+    'semantic.color.text.danger', // Negative amounts
     'semantic.typography.caption',
     'semantic.typography.body',
     'semantic.typography.h3',
@@ -224,7 +220,7 @@ export const moneyDisplayDocs: ComponentDocumentation = {
     notes: [
       'Uses semantic HTML with Typography component for proper text rendering',
       'Provides comprehensive aria-label with spelled out amounts (e.g., "negative forty-five dollars and fifty cents")',
-      'Color is not the only indicator - icons (addRing/remove) provide additional visual context',
+      'Colour is never the only cue: a signed amount carries its + or − sign as text, which copies with the amount and is read as plus or minus',
       'Icons have their own aria-labels for screen reader accessibility',
       'Sufficient color contrast for all variants meeting WCAG 2.2 AA requirements',
       'Works correctly with screen readers announcing full amount with currency'
@@ -253,15 +249,11 @@ export const moneyDisplayDocs: ComponentDocumentation = {
         tokens: []
       },
       {
-        name: 'Icon (optional)',
-        description: 'addRing icon for positive amounts, remove icon for negative amounts, with semantic colors',
+        name: 'Sign (optional)',
+        description: 'A + or − (U+2212) typed before the amount, in the success or danger text colour (decision 0045)',
         tokens: [
-          'semantic.size.icon.xs',
-          'semantic.size.icon.sm',
-          'semantic.size.icon.md',
-          'semantic.size.icon.lg',
-          'semantic.color.icon.success',
-          'semantic.color.icon.danger'
+          'semantic.color.text.success',
+          'semantic.color.text.danger'
         ]
       },
       {
