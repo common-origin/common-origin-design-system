@@ -258,12 +258,12 @@ export const listDocs: ComponentDocumentation = {
   <ListItem 
     primary="Inbox"
     secondary="Unread messages"
-    badge={<Chip variant="emphasis">12</Chip>}
+    badge={<Chip>12</Chip>}
   />
   <ListItem 
     primary="Sent"
     secondary="Outgoing messages"
-    badge={<Chip variant="subtle">48</Chip>}
+    badge={<Chip>48</Chip>}
   />
   <ListItem 
     primary="Drafts"
@@ -276,12 +276,12 @@ export const listDocs: ComponentDocumentation = {
           <ListItem 
             primary="Inbox"
             secondary="Unread messages"
-            badge={<Chip variant="emphasis">12</Chip>}
+            badge={<Chip>12</Chip>}
           />
           <ListItem 
             primary="Sent"
             secondary="Outgoing messages"
-            badge={<Chip variant="subtle">48</Chip>}
+            badge={<Chip>48</Chip>}
           />
           <ListItem 
             primary="Drafts"
@@ -384,7 +384,7 @@ return (
     icon={<Icon name="crossCircle" iconColor="subdued" size="lg" />}
     primary="Eggs"
     secondary="Free range, dozen"
-    badge={<Chip variant="subtle">$6.99</Chip>}
+    badge={<Chip>$6.99</Chip>}
     interactive
     onClick={() => console.log('Toggle eggs')}
   />
@@ -411,7 +411,7 @@ return (
             icon={<Icon name="crossCircle" iconColor="subdued" size="lg" />}
             primary="Eggs"
             secondary="Free range, dozen"
-            badge={<Chip variant="subtle">$6.99</Chip>}
+            badge={<Chip>$6.99</Chip>}
             interactive
             onClick={() => console.log('Toggle eggs')}
           />

@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styled from 'styled-components'
 import {
   Badge,
-  BooleanChip,
+  FilterChip,
   Box,
   Breadcrumbs,
   Button,
@@ -93,24 +93,24 @@ const rows = [
   },
   {
     name: 'Chip',
-    use: 'A static, chip-shaped label. Only the default look stays in 3.0.',
+    use: 'A static, chip-shaped label.',
     avoid: 'Anything clickable. Use a Button, or one of the interactive chips below.',
     example: <Chip>Design</Chip>,
   },
   {
-    name: 'BooleanChip (FilterChip in 3.0)',
+    name: 'FilterChip',
     use: 'Toggles a filter on and off. Selected shows light blue with a checkmark.',
     avoid: 'Applied values the user can remove. Use InputChip.',
     example: (
-      <BooleanChip selected onClick={() => {}}>
+      <FilterChip selected onClick={() => {}}>
         Open now
-      </BooleanChip>
+      </FilterChip>
     ),
   },
   {
     name: 'InputChip',
     use: 'A value the user has added and can remove, such as an applied filter.',
-    avoid: 'On/off toggles. Use BooleanChip.',
+    avoid: 'On/off toggles. Use FilterChip.',
     example: <InputChip onDismiss={() => {}}>Under $20</InputChip>,
   },
 ]

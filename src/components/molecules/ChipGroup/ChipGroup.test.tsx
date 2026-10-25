@@ -52,27 +52,11 @@ describe('ChipGroup', () => {
     })
   })
 
-  describe('Props Variants', () => {
-    it('applies default variant to chips by default', () => {
-      renderChipGroup()
-      
-      const chip = screen.getByTestId('chip-react')
-      expect(chip).toHaveAttribute('data-variant', 'default')
-    })
-
-    it('applies dark variant when specified', () => {
-      renderChipGroup({ variant: 'dark' })
-      
-      const chip = screen.getByTestId('chip-react')
-      expect(chip).toHaveAttribute('data-variant', 'dark')
-    })
-
-    it('applies variant consistently to all chips', () => {
-      renderChipGroup({ variant: 'dark', labels: ['One', 'Two'] })
-      
-      expect(screen.getByTestId('chip-one')).toHaveAttribute('data-variant', 'dark')
-      expect(screen.getByTestId('chip-two')).toHaveAttribute('data-variant', 'dark')
-    })
+  // ChipGroup's variant was removed in 3.0: chips have one look (decision 0016)
+  it('renders every chip with the one chip look', () => {
+    renderChipGroup({ labels: ['One', 'Two'] })
+    expect(screen.getByTestId('chip-one')).not.toHaveAttribute('data-variant')
+    expect(screen.getByTestId('chip-two')).not.toHaveAttribute('data-variant')
   })
 
   describe('Component Composition', () => {
@@ -85,11 +69,10 @@ describe('ChipGroup', () => {
     })
 
     it('passes correct props to individual chips', () => {
-      renderChipGroup({ labels: ['Custom Label'], variant: 'dark' })
+      renderChipGroup({ labels: ['Custom Label'] })
       
       const chip = screen.getByTestId('chip-custom label')
       expect(chip).toHaveTextContent('Custom Label')
-      expect(chip).toHaveAttribute('data-variant', 'dark')
     })
   })
 
@@ -113,16 +96,6 @@ describe('ChipGroup', () => {
   describe('Accessibility', () => {
     it('should not have accessibility violations with default props', async () => {
       const { container } = renderChipGroup({ 'data-testid': 'chip-group' })
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should not have accessibility violations with dark variant', async () => {
-      const { container } = renderChipGroup({ 
-        variant: 'dark', 
-        labels: ['Test', 'Accessibility'],
-        'data-testid': 'dark-chip-group' 
-      })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
     })

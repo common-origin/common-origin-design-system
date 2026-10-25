@@ -4,7 +4,6 @@ import { Chip, Stack } from '@/components/atoms'
 
 export type ChipGroupProps = {
   labels: string[]
-  variant?: 'default' | 'dark'
   'data-testid'?: string
 }
 
@@ -17,14 +16,13 @@ const ChipGroupWrapper = styled.div`
 
 export const ChipGroup: React.FC<ChipGroupProps> = ({ 
   labels, 
-  variant = 'default', 
   'data-testid': dataTestId 
 }) => {
   return (
     <ChipGroupWrapper data-testid={dataTestId}>
       <Stack direction="row" gap="sm">
         {labels && labels.map((title, index) => (
-          <Chip key={index} title={title} variant={variant} />
+          <Chip key={index} title={title} />
         ))}
       </Stack>
     </ChipGroupWrapper>

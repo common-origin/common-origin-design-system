@@ -4,7 +4,6 @@ import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { InputChip } from './InputChip'
 import { FilterChip } from './FilterChip'
-import { BooleanChip } from './BooleanChip'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio, pseudoClassDeclarations } from '../../../test-utils/contrast'
 
@@ -74,21 +73,22 @@ describe('InputChip', () => {
   })
 })
 
-describe('FilterChip (deprecated alias of InputChip)', () => {
-  it('is the same component as InputChip', () => {
-    expect(FilterChip).toBe(InputChip)
+// In 3.0 the name FilterChip moved from InputChip's alias to the toggle chip (decision 0016)
+describe('FilterChip is the toggle chip, not InputChip', () => {
+  it('is a different component from InputChip', () => {
+    expect(FilterChip).not.toBe(InputChip)
   })
 
-  it('renders identically to InputChip', () => {
-    const { container: input } = render(<InputChip selected onDismiss={() => {}}>Electronics</InputChip>)
-    const { container: filter } = render(<FilterChip selected onDismiss={() => {}}>Electronics</FilterChip>)
-    expect(filter.innerHTML).toBe(input.innerHTML)
+  it('renders a checkbox, not a removable value', () => {
+    render(<FilterChip selected onClick={() => {}}>In stock</FilterChip>)
+    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-checked', 'true')
+    expect(screen.queryByRole('status')).not.toBeInTheDocument()
   })
 })
 
 describe('Selected chip treatment (decision 0016)', () => {
   it('darkens the text with the fill on hover and press for a toggle chip', () => {
-    render(<BooleanChip data-testid="chip" selected onClick={() => {}}>In stock</BooleanChip>)
+    render(<FilterChip data-testid="chip" selected onClick={() => {}}>In stock</FilterChip>)
     const chip = screen.getByTestId('chip')
 
     expect(chip).toHaveStyle({ backgroundColor: fill['accent-muted'], color: text.accent })
@@ -101,7 +101,7 @@ describe('Selected chip treatment (decision 0016)', () => {
   })
 
   it('draws the toggle chip checkmark in the chip text colour', () => {
-    render(<BooleanChip data-testid="chip" selected onClick={() => {}}>In stock</BooleanChip>)
+    render(<FilterChip data-testid="chip" selected onClick={() => {}}>In stock</FilterChip>)
     const icon = screen.getByTestId('chip').querySelector('svg')?.parentElement as HTMLElement
     expect(icon).toHaveStyle({ color: text.accent })
   })
@@ -127,7 +127,7 @@ describe('Selected and disabled chips (#110)', () => {
 
   it.each([
     ['InputChip', <InputChip key="input" data-testid="chip" selected disabled onDismiss={() => {}}>Electronics</InputChip>],
-    ['BooleanChip', <BooleanChip key="toggle" data-testid="chip" selected disabled onClick={() => {}}>In stock</BooleanChip>],
+    ['FilterChip', <FilterChip key="toggle" data-testid="chip" selected disabled onClick={() => {}}>In stock</FilterChip>],
   ])('%s uses the disabled colours and keeps the checkmark', (_name, element) => {
     render(element)
     const chip = screen.getByTestId('chip')

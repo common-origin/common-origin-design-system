@@ -32,8 +32,6 @@ export const InputChip: React.FC<InputChipProps> = ({
   children,
   selected = false,
   onDismiss,
-  // Deprecated and ignored: chips have one size (decision 0035)
-  size: _size,
   disabled = false,
   'data-testid': dataTestId,
   'aria-label': ariaLabel,
@@ -70,7 +68,7 @@ export const InputChip: React.FC<InputChipProps> = ({
   
   return (
     <StyledChip
-      $variant="subtle"
+      $surface="subtle"
       $disabled={disabled || undefined}
       $clickable={false}
       $selected={selected}

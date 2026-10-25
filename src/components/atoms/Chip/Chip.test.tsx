@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Chip, ChipProps } from '../Chip'
 import { FilterChip, FilterChipProps } from '../Chip/FilterChip'
-import { BooleanChip, BooleanChipProps } from '../Chip/BooleanChip'
+import { InputChip, InputChipProps } from '../Chip/InputChip'
 import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
@@ -63,172 +63,42 @@ describe('Chip Component', () => {
     })
   })
 
-  describe('Variants', () => {
-    const variants: Array<ChipProps['variant']> = ['default', 'emphasis', 'subtle', 'interactive']
-
-    variants.forEach((variant) => {
-      it(`renders with ${variant} variant`, () => {
-        renderChip({ variant })
-        const chip = screen.getByText('Test Chip')
-        expect(chip).toBeInTheDocument()
-        // Note: specific style testing would require more sophisticated setup
-      })
-    })
-
-    it('defaults to primary variant', () => {
-      renderChip()
-      const chip = screen.getByText('Test Chip')
-      expect(chip).toBeInTheDocument()
-    })
+  // Chips have one size, 24px, with no vertical padding (decisions 0034 and 0035). The literal
+  // values are the design, so a mapping change fails here
+  it('renders at the one chip size', () => {
+    const { container } = renderChip()
+    expect(container.firstChild).toHaveStyle({ padding: '0 0.5rem', minHeight: '1.5rem', font: "400 0.875rem/1.25rem 'Inter', sans-serif" })
   })
 
-  describe('Sizes', () => {
-    const sizes: Array<ChipProps['size']> = ['small', 'medium']
-
-    sizes.forEach((size) => {
-      it(`renders with ${size} size`, () => {
-        renderChip({ size })
-        const chip = screen.getByText('Test Chip')
-        expect(chip).toBeInTheDocument()
-      })
-    })
-
-    it('defaults to medium size', () => {
+  // The static Chip is a label, not a control: variants and onClick were removed in 3.0 (decision 0016)
+  describe('Not interactive', () => {
+    it('is not focusable and has no button role', () => {
       renderChip()
       const chip = screen.getByText('Test Chip')
-      expect(chip).toBeInTheDocument()
-    })
-
-    // Chips have one size, 24px, with no vertical padding; `size` is deprecated and ignored
-    // (decisions 0034 and 0035). The literal values are the design, so a mapping change fails here
-    it.each(['small', 'medium'] as const)('renders size=%s at the one chip size', (size) => {
-      const { container } = renderChip({ size })
-      expect(container.firstChild).toHaveStyle({ padding: '0 0.5rem', minHeight: '1.5rem', font: "400 0.875rem/1.25rem 'Inter', sans-serif" })
-    })
-  })
-
-  describe('Interactive Functionality', () => {
-    it('handles click events when onClick is provided', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      fireEvent.click(chip)
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('does not render as button when onClick is not provided', () => {
-      renderChip()
-      
-      const chip = screen.getByText('Test Chip')
-      expect(chip).not.toHaveAttribute('role', 'button')
       expect(chip).not.toHaveAttribute('tabIndex')
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
-    it('supports keyboard navigation (Enter key)', () => {
+    it('ignores an onClick passed from plain JavaScript', () => {
       const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
+      renderChip({ onClick: handleClick } as Partial<ChipProps>)
+      const chip = screen.getByText('Test Chip')
+      fireEvent.click(chip)
       fireEvent.keyDown(chip, { key: 'Enter' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('supports keyboard navigation (Space key)', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      fireEvent.keyDown(chip, { key: ' ' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('ignores other keyboard events', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      fireEvent.keyDown(chip, { key: 'Tab' })
-      fireEvent.keyDown(chip, { key: 'Escape' })
-      
       expect(handleClick).not.toHaveBeenCalled()
+      expect(screen.queryByRole('button')).not.toBeInTheDocument()
     })
 
-    it('renders with proper tabIndex when clickable', () => {
-      renderChip({ onClick: jest.fn() })
-      
-      const chip = screen.getByRole('button')
-      expect(chip).toHaveAttribute('tabIndex', '0')
-    })
-
-    it('handles focus events properly when interactive', () => {
-      renderChip({ onClick: jest.fn() })
-      
-      const chip = screen.getByRole('button')
-      chip.focus()
-      expect(chip).toHaveFocus()
-    })
-
-    it('handles Space key interaction correctly', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      
-      fireEvent.keyDown(chip, { key: ' ' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
-
-    it('handles Enter key interaction correctly', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      
-      fireEvent.keyDown(chip, { key: 'Enter' })
-      
-      expect(handleClick).toHaveBeenCalledTimes(1)
+    it('renders a removed variant from plain JavaScript as default', () => {
+      const { container: removed } = renderChip({ variant: 'emphasis' } as unknown as Partial<ChipProps>)
+      expect(removed.firstChild).toHaveStyle({ backgroundColor: tokens.component.chip.default.backgroundColor })
     })
   })
 
   describe('Disabled State', () => {
-    it('does not call onClick when disabled', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick, disabled: true })
-      
-      const chip = screen.getByText('Test Chip')
-      fireEvent.click(chip)
-      
-      expect(handleClick).not.toHaveBeenCalled()
-    })
-
-    it('does not respond to keyboard events when disabled', () => {
-      const handleClick = jest.fn()
-      renderChip({ onClick: handleClick, disabled: true })
-      
-      const chip = screen.getByText('Test Chip')
-      fireEvent.keyDown(chip, { key: 'Enter' })
-      fireEvent.keyDown(chip, { key: ' ' })
-      
-      expect(handleClick).not.toHaveBeenCalled()
-    })
-
     it('applies aria-disabled when disabled', () => {
-      renderChip({ onClick: jest.fn(), disabled: true })
-      
-      const chip = screen.getByText('Test Chip')
-      expect(chip).toHaveAttribute('aria-disabled', 'true')
-    })
-
-    it('does not render as focusable when disabled', () => {
-      renderChip({ onClick: jest.fn(), disabled: true })
-      
-      const chip = screen.getByText('Test Chip')
-      expect(chip).not.toHaveAttribute('tabIndex')
+      renderChip({ disabled: true })
+      expect(screen.getByText('Test Chip')).toHaveAttribute('aria-disabled', 'true')
     })
   })
 
@@ -239,43 +109,10 @@ describe('Chip Component', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('should have no accessibility violations with all variants', async () => {
-      const variants: Array<ChipProps['variant']> = ['default', 'emphasis', 'subtle', 'interactive']
-      for (const variant of variants) {
-        const { container } = renderChip({ variant })
-        const results = await axe(container)
-        expect(results).toHaveNoViolations()
-      }
-    })
-
-    it('should have no accessibility violations with all sizes', async () => {
-      const sizes: Array<ChipProps['size']> = ['small', 'medium']
-      for (const size of sizes) {
-        const { container } = renderChip({ size })
-        const results = await axe(container)
-        expect(results).toHaveNoViolations()
-      }
-    })
-
-    it('should have no accessibility violations when interactive', async () => {
-      const { container } = renderChip({ onClick: jest.fn() })
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
-
     it('should have no accessibility violations when disabled', async () => {
-      const { container } = renderChip({ onClick: jest.fn(), disabled: true })
+      const { container } = renderChip({ disabled: true })
       const results = await axe(container)
       expect(results).toHaveNoViolations()
-    })
-
-    it('should have no accessibility violations with legacy variants', async () => {
-      const legacyVariants = ['light', 'dark'] as const
-      for (const variant of legacyVariants) {
-        const { container } = renderChip({ variant: variant as any })
-        const results = await axe(container)
-        expect(results).toHaveNoViolations()
-      }
     })
 
     it('supports custom aria-label', () => {
@@ -298,35 +135,6 @@ describe('Chip Component', () => {
       const chip = screen.getByRole('status')
       expect(chip).toBeInTheDocument()
     })
-
-    it('defaults to button role when interactive', () => {
-      renderChip({ onClick: jest.fn() })
-      
-      const chip = screen.getByRole('button')
-      expect(chip).toBeInTheDocument()
-    })
-
-    it('allows custom role to override default button role', () => {
-      renderChip({ onClick: jest.fn(), role: 'tab' })
-      
-      const chip = screen.getByRole('tab')
-      expect(chip).toBeInTheDocument()
-    })
-  })
-
-  describe('Variant and Size Combinations', () => {
-    const variants: Array<ChipProps['variant']> = ['default', 'emphasis', 'subtle', 'interactive']
-    const sizes: Array<ChipProps['size']> = ['small', 'medium']
-
-    variants.forEach((variant) => {
-      sizes.forEach((size) => {
-        it(`renders correctly with ${variant} variant and ${size} size`, () => {
-          renderChip({ variant, size })
-          const chip = screen.getByText('Test Chip')
-          expect(chip).toBeInTheDocument()
-        })
-      })
-    })
   })
 
   describe('Edge Cases', () => {
@@ -344,13 +152,6 @@ describe('Chip Component', () => {
       expect(document.querySelector('span')).toBeInTheDocument()
     })
 
-    it('handles undefined onClick gracefully', () => {
-      renderChip({ onClick: undefined })
-      const chip = screen.getByText('Test Chip')
-      expect(chip).toBeInTheDocument()
-      expect(chip).not.toHaveAttribute('role', 'button')
-    })
-
     it('preserves other HTML attributes', () => {
       renderChip({ 
         children: 'Custom Chip',
@@ -364,35 +165,8 @@ describe('Chip Component', () => {
     })
   })
 
-  describe('Legacy API Support', () => {
-    it('supports legacy light variant', () => {
-      renderChip({ variant: 'light' as any, children: 'Legacy Light' })
-      const chip = screen.getByText('Legacy Light')
-      expect(chip).toBeInTheDocument()
-    })
-
-    it('supports legacy dark variant', () => {
-      renderChip({ variant: 'dark' as any, children: 'Legacy Dark' })
-      const chip = screen.getByText('Legacy Dark')
-      expect(chip).toBeInTheDocument()
-    })
-
-    it('maps legacy light variant to default variant', () => {
-      renderChip({ variant: 'light' as any, children: 'Light Chip' })
-      // Since we can't directly test internal variant mapping without exposing it,
-      // we verify the component renders successfully with the legacy variant
-      const chip = screen.getByText('Light Chip')
-      expect(chip).toBeInTheDocument()
-    })
-
-    it('maps legacy dark variant to emphasis variant', () => {
-      renderChip({ variant: 'dark' as any, children: 'Dark Chip' })
-      // Verify the component renders successfully with the legacy variant
-      const chip = screen.getByText('Dark Chip')
-      expect(chip).toBeInTheDocument()
-    })
-
-    it('supports legacy title prop', () => {
+  describe('title prop', () => {
+    it('renders the title prop as the label', () => {
       renderChip({ title: 'Legacy Title', children: undefined })
       const chip = screen.getByText('Legacy Title')
       expect(chip).toBeInTheDocument()
@@ -404,26 +178,15 @@ describe('Chip Component', () => {
       expect(chip).toBeInTheDocument()
       expect(screen.queryByText('Title Prop')).not.toBeInTheDocument()
     })
-
-    it('handles legacy title prop with interactive behavior', () => {
-      const handleClick = jest.fn()
-      renderChip({ title: 'Clickable Legacy', children: undefined, onClick: handleClick })
-      
-      const chip = screen.getByRole('button')
-      expect(chip).toHaveTextContent('Clickable Legacy')
-      
-      fireEvent.click(chip)
-      expect(handleClick).toHaveBeenCalledTimes(1)
-    })
   })
 
-  describe('FilterChip (Dismissible Chips)', () => {
-    const renderFilterChip = (props: Partial<FilterChipProps> = {}) => {
-      return render(<FilterChip {...props}>Test Chip</FilterChip>)
+  describe('InputChip (Dismissible Chips)', () => {
+    const renderInputChip = (props: Partial<InputChipProps> = {}) => {
+      return render(<InputChip {...props}>Test Chip</InputChip>)
     }
 
     it('renders filter chip without close button when onDismiss not provided', () => {
-      renderFilterChip({ 
+      renderInputChip({ 
         'data-testid': 'filter-chip'
       })
       
@@ -436,7 +199,7 @@ describe('Chip Component', () => {
 
     it('renders filter chip with close button when onDismiss provided', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -449,7 +212,7 @@ describe('Chip Component', () => {
     })
 
     it('shows check icon when selected', () => {
-      const { container } = renderFilterChip({ 
+      const { container } = renderInputChip({ 
         selected: true,
         'data-testid': 'filter-chip'
       })
@@ -460,7 +223,7 @@ describe('Chip Component', () => {
     })
 
     it('does not show check icon when not selected', () => {
-      const { container } = renderFilterChip({ 
+      const { container } = renderInputChip({ 
         selected: false,
         'data-testid': 'filter-chip'
       })
@@ -472,7 +235,7 @@ describe('Chip Component', () => {
     })
 
     it('uses the overlay tokens for the close button hover and active states', () => {
-      renderFilterChip({ onDismiss: jest.fn(), 'data-testid': 'filter-chip' })
+      renderInputChip({ onDismiss: jest.fn(), 'data-testid': 'filter-chip' })
       const closeButton = screen.getByTestId('filter-chip-close')
       // jsdom can't apply :hover/:active, so read the rules styled-components injected
       const css = Array.from(document.querySelectorAll('style'))
@@ -491,7 +254,7 @@ describe('Chip Component', () => {
 
     it('calls onDismiss when close button is clicked', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -504,7 +267,7 @@ describe('Chip Component', () => {
 
     it('does not call onDismiss when disabled', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         disabled: true,
         'data-testid': 'filter-chip'
@@ -518,7 +281,7 @@ describe('Chip Component', () => {
 
     it('closes filter chip with Delete key', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -531,7 +294,7 @@ describe('Chip Component', () => {
 
     it('closes filter chip with Backspace key', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -544,7 +307,7 @@ describe('Chip Component', () => {
 
     it('close button can be activated with Enter key', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -557,7 +320,7 @@ describe('Chip Component', () => {
 
     it('close button can be activated with Space key', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
@@ -571,12 +334,12 @@ describe('Chip Component', () => {
     it('has appropriate aria-label on close button', () => {
       const handleDismiss = jest.fn()
       render(
-        <FilterChip 
+        <InputChip 
           onDismiss={handleDismiss}
           data-testid="filter-chip"
         >
           Price: $10-$50
-        </FilterChip>
+        </InputChip>
       )
       
       const closeButton = screen.getByTestId('filter-chip-close')
@@ -586,13 +349,13 @@ describe('Chip Component', () => {
     it('filter chip is not clickable', () => {
       const handleDismiss = jest.fn()
       
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss,
         'data-testid': 'filter-chip'
       })
       
       const chip = screen.getByTestId('filter-chip')
-      // FilterChip doesn't have onClick, so clicking the body should do nothing
+      // InputChip doesn't have onClick, so clicking the body should do nothing
       fireEvent.click(chip)
       
       // Only dismiss should work via close button
@@ -601,7 +364,7 @@ describe('Chip Component', () => {
 
     it('has status role', () => {
       const handleDismiss = jest.fn()
-      renderFilterChip({ 
+      renderInputChip({ 
         onDismiss: handleDismiss
       })
       
@@ -616,12 +379,12 @@ describe('Chip Component', () => {
       const { container } = render(
         // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions -- test harness: parent click listener to assert stopPropagation
         <div onClick={handleParentClick}>
-          <FilterChip 
+          <InputChip 
             onDismiss={handleDismiss}
             data-testid="filter-chip"
           >
             Test Chip
-          </FilterChip>
+          </InputChip>
         </div>
       )
       
@@ -634,13 +397,13 @@ describe('Chip Component', () => {
     })
   })
 
-  describe('BooleanChip (Toggle Chips)', () => {
-    const renderBooleanChip = (props: Partial<BooleanChipProps> = {}) => {
-      return render(<BooleanChip selected={false} onClick={() => {}} {...props}>Test Chip</BooleanChip>)
+  describe('FilterChip (Toggle Chips)', () => {
+    const renderToggle = (props: Partial<FilterChipProps> = {}) => {
+      return render(<FilterChip selected={false} onClick={() => {}} {...props}>Test Chip</FilterChip>)
     }
 
     it('renders boolean chip without selected indicator by default', () => {
-      renderBooleanChip({ selected: false })
+      renderToggle({ selected: false })
       
       const chip = screen.getByText('Test Chip')
       expect(chip).toBeInTheDocument()
@@ -651,7 +414,7 @@ describe('Chip Component', () => {
     })
 
     it('shows selected indicator when selected', () => {
-      renderBooleanChip({ 
+      renderToggle({ 
         selected: true
       })
       
@@ -664,7 +427,7 @@ describe('Chip Component', () => {
 
     it('is clickable and calls onClick', () => {
       const handleClick = jest.fn()
-      renderBooleanChip({ 
+      renderToggle({ 
         onClick: handleClick
       })
       
@@ -676,25 +439,25 @@ describe('Chip Component', () => {
 
     it('toggles selection on click', () => {
       const handleClick = jest.fn()
-      const { rerender } = renderBooleanChip({ 
+      const { rerender } = renderToggle({ 
         selected: false,
         onClick: handleClick,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      const chip = screen.getByTestId('boolean-chip')
+      const chip = screen.getByTestId('filter-toggle')
       fireEvent.click(chip)
       expect(handleClick).toHaveBeenCalledTimes(1)
       
       // Simulate parent updating selected state
       rerender(
-        <BooleanChip 
+        <FilterChip 
           selected={true}
           onClick={handleClick}
-          data-testid="boolean-chip"
+          data-testid="filter-toggle"
         >
           Test Chip
-        </BooleanChip>
+        </FilterChip>
       )
       
       // Icon should now be visible
@@ -702,43 +465,43 @@ describe('Chip Component', () => {
     })
 
     it('has checkbox role', () => {
-      renderBooleanChip({ selected: false })
+      renderToggle({ selected: false })
       
       const chip = screen.getByRole('checkbox')
       expect(chip).toBeInTheDocument()
     })
 
     it('has correct aria-checked attribute', () => {
-      const { rerender } = renderBooleanChip({ 
+      const { rerender } = renderToggle({ 
         selected: false,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      let chip = screen.getByTestId('boolean-chip')
+      let chip = screen.getByTestId('filter-toggle')
       expect(chip).toHaveAttribute('aria-checked', 'false')
       
       rerender(
-        <BooleanChip 
+        <FilterChip 
           selected={true}
           onClick={() => {}}
-          data-testid="boolean-chip"
+          data-testid="filter-toggle"
         >
           Test Chip
-        </BooleanChip>
+        </FilterChip>
       )
       
-      chip = screen.getByTestId('boolean-chip')
+      chip = screen.getByTestId('filter-toggle')
       expect(chip).toHaveAttribute('aria-checked', 'true')
     })
 
     it('can be activated with Enter key', () => {
       const handleClick = jest.fn()
-      renderBooleanChip({ 
+      renderToggle({ 
         onClick: handleClick,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      const chip = screen.getByTestId('boolean-chip')
+      const chip = screen.getByTestId('filter-toggle')
       fireEvent.keyDown(chip, { key: 'Enter' })
       
       expect(handleClick).toHaveBeenCalledTimes(1)
@@ -746,12 +509,12 @@ describe('Chip Component', () => {
 
     it('can be activated with Space key', () => {
       const handleClick = jest.fn()
-      renderBooleanChip({ 
+      renderToggle({ 
         onClick: handleClick,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      const chip = screen.getByTestId('boolean-chip')
+      const chip = screen.getByTestId('filter-toggle')
       fireEvent.keyDown(chip, { key: ' ' })
       
       expect(handleClick).toHaveBeenCalledTimes(1)
@@ -759,49 +522,49 @@ describe('Chip Component', () => {
 
     it('is focusable', () => {
       const handleClick = jest.fn()
-      renderBooleanChip({ 
+      renderToggle({ 
         onClick: handleClick,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      const chip = screen.getByTestId('boolean-chip')
+      const chip = screen.getByTestId('filter-toggle')
       expect(chip).toHaveAttribute('tabIndex', '0')
     })
 
     it('does not respond to clicks when disabled', () => {
       const handleClick = jest.fn()
-      renderBooleanChip({ 
+      renderToggle({ 
         onClick: handleClick,
         disabled: true,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      const chip = screen.getByTestId('boolean-chip')
+      const chip = screen.getByTestId('filter-toggle')
       fireEvent.click(chip)
       
       expect(handleClick).not.toHaveBeenCalled()
     })
 
     it('changes visual state when selected', () => {
-      const { rerender } = renderBooleanChip({ 
+      const { rerender } = renderToggle({ 
         selected: false,
-        'data-testid': 'boolean-chip'
+        'data-testid': 'filter-toggle'
       })
       
-      let chip = screen.getByTestId('boolean-chip')
+      let chip = screen.getByTestId('filter-toggle')
       const unselectedStyle = window.getComputedStyle(chip)
       
       rerender(
-        <BooleanChip 
+        <FilterChip 
           selected={true}
           onClick={() => {}}
-          data-testid="boolean-chip"
+          data-testid="filter-toggle"
         >
           Test Chip
-        </BooleanChip>
+        </FilterChip>
       )
       
-      chip = screen.getByTestId('boolean-chip')
+      chip = screen.getByTestId('filter-toggle')
       const selectedStyle = window.getComputedStyle(chip)
       
       // Background color should be different (though we can't easily test the exact color in jsdom)
@@ -810,14 +573,30 @@ describe('Chip Component', () => {
   })
 
   describe('Accessibility for New Variants', () => {
-    it('filter chip has no accessibility violations', async () => {
+    it('input chip has no accessibility violations', async () => {
       const handleDismiss = jest.fn()
       const { container} = render(
-        <FilterChip
+        <InputChip
           onDismiss={handleDismiss}
           data-testid="filter-chip"
         >
           Category: Electronics
+        </InputChip>
+      )
+      
+      const results = await axe(container)
+      expect(results).toHaveNoViolations()
+    })
+
+    it('filter chip (toggle) has no accessibility violations', async () => {
+      const handleClick = jest.fn()
+      const { container } = render(
+        <FilterChip
+          selected={true}
+          onClick={handleClick}
+          data-testid="filter-toggle"
+        >
+          In Stock
         </FilterChip>
       )
       
@@ -825,31 +604,15 @@ describe('Chip Component', () => {
       expect(results).toHaveNoViolations()
     })
 
-    it('boolean chip has no accessibility violations', async () => {
-      const handleClick = jest.fn()
-      const { container } = render(
-        <BooleanChip
-          selected={true}
-          onClick={handleClick}
-          data-testid="boolean-chip"
-        >
-          In Stock
-        </BooleanChip>
-      )
-      
-      const results = await axe(container)
-      expect(results).toHaveNoViolations()
-    })
-
-    it('filter chip close button is keyboard accessible', () => {
+    it('input chip close button is keyboard accessible', () => {
       const handleDismiss = jest.fn()
       render(
-        <FilterChip
+        <InputChip
           onDismiss={handleDismiss}
           data-testid="filter-chip"
         >
           Test Chip
-        </FilterChip>
+        </InputChip>
       )
       
       const closeButton = screen.getByTestId('filter-chip-close')

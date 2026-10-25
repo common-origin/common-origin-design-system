@@ -3,7 +3,7 @@ import { useState, type ReactNode } from 'react'
 import {
   AILabel,
   Badge,
-  BooleanChip,
+  FilterChip,
   SuggestionChip,
   Button,
   CategoryLabel,
@@ -70,8 +70,8 @@ export default function ForcedColorsFixture() {
           <section aria-label="Chips">
             <Stack direction="row" gap="sm" wrap>
               <Case id="chip-static"><Chip>Static chip</Chip></Case>
-              <Case id="chip-filter"><BooleanChip selected={false} onClick={() => {}}>Unselected filter</BooleanChip></Case>
-              <Case id="chip-filter-selected"><BooleanChip selected onClick={() => {}}>Selected filter</BooleanChip></Case>
+              <Case id="chip-filter"><FilterChip selected={false} onClick={() => {}}>Unselected filter</FilterChip></Case>
+              <Case id="chip-filter-selected"><FilterChip selected onClick={() => {}}>Selected filter</FilterChip></Case>
               <Case id="chip-input"><InputChip onDismiss={() => {}}>Removable value</InputChip></Case>
               <Case id="chip-input-selected"><InputChip selected onDismiss={() => {}}>Selected value</InputChip></Case>
               <Case id="chip-suggestion"><SuggestionChip onClick={() => {}}>Suggestion</SuggestionChip></Case>

@@ -162,7 +162,7 @@ States: rest (outline) · hover (naked hover fill) · pressed (naked pressed fil
   },
 
   notes: [
-    'Use SuggestionChip for text the user can put in an agent input. For an action that happens on click, use a Button. For a toggle, use BooleanChip (FilterChip in 3.0). For a removable value, use InputChip (decision 0016).',
+    'Use SuggestionChip for text the user can put in an agent input. For an action that happens on click, use a Button. For a toggle, use FilterChip. For a removable value, use InputChip (decision 0016).',
     'Suggestions are not marked as AI, even when the agent wrote them (decision 0046): they change nothing until the user sends them.',
   ],
 }
