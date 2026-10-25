@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { Box, BoxProps } from './Box'
+import { tokens } from '../../../types/tokens'
 
 describe('Box Component', () => {
   const defaultProps: Partial<BoxProps> = {
@@ -256,12 +257,26 @@ describe('Box Component', () => {
     })
 
     it('applies background and color', () => {
-      renderBox({ 
-        bg: 'subtle',
+      renderBox({
+        bg: 'surface.raised',
         color: 'default',
-        'data-testid': 'box-styled' 
+        'data-testid': 'box-styled'
       })
       expect(screen.getByTestId('box-styled')).toBeInTheDocument()
+    })
+
+    it('reads bg token paths from the token at that path (#304)', () => {
+      renderBox({ bg: 'surface.raised', 'data-testid': 'box-surface' })
+      renderBox({ bg: 'color.fill.muted', 'data-testid': 'box-fill' })
+      expect(screen.getByTestId('box-surface')).toHaveStyle({ backgroundColor: tokens.semantic.surface.raised })
+      expect(screen.getByTestId('box-fill')).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.muted })
+    })
+
+    it('keeps the deprecated bg keys working until 3.0', () => {
+      renderBox({ bg: 'subtle', 'data-testid': 'box-old-subtle' })
+      renderBox({ bg: 'surface', 'data-testid': 'box-old-surface' })
+      expect(screen.getByTestId('box-old-subtle')).toHaveStyle({ backgroundColor: tokens.semantic.surface.raised })
+      expect(screen.getByTestId('box-old-surface')).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.muted })
     })
   })
 
@@ -315,7 +330,7 @@ describe('Box Component', () => {
         flexDirection: 'column',
         gap: 'md',
         p: 'lg',
-        bg: 'subtle',
+        bg: 'surface.raised',
         borderRadius: 'md',
         'data-testid': 'styled-box',
         children: 'Styled content'
@@ -383,7 +398,7 @@ describe('Box Component', () => {
         gap: 'md',
         p: 'lg',
         m: 'md',
-        bg: 'subtle',
+        bg: 'surface.raised',
         borderRadius: 'xl',
         position: 'relative',
         width: '300px',

@@ -85,25 +85,25 @@ export const dividerDocs: ComponentDocumentation = {
         <Stack direction="column" gap="xl">
           <Stack direction="column" gap="md">
             <Typography>Small spacing</Typography>
-            <Box bg="subtle">
+            <Box bg="surface.raised">
               <Divider size="small" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Medium spacing</Typography>
-            <Box bg="subtle">
+            <Box bg="surface.raised">
               <Divider size="medium" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Large spacing</Typography>
-            <Box bg="subtle">
+            <Box bg="surface.raised">
               <Divider size="large" />
             </Box>
           </Stack>
           <Stack direction="column" gap="md">
             <Typography>Extra large spacing</Typography>
-            <Box bg="subtle">
+            <Box bg="surface.raised">
               <Divider size="xlarge" />
             </Box>
           </Stack>

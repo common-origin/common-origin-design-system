@@ -44,6 +44,52 @@ export const radiusByKey: Record<keyof Semantic['border']['radius'], string> = {
   circle: radius.full,
 }
 
+/** Fills with no value of their own: a strong fill's states mix in an overlay (decision 0048). */
+type StateMixedFill = 'emphasis-hover' | 'emphasis-pressed'
+
+/**
+ * Box's `bg` values in the semantic grammar (decision 0031, #304): the token's path below
+ * `semantic`, such as `surface.raised` or `color.fill.muted`.
+ */
+export type BackgroundPath =
+  | `surface.${keyof Semantic['surface']}`
+  | `color.fill.${Exclude<keyof Semantic['color']['fill'], StateMixedFill>}`
+
+/** Box's `bg` prop: the grammar's token paths, read from the token at that path. */
+export const backgroundByPath: Record<BackgroundPath, string> = {
+  'surface.base': surface.base,
+  'surface.raised': surface.raised,
+  'surface.scrim': surface.scrim,
+  'color.fill.emphasis': color.fill.emphasis,
+  'color.fill.muted': color.fill.muted,
+  'color.fill.inverse': color.fill.inverse,
+  'color.fill.accent': color.fill.accent,
+  'color.fill.accent-hover': color.fill['accent-hover'],
+  'color.fill.accent-pressed': color.fill['accent-pressed'],
+  'color.fill.accent-muted': color.fill['accent-muted'],
+  'color.fill.accent-muted-hover': color.fill['accent-muted-hover'],
+  'color.fill.accent-muted-pressed': color.fill['accent-muted-pressed'],
+  'color.fill.danger': color.fill.danger,
+  'color.fill.danger-hover': color.fill['danger-hover'],
+  'color.fill.danger-pressed': color.fill['danger-pressed'],
+  'color.fill.danger-muted': color.fill['danger-muted'],
+  'color.fill.success': color.fill.success,
+  'color.fill.success-muted': color.fill['success-muted'],
+  'color.fill.warning': color.fill.warning,
+  'color.fill.warning-muted': color.fill['warning-muted'],
+  'color.fill.serious': color.fill.serious,
+  'color.fill.serious-muted': color.fill['serious-muted'],
+  'color.fill.ai-muted': color.fill['ai-muted'],
+  'color.fill.disabled': color.fill.disabled,
+  'color.fill.default': color.fill.default,
+  'color.fill.default-hover': color.fill['default-hover'],
+  'color.fill.default-pressed': color.fill['default-pressed'],
+  'color.fill.none': color.fill.none,
+  'color.fill.none-hover': color.fill['none-hover'],
+  'color.fill.none-pressed': color.fill['none-pressed'],
+  'color.fill.inverse-none-hover': color.fill['inverse-none-hover'],
+}
+
 /** Box's `bg` prop: the old background keys, read from `surface` and `color.fill`. */
 export const backgroundByKey: Record<keyof Semantic['color']['background'], string> = {
   default: surface.base,

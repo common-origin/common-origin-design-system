@@ -37,13 +37,13 @@ export const gridColDocs: ComponentDocumentation = {
       name: 'Column Spans',
       description: 'Columns spanning 8 and 4 of 12 columns.',
       code: `<Grid cols={12} gap="4">
-  <GridCol span={8}><Box bg="surface" p="md"><Typography>Main</Typography></Box></GridCol>
-  <GridCol span={4}><Box bg="surface" p="md"><Typography>Aside</Typography></Box></GridCol>
+  <GridCol span={8}><Box bg="color.fill.muted" p="md"><Typography>Main</Typography></Box></GridCol>
+  <GridCol span={4}><Box bg="color.fill.muted" p="md"><Typography>Aside</Typography></Box></GridCol>
 </Grid>`,
       renderComponent: () => (
           <Grid cols={12} gap="4">
-            <GridCol span={8}><Box bg="surface" p="md"><Typography>Main</Typography></Box></GridCol>
-            <GridCol span={4}><Box bg="surface" p="md"><Typography>Aside</Typography></Box></GridCol>
+            <GridCol span={8}><Box bg="color.fill.muted" p="md"><Typography>Main</Typography></Box></GridCol>
+            <GridCol span={4}><Box bg="color.fill.muted" p="md"><Typography>Aside</Typography></Box></GridCol>
           </Grid>
       )
     },
@@ -51,15 +51,15 @@ export const gridColDocs: ComponentDocumentation = {
       name: 'Responsive Spans',
       description: 'Full width on small screens, then half width from md and a third from lg.',
       code: `<Grid cols={12} gap="4">
-  <GridCol span={12} spanMd={6} spanLg={4}><Box bg="surface" p="md"><Typography>One</Typography></Box></GridCol>
-  <GridCol span={12} spanMd={6} spanLg={4}><Box bg="surface" p="md"><Typography>Two</Typography></Box></GridCol>
-  <GridCol span={12} spanMd={12} spanLg={4}><Box bg="surface" p="md"><Typography>Three</Typography></Box></GridCol>
+  <GridCol span={12} spanMd={6} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>One</Typography></Box></GridCol>
+  <GridCol span={12} spanMd={6} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>Two</Typography></Box></GridCol>
+  <GridCol span={12} spanMd={12} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>Three</Typography></Box></GridCol>
 </Grid>`,
       renderComponent: () => (
           <Grid cols={12} gap="4">
-            <GridCol span={12} spanMd={6} spanLg={4}><Box bg="surface" p="md"><Typography>One</Typography></Box></GridCol>
-            <GridCol span={12} spanMd={6} spanLg={4}><Box bg="surface" p="md"><Typography>Two</Typography></Box></GridCol>
-            <GridCol span={12} spanMd={12} spanLg={4}><Box bg="surface" p="md"><Typography>Three</Typography></Box></GridCol>
+            <GridCol span={12} spanMd={6} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>One</Typography></Box></GridCol>
+            <GridCol span={12} spanMd={6} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>Two</Typography></Box></GridCol>
+            <GridCol span={12} spanMd={12} spanLg={4}><Box bg="color.fill.muted" p="md"><Typography>Three</Typography></Box></GridCol>
           </Grid>
       )
     },
@@ -67,13 +67,13 @@ export const gridColDocs: ComponentDocumentation = {
       name: 'Order',
       description: 'The aside comes second in the DOM but shows first from md up. Screen readers still read it second.',
       code: `<Grid cols={12} gap="4">
-  <GridCol span={12} spanMd={8}><Box bg="surface" p="md"><Typography>Main</Typography></Box></GridCol>
-  <GridCol span={12} spanMd={4} orderMd={-1}><Box bg="surface" p="md"><Typography>Aside</Typography></Box></GridCol>
+  <GridCol span={12} spanMd={8}><Box bg="color.fill.muted" p="md"><Typography>Main</Typography></Box></GridCol>
+  <GridCol span={12} spanMd={4} orderMd={-1}><Box bg="color.fill.muted" p="md"><Typography>Aside</Typography></Box></GridCol>
 </Grid>`,
       renderComponent: () => (
           <Grid cols={12} gap="4">
-            <GridCol span={12} spanMd={8}><Box bg="surface" p="md"><Typography>Main</Typography></Box></GridCol>
-            <GridCol span={12} spanMd={4} orderMd={-1}><Box bg="surface" p="md"><Typography>Aside</Typography></Box></GridCol>
+            <GridCol span={12} spanMd={8}><Box bg="color.fill.muted" p="md"><Typography>Main</Typography></Box></GridCol>
+            <GridCol span={12} spanMd={4} orderMd={-1}><Box bg="color.fill.muted" p="md"><Typography>Aside</Typography></Box></GridCol>
           </Grid>
       )
     }

@@ -49,15 +49,15 @@ export const responsiveGridDocs: ComponentDocumentation = {
       name: 'Responsive Columns',
       description: 'One column on small screens, two from md and three from xl.',
       code: `<ResponsiveGrid cols={1} colsMd={2} colsXl={3} gap="4">
-  <Box bg="surface" p="md"><Typography>Item 1</Typography></Box>
-  <Box bg="surface" p="md"><Typography>Item 2</Typography></Box>
-  <Box bg="surface" p="md"><Typography>Item 3</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 1</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 2</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 3</Typography></Box>
 </ResponsiveGrid>`,
       renderComponent: () => (
           <ResponsiveGrid cols={1} colsMd={2} colsXl={3} gap="4">
-            <Box bg="surface" p="md"><Typography>Item 1</Typography></Box>
-            <Box bg="surface" p="md"><Typography>Item 2</Typography></Box>
-            <Box bg="surface" p="md"><Typography>Item 3</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 1</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 2</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 3</Typography></Box>
           </ResponsiveGrid>
       )
     },
@@ -65,17 +65,17 @@ export const responsiveGridDocs: ComponentDocumentation = {
       name: 'Responsive Gaps',
       description: 'A tighter gap on small screens that opens up from md.',
       code: `<ResponsiveGrid cols={2} gap="2" gapMd="6">
-  <Box bg="surface" p="md"><Typography>Item 1</Typography></Box>
-  <Box bg="surface" p="md"><Typography>Item 2</Typography></Box>
-  <Box bg="surface" p="md"><Typography>Item 3</Typography></Box>
-  <Box bg="surface" p="md"><Typography>Item 4</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 1</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 2</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 3</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>Item 4</Typography></Box>
 </ResponsiveGrid>`,
       renderComponent: () => (
           <ResponsiveGrid cols={2} gap="2" gapMd="6">
-            <Box bg="surface" p="md"><Typography>Item 1</Typography></Box>
-            <Box bg="surface" p="md"><Typography>Item 2</Typography></Box>
-            <Box bg="surface" p="md"><Typography>Item 3</Typography></Box>
-            <Box bg="surface" p="md"><Typography>Item 4</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 1</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 2</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 3</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>Item 4</Typography></Box>
           </ResponsiveGrid>
       )
     },
@@ -83,17 +83,17 @@ export const responsiveGridDocs: ComponentDocumentation = {
       name: 'Separate Column and Row Gaps',
       description: 'gapX and gapY set the column and row gaps independently.',
       code: `<ResponsiveGrid cols={2} colsLg={4} gapX="4" gapY="8">
-  <Box bg="surface" p="md"><Typography>A</Typography></Box>
-  <Box bg="surface" p="md"><Typography>B</Typography></Box>
-  <Box bg="surface" p="md"><Typography>C</Typography></Box>
-  <Box bg="surface" p="md"><Typography>D</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>A</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>B</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>C</Typography></Box>
+  <Box bg="color.fill.muted" p="md"><Typography>D</Typography></Box>
 </ResponsiveGrid>`,
       renderComponent: () => (
           <ResponsiveGrid cols={2} colsLg={4} gapX="4" gapY="8">
-            <Box bg="surface" p="md"><Typography>A</Typography></Box>
-            <Box bg="surface" p="md"><Typography>B</Typography></Box>
-            <Box bg="surface" p="md"><Typography>C</Typography></Box>
-            <Box bg="surface" p="md"><Typography>D</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>A</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>B</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>C</Typography></Box>
+            <Box bg="color.fill.muted" p="md"><Typography>D</Typography></Box>
           </ResponsiveGrid>
       )
     }
