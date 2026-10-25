@@ -107,7 +107,7 @@ tag_release() {
   local version
   version=$(current_version)
   tag_exists "$version" && error "Tag v$version already exists. Bump the version with npm run release:create first."
-  grep -q "^#### \[v$version\]" CHANGELOG.md || error "CHANGELOG.md has no v$version entry. Was the release PR merged?"
+  grep -qE "^#{3,4} \\[v$version\\]" CHANGELOG.md || error "CHANGELOG.md has no v$version entry. Was the release PR merged?"
 
   info "main is at $(git rev-parse --short HEAD): $(git log -1 --format=%s)"
   echo -e "${YELLOW}Pushing v$version publishes to npm. This can't be undone.${NC}"
