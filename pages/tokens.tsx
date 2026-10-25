@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { Fragment, useState } from 'react'
 import {
   Avatar,
   Box,
@@ -319,7 +319,7 @@ const ZIndexSample = styled.div<{ $zIndex: string }>`
 // Helper function to render color tokens as table
 const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix: string, path?: string) => {
   return (
-    <Box key={idPrefix} mb="7xl">
+    <Box mb="7xl">
       <Typography variant="h3" color="default">{categoryName}</Typography>
       <TokenTable>
         <thead>
@@ -356,7 +356,7 @@ const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix
 // Helper function to render base color tokens as table
 const renderBaseColorTokensTable = (colorTokens: any, categoryName: string, idPrefix: string) => {
   return (
-    <Box key={idPrefix} mb="7xl">
+    <Box mb="7xl">
       <Typography variant="h3" color="default">{categoryName}</Typography>
       <TokenTable>
         <thead>
@@ -575,9 +575,9 @@ const renderBorderTokensTable = (borderTokens: Record<string, unknown>, radiusTo
 }
 
 // Helper function to render generic tokens as table
-const renderGenericTokensTable = (tokenObj: any, categoryName: string, prefix: string, idPrefix: string) => {
+const renderGenericTokensTable = (tokenObj: any, categoryName: string, prefix: string) => {
   return (
-    <Box key={idPrefix} mb="7xl">
+    <Box mb="7xl">
       <Typography variant="h3" color="default">{categoryName}</Typography>
       <TokenTable>
         <thead>
@@ -1023,6 +1023,17 @@ const getGenericUsageDescription = (prefix: string, _key: string): string => {
   return 'Design token value'
 }
 
+// One table on a tab: `type` picks the render helper, the other fields are its inputs
+type TokenSection = {
+  id: string
+  type: string
+  title: string
+  data: Record<string, unknown>
+  path?: string
+  prefix?: string
+  radius?: Record<string, string>
+}
+
 export default function Tokens() {
   const [activeTab, setActiveTab] = useState('border')
 
@@ -1117,40 +1128,42 @@ export default function Tokens() {
     setActiveTab(tabId)
   }
 
-  const renderTabContent = (content: any[]) => {
-    return content.map((item) => {
-      switch (item.type) {
-        case 'color':
-          return renderColorTokensTable(item.data, item.title, item.id, item.path)
-        case 'base-color':
-          return renderBaseColorTokensTable(item.data, item.title, item.id)
-        case 'typography':
-          return renderTypographyTokensTable(item.data)
-        case 'border':
-          return renderBorderTokensTable(item.data, item.radius)
-        case 'elevation':
-          return renderElevationTokensTable(item.data)
-        case 'spacing':
-          return renderSpacingTokensTable(item.data, item.title, item.path)
-        case 'icon-size':
-          return renderIconSizeTokensTable(item.data)
-        case 'avatar-size':
-          return renderAvatarSizeTokensTable(item.data)
-        case 'shadow':
-          return renderShadowTokensTable(item.data)
-        case 'motion':
-          return renderMotionTokensTable(item.data)
-        case 'opacity':
-          return renderOpacityTokensTable(item.data)
-        case 'z-index':
-          return renderZIndexTokensTable(item.data, item.title, item.prefix)
-        case 'generic':
-          return renderGenericTokensTable(item.data, item.title, item.prefix, item.id)
-        default:
-          return null
-      }
-    })
+  const renderSection = (item: TokenSection) => {
+    switch (item.type) {
+      case 'color':
+        return renderColorTokensTable(item.data, item.title, item.id, item.path)
+      case 'base-color':
+        return renderBaseColorTokensTable(item.data, item.title, item.id)
+      case 'typography':
+        return renderTypographyTokensTable(item.data)
+      case 'border':
+        return renderBorderTokensTable(item.data, item.radius)
+      case 'elevation':
+        return renderElevationTokensTable(item.data)
+      case 'spacing':
+        return renderSpacingTokensTable(item.data, item.title, item.path ?? '')
+      case 'icon-size':
+        return renderIconSizeTokensTable(item.data)
+      case 'avatar-size':
+        return renderAvatarSizeTokensTable(item.data)
+      case 'shadow':
+        return renderShadowTokensTable(item.data)
+      case 'motion':
+        return renderMotionTokensTable(item.data)
+      case 'opacity':
+        return renderOpacityTokensTable(item.data)
+      case 'z-index':
+        return renderZIndexTokensTable(item.data, item.title, item.prefix)
+      case 'generic':
+        return renderGenericTokensTable(item.data, item.title, item.prefix ?? '')
+      default:
+        return null
+    }
   }
+
+  // Key each section here, so a render helper never needs to set its own key
+  const renderTabContent = (content: TokenSection[]) =>
+    content.map((item) => <Fragment key={item.id}>{renderSection(item)}</Fragment>)
 
   return (
     <>
