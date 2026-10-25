@@ -316,12 +316,9 @@ describe('Alert', () => {
         )
       })
 
-      it('starts at the top, with the icon, in both block and inline alerts', () => {
-        ;[false, true].forEach((inline) => {
-          const { unmount } = renderAlert({ dismissible: true, inline, 'data-testid': 'a' })
-          expect(window.getComputedStyle(screen.getByTestId('a')).alignItems).toBe('flex-start')
-          unmount()
-        })
+      it('starts at the top, with the icon', () => {
+        renderAlert({ dismissible: true, 'data-testid': 'a' })
+        expect(window.getComputedStyle(screen.getByTestId('a')).alignItems).toBe('flex-start')
       })
 
       it('is the last item in the row', () => {
@@ -401,19 +398,13 @@ describe('Alert', () => {
     })
   })
 
-  describe('Inline Variant', () => {
-    it('applies inline styling when inline={true}', () => {
-      renderAlert({ inline: true, 'data-testid': 'inline-alert' })
-      const alert = screen.getByTestId('inline-alert')
-      expect(alert).toBeInTheDocument()
-      // Verify the alert renders with its expected structure
-      expect(alert).toHaveAttribute('role', 'status')
-    })
-
-    it('uses default styling when inline={false}', () => {
-      const { container } = renderAlert({ inline: false, 'data-testid': 'block-alert' })
-      const alert = screen.getByTestId('block-alert')
-      expect(alert).toBeInTheDocument()
+  // inline was removed in 3.0 (use InlineAlert, decision 0019)
+  describe('Removed inline prop', () => {
+    it('renders a block alert, with the prop kept off the DOM, when plain JavaScript passes it', () => {
+      renderAlert({ inline: true, 'data-testid': 'alert' } as Partial<AlertProps>)
+      const alert = screen.getByTestId('alert')
+      expect(alert).not.toHaveAttribute('inline')
+      expect(alert).toHaveStyle({ padding: tokens.semantic.space[300] })
     })
   })
 
@@ -614,10 +605,6 @@ describe('Alert appearance (decision 0019)', () => {
     })
   })
 
-  it('works alongside the deprecated inline prop', () => {
-    render(<Alert inline appearance="borderless" variant="warning" data-testid="alert">Message</Alert>)
-    expect(screen.getByTestId('alert')).toHaveStyle({ borderColor: 'transparent' })
-  })
 })
 
 // Each severity shows its status icon (decision 0045), hidden from assistive technology because the

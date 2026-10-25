@@ -70,14 +70,14 @@ describe('DateGroup', () => {
       expect(screen.getByTestId('date-group-date')).toBeInTheDocument()
     })
 
-    it('supports relative format mode', () => {
+    it('supports smart format mode', () => {
       const yesterday = new Date()
       yesterday.setDate(yesterday.getDate() - 1)
       
       render(
         <DateGroup 
           date={yesterday} 
-          format="relative"
+          format="smart"
           data-testid="date-group"
         >
           <div>Content</div>

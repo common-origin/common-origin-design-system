@@ -105,33 +105,6 @@ describe('DateFormatter', () => {
       expect(timeElement?.textContent).toMatch(/^(Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)$/)
     })
 
-    // 'relative' is a deprecated alias for 'smart' until 3.0 (#82)
-    it('renders deprecated relative mode exactly like smart mode', () => {
-      const daysAgo = (n: number) => {
-        const date = new Date()
-        date.setDate(date.getDate() - n)
-        return date.toISOString()
-      }
-      const dates = [daysAgo(0), daysAgo(1), daysAgo(3), '2023-06-15T10:30:00.000Z']
-      dates.forEach((dateString) => {
-        const text = (mode: 'relative' | 'smart') => {
-          const { container, unmount } = renderComponent({ dateString, mode, formatString: 'MMM d, yyyy' })
-          const value = container.querySelector('time')?.textContent
-          unmount()
-          return value
-        }
-        expect(text('relative')).toBe(text('smart'))
-      })
-    })
-
-    it('uses absolute format for old dates in smart mode', () => {
-      const { getByText } = renderComponent({
-        dateString: '2023-06-15T10:30:00.000Z',
-        mode: 'smart'
-      })
-      expect(getByText('June 15, 2023')).toBeInTheDocument()
-    })
-
     it('uses relative format for recent dates in smart mode', () => {
       const today = new Date().toISOString()
       const { getByText } = renderComponent({

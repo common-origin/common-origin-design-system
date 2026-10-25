@@ -10,15 +10,9 @@ const { radius } = semantic
 const { dot, count, ring } = tokens.component.badge
 
 /**
- * Badge variants: `default` and `accent`, plus deprecated aliases of `accent` kept until 3.0.
+ * Badge variants: `default`, the near-black count, and `accent`, the blue highlight (decision 0045).
  */
-export type BadgeVariant = 'default' | 'accent' | DeprecatedBadgeVariant
-
-/**
- * Deprecated Badge variants, each rendered as `accent` until 3.0 (decisions 0029, 0045).
- * @deprecated Use `accent`. For a count of items with a status, use StatusLabel.
- */
-export type DeprecatedBadgeVariant = 'primary' | 'error' | 'warning' | 'success'
+export type BadgeVariant = 'default' | 'accent'
 
 export interface BadgeProps {
   /** Content to wrap with the badge */
@@ -29,11 +23,9 @@ export interface BadgeProps {
   max?: number
   /**
    * Visual variant of the badge. A badge means new or unread items (decision 0045): `accent` is
-   * the blue highlight, and `default` the near-black count. `primary` is a deprecated alias for
-   * `accent`, because Button's `primary` is near-black (decision 0029). `error`, `warning` and
-   * `success` are deprecated aliases for `accent`: a badge's colour alone can't carry a status, so
-   * a count of items with a status uses the status pattern instead ("3 failed" with StatusLabel).
-   * All four keep working until they are removed in 3.0.
+   * the blue highlight, and `default` the near-black count. A badge's colour alone can't carry a
+   * status, so a count of items with a status uses the status pattern instead ("3 failed" with
+   * StatusLabel).
    * @default 'default'
    */
   variant?: BadgeVariant
@@ -96,14 +88,7 @@ const BadgeIndicator = styled.span.withConfig({
   
   ${props => {
     switch (props.$variant) {
-      // 'primary', 'error', 'warning' and 'success' are deprecated aliases for 'accent', removed in
-      // 3.0: 'primary' (#169), and the status colours, because a badge's colour alone can't carry a
-      // status (decision 0045, #263)
       case 'accent':
-      case 'primary':
-      case 'error':
-      case 'warning':
-      case 'success':
         return `
           background-color: ${color.fill.accent};
           color: ${color.text.inverse};

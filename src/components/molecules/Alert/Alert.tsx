@@ -105,15 +105,6 @@ export interface AlertProps {
   action?: React.ReactNode
   
   /**
-   * Compact inline variant with reduced padding
-   * @default false
-   * @deprecated Use `InlineAlert` for a short, local message (decision 0019). `inline` keeps
-   * working until it is removed in 3.0. An inline alert that needs a title, action or dismiss
-   * button stays an Alert.
-   */
-  inline?: boolean
-  
-  /**
    * ARIA live region behavior
    * - polite: Non-urgent announcements
    * - assertive: Important, time-sensitive information
@@ -158,17 +149,14 @@ const StyledAlert = styled.div.withConfig({
 })<{
   $variant: AlertProps['variant']
   $appearance: NonNullable<AlertProps['appearance']>
-  $inline: boolean
   $isExiting: boolean
   $reducedExit: boolean
 }>`
   display: flex;
   /* Items start at the top, so the icon and dismiss button line up with the first line */
   align-items: flex-start;
-  gap: ${({ $inline }) =>
-    $inline ? semantic.space[200] : semantic.space[300]};
-  padding: ${({ $inline }) =>
-    $inline ? semantic.space[200] : semantic.space[300]};
+  gap: ${semantic.space[300]};
+  padding: ${semantic.space[300]};
   border-radius: ${semantic.radius.sm};
   border: ${semantic.border.width.thin} solid;
   position: relative;
@@ -182,10 +170,7 @@ const StyledAlert = styled.div.withConfig({
   
   /* Responsive adjustments */
   @media (min-width: ${semantic.breakpoint.md}) {
-    padding: ${({ $inline }) =>
-      $inline
-        ? semantic.space[200]
-        : semantic.space[400]};
+    padding: ${semantic.space[400]};
   }
 
   /* The exit is chosen once, when dismissed (not by a media query), so a reduced-motion
@@ -249,13 +234,9 @@ const StyledDismissSlot = styled.div.withConfig({
   height: ${({ $lineHeight }) => $lineHeight};
 `
 
-// The glyph sits on the padding edge, mirroring the severity icon on the left. The inline
-// alert's padding is too small for that, so its button stays inside the padding.
-const StyledDismissButton = styled(IconButton)<{ $inline: boolean }>`
-  margin-right: ${({ $inline }) =>
-    $inline
-      ? 0
-      : `calc((${semantic.size.control.sm} - ${semantic.size.icon.sm}) / -2)`};
+// The glyph sits on the padding edge, mirroring the severity icon on the left
+const StyledDismissButton = styled(IconButton)`
+  margin-right: calc((${semantic.size.control.sm} - ${semantic.size.icon.sm}) / -2);
 `
 
 export const Alert = ({
@@ -266,11 +247,13 @@ export const Alert = ({
   dismissible = false,
   onDismiss,
   action,
-  inline = false,
   ariaLive = 'polite',
   'data-testid': dataTestId,
-  ...props
+  ...restProps
 }: AlertProps) => {
+  // `inline` was removed in 3.0 (use InlineAlert, decision 0019); plain JavaScript that still
+  // passes it gets a block alert, with the prop kept off the DOM
+  const { inline: _inline, ...props } = restProps as typeof restProps & { inline?: unknown }
   const [phase, setPhase] = React.useState<'visible' | 'exiting' | 'dismissed'>('visible')
   const [reducedExit, setReducedExit] = React.useState(false)
   const [exitStyle, setExitStyle] = React.useState<React.CSSProperties>()
@@ -365,7 +348,6 @@ export const Alert = ({
       aria-live={ariaLive}
       $variant={variant}
       $appearance={appearance}
-      $inline={inline}
       $isExiting={isExiting}
       $reducedExit={reducedExit}
       data-testid={dataTestId}
@@ -393,7 +375,6 @@ export const Alert = ({
             iconName="close"
             size="small"
             variant="naked"
-            $inline={inline}
             onClick={handleDismiss}
             aria-label="Dismiss alert"
             data-testid={dataTestId ? `${dataTestId}-dismiss` : undefined}

@@ -3,8 +3,8 @@ import { axe } from 'jest-axe'
 import tokens from '@/styles/tokens.json'
 import { Grid, GridCol, ResponsiveGrid } from './GridSystem'
 
-// Gap props take base spacing keys (the documented exception to decision 0014)
-const spacing = tokens.base.spacing
+// Gap props take base dimension keys (the documented exception to decision 0014)
+const spacing = tokens.base.dimension
 const { breakpoint } = tokens.semantic
 
 // jsdom can't compute grid properties or evaluate media queries, so these tests
@@ -58,6 +58,18 @@ describe('Grid', () => {
     )
     expect(screen.getByTestId('gap')).toHaveStyle({ gap: spacing['4'] })
     expect(screen.getByTestId('axes')).toHaveStyle({ columnGap: spacing['2'], rowGap: spacing['6'] })
+  })
+
+  // 3.0 types the gap props by base.dimension, so its steps that base.spacing never had work too (#188)
+  it('takes base.dimension steps and auto', () => {
+    render(
+      <>
+        <Grid gap="11" data-testid="dimension-only"><div /></Grid>
+        <Grid gapX="auto" data-testid="auto"><div /></Grid>
+      </>
+    )
+    expect(screen.getByTestId('dimension-only')).toHaveStyle({ gap: spacing['11'] })
+    expect(css()).toContain('column-gap:auto')
   })
 
   it('passes className and data-testid to the root', () => {

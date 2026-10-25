@@ -2,11 +2,22 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../lib/cssTokens'
 
-// Exception to decision 0014: the gap props are typed as base spacing keys (public API),
-// so they are looked up in base.spacing until they accept semantic keys.
-// eslint-disable-next-line no-restricted-syntax
-const gapSpacing = tokens.base.spacing
 import type { Tokens } from '../../../types/tokens'
+
+/**
+ * A grid gap: a `base.dimension` step (the 4px scale, so `4` is 16px), or `auto`. Before 3.0 the
+ * gap props took `base.spacing` keys, which had the same values (#188).
+ */
+type GridGap = keyof Tokens['base']['dimension'] | 'auto'
+
+// Exception to decision 0014: the gap props are typed as base dimension keys (public API),
+// so they are looked up in the base tier until they accept semantic keys.
+const gapSpacing: Record<GridGap, string> = {
+  // eslint-disable-next-line no-restricted-syntax
+  ...tokens.base.dimension,
+  // eslint-disable-next-line no-restricted-syntax
+  auto: tokens.base.spacing.auto
+}
 
 // Breakpoints using base tokens
 const breakpoints = {
@@ -31,9 +42,9 @@ const media = {
 // Base Grid Container
 interface GridProps {
   cols?: number
-  gap?: keyof Tokens['base']['spacing']
-  gapX?: keyof Tokens['base']['spacing']
-  gapY?: keyof Tokens['base']['spacing']
+  gap?: GridGap
+  gapX?: GridGap
+  gapY?: GridGap
   className?: string
   /** Test identifier for automated testing */
   'data-testid'?: string
@@ -201,21 +212,21 @@ interface ResponsiveGridProps {
   colsMd?: number
   colsLg?: number
   colsXl?: number
-  gap?: keyof Tokens['base']['spacing']
-  gapSm?: keyof Tokens['base']['spacing']
-  gapMd?: keyof Tokens['base']['spacing']
-  gapLg?: keyof Tokens['base']['spacing']
-  gapXl?: keyof Tokens['base']['spacing']
-  gapX?: keyof Tokens['base']['spacing']
-  gapXSm?: keyof Tokens['base']['spacing']
-  gapXMd?: keyof Tokens['base']['spacing']
-  gapXLg?: keyof Tokens['base']['spacing']
-  gapXXl?: keyof Tokens['base']['spacing']
-  gapY?: keyof Tokens['base']['spacing']
-  gapYSm?: keyof Tokens['base']['spacing']
-  gapYMd?: keyof Tokens['base']['spacing']
-  gapYLg?: keyof Tokens['base']['spacing']
-  gapYXl?: keyof Tokens['base']['spacing']
+  gap?: GridGap
+  gapSm?: GridGap
+  gapMd?: GridGap
+  gapLg?: GridGap
+  gapXl?: GridGap
+  gapX?: GridGap
+  gapXSm?: GridGap
+  gapXMd?: GridGap
+  gapXLg?: GridGap
+  gapXXl?: GridGap
+  gapY?: GridGap
+  gapYSm?: GridGap
+  gapYMd?: GridGap
+  gapYLg?: GridGap
+  gapYXl?: GridGap
   className?: string
   /** Test identifier for automated testing */
   'data-testid'?: string

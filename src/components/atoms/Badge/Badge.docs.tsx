@@ -34,10 +34,10 @@ export const badgeDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: '"default" | "accent" | "primary" | "error" | "warning" | "success" (the last four deprecated)',
+      type: '"default" | "accent"',
       required: false,
       default: '"default"',
-      description: 'Visual style. A badge means new or unread items (decision 0045): "accent" is the blue highlight and "default" the near-black count. "primary", "error", "warning" and "success" are deprecated aliases for "accent", removed in 3.0: a badge\'s colour alone can\'t carry a status, so a count of items with a status uses StatusLabel ("3 failed").'
+      description: 'Visual style. A badge means new or unread items (decision 0045): "accent" is the blue highlight and "default" the near-black count. A badge\'s colour alone can\'t carry a status, so a count of items with a status uses StatusLabel ("3 failed").'
     },
     {
       name: 'dot',

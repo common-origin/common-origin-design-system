@@ -19,10 +19,10 @@ export const buttonDocs: ComponentDocumentation = {
   props: [
     {
       name: 'variant',
-      type: "'primary' | 'secondary' | 'naked' | 'accent' | 'danger' | 'emphasis' (deprecated)",
+      type: "'primary' | 'secondary' | 'naked' | 'accent' | 'danger'",
       required: false,
       default: 'primary',
-      description: "Visual style variant: accent (blue, the call to action above primary; at most one per view), primary (dark, the main action), secondary (gray, supporting actions), naked (transparent, minimal), danger (red, destructive actions). 'emphasis' is a deprecated alias for 'accent' and will be removed in 3.0."
+      description: "Visual style variant: accent (blue, the call to action above primary; at most one per view), primary (dark, the main action), secondary (gray, supporting actions), naked (transparent, minimal), danger (red, destructive actions)."
     },
     {
       name: 'size',
@@ -141,13 +141,6 @@ export const buttonDocs: ComponentDocumentation = {
     'component.button.variants.accent.active.backgroundColor',
     'component.button.variants.accent.disabled.backgroundColor',
     'component.button.variants.accent.disabled.textColor',
-    // Deprecated emphasis variant: an alias of the accent tokens, removed in 3.0
-    'component.button.variants.emphasis.backgroundColor',
-    'component.button.variants.emphasis.textColor',
-    'component.button.variants.emphasis.hover.backgroundColor',
-    'component.button.variants.emphasis.active.backgroundColor',
-    'component.button.variants.emphasis.disabled.backgroundColor',
-    'component.button.variants.emphasis.disabled.textColor',
     // Danger variant (red destructive)
     'component.button.variants.danger.backgroundColor',
     'component.button.variants.danger.textColor',
@@ -441,7 +434,7 @@ export const buttonDocs: ComponentDocumentation = {
     'Semantic Purpose: Use purpose="button" for actions (forms, modals, state changes), purpose="link" for navigation',
     'Variant Hierarchy: Accent for the one call to action that must stand out above primary, primary for main actions, secondary for supporting actions, naked for low-emphasis actions, danger for destructive/irreversible actions (decisions 0002 and 0016)',
     'Accent Variant: A brand moment or the one action that must stand out beyond the primary action, such as a sign-up. Use at most one per view. Accent is not a selected state or a link colour',
-    'Deprecated: variant="emphasis" is an alias for accent, kept so nothing breaks in 2.x. Replace it with variant="accent"; emphasis will be removed in 3.0. The component.button.variants.emphasis tokens are likewise a deprecated alias of component.button.variants.accent',
+    'Removed in 3.0: variant="emphasis", which was an alias for accent. Use variant="accent".',
     'Danger Variant: Reserve for destructive actions like delete, remove, or cancel subscription. Always pair with confirmation dialogs for irreversible actions',
     'Size Guidelines: Small for compact interfaces, medium for standard use, large for prominent CTAs or touch interfaces',
     'Polymorphic Rendering: Automatically renders semantic HTML (<button> or <a>) with proper attributes based on purpose',

@@ -93,7 +93,7 @@ describe('Badge', () => {
       expect(container.querySelector('[role="status"]')).toBeInTheDocument()
     })
 
-    // accent is the blue highlight; primary is its deprecated alias until 3.0 (#169)
+    // accent is the blue highlight (#169)
     it('renders the accent variant in the interactive blue', () => {
       const { container } = render(
         <Badge count={5} variant="accent">
@@ -107,48 +107,17 @@ describe('Badge', () => {
       })
     })
 
-    it('renders deprecated primary exactly like accent', () => {
-      const styleOf = (variant: 'accent' | 'primary') => {
-        const { container, unmount } = render(
-          <Badge count={5} variant={variant}>
-            <Button>Button</Button>
-          </Badge>
-        )
-        const { backgroundColor, color } = getComputedStyle(container.querySelector('[role="status"]') as HTMLElement)
-        unmount()
-        return { backgroundColor, color }
-      }
-      expect(styleOf('primary')).toEqual(styleOf('accent'))
-    })
-
-    it('renders error variant', () => {
+    // primary, error, warning and success were removed in 3.0 (decision 0045, #99); plain
+    // JavaScript that still passes one gets the default near-black count
+    it.each(['primary', 'error', 'warning', 'success'])('renders removed %s from plain JavaScript as default', (variant) => {
       const { container } = render(
-        <Badge count={5} variant="error">
+        <Badge count={5} variant={variant as unknown as 'default'}>
           <Button>Button</Button>
         </Badge>
       )
-      
-      expect(container.querySelector('[role="status"]')).toBeInTheDocument()
-    })
-
-    it('renders warning variant', () => {
-      const { container } = render(
-        <Badge count={5} variant="warning">
-          <Button>Button</Button>
-        </Badge>
-      )
-      
-      expect(container.querySelector('[role="status"]')).toBeInTheDocument()
-    })
-
-    it('renders success variant', () => {
-      const { container } = render(
-        <Badge count={5} variant="success">
-          <Button>Button</Button>
-        </Badge>
-      )
-      
-      expect(container.querySelector('[role="status"]')).toBeInTheDocument()
+      expect(container.querySelector('[role="status"]')).toHaveStyle({
+        backgroundColor: tokens.semantic.color.fill.emphasis,
+      })
     })
   })
 
@@ -241,7 +210,7 @@ describe('Badge', () => {
 
     it('wraps Avatar-like component', () => {
       render(
-        <Badge dot variant="success">
+        <Badge dot variant="accent">
           <div role="img" aria-label="User avatar">👤</div>
         </Badge>
       )
@@ -251,7 +220,7 @@ describe('Badge', () => {
 
     it('wraps Chip-like component', () => {
       render(
-        <Badge count={2} variant="error">
+        <Badge count={2} variant="accent">
           <span role="button">Filter</span>
         </Badge>
       )

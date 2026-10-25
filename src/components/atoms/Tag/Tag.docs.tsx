@@ -21,10 +21,10 @@ export const tagDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: "'default' | 'emphasis' | 'success' | 'warning' | 'error' | 'interactive' (last four deprecated)",
+      type: "'default' | 'emphasis'",
       required: false,
       default: "'default'",
-      description: 'Tag is neutral metadata: default, or emphasis (near-black) to stand out. success, warning and error are deprecated, because status belongs to StatusLabel; interactive is deprecated, because a blue fill on a static label is decoration. They are removed in 3.0 (decision 0029).'
+      description: 'Tag is neutral metadata: default, or emphasis (near-black) to stand out. Status belongs to StatusLabel (decision 0029). success, warning, error and interactive were removed in 3.0.'
     },
     {
       name: 'border',
@@ -53,22 +53,10 @@ export const tagDocs: ComponentDocumentation = {
     'semantic.border.width.thin',
     // Colors
     'semantic.color.fill.muted',
-    'semantic.color.fill.accent-muted',
-    'semantic.color.fill.success-muted',
-    'semantic.color.fill.warning-muted',
-    'semantic.color.fill.danger-muted',
     'semantic.color.fill.emphasis',
     'semantic.color.text.default',
-    'semantic.color.text.accent',
-    'semantic.color.text.success',
-    'semantic.color.text.warning',
-    'semantic.color.text.danger',
     'semantic.color.text.inverse',
     'semantic.color.border.default',
-    'semantic.color.border.accent',
-    'semantic.color.border.success',
-    'semantic.color.border.warning',
-    'semantic.color.border.danger',
     
     // Typography
     'component.badge.label.typography.small',
@@ -97,7 +85,7 @@ export const tagDocs: ComponentDocumentation = {
     },
     {
       name: 'Variants',
-      description: 'Default and emphasis. For status (success, warning, error), use StatusLabel: the matching Tag variants are deprecated.',
+      description: 'Default and emphasis. For status (success, warning, error), use StatusLabel.',
       code: `<Stack direction="row" gap="md" alignItems="center">
   <Tag variant="default">Default</Tag>
   <Tag variant="emphasis">Emphasis</Tag>
@@ -231,16 +219,8 @@ export const tagDocs: ComponentDocumentation = {
           'semantic.size.label.small',
           'semantic.size.label.medium',
           'semantic.color.fill.muted',
-          'semantic.color.fill.accent-muted',
-          'semantic.color.fill.success-muted',
-          'semantic.color.fill.warning-muted',
-          'semantic.color.fill.danger-muted',
           'semantic.color.fill.emphasis',
           'semantic.color.border.default',
-          'semantic.color.border.accent',
-          'semantic.color.border.success',
-          'semantic.color.border.warning',
-          'semantic.color.border.danger'
         ]
       },
       {
@@ -250,10 +230,6 @@ export const tagDocs: ComponentDocumentation = {
           'component.badge.label.typography.small',
           'component.badge.label.fontWeight',
           'semantic.color.text.default',
-          'semantic.color.text.accent',
-          'semantic.color.text.success',
-          'semantic.color.text.warning',
-          'semantic.color.text.danger',
           'semantic.color.text.inverse'
         ]
       }

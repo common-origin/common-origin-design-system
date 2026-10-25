@@ -133,13 +133,6 @@ describe('InlineAlert', () => {
   })
 })
 
-describe('Alert inline (deprecated)', () => {
-  it('still renders', () => {
-    render(<Alert inline variant="warning">Careful</Alert>)
-    expect(screen.getByRole('status')).toHaveTextContent('Careful')
-  })
-})
-
 // The status pattern (decision 0045): each severity's status icon at the medium size, and its shape
 // indicator at the small size, where a 12px outline icon is too small to read
 describe('InlineAlert status pattern (decision 0045)', () => {

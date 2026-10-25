@@ -78,7 +78,7 @@ const rows = [
     name: 'CategoryLabel',
     use: "Colour-codes an item's category, such as a transaction's, with an optional icon. Category colours carry no status meaning.",
     avoid: 'Status (use StatusLabel) or neutral metadata (use Tag).',
-    example: <CategoryLabel color="blue">Groceries</CategoryLabel>,
+    example: <CategoryLabel color="periwinkle">Groceries</CategoryLabel>,
   },
   {
     name: 'Tag',

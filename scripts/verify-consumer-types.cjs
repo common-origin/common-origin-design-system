@@ -73,7 +73,7 @@ namedTokens.semantic.color.text.doesNotExist
 const badIcon: IconName = 'not-an-icon'
 
 export const App = () => (
-  <Box p="md" bg="default">
+  <Box p="md" bg="surface.base">
     <ResponsiveGrid cols={1} gap="4">
       <Button variant="primary">{text}{textColours.default}{standalone}{String(semantic)}{String(whole)}{path}</Button>
       <Icon name={icon} />
