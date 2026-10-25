@@ -361,8 +361,9 @@ export const getStaticProps: GetStaticProps<ReleasesPageProps> = async () => {
   const changelog = fs.readFileSync(changelogPath, 'utf-8')
 
   // Working parser for auto-changelog format
-  // Matches: #### [v1.8.5](...)\n> 30 October 2025\n- commit ...
-  const releaseRegex = /#### \[v([\d.]+)\][^]*?> ([^\n]+)\n([^]*?)(?=#### \[v|$)/g
+  // Matches: #### [v1.8.5](...)\n> 30 October 2025\n- commit ... The template gives a major
+  // release one fewer #, ### [v2.0.0](...), so the heading takes three or four
+  const releaseRegex = /#{3,4} \[v([\d.]+)\][^]*?> ([^\n]+)\n([^]*?)(?=#{3,4} \[v|$)/g
   // Each entry links to either a commit (`abc1234`) or, for changes merged
   // through a pull request, the PR (`#47`). Messages may themselves contain
   // brackets (e.g. "[WIP] ..."), so match up to the last link on the line.
