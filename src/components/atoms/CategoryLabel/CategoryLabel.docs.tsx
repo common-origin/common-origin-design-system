@@ -5,7 +5,7 @@ import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 export const categoryLabelDocs: ComponentDocumentation = {
   id: 'category-label',
   name: 'CategoryLabel',
-  description: 'Colour-codes an item\'s category, such as a transaction\'s (decision 0018). A static, display-only label with four display colours plus grey, filled, outlined and minimal styles, and an optional icon. Category colours carry no meaning (decision 0043): for status use StatusLabel. For a selectable or removable value use a chip. Replaces the deprecated CategoryBadge; it defaults to large (32px), so swapping the name doesn\'t change how anything looks.',
+  description: 'Colour-codes an item\'s category, such as a transaction\'s (decision 0018). A static, display-only label with four display colours plus grey, filled, outlined and minimal styles, and an optional icon. Category colours carry no meaning (decision 0043): for status use StatusLabel. For a selectable or removable value use a chip. Replaces CategoryBadge, removed in 3.0.',
   category: 'Atoms',
   
   props: [
@@ -363,7 +363,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
 
   guides: [labelGuide],
   notes: [
-    'Renamed from CategoryBadge in 2.16 (decision 0018). CategoryBadge still works as a deprecated alias and is removed in 3.0. Migrate by renaming, with size="small" → "medium" and size="medium" (or no size) → "large". color and variant are unchanged.',
+    'Renamed from CategoryBadge in 2.16 (decision 0018); CategoryBadge was removed in 3.0. Migrate by renaming, with size="small" → "medium" and size="medium" (or no size) → "large". color and variant are unchanged.',
     ...labelGuideNotes
   ]
 }

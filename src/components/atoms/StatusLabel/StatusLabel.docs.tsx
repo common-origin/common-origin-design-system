@@ -5,7 +5,7 @@ import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
 export const statusLabelDocs: ComponentDocumentation = {
   id: 'status-label',
   name: 'StatusLabel',
-  description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows its text, with the status icon (or, at the small size, the status shape), so status is never conveyed by colour alone (decision 0045). Not interactive. Announces status changes through an ARIA live region. Replaces the deprecated StatusBadge, with the same props apart from showIcon.',
+  description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows its text, with the status icon (or, at the small size, the status shape), so status is never conveyed by colour alone (decision 0045). Not interactive. Announces status changes through an ARIA live region. Replaces StatusBadge, removed in 3.0.',
   category: 'Atoms',
   
   props: [
@@ -291,7 +291,7 @@ export const statusLabelDocs: ComponentDocumentation = {
 
   guides: [labelGuide],
   notes: [
-    'Renamed from StatusBadge in 2.16 (decision 0018). StatusBadge still works as a deprecated alias and is removed in 3.0. Migrate by renaming: status, size, label and liveRegion are unchanged. showIcon={false} is no longer possible.',
+    'Renamed from StatusBadge in 2.16 (decision 0018); StatusBadge was removed in 3.0. Migrate by renaming: status, size, label and liveRegion are unchanged, and showIcon is gone because the icon is always shown.',
     ...labelGuideNotes
   ]
 }

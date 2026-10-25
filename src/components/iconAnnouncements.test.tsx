@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import iconsData from '@/styles/icons.json'
 import { Button } from './atoms/Button'
-import { CategoryBadge } from './atoms/CategoryBadge'
 import { CategoryLabel } from './atoms/CategoryLabel'
 import { MoneyDisplay } from './atoms/MoneyDisplay'
 import { Alert } from './molecules/Alert'
@@ -55,13 +54,8 @@ describe('icon announcements', () => {
     expect(await axe(container)).toHaveNoViolations()
   })
 
-  it('CategoryBadge and CategoryLabel icons are silent', async () => {
-    const { container } = render(
-      <>
-        <CategoryBadge icon="bell">Alerts</CategoryBadge>
-        <CategoryLabel icon="bell">Alerts</CategoryLabel>
-      </>
-    )
+  it('CategoryLabel icons are silent', async () => {
+    const { container } = render(<CategoryLabel icon="bell">Alerts</CategoryLabel>)
     expect(announcedImages(container)).toEqual([])
     expect(await axe(container)).toHaveNoViolations()
   })

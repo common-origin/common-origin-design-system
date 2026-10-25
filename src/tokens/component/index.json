@@ -1240,17 +1240,17 @@
         "fontWeight": {
           "$value": "{semantic.fontWeight.medium}",
           "$type": "fontWeight",
-          "$description": "Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it."
+          "$description": "Text weight for the badge-like label family: StatusLabel, CategoryLabel and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it."
         },
         "typography": {
           "$type": "typography",
           "small": {
             "$value": "{semantic.typography.caption}",
-            "$description": "Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight."
+            "$description": "Typography for small labels in the badge-like family (StatusLabel small, CategoryLabel medium, Tag). Combine with label.fontWeight."
           },
           "medium": {
             "$value": "{semantic.typography.small}",
-            "$description": "Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight."
+            "$description": "Typography for medium labels in the badge-like family (StatusLabel medium, CategoryLabel large). Combine with label.fontWeight."
           }
         }
       }

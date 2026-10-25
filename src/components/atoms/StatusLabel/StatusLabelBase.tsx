@@ -31,7 +31,7 @@ export type StatusType =
 export type StatusSize = 'small' | 'medium'
 
 /**
- * Props shared by StatusLabel and the deprecated StatusBadge
+ * Props for StatusLabel
  */
 export interface StatusLabelProps {
   /**
@@ -205,15 +205,14 @@ const VisibleContent = styled.span`
 `
 
 /**
- * Shared implementation of StatusLabel and the deprecated StatusBadge. Internal: not exported
- * from the package. `showIcon` exists only for StatusBadge. StatusLabel always shows the status icon
- * at the medium size, and at the small size the shape for coloured statuses (decisions 0018, 0045).
+ * StatusLabel's implementation. Internal: not exported from the package. It always shows the status
+ * icon at the medium size, and at the small size the shape for coloured statuses (decisions 0018,
+ * 0045).
  */
-export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }> = ({
+export const StatusLabelBase: React.FC<StatusLabelProps> = ({
   status,
   label,
   size = 'medium',
-  showIcon = true,
   liveRegion = true,
   'data-testid': dataTestId,
   'aria-label': ariaLabel
@@ -240,14 +239,14 @@ export const StatusLabelBase: React.FC<StatusLabelProps & { showIcon?: boolean }
       <VisibleContent aria-hidden={accessibleLabel ? 'true' : undefined}>
         {/* A 12px outline icon is too small to read, so the small size shows the status's shape
             instead, in the label's colour (decision 0045); neutral statuses show text only */}
-        {showIcon && size === 'medium' && (
+        {size === 'medium' && (
           <Icon
             name={statusConfig.icon}
             size={sizeStyles.iconSize}
             iconColor="inherit"
           />
         )}
-        {showIcon && size === 'small' && statusConfig.shape && (
+        {size === 'small' && statusConfig.shape && (
           <StatusShape shape={statusConfig.shape} />
         )}
         {displayLabel}
