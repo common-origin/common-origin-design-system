@@ -45,7 +45,7 @@ export const boxDocs: ComponentDocumentation = {
     },
     {
       name: 'gap',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Gap between flex/grid children using layout tokens'
     },
@@ -53,43 +53,43 @@ export const boxDocs: ComponentDocumentation = {
     // Margin spacing
     {
       name: 'm',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin on all sides using layout spacing tokens'
     },
     {
       name: 'mt',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin top using layout spacing tokens'
     },
     {
       name: 'mr',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin right using layout spacing tokens'
     },
     {
       name: 'mb',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin bottom using layout spacing tokens'
     },
     {
       name: 'ml',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin left using layout spacing tokens'
     },
     {
       name: 'mx',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin horizontal (left & right) using layout spacing tokens'
     },
     {
       name: 'my',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Margin vertical (top & bottom) using layout spacing tokens'
     },
@@ -97,43 +97,43 @@ export const boxDocs: ComponentDocumentation = {
     // Padding spacing
     {
       name: 'p',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding on all sides using layout spacing tokens'
     },
     {
       name: 'pt',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding top using layout spacing tokens'
     },
     {
       name: 'pr',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding right using layout spacing tokens'
     },
     {
       name: 'pb',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding bottom using layout spacing tokens'
     },
     {
       name: 'pl',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding left using layout spacing tokens'
     },
     {
       name: 'px',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding horizontal (left & right) using layout spacing tokens'
     },
     {
       name: 'py',
-      type: 'keyof typeof tokens.semantic.spacing.layout',
+      type: "BoxSpace: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' … '11xl' | 'auto'",
       required: false,
       description: 'Padding vertical (top & bottom) using layout spacing tokens'
     },
@@ -211,7 +211,7 @@ export const boxDocs: ComponentDocumentation = {
     // Borders
     {
       name: 'borderRadius',
-      type: "keyof Tokens['semantic']['border']['radius']",
+      type: "BoxRadius: 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'circle'",
       required: false,
       description: 'Border radius using design tokens'
     },
