@@ -3,99 +3,105 @@
  */
 import path from 'path'
 import ts from 'typescript'
-import { deprecatedTokens, findTokenReads, projectConfig, ROOT } from './tokenReads'
+import { findTokenReads, projectConfig, ROOT } from './tokenReads'
 
-// Each fixture reads `semantic.color.background.subtle` (or a category `-emphasis` name), both
-// deprecated by decision 0031, in one of the ways #229 lists. The checker must find every one,
-// and must not flag the clean controls.
+// Each fixture reads a target token, `semantic.color.fill.muted` (or a category `-strong` name), in
+// one of the ways #229 lists. The deprecation test traces deprecated tokens the same way; 3.0 left
+// none, so these tests use live targets. The checker must find every read, and must not flag the
+// clean controls.
+const TARGETS = new Set([
+  'semantic.color.fill.muted',
+  'semantic.color.category.magenta-strong',
+  'semantic.color.category.periwinkle-strong',
+])
 
 const FIXTURES: Record<string, string> = {
   direct: `
     import tokens from '@/styles/tokens.json'
-    export const a = tokens.semantic.color.background.subtle`,
+    export const a = tokens.semantic.color.fill.muted`,
   nestedDestructure: `
     import tokens from '@/styles/tokens.json'
-    const { semantic: { color: { background: bg } } } = tokens
-    export const a = bg.subtle`,
+    const { semantic: { color: { fill: bg } } } = tokens
+    export const a = bg.muted`,
   renamedBinding: `
     import tokens from '@/styles/tokens.json'
-    const { background: rowBackground } = tokens.semantic.color
-    export const a = rowBackground.subtle`,
+    const { fill: rowBackground } = tokens.semantic.color
+    export const a = rowBackground.muted`,
   destructuredLeaf: `
     import tokens from '@/styles/tokens.json'
-    const { subtle } = tokens.semantic.color.background
-    export const a = subtle`,
+    const { muted } = tokens.semantic.color.fill
+    export const a = muted`,
   alias: `
     import tokens from '@/styles/tokens.json'
     const color = tokens.semantic.color
-    const background = color.background
-    export const a = background.subtle`,
+    const background = color.fill
+    export const a = background.muted`,
   literalBracket: `
     import tokens from '@/styles/tokens.json'
-    const { background } = tokens.semantic.color
-    export const a = background['subtle']`,
+    const { fill: background } = tokens.semantic.color
+    export const a = background['muted']`,
   typedParameter: `
     import type { Tokens } from '@/types/tokens'
-    export const read = (color: Tokens['semantic']['color']) => color.background.subtle`,
+    export const read = (color: Tokens['semantic']['color']) => color.fill.muted`,
   helperReturn: `
     import tokens from '@/styles/tokens.json'
-    const background = () => tokens.semantic.color.background
-    export const a = background().subtle`,
+    const background = () => tokens.semantic.color.fill
+    export const a = background().muted`,
   objectProperty: `
     import tokens from '@/styles/tokens.json'
-    const theme = { surfaces: tokens.semantic.color.background }
-    export const a = theme.surfaces.subtle`,
+    const theme = { surfaces: tokens.semantic.color.fill }
+    export const a = theme.surfaces.muted`,
   templateUnion: `
     import tokens from '@/styles/tokens.json'
     const { category } = tokens.semantic.color
-    export const read = (hue: 'blue' | 'purple') => category[\`\${hue}-emphasis\` as keyof typeof category]`,
+    export const read = (hue: 'magenta' | 'periwinkle') => category[\`\${hue}-strong\` as keyof typeof category]`,
   castToRecord: `
     import tokens from '@/styles/tokens.json'
-    const background = tokens.semantic.color.background as Record<string, string>
+    const background = tokens.semantic.color.fill as Record<string, string>
     export const read = (key: string) => background[key]`,
   unresolvedKey: `
     import tokens from '@/styles/tokens.json'
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    export const read = (key: string) => tokens.semantic.color.background[key as any]`,
+    export const read = (key: string) => tokens.semantic.color.fill[key as any]`,
   objectEntries: `
     import tokens from '@/styles/tokens.json'
-    export const all = Object.entries(tokens.semantic.color.background)`,
+    export const all = Object.entries(tokens.semantic.color.fill)`,
   castToAny: `
     import tokens from '@/styles/tokens.json'
-    export const a = (tokens.semantic.color as any).background.subtle`,
+    export const a = (tokens.semantic.color as any).fill.muted`,
   containerEscape: `
     import tokens from '@/styles/tokens.json'
-    export const text = JSON.stringify({ data: tokens.semantic.color.background })`,
+    export const text = JSON.stringify({ data: tokens.semantic.color.fill })`,
   spread: `
     import tokens from '@/styles/tokens.json'
-    export const copy = { ...tokens.semantic.color.background }`,
+    export const copy = { ...tokens.semantic.color.fill }`,
   rest: `
     import tokens from '@/styles/tokens.json'
-    const { surface, ...others } = tokens.semantic.color.background
-    export const a = [surface, others]`,
+    const { inverse, ...others } = tokens.semantic.color.fill
+    export const a = [inverse, others]`,
   interfaceContainer: `
     import tokens from '@/styles/tokens.json'
-    interface Theme { bg: typeof tokens.semantic.color.background }
-    const theme: Theme = { bg: tokens.semantic.color.background }
+    interface Theme { bg: typeof tokens.semantic.color.fill }
+    const theme: Theme = { bg: tokens.semantic.color.fill }
     export const text = JSON.stringify(theme)`,
   recordContainer: `
     import tokens from '@/styles/tokens.json'
-    const byName: Record<string, typeof tokens.semantic.color.background> = { main: tokens.semantic.color.background }
+    const byName: Record<string, typeof tokens.semantic.color.fill> = { main: tokens.semantic.color.fill }
     export const text = JSON.stringify(byName)`,
   mapContainer: `
     import tokens from '@/styles/tokens.json'
-    const byName = new Map([['main', tokens.semantic.color.background]])
+    const byName = new Map([['main', tokens.semantic.color.fill]])
     export const text = JSON.stringify(byName)`,
   // Checking A first walks B inside A's cycle; B must still be searched in full on its own
   cyclicContainer: `
     import tokens from '@/styles/tokens.json'
-    interface A { b: B; bg: typeof tokens.semantic.color.background }
+    interface A { b: B; bg: typeof tokens.semantic.color.fill }
     interface B { a: A }
     declare const first: A
     declare const second: B
     export const one = JSON.stringify(first)
     export const two = JSON.stringify(second)`,
-  // Controls: none of these can reach a deprecated token
+  // Controls: none of these can reach a target token
   cleanDirect: `
     import tokens from '@/styles/tokens.json'
     const { surface } = tokens.semantic
@@ -126,7 +132,6 @@ function fixtureProgram() {
 }
 
 describe('findTokenReads (#229)', () => {
-  const deprecated = deprecatedTokens()
   let found: Map<string, Set<string>>
   let reads: ReturnType<typeof findTokenReads>
 
@@ -136,13 +141,13 @@ describe('findTokenReads (#229)', () => {
     for (const read of reads) {
       const name = path.basename(read.file, '.ts')
       const hits = found.get(name) ?? new Set<string>()
-      for (const token of read.paths) if (deprecated.has(token)) hits.add(`${read.how}: ${token}`)
+      for (const token of read.paths) if (TARGETS.has(token)) hits.add(`${read.how}: ${token}`)
       found.set(name, hits)
     }
   }, 120_000)
 
   const hits = (name: string) => [...(found.get(name) ?? [])]
-  const subtle = 'semantic.color.background.subtle'
+  const target = 'semantic.color.fill.muted'
 
   it.each([
     'direct',
@@ -155,34 +160,34 @@ describe('findTokenReads (#229)', () => {
     'helperReturn',
     'objectProperty',
   ])('finds an exact read: %s', (name) => {
-    expect(hits(name)).toContain(`exact: ${subtle}`)
+    expect(hits(name)).toContain(`exact: ${target}`)
   })
 
   it('expands a template key over its union, and finds only the names it can produce', () => {
     expect(hits('templateUnion').sort()).toEqual([
-      'exact: semantic.color.category.blue-emphasis',
-      'exact: semantic.color.category.purple-emphasis',
+      'exact: semantic.color.category.magenta-strong',
+      'exact: semantic.color.category.periwinkle-strong',
     ])
   })
 
   it('widens a key it cannot resolve to the whole group', () => {
-    expect(hits('unresolvedKey')).toContain(`unresolved key: ${subtle}`)
+    expect(hits('unresolvedKey')).toContain(`unresolved key: ${target}`)
   })
 
   it.each(['castToRecord', 'objectEntries', 'castToAny', 'containerEscape', 'spread', 'rest', 'interfaceContainer', 'recordContainer', 'mapContainer'])(
     'treats a group that loses its type as reading everything under it: %s',
     (name) => {
-      expect(hits(name)).toContain(`escape: ${subtle}`)
+      expect(hits(name)).toContain(`escape: ${target}`)
     }
   )
 
   it('searches a container in full even after meeting it inside a cycle', () => {
-    const lines = reads.filter((read) => read.file.endsWith('cyclicContainer.ts') && read.paths.includes(subtle)).map((read) => read.line)
+    const lines = reads.filter((read) => read.file.endsWith('cyclicContainer.ts') && read.paths.includes(target)).map((read) => read.line)
     // Both stringify calls: the one through A, and the one through B after A was searched
     expect(new Set(lines).size).toBe(2)
   })
 
-  it.each(['cleanDirect', 'cleanTemplate', 'cleanEscape'])('does not flag a read that cannot reach a deprecated token: %s', (name) => {
+  it.each(['cleanDirect', 'cleanTemplate', 'cleanEscape'])('does not flag a read that cannot reach a target token: %s', (name) => {
     expect(hits(name)).toEqual([])
   })
 })

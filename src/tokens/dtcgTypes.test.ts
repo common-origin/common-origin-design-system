@@ -30,13 +30,9 @@ const DTCG_TYPES = new Set([
   'color', 'dimension', 'number', 'fontFamily', 'fontWeight', 'duration', 'cubicBezier',
   'strokeStyle', 'shadow', 'border', 'transition', 'typography',
 ])
-// `other` is not a DTCG type. Only these deprecated layout and behaviour tokens use it, until 3.0.
-const OTHER = new Set([
-  'component.iconButton.primary.display',
-  'component.iconButton.primary.alignItems',
-  'component.iconButton.primary.justifyContent',
-  'component.input.disabled.cursor',
-])
+// `other` is not a DTCG type. 3.0 removed the four deprecated layout and behaviour tokens that
+// used it, so no token may.
+const OTHER = new Set<string>([])
 
 function descriptions(node: Node, path: string[] = [], out: [string, string][] = []) {
   for (const [key, child] of Object.entries(node)) {

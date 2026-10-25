@@ -60,8 +60,8 @@ describe('published token types', () => {
 
   // Picked from the source rather than named, so this test never reads a token that 3.0 removes
   it('mark every deprecated token @deprecated, with why and its replacement', () => {
+    // 3.0 removed every deprecated token (#99), so this loop is empty until the next deprecation
     const deprecated = deprecatedTokens()
-    expect(deprecated.length).toBeGreaterThan(0)
     for (const { path, replacedBy } of deprecated) {
       const { tags } = hover(path)
       expect(tags).toHaveLength(1)

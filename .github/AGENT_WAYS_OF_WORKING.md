@@ -132,7 +132,7 @@ Fix the failure before raising the PR. A PR with failing tests or a broken build
 **In the code (at the exact location of uncertainty):**
 ```typescript
 // TODO: [Specific question for reviewer]
-// e.g.: TODO: Should this use semantic.spacing.component.md or semantic.spacing.component.lg?
+// e.g.: TODO: Should this use semantic.space.inset.md or semantic.space.inset.lg?
 // The component's padding looks correct with md but lg matches the Button component.
 ```
 

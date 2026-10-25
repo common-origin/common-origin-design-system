@@ -82,12 +82,12 @@ Every ramp has a translucent twin (`gray-alpha`, `accent-alpha` and the rest) fo
 
 - `base.color.transparent`.
 - `base.color.white`: pure white, outside the ramps, for raised surfaces on the `gray.100` page ([decision 0049](../foundation/decisions/0049-where-white-lives.md)). Inverse text and icons use `gray.100`, not white.
-- **The older palettes** (`neutral.*`, from Bootstrap, and `blue`, `green`, `red`, `orange`, `purple`, `pink`, `yellow`, from Spectrum 1) are deprecated and removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)). Only deprecated semantic tokens still reference them.
+- **The older palettes** (`neutral.*`, from Bootstrap, and `blue`, `green`, `red`, `orange`, `purple`, `pink`, `yellow`, from Spectrum 1) were removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)).
 
 ## Dimension and size
 
 - **`base.dimension`** is the one dimension scale, on a 4px grid. The key is the multiple of 4px: `4` is 16px (1rem) and `12` is 48px. It holds only the steps in use. Semantic spacing and sizes read it ([#188](https://github.com/common-origin/common-origin-design-system/issues/188)). Off-grid values snap to the nearest step.
-- **`base.size`** holds the size keywords (`auto`, `full`, `screen`, `min`, `max`, `fit`). Its numbered steps, and those of `base.spacing`, are deprecated aliases of `base.dimension`.
+- **`base.size`** holds the size keywords (`auto`, `full`, `screen`, `min`, `max`, `fit`). Its numbered steps, and those of `base.spacing`, were aliases of `base.dimension` and were removed in 3.0; `base.spacing` keeps only `auto`.
 
 ## Radius and border
 

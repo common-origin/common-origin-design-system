@@ -19,7 +19,7 @@ html, body {
 
 /* Page background is the background.default token (decision 0006). */
 body {
-  background: var(--co-semantic-color-background-default);
+  background: var(--co-semantic-surface-base);
   color: var(--co-semantic-color-text-default);
 }
 

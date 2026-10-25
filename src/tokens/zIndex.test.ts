@@ -1,9 +1,9 @@
 import tokens from '@/styles/tokens.json'
 
-// Semantic z-index layers must stay in this order (decision 0013):
+// Semantic z-index layers (semantic.layer, named by decision 0031) must stay in this order (decision 0013):
 // sticky < dropdown < overlay < modal
 describe('semantic z-index layers', () => {
-  const { zIndex } = tokens.semantic
+  const { layer: zIndex } = tokens.semantic
   const order = ['sticky', 'dropdown', 'overlay', 'modal'] as const
 
   it('defines exactly the documented layers', () => {

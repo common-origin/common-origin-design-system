@@ -25,9 +25,9 @@ describe('token contrast', () => {
   // A resting control's border shows where the control is, so it needs 3:1 against the fill and
   // the page (SC 1.4.11, decision 0025). Disabled borders are exempt
   it('keeps the resting input border at 3:1 or more on the input fill and the page', () => {
-    const { background } = tokens.semantic.color
+    const { surface } = tokens.semantic
     expect(contrast(input.default.borderColor, input.default.backgroundColor)).toBeGreaterThanOrEqual(3)
-    expect(contrast(input.default.borderColor, background.default)).toBeGreaterThanOrEqual(3)
+    expect(contrast(input.default.borderColor, surface.base)).toBeGreaterThanOrEqual(3)
   })
 
   // Each grey step's job sets its contrast (decision 0040): 800 can be a control edge, and 1100 can
@@ -153,8 +153,6 @@ describe('token contrast', () => {
       expect(contrast(text.muted, background)).toBeGreaterThanOrEqual(4.5)
       expect(contrast(icon.muted, background)).toBeGreaterThanOrEqual(4.5)
     }
-    expect(text.emphasis).toBe(text.default)
-    expect(icon.emphasis).toBe(icon.default)
   })
 
   // A strong fill's states mix its content colour in at the state-layer opacity (decision 0048)
