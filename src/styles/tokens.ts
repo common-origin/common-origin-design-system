@@ -259,10 +259,12 @@ export type Tokens = {
       max: string;
       fit: string;
     };
-    /** Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent. */
+    /** Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; white (decision 0049); and transparent. */
     color: {
       /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
       transparent: string;
+      /** Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049). */
+      white: string;
       /** Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040). */
       gray: {
         /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
@@ -2863,7 +2865,7 @@ export type Tokens = {
          * @deprecated Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.
          */
         subdued: string;
-        /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis. */
+        /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis. */
         inverse: string;
         /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;

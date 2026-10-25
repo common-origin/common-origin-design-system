@@ -160,10 +160,26 @@ describe('token contrast', () => {
   // A strong fill's states mix its content colour in at the state-layer opacity (decision 0048)
   it('builds the strong fill states from fill.emphasis, text.inverse and opacity.state', () => {
     const { button } = tokens.component
-    const { opacity } = tokens.semantic
+    const { opacity, color } = tokens.semantic
     expect(opacity.state).toEqual({ hover: '0.08', pressed: '0.12' })
-    expect(button.hover.backgroundColor).toBe('color-mix(in srgb, #222222, #ffffff calc(0.08 * 100%))')
-    expect(button.active.backgroundColor).toBe('color-mix(in srgb, #222222, #ffffff calc(0.12 * 100%))')
+    expect(button.hover.backgroundColor).toBe(`color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(0.08 * 100%))`)
+    expect(button.active.backgroundColor).toBe(`color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(0.12 * 100%))`)
+  })
+
+  // White is base.color.white, off the ramps; inverse content is gray.100 (decision 0049)
+  it('takes white from base.color.white and inverse content from gray.100', () => {
+    const { base, semantic } = tokens
+    expect(base.color.white).toBe('#ffffff')
+    expect(semantic.surface.raised).toBe(base.color.white)
+    expect(semantic.color.text.inverse).toBe(base.color.gray[100])
+    expect(semantic.color.icon.inverse).toBe(base.color.gray[100])
+    for (const fill of ['emphasis', 'accent', 'danger', 'success'] as const) {
+      expect(contrast(semantic.color.text.inverse, semantic.color.fill[fill])).toBeGreaterThanOrEqual(4.5)
+    }
+    // 3.0 removes neutral.*, so the semantic and component tiers must not reference its white
+    for (const tier of ['semantic', 'component']) {
+      expect(readFileSync(`src/tokens/${tier}/index.json`, 'utf8')).not.toContain('neutral.000')
+    }
   })
 
   // Firefox renders placeholders at 0.54 opacity by default, which would cut that contrast to about

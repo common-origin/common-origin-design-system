@@ -617,11 +617,15 @@
       }
     },
     "color": {
-      "$description": "Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; and transparent.",
+      "$description": "Colour palette: the grey ramp, six role ramps (accent, success, warning, serious, danger, ai) and four display ramps (olive, periwinkle, rose, magenta), each with alpha twins (decisions 0040, 0043 and 0044); the older neutral ramp and seven older hue ramps, removed in 3.0; white (decision 0049); and transparent.",
       "$type": "color",
       "transparent": {
         "$value": "transparent",
         "$description": "Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none)."
+      },
+      "white": {
+        "$value": "#ffffff",
+        "$description": "Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049)."
       },
       "gray": {
         "$description": "Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040).",
