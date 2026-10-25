@@ -193,20 +193,20 @@ anatomy: {
       name: 'Container',
       description: 'Root element with background, padding, and border radius',
       tokens: [
-        'semantic.color.background.interactive',
-        'semantic.spacing.component.md',
-        'semantic.border.radius.md'
+        'semantic.color.fill.accent',
+        'semantic.space.inset.md',
+        'semantic.radius.md'
       ]
     },
     {
       name: 'Icon',
       description: 'Optional leading icon with fixed size and spacing',
-      tokens: ['semantic.spacing.component.sm']
+      tokens: ['semantic.space.inset.sm']
     },
     {
       name: 'Text Label',
       description: 'Button text with semantic typography',
-      tokens: ['semantic.typography.button1']
+      tokens: ['component.button.sizes.large.font']
     }
   ]
 }
@@ -241,28 +241,28 @@ anatomy: {
       name: 'Card Container',
       description: 'Root wrapper with elevation, radius, and background',
       tokens: [
-        'semantic.color.background.surface',
-        'semantic.border.radius.lg',
+        'semantic.color.fill.muted',
+        'semantic.radius.lg',
         'semantic.shadow.card'
       ]
     },
     {
       name: 'Header',
       description: 'Top section with optional image and title content',
-      tokens: ['semantic.spacing.component.lg']
+      tokens: ['semantic.space.inset.lg']
     },
     {
       name: 'Content',
       description: 'Main content area with flexible layout',
       tokens: [
-        'semantic.spacing.component.lg',
+        'semantic.space.inset.lg',
         'semantic.typography.body1'
       ]
     },
     {
       name: 'Actions',
       description: 'Bottom action button container with right alignment',
-      tokens: ['semantic.spacing.component.md']
+      tokens: ['semantic.space.inset.md']
     }
   ]
 }
@@ -328,19 +328,19 @@ Modal
 ```tsx
 tokens: [
   // Colors
-  'semantic.color.background.default',
+  'semantic.surface.base',
   'semantic.color.text.default',
   'semantic.color.border.default',
   
   // Spacing
-  'semantic.spacing.component.md',
-  'semantic.spacing.layout.sm',
+  'semantic.space.inset.md',
+  'semantic.space.200',
   
   // Typography
   'semantic.typography.body1',
   
   // Border
-  'semantic.border.radius.md',
+  'semantic.radius.md',
   
   // Effects
   'semantic.shadow.sm'

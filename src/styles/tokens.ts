@@ -116,142 +116,6 @@ export type Tokens = {
     };
     /** Size keywords (auto, full, screen, min, max, fit). The numbered steps are deprecated aliases of base.dimension. */
     size: {
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.0`.
-       */
-      '0': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.1`.
-       */
-      '1': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.2`.
-       */
-      '2': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.3`.
-       */
-      '3': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.4`.
-       */
-      '4': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.5`.
-       */
-      '5': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.6`.
-       */
-      '6': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.7`.
-       */
-      '7': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.8`.
-       */
-      '8': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.9`.
-       */
-      '9': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.10`.
-       */
-      '10': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.11`.
-       */
-      '11': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.12`.
-       */
-      '12': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.14`.
-       */
-      '14': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.15`.
-       */
-      '15': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.16`.
-       */
-      '16': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.18`.
-       */
-      '18': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.20`.
-       */
-      '20': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.24`.
-       */
-      '24': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.28`.
-       */
-      '28': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.30`.
-       */
-      '30': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.32`.
-       */
-      '32': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.40`.
-       */
-      '40': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.45`.
-       */
-      '45': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.48`.
-       */
-      '48': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.50`.
-       */
-      '50': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.56`.
-       */
-      '56': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.64`.
-       */
-      '64': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.75`.
-       */
-      '75': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.90`.
-       */
-      '90': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.100`.
-       */
-      '100': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.140`.
-       */
-      '140': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.180`.
-       */
-      '180': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.192`.
-       */
-      '192': string;
       auto: string;
       full: string;
       screen: string;
@@ -859,529 +723,9 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to magenta.1200 over white. */
         '1200': string;
       };
-      /** Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black). */
-      neutral: {
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp (decision 0040); its white is base.color.white (decision 0049). Removed in 3.0.
-         */
-        '000': string;
-      };
-      /** Green ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      green: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Orange ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      orange: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Red ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      red: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Blue ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      blue: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Purple ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      purple: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Pink ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      pink: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
-      /** Yellow ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
-      yellow: {
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '300': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '400': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '500': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '600': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '700': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '800': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '900': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1000': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1100': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1200': string;
-        /**
-         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
-         */
-        '1300': string;
-      };
     };
     /** Spacing keyword auto. The numbered steps are deprecated aliases of base.dimension. */
     spacing: {
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.0`.
-       */
-      '0': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.1`.
-       */
-      '1': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.2`.
-       */
-      '2': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.3`.
-       */
-      '3': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.4`.
-       */
-      '4': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.5`.
-       */
-      '5': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.6`.
-       */
-      '6': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.7`.
-       */
-      '7': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.8`.
-       */
-      '8': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.9`.
-       */
-      '9': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.10`.
-       */
-      '10': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.12`.
-       */
-      '12': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.14`.
-       */
-      '14': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.16`.
-       */
-      '16': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.20`.
-       */
-      '20': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.24`.
-       */
-      '24': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.28`.
-       */
-      '28': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.32`.
-       */
-      '32': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.40`.
-       */
-      '40': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.48`.
-       */
-      '48': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.56`.
-       */
-      '56': string;
-      /**
-       * @deprecated base.size and base.spacing were two copies of one 4px scale, merged into base.dimension (#188). Removed in 3.0. Use `base.dimension.64`.
-       */
-      '64': string;
       auto: string;
     };
     /** Font stacks keyed by role: heading, body and monospace. */
@@ -1481,12 +825,6 @@ export type Tokens = {
         textColor: string;
         /** Corner radius of every Button (visual language: Button uses sm). */
         borderRadius: string;
-        /**
-         * Padding of the primary Button.
-         *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0.
-         */
-        padding: string;
         /** Button label typography, the same as sizes.large.font. */
         font: string;
       };
@@ -1501,12 +839,6 @@ export type Tokens = {
       focus: {
         /** Focus ring on every Button. */
         outline: string;
-        /**
-         * Gap between a Button and its focus outline.
-         *
-         * @deprecated Use semantic.border.focusOffset (decision 0022). Removed in 3.0.
-         */
-        outlineOffset: string;
       };
       disabled: {
         /** Disabled primary Button fill. */
@@ -1575,50 +907,6 @@ export type Tokens = {
             textColor: string;
           };
         };
-        emphasis: {
-          /**
-           * Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016).
-           *
-           * @deprecated Use component.button.variants.accent.backgroundColor. Alias kept until 3.0 (decision 0016).
-           */
-          backgroundColor: string;
-          /**
-           * Text and icon colour on the accent Button.
-           *
-           * @deprecated Use component.button.variants.accent.textColor. Alias kept until 3.0 (decision 0016).
-           */
-          textColor: string;
-          hover: {
-            /**
-             * Accent Button fill on hover.
-             *
-             * @deprecated Use component.button.variants.accent.hover.backgroundColor. Alias kept until 3.0 (decision 0016).
-             */
-            backgroundColor: string;
-          };
-          active: {
-            /**
-             * Accent Button fill while pressed.
-             *
-             * @deprecated Use component.button.variants.accent.active.backgroundColor. Alias kept until 3.0 (decision 0016).
-             */
-            backgroundColor: string;
-          };
-          disabled: {
-            /**
-             * Disabled accent Button fill.
-             *
-             * @deprecated Use component.button.variants.accent.disabled.backgroundColor. Alias kept until 3.0 (decision 0016).
-             */
-            backgroundColor: string;
-            /**
-             * Disabled accent Button text and icon colour.
-             *
-             * @deprecated Use component.button.variants.accent.disabled.textColor. Alias kept until 3.0 (decision 0016).
-             */
-            textColor: string;
-          };
-        };
         danger: {
           /** Danger Button fill at rest, for destructive actions. */
           backgroundColor: string;
@@ -1642,34 +930,16 @@ export type Tokens = {
       };
       sizes: {
         small: {
-          /**
-           * Padding of the small Button.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0.
-           */
-          padding: string;
           /** Small Button text: the caption style, with button.sizes.small.fontWeight after it. */
           font: string;
           /** Weight of small Button text, set after the font: medium, as the other sizes. */
           fontWeight: string;
         };
         medium: {
-          /**
-           * Padding of the medium Button.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .lg. Removed in 3.0.
-           */
-          padding: string;
           /** Medium Button label typography. */
           font: string;
         };
         large: {
-          /**
-           * Padding of the large Button.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.md and .lg. Removed in 3.0.
-           */
-          padding: string;
           /** Large Button label typography. */
           font: string;
         };
@@ -1687,32 +957,12 @@ export type Tokens = {
         textColor: string;
         /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
         borderRadius: string;
-        /**
-         * Padding of a chip before chips took padding per size.
-         *
-         * @deprecated No component spacing tokens (decision 0022). No chip reads it; chips take padding per size. Removed in 3.0.
-         */
-        padding: string;
         /** Chip label typography, the same as sizes.large.font. */
         font: string;
-      };
-      hover: {
-        /** Default chip fill on hover, when it's clickable. */
-        backgroundColor: string;
-      };
-      active: {
-        /** Default chip fill while pressed, when it's clickable. */
-        backgroundColor: string;
       };
       focus: {
         /** Focus ring on every chip and its close button. */
         outline: string;
-        /**
-         * Gap between a chip and its focus outline.
-         *
-         * @deprecated Use semantic.border.focusOffset (decision 0022). Removed in 3.0.
-         */
-        outlineOffset: string;
       };
       disabled: {
         /** Disabled default chip fill. */
@@ -1721,26 +971,6 @@ export type Tokens = {
         textColor: string;
       };
       variants: {
-        emphasis: {
-          /** Emphasis chip fill at rest. */
-          backgroundColor: string;
-          /** Emphasis chip text and icon colour. */
-          textColor: string;
-          hover: {
-            /** Emphasis chip fill on hover, when it's clickable. */
-            backgroundColor: string;
-          };
-          active: {
-            /** Emphasis chip fill while pressed, when it's clickable. */
-            backgroundColor: string;
-          };
-          disabled: {
-            /** Disabled emphasis chip fill. */
-            backgroundColor: string;
-            /** Disabled emphasis chip text and icon colour. */
-            textColor: string;
-          };
-        };
         subtle: {
           /** Subtle chip fill at rest. */
           backgroundColor: string;
@@ -1761,357 +991,45 @@ export type Tokens = {
             textColor: string;
           };
         };
-        interactive: {
-          /** Interactive chip fill at rest. */
-          backgroundColor: string;
-          /** Interactive chip text and icon colour. */
-          textColor: string;
-          hover: {
-            /** Interactive chip fill on hover, when it's clickable. */
-            backgroundColor: string;
-          };
-          active: {
-            /** Interactive chip fill while pressed, when it's clickable. */
-            backgroundColor: string;
-          };
-          disabled: {
-            /** Disabled interactive chip fill. */
-            backgroundColor: string;
-            /** Disabled interactive chip text and icon colour. */
-            textColor: string;
-          };
-        };
       };
       sizes: {
-        small: {
-          /**
-           * Padding of the small chip.
-           *
-           * @deprecated Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0.
-           */
-          padding: string;
-          /**
-           * Label typography of the small chip.
-           *
-           * @deprecated Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0.
-           */
-          font: string;
-        };
         medium: {
-          /**
-           * Padding of the medium chip.
-           *
-           * @deprecated Chips take their min-height from semantic.size.label.medium with no vertical padding, and semantic.spacing.component.sm horizontally (decisions 0022, 0034 and 0035). Removed in 3.0.
-           */
-          padding: string;
           /** Chip label typography. Every chip uses it: chips have one size (decision 0035). */
-          font: string;
-        };
-        large: {
-          /**
-           * Padding of the large chip, which no chip used.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.spacing.component.sm and .md. Removed in 3.0.
-           */
-          padding: string;
-          /**
-           * Label typography of the large chip, which no chip used.
-           *
-           * @deprecated Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0.
-           */
           font: string;
         };
       };
     };
     iconButton: {
       primary: {
-        /**
-         * Fill of the primary IconButton at rest.
-         *
-         * @deprecated IconButton reads component.button.primary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-         */
-        backgroundColor: string;
         /** Corner radius of every IconButton, matching Button. */
         borderRadius: string;
-        /**
-         * Minimum width of the medium IconButton, duplicated from its sizes.
-         *
-         * @deprecated No IconButton reads it: sizes take their minimum width from semantic.size.control (decision 0034). Removed in 3.0. Use `semantic.size.control.md`.
-         */
-        minWidth: string;
-        /**
-         * Minimum height of the medium IconButton, duplicated from its sizes.
-         *
-         * @deprecated No IconButton reads it: sizes take their minimum height from semantic.size.control (decision 0034). Removed in 3.0. Use `semantic.size.control.md`.
-         */
-        minHeight: string;
-        /**
-         * Display of IconButton's content box.
-         *
-         * @deprecated Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets display: flex itself. Removed in 3.0.
-         */
-        display: string;
-        /**
-         * Vertical alignment of IconButton's icon.
-         *
-         * @deprecated Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets align-items: center itself. Removed in 3.0.
-         */
-        alignItems: string;
-        /**
-         * Horizontal alignment of IconButton's icon.
-         *
-         * @deprecated Layout mechanics stay in component code (decision 0014, rule 5); IconButton sets justify-content: center itself. Removed in 3.0.
-         */
-        justifyContent: string;
-      };
-      hover: {
-        /**
-         * Fill of the primary IconButton on hover.
-         *
-         * @deprecated IconButton reads component.button.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-         */
-        backgroundColor: string;
-      };
-      active: {
-        /**
-         * Fill of the primary IconButton while pressed.
-         *
-         * @deprecated IconButton reads component.button.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-         */
-        backgroundColor: string;
       };
       focus: {
         /** Focus ring on every IconButton. */
         outline: string;
-        /**
-         * Gap between an IconButton and its focus outline.
-         *
-         * @deprecated Use semantic.border.focusOffset (decision 0022). Removed in 3.0.
-         */
-        outlineOffset: string;
-      };
-      disabled: {
-        /**
-         * Fill of the primary IconButton when disabled.
-         *
-         * @deprecated IconButton reads component.button.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-         */
-        backgroundColor: string;
-      };
-      variants: {
-        secondary: {
-          /**
-           * Fill of the secondary IconButton at rest.
-           *
-           * @deprecated IconButton reads component.button.variants.secondary.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-           */
-          backgroundColor: string;
-          hover: {
-            /**
-             * Fill of the secondary IconButton on hover.
-             *
-             * @deprecated IconButton reads component.button.variants.secondary.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-          active: {
-            /**
-             * Fill of the secondary IconButton while pressed.
-             *
-             * @deprecated IconButton reads component.button.variants.secondary.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-          disabled: {
-            /**
-             * Fill of the secondary IconButton when disabled.
-             *
-             * @deprecated IconButton reads component.button.variants.secondary.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-        };
-        naked: {
-          /**
-           * Fill of the naked IconButton at rest.
-           *
-           * @deprecated IconButton reads component.button.variants.naked.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-           */
-          backgroundColor: string;
-          hover: {
-            /**
-             * Fill of the naked IconButton on hover.
-             *
-             * @deprecated IconButton reads component.button.variants.naked.hover.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-          active: {
-            /**
-             * Fill of the naked IconButton while pressed.
-             *
-             * @deprecated IconButton reads component.button.variants.naked.active.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-          disabled: {
-            /**
-             * Fill of the naked IconButton when disabled.
-             *
-             * @deprecated IconButton reads component.button.variants.naked.disabled.backgroundColor, so its colours match Button's (decision 0027). Removed in 3.0.
-             */
-            backgroundColor: string;
-          };
-        };
-      };
-      sizes: {
-        small: {
-          /**
-           * Minimum width of the small IconButton.
-           *
-           * @deprecated IconButton takes its minimum width from semantic.size.control.sm (decision 0034). Removed in 3.0.
-           */
-          minWidth: string;
-          /**
-           * Minimum height of the small IconButton.
-           *
-           * @deprecated IconButton takes its minimum height from semantic.size.control.sm (decision 0034). Removed in 3.0.
-           */
-          minHeight: string;
-          /**
-           * Padding of the small IconButton.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.
-           */
-          padding: string;
-        };
-        medium: {
-          /**
-           * Minimum width of the medium IconButton.
-           *
-           * @deprecated IconButton takes its minimum width from semantic.size.control.md (decision 0034). Removed in 3.0.
-           */
-          minWidth: string;
-          /**
-           * Minimum height of the medium IconButton.
-           *
-           * @deprecated IconButton takes its minimum height from semantic.size.control.md (decision 0034). Removed in 3.0.
-           */
-          minHeight: string;
-          /**
-           * Padding of the medium IconButton.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.sm. Removed in 3.0.
-           */
-          padding: string;
-        };
-        large: {
-          /**
-           * Minimum width of the large IconButton.
-           *
-           * @deprecated IconButton takes its minimum width from semantic.size.control.lg (decision 0034). Removed in 3.0.
-           */
-          minWidth: string;
-          /**
-           * Minimum height of the large IconButton.
-           *
-           * @deprecated IconButton takes its minimum height from semantic.size.control.lg (decision 0034). Removed in 3.0.
-           */
-          minHeight: string;
-          /**
-           * Padding of the large IconButton.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.md. Removed in 3.0.
-           */
-          padding: string;
-        };
       };
     };
     separator: {
       /** Divider line, the same as variants.default.border. */
       border: string;
-      /**
-       * Space around a Divider.
-       *
-       * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
-       */
-      margin: string;
       variants: {
         default: {
           /** Default Divider line. */
           border: string;
-          /**
-           * Space around the default Divider variant.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
         };
         strong: {
           /** Strong Divider line, for a firmer break. */
           border: string;
-          /**
-           * Space around a strong Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
         };
         minimal: {
           /** Minimal Divider line. */
           border: string;
-          /**
-           * Space around a minimal Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
-        };
-      };
-      sizes: {
-        small: {
-          /**
-           * Space around a small Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.400 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
-        };
-        medium: {
-          /**
-           * Space around a medium Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.600 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
-        };
-        large: {
-          /**
-           * Space around a large Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.800 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
-        };
-        xlarge: {
-          /**
-           * Space around an extra-large Divider.
-           *
-           * @deprecated No component spacing tokens (decision 0022). Use semantic.space.1200 (vertical margin). Removed in 3.0.
-           */
-          margin: string;
         };
       };
     };
     progressBar: {
       /** ProgressBar track, behind the filled part. */
       backgroundColor: string;
-      /**
-       * Corner radius of the ProgressBar track and fill.
-       *
-       * @deprecated ProgressBar never read it; its track and fill use semantic.radius.xs. Removed in 3.0.
-       */
-      borderRadius: string;
       sizes: {
         sm: {
           /** Thickness of the small ProgressBar, the thinnest size. */
@@ -2143,18 +1061,6 @@ export type Tokens = {
         borderRadius: string;
         /** Border width of text inputs and the Checkbox box. */
         borderWidth: string;
-        /**
-         * Vertical padding of single-line text inputs.
-         *
-         * @deprecated Single-line fields take their min-height from semantic.size.control.lg with no vertical padding (decisions 0022 and 0034). Removed in 3.0.
-         */
-        paddingY: string;
-        /**
-         * Horizontal padding of text inputs.
-         *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.lg. Removed in 3.0.
-         */
-        paddingX: string;
         /** Text input value typography. */
         font: string;
       };
@@ -2171,12 +1077,6 @@ export type Tokens = {
         borderColor: string;
         /** Focus ring on text inputs and the Checkbox box. */
         outline: string;
-        /**
-         * Gap between a text input and its focus outline.
-         *
-         * @deprecated Use semantic.border.focusOffset (decision 0022). Removed in 3.0.
-         */
-        outlineOffset: string;
       };
       error: {
         /** Text input border when invalid. */
@@ -2186,12 +1086,6 @@ export type Tokens = {
           borderColor: string;
           /** Focus ring on an invalid text input. */
           outline: string;
-          /**
-           * Gap between a text input in its error state and its focus outline.
-           *
-           * @deprecated Use semantic.border.focusOffset (decision 0022). Removed in 3.0.
-           */
-          outlineOffset: string;
         };
         hover: {
           /** Invalid text input border on hover. */
@@ -2205,12 +1099,6 @@ export type Tokens = {
         textColor: string;
         /** Disabled text input, Dropdown and Checkbox border. Stays light: WCAG 1.4.11 exempts inactive controls (decision 0025). */
         borderColor: string;
-        /**
-         * Cursor over a disabled text input.
-         *
-         * @deprecated Behaviour, not a design decision, stays in component code (decision 0014, rule 5); inputs set cursor: not-allowed themselves. Removed in 3.0.
-         */
-        cursor: string;
       };
       textarea: {
         /** Minimum height of TextArea, tall enough for a few lines of entry (decision 0034). */
@@ -2227,12 +1115,6 @@ export type Tokens = {
         minWidth: string;
         /** Height of the count Badge indicator on a button, tab or icon. */
         height: string;
-        /**
-         * Horizontal padding of a count Badge.
-         *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.inset.xs. Removed in 3.0.
-         */
-        paddingX: string;
         /** Line height of the count text, so the digits centre in the indicator. */
         lineHeight: string;
       };
@@ -2254,12 +1136,6 @@ export type Tokens = {
       };
     };
     field: {
-      /**
-       * Vertical gap between a field's label, control and helper text.
-       *
-       * @deprecated No component spacing tokens (decision 0022). Use semantic.space.200. Removed in 3.0.
-       */
-      gap: string;
       label: {
         /** Field label text. */
         typography: string;
@@ -2267,12 +1143,6 @@ export type Tokens = {
         color: string;
         /** Field label colour when the field is disabled. */
         colorDisabled: string;
-        /**
-         * Gap between a label and its required indicator.
-         *
-         * @deprecated No component spacing tokens (decision 0022). Use semantic.space.100. Removed in 3.0.
-         */
-        gap: string;
       };
       requiredIndicator: {
         /** Colour of the required-field asterisk. */
@@ -2436,12 +1306,6 @@ export type Tokens = {
         /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
         maxWidth: string;
       };
-      /**
-       * Breadcrumb-sized text; Breadcrumbs uses typography.caption for its links today.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.typography.caption`.
-       */
-      font: string;
     };
     cardLarge: {
       /** Widest a CardLarge grows, so its text keeps a readable measure. */
@@ -2527,55 +1391,9 @@ export type Tokens = {
         background: string;
       };
     };
-    transaction: {
-      /**
-       * Positive amounts and credits in MoneyDisplay and TransactionListItem.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.positive`.
-       */
-      credit: string;
-      /**
-       * A credit amount on a hovered interactive row.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.positive`.
-       */
-      'credit-hover': string;
-      /**
-       * Negative amounts and debits in MoneyDisplay and TransactionListItem.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.negative`.
-       */
-      debit: string;
-      /**
-       * A debit amount on a hovered interactive row.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.data.negative`.
-       */
-      'debit-hover': string;
-      /**
-       * Amounts of pending or processing transactions.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.text.muted`.
-       */
-      pending: string;
-      /**
-       * Informational amounts that are neither credit nor debit.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.color.text.muted`.
-       */
-      neutral: string;
-    };
     track: {
       /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
       background: string;
-    };
-    tooltip: {
-      /**
-       * Dotted underline marking text that has a tooltip.
-       *
-       * @deprecated Nothing reads it; the semantic tier now holds this meaning (#224). Removed in 3.0. Use `semantic.border.default`.
-       */
-      border: string;
     };
   };
   semantic: {
@@ -2669,55 +1487,11 @@ export type Tokens = {
       /** 700. Headings (display to h4), overline, strong indicators such as the required-field asterisk. */
       bold: string;
     };
-    zIndex: {
-      /**
-       * Sticky and fixed chrome that stays visible while scrolling: sticky headers, section headers, navigation bars. Pair with elevation.sticky. Sits below dropdowns, overlays and modals.
-       *
-       * @deprecated Renamed to semantic.layer.sticky by the semantic grammar (decision 0031). Removed in 3.0.
-       */
-      sticky: string;
-      /**
-       * Floating menus anchored to a control: dropdown menus, select and autocomplete lists (Dropdown, SearchField). Pair with elevation.floating. Sits above sticky, below overlays.
-       *
-       * @deprecated Renamed to semantic.layer.dropdown by the semantic grammar (decision 0031). Removed in 3.0.
-       */
-      dropdown: string;
-      /**
-       * Panels that slide over the page and their backdrop: sheets, drawers (Sheet). The backdrop uses the same value and comes before the panel in the DOM. Pair with elevation.overlay. Sits below modals.
-       *
-       * @deprecated Renamed to semantic.layer.overlay by the semantic grammar (decision 0031). Removed in 3.0.
-       */
-      overlay: string;
-      /**
-       * Blocking dialogs and their backdrop: modals, action sheets (Modal, ActionSheet). The backdrop uses the same value and comes before the dialog in the DOM. Pair with elevation.overlay. Topmost layer in the system.
-       *
-       * @deprecated Renamed to semantic.layer.modal by the semantic grammar (decision 0031). Removed in 3.0.
-       */
-      modal: string;
-    };
     border: {
       /** Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025). */
       default: string;
-      /**
-       * Hairline in the subtle border colour: dividers and decorative outlines, such as CodeBlock and Separator. 1.30:1 on white, so never a control's edge (decision 0025).
-       *
-       * @deprecated Renamed to semantic.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.border.default`.
-       */
-      subtle: string;
-      /**
-       * Hairline in near-black: a firm outline that must read as a boundary, such as a hovered or focused text input. 11.51:1 on white.
-       *
-       * @deprecated Renamed to semantic.border.input-hover by the semantic grammar (decision 0031). Removed in 3.0.
-       */
-      strong: string;
       /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
       focus: string;
-      /**
-       * Dotted underline marking text that has a tooltip.
-       *
-       * @deprecated Moved to the component tier as component.tooltip.border (decision 0031 §6). Removed in 3.0. Use `semantic.border.default`.
-       */
-      tooltip: string;
       width: {
         /** Hairline border: dividers, control edges and rings. */
         thin: string;
@@ -2726,68 +1500,6 @@ export type Tokens = {
       };
       /** Gap between an element and its focus ring; negate it to inset the ring inside the element. */
       focusOffset: string;
-      radius: {
-        /**
-         * No rounding - tables, dividers, inline code blocks, sharp-edged containers
-         *
-         * @deprecated Renamed to semantic.radius.none by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        none: string;
-        /**
-         * Minimal rounding - small badges, compact tags, inline buttons, checkboxes
-         *
-         * @deprecated Renamed to semantic.radius.xs by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xs: string;
-        /**
-         * Subtle rounding - buttons, inputs, chips, form controls, list items
-         *
-         * @deprecated Renamed to semantic.radius.sm by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        sm: string;
-        /**
-         * Standard rounding - cards, containers, dropdowns, popovers, menus
-         *
-         * @deprecated Renamed to semantic.radius.md by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        md: string;
-        /**
-         * Generous rounding - modals, action sheets, dialogs, feature cards, panels
-         *
-         * @deprecated Renamed to semantic.radius.lg by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        lg: string;
-        /**
-         * Large rounding - pills, pill buttons, prominent CTAs, search bars
-         *
-         * @deprecated Renamed to semantic.radius.xl by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xl: string;
-        /**
-         * Extra large rounding - hero elements, decorative containers, large pills
-         *
-         * @deprecated Renamed to semantic.radius.2xl by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '2xl': string;
-        /**
-         * Maximum rounding - decorative elements, marketing components, large decorative cards
-         *
-         * @deprecated Renamed to semantic.radius.3xl by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '3xl': string;
-        /**
-         * Fully circular - avatars, round icon buttons, status indicators, FABs
-         *
-         * @deprecated Renamed to semantic.radius.full by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        circle: string;
-      };
-      /**
-       * Hairline for dividers and decorative outlines, such as CodeBlock and Divider; never a control edge.
-       *
-       * @deprecated Dividers have one border (decision 0048). Removed in 3.0. Use `semantic.border.default`.
-       */
-      emphasis: string;
       /** Firm hairline that must read as a boundary, such as a hovered text input. */
       'input-hover': string;
     };
@@ -2858,110 +1570,6 @@ export type Tokens = {
         /** Tallest a floating menu grows before it scrolls: Dropdown, SearchField. */
         maxHeight: string;
       };
-      dimension: {
-        /**
-         * 0.25rem (4px): TabBar scrollbar height; small ProgressBar height (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.100 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '1': string;
-        /**
-         * 0.5rem (8px): medium ProgressBar height; Badge dot (via component tokens). Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.size.200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '2': string;
-        /**
-         * 1rem (16px): large ProgressBar height; Badge count minimum width and height (via component tokens). Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.size.400 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '4': string;
-        /**
-         * 1.25rem (20px): checkbox box; TabBar count badge; extra-large ProgressBar height (via component tokens); small label height (via size.label.small).
-         *
-         * @deprecated Renamed to semantic.size.500 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '5': string;
-        /**
-         * 1.5rem (24px): medium label height (via size.label.medium).
-         *
-         * @deprecated Renamed to semantic.size.600 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '6': string;
-        /**
-         * 2rem (32px): checkbox row minimum height (via component tokens); large label height (via size.label.large).
-         *
-         * @deprecated Renamed to semantic.size.800 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '8': string;
-        /**
-         * 3rem (48px): AccountCard header minimum height; compact ListItem expanded indent (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.1200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '12': string;
-        /**
-         * 3.75rem (60px): comfortable ListItem expanded indent (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.1500 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '15': string;
-        /**
-         * 4.5rem (72px): TransactionListItem minimum height (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.1800 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '18': string;
-        /**
-         * 5rem (80px): small EmptyState illustration (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.2000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '20': string;
-        /**
-         * 7.5rem (120px): medium EmptyState illustration; TextArea minimum height (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.3000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '30': string;
-        /**
-         * 11.25rem (180px): Breadcrumbs label truncation width (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.4500 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '45': string;
-        /**
-         * 12.5rem (200px): large EmptyState illustration (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.5000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '50': string;
-        /**
-         * 18.75rem (300px): AccountCard minimum width; EmptyState actions maximum width (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.7500 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '75': string;
-        /**
-         * 22.5rem (360px): EmptyState text maximum width (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.9000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '90': string;
-        /**
-         * 25rem (400px): EmptyState maximum width (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.10000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '100': string;
-        /**
-         * 48rem (768px): CardLarge maximum width (via component tokens).
-         *
-         * @deprecated Renamed to semantic.size.19200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '192': string;
-      };
       icon: {
         /** The smallest icon size, for dense inline indicators. */
         xs: string;
@@ -2990,167 +1598,7 @@ export type Tokens = {
       };
     };
     spacing: {
-      separator: {
-        /**
-         * 1rem: space around a small Divider, above and below when horizontal, either side when vertical.
-         *
-         * @deprecated Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        sm: string;
-        /**
-         * 1.5rem: space around a medium or minimal Divider, above and below when horizontal, either side when vertical.
-         *
-         * @deprecated Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        md: string;
-        /**
-         * 2rem: space around a large (the default) Divider, above and below when horizontal, either side when vertical.
-         *
-         * @deprecated Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        lg: string;
-        /**
-         * 3rem: space around an extra-large Divider, above and below when horizontal, either side when vertical.
-         *
-         * @deprecated Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xl: string;
-      };
-      component: {
-        /**
-         * Extra-small component internal spacing (0.25rem / 4px). Use for tight gaps within compound elements, icon-to-label spacing in small chips.
-         *
-         * @deprecated Renamed to semantic.space.inset.xs by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xs: string;
-        /**
-         * Small component internal spacing (0.5rem / 8px). Use for standard icon-to-label gaps, chip padding, compact button inner spacing.
-         *
-         * @deprecated Renamed to semantic.space.inset.sm by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        sm: string;
-        /**
-         * Medium component internal spacing (0.75rem / 12px). Use for standard button vertical padding, form field inner padding.
-         *
-         * @deprecated Renamed to semantic.space.inset.md by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        md: string;
-        /**
-         * Large component internal spacing (1rem / 16px). Use for button horizontal padding, input horizontal padding, card inner spacing.
-         *
-         * @deprecated Renamed to semantic.space.inset.lg by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        lg: string;
-        /**
-         * Extra-large component internal spacing (1.25rem / 20px). Use for generous button padding, prominent CTAs.
-         *
-         * @deprecated Renamed to semantic.space.inset.xl by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xl: string;
-        /**
-         * 2x extra-large component internal spacing (1.5rem / 24px). Use for large card inner padding, spacious form sections.
-         *
-         * @deprecated Renamed to semantic.space.inset.2xl by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '2xl': string;
-      };
       layout: {
-        /**
-         * 0: no space, for explicit resets.
-         *
-         * @deprecated Renamed to semantic.space.0 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        none: string;
-        /**
-         * 0.25rem: the tightest gap, such as between a label and its required indicator.
-         *
-         * @deprecated Renamed to semantic.space.100 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xs: string;
-        /**
-         * 0.5rem: a small gap, such as between a field's label, control and helper text.
-         *
-         * @deprecated Renamed to semantic.space.200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        sm: string;
-        /**
-         * 0.75rem: the default gap between related elements.
-         *
-         * @deprecated Renamed to semantic.space.300 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        md: string;
-        /**
-         * 1rem: space between groups of elements, and padding inside containers.
-         *
-         * @deprecated Renamed to semantic.space.400 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        lg: string;
-        /**
-         * 1.25rem: generous padding inside larger containers.
-         *
-         * @deprecated Renamed to semantic.space.500 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        xl: string;
-        /**
-         * 1.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.600 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '2xl': string;
-        /**
-         * 1.75rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.700 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '3xl': string;
-        /**
-         * 2rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.800 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '4xl': string;
-        /**
-         * 2.25rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.900 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '5xl': string;
-        /**
-         * 2.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.1000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '6xl': string;
-        /**
-         * 3rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.1200 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '7xl': string;
-        /**
-         * 3.5rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.1400 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '8xl': string;
-        /**
-         * 4rem: a larger step on the layout spacing scale, for space between blocks and sections. Pick the step the layout needs.
-         *
-         * @deprecated Renamed to semantic.space.1600 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '9xl': string;
-        /**
-         * 5rem: a larger step on the layout spacing scale, for space between blocks and sections. Second-largest, after 11xl.
-         *
-         * @deprecated Renamed to semantic.space.2000 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '10xl': string;
-        /**
-         * 6rem: the largest layout gap (FeatureBlock at wide breakpoints).
-         *
-         * @deprecated Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        '11xl': string;
         /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
         auto: string;
       };
@@ -3159,46 +1607,10 @@ export type Tokens = {
       text: {
         /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
         default: string;
-        /**
-         * Emphasised text.
-         *
-         * @deprecated Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. Use `semantic.color.text.default`.
-         */
-        emphasis: string;
-        /**
-         * Secondary text: helper text, metadata and supporting copy. 8.18:1 on white, 7.76:1 on the page.
-         *
-         * @deprecated Renamed to semantic.color.text.muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        subdued: string;
         /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis. */
         inverse: string;
         /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
-        /**
-         * Blue text for links and selected items (decision 0003). 5.39:1 on white, 5.11:1 on the page.
-         *
-         * @deprecated Renamed to semantic.color.text.accent by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        interactive: string;
-        /**
-         * Blue text on a hovered selected item (interactive-subtle-hover fill, 5.60:1). Decision 0016.
-         *
-         * @deprecated Renamed to semantic.color.text.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-hover': string;
-        /**
-         * Blue text on a pressed selected item (interactive-subtle-active fill, 6.65:1). Decision 0016.
-         *
-         * @deprecated Renamed to semantic.color.text.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-active': string;
-        /**
-         * Error text, such as field error messages and InlineAlert errors. 5.41:1 on white, 5.13:1 on the page.
-         *
-         * @deprecated Renamed to semantic.color.text.danger by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        error: string;
         /** Success text, such as InlineAlert success messages. 5.99:1 on white. */
         success: string;
         /** Warning text, such as InlineAlert warnings (0043: warning is yellow). 6.01:1 on white. */
@@ -3207,18 +1619,6 @@ export type Tokens = {
         muted: string;
         /** Blue text for links and selected items, in every state: the fill shows hover and pressed. Never decoration (0003). 6.00:1 on white. */
         accent: string;
-        /**
-         * Text of a hovered selected item, on the accent-muted-hover fill.
-         *
-         * @deprecated Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.text.accent`.
-         */
-        'accent-hover': string;
-        /**
-         * Text of a pressed selected item, on the accent-muted-pressed fill.
-         *
-         * @deprecated Accent text keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.text.accent`.
-         */
-        'accent-pressed': string;
         /** Error text: field error messages, InlineAlert errors. 6.03:1 on white. */
         danger: string;
         /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
@@ -3226,245 +1626,15 @@ export type Tokens = {
         /** Serious-warning text: between warning and danger (decisions 0043, 0045). 6.04:1 on white. */
         serious: string;
       };
-      background: {
-        /**
-         * Page background: a cool off-white (#f8f9fa), never pure white (decision 0006).
-         *
-         * @deprecated Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        default: string;
-        /**
-         * White: inputs, sheets and other surfaces that sit on the page background.
-         *
-         * @deprecated Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0.
-         */
-        subtle: string;
-        /**
-         * Near-black fill for emphasis controls: the primary Button, IconButton and the emphasis Chip.
-         *
-         * @deprecated Renamed to semantic.color.fill.emphasis by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        emphasis: string;
-        /**
-         * Fill of a hovered emphasis control: the primary Button and IconButton, and the emphasis Chip. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'emphasis-hover': string;
-        /**
-         * Fill of a pressed emphasis control. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'emphasis-active': string;
-        /**
-         * Light grey fill for quiet surfaces and grouped content, such as the default Chip.
-         *
-         * @deprecated Renamed to semantic.color.fill.muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        surface: string;
-        /**
-         * Dark grey fill for inverse surfaces, such as a checked Checkbox box.
-         *
-         * @deprecated Renamed to semantic.color.fill.inverse by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        inverse: string;
-        /**
-         * Blue fill for the accent Button and other deliberate highlights (decision 0003). Pair with text.inverse (5.39:1).
-         *
-         * @deprecated Renamed to semantic.color.fill.accent by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        interactive: string;
-        /**
-         * Light blue fill for selected items, such as a selected filter chip or tab (decision 0016). Pair with text.interactive.
-         *
-         * @deprecated Renamed to semantic.color.fill.accent-muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-subtle': string;
-        /**
-         * Fill of a hovered selected item, such as a selected filter chip. Pair with text.interactive-hover. Decision 0016.
-         *
-         * @deprecated Renamed to semantic.color.fill.accent-muted-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-subtle-hover': string;
-        /**
-         * Fill of a pressed selected item. Pair with text.interactive-active. Decision 0016.
-         *
-         * @deprecated Renamed to semantic.color.fill.accent-muted-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-subtle-active': string;
-        /**
-         * Blue fill on hover, for controls that use background.interactive.
-         *
-         * @deprecated Renamed to semantic.color.fill.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-hover': string;
-        /**
-         * Blue fill while pressed, for controls that use background.interactive.
-         *
-         * @deprecated Renamed to semantic.color.fill.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-active': string;
-        /**
-         * Strong red fill for destructive actions, such as the danger Button. Pair with text.inverse (5.41:1).
-         *
-         * @deprecated Renamed to semantic.color.fill.danger by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        error: string;
-        /**
-         * Fill of a hovered error control, such as the danger Button. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.danger-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'error-hover': string;
-        /**
-         * Fill of a pressed error control. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.danger-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'error-active': string;
-        /**
-         * Light red tint behind error messages, such as an error Alert.
-         *
-         * @deprecated Renamed to semantic.color.fill.danger-muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'error-subtle': string;
-        /**
-         * Strong green fill for success states.
-         *
-         * @deprecated Renamed to semantic.color.fill.success by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        success: string;
-        /**
-         * Light green tint behind success messages, such as a success Alert.
-         *
-         * @deprecated Renamed to semantic.color.fill.success-muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'success-subtle': string;
-        /**
-         * Strong orange fill for warning states.
-         *
-         * @deprecated Renamed to semantic.color.fill.warning by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        warning: string;
-        /**
-         * Light orange tint behind warning messages, such as a warning Alert.
-         *
-         * @deprecated Renamed to semantic.color.fill.warning-muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'warning-subtle': string;
-        /**
-         * Fill of disabled controls.
-         *
-         * @deprecated Renamed to semantic.color.fill.disabled by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        disabled: string;
-        /**
-         * Fill of a neutral control at rest, such as the secondary Button. Not the disabled fill, though the value matches today. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.default by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        neutral: string;
-        /**
-         * Fill of a hovered neutral control. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.default-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'neutral-hover': string;
-        /**
-         * Fill of a pressed neutral control. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.default-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'neutral-active': string;
-        /**
-         * No fill, for controls without a background at rest, such as the naked Button and IconButton. Approved under decision 0022.
-         *
-         * @deprecated Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        transparent: string;
-        /**
-         * Unfilled track of ProgressBar and Slider. 1.30:1 on white: the filled part and the thumb show the value, so the track doesn't need 3:1 (decision 0026).
-         *
-         * @deprecated Moved to the component tier as component.track.background (decision 0031 §6). Removed in 3.0.
-         */
-        progressTrack: string;
-        /**
-         * The same cool off-white as background.default (#f8f9fa). Decision 0006 makes background.default the page background token, so use that.
-         *
-         * @deprecated Renamed to semantic.surface.base by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        page: string;
-        /**
-         * Semi-transparent scrim for modal, sheet, drawer, and action-sheet backdrops. Uses brand near-black (#212529) at 50% opacity. Sits below the overlay surface and above page content.
-         *
-         * @deprecated Renamed to semantic.surface.scrim by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        overlay: string;
-        /**
-         * Subtle transparent dark overlay for hover states on components that sit over variable-colour backgrounds (e.g. chip close-button hover). Uses brand near-black (#212529) — never pure #000000 per VDL.
-         *
-         * @deprecated Renamed to semantic.color.fill.none-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'hover-overlay': string;
-        /**
-         * Slightly stronger transparent dark overlay for active/pressed states on components over variable-colour backgrounds (e.g. chip close-button active). Uses brand near-black (#212529). Pair with hover-overlay for consistent press depth.
-         *
-         * @deprecated Renamed to semantic.color.fill.none-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'active-overlay': string;
-        /**
-         * Subtle transparent light overlay for elements that sit on a strong or dark background (e.g. the count badge on an active pills tab in TabBar). The light counterpart of hover-overlay; pair with text.inverse.
-         *
-         * @deprecated Renamed to semantic.color.fill.inverse-none-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'inverse-overlay': string;
-      };
       border: {
         /** Default border colour for dividers and decorative outlines only (decision 0040). 1.53:1 on white, below the 3:1 a control edge needs; use color.border.input for that (decision 0025). */
         default: string;
-        /**
-         * Subtle border colour for dividers and decorative outlines, and for the borders of disabled controls, which WCAG 1.4.11 exempts. 1.30:1 on white, below the 3:1 a control's edge needs; use color.border.control for that (decision 0025).
-         *
-         * @deprecated Renamed to semantic.color.border.emphasis by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.border.default`.
-         */
-        subtle: string;
-        /**
-         * Resting border of a control whose edge shows where it is, such as a text input, Dropdown or the Checkbox box. 4.69:1 on white, 4.45:1 on the page, above the 3:1 WCAG 1.4.11 asks for (decision 0025).
-         *
-         * @deprecated Renamed to semantic.color.border.input by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        control: string;
-        /**
-         * Near-black border colour for firm boundaries, such as a hovered or focused input. 11.51:1 on white.
-         *
-         * @deprecated Split by use (decision 0031): semantic.color.border.input-hover for a hovered control, semantic.color.border.focus for the focus ring and CardSmall's ring, semantic.color.fill.inverse for drag handles. Removed in 3.0.
-         */
-        strong: string;
-        /**
-         * Blue border for selected and interactive states (decision 0003). 5.39:1 on white.
-         *
-         * @deprecated Renamed to semantic.color.border.accent by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        interactive: string;
-        /**
-         * Red border for invalid fields and error outlines. 5.41:1 on white.
-         *
-         * @deprecated Renamed to semantic.color.border.danger by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        error: string;
         /** Green border for success outlines, such as an outlined success Alert. 3.18:1 on white (decision 0025). */
         success: string;
         /** Yellow border for warning outlines, such as an outlined warning Alert. 3.19:1 on white (decision 0025). */
         warning: string;
         /** An invisible border that keeps its width, so a borderless state takes the same space as a bordered one (for example Alert's borderless appearance, decision 0019). */
         none: string;
-        /**
-         * Border for dividers, decorative outlines and disabled controls.
-         *
-         * @deprecated Dividers have one border colour (decision 0048). Removed in 3.0. Use `semantic.color.border.default`.
-         */
-        emphasis: string;
         /** Resting edge of a control that must show where it is: text inputs, Dropdown, Checkbox. 3.19:1 on white and the page (decision 0025). */
         input: string;
         /** Edge of a hovered control, such as a hovered text input or Dropdown. 6.01:1 on white, a clear step from rest that stays apart from the focus ring. */
@@ -3483,46 +1653,10 @@ export type Tokens = {
       icon: {
         /** Default icon colour, matching text.default. 15.91:1 on white. */
         default: string;
-        /**
-         * Emphasised icons.
-         *
-         * @deprecated Emphasis comes from weight and scale, not a darker colour (decision 0048). Removed in 3.0. Use `semantic.color.icon.default`.
-         */
-        emphasis: string;
-        /**
-         * Secondary icons, such as list item and empty-state icons. 4.69:1 on white, 4.45:1 on the page (icons need 3:1).
-         *
-         * @deprecated Renamed to semantic.color.icon.muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        subdued: string;
         /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
         disabled: string;
         /** Icons on dark or coloured fills, matching text.inverse. */
         inverse: string;
-        /**
-         * Blue icons in links and selected items, matching text.interactive. 5.39:1 on white.
-         *
-         * @deprecated Renamed to semantic.color.icon.accent by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        interactive: string;
-        /**
-         * Blue icon on hover, matching text.interactive-hover.
-         *
-         * @deprecated Renamed to semantic.color.icon.accent-hover by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-hover': string;
-        /**
-         * Blue icon while pressed, matching text.interactive-active.
-         *
-         * @deprecated Renamed to semantic.color.icon.accent-pressed by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'interactive-active': string;
-        /**
-         * Error icons, such as in Alert and EmptyState. 5.41:1 on white. (InlineAlert's icon takes the text colour instead.)
-         *
-         * @deprecated Renamed to semantic.color.icon.danger by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        error: string;
         /** Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.) */
         success: string;
         /** Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.) */
@@ -3531,18 +1665,6 @@ export type Tokens = {
         muted: string;
         /** Blue icons in links and selected items, in every state, matching color.text.accent. 6.00:1 on white. */
         accent: string;
-        /**
-         * Icon of a hovered selected item, matching color.text.accent-hover.
-         *
-         * @deprecated Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.icon.accent`.
-         */
-        'accent-hover': string;
-        /**
-         * Icon of a pressed selected item, matching color.text.accent-pressed.
-         *
-         * @deprecated Accent icons keeps one colour in every state; the fill shows hover and pressed (#190). Removed in 3.0. Use `semantic.color.icon.accent`.
-         */
-        'accent-pressed': string;
         /** Error icons, such as in Alert and EmptyState. 6.03:1 on white. */
         danger: string;
         /** The AI icon on AI-generated content and agent actions (0043, 0046), next to its label. 5.99:1 on white, 5.68:1 on the page. */
@@ -3550,315 +1672,13 @@ export type Tokens = {
         /** Serious-warning icons, matching color.text.serious. 6.04:1 on white. */
         serious: string;
       };
-      financial: {
-        /**
-         * Color for positive monetary values, credits, income
-         *
-         * @deprecated Moved to the component tier as component.transaction.credit (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.positive`.
-         */
-        credit: string;
-        /**
-         * Hover state for credit-colored interactive elements
-         *
-         * @deprecated Moved to the component tier as component.transaction.credit-hover (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.positive`.
-         */
-        'credit-hover': string;
-        /**
-         * Color for negative monetary values, debits, expenses
-         *
-         * @deprecated Moved to the component tier as component.transaction.debit (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.negative`.
-         */
-        debit: string;
-        /**
-         * Hover state for debit-colored interactive elements
-         *
-         * @deprecated Moved to the component tier as component.transaction.debit-hover (decision 0031 §6). Removed in 3.0. Use `semantic.color.data.negative`.
-         */
-        'debit-hover': string;
-        /**
-         * Color for pending or processing financial transactions
-         *
-         * @deprecated Moved to the component tier as component.transaction.pending (decision 0031 §6). Removed in 3.0. Use `semantic.color.text.muted`.
-         */
-        pending: string;
-        /**
-         * Neutral color for informational monetary amounts
-         *
-         * @deprecated Moved to the component tier as component.transaction.neutral (decision 0031 §6). Removed in 3.0. Use `semantic.color.text.muted`.
-         */
-        neutral: string;
-      };
       category: {
-        /**
-         * Blue category color for general/miscellaneous
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle`.
-         */
-        blue: string;
-        /**
-         * Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-strong`.
-         */
-        'blue-strong': string;
-        /**
-         * Strong step of the blue category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.blue-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.periwinkle-strong`.
-         */
-        'blue-emphasis': string;
-        /**
-         * Subtle blue background
-         *
-         * @deprecated Renamed to semantic.color.category.blue-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.periwinkle-muted`.
-         */
-        'blue-subtle': string;
-        /**
-         * Purple category color for entertainment
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta`.
-         */
-        purple: string;
-        /**
-         * Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-strong`.
-         */
-        'purple-strong': string;
-        /**
-         * Strong step of the purple category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.purple-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.magenta-strong`.
-         */
-        'purple-emphasis': string;
-        /**
-         * Subtle purple background
-         *
-         * @deprecated Renamed to semantic.color.category.purple-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.magenta-muted`.
-         */
-        'purple-subtle': string;
-        /**
-         * Pink category color for health/wellness
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
-         */
-        pink: string;
-        /**
-         * Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'pink-strong': string;
-        /**
-         * Strong step of the pink category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.pink-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'pink-emphasis': string;
-        /**
-         * Subtle pink background
-         *
-         * @deprecated Renamed to semantic.color.category.pink-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'pink-subtle': string;
-        /**
-         * Yellow category color for utilities
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive`.
-         */
-        yellow: string;
-        /**
-         * Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-strong`.
-         */
-        'yellow-strong': string;
-        /**
-         * Strong step of the yellow category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.yellow-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.olive-strong`.
-         */
-        'yellow-emphasis': string;
-        /**
-         * Subtle yellow background
-         *
-         * @deprecated Renamed to semantic.color.category.yellow-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.olive-muted`.
-         */
-        'yellow-subtle': string;
-        /**
-         * Green category color for income
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive`.
-         */
-        green: string;
-        /**
-         * Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-strong`.
-         */
-        'green-strong': string;
-        /**
-         * Strong step of the green category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.green-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.olive-strong`.
-         */
-        'green-emphasis': string;
-        /**
-         * Subtle green background
-         *
-         * @deprecated Renamed to semantic.color.category.green-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.olive-muted`.
-         */
-        'green-subtle': string;
-        /**
-         * Red category color for expenses
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
-         */
-        red: string;
-        /**
-         * Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'red-strong': string;
-        /**
-         * Strong step of the red category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.red-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'red-emphasis': string;
-        /**
-         * Subtle red background
-         *
-         * @deprecated Renamed to semantic.color.category.red-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'red-subtle': string;
-        /**
-         * Orange category color for food & dining
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose`.
-         */
-        orange: string;
-        /**
-         * Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'orange-strong': string;
-        /**
-         * Strong step of the orange category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.orange-strong (decision 0029). Removed in 3.0. Use `semantic.color.category.rose-strong`.
-         */
-        'orange-emphasis': string;
-        /**
-         * Subtle orange background
-         *
-         * @deprecated Renamed to semantic.color.category.orange-muted by the semantic grammar (decision 0031). Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'orange-subtle': string;
         /** Gray category (decision 0043: neutral, for uncategorised or "other"): the outline of an outlined CategoryLabel. 3.19:1 on white. */
         gray: string;
         /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1. */
         'gray-strong': string;
-        /**
-         * Strong step of the gray category: the fill of a filled CategoryLabel, with white text (decision 0029).
-         *
-         * @deprecated "emphasis" means near-black, so use semantic.color.category.gray-strong (decision 0029). Removed in 3.0.
-         */
-        'gray-emphasis': string;
-        /**
-         * Subtle gray background
-         *
-         * @deprecated Renamed to semantic.color.category.gray-muted by the semantic grammar (decision 0031). Removed in 3.0.
-         */
-        'gray-subtle': string;
-        /**
-         * Text and icons of an outlined or minimal blue CategoryLabel, on white or blue-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-text`.
-         */
-        'blue-text': string;
-        /**
-         * Text and icons of an outlined or minimal purple CategoryLabel, on white or purple-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-text`.
-         */
-        'purple-text': string;
-        /**
-         * Text and icons of an outlined or minimal pink CategoryLabel, on white or pink-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
-         */
-        'pink-text': string;
-        /**
-         * Text and icons of an outlined or minimal yellow CategoryLabel, on white or yellow-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-text`.
-         */
-        'yellow-text': string;
-        /**
-         * Text and icons of an outlined or minimal green CategoryLabel, on white or green-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-text`.
-         */
-        'green-text': string;
-        /**
-         * Text and icons of an outlined or minimal red CategoryLabel, on white or red-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
-         */
-        'red-text': string;
-        /**
-         * Text and icons of an outlined or minimal orange CategoryLabel, on white or orange-muted.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-text`.
-         */
-        'orange-text': string;
         /** Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted. */
         'gray-text': string;
-        /**
-         * Light blue fill of a blue CategoryLabel, behind the blue-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Blue is now periwinkle. Removed in 3.0. Use `semantic.color.category.periwinkle-muted`.
-         */
-        'blue-muted': string;
-        /**
-         * Light purple fill of a purple CategoryLabel, behind the purple-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Purple is now magenta. Removed in 3.0. Use `semantic.color.category.magenta-muted`.
-         */
-        'purple-muted': string;
-        /**
-         * Light pink fill of a pink CategoryLabel, behind the pink-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Pink is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'pink-muted': string;
-        /**
-         * Light yellow fill of a yellow CategoryLabel, behind the yellow-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Yellow is now olive. Removed in 3.0. Use `semantic.color.category.olive-muted`.
-         */
-        'yellow-muted': string;
-        /**
-         * Light green fill of a green CategoryLabel, behind the green-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Green is now olive. Removed in 3.0. Use `semantic.color.category.olive-muted`.
-         */
-        'green-muted': string;
-        /**
-         * Light red fill of a red CategoryLabel, behind the red-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Red is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'red-muted': string;
-        /**
-         * Light orange fill of a orange CategoryLabel, behind the orange-text colour.
-         *
-         * @deprecated Category labels use the display colours, which carry no meaning (decision 0043). Orange is now rose. Removed in 3.0. Use `semantic.color.category.rose-muted`.
-         */
-        'orange-muted': string;
         /** Light gray fill of a minimal CategoryLabel, behind the gray-text colour. */
         'gray-muted': string;
         /** Olive category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.18:1 on white. */
@@ -3894,95 +1714,9 @@ export type Tokens = {
         /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
         'magenta-muted': string;
       };
-      status: {
-        /**
-         * Text and icon of a pending StatusLabel, on its pending background.
-         *
-         * @deprecated Moved to the component tier as component.status.pending.text (decision 0031 §6). Removed in 3.0.
-         */
-        pending: string;
-        /**
-         * Background for pending status
-         *
-         * @deprecated Moved to the component tier as component.status.pending.background (decision 0031 §6). Removed in 3.0.
-         */
-        'pending-bg': string;
-        /**
-         * Green color for completed status
-         *
-         * @deprecated Moved to the component tier as component.status.completed.text (decision 0031 §6). Removed in 3.0.
-         */
-        completed: string;
-        /**
-         * Background for completed status
-         *
-         * @deprecated Moved to the component tier as component.status.completed.background (decision 0031 §6). Removed in 3.0.
-         */
-        'completed-bg': string;
-        /**
-         * Red color for failed/error status
-         *
-         * @deprecated Moved to the component tier as component.status.failed.text (decision 0031 §6). Removed in 3.0.
-         */
-        failed: string;
-        /**
-         * Background for failed status
-         *
-         * @deprecated Moved to the component tier as component.status.failed.background (decision 0031 §6). Removed in 3.0.
-         */
-        'failed-bg': string;
-        /**
-         * Gray color for cancelled status
-         *
-         * @deprecated Moved to the component tier as component.status.cancelled.text (decision 0031 §6). Removed in 3.0.
-         */
-        cancelled: string;
-        /**
-         * Background for cancelled status
-         *
-         * @deprecated Moved to the component tier as component.status.cancelled.background (decision 0031 §6). Removed in 3.0.
-         */
-        'cancelled-bg': string;
-        /**
-         * Blue color for processing status
-         *
-         * @deprecated Moved to the component tier as component.status.processing.text (decision 0031 §6). Removed in 3.0.
-         */
-        processing: string;
-        /**
-         * Background for processing status
-         *
-         * @deprecated Moved to the component tier as component.status.processing.background (decision 0031 §6). Removed in 3.0.
-         */
-        'processing-bg': string;
-        /**
-         * Purple color for scheduled status
-         *
-         * @deprecated Moved to the component tier as component.status.scheduled.text (decision 0031 §6). Removed in 3.0.
-         */
-        scheduled: string;
-        /**
-         * Background for scheduled status
-         *
-         * @deprecated Moved to the component tier as component.status.scheduled.background (decision 0031 §6). Removed in 3.0.
-         */
-        'scheduled-bg': string;
-      };
       fill: {
         /** Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048). */
         emphasis: string;
-        /**
-         * Fill of a hovered emphasis control, such as the primary Button.
-         *
-         * @deprecated Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0.
-         */
-        'emphasis-hover': string;
-        /**
-         * Fill of a pressed emphasis control, such as the primary Button.
-         *
-         * @deprecated Strong-fill states mix text.inverse into fill.emphasis at opacity.state.hover and opacity.state.pressed (decision 0048). Removed in 3.0.
-         */
-        'emphasis-pressed': string;
         /** Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page. */
         muted: string;
         /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
@@ -4114,41 +1848,11 @@ export type Tokens = {
       overline: string;
       /** Captions: helper text, metadata and image captions. */
       caption: string;
-      /**
-       * Label of the large Button, the default size.
-       *
-       * @deprecated Moved to the component tier as component.button.sizes.large.font (decision 0031 §6). Removed in 3.0.
-       */
-      button1: string;
-      /**
-       * Label of the medium Button, and tab labels.
-       *
-       * @deprecated Moved to the component tier as component.button.sizes.medium.font (decision 0031 §6). Removed in 3.0.
-       */
-      button2: string;
-      /**
-       * Label of the small Button, for dense toolbars.
-       *
-       * @deprecated Moved to the component tier as component.button.sizes.small.font (decision 0031 §6). Removed in 3.0.
-       */
-      button3: string;
       /** Form labels for fields such as TextField and Slider. */
       label: string;
-      /**
-       * Breadcrumb-sized text; not used today, as Breadcrumbs uses typography.caption.
-       *
-       * @deprecated Moved to the component tier as component.breadcrumbs.font (decision 0031 §6). Removed in 3.0. Use `semantic.typography.caption`.
-       */
-      breadcrumb: string;
     };
     motion: {
       duration: {
-        /**
-         * 200ms: standard duration for property-specific transitions.
-         *
-         * @deprecated Renamed to semantic.motion.duration.moderate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-         */
-        normal: string;
         /** Quick responses to input: hover, press, focus and small indicators. */
         fast: string;
         /** The longest duration (P6): larger movements, such as a Sheet sliding in. */
@@ -4159,18 +1863,6 @@ export type Tokens = {
         moderate: string;
       };
       easing: {
-        /**
-         * ease-in-out: standard easing for property-specific transitions.
-         *
-         * @deprecated Renamed to semantic.motion.easing.standard by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-         */
-        easeInOut: string;
-        /**
-         * ease-out: for elements responding to input or entering the page.
-         *
-         * @deprecated Renamed to semantic.motion.easing.decelerate by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-         */
-        easeOut: string;
         /** Easing for change on screen: something moving or resizing in place. */
         standard: string;
         /** Easing for things arriving or responding: entrances, hover and press. */
@@ -4179,24 +1871,6 @@ export type Tokens = {
         accelerate: string;
       };
       transition: {
-        /**
-         * All properties over duration.fast (150ms), easing out: quick feedback, such as the Slider thumb.
-         *
-         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
-         */
-        fast: string;
-        /**
-         * All properties over duration.normal (200ms), easing in and out: the default state transition.
-         *
-         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
-         */
-        normal: string;
-        /**
-         * All properties over duration.slow (300ms), the motion maximum (P6), easing in and out: larger changes.
-         *
-         * @deprecated It animates every property (`transition: all`). List the properties instead, with motion.duration and motion.easing, or use a motion.transition composite (decision 0037). Removed in 3.0.
-         */
-        slow: string;
         /** Fill and text colour responding to hover and press: buttons, chips, tabs and rows. */
         feedback: string;
         /** How the focus ring appears: outline and outline offset. */
@@ -4204,24 +1878,6 @@ export type Tokens = {
         /** Small movement or fade in response to input, such as a pressed control shifting. */
         press: string;
       };
-      /**
-       * Background and text colour over 150ms: the hover and press response of buttons, chips and tabs.
-       *
-       * @deprecated Renamed to semantic.motion.transition.feedback by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-       */
-      hover: string;
-      /**
-       * Outline and outline offset over 150ms: how the focus ring appears.
-       *
-       * @deprecated Renamed to semantic.motion.transition.focus by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-       */
-      focus: string;
-      /**
-       * Transform and opacity over 150ms: small movement or fade in response to input.
-       *
-       * @deprecated Renamed to semantic.motion.transition.press by the semantic grammar (decision 0031, settled in 0037). Removed in 3.0.
-       */
-      interactive: string;
       distance: {
         /** How far a small element travels as it enters, such as a Dropdown menu dropping in. */
         sm: string;

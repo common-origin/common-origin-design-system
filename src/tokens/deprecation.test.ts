@@ -42,8 +42,10 @@ const deprecated = all.filter((token) => token.$deprecated !== undefined)
 const replacedBy = (token: Token) => token.$extensions?.['studio.commonorigin']?.replacedBy
 
 describe('deprecated tokens (decision 0033)', () => {
-  it('finds the deprecated tokens', () => {
-    expect(deprecated.length).toBeGreaterThan(0)
+  // 3.0 removed every deprecated token (#99). These rules apply again at the next deprecation, so
+  // the sanity check is that the tokens are found at all
+  it('finds the tokens', () => {
+    expect(all.length).toBeGreaterThan(0)
   })
 
   it('mark deprecation with $deprecated, not a "Deprecated" description', () => {
@@ -79,10 +81,6 @@ describe('grammar renames (decision 0031)', () => {
   const renamed = deprecated.filter((token) => /decision 0031/.test(String(token.$deprecated)))
   const value = (path: string) => path.split('.').reduce<unknown>((node, key) => (node as Node)?.[key], resolved)
 
-  it('finds the renamed tokens', () => {
-    expect(renamed.length).toBeGreaterThan(0)
-  })
-
   it('resolve to the same value as their replacement', () => {
     const problems = renamed.flatMap((token) => {
       const target = replacedBy(token)
@@ -93,14 +91,13 @@ describe('grammar renames (decision 0031)', () => {
   })
 })
 
-// Only these deprecated tokens are deliberately still read, listed by exact path with the reason:
-// Button's `emphasis` variant aliases the accent tokens until 3.0 (decision 0016).
-const STILL_READ = [/^component\.button\.variants\.emphasis\./]
+// Deprecated tokens deliberately still read, listed by exact path with the reason. None since 3.0.
+const STILL_READ: RegExp[] = []
 
 // Reads the type checker can't follow on purpose, by file, with the reason. Each entry must still
 // match a read (checked below), so a fixed read takes its entry with it.
 const ALLOWED: { file: string; paths?: RegExp; argumentOf?: string; reason: string }[] = [
-  { file: 'src/tokens.ts', reason: 'Publishes the whole token set; deprecated tokens stay in it until 3.0' },
+  { file: 'src/tokens.ts', reason: 'Publishes the whole token set; deprecated tokens stay in it until the next major' },
   {
     file: 'src/lib/cssTokens.ts',
     reason: 'Builds the CSS-variable mirror of the whole token set (decision 0041); reads of the mirror are traced through its Tokens type',
@@ -154,6 +151,10 @@ describe('deprecated tokens are not read', () => {
   })
 
   it('keeps the allow-list current: every entry still matches a deprecated read', () => {
+    // These entries read the whole token set, so they match whenever a deprecated token exists.
+    // With none (3.0 removed them all, #99) there is nothing to match; the check resumes at the
+    // next deprecation
+    if (retired.size === 0) return
     const used = new Set(reads.flatMap((read) => read.paths.filter((token) => retired.has(token)).map((token) => allowedBy(read, token))))
     expect(ALLOWED.filter((entry) => !used.has(entry)).map((entry) => entry.file)).toEqual([])
   })
@@ -203,7 +204,7 @@ function readers(retired: Token[]): string[] {
 }
 
 // A description names the token's job, never its value: values change, the job shouldn't
-// (decision 0033). Deprecated tokens keep their old text until 3.0.
+// (decision 0033). Deprecated tokens keep their old text until they're removed.
 const VALUE = /#[0-9a-fA-F]{3,8}\b|\b\d*\.?\d+(px|rem)\b|Approved under/
 
 describe('descriptions of tokens in use', () => {

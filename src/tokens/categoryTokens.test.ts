@@ -1,8 +1,9 @@
 import { execFileSync } from 'child_process'
 import tokens from '@/styles/tokens.json'
 
-// The category palette's strong step is `<hue>-strong`. `<hue>-emphasis` is a deprecated alias
-// until 3.0, because "emphasis" means strong near-black and is never a hue (decision 0029, #167)
+// The category palette's strong step is `<hue>-strong`, never `<hue>-emphasis`, because "emphasis"
+// means strong near-black and is never a hue (decision 0029, #167). 3.0 removed the -emphasis
+// aliases and the old hues, leaving the display colours and gray (decision 0043)
 describe('category tokens', () => {
   const category = tokens.semantic.color.category as Record<string, string>
   const hues = Object.keys(category)
@@ -10,15 +11,12 @@ describe('category tokens', () => {
     .map((key) => key.replace(/-strong$/, ''))
 
   it('has a strong step for every hue', () => {
-    expect(hues.sort()).toEqual(['blue', 'gray', 'green', 'magenta', 'olive', 'orange', 'periwinkle', 'pink', 'purple', 'red', 'rose', 'yellow'])
+    expect(hues.sort()).toEqual(['gray', 'magenta', 'olive', 'periwinkle', 'rose'])
   })
 
-  it.each(['blue', 'gray', 'green', 'orange', 'pink', 'purple', 'red', 'yellow'])(
-    'keeps %s-emphasis as an alias of %s-strong',
-    (hue) => {
-      expect(category[`${hue}-emphasis`]).toBe(category[`${hue}-strong`])
-    }
-  )
+  it('has no -emphasis step', () => {
+    expect(Object.keys(category).filter((key) => key.endsWith('-emphasis'))).toEqual([])
+  })
 
   it('is not read as -emphasis by any component', () => {
     let hits = ''

@@ -160,30 +160,30 @@ const StyledComponent = styled.div.withConfig({
   /* Base styles using semantic tokens */
   padding: ${({ $size }) => {
     switch ($size) {
-      case 'small': return semantic.spacing.component.sm
-      case 'large': return semantic.spacing.component.lg  
-      default: return semantic.spacing.component.md
+      case 'small': return semantic.space.inset.sm
+      case 'large': return semantic.space.inset.lg  
+      default: return semantic.space.inset.md
     }
   }};
   
   background-color: ${({ $variant }) => {
     switch ($variant) {
-      case 'emphasis': return semantic.color.background.emphasis
-      case 'subtle': return semantic.color.background.subtle
-      default: return semantic.color.background.default
+      case 'emphasis': return semantic.color.fill.emphasis
+      case 'subtle': return semantic.surface.raised
+      default: return semantic.surface.base
     }
   }};
   
   color: ${semantic.color.text.default};
-  border-radius: ${semantic.border.radius.md};
+  border-radius: ${semantic.radius.md};
   
   /* Responsive behavior */
   @media (min-width: ${semantic.breakpoint.md}) {
     padding: ${({ $size }) => {
       switch ($size) {
-        case 'small': return semantic.spacing.component.md
-        case 'large': return semantic.spacing.component.xl
-        default: return semantic.spacing.component.lg
+        case 'small': return semantic.space.inset.md
+        case 'large': return semantic.space.inset.xl
+        default: return semantic.space.inset.lg
       }
     }};
   }
@@ -210,12 +210,12 @@ const StyledComponent = styled.div.withConfig({
 ```tsx
 // ✅ Always use semantic tokens
 const StyledButton = styled.button`
-  font: ${semantic.typography.button1};
-  color: ${semantic.color.text.interactive};
-  background: ${semantic.color.background.interactive};
-  border: 1px solid ${semantic.color.border.interactive};
-  border-radius: ${semantic.border.radius.md};
-  padding: ${semantic.spacing.component.md} ${semantic.spacing.component.lg};
+  font: ${component.button.sizes.large.font};
+  color: ${semantic.color.text.accent};
+  background: ${semantic.color.fill.accent};
+  border: 1px solid ${semantic.color.border.accent};
+  border-radius: ${semantic.radius.md};
+  padding: ${semantic.space.inset.md} ${semantic.space.inset.lg};
 `
 
 // ⚠️ Only for creating new semantic tokens
@@ -640,10 +640,10 @@ export const componentNameDocs: ComponentDocumentation = {
   ],
   
   tokens: [
-    'semantic.color.background.default',
+    'semantic.surface.base',
     'semantic.color.text.default',
-    'semantic.spacing.component.md',
-    'semantic.border.radius.md'
+    'semantic.space.inset.md',
+    'semantic.radius.md'
   ],
   
   examples: [

@@ -33,7 +33,7 @@ const tokensEntry = load('tokens/index.js')
 
 if (main) {
   if (typeof main.Button !== 'function' && typeof main.Button !== 'object') problems.push('dist/index.js: Button is not exported')
-  if (main.tokens?.semantic?.color?.background?.default === undefined) problems.push('dist/index.js: tokens are missing')
+  if (main.tokens?.semantic?.surface?.base === undefined) problems.push('dist/index.js: tokens are missing')
   if (!main.iconsData || Object.keys(main.iconsData).length === 0) problems.push('dist/index.js: iconsData is missing')
   try {
     const React = require('react')
@@ -45,7 +45,7 @@ if (main) {
   }
 }
 
-if (tokensEntry && tokensEntry.tokens?.semantic?.color?.background?.default === undefined) {
+if (tokensEntry && tokensEntry.tokens?.semantic?.surface?.base === undefined) {
   problems.push('dist/tokens/index.js: tokens are missing')
 }
 
@@ -61,7 +61,7 @@ async function checkEsm() {
   }
   const esm = await load('index.mjs')
   if (esm) {
-    if (esm.tokens?.semantic?.color?.background?.default === undefined) problems.push('dist/index.mjs: tokens are missing')
+    if (esm.tokens?.semantic?.surface?.base === undefined) problems.push('dist/index.mjs: tokens are missing')
     try {
       const React = require('react')
       const { renderToString } = require('react-dom/server')
@@ -72,7 +72,7 @@ async function checkEsm() {
     }
   }
   const esmTokens = await load('tokens/index.mjs')
-  if (esmTokens && esmTokens.tokens?.semantic?.color?.background?.default === undefined) {
+  if (esmTokens && esmTokens.tokens?.semantic?.surface?.base === undefined) {
     problems.push('dist/tokens/index.mjs: tokens are missing')
   }
 }

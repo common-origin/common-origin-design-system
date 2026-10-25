@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components'
 import tokens from '../../../lib/cssTokens'
 import type { Tokens } from '../../../types/tokens'
 import { backgroundByPath, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
-import type { BackgroundPath } from '../../../lib/tokenAliases'
+import type { BackgroundPath, BoxRadius, BoxSpace } from '../../../lib/tokenAliases'
+
+export type { BoxRadius, BoxSpace }
 import { reducedMotion } from '../../../lib/styleUtils'
 
 /**
@@ -23,23 +25,23 @@ export interface BoxProps {
   justifyContent?: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
   alignItems?: 'flex-start' | 'flex-end' | 'center' | 'stretch' | 'baseline'
   flexWrap?: 'nowrap' | 'wrap' | 'wrap-reverse'
-  gap?: keyof Tokens['semantic']['spacing']['layout']
+  gap?: BoxSpace
   
   // Spacing (using semantic layout tokens)
-  m?: keyof Tokens['semantic']['spacing']['layout']
-  mt?: keyof Tokens['semantic']['spacing']['layout']
-  mr?: keyof Tokens['semantic']['spacing']['layout']
-  mb?: keyof Tokens['semantic']['spacing']['layout']
-  ml?: keyof Tokens['semantic']['spacing']['layout']
-  mx?: keyof Tokens['semantic']['spacing']['layout']
-  my?: keyof Tokens['semantic']['spacing']['layout']
-  p?: keyof Tokens['semantic']['spacing']['layout']
-  pt?: keyof Tokens['semantic']['spacing']['layout']
-  pr?: keyof Tokens['semantic']['spacing']['layout']
-  pb?: keyof Tokens['semantic']['spacing']['layout']
-  pl?: keyof Tokens['semantic']['spacing']['layout']
-  px?: keyof Tokens['semantic']['spacing']['layout']
-  py?: keyof Tokens['semantic']['spacing']['layout']
+  m?: BoxSpace
+  mt?: BoxSpace
+  mr?: BoxSpace
+  mb?: BoxSpace
+  ml?: BoxSpace
+  mx?: BoxSpace
+  my?: BoxSpace
+  p?: BoxSpace
+  pt?: BoxSpace
+  pr?: BoxSpace
+  pb?: BoxSpace
+  pl?: BoxSpace
+  px?: BoxSpace
+  py?: BoxSpace
   
   // Size
   width?: string
@@ -57,7 +59,7 @@ export interface BoxProps {
   left?: string
   
   // Borders
-  borderRadius?: keyof Tokens['semantic']['border']['radius']
+  borderRadius?: BoxRadius
   border?: keyof Tokens['semantic']['color']['border']
   borderTop?: keyof Tokens['semantic']['color']['border']
   borderRight?: keyof Tokens['semantic']['color']['border']
@@ -215,15 +217,15 @@ const StyledBox = styled.div.withConfig({
   
   // Borders
   ${props => props.$borderRadius && css`border-radius: ${radiusByKey[props.$borderRadius]};`}
-  ${props => props.$border && css`border: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$border]};`}
-  ${props => props.$borderTop && css`border-top: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderTop]};`}
-  ${props => props.$borderRight && css`border-right: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderRight]};`}
-  ${props => props.$borderBottom && css`border-bottom: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderBottom]};`}
-  ${props => props.$borderLeft && css`border-left: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderLeft]};`}
+  ${props => props.$border && borderColorByKey[props.$border] && css`border: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$border]};`}
+  ${props => props.$borderTop && borderColorByKey[props.$borderTop] && css`border-top: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderTop]};`}
+  ${props => props.$borderRight && borderColorByKey[props.$borderRight] && css`border-right: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderRight]};`}
+  ${props => props.$borderBottom && borderColorByKey[props.$borderBottom] && css`border-bottom: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderBottom]};`}
+  ${props => props.$borderLeft && borderColorByKey[props.$borderLeft] && css`border-left: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderLeft]};`}
   
   // Background & Color
   ${props => props.$bg && backgroundByPath[props.$bg] && css`background-color: ${backgroundByPath[props.$bg]};`}
-  ${props => props.$color && css`color: ${textColorByKey[props.$color]};`}
+  ${props => props.$color && textColorByKey[props.$color] && css`color: ${textColorByKey[props.$color]};`}
   
   // Elevation (shadow)
   ${props => props.$shadow && css`box-shadow: ${tokens.semantic.elevation[props.$shadow]};`}

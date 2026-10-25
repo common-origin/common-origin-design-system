@@ -1,16 +1,23 @@
 import tokens from './cssTokens'
 import type { Tokens } from '../types/tokens'
 
-// Props whose values are token keys keep their published vocabulary in 2.x (P7), but read the
-// semantic grammar's names (decision 0031, #189). Each map covers every key the prop type allows,
-// so TypeScript fails here if a key is added without a mapping.
+// Box's spacing and radius props keep their own names, which 3.0 decoupled from the removed
+// spacing.layout and border.radius tokens (P7, #99), and read the semantic grammar's tokens
+// (decision 0031). Each map covers every key the prop type allows, so TypeScript fails here if a
+// key is added without a mapping.
 const { semantic } = tokens
 const { color, space, radius, surface } = semantic
 
 type Semantic = Tokens['semantic']
 
-/** Box's spacing props (`p`, `m`, `gap`…): the old layout scale's keys, read from `space`. */
-export const spaceByLayoutKey: Record<keyof Semantic['spacing']['layout'], string> = {
+/** Box's spacing values (`p`, `m`, `gap`…), each a `space` step, plus `auto`. */
+export type BoxSpace =
+  | 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+  | '2xl' | '3xl' | '4xl' | '5xl' | '6xl' | '7xl' | '8xl' | '9xl' | '10xl' | '11xl'
+  | 'auto'
+
+/** Box's spacing props: each name maps to the space step that replaced its spacing.layout token. */
+export const spaceByLayoutKey: Record<BoxSpace, string> = {
   none: space[0],
   xs: space[100],
   sm: space[200],
@@ -27,12 +34,15 @@ export const spaceByLayoutKey: Record<keyof Semantic['spacing']['layout'], strin
   '9xl': space[1600],
   '10xl': space[2000],
   '11xl': space[2400],
-  // A keyword, not a step: it stays until the keyword question is settled (0031)
+  // A keyword, not a step (0031)
   auto: semantic.spacing.layout.auto,
 }
 
-/** Box's `borderRadius` prop: the old radius keys, read from `radius`. */
-export const radiusByKey: Record<keyof Semantic['border']['radius'], string> = {
+/** Box's `borderRadius` values: the `radius` steps, with `circle` for `full`. */
+export type BoxRadius = 'none' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl' | 'circle'
+
+/** Box's `borderRadius` prop, read from `radius`. */
+export const radiusByKey: Record<BoxRadius, string> = {
   none: radius.none,
   xs: radius.xs,
   sm: radius.sm,
@@ -44,16 +54,13 @@ export const radiusByKey: Record<keyof Semantic['border']['radius'], string> = {
   circle: radius.full,
 }
 
-/** Fills with no value of their own: a strong fill's states mix in an overlay (decision 0048). */
-type StateMixedFill = 'emphasis-hover' | 'emphasis-pressed'
-
 /**
  * Box's `bg` values in the semantic grammar (decision 0031, #304): the token's path below
  * `semantic`, such as `surface.raised` or `color.fill.muted`.
  */
 export type BackgroundPath =
   | `surface.${keyof Semantic['surface']}`
-  | `color.fill.${Exclude<keyof Semantic['color']['fill'], StateMixedFill>}`
+  | `color.fill.${keyof Semantic['color']['fill']}`
 
 /** Box's `bg` prop: the grammar's token paths, read from the token at that path. */
 export const backgroundByPath: Record<BackgroundPath, string> = {
@@ -90,46 +97,8 @@ export const backgroundByPath: Record<BackgroundPath, string> = {
   'color.fill.inverse-none-hover': color.fill['inverse-none-hover'],
 }
 
-/** Box's `color` prop: text colours, old and new keys. */
-export const textColorByKey: Record<keyof Semantic['color']['text'], string> = {
-  default: color.text.default,
-  emphasis: color.text.default,
-  inverse: color.text.inverse,
-  disabled: color.text.disabled,
-  success: color.text.success,
-  warning: color.text.warning,
-  muted: color.text.muted,
-  accent: color.text.accent,
-  'accent-hover': color.text.accent,
-  'accent-pressed': color.text.accent,
-  danger: color.text.danger,
-  serious: color.text.serious,
-  ai: color.text.ai,
-  subdued: color.text.muted,
-  interactive: color.text.accent,
-  'interactive-hover': color.text.accent,
-  'interactive-active': color.text.accent,
-  error: color.text.danger,
-}
+/** Box's `color` prop: the text colours. */
+export const textColorByKey: Record<keyof Semantic['color']['text'], string> = color.text
 
-/** Box's border props: border colours, old and new keys. */
-export const borderColorByKey: Record<keyof Semantic['color']['border'], string> = {
-  default: color.border.default,
-  success: color.border.success,
-  warning: color.border.warning,
-  none: color.border.none,
-  emphasis: color.border.default,
-  input: color.border.input,
-  'input-hover': color.border['input-hover'],
-  focus: color.border.focus,
-  accent: color.border.accent,
-  danger: color.border.danger,
-  serious: color.border.serious,
-  ai: color.border.ai,
-  subtle: color.border.default,
-  control: color.border.input,
-  // `strong` split by use (0031); as a generic firm outline it is the hovered-input border
-  strong: color.border['input-hover'],
-  interactive: color.border.accent,
-  error: color.border.danger,
-}
+/** Box's border props: the border colours. */
+export const borderColorByKey: Record<keyof Semantic['color']['border'], string> = color.border
