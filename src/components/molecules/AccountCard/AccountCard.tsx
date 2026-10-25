@@ -151,7 +151,7 @@ export const AccountCard: React.FC<AccountCardProps> = ({
     <Box
       minWidth={tokens.component.accountCard.minWidth}
       p="lg"
-      bg="subtle"
+      bg="surface.raised"
       border="default"
       borderRadius="xl"
       transition={`box-shadow ${semantic.motion.duration.moderate} ${semantic.motion.easing.decelerate}`}

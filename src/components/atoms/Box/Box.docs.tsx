@@ -249,9 +249,9 @@ export const boxDocs: ComponentDocumentation = {
     // Background & Color
     {
       name: 'bg',
-      type: 'keyof typeof tokens.semantic.color.background',
+      type: 'BoxBackground',
       required: false,
-      description: 'Background color using semantic background tokens'
+      description: 'Background colour as a semantic token path: surface.base (the page), surface.raised (cards and sheets), surface.scrim, or a color.fill.* fill such as color.fill.muted. The old keys (default, subtle, surface and the rest of semantic.color.background) still work but are deprecated and removed in 3.0.'
     },
     {
       name: 'color',
@@ -383,6 +383,8 @@ export const boxDocs: ComponentDocumentation = {
     'semantic.border.width.thin',
     // Box's spacing, colour, border and radius props accept any token in these groups
     ...tokenPaths('semantic.spacing.layout'),
+    ...tokenPaths('semantic.surface'),
+    ...tokenPaths('semantic.color.fill'),
     ...tokenPaths('semantic.color.background'),
     ...tokenPaths('semantic.color.text'),
     ...tokenPaths('semantic.color.border'),
@@ -399,27 +401,27 @@ export const boxDocs: ComponentDocumentation = {
     {
       name: 'Flexbox Layout',
       description: 'Using Box for flexible layouts with gap and alignment',
-      code: `<Box display="flex" flexDirection="column" gap="md" p="lg" bg="subtle">
+      code: `<Box display="flex" flexDirection="column" gap="md" p="lg" bg="surface.raised">
   <Typography variant="h3">Flex Column Layout</Typography>
-  <Box display="flex" justifyContent="space-between" alignItems="center" p="sm" bg="default" borderRadius="sm">
+  <Box display="flex" justifyContent="space-between" alignItems="center" p="sm" bg="surface.base" borderRadius="sm">
     <Typography>Left content</Typography>
     <Typography>Right content</Typography>
   </Box>
   <Box display="flex" gap="sm">
-    <Box p="sm" bg="emphasis" color="inverse" borderRadius="xs" flex="1">Box 1</Box>
-    <Box p="sm" bg="emphasis" color="inverse" borderRadius="xs" flex="1">Box 2</Box>
+    <Box p="sm" bg="color.fill.emphasis" color="inverse" borderRadius="xs" flex="1">Box 1</Box>
+    <Box p="sm" bg="color.fill.emphasis" color="inverse" borderRadius="xs" flex="1">Box 2</Box>
   </Box>
 </Box>`,
       renderComponent: () => (
-        <Box display="flex" flexDirection="column" gap="md" p="lg" bg="surface" border="subtle" borderRadius="sm">
+        <Box display="flex" flexDirection="column" gap="md" p="lg" bg="color.fill.muted" border="subtle" borderRadius="sm">
           <Typography variant="h3">Flex Column Layout</Typography>
-          <Box display="flex" justifyContent="space-between" alignItems="center" bg="surface" border="strong" p="md" borderRadius="sm">
+          <Box display="flex" justifyContent="space-between" alignItems="center" bg="color.fill.muted" border="strong" p="md" borderRadius="sm">
             <Typography>Left content</Typography>
             <Typography>Right content</Typography>
           </Box>
-          <Box display="flex" gap="sm" bg="surface" border="strong" p="md" borderRadius="sm">
-            <Box p="sm" bg="default" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 1</Typography></Box>
-            <Box p="sm" bg="default" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 2</Typography></Box>
+          <Box display="flex" gap="sm" bg="color.fill.muted" border="strong" p="md" borderRadius="sm">
+            <Box p="sm" bg="surface.base" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 1</Typography></Box>
+            <Box p="sm" bg="surface.base" border="strong" borderRadius="sm" style={{flex: 1}}><Typography>Box 2</Typography></Box>
           </Box>
         </Box>
       )
@@ -428,19 +430,19 @@ export const boxDocs: ComponentDocumentation = {
       name: 'Spacing System',
       description: 'Demonstrating margin and padding using design tokens',
       code: `<Box>
-  <Box mb="lg" p="md" bg="subtle" borderRadius="sm">
+  <Box mb="lg" p="md" bg="surface.raised" borderRadius="sm">
     <Typography>Medium padding, large bottom margin</Typography>
   </Box>
-  <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="md" maxWidth="400px">
+  <Box mx="auto" px="xl" py="sm" bg="surface.base" borderRadius="md" maxWidth="400px">
     <Typography>Centered with horizontal auto margin, custom padding</Typography>
   </Box>
 </Box>`,
       renderComponent: () => (
         <Box>
-          <Box mb="lg" p="md" bg="subtle" borderRadius="sm" border="strong">
+          <Box mb="lg" p="md" bg="surface.raised" borderRadius="sm" border="strong">
             <Typography>Medium padding, large bottom margin</Typography>
           </Box>
-          <Box mx="auto" px="xl" py="sm" bg="default" borderRadius="md" border="strong" maxWidth="400px">
+          <Box mx="auto" px="xl" py="sm" bg="surface.base" borderRadius="md" border="strong" maxWidth="400px">
             <Typography>Centered with horizontal auto margin, custom padding</Typography>
           </Box>
         </Box>
@@ -450,34 +452,34 @@ export const boxDocs: ComponentDocumentation = {
       name: 'Borders and Colors',
       description: 'Using border and background color tokens',
       code: `<Stack direction="row" gap="md">
-  <Box p="md" border="default" borderRadius="sm" bg="default">
+  <Box p="md" border="default" borderRadius="sm" bg="surface.base">
     <Typography>Default border</Typography>
   </Box>
-  <Box p="md" border="strong" borderRadius="md" bg="subtle">
+  <Box p="md" border="strong" borderRadius="md" bg="surface.raised">
     <Typography>Strong border</Typography>
   </Box>
-  <Box p="md" borderTop="strong" borderRadius="xs" bg="emphasis" color="inverse">
+  <Box p="md" borderTop="strong" borderRadius="xs" bg="color.fill.emphasis" color="inverse">
     <Typography>Top border only</Typography>
   </Box>
 </Stack>`,
       renderComponent: () => (
         <Stack direction="row" gap="md">
-          <Box p="md" border="default" borderRadius="sm" bg="default">
+          <Box p="md" border="default" borderRadius="sm" bg="surface.base">
             <Typography>Default border</Typography>
           </Box>
-          <Box p="md" border="strong" borderRadius="md" bg="subtle">
+          <Box p="md" border="strong" borderRadius="md" bg="surface.raised">
             <Typography>Strong border</Typography>
           </Box>
-          <Box p="md" borderTop="strong" borderRadius="xs" bg="default">
+          <Box p="md" borderTop="strong" borderRadius="xs" bg="surface.base">
             <Typography>Top border only</Typography>
           </Box>
-          <Box p="md" borderRadius="sm" bg="interactive">
+          <Box p="md" borderRadius="sm" bg="color.fill.accent">
             <Typography color="inverse">Info background</Typography>
           </Box>
-          <Box p="md" borderRadius="sm" bg="interactive-subtle">
+          <Box p="md" borderRadius="sm" bg="color.fill.accent-muted">
             <Typography>Info surface background</Typography>
           </Box>
-          <Box p="md" borderRadius="sm" bg="inverse">
+          <Box p="md" borderRadius="sm" bg="color.fill.inverse">
             <Typography color="inverse">Inverse background</Typography>
           </Box>
         </Stack>

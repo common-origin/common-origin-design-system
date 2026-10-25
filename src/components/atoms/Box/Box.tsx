@@ -2,8 +2,34 @@ import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '../../../lib/cssTokens'
 import type { Tokens } from '../../../types/tokens'
-import { backgroundByKey, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
+import { backgroundByKey, backgroundByPath, borderColorByKey, radiusByKey, spaceByLayoutKey, textColorByKey } from '../../../lib/tokenAliases'
+import type { BackgroundPath } from '../../../lib/tokenAliases'
 import { reducedMotion } from '../../../lib/styleUtils'
+
+/**
+ * Box's background: a semantic token's path below `semantic` (decision 0031), such as
+ * `surface.base`, `surface.raised` or `color.fill.muted`.
+ */
+export type BoxBackground = BackgroundPath | DeprecatedBoxBackground
+
+/**
+ * The old `semantic.color.background` keys, removed in 3.0 with those tokens (#99, #304).
+ * @deprecated Use the token path: `default` and `page` → `surface.base`; `subtle` → `surface.raised`;
+ * `overlay` → `surface.scrim`; `surface` → `color.fill.muted`; `transparent` → `color.fill.none`;
+ * `progressTrack` → `color.fill.default`; `hover-overlay`, `active-overlay` and `inverse-overlay` →
+ * `color.fill.none-hover`, `none-pressed` and `inverse-none-hover`. The rest become `color.fill.*`
+ * with `interactive` → `accent`, `error` → `danger`, `neutral` → `default`, `-subtle` → `-muted`
+ * and `-active` → `-pressed`: `interactive-subtle` → `color.fill.accent-muted`, `emphasis` →
+ * `color.fill.emphasis`. `emphasis-hover`
+ * and `emphasis-active` have no static replacement: a strong fill's states belong to the control
+ * that has them (decision 0048).
+ */
+export type DeprecatedBoxBackground = keyof Tokens['semantic']['color']['background']
+
+const backgroundColor = (bg: BoxBackground): string =>
+  bg in backgroundByPath
+    ? backgroundByPath[bg as BackgroundPath]
+    : backgroundByKey[bg as DeprecatedBoxBackground]
 
 // Public props interface (without $ prefix, following atomic pattern)
 export interface BoxProps {
@@ -57,7 +83,12 @@ export interface BoxProps {
   borderLeft?: keyof Tokens['semantic']['color']['border']
   
   // Background & Color
-  bg?: keyof Tokens['semantic']['color']['background']
+  /**
+   * Background colour, as a semantic token path: `surface.base` (page), `surface.raised` (cards,
+   * sheets), `surface.scrim`, or a `color.fill.*` fill such as `color.fill.muted`. The old
+   * background keys (`default`, `subtle`, `surface`…) are deprecated and removed in 3.0.
+   */
+  bg?: BoxBackground
   color?: keyof Tokens['semantic']['color']['text']
   
   // Elevation (shadow)
@@ -210,7 +241,7 @@ const StyledBox = styled.div.withConfig({
   ${props => props.$borderLeft && css`border-left: ${tokens.semantic.border.width.thin} solid ${borderColorByKey[props.$borderLeft]};`}
   
   // Background & Color
-  ${props => props.$bg && css`background-color: ${backgroundByKey[props.$bg]};`}
+  ${props => props.$bg && css`background-color: ${backgroundColor(props.$bg)};`}
   ${props => props.$color && css`color: ${textColorByKey[props.$color]};`}
   
   // Elevation (shadow)
