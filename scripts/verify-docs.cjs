@@ -36,6 +36,9 @@ const isRepoPath = candidate => {
   if (SKIP_DIRS.has(candidate.split('/')[0])) return false
   // File extensions such as `.d.ts` or `.docs.tsx` aren't paths
   if (/^(\.[a-z]+)?\.(tsx?|jsx?|css|mjs|cjs|json|md|ya?ml)$/.test(candidate)) return false
+  // Token paths, such as `semantic.space.inset.md`, aren't files even when a step is named md.
+  // A token path has at least two segments after its tier, so `base.md` is still a file name
+  if (/^(base|semantic|component)(\.[\w-]+){2,}$/.test(candidate)) return false
   // Bare file names and dotfiles, such as `package.json`, `.babelrc` or `CONTRIBUTING.md`
   if (/^(\.[\w.-]+|[\w-]+(\.[\w-]+)*\.(json|js|cjs|mjs|ts|tsx|md|css|ya?ml|hbs|sh))$/.test(candidate)) return true
   if (TOP_LEVEL_DIRS.some(dir => candidate.startsWith(dir))) return true

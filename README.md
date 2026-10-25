@@ -28,7 +28,7 @@ export function Welcome() {
 
 Tokens are exported from the main entry and from `@common-origin/design-system/tokens`. Fonts, links and routing, server rendering and known issues are covered in the [usage guide](docs/foundation/usage.md).
 
-Upgrading from v1? See [MIGRATION-V2.md](MIGRATION-V2.md).
+Upgrading from 2.x? See [MIGRATION-V3.md](MIGRATION-V3.md). From v1, see [MIGRATION-V2.md](MIGRATION-V2.md).
 
 ## What's in the package
 
