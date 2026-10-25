@@ -79,6 +79,14 @@ describe('FilterChip is the toggle chip, not InputChip', () => {
     expect(FilterChip).not.toBe(InputChip)
   })
 
+  it('stays inert, without throwing, when plain JavaScript passes the old FilterChip props', () => {
+    const OldFilterChip = FilterChip as unknown as React.FC<{ onDismiss: () => void; children: React.ReactNode }>
+    render(<OldFilterChip onDismiss={() => {}}>Brand: Acme</OldFilterChip>)
+    const chip = screen.getByRole('checkbox')
+    expect(() => fireEvent.click(chip)).not.toThrow()
+    expect(() => fireEvent.keyDown(chip, { key: 'Enter' })).not.toThrow()
+  })
+
   it('renders a checkbox, not a removable value', () => {
     render(<FilterChip selected onClick={() => {}}>In stock</FilterChip>)
     expect(screen.getByRole('checkbox')).toHaveAttribute('aria-checked', 'true')

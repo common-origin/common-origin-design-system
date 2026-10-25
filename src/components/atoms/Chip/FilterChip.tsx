@@ -37,8 +37,10 @@ export const FilterChip: React.FC<FilterChipProps> = ({
   ...props
 }) => {
   const handleClick = () => {
+    // Optional call: a plain JavaScript app that kept the pre-3.0 FilterChip (now InputChip) passes
+    // no onClick, and its chip should stay inert rather than throw
     if (!disabled) {
-      onClick()
+      onClick?.()
     }
   }
   
