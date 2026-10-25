@@ -81,8 +81,8 @@ Every ramp has a translucent twin (`gray-alpha`, `accent-alpha` and the rest) fo
 ### Other colour tokens
 
 - `base.color.transparent`.
+- `base.color.white`: pure white, outside the ramps, for raised surfaces on the `gray.100` page ([decision 0049](../foundation/decisions/0049-where-white-lives.md)). Inverse text and icons use `gray.100`, not white.
 - **The older palettes** (`neutral.*`, from Bootstrap, and `blue`, `green`, `red`, `orange`, `purple`, `pink`, `yellow`, from Spectrum 1) stay until 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)), while the semantic tier moves off them ([#190](https://github.com/common-origin/common-origin-design-system/issues/190)).
-- **White** comes from `neutral.000` until 3.0, which decides where it lives.
 
 ## Dimension and size
 

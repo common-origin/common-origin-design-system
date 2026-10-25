@@ -96,6 +96,7 @@
   --co-base-size-max: max-content;
   --co-base-size-fit: fit-content;
   --co-base-color-transparent: transparent; /** Fully transparent. For colour values that must not show, such as a border that keeps its width (semantic.color.border.none). */
+  --co-base-color-white: #ffffff; /** Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049). */
   --co-base-color-gray-100: #fcfcfc; /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
   --co-base-color-gray-200: #f9f9f9; /** Subtle background. oklch(0.982 0 0), 1.05:1 on white. */
   --co-base-color-gray-300: #f2f2f2; /** Component fill at rest. oklch(0.961 0 0), 1.12:1 on white. */
@@ -743,7 +744,7 @@
   --co-semantic-spacing-layout-11xl: var(--co-base-dimension-24); /** Deprecated: Renamed to semantic.space.2400 by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-gray-1200); /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
-  --co-semantic-color-text-inverse: var(--co-base-color-neutral-000); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis. */
+  --co-semantic-color-text-inverse: var(--co-base-color-gray-100); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis. */
   --co-semantic-color-text-disabled: var(--co-base-color-gray-alpha-700); /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
   --co-semantic-color-text-success: var(--co-base-color-success-1100); /** Success text, such as InlineAlert success messages. 5.99:1 on white. */
   --co-semantic-color-text-warning: var(--co-base-color-warning-1100); /** Warning text, such as InlineAlert warnings (0043: warning is yellow). 6.01:1 on white. */
@@ -752,7 +753,7 @@
   --co-semantic-color-text-danger: var(--co-base-color-danger-1100); /** Error text: field error messages, InlineAlert errors. 6.03:1 on white. */
   --co-semantic-color-text-ai: var(--co-base-color-ai-1100); /** AI-generated content and agent actions, such as the label on proposed content (0046); always with the AI icon and a label, never colour alone (0043). 5.99:1 on white, 5.68:1 on the page. */
   --co-semantic-color-text-serious: var(--co-base-color-serious-1100); /** Serious-warning text: between warning and danger (decisions 0043, 0045). 6.04:1 on white. */
-  --co-semantic-color-background-subtle: var(--co-base-color-neutral-000); /** Deprecated: Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0. */
+  --co-semantic-color-background-subtle: var(--co-base-color-white); /** Deprecated: Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0. */
   --co-semantic-color-background-emphasis-hover: var(--co-base-color-neutral-800); /** Deprecated: Renamed to semantic.color.fill.emphasis-hover by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-emphasis-active: var(--co-base-color-neutral-1000); /** Deprecated: Renamed to semantic.color.fill.emphasis-pressed by the semantic grammar (decision 0031). Removed in 3.0. */
   --co-semantic-color-background-transparent: var(--co-base-color-transparent); /** Deprecated: Renamed to semantic.color.fill.none by the semantic grammar (decision 0031). Removed in 3.0. */
@@ -773,7 +774,7 @@
   --co-semantic-color-border-ai: var(--co-base-color-ai-800); /** Purple border for AI-generated content and agent actions, always with the AI icon and a label (0043). 3.20:1 on white. */
   --co-semantic-color-icon-default: var(--co-base-color-gray-1200); /** Default icon colour, matching text.default. 15.91:1 on white. */
   --co-semantic-color-icon-disabled: var(--co-base-color-gray-alpha-700); /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
-  --co-semantic-color-icon-inverse: var(--co-base-color-neutral-000); /** Icons on dark or coloured fills, matching text.inverse. */
+  --co-semantic-color-icon-inverse: var(--co-base-color-gray-100); /** Icons on dark or coloured fills, matching text.inverse. */
   --co-semantic-color-icon-success: var(--co-base-color-success-1100); /** Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.) */
   --co-semantic-color-icon-warning: var(--co-base-color-warning-1100); /** Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.) */
   --co-semantic-color-icon-muted: var(--co-base-color-gray-1100); /** Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white. */
@@ -897,7 +898,7 @@
   --co-semantic-space-inset-xl: var(--co-base-dimension-5); /** Generous padding inside a component, such as a prominent call to action. */
   --co-semantic-space-inset-2xl: var(--co-base-dimension-6); /** Largest padding inside a component: large cards, spacious form sections. */
   --co-semantic-surface-base: var(--co-base-color-gray-100); /** The page: the off-white background everything else sits on (decision 0006). */
-  --co-semantic-surface-raised: var(--co-base-color-neutral-000); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
+  --co-semantic-surface-raised: var(--co-base-color-white); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
   --co-component-button-primary-border-radius: var(--co-semantic-radius-sm); /** Corner radius of every Button (visual language: Button uses sm). */

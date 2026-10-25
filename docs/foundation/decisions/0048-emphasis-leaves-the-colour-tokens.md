@@ -1,6 +1,6 @@
 # 0048. Emphasis leaves the colour tokens: two text levels, a strong solid fill with overlay states
 
-- **Status:** Accepted. Values are signed off in part (a) of [#190](https://github.com/common-origin/common-origin-design-system/issues/190).
+- **Status:** Accepted; amended by [0049](0049-where-white-lives.md): the states mix in `text.inverse`, now `gray.100`, not white. Values are signed off in part (a) of [#190](https://github.com/common-origin/common-origin-design-system/issues/190).
 - **Date:** 2026-10-23
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P3, P5, P7

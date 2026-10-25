@@ -1033,8 +1033,8 @@
           }
         },
         "inverse": {
-          "$value": "{base.color.neutral.000}",
-          "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.91:1 on fill.emphasis."
+          "$value": "{base.color.gray.100}",
+          "$description": "Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis."
         },
         "disabled": {
           "$value": "{base.color.gray-alpha.700}",
@@ -1141,7 +1141,7 @@
           }
         },
         "subtle": {
-          "$value": "{base.color.neutral.000}",
+          "$value": "{base.color.white}",
           "$description": "White: inputs, sheets and other surfaces that sit on the page background.",
           "$deprecated": "Split by use (decision 0031): semantic.surface.raised for surfaces such as cards, inputs and sheets; component.slider.thumb.background for Slider's thumb. Removed in 3.0."
         },
@@ -1567,7 +1567,7 @@
           "$description": "Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white."
         },
         "inverse": {
-          "$value": "{base.color.neutral.000}",
+          "$value": "{base.color.gray.100}",
           "$description": "Icons on dark or coloured fills, matching text.inverse."
         },
         "interactive": {
@@ -2995,7 +2995,7 @@
         "$description": "The page: the off-white background everything else sits on (decision 0006)."
       },
       "raised": {
-        "$value": "{base.color.neutral.000}",
+        "$value": "{base.color.white}",
         "$type": "color",
         "$description": "Content raised off the page: cards, inputs, sheets, dialogs, code blocks."
       },
