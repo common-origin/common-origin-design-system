@@ -6,13 +6,6 @@ import { forcedColors } from '../../../lib/styleUtils'
 const { semantic } = tokens
 
 /**
- * Tab variant options for TabBar.
- * @deprecated TabBar has one look, `underline` (decision 0020). `'default'` and `'pills'` render
- * as `underline`. The type is removed in 3.0.
- */
-export type TabVariant = 'default' | 'pills' | 'underline'
-
-/**
  * Individual tab configuration
  */
 export interface Tab {
@@ -56,14 +49,6 @@ export interface TabBarProps {
    * Callback when tab changes
    */
   onTabChange: (tabId: string) => void
-  
-  /**
-   * Visual variant of the tabs.
-   * @deprecated TabBar has one look, `underline` (decision 0020). `'default'` and `'pills'` render
-   * as `underline`. Remove the prop; it is removed in 3.0.
-   * @default 'underline'
-   */
-  variant?: TabVariant
   
   /**
    * Accessible label for the tab list
@@ -227,8 +212,6 @@ export const TabBar: React.FC<TabBarProps> = ({
   tabs,
   activeTab,
   onTabChange,
-  // Deprecated: every variant renders as underline (decision 0020)
-  variant: _variant,
   'aria-label': ariaLabel = 'Tab navigation',
   'data-testid': dataTestId
 }) => {

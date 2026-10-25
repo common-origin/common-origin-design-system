@@ -73,8 +73,10 @@ const createMockAudioContext = () => {
 }
 
 describe('AgentInput', () => {
+  // Voice is off by default from 3.0 (#266); these tests exercise it, so they turn it on
   const defaultProps: AgentInputProps = {
     onSubmit: jest.fn().mockResolvedValue(undefined),
+    enableVoice: true,
   }
 
   const renderComponent = (props: Partial<AgentInputProps> = {}) => {
@@ -946,6 +948,13 @@ describe('AgentInput', () => {
       await waitFor(() => {
         expect(screen.getByRole('button', { name: /start voice input/i })).toHaveAttribute('aria-pressed', 'false')
       })
+    })
+  })
+
+  describe('Voice default (#266)', () => {
+    it('shows no mic unless enableVoice is set, even where the browser supports it', () => {
+      render(<AgentInput onSubmit={jest.fn()} />)
+      expect(screen.queryByRole('button', { name: /voice input/i })).not.toBeInTheDocument()
     })
   })
 

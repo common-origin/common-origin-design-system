@@ -85,6 +85,11 @@ export interface AgentInputProps {
   disabled?: boolean
   isSubmitting?: boolean
 
+  /**
+   * Web Speech API voice capture, with a mic control in the field, where the browser supports it.
+   * Off by default from 3.0 (#266): a product turns it on when it handles voice.
+   * @default false
+   */
   enableVoice?: boolean
   autoSubmitOnVoiceFinal?: boolean
   voiceLanguage?: string
@@ -502,7 +507,7 @@ function AgentInputWithRef({
   maxLength,
   disabled = false,
   isSubmitting,
-  enableVoice = true,
+  enableVoice = false,
   autoSubmitOnVoiceFinal = true,
   voiceLanguage = 'en-AU',
   noSpeechTimeoutMs = 8000,

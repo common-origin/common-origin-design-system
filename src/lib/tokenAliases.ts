@@ -5,7 +5,7 @@ import type { Tokens } from '../types/tokens'
 // semantic grammar's names (decision 0031, #189). Each map covers every key the prop type allows,
 // so TypeScript fails here if a key is added without a mapping.
 const { semantic } = tokens
-const { color, space, radius, surface, opacity } = semantic
+const { color, space, radius, surface } = semantic
 
 type Semantic = Tokens['semantic']
 
@@ -88,44 +88,6 @@ export const backgroundByPath: Record<BackgroundPath, string> = {
   'color.fill.none-hover': color.fill['none-hover'],
   'color.fill.none-pressed': color.fill['none-pressed'],
   'color.fill.inverse-none-hover': color.fill['inverse-none-hover'],
-}
-
-/** Box's `bg` prop: the old background keys, read from `surface` and `color.fill`. */
-export const backgroundByKey: Record<keyof Semantic['color']['background'], string> = {
-  default: surface.base,
-  page: surface.base,
-  subtle: surface.raised,
-  overlay: surface.scrim,
-  emphasis: color.fill.emphasis,
-  // A strong fill's states mix its content colour in at the state-layer opacity (decision 0048)
-  'emphasis-hover': `color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(${opacity.state.hover} * 100%))`,
-  'emphasis-active': `color-mix(in srgb, ${color.fill.emphasis}, ${color.text.inverse} calc(${opacity.state.pressed} * 100%))`,
-  surface: color.fill.muted,
-  inverse: color.fill.inverse,
-  interactive: color.fill.accent,
-  'interactive-hover': color.fill['accent-hover'],
-  'interactive-active': color.fill['accent-pressed'],
-  'interactive-subtle': color.fill['accent-muted'],
-  'interactive-subtle-hover': color.fill['accent-muted-hover'],
-  'interactive-subtle-active': color.fill['accent-muted-pressed'],
-  error: color.fill.danger,
-  'error-hover': color.fill['danger-hover'],
-  'error-active': color.fill['danger-pressed'],
-  'error-subtle': color.fill['danger-muted'],
-  success: color.fill.success,
-  'success-subtle': color.fill['success-muted'],
-  warning: color.fill.warning,
-  'warning-subtle': color.fill['warning-muted'],
-  disabled: color.fill.disabled,
-  neutral: color.fill.default,
-  'neutral-hover': color.fill['default-hover'],
-  'neutral-active': color.fill['default-pressed'],
-  transparent: color.fill.none,
-  'hover-overlay': color.fill['none-hover'],
-  'active-overlay': color.fill['none-pressed'],
-  'inverse-overlay': color.fill['inverse-none-hover'],
-  // Moved to the component tier (decision 0031 §6)
-  progressTrack: tokens.component.track.background,
 }
 
 /** Box's `color` prop: text colours, old and new keys. */

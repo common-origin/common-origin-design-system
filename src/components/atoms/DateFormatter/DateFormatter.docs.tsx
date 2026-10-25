@@ -24,10 +24,10 @@ export const dateFormatterDocs: ComponentDocumentation = {
     },
     {
       name: 'mode',
-      type: "'absolute' | 'relative' | 'smart'",
+      type: "'absolute' | 'smart'",
       required: false,
       default: "'absolute'",
-      description: '"absolute" always uses formatString. "smart" shows "Today", "Yesterday" or the day name for dates this week (weeks start on Monday), and formats older dates with formatString, or "MMMM dd, yyyy" if none is given. "relative" is deprecated: it behaves exactly like "smart", so use "smart". It will be removed in 3.0.'
+      description: '"absolute" always uses formatString. "smart" shows "Today", "Yesterday" or the day name for dates this week (weeks start on Monday), and formats older dates with formatString, or "MMMM dd, yyyy" if none is given. "relative", an alias of "smart", was removed in 3.0.'
     },
     {
       name: 'data-testid',

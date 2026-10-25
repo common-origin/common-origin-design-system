@@ -272,11 +272,13 @@ describe('Box Component', () => {
       expect(screen.getByTestId('box-fill')).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.muted })
     })
 
-    it('keeps the deprecated bg keys working until 3.0', () => {
-      renderBox({ bg: 'subtle', 'data-testid': 'box-old-subtle' })
-      renderBox({ bg: 'surface', 'data-testid': 'box-old-surface' })
-      expect(screen.getByTestId('box-old-subtle')).toHaveStyle({ backgroundColor: tokens.semantic.surface.raised })
-      expect(screen.getByTestId('box-old-surface')).toHaveStyle({ backgroundColor: tokens.semantic.color.fill.muted })
+    // The old background keys were removed in 3.0 (#304); plain JavaScript that still passes one
+    // gets no background rather than an invalid declaration
+    it('sets no background for a removed bg key from plain JavaScript', () => {
+      const { container } = renderBox({ bg: 'subtle' as unknown as 'surface.raised', 'data-testid': 'box-old' })
+      expect(screen.getByTestId('box-old').style.backgroundColor).toBe('')
+      expect(container.innerHTML).not.toContain('undefined')
+      expect(document.head.innerHTML).not.toContain('background-color:undefined')
     })
   })
 

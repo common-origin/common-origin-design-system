@@ -5,7 +5,7 @@ import { TabBar } from './TabBar'
 export const tabBarDocs: ComponentDocumentation = {
   id: 'tab-bar',
   name: 'TabBar',
-  description: 'An accessible tabbed navigation component with keyboard support and optional count badges. Implements the WAI-ARIA tablist pattern with a roving tabindex. TabBar has one look (decision 0020): the selected tab takes the light-blue selected treatment (fill and blue text) with a blue underline. The variant prop is deprecated; its old default and pills values now render the same way.',
+  description: 'An accessible tabbed navigation component with keyboard support and optional count badges. Implements the WAI-ARIA tablist pattern with a roving tabindex. TabBar has one look (decision 0020): the selected tab takes the light-blue selected treatment (fill and blue text) with a blue underline. The variant prop was removed in 3.0 (decision 0020).',
   category: 'Molecules',
 
   props: [
@@ -29,13 +29,6 @@ export const tabBarDocs: ComponentDocumentation = {
       required: true,
       default: 'undefined',
       description: 'Callback function invoked when user selects a different tab. Receives the selected tab ID. Not called for disabled tabs.'
-    },
-    {
-      name: 'variant',
-      type: "'default' | 'pills' | 'underline'",
-      required: false,
-      default: "'underline'",
-      description: "Deprecated, removed in 3.0 (decision 0020). TabBar has one look; every value renders as underline. Remove the prop."
     },
     {
       name: 'data-testid',
@@ -338,7 +331,7 @@ return (
       'Focus management syncs with activeTab prop changes for external state updates',
       'Selected tab text meets WCAG 2.2 AA in every state: 4.70:1 at rest, 5.60:1 on hover and 6.65:1 when pressed (decision 0016)',
       'The selected state does not rely on colour alone: the selected tab also has the underline and aria-selected="true"',
-      'No accessibility violations detected by jest-axe, including for the deprecated variant values'
+      'No accessibility violations detected by jest-axe'
     ],
     keyboardNavigation: 'Tab key focuses the tab group (enters first or currently active tab). ArrowLeft moves to previous tab, ArrowRight moves to next tab (both wrap around ends). Home jumps to first tab, End jumps to last tab. All navigation automatically skips disabled tabs. Click or tap to activate focused tab.',
     screenReader: 'Screen readers announce "Tab navigation, tablist" for the container. Each tab is announced as "tab" with its label and selection state. Active tabs: "{label}, tab, selected". Inactive tabs: "{label}, tab, not selected". Disabled tabs: "{label}, tab, disabled". Badge counts announced as "{number} items".'

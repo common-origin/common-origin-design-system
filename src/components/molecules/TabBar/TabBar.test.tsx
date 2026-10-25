@@ -2,7 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import { TabBar, TabBarProps, Tab, TabVariant } from './TabBar'
+import { TabBar, TabBarProps, Tab } from './TabBar'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio, pseudoClassDeclarations } from '../../../test-utils/contrast'
 
@@ -118,19 +118,11 @@ describe('TabBar Component', () => {
       })
     })
 
-    it.each(['default', 'pills'] as TabVariant[])(
-      'renders the deprecated %s variant exactly like underline',
-      (variant) => {
-        const { container: underline } = renderTabBar({ variant: 'underline', 'data-testid': 'tabs' })
-        const { container: deprecated } = renderTabBar({ variant, 'data-testid': 'tabs' })
-        expect(deprecated.innerHTML).toBe(underline.innerHTML)
-      }
-    )
-
-    it('renders as underline when no variant is given', () => {
-      const { container: underline } = renderTabBar({ variant: 'underline', 'data-testid': 'tabs' })
+    // variant was removed in 3.0 (decision 0020); plain JavaScript that still passes one is ignored
+    it.each(['default', 'pills', 'underline'])('ignores a removed variant=%s from plain JavaScript', (variant) => {
       const { container: unset } = renderTabBar({ 'data-testid': 'tabs' })
-      expect(unset.innerHTML).toBe(underline.innerHTML)
+      const { container: removed } = renderTabBar({ variant, 'data-testid': 'tabs' } as Partial<TabBarProps>)
+      expect(removed.innerHTML).toBe(unset.innerHTML)
     })
   })
 
@@ -317,17 +309,6 @@ describe('TabBar Component', () => {
       const { container } = renderTabBar()
       const results = await axe(container)
       expect(results).toHaveNoViolations()
-    })
-
-    it('should have no accessibility violations for every variant value, including deprecated ones', async () => {
-      const variants: TabVariant[] = ['default', 'pills', 'underline']
-
-      for (const variant of variants) {
-        const { container, unmount } = renderTabBar({ variant })
-        const results = await axe(container)
-        expect(results).toHaveNoViolations()
-        unmount()
-      }
     })
 
     it('should have no accessibility violations with badges', async () => {

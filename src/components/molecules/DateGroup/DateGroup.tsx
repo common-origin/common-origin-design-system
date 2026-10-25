@@ -14,8 +14,7 @@ export interface DateGroupProps {
   children: React.ReactNode
   
   /**
-   * Format mode for the date header, passed to DateFormatter's `mode`. `'relative'` is
-   * deprecated: it behaves exactly like `'smart'`, so use `'smart'` (#82).
+   * Format mode for the date header, passed to DateFormatter's `mode`.
    */
   format?: DateFormatMode
   

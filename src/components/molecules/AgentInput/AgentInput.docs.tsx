@@ -166,8 +166,8 @@ export const agentInputDocs: ComponentDocumentation = {
       name: 'enableVoice',
       type: 'boolean',
       required: false,
-      default: 'true',
-      description: 'Enables Web Speech API voice capture when the browser supports it, with a voice icon control inside the input on the right. Where the API is unsupported (Firefox, many WebViews) the mic is hidden and nothing is shown in its place. The default changes to false in 3.0.',
+      default: 'false',
+      description: 'Enables Web Speech API voice capture when the browser supports it, with a voice icon control inside the input on the right. Where the API is unsupported (Firefox, many WebViews) the mic is hidden and nothing is shown in its place. Off by default since 3.0: turn it on when the product handles voice.',
     },
     {
       name: 'autoSubmitOnVoiceFinal',
@@ -332,6 +332,7 @@ export const agentInputDocs: ComponentDocumentation = {
       name: 'Listening (Animated Ring)',
       description: 'Start voice input to show the animated circular blue gradient ring around the mic button while listening.',
       code: `<AgentInput
+  enableVoice
   statusMessage="Listening… speak now"
   onSubmit={async ({ text, source }) => {
     console.log(text, source)
@@ -339,6 +340,7 @@ export const agentInputDocs: ComponentDocumentation = {
 />`,
       renderComponent: () => (
         <AgentInput
+          enableVoice
           statusMessage="Listening… speak now"
           onSubmit={async () => {}}
         />
@@ -348,6 +350,7 @@ export const agentInputDocs: ComponentDocumentation = {
       name: 'Listening (Reduced Motion)',
       description: 'With prefers-reduced-motion enabled, listening uses a static blue ring instead of animation.',
       code: `<AgentInput
+  enableVoice
   statusMessage="Listening… speak now"
   onSubmit={async ({ text, source }) => {
     console.log(text, source)
@@ -355,6 +358,7 @@ export const agentInputDocs: ComponentDocumentation = {
 />`,
       renderComponent: () => (
         <AgentInput
+          enableVoice
           statusMessage="Listening… speak now"
           onSubmit={async () => {}}
         />

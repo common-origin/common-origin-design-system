@@ -20,33 +20,12 @@ const { label: labelHeight } = semantic.size
 export type CategoryDisplayColor = 'olive' | 'periwinkle' | 'rose' | 'magenta' | 'gray'
 
 /**
- * Deprecated category colour names, each an alias of the nearest display colour until 3.0
- * (decision 0043): blue is periwinkle; purple is magenta; pink, red and orange are rose; yellow and
- * green are olive.
- * @deprecated Use a CategoryDisplayColor: 'olive', 'periwinkle', 'rose', 'magenta' or 'gray'.
+ * Category color options for CategoryLabel: the display colours (decision 0043). The old hue names
+ * (blue, purple, pink, yellow, green, red, orange) were removed in 3.0.
  */
-export type DeprecatedCategoryColor = 'blue' | 'purple' | 'pink' | 'yellow' | 'green' | 'red' | 'orange'
+export type CategoryColor = CategoryDisplayColor
 
-/**
- * Category color options for CategoryLabel. The old hue names still work, as aliases of the
- * nearest display colour, until 3.0.
- */
-export type CategoryColor = CategoryDisplayColor | DeprecatedCategoryColor
-
-const displayColor: Record<CategoryColor, CategoryDisplayColor> = {
-  olive: 'olive',
-  periwinkle: 'periwinkle',
-  rose: 'rose',
-  magenta: 'magenta',
-  gray: 'gray',
-  blue: 'periwinkle',
-  purple: 'magenta',
-  pink: 'rose',
-  yellow: 'olive',
-  green: 'olive',
-  red: 'rose',
-  orange: 'rose',
-}
+const displayColors: readonly CategoryDisplayColor[] = ['olive', 'periwinkle', 'rose', 'magenta', 'gray']
 
 /**
  * Visual variant options for CategoryLabel
@@ -68,8 +47,7 @@ export interface CategoryLabelProps {
   children: ReactNode
   
   /**
-   * Category colour: 'olive', 'periwinkle', 'rose', 'magenta' or 'gray'. The old hue names are
-   * deprecated aliases (decision 0043).
+   * Category colour: 'olive', 'periwinkle', 'rose', 'magenta' or 'gray' (decision 0043).
    * @default 'periwinkle'
    */
   color?: CategoryColor
@@ -213,7 +191,8 @@ export const CategoryLabel: React.FC<CategoryLabelProps> = ({
 
   return (
     <StyledCategoryLabel
-      $color={displayColor[color]}
+      // A removed hue name passed from plain JavaScript renders as the default, periwinkle
+      $color={displayColors.includes(color) ? color : 'periwinkle'}
       $variant={variant}
       $size={size}
       data-testid={dataTestId}

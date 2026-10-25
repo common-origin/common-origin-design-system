@@ -27,7 +27,6 @@ export interface ModalAction {
   onClick: () => void
   /**
    * Button variant. `accent` is the blue call to action (at most one per view).
-   * `emphasis` is a deprecated alias for `accent` and will be removed in 3.0.
    */
   variant?: ButtonVariant
   /** Optional leading icon */

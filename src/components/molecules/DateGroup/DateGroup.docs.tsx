@@ -25,10 +25,10 @@ export const dateGroupDocs: ComponentDocumentation = {
     },
     {
       name: 'format',
-      type: "'absolute' | 'relative' | 'smart'",
+      type: "'absolute' | 'smart'",
       required: false,
       default: "'smart'",
-      description: 'Date formatting mode, passed to DateFormatter: absolute (formatted date) or smart (Today, Yesterday, day names this week, then a formatted date). relative is deprecated: it behaves exactly like smart and will be removed in 3.0'
+      description: 'Date formatting mode, passed to DateFormatter: absolute (formatted date) or smart (Today, Yesterday, day names this week, then a formatted date). relative, an alias of smart, was removed in 3.0'
     },
     {
       name: 'showTotal',
@@ -330,7 +330,7 @@ export const dateGroupDocs: ComponentDocumentation = {
       },
       {
         name: 'DateFormatter',
-        description: 'Date display with configurable formatting mode (smart/absolute/relative)',
+        description: 'Date display with configurable formatting mode (smart or absolute)',
         tokens: ['semantic.typography.body']
       },
       {

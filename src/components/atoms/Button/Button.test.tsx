@@ -85,18 +85,13 @@ describe('Button Component', () => {
       })
     })
 
-    it('renders the deprecated emphasis variant identically to accent', () => {
-      render(
-        <>
-          <Button variant="accent">Accent</Button>
-          <Button variant="emphasis">Emphasis</Button>
-        </>
-      )
-      const accent = window.getComputedStyle(screen.getByRole('button', { name: 'Accent' }))
-      const emphasis = window.getComputedStyle(screen.getByRole('button', { name: 'Emphasis' }))
-      expect(emphasis.backgroundColor).toBe(accent.backgroundColor)
-      expect(emphasis.color).toBe(accent.color)
-      expect(tokens.component.button.variants.emphasis).toEqual(tokens.component.button.variants.accent)
+    // emphasis was removed in 3.0 (decision 0016); plain JavaScript that still passes it gets primary
+    it('renders a removed variant from plain JavaScript as primary', () => {
+      renderButton({ variant: 'emphasis' as unknown as 'primary' })
+      expect(screen.getByRole('button')).toHaveStyle({
+        backgroundColor: tokens.component.button.primary.backgroundColor,
+        color: tokens.component.button.primary.textColor,
+      })
     })
   })
 

@@ -21,7 +21,7 @@ export const categoryLabelDocs: ComponentDocumentation = {
       type: "'olive' | 'periwinkle' | 'rose' | 'magenta' | 'gray'",
       required: false,
       default: "'periwinkle'",
-      description: 'The category colour: one of four display colours, which carry no meaning, or gray for uncategorised items (decision 0043). Pick any colour per category, and keep it consistent across a product. The old names (blue, purple, pink, yellow, green, red, orange) still work until 3.0, as deprecated aliases of the nearest display colour.'
+      description: 'The category colour: one of four display colours, which carry no meaning, or gray for uncategorised items (decision 0043). Pick any colour per category, and keep it consistent across a product. The old names (blue, purple, pink, yellow, green, red, orange) were removed in 3.0: blue is periwinkle, purple is magenta, pink, red and orange are rose, and yellow and green are olive.'
     },
     {
       name: 'variant',

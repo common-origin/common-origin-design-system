@@ -116,7 +116,7 @@ export default function ForcedColorsFixture() {
               <Case id="badge-dot"><Badge dot count={1}><Button variant="secondary">Updates</Button></Badge></Case>
               <Case id="status-label"><StatusLabel status="completed" /></Case>
               <Case id="tag"><Tag>Tag</Tag></Case>
-              <Case id="category-label"><CategoryLabel color="blue">Category</CategoryLabel></Case>
+              <Case id="category-label"><CategoryLabel color="periwinkle">Category</CategoryLabel></Case>
             </Stack>
           </section>
 

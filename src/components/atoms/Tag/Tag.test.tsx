@@ -46,10 +46,6 @@ describe('Tag', () => {
   describe('Variant Props', () => {
     const variants: Array<TagProps['variant']> = [
       'default',
-      'interactive',
-      'success',
-      'warning',
-      'error',
       'emphasis'
     ]
 
@@ -98,10 +94,6 @@ describe('Tag', () => {
     it('should have no accessibility violations across all variants', async () => {
       const variants: Array<TagProps['variant']> = [
         'default',
-        'interactive',
-        'success',
-        'warning',
-        'error',
         'emphasis'
       ]
 
@@ -181,7 +173,7 @@ describe('Tag', () => {
     })
 
     it.each(['small', 'medium'] as const)('has no accessibility violations at %s', async (size) => {
-      const { container } = renderTag({ size, variant: 'success' })
+      const { container } = renderTag({ size, variant: 'emphasis' })
       expect(await axe(container)).toHaveNoViolations()
     })
   })
@@ -208,10 +200,6 @@ describe('Tag', () => {
     it('correctly applies all variants', () => {
       const variants: Array<TagProps['variant']> = [
         'default',
-        'interactive',
-        'success',
-        'warning',
-        'error',
         'emphasis'
       ]
 

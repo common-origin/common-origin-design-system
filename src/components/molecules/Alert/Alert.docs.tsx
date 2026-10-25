@@ -66,13 +66,6 @@ export const alertDocs: ComponentDocumentation = {
       description: 'Optional action button or component, such as "Undo" or "Retry". It sits below the message, left-aligned with it, so it is read after the message (decision 0021).'
     },
     {
-      name: 'inline',
-      type: 'boolean',
-      required: false,
-      default: 'false',
-      description: 'Deprecated: use InlineAlert for a short, local message (decision 0019); inline is removed in 3.0. Until then it still gives the compact layout with reduced padding.'
-    },
-    {
       name: 'ariaLive',
       type: "'polite' | 'assertive' | 'off'",
       required: false,
@@ -375,20 +368,11 @@ export const alertDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Inline (deprecated)',
-      description: 'The inline prop is deprecated: use InlineAlert for a short, local message, with the same variant and text. An inline alert that needs a title, action or dismiss button stays an Alert.',
-      code: `// Deprecated
-<Alert variant="warning" inline>Low inventory: restock pantry items.</Alert>
-
-// Use instead
-<InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>`,
+      name: 'Short local messages use InlineAlert',
+      description: 'Alert\'s inline prop was removed in 3.0: use InlineAlert for a short, local message, with the same variant and text. A message that needs a title, action or dismiss button stays an Alert.',
+      code: `<InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>`,
       renderComponent: () => (
-        <Stack direction="column" gap="md">
-          <Alert variant="warning" inline>
-            Low inventory: restock pantry items.
-          </Alert>
-          <InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>
-        </Stack>
+        <InlineAlert variant="warning">Low inventory: restock pantry items.</InlineAlert>
       )
     },
     {

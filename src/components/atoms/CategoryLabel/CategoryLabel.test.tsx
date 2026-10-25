@@ -231,7 +231,7 @@ describe('CategoryLabel Component', () => {
 
     it('handles all prop combinations', () => {
       renderCategoryLabel({
-        color: 'purple',
+        color: 'magenta',
         variant: 'outlined',
         size: 'medium',
         icon: 'filter',
@@ -267,13 +267,11 @@ describe('CategoryLabel contrast (WCAG AA, #115)', () => {
     expect(labelRoot('Label')).toHaveStyle({ borderColor: category.olive })
   })
 
-  // The old hue names are aliases of the nearest display colour until 3.0 (decision 0043)
-  it.each([
-    ['blue', 'periwinkle'], ['purple', 'magenta'], ['pink', 'rose'], ['red', 'rose'],
-    ['orange', 'rose'], ['yellow', 'olive'], ['green', 'olive'],
-  ] as const)('renders the deprecated %s as %s', (old, display) => {
-    render(<CategoryLabel color={old} variant="filled">Label</CategoryLabel>)
-    expect(labelRoot('Label')).toHaveStyle({ backgroundColor: category[`${display}-strong`] })
+  // The old hue names were removed in 3.0 (decision 0043); plain JavaScript that still passes one
+  // gets the default, periwinkle
+  it.each(['blue', 'purple', 'pink', 'red', 'orange', 'yellow', 'green'])('renders removed %s as periwinkle', (old) => {
+    render(<CategoryLabel color={old as unknown as 'periwinkle'} variant="filled">Label</CategoryLabel>)
+    expect(labelRoot('Label')).toHaveStyle({ backgroundColor: category['periwinkle-strong'] })
   })
 })
 

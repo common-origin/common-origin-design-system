@@ -16,28 +16,29 @@ export const responsiveGridDocs: ComponentDocumentation = {
     { name: 'colsMd', type: 'number', required: false, default: 'undefined', description: 'Number of columns from the md breakpoint up' },
     { name: 'colsLg', type: 'number', required: false, default: 'undefined', description: 'Number of columns from the lg breakpoint up' },
     { name: 'colsXl', type: 'number', required: false, default: 'undefined', description: 'Number of columns from the xl breakpoint up' },
-    { name: 'gap', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns' },
-    { name: 'gapSm', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns from the sm breakpoint up' },
-    { name: 'gapMd', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns from the md breakpoint up' },
-    { name: 'gapLg', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns from the lg breakpoint up' },
-    { name: 'gapXl', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns from the xl breakpoint up' },
-    { name: 'gapX', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns' },
-    { name: 'gapXSm', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns from the sm breakpoint up' },
-    { name: 'gapXMd', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns from the md breakpoint up' },
-    { name: 'gapXLg', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns from the lg breakpoint up' },
-    { name: 'gapXXl', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns from the xl breakpoint up' },
-    { name: 'gapY', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows' },
-    { name: 'gapYSm', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows from the sm breakpoint up' },
-    { name: 'gapYMd', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows from the md breakpoint up' },
-    { name: 'gapYLg', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows from the lg breakpoint up' },
-    { name: 'gapYXl', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows from the xl breakpoint up' },
+    { name: 'gap', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns' },
+    { name: 'gapSm', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns from the sm breakpoint up' },
+    { name: 'gapMd', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns from the md breakpoint up' },
+    { name: 'gapLg', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns from the lg breakpoint up' },
+    { name: 'gapXl', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns from the xl breakpoint up' },
+    { name: 'gapX', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns' },
+    { name: 'gapXSm', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns from the sm breakpoint up' },
+    { name: 'gapXMd', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns from the md breakpoint up' },
+    { name: 'gapXLg', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns from the lg breakpoint up' },
+    { name: 'gapXXl', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns from the xl breakpoint up' },
+    { name: 'gapY', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows' },
+    { name: 'gapYSm', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows from the sm breakpoint up' },
+    { name: 'gapYMd', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows from the md breakpoint up' },
+    { name: 'gapYLg', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows from the lg breakpoint up' },
+    { name: 'gapYXl', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows from the xl breakpoint up' },
     { name: 'className', type: 'string', required: false, default: 'undefined', description: 'Custom className for the root element' },
     { name: 'data-testid', type: 'string', required: false, default: 'undefined', description: 'Test identifier, applied to the root element' },
     { name: 'children', type: 'React.ReactNode', required: true, description: 'Grid items' }
   ],
 
   tokens: [
-    ...tokenPaths('base.spacing'), // Gap props take base spacing keys (see notes)
+    ...tokenPaths('base.dimension'), // Gap props take base dimension keys (see notes)
+    'base.spacing.auto',
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -100,7 +101,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
   ],
 
   notes: [
-    'Gap props take base spacing keys (base.spacing.*), which decision 0014 says components should not use. Moving them to semantic spacing keys is migration work tracked in #34.'
+    'Gap props take base dimension keys (base.dimension.*, the 4px scale) or auto, which decision 0014 says components should not use. Before 3.0 they took the base.spacing keys, which had the same values (#188). Moving them to semantic spacing keys is migration work tracked in #34.'
   ],
 
   anatomy: {
@@ -109,7 +110,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'div with display: grid and equal columns (repeat(n, minmax(0, 1fr))). Column count, gap, column gap and row gap change at the sm, md, lg and xl breakpoints.',
-        tokens: [...tokenPaths('base.spacing'), 'semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
+        tokens: [...tokenPaths('base.dimension'), 'base.spacing.auto', 'semantic.breakpoint.sm', 'semantic.breakpoint.md', 'semantic.breakpoint.lg', 'semantic.breakpoint.xl']
       }
     ]
   },

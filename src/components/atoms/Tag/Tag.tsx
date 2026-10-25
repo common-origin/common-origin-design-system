@@ -16,12 +16,10 @@ export interface TagProps {
   
   /**
    * Visual variant. Tag is neutral metadata: use `default`, or `emphasis` (near-black) to make a
-   * tag stand out. `success`, `warning` and `error` are deprecated (status belongs to
-   * `StatusLabel`), and so is `interactive` (a blue fill on a static label is decoration).
-   * They keep working until they are removed in 3.0 (decision 0029).
+   * tag stand out. For a status, use `StatusLabel` (decision 0029).
    * @default 'default'
    */
-  variant?: 'default' | 'interactive' | 'success' | 'warning' | 'error' | 'emphasis'
+  variant?: 'default' | 'emphasis'
   
   /**
    * Whether to show a border
@@ -67,14 +65,6 @@ const StyledTag = styled.span.withConfig({
   /* Variant styles */
   background-color: ${({ $variant }) => {
     switch ($variant) {
-      case 'interactive':
-        return color.fill['accent-muted']
-      case 'success':
-        return color.fill['success-muted']
-      case 'warning':
-        return color.fill['warning-muted']
-      case 'error':
-        return color.fill['danger-muted']
       case 'emphasis':
         return color.fill.emphasis
       default:
@@ -84,14 +74,6 @@ const StyledTag = styled.span.withConfig({
   
   color: ${({ $variant }) => {
     switch ($variant) {
-      case 'interactive':
-        return color.text.accent
-      case 'success':
-        return color.text.success
-      case 'warning':
-        return color.text.warning
-      case 'error':
-        return color.text.danger
       case 'emphasis':
         return color.text.inverse
       default:
@@ -103,14 +85,6 @@ const StyledTag = styled.span.withConfig({
     if (!$border) return 'none'
     
     switch ($variant) {
-      case 'interactive':
-        return `${semantic.border.width.thin} solid ${color.border.accent}`
-      case 'success':
-        return `${semantic.border.width.thin} solid ${color.border.success}`
-      case 'warning':
-        return `${semantic.border.width.thin} solid ${color.border.warning}`
-      case 'error':
-        return `${semantic.border.width.thin} solid ${color.border.danger}`
       case 'emphasis':
         return `${semantic.border.width.thin} solid ${color.fill.emphasis}`
       default:

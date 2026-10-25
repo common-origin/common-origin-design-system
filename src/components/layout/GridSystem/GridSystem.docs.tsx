@@ -11,16 +11,17 @@ export const gridSystemDocs: ComponentDocumentation = {
   category: 'Layout',
   props: [
     { name: 'cols', type: 'number', required: false, default: '12', description: 'Number of equal columns' },
-    { name: 'gap', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows and columns' },
-    { name: 'gapX', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between columns' },
-    { name: 'gapY', type: "keyof Tokens['base']['spacing']", required: false, default: 'undefined', description: 'Gap between rows' },
+    { name: 'gap', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns' },
+    { name: 'gapX', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between columns' },
+    { name: 'gapY', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows' },
     { name: 'className', type: 'string', required: false, default: 'undefined', description: 'Custom className for the root element' },
     { name: 'data-testid', type: 'string', required: false, default: 'undefined', description: 'Test identifier, applied to the root element' },
     { name: 'children', type: 'React.ReactNode', required: true, description: 'Grid items, usually GridCol' }
   
   ],
   tokens: [
-    ...tokenPaths('base.spacing'), // Gap props take base spacing keys (see notes)
+    ...tokenPaths('base.dimension'), // Gap props take base dimension keys (see notes)
+    'base.spacing.auto',
     'semantic.breakpoint.sm',
     'semantic.breakpoint.md',
     'semantic.breakpoint.lg',
@@ -170,7 +171,7 @@ export const gridSystemDocs: ComponentDocumentation = {
       {
         name: 'Container',
         description: 'div with display: grid, repeat(cols, minmax(0, 1fr)) columns (12 by default), and optional gap, column gap and row gap.',
-        tokens: [...tokenPaths('base.spacing')]
+        tokens: [...tokenPaths('base.dimension'), 'base.spacing.auto']
       },
       {
         name: 'GridCol',
@@ -189,7 +190,7 @@ export const gridSystemDocs: ComponentDocumentation = {
   notes: [
     'GridSystem provides CSS Grid-based layout utilities for responsive design.',
     'Use ResponsiveGrid for breakpoint-based layouts similar to Tailwind CSS patterns.',
-    'Gap props take base spacing keys (base.spacing.*), which decision 0014 says components should not use. Moving them to semantic spacing keys is migration work tracked in #34.',
+    'Gap props take base dimension keys (base.dimension.*, the 4px scale) or auto, which decision 0014 says components should not use. Before 3.0 they took the base.spacing keys, which had the same values (#188). Moving them to semantic spacing keys is migration work tracked in #34.',
     'For flexbox layouts, use the Stack component from the atoms collection.'
   ]
 }

@@ -100,16 +100,6 @@ const STILL_READ = [/^component\.button\.variants\.emphasis\./]
 // Reads the type checker can't follow on purpose, by file, with the reason. Each entry must still
 // match a read (checked below), so a fixed read takes its entry with it.
 const ALLOWED: { file: string; paths?: RegExp; argumentOf?: string; reason: string }[] = [
-  {
-    file: 'src/components/layout/GridSystem/GridSystem.tsx',
-    paths: /^base\.spacing\./,
-    reason: 'The gap props are typed as base.spacing keys (public API) until 3.0 moves them to base.dimension (#99)',
-  },
-  {
-    file: 'src/components/layout/GridSystem/GridSystem.test.tsx',
-    paths: /^base\.spacing\./,
-    reason: "Tests GridSystem's base.spacing gap props (above)",
-  },
   { file: 'src/tokens.ts', reason: 'Publishes the whole token set; deprecated tokens stay in it until 3.0' },
   {
     file: 'src/lib/cssTokens.ts',

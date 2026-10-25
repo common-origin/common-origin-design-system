@@ -20,15 +20,12 @@ export type ButtonVariant =
   | 'secondary'
   | 'naked'
   | 'accent'
-  /** @deprecated Use `accent`. `emphasis` will be removed in 3.0. */
-  | 'emphasis'
   | 'danger'
 
 // Base props shared between button and link
 export interface BaseButtonProps {
   /**
    * Visual style. `accent` is the blue call to action above `primary` (at most one per view).
-   * `emphasis` is a deprecated alias for `accent` and will be removed in 3.0.
    * @default 'primary'
    */
   variant?: ButtonVariant
@@ -128,15 +125,6 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) => {
       disabledBg: button.variants.accent.disabled.backgroundColor,
       disabledText: button.variants.accent.disabled.textColor
     },
-    // Deprecated alias for accent; removed in 3.0
-    emphasis: {
-      bg: button.variants.emphasis.backgroundColor,
-      text: button.variants.emphasis.textColor,
-      hoverBg: button.variants.emphasis.hover.backgroundColor,
-      activeBg: button.variants.emphasis.active.backgroundColor,
-      disabledBg: button.variants.emphasis.disabled.backgroundColor,
-      disabledText: button.variants.emphasis.disabled.textColor
-    },
     danger: {
       bg: button.variants.danger.backgroundColor,
       text: button.variants.danger.textColor,
@@ -147,7 +135,8 @@ const getVariantStyles = ({ $variant }: StyledButtonProps) => {
     }
   }
   
-  const config = variantConfig[$variant]
+  // A removed variant (such as `emphasis`) passed from plain JavaScript renders as primary
+  const config = variantConfig[$variant] ?? variantConfig.primary
   
   return `
     background-color: ${config.bg};
