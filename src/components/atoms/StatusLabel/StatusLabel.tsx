@@ -19,7 +19,6 @@ export type { StatusLabelProps, StatusType, StatusSize } from './StatusLabelBase
  * <StatusLabel status="pending" label="Awaiting approval" size="small" />
  * ```
  */
-// showIcon comes last so no caller (for example plain JavaScript) can hide the icon
-export const StatusLabel: React.FC<StatusLabelProps> = (props) => <StatusLabelBase {...props} showIcon />
+export const StatusLabel: React.FC<StatusLabelProps> = (props) => <StatusLabelBase {...props} />
 
 StatusLabel.displayName = 'StatusLabel'

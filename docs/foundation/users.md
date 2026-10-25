@@ -14,7 +14,7 @@ Both need the same things in different forms: accurate docs, unambiguous rules, 
 | Product | Type | Character | Components it leans on |
 |---|---|---|---|
 | **Common Origin personal site** | Creative portfolio: music, generative art, design | Editorial, spacious, image-led | Typography, Chip filters, Button, cards, Breadcrumbs, GridSystem |
-| **A2UI** | AI financial proof of concept | Data-dense, structured, clarity first | DataView patterns, filters, TextField, Dropdown, Modal, Alert, Badge, StatusBadge, MoneyDisplay |
+| **A2UI** | AI financial proof of concept | Data-dense, structured, clarity first | DataView patterns, filters, TextField, Dropdown, Modal, Alert, Badge, StatusLabel, MoneyDisplay |
 | **Meal Agent** | Agentic AI meal planning | Clean, approachable, conversational | AgentInput, ActionSheet, List, Modal, Button, Icon, Stack |
 | **Smaller React projects** | Experiments, tools, creative work | Varies | Whatever they need — the system must stay light and composable |
 

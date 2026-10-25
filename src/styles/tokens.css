@@ -1022,7 +1022,7 @@
   --co-component-badge-count-line-height: var(--co-semantic-line-height-none); /** Line height of the count text, so the digits centre in the indicator. */
   --co-component-badge-ring-width: var(--co-semantic-border-width-thick); /** Ring that separates a Badge indicator from the element it sits on. */
   --co-component-badge-border-radius: var(--co-semantic-radius-full); /** Badge indicators are always fully circular. */
-  --co-component-badge-label-font-weight: var(--co-semantic-font-weight-medium); /** Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
+  --co-component-badge-label-font-weight: var(--co-semantic-font-weight-medium); /** Text weight for the badge-like label family: StatusLabel, CategoryLabel and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
   --co-component-field-gap: var(--co-semantic-space-200); /** Deprecated: No component spacing tokens (decision 0022). Use semantic.space.200. Removed in 3.0. */
   --co-component-field-label-color: var(--co-semantic-color-text-default); /** Field label colour. */
   --co-component-field-label-color-disabled: var(--co-semantic-color-text-disabled); /** Field label colour when the field is disabled. */
@@ -1248,8 +1248,8 @@
   --co-component-chip-sizes-large-font: var(--co-semantic-typography-body); /** Deprecated: Chips have one size (decision 0035). Use component.chip.sizes.medium.font. Removed in 3.0. */
   --co-component-progress-bar-background-color: var(--co-semantic-color-background-progress-track); /** ProgressBar track, behind the filled part. */
   --co-component-input-default-font: var(--co-semantic-typography-body); /** Text input value typography. */
-  --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
-  --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */
+  --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusLabel small, CategoryLabel medium, Tag). Combine with label.fontWeight. */
+  --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusLabel medium, CategoryLabel large). Combine with label.fontWeight. */
   --co-component-field-label-typography: var(--co-semantic-typography-label); /** Field label text. */
   --co-component-field-helper-text-typography: var(--co-semantic-typography-caption); /** Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label. */
   --co-component-alert-title-typography: var(--co-semantic-typography-h6); /** Alert title style (h6), adjusted by title.fontWeight and title.lineHeight. */

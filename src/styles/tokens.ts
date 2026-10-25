@@ -2243,12 +2243,12 @@ export type Tokens = {
       /** Badge indicators are always fully circular. */
       borderRadius: string;
       label: {
-        /** Text weight for the badge-like label family: StatusBadge, CategoryBadge and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
+        /** Text weight for the badge-like label family: StatusLabel, CategoryLabel and Tag (decision 0014). Declare it after the typography shorthand, which would otherwise reset it. */
         fontWeight: string;
         typography: {
-          /** Typography for small labels in the badge-like family (StatusBadge, CategoryBadge small; Tag). Combine with label.fontWeight. */
+          /** Typography for small labels in the badge-like family (StatusLabel small, CategoryLabel medium, Tag). Combine with label.fontWeight. */
           small: string;
-          /** Typography for medium labels in the badge-like family (StatusBadge, CategoryBadge medium). Combine with label.fontWeight. */
+          /** Typography for medium labels in the badge-like family (StatusLabel medium, CategoryLabel large). Combine with label.fontWeight. */
           medium: string;
         };
       };
