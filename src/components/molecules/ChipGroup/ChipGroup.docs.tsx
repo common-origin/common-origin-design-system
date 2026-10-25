@@ -18,13 +18,6 @@ export const chipGroupDocs: ComponentDocumentation = {
       description: 'Array of text labels to display as individual chips. Each string becomes a separate chip with automatic spacing and wrapping'
     },
     {
-      name: 'variant',
-      type: "'default' | 'dark'",
-      required: false,
-      default: 'default',
-      description: 'Visual variant applied uniformly to all chips in the group. Use "dark" for emphasis or on light backgrounds'
-    },
-    {
       name: 'data-testid',
       type: 'string',
       required: false,
@@ -35,10 +28,8 @@ export const chipGroupDocs: ComponentDocumentation = {
   tokens: [
     'semantic.space.200', // Gap between chips (Stack gap="sm")
     'component.chip.default.borderRadius',
-    'component.chip.default.backgroundColor', // variant="default"
+    'component.chip.default.backgroundColor',
     'component.chip.default.textColor',
-    'component.chip.variants.emphasis.backgroundColor', // variant="dark" renders the emphasis Chip
-    'component.chip.variants.emphasis.textColor',
   ],
 
   examples: [
@@ -47,26 +38,10 @@ export const chipGroupDocs: ComponentDocumentation = {
       description: 'Common use case showing technology tags with default styling',
       code: `<ChipGroup 
   labels={['React', 'TypeScript', 'Node.js', 'GraphQL', 'PostgreSQL']}
-  variant="default"
 />`,
       renderComponent: () => (
         <ChipGroup 
           labels={['React', 'TypeScript', 'Node.js', 'GraphQL', 'PostgreSQL']}
-          variant="default"
-        />
-      )
-    },
-    {
-      name: 'Dark Theme Variant',
-      description: 'Dark variant for emphasis or use on light backgrounds',
-      code: `<ChipGroup 
-  labels={['Frontend', 'Backend', 'DevOps', 'Mobile', 'Design']}
-  variant="dark"
-/>`,
-      renderComponent: () => (
-        <ChipGroup 
-          labels={['Frontend', 'Backend', 'DevOps', 'Mobile', 'Design']}
-          variant="dark"
         />
       )
     },
@@ -83,7 +58,6 @@ export const chipGroupDocs: ComponentDocumentation = {
     'Brief',
     'Comprehensive Category Title'
   ]}
-  variant="default"
 />`,
       renderComponent: () => (
         <div style={{ maxWidth: '400px' }}>
@@ -97,7 +71,6 @@ export const chipGroupDocs: ComponentDocumentation = {
               'Brief',
               'Comprehensive Category Title'
             ]}
-            variant="default"
           />
         </div>
       )
@@ -111,7 +84,6 @@ export const chipGroupDocs: ComponentDocumentation = {
     <Typography variant="label" color="subdued">BLOG POST TAGS</Typography>
     <ChipGroup 
       labels={['Design System', 'Accessibility', 'React', 'Best Practices']}
-      variant="default"
     />
   </Stack>
 
@@ -120,7 +92,6 @@ export const chipGroupDocs: ComponentDocumentation = {
     <Typography variant="label" color="subdued">PRODUCT CATEGORIES</Typography>
     <ChipGroup 
       labels={['Electronics', 'Smartphones', 'Apple', 'iOS', '5G']}
-      variant="dark"
     />
   </Stack>
 
@@ -129,7 +100,6 @@ export const chipGroupDocs: ComponentDocumentation = {
     <Typography variant="label" color="subdued">USER INTERESTS</Typography>
     <ChipGroup 
       labels={['Photography', 'Travel', 'Technology', 'Food & Dining', 'Sports']}
-      variant="default"
     />
   </Stack>
 </Stack>`,
@@ -140,7 +110,6 @@ export const chipGroupDocs: ComponentDocumentation = {
               <Typography variant="label" color="subdued">BLOG POST TAGS</Typography>
               <ChipGroup 
                 labels={['Design System', 'Accessibility', 'React', 'Best Practices']}
-                variant="default"
               />
             </Stack>
 
@@ -149,7 +118,6 @@ export const chipGroupDocs: ComponentDocumentation = {
               <Typography variant="label" color="subdued">PRODUCT CATEGORIES</Typography>
               <ChipGroup 
                 labels={['Electronics', 'Smartphones', 'Apple', 'iOS', '5G']}
-                variant="dark"
               />
             </Stack>
 
@@ -158,7 +126,6 @@ export const chipGroupDocs: ComponentDocumentation = {
               <Typography variant="label" color="subdued">USER INTERESTS</Typography>
               <ChipGroup 
                 labels={['Photography', 'Travel', 'Technology', 'Food & Dining', 'Sports']}
-                variant="default"
               />
             </Stack>
           </Stack>
@@ -174,7 +141,6 @@ export const chipGroupDocs: ComponentDocumentation = {
     'REST API', 'Docker', 'Kubernetes', 'AWS', 'Git',
     'Testing', 'Jest', 'Cypress', 'Accessibility', 'Performance'
   ]}
-  variant="default"
 />`,
       renderComponent: () => (
         <div style={{ maxWidth: '500px' }}>
@@ -185,7 +151,6 @@ export const chipGroupDocs: ComponentDocumentation = {
               'REST API', 'Docker', 'Kubernetes', 'AWS', 'Git',
               'Testing', 'Jest', 'Cypress', 'Accessibility', 'Performance'
             ]}
-            variant="default"
           />
         </div>
       )
@@ -205,16 +170,16 @@ export const chipGroupDocs: ComponentDocumentation = {
       'Text Scaling: Layout adapts gracefully to browser text scaling up to 200% without horizontal scrolling',
       'Motion Sensitivity: No animations respect user motion preferences - purely layout-based component'
     ],
-    keyboardNavigation: 'Tab: Navigate between individual chips in source order | Individual chips handle their own keyboard interactions based on variant and interactivity',
+    keyboardNavigation: 'Tab: Navigate between individual chips in source order | The chips are static labels and are not focusable',
     screenReader: 'Container announced as group of related items. Individual chips announced with their content and any interactive states. Reading flows naturally through each chip.',
     focusManagement: 'No focus management at group level - individual chips receive focus naturally. Focus indicators provided by child Chip components.',
-    colorContrast: 'Color contrast handled by individual Chip components. All variants meet WCAG AA requirements when used properly.'
+    colorContrast: 'Color contrast handled by the Chip component, whose text meets WCAG AA (4.5:1).'
   },
 
   notes: [
     'Layout Behavior: Uses Stack component with row direction and small gap for consistent, responsive wrapping behavior',
     'Content Grouping: Best for displaying related concepts like tags, categories, skills, technologies, or filter options',
-    'Variant Consistency: All chips in a group use the same variant to maintain visual cohesion and hierarchy',
+    'One look: every chip in a group is the default Chip. The variant prop was removed in 3.0 (decision 0016).',
     'Responsive Design: Automatically wraps to new lines based on container width and content length',
     'Performance: Efficient rendering with minimal DOM overhead - each label becomes a single Chip component',
     'Content Length: Handles mixed content lengths gracefully - short tags and longer descriptive labels work together',

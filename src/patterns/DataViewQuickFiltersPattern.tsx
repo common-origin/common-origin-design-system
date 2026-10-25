@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import {
   Box,
   Button,
-  BooleanChip,
+  FilterChip,
   Stack,
   Typography,
   IconButton,
@@ -251,29 +251,29 @@ export const DataViewQuickFiltersPattern: React.FC = () => {
               <Typography variant="label" color="subdued">Quick filters:</Typography>
             </QuickFiltersLabel>
             
-            <BooleanChip
+            <FilterChip
               selected={showActiveOnly}
               onClick={() => setShowActiveOnly(!showActiveOnly)}
               aria-label="Toggle show active only filter"
             >
               Show Active Only
-            </BooleanChip>
+            </FilterChip>
             
-            <BooleanChip
+            <FilterChip
               selected={showCompleted}
               onClick={() => setShowCompleted(!showCompleted)}
               aria-label="Toggle show completed filter"
             >
               Show Completed
-            </BooleanChip>
+            </FilterChip>
             
-            <BooleanChip
+            <FilterChip
               selected={urgentItems}
               onClick={() => setUrgentItems(!urgentItems)}
               aria-label="Toggle urgent items filter"
             >
               Urgent Items
-            </BooleanChip>
+            </FilterChip>
           </QuickFiltersGroup>
           
           <ActionsGroup>

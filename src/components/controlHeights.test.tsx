@@ -8,7 +8,7 @@ import { Dropdown } from './molecules/Dropdown'
 import { AgentInput } from './molecules/AgentInput'
 import { Button } from './atoms/Button'
 import { IconButton } from './atoms/IconButton'
-import { Chip, BooleanChip, InputChip } from './atoms/Chip'
+import { Chip, FilterChip, InputChip } from './atoms/Chip'
 
 // Controls take their height from size.control as a minimum, including the border, and
 // centre their content (decision 0034). Fields are size.control.lg; Button and IconButton
@@ -114,13 +114,13 @@ describe('chip heights', () => {
     expect(style.paddingBottom).toBe('0px')
   }
 
-  it.each([undefined, 'small', 'medium'] as const)('every chip is size.label.medium with size=%s', (size) => {
+  it('every chip is size.label.medium', () => {
     render(
       <>
-        <Chip size={size} data-testid="chip">Tag</Chip>
-        <BooleanChip size={size} selected onClick={() => {}} data-testid="boolean">Filter</BooleanChip>
-        <InputChip size={size} data-testid="input">Value</InputChip>
-        <InputChip size={size} onDismiss={() => {}} data-testid="dismissible">Value</InputChip>
+        <Chip data-testid="chip">Tag</Chip>
+        <FilterChip selected onClick={() => {}} data-testid="boolean">Filter</FilterChip>
+        <InputChip data-testid="input">Value</InputChip>
+        <InputChip onDismiss={() => {}} data-testid="dismissible">Value</InputChip>
       </>
     )
     expectChipHeight(screen.getByTestId('chip'))

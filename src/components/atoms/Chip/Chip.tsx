@@ -1,20 +1,13 @@
 import React from 'react'
-import { BaseChipProps, ChipVariant, LegacyVariant } from './shared/types'
+import { BaseChipProps, ChipVariant } from './shared/types'
 import { StyledChip } from './shared/ChipBase'
 
 export interface ChipProps extends BaseChipProps {
   /**
-   * Visual style. Only `default` stays in 3.0. `emphasis`, `subtle`, `interactive`, `light`
-   * and `dark` are deprecated and will be removed (decision 0016).
+   * Visual style. The static Chip has one, `default` (decision 0016).
    * @default 'default'
    */
-  variant?: ChipVariant | LegacyVariant
-  /**
-   * Click handler.
-   * @deprecated Removed in 3.0: the static Chip is not interactive. For a clickable action use a
-   * Button; for a toggle use `BooleanChip` (`FilterChip` in 3.0).
-   */
-  onClick?: () => void
+  variant?: ChipVariant
   /** Custom ARIA role override */
   role?: string
   /** Legacy title prop for backward compatibility */
@@ -25,19 +18,17 @@ export interface ChipProps extends BaseChipProps {
  * Chip - a static, non-interactive label for tags, categories and metadata.
  *
  * Chips are classified by job (decision 0016):
- * - Chip: a static label (`default` variant only)
- * - InputChip: a removable value, such as an applied filter (formerly `FilterChip`)
- * - BooleanChip: toggles a filter on and off (becomes `FilterChip` in 3.0)
+ * - Chip: a static label
+ * - FilterChip: toggles a filter on and off
+ * - InputChip: a removable value, such as an applied filter
+ * - SuggestionChip: fills the agent input with a suggestion
  *
- * The `emphasis`, `subtle`, `interactive`, `light` and `dark` variants and `onClick` are
- * deprecated and will be removed in 3.0.
+ * For a clickable action, use a Button.
  */
 export const Chip: React.FC<ChipProps> = ({
   children,
-  variant = 'default',
-  // Deprecated and ignored: chips have one size (decision 0035)
-  size: _size,
-  onClick,
+  // One variant: a removed one passed from plain JavaScript renders as default
+  variant: _variant,
   disabled = false,
   'data-testid': dataTestId,
   'aria-label': ariaLabel,
@@ -46,57 +37,24 @@ export const Chip: React.FC<ChipProps> = ({
   title,
   ...props
 }) => {
-  const isClickable = Boolean(onClick && !disabled)
-  
-  // Map legacy variants to new variants
-  const normalizedVariant: ChipVariant = 
-    variant === 'light' ? 'default' :
-    variant === 'dark' ? 'emphasis' :
-    variant as ChipVariant
-  
+  // Removed props passed from plain JavaScript stay off the DOM
+  const { onClick: _onClick, size: _size, ...domProps } = props as typeof props & { onClick?: unknown; size?: unknown }
+
   // Support legacy title prop
   const content = children !== undefined ? children : title
-  
-  const handleClick = () => {
-    if (onClick && !disabled) {
-      onClick()
-    }
-  }
-  
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (isClickable && (event.key === 'Enter' || event.key === ' ')) {
-      event.preventDefault()
-      handleClick()
-    }
-  }
-  
+
   return (
     <StyledChip
-      $variant={normalizedVariant}
+      $surface="default"
       $disabled={disabled || undefined}
-      $clickable={isClickable || undefined}
-      onClick={isClickable ? handleClick : undefined}
-      onKeyDown={handleKeyDown}
-      tabIndex={isClickable ? 0 : undefined}
-      role={role || (isClickable ? 'button' : undefined)}
+      role={role}
       aria-label={ariaLabel}
       aria-describedby={ariaDescribedBy}
       aria-disabled={disabled ? 'true' : undefined}
       data-testid={dataTestId}
-      {...props}
+      {...domProps}
     >
       {content}
     </StyledChip>
   )
-}
-
-// Legacy component for backward compatibility
-export interface LegacyChipProps {
-  title: string
-  variant?: LegacyVariant
-}
-
-export const LegacyChip: React.FC<LegacyChipProps> = ({ title, variant = 'light' }) => {
-  const newVariant = variant === 'dark' ? 'emphasis' : 'default'
-  return <Chip variant={newVariant}>{title}</Chip>
 }

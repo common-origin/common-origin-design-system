@@ -87,7 +87,7 @@ export const patternsData: PatternMetadata[] = [
     component: DataViewQuickFiltersPattern,
     overview: 'The Data View with Quick Filters pattern provides a streamlined approach to data filtering using boolean chips that toggle on/off instantly. Unlike dropdown-based filtering, quick filters immediately affect the displayed data without requiring a drawer or "Apply" action. This creates a simpler, more immediate user experience ideal for straightforward filtering needs.',
     keyFeatures: [
-      'Boolean Quick Filters: Toggle filters on/off with BooleanChip components',
+      'Boolean Quick Filters: Toggle filters on/off with FilterChip components',
       'Instant Filtering: Data updates immediately when filters are toggled',
       'No Drawer Required: All filters visible inline, no side drawer or bottom sheet',
       'Active Filter Count: Items count displays number of active filters',
@@ -109,7 +109,7 @@ export const patternsData: PatternMetadata[] = [
       'Stack',
       'Typography',
       'Button',
-      'BooleanChip',
+      'FilterChip',
       'IconButton',
       'Box',
     ],

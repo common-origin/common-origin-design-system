@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Chip } from './Chip'
 import { InputChip } from './InputChip'
-import { BooleanChip } from './BooleanChip'
+import { FilterChip } from './FilterChip'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
 import { labelGuide, labelGuideNotes } from '../../../lib/docgen/labelGuide'
@@ -23,10 +23,10 @@ const ChipTypesExample: React.FC = () => {
         </Stack>
       </Stack>
       <Stack direction="column" gap="sm">
-        <Typography variant="small">Filter: BooleanChip (FilterChip in 3.0)</Typography>
+        <Typography variant="small">Filter: FilterChip</Typography>
         <Stack direction="row" gap="sm" wrap>
-          <BooleanChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</BooleanChip>
-          <BooleanChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</BooleanChip>
+          <FilterChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</FilterChip>
+          <FilterChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</FilterChip>
         </Stack>
       </Stack>
       <Stack direction="column" gap="sm">
@@ -49,7 +49,7 @@ const ChipTypesExample: React.FC = () => {
 export const chipDocs: ComponentDocumentation = {
   id: 'chip',
   name: 'Chip',
-  description: 'A static, non-interactive label for tags, categories and metadata. Chips are classified by job, not emphasis (decision 0016): Chip is a static label, BooleanChip toggles a filter on and off (it becomes FilterChip in 3.0), and InputChip is a removable value such as an applied filter (formerly FilterChip). The static Chip\'s emphasis, subtle, interactive, light and dark variants and its onClick are deprecated and will be removed in 3.0.',
+  description: 'A static, non-interactive label for tags, categories and metadata. Chips are classified by job, not emphasis (decision 0016): Chip is a static label, FilterChip toggles a filter on and off, and InputChip is a removable value such as an applied filter. For a clickable action, use a Button.',
   category: 'Atoms',
 
   props: [
@@ -62,24 +62,10 @@ export const chipDocs: ComponentDocumentation = {
     },
     {
       name: 'variant',
-      type: "'default' | 'emphasis' | 'subtle' | 'interactive' | 'light' | 'dark'",
+      type: "'default'",
       required: false,
       default: 'default',
-      description: "Visual style. Only 'default' stays in 3.0. Deprecated, removed in 3.0: 'emphasis', 'subtle', 'interactive', and the legacy 'light' (same as default) and 'dark'. Chips have no emphasis levels."
-    },
-    {
-      name: 'size',
-      type: "'small' | 'medium'",
-      required: false,
-      default: 'undefined',
-      description: 'Deprecated and ignored, removed in 3.0: chips have one size, 24px (decision 0035).'
-    },
-    {
-      name: 'onClick',
-      type: '() => void',
-      required: false,
-      default: 'undefined',
-      description: 'Deprecated, removed in 3.0: the static Chip is not interactive. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0). While it remains, it gives the chip button semantics and Enter/Space activation.'
+      description: "Visual style. The static Chip has one: chips have no emphasis levels (decision 0016)."
     },
     {
       name: 'disabled',
@@ -139,37 +125,13 @@ export const chipDocs: ComponentDocumentation = {
     'semantic.size.label.medium',
     'semantic.space.inset.sm',
     // Motion
-    'semantic.motion.transition.feedback',
-    // Deprecated: hover, active and focus apply only to a chip with onClick
-    'component.chip.hover.backgroundColor',
-    'component.chip.active.backgroundColor',
-    'component.chip.focus.outline',
-    'semantic.border.focusOffset',
-    // Deprecated variants, removed in 3.0
-    'component.chip.variants.emphasis.backgroundColor',
-    'component.chip.variants.emphasis.textColor',
-    'component.chip.variants.emphasis.hover.backgroundColor',
-    'component.chip.variants.emphasis.active.backgroundColor',
-    'component.chip.variants.emphasis.disabled.backgroundColor',
-    'component.chip.variants.emphasis.disabled.textColor',
-    'component.chip.variants.subtle.backgroundColor',
-    'component.chip.variants.subtle.textColor',
-    'component.chip.variants.subtle.hover.backgroundColor',
-    'component.chip.variants.subtle.active.backgroundColor',
-    'component.chip.variants.subtle.disabled.backgroundColor',
-    'component.chip.variants.subtle.disabled.textColor',
-    'component.chip.variants.interactive.backgroundColor',
-    'component.chip.variants.interactive.textColor',
-    'component.chip.variants.interactive.hover.backgroundColor',
-    'component.chip.variants.interactive.active.backgroundColor',
-    'component.chip.variants.interactive.disabled.backgroundColor',
-    'component.chip.variants.interactive.disabled.textColor'
+    'semantic.motion.transition.feedback'
   ],
 
   examples: [
     {
       name: 'Chip Types',
-      description: 'Pick a chip by its job. Chip is a static label. BooleanChip toggles a filter on and off. InputChip is a removable value, such as an applied filter. Selected filter and input chips show a checkmark, with the light-blue fill and blue text when enabled; a disabled chip uses the disabled colours, selected or not.',
+      description: 'Pick a chip by its job. Chip is a static label. FilterChip toggles a filter on and off. InputChip is a removable value, such as an applied filter. Selected filter and input chips show a checkmark, with the light-blue fill and blue text when enabled; a disabled chip uses the disabled colours, selected or not.',
       code: `<Stack direction="column" gap="lg">
   {/* Static */}
   <Stack direction="row" gap="sm" wrap>
@@ -179,8 +141,8 @@ export const chipDocs: ComponentDocumentation = {
 
   {/* Filter: toggles on and off */}
   <Stack direction="row" gap="sm" wrap>
-    <BooleanChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</BooleanChip>
-    <BooleanChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</BooleanChip>
+    <FilterChip selected={inStock} onClick={() => setInStock(!inStock)}>In stock</FilterChip>
+    <FilterChip selected={onSale} onClick={() => setOnSale(!onSale)}>On sale</FilterChip>
   </Stack>
 
   {/* Input: removable values */}
@@ -209,25 +171,6 @@ export const chipDocs: ComponentDocumentation = {
           <Chip>Documentation</Chip>
         </Stack>
       )
-    },
-    {
-      name: 'Deprecated Variants',
-      description: 'These still render in 2.x but will be removed in 3.0. Replace them with the default chip; replace a chip with onClick with a Button (an action) or a BooleanChip (a toggle).',
-      code: `{/* Deprecated: remove the variant */}
-<Chip variant="emphasis">Featured</Chip>   →  <Chip>Featured</Chip>
-<Chip variant="subtle">Draft</Chip>        →  <Chip>Draft</Chip>
-<Chip variant="light">Archive</Chip>       →  <Chip>Archive</Chip>
-
-{/* Deprecated: onClick */}
-<Chip variant="interactive" onClick={save}>Save</Chip>
-  →  <Button variant="secondary" onClick={save}>Save</Button>`,
-      renderComponent: () => (
-        <Stack direction="row" gap="sm" wrap>
-          <Chip variant="emphasis">Featured</Chip>
-          <Chip variant="subtle">Draft</Chip>
-          <Chip variant="interactive">Interactive</Chip>
-        </Stack>
-      )
     }
   ],
 
@@ -237,26 +180,23 @@ export const chipDocs: ComponentDocumentation = {
       'Disabled state is communicated through aria-disabled.',
       'Use aria-label when the visible text needs more context, such as abbreviated content.',
       'Default chip text meets WCAG 2.2 AA (4.5:1).',
-      'BooleanChip uses role="checkbox" with aria-checked; InputChip uses role="status" and a labelled close button. See their pages for the full accessibility contract.',
-      'Deprecated: a chip with onClick gets button semantics, focus and Enter/Space activation. Use a Button instead, which has these natively.'
+      'FilterChip uses role="checkbox" with aria-checked; InputChip uses role="status" and a labelled close button. See their pages for the full accessibility contract.'
     ],
-    keyboardNavigation: 'A static chip is not focusable. (Deprecated: a chip with onClick is focusable and activates with Enter or Space.)',
+    keyboardNavigation: 'A static chip is not focusable.',
     screenReader: 'Announced as its text content, or its aria-label when provided.',
     focusManagement: 'A static chip does not take focus.'
   },
 
   guides: [labelGuide],
   notes: [
-    'Chip types (decision 0016): Chip for a static label, BooleanChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips keep their rounded 12px radius while Buttons use 4px, so the shapes signal different jobs.',
-    'Upcoming rename in 3.0: FilterChip (today a deprecated alias of InputChip) becomes the toggle chip, and BooleanChip is removed. Migrate in order: replace FilterChip with InputChip now, then BooleanChip with FilterChip when you upgrade to 3.0. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changes meaning.',
-    'Deprecated in 2.16, removed in 3.0: the emphasis, subtle, interactive, light and dark variants and onClick. For a clickable action use a Button; for a toggle use BooleanChip (FilterChip in 3.0).',
-    'Tag also has emphasis and interactive variants; its future is decided separately (#62).',
-    'Size: small for dense interfaces such as toolbars and metadata rows; medium for standard use.',
+    'Chip types (decision 0016): Chip for a static label, FilterChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips keep their rounded 12px radius while Buttons use 4px, so the shapes signal different jobs.',
+    'Renamed in 3.0: the toggle chip, BooleanChip, is now FilterChip, and the removable chip once called FilterChip is InputChip. Migrate in that order: FilterChip → InputChip first, then BooleanChip → FilterChip. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changed meaning.',
+    'Removed in 3.0: the static Chip\'s emphasis, subtle, interactive, light and dark variants, its onClick, LegacyChip, and every chip\'s size prop (chips have one size, 24px, decision 0035). For a clickable action use a Button; for a toggle use FilterChip.',
     ...labelGuideNotes
   ],
 
   anatomy: {
-    description: 'A compact inline label with a rounded container and text. InputChip and BooleanChip add a leading checkmark when selected, and InputChip adds a trailing close button when dismissible.',
+    description: 'A compact inline label with a rounded container and text. InputChip and FilterChip add a leading checkmark when selected, and InputChip adds a trailing close button when dismissible.',
     diagram: `
 ┌────────────────────────────────────┐
 │  Chip Container                    │
@@ -266,7 +206,7 @@ export const chipDocs: ComponentDocumentation = {
 │  └──────┘  └─────────┘  └───────┘ │
 └────────────────────────────────────┘
 
-Icon: checkmark on selected BooleanChip and InputChip
+Icon: checkmark on selected FilterChip and InputChip
 Close: InputChip with onDismiss
     `,
     parts: [
@@ -281,7 +221,7 @@ Close: InputChip with onDismiss
       },
       {
         name: 'Icon (optional)',
-        description: 'Leading checkmark on selected BooleanChip and InputChip, in the chip text colour.',
+        description: 'Leading checkmark on selected FilterChip and InputChip, in the chip text colour.',
         tokens: [
           'semantic.space.100'
         ]

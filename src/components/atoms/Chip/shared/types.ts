@@ -3,10 +3,6 @@ import React from 'react'
 // Base props shared across all chip variants
 export interface BaseChipProps {
   children?: React.ReactNode
-  /**
-   * @deprecated Ignored, and removed in 3.0. Chips have one size, 24px (decision 0035).
-   */
-  size?: 'small' | 'medium'
   disabled?: boolean
   'data-testid'?: string
   'aria-label'?: string
@@ -14,28 +10,21 @@ export interface BaseChipProps {
 }
 
 /**
- * Visual variants for the static Chip. Only `default` stays in 3.0 (decision 0016):
- * chips are classified by job, not emphasis.
+ * Visual variant of the static Chip. Chips are classified by job, not emphasis, so the static
+ * Chip has only `default` (decision 0016).
  */
-export type ChipVariant =
-  | 'default'
-  /** @deprecated Removed in 3.0. Chips have no emphasis levels; use `default`. */
-  | 'emphasis'
-  /** @deprecated Removed in 3.0. Use `default`. */
-  | 'subtle'
-  /** @deprecated Removed in 3.0. For a clickable action use a Button; for a toggle use `BooleanChip` (`FilterChip` in 3.0). */
-  | 'interactive'
+export type ChipVariant = 'default'
+
+/**
+ * Internal chip surfaces: `default` for the static Chip; `subtle` for the controls (FilterChip
+ * and InputChip) before they're selected.
+ */
+export type ChipSurface = 'default' | 'subtle'
 
 // Internal props for styled components with $ prefix
 export interface InternalStyledProps {
-  $variant: ChipVariant
+  $surface: ChipSurface
   $disabled?: boolean
   $clickable?: boolean
   $selected?: boolean
 }
-
-/**
- * Legacy Chip variants.
- * @deprecated Removed in 3.0. `light` is the same as `default`; `dark` maps to the deprecated `emphasis`. Use `default`.
- */
-export type LegacyVariant = 'light' | 'dark'

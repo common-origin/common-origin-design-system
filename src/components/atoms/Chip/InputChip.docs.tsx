@@ -75,13 +75,6 @@ export const inputChipDocs: ComponentDocumentation = {
         'Callback fired when the user removes the filter. When provided, a close (×) button is rendered on the right. Not called when the chip is disabled.'
     },
     {
-      name: 'size',
-      type: "'small' | 'medium'",
-      required: false,
-      default: 'undefined',
-      description: 'Deprecated and ignored, removed in 3.0: chips have one size, 24px (decision 0035).'
-    },
-    {
       name: 'disabled',
       type: 'boolean',
       required: false,
@@ -243,7 +236,7 @@ return (
     screenReader:
       'Chip container announced with role="status" and aria-label (or visible text). Close button announced as "Remove [filter label], button". When the close button is disabled, its unavailable state is conveyed by native disabled button semantics. Custom role prop overrides the default "status" role when provided.',
     focusManagement:
-      'The close button uses component.chip.focus.outline (2px solid outline) and semantic.border.focusOffset (2px offset) for focus visibility, consistent with BooleanChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
+      'The close button uses component.chip.focus.outline (2px solid outline) and semantic.border.focusOffset (2px offset) for focus visibility, consistent with FilterChip and Button. The chip container itself is not keyboard-focusable. Disabled close buttons do not receive focus.',
     colorContrast:
       'Unselected text meets WCAG AA (4.5:1). An enabled selected chip uses blue text on the light-blue fill: 4.70:1 (text.interactive on background.interactive-subtle). The checkmark and close icon take the text colour. A selected disabled chip uses the disabled colours instead, with its checkmark kept; disabled text is exempt from the contrast minimum (WCAG 1.4.3).'
   },
@@ -322,11 +315,11 @@ States:
   },
 
   notes: [
-    'Renamed from FilterChip in 2.16 (decision 0016). FilterChip still works as a deprecated alias. In 3.0 the name FilterChip moves to the toggle chip (today\'s BooleanChip), so replace FilterChip with InputChip before upgrading.',
-    'InputChip vs BooleanChip: InputChip is a passive display element — its body is not clickable. It shows which filters are applied. BooleanChip is a toggle control — the whole chip is clickable to turn a filter on or off.',
+    'Renamed from FilterChip in 2.16 (decision 0016). In 3.0 the name FilterChip moved to the toggle chip (formerly BooleanChip), so replace FilterChip with InputChip before renaming BooleanChip to FilterChip.',
+    'InputChip vs FilterChip: InputChip is a passive display element — its body is not clickable. It shows which filters are applied. FilterChip is a toggle control — the whole chip is clickable to turn a filter on or off.',
     'The close button aria-label is derived from children when children is a string (e.g. children="Status: Active" → aria-label="Remove Status: Active"). Use string children whenever the chip is dismissible to guarantee a meaningful label.',
     'data-testid on the chip container generates a matching "-close" suffix on the close button automatically. For example, data-testid="status-filter" gives data-testid="status-filter-close" on the close button.',
     'InputChips are not form inputs — they do not submit values. They are display elements that communicate state and optionally trigger a removal callback.',
-    'For a table filter bar: use BooleanChip (or similar toggles) to let users select filter values, then render InputChip above the results to show which filters are active and allow individual removal.'
+    'For a table filter bar: use FilterChip (or similar toggles) to let users select filter values, then render InputChip above the results to show which filters are active and allow individual removal.'
   ]
 }
