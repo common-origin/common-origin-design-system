@@ -1752,331 +1752,438 @@
       "neutral": {
         "$description": "Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black).",
         "100": {
-          "$value": "#f8f9fa"
+          "$value": "#f8f9fa",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "200": {
-          "$value": "#e9ecef"
+          "$value": "#e9ecef",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "300": {
-          "$value": "#dee2e6"
+          "$value": "#dee2e6",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "400": {
-          "$value": "#ced4da"
+          "$value": "#ced4da",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "500": {
-          "$value": "#adb5bd"
+          "$value": "#adb5bd",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "600": {
-          "$value": "#6c757d"
+          "$value": "#6c757d",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "700": {
-          "$value": "#495057"
+          "$value": "#495057",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "800": {
-          "$value": "#343a40"
+          "$value": "#343a40",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "900": {
-          "$value": "#212529"
+          "$value": "#212529",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "1000": {
-          "$value": "#16191C"
+          "$value": "#16191C",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0."
         },
         "000": {
-          "$value": "#ffffff"
+          "$value": "#ffffff",
+          "$deprecated": "The Bootstrap neutral ramp is replaced by the gray ramp (decision 0040); its white is base.color.white (decision 0049). Removed in 3.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "base.color.white"
+            }
+          }
         }
       },
       "green": {
         "$description": "Green ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#CEF8E0"
+          "$value": "#CEF8E0",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#ADF4CE"
+          "$value": "#ADF4CE",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#89ECBC"
+          "$value": "#89ECBC",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#67DEA8"
+          "$value": "#67DEA8",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#49CC93"
+          "$value": "#49CC93",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#2FB880"
+          "$value": "#2FB880",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#15A46E"
+          "$value": "#15A46E",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#008F5D"
+          "$value": "#008F5D",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#007A4D"
+          "$value": "#007A4D",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#00653E"
+          "$value": "#00653E",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#005132"
+          "$value": "#005132",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#053F27"
+          "$value": "#053F27",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#0A2E1D"
+          "$value": "#0A2E1D",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "orange": {
         "$description": "Orange ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#FFECCC"
+          "$value": "#FFECCC",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#FFDFAD"
+          "$value": "#FFDFAD",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#FDD291"
+          "$value": "#FDD291",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#FFBB63"
+          "$value": "#FFBB63",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#FFA037"
+          "$value": "#FFA037",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#F68511"
+          "$value": "#F68511",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#E46F00"
+          "$value": "#E46F00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#CB5D00"
+          "$value": "#CB5D00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#B14C00"
+          "$value": "#B14C00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#953D00"
+          "$value": "#953D00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#7A2F00"
+          "$value": "#7A2F00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#612300"
+          "$value": "#612300",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#491901"
+          "$value": "#491901",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "red": {
         "$description": "Red ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#FFEBE7"
+          "$value": "#FFEBE7",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#FFDDD6"
+          "$value": "#FFDDD6",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#FFCDC3"
+          "$value": "#FFCDC3",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#FFB7A9"
+          "$value": "#FFB7A9",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#FF9B88"
+          "$value": "#FF9B88",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#FF7C65"
+          "$value": "#FF7C65",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#F75C46"
+          "$value": "#F75C46",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#EA3829"
+          "$value": "#EA3829",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#D31510"
+          "$value": "#D31510",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#B40000"
+          "$value": "#B40000",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#930000"
+          "$value": "#930000",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#740000"
+          "$value": "#740000",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#590000"
+          "$value": "#590000",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "blue": {
         "$description": "Blue ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#E0F2FF"
+          "$value": "#E0F2FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#CAE8FF"
+          "$value": "#CAE8FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#B5DEFF"
+          "$value": "#B5DEFF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#96CEFD"
+          "$value": "#96CEFD",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#78BBFA"
+          "$value": "#78BBFA",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#59A7F6"
+          "$value": "#59A7F6",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#3892F3"
+          "$value": "#3892F3",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#147AF3"
+          "$value": "#147AF3",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#0265DC"
+          "$value": "#0265DC",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#0054B6"
+          "$value": "#0054B6",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#004491"
+          "$value": "#004491",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#003571"
+          "$value": "#003571",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#002754"
+          "$value": "#002754",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "purple": {
         "$description": "Purple ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#F9F0FF"
+          "$value": "#F9F0FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#F4E1FF"
+          "$value": "#F4E1FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#EDD0FF"
+          "$value": "#EDD0FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#E3B8FF"
+          "$value": "#E3B8FF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#D59DFF"
+          "$value": "#D59DFF",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#C27EF7"
+          "$value": "#C27EF7",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#AD5FE8"
+          "$value": "#AD5FE8",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#9644D4"
+          "$value": "#9644D4",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#7E2EBD"
+          "$value": "#7E2EBD",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#67229F"
+          "$value": "#67229F",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#511882"
+          "$value": "#511882",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#3D1066"
+          "$value": "#3D1066",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#2B0A4D"
+          "$value": "#2B0A4D",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "pink": {
         "$description": "Pink ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#FFEFF9"
+          "$value": "#FFEFF9",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#FFDFF4"
+          "$value": "#FFDFF4",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#FFCBED"
+          "$value": "#FFCBED",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#FFB0E3"
+          "$value": "#FFB0E3",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#FF8ED4"
+          "$value": "#FF8ED4",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#FF69C1"
+          "$value": "#FF69C1",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#FF42AB"
+          "$value": "#FF42AB",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#F31A93"
+          "$value": "#F31A93",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#DC007B"
+          "$value": "#DC007B",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#B90064"
+          "$value": "#B90064",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#97004E"
+          "$value": "#97004E",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#78003A"
+          "$value": "#78003A",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#5C0029"
+          "$value": "#5C0029",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       },
       "yellow": {
         "$description": "Yellow ramp; the key orders lightness from 100 (lightest) to 1300 (darkest).",
         "100": {
-          "$value": "#FFF3D6"
+          "$value": "#FFF3D6",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "200": {
-          "$value": "#FFE9B3"
+          "$value": "#FFE9B3",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "300": {
-          "$value": "#FFDE8F"
+          "$value": "#FFDE8F",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "400": {
-          "$value": "#FFD162"
+          "$value": "#FFD162",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "500": {
-          "$value": "#FFC233"
+          "$value": "#FFC233",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "600": {
-          "$value": "#EDAD0A"
+          "$value": "#EDAD0A",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "700": {
-          "$value": "#D39700"
+          "$value": "#D39700",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "800": {
-          "$value": "#B88100"
+          "$value": "#B88100",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "900": {
-          "$value": "#9D6C00"
+          "$value": "#9D6C00",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1000": {
-          "$value": "#825800"
+          "$value": "#825800",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1100": {
-          "$value": "#694600"
+          "$value": "#694600",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1200": {
-          "$value": "#523600"
+          "$value": "#523600",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         },
         "1300": {
-          "$value": "#3D2800"
+          "$value": "#3D2800",
+          "$deprecated": "The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0."
         }
       }
     },

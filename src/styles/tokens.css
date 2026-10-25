@@ -361,108 +361,108 @@
   --co-base-color-magenta-alpha-1000: rgba(215, 0, 212, 1); /** Solid fill on hover. Composites to magenta.1000 over white. */
   --co-base-color-magenta-alpha-1100: rgba(177, 0, 175, 1); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to magenta.1100 over white. */
   --co-base-color-magenta-alpha-1200: rgba(37, 0, 35, 0.918); /** Primary text, and the darkest step. Composites to magenta.1200 over white. */
-  --co-base-color-neutral-100: #f8f9fa;
-  --co-base-color-neutral-200: #e9ecef;
-  --co-base-color-neutral-300: #dee2e6;
-  --co-base-color-neutral-400: #ced4da;
-  --co-base-color-neutral-500: #adb5bd;
-  --co-base-color-neutral-600: #6c757d;
-  --co-base-color-neutral-700: #495057;
-  --co-base-color-neutral-800: #343a40;
-  --co-base-color-neutral-900: #212529;
-  --co-base-color-neutral-1000: #16191C;
-  --co-base-color-neutral-000: #ffffff;
-  --co-base-color-green-100: #CEF8E0;
-  --co-base-color-green-200: #ADF4CE;
-  --co-base-color-green-300: #89ECBC;
-  --co-base-color-green-400: #67DEA8;
-  --co-base-color-green-500: #49CC93;
-  --co-base-color-green-600: #2FB880;
-  --co-base-color-green-700: #15A46E;
-  --co-base-color-green-800: #008F5D;
-  --co-base-color-green-900: #007A4D;
-  --co-base-color-green-1000: #00653E;
-  --co-base-color-green-1100: #005132;
-  --co-base-color-green-1200: #053F27;
-  --co-base-color-green-1300: #0A2E1D;
-  --co-base-color-orange-100: #FFECCC;
-  --co-base-color-orange-200: #FFDFAD;
-  --co-base-color-orange-300: #FDD291;
-  --co-base-color-orange-400: #FFBB63;
-  --co-base-color-orange-500: #FFA037;
-  --co-base-color-orange-600: #F68511;
-  --co-base-color-orange-700: #E46F00;
-  --co-base-color-orange-800: #CB5D00;
-  --co-base-color-orange-900: #B14C00;
-  --co-base-color-orange-1000: #953D00;
-  --co-base-color-orange-1100: #7A2F00;
-  --co-base-color-orange-1200: #612300;
-  --co-base-color-orange-1300: #491901;
-  --co-base-color-red-100: #FFEBE7;
-  --co-base-color-red-200: #FFDDD6;
-  --co-base-color-red-300: #FFCDC3;
-  --co-base-color-red-400: #FFB7A9;
-  --co-base-color-red-500: #FF9B88;
-  --co-base-color-red-600: #FF7C65;
-  --co-base-color-red-700: #F75C46;
-  --co-base-color-red-800: #EA3829;
-  --co-base-color-red-900: #D31510;
-  --co-base-color-red-1000: #B40000;
-  --co-base-color-red-1100: #930000;
-  --co-base-color-red-1200: #740000;
-  --co-base-color-red-1300: #590000;
-  --co-base-color-blue-100: #E0F2FF;
-  --co-base-color-blue-200: #CAE8FF;
-  --co-base-color-blue-300: #B5DEFF;
-  --co-base-color-blue-400: #96CEFD;
-  --co-base-color-blue-500: #78BBFA;
-  --co-base-color-blue-600: #59A7F6;
-  --co-base-color-blue-700: #3892F3;
-  --co-base-color-blue-800: #147AF3;
-  --co-base-color-blue-900: #0265DC;
-  --co-base-color-blue-1000: #0054B6;
-  --co-base-color-blue-1100: #004491;
-  --co-base-color-blue-1200: #003571;
-  --co-base-color-blue-1300: #002754;
-  --co-base-color-purple-100: #F9F0FF;
-  --co-base-color-purple-200: #F4E1FF;
-  --co-base-color-purple-300: #EDD0FF;
-  --co-base-color-purple-400: #E3B8FF;
-  --co-base-color-purple-500: #D59DFF;
-  --co-base-color-purple-600: #C27EF7;
-  --co-base-color-purple-700: #AD5FE8;
-  --co-base-color-purple-800: #9644D4;
-  --co-base-color-purple-900: #7E2EBD;
-  --co-base-color-purple-1000: #67229F;
-  --co-base-color-purple-1100: #511882;
-  --co-base-color-purple-1200: #3D1066;
-  --co-base-color-purple-1300: #2B0A4D;
-  --co-base-color-pink-100: #FFEFF9;
-  --co-base-color-pink-200: #FFDFF4;
-  --co-base-color-pink-300: #FFCBED;
-  --co-base-color-pink-400: #FFB0E3;
-  --co-base-color-pink-500: #FF8ED4;
-  --co-base-color-pink-600: #FF69C1;
-  --co-base-color-pink-700: #FF42AB;
-  --co-base-color-pink-800: #F31A93;
-  --co-base-color-pink-900: #DC007B;
-  --co-base-color-pink-1000: #B90064;
-  --co-base-color-pink-1100: #97004E;
-  --co-base-color-pink-1200: #78003A;
-  --co-base-color-pink-1300: #5C0029;
-  --co-base-color-yellow-100: #FFF3D6;
-  --co-base-color-yellow-200: #FFE9B3;
-  --co-base-color-yellow-300: #FFDE8F;
-  --co-base-color-yellow-400: #FFD162;
-  --co-base-color-yellow-500: #FFC233;
-  --co-base-color-yellow-600: #EDAD0A;
-  --co-base-color-yellow-700: #D39700;
-  --co-base-color-yellow-800: #B88100;
-  --co-base-color-yellow-900: #9D6C00;
-  --co-base-color-yellow-1000: #825800;
-  --co-base-color-yellow-1100: #694600;
-  --co-base-color-yellow-1200: #523600;
-  --co-base-color-yellow-1300: #3D2800;
+  --co-base-color-neutral-100: #f8f9fa; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-200: #e9ecef; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-300: #dee2e6; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-400: #ced4da; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-500: #adb5bd; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-600: #6c757d; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-700: #495057; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-800: #343a40; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-900: #212529; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-1000: #16191C; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0. */
+  --co-base-color-neutral-000: #ffffff; /** Deprecated: The Bootstrap neutral ramp is replaced by the gray ramp (decision 0040); its white is base.color.white (decision 0049). Removed in 3.0. */
+  --co-base-color-green-100: #CEF8E0; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-200: #ADF4CE; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-300: #89ECBC; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-400: #67DEA8; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-500: #49CC93; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-600: #2FB880; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-700: #15A46E; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-800: #008F5D; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-900: #007A4D; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-1000: #00653E; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-1100: #005132; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-1200: #053F27; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-green-1300: #0A2E1D; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-100: #FFECCC; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-200: #FFDFAD; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-300: #FDD291; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-400: #FFBB63; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-500: #FFA037; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-600: #F68511; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-700: #E46F00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-800: #CB5D00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-900: #B14C00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-1000: #953D00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-1100: #7A2F00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-1200: #612300; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-orange-1300: #491901; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-100: #FFEBE7; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-200: #FFDDD6; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-300: #FFCDC3; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-400: #FFB7A9; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-500: #FF9B88; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-600: #FF7C65; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-700: #F75C46; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-800: #EA3829; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-900: #D31510; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-1000: #B40000; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-1100: #930000; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-1200: #740000; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-red-1300: #590000; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-100: #E0F2FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-200: #CAE8FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-300: #B5DEFF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-400: #96CEFD; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-500: #78BBFA; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-600: #59A7F6; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-700: #3892F3; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-800: #147AF3; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-900: #0265DC; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-1000: #0054B6; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-1100: #004491; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-1200: #003571; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-blue-1300: #002754; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-100: #F9F0FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-200: #F4E1FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-300: #EDD0FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-400: #E3B8FF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-500: #D59DFF; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-600: #C27EF7; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-700: #AD5FE8; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-800: #9644D4; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-900: #7E2EBD; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-1000: #67229F; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-1100: #511882; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-1200: #3D1066; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-purple-1300: #2B0A4D; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-100: #FFEFF9; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-200: #FFDFF4; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-300: #FFCBED; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-400: #FFB0E3; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-500: #FF8ED4; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-600: #FF69C1; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-700: #FF42AB; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-800: #F31A93; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-900: #DC007B; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-1000: #B90064; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-1100: #97004E; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-1200: #78003A; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-pink-1300: #5C0029; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-100: #FFF3D6; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-200: #FFE9B3; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-300: #FFDE8F; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-400: #FFD162; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-500: #FFC233; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-600: #EDAD0A; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-700: #D39700; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-800: #B88100; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-900: #9D6C00; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-1000: #825800; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-1100: #694600; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-1200: #523600; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
+  --co-base-color-yellow-1300: #3D2800; /** Deprecated: The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0. */
   --co-base-spacing-auto: auto;
   --co-base-font-family-heading: 'Inter', sans-serif;
   --co-base-font-family-body: 'Inter', sans-serif;

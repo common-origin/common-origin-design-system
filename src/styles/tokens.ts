@@ -861,128 +861,434 @@ export type Tokens = {
       };
       /** Neutral grey ramp: 000 is white, then 100 (lightest grey) to 1000 (near-black). */
       neutral: {
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp, whose steps have different values and jobs (decision 0040). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Bootstrap neutral ramp is replaced by the gray ramp (decision 0040); its white is base.color.white (decision 0049). Removed in 3.0.
+         */
         '000': string;
       };
       /** Green ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       green: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Orange ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       orange: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Red ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       red: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Blue ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       blue: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Purple ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       purple: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Pink ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       pink: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
       /** Yellow ramp; the key orders lightness from 100 (lightest) to 1300 (darkest). */
       yellow: {
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '300': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '400': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '500': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '600': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '700': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '800': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '900': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1000': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1100': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1200': string;
+        /**
+         * @deprecated The Spectrum 1 hue ramps are replaced by the role ramps (accent, success, warning, serious, danger, ai) and the display ramps (olive, periwinkle, rose, magenta), with different values (decisions 0040, 0043, 0044). Removed in 3.0.
+         */
         '1300': string;
       };
     };
