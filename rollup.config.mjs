@@ -130,6 +130,7 @@ export default [
         'src/lib/cssTokens.ts',
         'src/lib/cssVariables.ts',
         'src/lib/floatingPosition.ts',
+        'src/lib/keyboardFocus.ts',
         'src/lib/statusShapes.ts',
         'src/lib/styleUtils.ts',
         'src/lib/tokenAliases.ts',

@@ -57,8 +57,10 @@ const Row = styled.a.withConfig({
   gap: ${space[200]};
   box-sizing: border-box;
   width: 100%;
+  /* The row's height is its token, with the content centred (as controls, 0034): vertical
+     padding would hold a compact row above its 24px (0051) */
   min-height: ${size.row.sm};
-  padding: ${space.inset.xs} ${space.inset.sm};
+  padding: 0 ${space.inset.sm};
   border: none;
   border-radius: ${radius.sm};
   background: none;
@@ -88,7 +90,7 @@ const Row = styled.a.withConfig({
     $collapsed &&
     css`
       justify-content: center;
-      padding: ${space.inset.xs};
+      padding: 0 ${space.inset.xs};
     `}
 
   &:focus {
@@ -176,6 +178,8 @@ export const SidebarNavItem = ({
     // The icon is decorative (0028)
     'aria-label': name,
     'data-testid': dataTestId,
+    // SidebarNav's gliding highlight finds rows by this (0053)
+    'data-sidebar-row': '',
     onClick,
   }
 

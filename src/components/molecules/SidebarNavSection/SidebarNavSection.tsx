@@ -173,7 +173,7 @@ export const SidebarNavSection = ({
   action,
   'data-testid': dataTestId,
 }: SidebarNavSectionProps) => {
-  const { collapsed } = useSidebarNav()
+  const { collapsed, inNav } = useSidebarNav()
   const labelId = useId()
   const listId = useId()
   const [uncontrolledExpanded, setUncontrolledExpanded] = useState(defaultExpanded)
@@ -221,7 +221,8 @@ export const SidebarNavSection = ({
   )
 
   return (
-    <Section $collapsed={collapsed} data-testid={dataTestId}>
+    // In a SidebarNav the body is one list, so the section is one of its items
+    <Section as={inNav ? 'li' : 'div'} $collapsed={collapsed} data-testid={dataTestId}>
       {header}
       <Collapse
         $expanded={expanded}

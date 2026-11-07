@@ -84,6 +84,12 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Alert's action follows the content: below the message, left-aligned with it, `md` above it. The action and the dismiss button never share a row. ([0021](decisions/0021-alert-action-below-content.md)) | Enforced ([#122](https://github.com/common-origin/common-origin-design-system/issues/122)) |
 | `InlineAlert` is the small, local message: a severity icon and short text in the severity colour, with no background, border, title, action or dismiss button. Sizes `small` and `medium`. Feedback about a control is linked with `aria-describedby`. Every severity colour is at least 4.5:1 on the page, white and grey surfaces; check other backgrounds before use. ([0019](decisions/0019-alert-and-inline-alert.md)) | Enforced — InlineAlert ships; Alert's `inline` prop was removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)) |
 
+## Navigation
+
+| Rule | Status |
+|---|---|
+| **SidebarNav** sits on the page background with a thin right edge, no fill (P1). Its width is a prop on the width tokens (`narrow`, `default`, `wide`: 224, 256, 300px) and it collapses to the 56px rail, animating over `duration.moderate`; row heights come from density on the region around it, never a prop (P9, [0051](decisions/0051-row-heights-and-dense-targets.md)). Rows are `size.row.sm` with the content centred and no vertical padding. One highlight glides to the hovered or focused row ([0053](decisions/0053-sidebarnav-glide.md)); the current page is the light-blue selected row with `aria-current="page"`. In the rail, rows show their icon and badge only, named by their label and shown in a Tooltip; sections are separated by a rule; the footer is hidden. On small screens it goes in a Sheet, expanded, with no toggle. ([#331](https://github.com/common-origin/common-origin-design-system/issues/331)) | Enforced: `SidebarNav.test.tsx`, `e2e/sidebar-nav.spec.ts` |
+
 ## Tooltips and menus
 
 | Rule | Status |
