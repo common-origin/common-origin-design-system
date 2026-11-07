@@ -1,9 +1,16 @@
-import React, { useId, useState } from 'react'
+import React, { useEffect, useId, useState } from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '@/lib/cssTokens'
+// The clip timer needs the resolved duration, not its CSS variable (decision 0041)
+// eslint-disable-next-line no-restricted-imports
+import tokenValues from '../../../styles/tokens.json'
 import { interactiveRow, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
+
+// How long the items take to show or hide: the clip lifts after this even if no transition ran
+// (reduced motion, or a background tab)
+const COLLAPSE_MS = parseInt(tokenValues.semantic.motion.duration.moderate, 10)
 
 const { semantic } = tokens
 const { space, color, motion, radius, size, border, typography } = semantic
@@ -175,6 +182,12 @@ export const SidebarNavSection = ({
   const userExpanded = isControlled ? expandedProp : uncontrolledExpanded
   // The rail has no disclosure button, so a section always shows its items there
   const expanded = !collapsible || collapsed || userExpanded
+
+  useEffect(() => {
+    if (!animating) return
+    const timer = setTimeout(() => setAnimating(false), COLLAPSE_MS)
+    return () => clearTimeout(timer)
+  }, [animating])
 
   const toggle = () => {
     const next = !expanded

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { SidebarNavSection, type SidebarNavSectionProps } from './SidebarNavSection'
@@ -113,6 +113,10 @@ describe('SidebarNavSection', () => {
     expect(list).toHaveStyle({ overflow: 'visible' })
     await user.click(screen.getByRole('button', { name: 'Chats' }))
     expect(screen.getByRole('list', { hidden: true })).toHaveStyle({ overflow: 'hidden' })
+    // Shown again: the clip lifts after the transition's duration even when no transition runs
+    // (jsdom, or reduced motion), so a badge isn't left clipped
+    await user.click(screen.getByRole('button', { name: 'Chats' }))
+    await waitFor(() => expect(screen.getByRole('list', { name: 'Chats' })).toHaveStyle({ overflow: 'visible' }))
   })
 
   it("draws no rule in the rail when nothing is above it", () => {
