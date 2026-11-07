@@ -1283,6 +1283,18 @@ export type Tokens = {
       /** Code line height. */
       lineHeight: string;
     };
+    sidebarNav: {
+      width: {
+        /** Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side. */
+        rail: string;
+        /** Width of an expanded SidebarNav with width="narrow": short labels. */
+        narrow: string;
+        /** Width of an expanded SidebarNav with the default width: labels with a trailing count. */
+        default: string;
+        /** Width of an expanded SidebarNav with width="wide": long titles, such as chat history. */
+        wide: string;
+      };
+    };
     slider: {
       thumb: {
         shadow: {
@@ -1526,6 +1538,8 @@ export type Tokens = {
       '800': string;
       /** Size step for headers and indents, such as the AccountCard header. */
       '1200': string;
+      /** Size step for the collapsed SidebarNav rail: one icon row with an inset on each side. */
+      '1400': string;
       /** Size step for the comfortable ListItem expanded indent. */
       '1500': string;
       /** Size step for tall rows, such as the TransactionListItem minimum height. */
@@ -1538,7 +1552,11 @@ export type Tokens = {
       '4500': string;
       /** Size step for large illustrations, such as the large EmptyState image. */
       '5000': string;
-      /** Size step for narrow column widths: AccountCard, EmptyState actions. */
+      /** Size step for a narrow navigation column: the narrow SidebarNav. */
+      '5600': string;
+      /** Size step for a standard navigation column: the default SidebarNav. */
+      '6400': string;
+      /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav. */
       '7500': string;
       /** Size step for readable text widths, such as EmptyState copy. */
       '9000': string;

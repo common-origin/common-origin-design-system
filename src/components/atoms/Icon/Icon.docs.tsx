@@ -216,7 +216,8 @@ export const iconDocs: ComponentDocumentation = {
   <Icon name="back" /> <Icon name="caret" />
   <Icon name="caretDown" /> <Icon name="caretUp" />
   <Icon name="directionRight" /> <Icon name="directionUp" />
-  <Icon name="kebab" /> <Icon name="meatballs" />
+  <Icon name="home" /> <Icon name="kebab" />
+  <Icon name="meatballs" /> <Icon name="sidebar" />
 </Stack>
 
 {/* Interface Icons */}
@@ -330,7 +331,7 @@ export const iconDocs: ComponentDocumentation = {
           
           {/* Navigation Icons */}
           <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">NAVIGATION ICONS (12)</Typography>
+            <Typography variant="label" color="subdued">NAVIGATION ICONS (14)</Typography>
             <Stack direction="row" gap="lg" wrap>
               <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="arrowDown" />
@@ -377,8 +378,16 @@ export const iconDocs: ComponentDocumentation = {
                 <Typography variant="caption">kebab</Typography>
               </Stack>
               <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="home" />
+                <Typography variant="caption">home</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
                 <Icon name="meatballs" />
                 <Typography variant="caption">meatballs</Typography>
+              </Stack>
+              <Stack direction="column" gap="sm" alignItems="center">
+                <Icon name="sidebar" />
+                <Typography variant="caption">sidebar</Typography>
               </Stack>
             </Stack>
           </Stack>

@@ -353,6 +353,10 @@
         "$value": "{base.dimension.12}",
         "$description": "Size step for headers and indents, such as the AccountCard header."
       },
+      "1400": {
+        "$value": "{base.dimension.14}",
+        "$description": "Size step for the collapsed SidebarNav rail: one icon row with an inset on each side."
+      },
       "1500": {
         "$value": "{base.dimension.15}",
         "$description": "Size step for the comfortable ListItem expanded indent."
@@ -377,9 +381,17 @@
         "$value": "{base.dimension.50}",
         "$description": "Size step for large illustrations, such as the large EmptyState image."
       },
+      "5600": {
+        "$value": "{base.dimension.56}",
+        "$description": "Size step for a narrow navigation column: the narrow SidebarNav."
+      },
+      "6400": {
+        "$value": "{base.dimension.64}",
+        "$description": "Size step for a standard navigation column: the default SidebarNav."
+      },
       "7500": {
         "$value": "{base.dimension.75}",
-        "$description": "Size step for narrow column widths: AccountCard, EmptyState actions."
+        "$description": "Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav."
       },
       "9000": {
         "$value": "{base.dimension.90}",

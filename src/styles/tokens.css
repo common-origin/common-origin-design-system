@@ -476,13 +476,16 @@
   --co-semantic-size-600: var(--co-base-dimension-6); /** Size step for the medium label height, used by chips and StatusLabel. */
   --co-semantic-size-800: var(--co-base-dimension-8); /** Size step for compact rows and large labels, such as the Checkbox row. */
   --co-semantic-size-1200: var(--co-base-dimension-12); /** Size step for headers and indents, such as the AccountCard header. */
+  --co-semantic-size-1400: var(--co-base-dimension-14); /** Size step for the collapsed SidebarNav rail: one icon row with an inset on each side. */
   --co-semantic-size-1500: var(--co-base-dimension-15); /** Size step for the comfortable ListItem expanded indent. */
   --co-semantic-size-1800: var(--co-base-dimension-18); /** Size step for tall rows, such as the TransactionListItem minimum height. */
   --co-semantic-size-2000: var(--co-base-dimension-20); /** Size step for small illustrations, such as the small EmptyState image. */
   --co-semantic-size-3000: var(--co-base-dimension-30); /** Size step for medium illustrations and multi-line inputs: EmptyState, TextArea. */
   --co-semantic-size-4500: var(--co-base-dimension-45); /** Size step for truncation widths, such as a Breadcrumbs label. */
   --co-semantic-size-5000: var(--co-base-dimension-50); /** Size step for large illustrations, such as the large EmptyState image. */
-  --co-semantic-size-7500: var(--co-base-dimension-75); /** Size step for narrow column widths: AccountCard, EmptyState actions. */
+  --co-semantic-size-5600: var(--co-base-dimension-56); /** Size step for a narrow navigation column: the narrow SidebarNav. */
+  --co-semantic-size-6400: var(--co-base-dimension-64); /** Size step for a standard navigation column: the default SidebarNav. */
+  --co-semantic-size-7500: var(--co-base-dimension-75); /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav. */
   --co-semantic-size-9000: var(--co-base-dimension-90); /** Size step for readable text widths, such as EmptyState copy. */
   --co-semantic-size-10000: var(--co-base-dimension-100); /** Size step for compact panel widths, such as the EmptyState block. */
   --co-semantic-size-19200: var(--co-base-dimension-192); /** Size step for wide content columns, such as CardLarge. */
@@ -770,6 +773,10 @@
   --co-component-code-block-font-family: var(--co-semantic-font-family-monospace); /** Code font. */
   --co-component-code-block-font-size: var(--co-semantic-font-size-xs); /** Code text size. */
   --co-component-code-block-line-height: var(--co-semantic-line-height-tight); /** Code line height. */
+  --co-component-sidebar-nav-width-rail: var(--co-semantic-size-1400); /** Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side. */
+  --co-component-sidebar-nav-width-narrow: var(--co-semantic-size-5600); /** Width of an expanded SidebarNav with width="narrow": short labels. */
+  --co-component-sidebar-nav-width-default: var(--co-semantic-size-6400); /** Width of an expanded SidebarNav with the default width: labels with a trailing count. */
+  --co-component-sidebar-nav-width-wide: var(--co-semantic-size-7500); /** Width of an expanded SidebarNav with width="wide": long titles, such as chat history. */
   --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised); /** Slider thumb at rest. */
   --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky); /** Slider thumb on hover: one step deeper. */
   --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating); /** Slider thumb while dragging: deepest. */

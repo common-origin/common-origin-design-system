@@ -823,6 +823,27 @@
         "$description": "Code line height."
       }
     },
+    "sidebarNav": {
+      "$type": "dimension",
+      "width": {
+        "rail": {
+          "$value": "{semantic.size.1400}",
+          "$description": "Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side."
+        },
+        "narrow": {
+          "$value": "{semantic.size.5600}",
+          "$description": "Width of an expanded SidebarNav with width=\"narrow\": short labels."
+        },
+        "default": {
+          "$value": "{semantic.size.6400}",
+          "$description": "Width of an expanded SidebarNav with the default width: labels with a trailing count."
+        },
+        "wide": {
+          "$value": "{semantic.size.7500}",
+          "$description": "Width of an expanded SidebarNav with width=\"wide\": long titles, such as chat history."
+        }
+      }
+    },
     "slider": {
       "$type": "shadow",
       "thumb": {
