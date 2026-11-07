@@ -134,6 +134,7 @@ export default [
         'src/lib/styleUtils.ts',
         'src/lib/tokenAliases.ts',
         'src/lib/usePresence.ts',
+        'src/lib/useFloatingLayer.ts',
         'src/components/index.ts',
         'src/components/atoms/**/*',
         'src/components/molecules/**/*',
