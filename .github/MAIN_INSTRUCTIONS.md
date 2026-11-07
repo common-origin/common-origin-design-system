@@ -10,7 +10,7 @@ Update this file in the same PR as any change to the structure, build, testing a
 
 ## Structure
 
-- `src/components/atoms/`, `molecules/`, `layout/`: the published package. There is no organisms level.
+- `src/components/atoms/`, `molecules/`, `organisms/`, `layout/`: the published package. Organisms compose molecules into a region of a product's UI (decision 0052).
 - Each component folder has `Name.tsx`, `Name.test.tsx`, `Name.docs.tsx` and `index.ts` (`export * from './Name'`).
 - `src/tokens/`: token sources. `npm run build:tokens` compiles them to `src/styles/tokens.json`, `tokens.ts` and `tokens.css` ([pipeline](../docs/tokens/pipeline.md)).
 - `src/styles/icons.json`: icon path data, used through `Icon`. Icon names are typed in `src/types/icons.ts`.

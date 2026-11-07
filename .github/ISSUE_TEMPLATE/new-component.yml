@@ -30,6 +30,7 @@ body:
       options:
         - atoms — basic building blocks (no dependencies on other components)
         - molecules — simple combinations of atoms
+        - organisms — molecules composed into a region of a product's UI (decision 0052)
         - layout — structural/spacing components
     validations:
       required: true

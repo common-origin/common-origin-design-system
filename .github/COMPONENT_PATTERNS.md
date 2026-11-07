@@ -14,7 +14,7 @@ Molecule      | Combines 2-5 atoms | Atom dependencies | Specific UI patterns
 Layout        | Structural/responsive | Any level | Page organization
 ```
 
-There is no organism level: larger components (Modal, Sheet, AgentInput, TransactionListItem) are molecules.
+Organisms compose molecules into a self-contained region of a product's UI, such as SidebarNav (decision 0052). A single control or row stays an atom or molecule however large: Modal, Sheet, AgentInput and TransactionListItem are molecules.
 
 ### Component Creation Checklist
 - [ ] **Atomic Level**: Correctly categorized by complexity

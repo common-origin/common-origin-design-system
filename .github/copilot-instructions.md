@@ -94,7 +94,7 @@ npm run verify:package
 - `molecules/` - Composed components
 - `layout/` - Layout components (GridSystem)
 
-There are no organisms or templates levels. `src/page-components/`, `src/patterns/` and `pages/` belong to the docs site; package components must never import from them.
+Organisms compose molecules into a region of a product's UI (decision 0052); there is no templates level. `src/page-components/`, `src/patterns/` and `pages/` belong to the docs site; package components must never import from them.
 
 ### Component File Structure
 

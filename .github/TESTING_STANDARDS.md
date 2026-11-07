@@ -113,7 +113,7 @@ it('calls onChange as the user types', async () => {
 })
 ```
 
-There is no organisms level in this system; the same approach applies to larger molecules such as Modal, Sheet or AgentInput (test the user journey: open, interact, close, focus return).
+The same approach applies to organisms (decision 0052) and to larger molecules such as Modal, Sheet or AgentInput (test the user journey: open, interact, close, focus return).
 
 ## Accessibility Testing Standards
 
