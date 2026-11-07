@@ -30,6 +30,7 @@ import { menuDocs } from '@/components/molecules/Menu/Menu.docs'
 import { sidebarNavItemDocs } from '@/components/molecules/SidebarNavItem/SidebarNavItem.docs'
 import { sidebarNavSectionDocs } from '@/components/molecules/SidebarNavSection/SidebarNavSection.docs'
 import { workspaceSwitcherDocs } from '@/components/molecules/WorkspaceSwitcher/WorkspaceSwitcher.docs'
+import { sidebarNavDocs } from '@/components/organisms/SidebarNav/SidebarNav.docs'
 import { listItemDocs } from '@/components/molecules/List/ListItem.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
@@ -163,6 +164,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(sidebarNavItemDocs),
   convertDocumentationToLegacyFormat(sidebarNavSectionDocs),
   convertDocumentationToLegacyFormat(workspaceSwitcherDocs),
+  convertDocumentationToLegacyFormat(sidebarNavDocs),
   convertDocumentationToLegacyFormat(listItemDocs),
   convertDocumentationToLegacyFormat(progressBarDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
