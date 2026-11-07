@@ -27,6 +27,7 @@ import { iconDocs } from '@/components/atoms/Icon/Icon.docs'
 import { iconButtonDocs } from '@/components/atoms/IconButton/IconButton.docs'
 import { listDocs } from '@/components/molecules/List/List.docs'
 import { menuDocs } from '@/components/molecules/Menu/Menu.docs'
+import { sidebarNavItemDocs } from '@/components/molecules/SidebarNavItem/SidebarNavItem.docs'
 import { listItemDocs } from '@/components/molecules/List/ListItem.docs'
 import { progressBarDocs } from '@/components/atoms/ProgressBar/ProgressBar.docs'
 import { dividerDocs } from '@/components/atoms/Divider/Divider.docs'
@@ -157,6 +158,7 @@ export const staticComponentsData: ComponentData[] = [
   convertDocumentationToLegacyFormat(iconButtonDocs),
   convertDocumentationToLegacyFormat(listDocs),
   convertDocumentationToLegacyFormat(menuDocs),
+  convertDocumentationToLegacyFormat(sidebarNavItemDocs),
   convertDocumentationToLegacyFormat(listItemDocs),
   convertDocumentationToLegacyFormat(progressBarDocs),
   convertDocumentationToLegacyFormat(dividerDocs),
