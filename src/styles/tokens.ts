@@ -1556,7 +1556,7 @@ export type Tokens = {
       '5600': string;
       /** Size step for a standard navigation column: the default SidebarNav. */
       '6400': string;
-      /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav. */
+      /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav, the widest a Tooltip grows. */
       '7500': string;
       /** Size step for readable text widths, such as EmptyState copy. */
       '9000': string;
@@ -1895,6 +1895,10 @@ export type Tokens = {
         instant: string;
         /** The default duration for state changes and short movements, such as a menu opening. */
         moderate: string;
+      };
+      delay: {
+        /** How long the pointer rests on a control before its Tooltip opens, so passing pointers don't open it. A wait before anything moves, not an animation duration. */
+        hint: string;
       };
       easing: {
         /** Easing for change on screen: something moving or resizing in place. */

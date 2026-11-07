@@ -84,6 +84,12 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Alert's action follows the content: below the message, left-aligned with it, `md` above it. The action and the dismiss button never share a row. ([0021](decisions/0021-alert-action-below-content.md)) | Enforced ([#122](https://github.com/common-origin/common-origin-design-system/issues/122)) |
 | `InlineAlert` is the small, local message: a severity icon and short text in the severity colour, with no background, border, title, action or dismiss button. Sizes `small` and `medium`. Feedback about a control is linked with `aria-describedby`. Every severity colour is at least 4.5:1 on the page, white and grey surfaces; check other backgrounds before use. ([0019](decisions/0019-alert-and-inline-alert.md)) | Enforced — InlineAlert ships; Alert's `inline` prop was removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)) |
 
+## Tooltips and menus
+
+| Rule | Status |
+|---|---|
+| **Tooltip** is an inverse bubble (`color.fill.inverse` with `color.text.inverse`, the `small` text style, `radius.sm`, no arrow) that opens after `motion.delay.hint` of hover, at once on keyboard focus, and at once when moving on from another tooltip. It renders in the top layer with the Popover API, so it needs no z-index and no scroll container clips it, and it never opens on touch. Its `label` mode repeats a name the trigger already has and is hidden from assistive technology; its `description` mode adds non-essential help through `aria-describedby`. Nothing a user needs goes in a tooltip, because touch screens can't reach it. ([#326](https://github.com/common-origin/common-origin-design-system/issues/326), WCAG 1.4.13) | Enforced: `Tooltip.test.tsx`, `e2e/tooltip.spec.ts` |
+
 ## Icons
 
 | Rule | Status |
