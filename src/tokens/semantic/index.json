@@ -161,15 +161,15 @@
       },
       "medium": {
         "$value": "{base.fontWeight.3}",
-        "$description": "500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text."
+        "$description": "500. Subtitle, buttons, emphasis within UI text."
       },
       "semibold": {
         "$value": "{base.fontWeight.4}",
-        "$description": "600. Labels and short titles that need more weight than medium (label, Alert title)."
+        "$description": "600. Headings (h1 to h6), labels and short titles (label, Alert title)."
       },
       "bold": {
         "$value": "{base.fontWeight.5}",
-        "$description": "700. Headings (display to h4), overline, strong indicators such as the required-field asterisk."
+        "$description": "700. The display heading, overline, strong indicators such as the required-field asterisk."
       }
     },
     "border": {

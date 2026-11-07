@@ -460,9 +460,9 @@
   --co-semantic-letter-spacing-normal: var(--co-base-letter-spacing-2); /** 0: default tracking (h5, h6 and text). */
   --co-semantic-letter-spacing-wide: var(--co-base-letter-spacing-4); /** Wide tracking for small uppercase labels, such as SearchField section headers. */
   --co-semantic-font-weight-regular: var(--co-base-font-weight-2); /** 400. Body text, captions, most UI text. */
-  --co-semantic-font-weight-medium: var(--co-base-font-weight-3); /** 500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text. */
-  --co-semantic-font-weight-semibold: var(--co-base-font-weight-4); /** 600. Labels and short titles that need more weight than medium (label, Alert title). */
-  --co-semantic-font-weight-bold: var(--co-base-font-weight-5); /** 700. Headings (display to h4), overline, strong indicators such as the required-field asterisk. */
+  --co-semantic-font-weight-medium: var(--co-base-font-weight-3); /** 500. Subtitle, buttons, emphasis within UI text. */
+  --co-semantic-font-weight-semibold: var(--co-base-font-weight-4); /** 600. Headings (h1 to h6), labels and short titles (label, Alert title). */
+  --co-semantic-font-weight-bold: var(--co-base-font-weight-5); /** 700. The display heading, overline, strong indicators such as the required-field asterisk. */
   --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default); /** Hairline in the default border colour: dividers and decorative outlines, such as Breadcrumbs, CodeBlock and Divider. 1.53:1 on white, so never a control edge (decision 0025). */
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus); /** The focus ring every component draws, with border.focusOffset; never blue (decision 0029). */
   --co-semantic-border-width-thin: var(--co-base-border-width-1); /** Hairline border: dividers, control edges and rings. */

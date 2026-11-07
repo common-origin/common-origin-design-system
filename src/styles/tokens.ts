@@ -1480,11 +1480,11 @@ export type Tokens = {
     fontWeight: {
       /** 400. Body text, captions, most UI text. */
       regular: string;
-      /** 500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text. */
+      /** 500. Subtitle, buttons, emphasis within UI text. */
       medium: string;
-      /** 600. Labels and short titles that need more weight than medium (label, Alert title). */
+      /** 600. Headings (h1 to h6), labels and short titles (label, Alert title). */
       semibold: string;
-      /** 700. Headings (display to h4), overline, strong indicators such as the required-field asterisk. */
+      /** 700. The display heading, overline, strong indicators such as the required-field asterisk. */
       bold: string;
     };
     border: {
