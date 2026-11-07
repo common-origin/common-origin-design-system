@@ -4,8 +4,8 @@
 // Core atomic design components
 export * from './atoms/'
 export * from './molecules/'
+export * from './organisms/'
 export * from './layout/'
-// Note: Organisms removed - too project-specific for reusable design system
 
 // Layout grid system (explicit exports for better tree-shaking)
 export { ResponsiveGrid, GridCol, Grid } from './layout/GridSystem'

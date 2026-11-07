@@ -220,7 +220,7 @@ const GuideLink = styled(Link)`
   }
 `
 
-const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Layout', 'Components']
+const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Organisms', 'Layout', 'Components']
 
 
 const componentsData: ComponentData[] = staticComponentsData
