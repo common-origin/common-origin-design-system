@@ -112,6 +112,39 @@ describe('Tooltip', () => {
       expect(screen.getByTestId('tip')).toBeInTheDocument()
     })
 
+    it('moving straight between triggers swaps tooltips at once, one at a time', async () => {
+      const user = setup()
+      waitOutSkipWindow()
+      render(
+        <>
+          <Tooltip text="Home" data-testid="home-tip">
+            <IconButton variant="naked" iconName="home" aria-label="Home" />
+          </Tooltip>
+          <Tooltip text="Search" data-testid="search-tip">
+            <IconButton variant="naked" iconName="search" aria-label="Search" />
+          </Tooltip>
+        </>
+      )
+      await user.hover(screen.getByRole('button', { name: 'Home' }))
+      act(() => { jest.advanceTimersByTime(HINT) })
+      // No pause: Home's tooltip is still open when the pointer reaches Search
+      await user.hover(screen.getByRole('button', { name: 'Search' }))
+      expect(screen.getByTestId('search-tip')).toBeInTheDocument()
+      act(() => { jest.advanceTimersByTime(GRACE) })
+      expect(screen.queryByTestId('home-tip')).not.toBeInTheDocument()
+    })
+
+    it('closes when the trigger is pressed', async () => {
+      const user = setup()
+      renderHome()
+      const button = screen.getByRole('button', { name: 'Home' })
+      await user.hover(button)
+      act(() => { jest.advanceTimersByTime(HINT) })
+      await user.click(button)
+      act(() => { jest.advanceTimersByTime(GRACE) })
+      expect(screen.queryByTestId('tip')).not.toBeInTheDocument()
+    })
+
     it('opens at once when the pointer moves on from another tooltip', async () => {
       const user = setup()
       waitOutSkipWindow()

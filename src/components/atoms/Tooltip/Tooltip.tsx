@@ -18,8 +18,10 @@ const SKIP_DELAY_MS = parseInt(motion.duration.slow, 10)
 // The grace period for the pointer to cross from the trigger onto the tooltip (WCAG 1.4.13)
 const CLOSE_GRACE_MS = parseInt(motion.duration.fast, 10)
 
-// When the last tooltip closed, shared by every Tooltip for the skip-delay window
+// Shared by every Tooltip: only one is open at a time, and the next one opens at once while one
+// is open or within the skip-delay window after it closed
 let lastClosedAt = 0
+let active: { owner: object; close: () => void } | null = null
 
 const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
@@ -121,6 +123,9 @@ export const Tooltip = ({
   const bubbleRef = useRef<HTMLDivElement>(null)
   const openTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
   const closeTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined)
+  const [owner] = useState(() => ({}))
+  // Set by a press, so the focus that follows a click or tap doesn't reopen the tooltip
+  const pressed = useRef(false)
   const [isOpen, setIsOpen] = useState(false)
   const { isPresent, isExiting } = usePresence(isOpen)
 
@@ -129,23 +134,28 @@ export const Tooltip = ({
     clearTimeout(closeTimer.current)
   }
 
-  const open = useCallback(() => {
-    clearTimers()
-    setIsOpen(true)
-  }, [])
-
   const close = useCallback(() => {
     clearTimers()
-    setIsOpen((wasOpen) => {
-      if (wasOpen) lastClosedAt = Date.now()
-      return false
-    })
-  }, [])
+    if (active?.owner === owner) {
+      active = null
+      lastClosedAt = Date.now()
+    }
+    setIsOpen(false)
+  }, [owner])
+
+  const open = useCallback(() => {
+    clearTimers()
+    if (active && active.owner !== owner) active.close()
+    active = { owner, close }
+    setIsOpen(true)
+  }, [owner, close])
 
   const scheduleOpen = () => {
     clearTimeout(closeTimer.current)
     if (isOpen) return
-    if (Date.now() - lastClosedAt < SKIP_DELAY_MS) return open()
+    // Moving straight from one trigger to the next (another tooltip still open) or just after one
+    // closed skips the delay, so a rail feels immediate
+    if (active || Date.now() - lastClosedAt < SKIP_DELAY_MS) return open()
     clearTimeout(openTimer.current)
     openTimer.current = setTimeout(open, HINT_DELAY_MS)
   }
@@ -156,7 +166,13 @@ export const Tooltip = ({
     closeTimer.current = setTimeout(close, CLOSE_GRACE_MS)
   }
 
-  useEffect(() => clearTimers, [])
+  useEffect(
+    () => () => {
+      clearTimers()
+      if (active?.owner === owner) active = null
+    },
+    [owner]
+  )
 
   // While open: Escape closes it without moving focus, and before anything else hears the key
   // (an Escape meant for the tooltip mustn't also close a Modal). Scrolling closes it, since
@@ -212,7 +228,11 @@ export const Tooltip = ({
       onPointerEnter={(event) => event.pointerType !== 'touch' && scheduleOpen()}
       onPointerLeave={(event) => event.pointerType !== 'touch' && scheduleClose()}
       onFocus={(event) => {
-        // Keyboard focus opens it at once; a click's focus doesn't (the pointer already did)
+        // Keyboard focus opens it at once; a click's or tap's focus doesn't
+        if (pressed.current) {
+          pressed.current = false
+          return
+        }
         let keyboard = true
         try {
           keyboard = (event.target as HTMLElement).matches(':focus-visible')
@@ -222,6 +242,11 @@ export const Tooltip = ({
         if (keyboard) open()
       }}
       onBlur={close}
+      // Pressing the trigger acts on it, so the hint has done its job
+      onPointerDown={() => {
+        pressed.current = true
+        close()
+      }}
     >
       {React.cloneElement(child, { 'aria-describedby': describedBy })}
       {kind === 'description' && <Description id={descriptionId}>{text}</Description>}
