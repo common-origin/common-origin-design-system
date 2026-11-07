@@ -54,6 +54,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0048](0048-emphasis-leaves-the-colour-tokens.md) | Emphasis leaves the colour tokens: text has two levels (`gray.1200`, `gray.1100`) and emphasis is weight; the strong solid fill is `gray.1200` with white-overlay hover (8%) and pressed (12%); `border.emphasis` is an alias of the divider border; emphasis names only the strong fill; amends 0029, 0031 and 0040 | Accepted; amended by 0049 | 2026-10-23 |
 | [0049](0049-where-white-lives.md) | Where white lives: `base.color.white` sits off the ramps for raised surfaces; inverse text and icons are `gray.100`; nothing above the base tier references `neutral.000`; amends 0048 | Accepted | 2026-10-25 |
 | [0050](0050-headings-are-semibold.md) | Headings are semibold: `h1`–`h6` at 600, `display` stays 700; amends 0011 | Accepted | 2026-11-07 |
+| [0051](0051-row-heights-and-dense-targets.md) | Rows follow density on a `size.row` scale (`sm` 24/32/40, `md` 40/48/56, `lg` 64/72/80px) with padding from `space.inset`, and dense targets may be 24px on every pointer, touch included; inputs share one height; amends 0032 | Accepted | 2026-11-07 |
 
 ## Template
 

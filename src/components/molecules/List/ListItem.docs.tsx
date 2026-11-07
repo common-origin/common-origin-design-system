@@ -143,7 +143,7 @@ export const listItemDocs: ComponentDocumentation = {
       type: "'compact' | 'comfortable'",
       required: false,
       default: "the List's spacing, or 'comfortable'",
-      description: 'Padding density. Compact for dense layouts, comfortable for standard use. Defaults to the parent List\'s spacing (comfortable outside a List); set it to override the List for this item.'
+      description: 'Deprecated: set density on a region with data-co-density instead, and rows follow it (decision 0051). Still sets the padding, but not the height, until it is removed in 4.0. Defaults to the parent List\'s spacing (comfortable outside a List).'
     },
     {
       name: 'className',
@@ -162,12 +162,15 @@ export const listItemDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.size.touchTarget',
+    'semantic.size.row.md',
     'semantic.size.icon.lg',
     'semantic.space.100',
     'semantic.space.200',
     'semantic.space.300',
     'semantic.space.400',
+    'semantic.space.inset.sm',
+    'semantic.space.inset.md',
+    'semantic.space.inset.lg',
     'semantic.radius.sm',
     'semantic.border.width.thick',
     'semantic.border.focusOffset',
@@ -251,7 +254,7 @@ export const listItemDocs: ComponentDocumentation = {
   accessibility: {
     notes: [
       'Renders an li with role="listitem" by default; the parent List provides role="list"',
-      'Interactive and expandable items get role="button" on their content, are focusable, and meet the 44px minimum touch target (WCAG 2.2 AA)',
+      'Interactive and expandable items get role="button" on their content, are focusable, and are never shorter than 24px, the WCAG 2.2 AA minimum target: 48px at default density, 40px in compact (decision 0051)',
       'onClick alone does not make an item keyboard accessible: set interactive (or expandable) as well',
       'Enter and Space activate interactive items and toggle expandable ones (an expandable item with onToggle calls onToggle, not onClick)',
       'Expandable items set aria-expanded; collapsed content is hidden from keyboard and screen readers',

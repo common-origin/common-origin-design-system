@@ -213,7 +213,7 @@
       },
       "touchTarget": {
         "$value": "{base.dimension.11}",
-        "$description": "Minimum height of a tappable row or control on touch screens."
+        "$description": "Invisible hit area of a small control on touch screens, such as the Slider thumb. Not a row or control height: those follow density down to pointerTarget (decision 0051)."
       },
       "control": {
         "sm": {
@@ -227,6 +227,20 @@
         "lg": {
           "$value": "{base.dimension.12}",
           "$description": "Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034)."
+        }
+      },
+      "row": {
+        "sm": {
+          "$value": "{base.dimension.8}",
+          "$description": "Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051)."
+        },
+        "md": {
+          "$value": "{base.dimension.12}",
+          "$description": "Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051)."
+        },
+        "lg": {
+          "$value": "{base.dimension.18}",
+          "$description": "Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051)."
         }
       },
       "overlay": {

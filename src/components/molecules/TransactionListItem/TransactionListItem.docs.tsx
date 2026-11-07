@@ -89,7 +89,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.transactionListItem.minHeight',
+    'semantic.size.row.lg',
+    'semantic.space.inset.md',
     'semantic.border.focusOffset',
     'semantic.border.width.thick',
     'semantic.border.width.thin',
@@ -350,8 +351,10 @@ export const transactionListItemDocs: ComponentDocumentation = {
     parts: [
       {
         name: 'StyledContainer',
-        description: 'Root container with flexbox layout, min-height 72px, interactive states (hover/active/focus)',
+        description: 'Root container with flexbox layout, the two-line row height (72px at default, following density), interactive states (hover/active/focus)',
         tokens: [
+          'semantic.size.row.lg',
+          'semantic.space.inset.md',
           'semantic.space.300',
           'semantic.surface.base',
           'semantic.color.fill.muted',

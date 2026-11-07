@@ -70,7 +70,8 @@ export default function DensityGuidePage() {
                   <Typography variant="body" color="subdued">
                     Control heights move one 8px step: compact 24, 32 and 40px for small, medium and large; default
                     32, 40 and 48px; comfortable 40, 48 and 56px. The padding inside controls moves one step with them.
-                    Text, colour, radius, rows and layout spacing stay the same.
+                    Rows follow too: dense rows such as navigation items are 24, 32 and 40px; list rows 40, 48 and
+                    56px; two-line rows 64, 72 and 80px. Text, colour, radius and layout spacing stay the same.
                   </Typography>
 
                   <Typography variant="h3">When to use it</Typography>
@@ -82,12 +83,14 @@ export default function DensityGuidePage() {
 
                   <Typography variant="h3">Accessibility</Typography>
                   <Typography variant="body" color="subdued">
-                    Compact never makes a control smaller than 24px, the minimum pointer target (WCAG 2.2, 2.5.8), and
-                    the 44px touch target doesn&apos;t change with density.
+                    Compact never makes a control or row smaller than 24px, the minimum pointer target (WCAG 2.2, 2.5.8),
+                    on any kind of pointer, touch included. That&apos;s what lets dense products fit, so for screens
+                    used mainly by touch, prefer default or comfortable.
                   </Typography>
 
                   <Typography variant="caption" color="subdued">
-                    Decisions 0032 (token modes), 0034 (control heights) and 0041 (CSS variables) in the design system
+                    Decisions 0032 (token modes), 0034 (control heights), 0041 (CSS variables) and 0051 (row heights and
+                    targets) in the design system
                     foundation.
                   </Typography>
                 </Stack>

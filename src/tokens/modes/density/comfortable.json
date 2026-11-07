@@ -1,11 +1,16 @@
 {
-  "$description": "Density comfortable (decision 0032, #191): controls one 8px step taller (0034) and their inset one step roomier. Only $value is overridden; each token keeps its description and type from the semantic tier.",
+  "$description": "Density comfortable (decisions 0032 and 0051): controls and rows one step taller (0034) and their inset one step roomier. Only $value is overridden; each token keeps its description and type from the semantic tier.",
   "semantic": {
     "size": {
       "control": {
         "sm": { "$value": "{base.dimension.10}" },
         "md": { "$value": "{base.dimension.12}" },
         "lg": { "$value": "{base.dimension.14}" }
+      },
+      "row": {
+        "sm": { "$value": "{base.dimension.10}" },
+        "md": { "$value": "{base.dimension.14}" },
+        "lg": { "$value": "{base.dimension.20}" }
       }
     },
     "space": {

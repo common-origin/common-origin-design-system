@@ -80,6 +80,8 @@ export interface ListItemProps {
   /**
    * Density of this item. Defaults to the parent List's `spacing`, or `comfortable` outside a
    * List; set it to override the List for this item (#77).
+   * @deprecated Set density on a region with `data-co-density` instead: rows follow it (P9,
+   * decision 0051). `spacing` still sets the padding, but not the height, until it's removed in 4.0.
    */
   spacing?: ListSpacing
   
@@ -136,7 +138,7 @@ const StyledListItem = styled.li.withConfig({
 }>`
   display: flex;
   flex-direction: column;
-  min-height: ${semantic.size.touchTarget};
+  min-height: ${semantic.size.row.md};
   position: relative;
   
   /* Disable user selection for interactive items */
@@ -167,10 +169,11 @@ const StyledItemContent = styled.div.withConfig({
   display: flex;
   align-items: flex-start;
   gap: ${semantic.space[300]};
+  /* Insets, so the row's padding follows density with its height (decision 0051) */
   padding: ${({ $spacing }) =>
     $spacing === 'compact'
-      ? `${semantic.space[200]} ${semantic.space[300]}`
-      : `${semantic.space[300]} ${semantic.space[400]}`};
+      ? `${semantic.space.inset.sm} ${semantic.space.inset.md}`
+      : `${semantic.space.inset.md} ${semantic.space.inset.lg}`};
   border-radius: ${semantic.radius.sm};
   transition: background-color ${duration.fast} ${easing.decelerate}, color ${duration.fast} ${easing.decelerate};
   cursor: ${({ $interactive, $disabled }) => {
@@ -250,6 +253,7 @@ const StyledExpandedContent = styled.div.withConfig({
      keyboard and screen readers once the collapse finishes. */
   transition: max-height ${duration.moderate} ${easing.decelerate},
               padding ${duration.moderate} ${easing.decelerate},
+              margin ${duration.moderate} ${easing.decelerate},
               opacity ${duration.moderate} ${easing.decelerate},
               visibility ${duration.moderate} ${easing.decelerate};
   max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
@@ -269,14 +273,15 @@ const StyledExpandedContent = styled.div.withConfig({
     };
     background-color: ${semantic.surface.raised};
     border-radius: ${semantic.radius.sm};
+    /* The row's own insets, so the panel lines up with the row in every density (0051) */
     margin: 0 ${
-      $spacing === 'compact' 
-        ? semantic.space[300] 
-        : semantic.space[400]
+      $spacing === 'compact'
+        ? semantic.space.inset.md
+        : semantic.space.inset.lg
     } ${
       $spacing === 'compact'
-        ? semantic.space[200]
-        : semantic.space[300]
+        ? semantic.space.inset.sm
+        : semantic.space.inset.md
     };
   `}
 `

@@ -1,11 +1,16 @@
 {
-  "$description": "Density compact (decision 0032, #191): controls one 8px step shorter (0034) and their inset one step tighter. Only $value is overridden; each token keeps its description and type from the semantic tier.",
+  "$description": "Density compact (decisions 0032 and 0051): controls and rows one step shorter (0034) and their inset one step tighter. Only $value is overridden; each token keeps its description and type from the semantic tier.",
   "semantic": {
     "size": {
       "control": {
         "sm": { "$value": "{base.dimension.6}" },
         "md": { "$value": "{base.dimension.8}" },
         "lg": { "$value": "{base.dimension.10}" }
+      },
+      "row": {
+        "sm": { "$value": "{base.dimension.6}" },
+        "md": { "$value": "{base.dimension.10}" },
+        "lg": { "$value": "{base.dimension.16}" }
       }
     },
     "space": {

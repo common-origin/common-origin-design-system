@@ -44,12 +44,12 @@ describe('TransactionListItem', () => {
       expect(screen.getByTestId('transaction-date')).toBeInTheDocument()
     })
 
-    it('has the row minimum height token (72px)', () => {
+    it('takes its minimum height from the two-line row token (decision 0051)', () => {
       render(<TransactionListItem {...defaultProps} data-testid="transaction" />)
       
       const container = screen.getByTestId('transaction')
       const styles = window.getComputedStyle(container)
-      expect(styles.minHeight).toBe(tokens.component.transactionListItem.minHeight)
+      expect(styles.minHeight).toBe(tokens.semantic.size.row.lg)
     })
   })
 

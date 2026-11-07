@@ -406,6 +406,7 @@ export const ActionSheet = ({
                 onClick={() => handleActionClick(action)}
                 disabled={action.disabled}
                 destructive={action.destructive}
+                // Deprecated prop (0051), kept for this padding until 4.0 removes it
                 spacing="compact"
               />
             </React.Fragment>

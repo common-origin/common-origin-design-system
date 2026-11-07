@@ -1354,7 +1354,11 @@ export type Tokens = {
       };
     };
     transactionListItem: {
-      /** Minimum height of a TransactionListItem row, so rows line up in a list. */
+      /**
+       * Minimum height of a TransactionListItem row, so rows line up in a list.
+       *
+       * @deprecated Two-line rows share semantic.size.row.lg, which follows density (decision 0051). Removed in 4.0.
+       */
       minHeight: string;
     };
     status: {
@@ -1544,7 +1548,7 @@ export type Tokens = {
       '19200': string;
       /** Minimum pointer target for a control that's smaller to look at: its invisible hit area (WCAG 2.5.8, decision 0039). On touch screens, use touchTarget. */
       pointerTarget: string;
-      /** Minimum height of a tappable row or control on touch screens. */
+      /** Invisible hit area of a small control on touch screens, such as the Slider thumb. Not a row or control height: those follow density down to pointerTarget (decision 0051). */
       touchTarget: string;
       control: {
         /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
@@ -1552,6 +1556,14 @@ export type Tokens = {
         /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
         md: string;
         /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+        lg: string;
+      };
+      row: {
+        /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+        sm: string;
+        /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
+        md: string;
+        /** Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051). */
         lg: string;
       };
       overlay: {

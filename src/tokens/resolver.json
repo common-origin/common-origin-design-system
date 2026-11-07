@@ -9,7 +9,7 @@
   },
   "modifiers": {
     "density": {
-      "description": "Control heights and control insets for a region, set with data-co-density on any element (decisions 0032 and 0034, #191). Rows and layout spacing don't change.",
+      "description": "Control heights, control insets and row heights for a region, set with data-co-density on any element (decisions 0032, 0034 and 0051). Layout spacing doesn't change.",
       "contexts": {
         "compact": [{ "$ref": "modes/density/compact.json" }],
         "default": [],

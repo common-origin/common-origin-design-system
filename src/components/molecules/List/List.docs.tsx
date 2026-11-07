@@ -103,7 +103,7 @@ export const listDocs: ComponentDocumentation = {
       type: "'compact' | 'comfortable'",
       required: false,
       default: 'comfortable',
-      description: 'Density of the list\'s items: their padding. Items that don\'t set their own spacing use it; an item\'s own spacing overrides it.'
+      description: 'Deprecated: set density on a region with data-co-density instead, and rows follow it (decision 0051). Still sets the items\' padding, but not their height, until it is removed in 4.0.'
     },
     {
       name: 'className',
@@ -180,19 +180,23 @@ export const listDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Spacing Variants',
-      description: 'Compact spacing for dense layouts, set once on the List',
-      code: `<List spacing="compact">
-  <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
-  <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
-  <ListItem primary="Compact Item 3" secondary="More items visible at once" />
-</List>`,
+      name: 'Dense lists',
+      description: 'Set density on a region, not the List: rows and their padding follow it (decision 0051)',
+      code: `<div data-co-density="compact">
+  <List>
+    <ListItem primary="Compact Item 1" secondary="Shorter rows and tighter padding" />
+    <ListItem primary="Compact Item 2" secondary="More items visible at once" />
+    <ListItem primary="Compact Item 3" secondary="Never below a 24px target" />
+  </List>
+</div>`,
       renderComponent: () => (
-        <List spacing="compact">
-          <ListItem primary="Compact Item 1" secondary="Less spacing between items" />
-          <ListItem primary="Compact Item 2" secondary="Better for mobile layouts" />
-          <ListItem primary="Compact Item 3" secondary="More items visible at once" />
-        </List>
+        <div data-co-density="compact">
+          <List>
+            <ListItem primary="Compact Item 1" secondary="Shorter rows and tighter padding" />
+            <ListItem primary="Compact Item 2" secondary="More items visible at once" />
+            <ListItem primary="Compact Item 3" secondary="Never below a 24px target" />
+          </List>
+        </div>
       )
     },
     {
@@ -526,7 +530,6 @@ return (
             secondary={opt.description}
             interactive
             selected={selected === opt.id}
-            spacing="compact"
             onClick={() => setSelected(opt.id)}
           />
         ))}
@@ -556,7 +559,6 @@ return (
                     secondary={opt.description}
                     interactive
                     selected={selected === opt.id}
-                    spacing="compact"
                     onClick={() => setSelected(opt.id)}
                   />
                 ))}

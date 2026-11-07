@@ -490,6 +490,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
                     role="option"
                     primary="Clear recent searches"
                     interactive
+                    // Deprecated prop (0051), kept for this padding until 4.0 removes it
                     spacing="compact"
                     onClick={() => handleSuggestionClick(item)}
                     onKeyDown={(e) => {
@@ -518,6 +519,7 @@ export const SearchField = forwardRef<HTMLInputElement, SearchFieldProps>(
                   icon={item.type === 'recent' ? <Icon name="refresh" size="xs" /> : undefined}
                   interactive
                   data-highlighted={index === highlightedIndex || undefined}
+                  // Deprecated prop (0051), kept for this padding until 4.0 removes it
                   spacing="compact"
                   onClick={() => handleSuggestionClick(item)}
                 />
