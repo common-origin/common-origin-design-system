@@ -109,7 +109,9 @@ const ALLOWED: { file: string; paths?: RegExp; argumentOf?: string; reason: stri
     reason: 'Resolves token-path strings for docs pages; the strings themselves are checked by the text search below',
   },
   { file: 'src/lib/docsTokenPaths.test.ts', argumentOf: 'reduce', reason: 'Resolves the docs pages\' token-path strings (above)' },
-  { file: 'pages/tokens.tsx', argumentOf: 'inUse', reason: 'inUse() drops deprecated tokens before the tokens page lists a group' },
+  // When a semantic token is next deprecated, add back:
+  // { file: 'pages/tokens.tsx', argumentOf: 'inUse', reason: 'inUse() drops deprecated tokens before the tokens page lists a group' }
+  // The tokens page lists only semantic groups, so it can't match while only component tokens are deprecated
 ]
 
 describe('deprecated tokens are not read', () => {

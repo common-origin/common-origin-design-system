@@ -17,7 +17,8 @@ describe('typography departures', () => {
   it('Alert title and message use their component tokens', () => {
     render(<Alert title="Title">Message</Alert>)
     const title = screen.getByText('Title')
-    expect(effectiveFontWeight(title)).toBe(component.alert.title.fontWeight)
+    // The title's weight is h6's own since decision 0050
+    expect(effectiveFontWeight(title)).toBe(tokens.semantic.fontWeight.semibold)
     expect(effectiveFontProperty(title, 'line-height')).toBe(component.alert.title.lineHeight)
     expect(effectiveFontProperty(screen.getByText('Message'), 'line-height')).toBe(component.alert.message.lineHeight)
   })

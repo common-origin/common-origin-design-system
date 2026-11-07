@@ -692,12 +692,18 @@
         "typography": {
           "$value": "{semantic.typography.h6}",
           "$type": "typography",
-          "$description": "Alert title style (h6), adjusted by title.fontWeight and title.lineHeight."
+          "$description": "Alert title style (h6), adjusted by title.lineHeight."
         },
         "fontWeight": {
           "$value": "{semantic.fontWeight.semibold}",
           "$type": "fontWeight",
-          "$description": "Alert titles are semibold. h6 is also semibold since decision 0050; kept so the title weight stays an Alert decision."
+          "$description": "Alert title weight.",
+          "$deprecated": "h6 is semibold since decision 0050, so the title takes its weight from title.typography. Use semantic.fontWeight.semibold. Removed in 4.0.",
+          "$extensions": {
+            "studio.commonorigin": {
+              "replacedBy": "semantic.fontWeight.semibold"
+            }
+          }
         },
         "lineHeight": {
           "$value": "{semantic.lineHeight.tight}",

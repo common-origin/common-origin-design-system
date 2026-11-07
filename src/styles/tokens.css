@@ -749,7 +749,7 @@
   --co-component-alert-appearance-borderless-border-color-warning: var(--co-semantic-color-border-none); /** Borderless warning alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
   --co-component-alert-appearance-borderless-border-color-info: var(--co-semantic-color-border-none); /** Borderless info alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
   --co-component-alert-appearance-borderless-border-color-success: var(--co-semantic-color-border-none); /** Borderless success alert: no visible border, keeping its width so both appearances take the same space (decision 0019). */
-  --co-component-alert-title-font-weight: var(--co-semantic-font-weight-semibold); /** Alert titles are semibold. h6 is also semibold since decision 0050; kept so the title weight stays an Alert decision. */
+  --co-component-alert-title-font-weight: var(--co-semantic-font-weight-semibold); /** Deprecated: h6 is semibold since decision 0050, so the title takes its weight from title.typography. Use semantic.fontWeight.semibold. Removed in 4.0. */
   --co-component-alert-title-line-height: var(--co-semantic-line-height-tight); /** Alert titles use a tighter line height than h6. */
   --co-component-alert-message-line-height: var(--co-semantic-line-height-tight); /** Alert messages use a tighter line height than body. */
   --co-component-tab-bar-badge-font-weight: var(--co-semantic-font-weight-bold); /** Tab count badges are bold, heavier than caption. */
@@ -828,7 +828,7 @@
   --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusLabel medium, CategoryLabel large). Combine with label.fontWeight. */
   --co-component-field-label-typography: var(--co-semantic-typography-label); /** Field label text. */
   --co-component-field-helper-text-typography: var(--co-semantic-typography-caption); /** Helper and error text under a field (TextField, PasswordField, NumberInput, Dropdown, Checkbox). One step below the label. */
-  --co-component-alert-title-typography: var(--co-semantic-typography-h6); /** Alert title style (h6), adjusted by title.fontWeight and title.lineHeight. */
+  --co-component-alert-title-typography: var(--co-semantic-typography-h6); /** Alert title style (h6), adjusted by title.lineHeight. */
   --co-component-alert-message-typography: var(--co-semantic-typography-body); /** Alert message style (body), adjusted by message.lineHeight. */
   --co-component-tab-bar-badge-typography: var(--co-semantic-typography-caption); /** Tab count badge text. */
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */

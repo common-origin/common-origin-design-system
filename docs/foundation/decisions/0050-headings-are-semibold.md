@@ -25,4 +25,4 @@
 
 - `h1`–`h4` render lighter and `h5`–`h6` heavier. The change is a token value change, so it ships in a minor release ([P7](../principles.md#p7-stable-contracts)).
 - Products already load Inter at 600 ([usage](../usage.md#fonts)); nothing new to load.
-- Alert's title builds on `h6` and was already semibold through `component.alert.title.fontWeight`. That token now matches `h6`; it stays, because removing a token is a major version. The example in [0014](0014-token-tiers.md) ("h6 style (500) but is semibold") describes the system before this decision and is kept as history.
+- Alert's title builds on `h6` and was already semibold through `component.alert.title.fontWeight`. That token now matches `h6`, so it no longer departs from the semantic tier: Alert stops reading it, and it is deprecated (replaced by `semantic.fontWeight.semibold`) for removal in 4.0, because removing a token is a major version. The example in [0014](0014-token-tiers.md) ("h6 style (500) but is semibold") describes the system before this decision and is kept as history.

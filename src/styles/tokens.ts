@@ -1213,9 +1213,13 @@ export type Tokens = {
         };
       };
       title: {
-        /** Alert title style (h6), adjusted by title.fontWeight and title.lineHeight. */
+        /** Alert title style (h6), adjusted by title.lineHeight. */
         typography: string;
-        /** Alert titles are semibold. h6 is also semibold since decision 0050; kept so the title weight stays an Alert decision. */
+        /**
+         * Alert title weight.
+         *
+         * @deprecated h6 is semibold since decision 0050, so the title takes its weight from title.typography. Use semantic.fontWeight.semibold. Removed in 4.0.
+         */
         fontWeight: string;
         /** Alert titles use a tighter line height than h6. */
         lineHeight: string;
