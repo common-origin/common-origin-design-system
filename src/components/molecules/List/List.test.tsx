@@ -317,6 +317,22 @@ describe('ListItem', () => {
       expect(getComputedStyle(screen.getByText('Details')).visibility).toBe('visible')
     })
 
+    it('insets expanded content by the row\'s own insets, so it follows density (decision 0051)', () => {
+      const { inset } = tokens.semantic.space
+      const panel = (spacing: 'compact' | 'comfortable') => {
+        const { unmount } = render(
+          <ListItem primary="Item" expandable expanded spacing={spacing}>
+            <span>Details</span>
+          </ListItem>
+        )
+        const margin = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement).margin
+        unmount()
+        return margin
+      }
+      expect(panel('comfortable')).toBe(`0px ${inset.lg} ${inset.md}`)
+      expect(panel('compact')).toBe(`0px ${inset.md} ${inset.sm}`)
+    })
+
     it('updates aria-expanded attribute correctly', () => {
       const { rerender } = render(
         <ListItem primary="Item" expandable expanded={false} />

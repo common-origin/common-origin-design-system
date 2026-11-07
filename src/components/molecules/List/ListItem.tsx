@@ -253,6 +253,7 @@ const StyledExpandedContent = styled.div.withConfig({
      keyboard and screen readers once the collapse finishes. */
   transition: max-height ${duration.moderate} ${easing.decelerate},
               padding ${duration.moderate} ${easing.decelerate},
+              margin ${duration.moderate} ${easing.decelerate},
               opacity ${duration.moderate} ${easing.decelerate},
               visibility ${duration.moderate} ${easing.decelerate};
   max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
