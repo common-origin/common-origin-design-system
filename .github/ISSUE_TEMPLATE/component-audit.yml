@@ -27,6 +27,7 @@ body:
       options:
         - atoms
         - molecules
+        - organisms
         - layout
     validations:
       required: true

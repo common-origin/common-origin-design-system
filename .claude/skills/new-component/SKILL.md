@@ -11,7 +11,7 @@ Patterns: `.github/COMPONENT_PATTERNS.md`, `.github/TESTING_STANDARDS.md`, `.git
 
 ## Checklist
 
-1. **Place it:** `src/components/{atoms,molecules,layout}/Name/`. There is no organism level; larger components are molecules.
+1. **Place it:** `src/components/{atoms,molecules,organisms,layout}/Name/`. An organism composes molecules into a self-contained region of a product's UI, such as SidebarNav ([0052](../../../docs/foundation/decisions/0052-organisms-tier.md)); a single control or row is an atom or molecule, however large.
 2. **Files:** `Name.tsx`, `Name.test.tsx`, `Name.docs.tsx`, `index.ts` (`export * from './Name'`).
 3. **Implementation:**
    - Props interface with JSDoc on every prop, exported alongside the component.

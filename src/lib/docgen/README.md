@@ -21,7 +21,7 @@ The full requirements for each section are in [DOCUMENTATION_STANDARDS.md](../..
      id: 'name',            // kebab-case; used in the docs-site URL
      name: 'Name',
      description: '…',
-     category: 'Atoms',     // or 'Molecules', 'Layout'
+     category: 'Atoms',     // or 'Molecules', 'Organisms', 'Layout'
      parentId: 'parent-id', // optional: nests the page under another, e.g. ListItem under List
      props: [/* every public prop: name, type, required, default and what it does */],
      tokens: [/* exact token paths the component uses */],

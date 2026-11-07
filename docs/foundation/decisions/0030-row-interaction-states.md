@@ -4,6 +4,7 @@
 - **Date:** 2026-10-11
 - **Decided by:** Ollie (owner)
 - **Principles:** P5, P2, P3
+- **Amended by:** [0053](0053-sidebarnav-glide.md): SidebarNav's hover highlight glides between rows, in the same colours
 - **Follows:** [0016](0016-accent-selection-and-chip-types.md), [0029](0029-accent-emphasis-audit.md)
 
 ## Context

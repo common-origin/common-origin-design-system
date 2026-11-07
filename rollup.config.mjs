@@ -136,6 +136,7 @@ export default [
         'src/components/index.ts',
         'src/components/atoms/**/*',
         'src/components/molecules/**/*',
+        'src/components/organisms/**/*',
         'src/components/layout/**/*',
       ],
       exclude: [
