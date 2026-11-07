@@ -1,11 +1,12 @@
 import { useState } from 'react'
-import { render, screen, waitFor, within } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Menu, MenuDivider, MenuGroup, MenuItem, MenuItemCheckbox, MenuItemRadio } from './Menu'
 import { Button } from '../../atoms/Button'
 import { Tooltip } from '../../atoms/Tooltip'
 import { IconButton } from '../../atoms/IconButton'
+import { Avatar } from '../../atoms/Avatar'
 import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
@@ -132,6 +133,25 @@ describe('Menu', () => {
       expect(screen.getByRole('menuitem', { name: 'Duplicate' })).toHaveFocus()
     })
 
+    it('matches typeahead against the label alone, not a leading Avatar or the description', async () => {
+      const user = userEvent.setup()
+      render(
+        <Menu trigger={<Button variant="secondary">Workspace</Button>}>
+          <MenuGroup label="Workspaces">
+            <MenuItemRadio checked icon={<Avatar name="Creamery Ops" size="xs" />} description="Pro plan">
+              Creamery Ops
+            </MenuItemRadio>
+            <MenuItemRadio checked={false} icon={<Avatar name="Flavour Lab" size="xs" />}>
+              Flavour Lab
+            </MenuItemRadio>
+          </MenuGroup>
+        </Menu>
+      )
+      await user.click(screen.getByRole('button', { name: 'Workspace' }))
+      await user.keyboard('fla')
+      expect(screen.getByRole('menuitemradio', { name: /Flavour Lab/ })).toHaveFocus()
+    })
+
     it('activates an item with Enter, closes, and returns focus to the trigger', async () => {
       const user = userEvent.setup()
       const onRename = jest.fn()
@@ -163,6 +183,39 @@ describe('Menu', () => {
       await user.tab()
       await closed()
       expect(trigger()).not.toHaveFocus()
+    })
+  })
+
+  describe('placement', () => {
+    it('closes when the page scrolls, since the trigger moves away', async () => {
+      const user = userEvent.setup()
+      render(<Example />)
+      await user.click(trigger())
+      fireEvent.scroll(window)
+      await closed()
+    })
+
+    it("doesn't close when the menu itself scrolls", async () => {
+      const user = userEvent.setup()
+      render(<Example />)
+      await user.click(trigger())
+      fireEvent.scroll(screen.getByRole('menu'))
+      expect(screen.getByRole('menu')).toBeInTheDocument()
+    })
+
+    it("doesn't take focus when it starts open", () => {
+      const { rerender } = render(<input aria-label="Search" />)
+      screen.getByRole('textbox', { name: 'Search' }).focus()
+      rerender(
+        <>
+          <input aria-label="Search" />
+          <Menu defaultOpen trigger={<Button variant="secondary">Options</Button>}>
+            <MenuItem>Rename</MenuItem>
+          </Menu>
+        </>
+      )
+      expect(screen.getByRole('menu')).toBeInTheDocument()
+      expect(screen.getByRole('textbox', { name: 'Search' })).toHaveFocus()
     })
   })
 

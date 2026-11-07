@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useId, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import tokens from '@/lib/cssTokens'
 // Timers need resolved durations, not CSS variables (decision 0041)
@@ -6,7 +6,8 @@ import tokens from '@/lib/cssTokens'
 import tokenValues from '../../../styles/tokens.json'
 import { exitAnimation, forcedColorsEdge, visuallyHidden } from '../../../lib/styleUtils'
 import { usePresence } from '../../../lib/usePresence'
-import { laidOutElement, placeFloating, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
+import { type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
+import { useFloatingLayer } from '../../../lib/useFloatingLayer'
 
 const { semantic } = tokens
 const { motion } = tokenValues.semantic
@@ -22,16 +23,6 @@ const CLOSE_GRACE_MS = parseInt(motion.duration.fast, 10)
 // is open or within the skip-delay window after it closed
 let lastClosedAt = 0
 let active: { owner: object; close: () => void } | null = null
-
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
-
-// The Popover API puts the bubble in the top layer: above everything, Modal included, and never
-// clipped by a scroll container, with no z-index (#326). It's in every current browser; without
-// it the bubble is still position: fixed, so it escapes overflow clipping.
-const supportsPopover = () => typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype
-
-const remToPx = (value: string) =>
-  parseFloat(value) * (typeof document !== 'undefined' ? parseFloat(getComputedStyle(document.documentElement).fontSize) || 16 : 16)
 
 export type TooltipSide = FloatingSide
 export type TooltipAlign = FloatingAlign
@@ -175,8 +166,7 @@ export const Tooltip = ({
   )
 
   // While open: Escape closes it without moving focus, and before anything else hears the key
-  // (an Escape meant for the tooltip mustn't also close a Modal). Scrolling closes it, since
-  // the trigger moves away from it.
+  // (an Escape meant for the tooltip mustn't also close a Modal)
   useEffect(() => {
     if (!isOpen) return
     const onKeyDown = (event: KeyboardEvent) => {
@@ -185,37 +175,11 @@ export const Tooltip = ({
       close()
     }
     window.addEventListener('keydown', onKeyDown, true)
-    window.addEventListener('scroll', close, true)
-    return () => {
-      window.removeEventListener('keydown', onKeyDown, true)
-      window.removeEventListener('scroll', close, true)
-    }
+    return () => window.removeEventListener('keydown', onKeyDown, true)
   }, [isOpen, close])
 
-  // Show it in the top layer, then place it beside the trigger before the browser paints
-  useIsomorphicLayoutEffect(() => {
-    const bubble = bubbleRef.current
-    const trigger = laidOutElement(anchorRef.current)
-    if (!isPresent || !bubble || !trigger) return
-    if (supportsPopover() && !bubble.matches(':popover-open')) {
-      bubble.setAttribute('popover', 'manual')
-      bubble.showPopover()
-    }
-    const anchor = trigger.getBoundingClientRect()
-    const { width, height } = bubble.getBoundingClientRect()
-    const position = placeFloating({
-      anchor,
-      floating: { width, height },
-      side,
-      align,
-      offset: remToPx(tokenValues.semantic.space[100]),
-      viewport: { width: window.innerWidth, height: window.innerHeight },
-      margin: remToPx(tokenValues.semantic.space[200]),
-    })
-    bubble.style.top = `${position.top}px`
-    bubble.style.left = `${position.left}px`
-    bubble.dataset.side = position.side
-  }, [isPresent, side, align, text])
+  // In the top layer beside the trigger; scrolling or resizing closes it, since the trigger moves
+  useFloatingLayer({ isPresent, floatingRef: bubbleRef, anchorRef, side, align, onDetach: close })
 
   const child = React.Children.only(children) as React.ReactElement<{ 'aria-describedby'?: string }>
   const describedBy = [child.props['aria-describedby'], kind === 'description' ? descriptionId : undefined]

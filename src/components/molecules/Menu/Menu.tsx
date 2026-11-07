@@ -1,12 +1,10 @@
-import React, { createContext, useCallback, useContext, useEffect, useId, useLayoutEffect, useRef, useState } from 'react'
+import React, { createContext, useCallback, useContext, useEffect, useId, useRef, useState } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 import tokens from '@/lib/cssTokens'
-// Positioning needs resolved lengths, not CSS variables (decision 0041)
-// eslint-disable-next-line no-restricted-imports
-import tokenValues from '../../../styles/tokens.json'
 import { exitAnimation, forcedColorsEdge, interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 import { usePresence } from '../../../lib/usePresence'
-import { laidOutElement, placeFloating, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
+import { laidOutElement, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
+import { useFloatingLayer, useIsomorphicLayoutEffect } from '../../../lib/useFloatingLayer'
 import { Icon } from '../../atoms/Icon'
 
 const { semantic } = tokens
@@ -14,14 +12,6 @@ const { space, color, motion, radius, size, elevation, border, typography } = se
 
 // Typeahead keeps typed characters together for this long. An input timing, not a motion value.
 const TYPEAHEAD_RESET_MS = 500
-
-const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
-
-// The Popover API's top layer, as Tooltip uses (#326): above everything, never clipped
-const supportsPopover = () => typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype
-
-const remToPx = (value: string) =>
-  parseFloat(value) * (typeof document !== 'undefined' ? parseFloat(getComputedStyle(document.documentElement).fontSize) || 16 : 16)
 
 const ITEM_SELECTOR = '[role="menuitem"], [role="menuitemradio"], [role="menuitemcheckbox"]'
 
@@ -148,6 +138,7 @@ export const Menu = ({
   const panelRef = useRef<HTMLDivElement>(null)
   // Which item to focus once the menu has opened
   const initialFocus = useRef<'first' | 'last'>('first')
+  const openedFromTrigger = useRef(false)
   const typeahead = useRef({ text: '', timer: undefined as ReturnType<typeof setTimeout> | undefined })
 
   const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen)
@@ -175,6 +166,7 @@ export const Menu = ({
 
   const openWith = (focus: 'first' | 'last') => {
     initialFocus.current = focus
+    openedFromTrigger.current = true
     setOpen(true)
   }
 
@@ -190,36 +182,25 @@ export const Menu = ({
     else element.removeAttribute('aria-controls')
   })
 
-  // Show it in the top layer, place it, then focus the first or last item
+  // The menu is named by its trigger, whose own id is kept if it has one
   useIsomorphicLayoutEffect(() => {
     const panel = panelRef.current
     const element = triggerElement()
     if (!isPresent || !panel || !element) return
-    // The menu is named by its trigger, whose own id is kept if it has one
     if (!element.id) element.id = triggerId
     panel.setAttribute('aria-labelledby', element.id)
-    if (supportsPopover() && !panel.matches(':popover-open')) {
-      panel.setAttribute('popover', 'manual')
-      panel.showPopover()
-    }
-    const anchor = element.getBoundingClientRect()
-    const { width, height } = panel.getBoundingClientRect()
-    const position = placeFloating({
-      anchor,
-      floating: { width, height },
-      side,
-      align,
-      offset: remToPx(tokenValues.semantic.space[100]),
-      viewport: { width: window.innerWidth, height: window.innerHeight },
-      margin: remToPx(tokenValues.semantic.space[200]),
-    })
-    panel.style.top = `${position.top}px`
-    panel.style.left = `${position.left}px`
-    panel.dataset.side = position.side
-  }, [isPresent, side, align])
+  }, [isPresent])
 
+  // In the top layer beside the trigger; scrolling or resizing closes it, since the trigger moves
+  const detach = useCallback(() => close({ returnFocus: false }), [close])
+  useFloatingLayer({ isPresent, floatingRef: panelRef, anchorRef, side, align, onDetach: detach })
+
+  // Opening from the trigger focuses the first or last item. An open that didn't come from the
+  // trigger (defaultOpen, or a controlled open) leaves focus where it is
   useEffect(() => {
-    if (isOpen) focusItem(panelRef.current, initialFocus.current)
+    if (!isOpen || !openedFromTrigger.current) return
+    openedFromTrigger.current = false
+    focusItem(panelRef.current, initialFocus.current)
   }, [isOpen])
 
   // A press outside the trigger and the menu closes it, leaving focus where the press put it
@@ -280,7 +261,9 @@ export const Menu = ({
           clearTimeout(state.timer)
           state.text += event.key.toLowerCase()
           state.timer = setTimeout(() => { state.text = '' }, TYPEAHEAD_RESET_MS)
-          const label = (item: HTMLElement) => (item.dataset.label ?? item.textContent ?? '').trim().toLowerCase()
+          // The label alone: not a leading Avatar's initials, the description or the shortcut
+          const label = (item: HTMLElement) =>
+            (item.dataset.label ?? item.querySelector('[data-menu-label]')?.textContent ?? '').trim().toLowerCase()
           const ordered = [...items.slice(current + 1), ...items.slice(0, current + 1)]
           const search = state.text.length > 1 ? [items[current], ...ordered] : ordered
           search.find((item) => item && label(item).startsWith(state.text))?.focus()
@@ -476,7 +459,7 @@ const RowItem = ({
     >
       {icon && <Leading aria-hidden="true">{icon}</Leading>}
       <Text>
-        <span>{children}</span>
+        <span data-menu-label="">{children}</span>
         {description && <Description>{description}</Description>}
       </Text>
       {shortcut && <Shortcut aria-hidden="true">{shortcut.label}</Shortcut>}
