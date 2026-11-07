@@ -9,6 +9,8 @@ export interface SidebarNavContextValue {
   linkComponent?: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
   /** SidebarNav draws one gliding hover highlight, so rows don't colour their own hover (0053) */
   glide: boolean
+  /** Inside a SidebarNav, whose body is one list: a section is one of its items */
+  inNav?: boolean
 }
 
 export const SidebarNavContext = createContext<SidebarNavContextValue>({ collapsed: false, glide: false })

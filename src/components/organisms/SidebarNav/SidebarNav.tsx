@@ -4,7 +4,7 @@ import tokens from '@/lib/cssTokens'
 import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
 import { IconButton } from '../../atoms/IconButton'
 import { Tooltip } from '../../atoms/Tooltip'
-import { SidebarNavSection } from '../../molecules/SidebarNavSection'
+import { isKeyboardFocus } from '../../../lib/keyboardFocus'
 import { SidebarNavContext, type SidebarNavContextValue } from '../../molecules/SidebarNavItem/SidebarNavContext'
 
 const { semantic, component } = tokens
@@ -16,7 +16,10 @@ export type SidebarNavWidth = 'narrow' | 'default' | 'wide'
 export interface SidebarNavProps {
   /** Names the navigation landmark, such as "Main" or "Workspace" */
   label: string
-  /** The body: SidebarNavItems and SidebarNavSections, in order. It scrolls when it's too tall. */
+  /**
+   * The body: SidebarNavItems and SidebarNavSections, in order, wrapped in components or Fragments
+   * if you like. It's one list, and scrolls when it's too tall.
+   */
   children: React.ReactNode
   /** Content above the body, such as a WorkspaceSwitcher. The collapse toggle sits beside it. */
   header?: React.ReactNode
@@ -163,26 +166,6 @@ const Footer = styled.div`
   flex-shrink: 0;
 `
 
-// Consecutive top-level items go in one list; sections bring their own
-function groupItems(children: React.ReactNode) {
-  const groups: React.ReactNode[] = []
-  let run: React.ReactNode[] = []
-  const flush = () => {
-    if (run.length) groups.push(<List key={`list-${groups.length}`}>{run}</List>)
-    run = []
-  }
-  React.Children.toArray(children).forEach((child) => {
-    if (React.isValidElement(child) && child.type === SidebarNavSection) {
-      flush()
-      groups.push(child)
-    } else {
-      run.push(child)
-    }
-  })
-  flush()
-  return groups
-}
-
 /**
  * A product's sidebar navigation (#331): a header, a scrolling body of items and sections, and a
  * footer, that collapses to an icon rail. Row heights follow density (0051); the width is a prop.
@@ -243,7 +226,7 @@ export const SidebarNav = ({
     }))
   }
 
-  const context: SidebarNavContextValue = { collapsed, linkComponent, glide: true }
+  const context: SidebarNavContextValue = { collapsed, linkComponent, glide: true, inNav: true }
 
   const toggleLabel = collapsed ? 'Expand sidebar' : 'Collapse sidebar'
   const toggleButton = collapsible && (
@@ -278,15 +261,7 @@ export const SidebarNav = ({
             ref={contentRef}
             onPointerOver={(event) => event.pointerType !== 'touch' && highlightRow(event.target)}
             onPointerLeave={hide}
-            onFocus={(event) => {
-              let keyboard = true
-              try {
-                keyboard = (event.target as HTMLElement).matches(':focus-visible')
-              } catch {
-                // Browsers without :focus-visible treat every focus as keyboard focus
-              }
-              if (keyboard) highlightRow(event.target)
-            }}
+            onFocus={(event) => isKeyboardFocus(event.target) && highlightRow(event.target)}
             onBlur={(event) => {
               if (!contentRef.current?.contains(event.relatedTarget as Node)) hide()
             }}
@@ -306,7 +281,8 @@ export const SidebarNav = ({
                   : undefined
               }
             />
-            {groupItems(children)}
+            {/* One list: items are its items, and each section is an item holding its own list */}
+            <List>{children}</List>
           </Content>
         </Body>
         {footer && !collapsed && <Footer>{footer}</Footer>}

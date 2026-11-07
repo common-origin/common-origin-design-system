@@ -38,12 +38,29 @@ describe('SidebarNav', () => {
       expect(within(nav()).getByRole('button', { name: 'Upgrade' })).toBeInTheDocument()
     })
 
-    it('puts top-level items in a list, and keeps sections as their own lists', () => {
+    it('is one list: items are its items, and a section is an item holding its own list', () => {
       render(<Example />)
-      const lists = within(nav()).getAllByRole('list')
-      expect(lists).toHaveLength(2)
-      expect(within(lists[0]).getAllByRole('listitem')).toHaveLength(3)
-      expect(screen.getByRole('list', { name: 'Chats' })).toBe(lists[1])
+      const [body, chats] = within(nav()).getAllByRole('list')
+      expect(Array.from(body.children).every((child) => child.tagName === 'LI')).toBe(true)
+      expect(body.children).toHaveLength(4)
+      expect(screen.getByRole('list', { name: 'Chats' })).toBe(chats)
+    })
+
+    it('keeps valid list markup when items and sections are wrapped in a component or Fragment', async () => {
+      function Wrapped() {
+        return (
+          <>
+            <SidebarNavItem label="Home" icon="home" url="/" />
+            <SidebarNavSection label="Chats">
+              <SidebarNavItem label="Supplier records" url="/chats/1" />
+            </SidebarNavSection>
+          </>
+        )
+      }
+      const { container } = render(<SidebarNav label="Main"><Wrapped /></SidebarNav>)
+      const body = within(nav()).getAllByRole('list')[0]
+      expect(Array.from(body.children).map((child) => child.tagName)).toEqual(['LI', 'LI'])
+      expect(await axe(container)).toHaveNoViolations()
     })
 
     it('marks the current page', () => {

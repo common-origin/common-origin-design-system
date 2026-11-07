@@ -8,6 +8,7 @@ import { exitAnimation, forcedColorsEdge, visuallyHidden } from '../../../lib/st
 import { usePresence } from '../../../lib/usePresence'
 import { type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
 import { useFloatingLayer } from '../../../lib/useFloatingLayer'
+import { isKeyboardFocus } from '../../../lib/keyboardFocus'
 
 const { semantic } = tokens
 const { motion } = tokenValues.semantic
@@ -197,13 +198,7 @@ export const Tooltip = ({
           pressed.current = false
           return
         }
-        let keyboard = true
-        try {
-          keyboard = (event.target as HTMLElement).matches(':focus-visible')
-        } catch {
-          // Browsers without :focus-visible treat every focus as keyboard focus
-        }
-        if (keyboard) open()
+        if (isKeyboardFocus(event.target)) open()
       }}
       onBlur={() => {
         // A press on an already focused trigger has no focus to skip; don't carry it over
