@@ -20,6 +20,8 @@ export interface ListProps {
   /**
    * Density of the list's items: their padding. A ListItem's own `spacing` overrides it (#77).
    * @default 'comfortable'
+   * @deprecated Set density on a region with `data-co-density` instead: rows follow it (P9,
+   * decision 0051). `spacing` still sets the padding, but not the height, until it's removed in 4.0.
    */
   spacing?: ListSpacing
   

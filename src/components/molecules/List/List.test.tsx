@@ -156,6 +156,11 @@ describe('ListItem', () => {
       render(<ListItem primary="Primary" />)
       expect(screen.queryByText('Secondary')).not.toBeInTheDocument()
     })
+
+    it('takes its minimum height from the single-line row token (decision 0051)', () => {
+      render(<ListItem primary="Primary" data-testid="item" />)
+      expect(getComputedStyle(screen.getByTestId('item')).minHeight).toBe(tokens.semantic.size.row.md)
+    })
   })
 
   describe('Content Slots', () => {

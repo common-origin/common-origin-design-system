@@ -89,7 +89,7 @@ export const transactionListItemDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.transactionListItem.minHeight',
+    'semantic.size.row.lg',
     'semantic.border.focusOffset',
     'semantic.border.width.thick',
     'semantic.border.width.thin',

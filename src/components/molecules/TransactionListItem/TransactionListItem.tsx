@@ -59,8 +59,8 @@ interface StyledContainerProps {
 const StyledContainer = styled.div<StyledContainerProps>`
   display: flex;
   align-items: center;
-  min-height: ${tokens.component.transactionListItem.minHeight};
-  padding: ${tokens.semantic.space[300]} ${tokens.semantic.space[300]};
+  min-height: ${tokens.semantic.size.row.lg};
+  padding: ${tokens.semantic.space.inset.md}; /* follows density with the row's height (decision 0051) */
   background-color: ${tokens.semantic.surface.base};
   border-bottom: ${tokens.semantic.border.width.thin} solid ${tokens.semantic.color.border.default};
   gap: ${tokens.semantic.space[300]};

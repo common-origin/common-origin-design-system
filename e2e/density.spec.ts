@@ -1,7 +1,8 @@
 import { expect, test, type Locator, type Page } from '@playwright/test'
 
 // Density as a token mode (decision 0032, #191): data-co-density on an element changes control
-// heights and control insets for everything inside it, and nothing outside it. Uses
+// heights, control insets and row heights (decision 0051) for everything inside it, and nothing
+// outside it. Uses
 // pages/fixtures/density.tsx, which loads tokens.css through the docs site.
 
 const height = (locator: Locator) => locator.evaluate((el) => el.getBoundingClientRect().height)
@@ -58,4 +59,11 @@ test('compact keeps every control at least 24 × 24px (WCAG 2.5.8)', async ({ pa
   )
   expect(sizes.length).toBeGreaterThan(0)
   expect(sizes.filter(({ width, height }) => width < 24 || height < 24)).toEqual([])
+})
+
+test('rows move with density and keep today\'s heights at default (decision 0051)', async ({ page }) => {
+  const rows = (kind: string) =>
+    Promise.all(['compact', 'default', 'comfortable'].map((d) => height(page.locator(`[data-rows="${d}"] [data-testid="row-${kind}"]`))))
+  expect(await rows('list')).toEqual([40, 48, 56])
+  expect(await rows('two-line')).toEqual([64, 72, 80])
 })
