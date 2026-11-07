@@ -134,6 +134,24 @@ describe('Tooltip', () => {
       expect(screen.queryByTestId('home-tip')).not.toBeInTheDocument()
     })
 
+    it('still opens on keyboard focus after the focused trigger was pressed', async () => {
+      const user = setup()
+      render(
+        <>
+          <Tooltip text="Home" data-testid="tip">
+            <IconButton variant="naked" iconName="home" aria-label="Home" />
+          </Tooltip>
+          <button type="button">Next</button>
+        </>
+      )
+      await user.tab()
+      await user.click(screen.getByRole('button', { name: 'Home' }))
+      await user.tab()
+      act(() => { jest.advanceTimersByTime(GRACE) })
+      await user.tab({ shift: true })
+      expect(screen.getByTestId('tip')).toBeInTheDocument()
+    })
+
     it('closes when the trigger is pressed', async () => {
       const user = setup()
       renderHome()

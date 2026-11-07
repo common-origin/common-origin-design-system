@@ -241,7 +241,11 @@ export const Tooltip = ({
         }
         if (keyboard) open()
       }}
-      onBlur={close}
+      onBlur={() => {
+        // A press on an already focused trigger has no focus to skip; don't carry it over
+        pressed.current = false
+        close()
+      }}
       // Pressing the trigger acts on it, so the hint has done its job
       onPointerDown={() => {
         pressed.current = true
