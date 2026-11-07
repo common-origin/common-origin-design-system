@@ -114,13 +114,14 @@ export function DocsSidebar({ label, sections, currentId }: DocsSidebarProps) {
         <Button variant="secondary" iconName="menu" onClick={() => setSheetOpen(true)}>
           {current ? current.label : label}
         </Button>
-        <Sheet isOpen={sheetOpen} onClose={() => setSheetOpen(false)} position="left" title={label}>
+      </Mobile>
+      {/* Outside the sticky bar, so the Sheet stacks at the page's root, not inside the bar's layer */}
+      <Sheet isOpen={sheetOpen} onClose={() => setSheetOpen(false)} position="left" title={label}>
           <SidebarNav label={label} collapsible={false} linkComponent={Link}>
             {/* Choosing a page closes the Sheet */}
             <Body sections={sections} currentId={currentId} onNavigate={() => setSheetOpen(false)} />
           </SidebarNav>
-        </Sheet>
-      </Mobile>
+      </Sheet>
       <Desktop ref={desktopRef}>
         <SidebarNav label={label} collapsible={false} linkComponent={Link}>
           <Body sections={sections} currentId={currentId} />

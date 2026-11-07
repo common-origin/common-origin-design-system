@@ -53,7 +53,9 @@ export default function Patterns() {
   const requested = typeof router.query.pattern === 'string' ? router.query.pattern : undefined
   const activePattern = patternsData.some((pattern) => pattern.id === requested) ? (requested as string) : 'data-view'
 
-  const activePatternData = patternsData.find(pattern => pattern.id === activePattern)
+  // The page is prerendered without its query, so wait for the router rather than flash the default
+  // pattern before a deep link's
+  const activePatternData = router.isReady ? patternsData.find(pattern => pattern.id === activePattern) : undefined
 
   const sidebarSections = [
     {
@@ -71,11 +73,7 @@ export default function Patterns() {
     Draft: 'pending',
   }
 
-  if (!activePatternData) {
-    return null
-  }
-
-  const PatternComponent = activePatternData.component
+  const PatternComponent = activePatternData?.component
 
   return (
     <>
@@ -97,102 +95,106 @@ export default function Patterns() {
         <section>
           <Container>
             <PatternsLayout>
-              <DocsSidebar label="Patterns" sections={sidebarSections} currentId={activePattern} />
+              <DocsSidebar label="Patterns" sections={sidebarSections} currentId={router.isReady ? activePattern : ''} />
 
               <MainContent>
-                <Box my="4xl">
-                  <Stack gap="md" direction="column">
-                    <Typography variant="h1">{activePatternData.name}</Typography>
-                    <Stack gap="sm" direction="row" alignItems="center" wrap>
-                      <Tag variant="emphasis">{activePatternData.category}</Tag>
-                      <Tag>{activePatternData.complexity}</Tag>
-                      <StatusLabel
-                        status={statusTypes[activePatternData.status]}
-                        label={activePatternData.status}
-                        aria-label={`Status: ${activePatternData.status}`}
-                        liveRegion={false}
-                      />
-                    </Stack>
-                  </Stack>
-                  <Box mt="md">
-                    <Typography variant="body" color="emphasis">
-                      {activePatternData.description}
-                    </Typography>
-                  </Box>
-                </Box>
-
-                {/* Interactive Demo */}
-                <Box mb="4xl">
-                  <Typography variant="h3">Interactive Demo</Typography>
-                  <Typography variant="body" color="subdued">
-                    Try resizing your browser to see the responsive behavior. The table view automatically transitions to a mobile-optimized list view.
-                  </Typography>
-                </Box>
-
-                <PatternComponent />
-
-                {/* Pattern Documentation Sections */}
-                <PatternSection>
-                  <Typography variant="h3">Overview</Typography>
-                  <Box mt="md">
-                    <Typography variant="body" color="subdued">
-                      {activePatternData.overview}
-                    </Typography>
-                  </Box>
-                </PatternSection>
-
-                <PatternSection>
-                  <Typography variant="h3">Key Features</Typography>
-                  <Box mt="md">
-                    <Stack direction="column" gap="sm">
-                      {activePatternData.keyFeatures.map((feature, index) => (
-                        <Typography key={index} variant="body" color="subdued">
-                          • {feature}
+                {activePatternData && PatternComponent && (
+                  <>
+                    <Box my="4xl">
+                      <Stack gap="md" direction="column">
+                        <Typography variant="h1">{activePatternData.name}</Typography>
+                        <Stack gap="sm" direction="row" alignItems="center" wrap>
+                          <Tag variant="emphasis">{activePatternData.category}</Tag>
+                          <Tag>{activePatternData.complexity}</Tag>
+                          <StatusLabel
+                            status={statusTypes[activePatternData.status]}
+                            label={activePatternData.status}
+                            aria-label={`Status: ${activePatternData.status}`}
+                            liveRegion={false}
+                          />
+                        </Stack>
+                      </Stack>
+                      <Box mt="md">
+                        <Typography variant="body" color="emphasis">
+                          {activePatternData.description}
                         </Typography>
-                      ))}
-                    </Stack>
-                  </Box>
-                </PatternSection>
+                      </Box>
+                    </Box>
 
-                <PatternSection>
-                  <Typography variant="h3">Use Cases</Typography>
-                  <Box mt="md">
-                    <Stack direction="column" gap="sm">
-                      {activePatternData.useCases.map((useCase, index) => (
-                        <Typography key={index} variant="body" color="subdued">
-                          • {useCase}
+                    {/* Interactive Demo */}
+                    <Box mb="4xl">
+                      <Typography variant="h3">Interactive Demo</Typography>
+                      <Typography variant="body" color="subdued">
+                        Try resizing your browser to see the responsive behavior. The table view automatically transitions to a mobile-optimized list view.
+                      </Typography>
+                    </Box>
+
+                    <PatternComponent />
+
+                    {/* Pattern Documentation Sections */}
+                    <PatternSection>
+                      <Typography variant="h3">Overview</Typography>
+                      <Box mt="md">
+                        <Typography variant="body" color="subdued">
+                          {activePatternData.overview}
                         </Typography>
-                      ))}
-                    </Stack>
-                  </Box>
-                </PatternSection>
+                      </Box>
+                    </PatternSection>
 
-                <PatternSection>
-                  <Typography variant="h3">Components Used</Typography>
-                  <Box mt="md">
-                    <Stack direction="row" gap="sm" wrap>
-                      {activePatternData.componentsUsed.map((component, index) => (
-                        <Chip key={index} variant="default">{component}</Chip>
-                      ))}
-                    </Stack>
-                  </Box>
-                </PatternSection>
+                    <PatternSection>
+                      <Typography variant="h3">Key Features</Typography>
+                      <Box mt="md">
+                        <Stack direction="column" gap="sm">
+                          {activePatternData.keyFeatures.map((feature, index) => (
+                            <Typography key={index} variant="body" color="subdued">
+                              • {feature}
+                            </Typography>
+                          ))}
+                        </Stack>
+                      </Box>
+                    </PatternSection>
 
-                <PatternSection>
-                  <Typography variant="h3">Implementation Notes</Typography>
-                  <Box mt="md">
-                    <Stack direction="column" gap="md">
-                      {activePatternData.implementationNotes.map((note, index) => (
-                        <Box key={index}>
-                          <Typography variant="subtitle">{note.title}</Typography>
-                          <Typography variant="body" color="subdued">
-                            {note.description}
-                          </Typography>
-                        </Box>
-                      ))}
-                    </Stack>
-                  </Box>
-                </PatternSection>
+                    <PatternSection>
+                      <Typography variant="h3">Use Cases</Typography>
+                      <Box mt="md">
+                        <Stack direction="column" gap="sm">
+                          {activePatternData.useCases.map((useCase, index) => (
+                            <Typography key={index} variant="body" color="subdued">
+                              • {useCase}
+                            </Typography>
+                          ))}
+                        </Stack>
+                      </Box>
+                    </PatternSection>
+
+                    <PatternSection>
+                      <Typography variant="h3">Components Used</Typography>
+                      <Box mt="md">
+                        <Stack direction="row" gap="sm" wrap>
+                          {activePatternData.componentsUsed.map((component, index) => (
+                            <Chip key={index} variant="default">{component}</Chip>
+                          ))}
+                        </Stack>
+                      </Box>
+                    </PatternSection>
+
+                    <PatternSection>
+                      <Typography variant="h3">Implementation Notes</Typography>
+                      <Box mt="md">
+                        <Stack direction="column" gap="md">
+                          {activePatternData.implementationNotes.map((note, index) => (
+                            <Box key={index}>
+                              <Typography variant="subtitle">{note.title}</Typography>
+                              <Typography variant="body" color="subdued">
+                                {note.description}
+                              </Typography>
+                            </Box>
+                          ))}
+                        </Stack>
+                      </Box>
+                    </PatternSection>
+                  </>
+                )}
               </MainContent>
             </PatternsLayout>
           </Container>

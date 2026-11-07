@@ -360,7 +360,7 @@ export default function Components() {
         <section>
           <Container>
             <ComponentsLayout>
-              <DocsSidebar label="Components" sections={sidebarSections} currentId={activeComponent} />
+              <DocsSidebar label="Components" sections={sidebarSections} currentId={router.isReady ? activeComponent : ''} />
 
               <MainContent>
                 {activeComponentData && (

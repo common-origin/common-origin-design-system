@@ -1160,7 +1160,7 @@ export default function Tokens() {
           <Container>
             
             <TokensLayout>
-              <DocsSidebar label="Token categories" sections={sidebarSections} currentId={activeTab} />
+              <DocsSidebar label="Token categories" sections={sidebarSections} currentId={router.isReady ? activeTab : ''} />
 
               <MainContent>
                 <Box my="4xl">
