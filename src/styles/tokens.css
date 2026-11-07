@@ -487,10 +487,13 @@
   --co-semantic-size-10000: var(--co-base-dimension-100); /** Size step for compact panel widths, such as the EmptyState block. */
   --co-semantic-size-19200: var(--co-base-dimension-192); /** Size step for wide content columns, such as CardLarge. */
   --co-semantic-size-pointer-target: var(--co-base-dimension-6); /** Minimum pointer target for a control that's smaller to look at: its invisible hit area (WCAG 2.5.8, decision 0039). On touch screens, use touchTarget. */
-  --co-semantic-size-touch-target: var(--co-base-dimension-11); /** Minimum height of a tappable row or control on touch screens. */
+  --co-semantic-size-touch-target: var(--co-base-dimension-11); /** Invisible hit area of a small control on touch screens, such as the Slider thumb. Not a row or control height: those follow density down to pointerTarget (decision 0051). */
   --co-semantic-size-control-sm: var(--co-base-dimension-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-dimension-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
   --co-semantic-size-control-lg: var(--co-base-dimension-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-size-row-sm: var(--co-base-dimension-8); /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+  --co-semantic-size-row-md: var(--co-base-dimension-12); /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
+  --co-semantic-size-row-lg: var(--co-base-dimension-18); /** Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051). */
   --co-semantic-size-overlay-sm: var(--co-base-dimension-100); /** Width of a small Modal, and the default width or height of a Sheet. */
   --co-semantic-size-overlay-md: var(--co-base-dimension-140); /** Width of a medium overlay panel, such as a medium Modal. */
   --co-semantic-size-overlay-lg: var(--co-base-dimension-180); /** Width of a large overlay panel, such as a large Modal. */
@@ -785,7 +788,7 @@
   --co-component-empty-state-actions-max-width: var(--co-semantic-size-7500); /** Widest EmptyState's actions area grows, so buttons don't stretch. */
   --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Indent of a compact ListItem's expanded content, aligning it with the label. */
   --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of a comfortable ListItem's expanded content. */
-  --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Minimum height of a TransactionListItem row, so rows line up in a list. */
+  --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Deprecated: Two-line rows share semantic.size.row.lg, which follows density (decision 0051). Removed in 4.0. */
   --co-component-status-pending-text: var(--co-semantic-color-text-muted); /** Text and icon of a pending StatusLabel: neutral, because waiting needs no attention (decision 0045). 6.01:1 on white. */
   --co-component-status-pending-background: var(--co-semantic-color-fill-muted); /** Fill of a pending StatusLabel (decision 0045). */
   --co-component-status-completed-text: var(--co-semantic-color-text-success); /** Text and icon of a completed StatusLabel, on its completed background. */
@@ -834,12 +837,15 @@
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */
 }
 
-/* Mode: density (decision 0032). Control heights and control insets for a region, set with data-co-density on any element (decisions 0032 and 0034, #191). Rows and layout spacing don't change. */
+/* Mode: density (decision 0032). Control heights, control insets and row heights for a region, set with data-co-density on any element (decisions 0032, 0034 and 0051). Layout spacing doesn't change. */
 
 [data-co-density="default"] {
   --co-semantic-size-control-sm: var(--co-base-dimension-8); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-dimension-10); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
   --co-semantic-size-control-lg: var(--co-base-dimension-12); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-size-row-sm: var(--co-base-dimension-8); /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+  --co-semantic-size-row-md: var(--co-base-dimension-12); /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
+  --co-semantic-size-row-lg: var(--co-base-dimension-18); /** Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051). */
   --co-semantic-space-inset-xs: var(--co-base-dimension-1); /** Tightest padding inside a component, such as around an icon in a small control. */
   --co-semantic-space-inset-sm: var(--co-base-dimension-2); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
   --co-semantic-space-inset-md: var(--co-base-dimension-3); /** Medium padding inside a component: form field insides, medium IconButtons. */
@@ -852,6 +858,9 @@
   --co-semantic-size-control-sm: var(--co-base-dimension-6); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-dimension-8); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
   --co-semantic-size-control-lg: var(--co-base-dimension-10); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-size-row-sm: var(--co-base-dimension-6); /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+  --co-semantic-size-row-md: var(--co-base-dimension-10); /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
+  --co-semantic-size-row-lg: var(--co-base-dimension-16); /** Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051). */
   --co-semantic-space-inset-xs: var(--co-base-dimension-1); /** Tightest padding inside a component, such as around an icon in a small control. */
   --co-semantic-space-inset-sm: var(--co-base-dimension-1); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
   --co-semantic-space-inset-md: var(--co-base-dimension-2); /** Medium padding inside a component: form field insides, medium IconButtons. */
@@ -864,6 +873,9 @@
   --co-semantic-size-control-sm: var(--co-base-dimension-10); /** Minimum height of small controls: small Buttons and IconButtons, buttons inside fields (decision 0034). */
   --co-semantic-size-control-md: var(--co-base-dimension-12); /** Minimum height of medium controls: the default IconButton, medium Buttons (decision 0034). */
   --co-semantic-size-control-lg: var(--co-base-dimension-14); /** Minimum height of large controls: text fields, Dropdown, SearchField, the default Button (decision 0034). */
+  --co-semantic-size-row-sm: var(--co-base-dimension-10); /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+  --co-semantic-size-row-md: var(--co-base-dimension-14); /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
+  --co-semantic-size-row-lg: var(--co-base-dimension-20); /** Minimum height of two-line rows: TransactionListItem. Follows density (decision 0051). */
   --co-semantic-space-inset-xs: var(--co-base-dimension-2); /** Tightest padding inside a component, such as around an icon in a small control. */
   --co-semantic-space-inset-sm: var(--co-base-dimension-3); /** Small padding inside a component: chip sides, icon-to-label gaps, compact buttons. */
   --co-semantic-space-inset-md: var(--co-base-dimension-4); /** Medium padding inside a component: form field insides, medium IconButtons. */

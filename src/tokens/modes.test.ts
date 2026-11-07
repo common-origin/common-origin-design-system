@@ -30,9 +30,9 @@ function resolve(value: string, overrides = new Map<string, string>(), seen: str
 
 const rem = (value: string) => Number(value.replace('rem', '')) * 16
 
-// What each mode may change (0032's table, narrowed for density by #191: controls only)
+// What each mode may change (0032's table, narrowed for density by #191 to controls, then rows by 0051)
 const ALLOWED: Record<string, RegExp> = {
-  density: /^semantic\.(size\.control|space\.inset)\./,
+  density: /^semantic\.(size\.control|size\.row|space\.inset)\./,
 }
 
 type Node = { [key: string]: unknown }
@@ -98,10 +98,12 @@ describe.each(Object.entries(resolver.modifiers))('the %s mode', (mode, modifier
 })
 
 describe('density (#191)', () => {
-  const control = (context: string, step: string) => {
-    const name = `--co-semantic-size-control-${step}`
+  const height = (group: string) => (context: string, step: string) => {
+    const name = `--co-semantic-size-${group}-${step}`
     return rem(resolve(`var(${name})`, context === 'default' ? new Map() : block('density', context)))
   }
+  const control = height('control')
+  const row = height('row')
 
   it('shifts control heights one 8px step per context (decision 0034)', () => {
     expect(['sm', 'md', 'lg'].map((step) => control('compact', step))).toEqual([24, 32, 40])
@@ -111,5 +113,15 @@ describe('density (#191)', () => {
 
   it('keeps every compact control at least 24px, the WCAG 2.5.8 minimum target', () => {
     expect(Math.min(...['sm', 'md', 'lg'].map((step) => control('compact', step)))).toBeGreaterThanOrEqual(24)
+  })
+
+  it('shifts row heights per context, keeping today\'s rows at default (decision 0051)', () => {
+    expect(['sm', 'md', 'lg'].map((step) => row('compact', step))).toEqual([24, 40, 64])
+    expect(['sm', 'md', 'lg'].map((step) => row('default', step))).toEqual([32, 48, 72])
+    expect(['sm', 'md', 'lg'].map((step) => row('comfortable', step))).toEqual([40, 56, 80])
+  })
+
+  it('keeps every compact row at least 24px on every pointer type (decision 0051)', () => {
+    expect(Math.min(...['sm', 'md', 'lg'].map((step) => row('compact', step)))).toBeGreaterThanOrEqual(24)
   })
 })

@@ -1005,6 +1005,11 @@
         "md": "2.5rem",
         "lg": "3rem"
       },
+      "row": {
+        "sm": "2rem",
+        "md": "3rem",
+        "lg": "4.5rem"
+      },
       "overlay": {
         "sm": "25rem",
         "md": "35rem",
