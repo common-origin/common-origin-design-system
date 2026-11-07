@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
@@ -10,9 +10,10 @@ import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
-const renderSection = (props: Partial<SidebarNavSectionProps> = {}, collapsed = false) =>
+const renderSection = (props: Partial<SidebarNavSectionProps> = {}, collapsed = false, before?: React.ReactNode) =>
   render(
     <SidebarNavContext.Provider value={{ collapsed, glide: false }}>
+      {before}
       <SidebarNavSection label="Chats" {...props}>
         <SidebarNavItem label="Supplier records" url="/chats/1" />
         <SidebarNavItem label="Flavour page ticket" icon="message" url="/chats/2" />
@@ -90,7 +91,10 @@ describe('SidebarNavSection', () => {
           action: <IconButton variant="naked" size="small" iconName="search" aria-label="Search chats" />,
           'data-testid': 'section',
         },
-        true
+        true,
+        <ul>
+          <SidebarNavItem label="Home" icon="home" url="/" />
+        </ul>
       )
       expect(screen.queryByRole('button', { name: 'Chats' })).not.toBeInTheDocument()
       expect(screen.queryByRole('button', { name: 'Search chats' })).not.toBeInTheDocument()
@@ -100,6 +104,25 @@ describe('SidebarNavSection', () => {
       expect(screen.queryByRole('link', { name: 'Supplier records' })).not.toBeInTheDocument()
       expect(screen.getByRole('link', { name: 'Flavour page ticket' })).toBeInTheDocument()
     })
+  })
+
+  it("clips its items only while hidden, so an item's badge isn't cut off once shown", async () => {
+    const user = userEvent.setup()
+    renderSection({ collapsible: true })
+    const list = screen.getByRole('list', { name: 'Chats' })
+    expect(list).toHaveStyle({ overflow: 'visible' })
+    await user.click(screen.getByRole('button', { name: 'Chats' }))
+    expect(screen.getByRole('list', { hidden: true })).toHaveStyle({ overflow: 'hidden' })
+  })
+
+  it("draws no rule in the rail when nothing is above it", () => {
+    renderSection({ 'data-testid': 'section' }, true)
+    expect(getComputedStyle(screen.getByTestId('section')).borderTopStyle).not.toBe('solid')
+  })
+
+  it('shows its items in the rail even when collapsed, since the rail has no disclosure', () => {
+    renderSection({ collapsible: true, defaultExpanded: false }, true)
+    expect(screen.getByRole('link', { name: 'Flavour page ticket' })).toBeVisible()
   })
 
   it('has no axe violations, static or collapsible', async () => {

@@ -46,6 +46,13 @@ const Section = styled.div.withConfig({
       border-top: ${border.default};
       padding-top: ${space[100]};
       margin-top: ${space[100]};
+
+      /* Nothing above to separate it from */
+      &:first-child {
+        border-top: none;
+        padding-top: 0;
+        margin-top: 0;
+      }
     `}
 `
 
@@ -132,9 +139,12 @@ const Collapse = styled.div.withConfig({
   }
 `
 
-const List = styled.ul`
+// Clipped only while hidden or moving: once shown, an item's Badge can overhang its row
+const List = styled.ul.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $clip: boolean }>`
   min-height: 0;
-  overflow: hidden;
+  overflow: ${({ $clip }) => ($clip ? 'hidden' : 'visible')};
   margin: 0;
   padding: 0;
   list-style: none;
@@ -160,11 +170,15 @@ export const SidebarNavSection = ({
   const labelId = useId()
   const listId = useId()
   const [uncontrolledExpanded, setUncontrolledExpanded] = useState(defaultExpanded)
+  const [animating, setAnimating] = useState(false)
   const isControlled = expandedProp !== undefined
-  const expanded = !collapsible || (isControlled ? expandedProp : uncontrolledExpanded)
+  const userExpanded = isControlled ? expandedProp : uncontrolledExpanded
+  // The rail has no disclosure button, so a section always shows its items there
+  const expanded = !collapsible || collapsed || userExpanded
 
   const toggle = () => {
     const next = !expanded
+    setAnimating(true)
     if (!isControlled) setUncontrolledExpanded(next)
     onExpandedChange?.(next)
   }
@@ -196,8 +210,13 @@ export const SidebarNavSection = ({
   return (
     <Section $collapsed={collapsed} data-testid={dataTestId}>
       {header}
-      <Collapse $expanded={expanded}>
-        <List id={listId} aria-labelledby={labelId}>
+      <Collapse
+        $expanded={expanded}
+        onTransitionEnd={(event) => {
+          if (event.target === event.currentTarget && event.propertyName === 'grid-template-rows') setAnimating(false)
+        }}
+      >
+        <List id={listId} aria-labelledby={labelId} $clip={!expanded || animating}>
           {children}
         </List>
       </Collapse>
