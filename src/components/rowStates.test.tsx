@@ -5,6 +5,7 @@ import { pseudoClassDeclarations } from '@/test-utils/contrast'
 import { ListItem } from './molecules/List'
 import { TransactionListItem } from './molecules/TransactionListItem'
 import { Dropdown } from './molecules/Dropdown'
+import { SidebarNavItem } from './molecules/SidebarNavItem'
 
 expect.extend(toHaveNoViolations)
 
@@ -56,6 +57,17 @@ describe('row states', () => {
       <TransactionListItem merchant="Corner Shop" amount={-4.5} date={new Date('2026-10-01')} onClick={() => {}} />
     )
     expectRow(screen.getByRole('button', { name: /Corner Shop/ }), rowStates.unselected)
+  })
+
+  it('SidebarNavItem uses the unselected row states, and the selected ones for the current page', () => {
+    render(
+      <ul>
+        <SidebarNavItem label="Home" url="/home" />
+        <SidebarNavItem label="Chats" url="/chats" current />
+      </ul>
+    )
+    expectRow(screen.getByRole('link', { name: 'Home' }), rowStates.unselected)
+    expectRow(screen.getByRole('link', { name: 'Chats' }), rowStates.selected)
   })
 
   it('Dropdown options use the unselected and selected row states', () => {
