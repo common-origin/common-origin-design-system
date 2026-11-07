@@ -29,6 +29,9 @@ export default function DensityFixture() {
                 <List>
                   <ListItem primary="Groceries" data-testid="row-list" />
                 </List>
+                <List>
+                  <ListItem primary="Transport" spacing="compact" data-testid="row-list-compact-spacing" />
+                </List>
                 <TransactionListItem merchant="Corner Store" amount={-12.5} date="2026-11-07" data-testid="row-two-line" />
               </div>
             ))}

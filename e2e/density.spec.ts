@@ -65,5 +65,7 @@ test('rows move with density and keep today\'s heights at default (decision 0051
   const rows = (kind: string) =>
     Promise.all(['compact', 'default', 'comfortable'].map((d) => height(page.locator(`[data-rows="${d}"] [data-testid="row-${kind}"]`))))
   expect(await rows('list')).toEqual([40, 48, 56])
+  // The deprecated spacing="compact" (SearchField, ActionSheet) changes padding, not height
+  expect(await rows('list-compact-spacing')).toEqual([40, 48, 56])
   expect(await rows('two-line')).toEqual([64, 72, 80])
 })

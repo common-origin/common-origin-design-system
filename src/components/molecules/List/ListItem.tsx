@@ -272,14 +272,15 @@ const StyledExpandedContent = styled.div.withConfig({
     };
     background-color: ${semantic.surface.raised};
     border-radius: ${semantic.radius.sm};
+    /* The row's own insets, so the panel lines up with the row in every density (0051) */
     margin: 0 ${
-      $spacing === 'compact' 
-        ? semantic.space[300] 
-        : semantic.space[400]
+      $spacing === 'compact'
+        ? semantic.space.inset.md
+        : semantic.space.inset.lg
     } ${
       $spacing === 'compact'
-        ? semantic.space[200]
-        : semantic.space[300]
+        ? semantic.space.inset.sm
+        : semantic.space.inset.md
     };
   `}
 `
