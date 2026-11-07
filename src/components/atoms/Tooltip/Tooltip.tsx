@@ -6,7 +6,7 @@ import tokens from '@/lib/cssTokens'
 import tokenValues from '../../../styles/tokens.json'
 import { exitAnimation, forcedColorsEdge, visuallyHidden } from '../../../lib/styleUtils'
 import { usePresence } from '../../../lib/usePresence'
-import { placeFloating, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
+import { laidOutElement, placeFloating, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
 
 const { semantic } = tokens
 const { motion } = tokenValues.semantic
@@ -195,7 +195,7 @@ export const Tooltip = ({
   // Show it in the top layer, then place it beside the trigger before the browser paints
   useIsomorphicLayoutEffect(() => {
     const bubble = bubbleRef.current
-    const trigger = anchorRef.current?.firstElementChild
+    const trigger = laidOutElement(anchorRef.current)
     if (!isPresent || !bubble || !trigger) return
     if (supportsPopover() && !bubble.matches(':popover-open')) {
       bubble.setAttribute('popover', 'manual')

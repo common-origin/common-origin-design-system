@@ -84,3 +84,16 @@ export function placeFloating(options: FloatingOptions): FloatingPosition {
 
   return { top: Math.round(top), left: Math.round(left), side }
 }
+
+/**
+ * The element that actually has a box inside a wrapper: Tooltip and Menu wrap their trigger in a
+ * `display: contents` span, and a trigger can be nested in more than one (a Tooltip inside a Menu's
+ * trigger), so this steps down until it finds an element that lays out.
+ */
+export function laidOutElement(wrapper: Element | null): Element | null {
+  let element = wrapper?.firstElementChild ?? null
+  while (element && typeof getComputedStyle !== 'undefined' && getComputedStyle(element).display === 'contents') {
+    element = element.firstElementChild
+  }
+  return element
+}
