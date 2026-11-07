@@ -69,8 +69,9 @@ A surface pairs with an `elevation` token. `sunken` and `overlay` surfaces join 
 
 - **`size.{n}`** is the size scale, keyed like `space` and holding only the steps in use. Its descriptions name the parts each step sizes.
 - **`size.control.{sm, md, lg}`** is the minimum height of controls: 32, 40 and 48px ([decision 0034](../foundation/decisions/0034-control-heights.md)). Content centres within it. Density shifts the scale by 8px.
+- **`size.row.{sm, md, lg}`** is the minimum height of rows: 32px for dense single-line rows such as navigation items, 48px for list rows and 72px for two-line rows. A row's padding comes from `space.inset`, so it moves with the height. Density shifts them, down to 24px in compact ([decision 0051](../foundation/decisions/0051-row-heights-and-dense-targets.md)). Inputs aren't rows: they follow `size.control`.
 - **`size.label.{small, medium, large}`** is the label heights: 20, 24 and 32px. Every chip is the medium height ([decision 0018](../foundation/decisions/0018-indicators-and-labels.md), [decision 0035](../foundation/decisions/0035-chips-have-one-size.md)).
-- **`size.pointerTarget`** (24px) is the minimum hit area for a control that's smaller to look at, extended with an invisible pseudo-element ([decision 0039](../foundation/decisions/0039-target-size.md)). On touch screens, `size.touchTarget` (44px) applies.
+- **`size.pointerTarget`** (24px) is the minimum hit area for a control that's smaller to look at, extended with an invisible pseudo-element ([decision 0039](../foundation/decisions/0039-target-size.md)). `size.touchTarget` (44px) is that hit area on touch screens. It isn't a row or control height ([decision 0051](../foundation/decisions/0051-row-heights-and-dense-targets.md)).
 - **Named roles** shared by several components: `size.icon.*`, `size.avatar.*`, `size.overlay.*` (Modal and Sheet widths) and `size.menu.maxHeight`. A size unique to one component is a component token that references `size.{n}`.
 
 ## Radius
