@@ -109,7 +109,12 @@ export const WorkspaceSwitcher = ({
   'data-testid': dataTestId,
 }: WorkspaceSwitcherProps) => {
   const { collapsed } = useSidebarNav()
-  const current = workspaces.find((workspace) => workspace.id === value) ?? workspaces[0]
+  const match = workspaces.find((workspace) => workspace.id === value)
+  if (!match && workspaces.length > 0) {
+    // Showing the first keeps the header usable, but the app's value is wrong, so say so
+    console.warn(`WorkspaceSwitcher: no workspace has the id "${value}"; showing "${workspaces[0].name}"`)
+  }
+  const current = match ?? workspaces[0]
   if (!current) return null
 
   const trigger = (
@@ -146,7 +151,8 @@ export const WorkspaceSwitcher = ({
           <MenuItemRadio
             key={workspace.id}
             checked={workspace.id === current.id}
-            onSelect={() => onChange(workspace.id)}
+            // Choosing the current workspace again changes nothing
+            onSelect={() => workspace.id !== current.id && onChange(workspace.id)}
             icon={<Avatar name={workspace.name} picture={workspace.picture} size="xs" />}
             description={workspace.description}
             textValue={workspace.name}

@@ -90,9 +90,22 @@ describe('WorkspaceSwitcher', () => {
     expect(screen.getByRole('menu')).toBeInTheDocument()
   })
 
-  it('falls back to the first workspace when value matches none, and renders nothing without workspaces', () => {
+  it("doesn't call onChange when the current workspace is chosen again", async () => {
+    const user = userEvent.setup()
+    const onChange = jest.fn()
+    render(<WorkspaceSwitcher workspaces={workspaces} value="ops" onChange={onChange} />)
+    await user.click(screen.getByRole('button', { name: 'Creamery Ops' }))
+    await user.click(screen.getByRole('menuitemradio', { name: /Creamery Ops/ }))
+    expect(onChange).not.toHaveBeenCalled()
+    await closed()
+  })
+
+  it('warns and shows the first workspace when value matches none, and renders nothing without workspaces', () => {
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => {})
     const { unmount } = render(<WorkspaceSwitcher workspaces={workspaces} value="gone" onChange={() => {}} />)
     expect(screen.getByRole('button', { name: 'Creamery Ops' })).toBeInTheDocument()
+    expect(warn).toHaveBeenCalledWith(expect.stringContaining('"gone"'))
+    warn.mockRestore()
     unmount()
     const { container } = render(<WorkspaceSwitcher workspaces={[]} value="" onChange={() => {}} />)
     expect(container).toBeEmptyDOMElement()
