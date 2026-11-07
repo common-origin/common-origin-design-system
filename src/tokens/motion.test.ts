@@ -14,6 +14,13 @@ describe('semantic motion tokens', () => {
     })
   })
 
+  it('keeps delays apart from durations: waits before something starts, in ms', () => {
+    // A delay isn't motion, so the 300ms limit doesn't apply (#326); it must never be used as a
+    // transition or animation duration, which the duration group covers
+    Object.values(motion.delay).forEach((value) => expect(value).toMatch(/^\d+ms$/))
+    expect(motion.delay.hint).toBe('500ms')
+  })
+
   it('never uses linear easing', () => {
     const values = [...Object.values(motion.easing), ...Object.values(motion.transition)]
     values.forEach((value) => expect(value).not.toMatch(/\blinear\b/))

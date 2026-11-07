@@ -485,7 +485,7 @@
   --co-semantic-size-5000: var(--co-base-dimension-50); /** Size step for large illustrations, such as the large EmptyState image. */
   --co-semantic-size-5600: var(--co-base-dimension-56); /** Size step for a narrow navigation column: the narrow SidebarNav. */
   --co-semantic-size-6400: var(--co-base-dimension-64); /** Size step for a standard navigation column: the default SidebarNav. */
-  --co-semantic-size-7500: var(--co-base-dimension-75); /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav. */
+  --co-semantic-size-7500: var(--co-base-dimension-75); /** Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav, the widest a Tooltip grows. */
   --co-semantic-size-9000: var(--co-base-dimension-90); /** Size step for readable text widths, such as EmptyState copy. */
   --co-semantic-size-10000: var(--co-base-dimension-100); /** Size step for compact panel widths, such as the EmptyState block. */
   --co-semantic-size-19200: var(--co-base-dimension-192); /** Size step for wide content columns, such as CardLarge. */
@@ -609,6 +609,7 @@
   --co-semantic-motion-duration-slow: var(--co-base-duration-moderate); /** The longest duration (P6): larger movements, such as a Sheet sliding in. */
   --co-semantic-motion-duration-instant: var(--co-base-duration-instant); /** No duration: changes that should happen at once, such as movement under reduced motion. */
   --co-semantic-motion-duration-moderate: var(--co-base-duration-normal); /** The default duration for state changes and short movements, such as a menu opening. */
+  --co-semantic-motion-delay-hint: var(--co-base-duration-slow); /** How long the pointer rests on a control before its Tooltip opens, so passing pointers don't open it. A wait before anything moves, not an animation duration. */
   --co-semantic-motion-easing-standard: var(--co-base-easing-ease-in-out); /** Easing for change on screen: something moving or resizing in place. */
   --co-semantic-motion-easing-decelerate: var(--co-base-easing-ease-out); /** Easing for things arriving or responding: entrances, hover and press. */
   --co-semantic-motion-easing-accelerate: var(--co-base-easing-ease-in); /** Easing for things leaving: exits and dismissals speed up as they go (decision 0037). */

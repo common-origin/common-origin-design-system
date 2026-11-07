@@ -391,7 +391,7 @@
       },
       "7500": {
         "$value": "{base.dimension.75}",
-        "$description": "Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav."
+        "$description": "Size step for narrow column widths: AccountCard, EmptyState actions, the wide SidebarNav, the widest a Tooltip grows."
       },
       "9000": {
         "$value": "{base.dimension.90}",
@@ -901,6 +901,13 @@
         "moderate": {
           "$value": "{base.duration.normal}",
           "$description": "The default duration for state changes and short movements, such as a menu opening."
+        }
+      },
+      "delay": {
+        "$type": "duration",
+        "hint": {
+          "$value": "{base.duration.slow}",
+          "$description": "How long the pointer rests on a control before its Tooltip opens, so passing pointers don't open it. A wait before anything moves, not an animation duration."
         }
       },
       "easing": {
