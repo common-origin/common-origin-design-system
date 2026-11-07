@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '@/lib/cssTokens'
 import { interactiveRow } from '../../../lib/styleUtils'
@@ -110,10 +110,11 @@ export const WorkspaceSwitcher = ({
 }: WorkspaceSwitcherProps) => {
   const { collapsed } = useSidebarNav()
   const match = workspaces.find((workspace) => workspace.id === value)
-  if (!match && workspaces.length > 0) {
-    // Showing the first keeps the header usable, but the app's value is wrong, so say so
-    console.warn(`WorkspaceSwitcher: no workspace has the id "${value}"; showing "${workspaces[0].name}"`)
-  }
+  const fallback = !match && workspaces.length > 0 ? workspaces[0].name : undefined
+  // Showing the first keeps the header usable, but the app's value is wrong, so say so, once per value
+  useEffect(() => {
+    if (fallback) console.warn(`WorkspaceSwitcher: no workspace has the id "${value}"; showing "${fallback}"`)
+  }, [value, fallback])
   const current = match ?? workspaces[0]
   if (!current) return null
 
