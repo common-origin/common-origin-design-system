@@ -47,12 +47,15 @@ fields_json=$(gh project field-list "$PROJECT_NUMBER" --owner "$OWNER" --format 
 
 # Starting work puts it in the current cycle, unless the caller chose a cycle.
 pairs=("$@")
+auto_cycle=false
 if [[ " ${pairs[*]} " == *" Status=In progress "* && " ${pairs[*]} " != *" Cycle="* ]]; then
   pairs+=("Cycle=current")
+  auto_cycle=true
 fi
 
 # Resolve every Field=Value pair up front; exit before any write if one is invalid.
-names=() field_ids=() option_ids=() iteration_ids=()
+# edit_flags pairs each field with the gh flag that sets its kind of value.
+names=() field_ids=() edit_flags=() edit_values=()
 for pair in "${pairs[@]}"; do
   [[ "$pair" == *=* ]] || { echo "error: expected Field=Value, got '$pair'" >&2; exit 1; }
   field="${pair%%=*}"
@@ -61,8 +64,13 @@ for pair in "${pairs[@]}"; do
   if [[ "$field" == "Cycle" ]]; then
     cycle_json=$(gh api graphql -f query='query($id: ID!) { node(id: $id) { ... on ProjectV2 {
       field(name: "Cycle") { ... on ProjectV2IterationField { id configuration {
-        iterations { id title startDate duration } } } } } } }' -f id="$project_id" \
+        iterations { id title startDate duration }
+        completedIterations { id title startDate duration } } } } } } }' -f id="$project_id" \
       --jq '.data.node.field')
+    if [[ -z "$cycle_json" || "$cycle_json" == "null" ]]; then
+      echo "error: the project has no iteration field named 'Cycle'" >&2
+      exit 1
+    fi
     if [[ "$value" == "current" ]]; then
       # A cycle runs from its start date for `duration` days, in local time.
       iteration_id=$(jq -r --arg today "$(date +%F)" '.configuration.iterations[]
@@ -70,7 +78,13 @@ for pair in "${pairs[@]}"; do
             ((.startDate + "T00:00:00Z" | fromdate) + .duration * 86400 | strftime("%Y-%m-%d")) > $today)
         | .id' <<<"$cycle_json")
     else
-      iteration_id=$(jq -r --arg v "$value" '.configuration.iterations[] | select(.title == $v) | .id' <<<"$cycle_json")
+      iteration_id=$(jq -r --arg v "$value" \
+        '.configuration | (.iterations + .completedIterations)[] | select(.title == $v) | .id' <<<"$cycle_json")
+    fi
+    if [[ -z "$iteration_id" && "$auto_cycle" == true && "$value" == "current" ]]; then
+      # Don't block a status change the caller asked for on a cycle they didn't.
+      echo "warning: no cycle covers today, so the Cycle is left unset. Add cycles in the project's Cycle field settings." >&2
+      continue
     fi
     if [[ -z "$iteration_id" ]]; then
       echo "error: no cycle matches '$value'. Current and upcoming cycles:" >&2
@@ -79,8 +93,8 @@ for pair in "${pairs[@]}"; do
     fi
     names+=("Cycle → $value")
     field_ids+=("$(jq -r '.id' <<<"$cycle_json")")
-    option_ids+=("")
-    iteration_ids+=("$iteration_id")
+    edit_flags+=(--iteration-id)
+    edit_values+=("$iteration_id")
     continue
   fi
 
@@ -101,20 +115,15 @@ for pair in "${pairs[@]}"; do
 
   names+=("$field → $value")
   field_ids+=("$field_id")
-  option_ids+=("$option_id")
-  iteration_ids+=("")
+  edit_flags+=(--single-select-option-id)
+  edit_values+=("$option_id")
 done
 
 item_id=$(gh project item-add "$PROJECT_NUMBER" --owner "$OWNER" \
   --url "https://github.com/$OWNER/$REPO/issues/$issue" --format json --jq '.id')
 
 for i in "${!field_ids[@]}"; do
-  if [[ -n "${iteration_ids[$i]}" ]]; then
-    gh project item-edit --id "$item_id" --project-id "$project_id" \
-      --field-id "${field_ids[$i]}" --iteration-id "${iteration_ids[$i]}" >/dev/null
-  else
-    gh project item-edit --id "$item_id" --project-id "$project_id" \
-      --field-id "${field_ids[$i]}" --single-select-option-id "${option_ids[$i]}" >/dev/null
-  fi
+  gh project item-edit --id "$item_id" --project-id "$project_id" \
+    --field-id "${field_ids[$i]}" "${edit_flags[$i]}" "${edit_values[$i]}" >/dev/null
   echo "#$issue: ${names[$i]}"
 done
