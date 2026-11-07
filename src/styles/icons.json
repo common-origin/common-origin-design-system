@@ -374,7 +374,6 @@
 		"aliases": [
 			"hamburger",
 			"nav",
-			"sidebar",
 			"navigation"
 		],
 		"intent": "Use to open a navigation menu or sidebar",
@@ -916,9 +915,9 @@
 		"category": "navigation",
 		"aliases": [
 			"house",
-			"start",
 			"dashboard",
-			"main"
+			"main",
+			"homepage"
 		],
 		"intent": "Use for a link to the product's home or start page",
 		"decorativeDefault": false,
@@ -931,9 +930,9 @@
 		"category": "navigation",
 		"aliases": [
 			"panel",
-			"collapse",
-			"expand",
-			"drawer"
+			"side-panel",
+			"drawer",
+			"rail"
 		],
 		"intent": "Use for a button that collapses or expands a sidebar",
 		"decorativeDefault": false,
