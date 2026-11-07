@@ -44,12 +44,18 @@ describe('SidebarNavItem', () => {
       expect(link).toHaveStyle({ backgroundColor: tokens.semantic.color.fill['accent-muted'] })
     })
 
-    it('uses the linkComponent from SidebarNav for internal URLs only (0008)', () => {
-      const { unmount } = renderItem({}, { linkComponent: RouterLink })
-      expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('data-router')
-      unmount()
-      renderItem({ url: 'https://example.com' }, { linkComponent: RouterLink })
-      expect(screen.getByRole('link', { name: 'Home' })).not.toHaveAttribute('data-router')
+    it('uses the linkComponent from SidebarNav for internal URLs, relative ones included (0008)', () => {
+      const internal = ['/home', 'settings', './chats', '#top']
+      internal.forEach((url) => {
+        const { unmount } = renderItem({ url }, { linkComponent: RouterLink })
+        expect(screen.getByRole('link', { name: 'Home' })).toHaveAttribute('data-router')
+        unmount()
+      })
+      ;['https://example.com', '//cdn.example.com', 'mailto:hello@example.com'].forEach((url) => {
+        const { unmount } = renderItem({ url }, { linkComponent: RouterLink })
+        expect(screen.getByRole('link', { name: 'Home' })).not.toHaveAttribute('data-router')
+        unmount()
+      })
     })
 
     it('is a button without a url', async () => {
@@ -59,17 +65,31 @@ describe('SidebarNavItem', () => {
       await user.click(screen.getByRole('button', { name: 'New chat' }))
       expect(onClick).toHaveBeenCalledTimes(1)
     })
+
+    it("doesn't mark a button item as the current page", () => {
+      renderItem({ url: undefined, label: 'New chat', icon: 'edit', current: true })
+      expect(screen.getByRole('button', { name: 'New chat' })).not.toHaveAttribute('aria-current')
+    })
   })
 
   describe('content', () => {
-    it('shows string trailing content as quiet meta text', () => {
-      renderItem({ label: 'Invite users', trailing: '3/10' })
+    it('shows meta as quiet text at the end', () => {
+      renderItem({ label: 'Invite users', meta: '3/10' })
       expect(screen.getByText('3/10')).toHaveStyle({ color: tokens.semantic.color.text.muted })
     })
 
-    it('renders other trailing content, such as a Badge, as given', () => {
-      renderItem({ trailing: <span data-testid="badge">2</span> })
-      expect(screen.getByTestId('badge')).toBeInTheDocument()
+    it('shows a badge on the icon and adds it to the name (0045)', () => {
+      renderItem({ label: 'Chats', badge: 3, badgeLabel: '3 unread' })
+      expect(screen.getByRole('link', { name: 'Chats, 3 unread' })).toBeInTheDocument()
+      expect(screen.getByText('3')).toBeInTheDocument()
+    })
+
+    it('names a dot badge "new" by default, and shows nothing for a zero count', () => {
+      const { unmount } = renderItem({ label: 'Chats', badge: 'dot' })
+      expect(screen.getByRole('link', { name: 'Chats, new' })).toBeInTheDocument()
+      unmount()
+      renderItem({ label: 'Chats', badge: 0 })
+      expect(screen.getByRole('link', { name: 'Chats' })).toBeInTheDocument()
     })
 
     it('truncates a long label to one line; the full label stays its name', () => {
@@ -96,6 +116,12 @@ describe('SidebarNavItem', () => {
       expect(screen.getByText('Home')).toHaveAttribute('aria-hidden', 'true')
     })
 
+    it('keeps its badge, and says so in its name', () => {
+      renderItem({ label: 'Chats', badge: 2, badgeLabel: '2 unread' }, { collapsed: true })
+      expect(screen.getByRole('link', { name: 'Chats, 2 unread' })).toBeInTheDocument()
+      expect(screen.getByText('2')).toBeInTheDocument()
+    })
+
     it('hides an item without an icon', () => {
       renderItem({ icon: undefined, label: 'Supplier records' }, { collapsed: true })
       expect(screen.queryByRole('link')).not.toBeInTheDocument()
@@ -113,7 +139,7 @@ describe('SidebarNavItem', () => {
   })
 
   it('has no axe violations, expanded or in the rail', async () => {
-    const { container, unmount } = renderItem({ current: true, trailing: '3/10' })
+    const { container, unmount } = renderItem({ current: true, meta: '3/10', badge: 4 })
     expect(await axe(container)).toHaveNoViolations()
     unmount()
     const rail = renderItem({}, { collapsed: true })

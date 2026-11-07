@@ -17,7 +17,9 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
     { name: 'url', type: 'string', required: false, description: 'Where the item goes. With a url the item is a link (using SidebarNav\'s linkComponent for internal URLs); without one it\'s a button.' },
     { name: 'onClick', type: '(event) => void', required: false, description: 'Called when the item is activated. Without a url, the item is a button.' },
     { name: 'current', type: 'boolean', required: false, default: 'false', description: 'The page the user is on: aria-current="page" and the light-blue selected treatment.' },
-    { name: 'trailing', type: 'ReactNode', required: false, description: 'Content at the end of the row: a Badge for new or unread items, or quiet meta text such as "3/10". A string is shown as meta text.' },
+    { name: 'meta', type: 'string', required: false, description: 'Quiet text at the end of the row, such as "3/10". Hidden in the rail.' },
+    { name: 'badge', type: "number | 'dot'", required: false, description: 'New or unread items: a count, or a dot. Shown as an accent Badge on the icon, so it stays visible in the rail, and added to the item\'s name.' },
+    { name: 'badgeLabel', type: 'string', required: false, default: '"{count} new", or "new" for a dot', description: 'How the badge reads in the item\'s name, such as "3 unread"' },
     { name: 'data-testid', type: 'string', required: false, description: 'Test identifier for the item\'s link or button' },
   ],
 
@@ -44,13 +46,15 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
       code: `<ul>
   <SidebarNavItem label="New chat" icon="edit" onClick={startChat} />
   <SidebarNavItem label="Home" icon="home" url="/" current />
-  <SidebarNavItem label="Invite users" icon="userBox" url="/invite" trailing="3/10" />
+  <SidebarNavItem label="Chats" icon="message" url="/chats" badge={3} badgeLabel="3 unread" />
+  <SidebarNavItem label="Invite users" icon="userBox" url="/invite" meta="3/10" />
 </ul>`,
       renderComponent: () => (
         <ul style={list}>
           <SidebarNavItem label="New chat" icon="edit" onClick={() => {}} />
           <SidebarNavItem label="Home" icon="home" url="#home" current />
-          <SidebarNavItem label="Invite users" icon="userBox" url="#invite" trailing="3/10" />
+          <SidebarNavItem label="Chats" icon="message" url="#chats" badge={3} badgeLabel="3 unread" />
+          <SidebarNavItem label="Invite users" icon="userBox" url="#invite" meta="3/10" />
         </ul>
       ),
     },
@@ -66,13 +70,14 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
     },
     {
       name: 'In the rail',
-      description: 'In a collapsed SidebarNav, items show their icon only, with the label in a Tooltip. Items without an icon are hidden.',
-      code: `<SidebarNav collapsed>…</SidebarNav>`,
+      description: 'Inside a collapsed SidebarNav, items show their icon and badge only, with the label in a Tooltip. Items without an icon are hidden. The same items as above; SidebarNav sets the rail.',
+      code: `<SidebarNavItem label="Home" icon="home" url="/" current />
+<SidebarNavItem label="Chats" icon="message" url="/chats" badge={3} badgeLabel="3 unread" />`,
       renderComponent: () => (
         <SidebarNavContext.Provider value={{ collapsed: true, glide: false }}>
           <ul style={{ ...list, maxWidth: 56 }}>
             <SidebarNavItem label="Home" icon="home" url="#home" current />
-            <SidebarNavItem label="Search" icon="search" url="#search" />
+            <SidebarNavItem label="Chats" icon="message" url="#chats" badge={3} badgeLabel="3 unread" />
           </ul>
         </SidebarNavContext.Provider>
       ),
@@ -84,6 +89,8 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
       'A link with a url, a button without one; renders inside an li so it sits in a list',
       'The current page has aria-current="page" and the light-blue selected treatment, not colour alone: the attribute carries it for assistive technology',
       'The icon is decorative; the label names the item. In the rail the label becomes aria-label, and a label Tooltip shows it',
+      'An item with a badge is named with it, such as "Chats, 3 unread", in both layouts',
+      'aria-current="page" marks only links: a button item is never the current page',
       'Long labels truncate visually; the full label is always the accessible name',
       'At least 24px tall in every density (decision 0051)',
     ],
@@ -97,7 +104,8 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
       { name: 'Row', description: 'A link or button with the shared row states (0030). Inside SidebarNav its hover is the gliding highlight (0053)', tokens: ['semantic.size.row.sm', 'semantic.radius.sm'] },
       { name: 'Icon', description: 'Optional, decorative, in the text colour' },
       { name: 'Label', description: 'Small text, truncated to one line', tokens: ['semantic.typography.small'] },
-      { name: 'Trailing', description: 'A Badge, or quiet meta text', tokens: ['semantic.typography.caption', 'semantic.color.text.muted'] },
+      { name: 'Badge', description: 'An accent Badge on the icon for new or unread items; it stays in the rail' },
+      { name: 'Meta', description: 'Quiet text at the end, hidden in the rail', tokens: ['semantic.typography.caption', 'semantic.color.text.muted'] },
     ],
   },
 }

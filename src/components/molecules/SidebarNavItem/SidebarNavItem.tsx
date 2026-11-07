@@ -4,6 +4,7 @@ import tokens from '@/lib/cssTokens'
 import { interactiveRow } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { Tooltip } from '../../atoms/Tooltip'
+import { Badge } from '../../atoms/Badge'
 import type { IconName } from '../../../types/icons'
 import { useSidebarNav } from './SidebarNavContext'
 
@@ -28,16 +29,25 @@ export interface SidebarNavItemProps {
    * @default false
    */
   current?: boolean
+  /** Quiet text at the end of the row, such as "3/10". Hidden in the rail. */
+  meta?: string
   /**
-   * Content at the end of the row: a Badge (a count or dot meaning new or unread, decision 0045)
-   * or quiet meta text, such as "3/10". A string is shown as meta text.
+   * New or unread items (decision 0045): a count, or `'dot'` for "something new". Shown as an
+   * accent Badge on the icon, so it stays visible in the rail, and added to the item's name.
    */
-  trailing?: React.ReactNode
+  badge?: number | 'dot'
+  /**
+   * How the badge reads in the item's name, such as "3 unread".
+   * @default "{count} new", or "new" for a dot
+   */
+  badgeLabel?: string
   /** Test identifier for the item's link or button */
   'data-testid'?: string
 }
 
-const isInternalUrl = (url: string) => url.startsWith('/') && !url.startsWith('//')
+// Anything without a scheme (https:, mailto:) or a protocol-relative start is the app's own URL,
+// relative ones included, so it goes through the router's link
+const isInternalUrl = (url: string) => !/^[a-z][a-z\d+.-]*:/i.test(url) && !url.startsWith('//')
 
 const Row = styled.a.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
@@ -105,7 +115,8 @@ const Meta = styled.span`
   color: ${color.text.muted};
 `
 
-const Trailing = styled.span`
+// A badge needs something to sit on: the icon, or this mark at the end of an item without one
+const BadgeAnchor = styled.span`
   display: inline-flex;
   flex-shrink: 0;
 `
@@ -120,7 +131,9 @@ export const SidebarNavItem = ({
   url,
   onClick,
   current = false,
-  trailing,
+  meta,
+  badge,
+  badgeLabel,
   'data-testid': dataTestId,
 }: SidebarNavItemProps) => {
   const { collapsed, linkComponent, glide } = useSidebarNav()
@@ -128,18 +141,29 @@ export const SidebarNavItem = ({
   // The rail shows icons only: an item without one has nothing to show there
   if (collapsed && !icon) return null
 
+  const hasBadge = badge === 'dot' || (typeof badge === 'number' && badge > 0)
+  const badgeText = badgeLabel ?? (badge === 'dot' ? 'new' : `${badge} new`)
+  // The badge's own text would make a noisy name, so a badged item is named outright; so is an
+  // item in the rail, where the label isn't shown
+  const name = hasBadge ? `${label}, ${badgeText}` : collapsed ? label : undefined
+
+  const withBadge = (anchor: React.ReactElement) =>
+    hasBadge ? (
+      <Badge variant="accent" dot={badge === 'dot'} count={typeof badge === 'number' ? badge : 0} aria-label={badgeText}>
+        {anchor}
+      </Badge>
+    ) : (
+      anchor
+    )
+
   const content = (
     <>
-      {icon && <Icon name={icon} size="md" iconColor="inherit" />}
+      {icon && withBadge(<Icon name={icon} size="md" iconColor="inherit" />)}
       {!collapsed && (
         <>
           <Label>{label}</Label>
-          {trailing !== undefined &&
-            (typeof trailing === 'string' || typeof trailing === 'number' ? (
-              <Meta>{trailing}</Meta>
-            ) : (
-              <Trailing>{trailing}</Trailing>
-            ))}
+          {meta && <Meta>{meta}</Meta>}
+          {!icon && hasBadge && withBadge(<BadgeAnchor />)}
         </>
       )}
     </>
@@ -149,8 +173,8 @@ export const SidebarNavItem = ({
     $current: current,
     $glide: glide,
     $collapsed: collapsed,
-    // In the rail the label is the name; the icon is decorative (0028)
-    'aria-label': collapsed ? label : undefined,
+    // The icon is decorative (0028)
+    'aria-label': name,
     'data-testid': dataTestId,
     onClick,
   }
@@ -165,7 +189,8 @@ export const SidebarNavItem = ({
       {content}
     </Row>
   ) : (
-    <Row {...shared} as="button" type="button" aria-current={current ? 'page' : undefined}>
+    // aria-current="page" marks a link to the current page; a button isn't one
+    <Row {...shared} as="button" type="button">
       {content}
     </Row>
   )
