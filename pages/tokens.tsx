@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { Fragment, useState } from 'react'
+import { Fragment } from 'react'
+import { useRouter } from 'next/router'
+import { DocsSidebar } from '../src/page-components/DocsSidebar'
 import {
   Avatar,
   Box,
   Breadcrumbs,
-  Button,
   Container,
-  Dropdown,
   Icon,
   Layout,
   Navigation,
@@ -38,33 +38,10 @@ const { base: { breakpoint }, semantic: { color, border } } = tokens
 const TokensLayout = styled.div`
   display: flex;
   min-height: 100vh;
-`
 
-const Sidebar = styled.nav`
-  width: 250px;
-  border-right: ${border.default};
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  padding: ${tokens.semantic.space[1400]} 0;
-  
+  /* Narrow screens: the sidebar's Sheet button sits above the content */
   @media (max-width: ${breakpoint.md}) {
-    display: none;
-  }
-`
-
-const MobileNavigation = styled.div`
-  display: none;
-  
-  @media (max-width: ${breakpoint.md}) {
-    display: block;
-    padding: ${tokens.semantic.space[400]};
-    background-color: ${tokens.semantic.surface.raised};
-    border-bottom: ${border.default};
-    position: sticky;
-    top: 0;
-    z-index: ${tokens.semantic.layer.sticky};
+    flex-direction: column;
   }
 `
 
@@ -1035,7 +1012,7 @@ type TokenSection = {
 }
 
 export default function Tokens() {
-  const [activeTab, setActiveTab] = useState('border')
+  const router = useRouter()
 
   // Only semantic category tokens are displayed
   const navigationTabs = [
@@ -1122,11 +1099,16 @@ export default function Tokens() {
     },
   ]
 
-  const activeTabData = navigationTabs.find(tab => tab.id === activeTab)
+  // The category shown comes from the URL, so every category has a link (#332)
+  const requested = typeof router.query.tab === 'string' ? router.query.tab : undefined
+  const activeTab = navigationTabs.some((tab) => tab.id === requested) ? (requested as string) : 'border'
+  // The page is prerendered without its query, so wait for the router rather than flash the first
+  // category before a deep link's
+  const activeTabData = router.isReady ? navigationTabs.find(tab => tab.id === activeTab) : undefined
 
-  const handleTabClick = (tabId: string) => {
-    setActiveTab(tabId)
-  }
+  const sidebarSections = [
+    { items: navigationTabs.map((tab) => ({ id: tab.id, label: tab.label, url: `/tokens?tab=${tab.id}` })) },
+  ]
 
   const renderSection = (item: TokenSection) => {
     switch (item.type) {
@@ -1176,33 +1158,9 @@ export default function Tokens() {
         
         <section>
           <Container>
-            <MobileNavigation>
-              <Dropdown 
-                options={navigationTabs.map(tab => ({ id: tab.id, label: tab.label }))}
-                value={activeTab}
-                onChange={handleTabClick}
-                placeholder="Select a token category"
-              />
-            </MobileNavigation>
             
             <TokensLayout>
-              <Sidebar>
-                <Box px="lg">
-                  <Stack direction="column" gap="xs">
-                    {navigationTabs.map((tab) => (
-                      <Button
-                        key={tab.id}
-                        variant={activeTab === tab.id ? 'primary' : 'naked'}
-                        size="medium"
-                        onClick={() => handleTabClick(tab.id)}
-                        style={{ justifyContent: 'flex-start', width: '100%' }}
-                      >
-                        {tab.label}
-                      </Button>
-                    ))}
-                  </Stack>
-                </Box>
-              </Sidebar>
+              <DocsSidebar label="Token categories" sections={sidebarSections} currentId={activeTab} />
 
               <MainContent>
                 <Box my="4xl">

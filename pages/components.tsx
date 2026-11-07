@@ -1,17 +1,14 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { useState, useMemo, useCallback } from 'react'
+import { useMemo } from 'react'
+import { useRouter } from 'next/router'
 import {
   Box,
   Breadcrumbs,
   Chip,
   CodeBlock,
   Container,
-  Picture,
-  FeatureBlock,
-  Dropdown,
-  Icon,
   Layout,
   Navigation,
   Stack,
@@ -20,40 +17,17 @@ import {
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/styles/tokens.json'
-import { interactiveRow } from '@/lib/styleUtils'
+import { DocsSidebar } from '../src/page-components/DocsSidebar'
 
 const { base: { breakpoint }, semantic: { color, border } } = tokens
 
 const ComponentsLayout = styled.div`
   display: flex;
   min-height: 100vh;
-`
 
-const Sidebar = styled.nav`
-  width: 250px;
-  border-right: ${border.default};
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  padding: ${tokens.semantic.space[1400]} 0;
-  
-  @media (max-width:${breakpoint.md}) {
-    display: none;
-  }
-`
-
-const MobileNavigation = styled.div`
-  display: none;
-  
+  /* Narrow screens: the sidebar's Sheet button sits above the content */
   @media (max-width: ${breakpoint.md}) {
-    display: block;
-    padding: ${tokens.semantic.space[400]};
-    background-color: ${tokens.semantic.surface.raised};
-    border-bottom: ${border.default};
-    position: sticky;
-    top: 0;
-    z-index: ${tokens.semantic.layer.sticky};
+    flex-direction: column;
   }
 `
 
@@ -127,89 +101,6 @@ const TokenChip = styled(Chip)`
   margin: ${tokens.semantic.space[100]} ${tokens.semantic.space[100]} 0 0;
 `
 
-const CategoryHeader = styled.button<{ $isExpanded: boolean }>`
-  box-sizing: border-box;
-  display: inline-flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: ${tokens.semantic.space[100]};
-  width: 100%;
-  font: ${tokens.component.button.sizes.medium.font};
-  padding: ${tokens.semantic.space.inset.sm} ${tokens.semantic.space.inset.lg};
-  background-color: ${tokens.component.button.variants.secondary.backgroundColor};
-  color: ${tokens.component.button.variants.secondary.textColor};
-  border: none;
-  border-radius: ${tokens.component.button.primary.borderRadius};
-  cursor: pointer;
-  transition: ${tokens.semantic.motion.transition.feedback};
-  white-space: nowrap;
-  user-select: none;
-
-  &:hover {
-    background-color: ${tokens.component.button.variants.secondary.hover.backgroundColor};
-  }
-
-  &:active {
-    background-color: ${tokens.component.button.variants.secondary.active.backgroundColor};
-  }
-
-  &:focus {
-    outline: ${tokens.component.button.focus.outline};
-    outline-offset: ${border.focusOffset};
-  }
-`
-
-const CategoryIcon = styled.span<{ $isExpanded: boolean }>`
-  display: inline-flex;
-  align-items: center;
-  transition: transform 0.2s ease-in-out;
-  transform: ${({ $isExpanded }) => $isExpanded ? 'rotate(0deg)' : 'rotate(-90deg)'};
-`
-
-const CategoryGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: ${tokens.semantic.space[100]};
-`
-
-const CategoryChildren = styled.div<{ $isExpanded: boolean }>`
-  display: ${({ $isExpanded }) => $isExpanded ? 'flex' : 'none'};
-  flex-direction: column;
-  padding-left: ${tokens.semantic.space[200]};
-`
-
-// Sidebar item: naked Button styling, with the light-blue selected treatment for the
-// active item (decision 0016)
-const SidebarItem = styled.button<{ $isActive: boolean }>`
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  width: 100%;
-  font: ${tokens.component.button.sizes.medium.font};
-  padding: ${tokens.semantic.space.inset.sm} ${tokens.semantic.space.inset.lg};
-  border: none;
-  border-radius: ${tokens.component.button.primary.borderRadius};
-  color: ${tokens.semantic.color.text.default};
-  text-align: left;
-  cursor: pointer;
-  transition: ${tokens.semantic.motion.transition.feedback};
-  white-space: nowrap;
-
-  /* The shared row states (decision 0030), with the active page as the selected row */
-  ${({ $isActive }) => interactiveRow({ selected: $isActive })}
-
-  &:focus-visible {
-    outline: ${tokens.component.button.focus.outline};
-    outline-offset: ${border.focusOffset};
-  }
-`
-
-const SubComponentGroup = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding-left: ${tokens.semantic.space[300]};
-`
-
 const GuideLink = styled(Link)`
   font: ${tokens.semantic.typography.body};
   color: ${tokens.semantic.color.text.accent};
@@ -230,54 +121,30 @@ export default function Components() {
     () => componentsData.sort((a, b) => a.name.localeCompare(b.name)),
     []
   )
-  const [activeComponent, setActiveComponent] = useState(sortedComponents[0]?.id || 'alert')
+  // The component shown comes from the URL, so every component has a link (#332)
+  const router = useRouter()
+  const requested = typeof router.query.component === 'string' ? router.query.component : undefined
+  const activeComponent = sortedComponents.some((comp) => comp.id === requested)
+    ? (requested as string)
+    : sortedComponents[0]?.id || 'alert'
 
-  // Group components by category
-  const groupedComponents = useMemo(() => {
+  // Group components by category, in the defined order, leaving out empty categories
+  const sidebarSections = useMemo(() => {
     const groups: Record<string, ComponentData[]> = {}
     for (const comp of sortedComponents) {
       const cat = comp.category || 'Components'
       if (!groups[cat]) groups[cat] = []
       groups[cat].push(comp)
     }
-    // Return in defined order, filtering out empty categories
-    return CATEGORY_ORDER
-      .filter(cat => groups[cat] && groups[cat].length > 0)
-      .map(cat => ({ category: cat, components: groups[cat] }))
+    return CATEGORY_ORDER.filter((cat) => groups[cat]?.length).map((cat) => ({
+      label: cat,
+      items: groups[cat].map((comp) => ({ id: comp.id, label: comp.name, url: `/components?component=${comp.id}` })),
+    }))
   }, [sortedComponents])
 
-  // Determine which category the active component belongs to
-  const activeCategory = useMemo(() => {
-    const comp = sortedComponents.find(c => c.id === activeComponent)
-    return comp?.category || 'Atoms'
-  }, [sortedComponents, activeComponent])
-
-  // Track expanded categories — default to expanding the active component's category
-  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => {
-    const initial: Record<string, boolean> = {}
-    CATEGORY_ORDER.forEach(cat => {
-      initial[cat] = cat === activeCategory
-    })
-    return initial
-  })
-
-  const toggleCategory = useCallback((category: string) => {
-    setExpandedCategories(prev => ({
-      ...prev,
-      [category]: !prev[category]
-    }))
-  }, [])
-  
-  const activeComponentData = sortedComponents.find(comp => comp.id === activeComponent)
-
-  const handleComponentClick = (componentId: string) => {
-    setActiveComponent(componentId)
-    // Auto-expand the category of the clicked component
-    const comp = sortedComponents.find(c => c.id === componentId)
-    if (comp && !expandedCategories[comp.category]) {
-      setExpandedCategories(prev => ({ ...prev, [comp.category]: true }))
-    }
-  }
+  // The page is prerendered without its query, so wait for the router rather than flash the first
+  // component before a deep link's
+  const activeComponentData = router.isReady ? sortedComponents.find(comp => comp.id === activeComponent) : undefined
 
   const renderPropsTable = (props: ComponentData['props']) => {
     if (props.length === 0) {
@@ -492,83 +359,8 @@ export default function Components() {
         
         <section>
           <Container>
-            <MobileNavigation>
-              <Dropdown 
-                options={groupedComponents.flatMap(({ category, components }) =>
-                  components.map(comp => ({ id: comp.id, label: `${category} / ${comp.name}` }))
-                )}
-                value={activeComponent}
-                onChange={handleComponentClick}
-                placeholder="Select a component"
-              />
-            </MobileNavigation>
-            
             <ComponentsLayout>
-              <Sidebar>
-                <Box px="lg">
-                  <Stack direction="column" gap="xs">
-                    {groupedComponents.map(({ category, components }) => (
-                      <CategoryGroup key={category}>
-                        <CategoryHeader
-                          $isExpanded={!!expandedCategories[category]}
-                          onClick={() => toggleCategory(category)}
-                          aria-expanded={!!expandedCategories[category]}
-                          aria-controls={`category-${category}`}
-                        >
-                          <CategoryIcon $isExpanded={!!expandedCategories[category]}>
-                            <Icon name="arrowDown" size="sm" />
-                          </CategoryIcon>
-                          {category}
-                        </CategoryHeader>
-                        <CategoryChildren
-                          $isExpanded={!!expandedCategories[category]}
-                          id={`category-${category}`}
-                          role="group"
-                          aria-label={`${category} components`}
-                        >
-                          {(() => {
-                            const topLevel = components.filter(c => !c.parentId)
-                            const childMap: Record<string, ComponentData[]> = {}
-                            components
-                              .filter(c => c.parentId)
-                              .forEach(c => {
-                                if (!childMap[c.parentId!]) childMap[c.parentId!] = []
-                                childMap[c.parentId!].push(c)
-                              })
-                            return topLevel.map((comp) => (
-                              <div key={comp.id}>
-                                <SidebarItem
-                                  type="button"
-                                  $isActive={activeComponent === comp.id}
-                                  aria-current={activeComponent === comp.id ? 'page' : undefined}
-                                  onClick={() => handleComponentClick(comp.id)}
-                                >
-                                  {comp.name}
-                                </SidebarItem>
-                                {childMap[comp.id] && (
-                                  <SubComponentGroup>
-                                    {childMap[comp.id].map(child => (
-                                      <SidebarItem
-                                        key={child.id}
-                                        type="button"
-                                        $isActive={activeComponent === child.id}
-                                        aria-current={activeComponent === child.id ? 'page' : undefined}
-                                        onClick={() => handleComponentClick(child.id)}
-                                      >
-                                        {child.name}
-                                      </SidebarItem>
-                                    ))}
-                                  </SubComponentGroup>
-                                )}
-                              </div>
-                            ))
-                          })()}
-                        </CategoryChildren>
-                      </CategoryGroup>
-                    ))}
-                  </Stack>
-                </Box>
-              </Sidebar>
+              <DocsSidebar label="Components" sections={sidebarSections} currentId={activeComponent} />
 
               <MainContent>
                 {activeComponentData && (

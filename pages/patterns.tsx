@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { DocsSidebar } from '../src/page-components/DocsSidebar'
 import {
   Box,
   Breadcrumbs,
-  Button,
   Chip,
   Container,
   Layout,
@@ -22,19 +22,10 @@ const { base: { breakpoint }, semantic: { border } } = tokens
 const PatternsLayout = styled.div`
   display: flex;
   min-height: 100vh;
-`
 
-const Sidebar = styled.nav`
-  width: 250px;
-  border-right: ${border.default};
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: auto;
-  padding: ${tokens.semantic.space[1400]} 0;
-  
+  /* Narrow screens: the sidebar's Sheet button sits above the content */
   @media (max-width: ${breakpoint.md}) {
-    display: none;
+    flex-direction: column;
   }
 `
 
@@ -57,13 +48,20 @@ const PatternSection = styled.div`
 `
 
 export default function Patterns() {
-  const [activePattern, setActivePattern] = useState('data-view')
-  
+  // The pattern shown comes from the URL, so every pattern has a link (#332)
+  const router = useRouter()
+  const requested = typeof router.query.pattern === 'string' ? router.query.pattern : undefined
+  const activePattern = patternsData.some((pattern) => pattern.id === requested) ? (requested as string) : 'data-view'
+
   const activePatternData = patternsData.find(pattern => pattern.id === activePattern)
 
-  const handlePatternClick = (patternId: string) => {
-    setActivePattern(patternId)
-  }
+  const sidebarSections = [
+    {
+      items: [...patternsData]
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map((pattern) => ({ id: pattern.id, label: pattern.name, url: `/patterns?pattern=${pattern.id}` })),
+    },
+  ]
 
   // A pattern's status is a status, so it uses StatusLabel with the pattern's own wording
   // (decisions 0018 and 0029); category and complexity are neutral metadata, so they're Tags
@@ -99,25 +97,7 @@ export default function Patterns() {
         <section>
           <Container>
             <PatternsLayout>
-              <Sidebar>
-                <Box px="lg">
-                  <Stack direction="column" gap="xs">
-                    {patternsData
-                      .sort((a, b) => a.name.localeCompare(b.name))
-                      .map((pattern) => (
-                        <Button
-                          key={pattern.id}
-                          variant={activePattern === pattern.id ? 'primary' : 'naked'}
-                          size="medium"
-                          onClick={() => handlePatternClick(pattern.id)}
-                          style={{ justifyContent: 'flex-start', width: '100%' }}
-                        >
-                          {pattern.name}
-                        </Button>
-                      ))}
-                  </Stack>
-                </Box>
-              </Sidebar>
+              <DocsSidebar label="Patterns" sections={sidebarSections} currentId={activePattern} />
 
               <MainContent>
                 <Box my="4xl">
