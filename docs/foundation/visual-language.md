@@ -30,7 +30,7 @@ Concrete rules that apply the [principles](principles.md). Exact values live in 
 | Rule | Status |
 |---|---|
 | Inter for all UI text; monospace stack for code. | Enforced in tokens. The package doesn't load fonts — consumers must ([usage](usage.md#fonts)). The docs site self-hosts Inter (400–700) via `styles/fonts.css`. |
-| Headings use the typography tokens: `display`–`h4` at 700, `h5`–`h6` at 500; body at 400. The contrast between heavy display-level headings and regular body is the typographic signature. ([0011](decisions/0011-heading-weights-follow-tokens.md)) | Enforced |
+| Headings use the typography tokens: `display` at 700, `h1`–`h6` at 600; body at 400. Only the display heading is bold; hierarchy between heading levels comes from scale. ([0011](decisions/0011-heading-weights-follow-tokens.md), [0050](decisions/0050-headings-are-semibold.md)) | Enforced |
 | Products may use heavier heading weights as a site-specific choice. | Exception ([0011](decisions/0011-heading-weights-follow-tokens.md)) |
 | Font weights come from `semantic.fontWeight`: `regular` 400, `medium` 500, `semibold` 600, `bold` 700. The typography tokens reference them; components never use base weight keys or literal weights ([P3](principles.md#p3-tokens-not-values)). | Enforced |
 | A component that departs from a typography style (a different weight, line height, tracking or size) takes the departure from its component tokens, built from the semantic `fontWeight`, `fontSize`, `lineHeight`, `letterSpacing` and `fontFamily` scales ([0014](decisions/0014-token-tiers.md)). No literal line heights or base typography tokens in components. | Enforced |

@@ -119,7 +119,6 @@ export const alertDocs: ComponentDocumentation = {
 
     // Typography
     'component.alert.title.typography',
-    'component.alert.title.fontWeight',
     'component.alert.title.lineHeight',
     'component.alert.message.typography',
     'component.alert.message.lineHeight',
@@ -556,11 +555,10 @@ export const alertDocs: ComponentDocumentation = {
       {
         name: 'Content',
         description:
-          'Flexible content area with optional title, required message and optional action, in that order. Title uses h6 typography at semibold weight. Message uses body typography. Grows to fill available space.',
+          'Flexible content area with optional title, required message and optional action, in that order. Title uses h6 typography (semibold) with a tighter line height. Message uses body typography. Grows to fill available space.',
         tokens: [
           'component.alert.title.typography',
-          'component.alert.title.fontWeight',
-          'component.alert.title.lineHeight',
+                'component.alert.title.lineHeight',
           'component.alert.message.typography',
           'component.alert.message.lineHeight',
           'semantic.space.100'

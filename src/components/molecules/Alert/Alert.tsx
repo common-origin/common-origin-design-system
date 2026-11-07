@@ -201,7 +201,6 @@ const StyledContent = styled.div`
 
 const StyledTitle = styled.span`
   font: ${alert.title.typography};
-  font-weight: ${alert.title.fontWeight};
   line-height: ${alert.title.lineHeight};
   margin: 0;
 `

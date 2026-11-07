@@ -1213,9 +1213,13 @@ export type Tokens = {
         };
       };
       title: {
-        /** Alert title style (h6), adjusted by title.fontWeight and title.lineHeight. */
+        /** Alert title style (h6), adjusted by title.lineHeight. */
         typography: string;
-        /** Alert titles are semibold, heavier than h6's medium. */
+        /**
+         * Alert title weight.
+         *
+         * @deprecated h6 is semibold since decision 0050, so the title takes its weight from title.typography. Use semantic.fontWeight.semibold. Removed in 4.0.
+         */
         fontWeight: string;
         /** Alert titles use a tighter line height than h6. */
         lineHeight: string;
@@ -1480,11 +1484,11 @@ export type Tokens = {
     fontWeight: {
       /** 400. Body text, captions, most UI text. */
       regular: string;
-      /** 500. Subheadings (h5, h6, subtitle), buttons, emphasis within UI text. */
+      /** 500. Subtitle, buttons, emphasis within UI text. */
       medium: string;
-      /** 600. Labels and short titles that need more weight than medium (label, Alert title). */
+      /** 600. Headings (h1 to h6), labels and short titles (label, Alert title). */
       semibold: string;
-      /** 700. Headings (display to h4), overline, strong indicators such as the required-field asterisk. */
+      /** 700. The display heading, overline, strong indicators such as the required-field asterisk. */
       bold: string;
     };
     border: {
