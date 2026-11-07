@@ -1,6 +1,6 @@
 # 0011. System headings follow the typography tokens; products may go heavier
 
-- **Status:** Accepted
+- **Status:** Accepted; amended by [0050](0050-headings-are-semibold.md) (heading weights)
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P5

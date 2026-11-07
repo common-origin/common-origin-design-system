@@ -91,7 +91,7 @@ A surface pairs with an `elevation` token. `sunken` and `overlay` surfaces join 
 ## Typography
 
 - **`typography.*`** is complete text styles: `display`, `h1`–`h6`, `subtitle`, `body`, `small`, `overline`, `caption` and `label`. Use a style wherever one fits. Heading levels follow the page outline, not the size wanted.
-- **The parts** (`fontFamily`, `fontSize`, `lineHeight`, `letterSpacing` and `fontWeight`) are small named scales holding only the steps components use. They're for a component that departs from a style, such as Alert's semibold title, which combines `h6` with `fontWeight.semibold` through component tokens ([decision 0014](../foundation/decisions/0014-token-tiers.md)).
+- **The parts** (`fontFamily`, `fontSize`, `lineHeight`, `letterSpacing` and `fontWeight`) are small named scales holding only the steps components use. They're for a component that departs from a style, such as Alert's title, which combines `h6` with `lineHeight.tight` through component tokens ([decision 0014](../foundation/decisions/0014-token-tiers.md)).
 - Hierarchy comes from weight and scale, not colour.
 
 ## Motion

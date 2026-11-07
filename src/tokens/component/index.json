@@ -697,7 +697,7 @@
         "fontWeight": {
           "$value": "{semantic.fontWeight.semibold}",
           "$type": "fontWeight",
-          "$description": "Alert titles are semibold, heavier than h6's medium."
+          "$description": "Alert titles are semibold. h6 is also semibold since decision 0050; kept so the title weight stays an Alert decision."
         },
         "lineHeight": {
           "$value": "{semantic.lineHeight.tight}",

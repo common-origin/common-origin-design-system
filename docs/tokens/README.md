@@ -26,7 +26,7 @@ The rules:
 
 1. **Components never read base tokens.** Base tokens exist only to build semantic tokens. If a component needs something the semantic tier lacks, a semantic token is added first. A lint rule enforces this (see [Pipeline](pipeline.md#token-tiers)).
 2. **Components use semantic tokens by default.**
-3. **A component token exists only when** the component departs from the semantic tier (Alert's semibold title), a family shares the decision (`component.badge`, `component.input`), or there's a variant-and-state matrix (Button). Component tokens reference semantic tokens, never base tokens. Decision 0036's interim exception for domain tokens is resolved: none references a base token.
+3. **A component token exists only when** the component departs from the semantic tier (Alert's tighter title line height), a family shares the decision (`component.badge`, `component.input`), or there's a variant-and-state matrix (Button). Component tokens reference semantic tokens, never base tokens. Decision 0036's interim exception for domain tokens is resolved: none references a base token.
 4. **No component spacing tokens.** Padding, margins and gaps come from the semantic `space` scales, so density can change them in one place ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)).
 5. **Tokens hold design decisions only:** colour, typography, spacing, size, radius, border, shadow, motion and layer. Layout mechanics such as `display` and flex alignment stay in component code.
 6. **Every new token needs the owner's sign-off**, with a reason no existing token does the job ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)).

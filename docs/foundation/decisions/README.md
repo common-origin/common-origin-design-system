@@ -14,7 +14,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0008](0008-framework-agnostic-components.md) | Components are framework-agnostic | Accepted | 2025-12-05 |
 | [0009](0009-styling-architecture.md) | styled-components with tokens imported as values | Accepted; reading values superseded by 0041 | Recorded 2026-09-25 |
 | [0010](0010-agentinput-working-ring.md) | AgentInput's working ring is a temporary exception | Accepted (temporary) | 2026-09-25 |
-| [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted | 2026-09-25 |
+| [0011](0011-heading-weights-follow-tokens.md) | System headings follow the typography tokens; products may go heavier | Accepted; amended by 0050 | 2026-09-25 |
 | [0012](0012-shadows-use-black.md) | Shadows may use pure black | Accepted | 2026-09-26 |
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted; rule 4 has an interim exception (0036) | 2026-09-26 |
@@ -53,6 +53,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0047](0047-agent-proposal-ids.md) | A proposal carries a required `id`; a replacement of an open proposal is announced as "Proposal updated."; summaries say what changed; amends 0046 | Accepted | 2026-10-22 |
 | [0048](0048-emphasis-leaves-the-colour-tokens.md) | Emphasis leaves the colour tokens: text has two levels (`gray.1200`, `gray.1100`) and emphasis is weight; the strong solid fill is `gray.1200` with white-overlay hover (8%) and pressed (12%); `border.emphasis` is an alias of the divider border; emphasis names only the strong fill; amends 0029, 0031 and 0040 | Accepted; amended by 0049 | 2026-10-23 |
 | [0049](0049-where-white-lives.md) | Where white lives: `base.color.white` sits off the ramps for raised surfaces; inverse text and icons are `gray.100`; nothing above the base tier references `neutral.000`; amends 0048 | Accepted | 2026-10-25 |
+| [0050](0050-headings-are-semibold.md) | Headings are semibold: `h1`–`h6` at 600, `display` stays 700; amends 0011 | Accepted | 2026-11-07 |
 
 ## Template
 

@@ -809,27 +809,27 @@
         "$description": "The largest heading, for hero titles."
       },
       "h1": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.9}/{base.lineHeight.9} {base.fontFamily.heading}",
         "$description": "Heading 1: the page title, one per page."
       },
       "h2": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.8}/{base.lineHeight.8} {base.fontFamily.heading}",
         "$description": "Heading 2: major sections of a page."
       },
       "h3": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.7}/{base.lineHeight.7} {base.fontFamily.heading}",
         "$description": "Heading 3: the third heading level in a page outline."
       },
       "h4": {
-        "$value": "{semantic.fontWeight.bold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.6}/{base.lineHeight.6} {base.fontFamily.heading}",
         "$description": "Heading 4: the fourth heading level in a page outline."
       },
       "h5": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.5}/{base.lineHeight.5} {base.fontFamily.heading}",
         "$description": "Heading 5: the fifth heading level in a page outline."
       },
       "h6": {
-        "$value": "{semantic.fontWeight.medium} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
+        "$value": "{semantic.fontWeight.semibold} {base.fontSize.4}/{base.lineHeight.4} {base.fontFamily.heading}",
         "$description": "The smallest heading; Alert's title builds on it."
       },
       "subtitle": {
