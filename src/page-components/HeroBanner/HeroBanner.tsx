@@ -4,7 +4,7 @@ import { Button } from '../../components/atoms/Button'
 import { Container } from '../../components/atoms/Container'
 import { Stack } from '../../components/atoms/Stack'
 import { Typography } from '../../components/atoms/Typography'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { base: { border, breakpoint } } = tokens
 

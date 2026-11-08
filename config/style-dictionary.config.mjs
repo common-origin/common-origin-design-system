@@ -219,6 +219,12 @@ for (const [name, modifier] of Object.entries(resolver.modifiers)) {
   // inside a comfortable one gets compact's value even where compact matches the default
   for (const { context, tokens } of contexts) {
     blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all, extraDeclarations(modifier, context)))
+    // A context's resolved values, shaped like tokens.json, for tools that show them (the docs
+    // site's tokens page shows each colour in both themes, #360). Not published in the package.
+    if (modifier.$extensions?.['studio.commonorigin']?.resolvedJson) {
+      const [{ output }] = await modeDictionary(tokens, [{ format: 'json/nested', destination: 'context.json' }]).formatPlatform('css')
+      writeFileSync(`src/styles/tokens.${name}-${context}.json`, output.endsWith('\n') ? output : `${output}\n`)
+    }
   }
 }
 

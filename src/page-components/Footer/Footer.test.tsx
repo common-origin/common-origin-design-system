@@ -168,10 +168,10 @@ describe("Footer", () => {
       expect(screen.getByRole("presentation")).toBeInTheDocument()
     })
 
-    it("handles missing logo src gracefully", () => {
+    it("falls back to the default logo when the logo src is empty", () => {
       renderFooter({ logoSrc: "" })
       const logo = screen.getByRole("presentation")
-  expect(logo.getAttribute("src")).toBeNull()
+      expect(logo).toHaveAttribute("src", "/assets/logo/co-logo-white.svg")
     })
 
     it("handles missing logo alt gracefully", () => {

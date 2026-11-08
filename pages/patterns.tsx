@@ -15,7 +15,7 @@ import {
   Typography,
 } from '../src/page-components'
 import { patternsData, type PatternMetadata } from '../src/patterns'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { base: { breakpoint }, semantic: { border } } = tokens
 

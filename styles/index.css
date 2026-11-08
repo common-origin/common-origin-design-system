@@ -5,8 +5,8 @@
   box-sizing: border-box;
 }
 
-/* The docs site has no dark theme: declare light so browsers with auto/forced
-   dark mode don't render dark backgrounds under near-black text. */
+/* The theme is data-co-theme on <html>, set before the first paint (#360). Its blocks in
+   tokens.css set color-scheme; this is the fallback before the attribute applies. */
 html {
   color-scheme: light;
 }
@@ -30,8 +30,8 @@ a {
 
 /* Focus styles for accessibility */
 :focus-visible {
-  outline: 2px solid #0070f3;
-  outline-offset: 2px;
+  outline: var(--co-semantic-border-focus);
+  outline-offset: var(--co-semantic-border-focus-offset);
 }
 
 /* Image optimization */

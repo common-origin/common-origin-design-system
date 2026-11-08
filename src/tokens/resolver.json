@@ -24,7 +24,7 @@
         "dark": [{ "$ref": "modes/theme/dark.json" }]
       },
       "default": "light",
-      "$extensions": { "studio.commonorigin": { "declarations": { "color-scheme": "{context}" } } }
+      "$extensions": { "studio.commonorigin": { "declarations": { "color-scheme": "{context}" }, "resolvedJson": true } }
     }
   },
   "resolutionOrder": [

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styled from 'styled-components'
 import { Button, Stack, Typography } from '../src/page-components'
-import tokens from '../src/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 
 const CenteredContainer = styled.div`

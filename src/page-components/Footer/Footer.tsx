@@ -3,13 +3,14 @@ import { useRouter } from 'next/router'
 import styled from "styled-components"
 import Link from 'next/link'
 import { Container } from '../../components/atoms/Container'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
+import { ThemedLogo } from '../ThemedLogo'
 
 const { semantic: { color } } = tokens
 
 // Props interface for the Footer component
 export interface FooterProps {
-  /** Logo source path - defaults to white logo */
+  /** Logo source path. Defaults to the Common Origin logo in the colour that reads on the footer in the current theme */
   logoSrc?: string
   /** Logo alt text - defaults to "Common Origin Logo" */
   logoAlt?: string
@@ -58,8 +59,14 @@ const LogoImage = styled.img`
   min-height: 44px;
 `
 
+// The default logo matches text.inverse on the emphasis fill, in either theme (#360)
+const FooterLogo = styled(ThemedLogo)`
+  min-width: 44px;
+  min-height: 44px;
+`
+
 export const Footer: React.FC<FooterProps> = ({
-  logoSrc = "/assets/logo/co-logo-white.svg",
+  logoSrc,
   logoAlt = "Common Origin Logo"
 }) => {
   const router = useRouter()
@@ -74,7 +81,7 @@ export const Footer: React.FC<FooterProps> = ({
             $isActive={asPath === '/'}
             aria-label={`${logoAlt} - Navigate to homepage`}
           >
-            <LogoImage src={logoSrc} alt="" />
+            {logoSrc ? <LogoImage src={logoSrc} alt="" /> : <FooterLogo tone="inverse" alt="" />}
           </LogoLink>
         </FooterContent>
       </Container>

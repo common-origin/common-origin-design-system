@@ -82,7 +82,7 @@ Density changes control heights by one 8px step (compact 24 / 32 / 40px, default
 
 `tokens.css` has a dark theme: set `data-co-theme="dark"` on any element, and everything inside it takes the dark colours ([0054](decisions/0054-dark-mode-theme-mode.md)). It changes colour and shadow only, regions nest, `data-co-theme="light"` resets one, and density and theme can be set on the same element. `tokens.css` never turns dark by itself from the system setting: a product that wants that sets the attribute.
 
-**Don't use it in a product yet.** The docs site adopts it first ([#360](https://github.com/common-origin/common-origin-design-system/issues/360)), and browser checks of every component in dark are still to come ([#359](https://github.com/common-origin/common-origin-design-system/issues/359)).
+**Don't use it in a product yet.** The docs site uses it (pick a theme in its header, and see its [dark mode guide](https://common-origin-design-system.vercel.app/guides/dark-mode)), but browser checks of every component in dark are still to come ([#359](https://github.com/common-origin/common-origin-design-system/issues/359)).
 
 ## Fonts
 

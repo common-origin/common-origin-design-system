@@ -17,7 +17,7 @@ import {
   Tag,
   Typography,
 } from '../../src/page-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic } = tokens
 

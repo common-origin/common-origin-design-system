@@ -13,8 +13,8 @@ export const footerDocs: ComponentDocumentation = {
       name: 'logoSrc',
       type: 'string',
       required: false,
-      default: '/assets/logo/co-logo-white.svg',
-      description: 'Logo source path - defaults to white logo'
+      default: 'The logo in the colour that reads on the footer in the current theme',
+      description: 'Logo source path. By default the Common Origin logo, white on the light theme\'s dark footer and dark on the dark theme\'s light footer'
     },
     {
       name: 'logoAlt',

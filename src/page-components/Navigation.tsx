@@ -5,7 +5,10 @@ import Link from 'next/link'
 import { Container } from '../components/atoms/Container'
 import { IconButton } from '../components/atoms/IconButton'
 import { Typography } from '../components/atoms/Typography'
-import tokens from '@/styles/tokens.json'
+import { Stack } from '../components/atoms/Stack'
+import { ThemedLogo } from './ThemedLogo'
+import { ThemeMenu } from './ThemeMenu'
+import tokens from '@/lib/cssTokens'
 
 const { semantic: { border, color, space } } = tokens
 
@@ -52,11 +55,6 @@ const LogoLink = styled(Link)<{ $isActive: boolean }>`
   @media (max-width: calc(${tokens.base.breakpoint.md} - 1px)) {
     margin-right: 0;
   }
-`
-
-const LogoImage = styled.img`
-  height: auto;
-  width: auto;
 `
 
 const DesktopNav = styled.div`
@@ -154,9 +152,12 @@ export const Navigation: React.FC = () => {
         <Container>
           <MobileNav>
             <LogoLink href="/" $isActive={asPath === '/'}>
-              <LogoImage src="/assets/logo/co-logo.svg" alt="Common Origin Logo" />
+              <ThemedLogo alt="Common Origin Logo" />
             </LogoLink>
-            <IconButton onClick={toggleMenu} iconName="menu" variant="naked" size="large" aria-label="Toggle navigation menu" />
+            <Stack direction="row" gap="xs" alignItems="center">
+              <ThemeMenu />
+              <IconButton onClick={toggleMenu} iconName="menu" variant="naked" size="large" aria-label="Toggle navigation menu" />
+            </Stack>
           </MobileNav>
         </Container>
       </MobileNavWrapper>
@@ -165,7 +166,7 @@ export const Navigation: React.FC = () => {
           <MobileMenuItems>
             <MobileCloseButton onClick={toggleMenu} iconName="close" variant="naked" size="large" aria-label="Close navigation menu" />
             <LogoLink href="/" $isActive={asPath === '/'}>
-              <LogoImage src="/assets/logo/co-logo.svg" alt="Common Origin Logo" />
+              <ThemedLogo alt="Common Origin Logo" />
             </LogoLink>
             <MobileNavLink href="/components" $isActive={asPath === '/components'}>
               <Typography variant="h6" color="default">Components</Typography>
@@ -186,7 +187,7 @@ export const Navigation: React.FC = () => {
         <Container>
           <DesktopNav>
             <LogoLink href="/" $isActive={asPath === '/'}>
-              <LogoImage src="/assets/logo/co-logo.svg" alt="Common Origin Logo" />
+              <ThemedLogo alt="Common Origin Logo" />
             </LogoLink>
             <DesktopNavMenu>
               <DesktopNavLink href="/components" $isActive={asPath === '/components'}>
@@ -201,6 +202,7 @@ export const Navigation: React.FC = () => {
               <DesktopNavLink href="/releases" $isActive={asPath === '/releases'}>
                 <Typography variant="subtitle" color={asPath === '/releases' ? 'default' : 'subdued'}>Releases</Typography>
               </DesktopNavLink>
+              <ThemeMenu />
             </DesktopNavMenu>
           </DesktopNav>
         </Container>

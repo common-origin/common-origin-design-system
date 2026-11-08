@@ -11,7 +11,7 @@ import {
 	Divider,
   Dropdown,
 } from '../page-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { base: { breakpoint }, semantic: { color, border, elevation } } = tokens
 
