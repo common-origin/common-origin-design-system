@@ -163,7 +163,7 @@ const StyledSheet = styled.div.withConfig({
   ${({ $position, $variant, $width, $height }) => {
     const isDrawer = $variant === 'drawer'
     const margin = isDrawer ? semantic.space[400] : '0'
-    const borderRadius = isDrawer ? semantic.radius['2xl'] : '0'
+    const borderRadius = isDrawer ? tokens.component.overlay.borderRadius : '0'
     
     switch ($position) {
       case 'right':

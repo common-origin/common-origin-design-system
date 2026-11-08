@@ -112,7 +112,7 @@ export const sheetDocs: ComponentDocumentation = {
     'semantic.space.600',
     
     // Border
-    'semantic.radius.2xl',
+    'component.overlay.borderRadius',
     
     // Colors for scrollbar
     'semantic.surface.raised', // Scrollbar track
@@ -778,7 +778,7 @@ Visual Variants:
         tokens: [
           'semantic.surface.base',
           'semantic.elevation.overlay',
-          'semantic.radius.2xl',
+          'component.overlay.borderRadius',
           'semantic.space.200',
           'semantic.space.400',
           'semantic.space.600',

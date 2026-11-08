@@ -1417,6 +1417,10 @@ export type Tokens = {
       /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
       background: string;
     };
+    overlay: {
+      /** Corner radius of every overlay that holds controls: Modal, ActionSheet's top corners and the drawer Sheet, so they share one shape that nests around the control radius (decision 0055). */
+      borderRadius: string;
+    };
   };
   semantic: {
     elevation: {

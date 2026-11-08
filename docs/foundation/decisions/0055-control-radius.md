@@ -30,7 +30,7 @@ The corners line up when the outer radius is the inner radius plus the padding b
    | Sheet, drawer variant | 24px | 32px | `radius.2xl` (24px) |
    | Menu, Dropdown panel, SearchField suggestions | rows run edge to edge | none | `radius.md` (8px) | <!-- verify-docs-ignore: token names, not files -->
 
-   Modal, ActionSheet and the drawer share one overlay shape. Where the nesting value is larger than a container can carry without looking soft, it is a ceiling, not a target: a container is never sharper than the controls inside it, and needn't reach the full nesting value.
+   Modal, ActionSheet and the drawer share one overlay shape, `component.overlay.borderRadius` (`radius.2xl`). Where the nesting value is larger than a container can carry without looking soft, it is a ceiling, not a target: a container is never sharper than the controls inside it, and needn't reach the full nesting value.
 6. **Chips are fully round** (`component.chip.default.borderRadius` is `radius.full`), with a round close button. Chips are 24px tall, so 12px already drew a pill. `full` keeps them a pill at any height, which keeps 0016's point that a chip never shares Button's shape.
 
 ## Consequences

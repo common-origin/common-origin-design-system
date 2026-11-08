@@ -922,6 +922,9 @@
     },
     "track": {
       "background": "#f2f2f2"
+    },
+    "overlay": {
+      "borderRadius": "1.5rem"
     }
   },
   "semantic": {
