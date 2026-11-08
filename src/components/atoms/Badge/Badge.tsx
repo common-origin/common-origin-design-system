@@ -2,7 +2,6 @@ import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { forcedColors, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import tokens from '@/lib/cssTokens'
-import { Typography } from '../Typography'
 
 const { semantic } = tokens
 const { color } = semantic
@@ -102,6 +101,13 @@ const BadgeIndicator = styled.span.withConfig({
   }}
 `
 
+// The count takes the indicator's colour, so each variant's content colour reaches it: inverse on
+// the strong fill, on-fill on the accent fill (decision 0056)
+const Count = styled.span`
+  font: ${semantic.typography.caption};
+  text-transform: uppercase;
+`
+
 const ScreenReaderOnly = styled.span`
   ${visuallyHidden}
 `
@@ -139,9 +145,7 @@ export const Badge: React.FC<BadgeProps> = ({
         aria-live="polite"
       >
         {!dot && (
-          <Typography variant="caption" color="inverse">
-            {displayCount}
-          </Typography>
+          <Count>{displayCount}</Count>
         )}
         <ScreenReaderOnly>{label}</ScreenReaderOnly>
       </BadgeIndicator>

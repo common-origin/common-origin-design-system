@@ -5,13 +5,15 @@
  */
 /**
  * A colour as #rrggbb. Translucent colours (the alpha twins, decision 0056) are composited over
- * white, the surface they're defined against, where each equals its solid step.
+ * `backdrop`, by default white: the surface light's twins are defined against, where each equals
+ * its solid step. Dark's twins are defined against the dark page.
  */
-export function opaque(color: string): string {
+export function opaque(color: string, backdrop = '#ffffff'): string {
   const rgba = color.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/)
   if (!rgba) return color
   const a = Number(rgba[4])
-  return `#${[1, 2, 3].map((i) => Math.round(a * Number(rgba[i]) + (1 - a) * 255).toString(16).padStart(2, '0')).join('')}`
+  const under = [1, 3, 5].map((i) => parseInt(backdrop.slice(i, i + 2), 16))
+  return `#${[1, 2, 3].map((i, k) => Math.round(a * Number(rgba[i]) + (1 - a) * under[k]).toString(16).padStart(2, '0')).join('')}`
 }
 
 function relativeLuminance(color: string): number {

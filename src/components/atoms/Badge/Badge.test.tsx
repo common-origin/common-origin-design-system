@@ -103,8 +103,10 @@ describe('Badge', () => {
       const indicator = container.querySelector('[role="status"]') as HTMLElement
       expect(indicator).toHaveStyle({
         backgroundColor: tokens.semantic.color.fill.accent,
-        color: tokens.semantic.color.text.inverse,
+        color: tokens.semantic.color.text['on-fill'],
       })
+      // The count inherits it, rather than setting a colour of its own
+      expect(screen.getByText('5')).toHaveStyle({ color: tokens.semantic.color.text['on-fill'] })
     })
 
     // primary, error, warning and success were removed in 3.0 (decision 0045, #99); plain
