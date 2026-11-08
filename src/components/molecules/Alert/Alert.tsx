@@ -157,7 +157,7 @@ const StyledAlert = styled.div.withConfig({
   align-items: flex-start;
   gap: ${semantic.space[300]};
   padding: ${semantic.space[300]};
-  border-radius: ${semantic.radius.sm};
+  border-radius: ${semantic.radius.lg};
   border: ${semantic.border.width.thin} solid;
   position: relative;
   width: 100%;

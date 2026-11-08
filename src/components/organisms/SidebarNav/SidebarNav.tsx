@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
-import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
+import { forcedColors, reducedMotion, rowRadius } from '../../../lib/styleUtils'
 import { IconButton } from '../../atoms/IconButton'
 import { Tooltip } from '../../atoms/Tooltip'
 import { isKeyboardFocus } from '../../../lib/keyboardFocus'
@@ -9,7 +9,7 @@ import { SidebarNavContext, type SidebarNavContextValue } from '../../molecules/
 import { EXPANDED_WIDTH_VAR, NAV_PADDING, SCROLLBAR_VAR, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
 
 const { semantic, component } = tokens
-const { space, motion, radius, color, size } = semantic
+const { space, motion, color, size } = semantic
 const { width: widths } = component.sidebarNav
 
 export type SidebarNavWidth = 'narrow' | 'default' | 'wide'
@@ -168,7 +168,7 @@ const Highlight = styled.div.withConfig({
   top: 0;
   left: 0;
   z-index: 0;
-  border-radius: ${radius.sm};
+  border-radius: ${rowRadius};
   background-color: ${color.fill.muted};
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};

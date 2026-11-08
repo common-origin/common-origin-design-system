@@ -823,7 +823,7 @@ export type Tokens = {
         backgroundColor: string;
         /** Text and icon colour on the primary Button. */
         textColor: string;
-        /** Corner radius of every Button (visual language: Button uses sm). */
+        /** Corner radius of every Button (visual language: Button uses md). */
         borderRadius: string;
         /** Button label typography, the same as sizes.large.font. */
         font: string;
@@ -955,7 +955,7 @@ export type Tokens = {
         backgroundColor: string;
         /** Default chip text and icon colour. */
         textColor: string;
-        /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
+        /** Corner radius of every chip: fully round, so a chip never shares Button's shape and the two read as different jobs (decision 0016). */
         borderRadius: string;
         /** Chip label typography, the same as sizes.large.font. */
         font: string;
@@ -1057,7 +1057,7 @@ export type Tokens = {
         textColor: string;
         /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
         borderColor: string;
-        /** Corner radius of text inputs and the Checkbox box. */
+        /** Corner radius of text inputs, Dropdown and SearchField, matching Button. */
         borderRadius: string;
         /** Border width of text inputs and the Checkbox box. */
         borderWidth: string;
@@ -1331,6 +1331,8 @@ export type Tokens = {
       box: {
         /** Width and height of the Checkbox and Radio box. */
         size: string;
+        /** Corner radius of the Checkbox box: one step tighter than the control radius, so the small box stays square and never reads as a Radio. */
+        borderRadius: string;
       };
       row: {
         /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */
@@ -1414,6 +1416,10 @@ export type Tokens = {
     track: {
       /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
       background: string;
+    };
+    overlay: {
+      /** Corner radius of every overlay that holds controls: Modal, ActionSheet's top corners and the drawer Sheet, so they share one shape that nests around the control radius (decision 0055). */
+      borderRadius: string;
     };
   };
   semantic: {
@@ -1934,21 +1940,21 @@ export type Tokens = {
     radius: {
       /** No rounding: tables, dividers and sharp-edged containers. */
       none: string;
-      /** Minimal rounding: small badges, checkboxes, compact tags. */
+      /** Minimal rounding for thin bars: ProgressBar and AgentInput's level meter. */
       xs: string;
-      /** Subtle rounding: buttons, inputs and other form controls. */
+      /** Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock, Slider's value label, small images (CardSmall, Picture) and the Checkbox box. */
       sm: string;
-      /** Standard rounding: cards, dropdown menus, popovers. */
+      /** The control radius: Button, IconButton, inputs, rows and tabs, and the menus and popovers they open. */
       md: string;
-      /** Generous rounding: modals, action sheets and feature cards. */
+      /** Generous rounding for containers that hold controls: Alert and cards. */
       lg: string;
-      /** Large rounding: pill buttons and prominent search bars. */
+      /** Large rounding: large cards such as AccountCard. */
       xl: string;
-      /** Extra-large rounding: hero elements and decorative containers. */
+      /** Overlays that hold controls (Modal, ActionSheet and the drawer Sheet), so their corners nest around the control radius, and large image cards (CardLarge, FeatureBlock). */
       '2xl': string;
-      /** Maximum rounding short of a circle: decorative cards and marketing elements. */
+      /** Maximum rounding short of a circle: AgentInput's input shell, which holds round buttons. */
       '3xl': string;
-      /** Fully round: avatars, round icon buttons, status dots and chips. */
+      /** Fully round: avatars, chips, badges, round icon buttons and status dots. */
       full: string;
     };
     space: {

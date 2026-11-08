@@ -116,7 +116,8 @@ const DropdownMenu = styled.div.withConfig({
   background-color: ${input.default.backgroundColor};
   /* A decorative outline: elevation separates the menu, and only the trigger is a control edge (decision 0025) */
   border: ${border.default};
-  border-radius: ${input.default.borderRadius};
+  /* The panel radius Menu and SearchField share, not the control token (decision 0055) */
+  border-radius: ${tokens.semantic.radius.md};
   box-shadow: ${elevation.floating};
   margin-top: ${space[100]};
   overflow: hidden;

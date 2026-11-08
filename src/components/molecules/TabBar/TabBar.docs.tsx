@@ -53,6 +53,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'component.tabBar.scrollbar.height',
     'semantic.surface.raised',
     'semantic.radius.sm',
+    'semantic.radius.md',
     // Tab
     'component.button.sizes.medium.font',
     'semantic.space.200',

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { StyledInputBase } from '../TextField/InputBase'
 import { IconButton } from '../../atoms/IconButton/IconButton'
 import tokens from '@/lib/cssTokens'
+import { fieldButtonRadius } from '../../../lib/styleUtils'
 
 const { field } = tokens.component
 // Gaps come from the semantic spacing scale: no component spacing tokens (decision 0022)
@@ -123,6 +124,11 @@ const StyledStepperContainer = styled.div`
   display: flex;
   flex-direction: row;
   gap: ${tokens.semantic.space[200]};
+
+  /* Buttons inside the field nest within its corner: a step tighter than the control radius (decision 0055) */
+  & > button {
+    border-radius: ${fieldButtonRadius};
+  }
 `
 
 const StyledHelperText = styled.div<{ $isError?: boolean }>`

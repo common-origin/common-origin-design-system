@@ -454,4 +454,14 @@ describe('Checkbox', () => {
       expect(getComputedStyle(boxOf(screen.getByRole('checkbox'))).borderTopColor).toBe(css(checkedFill))
     })
   })
+
+  describe('corner radius', () => {
+    // At the 8px control radius the 20px box reads as a Radio, so it keeps its own (decision 0055)
+    it('uses the Checkbox radius, not the input radius', () => {
+      render(<Checkbox label="Box" onChange={() => {}} />)
+      const box = getComputedStyle(screen.getByRole('checkbox').nextElementSibling as HTMLElement)
+      expect(box.borderRadius).toBe(tokens.component.checkbox.box.borderRadius)
+      expect(box.borderRadius).not.toBe(tokens.component.input.default.borderRadius)
+    })
+  })
 })

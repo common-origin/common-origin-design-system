@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
 import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
-import { forcedColors } from '../../../lib/styleUtils'
+import { forcedColors, rowRadius } from '../../../lib/styleUtils'
 
 const { semantic } = tokens
 
@@ -106,7 +106,7 @@ const StyledTab = styled.button.withConfig({
   
   /* Selected tab: the light-blue selected treatment plus a blue underline (decisions 0016, 0020).
      The text darkens with the fill on hover and press so every state stays at least 4.5:1. */
-  border-radius: ${semantic.radius.sm} ${semantic.radius.sm} 0 0;
+  border-radius: ${rowRadius} ${rowRadius} 0 0;
   background-color: ${props => props.$isActive
     ? semantic.color.fill['accent-muted']
     : 'transparent'

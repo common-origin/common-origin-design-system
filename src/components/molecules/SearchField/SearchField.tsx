@@ -16,7 +16,7 @@ import { Stack } from '../../atoms/Stack/Stack'
 import { Typography } from '../../atoms/Typography/Typography'
 import { ListItem } from '../List/ListItem'
 import tokens from '@/lib/cssTokens'
-import { rowStates } from '../../../lib/styleUtils'
+import { fieldButtonRadius, rowStates } from '../../../lib/styleUtils'
 
 const { semantic, component } = tokens
 
@@ -147,6 +147,12 @@ const StyledInputWrapper = styled.div<StyledSearchContainerProps>`
   background-color: ${component.input.default.backgroundColor};
   border: ${component.input.default.borderWidth} solid ${component.input.default.borderColor};
   border-radius: ${component.input.default.borderRadius};
+
+  /* Buttons inside the field nest within its corner: a step tighter than the control radius (decision 0055) */
+  & > button {
+    border-radius: ${fieldButtonRadius};
+  }
+
   transition: border-color ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard}, outline ${semantic.motion.duration.moderate} ${semantic.motion.easing.standard};
   
   ${props => props.$isFocused && `

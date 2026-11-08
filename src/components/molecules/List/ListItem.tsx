@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
 import { Icon } from '../../atoms/Icon'
 import { Typography } from '../../atoms/Typography'
-import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
+import { interactiveRow, reducedMotion, rowRadius } from '../../../lib/styleUtils'
 import { ListSpacingContext, type ListSpacing } from './ListContext'
 
 const { semantic } = tokens
@@ -174,7 +174,7 @@ const StyledItemContent = styled.div.withConfig({
     $spacing === 'compact'
       ? `${semantic.space.inset.sm} ${semantic.space.inset.md}`
       : `${semantic.space.inset.md} ${semantic.space.inset.lg}`};
-  border-radius: ${semantic.radius.sm};
+  border-radius: ${rowRadius};
   transition: background-color ${duration.fast} ${easing.decelerate}, color ${duration.fast} ${easing.decelerate};
   cursor: ${({ $interactive, $disabled }) => {
     if ($disabled) return 'not-allowed'
@@ -272,7 +272,7 @@ const StyledExpandedContent = styled.div.withConfig({
         : `${semantic.space[200]} ${semantic.space[400]} ${semantic.space[300]} ${tokens.component.listItem.expandedIndent.comfortable}`
     };
     background-color: ${semantic.surface.raised};
-    border-radius: ${semantic.radius.sm};
+    border-radius: ${rowRadius};
     /* The row's own insets, so the panel lines up with the row in every density (0051) */
     margin: 0 ${
       $spacing === 'compact'

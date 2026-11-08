@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { NumberInput } from './NumberInput'
 import { useState } from 'react'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -483,6 +484,16 @@ describe('NumberInput', () => {
     it('forwards aria-label', () => {
       render(<NumberInput aria-label="Custom label" />)
       expect(screen.getByLabelText('Custom label')).toBeInTheDocument()
+    })
+  })
+
+  describe('corner radius', () => {
+    // The steppers sit inside the field's 8px corner, so they're a step tighter (decision 0055)
+    it('gives the steppers the field-button radius, tighter than the field', () => {
+      render(<NumberInput aria-label="Quantity" />)
+      const stepper = getComputedStyle(screen.getByRole('button', { name: 'Increment value', hidden: true }))
+      expect(stepper.borderRadius).toBe(tokens.semantic.radius.sm)
+      expect(stepper.borderRadius).not.toBe(tokens.component.input.default.borderRadius)
     })
   })
 })

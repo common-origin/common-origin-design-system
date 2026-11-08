@@ -89,7 +89,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
     'component.sidebarNav.width.default',
     'component.sidebarNav.width.wide',
     'semantic.color.fill.muted',
-    'semantic.radius.sm',
+    'semantic.radius.md',
     'semantic.space.100',
     'semantic.space.200',
     'semantic.motion.duration.fast',

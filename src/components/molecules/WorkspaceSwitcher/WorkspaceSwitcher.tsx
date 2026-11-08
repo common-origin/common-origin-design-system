@@ -55,7 +55,7 @@ const Trigger = styled.button.withConfig({
   min-height: ${size.row.sm};
   padding: ${space.inset.xs} ${space.inset.sm};
   border: none;
-  border-radius: ${radius.sm};
+  border-radius: ${radius.md};
   background: none;
   font: ${typography.label};
   color: ${color.text.default};

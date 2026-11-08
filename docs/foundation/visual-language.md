@@ -51,12 +51,14 @@ Five `Button` variants, each with a distinct job ([0002](decisions/0002-button-v
 | Rule | Status |
 |---|---|
 | Disabled states use their disabled tokens; never invent new colours for hover or active. | Enforced |
-| Button uses corner radius `sm` (4px). | Enforced |
+| Controls have 8px corners (`radius.md`): Button, IconButton, the input family, rows and tabs, and button-like triggers. Small elements that aren't controls (Tag, Tooltip, CodeBlock, the Checkbox box) keep `radius.sm` (4px), and so do buttons inside a field (steppers, clear and show-password buttons), which nest within its corner. ([0055](decisions/0055-control-radius.md)) | Enforced | <!-- verify-docs-ignore: token names, not files -->
+| A container's corner nests around the controls inside it: its radius is the control radius plus the padding between them, snapped to the scale. Treat that as a ceiling for large padding; a container is never sharper than its controls. ([0055](decisions/0055-control-radius.md)) | Guideline |
+| Overlays that hold controls share one shape: Modal, ActionSheet's top corners and the drawer Sheet use `component.overlay.borderRadius` (`radius.2xl`, 24px). Alert uses `radius.lg` (12px). ([0055](decisions/0055-control-radius.md)) | Enforced |
 | `IconButton`'s `primary`, `secondary` and `naked` look and behave exactly like `Button`'s: the same colours in every state, from `component.button.*`, and the same colour transition (`motion.transition.feedback`). Only the size and the icon differ. ([0027](decisions/0027-iconbutton-follows-button.md)) | Enforced — `IconButton.test.tsx` compares the two |
 | `IconButton` has no `accent` or `danger` variant until a product needs one ([P4](principles.md#p4-earn-its-place)). ([0027](decisions/0027-iconbutton-follows-button.md)) | Guideline |
 | `IconButton`'s icon is one step larger than a `Button`'s at the same size (`sm`, `md`, `lg` against `xs`, `sm`, `md`): an icon-only button needs a larger glyph to fill the same square. ([0027](decisions/0027-iconbutton-follows-button.md)) | Exception |
 | **Accent** is the name for the blue call-to-action level above `primary`, wherever a component has one. It is never a selected state, a link colour or decoration. **Emphasis** is never blue, and it names only the strong solid fill. Text and icons have two levels, primary (`gray.1200`) and secondary (`gray.1100`), and emphasis comes from weight and scale. The strong near-black fill is `gray.1200`, with white-overlay hover and pressed states. The category palette's strong step is `-strong`, not `-emphasis`. ([0016](decisions/0016-accent-selection-and-chip-types.md), [0029](decisions/0029-accent-emphasis-audit.md), [0048](decisions/0048-emphasis-leaves-the-colour-tokens.md)) | Enforced — Button's `emphasis` variant and the category `-emphasis` tokens were removed in 3.0 ([#99](https://github.com/common-origin/common-origin-design-system/issues/99)) |
-| Chips keep a rounded radius (12px) while Buttons use `sm` (4px): the shape signals a different job. ([0016](decisions/0016-accent-selection-and-chip-types.md)) | Exception |
+| Chips are fully round (`radius.full`) while Buttons have 8px corners: the shape signals a different job. ([0016](decisions/0016-accent-selection-and-chip-types.md), [0055](decisions/0055-control-radius.md)) | Exception |
 
 ## Selected and active states
 

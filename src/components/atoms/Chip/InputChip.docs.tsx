@@ -138,7 +138,7 @@ export const inputChipDocs: ComponentDocumentation = {
     // Close button shape and states
     'component.chip.closeButton.size',
     'semantic.space.0',
-    'semantic.radius.xs',
+    'semantic.radius.full',
     'semantic.color.text.disabled',
     'semantic.color.fill.none-hover',
     'semantic.color.fill.none-pressed',
@@ -302,7 +302,7 @@ States:
           'component.chip.closeButton.size',
           'semantic.space.0',
           'semantic.space.200',
-          'semantic.radius.xs',
+          'semantic.radius.full',
           'semantic.color.text.disabled',
           'semantic.color.fill.none-hover',
           'semantic.color.fill.none-pressed',

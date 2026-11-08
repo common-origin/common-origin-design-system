@@ -39,7 +39,7 @@ export const workspaceSwitcherDocs: ComponentDocumentation = {
     'semantic.space.200',
     'semantic.space.inset.xs',
     'semantic.space.inset.sm',
-    'semantic.radius.sm',
+    'semantic.radius.md',
     'semantic.typography.label',
     'semantic.color.text.default',
     'semantic.color.text.muted',

@@ -4,7 +4,7 @@ import tokens from '@/lib/cssTokens'
 // The clip timer needs the resolved duration, not its CSS variable (decision 0041)
 // eslint-disable-next-line no-restricted-imports
 import tokenValues from '../../../styles/tokens.json'
-import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
+import { interactiveRow, reducedMotion, rowRadius } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
 import { SidebarNavItem } from '../SidebarNavItem'
@@ -15,7 +15,7 @@ import { Fold } from '../SidebarNavItem/sidebarNavMotion'
 const COLLAPSE_MS = parseInt(tokenValues.semantic.motion.duration.moderate, 10)
 
 const { semantic } = tokens
-const { space, color, motion, radius, size, border, typography } = semantic
+const { space, color, motion, size, border, typography } = semantic
 
 export interface SidebarNavSectionProps {
   /** The section's visible label, which also names its list */
@@ -97,7 +97,7 @@ const Disclosure = styled.button.withConfig({
   min-height: ${size.row.sm};
   padding: 0 ${space.inset.sm};
   border: none;
-  border-radius: ${radius.sm};
+  border-radius: ${rowRadius};
   background: none;
   text-align: left;
   cursor: pointer;

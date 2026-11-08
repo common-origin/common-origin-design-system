@@ -76,7 +76,7 @@ A surface pairs with an `elevation` token. `sunken` and `overlay` surfaces join 
 
 ## Radius
 
-`radius.none` to `radius.3xl`, plus `radius.full` for pills, circles and chips. The descriptions match radius to object size: small controls get `sm`, cards `md`, and modals and sheets `lg`. Use the step for the kind of object, so corners stay consistent across the system.
+`radius.none` to `radius.3xl`, plus `radius.full` for pills, circles and chips. Each step has a job ([0055](../foundation/decisions/0055-control-radius.md)): `md` (8px) is the control radius, for buttons, inputs, rows and tabs; `sm` (4px) is for small elements that aren't controls, such as Tag and Tooltip; `lg` is for containers that hold controls, such as Alert; and `2xl` is for overlays (Modal, ActionSheet, the drawer Sheet). A container's corner nests around the controls inside it: the control radius plus the padding between them, snapped to the scale.
 
 ## Border
 

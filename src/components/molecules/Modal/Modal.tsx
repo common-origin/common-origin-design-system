@@ -141,7 +141,7 @@ const StyledDialog = styled.div.withConfig({
   flex-direction: column;
 
   background-color: ${semantic.surface.raised};
-  border-radius: ${semantic.radius.xl};
+  border-radius: ${tokens.component.overlay.borderRadius};
   box-shadow: ${elevation.overlay};
   overflow: hidden;
 

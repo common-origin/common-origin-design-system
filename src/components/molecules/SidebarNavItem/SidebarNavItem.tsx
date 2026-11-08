@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import tokens from '@/lib/cssTokens'
-import { interactiveRow } from '../../../lib/styleUtils'
+import { interactiveRow, rowRadius } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { Tooltip } from '../../atoms/Tooltip'
 import { Badge } from '../../atoms/Badge'
@@ -10,7 +10,7 @@ import { useSidebarNav } from './SidebarNavContext'
 import { EXPANDED_WIDTH_VAR, Fold, NAV_PADDING, ROW_INSET, SCROLLBAR_VAR, fade } from './sidebarNavMotion'
 
 const { semantic } = tokens
-const { space, color, motion, radius, size, border, typography } = semantic
+const { space, color, motion, size, border, typography } = semantic
 
 export interface SidebarNavItemProps {
   /** The item's label. In the rail it becomes the accessible name and shows in a Tooltip. */
@@ -67,7 +67,7 @@ const Row = styled.a.withConfig({
   padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
   overflow: hidden;
   border: none;
-  border-radius: ${radius.sm};
+  border-radius: ${rowRadius};
   background: none;
   font: ${typography.small};
   color: ${color.text.default};
