@@ -4,6 +4,9 @@
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
 import resolver from './resolver.json'
+import darkRamps from './modes/theme/dark.json'
+import darkSemantic from './modes/theme/dark-semantic.json'
+import { contrastRatio } from '../test-utils/contrast'
 
 // Token modes (decision 0032): src/tokens/resolver.json describes them as DTCG Resolver modifiers,
 // and the token build writes a [data-co-<mode>="<context>"] block into tokens.css for each context.
@@ -131,14 +134,17 @@ describe('density (#191)', () => {
 describe('theme (#358)', () => {
   const dark = block('theme', 'dark')
   const hex = (name: string) => resolve(`var(${name})`, dark)
+  const isHex = (value: string) => /^#[0-9a-f]{6}$/i.test(value)
   const luminance = (value: string) => {
+    if (!isHex(value)) throw new Error(`not a resolved hex colour: ${value}`)
     const n = parseInt(value.slice(1), 16)
     const c = (v: number) => (v / 255 <= 0.04045 ? v / 255 / 12.92 : ((v / 255 + 0.055) / 1.055) ** 2.4)
     return 0.2126 * c((n >> 16) & 255) + 0.7152 * c((n >> 8) & 255) + 0.0722 * c(n & 255)
   }
+  // Throws on anything but two hex colours, so a value the test can't read never passes as NaN
   const contrast = (a: string, b: string) => {
-    const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x)
-    return (high + 0.05) / (low + 0.05)
+    if (!isHex(a) || !isHex(b)) throw new Error(`not resolved hex colours: ${a}, ${b}`)
+    return contrastRatio(a, b)
   }
 
   it('tells the browser the colour scheme in each context', () => {
@@ -173,6 +179,16 @@ describe('theme (#358)', () => {
       .map((fill) => [fill, contrast(onFill, mixed(hex(`--co-semantic-color-fill-${fill}`)))] as const)
       .filter(([, ratio]) => ratio < 4.5)
     expect(low).toEqual([])
+  })
+
+  // The generator picks each role's fill step (#355); the hand-written override must point at it
+  it('uses the generated fill step for every coloured fill', () => {
+    const ramps = darkRamps.base.color as unknown as Record<string, { $extensions?: { 'studio.commonorigin'?: { fillStep?: string } } }>
+    const fills = darkSemantic.semantic.color.fill as unknown as Record<string, { $value: string }>
+    const mismatched = ['accent', 'danger', 'success', 'warning', 'serious'].filter(
+      (role) => fills[role]?.$value !== `{base.color.${role}.${ramps[role].$extensions?.['studio.commonorigin']?.fillStep}}`
+    )
+    expect(mismatched).toEqual([])
   })
 
   it('keeps inverse text at 4.5:1 or more on the emphasis fill', () => {
