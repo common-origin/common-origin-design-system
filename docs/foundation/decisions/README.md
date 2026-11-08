@@ -57,7 +57,8 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0051](0051-row-heights-and-dense-targets.md) | Rows follow density on a `size.row` scale (`sm` 24/32/40, `md` 40/48/56, `lg` 64/72/80px) with padding from `space.inset`, and dense targets may be 24px on every pointer, touch included; inputs share one height; amends 0032 | Accepted | 2026-11-07 |
 | [0052](0052-organisms-tier.md) | An organisms tier: `src/components/organisms/` for components that compose molecules into a region of a product's UI; SidebarNav is the first; nothing moves now | Accepted | 2026-11-08 |
 | [0053](0053-sidebarnav-glide.md) | SidebarNav's hover highlight glides between rows with `duration.fast`, in the row colours, following keyboard focus; jumps under reduced motion; amends 0030 for SidebarNav only | Accepted | 2026-11-08 |
-| [0055](0055-control-radius.md) | Controls, rows and tabs have 8px corners (`radius.md`); small non-control elements and the Checkbox box stay at 4px; containers nest around controls (Alert `lg`, overlays `2xl`); chips are fully round; amends 0002, 0016 and 0020 | Accepted | 2026-11-08 | <!-- verify-docs-ignore: token names, not files -->
+| [0054](0054-dark-mode-theme-mode.md) | Dark mode is a `theme` token mode; each ramp step keeps its role in dark, and the dark context overrides base values; the docs site is the first consumer; amends 0032 rule 8 | Accepted | 2026-11-08 |
+| [0055](0055-control-radius.md) | Controls, rows and tabs have 8px corners (`radius.md`); small non-control elements, buttons inside fields and the Checkbox box stay at 4px; containers nest around controls (Alert `lg`, overlays share `component.overlay.borderRadius`); chips are fully round; amends 0002, 0016 and 0020 | Accepted | 2026-11-08 | <!-- verify-docs-ignore: token names, not files -->
 
 ## Template
 
