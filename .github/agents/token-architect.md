@@ -41,7 +41,7 @@ Apply current Style Dictionary knowledge (reference: `docs/tokens/pipeline.md` �
 - **Composite tokens**: `typography`, `shadow`, `border`, `transition` as objects, emitted with `typography/css/shorthand`, `shadow/css/shorthand`, `border/css/shorthand`, `transition/css/shorthand`; `expand` to split them when separate tokens are needed.
 - **Outputs**: `css/variables` with `outputReferences` (var chains) and `selector` (per theme); `json/nested`; `javascript/esm`; `typescript/es6-declarations`; per-file `filter`. Deterministic output (no timestamp headers by default from v4).
 - **Validation**: `log: { warnings: 'error' }` to fail builds on broken references and name collisions.
-- **Theming readiness**: semantic tokens as the theming seam; theme files as separate sources or selectors; `outputReferences` CSS so a theme overrides semantic variables only. Dark mode is out of scope today (Purpose) — don't build it, but don't make it harder.
+- **Dark mode** ([0054](../../docs/foundation/decisions/0054-dark-mode-theme-mode.md), #352): a `theme` token mode on the 0032 mechanism. Each ramp step keeps its role in dark, so the dark context overrides **base** colour values, with semantic overrides only for the exceptions settled in #354–#356. It changes colour and shadow only. Light stays the default; the docs site is the first consumer.
 
 ## Your scope
 

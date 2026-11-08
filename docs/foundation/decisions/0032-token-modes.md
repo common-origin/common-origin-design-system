@@ -5,7 +5,7 @@
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P6, P8, P9
 - **Amends:** [P9](../principles.md#p9-serve-the-full-range) ("density is handled per component; there is no global density mode") and the matching row in [visual-language.md](../visual-language.md#layout-and-spacing). Changes how [0015](0015-reduced-motion.md)'s reduced motion is delivered, not what it does
-- **Amended by:** [0051](0051-row-heights-and-dense-targets.md): `size.touchTarget` is no longer a row or control height; density may take any target to 24px on every pointer
+- **Amended by:** [0051](0051-row-heights-and-dense-targets.md): `size.touchTarget` is no longer a row or control height; density may take any target to 24px on every pointer; [0054](0054-dark-mode-theme-mode.md): rule 8, dark mode is now in scope as a `theme` mode
 - **Issue:** [#193](https://github.com/common-origin/common-origin-design-system/issues/193), part of [#187](https://github.com/common-origin/common-origin-design-system/issues/187)
 
 ## Context
