@@ -58,4 +58,4 @@ Quality and alignment of the existing components comes before breadth:
 
 Future, not current: a Figma/MCP connection.
 
-In progress: dark mode, as a theme token mode proven on the docs site first ([decision 0054](decisions/0054-dark-mode-theme-mode.md), [#352](https://github.com/common-origin/common-origin-design-system/issues/352)).
+Done: dark mode, as a theme token mode with one set of colour rules for both themes, proven on the docs site and checked for contrast in both themes ([decision 0054](decisions/0054-dark-mode-theme-mode.md), [0056](decisions/0056-one-set-of-colour-rules.md), [#352](https://github.com/common-origin/common-origin-design-system/issues/352)). Products can adopt it from the first release after 3.1.0.

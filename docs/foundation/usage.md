@@ -78,11 +78,11 @@ A product can make any region compact or comfortable: load `tokens.css` once, th
 
 Density changes control heights by one 8px step (compact 24 / 32 / 40px, default 32 / 40 / 48px, comfortable 40 / 48 / 56px) and the padding inside controls by one step. Text, colour, rows and layout spacing don't change, and compact never goes below the 24px pointer target ([0032](decisions/0032-token-modes.md), [0034](decisions/0034-control-heights.md)). Without `tokens.css`, everything renders at the default density. The docs site's density guide shows the three side by side.
 
-### Dark theme (in progress)
+### Dark theme
 
 `tokens.css` has a dark theme: set `data-co-theme="dark"` on any element, and everything inside it takes the dark colours ([0054](decisions/0054-dark-mode-theme-mode.md)). It changes colour and shadow only, regions nest, `data-co-theme="light"` resets one, and density and theme can be set on the same element. `tokens.css` never turns dark by itself from the system setting: a product that wants that sets the attribute.
 
-**Don't use it in a product yet.** The docs site uses it (pick a theme in its header, and see its [dark mode guide](https://common-origin-design-system.vercel.app/guides/dark-mode)), but browser checks of every component in dark are still to come ([#359](https://github.com/common-origin/common-origin-design-system/issues/359)).
+It's ready for products from the first release after 3.1.0. The docs site uses it: pick a theme in its header, and see its [dark mode guide](https://common-origin-design-system.vercel.app/guides/dark-mode) for how it sets the attribute before the page paints. Every token pairing meets WCAG AA in both themes, and the components' rendered colours are checked in a browser in both ([#359](https://github.com/common-origin/common-origin-design-system/issues/359)). Two things are the product's job: load `tokens.css`, since without it components render their light fallbacks, and take any colours in your own CSS from the `--co-*` variables, so they switch too.
 
 ## Fonts
 
