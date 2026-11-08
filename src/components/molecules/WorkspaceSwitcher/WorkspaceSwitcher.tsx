@@ -146,6 +146,8 @@ export const WorkspaceSwitcher = ({
       trigger={collapsed ? <Tooltip text={current.name} side="right">{trigger}</Tooltip> : trigger}
       side={collapsed ? 'right' : 'bottom'}
       align="start"
+      // Lines up with the full-width trigger beneath it (issue 350)
+      matchTriggerWidth
     >
       <MenuGroup label={label}>
         {workspaces.map((workspace) => (
