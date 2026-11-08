@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 // Palette generator (#357, decisions 0040, 0044 and 0054).
 //
-//   npm run tokens:palette            writes the dark ramps (then run npm run build:tokens)
-//   npm run tokens:palette -- --check fails if the light ramps break the rule, or the file is stale
+//   npm run tokens:palette            writes the dark ramps, then rebuilds tokens.css
+//   node scripts/generate-palette.mjs --check  fails if the light ramps break the rule, or the file is stale
 //
 // The light ramps in src/tokens/base/index.json were signed off value by value, and some were
 // rounded by hand at the edge of sRGB, so they stay the source for light. The check confirms they
@@ -230,7 +230,7 @@ if (check) {
     console.error(`Palette check failed:\n${problems.map((p) => `  - ${p}`).join('\n')}`)
     process.exit(1)
   }
-  console.log('Palette check passed: the light ramps follow the rule, and the dark files are current.')
+  console.log('Palette check passed: the light ramps follow the rule, and dark.json is current.')
 } else {
   if (problems.length) console.warn(`The palette breaks the rule:\n${problems.map((p) => `  - ${p}`).join('\n')}`)
   for (const [file, content] of outputs) {

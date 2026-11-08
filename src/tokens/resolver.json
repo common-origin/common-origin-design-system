@@ -23,7 +23,8 @@
         "light": [],
         "dark": [{ "$ref": "modes/theme/dark.json" }, { "$ref": "modes/theme/dark-semantic.json" }]
       },
-      "default": "light"
+      "default": "light",
+      "$extensions": { "studio.commonorigin": { "declarations": { "color-scheme": "{context}" } } }
     }
   },
   "resolutionOrder": [

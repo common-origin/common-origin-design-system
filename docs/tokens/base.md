@@ -87,7 +87,7 @@ Dark mode keeps every ramp's names, and each step keeps its job ([decision 0054]
 - **Alpha twins** composite over the dark page instead of white.
 - **Coloured fills** use the most saturated step where on-fill text meets 4.5:1. That's 800 in every role ramp, recorded as `fillStep` in the file ([#355](https://github.com/common-origin/common-origin-design-system/issues/355)).
 
-The same script checks that the signed-off light ramps still follow the rule, and a unit test runs it with `--check`. After changing the parameters, run `npm run build:tokens` too: the `theme` modifier in `src/tokens/resolver.json` reads `dark.json` (with the semantic exceptions in `dark-semantic.json`) and writes the `[data-co-theme]` blocks in `tokens.css` ([#358](https://github.com/common-origin/common-origin-design-system/issues/358)). The docs site's `/preview/dark-palette` page shows the ramps and components in both themes.
+The same script checks that the signed-off light ramps still follow the rule, and a unit test runs it with `--check`. The script then runs `npm run build:tokens`, because the `theme` modifier in `src/tokens/resolver.json` reads `dark.json` (with the semantic exceptions in `dark-semantic.json`) and writes the `[data-co-theme]` blocks in `tokens.css` ([#358](https://github.com/common-origin/common-origin-design-system/issues/358)). The docs site's `/preview/dark-palette` page shows the ramps and components in both themes.
 
 ### Other colour tokens
 
