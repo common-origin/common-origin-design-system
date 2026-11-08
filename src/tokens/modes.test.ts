@@ -197,6 +197,35 @@ describe('theme (#358)', () => {
     expect(overlay).toBeGreaterThan(raised)
   })
 
+  // Translucent fills sit on whatever surface is below them (decision 0056), so text on them is
+  // checked over every surface, in both themes, not only over white
+  const over = (fill: string, surface: string) => {
+    const m = fill.match(/^rgba\((\d+), (\d+), (\d+), ([\d.]+)\)$/)
+    if (!m) return fill
+    const a = Number(m[4])
+    const s = [1, 3, 5].map((i) => parseInt(surface.slice(i, i + 2), 16))
+    return `#${[1, 2, 3].map((i) => Math.round(a * Number(m[i]) + (1 - a) * s[i - 1]).toString(16).padStart(2, '0')).join('')}`
+  }
+  const textOnFills: [string, string][] = [
+    ...['default', 'muted'].flatMap((text) =>
+      ['default', 'default-hover', 'default-pressed', 'muted'].map((fill) => [text, fill] as [string, string])
+    ),
+    ...['accent', 'danger', 'success', 'warning', 'serious'].map((role) => [role, `${role}-muted`] as [string, string]),
+  ]
+  it.each(['light', 'dark'])('keeps text at 4.5:1 or more on every translucent fill over every %s surface', (theme) => {
+    const value = (name: string) => (theme === 'dark' ? hex(name) : resolve(`var(${name})`))
+    const low = ['base', 'raised', 'overlay'].flatMap((surface) => {
+      const ground = value(`--co-semantic-surface-${surface}`)
+      return textOnFills
+        .map(([text, fill]) => {
+          const ratio = contrast(value(`--co-semantic-color-text-${text}`), over(value(`--co-semantic-color-fill-${fill}`), ground))
+          return [`text.${text} on fill.${fill} over surface.${surface}`, ratio] as const
+        })
+        .filter(([, ratio]) => ratio < 4.5)
+    })
+    expect(low).toEqual([])
+  })
+
   it('makes raised surfaces lighter than the dark page (#356)', () => {
     expect(luminance(hex('--co-semantic-surface-raised'))).toBeGreaterThan(luminance(hex('--co-semantic-surface-base')))
   })

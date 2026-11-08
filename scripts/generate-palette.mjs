@@ -1,16 +1,18 @@
 #!/usr/bin/env node
-// Palette generator (#357, decisions 0040, 0044 and 0054).
+// Palette generator (#357, decisions 0040, 0044, 0054 and 0056).
 //
-//   npm run tokens:palette            writes the dark ramps, then rebuilds tokens.css
-//   node scripts/generate-palette.mjs --check  fails if the light ramps break the rule, or the file is stale
+//   npm run tokens:palette            writes the dark theme, then rebuilds tokens.css
+//   node scripts/generate-palette.mjs --check  fails if light breaks a rule, or dark.json is stale
 //
-// The light ramps in src/tokens/base/index.json were signed off value by value, and some were
-// rounded by hand at the edge of sRGB, so they stay the source for light. The check confirms they
-// still follow the rule: each is within 0.005 (OKLab) of what the rule gives, with the same
-// contrast on white to 1.5% (at 16:1, one 8-bit step moves the ratio by about 0.2). The dark
-// ramps must meet 0040's contrast floors on the dark surfaces.
-// The dark ramps are generated, and the script's output is the source of truth for them: change
-// scripts/palette/params.mjs, never the generated file.
+// One set of rules for every theme (0056). A theme supplies inputs: its grey ramp's lightness, the
+// scrim opacity and the shadow strength, in scripts/palette/params.mjs. The rules derive the rest:
+// the hue ramps and alpha twins, the solid fills, the surfaces, the inks, the scrim and shadows.
+//
+// Light was signed off value by value (some ramp steps rounded by hand at the edge of sRGB), so
+// src/tokens/base/index.json stays its source, and the check confirms every light value still
+// follows its rule: ramp steps within 0.005 (OKLab) and 1.5% contrast on white (at 16:1 one 8-bit
+// step moves the ratio by about 0.2), role tokens exactly. Dark is generated, and this script's
+// output is its source of truth: change the parameters, never src/tokens/modes/theme/dark.json.
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname } from 'node:path'
 import * as color from './palette/color.mjs'
@@ -28,7 +30,8 @@ import {
 const BASE = 'src/tokens/base/index.json'
 const DARK_OUT = 'src/tokens/modes/theme/dark.json'
 
-const base = JSON.parse(readFileSync(BASE, 'utf8')).base.color
+const baseTokens = JSON.parse(readFileSync(BASE, 'utf8')).base
+const base = baseTokens.color
 const fmt = (n, digits = 3) => n.toFixed(digits)
 
 // --- Ramps -------------------------------------------------------------------------------------
@@ -189,7 +192,7 @@ const ref = (path) => `{base.color.${path}}`
 const refValue = (value) => {
   const m = String(value).match(/^\{base\.(.+)\}$/)
   if (!m) return value
-  return refValue(m[1].split('.').reduce((node, key) => node[key], JSON.parse(readFileSync(BASE, 'utf8')).base).$value)
+  return refValue(m[1].split('.').reduce((node, key) => node[key], baseTokens).$value)
 }
 
 /** The light theme's label contrast: secondary text (gray.1100) on the page (gray.100). */
@@ -236,7 +239,6 @@ function checkLightRoles() {
     const signed = refValue(col[ramp]?.solid?.$value)
     if (!signed || color.deltaOk(signed, hex) > LIGHT_DISTANCE) problems.push(`${ramp}.solid is ${signed}, but the rule gives ${hex}`)
   }
-  const baseTokens = JSON.parse(readFileSync(BASE, 'utf8')).base
   if (Number(refValue(baseTokens.opacity.scrim?.$value)) !== roles.scrim) problems.push(`opacity.scrim should be ${roles.scrim}`)
   return problems
 }
@@ -288,7 +290,6 @@ function darkTheme() {
   out.ink = Object.fromEntries(
     Object.entries(roles.ink).map(([name, path]) => [name, { $value: ref(path), $description: `The ${name} end of the neutral ramp.` }])
   )
-  const baseTokens = JSON.parse(readFileSync(BASE, 'utf8')).base
   const shadow = Object.fromEntries(
     Object.entries(baseTokens.shadow)
       .filter(([key]) => !key.startsWith('$'))
