@@ -640,4 +640,12 @@ describe('SearchField highlighted suggestion', () => {
     expect(row(highlighted)).toBe(css(tokens.semantic.color.fill.muted))
     expect(row(other)).not.toBe(css(tokens.semantic.color.fill.muted))
   })
+
+  // The clear button sits inside the field's 8px corner, so it's a step tighter (decision 0055)
+  it('gives the clear button the field-button radius, tighter than the field', () => {
+    render(<SearchField value="rent" onChange={() => {}} aria-label="Search" />)
+    const clear = getComputedStyle(screen.getByLabelText('Clear search'))
+    expect(clear.borderRadius).toBe(tokens.semantic.radius.sm)
+    expect(clear.borderRadius).not.toBe(tokens.component.input.default.borderRadius)
+  })
 })

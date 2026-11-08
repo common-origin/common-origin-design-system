@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { PasswordField } from './PasswordField'
 import type { PasswordFieldProps } from './PasswordField'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -342,6 +343,16 @@ describe('PasswordField', () => {
       renderPasswordField({ 'data-custom': 'value' } as PasswordFieldProps)
       const input = screen.getByTestId('password-field')
       expect(input).toHaveAttribute('data-custom', 'value')
+    })
+  })
+
+  describe('corner radius', () => {
+    // The toggle sits inside the field's 8px corner, so it's a step tighter (decision 0055)
+    it('gives the show-password button the field-button radius, tighter than the field', () => {
+      render(<PasswordField label="Password" />)
+      const toggle = getComputedStyle(screen.getByRole('button', { name: 'Show password', hidden: true }))
+      expect(toggle.borderRadius).toBe(tokens.semantic.radius.sm)
+      expect(toggle.borderRadius).not.toBe(tokens.component.input.default.borderRadius)
     })
   })
 })
