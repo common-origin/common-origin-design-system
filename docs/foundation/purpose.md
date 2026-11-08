@@ -56,4 +56,6 @@ Quality and alignment of the existing components comes before breadth:
 3. **Gaps** — add components that products need, built to the benchmark from day one. The agentic component set is a known gap ([#22](https://github.com/common-origin/common-origin-design-system/issues/22)).
 4. **Patterns** — expand composition examples (page layouts, data display, navigation).
 
-Future, not current: dark mode (see [decision 0009](decisions/0009-styling-architecture.md) for what it would require) and a Figma/MCP connection.
+Future, not current: a Figma/MCP connection.
+
+In progress: dark mode, as a theme token mode proven on the docs site first ([decision 0054](decisions/0054-dark-mode-theme-mode.md), [#352](https://github.com/common-origin/common-origin-design-system/issues/352)).
