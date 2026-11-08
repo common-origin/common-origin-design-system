@@ -65,4 +65,20 @@ describe('docs component groups', () => {
       .map((page) => `${page.name}: parent "${page.parentId}"`)
     expect(wrong).toEqual([])
   })
+
+  it('leads every child page back to a top-level page, so none drops out of the sidebar', () => {
+    const cyclic = staticComponentsData
+      .filter((page) => {
+        const seen = new Set<string>()
+        let current: typeof page | undefined = page
+        while (current?.parentId) {
+          if (seen.has(current.id)) return true
+          seen.add(current.id)
+          current = byId.get(current.parentId)
+        }
+        return false
+      })
+      .map((page) => page.name)
+    expect(cyclic).toEqual([])
+  })
 })
