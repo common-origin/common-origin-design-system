@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
+import { pseudoClassDeclarations } from '@/test-utils/contrast'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
 import { Button } from '../Button'
@@ -461,5 +462,14 @@ describe('Button Component', () => {
       const icon = button.querySelector('span')
       expect(icon).toBeInTheDocument()
     })
+  })
+})
+
+describe('Button focus ring', () => {
+  it('draws the ring for keyboard focus only, not after a click (P2, P5)', () => {
+    render(<Button variant="secondary">Save</Button>)
+    const button = screen.getByRole('button', { name: 'Save' })
+    expect(pseudoClassDeclarations(button, ':focus-visible')).toContain('outline:')
+    expect(pseudoClassDeclarations(button, ':focus')).not.toContain('outline:')
   })
 })

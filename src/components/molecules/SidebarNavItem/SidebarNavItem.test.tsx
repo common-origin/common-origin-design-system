@@ -78,10 +78,13 @@ describe('SidebarNavItem', () => {
       expect(screen.getByText('3/10')).toHaveStyle({ color: tokens.semantic.color.text.muted })
     })
 
-    it('shows a badge on the icon and adds it to the name (0045)', () => {
+    it('shows a badge count at the end of the row and adds it to the name (0045)', () => {
       renderItem({ label: 'Chats', badge: 3, badgeLabel: '3 unread' })
-      expect(screen.getByRole('link', { name: 'Chats, 3 unread' })).toBeInTheDocument()
-      expect(screen.getByText('3')).toBeInTheDocument()
+      const link = screen.getByRole('link', { name: 'Chats, 3 unread' })
+      const count = screen.getByText('3')
+      // After the label, not on the icon, so it can't reach the rows above or below
+      expect(screen.getByText('Chats').compareDocumentPosition(count) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy()
+      expect(link.querySelector('svg')?.parentElement?.contains(count)).toBe(false)
     })
 
     it('names a dot badge "new" by default, and shows nothing for a zero count', () => {
@@ -116,10 +119,13 @@ describe('SidebarNavItem', () => {
       expect(screen.getByText('Home')).toHaveAttribute('aria-hidden', 'true')
     })
 
-    it('keeps its badge, and says so in its name', () => {
+    it('keeps its badge as a dot inside the icon, and says the count in its name', () => {
       renderItem({ label: 'Chats', badge: 2, badgeLabel: '2 unread' }, { collapsed: true })
-      expect(screen.getByRole('link', { name: 'Chats, 2 unread' })).toBeInTheDocument()
-      expect(screen.getByText('2')).toBeInTheDocument()
+      const link = screen.getByRole('link', { name: 'Chats, 2 unread' })
+      expect(screen.queryByText('2')).not.toBeInTheDocument()
+      // The dot's anchor sits inside the icon's box, a quarter in from its top-right corner
+      const corner = link.querySelector('[role="status"]')?.parentElement?.parentElement as HTMLElement
+      expect(corner).toHaveStyle({ position: 'absolute', top: '25%', right: '25%' })
     })
 
     it('hides an item without an icon', () => {

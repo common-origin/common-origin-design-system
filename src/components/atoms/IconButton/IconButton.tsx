@@ -98,7 +98,8 @@ const IconButtonStyled = styled.button.withConfig({
     background-color: ${({ $variant }) => colours($variant).activeBg};
   }
 
-  &:focus {
+  /* The system ring for keyboard focus only: a click doesn't leave it behind (P2, P5) */
+  &:focus-visible {
     outline: ${iconButton.focus.outline};
     outline-offset: ${border.focusOffset};
   }

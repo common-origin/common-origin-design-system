@@ -7,6 +7,7 @@ import tokenValues from '../../../styles/tokens.json'
 import { interactiveRow, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
+import { SidebarNavItem } from '../SidebarNavItem'
 
 // How long the items take to show or hide: the clip lifts after this even if no transition ran
 // (reduced motion, or a background tab)
@@ -195,6 +196,14 @@ export const SidebarNavSection = ({
     if (!isControlled) setUncontrolledExpanded(next)
     onExpandedChange?.(next)
   }
+
+  // The rail shows items by their icons only; a section with none has nothing to show there, so it
+  // isn't drawn at all, not even its separating rule. Items wrapped in other components count as
+  // showing, since their icons can't be seen from here.
+  const showsInRail = React.Children.toArray(children).some(
+    (child) => !React.isValidElement(child) || child.type !== SidebarNavItem || Boolean((child.props as { icon?: unknown }).icon)
+  )
+  if (collapsed && !showsInRail) return null
 
   const header = collapsed ? (
     // The rail shows no label, but the list keeps its name

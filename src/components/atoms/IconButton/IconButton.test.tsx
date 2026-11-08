@@ -1,5 +1,6 @@
 import React from 'react'
 import { render, screen } from '@testing-library/react'
+import { pseudoClassDeclarations } from '@/test-utils/contrast'
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom'
 import { axe, toHaveNoViolations } from 'jest-axe'
@@ -476,5 +477,14 @@ describe('IconButton', () => {
         ':active:not(:disabled)': { background: secondary.active.backgroundColor },
       })
     })
+  })
+})
+
+describe('IconButton focus ring', () => {
+  it('draws the ring for keyboard focus only, not after a click (P2, P5)', () => {
+    render(<IconButton variant="naked" iconName="search" aria-label="Save" />)
+    const button = screen.getByRole('button', { name: 'Save' })
+    expect(pseudoClassDeclarations(button, ':focus-visible')).toContain('outline:')
+    expect(pseudoClassDeclarations(button, ':focus')).not.toContain('outline:')
   })
 })

@@ -9,6 +9,8 @@ function Items() {
       <SidebarNavItem label="New chat" icon="edit" onClick={() => {}} />
       <SidebarNavItem label="Home" icon="home" url="#home" current />
       <SidebarNavItem label="Invite users" icon="userBox" url="#invite" meta="3/10" />
+      <SidebarNavItem label="Chats" icon="message" url="#chats" badge={3} badgeLabel="3 unread" />
+      <SidebarNavItem label="Mentions" icon="bell" url="#mentions" badge={150} badgeLabel="150 unread" />
       <SidebarNavSection label="Chats" collapsible>
         <SidebarNavItem label="Supplier records" url="#chat-1" />
         <SidebarNavItem label="Flavour page ticket" icon="message" url="#chat-2" />
