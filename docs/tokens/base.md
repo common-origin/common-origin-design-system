@@ -78,6 +78,17 @@ Every ramp has a translucent twin (`gray-alpha`, `accent-alpha` and the rest) fo
 - **`gray-alpha`** is `gray.1200` at the opacity that composites over white to the same step ([decision 0040](../foundation/decisions/0040-own-oklch-palette.md)).
 - **Hue twins** are the smallest opacity, each with its own RGB, that composites over white to the solid step's exact hex ([decision 0044](../foundation/decisions/0044-hue-ramps.md)). Steps 800–1100 sit on the edge of sRGB, so most of their twins are opaque.
 
+### Dark values
+
+Dark mode keeps every ramp's names, and each step keeps its job ([decision 0054](../foundation/decisions/0054-dark-mode-theme-mode.md)): in dark, 100 is the page and 1200 is primary text. The dark values aren't edited by hand. `npm run tokens:palette` generates them into `src/tokens/modes/theme/dark.json` from the parameters in `scripts/palette/params.mjs`:
+
+- **The dark grey ramp** is a list of OKLCH lightness values. The page is near-black (`#0f0f0f`). The floors hold against the dark surfaces: 800 is at least 3:1 on 100, 200 and 300, and 1100 at least 4.5:1 on 100 to 500.
+- **Hue ramps** take each step's luminance from the dark grey step, as in light (0044). They keep the light ramp's hue and chroma, and only lightness moves. Chroma is capped where sRGB runs out.
+- **Alpha twins** composite over the dark page instead of white.
+- **Coloured fills** use the most saturated step where on-fill text meets 4.5:1. That's 800 in every role ramp, recorded as `fillStep` in the file ([#355](https://github.com/common-origin/common-origin-design-system/issues/355)).
+
+The same script checks that the signed-off light ramps still follow the rule, and a unit test runs it with `--check`. The values aren't wired into a mode yet ([#358](https://github.com/common-origin/common-origin-design-system/issues/358)). Until then, the docs site's `/preview/dark-palette` page shows them for review.
+
 ### Other colour tokens
 
 - `base.color.transparent`.

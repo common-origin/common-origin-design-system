@@ -80,6 +80,7 @@
     "release:create": "./scripts/release.sh",
     "release:tag": "./scripts/release.sh tag",
     "tokens:golden": "node scripts/tokens-golden.cjs",
+    "tokens:palette": "node scripts/generate-palette.mjs",
     "verify:size": "node scripts/verify-size.mjs"
   },
   "peerDependencies": {
