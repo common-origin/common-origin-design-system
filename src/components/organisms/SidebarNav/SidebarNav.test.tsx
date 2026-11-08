@@ -144,6 +144,21 @@ describe('SidebarNav', () => {
       expect(screen.getByRole('button', { name: 'Collapse sidebar' })).toHaveFocus()
     })
 
+    it("doesn't move focus later when a controlled parent declined the change", async () => {
+      const user = userEvent.setup()
+      const { rerender } = render(<Example collapsed={false} onCollapsedChange={() => {}} />)
+      await user.click(screen.getByRole('button', { name: 'Collapse sidebar' }))
+      // The parent declined: still expanded. Later it collapses for its own reason, with focus elsewhere
+      const outside = document.createElement('button')
+      document.body.append(outside)
+      outside.focus()
+      jest.spyOn(Date, 'now').mockReturnValue(Date.now() + 5000)
+      rerender(<Example collapsed onCollapsedChange={() => {}} />)
+      expect(outside).toHaveFocus()
+      jest.restoreAllMocks()
+      outside.remove()
+    })
+
     it('keeps every row element when it collapses, so nothing remounts mid-move', async () => {
       const user = userEvent.setup()
       render(<Example />)

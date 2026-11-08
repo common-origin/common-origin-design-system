@@ -7,7 +7,7 @@ import { Tooltip } from '../../atoms/Tooltip'
 import { Badge } from '../../atoms/Badge'
 import type { IconName } from '../../../types/icons'
 import { useSidebarNav } from './SidebarNavContext'
-import { EXPANDED_WIDTH_VAR, Fold, NAV_PADDING, ROW_INSET, fade } from './sidebarNavMotion'
+import { EXPANDED_WIDTH_VAR, Fold, NAV_PADDING, ROW_INSET, SCROLLBAR_VAR, fade } from './sidebarNavMotion'
 
 const { semantic } = tokens
 const { space, color, motion, radius, size, border, typography } = semantic
@@ -111,10 +111,10 @@ const Inner = styled.span.withConfig({
   align-items: center;
   gap: ${space[200]};
   min-width: 0;
-  /* The row's content width when expanded: the nav's width less its padding, the row's insets and,
-     beside an icon, the icon and its gap */
+  /* The row's content width when expanded: the nav's width less any scrollbar, its padding, the row's
+     insets and, beside an icon, the icon and its gap */
   width: calc(
-    var(${EXPANDED_WIDTH_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.sm}
+    var(${EXPANDED_WIDTH_VAR}, 0px) - var(${SCROLLBAR_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.sm}
       ${({ $withIcon }) => ($withIcon ? `- ${size.icon.md} - ${space[200]}` : '')}
   );
 `

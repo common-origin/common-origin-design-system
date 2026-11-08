@@ -14,6 +14,12 @@ const { motion, space, size } = semantic
  */
 export const EXPANDED_WIDTH_VAR = '--co-sidebar-nav-expanded'
 
+/**
+ * SidebarNav sets this to its body's scrollbar width (0 for overlay scrollbars), measured while
+ * expanded, since a classic scrollbar narrows every row
+ */
+export const SCROLLBAR_VAR = '--co-sidebar-nav-scrollbar'
+
 /** The nav's own side padding: the rail's inner width is the rail less twice this */
 export const NAV_PADDING = space[200]
 

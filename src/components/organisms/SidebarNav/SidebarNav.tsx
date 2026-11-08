@@ -6,7 +6,7 @@ import { IconButton } from '../../atoms/IconButton'
 import { Tooltip } from '../../atoms/Tooltip'
 import { isKeyboardFocus } from '../../../lib/keyboardFocus'
 import { SidebarNavContext, type SidebarNavContextValue } from '../../molecules/SidebarNavItem/SidebarNavContext'
-import { EXPANDED_WIDTH_VAR, NAV_PADDING, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
+import { EXPANDED_WIDTH_VAR, NAV_PADDING, SCROLLBAR_VAR, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
 
 const { semantic, component } = tokens
 const { space, motion, radius, color, size } = semantic
@@ -225,6 +225,23 @@ export const SidebarNav = ({
   const collapsed = collapsible && (isControlled ? collapsedProp : uncontrolledCollapsed)
 
   const contentRef = useRef<HTMLDivElement>(null)
+  const navRef = useRef<HTMLElement>(null)
+  const bodyRef = useRef<HTMLDivElement>(null)
+
+  // A classic scrollbar narrows every row, so rows need its width. Measured while expanded (the rail
+  // only clips what rows hold) and written straight to a CSS variable, so it re-renders nothing.
+  useEffect(() => {
+    const nav = navRef.current
+    const body = bodyRef.current
+    if (!nav || !body || collapsed) return
+    const measure = () => nav.style.setProperty(SCROLLBAR_VAR, `${body.offsetWidth - body.clientWidth}px`)
+    measure()
+    if (typeof ResizeObserver === 'undefined') return
+    const observer = new ResizeObserver(measure)
+    observer.observe(body)
+    if (contentRef.current) observer.observe(contentRef.current)
+    return () => observer.disconnect()
+  }, [collapsed])
   const [highlight, setHighlight] = useState<{ box: HighlightBox | null; visible: boolean; instant: boolean }>({
     box: null,
     visible: false,
@@ -234,18 +251,21 @@ export const SidebarNav = ({
   // Focus follows the toggle: the one pressed fades away, so focus moves to the one now shown
   const collapseSlot = useRef<HTMLSpanElement>(null)
   const expandSlot = useRef<HTMLSpanElement>(null)
-  const focusToggle = useRef(false)
+  // Which state a toggle asked for, and when: focus moves only if that state arrives promptly, so a
+  // controlled parent that declined the change can't have focus jump on some later change
+  const focusToggle = useRef<{ to: boolean; at: number } | null>(null)
 
   const toggle = () => {
     const next = !collapsed
-    focusToggle.current = true
+    focusToggle.current = { to: next, at: Date.now() }
     if (!isControlled) setUncontrolledCollapsed(next)
     onCollapsedChange?.(next)
   }
 
   useEffect(() => {
-    if (!focusToggle.current) return
-    focusToggle.current = false
+    const request = focusToggle.current
+    focusToggle.current = null
+    if (!request || request.to !== collapsed || Date.now() - request.at > 1000) return
     const slot = collapsed ? expandSlot.current : collapseSlot.current
     slot?.querySelector('button')?.focus()
   }, [collapsed])
@@ -284,6 +304,7 @@ export const SidebarNav = ({
   return (
     <SidebarNavContext.Provider value={context}>
       <Nav
+        ref={navRef}
         aria-label={label}
         $width={collapsed ? widths.rail : widths[width]}
         data-collapsed={collapsed || undefined}
@@ -329,7 +350,7 @@ export const SidebarNav = ({
             )}
           </Header>
         )}
-        <Body>
+        <Body ref={bodyRef}>
           <Content
             ref={contentRef}
             onPointerOver={(event) => event.pointerType !== 'touch' && highlightRow(event.target)}
