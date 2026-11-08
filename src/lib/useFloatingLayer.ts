@@ -64,6 +64,7 @@ export function useFloatingLayer({
       const anchor = trigger.getBoundingClientRect()
       // Before measuring, since it can widen the floating element
       if (matchAnchorWidth) floating.style.setProperty(ANCHOR_WIDTH_VAR, `${anchor.width}px`)
+      else floating.style.removeProperty(ANCHOR_WIDTH_VAR)
       const { width, height } = floating.getBoundingClientRect()
       const position = placeFloating({
         anchor,
@@ -82,6 +83,9 @@ export function useFloatingLayer({
     if (typeof ResizeObserver === 'undefined') return
     const observer = new ResizeObserver(place)
     observer.observe(floating)
+    // Its width follows the trigger's, so a trigger that resizes while it's open places it again
+    const trigger = matchAnchorWidth ? laidOutElement(anchorRef.current) : null
+    if (trigger) observer.observe(trigger)
     return () => observer.disconnect()
   }, [isPresent, side, align, matchAnchorWidth, floatingRef, anchorRef])
 

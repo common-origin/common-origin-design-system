@@ -210,11 +210,26 @@ describe('Menu', () => {
           <MenuItem>Rename</MenuItem>
         </Menu>
       )
-      jest.spyOn(trigger(), 'getBoundingClientRect').mockReturnValue({ width: 240, height: 32, top: 0, left: 0, right: 240, bottom: 32, x: 0, y: 0, toJSON: () => ({}) })
+      const box = jest
+        .spyOn(trigger(), 'getBoundingClientRect')
+        .mockReturnValue({ width: 240, height: 32, top: 0, left: 0, right: 240, bottom: 32, x: 0, y: 0, toJSON: () => ({}) })
       await user.click(trigger())
       expect(screen.getByRole('menu').style.getPropertyValue('--co-floating-anchor-width')).toBe('240px')
       expect(getComputedStyle(screen.getByRole('menu')).minWidth).toContain('--co-floating-anchor-width')
+      box.mockRestore()
       unmount()
+    })
+
+    it("drops the trigger's width when matchTriggerWidth turns off while open", () => {
+      const menu = (match: boolean) => (
+        <Menu defaultOpen matchTriggerWidth={match} trigger={<Button variant="secondary">Options</Button>}>
+          <MenuItem>Rename</MenuItem>
+        </Menu>
+      )
+      const { rerender } = render(menu(true))
+      expect(screen.getByRole('menu').style.getPropertyValue('--co-floating-anchor-width')).toMatch(/px$/)
+      rerender(menu(false))
+      expect(screen.getByRole('menu').style.getPropertyValue('--co-floating-anchor-width')).toBe('')
     })
 
     it("sizes to its content alone by default, whatever its trigger's width", async () => {
