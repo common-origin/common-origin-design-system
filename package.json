@@ -58,7 +58,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:package": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\" && rollup -c && node scripts/build-dmts.cjs",
-    "build:tokens": "node config/style-dictionary.config.mjs && node scripts/generate-palette.mjs --quiet",
+    "build:tokens": "node config/style-dictionary.config.mjs",
     "start": "next start",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -80,7 +80,7 @@
     "release:create": "./scripts/release.sh",
     "release:tag": "./scripts/release.sh tag",
     "tokens:golden": "node scripts/tokens-golden.cjs",
-    "tokens:palette": "node scripts/generate-palette.mjs",
+    "tokens:palette": "node scripts/generate-palette.mjs && npm run build:tokens",
     "verify:size": "node scripts/verify-size.mjs"
   },
   "peerDependencies": {

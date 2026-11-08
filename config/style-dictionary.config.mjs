@@ -128,20 +128,39 @@ await sd.buildAllPlatforms()
 const resolver = JSON.parse(readFileSync('src/tokens/resolver.json', 'utf8'))
 const tiers = () => Object.assign({}, ...SOURCES.map((file) => JSON.parse(readFileSync(file, 'utf8'))))
 
+// A block's comments describe only the tokens its context overrides. The aliases it redeclares
+// keep their value's meaning but not their :root description, which states light, default-density
+// facts (such as contrast on white) that may not hold in the block.
+function keepDescriptions(node, keep, path = []) {
+  for (const [key, child] of Object.entries(node)) {
+    if (key.startsWith('$') || !child || typeof child !== 'object') continue
+    const at = [...path, key]
+    if ('$value' in child) {
+      if (!keep.has(at.join('.'))) delete child.$description
+    } else keepDescriptions(child, keep, at)
+  }
+  return node
+}
+
 // Each context is merged in memory: as a second source, an overridden token would collide
 function withContext(sources) {
   const tokens = tiers()
+  const overridden = new Set()
   const apply = (node, target, path) => {
     for (const [key, child] of Object.entries(node)) {
       if (key.startsWith('$') || !child || typeof child !== 'object') continue
       const next = target?.[key]
       if (!next) throw new Error(`Mode override ${[...path, key].join('.')} has no token to override`)
-      if ('$value' in child) next.$value = child.$value
-      else apply(child, next, [...path, key])
+      if ('$value' in child) {
+        overridden.add([...path, key].join('.'))
+        next.$value = child.$value
+        // A context's own description (the dark ramps give their contrast on the dark page)
+        if (typeof child.$description === 'string') next.$description = child.$description
+      } else apply(child, next, [...path, key])
     }
   }
   for (const { $ref } of sources) apply(JSON.parse(readFileSync(`src/tokens/${$ref}`, 'utf8')), tokens, [])
-  return tokens
+  return keepDescriptions(tokens, overridden)
 }
 
 const modeDictionary = (tokens, files = []) =>
@@ -162,7 +181,14 @@ async function resolvedValues(tokens) {
   return new Map(allTokens.map((token) => [token.path.join('.'), JSON.stringify(token.$value)]))
 }
 
-async function modeBlock(selector, tokens, changed) {
+// Declarations a modifier adds beside its tokens, from its $extensions in resolver.json, with
+// {context} replaced: the theme sets color-scheme so native controls match (decision 0054)
+const extraDeclarations = (modifier, context) =>
+  Object.entries(modifier.$extensions?.['studio.commonorigin']?.declarations ?? {}).map(
+    ([property, value]) => `  ${property}: ${value.replaceAll('{context}', context)};`
+  )
+
+async function modeBlock(selector, tokens, changed, extra = []) {
   const [{ output }] = await modeDictionary(tokens, [
     {
       format: 'css/variables',
@@ -171,7 +197,7 @@ async function modeBlock(selector, tokens, changed) {
       options: { outputReferences: true, selector, showFileHeader: false },
     },
   ]).formatPlatform('css')
-  return output
+  return extra.length ? output.replace(`${selector} {\n`, `${selector} {\n${extra.join('\n')}\n`) : output
 }
 
 const blocks = []
@@ -187,10 +213,13 @@ for (const [name, modifier] of Object.entries(resolver.modifiers)) {
   }
   const all = new Set(contexts.flatMap(({ changed }) => [...changed]))
   blocks.push(`/* Mode: ${name} (decision 0032). ${modifier.description} */`)
-  blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, tiers(), all))
+  const reset = keepDescriptions(tiers(), new Set())
+  blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, reset, all, extraDeclarations(modifier, modifier.default)))
   // Every block declares every token any context changes, so contexts nest: a compact region
   // inside a comfortable one gets compact's value even where compact matches the default
-  for (const { context, tokens } of contexts) blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all))
+  for (const { context, tokens } of contexts) {
+    blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all, extraDeclarations(modifier, context)))
+  }
 }
 
 const css = readFileSync('src/styles/tokens.css', 'utf8')
