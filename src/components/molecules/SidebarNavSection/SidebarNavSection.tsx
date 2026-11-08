@@ -4,10 +4,11 @@ import tokens from '@/lib/cssTokens'
 // The clip timer needs the resolved duration, not its CSS variable (decision 0041)
 // eslint-disable-next-line no-restricted-imports
 import tokenValues from '../../../styles/tokens.json'
-import { interactiveRow, reducedMotion, visuallyHidden } from '../../../lib/styleUtils'
+import { interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 import { Icon } from '../../atoms/Icon'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
 import { SidebarNavItem } from '../SidebarNavItem'
+import { Fold } from '../SidebarNavItem/sidebarNavMotion'
 
 // How long the items take to show or hide: the clip lifts after this even if no transition ran
 // (reduced motion, or a background tab)
@@ -44,24 +45,22 @@ export interface SidebarNavSectionProps {
   'data-testid'?: string
 }
 
-const Section = styled.div.withConfig({
+// The space above a section is the same expanded and in the rail, so the switch never shifts rows;
+// only the rule's colour changes: clear when the label separates the section, visible in the rail,
+// where there's no label (issue 348)
+const Section = styled(Fold).withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
 })<{ $collapsed: boolean }>`
-  /* In the rail there's no label, so a rule separates sections */
-  ${({ $collapsed }) =>
-    $collapsed &&
-    css`
-      border-top: ${border.default};
-      padding-top: ${space[100]};
-      margin-top: ${space[100]};
+  margin-top: ${space[200]};
+  padding-top: ${space[100]};
+  border-top: ${border.width.thin} solid ${({ $collapsed }) => ($collapsed ? color.border.default : 'transparent')};
 
-      /* Nothing above to separate it from */
-      &:first-child {
-        border-top: none;
-        padding-top: 0;
-        margin-top: 0;
-      }
-    `}
+  /* Nothing above to separate it from */
+  &:first-child {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+  }
 `
 
 const Header = styled.div`
@@ -84,9 +83,6 @@ const StaticLabel = styled.div`
   padding: 0 ${space.inset.sm};
 `
 
-const HiddenLabel = styled.div`
-  ${visuallyHidden}
-`
 
 const Disclosure = styled.button.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
@@ -138,12 +134,17 @@ const Collapse = styled.div.withConfig({
 })<{ $expanded: boolean }>`
   display: grid;
   grid-template-rows: ${({ $expanded }) => ($expanded ? '1fr' : '0fr')};
-  visibility: ${({ $expanded }) => ($expanded ? 'visible' : 'hidden')};
-  transition: grid-template-rows ${motion.duration.moderate} ${motion.easing.standard},
-    visibility ${motion.duration.moderate} ${motion.easing.standard};
+  opacity: ${({ $expanded }) => ($expanded ? 1 : 0)};
+  /* Shown items inherit, so a section folded away in the rail hides them too */
+  visibility: ${({ $expanded }) => ($expanded ? 'inherit' : 'hidden')};
+  /* The items fold and fade together (issue 348) */
+  transition: grid-template-rows ${motion.duration.moderate} ${motion.easing.decelerate},
+    opacity ${motion.duration.moderate} ${motion.easing.decelerate},
+    visibility ${motion.duration.moderate} ${motion.easing.decelerate};
 
   ${reducedMotion} {
-    transition: none;
+    transition: opacity ${motion.duration.fast} ${motion.easing.decelerate},
+      visibility ${motion.duration.fast} ${motion.easing.decelerate};
   }
 `
 
@@ -203,12 +204,9 @@ export const SidebarNavSection = ({
   const showsInRail = React.Children.toArray(children).some(
     (child) => !React.isValidElement(child) || child.type !== SidebarNavItem || Boolean((child.props as { icon?: unknown }).icon)
   )
-  if (collapsed && !showsInRail) return null
 
-  const header = collapsed ? (
-    // The rail shows no label, but the list keeps its name
-    <HiddenLabel id={labelId}>{label}</HiddenLabel>
-  ) : (
+  // The header stays mounted, folding away in the rail; the list keeps its name from it there
+  const header = (
     <Header>
       {collapsible ? (
         <Disclosure
@@ -231,18 +229,28 @@ export const SidebarNavSection = ({
 
   return (
     // In a SidebarNav the body is one list, so the section is one of its items
-    <Section as={inNav ? 'li' : 'div'} $collapsed={collapsed} data-testid={dataTestId}>
-      {header}
-      <Collapse
-        $expanded={expanded}
-        onTransitionEnd={(event) => {
-          if (event.target === event.currentTarget && event.propertyName === 'grid-template-rows') setAnimating(false)
-        }}
-      >
-        <List id={listId} aria-labelledby={labelId} $clip={!expanded || animating}>
-          {children}
-        </List>
-      </Collapse>
+    // In the rail, a section with nothing to show folds away, rule and all
+    <Section
+      as={inNav ? 'li' : 'div'}
+      $open={!collapsed || showsInRail}
+      $collapsed={collapsed}
+      data-testid={dataTestId}
+    >
+      <div>
+        <Fold $open={!collapsed}>
+          <div>{header}</div>
+        </Fold>
+        <Collapse
+          $expanded={expanded}
+          onTransitionEnd={(event) => {
+            if (event.target === event.currentTarget && event.propertyName === 'grid-template-rows') setAnimating(false)
+          }}
+        >
+          <List id={listId} aria-labelledby={labelId} $clip={!expanded || animating}>
+            {children}
+          </List>
+        </Collapse>
+      </div>
     </Section>
   )
 }

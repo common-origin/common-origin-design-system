@@ -49,6 +49,12 @@ export interface TooltipProps {
    * @default 'center'
    */
   align?: TooltipAlign
+  /**
+   * Turns the tooltip off while keeping the trigger where it is, such as when the label it repeats
+   * is visible. Changing it never remounts the trigger.
+   * @default false
+   */
+  disabled?: boolean
   /** One focusable element: the trigger */
   children: React.ReactElement
   /** Test identifier for the tooltip bubble */
@@ -107,6 +113,7 @@ export const Tooltip = ({
   kind = 'label',
   side = 'top',
   align = 'center',
+  disabled = false,
   children,
   'data-testid': dataTestId,
 }: TooltipProps) => {
@@ -119,6 +126,12 @@ export const Tooltip = ({
   // Set by a press, so the focus that follows a click or tap doesn't reopen the tooltip
   const pressed = useRef(false)
   const [isOpen, setIsOpen] = useState(false)
+  // Turned off while showing (its label became visible): close it on the same render
+  const [wasDisabled, setWasDisabled] = useState(disabled)
+  if (wasDisabled !== disabled) {
+    setWasDisabled(disabled)
+    if (disabled) setIsOpen(false)
+  }
   const { isPresent, isExiting } = usePresence(isOpen)
 
   const clearTimers = () => {
@@ -144,7 +157,7 @@ export const Tooltip = ({
 
   const scheduleOpen = () => {
     clearTimeout(closeTimer.current)
-    if (isOpen) return
+    if (isOpen || disabled) return
     // Moving straight from one trigger to the next (another tooltip still open) or just after one
     // closed skips the delay, so a rail feels immediate
     if (active || Date.now() - lastClosedAt < SKIP_DELAY_MS) return open()
@@ -198,7 +211,7 @@ export const Tooltip = ({
           pressed.current = false
           return
         }
-        if (isKeyboardFocus(event.target)) open()
+        if (!disabled && isKeyboardFocus(event.target)) open()
       }}
       onBlur={() => {
         // A press on an already focused trigger has no focus to skip; don't carry it over

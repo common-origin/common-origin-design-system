@@ -88,7 +88,6 @@ export const sidebarNavDocs: ComponentDocumentation = {
     'component.sidebarNav.width.narrow',
     'component.sidebarNav.width.default',
     'component.sidebarNav.width.wide',
-    'semantic.border.default',
     'semantic.color.fill.muted',
     'semantic.radius.sm',
     'semantic.space.100',
@@ -96,7 +95,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
     'semantic.motion.duration.fast',
     'semantic.motion.duration.moderate',
     'semantic.motion.easing.decelerate',
-    'semantic.motion.easing.standard',
+    'semantic.motion.easing.accelerate',
   ],
 
   examples: [
@@ -114,7 +113,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
 </SidebarNav>`,
       renderComponent: () => (
         <div style={frame}>
-          <SidebarNav label="Example" header={<Switcher />} footer={<Button variant="secondary" size="small">Upgrade</Button>}>
+          <SidebarNav label="Example" header={<Switcher />} footer={<Button variant="secondary" size="small" style={{ width: '100%' }}>Upgrade</Button>}>
             <Body />
           </SidebarNav>
         </div>
@@ -160,11 +159,11 @@ export const sidebarNavDocs: ComponentDocumentation = {
   anatomy: {
     description: 'A nav column: header, scrolling body, footer.',
     parts: [
-      { name: 'Header', description: 'Product content such as a WorkspaceSwitcher, and the collapse toggle (an IconButton with the sidebar icon and a Tooltip)' },
+      { name: 'Header', description: 'Product content such as a WorkspaceSwitcher, and the collapse toggle beside it. In the rail an expand toggle takes the content\'s place; the two cross-fade, so nothing moves' },
       { name: 'Body', description: 'Items and sections; scrolls when too tall' },
       { name: 'Highlight', description: 'One shape in the row hover colour that glides to the hovered or focused row over duration.fast, stepping aside for the current page (0053)', tokens: ['semantic.color.fill.muted', 'semantic.motion.duration.fast'] },
       { name: 'Footer', description: 'Optional content below the body, hidden in the rail' },
-      { name: 'Edge', description: 'The page background with a thin right border (P1); the width animates over duration.moderate when collapsing', tokens: ['semantic.border.default', 'component.sidebarNav.width.default', 'component.sidebarNav.width.rail'] },
+      { name: 'Surface', description: 'The page background, with no edge or fill of its own (P1). Collapsing animates the width over duration.moderate, decelerating, while labels fade and icons stay put', tokens: ['component.sidebarNav.width.default', 'component.sidebarNav.width.rail'] },
     ],
   },
 }

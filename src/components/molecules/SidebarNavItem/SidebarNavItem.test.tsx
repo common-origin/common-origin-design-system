@@ -114,15 +114,33 @@ describe('SidebarNavItem', () => {
       renderItem({}, { collapsed: true })
       const link = screen.getByRole('link', { name: 'Home' })
       expect(link).toHaveAttribute('aria-label', 'Home')
-      expect(screen.queryByText('Home')).not.toBeInTheDocument()
+      // The label stays in place, faded out and hidden, so collapsing never remounts the row
+      expect(screen.getByText('Home')).not.toBeVisible()
       await user.tab()
-      expect(screen.getByText('Home')).toHaveAttribute('aria-hidden', 'true')
+      // Now the tooltip shows the label too, hidden from assistive technology
+      const tooltip = screen.getAllByText('Home').find((el) => el.getAttribute('aria-hidden') === 'true')
+      expect(tooltip).toBeVisible()
+    })
+
+    it('keeps the same row element when it collapses, so focus and transitions survive', () => {
+      const { rerender } = renderItem()
+      const link = screen.getByRole('link', { name: 'Home' })
+      link.focus()
+      rerender(
+        <SidebarNavContext.Provider value={{ collapsed: true, glide: false }}>
+          <ul>
+            <SidebarNavItem label="Home" icon="home" url="/home" />
+          </ul>
+        </SidebarNavContext.Provider>
+      )
+      expect(screen.getByRole('link', { name: 'Home' })).toBe(link)
+      expect(link).toHaveFocus()
     })
 
     it('keeps its badge as a dot inside the icon, and says the count in its name', () => {
       renderItem({ label: 'Chats', badge: 2, badgeLabel: '2 unread' }, { collapsed: true })
       const link = screen.getByRole('link', { name: 'Chats, 2 unread' })
-      expect(screen.queryByText('2')).not.toBeInTheDocument()
+      expect(screen.getByText('2')).not.toBeVisible()
       // The dot's anchor sits inside the icon's box, a quarter in from its top-right corner
       const corner = link.querySelector('[role="status"]')?.parentElement?.parentElement as HTMLElement
       expect(corner).toHaveStyle({ position: 'absolute', top: '25%', right: '25%' })

@@ -7,6 +7,7 @@ import { Tooltip } from '../../atoms/Tooltip'
 import { Badge } from '../../atoms/Badge'
 import type { IconName } from '../../../types/icons'
 import { useSidebarNav } from './SidebarNavContext'
+import { EXPANDED_WIDTH_VAR, Fold, NAV_PADDING, ROW_INSET, SCROLLBAR_VAR, fade } from './sidebarNavMotion'
 
 const { semantic } = tokens
 const { space, color, motion, radius, size, border, typography } = semantic
@@ -52,7 +53,7 @@ const isInternalUrl = (url: string) => !/^[a-z][a-z\d+.-]*:/i.test(url) && !url.
 
 const Row = styled.a.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{ $current: boolean; $glide: boolean; $collapsed: boolean }>`
+})<{ $current: boolean; $glide: boolean }>`
   display: flex;
   align-items: center;
   gap: ${space[200]};
@@ -61,7 +62,10 @@ const Row = styled.a.withConfig({
   /* The row's height is its token, with the content centred (as controls, 0034): vertical
      padding would hold a compact row above its 24px (0051) */
   min-height: ${size.row.sm};
-  padding: 0 ${space.inset.sm};
+  /* The left inset is the same expanded and in the rail, so the icon never moves (issue 348); the row
+     clips what the rail doesn't show as the nav narrows */
+  padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
+  overflow: hidden;
   border: none;
   border-radius: ${radius.sm};
   background: none;
@@ -87,13 +91,6 @@ const Row = styled.a.withConfig({
       }
     `}
 
-  ${({ $collapsed }) =>
-    $collapsed &&
-    css`
-      justify-content: center;
-      padding: 0 ${space.inset.xs};
-    `}
-
   &:focus {
     outline: none;
   }
@@ -104,27 +101,54 @@ const Row = styled.a.withConfig({
   }
 `
 
-const Label = styled.span`
+// The row's content keeps the nav's expanded width (when it's in a SidebarNav), so the nav's edge
+// clips it as the nav narrows, instead of the label reflowing or ellipsising mid-move
+const Inner = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $withIcon: boolean }>`
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  gap: ${space[200]};
+  min-width: 0;
+  /* The row's content width when expanded: the nav's width less any scrollbar, its padding, the row's
+     insets and, beside an icon, the icon and its gap */
+  width: calc(
+    var(${EXPANDED_WIDTH_VAR}, 0px) - var(${SCROLLBAR_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.sm}
+      ${({ $withIcon }) => ($withIcon ? `- ${size.icon.md} - ${space[200]}` : '')}
+  );
+`
+
+const Label = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   flex: 1;
   min-width: 0;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  ${({ $hidden }) => fade($hidden)}
 `
 
-const Meta = styled.span`
+const Meta = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   flex-shrink: 0;
   font: ${typography.caption};
   color: ${color.text.muted};
+  ${({ $hidden }) => fade($hidden)}
 `
 
 // A badge needs something to sit on: the icon, or this mark at the end of an item without one
 // Badge normally sits centred on its anchor's top-right corner (0045). At the end of the row the
 // count is laid out in place instead, so a count of any width ("3", "12", "99+") stays inside the
 // row in every density and never reaches the rows around it
-const EndSlot = styled.span`
+const EndSlot = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   display: inline-flex;
   flex-shrink: 0;
+  ${({ $hidden }) => fade($hidden)}
 
   & [role='status'] {
     position: static;
@@ -145,12 +169,18 @@ const IconBox = styled.span`
   flex-shrink: 0;
 `
 
-const Corner = styled.span`
+const Corner = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   position: absolute;
   top: 25%;
   right: 25%;
   display: inline-flex;
+  ${({ $hidden }) => fade($hidden)}
 `
+
+// An item folds away in the rail when it has no icon to show there
+const Item = styled(Fold).attrs({ as: 'li' })``
 
 /**
  * One row of a SidebarNav (#327): a link to a page, or a button for an action such as "New chat".
@@ -169,9 +199,6 @@ export const SidebarNavItem = ({
 }: SidebarNavItemProps) => {
   const { collapsed, linkComponent, glide } = useSidebarNav()
 
-  // The rail shows icons only: an item without one has nothing to show there
-  if (collapsed && !icon) return null
-
   const hasBadge = badge === 'dot' || (typeof badge === 'number' && badge > 0)
   const badgeText = badgeLabel ?? (badge === 'dot' ? 'new' : `${badge} new`)
   // The badge's own text would make a noisy name, so a badged item is named outright; so is an
@@ -180,13 +207,15 @@ export const SidebarNavItem = ({
 
   const count = typeof badge === 'number' ? badge : 0
 
+  // Everything stays mounted and fades, so collapsing and expanding never jump (issue 348). Hidden
+  // content leaves screen readers once its fade ends; the rail names the row with aria-label.
   const content = (
     <>
       {icon && (
         <IconBox>
           <Icon name={icon} size="md" iconColor="inherit" />
-          {collapsed && hasBadge && (
-            <Corner>
+          {hasBadge && (
+            <Corner $hidden={!collapsed}>
               <Badge variant="accent" dot aria-label={badgeText}>
                 <span />
               </Badge>
@@ -194,26 +223,23 @@ export const SidebarNavItem = ({
           )}
         </IconBox>
       )}
-      {!collapsed && (
-        <>
-          <Label>{label}</Label>
-          {meta && <Meta>{meta}</Meta>}
-          {hasBadge && (
-            <EndSlot>
-              <Badge variant="accent" dot={badge === 'dot'} count={count} aria-label={badgeText}>
-                <EndAnchor />
-              </Badge>
-            </EndSlot>
-          )}
-        </>
-      )}
+      <Inner $withIcon={Boolean(icon)}>
+        <Label $hidden={collapsed}>{label}</Label>
+        {meta && <Meta $hidden={collapsed}>{meta}</Meta>}
+        {hasBadge && (
+          <EndSlot $hidden={collapsed}>
+            <Badge variant="accent" dot={badge === 'dot'} count={count} aria-label={badgeText}>
+              <EndAnchor />
+            </Badge>
+          </EndSlot>
+        )}
+      </Inner>
     </>
   )
 
   const shared = {
     $current: current,
     $glide: glide,
-    $collapsed: collapsed,
     // The icon is decorative (0028)
     'aria-label': name,
     'data-testid': dataTestId,
@@ -239,15 +265,15 @@ export const SidebarNavItem = ({
   )
 
   return (
-    <li>
-      {collapsed ? (
-        <Tooltip text={label} side="right">
+    // The Tooltip is always there, turned off while the label is visible, so collapsing never
+    // remounts the row (which would lose focus and skip its transitions)
+    <Item $open={!collapsed || Boolean(icon)}>
+      <div>
+        <Tooltip text={label} side="right" disabled={!collapsed}>
           {row}
         </Tooltip>
-      ) : (
-        row
-      )}
-    </li>
+      </div>
+    </Item>
   )
 }
 
