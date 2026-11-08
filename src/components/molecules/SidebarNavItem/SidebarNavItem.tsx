@@ -119,13 +119,17 @@ const Meta = styled.span`
 `
 
 // A badge needs something to sit on: the icon, or this mark at the end of an item without one
-// Badge sits centred on its anchor's top-right corner (0045). Expanded, the anchor is a point in
-// the row's vertical middle, held half a count's width in from the end, so the count sits at the
-// end of the row, inside it in every density, and never reaches the rows around it
+// Badge normally sits centred on its anchor's top-right corner (0045). At the end of the row the
+// count is laid out in place instead, so a count of any width ("3", "12", "99+") stays inside the
+// row in every density and never reaches the rows around it
 const EndSlot = styled.span`
   display: inline-flex;
   flex-shrink: 0;
-  padding-right: calc(${tokens.component.badge.count.minWidth} / 2);
+
+  & [role='status'] {
+    position: static;
+    transform: none;
+  }
 `
 
 const EndAnchor = styled.span`

@@ -50,10 +50,11 @@ test('rows are 24px in a compact region and at least 24px everywhere (0051)', as
   expect(new Set(await heights('Compact'))).toEqual(new Set([24]))
 })
 
-test('a badge stays inside its row, expanded and in the rail, in each density', async ({ page }) => {
-  const inside = (name: string) =>
+test('a badge of any width stays inside its row, expanded and in the rail, in each density', async ({ page }) => {
+  const inside = async (name: string) => (await Promise.all([/^Chats/, /^Mentions/].map((label) => insideRow(name, label)))).every(Boolean)
+  const insideRow = (name: string, label: RegExp) =>
     // By its name: in the rail the label isn't shown as text
-    nav(page, name).getByRole('link', { name: /^Chats/ }).evaluate((row) => {
+    nav(page, name).getByRole('link', { name: label }).evaluate((row) => {
       const badge = row.querySelector('[role="status"]')!.getBoundingClientRect()
       const box = row.getBoundingClientRect()
       return badge.left >= box.left && badge.right <= box.right && badge.top >= box.top && badge.bottom <= box.bottom
