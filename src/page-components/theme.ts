@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useSyncExternalStore } from 'react'
 
 // The docs site's colour theme (#360, decisions 0054 and 0056). The site follows the system
 // setting unless the reader picks light or dark, and remembers that choice. It's applied as
@@ -29,28 +29,51 @@ export const themeScript = `(function () {
 const systemTheme = (): Theme =>
   typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
 
+// Where storage is blocked, the choice lasts for this visit
+let memoryPreference: ThemePreference | null = null
+
 const readPreference = (): ThemePreference => {
   try {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
-    return isPreference(stored) ? stored : 'system'
+    return isPreference(stored) ? stored : memoryPreference ?? 'system'
   } catch {
-    return 'system'
+    return memoryPreference ?? 'system'
   }
 }
 
+const resolve = (preference: ThemePreference): Theme => (preference === 'system' ? systemTheme() : preference)
+
 const apply = (theme: Theme) => document.documentElement.setAttribute('data-co-theme', theme)
+
+// One preference for the whole page: every theme menu reads the same store, and hears changes
+// made in another menu or another tab
+const CHANGE_EVENT = 'co-docs-theme-change'
+
+function subscribe(onChange: () => void) {
+  window.addEventListener(CHANGE_EVENT, onChange)
+  window.addEventListener('storage', onChange)
+  return () => {
+    window.removeEventListener(CHANGE_EVENT, onChange)
+    window.removeEventListener('storage', onChange)
+  }
+}
 
 /** The reader's theme preference, and a setter that applies and remembers it. */
 export function useThemePreference() {
-  // The stored choice in the browser, 'system' on the server. Nothing renders from it until the
-  // theme menu opens, so the two never disagree in server-rendered markup; the head script has
+  // 'system' while server rendering and hydrating, then the stored choice; the head script has
   // already applied the real theme
-  const [preference, setPreferenceState] = useState<ThemePreference>(() =>
-    typeof window === 'undefined' ? 'system' : readPreference()
-  )
+  const preference = useSyncExternalStore(subscribe, readPreference, () => 'system' as ThemePreference)
 
-  // While following the system, follow its changes. Only changes: the head script applied the
-  // initial theme, and applying here on mount would override a stored choice before it's read
+  // A choice made in another tab applies here too
+  useEffect(() => {
+    const onStorage = (event: StorageEvent) => {
+      if (event.key === THEME_STORAGE_KEY) apply(resolve(readPreference()))
+    }
+    window.addEventListener('storage', onStorage)
+    return () => window.removeEventListener('storage', onStorage)
+  }, [])
+
+  // While following the system, follow its changes
   useEffect(() => {
     if (preference !== 'system' || !window.matchMedia) return
     const query = window.matchMedia('(prefers-color-scheme: dark)')
@@ -62,13 +85,14 @@ export function useThemePreference() {
   }, [preference])
 
   const setPreference = useCallback((next: ThemePreference) => {
-    setPreferenceState(next)
+    memoryPreference = next
     try {
       window.localStorage.setItem(THEME_STORAGE_KEY, next)
     } catch {
       // Storage can be blocked; the choice still applies for this visit
     }
-    apply(next === 'system' ? systemTheme() : next)
+    apply(resolve(next))
+    window.dispatchEvent(new Event(CHANGE_EVENT))
   }, [])
 
   return { preference, setPreference }

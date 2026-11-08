@@ -23,7 +23,7 @@ describe("Footer", () => {
 
     it("renders logo image with default props", () => {
       renderFooter()
-      const logo = screen.getByRole("presentation")
+      const logo = screen.getAllByRole("presentation")[0]
       expect(logo).toBeInTheDocument()
       expect(logo).toHaveAttribute("src", "/assets/logo/co-logo-white.svg")
     })
@@ -39,7 +39,7 @@ describe("Footer", () => {
   describe("Props Variants", () => {
     it("renders with custom logo source", () => {
       renderFooter({ logoSrc: "/custom-logo.svg" })
-      const logo = screen.getByRole("presentation")
+      const logo = screen.getAllByRole("presentation")[0]
       expect(logo).toHaveAttribute("src", "/custom-logo.svg")
     })
 
@@ -54,7 +54,7 @@ describe("Footer", () => {
         logoSrc: "/custom-logo.svg",
         logoAlt: "Custom Logo Alt"
       })
-      const logo = screen.getByRole("presentation")
+      const logo = screen.getAllByRole("presentation")[0]
       expect(logo).toHaveAttribute("src", "/custom-logo.svg")
       
       const logoLink = screen.getByLabelText("Custom Logo Alt - Navigate to homepage")
@@ -98,7 +98,7 @@ describe("Footer", () => {
 
     it("meets minimum target size requirements (44x44px)", () => {
       renderFooter()
-      const logoImage = screen.getByRole("presentation")
+      const logoImage = screen.getAllByRole("presentation")[0]
       
       // Since we can't test computed styles in jsdom, we verify the CSS properties exist
       expect(logoImage).toBeInTheDocument()
@@ -116,7 +116,7 @@ describe("Footer", () => {
 
     it("has decorative image with empty alt text", () => {
       renderFooter()
-      const logoImage = screen.getByRole("presentation")
+      const logoImage = screen.getAllByRole("presentation")[0]
       expect(logoImage).toHaveAttribute("alt", "")
     })
 
@@ -150,7 +150,7 @@ describe("Footer", () => {
     it("provides proper semantic relationship between link and image", () => {
       renderFooter()
       const logoLink = screen.getByRole("link")
-      const logoImage = screen.getByRole("presentation")
+      const logoImage = screen.getAllByRole("presentation")[0]
       
       // Image should be contained within the link
       expect(logoLink).toContainElement(logoImage)
@@ -165,12 +165,12 @@ describe("Footer", () => {
     it("handles empty props gracefully", () => {
       renderFooter({})
       expect(screen.getByRole("contentinfo")).toBeInTheDocument()
-      expect(screen.getByRole("presentation")).toBeInTheDocument()
+      expect(screen.getAllByRole("presentation")[0]).toBeInTheDocument()
     })
 
     it("falls back to the default logo when the logo src is empty", () => {
       renderFooter({ logoSrc: "" })
-      const logo = screen.getByRole("presentation")
+      const logo = screen.getAllByRole("presentation")[0]
       expect(logo).toHaveAttribute("src", "/assets/logo/co-logo-white.svg")
     })
 
@@ -179,7 +179,7 @@ describe("Footer", () => {
       const logoLink = screen.getByRole("link")
       expect(logoLink).toHaveAttribute("aria-label", " - Navigate to homepage")
       
-      const logoImage = screen.getByRole("presentation")
+      const logoImage = screen.getAllByRole("presentation")[0]
       expect(logoImage).toHaveAttribute("alt", "")
     })
   })
@@ -192,7 +192,7 @@ describe("Footer", () => {
       
       // Verify it contains the expected structure
       const link = screen.getByRole("link")
-      const image = screen.getByRole("presentation")
+      const image = screen.getAllByRole("presentation")[0]
       expect(link).toContainElement(image)
     })
 

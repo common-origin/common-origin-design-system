@@ -21,7 +21,8 @@ export function ThemedLogo({ tone = 'default', alt, className }: { tone?: 'defau
   return (
     <>
       <Img src={inLight} alt={alt} $showIn="light" className={className} />
-      <Img src={inDark} alt="" aria-hidden="true" $showIn="dark" className={className} />
+      {/* Both carry the alt: the hidden one is display: none, so it's out of the accessibility tree */}
+      <Img src={inDark} alt={alt} $showIn="dark" className={className} />
     </>
   )
 }
