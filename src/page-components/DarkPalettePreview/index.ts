@@ -1,0 +1,1 @@
+export { DarkPalettePreview } from './DarkPalettePreview'
