@@ -25,12 +25,12 @@ import { contrastRatio } from '../../test-utils/contrast'
 
 const STEPS = ['100', '200', '300', '400', '500', '600', '700', '800', '900', '1000', '1100', '1200'] as const
 const RAMPS = ['gray', 'accent', 'success', 'warning', 'serious', 'danger', 'ai', 'olive', 'periwinkle', 'rose', 'magenta'] as const
-const FILL_RAMPS = ['accent', 'success', 'warning', 'serious', 'danger'] as const
+const SOLID_RAMPS = ['accent', 'success', 'warning', 'serious', 'danger'] as const
 
 type Step = (typeof STEPS)[number]
 type Ramp = (typeof RAMPS)[number]
 type TokenLeaf = { $value: string; $description?: string }
-type RampTokens = Record<Step, TokenLeaf> & { $extensions?: { 'studio.commonorigin'?: { fillStep?: Step; fillStepContrast?: number } } }
+type RampTokens = Record<Step, TokenLeaf> & { solid?: TokenLeaf }
 
 const light = baseTokens.base.color as unknown as Record<string, RampTokens>
 const dark = darkTokens.base.color as unknown as Record<string, RampTokens>
@@ -189,16 +189,14 @@ export function DarkPalettePreview() {
         <section>
           <Typography variant="h3">Coloured fills in dark</Typography>
           <Typography variant="body" color="subdued">
-            Each role&apos;s fill uses its most saturated step where on-fill text (dark gray.1200) meets 4.5:1 (#355).
+            Each role&apos;s solid fill sits where its label reads at secondary-text contrast (decision 0056).
           </Typography>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, marginTop: 12, padding: 24, background: dark.gray['100'].$value, borderRadius: 8 }}>
-            {FILL_RAMPS.map((ramp) => {
-              const info = dark[ramp].$extensions?.['studio.commonorigin']
-              const step = info?.fillStep ?? '800'
-              const fill = dark[ramp][step].$value
+            {SOLID_RAMPS.map((ramp) => {
+              const fill = dark[ramp].solid?.$value ?? dark[ramp]['800'].$value
               return (
                 <div key={ramp} style={{ background: fill, color: onFill, padding: '10px 16px', borderRadius: 6, ...mono, fontSize: 13 }}>
-                  {ramp} {step} · {contrastRatio(fill, onFill).toFixed(2)}:1
+                  {ramp} solid {fill} · {contrastRatio(fill, onFill).toFixed(2)}:1
                 </div>
               )
             })}
@@ -208,7 +206,7 @@ export function DarkPalettePreview() {
         <section>
           <Typography variant="h3">Components</Typography>
           <Typography variant="body" color="subdued">
-            The dark region is data-co-theme="dark" from tokens.css: the dark ramps, with the exceptions from decision 0056 (on-fill text on step-800 fills, raised and overlay surfaces, a dark scrim and stronger shadows).
+            The dark region is data-co-theme="dark" from tokens.css. Both regions follow the same rules (decision 0056): solid fills where their label reads at secondary-text contrast, translucent fills on every surface, and surfaces that get lighter as they rise.
           </Typography>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, marginTop: 16 }}>
             <Components theme="light" />

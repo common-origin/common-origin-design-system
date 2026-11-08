@@ -94,6 +94,10 @@
       "$type": "shadow",
       "none": {
         "$value": "none"
+      },
+      "inset": {
+        "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "$description": "A sunken well or pressed state. A shadow, so the theme scales it with the others (decision 0056)."
       }
     },
     "zIndex": {
@@ -180,7 +184,11 @@
       "100": {
         "$value": "1"
       },
-      "$type": "number"
+      "$type": "number",
+      "scrim": {
+        "$value": "{base.opacity.50}",
+        "$description": "How strongly the scrim dims the page: a theme parameter, 0.5 in light (decision 0056)."
+      }
     },
     "dimension": {
       "$description": "The one dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). Replaces the parallel base.size and base.spacing scales (#188).",
@@ -320,6 +328,32 @@
       "white": {
         "$value": "#ffffff",
         "$description": "Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049)."
+      },
+      "surface": {
+        "$description": "Surfaces by elevation, the same rule in every theme: higher is lighter (decision 0056). Raised and overlay are the next neutrals lighter than the page; in light the scale tops out at white, so both are white and shadows separate them.",
+        "page": {
+          "$value": "{base.color.gray.100}",
+          "$description": "The page."
+        },
+        "raised": {
+          "$value": "{base.color.white}",
+          "$description": "One level above the page: cards, inputs, code blocks."
+        },
+        "overlay": {
+          "$value": "{base.color.white}",
+          "$description": "Two levels above the page: menus, dialogs, sheets."
+        }
+      },
+      "ink": {
+        "$description": "The light and dark ends of the neutral ramp, by role, in every theme (decision 0056): labels on solid fills use the light ink, and the scrim the dark ink.",
+        "light": {
+          "$value": "{base.color.gray.100}",
+          "$description": "The light end of the neutral ramp."
+        },
+        "dark": {
+          "$value": "{base.color.gray.1200}",
+          "$description": "The dark end of the neutral ramp."
+        }
       },
       "gray": {
         "$description": "Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040).",
@@ -523,6 +557,10 @@
         "1200": {
           "$value": "#0f2339",
           "$description": "Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white."
+        },
+        "solid": {
+          "$value": "{base.color.accent.1100}",
+          "$description": "Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own."
         }
       },
       "accent-alpha": {
@@ -625,6 +663,10 @@
         "1200": {
           "$value": "#12261b",
           "$description": "Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white."
+        },
+        "solid": {
+          "$value": "{base.color.success.1100}",
+          "$description": "Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own."
         }
       },
       "success-alpha": {
@@ -727,6 +769,10 @@
         "1200": {
           "$value": "#292111",
           "$description": "Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white."
+        },
+        "solid": {
+          "$value": "{base.color.warning.1100}",
+          "$description": "Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own."
         }
       },
       "warning-alpha": {
@@ -829,6 +875,10 @@
         "1200": {
           "$value": "#341c10",
           "$description": "Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white."
+        },
+        "solid": {
+          "$value": "{base.color.serious.1100}",
+          "$description": "Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own."
         }
       },
       "serious-alpha": {
@@ -931,6 +981,10 @@
         "1200": {
           "$value": "#3d1611",
           "$description": "Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white."
+        },
+        "solid": {
+          "$value": "{base.color.danger.1100}",
+          "$description": "Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own."
         }
       },
       "danger-alpha": {

@@ -7,7 +7,7 @@
         "$description": "No elevation - flat surfaces, default state"
       },
       "inset": {
-        "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)",
+        "$value": "{base.shadow.inset}",
         "$description": "Sunken/pressed states, input fields, wells"
       },
       "raised": {
@@ -427,8 +427,8 @@
           "$description": "Text on the emphasis and inverse fills, such as the primary Button, the emphasis Tag and Tooltip. 15.51:1 on fill.emphasis. Text on a coloured fill uses text.on-fill."
         },
         "on-fill": {
-          "$value": "{base.color.gray.100}",
-          "$description": "Text on coloured fills: the accent, danger, success, warning and serious fills (issue 355). Light in both themes, while text.inverse turns dark in the dark theme. 6.00:1 on fill.accent."
+          "$value": "{base.color.ink.light}",
+          "$description": "Text on solid coloured fills: the accent, danger, success, warning and serious fills (issue 355). The light ink, in every theme; text.inverse is for the emphasis and inverse fills. 6.00:1 on fill.accent."
         },
         "disabled": {
           "$value": "{base.color.gray-alpha.700}",
@@ -523,7 +523,7 @@
           "$description": "Icons on the emphasis and inverse fills, matching text.inverse."
         },
         "on-fill": {
-          "$value": "{base.color.gray.100}",
+          "$value": "{base.color.ink.light}",
           "$description": "Icons on coloured fills, matching text.on-fill."
         },
         "success": {
@@ -569,7 +569,7 @@
           "$description": "Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted."
         },
         "gray-muted": {
-          "$value": "{base.color.gray.300}",
+          "$value": "{base.color.gray-alpha.300}",
           "$description": "Light gray fill of a minimal CategoryLabel, behind the gray-text colour."
         },
         "olive": {
@@ -585,7 +585,7 @@
           "$description": "Text and icons of an outlined or minimal olive CategoryLabel. 6.02:1 on white, 5.39:1 on olive-muted."
         },
         "olive-muted": {
-          "$value": "{base.color.olive.300}",
+          "$value": "{base.color.olive-alpha.300}",
           "$description": "Light olive fill of a minimal CategoryLabel, behind the olive-text colour."
         },
         "periwinkle": {
@@ -601,7 +601,7 @@
           "$description": "Text and icons of an outlined or minimal periwinkle CategoryLabel. 6.00:1 on white, 5.37:1 on periwinkle-muted."
         },
         "periwinkle-muted": {
-          "$value": "{base.color.periwinkle.300}",
+          "$value": "{base.color.periwinkle-alpha.300}",
           "$description": "Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour."
         },
         "rose": {
@@ -617,7 +617,7 @@
           "$description": "Text and icons of an outlined or minimal rose CategoryLabel. 5.99:1 on white, 5.33:1 on rose-muted."
         },
         "rose-muted": {
-          "$value": "{base.color.rose.300}",
+          "$value": "{base.color.rose-alpha.300}",
           "$description": "Light rose fill of a minimal CategoryLabel, behind the rose-text colour."
         },
         "magenta": {
@@ -633,7 +633,7 @@
           "$description": "Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted."
         },
         "magenta-muted": {
-          "$value": "{base.color.magenta.300}",
+          "$value": "{base.color.magenta-alpha.300}",
           "$description": "Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour."
         }
       },
@@ -643,7 +643,7 @@
           "$description": "Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048)."
         },
         "muted": {
-          "$value": "{base.color.gray.300}",
+          "$value": "{base.color.gray-alpha.300}",
           "$description": "Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page."
         },
         "inverse": {
@@ -651,19 +651,19 @@
           "$description": "Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles."
         },
         "accent": {
-          "$value": "{base.color.accent.1100}",
+          "$value": "{base.color.accent.solid}",
           "$description": "Blue fill for the accent Button and other deliberate highlights (0003), with text.on-fill on it at 6.00:1."
         },
         "accent-muted": {
-          "$value": "{base.color.accent.300}",
+          "$value": "{base.color.accent-alpha.300}",
           "$description": "Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1."
         },
         "accent-muted-hover": {
-          "$value": "{base.color.accent.400}",
+          "$value": "{base.color.accent-alpha.400}",
           "$description": "Fill of a hovered selected item, such as a selected filter chip."
         },
         "accent-muted-pressed": {
-          "$value": "{base.color.accent.500}",
+          "$value": "{base.color.accent-alpha.500}",
           "$description": "Fill of a pressed selected item, such as a selected filter chip."
         },
         "accent-hover": {
@@ -675,7 +675,7 @@
           "$description": "Blue fill of a pressed accent control: fill.accent with text.on-fill mixed in at opacity.state.pressed (decision 0048)."
         },
         "danger": {
-          "$value": "{base.color.danger.1100}",
+          "$value": "{base.color.danger.solid}",
           "$description": "Strong red fill for destructive actions, such as the danger Button, with text.on-fill on it at 6.03:1."
         },
         "danger-hover": {
@@ -687,39 +687,39 @@
           "$description": "Fill of a pressed destructive control: fill.danger with text.on-fill mixed in at opacity.state.pressed (decision 0048)."
         },
         "danger-muted": {
-          "$value": "{base.color.danger.300}",
+          "$value": "{base.color.danger-alpha.300}",
           "$description": "Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1."
         },
         "success": {
-          "$value": "{base.color.success.1100}",
+          "$value": "{base.color.success.solid}",
           "$description": "Strong green fill for success states, such as a success indicator, with text.on-fill on it at 5.99:1."
         },
         "success-muted": {
-          "$value": "{base.color.success.300}",
+          "$value": "{base.color.success-alpha.300}",
           "$description": "Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1."
         },
         "warning": {
-          "$value": "{base.color.warning.1100}",
+          "$value": "{base.color.warning.solid}",
           "$description": "Strong yellow fill for warning states, such as a warning indicator, with text.on-fill on it at 6.01:1."
         },
         "warning-muted": {
-          "$value": "{base.color.warning.300}",
+          "$value": "{base.color.warning-alpha.300}",
           "$description": "Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1."
         },
         "disabled": {
-          "$value": "{base.color.gray.300}",
+          "$value": "{base.color.gray-alpha.300}",
           "$description": "Fill of a disabled control, such as a disabled Button or Switch."
         },
         "default": {
-          "$value": "{base.color.gray.300}",
+          "$value": "{base.color.gray-alpha.300}",
           "$description": "Fill of a neutral control at rest, such as the secondary Button (decision 0040)."
         },
         "default-hover": {
-          "$value": "{base.color.gray.400}",
+          "$value": "{base.color.gray-alpha.400}",
           "$description": "Fill of a hovered neutral control, such as the secondary Button."
         },
         "default-pressed": {
-          "$value": "{base.color.gray.500}",
+          "$value": "{base.color.gray-alpha.500}",
           "$description": "Fill of a pressed neutral control, such as the secondary Button."
         },
         "none": {
@@ -739,15 +739,15 @@
           "$description": "Hover tint for a fill-less element on a dark background, such as a count on a dark tab."
         },
         "serious": {
-          "$value": "{base.color.serious.1100}",
+          "$value": "{base.color.serious.solid}",
           "$description": "Strong orange fill for serious-warning states, with text.on-fill on it at 6.04:1."
         },
         "serious-muted": {
-          "$value": "{base.color.serious.300}",
+          "$value": "{base.color.serious-alpha.300}",
           "$description": "Light orange tint behind serious-warning messages."
         },
         "ai-muted": {
-          "$value": "{base.color.ai.300}",
+          "$value": "{base.color.ai-alpha.300}",
           "$description": "Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043)."
         }
       },
@@ -1141,24 +1141,24 @@
     },
     "surface": {
       "base": {
-        "$value": "{base.color.gray.100}",
+        "$value": "{base.color.surface.page}",
         "$type": "color",
         "$description": "The page: the off-white background everything else sits on (decision 0006)."
       },
       "raised": {
-        "$value": "{base.color.white}",
+        "$value": "{base.color.surface.raised}",
         "$type": "color",
         "$description": "Content raised off the page: cards, inputs, code blocks. Floating layers use surface.overlay."
       },
       "overlay": {
-        "$value": "{base.color.white}",
+        "$value": "{base.color.surface.overlay}",
         "$type": "color",
         "$description": "Floating layers above raised content: Menu, the Dropdown and SearchField lists, ActionSheet, Modal and Sheet (issue 356). White in light, the same as raised; in the dark theme one step lighter than raised, because shadows barely show on a dark page."
       },
       "scrim": {
-        "$value": "{base.color.gray-alpha.800}",
+        "$value": "color-mix(in srgb, {base.color.ink.dark} calc({base.opacity.scrim} * 100%), transparent)",
         "$type": "color",
-        "$description": "Backdrop behind a modal surface: Modal, Sheet, ActionSheet."
+        "$description": "Backdrop behind a modal surface: Modal, Sheet, ActionSheet. The dark ink at opacity.scrim, so it stays dark in every theme."
       }
     }
   }

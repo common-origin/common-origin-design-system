@@ -1,6 +1,6 @@
 # 0049. Where white lives: `base.color.white` off the ramps, inverse content on `gray.100`
 
-- **Status:** Accepted; amended by [0056](0056-dark-theme-exceptions.md) (text on coloured fills uses `text.on-fill`)
+- **Status:** Accepted; amended by [0056](0056-one-set-of-colour-rules.md) (text on coloured fills uses `text.on-fill`)
 - **Date:** 2026-10-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P3, P7

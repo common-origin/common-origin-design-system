@@ -44,6 +44,8 @@ export type Tokens = {
       '5': string;
       '6': string;
       none: string;
+      /** A sunken well or pressed state. A shadow, so the theme scales it with the others (decision 0056). */
+      inset: string;
     };
     /** Stacking order: 1–5 are 10–50 for layers within the page, 6–8 are 1000 and up for overlays. */
     zIndex: {
@@ -76,6 +78,8 @@ export type Tokens = {
       '90': string;
       '95': string;
       '100': string;
+      /** How strongly the scrim dims the page: a theme parameter, 0.5 in light (decision 0056). */
+      scrim: string;
     };
     /** The one dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). Replaces the parallel base.size and base.spacing scales (#188). */
     dimension: {
@@ -129,6 +133,22 @@ export type Tokens = {
       transparent: string;
       /** Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049). */
       white: string;
+      /** Surfaces by elevation, the same rule in every theme: higher is lighter (decision 0056). Raised and overlay are the next neutrals lighter than the page; in light the scale tops out at white, so both are white and shadows separate them. */
+      surface: {
+        /** The page. */
+        page: string;
+        /** One level above the page: cards, inputs, code blocks. */
+        raised: string;
+        /** Two levels above the page: menus, dialogs, sheets. */
+        overlay: string;
+      };
+      /** The light and dark ends of the neutral ramp, by role, in every theme (decision 0056): labels on solid fills use the light ink, and the scrim the dark ink. */
+      ink: {
+        /** The light end of the neutral ramp. */
+        light: string;
+        /** The dark end of the neutral ramp. */
+        dark: string;
+      };
       /** Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040). */
       gray: {
         /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
@@ -236,6 +256,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'accent-alpha': {
@@ -290,6 +312,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'success-alpha': {
@@ -344,6 +368,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'warning-alpha': {
@@ -398,6 +424,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'serious-alpha': {
@@ -452,6 +480,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'danger-alpha': {
@@ -1676,7 +1706,7 @@ export type Tokens = {
         default: string;
         /** Text on the emphasis and inverse fills, such as the primary Button, the emphasis Tag and Tooltip. 15.51:1 on fill.emphasis. Text on a coloured fill uses text.on-fill. */
         inverse: string;
-        /** Text on coloured fills: the accent, danger, success, warning and serious fills (issue 355). Light in both themes, while text.inverse turns dark in the dark theme. 6.00:1 on fill.accent. */
+        /** Text on solid coloured fills: the accent, danger, success, warning and serious fills (issue 355). The light ink, in every theme; text.inverse is for the emphasis and inverse fills. 6.00:1 on fill.accent. */
         'on-fill': string;
         /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
@@ -2043,7 +2073,7 @@ export type Tokens = {
       raised: string;
       /** Floating layers above raised content: Menu, the Dropdown and SearchField lists, ActionSheet, Modal and Sheet (issue 356). White in light, the same as raised; in the dark theme one step lighter than raised, because shadows barely show on a dark page. */
       overlay: string;
-      /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+      /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. The dark ink at opacity.scrim, so it stays dark in every theme. */
       scrim: string;
     };
   };

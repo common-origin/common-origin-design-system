@@ -1,9 +1,12 @@
 import { execFileSync } from 'child_process'
 import { readFileSync } from 'fs'
 import tokens from '@/styles/tokens.json'
+import { opaque } from '../test-utils/contrast'
 
-// WCAG 2.2 relative luminance and contrast ratio, for hex colours (P2)
-function luminance(hex: string) {
+// WCAG 2.2 relative luminance and contrast ratio, for hex colours (P2). Translucent fills are
+// composited over white, where each equals its solid step (decision 0056)
+function luminance(color: string) {
+  const hex = opaque(color)
   const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
   const linear = (c: number) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)
   return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b)
@@ -85,7 +88,10 @@ describe('token contrast', () => {
       const { gray } = tokens.base.color
       const ramp = tokens.base.color[name]
       const white = '#ffffff'
-      const steps = Object.keys(ramp).sort((a, b) => Number(a) - Number(b)) as (keyof typeof ramp)[]
+      // The numbered steps; a role ramp also has its solid fill (decision 0056)
+      const steps = Object.keys(ramp)
+        .filter((key) => /^\d+$/.test(key))
+        .sort((a, b) => Number(a) - Number(b)) as (keyof typeof gray & keyof typeof ramp)[]
 
       it('matches the grey ramp’s contrast with white at every step, within 2%', () => {
         expect(steps).toEqual(Object.keys(gray).sort((a, b) => Number(a) - Number(b)))

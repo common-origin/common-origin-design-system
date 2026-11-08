@@ -4,8 +4,6 @@
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
 import resolver from './resolver.json'
-import darkRamps from './modes/theme/dark.json'
-import darkSemantic from './modes/theme/dark-semantic.json'
 import { contrastRatio } from '../test-utils/contrast'
 
 // Token modes (decision 0032): src/tokens/resolver.json describes them as DTCG Resolver modifiers,
@@ -37,7 +35,7 @@ const rem = (value: string) => Number(value.replace('rem', '')) * 16
 const ALLOWED: Record<string, RegExp> = {
   density: /^semantic\.(size\.control|size\.row|space\.inset)\./,
   // Colour and shadow only (decision 0054): base colour values, plus semantic colour exceptions
-  theme: /^(base\.color\.|base\.shadow\.|semantic\.(color|surface|elevation)\.)/,
+  theme: /^base\.(color\.|shadow\.|opacity\.scrim$)/,
 }
 
 type Node = { [key: string]: unknown }
@@ -181,14 +179,12 @@ describe('theme (#358)', () => {
     expect(low).toEqual([])
   })
 
-  // The generator picks each role's fill step (#355); the hand-written override must point at it
-  it('uses the generated fill step for every coloured fill', () => {
-    const ramps = darkRamps.base.color as unknown as Record<string, { $extensions?: { 'studio.commonorigin'?: { fillStep?: string } } }>
-    const fills = darkSemantic.semantic.color.fill as unknown as Record<string, { $value: string }>
-    const mismatched = ['accent', 'danger', 'success', 'warning', 'serious'].filter(
-      (role) => fills[role]?.$value !== `{base.color.${role}.${ramps[role].$extensions?.['studio.commonorigin']?.fillStep}}`
-    )
-    expect(mismatched).toEqual([])
+  // One set of rules for both themes (decision 0056): the theme supplies base values only, so
+  // semantic and component tokens read the same paths in light and dark
+  it('overrides base tokens only, never a semantic or component token', () => {
+    const files = (resolver.modifiers.theme.contexts as Record<string, { $ref: string }[]>).dark
+    const paths = files.flatMap(({ $ref }) => overridden(JSON.parse(readFileSync(join(__dirname, $ref), 'utf8'))))
+    expect(paths.filter((path) => !path.startsWith('base.'))).toEqual([])
   })
 
   it('keeps inverse text at 4.5:1 or more on the emphasis fill', () => {

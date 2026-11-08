@@ -1,6 +1,6 @@
 # 0054. Dark mode is a theme token mode; each ramp step keeps its role
 
-- **Status:** Accepted
+- **Status:** Accepted; rule 3 amended by [0056](0056-one-set-of-colour-rules.md): the theme is base values only, with no semantic exceptions
 - **Date:** 2026-11-08
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P3, P4, P7, P8

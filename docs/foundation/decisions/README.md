@@ -59,7 +59,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0053](0053-sidebarnav-glide.md) | SidebarNav's hover highlight glides between rows with `duration.fast`, in the row colours, following keyboard focus; jumps under reduced motion; amends 0030 for SidebarNav only | Accepted | 2026-11-08 |
 | [0054](0054-dark-mode-theme-mode.md) | Dark mode is a `theme` token mode; each ramp step keeps its role in dark, and the dark context overrides base values; the docs site is the first consumer; amends 0032 rule 8 | Accepted | 2026-11-08 |
 | [0055](0055-control-radius.md) | Controls, rows and tabs have 8px corners (`radius.md`); small non-control elements, buttons inside fields and the Checkbox box stay at 4px; containers nest around controls (Alert `lg`, overlays share `component.overlay.borderRadius`); chips are fully round; amends 0002, 0016 and 0020 | Accepted | 2026-11-08 | <!-- verify-docs-ignore: token names, not files -->
-| [0056](0056-dark-theme-exceptions.md) | The dark theme's exceptions: `text.on-fill` on coloured fills (step 800 in dark, states darken there for P2), `surface.overlay` for floating layers, a dark scrim and doubled shadows; amends 0048 and 0049 | Accepted | 2026-11-08 |
+| [0056](0056-one-set-of-colour-rules.md) | One set of colour rules for every theme: themes supply inputs (ramp, scrim, shadow strength) and rules derive solid fills, surfaces, inks and translucent fills, so semantic tokens read the same paths in light and dark; amends 0048, 0049 and 0054 | Accepted | 2026-11-08 |
 
 ## Template
 

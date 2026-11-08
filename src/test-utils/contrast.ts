@@ -3,8 +3,19 @@
  * jsdom doesn't lay out or paint, so jest-axe's colour-contrast rule can't check
  * rendered colours; tests use this to check the token pairs a component renders.
  */
-function relativeLuminance(hex: string): number {
-  const h = hex.replace('#', '')
+/**
+ * A colour as #rrggbb. Translucent colours (the alpha twins, decision 0056) are composited over
+ * white, the surface they're defined against, where each equals its solid step.
+ */
+export function opaque(color: string): string {
+  const rgba = color.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/)
+  if (!rgba) return color
+  const a = Number(rgba[4])
+  return `#${[1, 2, 3].map((i) => Math.round(a * Number(rgba[i]) + (1 - a) * 255).toString(16).padStart(2, '0')).join('')}`
+}
+
+function relativeLuminance(color: string): number {
+  const h = opaque(color).replace('#', '')
   const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
   const [r, g, b] = [0, 2, 4].map((i) => {
     const channel = parseInt(full.slice(i, i + 2), 16) / 255

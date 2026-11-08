@@ -76,7 +76,7 @@ Steps 800–1100 use the most chroma sRGB allows at their lightness ([decision 0
 Every ramp has a translucent twin (`gray-alpha`, `accent-alpha` and the rest) for overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds.
 
 - **`gray-alpha`** is `gray.1200` at the opacity that composites over white to the same step ([decision 0040](../foundation/decisions/0040-own-oklch-palette.md)).
-- **`gray-alpha-inverse`** is `gray.100`, the inverse end of the ramp, at `gray-alpha`'s opacity for each step: a translucent overlay on a dark or coloured fill, such as `fill.inverse-none-hover`. It's named by role, like `text.inverse`, so in the dark theme it's dark-based ([decision 0056](../foundation/decisions/0056-dark-theme-exceptions.md)).
+- **`gray-alpha-inverse`** is `gray.100`, the inverse end of the ramp, at `gray-alpha`'s opacity for each step: a translucent overlay on a dark or coloured fill, such as `fill.inverse-none-hover`. It's named by role, like `text.inverse`, so in the dark theme it's dark-based ([decision 0056](../foundation/decisions/0056-one-set-of-colour-rules.md)).
 - **Hue twins** are the smallest opacity, each with its own RGB, that composites over white to the solid step's exact hex ([decision 0044](../foundation/decisions/0044-hue-ramps.md)). Steps 800–1100 sit on the edge of sRGB, so most of their twins are opaque.
 
 ### Dark values
@@ -86,9 +86,21 @@ Dark mode keeps every ramp's names, and each step keeps its job ([decision 0054]
 - **The dark grey ramp** is a list of OKLCH lightness values. The page is near-black (`#0f0f0f`). The floors hold against the dark surfaces: 800 is at least 3:1 on 100, 200 and 300, and 1100 at least 4.5:1 on 100 to 500.
 - **Hue ramps** take each step's luminance from the dark grey step, as in light (0044). They keep the light ramp's hue and chroma, and only lightness moves. Chroma is capped where sRGB runs out.
 - **Alpha twins** composite over the dark page instead of white.
-- **Coloured fills** use the most saturated step where on-fill text meets 4.5:1. That's 800 in every role ramp, recorded as `fillStep` in the file ([#355](https://github.com/common-origin/common-origin-design-system/issues/355)).
+- **Alpha twins** composite over the dark page instead of white.
 
-The same script checks that the signed-off light ramps still follow the rule, and a unit test runs it with `--check`. The script then runs `npm run build:tokens`, because the `theme` modifier in `src/tokens/resolver.json` reads `dark.json` (with the semantic exceptions in `dark-semantic.json`) and writes the `[data-co-theme]` blocks in `tokens.css` ([#358](https://github.com/common-origin/common-origin-design-system/issues/358)). The docs site's `/preview/dark-palette` page shows the ramps and components in both themes.
+### Role tokens
+
+The semantic tier reads the same base paths in every theme. A theme supplies inputs (the grey ramp's lightness, the scrim opacity and the shadow strength, in `scripts/palette/params.mjs`), and the same rules derive the rest ([decision 0056](../foundation/decisions/0056-one-set-of-colour-rules.md)):
+
+| Token | Rule | Light | Dark |
+|---|---|---|---|
+| `{role}.solid` (accent, success, warning, serious, danger) | Full chroma where the light ink reads at secondary-text contrast (5.86:1) | step 1100 | generated, e.g. accent `#0058ae` |
+| `surface.page`, `raised`, `overlay` | Higher is lighter: the page, then the next lighter neutrals | `gray.100`, white, white | `gray.100`, `gray.200`, `gray.300` |
+| `ink.light`, `ink.dark` | The ends of the neutral ramp | `gray.100`, `gray.1200` | `gray.1200`, `gray.100` |
+| `opacity.scrim` | A theme parameter | 0.5 | 0.7 |
+| `shadow.*` | Black; the light opacities times the theme's strength | ×1 | ×2 |
+
+The script checks that the signed-off light ramps and role tokens still follow the rules, and a unit test runs it with `--check`. `npm run tokens:palette` writes `dark.json` and then runs `npm run build:tokens`, because the `theme` modifier in `src/tokens/resolver.json` reads it and writes the `[data-co-theme]` blocks in `tokens.css`. `modes.test.ts` fails if the theme overrides anything but base tokens. The docs site's `/preview/dark-palette` page shows the ramps and components in both themes.
 
 ### Other colour tokens
 

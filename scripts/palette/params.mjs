@@ -46,8 +46,17 @@ export const FULL_CHROMA_STEPS = ['800', '900', '1000', '1100']
 export const TEXT_CHROMA_SHARE = 0.6
 
 /**
- * Coloured fills that carry `on-fill` text (#355). In dark, each one uses its ramp's most saturated
- * step where on-fill text (dark gray.1200) still meets 4.5:1.
+ * Solid fills that carry a label (decision 0056): each role's `solid` sits where its label (the
+ * light ink) reads at the contrast secondary text has with the page in light, gray.1100 on gray.100.
+ * In light that is step 1100 itself; in dark it's a vivid mid-tone. Every hover and pressed state,
+ * which mixes the label in at 8% and 12%, then stays above 4.5:1.
  */
-export const FILL_RAMPS = ['accent', 'success', 'warning', 'serious', 'danger']
-export const FILL_TEXT_CONTRAST = 4.5
+export const SOLID_RAMPS = ['accent', 'success', 'warning', 'serious', 'danger']
+
+/**
+ * The two theme parameters that aren't ramps (owner rulings on #354 and #356): how strongly the
+ * scrim dims the page, and how strong shadows are. Shadows stay black (decision 0012); the light
+ * values in src/tokens/base/index.json are multiplied by the strength.
+ */
+export const SCRIM_OPACITY = { light: 0.5, dark: 0.7 }
+export const SHADOW_STRENGTH = { light: 1, dark: 2 }
