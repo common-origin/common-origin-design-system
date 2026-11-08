@@ -64,7 +64,8 @@ export const agentInputDocs: ComponentDocumentation = {
   name: 'AgentInput',
   description:
     'A chat-style input that grows from one line to six as the user types, with right-aligned in-field icon controls for voice capture and send, an optional soft character limit, live status feedback, an active listening ring around the mic button, and auto-submit on final transcripts.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
 
   props: [
     {

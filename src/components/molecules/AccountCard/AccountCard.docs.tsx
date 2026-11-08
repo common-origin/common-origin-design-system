@@ -7,7 +7,8 @@ export const accountCardDocs: ComponentDocumentation = {
   id: 'account-card',
   name: 'AccountCard',
   description: 'Feature-rich account card displaying account type, name, balance, trend indicator, and action buttons. Minimum 300x200px with elevation shadow and optional interactive states. Ideal for dashboard account overviews and financial summaries.',
-  category: 'Molecules',
+  category: 'Data display',
+  tier: 'Molecule',
   
   props: [
     {

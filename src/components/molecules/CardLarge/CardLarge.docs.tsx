@@ -5,7 +5,8 @@ export const cardLargeDocs: ComponentDocumentation = {
   id: 'cardlarge',
   name: 'CardLarge',
   description: 'Displays large card content with title, subtitle, labels, and cover image. Content-agnostic.',
-  category: 'Molecules',
+  category: 'Content',
+  tier: 'Molecule',
   props: [
     {
       name: 'title',

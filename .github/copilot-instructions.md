@@ -134,7 +134,7 @@ Then export the folder from the category's `index.ts` (for example `src/componen
 
 Key requirements for component documentation:
 - Export a `ComponentDocumentation` object (type from `src/lib/docgen/types.ts`)
-- Include all required fields: `id`, `name`, `description`, `category`, `props`, `tokens`, `examples`, `accessibility`, `anatomy`
+- Include all required fields: `id`, `name`, `description`, `category` (docs-site group, decision 0057), `tier`, `props`, `tokens`, `examples`, `accessibility`, `anatomy`
 - Each example needs both `code` (string) and `renderComponent` (function)
 - Stack and Typography components do NOT support `style` prop - use plain HTML elements when inline styles are needed
 - Check existing `.docs.tsx` files (Chip, Button, ProgressBar) for reference patterns

@@ -46,8 +46,8 @@ export const inputChipDocs: ComponentDocumentation = {
   name: 'InputChip',
   description:
     'A removable value, such as an applied filter, with an optional selected state (a checkmark, with the light-blue fill and blue text when enabled; disabled colours when disabled). The chip body is non-interactive. When onDismiss is provided, a close button lets the user remove the value. Announces as a status element to screen readers. Formerly FilterChip, which is now a deprecated alias (decision 0016).',
-  category: 'Atoms',
-  parentId: 'chip',
+  category: 'Inputs',
+  tier: 'Atom',
 
   props: [
     {
@@ -315,6 +315,7 @@ States:
   },
 
   notes: [
+    'One of four chip types, each grouped on the docs site by its job (decisions 0016 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
     'Renamed from FilterChip in 2.16 (decision 0016). In 3.0 the name FilterChip moved to the toggle chip (formerly BooleanChip), so replace FilterChip with InputChip before renaming BooleanChip to FilterChip.',
     'InputChip vs FilterChip: InputChip is a passive display element — its body is not clickable. It shows which filters are applied. FilterChip is a toggle control — the whole chip is clickable to turn a filter on or off.',
     'The close button aria-label is derived from children when children is a string (e.g. children="Status: Active" → aria-label="Remove Status: Active"). Use string children whenever the chip is dismissible to guarantee a meaningful label.',

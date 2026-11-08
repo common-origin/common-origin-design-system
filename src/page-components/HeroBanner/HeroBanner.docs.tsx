@@ -5,7 +5,8 @@ export const heroBannerDocs: ComponentDocumentation = {
   id: 'hero-banner',
   name: 'HeroBanner',
   description: 'Main hero banner organism that showcases the brand identity with video background, headline content, and navigation buttons. Features responsive grid layout and accessibility considerations.',
-  category: 'Organisms',
+  category: 'Content',
+  tier: 'Organism',
   
   // Props extracted with full type safety from HeroBannerProps interface
   props: [

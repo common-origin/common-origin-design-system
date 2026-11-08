@@ -5,7 +5,8 @@ export const footerDocs: ComponentDocumentation = {
   id: 'footer',
   name: 'Footer',
   description: 'Site footer organism that provides consistent branding and navigation. Features responsive layout with logo link and emphasizes brand identity.',
-  category: 'Organisms',
+  category: 'Navigation',
+  tier: 'Organism',
   
   // Props extracted with full type safety from FooterProps interface
   props: [

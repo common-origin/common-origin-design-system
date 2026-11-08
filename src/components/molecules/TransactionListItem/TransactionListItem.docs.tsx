@@ -7,7 +7,8 @@ export const transactionListItemDocs: ComponentDocumentation = {
   id: 'transaction-list-item',
   name: 'TransactionListItem',
   description: 'Comprehensive transaction list item displaying merchant info, amount, date, status, and metadata. Supports interactive states, a status label for pending and failed transactions (decision 0045), category labels and attachment indicators. Minimum height 72px with full keyboard accessibility.',
-  category: 'Molecules',
+  category: 'Data display',
+  tier: 'Molecule',
   
   props: [
     {

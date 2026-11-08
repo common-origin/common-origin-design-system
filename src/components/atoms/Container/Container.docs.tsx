@@ -7,7 +7,8 @@ export const containerDocs: ComponentDocumentation = {
   id: 'container',
   name: 'Container',
   description: 'A responsive layout component that provides consistent page widths with automatic centering and progressive enhancement. Implements mobile-first design principles with semantic spacing tokens and optimized content readability across all viewport sizes. WCAG 2.2 AA compliant with comprehensive accessibility testing and semantic HTML structure.',
-  category: 'Atoms',
+  category: 'Layout',
+  tier: 'Atom',
   
   // Props extracted with full type safety from ContainerProps interface
   props: [

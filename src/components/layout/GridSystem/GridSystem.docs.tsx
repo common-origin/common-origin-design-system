@@ -9,6 +9,7 @@ export const gridSystemDocs: ComponentDocumentation = {
   name: 'GridSystem',
   description: 'CSS Grid layout components: Grid (a fixed column grid, whose props are listed here), GridCol (a column that spans and reorders, per breakpoint) and ResponsiveGrid (a grid whose column count and gaps change per breakpoint). GridCol and ResponsiveGrid have their own pages below this one.',
   category: 'Layout',
+  tier: 'Layout',
   props: [
     { name: 'cols', type: 'number', required: false, default: '12', description: 'Number of equal columns' },
     { name: 'gap', type: "keyof Tokens['base']['dimension'] | 'auto'", required: false, default: 'undefined', description: 'Gap between rows and columns' },

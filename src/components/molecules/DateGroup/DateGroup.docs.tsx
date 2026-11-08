@@ -8,7 +8,8 @@ export const dateGroupDocs: ComponentDocumentation = {
   id: 'date-group',
   name: 'DateGroup',
   description: 'Groups related content under a formatted date header with optional total amount and item count. Commonly used for transaction lists, activity feeds, and chronological data. Supports sticky headers for scrollable lists.',
-  category: 'Molecules',
+  category: 'Data display',
+  tier: 'Molecule',
   
   props: [
     {

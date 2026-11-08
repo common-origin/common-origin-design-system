@@ -608,7 +608,8 @@ export const componentNameDocs: ComponentDocumentation = {
   id: 'component-name',
   name: 'Component Name',
   description: 'Brief description of what this component does and when to use it.',
-  category: 'Atoms', // or 'Molecules', 'Layout'
+  category: 'Inputs', // docs-site group by purpose (decision 0057)
+  tier: 'Atom', // 'Atom', 'Molecule', 'Organism' or 'Layout', matching the folder
   
   props: [
     {

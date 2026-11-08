@@ -8,6 +8,7 @@ export const gridColDocs: ComponentDocumentation = {
   name: 'GridCol',
   description: 'A column inside a Grid. It spans a number of the grid\'s columns and can change its span and order from each breakpoint up.',
   category: 'Layout',
+  tier: 'Layout',
   parentId: 'grid-system',
   props: [
     { name: 'span', type: 'number', required: false, default: 'undefined', description: 'Number of columns to span' },

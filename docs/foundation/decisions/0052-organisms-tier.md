@@ -1,6 +1,6 @@
 # 0052. An organisms tier for components that compose molecules into a region
 
-- **Status:** Accepted
+- **Status:** Accepted; point 1's docs-site grouping amended by [0057](0057-docs-groups-by-purpose.md)
 - **Date:** 2026-11-08
 - **Decided by:** Ollie (owner)
 - **Principles:** P4, P5, P7

@@ -67,7 +67,8 @@ export const sidebarNavDocs: ComponentDocumentation = {
   name: 'SidebarNav',
   description:
     'A product\'s sidebar navigation: a header (such as a WorkspaceSwitcher), a scrolling body of SidebarNavItems and SidebarNavSections, and a footer. It collapses to an icon rail, and one highlight glides to the row under the pointer or keyboard focus. Row heights follow density on the region around it; the width is a prop. On small screens, place it in a Sheet.',
-  category: 'Organisms',
+  category: 'Navigation',
+  tier: 'Organism',
 
   props: [
     { name: 'label', type: 'string', required: true, description: 'Names the navigation landmark, such as "Main"' },

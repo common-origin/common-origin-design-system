@@ -6,7 +6,8 @@ export const statusLabelDocs: ComponentDocumentation = {
   id: 'status-label',
   name: 'StatusLabel',
   description: 'Conveys the status of something, such as a transaction or task (decision 0018). Uses only the status colour tokens and always shows its text, with the status icon (or, at the small size, the status shape), so status is never conveyed by colour alone (decision 0045). Not interactive. Announces status changes through an ARIA live region. Replaces StatusBadge, removed in 3.0.',
-  category: 'Atoms',
+  category: 'Labels',
+  tier: 'Atom',
   
   props: [
     {

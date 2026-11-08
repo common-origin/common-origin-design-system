@@ -11,7 +11,8 @@ export const cardSmallDocs: ComponentDocumentation = {
   id: 'cardsmall',
   name: 'CardSmall',
   description: 'A small, content-agnostic card component with title, picture, subtitle, meta, and link. Features hover effects and responsive image handling.',
-  category: 'Molecules',
+  category: 'Content',
+  tier: 'Molecule',
   
   props: [
     {

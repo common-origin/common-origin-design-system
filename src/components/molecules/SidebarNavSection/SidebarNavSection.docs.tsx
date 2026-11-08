@@ -10,7 +10,8 @@ export const sidebarNavSectionDocs: ComponentDocumentation = {
   name: 'SidebarNavSection',
   description:
     'A labelled group of SidebarNavItems in a SidebarNav, such as a list of chats. Its label can be a disclosure that shows and hides the items, and it can carry one action, such as "New chat" or "Search". In the rail its label and action are hidden and a rule separates it from the section above.',
-  category: 'Molecules',
+  category: 'Navigation',
+  tier: 'Molecule',
 
   props: [
     { name: 'label', type: 'string', required: true, description: 'The section\'s visible label, which also names its list' },

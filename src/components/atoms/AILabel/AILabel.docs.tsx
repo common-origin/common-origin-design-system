@@ -15,7 +15,8 @@ export const aiLabelDocs: ComponentDocumentation = {
   name: 'AILabel',
   description:
     "Marks content an agent has proposed but the user hasn't accepted yet: the AI icon and a fixed label in the AI colour. \"Suggested\" for a change or addition, \"Will be removed\" for a removal. Place it on each changed item while AgentInput's review bar shows the proposal, and remove it when the proposal is accepted or discarded (decision 0046). AI is shown with its icon and a label, never colour alone (decision 0043).",
-  category: 'Atoms',
+  category: 'Labels',
+  tier: 'Atom',
 
   props: [
     {

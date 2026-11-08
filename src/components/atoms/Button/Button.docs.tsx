@@ -13,7 +13,8 @@ export const buttonDocs: ComponentDocumentation = {
   id: 'button',
   name: 'Button',
   description: 'Interactive button component with various styles, sizes, and states. Supports both button and link purposes for semantic flexibility. Includes icon support with automatic color inheritance and size scaling. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Actions',
+  tier: 'Atom',
   
   // Props extracted with full type safety from BaseButtonProps interface
   props: [

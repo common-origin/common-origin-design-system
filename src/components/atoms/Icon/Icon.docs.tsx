@@ -7,7 +7,8 @@ export const iconDocs: ComponentDocumentation = {
   id: 'icon',
   name: 'Icon',
   description: 'Displays SVG icons with consistent sizing and semantic color variants. Renders inline SVG elements using path data from icons.json for optimal performance and styling control. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Content',
+  tier: 'Atom',
   
   // Props extracted with full type safety from IconProps interface
   props: [

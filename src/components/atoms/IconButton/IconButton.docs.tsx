@@ -8,7 +8,8 @@ export const iconButtonDocs: ComponentDocumentation = {
   id: 'iconbutton',
   name: 'IconButton',
   description: 'A versatile interactive button component that displays only an icon with comprehensive accessibility support. Essential for space-efficient interfaces while maintaining full usability for all users. Features mandatory ARIA labeling, keyboard navigation, state management, and WCAG 2.2 AA compliance with automated accessibility testing.',
-  category: 'Atoms',
+  category: 'Actions',
+  tier: 'Atom',
   
   // Props extracted with full type safety from IconButtonProps interface
   props: [

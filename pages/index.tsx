@@ -28,7 +28,7 @@ export default function Home() {
     <>
       <Head>
         <title>Common Origin Design System</title>
-        <meta name="description" content="A production-ready design system with atomic components and WCAG 2.2 AA accessibility compliance" />
+        <meta name="description" content="A production-ready React design system: components and tokens built to WCAG 2.2 AA" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </Head>
       <CenteredContainer>
@@ -39,7 +39,7 @@ export default function Home() {
                 Common Origin Design System
               </Typography>
               <Typography variant="body" color="subdued">
-                A comprehensive design system with atomic components and WCAG 2.2 AA accessibility compliance
+                React components and design tokens, built to WCAG 2.2 AA
               </Typography>
             </Stack>
             

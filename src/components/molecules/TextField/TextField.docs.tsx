@@ -7,7 +7,8 @@ export const textFieldDocs: ComponentDocumentation = {
   id: 'text-field',
   name: 'TextField',
   description: 'A text input field with label, helper text, error messaging, and comprehensive accessibility support for form data entry.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
 
   props: [
     {

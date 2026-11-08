@@ -12,12 +12,14 @@ import {
   Layout,
   Navigation,
   Stack,
+  Tag,
   Typography,
 } from '../src/page-components'
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
 import tokens from '@/lib/cssTokens'
 import { DocsSidebar } from '../src/page-components/DocsSidebar'
+import { COMPONENT_GROUPS } from '@/lib/componentGroups'
 
 const { base: { breakpoint }, semantic: { color, border } } = tokens
 
@@ -111,7 +113,6 @@ const GuideLink = styled(Link)`
   }
 `
 
-const CATEGORY_ORDER: Array<ComponentData['category']> = ['Atoms', 'Molecules', 'Organisms', 'Layout', 'Components']
 
 
 const componentsData: ComponentData[] = staticComponentsData
@@ -128,18 +129,17 @@ export default function Components() {
     ? (requested as string)
     : sortedComponents[0]?.id || 'alert'
 
-  // Group components by category, in the defined order, leaving out empty categories
+  // Group components by purpose, in the defined order, leaving out empty groups (decision 0057).
+  // Within a group, pages are alphabetical and a child page follows its parent.
   const sidebarSections = useMemo(() => {
-    const groups: Record<string, ComponentData[]> = {}
-    for (const comp of sortedComponents) {
-      const cat = comp.category || 'Components'
-      if (!groups[cat]) groups[cat] = []
-      groups[cat].push(comp)
-    }
-    return CATEGORY_ORDER.filter((cat) => groups[cat]?.length).map((cat) => ({
-      label: cat,
-      items: groups[cat].map((comp) => ({ id: comp.id, label: comp.name, url: `/components?component=${comp.id}` })),
-    }))
+    const toItem = (comp: ComponentData) => ({ id: comp.id, label: comp.name, url: `/components?component=${comp.id}` })
+    return COMPONENT_GROUPS.map((group) => {
+      const inGroup = sortedComponents.filter((comp) => comp.category === group)
+      const ids = new Set(inGroup.map((comp) => comp.id))
+      const tops = inGroup.filter((comp) => !comp.parentId || !ids.has(comp.parentId))
+      const ordered = tops.flatMap((parent) => [parent, ...inGroup.filter((comp) => comp.parentId === parent.id)])
+      return { label: group, items: ordered.map(toItem) }
+    }).filter((section) => section.items.length > 0)
   }, [sortedComponents])
 
   // The page is prerendered without its query, so wait for the router rather than flash the first
@@ -368,7 +368,11 @@ export default function Components() {
                     <Box my="4xl">
                       <Stack gap="sm">
                         <Typography variant="h1">{activeComponentData.name}</Typography>
-                        <Chip title={activeComponentData.category} variant="default" />
+                        {/* Group and tier are neutral metadata, so they're Tags (decisions 0018, 0057) */}
+                        <Stack direction="row" gap="xs" wrap>
+                          <Tag>{activeComponentData.category}</Tag>
+                          <Tag>{activeComponentData.tier}</Tag>
+                        </Stack>
                       </Stack>
                       <Box mt="md">
                         <Typography variant="body" color="emphasis">

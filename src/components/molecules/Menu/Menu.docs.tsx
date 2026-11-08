@@ -62,7 +62,8 @@ export const menuDocs: ComponentDocumentation = {
   name: 'Menu',
   description:
     'A menu of actions and choices that opens from a button, following the WAI-ARIA menu button pattern. Items are actions, one-of-a-set choices (radio) or on/off options (checkbox), grouped and separated. It renders in the browser\'s top layer, so no scrolling container clips it. For choosing a form value, use Dropdown.',
-  category: 'Molecules',
+  category: 'Actions',
+  tier: 'Molecule',
 
   props: [
     { name: 'trigger', type: 'ReactElement', required: true, description: 'The element that opens the menu, such as a Button or IconButton. It gets aria-haspopup, aria-expanded and aria-controls, and names the menu. It can be wrapped in a Tooltip.' },

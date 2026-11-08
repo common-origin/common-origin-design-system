@@ -8,7 +8,8 @@ export const boxDocs: ComponentDocumentation = {
   id: 'box',
   name: 'Box',
   description: 'Comprehensive utility component providing low-level styling primitives. Supports flexbox layout, spacing, positioning, borders, and more using design tokens. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Layout',
+  tier: 'Atom',
   
   // Props extracted with full type safety from BoxProps interface
   props: [

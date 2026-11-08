@@ -8,7 +8,8 @@ export const pictureDocs: ComponentDocumentation = {
   id: 'picture',
   name: 'Picture',
   description: 'Responsive image component for displaying images with optional click interactions. Framework-agnostic and suitable for any React application. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Content',
+  tier: 'Atom',
   
   props: [
     {

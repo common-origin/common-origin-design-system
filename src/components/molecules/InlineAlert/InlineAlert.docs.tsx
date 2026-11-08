@@ -22,7 +22,8 @@ export const inlineAlertDocs: ComponentDocumentation = {
   name: 'InlineAlert',
   description:
     'A short, local message that sits next to what it is about: between paragraphs, below a field or in a table cell (decision 0019). A severity icon and text in the severity colour, with no background or border. It replaces Alert\'s deprecated inline prop. For a title, an action or a dismiss button, use Alert.',
-  category: 'Molecules',
+  category: 'Feedback',
+  tier: 'Molecule',
   parentId: 'alert',
 
   props: [

@@ -5,7 +5,8 @@ export const sliderDocs: ComponentDocumentation = {
   id: 'slider',
   name: 'Slider',
   description: 'An accessible slider component for selecting single values or ranges with keyboard, mouse, touch and pen support',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
   
   props: [
     {

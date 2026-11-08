@@ -5,7 +5,8 @@ export const numberInputDocs: ComponentDocumentation = {
   id: 'number-input',
   name: 'NumberInput',
   description: 'A numeric input field with stepper buttons for incrementing and decrementing values, with full WCAG 2.2 AA compliance.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
   
   props: [
     {

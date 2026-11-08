@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { ComponentDocumentation } from './docgen/types'
+import { ComponentDocumentation, ComponentGroup, ComponentTier } from './docgen/types'
 
 // Import all documentation files (mix of default and named exports)
 import { alertDocs } from '@/components/molecules/Alert/Alert.docs'
@@ -65,7 +65,8 @@ export interface ComponentData {
   id: string
   name: string
   description: string
-  category: 'Atoms' | 'Molecules' | 'Organisms' | 'Layout' | 'Components'
+  category: ComponentGroup
+  tier: ComponentTier
   parentId?: string
   props: Array<{
     name: string
@@ -108,7 +109,8 @@ function convertDocumentationToLegacyFormat(docs: ComponentDocumentation): Compo
     id: docs.id,
     name: docs.name,
     description: docs.description,
-    category: docs.category as 'Atoms' | 'Molecules' | 'Organisms' | 'Layout' | 'Components',
+    category: docs.category,
+    tier: docs.tier,
     parentId: docs.parentId,
     props: (docs.props || []).map(prop => ({
       name: prop.name,

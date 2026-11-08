@@ -7,7 +7,8 @@ export const checkboxDocs: ComponentDocumentation = {
   name: 'Checkbox',
   description:
     'A binary selection input component with integrated label, helper text, and error messaging. Supports indeterminate state for "select all" scenarios.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
 
   props: [
     {

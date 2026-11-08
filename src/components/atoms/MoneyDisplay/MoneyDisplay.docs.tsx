@@ -7,7 +7,8 @@ export const moneyDisplayDocs: ComponentDocumentation = {
   id: 'money-display',
   name: 'MoneyDisplay',
   description: 'Displays monetary amounts with locale-aware currency formatting (Intl.NumberFormat). A signed amount carries its sign as text, + or − (a true minus, U+2212), so the sign survives copying and is read as plus or minus; the success or danger colour repeats it, and colour is never the only cue (decision 0045).',
-  category: 'Atoms',
+  category: 'Data display',
+  tier: 'Atom',
   
   props: [
     {
