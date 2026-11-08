@@ -10,7 +10,7 @@ Colour is split by **property**: what the colour is painted on.
 
 | Property | Painted on | Neutral tokens | Role tokens |
 |---|---|---|---|
-| `color.text` | Text | `default`, `muted`, `disabled`, `inverse` | `accent`, `danger`, `serious`, `warning`, `success`, `ai` |
+| `color.text` | Text | `default`, `muted`, `disabled`, `inverse`, `on-fill` | `accent`, `danger`, `serious`, `warning`, `success`, `ai` |
 | `color.icon` | Icons and other foreground marks | the same as text | the same as text |
 | `color.border` | Edges and outlines | `default` (dividers), `input` and `input-hover` (control edges), `focus`, `none` | `accent`, `danger`, `serious`, `warning`, `success`, `ai` |
 | `color.fill` | The backgrounds of controls and indicators | `default`, `muted`, `emphasis`, `inverse`, `disabled`, `none` | `accent`, `danger`, `serious`, `warning`, `success`, each with `-muted`, and `ai-muted` |
@@ -21,7 +21,7 @@ Colour is split by **property**: what the colour is painted on.
 - **Text and icons have two levels: primary (`default`) and secondary (`muted`).** Emphasis comes from weight and scale, never a darker colour ([decision 0048](../foundation/decisions/0048-emphasis-leaves-the-colour-tokens.md)).
 - **Neutral controls step along the fill ladder:** `fill.default`, `fill.default-hover`, `fill.default-pressed`. Every state has a different value.
 - **A control with no fill at rest** uses `none`. On the page or a raised surface, it steps onto the ladder: `default` on hover and `default-hover` on press, as the naked Button does. Over a tinted or image background, it uses the translucent `none-hover` and `none-pressed` instead, so the tint works on any surface (for example a chip's close button).
-- **Solid fills that carry text** (`fill.emphasis`, `fill.accent`, `fill.danger` and the other role fills) sit on step 1200 or 1100, so white text reads at 4.5:1 or more. They have no darker steps to move to, so hover and pressed mix `text.inverse` into the fill at `opacity.state.hover` and `opacity.state.pressed` (8% and 12%), as Material 3's state layers do ([decision 0048](../foundation/decisions/0048-emphasis-leaves-the-colour-tokens.md)). They get slightly lighter.
+- **Solid fills that carry text** (`fill.emphasis`, `fill.accent`, `fill.danger` and the other role fills) sit on step 1200 or 1100, so light text reads at 4.5:1 or more: `text.inverse` on the emphasis and inverse fills, `text.on-fill` on the role fills. They have no darker steps to move to, so hover and pressed mix that text colour into the fill at `opacity.state.hover` and `opacity.state.pressed` (8% and 12%), as Material 3's state layers do ([decision 0048](../foundation/decisions/0048-emphasis-leaves-the-colour-tokens.md)). They get slightly lighter. In the dark theme the role fills move to step 800, the most saturated step where `text.on-fill` still reads at 4.5:1, and their states mix in `text.inverse` (dark there), so they darken rather than lighten ([decision 0056](../foundation/decisions/0056-dark-theme-exceptions.md)).
 - **Role text and icons are step 1100 of their ramp** (about 6:1), and keep one colour in every state: a selected item's fill shows hover and pressed. Role borders are step 800 (3:1 or more). Role tints (`-muted`) follow the fill ladder from 300, so they're quiet: alerts and selected items read by their border, icon and text.
 - **A control's edge is `border.input`** (at least 3:1). `border.default` is for dividers and decorative outlines only, and never marks a control ([decision 0025](../foundation/decisions/0025-control-borders-meet-3-to-1.md)).
 - **There is one focus ring,** `border.focus`. It's near-black, never blue ([decision 0029](../foundation/decisions/0029-accent-emphasis-audit.md)).
@@ -54,8 +54,9 @@ Every series also has a legend or a direct label. Positive green and categorical
 `surface.*` holds the ordered backgrounds that content sits on ([decision 0031](../foundation/decisions/0031-semantic-token-grammar.md)):
 
 - `surface.base` is the page, the off-white everything sits on ([decision 0006](../foundation/decisions/0006-page-background.md)).
-- `surface.raised` is white content on the page: cards, inputs, sheets and dialogs.
-- `surface.scrim` is the backdrop behind a modal.
+- `surface.raised` is white content on the page: cards, inputs and code blocks.
+- `surface.overlay` is a floating layer above raised content: menus, dropdown lists, action sheets, modals and sheets. It's white in light, the same as raised, and one step lighter than raised in the dark theme ([decision 0056](../foundation/decisions/0056-dark-theme-exceptions.md)).
+- `surface.scrim` is the backdrop behind a modal. It stays dark in both themes.
 
 A surface pairs with an `elevation` token. `sunken` and `overlay` surfaces join only when something needs them ([P4](../foundation/principles.md#p4-earn-its-place)). Surfaces are for areas; the backgrounds of controls are `color.fill`.
 

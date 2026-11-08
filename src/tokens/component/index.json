@@ -127,7 +127,7 @@
             "$description": "Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016)."
           },
           "textColor": {
-            "$value": "{semantic.color.text.inverse}",
+            "$value": "{semantic.color.text.on-fill}",
             "$description": "Text and icon colour on the accent Button."
           },
           "hover": {
@@ -159,7 +159,7 @@
             "$description": "Danger Button fill at rest, for destructive actions."
           },
           "textColor": {
-            "$value": "{semantic.color.text.inverse}",
+            "$value": "{semantic.color.text.on-fill}",
             "$description": "Text and icon colour on the danger Button."
           },
           "hover": {

@@ -113,7 +113,8 @@ const DropdownMenu = styled.div.withConfig({
   left: 0;
   right: 0;
   z-index: ${tokens.semantic.layer.dropdown};
-  background-color: ${input.default.backgroundColor};
+  /* A floating layer: one step above raised content in the dark theme (issue 356) */
+  background-color: ${tokens.semantic.surface.overlay};
   /* A decorative outline: elevation separates the menu, and only the trigger is a control edge (decision 0025) */
   border: ${border.default};
   /* The panel radius Menu and SearchField share, not the control token (decision 0055) */

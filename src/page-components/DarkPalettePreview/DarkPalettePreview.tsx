@@ -208,8 +208,7 @@ export function DarkPalettePreview() {
         <section>
           <Typography variant="h3">Components</Typography>
           <Typography variant="body" color="subdued">
-            The dark region is data-co-theme="dark" from tokens.css (#358): the dark base ramps, with raised surfaces on gray.200. Not applied yet: on-fill text (#355), so accent, danger and checked controls still use
-            text.inverse and show dark labels; the overlay surface, scrim and stronger shadows (#354, #356); and the semantic literals (#354).
+            The dark region is data-co-theme="dark" from tokens.css: the dark ramps, with the exceptions from decision 0056 (on-fill text on step-800 fills, raised and overlay surfaces, a dark scrim and stronger shadows).
           </Typography>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 24, marginTop: 16 }}>
             <Components theme="light" />

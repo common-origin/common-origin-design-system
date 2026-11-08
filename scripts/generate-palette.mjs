@@ -105,6 +105,19 @@ const composite = (rgba, surface) => {
   return [r, g, b].map((c, k) => Math.round(a * c + (1 - a) * s[k]))
 }
 
+/**
+ * gray-alpha-inverse (#354): the inverse end of the grey ramp (gray.100) at gray-alpha's opacity for
+ * each step, named by role like text.inverse, so it's dark-based in the dark theme.
+ */
+const opacityOf = (rgba) => rgba.match(/[\d.]+/g)[3]
+const inverseAlpha = (gray100) =>
+  Object.fromEntries(
+    STEPS.map((step) => {
+      const [r, g, b] = rgb255(gray100)
+      return [step, `rgba(${r}, ${g}, ${b}, ${opacityOf(base['gray-alpha'][step].$value)})`]
+    })
+  )
+
 // --- Light check -------------------------------------------------------------------------------
 
 const LIGHT_DISTANCE = 0.005
@@ -128,6 +141,11 @@ function checkLight() {
       }
     }
   }
+  const expected = inverseAlpha(base.gray['100'].$value)
+  for (const step of STEPS) {
+    const signed = base['gray-alpha-inverse']?.[step]?.$value
+    if (signed !== expected[step]) problems.push(`gray-alpha-inverse.${step} is ${signed}, but the rule gives ${expected[step]}`)
+  }
   return problems
 }
 
@@ -138,7 +156,7 @@ function checkLight() {
 function checkDark(ramps) {
   const problems = []
   const page = ramps.gray['100'].$value
-  for (const ramp of Object.keys(ramps).filter((name) => !name.endsWith('-alpha'))) {
+  for (const ramp of ['gray', ...Object.keys(HUES)]) {
     for (const s of STEPS) {
       const solid = ramps[ramp][s].$value
       const twin = ramps[`${ramp}-alpha`][s].$value
@@ -186,6 +204,13 @@ function darkRamps() {
       ])
     )
   }
+  const darkInverse = inverseAlpha(page)
+  out['gray-alpha-inverse'] = Object.fromEntries(
+    STEPS.map((step) => [
+      step,
+      { $value: darkInverse[step], $description: `${job('gray', step)} The dark page's grey at gray-alpha.${step}'s opacity.` },
+    ])
+  )
   // The most saturated step where on-fill text still meets 4.5:1 (#355)
   for (const ramp of FILL_RAMPS) {
     const candidates = STEPS.filter((step) => color.contrast(ramps[ramp][step], onFill) >= FILL_TEXT_CONTRAST)

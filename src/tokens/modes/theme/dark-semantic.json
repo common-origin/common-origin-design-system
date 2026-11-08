@@ -1,10 +1,104 @@
 {
-  "$description": "Semantic exceptions for the dark theme (decision 0054): the few tokens whose reference changes in dark, beside the generated base values in dark.json. #354, #355 and #356 add theirs here.",
+  "$description": "Exceptions for the dark theme (decision 0054), beside the generated base values in dark.json: the semantic tokens whose reference changes in dark, and the stronger shadows (#354, #355, #356). Hand-written; modes.test.ts checks the theme changes only colour and shadow.",
+  "base": {
+    "shadow": {
+      "1": {
+        "$value": "0 1px 2px 0 rgba(0, 0, 0, 0.1)",
+        "$description": "Twice the light opacity: shadows barely show on the dark page (#356)."
+      },
+      "2": {
+        "$value": "0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.12)",
+        "$description": "Twice the light opacity (#356)."
+      },
+      "3": {
+        "$value": "0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12)",
+        "$description": "Twice the light opacity (#356)."
+      },
+      "4": {
+        "$value": "0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1)",
+        "$description": "Twice the light opacity (#356)."
+      },
+      "5": {
+        "$value": "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.08)",
+        "$description": "Twice the light opacity (#356)."
+      },
+      "6": {
+        "$value": "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+        "$description": "Twice the light opacity (#356)."
+      }
+    }
+  },
   "semantic": {
+    "color": {
+      "text": {
+        "on-fill": {
+          "$value": "{base.color.gray.1200}",
+          "$description": "Light in dark too: the near-white end of the dark ramp (#355)."
+        }
+      },
+      "icon": {
+        "on-fill": {
+          "$value": "{base.color.gray.1200}",
+          "$description": "Light in dark too, matching text.on-fill (#355)."
+        }
+      },
+      "fill": {
+        "accent": {
+          "$value": "{base.color.accent.800}",
+          "$description": "The most saturated step where text.on-fill meets 4.5:1 in dark (#355; fillStep in dark.json)."
+        },
+        "danger": {
+          "$value": "{base.color.danger.800}",
+          "$description": "The most saturated step where text.on-fill meets 4.5:1 in dark (#355; fillStep in dark.json)."
+        },
+        "success": {
+          "$value": "{base.color.success.800}",
+          "$description": "The most saturated step where text.on-fill meets 4.5:1 in dark (#355; fillStep in dark.json)."
+        },
+        "warning": {
+          "$value": "{base.color.warning.800}",
+          "$description": "The most saturated step where text.on-fill meets 4.5:1 in dark (#355; fillStep in dark.json)."
+        },
+        "serious": {
+          "$value": "{base.color.serious.800}",
+          "$description": "The most saturated step where text.on-fill meets 4.5:1 in dark (#355; fillStep in dark.json)."
+        },
+        "accent-hover": {
+          "$value": "color-mix(in srgb, {semantic.color.fill.accent}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
+          "$description": "Darkens in dark: mixing in the light on-fill colour would take on-fill text below 4.5:1 on a fill that starts at 4.6:1, so the state mixes in text.inverse, which is dark here (P2 over #355's 'lighten in both themes')."
+        },
+        "accent-pressed": {
+          "$value": "color-mix(in srgb, {semantic.color.fill.accent}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
+          "$description": "Darkens in dark: mixing in the light on-fill colour would take on-fill text below 4.5:1 on a fill that starts at 4.6:1, so the state mixes in text.inverse, which is dark here (P2 over #355's 'lighten in both themes')."
+        },
+        "danger-hover": {
+          "$value": "color-mix(in srgb, {semantic.color.fill.danger}, {semantic.color.text.inverse} calc({semantic.opacity.state.hover} * 100%))",
+          "$description": "Darkens in dark: mixing in the light on-fill colour would take on-fill text below 4.5:1 on a fill that starts at 4.6:1, so the state mixes in text.inverse, which is dark here (P2 over #355's 'lighten in both themes')."
+        },
+        "danger-pressed": {
+          "$value": "color-mix(in srgb, {semantic.color.fill.danger}, {semantic.color.text.inverse} calc({semantic.opacity.state.pressed} * 100%))",
+          "$description": "Darkens in dark: mixing in the light on-fill colour would take on-fill text below 4.5:1 on a fill that starts at 4.6:1, so the state mixes in text.inverse, which is dark here (P2 over #355's 'lighten in both themes')."
+        }
+      }
+    },
+    "elevation": {
+      "inset": {
+        "$value": "inset 0 2px 4px 0 rgba(0, 0, 0, 0.12)",
+        "$description": "Twice the light opacity (#356)."
+      }
+    },
     "surface": {
       "raised": {
         "$value": "{base.color.gray.200}",
         "$description": "Raised surfaces sit one step above the dark page (#356). In light this is white, which has no dark counterpart (decision 0049)."
+      },
+      "overlay": {
+        "$value": "{base.color.gray.300}",
+        "$description": "Floating layers sit one step above raised in dark (#356)."
+      },
+      "scrim": {
+        "$value": "{base.color.gray-alpha-inverse.1100}",
+        "$description": "The scrim stays dark in dark, and stronger, so the page recedes (#354): the inverse alpha ramp is dark-based here."
       }
     }
   }

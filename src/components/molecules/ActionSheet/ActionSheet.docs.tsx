@@ -309,7 +309,7 @@ export const actionSheetDocs: ComponentDocumentation = {
   
   tokens: [
     'semantic.layer.modal',
-    'semantic.surface.raised',
+    'semantic.surface.overlay',
     'semantic.color.fill.muted',
     'semantic.color.border.default',
     'semantic.color.text.default',
@@ -482,7 +482,7 @@ const actions = [
         name: 'Sheet Container',
         description: 'Bottom-aligned container that slides up on open and fades out on close',
         tokens: [
-          'semantic.surface.raised',
+          'semantic.surface.overlay',
           'component.overlay.borderRadius',
           'semantic.elevation.overlay'
         ]

@@ -157,6 +157,34 @@ describe('theme (#358)', () => {
     }
   })
 
+  // color-mix(in srgb, A, B calc(N * 100%)) with resolved hex values, as the state tokens use (0048)
+  const mixed = (value: string) => {
+    const m = value.match(/^color-mix\(in srgb, (#[0-9a-f]{6}), (#[0-9a-f]{6}) calc\(([\d.]+) \* 100%\)\)$/)
+    if (!m) return value
+    const [a, b, t] = [m[1], m[2], Number(m[3])]
+    const channel = (hexValue: string, i: number) => parseInt(hexValue.slice(1 + i * 2, 3 + i * 2), 16)
+    return `#${[0, 1, 2].map((i) => Math.round(channel(a, i) * (1 - t) + channel(b, i) * t).toString(16).padStart(2, '0')).join('')}`
+  }
+
+  it('keeps on-fill text at 4.5:1 or more on every coloured fill and its states (#355)', () => {
+    const onFill = hex('--co-semantic-color-text-on-fill')
+    const fills = ['accent', 'accent-hover', 'accent-pressed', 'danger', 'danger-hover', 'danger-pressed', 'success', 'warning', 'serious']
+    const low = fills
+      .map((fill) => [fill, contrast(onFill, mixed(hex(`--co-semantic-color-fill-${fill}`)))] as const)
+      .filter(([, ratio]) => ratio < 4.5)
+    expect(low).toEqual([])
+  })
+
+  it('keeps inverse text at 4.5:1 or more on the emphasis fill', () => {
+    expect(contrast(hex('--co-semantic-color-text-inverse'), hex('--co-semantic-color-fill-emphasis'))).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('layers the dark surfaces: page, then raised, then overlay (#356)', () => {
+    const [page, raised, overlay] = ['base', 'raised', 'overlay'].map((s) => luminance(hex(`--co-semantic-surface-${s}`)))
+    expect(raised).toBeGreaterThan(page)
+    expect(overlay).toBeGreaterThan(raised)
+  })
+
   it('makes raised surfaces lighter than the dark page (#356)', () => {
     expect(luminance(hex('--co-semantic-surface-raised'))).toBeGreaterThan(luminance(hex('--co-semantic-surface-base')))
   })

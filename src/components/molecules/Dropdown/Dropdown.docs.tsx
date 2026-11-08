@@ -93,6 +93,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'semantic.size.control.lg', // Minimum height (decision 0034)
     'semantic.space.inset.lg',
     'component.input.default.backgroundColor',
+    'semantic.surface.overlay',
     'component.input.default.borderWidth',
     'component.input.default.borderColor',
     'component.input.default.borderRadius',

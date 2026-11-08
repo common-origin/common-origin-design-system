@@ -423,6 +423,57 @@
           "$description": "Primary text, and the darkest step. Composites to gray.1200 over white."
         }
       },
+      "gray-alpha-inverse": {
+        "$description": "Alpha twins of the inverse end of the grey ramp, named by role like text.inverse: gray.100 at gray-alpha's opacity for each step, so a translucent overlay on a dark or coloured fill (issue 354). In the dark theme the inverse end is dark, so this ramp is too (decision 0054).",
+        "100": {
+          "$value": "rgba(252, 252, 252, 0.014)",
+          "$description": "Page background. gray.100 at gray-alpha.100's opacity."
+        },
+        "200": {
+          "$value": "rgba(252, 252, 252, 0.027)",
+          "$description": "Subtle background. gray.100 at gray-alpha.200's opacity."
+        },
+        "300": {
+          "$value": "rgba(252, 252, 252, 0.059)",
+          "$description": "Component fill at rest. gray.100 at gray-alpha.300's opacity."
+        },
+        "400": {
+          "$value": "rgba(252, 252, 252, 0.09)",
+          "$description": "Component fill on hover. gray.100 at gray-alpha.400's opacity."
+        },
+        "500": {
+          "$value": "rgba(252, 252, 252, 0.122)",
+          "$description": "Component fill pressed or selected. gray.100 at gray-alpha.500's opacity."
+        },
+        "600": {
+          "$value": "rgba(252, 252, 252, 0.158)",
+          "$description": "Subtle border. gray.100 at gray-alpha.600's opacity."
+        },
+        "700": {
+          "$value": "rgba(252, 252, 252, 0.208)",
+          "$description": "Default border, for dividers and decorative outlines. gray.100 at gray-alpha.700's opacity."
+        },
+        "800": {
+          "$value": "rgba(252, 252, 252, 0.502)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). gray.100 at gray-alpha.800's opacity."
+        },
+        "900": {
+          "$value": "rgba(252, 252, 252, 0.557)",
+          "$description": "Solid fill. gray.100 at gray-alpha.900's opacity."
+        },
+        "1000": {
+          "$value": "rgba(252, 252, 252, 0.606)",
+          "$description": "Solid fill on hover. gray.100 at gray-alpha.1000's opacity."
+        },
+        "1100": {
+          "$value": "rgba(252, 252, 252, 0.706)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. gray.100 at gray-alpha.1100's opacity."
+        },
+        "1200": {
+          "$value": "rgba(252, 252, 252, 1)",
+          "$description": "Primary text, and the darkest step. gray.100 at gray-alpha.1200's opacity."
+        }
+      },
       "accent": {
         "$description": "Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044).",
         "100": {

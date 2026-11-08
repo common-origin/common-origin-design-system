@@ -184,7 +184,7 @@ export const modalDocs: ComponentDocumentation = {
     'semantic.elevation.overlay',
     // Background
     'semantic.surface.scrim',
-    'semantic.surface.raised',
+    'semantic.surface.overlay',
     'semantic.color.fill.muted',
     // Border
     'component.overlay.borderRadius',
@@ -307,7 +307,7 @@ export const modalDocs: ComponentDocumentation = {
     screenReader:
       'Announced as a dialog with the title as its label. Actions are rendered as standard Button components with visible labels.',
     colorContrast:
-      'Inherits contrast from Typography and Button atoms. Overlay uses a 50 % opacity near-black backdrop (semantic.surface.scrim).',
+      'Inherits contrast from Typography and Button atoms. Overlay uses a dark backdrop, dark in both themes (semantic.surface.scrim).',
     focusManagement:
       'On open, focus moves to the dialog container. On close, focus returns to the element that triggered the modal.',
   },
@@ -341,7 +341,7 @@ export const modalDocs: ComponentDocumentation = {
       {
         name: 'Dialog',
         description: 'Centred panel containing header, body, and footer. Sized by the size prop.',
-        tokens: ['semantic.surface.raised', 'semantic.elevation.overlay', 'component.overlay.borderRadius'],
+        tokens: ['semantic.surface.overlay', 'semantic.elevation.overlay', 'component.overlay.borderRadius'],
       },
       {
         name: 'Header',

@@ -103,7 +103,7 @@ export const searchFieldDocs: ComponentDocumentation = {
     'semantic.layer.dropdown',
     'semantic.space.200',
     'semantic.space.300',
-    'semantic.surface.raised',
+    'semantic.surface.overlay',
     'semantic.color.fill.muted',
     'semantic.color.fill.accent-muted',
     'semantic.color.border.default',
@@ -448,7 +448,7 @@ useEffect(() => {
         name: 'Suggestions Listbox',
         description: 'Dropdown container with scrollable list of suggestions',
         tokens: [
-          'semantic.surface.raised',
+          'semantic.surface.overlay',
           'semantic.color.border.default',
           'semantic.radius.md',
           'semantic.elevation.floating'

@@ -96,7 +96,7 @@ const Panel = styled.div.withConfig({
   max-height: ${size.menu.maxHeight};
   overflow-y: auto;
   padding: ${space[100]} 0;
-  background-color: ${semantic.surface.raised};
+  background-color: ${semantic.surface.overlay};
   color: ${color.text.default};
   border: ${border.default};
   border-radius: ${radius.md};

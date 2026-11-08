@@ -37,7 +37,7 @@ export const badgeDocs: ComponentDocumentation = {
       type: '"default" | "accent"',
       required: false,
       default: '"default"',
-      description: 'Visual style. A badge means new or unread items (decision 0045): "accent" is the blue highlight and "default" the near-black count. A badge\'s colour alone can\'t carry a status, so a count of items with a status uses StatusLabel ("3 failed").'
+      description: 'Visual style. A badge means new or unread items (decision 0045): "accent" is the blue highlight and "default" the count on the strongest neutral fill. A badge\'s colour alone can\'t carry a status, so a count of items with a status uses StatusLabel ("3 failed").'
     },
     {
       name: 'dot',
@@ -74,6 +74,7 @@ export const badgeDocs: ComponentDocumentation = {
     'semantic.color.fill.emphasis',
     'semantic.color.fill.accent',
     'semantic.color.text.inverse',
+    'semantic.color.text.on-fill',
     'semantic.surface.base',
     
     // Typography (count text)
@@ -292,6 +293,7 @@ export const badgeDocs: ComponentDocumentation = {
         tokens: [
           'semantic.color.fill.emphasis',
           'semantic.color.text.inverse',
+    'semantic.color.text.on-fill',
           'semantic.radius.full',
           'component.badge.dot.size',
           'component.badge.count.minWidth',

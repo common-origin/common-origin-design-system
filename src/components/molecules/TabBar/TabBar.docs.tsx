@@ -78,7 +78,7 @@ export const tabBarDocs: ComponentDocumentation = {
     'component.tabBar.badge.typography',
     'component.tabBar.badge.fontWeight',
     'semantic.radius.full',
-    'semantic.color.text.inverse'
+    'semantic.color.text.on-fill'
   ],
 
   examples: [
@@ -381,7 +381,7 @@ return (
         description: 'Optional circular badge displaying notification or item count. Positioned inline after tab label. Shows "99+" for values over 99. Has aria-label for accessibility.',
         tokens: [
           'semantic.color.fill.accent',
-          'semantic.color.text.inverse',
+          'semantic.color.text.on-fill',
           'semantic.radius.full',
           'component.tabBar.badge.typography',
           'component.tabBar.badge.fontWeight'

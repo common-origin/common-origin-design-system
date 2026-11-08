@@ -15,7 +15,7 @@ export interface TagProps {
   children: React.ReactNode
   
   /**
-   * Visual variant. Tag is neutral metadata: use `default`, or `emphasis` (near-black) to make a
+   * Visual variant. Tag is neutral metadata: use `default`, or `emphasis` (the strongest neutral fill) to make a
    * tag stand out. For a status, use `StatusLabel` (decision 0029).
    * @default 'default'
    */

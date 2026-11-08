@@ -66,6 +66,7 @@ export type BackgroundPath =
 export const backgroundByPath: Record<BackgroundPath, string> = {
   'surface.base': surface.base,
   'surface.raised': surface.raised,
+  'surface.overlay': surface.overlay,
   'surface.scrim': surface.scrim,
   'color.fill.emphasis': color.fill.emphasis,
   'color.fill.muted': color.fill.muted,

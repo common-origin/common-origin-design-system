@@ -1131,6 +1131,56 @@
           "$value": "rgba(255, 236, 253, 0.971)",
           "$description": "Primary text, and the darkest step. Composites to magenta.1200 over the dark page."
         }
+      },
+      "gray-alpha-inverse": {
+        "100": {
+          "$value": "rgba(15, 15, 15, 0.014)",
+          "$description": "Page background. The dark page's grey at gray-alpha.100's opacity."
+        },
+        "200": {
+          "$value": "rgba(15, 15, 15, 0.027)",
+          "$description": "Subtle background. The dark page's grey at gray-alpha.200's opacity."
+        },
+        "300": {
+          "$value": "rgba(15, 15, 15, 0.059)",
+          "$description": "Component fill at rest. The dark page's grey at gray-alpha.300's opacity."
+        },
+        "400": {
+          "$value": "rgba(15, 15, 15, 0.09)",
+          "$description": "Component fill on hover. The dark page's grey at gray-alpha.400's opacity."
+        },
+        "500": {
+          "$value": "rgba(15, 15, 15, 0.122)",
+          "$description": "Component fill pressed or selected. The dark page's grey at gray-alpha.500's opacity."
+        },
+        "600": {
+          "$value": "rgba(15, 15, 15, 0.158)",
+          "$description": "Subtle border. The dark page's grey at gray-alpha.600's opacity."
+        },
+        "700": {
+          "$value": "rgba(15, 15, 15, 0.208)",
+          "$description": "Default border, for dividers and decorative outlines. The dark page's grey at gray-alpha.700's opacity."
+        },
+        "800": {
+          "$value": "rgba(15, 15, 15, 0.502)",
+          "$description": "Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). The dark page's grey at gray-alpha.800's opacity."
+        },
+        "900": {
+          "$value": "rgba(15, 15, 15, 0.557)",
+          "$description": "Solid fill. The dark page's grey at gray-alpha.900's opacity."
+        },
+        "1000": {
+          "$value": "rgba(15, 15, 15, 0.606)",
+          "$description": "Solid fill on hover. The dark page's grey at gray-alpha.1000's opacity."
+        },
+        "1100": {
+          "$value": "rgba(15, 15, 15, 0.706)",
+          "$description": "Secondary text: at least 4.5:1 on 100 to 500 and white. The dark page's grey at gray-alpha.1100's opacity."
+        },
+        "1200": {
+          "$value": "rgba(15, 15, 15, 1)",
+          "$description": "Primary text, and the darkest step. The dark page's grey at gray-alpha.1200's opacity."
+        }
       }
     }
   }

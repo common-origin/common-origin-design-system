@@ -76,6 +76,7 @@ Steps 800–1100 use the most chroma sRGB allows at their lightness ([decision 0
 Every ramp has a translucent twin (`gray-alpha`, `accent-alpha` and the rest) for overlays, hover fills that must work on any surface, and borders on tinted or image backgrounds.
 
 - **`gray-alpha`** is `gray.1200` at the opacity that composites over white to the same step ([decision 0040](../foundation/decisions/0040-own-oklch-palette.md)).
+- **`gray-alpha-inverse`** is `gray.100`, the inverse end of the ramp, at `gray-alpha`'s opacity for each step: a translucent overlay on a dark or coloured fill, such as `fill.inverse-none-hover`. It's named by role, like `text.inverse`, so in the dark theme it's dark-based ([decision 0056](../foundation/decisions/0056-dark-theme-exceptions.md)).
 - **Hue twins** are the smallest opacity, each with its own RGB, that composites over white to the solid step's exact hex ([decision 0044](../foundation/decisions/0044-hue-ramps.md)). Steps 800–1100 sit on the edge of sRGB, so most of their twins are opaque.
 
 ### Dark values

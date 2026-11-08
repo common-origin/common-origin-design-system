@@ -154,7 +154,8 @@ const StyledSheet = styled.div.withConfig({
   $isExiting: boolean
 }>`
   position: fixed;
-  background-color: ${semantic.surface.base};
+  /* A floating layer: one step above raised content in the dark theme (issue 356) */
+  background-color: ${semantic.surface.overlay};
   box-shadow: ${semantic.elevation.overlay};
   z-index: ${semantic.layer.overlay};
   overflow-y: auto;
@@ -225,7 +226,7 @@ const StyledSheet = styled.div.withConfig({
   }
   
   &::-webkit-scrollbar-track {
-    background: ${semantic.surface.raised};
+    background: ${semantic.surface.overlay}; /* matches the panel */
   }
   
   &::-webkit-scrollbar-thumb {
