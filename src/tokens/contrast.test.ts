@@ -2,21 +2,7 @@ import { execFileSync } from 'child_process'
 import { readFileSync } from 'fs'
 import lightTokens from '@/styles/tokens.json'
 import darkTokens from '@/styles/tokens.theme-dark.json'
-import { opaque } from '../test-utils/contrast'
-
-// WCAG 2.2 relative luminance and contrast ratio, for hex colours (P2). Translucent fills are
-// composited over a backdrop: the surface their theme defines them against (decision 0056)
-function luminance(color: string, backdrop?: string) {
-  const hex = opaque(color, backdrop)
-  const [r, g, b] = [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255)
-  const linear = (c: number) => (c <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4)
-  return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b)
-}
-
-function contrastOver(backdrop: string | undefined, a: string, b: string) {
-  const [light, dark] = [luminance(a, backdrop), luminance(b, backdrop)].sort((x, y) => y - x)
-  return (light + 0.05) / (dark + 0.05)
-}
+import { contrastRatio, opaque } from '../test-utils/contrast'
 
 // Both themes, resolved (#359). One set of colour rules makes the same pairings in each theme
 // (decision 0056), so every pairing below runs against both.
@@ -32,10 +18,8 @@ describe.each(themes)('token contrast (%s)', (theme, tokens) => {
   const surfaces = [surface.base, surface.raised, surface.overlay]
   // The surface furthest from primary text: white in light, the page in dark. The alpha twins
   // composite over it to their solid steps, and each ramp step moves further from it
-  const backdrop = surfaces.reduce((a, b) =>
-    contrastOver(undefined, gray[1200], b) > contrastOver(undefined, gray[1200], a) ? b : a
-  )
-  const contrast = (a: string, b: string) => contrastOver(backdrop, a, b)
+  const backdrop = surfaces.reduce((a, b) => (contrastRatio(gray[1200], b) > contrastRatio(gray[1200], a) ? b : a))
+  const contrast = (a: string, b: string) => contrastRatio(a, b, backdrop)
   const { input } = tokens.component
 
   it('composites over white in light and over the page in dark', () => {
@@ -189,6 +173,16 @@ describe.each(themes)('token contrast (%s)', (theme, tokens) => {
     for (const solid of [fill.accent, fill.danger, fill.success, fill.warning, fill.serious]) {
       expect(contrast(text['on-fill'], solid)).toBeGreaterThanOrEqual(4.5)
       expect(contrast(icon['on-fill'], solid)).toBeGreaterThanOrEqual(4.5)
+    }
+  })
+
+  // CategoryLabel (#115): filled puts inverse content on the -strong fill (the 1100 step); outlined
+  // and minimal put -text on the surfaces and the -muted fill
+  it.each(['gray', 'olive', 'periwinkle', 'rose', 'magenta'] as const)('keeps the %s category label at 4.5:1 or more', (hue) => {
+    const { text, category } = tokens.semantic.color
+    expect(contrast(text.inverse, category[`${hue}-strong`])).toBeGreaterThanOrEqual(4.5)
+    for (const background of [...surfaces, category[`${hue}-muted`]]) {
+      expect(contrast(category[`${hue}-text`], background)).toBeGreaterThanOrEqual(4.5)
     }
   })
 
