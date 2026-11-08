@@ -181,7 +181,8 @@ describe.each(themes)('token contrast (%s)', (theme, tokens) => {
   it.each(['gray', 'olive', 'periwinkle', 'rose', 'magenta'] as const)('keeps the %s category label at 4.5:1 or more', (hue) => {
     const { text, category } = tokens.semantic.color
     expect(contrast(text.inverse, category[`${hue}-strong`])).toBeGreaterThanOrEqual(4.5)
-    for (const background of [...surfaces, category[`${hue}-muted`]]) {
+    // The -muted fill is translucent, so it's checked over every surface it can sit on
+    for (const background of [...surfaces, ...surfaces.map((under) => opaque(category[`${hue}-muted`], under))]) {
       expect(contrast(category[`${hue}-text`], background)).toBeGreaterThanOrEqual(4.5)
     }
   })
