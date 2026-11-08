@@ -131,8 +131,10 @@ describe('SidebarNavSection', () => {
         </SidebarNavSection>
       </SidebarNavContext.Provider>
     )
-    expect(screen.queryByTestId('section')).not.toBeInTheDocument()
-    expect(screen.queryByRole('list', { name: 'Recent' })).not.toBeInTheDocument()
+    // It folds away, rule and all, rather than unmounting, so collapsing doesn't jump
+    expect(screen.getByTestId('section')).not.toBeVisible()
+    // jsdom doesn't resolve an inherited visibility, so check the list against its ancestors
+    expect(screen.getByRole('list', { hidden: true, name: 'Recent' })).not.toBeVisible()
   })
 
   it("draws no rule in the rail when nothing is above it", () => {

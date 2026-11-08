@@ -1,5 +1,7 @@
 import Head from 'next/head'
-import { SidebarNav, SidebarNavItem, SidebarNavSection } from '../../src/components'
+import { SidebarNav, SidebarNavItem, SidebarNavSection, WorkspaceSwitcher } from '../../src/components'
+
+const workspaces = [{ id: 'ops', name: 'Creamery Ops' }]
 
 // Test fixture for e2e/sidebar-nav.spec.ts (#331): a SidebarNav at default density and one in a
 // compact region. Not part of the docs navigation, and not indexed.
@@ -27,7 +29,7 @@ export default function SidebarNavFixture() {
         <meta name="robots" content="noindex" />
       </Head>
       <main style={{ display: 'flex', height: 480 }}>
-        <SidebarNav label="Default">
+        <SidebarNav label="Default" header={<WorkspaceSwitcher workspaces={workspaces} value="ops" onChange={() => {}} />}>
           <Items />
         </SidebarNav>
         <div data-co-density="compact" style={{ display: 'flex', marginLeft: 40 }}>

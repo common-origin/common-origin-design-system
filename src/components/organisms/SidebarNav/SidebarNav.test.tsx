@@ -94,9 +94,9 @@ describe('SidebarNav', () => {
       expect(nav()).toHaveStyle({ flexShrink: '0' })
     })
 
-    it('draws a thin edge on the page background, with no fill (P1)', () => {
+    it('sits on the page background with no edge or fill (P1, issue 348)', () => {
       render(<Example />)
-      expect(nav()).toHaveStyle({ borderRight: tokens.semantic.border.default })
+      expect(getComputedStyle(nav()).borderRightStyle).toMatch(/^(none|)$/)
       expect(getComputedStyle(nav()).backgroundColor).toMatch(/^(rgba\(0, 0, 0, 0\)|transparent|)$/)
     })
   })
@@ -120,6 +120,36 @@ describe('SidebarNav', () => {
       expect(screen.queryByRole('link', { name: 'Supplier records' })).not.toBeInTheDocument()
       expect(screen.getByRole('link', { name: 'Flavour page ticket' })).toBeInTheDocument()
       expect(screen.queryByRole('button', { name: 'Upgrade' })).not.toBeInTheDocument()
+    })
+
+    it('swaps the header for the expand toggle in the rail, the two toggles cross-fading in place', async () => {
+      const user = userEvent.setup()
+      render(<Example />)
+      expect(screen.queryByRole('button', { name: 'Expand sidebar' })).not.toBeInTheDocument()
+      await user.click(screen.getByRole('button', { name: 'Collapse sidebar' }))
+      expect(screen.queryByRole('button', { name: 'Collapse sidebar' })).not.toBeInTheDocument()
+      expect(screen.getByRole('button', { name: 'Expand sidebar' })).toBeInTheDocument()
+      // The header content fades out in the rail rather than unmounting
+      expect(within(nav()).getByText('Creamery Ops')).not.toBeVisible()
+    })
+
+    it('moves focus to the toggle now shown, so focus is never lost', async () => {
+      const user = userEvent.setup()
+      render(<Example />)
+      await user.tab()
+      expect(screen.getByRole('button', { name: 'Collapse sidebar' })).toHaveFocus()
+      await user.keyboard('{Enter}')
+      expect(screen.getByRole('button', { name: 'Expand sidebar' })).toHaveFocus()
+      await user.keyboard('{Enter}')
+      expect(screen.getByRole('button', { name: 'Collapse sidebar' })).toHaveFocus()
+    })
+
+    it('keeps every row element when it collapses, so nothing remounts mid-move', async () => {
+      const user = userEvent.setup()
+      render(<Example />)
+      const home = screen.getByRole('link', { name: 'Home' })
+      await user.click(screen.getByRole('button', { name: 'Collapse sidebar' }))
+      expect(screen.getByRole('link', { name: 'Home' })).toBe(home)
     })
 
     it('can be controlled', async () => {

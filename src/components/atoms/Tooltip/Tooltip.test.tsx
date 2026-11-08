@@ -185,6 +185,34 @@ describe('Tooltip', () => {
     })
   })
 
+  describe('disabled', () => {
+    it("doesn't open on hover or focus, and closes if turned off while showing", async () => {
+      const user = setup()
+      const { rerender } = renderHome({ disabled: true })
+      await user.hover(screen.getByRole('button', { name: 'Home' }))
+      act(() => { jest.advanceTimersByTime(HINT) })
+      expect(screen.queryByTestId('tip')).not.toBeInTheDocument()
+      await user.unhover(screen.getByRole('button', { name: 'Home' }))
+      rerender(
+        <Tooltip text="Home" data-testid="tip">
+          <IconButton variant="naked" iconName="home" aria-label="Home" />
+        </Tooltip>
+      )
+      await user.tab()
+      expect(screen.getByTestId('tip')).toBeInTheDocument()
+      const button = screen.getByRole('button', { name: 'Home' })
+      rerender(
+        <Tooltip text="Home" data-testid="tip" disabled>
+          <IconButton variant="naked" iconName="home" aria-label="Home" />
+        </Tooltip>
+      )
+      act(() => { jest.advanceTimersByTime(GRACE) })
+      expect(screen.queryByTestId('tip')).not.toBeInTheDocument()
+      // The trigger is the same element throughout: turning the tooltip off never remounts it
+      expect(screen.getByRole('button', { name: 'Home' })).toBe(button)
+    })
+  })
+
   describe('accessibility', () => {
     it('in label mode, hides the bubble from assistive technology and leaves the name alone', async () => {
       const user = setup()

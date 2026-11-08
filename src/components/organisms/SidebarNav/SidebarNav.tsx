@@ -1,14 +1,15 @@
-import React, { useRef, useState } from 'react'
-import styled, { css } from 'styled-components'
+import React, { useEffect, useRef, useState } from 'react'
+import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
 import { forcedColors, reducedMotion } from '../../../lib/styleUtils'
 import { IconButton } from '../../atoms/IconButton'
 import { Tooltip } from '../../atoms/Tooltip'
 import { isKeyboardFocus } from '../../../lib/keyboardFocus'
 import { SidebarNavContext, type SidebarNavContextValue } from '../../molecules/SidebarNavItem/SidebarNavContext'
+import { EXPANDED_WIDTH_VAR, NAV_PADDING, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
 
 const { semantic, component } = tokens
-const { space, motion, radius, border, color } = semantic
+const { space, motion, radius, color, size } = semantic
 const { width: widths } = component.sidebarNav
 
 export type SidebarNavWidth = 'narrow' | 'default' | 'wide'
@@ -67,33 +68,59 @@ const Nav = styled.nav.withConfig({
   height: 100%;
   padding: ${space[200]};
   overflow: hidden;
-  /* Quiet chrome (P1): the page's own background, with a thin edge */
-  border-right: ${border.default};
-  transition: width ${motion.duration.moderate} ${motion.easing.standard};
+  /* Quiet chrome (P1): the page's own background, with no edge of its own (issue 348). The width
+     moves with everything inside it, decelerating (0037) */
+  transition: width ${motion.duration.moderate} ${motion.easing.decelerate};
 
   ${reducedMotion} {
     transition: none;
   }
 `
 
-const Header = styled.div.withConfig({
-  shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{ $collapsed: boolean }>`
+// The header holds two toggles in fixed places that cross-fade (issue 348): collapse beside the
+// header content, and expand in the content's place, where the rail shows it. Nothing moves.
+const Header = styled.div`
+  position: relative;
   display: flex;
   align-items: center;
   gap: ${space[100]};
-
-  ${({ $collapsed }) =>
-    $collapsed &&
-    css`
-      flex-direction: column;
-    `}
+  min-height: ${size.control.sm};
 `
 
-const HeaderContent = styled.div`
+const HeaderContent = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   flex: 1;
   min-width: 0;
-  width: 100%;
+  overflow: hidden;
+  ${({ $hidden }) => fade($hidden)}
+
+  /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move */
+  & > div {
+    width: calc(var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING} - ${size.control.sm} - ${space[100]});
+  }
+`
+
+const CollapseSlot = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
+  display: inline-flex;
+  flex-shrink: 0;
+  margin-left: auto;
+  ${({ $hidden }) => fade($hidden)}
+`
+
+// Centred in the rail, where the header content starts
+const ExpandSlot = styled.span.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${size.control.sm}) / 2);
+  display: flex;
+  align-items: center;
+  ${({ $hidden }) => fade($hidden)}
 `
 
 const Body = styled.div`
@@ -162,8 +189,17 @@ const Highlight = styled.div.withConfig({
   }
 `
 
-const Footer = styled.div`
+// The footer fades out in the rail, keeping its expanded width so it doesn't reflow mid-move
+const Footer = styled.div.withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $hidden: boolean }>`
   flex-shrink: 0;
+  overflow: hidden;
+  ${({ $hidden }) => fade($hidden)}
+
+  & > div {
+    width: calc(var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING});
+  }
 `
 
 /**
@@ -195,11 +231,24 @@ export const SidebarNav = ({
     instant: true,
   })
 
+  // Focus follows the toggle: the one pressed fades away, so focus moves to the one now shown
+  const collapseSlot = useRef<HTMLSpanElement>(null)
+  const expandSlot = useRef<HTMLSpanElement>(null)
+  const focusToggle = useRef(false)
+
   const toggle = () => {
     const next = !collapsed
+    focusToggle.current = true
     if (!isControlled) setUncontrolledCollapsed(next)
     onCollapsedChange?.(next)
   }
+
+  useEffect(() => {
+    if (!focusToggle.current) return
+    focusToggle.current = false
+    const slot = collapsed ? expandSlot.current : collapseSlot.current
+    slot?.querySelector('button')?.focus()
+  }, [collapsed])
 
   const hide = () => setHighlight((state) => ({ ...state, visible: false }))
 
@@ -228,19 +277,9 @@ export const SidebarNav = ({
 
   const context: SidebarNavContextValue = { collapsed, linkComponent, glide: true, inNav: true }
 
-  const toggleLabel = collapsed ? 'Expand sidebar' : 'Collapse sidebar'
-  const toggleButton = collapsible && (
-    <Tooltip text={toggleLabel} side={collapsed ? 'right' : 'bottom'}>
-      <IconButton
-        variant="naked"
-        size="small"
-        iconName="sidebar"
-        aria-label={toggleLabel}
-        aria-expanded={!collapsed}
-        onClick={toggle}
-      />
-    </Tooltip>
-  )
+  // The header content keeps its expanded layout: it fades out in the rail rather than turning into
+  // a rail version of itself mid-move
+  const headerContext: SidebarNavContextValue = { ...context, collapsed: false }
 
   return (
     <SidebarNavContext.Provider value={context}>
@@ -249,11 +288,45 @@ export const SidebarNav = ({
         $width={collapsed ? widths.rail : widths[width]}
         data-collapsed={collapsed || undefined}
         data-testid={dataTestId}
+        style={{ [EXPANDED_WIDTH_VAR]: widths[width] } as React.CSSProperties}
       >
-        {(header || toggleButton) && (
-          <Header $collapsed={collapsed}>
-            {header && <HeaderContent>{header}</HeaderContent>}
-            {toggleButton}
+        {(header || collapsible) && (
+          <Header>
+            {header && (
+              <HeaderContent $hidden={collapsed}>
+                <div>
+                  <SidebarNavContext.Provider value={headerContext}>{header}</SidebarNavContext.Provider>
+                </div>
+              </HeaderContent>
+            )}
+            {collapsible && (
+              <>
+                <CollapseSlot ref={collapseSlot} $hidden={collapsed}>
+                  <Tooltip text="Collapse sidebar" side="bottom">
+                    <IconButton
+                      variant="naked"
+                      size="small"
+                      iconName="sidebar"
+                      aria-label="Collapse sidebar"
+                      aria-expanded
+                      onClick={toggle}
+                    />
+                  </Tooltip>
+                </CollapseSlot>
+                <ExpandSlot ref={expandSlot} $hidden={!collapsed}>
+                  <Tooltip text="Expand sidebar" side="right">
+                    <IconButton
+                      variant="naked"
+                      size="small"
+                      iconName="sidebar"
+                      aria-label="Expand sidebar"
+                      aria-expanded={false}
+                      onClick={toggle}
+                    />
+                  </Tooltip>
+                </ExpandSlot>
+              </>
+            )}
           </Header>
         )}
         <Body>
@@ -285,7 +358,11 @@ export const SidebarNav = ({
             <List>{children}</List>
           </Content>
         </Body>
-        {footer && !collapsed && <Footer>{footer}</Footer>}
+        {footer && (
+          <Footer $hidden={collapsed}>
+            <div>{footer}</div>
+          </Footer>
+        )}
       </Nav>
     </SidebarNavContext.Provider>
   )

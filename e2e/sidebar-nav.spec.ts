@@ -32,6 +32,36 @@ test('collapses to the 56px rail, animating its width', async ({ page }) => {
   await expect.poll(async () => Math.round((await nav(page).boundingBox())!.width)).toBe(56)
 })
 
+test('collapsing and expanding never jump: icons and labels hold their place, frame by frame (issue 348)', async ({ page }) => {
+  // Every animation frame while it moves: where the Home row's icon and label sit, from the nav's
+  // left edge. Only the width may change; a jump would show as an icon moving sideways.
+  const track = (ms: number) =>
+    nav(page).evaluate(async (el, ms) => {
+      const home = [...el.querySelectorAll('[data-sidebar-row]')].find((r) => (r.getAttribute('aria-label') || r.textContent || '').startsWith('Home'))!
+      const icon = home.querySelector('svg')!
+      const label = [...home.querySelectorAll('span')].find((s) => s.textContent === 'Home')!
+      const frames: number[][] = []
+      const start = performance.now()
+      while (performance.now() - start < ms) {
+        const left = el.getBoundingClientRect().x
+        frames.push([icon.getBoundingClientRect().x - left, label.getBoundingClientRect().x - left, el.getBoundingClientRect().width])
+        await new Promise(requestAnimationFrame)
+      }
+      return frames
+    }, ms)
+  for (const button of ['Collapse sidebar', 'Expand sidebar']) {
+    const frames = track(500)
+    await page.waitForTimeout(20)
+    await nav(page).getByRole('button', { name: button }).click()
+    const result = await frames
+    expect(new Set(result.map(([icon]) => Math.round(icon))).size).toBe(1)
+    expect(new Set(result.map(([, label]) => Math.round(label))).size).toBe(1)
+    // And the width really did move through the frames in between
+    expect(new Set(result.map(([, , width]) => Math.round(width))).size).toBeGreaterThan(4)
+    await page.waitForTimeout(300)
+  }
+})
+
 test('a section hides and shows its items, animating their height', async ({ page }) => {
   const toggle = nav(page).getByRole('button', { name: 'Chats' })
   const list = nav(page).getByRole('list', { name: 'Chats' })
@@ -64,6 +94,23 @@ test('a badge of any width stays inside its row, expanded and in the rail, in ea
     await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
     await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
     expect(await inside(name)).toBe(true)
+  }
+})
+
+test("every row's content ends inside the row when expanded, in each density", async ({ page }) => {
+  for (const name of ['Default', 'Compact']) {
+    const overflowing = await nav(page, name).evaluate((el) =>
+      [...el.querySelectorAll('[data-sidebar-row]')]
+        .filter((row) => {
+          const box = row.getBoundingClientRect()
+          return [...row.querySelectorAll('span')].some((span) => {
+            const r = span.getBoundingClientRect()
+            return r.width > 0 && r.right > box.right + 0.5
+          })
+        })
+        .map((row) => row.textContent)
+    )
+    expect(overflowing).toEqual([])
   }
 })
 
