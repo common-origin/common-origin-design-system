@@ -73,6 +73,9 @@ export const visuallyHidden = css`
 // rows leave their text colour to the component, so a destructive row can stay red.
 const { fill: rowFill, text: rowText } = tokens.semantic.color
 
+/** Corner radius of a button inside a field (a stepper, a clear or show-password button): one step tighter than the field, so its corner nests (decision 0055). */
+export const fieldButtonRadius = tokens.semantic.radius.sm
+
 /** Corner radius every row and tab shares: the control radius (decision 0055). */
 export const rowRadius = tokens.semantic.radius.md
 

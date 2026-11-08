@@ -135,6 +135,7 @@ export const searchFieldDocs: ComponentDocumentation = {
     'component.input.default.borderColor',
     'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.default.borderRadius',
+    'semantic.radius.sm',
     'component.input.default.borderWidth',
     'component.input.hover.borderColor',
     'component.input.focus.borderColor',
@@ -407,6 +408,7 @@ useEffect(() => {
           'component.input.default.borderWidth',
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
+          'semantic.radius.sm',
           'component.input.hover.borderColor',
           'component.input.focus.borderColor',
           'component.input.focus.outline',

@@ -132,6 +132,7 @@ export const passwordFieldDocs: ComponentDocumentation = {
 
   tokens: [
     'semantic.space.200',
+    'semantic.radius.sm',
     'component.field.label.typography',
     'component.field.label.color',
     'component.field.label.colorDisabled',

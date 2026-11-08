@@ -19,6 +19,7 @@ The corners line up when the outer radius is the inner radius plus the padding b
 2. **The base scale and the semantic step values don't change.** Controls move by pointing at a different step. Changing `radius.sm` itself would have rounded every small element and made `sm` the same as `md`.
 3. **Rows and tabs follow controls at 8px:** ListItem, SidebarNavItem, SidebarNavSection, SidebarNav's highlight, and the top corners of TabBar's selected tab. Menu and Dropdown options stay square, because they run edge to edge inside their panel.
 4. **Small elements that aren't controls stay at 4px (`radius.sm`):** Tag, Tooltip, CodeBlock and the Checkbox box. Checkbox gets its own `component.checkbox.box.borderRadius` so it no longer follows the input radius: at 8px the 20px box reads as a Radio.
+   Buttons inside a field (NumberInput's steppers, PasswordField's show-password button, SearchField's clear button) also use `radius.sm`, through `fieldButtonRadius` in `src/lib/styleUtils.ts`: they sit inside the field's 8px corner, so they are a step tighter. IconButton keeps 8px everywhere else.
 5. **Containers nest around the control radius:**
 
    | Container | Padding to the control | Nesting value | Chosen |

@@ -133,6 +133,7 @@ export const numberInputDocs: ComponentDocumentation = {
     'component.input.default.borderColor',
     'component.input.default.borderWidth',
     'component.input.default.borderRadius',
+    'semantic.radius.sm',
     'semantic.space.inset.lg',
     'semantic.size.control.lg', // Minimum height (decision 0034)
     'component.input.placeholder.textColor',
@@ -331,6 +332,7 @@ export const numberInputDocs: ComponentDocumentation = {
           'component.input.default.backgroundColor',
           'component.input.default.borderColor',
           'component.input.default.borderRadius',
+          'semantic.radius.sm',
           'semantic.space.1000',
         ],
       },
