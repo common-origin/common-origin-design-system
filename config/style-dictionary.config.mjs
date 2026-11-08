@@ -136,8 +136,11 @@ function withContext(sources) {
       if (key.startsWith('$') || !child || typeof child !== 'object') continue
       const next = target?.[key]
       if (!next) throw new Error(`Mode override ${[...path, key].join('.')} has no token to override`)
-      if ('$value' in child) next.$value = child.$value
-      else apply(child, next, [...path, key])
+      if ('$value' in child) {
+        next.$value = child.$value
+        // A context's own description (the dark ramps give their contrast on the dark page)
+        if (typeof child.$description === 'string') next.$description = child.$description
+      } else apply(child, next, [...path, key])
     }
   }
   for (const { $ref } of sources) apply(JSON.parse(readFileSync(`src/tokens/${$ref}`, 'utf8')), tokens, [])
@@ -162,7 +165,11 @@ async function resolvedValues(tokens) {
   return new Map(allTokens.map((token) => [token.path.join('.'), JSON.stringify(token.$value)]))
 }
 
-async function modeBlock(selector, tokens, changed) {
+// Declarations a mode adds beside its tokens: the theme tells the browser which colour scheme the
+// region is in, so native controls, scrollbars and system colours match (decision 0054)
+const extraDeclarations = (name, context) => (name === 'theme' ? [`  color-scheme: ${context};`] : [])
+
+async function modeBlock(selector, tokens, changed, extra = []) {
   const [{ output }] = await modeDictionary(tokens, [
     {
       format: 'css/variables',
@@ -171,7 +178,7 @@ async function modeBlock(selector, tokens, changed) {
       options: { outputReferences: true, selector, showFileHeader: false },
     },
   ]).formatPlatform('css')
-  return output
+  return extra.length ? output.replace(`${selector} {\n`, `${selector} {\n${extra.join('\n')}\n`) : output
 }
 
 const blocks = []
@@ -187,10 +194,12 @@ for (const [name, modifier] of Object.entries(resolver.modifiers)) {
   }
   const all = new Set(contexts.flatMap(({ changed }) => [...changed]))
   blocks.push(`/* Mode: ${name} (decision 0032). ${modifier.description} */`)
-  blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, tiers(), all))
+  blocks.push(await modeBlock(`[data-co-${name}="${modifier.default}"]`, tiers(), all, extraDeclarations(name, modifier.default)))
   // Every block declares every token any context changes, so contexts nest: a compact region
   // inside a comfortable one gets compact's value even where compact matches the default
-  for (const { context, tokens } of contexts) blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all))
+  for (const { context, tokens } of contexts) {
+    blocks.push(await modeBlock(`[data-co-${name}="${context}"]`, tokens, all, extraDeclarations(name, context)))
+  }
 }
 
 const css = readFileSync('src/styles/tokens.css', 'utf8')

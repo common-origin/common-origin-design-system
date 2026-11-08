@@ -64,7 +64,7 @@ import '@common-origin/design-system/tokens.css'
 
 Every variable is `--co-` plus the token's tier and path in kebab case ([0024](decisions/0024-css-variable-names-keep-tier.md)). Use `--co-semantic-*` in product code, as with the JS tokens. Most semantic variables reference base variables (`var(--co-base-…)`), so the file defines all three tiers. Six semantic tokens hold their own value instead (`elevation.inset`, `border.radius.none` and the four background overlays), so overriding a base variable doesn't change them. 
 
-The components read these same variables, each with its resolved value as the fallback (`var(--co-semantic-color-text-default, #212529)`, [0041](decisions/0041-components-read-css-variables.md)). So **loading `tokens.css` is optional**: without it, components render exactly the resolved values. It's needed for your own CSS above, and for the density and motion modes when they arrive ([#191](https://github.com/common-origin/common-origin-design-system/issues/191), [#226](https://github.com/common-origin/common-origin-design-system/issues/226)). Don't override the variables yourself to restyle components: a variable that references another is resolved where `tokens.css` declares it, so an override on an element doesn't reach the variables built on it, and the modes will be the supported way.
+The components read these same variables, each with its resolved value as the fallback (`var(--co-semantic-color-text-default, #212529)`, [0041](decisions/0041-components-read-css-variables.md)). So **loading `tokens.css` is optional**: without it, components render exactly the resolved values. It's needed for your own CSS above, and for the modes: density, the dark theme, and motion when it arrives ([#226](https://github.com/common-origin/common-origin-design-system/issues/226)). Don't override the variables yourself to restyle components: a variable that references another is resolved where `tokens.css` declares it, so an override on an element doesn't reach the variables built on it, and the modes will be the supported way.
 
 ### Density
 
@@ -77,6 +77,12 @@ A product can make any region compact or comfortable: load `tokens.css` once, th
 ```
 
 Density changes control heights by one 8px step (compact 24 / 32 / 40px, default 32 / 40 / 48px, comfortable 40 / 48 / 56px) and the padding inside controls by one step. Text, colour, rows and layout spacing don't change, and compact never goes below the 24px pointer target ([0032](decisions/0032-token-modes.md), [0034](decisions/0034-control-heights.md)). Without `tokens.css`, everything renders at the default density. The docs site's density guide shows the three side by side.
+
+### Dark theme (in progress)
+
+`tokens.css` has a dark theme: set `data-co-theme="dark"` on any element, and everything inside it takes the dark colours ([0054](decisions/0054-dark-mode-theme-mode.md)). It changes colour and shadow only, regions nest, `data-co-theme="light"` resets one, and density and theme can be set on the same element. `tokens.css` never turns dark by itself from the system setting: a product that wants that sets the attribute.
+
+**Don't use it in a product yet.** Text on coloured fills, the overlay surface, the scrim and shadows aren't done ([#352](https://github.com/common-origin/common-origin-design-system/issues/352)), so accent and danger buttons, for example, aren't right in dark. The docs site adopts it first ([#360](https://github.com/common-origin/common-origin-design-system/issues/360)).
 
 ## Fonts
 

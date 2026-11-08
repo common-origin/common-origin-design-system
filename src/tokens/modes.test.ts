@@ -33,6 +33,8 @@ const rem = (value: string) => Number(value.replace('rem', '')) * 16
 // What each mode may change (0032's table, narrowed for density by #191 to controls, then rows by 0051)
 const ALLOWED: Record<string, RegExp> = {
   density: /^semantic\.(size\.control|size\.row|space\.inset)\./,
+  // Colour and shadow only (decision 0054): base colour values, plus semantic colour exceptions
+  theme: /^(base\.color\.|base\.shadow\.|semantic\.(color|surface|elevation)\.)/,
 }
 
 type Node = { [key: string]: unknown }
@@ -123,5 +125,45 @@ describe('density (#191)', () => {
 
   it('keeps every compact row at least 24px on every pointer type (decision 0051)', () => {
     expect(Math.min(...['sm', 'md', 'lg'].map((step) => row('compact', step)))).toBeGreaterThanOrEqual(24)
+  })
+})
+
+describe('theme (#358)', () => {
+  const dark = block('theme', 'dark')
+  const hex = (name: string) => resolve(`var(${name})`, dark)
+  const luminance = (value: string) => {
+    const n = parseInt(value.slice(1), 16)
+    const c = (v: number) => (v / 255 <= 0.04045 ? v / 255 / 12.92 : ((v / 255 + 0.055) / 1.055) ** 2.4)
+    return 0.2126 * c((n >> 16) & 255) + 0.7152 * c((n >> 8) & 255) + 0.0722 * c(n & 255)
+  }
+  const contrast = (a: string, b: string) => {
+    const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x)
+    return (high + 0.05) / (low + 0.05)
+  }
+
+  it('tells the browser the colour scheme in each context', () => {
+    expect(css).toMatch(/\[data-co-theme="light"\] \{\n {2}color-scheme: light;/)
+    expect(css).toMatch(/\[data-co-theme="dark"\] \{\n {2}color-scheme: dark;/)
+  })
+
+  it('never turns dark by itself: there is no prefers-color-scheme block', () => {
+    expect(css).not.toMatch(/@media[^{]*prefers-color-scheme/)
+  })
+
+  it('puts primary and secondary text on the dark page and surfaces at 4.5:1 or more', () => {
+    for (const surface of ['--co-semantic-surface-base', '--co-semantic-surface-raised']) {
+      expect(contrast(hex('--co-semantic-color-text-default'), hex(surface))).toBeGreaterThanOrEqual(4.5)
+      expect(contrast(hex('--co-semantic-color-text-muted'), hex(surface))).toBeGreaterThanOrEqual(4.5)
+    }
+  })
+
+  it('makes raised surfaces lighter than the dark page (#356)', () => {
+    expect(luminance(hex('--co-semantic-surface-raised'))).toBeGreaterThan(luminance(hex('--co-semantic-surface-base')))
+  })
+
+  // Density and theme change different groups, so a region can set both, in either order
+  it('shares no variable with the density mode', () => {
+    const density = new Set(block('density', 'compact').keys())
+    expect([...dark.keys()].filter((name) => density.has(name))).toEqual([])
   })
 })

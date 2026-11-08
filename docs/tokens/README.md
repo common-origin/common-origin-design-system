@@ -68,7 +68,7 @@ Numbered scales use the multiple of the 4px grid unit × 100: `space.400` is 16p
 
 - **Components read tokens as CSS variables with their resolved value as the fallback,** for example `var(--co-semantic-color-text-default, #222222)` ([decision 0041](../foundation/decisions/0041-components-read-css-variables.md)). A product that doesn't load `tokens.css` still renders correctly. Loading it turns on modes and overrides.
 - **Variable names keep their tier,** for example `--co-semantic-…` and `--co-component-…` ([decision 0024](../foundation/decisions/0024-css-variable-names-keep-tier.md)).
-- **Modes are token values applied to a region, not component props.** Density (`data-co-density="compact"`, `default` or `comfortable`) changes control heights, the padding inside controls and row heights, wherever a product sets it ([decision 0032](../foundation/decisions/0032-token-modes.md), [P9](../foundation/principles.md#p9-serve-the-full-range)). Dark values will arrive the same way, from the same ramps ([decision 0043](../foundation/decisions/0043-data-colours.md)).
+- **Modes are token values applied to a region, not component props.** Density (`data-co-density="compact"`, `default` or `comfortable`) changes control heights, the padding inside controls and row heights, wherever a product sets it ([decision 0032](../foundation/decisions/0032-token-modes.md), [P9](../foundation/principles.md#p9-serve-the-full-range)). The dark theme (`data-co-theme="dark"`) works the same way: each ramp step keeps its job, so the dark context swaps base colour values, plus a few semantic exceptions ([decision 0054](../foundation/decisions/0054-dark-mode-theme-mode.md)).
 
 ## What's changing
 
