@@ -73,6 +73,9 @@ export const visuallyHidden = css`
 // rows leave their text colour to the component, so a destructive row can stay red.
 const { fill: rowFill, text: rowText } = tokens.semantic.color
 
+/** Corner radius every row and tab shares: the control radius (decision 0055). */
+export const rowRadius = tokens.semantic.radius.md
+
 export interface RowState {
   background: string
   text?: string

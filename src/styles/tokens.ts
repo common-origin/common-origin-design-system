@@ -1938,7 +1938,7 @@ export type Tokens = {
       none: string;
       /** Minimal rounding for thin bars: ProgressBar and AgentInput's level meter. */
       xs: string;
-      /** Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock and the Checkbox box. */
+      /** Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock, Slider's value label, small images (CardSmall, Picture) and the Checkbox box. */
       sm: string;
       /** The control radius: Button, IconButton, inputs, rows and tabs, and the menus and popovers they open. */
       md: string;

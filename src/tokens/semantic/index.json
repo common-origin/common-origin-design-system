@@ -984,7 +984,7 @@
       "sm": {
         "$value": "{base.border.radius.2}",
         "$type": "dimension",
-        "$description": "Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock and the Checkbox box."
+        "$description": "Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock, Slider's value label, small images (CardSmall, Picture) and the Checkbox box."
       },
       "md": {
         "$value": "{base.border.radius.3}",

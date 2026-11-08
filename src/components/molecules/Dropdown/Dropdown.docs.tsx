@@ -96,6 +96,7 @@ export const dropdownDocs: ComponentDocumentation = {
     'component.input.default.borderWidth',
     'component.input.default.borderColor',
     'component.input.default.borderRadius',
+    'semantic.radius.md',
     'component.input.default.font',
     'component.input.default.textColor',
     'component.input.hover.borderColor',
