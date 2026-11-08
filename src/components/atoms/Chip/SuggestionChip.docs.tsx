@@ -162,7 +162,7 @@ States: rest (outline) · hover (naked hover fill) · pressed (naked pressed fil
   },
 
   notes: [
-    'One of four chip types, each grouped on the docs site by its job (decisions 0016 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
+    'One of four chip types, each grouped on the docs site by its job (decisions 0016, 0046 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
     'Use SuggestionChip for text the user can put in an agent input. For an action that happens on click, use a Button. For a toggle, use FilterChip. For a removable value, use InputChip (decision 0016).',
     'Suggestions are not marked as AI, even when the agent wrote them (decision 0046): they change nothing until the user sends them.',
   ],

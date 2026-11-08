@@ -350,7 +350,7 @@ States:
   },
 
   notes: [
-    'One of four chip types, each grouped on the docs site by its job (decisions 0016 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
+    'One of four chip types, each grouped on the docs site by its job (decisions 0016, 0046 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
     'FilterChip vs InputChip: FilterChip is fully clickable to toggle on/off. InputChip (called FilterChip before 3.0) is a read-only display of an applied filter — its body is not clickable. Only InputChip supports dismissal via a close button.',
     'Always pair FilterChips with a visible group label (Typography or fieldset/legend) so users understand what the chips are filtering.',
     'Both selected and onClick are required props. FilterChip is a controlled component — maintain toggle state in the parent using useState or equivalent.',

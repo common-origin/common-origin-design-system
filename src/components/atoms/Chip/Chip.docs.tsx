@@ -190,7 +190,7 @@ export const chipDocs: ComponentDocumentation = {
 
   guides: [labelGuide],
   notes: [
-    'One of four chip types, each grouped on the docs site by its job (decisions 0016 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
+    'One of four chip types, each grouped on the docs site by its job (decisions 0016, 0046 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
     'Chip types (decision 0016): Chip for a static label, FilterChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips are fully round while Buttons have 8px corners, so the shapes signal different jobs.',
     'Renamed in 3.0: the toggle chip, BooleanChip, is now FilterChip, and the removable chip once called FilterChip is InputChip. Migrate in that order: FilterChip → InputChip first, then BooleanChip → FilterChip. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changed meaning.',
     'Removed in 3.0: the static Chip\'s emphasis, subtle, interactive, light and dark variants, its onClick, LegacyChip, and every chip\'s size prop (chips have one size, 24px, decision 0035). For a clickable action use a Button; for a toggle use FilterChip.',

@@ -130,15 +130,21 @@ export default function Components() {
     : sortedComponents[0]?.id || 'alert'
 
   // Group components by purpose, in the defined order, leaving out empty groups (decision 0057).
-  // Within a group, pages are alphabetical and a child page follows its parent.
+  // Within a group, pages are alphabetical and a child page follows its parent, at any depth.
   const sidebarSections = useMemo(() => {
     const toItem = (comp: ComponentData) => ({ id: comp.id, label: comp.name, url: `/components?component=${comp.id}` })
     return COMPONENT_GROUPS.map((group) => {
       const inGroup = sortedComponents.filter((comp) => comp.category === group)
       const ids = new Set(inGroup.map((comp) => comp.id))
+      const children = new Map<string, ComponentData[]>()
+      for (const comp of inGroup) {
+        if (comp.parentId && ids.has(comp.parentId)) {
+          children.set(comp.parentId, [...(children.get(comp.parentId) ?? []), comp])
+        }
+      }
+      const withChildren = (comp: ComponentData): ComponentData[] => [comp, ...(children.get(comp.id) ?? []).flatMap(withChildren)]
       const tops = inGroup.filter((comp) => !comp.parentId || !ids.has(comp.parentId))
-      const ordered = tops.flatMap((parent) => [parent, ...inGroup.filter((comp) => comp.parentId === parent.id)])
-      return { label: group, items: ordered.map(toItem) }
+      return { label: group, items: tops.flatMap(withChildren).map(toItem) }
     }).filter((section) => section.items.length > 0)
   }, [sortedComponents])
 

@@ -1,4 +1,8 @@
 import { ReactNode } from 'react'
+import type { ComponentGroup } from '../componentGroups'
+
+// Docs-site groups, by purpose (decision 0057), in sidebar order
+export type { ComponentGroup }
 
 export interface PropInfo {
   name: string
@@ -35,18 +39,6 @@ export interface AnatomyInfo {
   diagram?: string
   parts: AnatomyPart[]
 }
-
-/** Docs-site groups, by purpose (decision 0057). The sidebar order is COMPONENT_GROUPS in src/lib/componentGroups.ts. */
-export type ComponentGroup =
-  | 'Actions'
-  | 'Inputs'
-  | 'Navigation'
-  | 'Feedback'
-  | 'Overlays'
-  | 'Labels'
-  | 'Data display'
-  | 'Content'
-  | 'Layout'
 
 /** The atomic tier: the component's folder in src/components (decision 0052) */
 export type ComponentTier = 'Atom' | 'Molecule' | 'Organism' | 'Layout'
