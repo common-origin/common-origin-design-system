@@ -656,7 +656,7 @@
   --co-semantic-surface-raised: var(--co-base-color-white); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
-  --co-component-button-primary-border-radius: var(--co-semantic-radius-sm); /** Corner radius of every Button (visual language: Button uses sm). */
+  --co-component-button-primary-border-radius: var(--co-semantic-radius-md); /** Corner radius of every Button (visual language: Button uses md). */
   --co-component-button-primary-font: var(--co-semantic-font-weight-medium) var(--co-semantic-font-size-md)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Button label typography, the same as sizes.large.font. */
   --co-component-button-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Primary Button fill on hover. */
   --co-component-button-active-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Primary Button fill while pressed. */
@@ -699,7 +699,7 @@
   --co-component-chip-variants-subtle-active-background-color: var(--co-semantic-color-fill-muted); /** Subtle chip fill while pressed, when it's clickable. */
   --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised); /** Disabled subtle chip fill. */
   --co-component-chip-variants-subtle-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled subtle chip text and icon colour. */
-  --co-component-icon-button-primary-border-radius: var(--co-semantic-radius-sm); /** Corner radius of every IconButton, matching Button. */
+  --co-component-icon-button-primary-border-radius: var(--co-semantic-radius-md); /** Corner radius of every IconButton, matching Button. */
   --co-component-input-focus-border-color: var(--co-semantic-color-border-focus); /** Text input border while focused. */
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every IconButton. */
   --co-component-separator-border: var(--co-semantic-border-default); /** Divider line, the same as variants.default.border. */
@@ -714,7 +714,7 @@
   --co-component-input-default-background-color: var(--co-semantic-surface-raised); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-text-color: var(--co-semantic-color-text-default); /** Text input value colour. */
   --co-component-input-default-border-color: var(--co-semantic-color-border-input); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
-  --co-component-input-default-border-radius: var(--co-semantic-radius-sm); /** Corner radius of text inputs and the Checkbox box. */
+  --co-component-input-default-border-radius: var(--co-semantic-radius-md); /** Corner radius of text inputs, Dropdown and SearchField, matching Button. */
   --co-component-input-default-border-width: var(--co-semantic-border-width-thin); /** Border width of text inputs and the Checkbox box. */
   --co-component-input-placeholder-text-color: var(--co-semantic-color-text-muted); /** Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text. */
   --co-component-input-hover-border-color: var(--co-semantic-color-border-input-hover); /** Text input border on hover. */
@@ -787,6 +787,7 @@
   --co-component-breadcrumbs-item-max-width: var(--co-semantic-size-4500); /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
   --co-component-card-large-max-width: var(--co-semantic-size-19200); /** Widest a CardLarge grows, so its text keeps a readable measure. */
   --co-component-checkbox-box-size: var(--co-semantic-size-500); /** Width and height of the Checkbox and Radio box. */
+  --co-component-checkbox-box-border-radius: var(--co-semantic-radius-sm); /** Corner radius of the Checkbox box: one step tighter than the control radius, so the small box stays square and never reads as a Radio. */
   --co-component-checkbox-row-min-height: var(--co-semantic-size-800); /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */
   --co-component-empty-state-illustration-small: var(--co-semantic-size-2000); /** Size of the small EmptyState illustration, for empty panels and cards. */
   --co-component-empty-state-illustration-medium: var(--co-semantic-size-3000); /** Size of the medium EmptyState illustration, the default. */

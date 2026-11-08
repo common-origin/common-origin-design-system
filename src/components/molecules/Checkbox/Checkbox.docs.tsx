@@ -207,7 +207,7 @@ export const checkboxDocs: ComponentDocumentation = {
     'component.input.default.backgroundColor',
     'component.input.default.textColor',
     'component.input.default.borderColor',
-    'component.input.default.borderRadius',
+    'component.checkbox.box.borderRadius',
     'component.input.default.borderWidth',
     'component.input.default.font',
     'component.input.placeholder.textColor',
@@ -290,7 +290,7 @@ export const checkboxDocs: ComponentDocumentation = {
         tokens: [
           'component.input.default.backgroundColor',
           'component.input.default.borderColor',
-          'component.input.default.borderRadius',
+          'component.checkbox.box.borderRadius',
           'component.input.default.borderWidth',
           'semantic.color.fill.inverse',
           'semantic.color.fill.inverse',

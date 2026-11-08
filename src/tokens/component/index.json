@@ -13,9 +13,9 @@
           "$description": "Text and icon colour on the primary Button."
         },
         "borderRadius": {
-          "$value": "{semantic.radius.sm}",
+          "$value": "{semantic.radius.md}",
           "$type": "dimension",
-          "$description": "Corner radius of every Button (visual language: Button uses sm)."
+          "$description": "Corner radius of every Button (visual language: Button uses md)."
         },
         "font": {
           "$value": "{semantic.fontWeight.medium} {semantic.fontSize.md}/{semantic.lineHeight.normal} {semantic.fontFamily.body}",
@@ -311,7 +311,7 @@
     "iconButton": {
       "primary": {
         "borderRadius": {
-          "$value": "{semantic.radius.sm}",
+          "$value": "{semantic.radius.md}",
           "$type": "dimension",
           "$description": "Corner radius of every IconButton, matching Button."
         }
@@ -406,9 +406,9 @@
           "$description": "Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025)."
         },
         "borderRadius": {
-          "$value": "{semantic.radius.sm}",
+          "$value": "{semantic.radius.md}",
           "$type": "dimension",
-          "$description": "Corner radius of text inputs and the Checkbox box."
+          "$description": "Corner radius of text inputs, Dropdown and SearchField, matching Button."
         },
         "borderWidth": {
           "$value": "{semantic.border.width.thin}",
@@ -903,6 +903,10 @@
         "size": {
           "$value": "{semantic.size.500}",
           "$description": "Width and height of the Checkbox and Radio box."
+        },
+        "borderRadius": {
+          "$value": "{semantic.radius.sm}",
+          "$description": "Corner radius of the Checkbox box: one step tighter than the control radius, so the small box stays square and never reads as a Radio."
         }
       },
       "row": {

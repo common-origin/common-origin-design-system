@@ -823,7 +823,7 @@ export type Tokens = {
         backgroundColor: string;
         /** Text and icon colour on the primary Button. */
         textColor: string;
-        /** Corner radius of every Button (visual language: Button uses sm). */
+        /** Corner radius of every Button (visual language: Button uses md). */
         borderRadius: string;
         /** Button label typography, the same as sizes.large.font. */
         font: string;
@@ -1057,7 +1057,7 @@ export type Tokens = {
         textColor: string;
         /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
         borderColor: string;
-        /** Corner radius of text inputs and the Checkbox box. */
+        /** Corner radius of text inputs, Dropdown and SearchField, matching Button. */
         borderRadius: string;
         /** Border width of text inputs and the Checkbox box. */
         borderWidth: string;
@@ -1331,6 +1331,8 @@ export type Tokens = {
       box: {
         /** Width and height of the Checkbox and Radio box. */
         size: string;
+        /** Corner radius of the Checkbox box: one step tighter than the control radius, so the small box stays square and never reads as a Radio. */
+        borderRadius: string;
       };
       row: {
         /** Minimum height of a Checkbox or Radio row, so the whole row is easy to hit. */

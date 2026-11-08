@@ -40,7 +40,7 @@ export const StyledCheckbox = styled.span.withConfig({
   height: ${tokens.component.checkbox.box.size};
   min-width: ${tokens.component.checkbox.box.size};
   min-height: ${tokens.component.checkbox.box.size};
-  border-radius: ${tokens.component.input.default.borderRadius};
+  border-radius: ${tokens.component.checkbox.box.borderRadius};
   border: ${tokens.component.input.default.borderWidth} solid;
   background-color: ${(props) =>
     props.$checked || props.$indeterminate
