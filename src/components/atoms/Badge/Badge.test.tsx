@@ -103,8 +103,15 @@ describe('Badge', () => {
       const indicator = container.querySelector('[role="status"]') as HTMLElement
       expect(indicator).toHaveStyle({
         backgroundColor: tokens.semantic.color.fill.accent,
-        color: tokens.semantic.color.text.inverse,
+        color: tokens.semantic.color.text['on-fill'],
       })
+      // The count sets no colour of its own, so it inherits each variant's content colour. (In
+      // light, inverse and on-fill are the same value, so comparing colours couldn't tell.)
+      const count = screen.getByText('5')
+      const css = Array.from(document.querySelectorAll('style'), (style) => style.textContent).join('')
+      const rules = Array.from(count.classList).flatMap((cls) => Array.from(css.matchAll(new RegExp(`\\.${cls}\\{([^}]*)\\}`, 'g')), (m) => m[1]))
+      expect(rules.join('')).toContain('font:')
+      rules.forEach((rule) => expect(rule).not.toMatch(/(^|;)\s*color:/))
     })
 
     // primary, error, warning and success were removed in 3.0 (decision 0045, #99); plain

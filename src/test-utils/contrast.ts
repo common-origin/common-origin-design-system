@@ -3,29 +3,37 @@
  * jsdom doesn't lay out or paint, so jest-axe's colour-contrast rule can't check
  * rendered colours; tests use this to check the token pairs a component renders.
  */
+/** #rgb or #rrggbb as [r, g, b], 0–255 */
+function channels(hex: string): number[] {
+  const h = hex.replace('#', '')
+  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
+  return [0, 2, 4].map((i) => parseInt(full.slice(i, i + 2), 16))
+}
+
 /**
  * A colour as #rrggbb. Translucent colours (the alpha twins, decision 0056) are composited over
- * white, the surface they're defined against, where each equals its solid step.
+ * `backdrop`, by default white: the surface light's twins are defined against, where each equals
+ * its solid step. Dark's twins are defined against the dark page.
  */
-export function opaque(color: string): string {
+export function opaque(color: string, backdrop = '#ffffff'): string {
   const rgba = color.match(/^rgba\((\d+),\s*(\d+),\s*(\d+),\s*([\d.]+)\)$/)
   if (!rgba) return color
   const a = Number(rgba[4])
-  return `#${[1, 2, 3].map((i) => Math.round(a * Number(rgba[i]) + (1 - a) * 255).toString(16).padStart(2, '0')).join('')}`
+  const under = channels(backdrop)
+  return `#${[1, 2, 3].map((i, k) => Math.round(a * Number(rgba[i]) + (1 - a) * under[k]).toString(16).padStart(2, '0')).join('')}`
 }
 
-function relativeLuminance(color: string): number {
-  const h = opaque(color).replace('#', '')
-  const full = h.length === 3 ? h.split('').map((c) => c + c).join('') : h
-  const [r, g, b] = [0, 2, 4].map((i) => {
-    const channel = parseInt(full.slice(i, i + 2), 16) / 255
+export function relativeLuminance(color: string, backdrop?: string): number {
+  const [r, g, b] = channels(opaque(color, backdrop)).map((value) => {
+    const channel = value / 255
     return channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4
   })
   return 0.2126 * r + 0.7152 * g + 0.0722 * b
 }
 
-export function contrastRatio(foreground: string, background: string): number {
-  const [lighter, darker] = [relativeLuminance(foreground), relativeLuminance(background)].sort((a, b) => b - a)
+/** Translucent colours are composited over `backdrop` first (see `opaque`) */
+export function contrastRatio(foreground: string, background: string, backdrop?: string): number {
+  const [lighter, darker] = [relativeLuminance(foreground, backdrop), relativeLuminance(background, backdrop)].sort((a, b) => b - a)
   return (lighter + 0.05) / (darker + 0.05)
 }
 
