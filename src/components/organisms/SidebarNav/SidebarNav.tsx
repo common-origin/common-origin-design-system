@@ -168,7 +168,7 @@ const Highlight = styled.div.withConfig({
   top: 0;
   left: 0;
   z-index: 0;
-  border-radius: ${radius.sm};
+  border-radius: ${radius.md};
   background-color: ${color.fill.muted};
   pointer-events: none;
   opacity: ${({ $visible }) => ($visible ? 1 : 0)};

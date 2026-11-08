@@ -189,7 +189,7 @@ export const chipDocs: ComponentDocumentation = {
 
   guides: [labelGuide],
   notes: [
-    'Chip types (decision 0016): Chip for a static label, FilterChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips keep their rounded 12px radius while Buttons use 4px, so the shapes signal different jobs.',
+    'Chip types (decision 0016): Chip for a static label, FilterChip to toggle a filter, InputChip for a removable value. No chip has emphasis levels, and chips are fully round while Buttons have 8px corners, so the shapes signal different jobs.',
     'Renamed in 3.0: the toggle chip, BooleanChip, is now FilterChip, and the removable chip once called FilterChip is InputChip. Migrate in that order: FilterChip → InputChip first, then BooleanChip → FilterChip. Plain JavaScript projects get no error if they skip the first step, because the name FilterChip changed meaning.',
     'Removed in 3.0: the static Chip\'s emphasis, subtle, interactive, light and dark variants, its onClick, LegacyChip, and every chip\'s size prop (chips have one size, 24px, decision 0035). For a clickable action use a Button; for a toggle use FilterChip.',
     ...labelGuideNotes
@@ -239,7 +239,7 @@ Close: InputChip with onDismiss
         description: 'InputChip only: a labelled close button with its own hover and pressed overlay.',
         tokens: [
           'semantic.space.200',
-          'semantic.radius.xs',
+          'semantic.radius.full',
           'semantic.motion.transition.feedback'
         ]
       }

@@ -955,7 +955,7 @@ export type Tokens = {
         backgroundColor: string;
         /** Default chip text and icon colour. */
         textColor: string;
-        /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
+        /** Corner radius of every chip: fully round, so a chip never shares Button's shape and the two read as different jobs (decision 0016). */
         borderRadius: string;
         /** Chip label typography, the same as sizes.large.font. */
         font: string;
@@ -1936,21 +1936,21 @@ export type Tokens = {
     radius: {
       /** No rounding: tables, dividers and sharp-edged containers. */
       none: string;
-      /** Minimal rounding: small badges, checkboxes, compact tags. */
+      /** Minimal rounding for thin bars: ProgressBar and AgentInput's level meter. */
       xs: string;
-      /** Subtle rounding: buttons, inputs and other form controls. */
+      /** Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock and the Checkbox box. */
       sm: string;
-      /** Standard rounding: cards, dropdown menus, popovers. */
+      /** The control radius: Button, IconButton, inputs, rows and tabs, and the menus and popovers they open. */
       md: string;
-      /** Generous rounding: modals, action sheets and feature cards. */
+      /** Generous rounding for containers that hold controls: Alert and cards. */
       lg: string;
-      /** Large rounding: pill buttons and prominent search bars. */
+      /** Large rounding: large cards such as AccountCard. */
       xl: string;
-      /** Extra-large rounding: hero elements and decorative containers. */
+      /** Overlays that hold controls (Modal, ActionSheet and the drawer Sheet), so their corners nest around the control radius, and large image cards (CardLarge, FeatureBlock). */
       '2xl': string;
-      /** Maximum rounding short of a circle: decorative cards and marketing elements. */
+      /** Maximum rounding short of a circle: AgentInput's input shell, which holds round buttons. */
       '3xl': string;
-      /** Fully round: avatars, round icon buttons, status dots and chips. */
+      /** Fully round: avatars, chips, badges, round icon buttons and status dots. */
       full: string;
     };
     space: {

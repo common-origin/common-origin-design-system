@@ -115,7 +115,7 @@ export const alertDocs: ComponentDocumentation = {
     'semantic.space.400',
 
     // Border
-    'semantic.radius.sm',
+    'semantic.radius.lg',
 
     // Typography
     'component.alert.title.typography',
@@ -543,7 +543,7 @@ export const alertDocs: ComponentDocumentation = {
           'semantic.border.width.thin',
           'semantic.space.300',
           'semantic.space.400',
-          'semantic.radius.sm'
+          'semantic.radius.lg'
         ]
       },
       {

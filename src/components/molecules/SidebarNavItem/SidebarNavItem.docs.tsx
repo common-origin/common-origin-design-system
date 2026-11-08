@@ -28,7 +28,7 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
     'semantic.space.200',
     'semantic.space.inset.xs',
     'semantic.space.inset.sm',
-    'semantic.radius.sm',
+    'semantic.radius.md',
     'semantic.typography.small',
     'semantic.typography.caption',
     'semantic.color.text.default',
@@ -101,7 +101,7 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
   anatomy: {
     description: 'A dense row: icon, label, trailing content.',
     parts: [
-      { name: 'Row', description: 'A link or button with the shared row states (0030). Inside SidebarNav its hover is the gliding highlight (0053)', tokens: ['semantic.size.row.sm', 'semantic.radius.sm'] },
+      { name: 'Row', description: 'A link or button with the shared row states (0030). Inside SidebarNav its hover is the gliding highlight (0053)', tokens: ['semantic.size.row.sm', 'semantic.radius.md'] },
       { name: 'Icon', description: 'Optional, decorative, in the text colour' },
       { name: 'Label', description: 'Small text, truncated to one line', tokens: ['semantic.typography.small'] },
       { name: 'Badge', description: 'An accent Badge count at the end of the row for new or unread items; in the rail, a dot inside the icon\'s top-right corner, clear of the rows around it' },

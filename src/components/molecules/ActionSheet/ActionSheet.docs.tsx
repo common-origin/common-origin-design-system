@@ -324,8 +324,8 @@ export const actionSheetDocs: ComponentDocumentation = {
     'semantic.space.400',
     'semantic.border.default',
     'semantic.border.focus',
-    'semantic.radius.sm',
-    'semantic.radius.lg',
+    'semantic.radius.md',
+    'semantic.radius.2xl',
     'semantic.typography.h3',
     'semantic.typography.body',
     'semantic.elevation.overlay',
@@ -483,7 +483,7 @@ const actions = [
         description: 'Bottom-aligned container that slides up on open and fades out on close',
         tokens: [
           'semantic.surface.raised',
-          'semantic.radius.lg',
+          'semantic.radius.2xl',
           'semantic.elevation.overlay'
         ]
       },
@@ -502,7 +502,7 @@ const actions = [
         description: 'Icon button to dismiss the sheet',
         tokens: [
           'semantic.color.icon.muted',
-          'semantic.radius.sm',
+          'semantic.radius.md',
           'semantic.border.focus'
         ]
       },

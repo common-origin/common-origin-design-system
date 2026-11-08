@@ -71,7 +71,7 @@ export const CloseButton = styled.button.withConfig({
     height: ${semantic.size.label.medium};
     transform: translate(-50%, -50%);
   }
-  border-radius: ${tokens.semantic.radius.xs};
+  border-radius: ${tokens.semantic.radius.full};
   cursor: ${props => props.$disabled ? 'not-allowed' : 'pointer'};
   color: inherit;
   transition: ${semantic.motion.transition.feedback};

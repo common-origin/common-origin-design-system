@@ -67,7 +67,7 @@ const Row = styled.a.withConfig({
   padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
   overflow: hidden;
   border: none;
-  border-radius: ${radius.sm};
+  border-radius: ${radius.md};
   background: none;
   font: ${typography.small};
   color: ${color.text.default};

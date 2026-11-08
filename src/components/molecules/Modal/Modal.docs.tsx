@@ -187,7 +187,7 @@ export const modalDocs: ComponentDocumentation = {
     'semantic.surface.raised',
     'semantic.color.fill.muted',
     // Border
-    'semantic.radius.xl',
+    'semantic.radius.2xl',
     'semantic.color.border.default',
     'semantic.color.fill.inverse',
     // Spacing
@@ -341,7 +341,7 @@ export const modalDocs: ComponentDocumentation = {
       {
         name: 'Dialog',
         description: 'Centred panel containing header, body, and footer. Sized by the size prop.',
-        tokens: ['semantic.surface.raised', 'semantic.elevation.overlay', 'semantic.radius.xl'],
+        tokens: ['semantic.surface.raised', 'semantic.elevation.overlay', 'semantic.radius.2xl'],
       },
       {
         name: 'Header',

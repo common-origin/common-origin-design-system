@@ -97,7 +97,7 @@ const Disclosure = styled.button.withConfig({
   min-height: ${size.row.sm};
   padding: 0 ${space.inset.sm};
   border: none;
-  border-radius: ${radius.sm};
+  border-radius: ${radius.md};
   background: none;
   text-align: left;
   cursor: pointer;

@@ -235,9 +235,9 @@
           "$description": "Default chip text and icon colour."
         },
         "borderRadius": {
-          "$value": "{semantic.radius.lg}",
+          "$value": "{semantic.radius.full}",
           "$type": "dimension",
-          "$description": "Corner radius of every chip: rounder than Button, to signal a different job (decision 0016)."
+          "$description": "Corner radius of every chip: fully round, so a chip never shares Button's shape and the two read as different jobs (decision 0016)."
         },
         "font": {
           "$value": "{semantic.typography.body}",

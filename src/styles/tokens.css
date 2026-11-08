@@ -622,14 +622,14 @@
   --co-semantic-layer-overlay: var(--co-base-z-index-7); /** Stacking layer for panels that slide over the page and their backdrop, such as Sheet. */
   --co-semantic-layer-modal: var(--co-base-z-index-8); /** Stacking layer for blocking dialogs and their backdrop: Modal, ActionSheet. */
   --co-semantic-radius-none: var(--co-base-dimension-0); /** No rounding: tables, dividers and sharp-edged containers. */
-  --co-semantic-radius-xs: var(--co-base-border-radius-1); /** Minimal rounding: small badges, checkboxes, compact tags. */
-  --co-semantic-radius-sm: var(--co-base-border-radius-2); /** Subtle rounding: buttons, inputs and other form controls. */
-  --co-semantic-radius-md: var(--co-base-border-radius-3); /** Standard rounding: cards, dropdown menus, popovers. */
-  --co-semantic-radius-lg: var(--co-base-border-radius-4); /** Generous rounding: modals, action sheets and feature cards. */
-  --co-semantic-radius-xl: var(--co-base-border-radius-5); /** Large rounding: pill buttons and prominent search bars. */
-  --co-semantic-radius-2xl: var(--co-base-border-radius-6); /** Extra-large rounding: hero elements and decorative containers. */
-  --co-semantic-radius-3xl: var(--co-base-border-radius-7); /** Maximum rounding short of a circle: decorative cards and marketing elements. */
-  --co-semantic-radius-full: var(--co-base-border-radius-circle); /** Fully round: avatars, round icon buttons, status dots and chips. */
+  --co-semantic-radius-xs: var(--co-base-border-radius-1); /** Minimal rounding for thin bars: ProgressBar and AgentInput's level meter. */
+  --co-semantic-radius-sm: var(--co-base-border-radius-2); /** Subtle rounding for small elements that aren't controls: Tag, Tooltip, CodeBlock and the Checkbox box. */
+  --co-semantic-radius-md: var(--co-base-border-radius-3); /** The control radius: Button, IconButton, inputs, rows and tabs, and the menus and popovers they open. */
+  --co-semantic-radius-lg: var(--co-base-border-radius-4); /** Generous rounding for containers that hold controls: Alert and cards. */
+  --co-semantic-radius-xl: var(--co-base-border-radius-5); /** Large rounding: large cards such as AccountCard. */
+  --co-semantic-radius-2xl: var(--co-base-border-radius-6); /** Overlays that hold controls (Modal, ActionSheet and the drawer Sheet), so their corners nest around the control radius, and large image cards (CardLarge, FeatureBlock). */
+  --co-semantic-radius-3xl: var(--co-base-border-radius-7); /** Maximum rounding short of a circle: AgentInput's input shell, which holds round buttons. */
+  --co-semantic-radius-full: var(--co-base-border-radius-circle); /** Fully round: avatars, chips, badges, round icon buttons and status dots. */
   --co-semantic-space-0: var(--co-base-dimension-0); /** No space, for explicit resets of padding, margin or gap. */
   --co-semantic-space-100: var(--co-base-dimension-1); /** The tightest gap, such as between a label and its required indicator. */
   --co-semantic-space-200: var(--co-base-dimension-2); /** A small gap, such as between a field's label, control and helper text. */
@@ -689,7 +689,7 @@
   --co-component-chip-close-button-size: var(--co-semantic-size-500); /** Width and height of a chip's close button, which fits inside the chip with room around it. */
   --co-component-chip-default-background-color: var(--co-semantic-color-fill-muted); /** Default chip fill at rest. */
   --co-component-chip-default-text-color: var(--co-semantic-color-text-default); /** Default chip text and icon colour. */
-  --co-component-chip-default-border-radius: var(--co-semantic-radius-lg); /** Corner radius of every chip: rounder than Button, to signal a different job (decision 0016). */
+  --co-component-chip-default-border-radius: var(--co-semantic-radius-full); /** Corner radius of every chip: fully round, so a chip never shares Button's shape and the two read as different jobs (decision 0016). */
   --co-component-chip-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every chip and its close button. */
   --co-component-chip-disabled-background-color: var(--co-semantic-color-fill-muted); /** Disabled default chip fill. */
   --co-component-chip-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled default chip text and icon colour. */

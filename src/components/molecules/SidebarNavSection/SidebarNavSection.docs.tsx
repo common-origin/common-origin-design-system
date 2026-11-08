@@ -29,7 +29,7 @@ export const sidebarNavSectionDocs: ComponentDocumentation = {
     'semantic.size.row.sm',
     'semantic.space.100',
     'semantic.space.inset.sm',
-    'semantic.radius.sm',
+    'semantic.radius.md',
     'semantic.border.default',
     'semantic.border.focus',
     'semantic.border.focusOffset',
