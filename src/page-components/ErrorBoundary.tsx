@@ -5,7 +5,7 @@ import { Stack } from '../components/atoms/Stack'
 import { Typography } from '../components/atoms/Typography'
 import { Button } from '../components/atoms/Button'
 import { captureException } from '../lib/errorReporting'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic } = tokens
 

@@ -29,8 +29,9 @@ export class LayoutErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoun
         <div style={{ 
           padding: '2rem', 
           textAlign: 'center',
-          backgroundColor: '#f8f9fa',
-          color: '#333',
+          // Tokens as CSS variables, so the fallback page follows the theme too (#360)
+          backgroundColor: 'var(--co-semantic-surface-base)',
+          color: 'var(--co-semantic-color-text-default)',
           minHeight: '100vh',
           display: 'flex',
           flexDirection: 'column',
@@ -43,10 +44,10 @@ export class LayoutErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoun
             onClick={() => this.setState({ hasError: false })}
             style={{
               padding: '0.5rem 1rem',
-              backgroundColor: '#0070f3',
-              color: 'white',
+              backgroundColor: 'var(--co-semantic-color-fill-emphasis)',
+              color: 'var(--co-semantic-color-text-inverse)',
               border: 'none',
-              borderRadius: '4px',
+              borderRadius: 'var(--co-semantic-radius-sm)',
               cursor: 'pointer'
             }}
           >

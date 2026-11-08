@@ -1,5 +1,6 @@
 import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import { themeScript } from '../src/page-components/theme'
 
 // Collects styled-components styles during server rendering so pages arrive
 // styled, instead of rendering unstyled until JavaScript loads.
@@ -31,8 +32,11 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
-        <Head />
+      // Light until the head script below applies the reader's theme, before the first paint (#360)
+      <Html lang="en" data-co-theme="light">
+        <Head>
+          <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        </Head>
         <body>
           <Main />
           <NextScript />

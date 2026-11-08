@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Button, Sheet, SidebarNav, SidebarNavItem, SidebarNavSection } from '../components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { base: { breakpoint }, semantic: { space, border, surface, layer } } = tokens
 

@@ -1,5 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
+import tokens from '@/styles/tokens.json'
+import darkTokens from '@/styles/tokens.theme-dark.json'
 
 export const Meta: React.FC = () => {
   return (
@@ -33,7 +35,9 @@ export const Meta: React.FC = () => {
       {/* Browser theme configuration */}
       <meta name="msapplication-TileColor" content="#000000" />
       <meta name="msapplication-config" content="/favicon/browserconfig.xml" />
-      <meta name="theme-color" content="#000000" />
+      {/* The browser's own chrome matches the page in each system theme (#360) */}
+      <meta name="theme-color" media="(prefers-color-scheme: light)" content={tokens.semantic.surface.base} />
+      <meta name="theme-color" media="(prefers-color-scheme: dark)" content={darkTokens.semantic.surface.base} />
       
       {/* Basic viewport and SEO */}
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />

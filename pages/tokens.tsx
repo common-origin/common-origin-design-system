@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import Link from 'next/link'
+import { darkModeGuide } from '../src/lib/docgen/darkModeGuide'
 import styled from 'styled-components'
 import { Fragment } from 'react'
 import { useRouter } from 'next/router'
@@ -16,6 +18,9 @@ import {
   Chip,
 } from '../src/page-components'
 import tokens from '@/styles/tokens.json'
+// Styles read the CSS-variable mirror, so the page follows the theme (#360); `tokens` is the data it lists
+import styleTokens from '@/lib/cssTokens'
+import darkTokens from '@/styles/tokens.theme-dark.json'
 import semanticSource from '@/tokens/semantic/index.json'
 
 // The token source carries each token's description and deprecation (decision 0033). The page
@@ -33,7 +38,7 @@ const inUse = (path: string, group: Record<string, unknown>) =>
     Object.entries(group).filter(([key, value]) => typeof value === 'string' && sourceAt(`${path}.${key}`)?.$deprecated === undefined)
   )
 
-const { base: { breakpoint }, semantic: { color, border } } = tokens
+const { base: { breakpoint }, semantic: { color, border } } = styleTokens
 
 const TokensLayout = styled.div`
   display: flex;
@@ -67,7 +72,7 @@ const TokenTable = styled.table`
 `
 
 const TableHeader = styled.th`
-  background-color: ${tokens.semantic.surface.base};
+  background-color: ${styleTokens.semantic.surface.base};
   border-bottom: ${border.default};
   padding: ${tokens.semantic.space[300]};
   text-align: left;
@@ -118,13 +123,44 @@ const ColorSwatch = styled.div<{ $color: string }>`
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
-  box-shadow: ${tokens.base.shadow[1]};
+  box-shadow: ${styleTokens.base.shadow[1]};
   
   @media (max-width: ${breakpoint.md}) {
     width: 32px;
     height: 32px;
   }
 `
+
+// A swatch in one theme (#360): a small ground in that theme's raised surface, with the token's own
+// CSS variable on it, so translucent fills show as they render in that theme
+const ThemedSwatchGround = styled.div`
+  display: inline-flex;
+  align-items: center;
+  padding: ${tokens.semantic.space[100]};
+  border-radius: ${tokens.base.border.radius[2]};
+  background-color: var(--co-semantic-surface-raised);
+  border: ${border.default};
+`
+
+const ThemeValue = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${tokens.semantic.space[200]};
+`
+
+const darkValueAt = (path: string): string | undefined => {
+  const value = path.split('.').reduce<unknown>((node, key) => (node as Record<string, unknown> | undefined)?.[key], darkTokens)
+  return typeof value === 'string' ? value : undefined
+}
+
+const ThemedColor = ({ theme, path, value }: { theme: 'light' | 'dark'; path: string; value?: string }) => (
+  <ThemeValue>
+    <ThemedSwatchGround data-co-theme={theme}>
+      <ColorSwatch $color={`var(--co-${path.replace(/\./g, '-')})`} style={{ marginRight: 0 }} />
+    </ThemedSwatchGround>
+    <TokenValue>{value ?? '—'}</TokenValue>
+  </ThemeValue>
+)
 
 const SpacingSwatch = styled.div<{ $size: string }>`
   width: ${props => props.$size};
@@ -134,7 +170,7 @@ const SpacingSwatch = styled.div<{ $size: string }>`
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
-  box-shadow: ${tokens.base.shadow[1]};
+  box-shadow: ${styleTokens.base.shadow[1]};
 `
 
 const IconSizeSwatch = styled.div<{ $size: string }>`
@@ -147,7 +183,7 @@ const IconSizeSwatch = styled.div<{ $size: string }>`
   justify-content: center;
   margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
-  box-shadow: ${tokens.base.shadow[1]};
+  box-shadow: ${styleTokens.base.shadow[1]};
   
   &::after {
     content: '★';
@@ -167,7 +203,7 @@ const BorderSample = styled.div<{ $border: string }>`
   border: ${props => props.$border};
   padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${tokens.semantic.surface.raised};
+  background-color: ${styleTokens.semantic.surface.raised};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   min-width: 100px;
@@ -180,7 +216,7 @@ const BorderRadiusSample = styled.div<{ $radius: string }>`
   border: ${border.default};
   padding: ${tokens.semantic.space[200]};
   border-radius: ${props => props.$radius};
-  background-color: ${tokens.semantic.surface.raised};
+  background-color: ${styleTokens.semantic.surface.raised};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   min-width: 60px;
@@ -197,7 +233,7 @@ const ShadowSample = styled.div<{ $shadow: string }>`
   box-shadow: ${props => props.$shadow};
   padding: ${tokens.semantic.space[300]};
   border-radius: ${tokens.base.border.radius[2]};
-  background-color: ${tokens.semantic.surface.raised};
+  background-color: ${styleTokens.semantic.surface.raised};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   min-width: 100px;
@@ -210,7 +246,7 @@ const ElevationSample = styled.div<{ $elevation: string }>`
   box-shadow: ${props => props.$elevation};
   padding: ${tokens.semantic.space[400]};
   border-radius: ${tokens.semantic.radius.md};
-  background-color: ${tokens.semantic.surface.raised};
+  background-color: ${styleTokens.semantic.surface.raised};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   min-width: 80px;
@@ -228,7 +264,7 @@ const MotionSample = styled.div<{ $transition: string }>`
   padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
   background-color: ${color.fill.accent};
-  color: ${color.text.inverse};
+  color: ${color.text['on-fill']};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   cursor: pointer;
@@ -250,8 +286,8 @@ const AvatarSizeSample = styled.div<{ $size: string }>`
   justify-content: center;
   margin-right: ${tokens.semantic.space[200]};
   vertical-align: middle;
-  box-shadow: ${tokens.base.shadow[1]};
-  color: ${color.text.inverse};
+  box-shadow: ${styleTokens.base.shadow[1]};
+  color: ${color.text['on-fill']};
   font: ${tokens.semantic.typography.caption};
   
   &::after {
@@ -285,7 +321,7 @@ const ZIndexSample = styled.div<{ $zIndex: string }>`
   padding: ${tokens.semantic.space[200]};
   border-radius: ${tokens.base.border.radius[2]};
   background-color: ${color.fill.accent};
-  color: ${color.text.inverse};
+  color: ${color.text['on-fill']};
   display: inline-block;
   margin-right: ${tokens.semantic.space[200]};
   min-width: 60px;
@@ -293,7 +329,7 @@ const ZIndexSample = styled.div<{ $zIndex: string }>`
   font: ${tokens.semantic.typography.caption};
 `
 
-// Helper function to render color tokens as table
+// Helper function to render color tokens as table, with each token's value in both themes (#360)
 const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix: string, path?: string) => {
   return (
     <Box mb="7xl">
@@ -302,28 +338,31 @@ const renderColorTokensTable = (colorTokens: any, categoryName: string, idPrefix
         <thead>
           <tr>
             <TableHeader>Token Name</TableHeader>
-            <TableHeader>Value</TableHeader>
+            <TableHeader>Light</TableHeader>
+            <TableHeader>Dark</TableHeader>
             <TableHeader>Usage</TableHeader>
-            <TableHeader style={{ width: '80px' }}>Example</TableHeader>
           </tr>
         </thead>
         <tbody>
-          {Object.entries(colorTokens).map(([key, value]) => (
-            <TableRow key={key}>
-              <TableCell>
-                <Chip title={path ? `${path.replace(/^semantic\./, '')}.${key}` : `color.${idPrefix.replace('color-', '')}.${key}`} variant="default" />
-              </TableCell>
-              <TableCell>
-                <TokenValue>{value as string}</TokenValue>
-              </TableCell>
-              <TableCell>
-                <TokenValue>{(path && sourceDescription(`${path}.${key}`)) || getColorUsageDescription(idPrefix, key)}</TokenValue>
-              </TableCell>
-              <TableCell>
-                <ColorSwatch $color={value as string} />
-              </TableCell>
-            </TableRow>
-          ))}
+          {Object.entries(colorTokens).map(([key, value]) => {
+            const tokenPath = path ? `${path}.${key}` : `semantic.color.${idPrefix.replace('color-', '')}.${key}`
+            return (
+              <TableRow key={key}>
+                <TableCell>
+                  <Chip title={path ? `${path.replace(/^semantic\./, '')}.${key}` : `color.${idPrefix.replace('color-', '')}.${key}`} variant="default" />
+                </TableCell>
+                <TableCell>
+                  <ThemedColor theme="light" path={tokenPath} value={value as string} />
+                </TableCell>
+                <TableCell>
+                  <ThemedColor theme="dark" path={tokenPath} value={darkValueAt(tokenPath)} />
+                </TableCell>
+                <TableCell>
+                  <TokenValue>{(path && sourceDescription(`${path}.${key}`)) || getColorUsageDescription(idPrefix, key)}</TokenValue>
+                </TableCell>
+              </TableRow>
+            )
+          })}
         </tbody>
       </TokenTable>
     </Box>
@@ -1185,6 +1224,11 @@ export default function Tokens() {
                       <Typography variant="small" color="subdued">
                         <a href={activeTabData.docs}>How to choose {activeTabData.label.toLowerCase()} tokens</a>
                       </Typography>
+                      {activeTabData.id === 'color' && (
+                        <Typography variant="small" color="subdued">
+                          <Link href={darkModeGuide.href}>{darkModeGuide.label}</Link>
+                        </Typography>
+                      )}
                     </Stack>
                   </Box>
                 )}

@@ -16,7 +16,7 @@ import {
 	Button,
 } from '../src/page-components'
 import { Grid, GridCol } from '../src/components/layout/GridSystem'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 interface Commit {
   hash: string
   url: string

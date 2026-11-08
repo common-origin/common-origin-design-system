@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { ErrorBoundary } from './ErrorBoundary'
 import styled from 'styled-components'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 
 const { semantic, base } = tokens
 

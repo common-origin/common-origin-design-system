@@ -16,7 +16,7 @@ import {
 } from '../src/page-components'
 import { staticComponentsData } from '@/lib/componentsData'
 import { ComponentData } from '@/lib/componentsData'
-import tokens from '@/styles/tokens.json'
+import tokens from '@/lib/cssTokens'
 import { DocsSidebar } from '../src/page-components/DocsSidebar'
 
 const { base: { breakpoint }, semantic: { color, border } } = tokens
