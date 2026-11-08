@@ -1,6 +1,6 @@
 # 0016. Accent, selection and chip types
 
-- **Status:** Accepted; chip types amended by [0046](0046-agent-proposals-and-suggestions.md) (adds the Suggestion chip)
+- **Status:** Accepted; chip types amended by [0046](0046-agent-proposals-and-suggestions.md) (adds the Suggestion chip); chip radius amended by [0055](0055-control-radius.md) (fully round)
 - **Date:** 2026-10-01
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P2, P3, P4, P5, P7
@@ -66,7 +66,7 @@ Chips are classified by job, not by emphasis. There are no emphasis levels on an
 | **Input** | `InputChip` (formerly `FilterChip`) | A removable value, such as an applied filter | Optional selected state (light blue plus checkmark); dismiss button |
 
 - The static `Chip` loses its `emphasis`, `interactive` and `subtle` variants, the legacy `light` and `dark` variants, and `onClick`. A clickable action uses a Button; a toggle uses `FilterChip`.
-- Chips keep their rounded radius (12px) while Buttons keep `sm` (4px). The different shapes signal different jobs.
+- Chips keep their rounded radius (12px) while Buttons keep `sm` (4px). The different shapes signal different jobs. (Amended by [0055](0055-control-radius.md): chips are fully round and Buttons use `md`, 8px.)
 - `Tag`, which also has `emphasis` and `interactive` variants, is left to [#62](https://github.com/common-origin/common-origin-design-system/issues/62), which decides whether Tag, Chip, CategoryBadge and Badge all stay.
 
 ## Consequences

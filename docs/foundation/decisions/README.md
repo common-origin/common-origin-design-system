@@ -5,7 +5,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | # | Decision | Status | Date |
 |---|---|---|---|
 | [0001](0001-record-decisions.md) | Record significant decisions | Accepted | 2026-09-25 |
-| [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted; `emphasis` renamed `accent` by 0016 | 2026-09-25 |
+| [0002](0002-button-variants.md) | Five Button variants; `emphasis` sits above `primary` | Accepted; `emphasis` renamed `accent` by 0016; radius amended by 0055 | 2026-09-25 |
 | [0003](0003-use-of-blue.md) | Blue is for links, focus, and deliberate highlight | Accepted; open question resolved by 0016 | 2026-09-25 |
 | [0004](0004-heading-weights.md) | System headings are weight 700; products may go heavier | Superseded by 0011 | 2026-09-25 |
 | [0005](0005-motion.md) | Motion is part of the system; appearing elements animate in | Accepted; reduced-motion clause superseded by 0015 | 2026-09-25 |
@@ -19,7 +19,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0013](0013-z-index-layers.md) | Z-index uses semantic layers paired with elevation | Accepted | 2026-09-26 |
 | [0014](0014-token-tiers.md) | Token tiers: semantic by default, component tokens for departures and families | Accepted; rule 4 has an interim exception (0036) | 2026-09-26 |
 | [0015](0015-reduced-motion.md) | Every motion respects reduced motion; overlays and dismissed alerts animate out | Accepted | 2026-09-27 |
-| [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted; chip types amended by 0046 | 2026-10-01 |
+| [0016](0016-accent-selection-and-chip-types.md) | Accent is the blue level above primary; selection is light blue; chips are static, filter or input | Accepted; chip types amended by 0046; chip radius amended by 0055 | 2026-10-01 |
 | [0017](0017-token-pipeline-dtcg-style-dictionary-5.md) | Token source moves to DTCG on Style Dictionary 5; `--co-` CSS variables are published | Accepted; step order amended by 0023, CSS variable names by 0024 | 2026-10-01 |
 | [0018](0018-indicators-and-labels.md) | Badge is a count or dot; StatusLabel conveys status; CategoryLabel colour-codes categories; one 20/24/32px size scale | Accepted; amended by 0045 | 2026-10-01 |
 | [0019](0019-alert-and-inline-alert.md) | Alert is the block alert (outlined or borderless); InlineAlert is the small inline message | Accepted | 2026-10-01 |
@@ -57,6 +57,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0051](0051-row-heights-and-dense-targets.md) | Rows follow density on a `size.row` scale (`sm` 24/32/40, `md` 40/48/56, `lg` 64/72/80px) with padding from `space.inset`, and dense targets may be 24px on every pointer, touch included; inputs share one height; amends 0032 | Accepted | 2026-11-07 |
 | [0052](0052-organisms-tier.md) | An organisms tier: `src/components/organisms/` for components that compose molecules into a region of a product's UI; SidebarNav is the first; nothing moves now | Accepted | 2026-11-08 |
 | [0053](0053-sidebarnav-glide.md) | SidebarNav's hover highlight glides between rows with `duration.fast`, in the row colours, following keyboard focus; jumps under reduced motion; amends 0030 for SidebarNav only | Accepted | 2026-11-08 |
+| [0055](0055-control-radius.md) | Controls, rows and tabs have 8px corners (`radius.md`); small non-control elements and the Checkbox box stay at 4px; containers nest around controls (Alert `lg`, overlays `2xl`); chips are fully round; amends 0002, 0016 and 0020 | Accepted | 2026-11-08 | <!-- verify-docs-ignore: token names, not files -->
 
 ## Template
 

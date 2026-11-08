@@ -1,6 +1,6 @@
 # 0002. Five Button variants; `emphasis` sits above `primary`
 
-- **Status:** Accepted; the `emphasis` variant is renamed `accent` by [0016](0016-accent-selection-and-chip-types.md) (role unchanged)
+- **Status:** Accepted; the `emphasis` variant is renamed `accent` by [0016](0016-accent-selection-and-chip-types.md) (role unchanged); radius amended by [0055](0055-control-radius.md) (`md`, 8px)
 - **Date:** 2026-09-25
 - **Decided by:** Ollie (owner)
 - **Principles:** P1, P4, P7
@@ -25,4 +25,4 @@ The live `Button` component is the source of truth. The binary rule is discarded
 
 - The binary rule has been removed from the `.github/` guidance and agent definitions.
 - Button docs should describe `emphasis` as sitting above `primary` in the hierarchy.
-- Button's corner radius (`sm`, 4px) is also taken from the live component; the earlier "6px minimum" and "~8px" claims are dropped.
+- Button's corner radius (`sm`, 4px) is also taken from the live component; the earlier "6px minimum" and "~8px" claims are dropped. (Superseded by [0055](0055-control-radius.md): Button uses `md`, 8px.)
