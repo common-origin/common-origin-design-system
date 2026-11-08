@@ -100,7 +100,7 @@ export const sheetDocs: ComponentDocumentation = {
     'semantic.size.overlay.sm',
     'semantic.layer.overlay',
     // Colors
-    'semantic.surface.base',
+    'semantic.surface.overlay',
     'semantic.surface.scrim',
     
     // Shadows
@@ -115,7 +115,7 @@ export const sheetDocs: ComponentDocumentation = {
     'component.overlay.borderRadius',
     
     // Colors for scrollbar
-    'semantic.surface.raised', // Scrollbar track
+    // the panel's surface.overlay is listed above, and also styles its scrollbar track
     'semantic.color.border.default', // Scrollbar thumb
     'semantic.color.fill.inverse', // Scrollbar thumb on hover
     // Motion
@@ -730,7 +730,7 @@ export const sheetDocs: ComponentDocumentation = {
       'Body scroll is prevented while sheet is open to maintain context',
       'Proper ARIA labeling via title prop or aria-label prop',
       'Support for aria-describedby for additional context',
-      'Overlay dims the page with a 50% near-black backdrop (semantic.surface.scrim)',
+      'Overlay dims the page with a dark backdrop, dark in both themes (semantic.surface.scrim)',
     ],
     keyboardNavigation: 'Tab to move forward through focusable elements, Shift+Tab to move backward. Focus wraps from last to first element and vice versa. Press ESC to close the sheet (if closeOnEscape is true).',
     screenReader: 'Announces as "dialog" with the provided label. Screen readers are informed this is a modal dialog via aria-modal="true". Focus management ensures users stay within the sheet context.',
@@ -769,14 +769,14 @@ Visual Variants:
     parts: [
       {
         name: 'Overlay',
-        description: 'Fixed-position backdrop that covers the entire viewport with a semi-transparent near-black background. Fades in with 200ms animation. Clicking it closes the sheet by default.',
+        description: 'Fixed-position backdrop that covers the entire viewport with a semi-transparent dark background (dark in both themes). Fades in with 200ms animation. Clicking it closes the sheet by default.',
         tokens: ['semantic.surface.scrim', 'semantic.layer.overlay'],
       },
       {
         name: 'Sheet Panel',
         description: 'The main sliding panel that contains content. Fixed position with slide animation from the configured edge. Has elevated shadow and scrollable overflow.',
         tokens: [
-          'semantic.surface.base',
+          'semantic.surface.overlay',
           'semantic.elevation.overlay',
           'component.overlay.borderRadius',
           'semantic.space.200',

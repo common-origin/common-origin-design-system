@@ -24,7 +24,7 @@ export const tagDocs: ComponentDocumentation = {
       type: "'default' | 'emphasis'",
       required: false,
       default: "'default'",
-      description: 'Tag is neutral metadata: default, or emphasis (near-black) to stand out. Status belongs to StatusLabel (decision 0029). success, warning, error and interactive were removed in 3.0.'
+      description: 'Tag is neutral metadata: default, or emphasis (the strongest neutral fill) to stand out. Status belongs to StatusLabel (decision 0029). success, warning, error and interactive were removed in 3.0.'
     },
     {
       name: 'border',

@@ -44,6 +44,8 @@ export type Tokens = {
       '5': string;
       '6': string;
       none: string;
+      /** A sunken well or pressed state. A shadow, so the theme scales it with the others (decision 0056). */
+      inset: string;
     };
     /** Stacking order: 1–5 are 10–50 for layers within the page, 6–8 are 1000 and up for overlays. */
     zIndex: {
@@ -76,6 +78,8 @@ export type Tokens = {
       '90': string;
       '95': string;
       '100': string;
+      /** How strongly the scrim dims the page: a theme parameter, 0.5 in light (decision 0056). */
+      scrim: string;
     };
     /** The one dimension scale on the 4px grid; the key is the multiple of 4px (12 is 3rem, 48px). Replaces the parallel base.size and base.spacing scales (#188). */
     dimension: {
@@ -129,6 +133,22 @@ export type Tokens = {
       transparent: string;
       /** Pure white, outside the ramps: raised surfaces (semantic.surface.raised) that sit on the gray.100 page. The ramps' contrast is measured against it (decision 0049). */
       white: string;
+      /** Surfaces by elevation, the same rule in every theme: higher is lighter (decision 0056). Raised and overlay are the next neutrals lighter than the page; in light the scale tops out at white, so both are white and shadows separate them. */
+      surface: {
+        /** The page. */
+        page: string;
+        /** One level above the page: cards, inputs, code blocks. */
+        raised: string;
+        /** Two levels above the page: menus, dialogs, sheets. */
+        overlay: string;
+      };
+      /** The light and dark ends of the neutral ramp, by role, in every theme (decision 0056): labels on solid fills use the light ink, and the scrim the dark ink. */
+      ink: {
+        /** The light end of the neutral ramp. */
+        light: string;
+        /** The dark end of the neutral ramp. */
+        dark: string;
+      };
       /** Pure-grey ramp, defined in OKLCH (chroma 0): 100 (lightest) to 1200 (primary text). Each step has one job, and its contrast against white is in its description (decision 0040). */
       gray: {
         /** Page background. oklch(0.991 0 0), 1.03:1 on white. */
@@ -183,6 +203,33 @@ export type Tokens = {
         /** Primary text, and the darkest step. Composites to gray.1200 over white. */
         '1200': string;
       };
+      /** Alpha twins of the inverse end of the grey ramp, named by role like text.inverse: gray.100 at gray-alpha's opacity for each step, so a translucent overlay on a dark or coloured fill (issue 354). In the dark theme the inverse end is dark, so this ramp is too (decision 0054). */
+      'gray-alpha-inverse': {
+        /** Page background. gray.100 at gray-alpha.100's opacity. */
+        '100': string;
+        /** Subtle background. gray.100 at gray-alpha.200's opacity. */
+        '200': string;
+        /** Component fill at rest. gray.100 at gray-alpha.300's opacity. */
+        '300': string;
+        /** Component fill on hover. gray.100 at gray-alpha.400's opacity. */
+        '400': string;
+        /** Component fill pressed or selected. gray.100 at gray-alpha.500's opacity. */
+        '500': string;
+        /** Subtle border. gray.100 at gray-alpha.600's opacity. */
+        '600': string;
+        /** Default border, for dividers and decorative outlines. gray.100 at gray-alpha.700's opacity. */
+        '700': string;
+        /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). gray.100 at gray-alpha.800's opacity. */
+        '800': string;
+        /** Solid fill. gray.100 at gray-alpha.900's opacity. */
+        '900': string;
+        /** Solid fill on hover. gray.100 at gray-alpha.1000's opacity. */
+        '1000': string;
+        /** Secondary text: at least 4.5:1 on 100 to 500 and white. gray.100 at gray-alpha.1100's opacity. */
+        '1100': string;
+        /** Primary text, and the darkest step. gray.100 at gray-alpha.1200's opacity. */
+        '1200': string;
+      };
       /** Accent role (decision 0043): links, selected and active states, the accent action, neutral information, in progress. Defined in OKLCH at hue 255°: 100 (lightest) to 1200 (darkest), each step at the gray step's contrast with white, with its contrast in its description (decisions 0040 and 0044). */
       accent: {
         /** Page background. oklch(0.991 0.002 248), 1.03:1 on white. */
@@ -209,6 +256,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.252 0.049 252), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of accent: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'accent-alpha': {
@@ -263,6 +312,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.248 0.034 159), 15.92:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of success: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'success-alpha': {
@@ -317,6 +368,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.252 0.030 84), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of warning: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'warning-alpha': {
@@ -371,6 +424,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.256 0.043 47), 15.91:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of serious: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'serious-alpha': {
@@ -425,6 +480,8 @@ export type Tokens = {
         '1100': string;
         /** Primary text, and the darkest step. oklch(0.259 0.063 29), 15.89:1 on white. */
         '1200': string;
+        /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+        solid: string;
       };
       /** Alpha twins of danger: each is the smallest opacity that composites over white to the solid step (decision 0044). */
       'danger-alpha': {
@@ -1647,8 +1704,10 @@ export type Tokens = {
       text: {
         /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
         default: string;
-        /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis. */
+        /** Text on the emphasis and inverse fills, such as the primary Button, the emphasis Tag and Tooltip. 15.51:1 on fill.emphasis. Text on a coloured fill uses text.on-fill. */
         inverse: string;
+        /** Text on solid coloured fills: the accent, danger, success, warning and serious fills (issue 355). The light ink, in every theme; text.inverse is for the emphasis and inverse fills. 6.00:1 on fill.accent. */
+        'on-fill': string;
         /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
         disabled: string;
         /** Success text, such as InlineAlert success messages. 5.99:1 on white. */
@@ -1695,8 +1754,10 @@ export type Tokens = {
         default: string;
         /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
         disabled: string;
-        /** Icons on dark or coloured fills, matching text.inverse. */
+        /** Icons on the emphasis and inverse fills, matching text.inverse. */
         inverse: string;
+        /** Icons on coloured fills, matching text.on-fill. */
+        'on-fill': string;
         /** Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.) */
         success: string;
         /** Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.) */
@@ -1761,7 +1822,7 @@ export type Tokens = {
         muted: string;
         /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
         inverse: string;
-        /** Blue fill for the accent Button and other deliberate highlights (0003), with text.inverse on it at 6.00:1. */
+        /** Blue fill for the accent Button and other deliberate highlights (0003), with text.on-fill on it at 6.00:1. */
         accent: string;
         /** Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1. */
         'accent-muted': string;
@@ -1769,23 +1830,23 @@ export type Tokens = {
         'accent-muted-hover': string;
         /** Fill of a pressed selected item, such as a selected filter chip. */
         'accent-muted-pressed': string;
-        /** Blue fill of a hovered accent control: fill.accent with text.inverse mixed in at opacity.state.hover (decision 0048). */
+        /** Blue fill of a hovered accent control: fill.accent with text.on-fill mixed in at opacity.state.hover (decision 0048). */
         'accent-hover': string;
-        /** Blue fill of a pressed accent control: fill.accent with text.inverse mixed in at opacity.state.pressed (decision 0048). */
+        /** Blue fill of a pressed accent control: fill.accent with text.on-fill mixed in at opacity.state.pressed (decision 0048). */
         'accent-pressed': string;
-        /** Strong red fill for destructive actions, such as the danger Button, with text.inverse on it at 6.03:1. */
+        /** Strong red fill for destructive actions, such as the danger Button, with text.on-fill on it at 6.03:1. */
         danger: string;
-        /** Fill of a hovered destructive control: fill.danger with text.inverse mixed in at opacity.state.hover (decision 0048). */
+        /** Fill of a hovered destructive control: fill.danger with text.on-fill mixed in at opacity.state.hover (decision 0048). */
         'danger-hover': string;
-        /** Fill of a pressed destructive control: fill.danger with text.inverse mixed in at opacity.state.pressed (decision 0048). */
+        /** Fill of a pressed destructive control: fill.danger with text.on-fill mixed in at opacity.state.pressed (decision 0048). */
         'danger-pressed': string;
         /** Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1. */
         'danger-muted': string;
-        /** Strong green fill for success states, such as a success indicator, with text.inverse on it at 5.99:1. */
+        /** Strong green fill for success states, such as a success indicator, with text.on-fill on it at 5.99:1. */
         success: string;
         /** Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1. */
         'success-muted': string;
-        /** Strong yellow fill for warning states, such as a warning indicator, with text.inverse on it at 6.01:1. */
+        /** Strong yellow fill for warning states, such as a warning indicator, with text.on-fill on it at 6.01:1. */
         warning: string;
         /** Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1. */
         'warning-muted': string;
@@ -1805,7 +1866,7 @@ export type Tokens = {
         'none-pressed': string;
         /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
         'inverse-none-hover': string;
-        /** Strong orange fill for serious-warning states, with text.inverse on it at 6.04:1. */
+        /** Strong orange fill for serious-warning states, with text.on-fill on it at 6.04:1. */
         serious: string;
         /** Light orange tint behind serious-warning messages. */
         'serious-muted': string;
@@ -2008,9 +2069,11 @@ export type Tokens = {
     surface: {
       /** The page: the off-white background everything else sits on (decision 0006). */
       base: string;
-      /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
+      /** Content raised off the page: cards, inputs, code blocks. Floating layers use surface.overlay. */
       raised: string;
-      /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+      /** Floating layers above raised content: Menu, the Dropdown and SearchField lists, ActionSheet, Modal and Sheet (issue 356). White in light, the same as raised; in the dark theme one step lighter than raised, because shadows barely show on a dark page. */
+      overlay: string;
+      /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. The dark ink at opacity.scrim, so it stays dark in every theme. */
       scrim: string;
     };
   };

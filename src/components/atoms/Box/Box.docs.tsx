@@ -251,7 +251,7 @@ export const boxDocs: ComponentDocumentation = {
       name: 'bg',
       type: 'BoxBackground',
       required: false,
-      description: 'Background colour as a semantic token path: surface.base (the page), surface.raised (cards and sheets), surface.scrim, or a color.fill.* fill such as color.fill.muted. The old keys (default, subtle, surface and the rest of semantic.color.background) were removed in 3.0.'
+      description: 'Background colour as a semantic token path: surface.base (the page), surface.raised (cards), surface.overlay (floating layers such as menus and dialogs), surface.scrim, or a color.fill.* fill such as color.fill.muted. The old keys (default, subtle, surface and the rest of semantic.color.background) were removed in 3.0.'
     },
     {
       name: 'color',

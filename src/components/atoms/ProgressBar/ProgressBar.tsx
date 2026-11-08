@@ -12,7 +12,7 @@ export interface ProgressBarProps {
   value: number
   /** Orientation of the progress bar */
   variant?: 'horizontal' | 'vertical'
-  /** Fill colour: `default` is near-black (`background.emphasis`); `success` and `error` use their status colours */
+  /** Fill colour: `default` is the strongest neutral fill (`color.fill.emphasis`: near-black in light, near-white in dark); `success` and `error` use their status colours */
   color?: 'success' | 'error' | 'default'
   /** Height size for horizontal progress bar (default: md) */
   height?: 'sm' | 'md' | 'lg' | 'xl'

@@ -10,7 +10,7 @@ const { radius } = semantic
 const { dot, count, ring } = tokens.component.badge
 
 /**
- * Badge variants: `default`, the near-black count, and `accent`, the blue highlight (decision 0045).
+ * Badge variants: `default`, the count on the strongest neutral fill, and `accent`, the blue highlight (decision 0045).
  */
 export type BadgeVariant = 'default' | 'accent'
 
@@ -23,7 +23,7 @@ export interface BadgeProps {
   max?: number
   /**
    * Visual variant of the badge. A badge means new or unread items (decision 0045): `accent` is
-   * the blue highlight, and `default` the near-black count. A badge's colour alone can't carry a
+   * the blue highlight, and `default` the count on the strongest neutral fill. A badge's colour alone can't carry a
    * status, so a count of items with a status uses the status pattern instead ("3 failed" with
    * StatusLabel).
    * @default 'default'
@@ -91,7 +91,7 @@ const BadgeIndicator = styled.span.withConfig({
       case 'accent':
         return `
           background-color: ${color.fill.accent};
-          color: ${color.text.inverse};
+          color: ${color.text['on-fill']};
         `
       default:
         return `

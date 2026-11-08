@@ -29,6 +29,7 @@
   --co-base-shadow-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   --co-base-shadow-6: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   --co-base-shadow-none: none;
+  --co-base-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /** A sunken well or pressed state. A shadow, so the theme scales it with the others (decision 0056). */
   --co-base-z-index-0: 0;
   --co-base-z-index-1: 10;
   --co-base-z-index-2: 20;
@@ -121,6 +122,18 @@
   --co-base-color-gray-alpha-1000: rgba(34, 34, 34, 0.606); /** Solid fill on hover. Composites to gray.1000 over white. */
   --co-base-color-gray-alpha-1100: rgba(34, 34, 34, 0.706); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over white. */
   --co-base-color-gray-alpha-1200: rgba(34, 34, 34, 1); /** Primary text, and the darkest step. Composites to gray.1200 over white. */
+  --co-base-color-gray-alpha-inverse-100: rgba(252, 252, 252, 0.014); /** Page background. gray.100 at gray-alpha.100's opacity. */
+  --co-base-color-gray-alpha-inverse-200: rgba(252, 252, 252, 0.027); /** Subtle background. gray.100 at gray-alpha.200's opacity. */
+  --co-base-color-gray-alpha-inverse-300: rgba(252, 252, 252, 0.059); /** Component fill at rest. gray.100 at gray-alpha.300's opacity. */
+  --co-base-color-gray-alpha-inverse-400: rgba(252, 252, 252, 0.09); /** Component fill on hover. gray.100 at gray-alpha.400's opacity. */
+  --co-base-color-gray-alpha-inverse-500: rgba(252, 252, 252, 0.122); /** Component fill pressed or selected. gray.100 at gray-alpha.500's opacity. */
+  --co-base-color-gray-alpha-inverse-600: rgba(252, 252, 252, 0.158); /** Subtle border. gray.100 at gray-alpha.600's opacity. */
+  --co-base-color-gray-alpha-inverse-700: rgba(252, 252, 252, 0.208); /** Default border, for dividers and decorative outlines. gray.100 at gray-alpha.700's opacity. */
+  --co-base-color-gray-alpha-inverse-800: rgba(252, 252, 252, 0.502); /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). gray.100 at gray-alpha.800's opacity. */
+  --co-base-color-gray-alpha-inverse-900: rgba(252, 252, 252, 0.557); /** Solid fill. gray.100 at gray-alpha.900's opacity. */
+  --co-base-color-gray-alpha-inverse-1000: rgba(252, 252, 252, 0.606); /** Solid fill on hover. gray.100 at gray-alpha.1000's opacity. */
+  --co-base-color-gray-alpha-inverse-1100: rgba(252, 252, 252, 0.706); /** Secondary text: at least 4.5:1 on 100 to 500 and white. gray.100 at gray-alpha.1100's opacity. */
+  --co-base-color-gray-alpha-inverse-1200: rgba(252, 252, 252, 1); /** Primary text, and the darkest step. gray.100 at gray-alpha.1200's opacity. */
   --co-base-color-accent-100: #fbfcfd; /** Page background. oklch(0.991 0.002 248), 1.03:1 on white. */
   --co-base-color-accent-200: #f7f9fc; /** Subtle background. oklch(0.981 0.005 258), 1.05:1 on white. */
   --co-base-color-accent-300: #edf3fa; /** Component fill at rest. oklch(0.962 0.011 252), 1.12:1 on white. */
@@ -423,12 +436,19 @@
   --co-base-easing-ease-in-back: cubic-bezier(0.36, 0, 0.66, -0.56);
   --co-base-easing-ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
   --co-base-easing-ease-in-out-back: cubic-bezier(0.68, -0.6, 0.32, 1.6);
-  --co-semantic-elevation-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06); /** Sunken/pressed states, input fields, wells */
-  --co-semantic-color-fill-none-hover: rgba(34, 34, 34, 0.1); /** Hover tint for a fill-less control over any background, such as a chip close button. */
-  --co-semantic-color-fill-none-pressed: rgba(34, 34, 34, 0.15); /** Pressed tint for a fill-less control over any background, such as a chip close button. */
-  --co-semantic-color-fill-inverse-none-hover: rgba(255, 255, 255, 0.2); /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
-  --co-semantic-surface-scrim: rgba(34, 34, 34, 0.5); /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. */
+  --co-base-opacity-scrim: var(--co-base-opacity-50); /** How strongly the scrim dims the page: a theme parameter, 0.5 in light (decision 0056). */
+  --co-base-color-surface-page: var(--co-base-color-gray-100); /** The page. */
+  --co-base-color-surface-raised: var(--co-base-color-white); /** One level above the page: cards, inputs, code blocks. */
+  --co-base-color-surface-overlay: var(--co-base-color-white); /** Two levels above the page: menus, dialogs, sheets. */
+  --co-base-color-ink-light: var(--co-base-color-gray-100); /** The light end of the neutral ramp. */
+  --co-base-color-ink-dark: var(--co-base-color-gray-1200); /** The dark end of the neutral ramp. */
+  --co-base-color-accent-solid: var(--co-base-color-accent-1100); /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+  --co-base-color-success-solid: var(--co-base-color-success-1100); /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+  --co-base-color-warning-solid: var(--co-base-color-warning-1100); /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+  --co-base-color-serious-solid: var(--co-base-color-serious-1100); /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
+  --co-base-color-danger-solid: var(--co-base-color-danger-1100); /** Solid fill that carries a label: where the light ink reads at the contrast secondary text has with the page (decision 0056). In light that is step 1100; the dark theme generates its own. */
   --co-semantic-elevation-none: var(--co-base-shadow-none); /** No elevation - flat surfaces, default state */
+  --co-semantic-elevation-inset: var(--co-base-shadow-inset); /** Sunken/pressed states, input fields, wells */
   --co-semantic-elevation-raised: var(--co-base-shadow-2); /** Subtle lift - cards, buttons with depth */
   --co-semantic-elevation-floating: var(--co-base-shadow-4); /** Moderate lift - tooltips, popovers, dropdowns */
   --co-semantic-elevation-overlay: var(--co-base-shadow-5); /** High lift - modals, dialogs, action sheets */
@@ -517,7 +537,7 @@
   --co-semantic-size-avatar-xl: var(--co-base-dimension-16); /** Extra-large avatar, on profile pages. */
   --co-semantic-spacing-layout-auto: var(--co-base-spacing-auto); /** auto: lets the browser compute the space, such as margin: auto to centre or push an element. */
   --co-semantic-color-text-default: var(--co-base-color-gray-1200); /** Primary text: body copy, labels and headings. 15.91:1 on white, 15.51:1 on the page. */
-  --co-semantic-color-text-inverse: var(--co-base-color-gray-100); /** Text on dark or coloured fills, such as the primary, accent and danger Buttons. 15.51:1 on fill.emphasis. */
+  --co-semantic-color-text-inverse: var(--co-base-color-gray-100); /** Text on the emphasis and inverse fills, such as the primary Button, the emphasis Tag and Tooltip. 15.51:1 on fill.emphasis. Text on a coloured fill uses text.on-fill. */
   --co-semantic-color-text-disabled: var(--co-base-color-gray-alpha-700); /** Text of disabled controls, translucent so it stays right on tinted surfaces. 1.53:1 on white: disabled text is exempt from the contrast minimum (WCAG 1.4.3), so never use it for text people need to read, including placeholders. */
   --co-semantic-color-text-success: var(--co-base-color-success-1100); /** Success text, such as InlineAlert success messages. 5.99:1 on white. */
   --co-semantic-color-text-warning: var(--co-base-color-warning-1100); /** Warning text, such as InlineAlert warnings (0043: warning is yellow). 6.01:1 on white. */
@@ -539,7 +559,7 @@
   --co-semantic-color-border-ai: var(--co-base-color-ai-800); /** Purple border for AI-generated content and agent actions, always with the AI icon and a label (0043). 3.20:1 on white. */
   --co-semantic-color-icon-default: var(--co-base-color-gray-1200); /** Default icon colour, matching text.default. 15.91:1 on white. */
   --co-semantic-color-icon-disabled: var(--co-base-color-gray-alpha-700); /** Icons and other foreground marks in disabled controls, matching text.disabled. 1.53:1 on white. */
-  --co-semantic-color-icon-inverse: var(--co-base-color-gray-100); /** Icons on dark or coloured fills, matching text.inverse. */
+  --co-semantic-color-icon-inverse: var(--co-base-color-gray-100); /** Icons on the emphasis and inverse fills, matching text.inverse. */
   --co-semantic-color-icon-success: var(--co-base-color-success-1100); /** Success icons, such as in Alert and EmptyState. 5.99:1 on white. (InlineAlert’s icon takes the text colour instead.) */
   --co-semantic-color-icon-warning: var(--co-base-color-warning-1100); /** Warning icons, such as in Alert. 6.01:1 on white. (InlineAlert’s icon takes the text colour instead.) */
   --co-semantic-color-icon-muted: var(--co-base-color-gray-1100); /** Secondary icons, such as list item and empty-state icons, matching text.muted. 6.01:1 on white. */
@@ -550,44 +570,42 @@
   --co-semantic-color-category-gray: var(--co-base-color-gray-800); /** Gray category (decision 0043: neutral, for uncategorised or "other"): the outline of an outlined CategoryLabel. 3.19:1 on white. */
   --co-semantic-color-category-gray-strong: var(--co-base-color-gray-1100); /** Strong step of the gray category: the fill of a filled CategoryLabel, with white text at 6.01:1. */
   --co-semantic-color-category-gray-text: var(--co-base-color-gray-1100); /** Text and icons of an outlined or minimal gray CategoryLabel. 6.01:1 on white, 5.37:1 on gray-muted. */
-  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-300); /** Light gray fill of a minimal CategoryLabel, behind the gray-text colour. */
+  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-alpha-300); /** Light gray fill of a minimal CategoryLabel, behind the gray-text colour. */
   --co-semantic-color-category-olive: var(--co-base-color-olive-800); /** Olive category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.18:1 on white. */
   --co-semantic-color-category-olive-strong: var(--co-base-color-olive-1100); /** Strong step of the olive category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
   --co-semantic-color-category-olive-text: var(--co-base-color-olive-1100); /** Text and icons of an outlined or minimal olive CategoryLabel. 6.02:1 on white, 5.39:1 on olive-muted. */
-  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-300); /** Light olive fill of a minimal CategoryLabel, behind the olive-text colour. */
+  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-alpha-300); /** Light olive fill of a minimal CategoryLabel, behind the olive-text colour. */
   --co-semantic-color-category-periwinkle: var(--co-base-color-periwinkle-800); /** Periwinkle category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
   --co-semantic-color-category-periwinkle-strong: var(--co-base-color-periwinkle-1100); /** Strong step of the periwinkle category: the fill of a filled CategoryLabel, with white text at 6.00:1. */
   --co-semantic-color-category-periwinkle-text: var(--co-base-color-periwinkle-1100); /** Text and icons of an outlined or minimal periwinkle CategoryLabel. 6.00:1 on white, 5.37:1 on periwinkle-muted. */
-  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-300); /** Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour. */
+  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-alpha-300); /** Light periwinkle fill of a minimal CategoryLabel, behind the periwinkle-text colour. */
   --co-semantic-color-category-rose: var(--co-base-color-rose-800); /** Rose category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
   --co-semantic-color-category-rose-strong: var(--co-base-color-rose-1100); /** Strong step of the rose category: the fill of a filled CategoryLabel, with white text at 5.99:1. */
   --co-semantic-color-category-rose-text: var(--co-base-color-rose-1100); /** Text and icons of an outlined or minimal rose CategoryLabel. 5.99:1 on white, 5.33:1 on rose-muted. */
-  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-300); /** Light rose fill of a minimal CategoryLabel, behind the rose-text colour. */
+  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-alpha-300); /** Light rose fill of a minimal CategoryLabel, behind the rose-text colour. */
   --co-semantic-color-category-magenta: var(--co-base-color-magenta-800); /** Magenta category (decision 0043: no meaning): the outline of an outlined CategoryLabel. 3.20:1 on white. */
   --co-semantic-color-category-magenta-strong: var(--co-base-color-magenta-1100); /** Strong step of the magenta category: the fill of a filled CategoryLabel, with white text at 6.02:1. */
   --co-semantic-color-category-magenta-text: var(--co-base-color-magenta-1100); /** Text and icons of an outlined or minimal magenta CategoryLabel. 6.02:1 on white, 5.38:1 on magenta-muted. */
-  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-300); /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
+  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-alpha-300); /** Light magenta fill of a minimal CategoryLabel, behind the magenta-text colour. */
   --co-semantic-color-fill-emphasis: var(--co-base-color-gray-1200); /** Strong near-black fill for the primary Button and IconButton and the emphasis Chip, with text.inverse on it (15.91:1). Hover and pressed mix in text.inverse at opacity.state (decision 0048). */
-  --co-semantic-color-fill-muted: var(--co-base-color-gray-300); /** Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page. */
+  --co-semantic-color-fill-muted: var(--co-base-color-gray-alpha-300); /** Light grey fill for quiet grouped content, such as the default Chip. The resting fill step, so it shows on the page. */
   --co-semantic-color-fill-inverse: var(--co-base-color-gray-1200); /** Dark fill for inverse elements: a checked Checkbox, Modal and Sheet drag handles. */
-  --co-semantic-color-fill-accent: var(--co-base-color-accent-1100); /** Blue fill for the accent Button and other deliberate highlights (0003), with text.inverse on it at 6.00:1. */
-  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-300); /** Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1. */
-  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-400); /** Fill of a hovered selected item, such as a selected filter chip. */
-  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-500); /** Fill of a pressed selected item, such as a selected filter chip. */
-  --co-semantic-color-fill-danger: var(--co-base-color-danger-1100); /** Strong red fill for destructive actions, such as the danger Button, with text.inverse on it at 6.03:1. */
-  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-300); /** Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1. */
-  --co-semantic-color-fill-success: var(--co-base-color-success-1100); /** Strong green fill for success states, such as a success indicator, with text.inverse on it at 5.99:1. */
-  --co-semantic-color-fill-success-muted: var(--co-base-color-success-300); /** Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1. */
-  --co-semantic-color-fill-warning: var(--co-base-color-warning-1100); /** Strong yellow fill for warning states, such as a warning indicator, with text.inverse on it at 6.01:1. */
-  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-300); /** Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1. */
-  --co-semantic-color-fill-disabled: var(--co-base-color-gray-300); /** Fill of a disabled control, such as a disabled Button or Switch. */
-  --co-semantic-color-fill-default: var(--co-base-color-gray-300); /** Fill of a neutral control at rest, such as the secondary Button (decision 0040). */
-  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-400); /** Fill of a hovered neutral control, such as the secondary Button. */
-  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-500); /** Fill of a pressed neutral control, such as the secondary Button. */
+  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-alpha-300); /** Light blue fill for selected items: a selected chip, tab or row (0016). Accent text on it is 5.37:1. */
+  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-alpha-400); /** Fill of a hovered selected item, such as a selected filter chip. */
+  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-alpha-500); /** Fill of a pressed selected item, such as a selected filter chip. */
+  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-alpha-300); /** Light red tint behind error messages, such as an error Alert. Danger text on it is 5.39:1. */
+  --co-semantic-color-fill-success-muted: var(--co-base-color-success-alpha-300); /** Light green tint behind success messages, such as a success Alert. Success text on it is 5.34:1. */
+  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-alpha-300); /** Light yellow tint behind warning messages, such as a warning Alert. Warning text on it is 5.37:1. */
+  --co-semantic-color-fill-disabled: var(--co-base-color-gray-alpha-300); /** Fill of a disabled control, such as a disabled Button or Switch. */
+  --co-semantic-color-fill-default: var(--co-base-color-gray-alpha-300); /** Fill of a neutral control at rest, such as the secondary Button (decision 0040). */
+  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-alpha-400); /** Fill of a hovered neutral control, such as the secondary Button. */
+  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-alpha-500); /** Fill of a pressed neutral control, such as the secondary Button. */
   --co-semantic-color-fill-none: var(--co-base-color-transparent); /** No fill, for controls without a background at rest: the naked Button and IconButton. */
-  --co-semantic-color-fill-serious: var(--co-base-color-serious-1100); /** Strong orange fill for serious-warning states, with text.inverse on it at 6.04:1. */
-  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-300); /** Light orange tint behind serious-warning messages. */
-  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-300); /** Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043). */
+  --co-semantic-color-fill-none-hover: var(--co-base-color-gray-alpha-400); /** Hover tint for a fill-less control over any background, such as a chip close button. */
+  --co-semantic-color-fill-none-pressed: var(--co-base-color-gray-alpha-600); /** Pressed tint for a fill-less control over any background, such as a chip close button. */
+  --co-semantic-color-fill-inverse-none-hover: var(--co-base-color-gray-alpha-inverse-700); /** Hover tint for a fill-less element on a dark background, such as a count on a dark tab. */
+  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-alpha-300); /** Light orange tint behind serious-warning messages. */
+  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-alpha-300); /** Light purple tint behind AI-generated content and agent proposals, always with the AI icon and a label (0043). */
   --co-semantic-color-data-positive: var(--co-base-color-success-900); /** Good values and money in: gains, rises, credits. Always with a sign or arrow. 3.75:1 on white, the same step as negative so neither looks heavier. */
   --co-semantic-color-data-negative: var(--co-base-color-danger-900); /** Bad values and money out: losses, falls, debits. Always with a sign or arrow. 3.74:1 on white, 0.118 apart from positive under every kind of colour vision. */
   --co-semantic-color-data-categorical-1: var(--co-base-color-olive-1100); /** Category series 1 (olive). 6.02:1 on white. */
@@ -652,8 +670,6 @@
   --co-semantic-space-inset-lg: var(--co-base-dimension-4); /** Large padding inside a component: button and input sides, card insides. */
   --co-semantic-space-inset-xl: var(--co-base-dimension-5); /** Generous padding inside a component, such as a prominent call to action. */
   --co-semantic-space-inset-2xl: var(--co-base-dimension-6); /** Largest padding inside a component: large cards, spacious form sections. */
-  --co-semantic-surface-base: var(--co-base-color-gray-100); /** The page: the off-white background everything else sits on (decision 0006). */
-  --co-semantic-surface-raised: var(--co-base-color-white); /** Content raised off the page: cards, inputs, sheets, dialogs, code blocks. */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis); /** Primary Button fill at rest. */
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the primary Button. */
   --co-component-button-primary-border-radius: var(--co-semantic-radius-md); /** Corner radius of every Button (visual language: Button uses md). */
@@ -675,12 +691,8 @@
   --co-component-button-variants-naked-active-background-color: var(--co-semantic-color-fill-default-hover); /** Naked Button fill while pressed. */
   --co-component-button-variants-naked-disabled-background-color: var(--co-semantic-color-fill-none); /** Disabled naked Button has no fill. */
   --co-component-button-variants-naked-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled naked Button text and icon colour. */
-  --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent); /** Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016). */
-  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the accent Button. */
   --co-component-button-variants-accent-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled accent Button fill. */
   --co-component-button-variants-accent-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled accent Button text and icon colour. */
-  --co-component-button-variants-danger-background-color: var(--co-semantic-color-fill-danger); /** Danger Button fill at rest, for destructive actions. */
-  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-inverse); /** Text and icon colour on the danger Button. */
   --co-component-button-variants-danger-disabled-background-color: var(--co-semantic-color-fill-disabled); /** Disabled danger Button fill. */
   --co-component-button-variants-danger-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled danger Button text and icon colour. */
   --co-component-button-sizes-small-font-weight: var(--co-semantic-font-weight-medium); /** Weight of small Button text, set after the font: medium, as the other sizes. */
@@ -693,14 +705,10 @@
   --co-component-chip-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every chip and its close button. */
   --co-component-chip-disabled-background-color: var(--co-semantic-color-fill-muted); /** Disabled default chip fill. */
   --co-component-chip-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled default chip text and icon colour. */
-  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised); /** Subtle chip fill at rest. */
   --co-component-chip-variants-subtle-text-color: var(--co-semantic-color-text-default); /** Subtle chip text and icon colour. */
-  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base); /** Subtle chip fill on hover, when it's clickable. */
   --co-component-chip-variants-subtle-active-background-color: var(--co-semantic-color-fill-muted); /** Subtle chip fill while pressed, when it's clickable. */
-  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised); /** Disabled subtle chip fill. */
   --co-component-chip-variants-subtle-disabled-text-color: var(--co-semantic-color-text-disabled); /** Disabled subtle chip text and icon colour. */
   --co-component-icon-button-primary-border-radius: var(--co-semantic-radius-md); /** Corner radius of every IconButton, matching Button. */
-  --co-component-input-focus-border-color: var(--co-semantic-color-border-focus); /** Text input border while focused. */
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus); /** Focus ring on every IconButton. */
   --co-component-separator-border: var(--co-semantic-border-default); /** Divider line, the same as variants.default.border. */
   --co-component-separator-variants-default-border: var(--co-semantic-border-default); /** Default Divider line. */
@@ -711,13 +719,13 @@
   --co-component-progress-bar-sizes-md-height: var(--co-semantic-size-200); /** Thickness of the medium ProgressBar, the default. */
   --co-component-progress-bar-sizes-lg-height: var(--co-semantic-size-400); /** Thickness of the large ProgressBar, for prominent progress. */
   --co-component-progress-bar-sizes-xl-height: var(--co-semantic-size-500); /** Thickness of the extra-large ProgressBar, the thickest size. */
-  --co-component-input-default-background-color: var(--co-semantic-surface-raised); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-text-color: var(--co-semantic-color-text-default); /** Text input value colour. */
   --co-component-input-default-border-color: var(--co-semantic-color-border-input); /** Text input, Dropdown and Checkbox border at rest. At least 3:1 on white (decision 0025). */
   --co-component-input-default-border-radius: var(--co-semantic-radius-md); /** Corner radius of text inputs, Dropdown and SearchField, matching Button. */
   --co-component-input-default-border-width: var(--co-semantic-border-width-thin); /** Border width of text inputs and the Checkbox box. */
   --co-component-input-placeholder-text-color: var(--co-semantic-color-text-muted); /** Placeholder text in every text input (TextField, PasswordField, NumberInput, SearchField, AgentInput). 8.18:1 on the white input fill: placeholders aren't exempt from the contrast minimum (WCAG 1.4.3), unlike disabled text. */
   --co-component-input-hover-border-color: var(--co-semantic-color-border-input-hover); /** Text input border on hover. */
+  --co-component-input-focus-border-color: var(--co-semantic-color-border-focus); /** Text input border while focused. */
   --co-component-input-focus-outline: var(--co-semantic-border-focus); /** Focus ring on text inputs and the Checkbox box. */
   --co-component-input-error-border-color: var(--co-semantic-color-border-danger); /** Text input border when invalid. */
   --co-component-input-error-focus-border-color: var(--co-semantic-color-border-danger); /** Invalid text input border while focused. */
@@ -781,7 +789,6 @@
   --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised); /** Slider thumb at rest. */
   --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky); /** Slider thumb on hover: one step deeper. */
   --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating); /** Slider thumb while dragging: deepest. */
-  --co-component-slider-thumb-background: var(--co-semantic-surface-raised); /** Fill of the Slider thumb: the raised surface, white. */
   --co-component-account-card-header-min-height: var(--co-semantic-size-1200); /** Minimum height of AccountCard's header row, so cards in a grid line up. */
   --co-component-account-card-min-width: var(--co-semantic-size-7500); /** Narrowest an AccountCard may get before its content wraps badly. */
   --co-component-breadcrumbs-item-max-width: var(--co-semantic-size-4500); /** Width at which a long Breadcrumbs label truncates with an ellipsis. */
@@ -812,10 +819,13 @@
   --co-component-status-scheduled-background: var(--co-semantic-color-fill-muted); /** Fill of a scheduled StatusLabel (decision 0045). */
   --co-component-track-background: var(--co-semantic-color-fill-default); /** Unfilled track of ProgressBar and Slider: light, so the fill and thumb show the value (decision 0026). The resting fill step, 1.12:1 on white. */
   --co-component-overlay-border-radius: var(--co-semantic-radius-2xl); /** Corner radius of every overlay that holds controls: Modal, ActionSheet's top corners and the drawer Sheet, so they share one shape that nests around the control radius (decision 0055). */
-  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Blue fill of a hovered accent control: fill.accent with text.inverse mixed in at opacity.state.hover (decision 0048). */
-  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Blue fill of a pressed accent control: fill.accent with text.inverse mixed in at opacity.state.pressed (decision 0048). */
-  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Fill of a hovered destructive control: fill.danger with text.inverse mixed in at opacity.state.hover (decision 0048). */
-  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Fill of a pressed destructive control: fill.danger with text.inverse mixed in at opacity.state.pressed (decision 0048). */
+  --co-semantic-color-text-on-fill: var(--co-base-color-ink-light); /** Text on solid coloured fills: the accent, danger, success, warning and serious fills (issue 355). The light ink, in every theme; text.inverse is for the emphasis and inverse fills. 6.00:1 on fill.accent. */
+  --co-semantic-color-icon-on-fill: var(--co-base-color-ink-light); /** Icons on coloured fills, matching text.on-fill. */
+  --co-semantic-color-fill-accent: var(--co-base-color-accent-solid); /** Blue fill for the accent Button and other deliberate highlights (0003), with text.on-fill on it at 6.00:1. */
+  --co-semantic-color-fill-danger: var(--co-base-color-danger-solid); /** Strong red fill for destructive actions, such as the danger Button, with text.on-fill on it at 6.03:1. */
+  --co-semantic-color-fill-success: var(--co-base-color-success-solid); /** Strong green fill for success states, such as a success indicator, with text.on-fill on it at 5.99:1. */
+  --co-semantic-color-fill-warning: var(--co-base-color-warning-solid); /** Strong yellow fill for warning states, such as a warning indicator, with text.on-fill on it at 6.01:1. */
+  --co-semantic-color-fill-serious: var(--co-base-color-serious-solid); /** Strong orange fill for serious-warning states, with text.on-fill on it at 6.04:1. */
   --co-semantic-typography-display: var(--co-semantic-font-weight-bold) var(--co-base-font-size-10)/var(--co-base-line-height-10) var(--co-base-font-family-heading); /** The largest heading, for hero titles. */
   --co-semantic-typography-h1: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-9)/var(--co-base-line-height-9) var(--co-base-font-family-heading); /** Heading 1: the page title, one per page. */
   --co-semantic-typography-h2: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-8)/var(--co-base-line-height-8) var(--co-base-font-family-heading); /** Heading 2: major sections of a page. */
@@ -829,13 +839,21 @@
   --co-semantic-typography-overline: var(--co-semantic-font-weight-bold) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** A short uppercase label above a heading. */
   --co-semantic-typography-caption: var(--co-semantic-font-weight-regular) var(--co-base-font-size-1)/var(--co-base-line-height-1) var(--co-base-font-family-body); /** Captions: helper text, metadata and image captions. */
   --co-semantic-typography-label: var(--co-semantic-font-weight-semibold) var(--co-base-font-size-2)/var(--co-base-line-height-3) var(--co-base-font-family-body); /** Form labels for fields such as TextField and Slider. */
-  --co-component-button-variants-accent-hover-background-color: var(--co-semantic-color-fill-accent-hover); /** Accent Button fill on hover. */
-  --co-component-button-variants-accent-active-background-color: var(--co-semantic-color-fill-accent-pressed); /** Accent Button fill while pressed. */
-  --co-component-button-variants-danger-hover-background-color: var(--co-semantic-color-fill-danger-hover); /** Danger Button fill on hover. */
-  --co-component-button-variants-danger-active-background-color: var(--co-semantic-color-fill-danger-pressed); /** Danger Button fill while pressed. */
+  --co-semantic-surface-base: var(--co-base-color-surface-page); /** The page: the off-white background everything else sits on (decision 0006). */
+  --co-semantic-surface-raised: var(--co-base-color-surface-raised); /** Content raised off the page: cards, inputs, code blocks. Floating layers use surface.overlay. */
+  --co-semantic-surface-overlay: var(--co-base-color-surface-overlay); /** Floating layers above raised content: Menu, the Dropdown and SearchField lists, ActionSheet, Modal and Sheet (issue 356). White in light, the same as raised; in the dark theme one step lighter than raised, because shadows barely show on a dark page. */
+  --co-semantic-surface-scrim: color-mix(in srgb, var(--co-base-color-ink-dark) calc(var(--co-base-opacity-scrim) * 100%), transparent); /** Backdrop behind a modal surface: Modal, Sheet, ActionSheet. The dark ink at opacity.scrim, so it stays dark in every theme. */
+  --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent); /** Fill of the accent Button: the blue call to action above primary, at most one per view (decision 0016). */
+  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-on-fill); /** Text and icon colour on the accent Button. */
+  --co-component-button-variants-danger-background-color: var(--co-semantic-color-fill-danger); /** Danger Button fill at rest, for destructive actions. */
+  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-on-fill); /** Text and icon colour on the danger Button. */
   --co-component-button-sizes-small-font: var(--co-semantic-typography-caption); /** Small Button text: the caption style, with button.sizes.small.fontWeight after it. */
   --co-component-chip-default-font: var(--co-semantic-typography-body); /** Chip label typography, the same as sizes.large.font. */
+  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised); /** Subtle chip fill at rest. */
+  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base); /** Subtle chip fill on hover, when it's clickable. */
+  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised); /** Disabled subtle chip fill. */
   --co-component-chip-sizes-medium-font: var(--co-semantic-typography-small); /** Chip label typography. Every chip uses it: chips have one size (decision 0035). */
+  --co-component-input-default-background-color: var(--co-semantic-surface-raised); /** Text input fill: TextField, PasswordField, NumberInput, Dropdown, SearchField, and the Checkbox box. */
   --co-component-input-default-font: var(--co-semantic-typography-body); /** Text input value typography. */
   --co-component-badge-label-typography-small: var(--co-semantic-typography-caption); /** Typography for small labels in the badge-like family (StatusLabel small, CategoryLabel medium, Tag). Combine with label.fontWeight. */
   --co-component-badge-label-typography-medium: var(--co-semantic-typography-small); /** Typography for medium labels in the badge-like family (StatusLabel medium, CategoryLabel large). Combine with label.fontWeight. */
@@ -845,6 +863,15 @@
   --co-component-alert-message-typography: var(--co-semantic-typography-body); /** Alert message style (body), adjusted by message.lineHeight. */
   --co-component-tab-bar-badge-typography: var(--co-semantic-typography-caption); /** Tab count badge text. */
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */
+  --co-component-slider-thumb-background: var(--co-semantic-surface-raised); /** Fill of the Slider thumb: the raised surface, white. */
+  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Blue fill of a hovered accent control: fill.accent with text.on-fill mixed in at opacity.state.hover (decision 0048). */
+  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Blue fill of a pressed accent control: fill.accent with text.on-fill mixed in at opacity.state.pressed (decision 0048). */
+  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Fill of a hovered destructive control: fill.danger with text.on-fill mixed in at opacity.state.hover (decision 0048). */
+  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Fill of a pressed destructive control: fill.danger with text.on-fill mixed in at opacity.state.pressed (decision 0048). */
+  --co-component-button-variants-accent-hover-background-color: var(--co-semantic-color-fill-accent-hover); /** Accent Button fill on hover. */
+  --co-component-button-variants-accent-active-background-color: var(--co-semantic-color-fill-accent-pressed); /** Accent Button fill while pressed. */
+  --co-component-button-variants-danger-hover-background-color: var(--co-semantic-color-fill-danger-hover); /** Danger Button fill on hover. */
+  --co-component-button-variants-danger-active-background-color: var(--co-semantic-color-fill-danger-pressed); /** Danger Button fill while pressed. */
 }
 
 /* Mode: density (decision 0032). Control heights, control insets and row heights for a region, set with data-co-density on any element (decisions 0032, 0034 and 0051). Layout spacing doesn't change. */
@@ -894,10 +921,17 @@
   --co-semantic-space-inset-2xl: var(--co-base-dimension-7); /** Largest padding inside a component: large cards, spacious form sections. */
 }
 
-/* Mode: theme (decision 0032). Light or dark colour for a region, set with data-co-theme on any element (decision 0054). Changes colour and shadow only. Each ramp step keeps its job, so the dark context overrides base colour values (generated by scripts/generate-palette.mjs) plus a few semantic exceptions. A product that doesn't set it stays light: tokens.css never follows prefers-color-scheme by itself (#358). */
+/* Mode: theme (decision 0032). Light or dark colour for a region, set with data-co-theme on any element (decision 0054). Changes colour and shadow only. Each ramp step keeps its job, so the dark context is generated base values only (scripts/generate-palette.mjs): semantic tokens read the same paths in both themes (decision 0056). A product that doesn't set it stays light: tokens.css never follows prefers-color-scheme by itself (#358). */
 
 [data-co-theme="light"] {
   color-scheme: light;
+  --co-base-shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --co-base-shadow-2: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --co-base-shadow-3: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --co-base-shadow-4: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --co-base-shadow-5: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --co-base-shadow-6: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  --co-base-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
   --co-base-color-gray-100: #fcfcfc;
   --co-base-color-gray-200: #f9f9f9;
   --co-base-color-gray-300: #f2f2f2;
@@ -922,6 +956,18 @@
   --co-base-color-gray-alpha-1000: rgba(34, 34, 34, 0.606);
   --co-base-color-gray-alpha-1100: rgba(34, 34, 34, 0.706);
   --co-base-color-gray-alpha-1200: rgba(34, 34, 34, 1);
+  --co-base-color-gray-alpha-inverse-100: rgba(252, 252, 252, 0.014);
+  --co-base-color-gray-alpha-inverse-200: rgba(252, 252, 252, 0.027);
+  --co-base-color-gray-alpha-inverse-300: rgba(252, 252, 252, 0.059);
+  --co-base-color-gray-alpha-inverse-400: rgba(252, 252, 252, 0.09);
+  --co-base-color-gray-alpha-inverse-500: rgba(252, 252, 252, 0.122);
+  --co-base-color-gray-alpha-inverse-600: rgba(252, 252, 252, 0.158);
+  --co-base-color-gray-alpha-inverse-700: rgba(252, 252, 252, 0.208);
+  --co-base-color-gray-alpha-inverse-800: rgba(252, 252, 252, 0.502);
+  --co-base-color-gray-alpha-inverse-900: rgba(252, 252, 252, 0.557);
+  --co-base-color-gray-alpha-inverse-1000: rgba(252, 252, 252, 0.606);
+  --co-base-color-gray-alpha-inverse-1100: rgba(252, 252, 252, 0.706);
+  --co-base-color-gray-alpha-inverse-1200: rgba(252, 252, 252, 1);
   --co-base-color-accent-100: #fbfcfd;
   --co-base-color-accent-200: #f7f9fc;
   --co-base-color-accent-300: #edf3fa;
@@ -1162,6 +1208,22 @@
   --co-base-color-magenta-alpha-1000: rgba(215, 0, 212, 1);
   --co-base-color-magenta-alpha-1100: rgba(177, 0, 175, 1);
   --co-base-color-magenta-alpha-1200: rgba(37, 0, 35, 0.918);
+  --co-base-opacity-scrim: var(--co-base-opacity-50);
+  --co-base-color-surface-page: var(--co-base-color-gray-100);
+  --co-base-color-surface-raised: var(--co-base-color-white);
+  --co-base-color-surface-overlay: var(--co-base-color-white);
+  --co-base-color-ink-light: var(--co-base-color-gray-100);
+  --co-base-color-ink-dark: var(--co-base-color-gray-1200);
+  --co-base-color-accent-solid: var(--co-base-color-accent-1100);
+  --co-base-color-success-solid: var(--co-base-color-success-1100);
+  --co-base-color-warning-solid: var(--co-base-color-warning-1100);
+  --co-base-color-serious-solid: var(--co-base-color-serious-1100);
+  --co-base-color-danger-solid: var(--co-base-color-danger-1100);
+  --co-semantic-elevation-inset: var(--co-base-shadow-inset);
+  --co-semantic-elevation-raised: var(--co-base-shadow-2);
+  --co-semantic-elevation-floating: var(--co-base-shadow-4);
+  --co-semantic-elevation-overlay: var(--co-base-shadow-5);
+  --co-semantic-elevation-sticky: var(--co-base-shadow-3);
   --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default);
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus);
   --co-semantic-border-input-hover: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-input-hover);
@@ -1198,43 +1260,41 @@
   --co-semantic-color-category-gray: var(--co-base-color-gray-800);
   --co-semantic-color-category-gray-strong: var(--co-base-color-gray-1100);
   --co-semantic-color-category-gray-text: var(--co-base-color-gray-1100);
-  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-300);
+  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-alpha-300);
   --co-semantic-color-category-olive: var(--co-base-color-olive-800);
   --co-semantic-color-category-olive-strong: var(--co-base-color-olive-1100);
   --co-semantic-color-category-olive-text: var(--co-base-color-olive-1100);
-  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-300);
+  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-alpha-300);
   --co-semantic-color-category-periwinkle: var(--co-base-color-periwinkle-800);
   --co-semantic-color-category-periwinkle-strong: var(--co-base-color-periwinkle-1100);
   --co-semantic-color-category-periwinkle-text: var(--co-base-color-periwinkle-1100);
-  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-300);
+  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-alpha-300);
   --co-semantic-color-category-rose: var(--co-base-color-rose-800);
   --co-semantic-color-category-rose-strong: var(--co-base-color-rose-1100);
   --co-semantic-color-category-rose-text: var(--co-base-color-rose-1100);
-  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-300);
+  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-alpha-300);
   --co-semantic-color-category-magenta: var(--co-base-color-magenta-800);
   --co-semantic-color-category-magenta-strong: var(--co-base-color-magenta-1100);
   --co-semantic-color-category-magenta-text: var(--co-base-color-magenta-1100);
-  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-300);
+  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-alpha-300);
   --co-semantic-color-fill-emphasis: var(--co-base-color-gray-1200);
-  --co-semantic-color-fill-muted: var(--co-base-color-gray-300);
+  --co-semantic-color-fill-muted: var(--co-base-color-gray-alpha-300);
   --co-semantic-color-fill-inverse: var(--co-base-color-gray-1200);
-  --co-semantic-color-fill-accent: var(--co-base-color-accent-1100);
-  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-300);
-  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-400);
-  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-500);
-  --co-semantic-color-fill-danger: var(--co-base-color-danger-1100);
-  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-300);
-  --co-semantic-color-fill-success: var(--co-base-color-success-1100);
-  --co-semantic-color-fill-success-muted: var(--co-base-color-success-300);
-  --co-semantic-color-fill-warning: var(--co-base-color-warning-1100);
-  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-300);
-  --co-semantic-color-fill-disabled: var(--co-base-color-gray-300);
-  --co-semantic-color-fill-default: var(--co-base-color-gray-300);
-  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-400);
-  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-500);
-  --co-semantic-color-fill-serious: var(--co-base-color-serious-1100);
-  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-300);
-  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-300);
+  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-alpha-300);
+  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-alpha-400);
+  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-alpha-500);
+  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-alpha-300);
+  --co-semantic-color-fill-success-muted: var(--co-base-color-success-alpha-300);
+  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-alpha-300);
+  --co-semantic-color-fill-disabled: var(--co-base-color-gray-alpha-300);
+  --co-semantic-color-fill-default: var(--co-base-color-gray-alpha-300);
+  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-alpha-400);
+  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-alpha-500);
+  --co-semantic-color-fill-none-hover: var(--co-base-color-gray-alpha-400);
+  --co-semantic-color-fill-none-pressed: var(--co-base-color-gray-alpha-600);
+  --co-semantic-color-fill-inverse-none-hover: var(--co-base-color-gray-alpha-inverse-700);
+  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-alpha-300);
+  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-alpha-300);
   --co-semantic-color-data-positive: var(--co-base-color-success-900);
   --co-semantic-color-data-negative: var(--co-base-color-danger-900);
   --co-semantic-color-data-categorical-1: var(--co-base-color-olive-1100);
@@ -1252,8 +1312,6 @@
   --co-semantic-color-data-sequential-periwinkle-3: var(--co-base-color-periwinkle-800);
   --co-semantic-color-data-sequential-periwinkle-4: var(--co-base-color-periwinkle-1000);
   --co-semantic-color-data-sequential-periwinkle-5: var(--co-base-color-periwinkle-1200);
-  --co-semantic-surface-base: var(--co-base-color-gray-100);
-  --co-semantic-surface-raised: var(--co-base-color-white);
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis);
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
@@ -1271,12 +1329,8 @@
   --co-component-button-variants-naked-hover-background-color: var(--co-semantic-color-fill-default);
   --co-component-button-variants-naked-active-background-color: var(--co-semantic-color-fill-default-hover);
   --co-component-button-variants-naked-disabled-text-color: var(--co-semantic-color-text-disabled);
-  --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent);
-  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-variants-accent-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-button-variants-accent-disabled-text-color: var(--co-semantic-color-text-disabled);
-  --co-component-button-variants-danger-background-color: var(--co-semantic-color-fill-danger);
-  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-variants-danger-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-button-variants-danger-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-chip-default-background-color: var(--co-semantic-color-fill-muted);
@@ -1284,20 +1338,15 @@
   --co-component-chip-focus-outline: var(--co-semantic-border-focus);
   --co-component-chip-disabled-background-color: var(--co-semantic-color-fill-muted);
   --co-component-chip-disabled-text-color: var(--co-semantic-color-text-disabled);
-  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised);
   --co-component-chip-variants-subtle-text-color: var(--co-semantic-color-text-default);
-  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base);
   --co-component-chip-variants-subtle-active-background-color: var(--co-semantic-color-fill-muted);
-  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised);
   --co-component-chip-variants-subtle-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus);
-  --co-component-input-disabled-border-color: var(--co-semantic-color-border-default);
   --co-component-separator-border: var(--co-semantic-border-default);
   --co-component-separator-variants-default-border: var(--co-semantic-border-default);
   --co-component-separator-variants-strong-border: var(--co-semantic-border-input-hover);
   --co-component-separator-variants-minimal-border: var(--co-semantic-border-default);
   --co-component-progress-bar-background-color: var(--co-semantic-color-fill-default);
-  --co-component-input-default-background-color: var(--co-semantic-surface-raised);
   --co-component-input-default-text-color: var(--co-semantic-color-text-default);
   --co-component-input-default-border-color: var(--co-semantic-color-border-input);
   --co-component-input-placeholder-text-color: var(--co-semantic-color-text-muted);
@@ -1310,6 +1359,7 @@
   --co-component-input-error-hover-border-color: var(--co-semantic-color-border-danger);
   --co-component-input-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-input-disabled-text-color: var(--co-semantic-color-text-disabled);
+  --co-component-input-disabled-border-color: var(--co-semantic-color-border-default);
   --co-component-field-label-color: var(--co-semantic-color-text-default);
   --co-component-field-label-color-disabled: var(--co-semantic-color-text-disabled);
   --co-component-field-required-indicator-color: var(--co-semantic-color-text-danger);
@@ -1327,7 +1377,9 @@
   --co-component-alert-appearance-outlined-border-color-warning: var(--co-semantic-color-border-warning);
   --co-component-alert-appearance-outlined-border-color-info: var(--co-semantic-color-border-accent);
   --co-component-alert-appearance-outlined-border-color-success: var(--co-semantic-color-border-success);
-  --co-component-slider-thumb-background: var(--co-semantic-surface-raised);
+  --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised);
+  --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky);
+  --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating);
   --co-component-status-pending-text: var(--co-semantic-color-text-muted);
   --co-component-status-pending-background: var(--co-semantic-color-fill-muted);
   --co-component-status-completed-text: var(--co-semantic-color-text-success);
@@ -1341,10 +1393,30 @@
   --co-component-status-scheduled-text: var(--co-semantic-color-text-muted);
   --co-component-status-scheduled-background: var(--co-semantic-color-fill-muted);
   --co-component-track-background: var(--co-semantic-color-fill-default);
-  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
-  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%));
-  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
-  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%));
+  --co-semantic-color-text-on-fill: var(--co-base-color-ink-light);
+  --co-semantic-color-icon-on-fill: var(--co-base-color-ink-light);
+  --co-semantic-color-fill-accent: var(--co-base-color-accent-solid);
+  --co-semantic-color-fill-danger: var(--co-base-color-danger-solid);
+  --co-semantic-color-fill-success: var(--co-base-color-success-solid);
+  --co-semantic-color-fill-warning: var(--co-base-color-warning-solid);
+  --co-semantic-color-fill-serious: var(--co-base-color-serious-solid);
+  --co-semantic-surface-base: var(--co-base-color-surface-page);
+  --co-semantic-surface-raised: var(--co-base-color-surface-raised);
+  --co-semantic-surface-overlay: var(--co-base-color-surface-overlay);
+  --co-semantic-surface-scrim: color-mix(in srgb, var(--co-base-color-ink-dark) calc(var(--co-base-opacity-scrim) * 100%), transparent);
+  --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent);
+  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-on-fill);
+  --co-component-button-variants-danger-background-color: var(--co-semantic-color-fill-danger);
+  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-on-fill);
+  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised);
+  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base);
+  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised);
+  --co-component-input-default-background-color: var(--co-semantic-surface-raised);
+  --co-component-slider-thumb-background: var(--co-semantic-surface-raised);
+  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%));
+  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%));
+  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%));
+  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%));
   --co-component-button-variants-accent-hover-background-color: var(--co-semantic-color-fill-accent-hover);
   --co-component-button-variants-accent-active-background-color: var(--co-semantic-color-fill-accent-pressed);
   --co-component-button-variants-danger-hover-background-color: var(--co-semantic-color-fill-danger-hover);
@@ -1353,6 +1425,14 @@
 
 [data-co-theme="dark"] {
   color-scheme: dark;
+  --co-base-shadow-1: 0 1px 2px 0 rgba(0, 0, 0, 0.1); /** Light shadow 1 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-2: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px 0 rgba(0, 0, 0, 0.12); /** Light shadow 2 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-3: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.12); /** Light shadow 3 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-4: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1); /** Light shadow 4 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-5: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.08); /** Light shadow 5 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-6: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /** Light shadow 6 at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-shadow-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.12); /** Light shadow inset at 2× the opacity: shadows barely show on a dark page. */
+  --co-base-opacity-scrim: 0.7; /** How strongly the scrim dims the dark page. */
   --co-base-color-gray-100: #0f0f0f; /** Page background. oklch(0.168 0.000 0), 1.00:1 on the dark page. */
   --co-base-color-gray-200: #171717; /** Subtle background. oklch(0.205 0.000 0), 1.07:1 on the dark page. */
   --co-base-color-gray-300: #1e1e1e; /** Component fill at rest. oklch(0.235 0.000 0), 1.15:1 on the dark page. */
@@ -1377,6 +1457,18 @@
   --co-base-color-gray-alpha-1000: rgba(235, 235, 235, 0.555); /** Solid fill on hover. Composites to gray.1000 over the dark page. */
   --co-base-color-gray-alpha-1100: rgba(235, 235, 235, 0.709); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to gray.1100 over the dark page. */
   --co-base-color-gray-alpha-1200: rgba(235, 235, 235, 1); /** Primary text, and the darkest step. Composites to gray.1200 over the dark page. */
+  --co-base-color-gray-alpha-inverse-100: rgba(15, 15, 15, 0.014); /** Page background. The dark page's grey at gray-alpha.100's opacity. */
+  --co-base-color-gray-alpha-inverse-200: rgba(15, 15, 15, 0.027); /** Subtle background. The dark page's grey at gray-alpha.200's opacity. */
+  --co-base-color-gray-alpha-inverse-300: rgba(15, 15, 15, 0.059); /** Component fill at rest. The dark page's grey at gray-alpha.300's opacity. */
+  --co-base-color-gray-alpha-inverse-400: rgba(15, 15, 15, 0.09); /** Component fill on hover. The dark page's grey at gray-alpha.400's opacity. */
+  --co-base-color-gray-alpha-inverse-500: rgba(15, 15, 15, 0.122); /** Component fill pressed or selected. The dark page's grey at gray-alpha.500's opacity. */
+  --co-base-color-gray-alpha-inverse-600: rgba(15, 15, 15, 0.158); /** Subtle border. The dark page's grey at gray-alpha.600's opacity. */
+  --co-base-color-gray-alpha-inverse-700: rgba(15, 15, 15, 0.208); /** Default border, for dividers and decorative outlines. The dark page's grey at gray-alpha.700's opacity. */
+  --co-base-color-gray-alpha-inverse-800: rgba(15, 15, 15, 0.502); /** Strong border: a control edge, at least 3:1 on 100, 200 and white (decision 0025). The dark page's grey at gray-alpha.800's opacity. */
+  --co-base-color-gray-alpha-inverse-900: rgba(15, 15, 15, 0.557); /** Solid fill. The dark page's grey at gray-alpha.900's opacity. */
+  --co-base-color-gray-alpha-inverse-1000: rgba(15, 15, 15, 0.606); /** Solid fill on hover. The dark page's grey at gray-alpha.1000's opacity. */
+  --co-base-color-gray-alpha-inverse-1100: rgba(15, 15, 15, 0.706); /** Secondary text: at least 4.5:1 on 100 to 500 and white. The dark page's grey at gray-alpha.1100's opacity. */
+  --co-base-color-gray-alpha-inverse-1200: rgba(15, 15, 15, 1); /** Primary text, and the darkest step. The dark page's grey at gray-alpha.1200's opacity. */
   --co-base-color-accent-100: #0e0f10; /** Page background. oklch(0.168 0.003 248), 1.00:1 on the dark page. */
   --co-base-color-accent-200: #161719; /** Subtle background. oklch(0.204 0.004 264), 1.07:1 on the dark page. */
   --co-base-color-accent-300: #1b1e23; /** Component fill at rest. oklch(0.234 0.011 261), 1.15:1 on the dark page. */
@@ -1389,6 +1481,7 @@
   --co-base-color-accent-1000: #1688ff; /** Solid fill on hover. oklch(0.634 0.200 255), 5.48:1 on the dark page. */
   --co-base-color-accent-1100: #6eaeff; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.742 0.135 255), 8.36:1 on the dark page. */
   --co-base-color-accent-1200: #e3ecf7; /** Primary text, and the darkest step. oklch(0.940 0.018 253), 16.07:1 on the dark page. */
+  --co-base-color-accent-solid: #0058ae; /** Solid fill that carries a label: the light ink reads on it at 5.86:1, the light theme's secondary-text contrast. */
   --co-base-color-accent-alpha-100: rgba(0, 15, 30, 0.067); /** Page background. Composites to accent.100 over the dark page. */
   --co-base-color-accent-alpha-200: rgba(182, 205, 253, 0.042); /** Subtle background. Composites to accent.200 over the dark page. */
   --co-base-color-accent-alpha-300: rgba(158, 194, 253, 0.084); /** Component fill at rest. Composites to accent.300 over the dark page. */
@@ -1413,6 +1506,7 @@
   --co-base-color-success-1000: #009d67; /** Solid fill on hover. oklch(0.614 0.139 160), 5.49:1 on the dark page. */
   --co-base-color-success-1100: #00c381; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.721 0.163 160), 8.33:1 on the dark page. */
   --co-base-color-success-1200: #c5f6da; /** Primary text, and the darkest step. oklch(0.931 0.063 160), 16.04:1 on the dark page. */
+  --co-base-color-success-solid: #006742; /** Solid fill that carries a label: the light ink reads on it at 5.84:1, the light theme's secondary-text contrast. */
   --co-base-color-success-alpha-100: rgba(0, 22, 8, 0.134); /** Page background. Composites to success.100 over the dark page. */
   --co-base-color-success-alpha-200: rgba(39, 253, 134, 0.042); /** Subtle background. Composites to success.200 over the dark page. */
   --co-base-color-success-alpha-300: rgba(0, 75, 39, 0.334); /** Component fill at rest. Composites to success.300 over the dark page. */
@@ -1437,6 +1531,7 @@
   --co-base-color-warning-1000: #b48000; /** Solid fill on hover. oklch(0.635 0.132 80), 5.50:1 on the dark page. */
   --co-base-color-warning-1100: #dfa000; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.747 0.155 80), 8.37:1 on the dark page. */
   --co-base-color-warning-1200: #f7e9d3; /** Primary text, and the darkest step. oklch(0.939 0.033 79), 16.02:1 on the dark page. */
+  --co-base-color-warning-solid: #765300; /** Solid fill that carries a label: the light ink reads on it at 5.86:1, the light theme's secondary-text contrast. */
   --co-base-color-warning-alpha-100: rgba(30, 15, 0, 0.067); /** Page background. Composites to warning.100 over the dark page. */
   --co-base-color-warning-alpha-200: rgba(253, 205, 134, 0.042); /** Subtle background. Composites to warning.200 over the dark page. */
   --co-base-color-warning-alpha-300: rgba(253, 182, 63, 0.084); /** Component fill at rest. Composites to warning.300 over the dark page. */
@@ -1461,6 +1556,7 @@
   --co-base-color-serious-1000: #e26300; /** Solid fill on hover. oklch(0.648 0.179 47), 5.49:1 on the dark page. */
   --co-base-color-serious-1100: #ff8c50; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.755 0.158 47), 8.32:1 on the dark page. */
   --co-base-color-serious-1200: #f7e8e1; /** Primary text, and the darkest step. oklch(0.941 0.019 47), 16.05:1 on the dark page. */
+  --co-base-color-serious-solid: #963f00; /** Solid fill that carries a label: the light ink reads on it at 5.86:1, the light theme's secondary-text contrast. */
   --co-base-color-serious-alpha-100: rgba(30, 15, 0, 0.067); /** Page background. Composites to serious.100 over the dark page. */
   --co-base-color-serious-alpha-200: rgba(253, 182, 158, 0.042); /** Subtle background. Composites to serious.200 over the dark page. */
   --co-base-color-serious-alpha-300: rgba(254, 174, 129, 0.088); /** Component fill at rest. Composites to serious.300 over the dark page. */
@@ -1485,6 +1581,7 @@
   --co-base-color-danger-1000: #ff3f31; /** Solid fill on hover. oklch(0.657 0.229 29), 5.48:1 on the dark page. */
   --co-base-color-danger-1100: #ff8a7a; /** Secondary text: at least 4.5:1 on 100 to 500 and white. oklch(0.758 0.145 29), 8.37:1 on the dark page. */
   --co-base-color-danger-1200: #f7e8e5; /** Primary text, and the darkest step. oklch(0.942 0.017 31), 16.09:1 on the dark page. */
+  --co-base-color-danger-solid: #b70002; /** Solid fill that carries a label: the light ink reads on it at 5.84:1, the light theme's secondary-text contrast. */
   --co-base-color-danger-alpha-100: rgba(215, 15, 15, 0.005); /** Page background. Composites to danger.100 over the dark page. */
   --co-base-color-danger-alpha-200: rgba(253, 182, 182, 0.042); /** Subtle background. Composites to danger.200 over the dark page. */
   --co-base-color-danger-alpha-300: rgba(253, 170, 158, 0.084); /** Component fill at rest. Composites to danger.300 over the dark page. */
@@ -1617,6 +1714,16 @@
   --co-base-color-magenta-alpha-1000: rgba(242, 0, 239, 1); /** Solid fill on hover. Composites to magenta.1000 over the dark page. */
   --co-base-color-magenta-alpha-1100: rgba(255, 116, 250, 1); /** Secondary text: at least 4.5:1 on 100 to 500 and white. Composites to magenta.1100 over the dark page. */
   --co-base-color-magenta-alpha-1200: rgba(255, 236, 253, 0.971); /** Primary text, and the darkest step. Composites to magenta.1200 over the dark page. */
+  --co-base-color-surface-page: var(--co-base-color-gray-100); /** Surface page: higher surfaces are lighter. */
+  --co-base-color-surface-raised: var(--co-base-color-gray-200); /** Surface raised: higher surfaces are lighter. */
+  --co-base-color-surface-overlay: var(--co-base-color-gray-300); /** Surface overlay: higher surfaces are lighter. */
+  --co-base-color-ink-light: var(--co-base-color-gray-1200); /** The light end of the neutral ramp. */
+  --co-base-color-ink-dark: var(--co-base-color-gray-100); /** The dark end of the neutral ramp. */
+  --co-semantic-elevation-inset: var(--co-base-shadow-inset);
+  --co-semantic-elevation-raised: var(--co-base-shadow-2);
+  --co-semantic-elevation-floating: var(--co-base-shadow-4);
+  --co-semantic-elevation-overlay: var(--co-base-shadow-5);
+  --co-semantic-elevation-sticky: var(--co-base-shadow-3);
   --co-semantic-border-default: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-default);
   --co-semantic-border-focus: var(--co-base-border-width-2) var(--co-base-border-style-solid) var(--co-semantic-color-border-focus);
   --co-semantic-border-input-hover: var(--co-base-border-width-1) var(--co-base-border-style-solid) var(--co-semantic-color-border-input-hover);
@@ -1653,43 +1760,46 @@
   --co-semantic-color-category-gray: var(--co-base-color-gray-800);
   --co-semantic-color-category-gray-strong: var(--co-base-color-gray-1100);
   --co-semantic-color-category-gray-text: var(--co-base-color-gray-1100);
-  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-300);
+  --co-semantic-color-category-gray-muted: var(--co-base-color-gray-alpha-300);
   --co-semantic-color-category-olive: var(--co-base-color-olive-800);
   --co-semantic-color-category-olive-strong: var(--co-base-color-olive-1100);
   --co-semantic-color-category-olive-text: var(--co-base-color-olive-1100);
-  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-300);
+  --co-semantic-color-category-olive-muted: var(--co-base-color-olive-alpha-300);
   --co-semantic-color-category-periwinkle: var(--co-base-color-periwinkle-800);
   --co-semantic-color-category-periwinkle-strong: var(--co-base-color-periwinkle-1100);
   --co-semantic-color-category-periwinkle-text: var(--co-base-color-periwinkle-1100);
-  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-300);
+  --co-semantic-color-category-periwinkle-muted: var(--co-base-color-periwinkle-alpha-300);
   --co-semantic-color-category-rose: var(--co-base-color-rose-800);
   --co-semantic-color-category-rose-strong: var(--co-base-color-rose-1100);
   --co-semantic-color-category-rose-text: var(--co-base-color-rose-1100);
-  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-300);
+  --co-semantic-color-category-rose-muted: var(--co-base-color-rose-alpha-300);
   --co-semantic-color-category-magenta: var(--co-base-color-magenta-800);
   --co-semantic-color-category-magenta-strong: var(--co-base-color-magenta-1100);
   --co-semantic-color-category-magenta-text: var(--co-base-color-magenta-1100);
-  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-300);
+  --co-semantic-color-category-magenta-muted: var(--co-base-color-magenta-alpha-300);
   --co-semantic-color-fill-emphasis: var(--co-base-color-gray-1200);
-  --co-semantic-color-fill-muted: var(--co-base-color-gray-300);
+  --co-semantic-color-fill-muted: var(--co-base-color-gray-alpha-300);
   --co-semantic-color-fill-inverse: var(--co-base-color-gray-1200);
-  --co-semantic-color-fill-accent: var(--co-base-color-accent-1100);
-  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-300);
-  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-400);
-  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-500);
-  --co-semantic-color-fill-danger: var(--co-base-color-danger-1100);
-  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-300);
-  --co-semantic-color-fill-success: var(--co-base-color-success-1100);
-  --co-semantic-color-fill-success-muted: var(--co-base-color-success-300);
-  --co-semantic-color-fill-warning: var(--co-base-color-warning-1100);
-  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-300);
-  --co-semantic-color-fill-disabled: var(--co-base-color-gray-300);
-  --co-semantic-color-fill-default: var(--co-base-color-gray-300);
-  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-400);
-  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-500);
-  --co-semantic-color-fill-serious: var(--co-base-color-serious-1100);
-  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-300);
-  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-300);
+  --co-semantic-color-fill-accent: var(--co-base-color-accent-solid);
+  --co-semantic-color-fill-accent-muted: var(--co-base-color-accent-alpha-300);
+  --co-semantic-color-fill-accent-muted-hover: var(--co-base-color-accent-alpha-400);
+  --co-semantic-color-fill-accent-muted-pressed: var(--co-base-color-accent-alpha-500);
+  --co-semantic-color-fill-danger: var(--co-base-color-danger-solid);
+  --co-semantic-color-fill-danger-muted: var(--co-base-color-danger-alpha-300);
+  --co-semantic-color-fill-success: var(--co-base-color-success-solid);
+  --co-semantic-color-fill-success-muted: var(--co-base-color-success-alpha-300);
+  --co-semantic-color-fill-warning: var(--co-base-color-warning-solid);
+  --co-semantic-color-fill-warning-muted: var(--co-base-color-warning-alpha-300);
+  --co-semantic-color-fill-disabled: var(--co-base-color-gray-alpha-300);
+  --co-semantic-color-fill-default: var(--co-base-color-gray-alpha-300);
+  --co-semantic-color-fill-default-hover: var(--co-base-color-gray-alpha-400);
+  --co-semantic-color-fill-default-pressed: var(--co-base-color-gray-alpha-500);
+  --co-semantic-color-fill-none-hover: var(--co-base-color-gray-alpha-400);
+  --co-semantic-color-fill-none-pressed: var(--co-base-color-gray-alpha-600);
+  --co-semantic-color-fill-inverse-none-hover: var(--co-base-color-gray-alpha-inverse-700);
+  --co-semantic-color-fill-serious: var(--co-base-color-serious-solid);
+  --co-semantic-color-fill-serious-muted: var(--co-base-color-serious-alpha-300);
+  --co-semantic-color-fill-ai-muted: var(--co-base-color-ai-alpha-300);
   --co-semantic-color-data-positive: var(--co-base-color-success-900);
   --co-semantic-color-data-negative: var(--co-base-color-danger-900);
   --co-semantic-color-data-categorical-1: var(--co-base-color-olive-1100);
@@ -1707,8 +1817,6 @@
   --co-semantic-color-data-sequential-periwinkle-3: var(--co-base-color-periwinkle-800);
   --co-semantic-color-data-sequential-periwinkle-4: var(--co-base-color-periwinkle-1000);
   --co-semantic-color-data-sequential-periwinkle-5: var(--co-base-color-periwinkle-1200);
-  --co-semantic-surface-base: var(--co-base-color-gray-100);
-  --co-semantic-surface-raised: var(--co-base-color-gray-200); /** Raised surfaces sit one step above the dark page (#356). In light this is white, which has no dark counterpart (decision 0049). */
   --co-component-button-primary-background-color: var(--co-semantic-color-fill-emphasis);
   --co-component-button-primary-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-hover-background-color: color-mix(in srgb, var(--co-semantic-color-fill-emphasis), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
@@ -1727,11 +1835,9 @@
   --co-component-button-variants-naked-active-background-color: var(--co-semantic-color-fill-default-hover);
   --co-component-button-variants-naked-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-button-variants-accent-background-color: var(--co-semantic-color-fill-accent);
-  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-variants-accent-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-button-variants-accent-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-button-variants-danger-background-color: var(--co-semantic-color-fill-danger);
-  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-inverse);
   --co-component-button-variants-danger-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-button-variants-danger-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-chip-default-background-color: var(--co-semantic-color-fill-muted);
@@ -1739,20 +1845,15 @@
   --co-component-chip-focus-outline: var(--co-semantic-border-focus);
   --co-component-chip-disabled-background-color: var(--co-semantic-color-fill-muted);
   --co-component-chip-disabled-text-color: var(--co-semantic-color-text-disabled);
-  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised);
   --co-component-chip-variants-subtle-text-color: var(--co-semantic-color-text-default);
-  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base);
   --co-component-chip-variants-subtle-active-background-color: var(--co-semantic-color-fill-muted);
-  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised);
   --co-component-chip-variants-subtle-disabled-text-color: var(--co-semantic-color-text-disabled);
   --co-component-icon-button-focus-outline: var(--co-semantic-border-focus);
-  --co-component-input-disabled-border-color: var(--co-semantic-color-border-default);
   --co-component-separator-border: var(--co-semantic-border-default);
   --co-component-separator-variants-default-border: var(--co-semantic-border-default);
   --co-component-separator-variants-strong-border: var(--co-semantic-border-input-hover);
   --co-component-separator-variants-minimal-border: var(--co-semantic-border-default);
   --co-component-progress-bar-background-color: var(--co-semantic-color-fill-default);
-  --co-component-input-default-background-color: var(--co-semantic-surface-raised);
   --co-component-input-default-text-color: var(--co-semantic-color-text-default);
   --co-component-input-default-border-color: var(--co-semantic-color-border-input);
   --co-component-input-placeholder-text-color: var(--co-semantic-color-text-muted);
@@ -1765,6 +1866,7 @@
   --co-component-input-error-hover-border-color: var(--co-semantic-color-border-danger);
   --co-component-input-disabled-background-color: var(--co-semantic-color-fill-disabled);
   --co-component-input-disabled-text-color: var(--co-semantic-color-text-disabled);
+  --co-component-input-disabled-border-color: var(--co-semantic-color-border-default);
   --co-component-field-label-color: var(--co-semantic-color-text-default);
   --co-component-field-label-color-disabled: var(--co-semantic-color-text-disabled);
   --co-component-field-required-indicator-color: var(--co-semantic-color-text-danger);
@@ -1782,7 +1884,9 @@
   --co-component-alert-appearance-outlined-border-color-warning: var(--co-semantic-color-border-warning);
   --co-component-alert-appearance-outlined-border-color-info: var(--co-semantic-color-border-accent);
   --co-component-alert-appearance-outlined-border-color-success: var(--co-semantic-color-border-success);
-  --co-component-slider-thumb-background: var(--co-semantic-surface-raised);
+  --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised);
+  --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky);
+  --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating);
   --co-component-status-pending-text: var(--co-semantic-color-text-muted);
   --co-component-status-pending-background: var(--co-semantic-color-fill-muted);
   --co-component-status-completed-text: var(--co-semantic-color-text-success);
@@ -1796,12 +1900,25 @@
   --co-component-status-scheduled-text: var(--co-semantic-color-text-muted);
   --co-component-status-scheduled-background: var(--co-semantic-color-fill-muted);
   --co-component-track-background: var(--co-semantic-color-fill-default);
-  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
-  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%));
-  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-hover) * 100%));
-  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-inverse) calc(var(--co-semantic-opacity-state-pressed) * 100%));
+  --co-semantic-color-text-on-fill: var(--co-base-color-ink-light);
+  --co-semantic-color-icon-on-fill: var(--co-base-color-ink-light);
+  --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%));
+  --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%));
+  --co-semantic-color-fill-danger-hover: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%));
+  --co-semantic-color-fill-danger-pressed: color-mix(in srgb, var(--co-semantic-color-fill-danger), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%));
+  --co-semantic-surface-base: var(--co-base-color-surface-page);
+  --co-semantic-surface-raised: var(--co-base-color-surface-raised);
+  --co-semantic-surface-overlay: var(--co-base-color-surface-overlay);
+  --co-semantic-surface-scrim: color-mix(in srgb, var(--co-base-color-ink-dark) calc(var(--co-base-opacity-scrim) * 100%), transparent);
+  --co-component-button-variants-accent-text-color: var(--co-semantic-color-text-on-fill);
+  --co-component-button-variants-danger-text-color: var(--co-semantic-color-text-on-fill);
   --co-component-button-variants-accent-hover-background-color: var(--co-semantic-color-fill-accent-hover);
   --co-component-button-variants-accent-active-background-color: var(--co-semantic-color-fill-accent-pressed);
   --co-component-button-variants-danger-hover-background-color: var(--co-semantic-color-fill-danger-hover);
   --co-component-button-variants-danger-active-background-color: var(--co-semantic-color-fill-danger-pressed);
+  --co-component-chip-variants-subtle-background-color: var(--co-semantic-surface-raised);
+  --co-component-chip-variants-subtle-hover-background-color: var(--co-semantic-surface-base);
+  --co-component-chip-variants-subtle-disabled-background-color: var(--co-semantic-surface-raised);
+  --co-component-input-default-background-color: var(--co-semantic-surface-raised);
+  --co-component-slider-thumb-background: var(--co-semantic-surface-raised);
 }

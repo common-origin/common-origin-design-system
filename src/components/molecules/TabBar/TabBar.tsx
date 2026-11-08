@@ -184,7 +184,7 @@ const StyledBadge = styled.span`
   font-weight: ${tokens.component.tabBar.badge.fontWeight};
   border-radius: ${semantic.radius.full};
   background-color: ${semantic.color.fill.accent};
-  color: ${semantic.color.text.inverse};
+  color: ${semantic.color.text['on-fill']};
 `
 
 /**

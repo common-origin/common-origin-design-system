@@ -146,7 +146,7 @@ const StyledActionSheet = styled.div<{ $isExiting: boolean }>`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: ${tokens.semantic.surface.raised};
+  background-color: ${tokens.semantic.surface.overlay};
   border-top-left-radius: ${tokens.component.overlay.borderRadius};
   border-top-right-radius: ${tokens.component.overlay.borderRadius};
   box-shadow: ${elevation.overlay};

@@ -297,7 +297,7 @@ States:
       {
         name: 'Close Button (dismissible only)',
         description:
-          'Button element rendered when onDismiss is provided. Has its own hover and active states (near-black at 10% and 15%). Independently focusable. Labelled with "Remove [label]" for screen readers.',
+          'Button element rendered when onDismiss is provided. Has its own hover and active states (the neutral overlays fill.none-hover and fill.none-pressed). Independently focusable. Labelled with "Remove [label]" for screen readers.',
         tokens: [
           'component.chip.closeButton.size',
           'semantic.space.0',

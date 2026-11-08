@@ -30,7 +30,7 @@ export const progressBarDocs: ComponentDocumentation = {
       type: "'default' | 'success' | 'error'",
       required: false,
       default: 'default',
-      description: 'Fill colour. Default is near-black, like Slider (decision 0029), for standard progress; success for completed tasks; error for failed operations.'
+      description: 'Fill colour. Default is the strongest neutral fill (near-black in light, near-white in dark), like Slider (decision 0029), for standard progress; success for completed tasks; error for failed operations.'
     },
     {
       name: 'height',

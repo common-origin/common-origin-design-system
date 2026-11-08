@@ -82,7 +82,7 @@ export const menuDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'semantic.surface.raised',
+    'semantic.surface.overlay',
     'semantic.border.default',
     'semantic.radius.md',
     'semantic.elevation.floating',
@@ -184,7 +184,7 @@ export const menuDocs: ComponentDocumentation = {
       {
         name: 'Panel',
         description: 'Dropdown\'s floating panel: the raised surface, a decorative outline, floating elevation and a medium radius. It drops in over duration.fast and only fades under reduced motion. Scrolls beyond size.menu.maxHeight',
-        tokens: ['semantic.surface.raised', 'semantic.border.default', 'semantic.elevation.floating', 'semantic.size.menu.maxHeight'],
+        tokens: ['semantic.surface.overlay', 'semantic.border.default', 'semantic.elevation.floating', 'semantic.size.menu.maxHeight'],
       },
       {
         name: 'Item',

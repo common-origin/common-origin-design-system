@@ -199,7 +199,7 @@ const StyledSuggestionsList = styled.ul`
   right: 0;
   max-height: ${tokens.semantic.size.menu.maxHeight};
   overflow-y: auto;
-  background-color: ${semantic.surface.raised};
+  background-color: ${semantic.surface.overlay};
   border: ${semantic.border.width.thin} solid ${semantic.color.border.default};
   border-radius: ${semantic.radius.md};
   box-shadow: ${semantic.elevation.floating};

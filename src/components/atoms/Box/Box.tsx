@@ -68,8 +68,9 @@ export interface BoxProps {
   
   // Background & Color
   /**
-   * Background colour, as a semantic token path: `surface.base` (page), `surface.raised` (cards,
-   * sheets), `surface.scrim`, or a `color.fill.*` fill such as `color.fill.muted`.
+   * Background colour, as a semantic token path: `surface.base` (page), `surface.raised` (cards),
+   * `surface.overlay` (floating layers such as menus and dialogs), `surface.scrim`, or a
+   * `color.fill.*` fill such as `color.fill.muted`.
    */
   bg?: BoxBackground
   color?: keyof Tokens['semantic']['color']['text']

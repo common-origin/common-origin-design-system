@@ -4,6 +4,7 @@
 import { existsSync, readFileSync } from 'fs'
 import { join } from 'path'
 import resolver from './resolver.json'
+import { contrastRatio } from '../test-utils/contrast'
 
 // Token modes (decision 0032): src/tokens/resolver.json describes them as DTCG Resolver modifiers,
 // and the token build writes a [data-co-<mode>="<context>"] block into tokens.css for each context.
@@ -34,7 +35,7 @@ const rem = (value: string) => Number(value.replace('rem', '')) * 16
 const ALLOWED: Record<string, RegExp> = {
   density: /^semantic\.(size\.control|size\.row|space\.inset)\./,
   // Colour and shadow only (decision 0054): base colour values, plus semantic colour exceptions
-  theme: /^(base\.color\.|base\.shadow\.|semantic\.(color|surface|elevation)\.)/,
+  theme: /^base\.(color\.|shadow\.|opacity\.scrim$)/,
 }
 
 type Node = { [key: string]: unknown }
@@ -131,14 +132,17 @@ describe('density (#191)', () => {
 describe('theme (#358)', () => {
   const dark = block('theme', 'dark')
   const hex = (name: string) => resolve(`var(${name})`, dark)
+  const isHex = (value: string) => /^#[0-9a-f]{6}$/i.test(value)
   const luminance = (value: string) => {
+    if (!isHex(value)) throw new Error(`not a resolved hex colour: ${value}`)
     const n = parseInt(value.slice(1), 16)
     const c = (v: number) => (v / 255 <= 0.04045 ? v / 255 / 12.92 : ((v / 255 + 0.055) / 1.055) ** 2.4)
     return 0.2126 * c((n >> 16) & 255) + 0.7152 * c((n >> 8) & 255) + 0.0722 * c(n & 255)
   }
+  // Throws on anything but two hex colours, so a value the test can't read never passes as NaN
   const contrast = (a: string, b: string) => {
-    const [high, low] = [luminance(a), luminance(b)].sort((x, y) => y - x)
-    return (high + 0.05) / (low + 0.05)
+    if (!isHex(a) || !isHex(b)) throw new Error(`not resolved hex colours: ${a}, ${b}`)
+    return contrastRatio(a, b)
   }
 
   it('tells the browser the colour scheme in each context', () => {
@@ -155,6 +159,71 @@ describe('theme (#358)', () => {
       expect(contrast(hex('--co-semantic-color-text-default'), hex(surface))).toBeGreaterThanOrEqual(4.5)
       expect(contrast(hex('--co-semantic-color-text-muted'), hex(surface))).toBeGreaterThanOrEqual(4.5)
     }
+  })
+
+  // color-mix(in srgb, A, B calc(N * 100%)) with resolved hex values, as the state tokens use (0048)
+  const mixed = (value: string) => {
+    const m = value.match(/^color-mix\(in srgb, (#[0-9a-f]{6}), (#[0-9a-f]{6}) calc\(([\d.]+) \* 100%\)\)$/)
+    if (!m) return value
+    const [a, b, t] = [m[1], m[2], Number(m[3])]
+    const channel = (hexValue: string, i: number) => parseInt(hexValue.slice(1 + i * 2, 3 + i * 2), 16)
+    return `#${[0, 1, 2].map((i) => Math.round(channel(a, i) * (1 - t) + channel(b, i) * t).toString(16).padStart(2, '0')).join('')}`
+  }
+
+  it('keeps on-fill text at 4.5:1 or more on every coloured fill and its states (#355)', () => {
+    const onFill = hex('--co-semantic-color-text-on-fill')
+    const fills = ['accent', 'accent-hover', 'accent-pressed', 'danger', 'danger-hover', 'danger-pressed', 'success', 'warning', 'serious']
+    const low = fills
+      .map((fill) => [fill, contrast(onFill, mixed(hex(`--co-semantic-color-fill-${fill}`)))] as const)
+      .filter(([, ratio]) => ratio < 4.5)
+    expect(low).toEqual([])
+  })
+
+  // One set of rules for both themes (decision 0056): the theme supplies base values only, so
+  // semantic and component tokens read the same paths in light and dark
+  it('overrides base tokens only, never a semantic or component token', () => {
+    const files = (resolver.modifiers.theme.contexts as Record<string, { $ref: string }[]>).dark
+    const paths = files.flatMap(({ $ref }) => overridden(JSON.parse(readFileSync(join(__dirname, $ref), 'utf8'))))
+    expect(paths.filter((path) => !path.startsWith('base.'))).toEqual([])
+  })
+
+  it('keeps inverse text at 4.5:1 or more on the emphasis fill', () => {
+    expect(contrast(hex('--co-semantic-color-text-inverse'), hex('--co-semantic-color-fill-emphasis'))).toBeGreaterThanOrEqual(4.5)
+  })
+
+  it('layers the dark surfaces: page, then raised, then overlay (#356)', () => {
+    const [page, raised, overlay] = ['base', 'raised', 'overlay'].map((s) => luminance(hex(`--co-semantic-surface-${s}`)))
+    expect(raised).toBeGreaterThan(page)
+    expect(overlay).toBeGreaterThan(raised)
+  })
+
+  // Translucent fills sit on whatever surface is below them (decision 0056), so text on them is
+  // checked over every surface, in both themes, not only over white
+  const over = (fill: string, surface: string) => {
+    const m = fill.match(/^rgba\((\d+), (\d+), (\d+), ([\d.]+)\)$/)
+    if (!m) return fill
+    const a = Number(m[4])
+    const s = [1, 3, 5].map((i) => parseInt(surface.slice(i, i + 2), 16))
+    return `#${[1, 2, 3].map((i) => Math.round(a * Number(m[i]) + (1 - a) * s[i - 1]).toString(16).padStart(2, '0')).join('')}`
+  }
+  const textOnFills: [string, string][] = [
+    ...['default', 'muted'].flatMap((text) =>
+      ['default', 'default-hover', 'default-pressed', 'muted'].map((fill) => [text, fill] as [string, string])
+    ),
+    ...['accent', 'danger', 'success', 'warning', 'serious'].map((role) => [role, `${role}-muted`] as [string, string]),
+  ]
+  it.each(['light', 'dark'])('keeps text at 4.5:1 or more on every translucent fill over every %s surface', (theme) => {
+    const value = (name: string) => (theme === 'dark' ? hex(name) : resolve(`var(${name})`))
+    const low = ['base', 'raised', 'overlay'].flatMap((surface) => {
+      const ground = value(`--co-semantic-surface-${surface}`)
+      return textOnFills
+        .map(([text, fill]) => {
+          const ratio = contrast(value(`--co-semantic-color-text-${text}`), over(value(`--co-semantic-color-fill-${fill}`), ground))
+          return [`text.${text} on fill.${fill} over surface.${surface}`, ratio] as const
+        })
+        .filter(([, ratio]) => ratio < 4.5)
+    })
+    expect(low).toEqual([])
   })
 
   it('makes raised surfaces lighter than the dark page (#356)', () => {
