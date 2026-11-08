@@ -78,7 +78,8 @@ const baseButtonStyles = `
   white-space: nowrap;
   user-select: none;
   
-  &:focus {
+  /* The system ring for keyboard focus only: a click doesn't leave it behind (P2, P5) */
+  &:focus-visible {
     outline: ${button.focus.outline};
     outline-offset: ${semantic.border.focusOffset};
   }

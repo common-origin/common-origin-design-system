@@ -119,6 +119,22 @@ describe('SidebarNavSection', () => {
     await waitFor(() => expect(screen.getByRole('list', { name: 'Chats' })).toHaveStyle({ overflow: 'visible' }))
   })
 
+  it("isn't drawn in the rail when none of its items has an icon, so it leaves no stray rule", () => {
+    render(
+      <SidebarNavContext.Provider value={{ collapsed: true, glide: false }}>
+        <ul>
+          <SidebarNavItem label="Home" icon="home" url="/" />
+        </ul>
+        <SidebarNavSection label="Recent" data-testid="section">
+          <SidebarNavItem label="Supplier records" url="/chats/1" />
+          <SidebarNavItem label="Flavour page ticket" url="/chats/2" />
+        </SidebarNavSection>
+      </SidebarNavContext.Provider>
+    )
+    expect(screen.queryByTestId('section')).not.toBeInTheDocument()
+    expect(screen.queryByRole('list', { name: 'Recent' })).not.toBeInTheDocument()
+  })
+
   it("draws no rule in the rail when nothing is above it", () => {
     renderSection({ 'data-testid': 'section' }, true)
     expect(getComputedStyle(screen.getByTestId('section')).borderTopStyle).not.toBe('solid')

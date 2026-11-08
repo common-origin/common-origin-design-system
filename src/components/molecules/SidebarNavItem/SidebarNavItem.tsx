@@ -33,7 +33,8 @@ export interface SidebarNavItemProps {
   meta?: string
   /**
    * New or unread items (decision 0045): a count, or `'dot'` for "something new". Shown as an
-   * accent Badge on the icon, so it stays visible in the rail, and added to the item's name.
+   * accent Badge count at the end of the row, or as a dot inside the icon's corner in the rail, and
+   * added to the item's name.
    */
   badge?: number | 'dot'
   /**
@@ -118,9 +119,33 @@ const Meta = styled.span`
 `
 
 // A badge needs something to sit on: the icon, or this mark at the end of an item without one
-const BadgeAnchor = styled.span`
+// Badge sits centred on its anchor's top-right corner (0045). Expanded, the anchor is a point in
+// the row's vertical middle, held half a count's width in from the end, so the count sits at the
+// end of the row, inside it in every density, and never reaches the rows around it
+const EndSlot = styled.span`
   display: inline-flex;
   flex-shrink: 0;
+  padding-right: calc(${tokens.component.badge.count.minWidth} / 2);
+`
+
+const EndAnchor = styled.span`
+  display: inline-flex;
+  width: 0;
+  height: 0;
+`
+
+// In the rail there's no room for a count, so a dot sits inside the icon's top-right corner
+const IconBox = styled.span`
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+`
+
+const Corner = styled.span`
+  position: absolute;
+  top: 25%;
+  right: 25%;
+  display: inline-flex;
 `
 
 /**
@@ -149,23 +174,33 @@ export const SidebarNavItem = ({
   // item in the rail, where the label isn't shown
   const name = hasBadge ? `${label}, ${badgeText}` : collapsed ? label : undefined
 
-  const withBadge = (anchor: React.ReactElement) =>
-    hasBadge ? (
-      <Badge variant="accent" dot={badge === 'dot'} count={typeof badge === 'number' ? badge : 0} aria-label={badgeText}>
-        {anchor}
-      </Badge>
-    ) : (
-      anchor
-    )
+  const count = typeof badge === 'number' ? badge : 0
 
   const content = (
     <>
-      {icon && withBadge(<Icon name={icon} size="md" iconColor="inherit" />)}
+      {icon && (
+        <IconBox>
+          <Icon name={icon} size="md" iconColor="inherit" />
+          {collapsed && hasBadge && (
+            <Corner>
+              <Badge variant="accent" dot aria-label={badgeText}>
+                <span />
+              </Badge>
+            </Corner>
+          )}
+        </IconBox>
+      )}
       {!collapsed && (
         <>
           <Label>{label}</Label>
           {meta && <Meta>{meta}</Meta>}
-          {!icon && hasBadge && withBadge(<BadgeAnchor />)}
+          {hasBadge && (
+            <EndSlot>
+              <Badge variant="accent" dot={badge === 'dot'} count={count} aria-label={badgeText}>
+                <EndAnchor />
+              </Badge>
+            </EndSlot>
+          )}
         </>
       )}
     </>
