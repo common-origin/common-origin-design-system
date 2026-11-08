@@ -4,7 +4,7 @@ import tokens from '@/lib/cssTokens'
 import { exitAnimation, forcedColorsEdge, interactiveRow, reducedMotion } from '../../../lib/styleUtils'
 import { usePresence } from '../../../lib/usePresence'
 import { laidOutElement, type FloatingAlign, type FloatingSide } from '../../../lib/floatingPosition'
-import { useFloatingLayer, useIsomorphicLayoutEffect } from '../../../lib/useFloatingLayer'
+import { ANCHOR_WIDTH_VAR, useFloatingLayer, useIsomorphicLayoutEffect } from '../../../lib/useFloatingLayer'
 import { Icon } from '../../atoms/Icon'
 
 const { semantic } = tokens
@@ -57,6 +57,13 @@ export interface MenuProps {
    * @default 'start'
    */
   align?: MenuAlign
+  /**
+   * Makes the menu at least as wide as its trigger, for a full-width trigger such as
+   * WorkspaceSwitcher's, so the two line up. It still grows with its content, up to the usual
+   * maximum, and never goes below the usual minimum for a small trigger.
+   * @default false
+   */
+  matchTriggerWidth?: boolean
   /** Test identifier for the menu */
   'data-testid'?: string
 }
@@ -83,7 +90,8 @@ const Panel = styled.div.withConfig({
   left: 0;
   margin: 0;
   box-sizing: border-box;
-  min-width: ${size[4500]};
+  /* At least the trigger's width when matchTriggerWidth sets the variable, within the usual range */
+  min-width: min(max(${size[4500]}, var(${ANCHOR_WIDTH_VAR}, 0px)), ${size[7500]});
   max-width: ${size[7500]};
   max-height: ${size.menu.maxHeight};
   overflow-y: auto;
@@ -130,6 +138,7 @@ export const Menu = ({
   onOpenChange,
   side = 'bottom',
   align = 'start',
+  matchTriggerWidth = false,
   'data-testid': dataTestId,
 }: MenuProps) => {
   const menuId = useId()
@@ -193,7 +202,15 @@ export const Menu = ({
 
   // In the top layer beside the trigger; scrolling or resizing closes it, since the trigger moves
   const detach = useCallback(() => close({ returnFocus: false }), [close])
-  useFloatingLayer({ isPresent, floatingRef: panelRef, anchorRef, side, align, onDetach: detach })
+  useFloatingLayer({
+    isPresent,
+    floatingRef: panelRef,
+    anchorRef,
+    side,
+    align,
+    matchAnchorWidth: matchTriggerWidth,
+    onDetach: detach,
+  })
 
   // Opening from the trigger focuses the first or last item. An open that didn't come from the
   // trigger (defaultOpen, or a controlled open) leaves focus where it is

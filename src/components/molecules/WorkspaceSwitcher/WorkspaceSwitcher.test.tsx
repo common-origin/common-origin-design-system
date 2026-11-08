@@ -111,6 +111,13 @@ describe('WorkspaceSwitcher', () => {
     expect(container).toBeEmptyDOMElement()
   })
 
+  it('opens a menu at least as wide as its trigger (issue 350)', async () => {
+    const user = userEvent.setup()
+    render(<Switcher />)
+    await user.click(screen.getByRole('button', { name: 'Creamery Ops' }))
+    expect(screen.getByRole('menu').style.getPropertyValue('--co-floating-anchor-width')).toMatch(/px$/)
+  })
+
   it('has no axe violations, closed or open', async () => {
     const user = userEvent.setup()
     const { container } = render(<Switcher />)

@@ -10,6 +10,9 @@ export const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayo
 // without it the element is still position: fixed, so it escapes overflow clipping.
 const supportsPopover = () => typeof HTMLElement !== 'undefined' && 'showPopover' in HTMLElement.prototype
 
+/** The trigger's width in px, set on the floating element when `matchAnchorWidth` is on */
+export const ANCHOR_WIDTH_VAR = '--co-floating-anchor-width'
+
 const remToPx = (value: string) =>
   parseFloat(value) * (parseFloat(getComputedStyle(document.documentElement).fontSize) || 16)
 
@@ -23,6 +26,11 @@ interface FloatingLayerOptions {
   side: FloatingSide
   align: FloatingAlign
   /**
+   * Writes the trigger's width to `ANCHOR_WIDTH_VAR` on the floating element before each placement,
+   * so its CSS can be at least as wide as the trigger
+   */
+  matchAnchorWidth?: boolean
+  /**
    * Called when the trigger may have moved away from the floating element: the page or a container
    * scrolled (anything but the floating element itself), or the window resized
    */
@@ -34,7 +42,15 @@ interface FloatingLayerOptions {
  * paints, and places it again whenever its size changes. A gap of `space.100` separates it from the
  * trigger, and it keeps `space.200` from the viewport's edges.
  */
-export function useFloatingLayer({ isPresent, floatingRef, anchorRef, side, align, onDetach }: FloatingLayerOptions) {
+export function useFloatingLayer({
+  isPresent,
+  floatingRef,
+  anchorRef,
+  side,
+  align,
+  matchAnchorWidth = false,
+  onDetach,
+}: FloatingLayerOptions) {
   useIsomorphicLayoutEffect(() => {
     const floating = floatingRef.current
     if (!isPresent || !floating) return
@@ -46,6 +62,8 @@ export function useFloatingLayer({ isPresent, floatingRef, anchorRef, side, alig
       const trigger = laidOutElement(anchorRef.current)
       if (!trigger) return
       const anchor = trigger.getBoundingClientRect()
+      // Before measuring, since it can widen the floating element
+      if (matchAnchorWidth) floating.style.setProperty(ANCHOR_WIDTH_VAR, `${anchor.width}px`)
       const { width, height } = floating.getBoundingClientRect()
       const position = placeFloating({
         anchor,
@@ -65,7 +83,7 @@ export function useFloatingLayer({ isPresent, floatingRef, anchorRef, side, alig
     const observer = new ResizeObserver(place)
     observer.observe(floating)
     return () => observer.disconnect()
-  }, [isPresent, side, align, floatingRef, anchorRef])
+  }, [isPresent, side, align, matchAnchorWidth, floatingRef, anchorRef])
 
   useEffect(() => {
     if (!isPresent) return

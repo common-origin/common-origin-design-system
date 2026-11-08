@@ -72,6 +72,7 @@ export const menuDocs: ComponentDocumentation = {
     { name: 'onOpenChange', type: '(open: boolean) => void', required: false, description: 'Called when the menu opens or closes' },
     { name: 'side', type: "'top' | 'right' | 'bottom' | 'left'", required: false, default: "'bottom'", description: 'The side of the trigger it opens on. It flips when there is no room.' },
     { name: 'align', type: "'start' | 'center' | 'end'", required: false, default: "'start'", description: 'Where it lines up along the trigger\'s edge' },
+    { name: 'matchTriggerWidth', type: 'boolean', required: false, default: 'false', description: 'Makes the menu at least as wide as its trigger, for a full-width trigger such as WorkspaceSwitcher\'s. It still grows with its content up to 300px, and is never narrower than 180px.' },
     { name: 'data-testid', type: 'string', required: false, description: 'Test identifier for the menu' },
     { name: 'MenuItem', type: 'component', required: false, description: 'An action: children (label), icon, description, shortcut ({ label, keys }), disabled, destructive, onSelect. Activating it closes the menu.' },
     { name: 'MenuItemRadio', type: 'component', required: false, description: 'One choice of a set, inside a MenuGroup: checked, onSelect, plus the item props. Choosing it closes the menu.' },

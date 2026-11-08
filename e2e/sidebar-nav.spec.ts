@@ -114,6 +114,16 @@ test("every row's content ends inside the row when expanded, in each density", a
   }
 })
 
+test("the workspace menu is at least as wide as its trigger, and lines up with it (issue 350)", async ({ page }) => {
+  const trigger = nav(page).getByRole('button', { name: 'Creamery Ops' })
+  await trigger.click()
+  const menu = page.getByRole('menu')
+  await expect(menu).toBeVisible()
+  const [button, panel] = [await trigger.boundingBox(), await menu.boundingBox()]
+  expect(Math.round(panel!.width)).toBeGreaterThanOrEqual(Math.round(button!.width))
+  expect(Math.round(panel!.x)).toBe(Math.round(button!.x))
+})
+
 test.describe('reduced motion', () => {
   test.use({ reducedMotion: 'reduce' })
 
