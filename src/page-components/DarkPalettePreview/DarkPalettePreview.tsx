@@ -17,7 +17,7 @@ import {
 } from '../../components'
 import baseTokens from '../../tokens/base/index.json'
 import darkTokens from '../../tokens/modes/theme/dark.json'
-import { contrastRatio } from './contrast'
+import { contrastRatio } from '../../test-utils/contrast'
 import { darkPreviewCss, darkPreviewSelector } from './darkPreviewCss'
 
 // The review page for the dark palette (#357, decision 0054): the generated dark ramps beside the
@@ -38,7 +38,7 @@ const dark = darkTokens.base.color as unknown as Record<string, RampTokens>
 const white = (baseTokens.base.color.white as TokenLeaf).$value
 const darkSelectorValue = darkPreviewSelector.match(/"(.*)"/)?.[1] ?? 'dark'
 
-const mono = { fontFamily: 'var(--co-semantic-font-family-mono, monospace)', fontSize: 11 }
+const mono = { fontFamily: 'var(--co-semantic-font-family-monospace)', fontSize: 11 }
 
 function Swatch({ hex, label, page }: { hex: string; label: string; page: string }) {
   return (
