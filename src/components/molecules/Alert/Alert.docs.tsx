@@ -11,7 +11,8 @@ export const alertDocs: ComponentDocumentation = {
   name: 'Alert',
   description:
     'A flexible alert component for displaying important messages, warnings, errors, and informational content to users. Used for system feedback, validation messages, and contextual help.',
-  category: 'Molecules',
+  category: 'Feedback',
+  tier: 'Molecule',
 
   props: [
     {

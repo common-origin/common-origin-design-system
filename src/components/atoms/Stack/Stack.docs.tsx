@@ -7,7 +7,8 @@ export const stackDocs: ComponentDocumentation = {
   id: 'stack',
   name: 'Stack',
   description: 'Flexbox-based layout component for arranging elements in rows or columns with consistent spacing. Provides flexible alignment and gap controls using design tokens. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Layout',
+  tier: 'Atom',
   
   // Props extracted with full type safety from StackProps interface
   props: [

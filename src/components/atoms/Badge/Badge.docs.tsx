@@ -9,7 +9,8 @@ export const badgeDocs: ComponentDocumentation = {
   id: 'badge',
   name: 'Badge',
   description: 'A notification indicator that wraps components to show counts or presence status',
-  category: 'Atoms',
+  category: 'Labels',
+  tier: 'Atom',
   
   props: [
     {

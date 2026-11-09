@@ -8,7 +8,8 @@ export const progressBarDocs: ComponentDocumentation = {
   id: 'progressbar',
   name: 'ProgressBar',
   description: 'A visual indicator component for displaying completion progress or task status. Supports both horizontal and vertical orientations with multiple color variants for different states. Designed for file uploads, loading states, task completion, and any scenario requiring visual progress feedback. Features comprehensive accessibility support with ARIA attributes and WCAG 2.2 AA compliance.',
-  category: 'Atoms',
+  category: 'Feedback',
+  tier: 'Atom',
   
   // Props extracted with full type safety from ProgressBarProps interface
   props: [

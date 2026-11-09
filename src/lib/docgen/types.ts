@@ -1,4 +1,8 @@
 import { ReactNode } from 'react'
+import type { ComponentGroup } from '../componentGroups'
+
+// Docs-site groups, by purpose (decision 0057), in sidebar order
+export type { ComponentGroup }
 
 export interface PropInfo {
   name: string
@@ -36,11 +40,17 @@ export interface AnatomyInfo {
   parts: AnatomyPart[]
 }
 
+/** The atomic tier: the component's folder in src/components (decision 0052) */
+export type ComponentTier = 'Atom' | 'Molecule' | 'Organism' | 'Layout'
+
 export interface ComponentDocumentation {
   id: string
   name: string
   description: string
-  category: 'Atoms' | 'Molecules' | 'Organisms' | 'Templates' | 'Layout' | 'Components'
+  /** The docs-site group: what the component is for (decision 0057) */
+  category: ComponentGroup
+  /** How the component is built, matching its folder in src/components */
+  tier: ComponentTier
   parentId?: string
   
   // Written by hand; nothing is extracted from the source

@@ -6,7 +6,8 @@ export const passwordFieldDocs: ComponentDocumentation = {
   id: 'password-field',
   name: 'PasswordField',
   description: 'A secure password input field with visibility toggle, label, helper text, error messaging, and comprehensive accessibility support for authentication and password entry forms.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
 
   props: [
     {

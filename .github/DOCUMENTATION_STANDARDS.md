@@ -18,7 +18,8 @@ export const componentNameDocs: ComponentDocumentation = {
   id: 'component-name',
   name: 'Component Name',
   description: 'Clear, concise description (1-2 sentences)',
-  category: 'Atoms' | 'Molecules' | 'Layout',
+  category: ComponentGroup, // docs-site group by purpose (decision 0057)
+  tier: 'Atom' | 'Molecule' | 'Organism' | 'Layout',
   
   props: [...],        // REQUIRED
   tokens: [...],       // REQUIRED
@@ -46,7 +47,7 @@ After creating a component's `.docs.tsx` file, you must add it to the documentat
    ```
 
 This makes the component appear in the documentation site automatically. The component will be:
-- Listed in the component category navigation
+- Listed in its group in the docs-site navigation
 - Searchable in the docs
 - Accessible with all examples and documentation rendered
 

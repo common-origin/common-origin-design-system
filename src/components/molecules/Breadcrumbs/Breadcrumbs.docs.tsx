@@ -13,7 +13,8 @@ export const breadcrumbsDocs: ComponentDocumentation = {
   id: 'breadcrumbs',
   name: 'Breadcrumbs',
   description: 'Navigation component that shows the hierarchical location of the current page within the site structure. Provides wayfinding functionality with proper semantic markup and accessibility support for screen readers and keyboard navigation.',
-  category: 'Molecules',
+  category: 'Navigation',
+  tier: 'Molecule',
   
   props: [
     {

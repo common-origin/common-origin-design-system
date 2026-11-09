@@ -7,7 +7,8 @@ export const chipGroupDocs: ComponentDocumentation = {
   id: 'chipgroup',
   name: 'ChipGroup',
   description: 'Collection of related chips with consistent spacing and wrapping behavior. Perfect for displaying tags, categories, or filter options.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
   
   // Props extracted with full type safety from ChipGroupProps interface
   props: [

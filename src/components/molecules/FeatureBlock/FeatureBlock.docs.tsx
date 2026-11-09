@@ -6,7 +6,8 @@ export const featureBlockDocs: ComponentDocumentation = {
   id: 'featureblock',
   name: 'FeatureBlock',
   description: 'Displays a feature block with title, excerpt, labels, and cover image.',
-  category: 'Molecules',
+  category: 'Content',
+  tier: 'Molecule',
   props: [
     {
       name: 'title',

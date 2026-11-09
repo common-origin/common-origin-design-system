@@ -9,7 +9,8 @@ export const searchFieldDocs: ComponentDocumentation = {
   id: 'search-field',
   name: 'SearchField',
   description: 'A search input with autocomplete, suggestions, and recent searches. Includes debouncing and full keyboard navigation support.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
   
   props: [
     {

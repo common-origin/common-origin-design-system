@@ -25,7 +25,8 @@ export const workspaceSwitcherDocs: ComponentDocumentation = {
   name: 'WorkspaceSwitcher',
   description:
     'Shows the current workspace and switches between workspaces, from a SidebarNav header. Built on Menu: a labelled group of the workspaces as radio items, then any actions. In the rail it shows the Avatar only, with the name in a Tooltip.',
-  category: 'Molecules',
+  category: 'Navigation',
+  tier: 'Molecule',
   props: [
     { name: 'workspaces', type: '{ id, name, picture?, description? }[]', required: true, description: 'The workspaces to choose from' },
     { name: 'value', type: 'string', required: true, description: "The current workspace's id" },

@@ -80,7 +80,8 @@ export const listDocs: ComponentDocumentation = {
   id: 'list',
   name: 'List',
   description: 'A flexible list component for displaying structured content with interactive states, expandable sections, badges, and secondary information. Designed for versatile data presentation including shopping lists, recipe ingredients, settings menus, and search results. Features comprehensive accessibility support with proper ARIA attributes, keyboard navigation, and minimum 44px touch targets.',
-  category: 'Molecules',
+  category: 'Data display',
+  tier: 'Molecule',
   
   props: [
     // List props

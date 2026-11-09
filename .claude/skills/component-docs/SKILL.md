@@ -10,7 +10,7 @@ Each component's docs page is its `Name.docs.tsx` object, rendered by `pages/com
 ## Rules
 
 - **Read the component source first.** Document what the code does, not what the docs used to say. Every prop in the props interface appears, with an accurate type, `required` and `default`.
-- **Required fields:** `id`, `name`, `description`, `category`, `props`, `tokens`, `examples` (at least 3, each with `code` and `renderComponent`, real use cases), `accessibility`, `anatomy` (ASCII diagram plus parts, each with its tokens).
+- **Required fields:** `id`, `name`, `description`, `category` (the docs-site group by purpose, from `COMPONENT_GROUPS` in `src/lib/componentGroups.ts`: the group for the job someone uses it for, not how it works, per [0057](../../../docs/foundation/decisions/0057-docs-groups-by-purpose.md); if none clearly fits, ask the owner), `tier` (matching its folder: `Atom`, `Molecule`, `Organism` or `Layout`), `props`, `tokens`, `examples` (at least 3, each with `code` and `renderComponent`, real use cases), `accessibility`, `anatomy` (ASCII diagram plus parts, each with its tokens).
 - **Tokens are exact paths** from `src/styles/tokens.json`, one per styled reference the component uses. Put explanations in comments or anatomy parts, not in the path string.
 - **Examples** import only from the package's components, never from `src/page-components/` or `src/patterns/`.
 - **Registration:** import the docs object in `src/lib/componentsData.ts` and add it to `staticComponentsData` through `convertDocumentationToLegacyFormat`. Deprecated components aren't registered.

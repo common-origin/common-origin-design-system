@@ -84,7 +84,8 @@ export const modalDocs: ComponentDocumentation = {
   name: 'Modal',
   description:
     'A centred dialog overlay for focused tasks such as confirmations, forms, and detail views. Features a title, close button, scrollable body, and optional structured footer actions. Auto-fullscreen on mobile viewports (< 768 px).',
-  category: 'Molecules',
+  category: 'Overlays',
+  tier: 'Molecule',
 
   // ---------------------------------------------------------------------------
   // Props

@@ -10,7 +10,8 @@ export const typographyDocs: ComponentDocumentation = {
   id: 'typography',
   name: 'Typography',
   description: 'Semantic text component with predefined styles and color variants using design tokens. Provides consistent typography hierarchy across the design system. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Content',
+  tier: 'Atom',
   
   // Props extracted with full type safety from TypographyProps interface
   props: [

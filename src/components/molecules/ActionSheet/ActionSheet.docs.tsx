@@ -245,7 +245,8 @@ export const actionSheetDocs: ComponentDocumentation = {
   id: 'action-sheet',
   name: 'ActionSheet',
   description: 'A bottom sheet modal component for displaying a list of actions. Includes focus trap, keyboard navigation, and proper accessibility support.',
-  category: 'Molecules',
+  category: 'Actions',
+  tier: 'Molecule',
   
   props: [
     {

@@ -9,6 +9,7 @@ export const responsiveGridDocs: ComponentDocumentation = {
   name: 'ResponsiveGrid',
   description: 'A grid of equal columns whose column count and gaps change from each breakpoint up. Use it for lists of cards or tiles; use Grid and GridCol when items need different spans.',
   category: 'Layout',
+  tier: 'Layout',
   parentId: 'grid-system',
   props: [
     { name: 'cols', type: 'number', required: true, description: 'Number of columns below the sm breakpoint (the base column count)' },

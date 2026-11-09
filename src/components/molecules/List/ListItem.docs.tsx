@@ -8,7 +8,8 @@ export const listItemDocs: ComponentDocumentation = {
   id: 'list-item',
   name: 'ListItem',
   description: 'A single row in a List, with a primary label and optional secondary text, leading icon, trailing badge, and expandable content. Items can be static, interactive, selected, disabled or destructive. Always render ListItems inside a List, which provides the list semantics and dividers. List has more patterns, including expandable items and a combobox.',
-  category: 'Molecules',
+  category: 'Data display',
+  tier: 'Molecule',
   parentId: 'list',
 
   props: [

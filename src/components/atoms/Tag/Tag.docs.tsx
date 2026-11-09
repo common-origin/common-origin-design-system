@@ -9,7 +9,8 @@ export const tagDocs: ComponentDocumentation = {
   id: 'tag',
   name: 'Tag',
   description: 'A static, non-interactive label used to categorize elements or objects in the UI. Tags help users quickly identify and understand content classification.',
-  category: 'Atoms',
+  category: 'Labels',
+  tier: 'Atom',
   
   props: [
     {

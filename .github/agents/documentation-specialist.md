@@ -47,7 +47,8 @@ Read `DOCUMENTATION_STANDARDS.md` in full, then verify each of these:
 - [ ] `id` — unique kebab-case identifier
 - [ ] `name` — display name
 - [ ] `description` — clear, concise description of what the component does and when to use it
-- [ ] `category` — correct Atomic Design category (`atom`, `molecule`, `layout`)
+- [ ] `category` — the docs-site group by purpose, one of `COMPONENT_GROUPS` in `src/lib/componentGroups.ts` (decision 0057)
+- [ ] `tier` — matches the component's folder: `Atom`, `Molecule`, `Organism` or `Layout`
 - [ ] `props` — all props documented with type, description, required flag, and defaultValue
 - [ ] `tokens` — all design tokens used by the component
 - [ ] `examples` — minimum 3 examples (see below)

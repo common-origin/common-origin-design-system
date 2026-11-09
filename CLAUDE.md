@@ -21,7 +21,7 @@ The guidance in `.github/*.md` predates the foundation and is partly inaccurate.
 - `src/components/{atoms,molecules,organisms,layout}/Name/` — `Name.tsx`, `Name.test.tsx`, `Name.docs.tsx`, `index.ts`. This is the published package. Organisms compose molecules into a region of a product's UI ([0052](docs/foundation/decisions/0052-organisms-tier.md)).
 - `src/tokens/` — token sources. `npm run build:tokens` compiles them to `src/styles/tokens.json` (+ `.d.ts`, `.css`).
 - `src/page-components/`, `src/patterns/`, `pages/` — docs site only. Package components must never import from these.
-- `src/lib/componentsData.ts` — registers each `.docs.tsx` on the docs site.
+- `src/lib/componentsData.ts` — registers each `.docs.tsx` on the docs site. The site groups components by purpose (`category`, [0057](docs/foundation/decisions/0057-docs-groups-by-purpose.md)), not by folder; each page also records its `tier`.
 
 ## Commands
 

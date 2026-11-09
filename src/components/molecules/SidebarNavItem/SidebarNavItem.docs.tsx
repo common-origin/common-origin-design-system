@@ -9,7 +9,8 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
   name: 'SidebarNavItem',
   description:
     'One row of a SidebarNav: a link to a page, or a button for an action such as "New chat". It shows an optional icon, the label (truncated to one line) and optional trailing content, and marks the current page. In a collapsed SidebarNav it shows its icon only, with the label as its name and in a Tooltip.',
-  category: 'Molecules',
+  category: 'Navigation',
+  tier: 'Molecule',
 
   props: [
     { name: 'label', type: 'string', required: true, description: 'The item\'s label. In the rail it becomes the accessible name and shows in a Tooltip.' },

@@ -6,7 +6,8 @@ export const tabBarDocs: ComponentDocumentation = {
   id: 'tab-bar',
   name: 'TabBar',
   description: 'An accessible tabbed navigation component with keyboard support and optional count badges. Implements the WAI-ARIA tablist pattern with a roving tabindex. TabBar has one look (decision 0020): the selected tab takes the light-blue selected treatment (fill and blue text) with a blue underline. The variant prop was removed in 3.0 (decision 0020).',
-  category: 'Molecules',
+  category: 'Navigation',
+  tier: 'Molecule',
 
   props: [
     {

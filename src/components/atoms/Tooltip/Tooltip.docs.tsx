@@ -8,7 +8,8 @@ export const tooltipDocs: ComponentDocumentation = {
   name: 'Tooltip',
   description:
     'A short label or hint that appears beside a control on hover or keyboard focus. Use it to show the name of an icon-only control, such as an IconButton or a collapsed sidebar item, or to add non-essential help. It renders in the browser\'s top layer, so it is never clipped by a scrolling container and always sits above the page and any Modal.',
-  category: 'Atoms',
+  category: 'Overlays',
+  tier: 'Atom',
 
   props: [
     {

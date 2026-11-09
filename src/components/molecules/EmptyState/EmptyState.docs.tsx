@@ -7,7 +7,8 @@ export const emptyStateDocs: ComponentDocumentation = {
   id: 'empty-state',
   name: 'EmptyState',
   description: 'Engaging empty state component with illustration, clear message, and actionable CTAs. Provides friendly guidance when content is unavailable, searches return no results, or errors occur. Composes from Stack, Icon, Typography, and Button atoms.',
-  category: 'Molecules',
+  category: 'Feedback',
+  tier: 'Molecule',
   
   props: [
     {

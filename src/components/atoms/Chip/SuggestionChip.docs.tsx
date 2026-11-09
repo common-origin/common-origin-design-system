@@ -31,8 +31,8 @@ export const suggestionChipDocs: ComponentDocumentation = {
   name: 'SuggestionChip',
   description:
     'Offers text to put in an agent input: a prompt starter or a follow-up. Picking it fills the input so the user can edit before sending; it never sends or runs a command. It is the Suggestion chip type from decision 0046, the one chip that acts on click. Outlined, with no selected state. In agent interfaces, pass suggestions to AgentInput, which renders these chips for you.',
-  category: 'Atoms',
-  parentId: 'chip',
+  category: 'Actions',
+  tier: 'Atom',
 
   props: [
     {
@@ -162,6 +162,7 @@ States: rest (outline) · hover (naked hover fill) · pressed (naked pressed fil
   },
 
   notes: [
+    'One of four chip types, each grouped on the docs site by its job (decisions 0016, 0046 and 0057): Chip, a static label, is in Labels; FilterChip and InputChip are in Inputs; SuggestionChip is in Actions.',
     'Use SuggestionChip for text the user can put in an agent input. For an action that happens on click, use a Button. For a toggle, use FilterChip. For a removable value, use InputChip (decision 0016).',
     'Suggestions are not marked as AI, even when the agent wrote them (decision 0046): they change nothing until the user sends them.',
   ],

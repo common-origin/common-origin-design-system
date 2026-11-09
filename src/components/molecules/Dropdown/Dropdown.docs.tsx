@@ -14,7 +14,8 @@ export const dropdownDocs: ComponentDocumentation = {
   id: 'dropdown',
   name: 'Dropdown',
   description: 'A fully accessible dropdown component for selecting from a list of options. Features keyboard navigation, click-outside detection, smooth animations, and consistent design system integration.',
-  category: 'Molecules',
+  category: 'Inputs',
+  tier: 'Molecule',
   
   props: [
     {

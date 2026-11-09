@@ -6,7 +6,8 @@ export const categoryLabelDocs: ComponentDocumentation = {
   id: 'category-label',
   name: 'CategoryLabel',
   description: 'Colour-codes an item\'s category, such as a transaction\'s (decision 0018). A static, display-only label with four display colours plus grey, filled, outlined and minimal styles, and an optional icon. Category colours carry no meaning (decision 0043): for status use StatusLabel. For a selectable or removable value use a chip. Replaces CategoryBadge, removed in 3.0.',
-  category: 'Atoms',
+  category: 'Labels',
+  tier: 'Atom',
   
   props: [
     {

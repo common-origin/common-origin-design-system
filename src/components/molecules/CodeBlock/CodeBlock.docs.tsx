@@ -7,7 +7,8 @@ export const codeBlockDocs: ComponentDocumentation = {
   id: 'codeblock',
   name: 'CodeBlock',
   description: 'A comprehensive code display component optimized for developer documentation and technical content. Features syntax-preserved formatting, modern clipboard integration, expandable/collapsible content for long code blocks, and enhanced accessibility support. Designed for technical documentation, API references, code tutorials, and developer onboarding experiences with WCAG 2.2 AA compliance.',
-  category: 'Molecules',
+  category: 'Content',
+  tier: 'Molecule',
   
   // Props extracted with full type safety from CodeBlockProps interface
   props: [

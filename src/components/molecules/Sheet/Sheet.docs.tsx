@@ -7,7 +7,8 @@ export const sheetDocs: ComponentDocumentation = {
   id: 'sheet',
   name: 'Sheet',
   description: 'A sliding panel overlay component that can appear from any edge of the viewport, ideal for navigation menus, filters, forms, or additional content.',
-  category: 'Molecules',
+  category: 'Overlays',
+  tier: 'Molecule',
   
   props: [
     {

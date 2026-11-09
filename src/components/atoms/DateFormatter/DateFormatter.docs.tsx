@@ -6,7 +6,8 @@ export const dateFormatterDocs: ComponentDocumentation = {
   id: 'date-formatter',
   name: 'DateFormatter',
   description: 'Utility atom for consistent date formatting throughout the application. Uses date-fns for reliable parsing and formatting of ISO date strings with customizable format patterns.',
-  category: 'Atoms',
+  category: 'Data display',
+  tier: 'Atom',
   
   props: [
     {

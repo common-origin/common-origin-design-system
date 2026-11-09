@@ -7,7 +7,8 @@ export const avatarDocs: ComponentDocumentation = {
   id: 'avatar',
   name: 'Avatar',
   description: 'Display user profile pictures with fallback to initials. Supports multiple sizes and graceful degradation when images fail to load. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Content',
+  tier: 'Atom',
   
   // Props extracted with full type safety from AvatarProps interface
   props: [

@@ -8,7 +8,8 @@ export const dividerDocs: ComponentDocumentation = {
   id: 'divider',
   name: 'Divider',
   description: 'Semantic content divider with customizable visual styling and orientation. Provides clear visual breaks between content sections both horizontally and vertically while maintaining screen reader compatibility. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
-  category: 'Atoms',
+  category: 'Layout',
+  tier: 'Atom',
   
   // Props extracted with full type safety from DividerProps interface
   props: [
