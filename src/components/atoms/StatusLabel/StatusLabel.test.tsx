@@ -7,7 +7,7 @@ import tokens from '@/styles/tokens.json'
 import { contrastRatio } from '@/test-utils/contrast'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 import { type IconName } from '../../../types/icons'
-import { iconSet } from '../../../types/iconSet'
+import { expectDrawnIcon } from '@/test-utils/icons'
 import { statusShapes } from '../../../lib/statusShapes'
 
 expect.extend(toHaveNoViolations)
@@ -343,8 +343,7 @@ describe('StatusLabel status pattern (decision 0045)', () => {
 
   it.each(Object.entries(icons) as [StatusType, IconName][])('shows the %s status icon at the medium size', (status, icon) => {
     render(<StatusLabel status={status} />)
-    const path = screen.getByRole('status').querySelector('svg path')
-    expect(path).toHaveAttribute('d', iconSet[icon].elements[0][1].d)
+    expectDrawnIcon(screen.getByRole('status').querySelector('svg'), icon)
   })
 
   it.each([
