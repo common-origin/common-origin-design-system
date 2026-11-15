@@ -88,6 +88,14 @@ describe('IconName', () => {
     expect(withIconNameUnion(source, ['b', 'a'])).toBe("// head\nexport type IconName =\n  | 'a'\n  | 'b'\n\nexport type Other = 1\n")
   })
 
+  it('keeps Windows line endings', () => {
+    expect(withIconNameUnion("export type IconName =\r\n  | 'old'\r\n\r\n", ['a'])).toBe("export type IconName =\r\n  | 'a'\r\n\r\n")
+  })
+
+  it('sorts by code point, the same on every machine', () => {
+    expect(iconNameUnion(['b', 'B', 'a'])).toBe("export type IconName =\n  | 'B'\n  | 'a'\n  | 'b'\n")
+  })
+
   it('fails loudly if the union moved', () => {
     expect(() => withIconNameUnion('export type Names = string\n', ['a'])).toThrow('Could not find the IconName union')
   })

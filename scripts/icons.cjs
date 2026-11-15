@@ -39,15 +39,25 @@ function lucideElements(lucideName) {
 /** Lucide's search tags for an icon, offered as aliases */
 const lucideTags = (lucideName) => lucideTagsByName[lucideName] ?? []
 
+/** Throws unless `name` is a free, camelCase icon name */
+function checkName(iconSet, name) {
+  if (!NAME.test(name ?? '')) throw new Error(`"${name}" isn't a valid icon name: use camelCase, such as "arrowRight"`)
+  if (iconSet[name]) throw new Error(`An icon named "${name}" already exists`)
+}
+
+/** Throws unless `category` is one of the icon categories */
+function checkCategory(category) {
+  if (!CATEGORIES.includes(category)) throw new Error(`Category must be one of: ${CATEGORIES.join(', ')}`)
+}
+
 /**
  * A copy of the icon set with a Lucide icon added under our name. Throws for a taken or badly
  * formed name, an unknown category or paint, or missing metadata.
  */
 function addLucideIcon(iconSet, icon) {
   const { lucideName, name, displayName = name, description, category, aliases = [], intent, decorativeDefault = false, ariaLabelDefault, paint = 'stroke' } = icon
-  if (!NAME.test(name ?? '')) throw new Error(`"${name}" isn't a valid icon name: use camelCase, such as "arrowRight"`)
-  if (iconSet[name]) throw new Error(`An icon named "${name}" already exists`)
-  if (!CATEGORIES.includes(category)) throw new Error(`Category must be one of: ${CATEGORIES.join(', ')}`)
+  checkName(iconSet, name)
+  checkCategory(category)
   if (!LUCIDE_PAINTS.includes(paint)) throw new Error(`A Lucide icon's paint is ${LUCIDE_PAINTS.join(' or ')}`)
   for (const [field, value] of Object.entries({ description, intent, ariaLabelDefault })) {
     if (!value || !String(value).trim()) throw new Error(`${field} is required`)
@@ -70,17 +80,16 @@ function addLucideIcon(iconSet, icon) {
   }
 }
 
-const UNION_START = 'export type IconName ='
-const UNION = /export type IconName =\n(?: {2}\| '[a-zA-Z0-9]+'\n)+/
+const UNION = /export type IconName =\r?\n(?: {2}\| '[a-zA-Z0-9]+'\r?\n)+/
 
-/** `IconName` as source: one sorted member per line */
-const iconNameUnion = (names) =>
-  `${UNION_START}\n${[...names].sort((a, b) => a.localeCompare(b, 'en')).map((name) => `  | '${name}'\n`).join('')}`
+/** `IconName` as source: one member per line, in code-point order (the same on every machine) */
+const iconNameUnion = (names, eol = '\n') =>
+  `export type IconName =${eol}${[...names].sort().map((name) => `  | '${name}'${eol}`).join('')}`
 
-/** `src/types/icons.ts` with `IconName` regenerated from the given names */
+/** `src/types/icons.ts` with `IconName` regenerated from the given names, keeping its line endings */
 function withIconNameUnion(iconsTs, names) {
   if (!UNION.test(iconsTs)) throw new Error('Could not find the IconName union in src/types/icons.ts')
-  return iconsTs.replace(UNION, iconNameUnion(names))
+  return iconsTs.replace(UNION, iconNameUnion(names, iconsTs.includes('\r\n') ? '\r\n' : '\n'))
 }
 
 module.exports = {
@@ -90,6 +99,8 @@ module.exports = {
   LUCIDE_VERSION,
   TAGS,
   addLucideIcon,
+  checkCategory,
+  checkName,
   iconNameUnion,
   lucideElements,
   lucideTags,

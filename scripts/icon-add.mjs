@@ -22,7 +22,7 @@ import { fileURLToPath } from 'url'
 import { parseArgs } from 'util'
 
 const require = createRequire(import.meta.url)
-const { CATEGORIES, LUCIDE_VERSION, addLucideIcon, lucideElements, lucideTags, withIconNameUnion } = require('./icons.cjs')
+const { CATEGORIES, LUCIDE_VERSION, addLucideIcon, checkCategory, checkName, lucideElements, lucideTags, withIconNameUnion } = require('./icons.cjs')
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const ICON_SET = join(ROOT, 'src/styles/iconSet.json')
@@ -69,25 +69,37 @@ const missing = REQUIRED.filter((flag) => values[flag] === undefined)
 if (!interactive && missing.length > 0) fail(`Missing ${missing.map((flag) => `--${flag}`).join(', ')} (not running in a terminal, so nothing can be asked)`)
 const rl = interactive ? createInterface({ input: process.stdin, output: process.stdout }) : null
 
-async function ask(value, question, fallback = '') {
-  if (value !== undefined) return value
-  if (!rl) return fallback
-  const answer = (await rl.question(fallback ? `${question} [${fallback}]: ` : `${question}: `)).trim()
-  return answer || fallback
+// Asks until `check` passes, so a mistake costs one answer, not the whole run. A flag that fails
+// its check stops the script.
+async function ask(value, question, fallback = '', check = () => {}) {
+  for (let answer = value; ; answer = undefined) {
+    if (answer === undefined) answer = rl ? (await rl.question(fallback ? `${question} [${fallback}]: ` : `${question}: `)).trim() || fallback : fallback
+    try {
+      check(answer)
+      return answer
+    } catch (error) {
+      if (!rl || value !== undefined) fail(error.message)
+      console.error(`  ${error.message}`)
+    }
+  }
 }
 
+const current = JSON.parse(readFileSync(ICON_SET, 'utf8'))
+
 console.log(`Adding Lucide "${lucideName}" (lucide-static ${LUCIDE_VERSION})`)
-const name = await ask(values.as, 'Our name (camelCase)')
+const name = await ask(values.as, 'Our name (camelCase)', '', (answer) => checkName(current, answer))
 const description = await ask(values.description, 'What it depicts')
-const category = await ask(values.category, `Category (${CATEGORIES.join(', ')})`)
+const category = await ask(values.category, `Category (${CATEGORIES.join(', ')})`, '', checkCategory)
 const intent = await ask(values.intent, 'When to use it')
 const ariaLabelDefault = await ask(values.label, 'Accessible label when it carries meaning')
 const aliases = await ask(values.aliases, 'Aliases, comma separated', tags.slice(0, 8).join(', '))
 rl?.close()
 
+// Work out both files before writing either, so a failure leaves neither half-changed
 let iconSet
+let iconsTs
 try {
-  iconSet = addLucideIcon(JSON.parse(readFileSync(ICON_SET, 'utf8')), {
+  iconSet = addLucideIcon(current, {
     lucideName,
     name,
     displayName: values['display-name'] ?? name,
@@ -99,10 +111,11 @@ try {
     ariaLabelDefault,
     paint: values.paint,
   })
+  iconsTs = withIconNameUnion(readFileSync(ICONS_TS, 'utf8'), Object.keys(iconSet))
 } catch (error) {
   fail(error.message)
 }
 
 writeFileSync(ICON_SET, `${JSON.stringify(iconSet, null, 2)}\n`)
-writeFileSync(ICONS_TS, withIconNameUnion(readFileSync(ICONS_TS, 'utf8'), Object.keys(iconSet)))
+writeFileSync(ICONS_TS, iconsTs)
 console.log(`✅ Added "${name}" from Lucide "${lucideName}". Use it as <Icon name="${name}" />, then run npm test.`)

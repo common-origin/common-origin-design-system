@@ -178,7 +178,7 @@ npm run icon:add -- calendar --as calendar --category object \
   --description "Calendar page" --intent "Use for dates and scheduling" --label "Calendar"
 ```
 
-The script copies the icon from the pinned `lucide-static` into `src/styles/iconSet.json` under the name you give it, records the Lucide name, and regenerates `IconName` in `src/types/icons.ts`. Leave out any metadata flag and it asks for it; aliases default to Lucide's tags. Use `--paint both` for a filled variant, as `starFilled` is. The icon then shows on the Icon docs page. The status icons and the carets are the system's own drawings, not Lucide's: change those in `iconSet.json` with a decision behind it. Never edit `src/styles/icons.json`, which is the frozen, deprecated `iconsData`.
+The script copies the icon from the pinned `lucide-static` into `src/styles/iconSet.json` under the name you give it, records the Lucide name, and regenerates `IconName` in `src/types/icons.ts`. Leave out any metadata flag and it asks for it; aliases default to the first eight of Lucide's tags. Use `--paint both` for a filled variant, as `starFilled` is. The icon then shows on the Icon docs page. The status icons and the carets are the system's own drawings, not Lucide's: change those in `iconSet.json` with a decision behind it. Never edit `src/styles/icons.json`, which is the frozen, deprecated `iconsData`.
 
 ## Type Safety
 
