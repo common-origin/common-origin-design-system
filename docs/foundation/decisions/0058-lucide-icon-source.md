@@ -33,7 +33,7 @@ Every bundle that uses `Icon` includes every icon, because `Icon` looks icons up
 ## Consequences
 
 - Follow-up work, in order: `Icon` draws the new format, with the new export and `iconsData` frozen ([#375](https://github.com/common-origin/common-origin-design-system/issues/375)); the script that adds an icon from Lucide ([#376](https://github.com/common-origin/common-origin-design-system/issues/376)); moving the 51 general icons to Lucide ([#378](https://github.com/common-origin/common-origin-design-system/issues/378)). Redrawing the status icons and carets ([#377](https://github.com/common-origin/common-origin-design-system/issues/377)) can follow #375.
-- The current names map to Lucide as follows. The comparison the owner approved used Lucide 1.66.0.
+- The current names map to Lucide as follows. The comparison the owner approved used Lucide 1.66.0. Lucide's `trash-2` from that comparison is named `trash` in 1.66.0's icon data, with the same drawing.
 
   | Ours | Lucide | Ours | Lucide | Ours | Lucide |
   |---|---|---|---|---|---|
@@ -43,7 +43,7 @@ Every bundle that uses `Icon` includes every icon, because `Icon` looks icons up
   | `arrowDown` | `chevron-down` | `info` | `info` | `star` | `star` |
   | `arrowUp` | `chevron-up` | `lamp` | `lightbulb` | `starFilled` | `star` (filled) |
   | `arrowLeft` | `chevron-left` | `menu` | `menu` | `table` | `table` |
-  | `arrowRight` | `chevron-right` | `paper` | `receipt-text` | `trash` | `trash-2` |
+  | `arrowRight` | `chevron-right` | `paper` | `receipt-text` | `trash` | `trash` |
   | `bell` | `bell` | `pause` | `pause` | `userBox` | `square-user` |
   | `back` | `arrow-left` | `stop` | `square` | `view` | `eye` |
   | `cancel` | `ban` | `play` | `play` | `viewHide` | `eye-off` |

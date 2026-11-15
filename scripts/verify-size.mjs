@@ -6,8 +6,9 @@
  * and fails if it grows past the budget. On 2.19.0, before per-module ESM, Button alone cost
  * 78.3 KB gzipped (71% of the package); per-module ESM brought it to about 35 KB.
  *
- * Most of what's left is data: every icon (Icon looks them up by name) and the token object.
- * Shrinking icons is research in #253; lower the budget when it lands.
+ * Moving the icons to Lucide's line markup (decision 0058) brought it to 21.5 KB. Most of what's
+ * left is data: every icon (Icon looks them up by name) and the token object. Bundling only the
+ * icons a product uses is research in #253; lower the budget again when it lands.
  */
 
 import { existsSync } from 'fs'
@@ -21,7 +22,7 @@ import json from '@rollup/plugin-json'
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const ENTRY = join(ROOT, 'dist', 'index.mjs')
-const BUDGET_KB = 40
+const BUDGET_KB = 25
 
 if (!existsSync(ENTRY)) {
   console.error('❌ dist/index.mjs not found. Run npm run build:package first.')
