@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { axe, toHaveNoViolations } from 'jest-axe'
-import iconsData from '@/styles/icons.json'
+import { iconSet } from '../types/iconSet'
 import { Button } from './atoms/Button'
 import { CategoryLabel } from './atoms/CategoryLabel'
 import { MoneyDisplay } from './atoms/MoneyDisplay'
@@ -13,7 +13,7 @@ expect.extend(toHaveNoViolations)
 
 // Icons are decorative unless a component gives them a human-readable name, and no component
 // announces an internal icon name such as "arrowDown" or "addRing" (#85, WCAG 1.1.1)
-const internalNames = new Set(Object.keys(iconsData))
+const internalNames = new Set(Object.keys(iconSet))
 
 const announcedImages = (container: HTMLElement) =>
   Array.from(container.querySelectorAll('[role="img"]')).map((image) => image.getAttribute('aria-label') ?? '')

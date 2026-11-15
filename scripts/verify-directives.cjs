@@ -4,7 +4,7 @@
  * Pre-publish check for React Server Components support (see rollup.config.mjs):
  * - the CommonJS component chunk, and every ESM component and lib module (decision 0042), starts
  *   with 'use client', so components render from Server Components
- * - the entries, the data and the tokens don't, so `tokens` and `iconsData` stay plain data that
+ * - the entries, the data and the tokens don't, so `tokens`, `iconSet` and `iconsData` stay plain data that
  *   Server Components can read
  */
 

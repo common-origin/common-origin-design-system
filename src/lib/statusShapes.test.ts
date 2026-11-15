@@ -1,5 +1,6 @@
 import { statusShapes } from './statusShapes'
-import { iconsData, type IconName } from '../types/icons'
+import { type IconName } from '../types/icons'
+import { iconSet } from '../types/iconSet'
 
 // Coordinates in an SVG path, including each arc's radii and end point
 const numbers = (path: string) => (path.match(/-?\d*\.?\d+/g) ?? []).map(Number)
@@ -28,12 +29,12 @@ describe('status shapes and icons (decision 0045)', () => {
   })
 
   it.each(Object.entries(icons))('pairs the %s shape with a status icon', (_, name) => {
-    expect(iconsData[name]).toMatchObject({ name, category: 'status', decorativeDefault: false })
+    expect(iconSet[name]).toMatchObject({ name, category: 'status', decorativeDefault: false })
   })
 
   it('gives every status icon a human-readable default label', () => {
-    const names = Object.keys(iconsData).filter((name) => name.startsWith('status')) as IconName[]
+    const names = Object.keys(iconSet).filter((name) => name.startsWith('status')) as IconName[]
     expect(names).toHaveLength(10)
-    for (const name of names) expect(iconsData[name].ariaLabelDefault).not.toMatch(/^status/)
+    for (const name of names) expect(iconSet[name].ariaLabelDefault).not.toMatch(/^status/)
   })
 })

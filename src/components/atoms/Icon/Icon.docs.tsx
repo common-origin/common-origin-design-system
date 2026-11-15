@@ -6,7 +6,7 @@ import { Typography } from '../Typography'
 export const iconDocs: ComponentDocumentation = {
   id: 'icon',
   name: 'Icon',
-  description: 'Displays SVG icons with consistent sizing and semantic color variants. Renders inline SVG elements using path data from icons.json for optimal performance and styling control. WCAG 2.2 AA compliant with comprehensive accessibility testing.',
+  description: 'Displays SVG icons with consistent sizing and semantic color variants. Draws each icon inline from iconSet, in currentColor: Lucide\'s 2px line icons and the system\'s own drawings (decision 0058). WCAG 2.2 AA compliant with comprehensive accessibility testing.',
   category: 'Content',
   tier: 'Atom',
   
@@ -14,9 +14,9 @@ export const iconDocs: ComponentDocumentation = {
   props: [
     {
       name: 'name',
-      type: 'keyof typeof iconsData',
+      type: 'IconName',
       required: true,
-      description: 'Icon name from icons.json (add, arrowDown, menu, play, etc.). Must match exact key in icon data file'
+      description: 'Icon name: a key of iconSet (add, arrowDown, menu, play and so on)'
     },
     {
       name: 'size',
@@ -36,7 +36,7 @@ export const iconDocs: ComponentDocumentation = {
       name: 'aria-label',
       type: 'string',
       required: false,
-      description: 'Makes the icon meaningful: it is announced as an image with this name. Without aria-label or title the icon is decorative and hidden from assistive technology. Use a human-readable name, never the internal icon name (icons.json\'s ariaLabelDefault is a starting point)'
+      description: 'Makes the icon meaningful: it is announced as an image with this name. Without aria-label or title the icon is decorative and hidden from assistive technology. Use a human-readable name, never the internal icon name (the icon\'s ariaLabelDefault in iconSet is a starting point)'
     },
     {
       name: 'title',
@@ -644,7 +644,8 @@ export const iconDocs: ComponentDocumentation = {
   ],
   
   notes: [
-    'Icon Library: Icons loaded from styles/icons.json with SVG path data - add new icons by extending this JSON file',
+    'Icon set: Icon draws from iconSet, exported by the package. Each icon has its metadata, where it comes from (Lucide or the system\'s own drawings), how it\'s painted (stroke, fill or both) and its shapes on a 24px grid. Lines are 2px at 24px and scale with the icon (decision 0058)',
+    'Deprecated: iconsData is frozen at the 64 icons of 3.2.0 as single filled paths. Icons added since aren\'t in it. Use iconSet; iconsData is removed in 4.0',
     'Size Guidelines: xs/sm for inline text, md/lg for buttons and UI elements, xl/2xl for feature graphics and headers',
     'Color Semantics: Use semantic colors (error, success, warning) consistently with their meaning, not just for visual variety',
     'Inherit Color: Use iconColor="inherit" to match parent text color for seamless text integration',

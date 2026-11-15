@@ -1,8 +1,8 @@
-import React, { FC, ReactElement } from 'react'
+import React, { FC, ReactElement, SVGProps } from 'react'
 import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
-import iconsData from '@/styles/icons.json'
-import { type IconName } from '../../../types/icons'
+import { iconSet } from '../../../types/iconSet'
+import { type IconName, type IconPaint } from '../../../types/icons'
 
 export type { IconName }
 
@@ -13,7 +13,7 @@ export interface IconProps {
   /**
    * Makes the icon meaningful: it's announced as an image with this name. Without `aria-label`
    * or `title`, the icon is decorative and hidden from assistive technology (#85). Use a
-   * human-readable name, never the internal icon name; `icons.json`'s `ariaLabelDefault` is a
+   * human-readable name, never the internal icon name; the icon's `ariaLabelDefault` in `iconSet` is a
    * starting point.
    */
   'aria-label'?: string
@@ -73,6 +73,20 @@ const IconStyled = styled.span.withConfig({
   }};
 `
 
+// How each paint draws, in currentColor. Lines are 2px on the 24px grid, so they scale with the
+// icon (decision 0058).
+const LINE: SVGProps<SVGSVGElement> = {
+  stroke: 'currentColor',
+  strokeWidth: 2,
+  strokeLinecap: 'round',
+  strokeLinejoin: 'round'
+}
+const PAINT: Record<IconPaint, SVGProps<SVGSVGElement>> = {
+  stroke: { fill: 'none', ...LINE },
+  fill: { fill: 'currentColor' },
+  both: { fill: 'currentColor', ...LINE }
+}
+
 export const Icon: FC<IconProps> = ({
   name,
   size = 'lg',
@@ -84,11 +98,10 @@ export const Icon: FC<IconProps> = ({
   // Decorative unless it's given a name. A blank name is no name, so the icon stays hidden
   const label = ariaLabel?.trim() || title?.trim() || undefined
 
-  // Get the icon data from the JSON file
-  const iconData = iconsData[name]
-  
-  if (!iconData) {
-    console.warn(`Icon "${name}" not found in icons.json`)
+  const icon = iconSet[name]
+
+  if (!icon) {
+    console.warn(`Icon "${name}" not found in iconSet`)
     return <IconStyled $size={size} $iconColor={iconColor} data-testid={dataTestId} />
   }
   
@@ -96,14 +109,14 @@ export const Icon: FC<IconProps> = ({
     <IconStyled $size={size} $iconColor={iconColor} data-testid={dataTestId}>
       <svg
         viewBox="0 0 24 24"
-        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
+        {...PAINT[icon.paint]}
         {...(label
           ? { role: 'img', 'aria-label': label }
           : { 'aria-hidden': true, focusable: false })}
       >
         {title?.trim() && <title>{title}</title>}
-        <path d={iconData.path} />
+        {icon.elements.map(([tag, attributes], index) => React.createElement(tag, { key: index, ...attributes }))}
       </svg>
     </IconStyled>
   )

@@ -34,8 +34,8 @@ const consumerSource = `
 // TypeScript 6 default) a side-effect import must resolve, so the entry needs its own declaration.
 import '@common-origin/design-system/tokens.css'
 import {
-  Box, Button, Icon, ResponsiveGrid, iconsData, tokens,
-  type IconName, type Tokens, type TokensBase, type TokensComponent,
+  Box, Button, Icon, ResponsiveGrid, iconSet, iconsData, tokens,
+  type IconElement, type IconName, type IconPaint, type Tokens, type TokensBase, type TokensComponent,
 } from '@common-origin/design-system'
 import { tokens as namedTokens, type TokensSemantic } from '@common-origin/design-system/tokens'
 
@@ -53,6 +53,10 @@ export function exportedTypesAreNotAny(t: Tokens, b: TokensBase, s: TokensSemant
   iconsData.notAnIcon
   // @ts-expect-error icon metadata has no such field
   iconsData.add.notAField
+  // @ts-expect-error iconSet is keyed by IconName
+  iconSet.notAnIcon
+  // @ts-expect-error icon definitions have no such field
+  iconSet.add.notAField
 }
 
 const text: string = tokens.semantic.color.text.default
@@ -64,6 +68,10 @@ const semantic: TokensSemantic = namedTokens.semantic
 const whole: Tokens = tokens
 const icon: IconName = 'add'
 const path: string = iconsData.add.path
+const paint: IconPaint = iconSet.add.paint
+const elements: IconElement[] = iconSet.add.elements
+const [tag, attributes] = elements[0]
+const shape: string = tag + Object.keys(attributes).join()
 
 // @ts-expect-error token values are strings, not numbers
 const notNumber: number = tokens.semantic.color.text.default
@@ -75,7 +83,7 @@ const badIcon: IconName = 'not-an-icon'
 export const App = () => (
   <Box p="md" bg="surface.base">
     <ResponsiveGrid cols={1} gap="4">
-      <Button variant="primary">{text}{textColours.default}{standalone}{String(semantic)}{String(whole)}{path}</Button>
+      <Button variant="primary">{text}{textColours.default}{standalone}{String(semantic)}{String(whole)}{path}{paint}{shape}</Button>
       <Icon name={icon} />
       {/* @ts-expect-error gap must be a spacing token key */}
       <ResponsiveGrid cols={1} gap="huge">{notNumber}{badIcon}</ResponsiveGrid>
