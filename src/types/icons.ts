@@ -118,7 +118,11 @@ export type IconElement = [tag: IconElementTag, attributes: Record<string, strin
  */
 export type IconPaint = 'stroke' | 'fill' | 'both'
 
-/** Where an icon comes from: copied from Lucide, or drawn and maintained here (decision 0058) */
+/**
+ * Where an icon comes from (decision 0058): copied from Lucide, with its Lucide name, or
+ * maintained in this repository. Icons carried over from 3.2.0 are `common-origin` until they move
+ * to Lucide.
+ */
 export type IconSource = { library: 'lucide'; name: string } | { library: 'common-origin' }
 
 /** An icon in `iconSet`: its metadata, where it comes from, and how to draw it */
