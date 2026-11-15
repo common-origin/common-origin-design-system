@@ -64,6 +64,14 @@ describe('iconSet', () => {
     })
   }
 
+  // The system's own drawings use the house paint (decision 0058): status icons are lines like
+  // Lucide's, the carets are solid with round joins, and the AI sparkle stays solid
+  const OWN_PAINT: Partial<Record<IconName, IconPaint>> = { ai: 'fill', caret: 'both', caretDown: 'both', caretUp: 'both' }
+  const own = entries.filter(([, icon]) => icon.source.library === 'common-origin')
+  it.each(own)('%s, one of our own drawings, uses the house paint', (key, icon) => {
+    expect(icon.paint).toBe(OWN_PAINT[key as IconName] ?? (key.startsWith('status') ? 'stroke' : undefined))
+  })
+
   it('has IconName generated from its keys', () => {
     const iconsTs = readFileSync(join(__dirname, 'icons.ts'), 'utf8')
     expect(icons.withIconNameUnion(iconsTs, Object.keys(iconSet))).toBe(iconsTs)

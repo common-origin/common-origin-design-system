@@ -1,5 +1,5 @@
 // Shape indicators for the six coloured statuses (decision 0045): filled silhouettes on the
-// 24px grid, each the same outline as its status icon. Internal: they aren't public icons, so a
+// 24px grid. Each status icon draws its outline along the same path as a 2px line (decision 0058). Internal: they aren't public icons, so a
 // bare shape can't be shown without its label. The shape indicator (#264) and the small
 // StatusLabel and InlineAlert sizes render them at 12px or more, with a darker edge.
 
