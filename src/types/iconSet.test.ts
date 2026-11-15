@@ -5,16 +5,20 @@ import iconSetJson from '../styles/iconSet.json'
 import { iconSet } from './iconSet'
 import { iconsData, type IconCategory, type IconElementTag, type IconName, type IconPaint } from './icons'
 
+/* eslint-disable @typescript-eslint/no-require-imports */
+const icons = require('../../scripts/icons.cjs')
+/* eslint-enable @typescript-eslint/no-require-imports */
+
 // iconSet's keys and IconName are the same set, both ways (decision 0058)
 type MissingFromSet = Exclude<IconName, keyof typeof iconSetJson>
 type MissingFromName = Exclude<keyof typeof iconSetJson, IconName>
 const namesMatch: [MissingFromSet, MissingFromName] extends [never, never] ? true : false = true
 
-const TAGS: IconElementTag[] = ['path', 'circle', 'ellipse', 'rect', 'line', 'polyline', 'polygon']
+const TAGS: IconElementTag[] = icons.TAGS
 const PAINTS: IconPaint[] = ['stroke', 'fill', 'both']
-const CATEGORIES: IconCategory[] = ['action', 'communication', 'content', 'feedback', 'media', 'navigation', 'object', 'status', 'user']
-// Geometry only: paint, colour and stroke come from Icon, so every icon draws the same way
-const ATTRIBUTES = new Set(['d', 'cx', 'cy', 'r', 'rx', 'ry', 'x', 'y', 'width', 'height', 'x1', 'y1', 'x2', 'y2', 'points'])
+const CATEGORIES: IconCategory[] = icons.CATEGORIES
+// Geometry, plus Lucide's filled dots: paint, colour and stroke otherwise come from Icon
+const ATTRIBUTES = new Set<string>(icons.ATTRIBUTES)
 
 describe('iconSet', () => {
   const entries = Object.entries(iconSet)
@@ -38,7 +42,7 @@ describe('iconSet', () => {
     else expect(icon.source).toEqual({ library: 'common-origin' })
   })
 
-  it.each(entries)('%s is drawn from geometry only', (_key, icon) => {
+  it.each(entries)('%s is drawn from shapes Icon can draw', (_key, icon) => {
     expect(PAINTS).toContain(icon.paint)
     expect(icon.elements.length).toBeGreaterThan(0)
     for (const [tag, attributes] of icon.elements) {
@@ -46,8 +50,23 @@ describe('iconSet', () => {
       for (const [name, value] of Object.entries(attributes)) {
         expect(ATTRIBUTES).toContain(name)
         expect(typeof value).toBe('string')
+        if (name === 'fill') expect(icons.FILLS).toContain(value)
       }
     }
+  })
+
+  // A Lucide upgrade that changes an icon shows up as a failure here, then a reviewed diff
+  const fromLucide = entries.filter(([, icon]) => icon.source.library === 'lucide')
+  if (fromLucide.length > 0) {
+    it.each(fromLucide)(`%s matches its Lucide icon in lucide-static ${icons.LUCIDE_VERSION}`, (_key, icon) => {
+      if (icon.source.library !== 'lucide') throw new Error('not a Lucide icon')
+      expect(icon.elements).toEqual(icons.lucideElements(icon.source.name))
+    })
+  }
+
+  it('has IconName generated from its keys', () => {
+    const iconsTs = readFileSync(join(__dirname, 'icons.ts'), 'utf8')
+    expect(icons.withIconNameUnion(iconsTs, Object.keys(iconSet))).toBe(iconsTs)
   })
 })
 
