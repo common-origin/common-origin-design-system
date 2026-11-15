@@ -1,9 +1,9 @@
-# 0058. Lucide is the source of the system's icons
+# 0058. Lucide is the source of the system's general icons
 
 - **Status:** Accepted
 - **Date:** 2026-11-15
 - **Decided by:** Ollie (owner)
-- **Principles:** P1, P4, P5, P7, P8
+- **Principles:** P4, P5, P7, P8
 - **Issue:** [#374](https://github.com/common-origin/common-origin-design-system/issues/374)
 
 ## Context
@@ -14,7 +14,7 @@ That workflow is slow, so products went without icons they needed. The Figma pac
 
 Every bundle that uses `Icon` includes every icon, because `Icon` looks icons up by name at run time ([#253](https://github.com/common-origin/common-origin-design-system/issues/253)). More icons in the same format would make that cost grow.
 
-[Lucide](https://lucide.dev) is an open-source icon library under the ISC licence, with over 2,000 icons on a 24px grid, drawn with 2px lines and round ends: the same style as our current icons. Of the 54 current icons that aren't status icons, 51 have a Lucide equivalent. The three filled carets don't. The owner compared every current icon with its Lucide match side by side and approved the look.
+[Lucide](https://lucide.dev) is an open-source icon library under the ISC licence, with over 2,000 icons on a 24px grid, drawn with 2px lines and round ends, like most of our current icons. A few current icons are solid shapes (`ai`, `starFilled`, `stop` and the carets). Of the 54 current icons that aren't status icons, 51 have a Lucide equivalent. The three filled carets don't. The owner compared every current icon with its Lucide match side by side and approved the look.
 
 ## Decision
 
@@ -26,8 +26,8 @@ Every bundle that uses `Icon` includes every icon, because `Icon` looks icons up
    - the ten status icons, whose shapes come from [0045](0045-status-indication.md). Lucide has no match for serious or in progress, and draws error, info and cancelled with other shapes. The status pattern defines its icons; a library doesn't redefine them.
    - the three filled carets (`caret`, `caretDown`, `caretUp`), which have no Lucide equivalent.
 
-   They're redrawn in Lucide's style (24px grid, 2px lines, round caps and joins) so they sit beside Lucide icons. The carets stay filled. The status shape indicators used in small spaces don't change.
-6. **The old data is frozen, not changed (P7).** The exported `iconsData` keeps today's 64 filled shapes, unchanged, and is deprecated; it's removed in the next major version. `Icon` and every new icon use a new export in the new format, with a type of its own, so `iconsData`'s type keeps describing only the 64 names it contains.
+   They're redrawn to sit beside Lucide icons, on the same 24px grid. The status icons use 2px lines with round caps and joins. The carets stay solid triangles, with corners rounded to match Lucide's round joins. The status shape indicators used in small spaces don't change.
+6. **The old data is frozen, not changed (P7).** The exported `iconsData` keeps today's 64 filled shapes, unchanged, and is deprecated; it's removed in the next major version. `Icon` and every new icon use a new export in the new format, with a type of its own. `iconsData` keeps its declared type, and the exported `IconRegistry` and `IconMetadata` types stay as they are, deprecated with it. Narrowing any of them to the 64 names would break code that indexes `iconsData` with an `IconName`. Icons added after the freeze have no entry in `iconsData`, and its deprecation note says so and points to the new export.
 7. **It ships in a minor release.** No prop, export or icon name is removed. The release notes say that every general icon has changed shape.
 
 ## Consequences
