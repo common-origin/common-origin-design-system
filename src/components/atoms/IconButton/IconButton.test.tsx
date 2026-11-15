@@ -8,6 +8,7 @@ import { IconButton } from './IconButton'
 import { Button } from '../Button'
 import tokens from '@/styles/tokens.json'
 import type { IconButtonProps } from './IconButton'
+import type { IconName } from '../../../types/icons'
 
 // Extend Jest matchers
 expect.extend(toHaveNoViolations)
@@ -287,7 +288,7 @@ describe('IconButton', () => {
       const icons = ['play', 'pause', 'stop', 'add', 'remove']
       
       icons.forEach((iconName) => {
-        const { unmount } = renderIconButton({ iconName: iconName as keyof typeof import('@/styles/icons.json') })
+        const { unmount } = renderIconButton({ iconName: iconName as IconName })
         expect(getIcon(iconName)).toBeInTheDocument()
         unmount()
       })

@@ -34,7 +34,7 @@ export const buttonDocs: ComponentDocumentation = {
     },
     {
       name: 'iconName',
-      type: 'keyof typeof iconsData',
+      type: 'IconName',
       required: false,
       description: 'Icon displayed before button text. Automatically inherits text color and scales with size (small→xs, medium→sm, large→md icons)'
     },

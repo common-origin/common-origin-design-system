@@ -35,6 +35,7 @@ if (main) {
   if (typeof main.Button !== 'function' && typeof main.Button !== 'object') problems.push('dist/index.js: Button is not exported')
   if (main.tokens?.semantic?.surface?.base === undefined) problems.push('dist/index.js: tokens are missing')
   if (!main.iconsData || Object.keys(main.iconsData).length === 0) problems.push('dist/index.js: iconsData is missing')
+  if (!main.iconSet || Object.keys(main.iconSet).length === 0) problems.push('dist/index.js: iconSet is missing')
   try {
     const React = require('react')
     const { renderToString } = require('react-dom/server')

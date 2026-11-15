@@ -63,7 +63,7 @@ const esmModules = {
   banner: (chunk) => (isClientModule(chunk.facadeModuleId) ? USE_CLIENT : ''),
   plugins: [styledDefaultInterop()],
 }
-const DATA_MODULES = /[\\/]src[\\/](styles[\\/][^\\/]+\.json|types[\\/](tokens|icons)\.ts)$/
+const DATA_MODULES = /[\\/]src[\\/](styles[\\/][^\\/]+\.json|types[\\/](tokens|icons|iconSet)\.ts)$/
 
 const mainChunks = (id) => {
   if (id.includes('node_modules') || id.startsWith('\0')) return undefined

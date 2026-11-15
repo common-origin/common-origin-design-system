@@ -4,6 +4,7 @@
 
 import iconsJson from '../styles/icons.json'
 
+/** Every icon `Icon` can draw: the keys of `iconSet` (decision 0058) */
 export type IconName =
   | 'add'
   | 'ai'
@@ -82,10 +83,8 @@ export type IconCategory =
   | 'status'
   | 'user'
 
-/** Enriched metadata for each icon entry in icons.json */
-export interface IconMetadata {
-  /** SVG path data */
-  path: string
+/** Metadata every icon carries, whatever its format */
+export interface IconDescription {
   /** Display name of the icon */
   name: string
   /** What the icon visually depicts */
@@ -102,8 +101,55 @@ export interface IconMetadata {
   ariaLabelDefault: string
 }
 
-/** The full icon registry keyed by IconName */
+/** The SVG shapes an icon is drawn from */
+export type IconElementTag = 'path' | 'circle' | 'ellipse' | 'rect' | 'line' | 'polyline' | 'polygon'
+
+/**
+ * One shape of an icon: its tag and its geometry attributes (`d`, `cx`, `points`…), on a 24px
+ * grid. Lucide's own format, so icons copy across unchanged.
+ */
+export type IconElement = [tag: IconElementTag, attributes: Record<string, string>]
+
+/**
+ * How an icon is painted, always in `currentColor`:
+ * - `stroke`: 2px lines with round caps and joins, no fill (Lucide icons)
+ * - `fill`: solid shapes, no line
+ * - `both`: lines and a fill, such as a filled star
+ */
+export type IconPaint = 'stroke' | 'fill' | 'both'
+
+/** Where an icon comes from: copied from Lucide, or drawn and maintained here (decision 0058) */
+export type IconSource = { library: 'lucide'; name: string } | { library: 'common-origin' }
+
+/** An icon in `iconSet`: its metadata, where it comes from, and how to draw it */
+export interface IconDefinition extends IconDescription {
+  source: IconSource
+  paint: IconPaint
+  elements: IconElement[]
+}
+
+/** The icon set keyed by IconName */
+export type IconSet = Record<IconName, IconDefinition>
+
+/**
+ * An entry in the frozen `iconsData`: one filled path and its metadata.
+ * @deprecated Use `IconDefinition` and `iconSet`. Removed in 4.0 (decision 0058).
+ */
+export interface IconMetadata extends IconDescription {
+  /** SVG path data */
+  path: string
+}
+
+/**
+ * The type of the frozen `iconsData`.
+ * @deprecated Use `IconSet` and `iconSet`. Removed in 4.0 (decision 0058).
+ */
 export type IconRegistry = Record<IconName, IconMetadata>
 
+/**
+ * The 64 icons as they were in 3.2.0, each one filled path. Frozen: icons added since have no
+ * entry here, and `Icon` no longer reads it.
+ * @deprecated Use `iconSet`, which holds every icon `Icon` draws. Removed in 4.0 (decision 0058).
+ */
 // Typed as IconRegistry so emitted .d.ts files don't import JSON (needs `resolveJsonModule` in consumers).
 export const iconsData = iconsJson as IconRegistry

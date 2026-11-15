@@ -2,54 +2,39 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { Icon } from './Icon'
-import iconsData from '@/styles/icons.json'
+import { iconSet } from '../../../types/iconSet'
 
-// Mock the icons JSON file directly as a default export
-jest.mock('@/styles/icons.json', () => ({
-  __esModule: true,
-  default: {
-    arrowDown: {
-      name: 'arrowDown',
-      path: 'm18.707 9.707-1.414-1.414L12 13.586 6.707 8.293 5.293 9.707 12 16.414l6.707-6.707Z'
-    },
-    arrowUp: {
-      name: 'arrowUp', 
-      path: 'm18.707 14.293-1.414 1.414L12 10.414l-5.293 5.293-1.414-1.414L12 7.586l6.707 6.707Z'
-    },
-    back: {
-      name: 'back',
-      path: 'm5 12-.707-.707-.707.707.707.707L5 12Zm12 1a1 1 0 1 0 0-2v2ZM8.293 7.293l-4 4 1.414 1.414 4-4-1.414-1.414Zm-4 5.414 4 4 1.414-1.414-4-4-1.414 1.414ZM5 13h12v-2H5v2Z'
-    },
-    close: {
-      name: 'close',
-      path: 'M18.7071 5.29289c.3905.39053.3905 1.02369 0 1.41422L6.70711 18.7071c-.39053.3905-1.02369.3905-1.41422 0-.39052-.3905-.39052-1.0237 0-1.4142L17.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0ZM5.29289 5.29289c-.39052.39053-.39052 1.02369 0 1.41422L17.2929 18.7071c.3905.3905 1.0237.3905 1.4142 0 .3905-.3905.3905-1.0237 0-1.4142L6.70711 5.29289c-.39053-.39052-1.02369-.39052-1.41422 0Z'
-    },
-    menu: {
-      name: 'menu',
-      path: 'M4 7a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z'
-    },
-    pause: {
-      name: 'pause',
-      path: 'M7 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H7ZM15 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2Z'
-    },
-    play: {
-      name: 'play',
-      path: 'M16.138 10.569 9.605 7.303A1.8 1.8 0 0 0 7 8.913v6.175a1.8 1.8 0 0 0 2.605 1.61l6.533-3.267c1.18-.59 1.18-2.272 0-2.862Z'
-    },
-    playBack: {
-      name: 'playBack',
-      path: 'm16.293 5.293 1.414 1.414L12.414 12l5.293 5.293-1.414 1.414L9.586 12l6.707-6.707ZM5 17V7h2v10H5Z'
-    },
-    directionRight: {
-      name: 'directionRight',
-      path: 'M20 12L20.7071 11.2929L21.4142 12L20.7071 12.7071L20 12ZM5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11V13ZM14 6L14.7071 5.29289L20.7071 11.2929L20 12L19.2929 12.7071L13.2929 6.70711L14 6ZM20 12L20.7071 12.7071L14.7071 18.7071L14 18L13.2929 17.2929L19.2929 11.2929L20 12ZM20 12V13H5V12V11H20V12Z'
-    },
-    caret: {
-      name: 'caret',
-      path: 'm14.77 11.808-4.458-3.715A.8.8 0 0 0 9 8.708v6.584a.8.8 0 0 0 1.312.614l4.458-3.714a.25.25 0 0 0 0-.384Z'
+// A small icon set in the iconSet.json format: solid icons as one filled path, plus a line icon
+// (Lucide's search) and a line icon with a fill
+jest.mock('@/styles/iconSet.json', () => {
+  // Inside the factory: jest.mock is hoisted above the module's own declarations
+  const solid = (name: string, d: string) => ({ name, paint: 'fill', elements: [['path', { d }]] })
+  return {
+    __esModule: true,
+    default: {
+      arrowDown: solid('arrowDown', 'm18.707 9.707-1.414-1.414L12 13.586 6.707 8.293 5.293 9.707 12 16.414l6.707-6.707Z'),
+      arrowUp: solid('arrowUp', 'm18.707 14.293-1.414 1.414L12 10.414l-5.293 5.293-1.414-1.414L12 7.586l6.707 6.707Z'),
+      back: solid('back', 'm5 12-.707-.707-.707.707.707.707L5 12Zm12 1a1 1 0 1 0 0-2v2ZM8.293 7.293l-4 4 1.414 1.414 4-4-1.414-1.414Zm-4 5.414 4 4 1.414-1.414-4-4-1.414 1.414ZM5 13h12v-2H5v2Z'),
+      close: solid('close', 'M18.7071 5.29289c.3905.39053.3905 1.02369 0 1.41422L6.70711 18.7071c-.39053.3905-1.02369.3905-1.41422 0-.39052-.3905-.39052-1.0237 0-1.4142L17.2929 5.29289c.3905-.39052 1.0237-.39052 1.4142 0ZM5.29289 5.29289c-.39052.39053-.39052 1.02369 0 1.41422L17.2929 18.7071c.3905.3905 1.0237.3905 1.4142 0 .3905-.3905.3905-1.0237 0-1.4142L6.70711 5.29289c-.39053-.39052-1.02369-.39052-1.41422 0Z'),
+      menu: solid('menu', 'M4 7a1 1 0 0 1 1-1h14a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h10a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Zm0 5a1 1 0 0 1 1-1h6a1 1 0 1 1 0 2H5a1 1 0 0 1-1-1Z'),
+      pause: solid('pause', 'M7 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H7ZM15 5a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-2Z'),
+      play: solid('play', 'M16.138 10.569 9.605 7.303A1.8 1.8 0 0 0 7 8.913v6.175a1.8 1.8 0 0 0 2.605 1.61l6.533-3.267c1.18-.59 1.18-2.272 0-2.862Z'),
+      playBack: solid('playBack', 'm16.293 5.293 1.414 1.414L12.414 12l5.293 5.293-1.414 1.414L9.586 12l6.707-6.707ZM5 17V7h2v10H5Z'),
+      directionRight: solid('directionRight', 'M20 12L20.7071 11.2929L21.4142 12L20.7071 12.7071L20 12ZM5 13C4.44772 13 4 12.5523 4 12C4 11.4477 4.44772 11 5 11V13ZM14 6L14.7071 5.29289L20.7071 11.2929L20 12L19.2929 12.7071L13.2929 6.70711L14 6ZM20 12L20.7071 12.7071L14.7071 18.7071L14 18L13.2929 17.2929L19.2929 11.2929L20 12ZM20 12V13H5V12V11H20V12Z'),
+      search: {
+        name: 'search',
+        paint: 'stroke',
+        elements: [['path', { d: 'm21 21-4.34-4.34' }], ['circle', { cx: '11', cy: '11', r: '8' }]]
+      },
+      starFilled: {
+        name: 'starFilled',
+        paint: 'both',
+        elements: [['path', { d: 'M12 2 15 9h7l-5.5 4.5L18.5 21 12 16.8 5.5 21l2-7.5L2 9h7z' }]]
+      },
+      caret: solid('caret', 'm14.77 11.808-4.458-3.715A.8.8 0 0 0 9 8.708v6.584a.8.8 0 0 0 1.312.614l4.458-3.714a.25.25 0 0 0 0-.384Z')
     }
   }
-}))
+})
 
 import type { IconProps } from './Icon'
 
@@ -71,7 +56,7 @@ describe('Icon', () => {
     if (!svg) throw new Error('No icon SVG rendered')
     return svg
   }
-  const pathOf = (name: keyof typeof iconsData) => iconsData[name].path
+  const pathOf = (name: keyof typeof iconSet) => iconSet[name].elements[0][1].d
 
   describe('Basic Rendering', () => {
     it('renders without crashing', () => {
@@ -114,6 +99,51 @@ describe('Icon', () => {
       const icon = getIcon()
       const pathElement = icon.querySelector('path')
       expect(pathElement).toHaveAttribute('d', 'm18.707 9.707-1.414-1.414L12 13.586 6.707 8.293 5.293 9.707 12 16.414l6.707-6.707Z')
+    })
+  })
+
+  describe('Paint', () => {
+    it('draws a line icon with 2px round lines and no fill', () => {
+      renderIcon({ name: 'search' })
+      const icon = getIcon()
+      expect(icon).toHaveAttribute('fill', 'none')
+      expect(icon).toHaveAttribute('stroke', 'currentColor')
+      expect(icon).toHaveAttribute('stroke-width', '2')
+      expect(icon).toHaveAttribute('stroke-linecap', 'round')
+      expect(icon).toHaveAttribute('stroke-linejoin', 'round')
+    })
+
+    it('draws every shape of the icon, whatever its element', () => {
+      renderIcon({ name: 'search' })
+      const icon = getIcon()
+      expect(icon.querySelector('path')).toHaveAttribute('d', 'm21 21-4.34-4.34')
+      expect(icon.querySelector('circle')).toHaveAttribute('r', '8')
+      expect(icon.querySelector('circle')).toHaveAttribute('cx', '11')
+    })
+
+    it('draws a solid icon filled, with no line', () => {
+      renderIcon({ name: 'close' })
+      const icon = getIcon()
+      expect(icon).toHaveAttribute('fill', 'currentColor')
+      expect(icon).not.toHaveAttribute('stroke')
+    })
+
+    it('draws an icon painted both ways with a fill and the line', () => {
+      renderIcon({ name: 'starFilled' })
+      const icon = getIcon()
+      expect(icon).toHaveAttribute('fill', 'currentColor')
+      expect(icon).toHaveAttribute('stroke', 'currentColor')
+      expect(icon).toHaveAttribute('stroke-width', '2')
+    })
+
+    it('keeps a title first, before the shapes', () => {
+      renderIcon({ name: 'search', title: 'Search' })
+      expect(getIcon().firstElementChild?.tagName).toBe('title')
+    })
+
+    it('has no accessibility violations as a line icon', async () => {
+      const { container } = renderIcon({ name: 'search', 'aria-label': 'Search' })
+      expect(await axe(container)).toHaveNoViolations()
     })
   })
 
@@ -342,7 +372,7 @@ describe('Icon', () => {
       const IconWithAny = Icon as any
       const { container } = render(<IconWithAny name="nonexistent" />)
       
-      expect(consoleSpy).toHaveBeenCalledWith('Icon "nonexistent" not found in icons.json')
+      expect(consoleSpy).toHaveBeenCalledWith('Icon "nonexistent" not found in iconSet')
       expect(container.firstChild).toBeInTheDocument()
       
       consoleSpy.mockRestore()

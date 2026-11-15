@@ -5,7 +5,8 @@ import { InlineAlert, type InlineAlertSize, type InlineAlertVariant } from './In
 import { Alert } from '../Alert'
 import tokens from '@/styles/tokens.json'
 import { contrastRatio } from '@/test-utils/contrast'
-import { iconsData, type IconName } from '../../../types/icons'
+import { type IconName } from '../../../types/icons'
+import { iconSet } from '../../../types/iconSet'
 import { statusShapes, type StatusShape as StatusShapeName } from '../../../lib/statusShapes'
 
 expect.extend(toHaveNoViolations)
@@ -145,7 +146,7 @@ describe('InlineAlert status pattern (decision 0045)', () => {
 
   it.each(pattern)('shows the %s status icon at the medium size', (variant, icon) => {
     render(<InlineAlert variant={variant} data-testid="alert">Message</InlineAlert>)
-    expect(screen.getByTestId('alert').querySelector('svg path')).toHaveAttribute('d', iconsData[icon].path)
+    expect(screen.getByTestId('alert').querySelector('svg path')).toHaveAttribute('d', iconSet[icon].elements[0][1].d)
   })
 
   it.each(pattern)('shows the %s shape at the small size', (variant, _icon, shape) => {

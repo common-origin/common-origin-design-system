@@ -5,7 +5,7 @@ import { Alert, type AlertProps } from './Alert'
 import tokens from '@/styles/tokens.json'
 import { effectiveFontWeight } from '@/test-utils/effectiveFontWeight'
 import { Button } from '../../atoms/Button'
-import { iconsData } from '../../../types/icons'
+import { iconSet } from '../../../types/iconSet'
 
 expect.extend(toHaveNoViolations)
 
@@ -618,6 +618,6 @@ describe('Alert status icons (decision 0045)', () => {
   ] as const)('shows the %s status icon, decoratively', (variant, icon) => {
     const { container } = render(<Alert variant={variant} title="Title">Message</Alert>)
     const path = container.querySelector('[aria-hidden="true"] svg path')
-    expect(path).toHaveAttribute('d', iconsData[icon].path)
+    expect(path).toHaveAttribute('d', iconSet[icon].elements[0][1].d)
   })
 })
