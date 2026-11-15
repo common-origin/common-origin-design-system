@@ -34,6 +34,7 @@ npm run test:e2e         # Playwright browser checks (forced colours); needs `np
 npm run build:package    # rollup → dist/
 npm run verify:package   # after build:package: .d.ts imports resolvable, consumer type-check, publint, attw
 npm run build            # docs site
+npm run icon:add -- <lucide-name> --as <ourName>  # add an icon from Lucide (decision 0058)
 ```
 
 Run typecheck, lint, tests, `build:package` and `verify:package` before proposing any change as done.

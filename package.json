@@ -65,7 +65,7 @@
     "test:coverage": "jest --coverage",
     "test:e2e": "playwright test",
     "typecheck": "tsc --noEmit",
-    "lint": "eslint . --max-warnings 157",
+    "lint": "eslint . --max-warnings 156",
     "docs:dev": "npm run build:tokens && npm run dev",
     "verify:types": "node scripts/verify-types.cjs",
     "verify:no-nextjs": "node scripts/verify-no-nextjs-deps.cjs",
@@ -81,7 +81,8 @@
     "release:tag": "./scripts/release.sh tag",
     "tokens:golden": "node scripts/tokens-golden.cjs",
     "tokens:palette": "node scripts/generate-palette.mjs && npm run build:tokens",
-    "verify:size": "node scripts/verify-size.mjs"
+    "verify:size": "node scripts/verify-size.mjs",
+    "icon:add": "node scripts/icon-add.mjs"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0",
@@ -127,6 +128,7 @@
     "jest": "^30.0.2",
     "jest-axe": "^9.0.0",
     "jest-environment-jsdom": "^30.0.2",
+    "lucide-static": "1.66.0",
     "next": "^16.3.6",
     "publint": "^0.3.24",
     "react": "^19.2.0",

@@ -2,6 +2,19 @@ import { ComponentDocumentation } from '../../../lib/docgen/types'
 import { Icon } from '../Icon'
 import { Stack } from '../Stack'
 import { Typography } from '../Typography'
+import { iconSet } from '../../../types/iconSet'
+import type { IconCategory, IconName } from '../../../types/icons'
+
+// The icon set by category, names sorted, so the gallery shows every icon as soon as it's added
+const ICON_CATEGORIES = Object.entries(
+  (Object.keys(iconSet) as IconName[]).reduce<Partial<Record<IconCategory, IconName[]>>>((groups, name) => {
+    const category = iconSet[name].category
+    groups[category] = [...(groups[category] ?? []), name]
+    return groups
+  }, {})
+)
+  .map(([category, names]) => [category, (names ?? []).slice().sort()] as const)
+  .sort(([a], [b]) => a.localeCompare(b))
 
 export const iconDocs: ComponentDocumentation = {
   id: 'icon',
@@ -198,368 +211,28 @@ export const iconDocs: ComponentDocumentation = {
       )
     },
     {
-      name: 'Available Icons Grid',
-      description: 'Complete icon library organized by category with names (62 icons total)',
-      code: `{/* Action Icons */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="add" /> <Icon name="addRing" /> <Icon name="cancel" />
-  <Icon name="check" /> <Icon name="checkRing" /> <Icon name="close" />
-  <Icon name="crossCircle" /> <Icon name="copy" /> <Icon name="edit" />
-  <Icon name="export" /> <Icon name="filter" /> <Icon name="order" />
-  <Icon name="move" /> <Icon name="refresh" /> <Icon name="remove" />
-  <Icon name="search" /> <Icon name="trash" />
-</Stack>
+      name: 'Icon set',
+      description: 'Every icon in iconSet, grouped by category, with the name to pass to Icon. Icons added with npm run icon:add appear here',
+      code: `import { Icon, iconSet, type IconName } from '@common-origin/design-system'
 
-{/* Navigation Icons */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="arrowDown" /> <Icon name="arrowUp" />
-  <Icon name="arrowLeft" /> <Icon name="arrowRight" />
-  <Icon name="back" /> <Icon name="caret" />
-  <Icon name="caretDown" /> <Icon name="caretUp" />
-  <Icon name="directionRight" /> <Icon name="directionUp" />
-  <Icon name="home" /> <Icon name="kebab" />
-  <Icon name="meatballs" /> <Icon name="sidebar" />
-</Stack>
-
-{/* Interface Icons */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="ai" /> <Icon name="bell" /> <Icon name="fileDocSearch" /> <Icon name="info" />
-  <Icon name="lamp" /> <Icon name="menu" /> <Icon name="paper" />
-  <Icon name="table" /> <Icon name="view" /> <Icon name="viewHide" />
-</Stack>
-
-{/* Media & Communication */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="play" /> <Icon name="pause" /> <Icon name="stop" /> <Icon name="playBack" />
-  <Icon name="message" /> <Icon name="link" /> <Icon name="mic" />
-</Stack>
-
-{/* Object Icons */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="creditCard" /> <Icon name="wallet" />
-  <Icon name="star" /> <Icon name="starFilled" />
-  <Icon name="lineOut" />
-</Stack>
-
-{/* User Icons */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="userBox" />
-</Stack>
-
-{/* Status Icons: one per status, always with a visible label (decision 0045) */}
-<Stack direction="row" gap="lg" wrap>
-  <Icon name="statusError" /> <Icon name="statusSerious" /> <Icon name="statusWarning" />
-  <Icon name="statusSuccess" /> <Icon name="statusInfo" /> <Icon name="statusInProgress" />
-  <Icon name="statusPending" /> <Icon name="statusScheduled" /> <Icon name="statusNotStarted" />
-  <Icon name="statusCancelled" />
-</Stack>`,
+{(Object.keys(iconSet) as IconName[]).map((name) => (
+  <Icon key={name} name={name} />
+))}`,
       renderComponent: () => (
         <Stack direction="column" gap="xl">
-          {/* Action Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">ACTION ICONS (17)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="add" />
-                <Typography variant="caption">add</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="addRing" />
-                <Typography variant="caption">addRing</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="cancel" />
-                <Typography variant="caption">cancel</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="check" />
-                <Typography variant="caption">check</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="checkRing" />
-                <Typography variant="caption">checkRing</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="close" />
-                <Typography variant="caption">close</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="crossCircle" />
-                <Typography variant="caption">crossCircle</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="copy" />
-                <Typography variant="caption">copy</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="edit" />
-                <Typography variant="caption">edit</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="export" />
-                <Typography variant="caption">export</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="filter" />
-                <Typography variant="caption">filter</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="order" />
-                <Typography variant="caption">order</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="refresh" />
-                <Typography variant="caption">refresh</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="remove" />
-                <Typography variant="caption">remove</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="search" />
-                <Typography variant="caption">search</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="move" />
-                <Typography variant="caption">move</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="trash" />
-                <Typography variant="caption">trash</Typography>
+          {ICON_CATEGORIES.map(([category, names]) => (
+            <Stack key={category} direction="column" gap="md">
+              <Typography variant="label" color="subdued">{`${category.toUpperCase()} (${names.length})`}</Typography>
+              <Stack direction="row" gap="lg" wrap>
+                {names.map((name) => (
+                  <Stack key={name} direction="column" gap="sm" alignItems="center">
+                    <Icon name={name} />
+                    <Typography variant="small" color="subdued">{name}</Typography>
+                  </Stack>
+                ))}
               </Stack>
             </Stack>
-          </Stack>
-          
-          {/* Navigation Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">NAVIGATION ICONS (14)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="arrowDown" />
-                <Typography variant="caption">arrowDown</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="arrowUp" />
-                <Typography variant="caption">arrowUp</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="arrowLeft" />
-                <Typography variant="caption">arrowLeft</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="arrowRight" />
-                <Typography variant="caption">arrowRight</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="back" />
-                <Typography variant="caption">back</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="caret" />
-                <Typography variant="caption">caret</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="caretDown" />
-                <Typography variant="caption">caretDown</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="caretUp" />
-                <Typography variant="caption">caretUp</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="directionRight" />
-                <Typography variant="caption">directionRight</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="directionUp" />
-                <Typography variant="caption">directionUp</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="kebab" />
-                <Typography variant="caption">kebab</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="home" />
-                <Typography variant="caption">home</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="meatballs" />
-                <Typography variant="caption">meatballs</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="sidebar" />
-                <Typography variant="caption">sidebar</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-          
-          {/* Interface Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">INTERFACE ICONS (10)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="ai" />
-                <Typography variant="caption">ai</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="bell" />
-                <Typography variant="caption">bell</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="fileDocSearch" />
-                <Typography variant="caption">fileDocSearch</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="info" />
-                <Typography variant="caption">info</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="lamp" />
-                <Typography variant="caption">lamp</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="menu" />
-                <Typography variant="caption">menu</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="paper" />
-                <Typography variant="caption">paper</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="table" />
-                <Typography variant="caption">table</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="view" />
-                <Typography variant="caption">view</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="viewHide" />
-                <Typography variant="caption">viewHide</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-          
-          {/* Media & Communication Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">MEDIA & COMMUNICATION (7)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="play" />
-                <Typography variant="caption">play</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="pause" />
-                <Typography variant="caption">pause</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="stop" />
-                <Typography variant="caption">stop</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="playBack" />
-                <Typography variant="caption">playBack</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="message" />
-                <Typography variant="caption">message</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="link" />
-                <Typography variant="caption">link</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="mic" />
-                <Typography variant="caption">mic</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-          
-          {/* Object Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">OBJECT ICONS (5)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="creditCard" />
-                <Typography variant="caption">creditCard</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="wallet" />
-                <Typography variant="caption">wallet</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="star" />
-                <Typography variant="caption">star</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="starFilled" />
-                <Typography variant="caption">starFilled</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="lineOut" />
-                <Typography variant="caption">lineOut</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-          
-          {/* User Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">USER ICONS (1)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="userBox" />
-                <Typography variant="caption">userBox</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
-
-          {/* Status Icons */}
-          <Stack direction="column" gap="md">
-            <Typography variant="label" color="subdued">STATUS ICONS (10)</Typography>
-            <Typography variant="caption" color="subdued">One per status, in its role colour and always with a visible label (decision 0045)</Typography>
-            <Stack direction="row" gap="lg" wrap>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusError" />
-                <Typography variant="caption">statusError</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusSerious" />
-                <Typography variant="caption">statusSerious</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusWarning" />
-                <Typography variant="caption">statusWarning</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusSuccess" />
-                <Typography variant="caption">statusSuccess</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusInfo" />
-                <Typography variant="caption">statusInfo</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusInProgress" />
-                <Typography variant="caption">statusInProgress</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusPending" />
-                <Typography variant="caption">statusPending</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusScheduled" />
-                <Typography variant="caption">statusScheduled</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusNotStarted" />
-                <Typography variant="caption">statusNotStarted</Typography>
-              </Stack>
-              <Stack direction="column" gap="sm" alignItems="center">
-                <Icon name="statusCancelled" />
-                <Typography variant="caption">statusCancelled</Typography>
-              </Stack>
-            </Stack>
-          </Stack>
+          ))}
         </Stack>
       )
     },
