@@ -32,6 +32,15 @@ describe('status shapes and icons (decision 0045)', () => {
     expect(iconSet[name]).toMatchObject({ name, category: 'status', decorativeDefault: false })
   })
 
+  // The icon and the indicator are one shape: the icon's outline is the indicator's outer path,
+  // drawn as a line in Lucide's style (decision 0058). In progress's indicator adds its ring and
+  // half inside that outline.
+  it.each(Object.entries(icons))('draws the %s icon along its shape', (shape, name) => {
+    const outline = statusShapes[shape as keyof typeof statusShapes].split(/(?=M)/)[0]
+    expect(iconSet[name].paint).toBe('stroke')
+    expect(iconSet[name].elements[0]).toEqual(['path', { d: outline }])
+  })
+
   it('gives every status icon a human-readable default label', () => {
     const names = Object.keys(iconSet).filter((name) => name.startsWith('status')) as IconName[]
     expect(names).toHaveLength(10)
