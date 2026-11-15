@@ -61,6 +61,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0055](0055-control-radius.md) | Controls, rows and tabs have 8px corners (`radius.md`); small non-control elements, buttons inside fields and the Checkbox box stay at 4px; containers nest around controls (Alert `lg`, overlays share `component.overlay.borderRadius`); chips are fully round; amends 0002, 0016 and 0020 | Accepted | 2026-11-08 | <!-- verify-docs-ignore: token names, not files -->
 | [0056](0056-one-set-of-colour-rules.md) | One set of colour rules for every theme: themes supply inputs (ramp, scrim, shadow strength) and rules derive solid fills, surfaces, inks and translucent fills, so semantic tokens read the same paths in light and dark; amends 0048, 0049 and 0054 | Accepted | 2026-11-08 |
 | [0057](0057-docs-groups-by-purpose.md) | The docs site groups components by purpose in nine groups (Actions, Inputs, Navigation, Feedback, Overlays, Labels, Data display, Content, Layout); a component goes in the group for its job; the tier stays as metadata; source folders don't change; amends 0052 | Accepted | 2026-11-09 |
+| [0058](0058-lucide-icon-source.md) | Lucide is the source of the system's general icons: a pinned dev dependency, curated on demand, used as drawn with the line scaling with the icon; the status icons and filled carets stay our own, redrawn in Lucide's style; `iconsData` is frozen and deprecated, and a new export carries the new format | Accepted | 2026-11-15 |
 
 ## Template
 
