@@ -13,7 +13,7 @@ Update this file in the same PR as any change to the structure, build, testing a
 - `src/components/atoms/`, `molecules/`, `organisms/`, `layout/`: the published package. Organisms compose molecules into a region of a product's UI (decision 0052).
 - Each component folder has `Name.tsx`, `Name.test.tsx`, `Name.docs.tsx` and `index.ts` (`export * from './Name'`).
 - `src/tokens/`: token sources. `npm run build:tokens` compiles them to `src/styles/tokens.json`, `tokens.ts` and `tokens.css` ([pipeline](../docs/tokens/pipeline.md)).
-- `src/styles/iconSet.json`: every icon `Icon` draws, exported as `iconSet` (decision 0058). Add one from Lucide with `npm run icon:add`, which also regenerates `IconName` in `src/types/icons.ts`. `src/styles/icons.json` is the frozen, deprecated `iconsData`: never edit it.
+- `src/styles/iconMeta.json` and `src/styles/iconDrawings.json`: every icon's metadata and its drawing, joined and exported as `iconSet` (decision 0058). `Icon` loads only the drawings. Add one from Lucide with `npm run icon:add`, which also regenerates `IconName` in `src/types/icons.ts`. `src/styles/icons.json` is the frozen, deprecated `iconsData`: never edit it.
 - `src/lib/`: shared helpers used by components (`styleUtils`, `usePresence`) and docs-site data (`componentsData.ts`).
 - `src/page-components/`, `src/patterns/`, `pages/`: docs site only. Package components must never import from them.
 

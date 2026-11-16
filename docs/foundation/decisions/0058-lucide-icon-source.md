@@ -6,6 +6,7 @@
 - **Principles:** P4, P5, P7, P8
 - **Issue:** [#374](https://github.com/common-origin/common-origin-design-system/issues/374)
 - **Amended:** 2026-11-15, point 5: the AI sparkle stays our own drawing ([#378](https://github.com/common-origin/common-origin-design-system/issues/378))
+- **Amended:** 2026-11-16, consequences: drawings and metadata are stored apart ([#385](https://github.com/common-origin/common-origin-design-system/issues/385))
 
 ## Context
 
@@ -59,4 +60,5 @@ Every bundle that uses `Icon` includes every icon, because `Icon` looks icons up
 
 - Two shapes change in ways to check where they're used: `menu`'s lines become equal width, and `lineOut` becomes Lucide's external-link arrow.
 - Lucide's markup is much smaller than our flattened paths: about 1.6 KB against 15 KB for a sample of ten icons. Moving to Lucide should shrink the cost of every icon, which helps [#253](https://github.com/common-origin/common-origin-design-system/issues/253). That issue still decides whether bundles carry only the icons they use. Measure the change in the migration.
+- **Drawings and metadata are stored apart** (amended 2026-11-16, [#385](https://github.com/common-origin/common-origin-design-system/issues/385)). `src/styles/iconDrawings.json` holds each icon's paint and shapes, and `src/styles/iconMeta.json` its metadata. `Icon` loads only the drawings, so a bundle that draws icons doesn't carry every icon's description, intent and aliases. `iconSet` joins the two and is unchanged for products. With 140 icons, a Button-only bundle stays about the size it was with 64 icons and both together.
 - The owner may still add an icon drawn in Figma when Lucide has nothing suitable. It's drawn in Lucide's style, and the reason is recorded with the icon, as for the status icons.

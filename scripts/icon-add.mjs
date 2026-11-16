@@ -5,7 +5,8 @@
  *
  *   npm run icon:add -- <lucide-name> --as <ourName> [metadata flags]
  *
- * Copies the icon's shapes from the pinned lucide-static into src/styles/iconSet.json under our
+ * Copies the icon's shapes from the pinned lucide-static into src/styles/iconDrawings.json and its
+ * metadata into src/styles/iconMeta.json under our
  * name, records the Lucide name, and regenerates IconName in src/types/icons.ts. Metadata not given
  * as flags is asked for when run in a terminal. Add icons when a product needs them (P4).
  *
@@ -22,10 +23,11 @@ import { fileURLToPath } from 'url'
 import { parseArgs } from 'util'
 
 const require = createRequire(import.meta.url)
-const { CATEGORIES, LUCIDE_VERSION, addLucideIcon, checkCategory, checkName, lucideElements, lucideTags, withIconNameUnion } = require('./icons.cjs')
+const { CATEGORIES, LUCIDE_VERSION, addLucideIcon, checkCategory, checkName, joinIconSet, lucideElements, lucideTags, splitIconSet, withIconNameUnion } = require('./icons.cjs')
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
-const ICON_SET = join(ROOT, 'src/styles/iconSet.json')
+const ICON_META = join(ROOT, 'src/styles/iconMeta.json')
+const ICON_DRAWINGS = join(ROOT, 'src/styles/iconDrawings.json')
 const ICONS_TS = join(ROOT, 'src/types/icons.ts')
 
 const fail = (message) => {
@@ -84,7 +86,8 @@ async function ask(value, question, fallback = '', check = () => {}) {
   }
 }
 
-const current = JSON.parse(readFileSync(ICON_SET, 'utf8'))
+const readJson = (file) => JSON.parse(readFileSync(file, 'utf8'))
+const current = joinIconSet(readJson(ICON_META), readJson(ICON_DRAWINGS))
 
 console.log(`Adding Lucide "${lucideName}" (lucide-static ${LUCIDE_VERSION})`)
 const name = await ask(values.as, 'Our name (camelCase)', '', (answer) => checkName(current, answer))
@@ -116,6 +119,8 @@ try {
   fail(error.message)
 }
 
-writeFileSync(ICON_SET, `${JSON.stringify(iconSet, null, 2)}\n`)
+const { meta, drawings } = splitIconSet(iconSet)
+writeFileSync(ICON_META, `${JSON.stringify(meta, null, 2)}\n`)
+writeFileSync(ICON_DRAWINGS, `${JSON.stringify(drawings, null, 2)}\n`)
 writeFileSync(ICONS_TS, iconsTs)
 console.log(`✅ Added "${name}" from Lucide "${lucideName}". Use it as <Icon name="${name}" />, then run npm test.`)

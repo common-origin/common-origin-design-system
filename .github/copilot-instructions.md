@@ -163,7 +163,7 @@ For complete standards including:
 We are actively exploring ways to make this design system easier for AI agents to use correctly. The icon metadata enrichment (v2.8.0) was the first step. Areas to investigate next:
 
 ### Completed
-- **Icon metadata** (v2.8.0): Every icon in `src/styles/iconSet.json` (formerly `icons.json`, frozen since decision 0058) has `description`, `category`, `aliases`, `intent`, `decorativeDefault`, and `ariaLabelDefault` fields. Types: `IconCategory`, `IconDefinition`, `IconSet`.
+- **Icon metadata** (v2.8.0): Every icon in `src/styles/iconMeta.json` (formerly `icons.json`, frozen since decision 0058) has `description`, `category`, `aliases`, `intent`, `decorativeDefault`, and `ariaLabelDefault` fields. Types: `IconCategory`, `IconDefinition`, `IconSet`.
 
 ### To Explore
 - **Component intent metadata**: Add `intent`, `whenToUse`, `whenNotToUse` fields to component documentation so agents can choose the right component for a task

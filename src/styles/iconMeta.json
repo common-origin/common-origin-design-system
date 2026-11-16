@@ -1,0 +1,2471 @@
+{
+  "ai": {
+    "name": "ai",
+    "description": "Two solid four-point sparkles, one large and one small",
+    "category": "content",
+    "aliases": [
+      "sparkle",
+      "sparkles",
+      "generated",
+      "agent",
+      "magic"
+    ],
+    "intent": "Use to mark AI-generated content and agent actions, always with a text label (decisions 0043 and 0046)",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "AI",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "add": {
+    "name": "add",
+    "description": "Plus sign",
+    "category": "action",
+    "aliases": [
+      "plus",
+      "create",
+      "new"
+    ],
+    "intent": "Use to indicate adding or creating a new item",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Add",
+    "source": {
+      "library": "lucide",
+      "name": "plus"
+    }
+  },
+  "addRing": {
+    "name": "addRing",
+    "description": "Plus sign inside a circle",
+    "category": "action",
+    "aliases": [
+      "plus-circle",
+      "create",
+      "new"
+    ],
+    "intent": "Use to add or create a new item; circled variant for more prominence",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Add",
+    "source": {
+      "library": "lucide",
+      "name": "circle-plus"
+    }
+  },
+  "arrowDown": {
+    "name": "arrowDown",
+    "description": "Downward-pointing chevron",
+    "category": "navigation",
+    "aliases": [
+      "chevron-down",
+      "expand",
+      "dropdown"
+    ],
+    "intent": "Use to expand a section, open a dropdown, or indicate downward direction",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Arrow down",
+    "source": {
+      "library": "lucide",
+      "name": "chevron-down"
+    }
+  },
+  "arrowUp": {
+    "name": "arrowUp",
+    "description": "Upward-pointing chevron",
+    "category": "navigation",
+    "aliases": [
+      "chevron-up",
+      "collapse"
+    ],
+    "intent": "Use to collapse a section or indicate upward direction",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Arrow up",
+    "source": {
+      "library": "lucide",
+      "name": "chevron-up"
+    }
+  },
+  "arrowLeft": {
+    "name": "arrowLeft",
+    "description": "Left-pointing chevron",
+    "category": "navigation",
+    "aliases": [
+      "chevron-left",
+      "previous"
+    ],
+    "intent": "Use to navigate to a previous item or indicate leftward direction",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Arrow left",
+    "source": {
+      "library": "lucide",
+      "name": "chevron-left"
+    }
+  },
+  "arrowRight": {
+    "name": "arrowRight",
+    "description": "Right-pointing chevron",
+    "category": "navigation",
+    "aliases": [
+      "chevron-right",
+      "next",
+      "forward"
+    ],
+    "intent": "Use to navigate to next item or indicate rightward direction",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Arrow right",
+    "source": {
+      "library": "lucide",
+      "name": "chevron-right"
+    }
+  },
+  "bell": {
+    "name": "bell",
+    "description": "Bell shape",
+    "category": "communication",
+    "aliases": [
+      "notification",
+      "alert",
+      "alarm",
+      "reminder"
+    ],
+    "intent": "Use to indicate notifications or alerts",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Notifications",
+    "source": {
+      "library": "lucide",
+      "name": "bell"
+    }
+  },
+  "back": {
+    "name": "back",
+    "description": "Left-pointing arrow with horizontal line",
+    "category": "navigation",
+    "aliases": [
+      "return",
+      "go-back",
+      "previous"
+    ],
+    "intent": "Use to navigate back to the previous page or step",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Go back",
+    "source": {
+      "library": "lucide",
+      "name": "arrow-left"
+    }
+  },
+  "cancel": {
+    "name": "cancel",
+    "description": "Circle with diagonal line through it",
+    "category": "action",
+    "aliases": [
+      "prohibit",
+      "block",
+      "deny",
+      "ban",
+      "forbidden"
+    ],
+    "intent": "Use to cancel an action or indicate something is prohibited",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Cancel",
+    "source": {
+      "library": "lucide",
+      "name": "ban"
+    }
+  },
+  "caret": {
+    "name": "caret",
+    "description": "Right-pointing filled triangle",
+    "category": "navigation",
+    "aliases": [
+      "disclosure",
+      "expand",
+      "chevron-right-filled"
+    ],
+    "intent": "Use as a disclosure control to indicate expandable content",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Expand",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "caretDown": {
+    "name": "caretDown",
+    "description": "Downward-pointing filled triangle",
+    "category": "navigation",
+    "aliases": [
+      "dropdown",
+      "disclosure-down",
+      "select"
+    ],
+    "intent": "Use to indicate a dropdown or expandable content below",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Expand",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "caretUp": {
+    "name": "caretUp",
+    "description": "Upward-pointing filled triangle",
+    "category": "navigation",
+    "aliases": [
+      "collapse",
+      "disclosure-up"
+    ],
+    "intent": "Use to indicate collapsible content above",
+    "decorativeDefault": true,
+    "ariaLabelDefault": "Collapse",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "check": {
+    "name": "check",
+    "description": "Checkmark",
+    "category": "status",
+    "aliases": [
+      "tick",
+      "confirm",
+      "done",
+      "success",
+      "approved"
+    ],
+    "intent": "Use to confirm a selection or indicate completion or success",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Confirmed",
+    "source": {
+      "library": "lucide",
+      "name": "check"
+    }
+  },
+  "checkRing": {
+    "name": "checkRing",
+    "description": "Checkmark inside a circle",
+    "category": "status",
+    "aliases": [
+      "verified",
+      "complete",
+      "success-circle",
+      "approved"
+    ],
+    "intent": "Use to indicate verification, completion, or a successful state",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Verified",
+    "source": {
+      "library": "lucide",
+      "name": "circle-check"
+    }
+  },
+  "close": {
+    "name": "close",
+    "description": "X shape",
+    "category": "action",
+    "aliases": [
+      "dismiss",
+      "remove",
+      "clear",
+      "x"
+    ],
+    "intent": "Use to close a dialog, dismiss a notification, or clear content",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Close",
+    "source": {
+      "library": "lucide",
+      "name": "x"
+    }
+  },
+  "crossCircle": {
+    "name": "crossCircle",
+    "description": "X inside a circle",
+    "category": "status",
+    "aliases": [
+      "error",
+      "failed",
+      "rejected",
+      "cancel-circle"
+    ],
+    "intent": "Use to indicate an error, failure, or rejected state",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Error",
+    "source": {
+      "library": "lucide",
+      "name": "circle-x"
+    }
+  },
+  "directionRight": {
+    "name": "directionRight",
+    "description": "Right-pointing arrow with tail",
+    "category": "navigation",
+    "aliases": [
+      "arrow-right",
+      "send",
+      "forward",
+      "proceed"
+    ],
+    "intent": "Use to navigate forward or direct attention to the right",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Go right",
+    "source": {
+      "library": "lucide",
+      "name": "arrow-right"
+    }
+  },
+  "directionUp": {
+    "name": "directionUp",
+    "description": "Upward-pointing arrow with tail",
+    "category": "navigation",
+    "aliases": [
+      "arrow-up",
+      "upload",
+      "send-up"
+    ],
+    "intent": "Use to indicate uploading or directing upward",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Go up",
+    "source": {
+      "library": "lucide",
+      "name": "arrow-up"
+    }
+  },
+  "edit": {
+    "name": "edit",
+    "description": "Pencil",
+    "category": "action",
+    "aliases": [
+      "pencil",
+      "modify",
+      "write",
+      "compose",
+      "update"
+    ],
+    "intent": "Use to edit or modify existing content",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Edit",
+    "source": {
+      "library": "lucide",
+      "name": "pencil"
+    }
+  },
+  "export": {
+    "name": "export",
+    "description": "Upward arrow out of an open tray",
+    "category": "action",
+    "aliases": [
+      "upload",
+      "share",
+      "send"
+    ],
+    "intent": "Use to export, upload, or share content",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Export",
+    "source": {
+      "library": "lucide",
+      "name": "upload"
+    }
+  },
+  "fileDocSearch": {
+    "name": "fileDocSearch",
+    "description": "Document with magnifying glass overlay",
+    "category": "content",
+    "aliases": [
+      "search-document",
+      "find-file",
+      "lookup",
+      "document-search"
+    ],
+    "intent": "Use to search within documents or find specific files",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Search documents",
+    "source": {
+      "library": "lucide",
+      "name": "file-search"
+    }
+  },
+  "filter": {
+    "name": "filter",
+    "description": "Three horizontal sliders with handles",
+    "category": "action",
+    "aliases": [
+      "sort",
+      "adjust",
+      "sliders",
+      "tune",
+      "refine"
+    ],
+    "intent": "Use to filter or refine a list of items",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Filter",
+    "source": {
+      "library": "lucide",
+      "name": "sliders-horizontal"
+    }
+  },
+  "info": {
+    "name": "info",
+    "description": "Letter i inside a circle",
+    "category": "status",
+    "aliases": [
+      "information",
+      "help",
+      "about",
+      "details",
+      "tooltip"
+    ],
+    "intent": "Use to provide additional information or contextual help",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Information",
+    "source": {
+      "library": "lucide",
+      "name": "info"
+    }
+  },
+  "lamp": {
+    "name": "lamp",
+    "description": "Light bulb",
+    "category": "object",
+    "aliases": [
+      "lightbulb",
+      "idea",
+      "tip",
+      "insight",
+      "hint"
+    ],
+    "intent": "Use to indicate ideas, tips, insights, or suggestions",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Tip",
+    "source": {
+      "library": "lucide",
+      "name": "lightbulb"
+    }
+  },
+  "menu": {
+    "name": "menu",
+    "description": "Three equal horizontal lines",
+    "category": "navigation",
+    "aliases": [
+      "hamburger",
+      "nav",
+      "navigation"
+    ],
+    "intent": "Use to open a navigation menu or sidebar",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Menu",
+    "source": {
+      "library": "lucide",
+      "name": "menu"
+    }
+  },
+  "paper": {
+    "name": "paper",
+    "description": "Receipt with a zigzag edge and lines of text",
+    "category": "content",
+    "aliases": [
+      "receipt",
+      "document",
+      "invoice",
+      "bill",
+      "note"
+    ],
+    "intent": "Use to represent a receipt, document, or bill",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Document",
+    "source": {
+      "library": "lucide",
+      "name": "receipt-text"
+    }
+  },
+  "pause": {
+    "name": "pause",
+    "description": "Two vertical bars with rounded corners",
+    "category": "media",
+    "aliases": [
+      "halt",
+      "break"
+    ],
+    "intent": "Use to pause audio or video playback",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Pause",
+    "source": {
+      "library": "lucide",
+      "name": "pause"
+    }
+  },
+  "stop": {
+    "name": "stop",
+    "description": "Square with rounded corners",
+    "category": "media",
+    "aliases": [
+      "halt",
+      "end",
+      "cancel-generation"
+    ],
+    "intent": "Use to stop something in progress, such as an agent generating a response or media playback",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Stop",
+    "source": {
+      "library": "lucide",
+      "name": "square"
+    }
+  },
+  "play": {
+    "name": "play",
+    "description": "Right-pointing triangle with rounded corners",
+    "category": "media",
+    "aliases": [
+      "start",
+      "resume",
+      "begin"
+    ],
+    "intent": "Use to start or resume audio or video playback",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Play",
+    "source": {
+      "library": "lucide",
+      "name": "play"
+    }
+  },
+  "playBack": {
+    "name": "playBack",
+    "description": "Left-pointing triangle against a vertical bar",
+    "category": "media",
+    "aliases": [
+      "skip-back",
+      "previous-track",
+      "rewind"
+    ],
+    "intent": "Use to skip to the previous track or rewind playback",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Previous track",
+    "source": {
+      "library": "lucide",
+      "name": "skip-back"
+    }
+  },
+  "lineOut": {
+    "name": "lineOut",
+    "description": "Arrow leaving a box towards the upper right",
+    "category": "action",
+    "aliases": [
+      "external-link",
+      "open-external",
+      "redirect",
+      "outbound"
+    ],
+    "intent": "Use to open a link in a new window or navigate to an external resource",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Open external",
+    "source": {
+      "library": "lucide",
+      "name": "external-link"
+    }
+  },
+  "message": {
+    "name": "message",
+    "description": "Envelope",
+    "category": "communication",
+    "aliases": [
+      "email",
+      "mail",
+      "inbox",
+      "letter",
+      "compose"
+    ],
+    "intent": "Use to indicate email, messages, or compose actions",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Messages",
+    "source": {
+      "library": "lucide",
+      "name": "mail"
+    }
+  },
+  "mic": {
+    "name": "mic",
+    "description": "Microphone",
+    "category": "media",
+    "aliases": [
+      "microphone",
+      "audio",
+      "record",
+      "voice",
+      "speech"
+    ],
+    "intent": "Use to indicate audio recording or voice input",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Microphone",
+    "source": {
+      "library": "lucide",
+      "name": "mic"
+    }
+  },
+  "copy": {
+    "name": "copy",
+    "description": "Two overlapping rectangles",
+    "category": "action",
+    "aliases": [
+      "duplicate",
+      "clipboard",
+      "clone"
+    ],
+    "intent": "Use to copy content to clipboard or duplicate an item",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Copy",
+    "source": {
+      "library": "lucide",
+      "name": "copy"
+    }
+  },
+  "link": {
+    "name": "link",
+    "description": "Two interlocking chain links",
+    "category": "action",
+    "aliases": [
+      "url",
+      "hyperlink",
+      "anchor",
+      "connect"
+    ],
+    "intent": "Use to insert or indicate a hyperlink or URL",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Link",
+    "source": {
+      "library": "lucide",
+      "name": "link"
+    }
+  },
+  "order": {
+    "name": "order",
+    "description": "Document with horizontal lines of text",
+    "category": "content",
+    "aliases": [
+      "list",
+      "receipt",
+      "invoice",
+      "document"
+    ],
+    "intent": "Use to view an order, receipt, or structured list of items",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Order",
+    "source": {
+      "library": "lucide",
+      "name": "file-text"
+    }
+  },
+  "refresh": {
+    "name": "refresh",
+    "description": "Circular arrow looping counterclockwise",
+    "category": "action",
+    "aliases": [
+      "reload",
+      "retry",
+      "sync",
+      "update"
+    ],
+    "intent": "Use to refresh content, retry an action, or sync data",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Refresh",
+    "source": {
+      "library": "lucide",
+      "name": "rotate-ccw"
+    }
+  },
+  "remove": {
+    "name": "remove",
+    "description": "Minus sign inside a circle",
+    "category": "action",
+    "aliases": [
+      "minus-circle",
+      "subtract",
+      "delete"
+    ],
+    "intent": "Use to remove an item from a list or reduce quantity",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Remove",
+    "source": {
+      "library": "lucide",
+      "name": "circle-minus"
+    }
+  },
+  "search": {
+    "name": "search",
+    "description": "Magnifying glass",
+    "category": "action",
+    "aliases": [
+      "find",
+      "lookup",
+      "discover",
+      "query"
+    ],
+    "intent": "Use to search for content or trigger a search interface",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Search",
+    "source": {
+      "library": "lucide",
+      "name": "search"
+    }
+  },
+  "star": {
+    "name": "star",
+    "description": "Five-pointed star outline",
+    "category": "feedback",
+    "aliases": [
+      "favourite",
+      "bookmark",
+      "rate",
+      "rating"
+    ],
+    "intent": "Use to rate an item or mark as a favourite (unselected state)",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Favourite",
+    "source": {
+      "library": "lucide",
+      "name": "star"
+    }
+  },
+  "starFilled": {
+    "name": "starFilled",
+    "description": "Five-pointed filled star",
+    "category": "feedback",
+    "aliases": [
+      "favourite-filled",
+      "bookmarked",
+      "rated"
+    ],
+    "intent": "Use to indicate a selected favourite or active rating",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Favourited",
+    "source": {
+      "library": "lucide",
+      "name": "star"
+    }
+  },
+  "table": {
+    "name": "table",
+    "description": "Rounded square divided into a grid of cells",
+    "category": "content",
+    "aliases": [
+      "grid",
+      "spreadsheet",
+      "data-table",
+      "tabular"
+    ],
+    "intent": "Use to represent tabular data or switch to a table view",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Table",
+    "source": {
+      "library": "lucide",
+      "name": "table"
+    }
+  },
+  "trash": {
+    "name": "trash",
+    "description": "Trash can with lid",
+    "category": "action",
+    "aliases": [
+      "delete",
+      "bin",
+      "discard",
+      "rubbish"
+    ],
+    "intent": "Use to permanently delete or discard an item",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Delete",
+    "source": {
+      "library": "lucide",
+      "name": "trash"
+    }
+  },
+  "userBox": {
+    "name": "userBox",
+    "description": "Person silhouette inside a rounded square",
+    "category": "user",
+    "aliases": [
+      "profile",
+      "account",
+      "avatar",
+      "person"
+    ],
+    "intent": "Use to represent a user profile, account, or personal settings",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "User profile",
+    "source": {
+      "library": "lucide",
+      "name": "square-user"
+    }
+  },
+  "view": {
+    "name": "eye",
+    "description": "Open eye",
+    "category": "status",
+    "aliases": [
+      "visible",
+      "show",
+      "eye",
+      "password-show",
+      "reveal"
+    ],
+    "intent": "Use to indicate content is visible or to toggle visibility on",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Show",
+    "source": {
+      "library": "lucide",
+      "name": "eye"
+    }
+  },
+  "viewHide": {
+    "name": "eyeSlash",
+    "description": "Eye with a diagonal line through it",
+    "category": "status",
+    "aliases": [
+      "hidden",
+      "hide",
+      "eye-slash",
+      "password-hide",
+      "conceal"
+    ],
+    "intent": "Use to indicate content is hidden or to toggle visibility off",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Hide",
+    "source": {
+      "library": "lucide",
+      "name": "eye-off"
+    }
+  },
+  "kebab": {
+    "name": "kebab",
+    "description": "Three vertical dots",
+    "category": "navigation",
+    "aliases": [
+      "vertical-dots",
+      "more-vertical",
+      "options",
+      "overflow"
+    ],
+    "intent": "Use to open an overflow or contextual actions menu (vertical layout)",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "More options",
+    "source": {
+      "library": "lucide",
+      "name": "ellipsis-vertical"
+    }
+  },
+  "meatballs": {
+    "name": "meatballs",
+    "description": "Three horizontal dots",
+    "category": "navigation",
+    "aliases": [
+      "horizontal-dots",
+      "more-horizontal",
+      "ellipsis",
+      "options"
+    ],
+    "intent": "Use to open an overflow or contextual actions menu (horizontal layout)",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "More options",
+    "source": {
+      "library": "lucide",
+      "name": "ellipsis"
+    }
+  },
+  "creditCard": {
+    "name": "creditCard",
+    "description": "Credit card with magnetic stripe",
+    "category": "object",
+    "aliases": [
+      "card",
+      "payment",
+      "bank-card",
+      "debit"
+    ],
+    "intent": "Use to indicate payment methods, card details, or financial transactions",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Credit card",
+    "source": {
+      "library": "lucide",
+      "name": "credit-card"
+    }
+  },
+  "wallet": {
+    "name": "wallet",
+    "description": "Wallet with card slot",
+    "category": "object",
+    "aliases": [
+      "purse",
+      "money",
+      "funds",
+      "balance"
+    ],
+    "intent": "Use to indicate a wallet, stored funds, account balance, or financial overview",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Wallet",
+    "source": {
+      "library": "lucide",
+      "name": "wallet"
+    }
+  },
+  "move": {
+    "name": "move",
+    "description": "Four arrows pointing outward from centre",
+    "category": "action",
+    "aliases": [
+      "drag",
+      "reorder",
+      "reposition",
+      "grab"
+    ],
+    "intent": "Use to indicate that an element can be moved, dragged, or repositioned",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Move",
+    "source": {
+      "library": "lucide",
+      "name": "move"
+    }
+  },
+  "statusError": {
+    "name": "statusError",
+    "description": "X inside a hexagon with a flat top edge",
+    "category": "status",
+    "aliases": [
+      "error",
+      "failed",
+      "blocked",
+      "danger"
+    ],
+    "intent": "Use for the error status: failed or blocked, needs action now (decision 0045). Shows in the danger colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Error",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusSerious": {
+    "name": "statusSerious",
+    "description": "Exclamation mark inside a diamond",
+    "category": "status",
+    "aliases": [
+      "serious",
+      "severe",
+      "critical-warning"
+    ],
+    "intent": "Use for the serious status: will fail or cause harm without action (decision 0045). Shows in the serious colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Serious",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusWarning": {
+    "name": "statusWarning",
+    "description": "Exclamation mark inside a triangle",
+    "category": "status",
+    "aliases": [
+      "warning",
+      "caution",
+      "attention"
+    ],
+    "intent": "Use for the warning status: needs attention, not blocking (decision 0045). Shows in the warning colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Warning",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusSuccess": {
+    "name": "statusSuccess",
+    "description": "Checkmark inside a circle",
+    "category": "status",
+    "aliases": [
+      "success",
+      "completed",
+      "done"
+    ],
+    "intent": "Use for the success status: done as intended (decision 0045). Shows in the success colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Success",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusInfo": {
+    "name": "statusInfo",
+    "description": "Letter i inside a rounded square",
+    "category": "status",
+    "aliases": [
+      "info",
+      "information",
+      "notice"
+    ],
+    "intent": "Use for the info status: neutral information (decision 0045). Shows in the accent colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Information",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusInProgress": {
+    "name": "statusInProgress",
+    "description": "Circle with its right half filled",
+    "category": "status",
+    "aliases": [
+      "in progress",
+      "processing",
+      "running"
+    ],
+    "intent": "Use for the in-progress status: running now (decision 0045). Shows in the accent colour with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "In progress",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusPending": {
+    "name": "statusPending",
+    "description": "Clock face",
+    "category": "status",
+    "aliases": [
+      "pending",
+      "waiting",
+      "clock"
+    ],
+    "intent": "Use for the pending status: waiting on someone or something else (decision 0045). Neutral colour, with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Pending",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusScheduled": {
+    "name": "statusScheduled",
+    "description": "Calendar page",
+    "category": "status",
+    "aliases": [
+      "scheduled",
+      "calendar",
+      "planned"
+    ],
+    "intent": "Use for the scheduled status: starts at a set time (decision 0045). Neutral colour, with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Scheduled",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusNotStarted": {
+    "name": "statusNotStarted",
+    "description": "Dashed circle",
+    "category": "status",
+    "aliases": [
+      "not started",
+      "draft",
+      "to do"
+    ],
+    "intent": "Use for the not-started status: exists but not begun or submitted, such as a draft (decision 0045). Neutral colour, with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Not started",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "statusCancelled": {
+    "name": "statusCancelled",
+    "description": "Circle with a diagonal line through it",
+    "category": "status",
+    "aliases": [
+      "cancelled",
+      "canceled",
+      "stopped"
+    ],
+    "intent": "Use for the cancelled status: stopped on purpose (decision 0045). Neutral colour, with a label",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Cancelled",
+    "source": {
+      "library": "common-origin"
+    }
+  },
+  "home": {
+    "name": "home",
+    "description": "House outline with a door",
+    "category": "navigation",
+    "aliases": [
+      "house",
+      "dashboard",
+      "main",
+      "homepage"
+    ],
+    "intent": "Use for a link to the product's home or start page",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Home",
+    "source": {
+      "library": "lucide",
+      "name": "house"
+    }
+  },
+  "sidebar": {
+    "name": "sidebar",
+    "description": "Rounded square with a narrow column on the left",
+    "category": "navigation",
+    "aliases": [
+      "panel",
+      "side-panel",
+      "drawer",
+      "rail"
+    ],
+    "intent": "Use for a button that collapses or expands a sidebar",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Toggle sidebar",
+    "source": {
+      "library": "lucide",
+      "name": "panel-left"
+    }
+  },
+  "drag": {
+    "name": "drag",
+    "description": "Two columns of three dots",
+    "category": "action",
+    "aliases": [
+      "drag",
+      "grip",
+      "handle",
+      "reorder",
+      "sort",
+      "move"
+    ],
+    "intent": "Use as the handle that drags an item to reorder it, such as a row in a sortable list",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Drag to reorder",
+    "source": {
+      "library": "lucide",
+      "name": "grip-vertical"
+    }
+  },
+  "settings": {
+    "name": "settings",
+    "description": "Gear",
+    "category": "action",
+    "aliases": [
+      "gear",
+      "cog",
+      "preferences",
+      "options",
+      "configure"
+    ],
+    "intent": "Use to open settings or preferences",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Settings",
+    "source": {
+      "library": "lucide",
+      "name": "settings"
+    }
+  },
+  "user": {
+    "name": "user",
+    "description": "Person silhouette",
+    "category": "user",
+    "aliases": [
+      "person",
+      "profile",
+      "account",
+      "avatar"
+    ],
+    "intent": "Use for a single person: a profile, an account or an assignee",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "User",
+    "source": {
+      "library": "lucide",
+      "name": "user"
+    }
+  },
+  "users": {
+    "name": "users",
+    "description": "Two person silhouettes",
+    "category": "user",
+    "aliases": [
+      "people",
+      "team",
+      "group",
+      "members",
+      "household"
+    ],
+    "intent": "Use for a group of people: a team, members or sharing with others",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Users",
+    "source": {
+      "library": "lucide",
+      "name": "users"
+    }
+  },
+  "download": {
+    "name": "download",
+    "description": "Downward arrow into an open tray",
+    "category": "action",
+    "aliases": [
+      "save",
+      "get",
+      "file",
+      "import"
+    ],
+    "intent": "Use to download or save a file to the device",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Download",
+    "source": {
+      "library": "lucide",
+      "name": "download"
+    }
+  },
+  "share": {
+    "name": "share",
+    "description": "Three connected dots",
+    "category": "action",
+    "aliases": [
+      "send",
+      "social",
+      "network",
+      "connect"
+    ],
+    "intent": "Use to share an item with other people or apps",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Share",
+    "source": {
+      "library": "lucide",
+      "name": "share-2"
+    }
+  },
+  "send": {
+    "name": "send",
+    "description": "Paper plane",
+    "category": "action",
+    "aliases": [
+      "submit",
+      "message",
+      "paper plane",
+      "post"
+    ],
+    "intent": "Use to send a message or submit a prompt",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Send",
+    "source": {
+      "library": "lucide",
+      "name": "send"
+    }
+  },
+  "attach": {
+    "name": "attach",
+    "description": "Paperclip",
+    "category": "action",
+    "aliases": [
+      "attachment",
+      "paperclip",
+      "file",
+      "upload"
+    ],
+    "intent": "Use to attach a file to a message or form",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Attach",
+    "source": {
+      "library": "lucide",
+      "name": "paperclip"
+    }
+  },
+  "minus": {
+    "name": "minus",
+    "description": "Minus sign",
+    "category": "action",
+    "aliases": [
+      "subtract",
+      "decrease",
+      "less",
+      "collapse"
+    ],
+    "intent": "Use to subtract, decrease a quantity or collapse",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Minus",
+    "source": {
+      "library": "lucide",
+      "name": "minus"
+    }
+  },
+  "undo": {
+    "name": "undo",
+    "description": "Curved arrow turning back to the left",
+    "category": "action",
+    "aliases": [
+      "back",
+      "revert",
+      "reverse"
+    ],
+    "intent": "Use to undo the last action",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Undo",
+    "source": {
+      "library": "lucide",
+      "name": "undo-2"
+    }
+  },
+  "redo": {
+    "name": "redo",
+    "description": "Curved arrow turning forward to the right",
+    "category": "action",
+    "aliases": [
+      "forward",
+      "repeat",
+      "again"
+    ],
+    "intent": "Use to redo an action that was undone",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Redo",
+    "source": {
+      "library": "lucide",
+      "name": "redo-2"
+    }
+  },
+  "save": {
+    "name": "save",
+    "description": "Floppy disk",
+    "category": "action",
+    "aliases": [
+      "floppy",
+      "disk",
+      "store",
+      "keep"
+    ],
+    "intent": "Use to save changes",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Save",
+    "source": {
+      "library": "lucide",
+      "name": "save"
+    }
+  },
+  "sort": {
+    "name": "sort",
+    "description": "Up and down arrows side by side",
+    "category": "action",
+    "aliases": [
+      "order",
+      "arrange",
+      "reorder",
+      "ascending",
+      "descending"
+    ],
+    "intent": "Use to change the sort order of a list or table",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Sort",
+    "source": {
+      "library": "lucide",
+      "name": "arrow-up-down"
+    }
+  },
+  "calendar": {
+    "name": "calendar",
+    "description": "Calendar page",
+    "category": "object",
+    "aliases": [
+      "date",
+      "schedule",
+      "plan",
+      "week",
+      "month"
+    ],
+    "intent": "Use for dates, schedules and planning. For the scheduled status, use statusScheduled",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Calendar",
+    "source": {
+      "library": "lucide",
+      "name": "calendar"
+    }
+  },
+  "clock": {
+    "name": "clock",
+    "description": "Clock face",
+    "category": "object",
+    "aliases": [
+      "time",
+      "hour",
+      "duration",
+      "watch"
+    ],
+    "intent": "Use for times and durations. For the pending status, use statusPending",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Time",
+    "source": {
+      "library": "lucide",
+      "name": "clock"
+    }
+  },
+  "timer": {
+    "name": "timer",
+    "description": "Stopwatch",
+    "category": "object",
+    "aliases": [
+      "stopwatch",
+      "countdown",
+      "cooking time",
+      "duration"
+    ],
+    "intent": "Use for a countdown or an elapsed time, such as cooking or prep time",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Timer",
+    "source": {
+      "library": "lucide",
+      "name": "timer"
+    }
+  },
+  "history": {
+    "name": "history",
+    "description": "Clock with an arrow circling back",
+    "category": "navigation",
+    "aliases": [
+      "recent",
+      "past",
+      "previous",
+      "activity",
+      "log"
+    ],
+    "intent": "Use for history, recent items or past activity",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "History",
+    "source": {
+      "library": "lucide",
+      "name": "rotate-ccw-clock"
+    }
+  },
+  "heart": {
+    "name": "heart",
+    "description": "Heart outline",
+    "category": "feedback",
+    "aliases": [
+      "like",
+      "love",
+      "favourite",
+      "save"
+    ],
+    "intent": "Use to mark something as a favourite or liked",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Favourite",
+    "source": {
+      "library": "lucide",
+      "name": "heart"
+    }
+  },
+  "bookmark": {
+    "name": "bookmark",
+    "description": "Bookmark ribbon",
+    "category": "action",
+    "aliases": [
+      "save",
+      "later",
+      "saved",
+      "keep"
+    ],
+    "intent": "Use to save an item to come back to later",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Bookmark",
+    "source": {
+      "library": "lucide",
+      "name": "bookmark"
+    }
+  },
+  "tag": {
+    "name": "tag",
+    "description": "Price tag",
+    "category": "content",
+    "aliases": [
+      "label",
+      "price",
+      "category",
+      "badge"
+    ],
+    "intent": "Use for labels, tags or prices",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Tag",
+    "source": {
+      "library": "lucide",
+      "name": "tag"
+    }
+  },
+  "lock": {
+    "name": "lock",
+    "description": "Closed padlock",
+    "category": "status",
+    "aliases": [
+      "private",
+      "secure",
+      "locked",
+      "password"
+    ],
+    "intent": "Use to show something is locked, private or secure",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Locked",
+    "source": {
+      "library": "lucide",
+      "name": "lock"
+    }
+  },
+  "unlock": {
+    "name": "unlock",
+    "description": "Open padlock",
+    "category": "status",
+    "aliases": [
+      "open",
+      "unlocked",
+      "public"
+    ],
+    "intent": "Use to show something is unlocked or shared",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Unlocked",
+    "source": {
+      "library": "lucide",
+      "name": "lock-open"
+    }
+  },
+  "logIn": {
+    "name": "logIn",
+    "description": "Arrow entering a doorway",
+    "category": "action",
+    "aliases": [
+      "sign in",
+      "login",
+      "enter"
+    ],
+    "intent": "Use to sign in",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Sign in",
+    "source": {
+      "library": "lucide",
+      "name": "log-in"
+    }
+  },
+  "logOut": {
+    "name": "logOut",
+    "description": "Arrow leaving a doorway",
+    "category": "action",
+    "aliases": [
+      "sign out",
+      "logout",
+      "exit",
+      "leave"
+    ],
+    "intent": "Use to sign out",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Sign out",
+    "source": {
+      "library": "lucide",
+      "name": "log-out"
+    }
+  },
+  "phone": {
+    "name": "phone",
+    "description": "Telephone handset",
+    "category": "communication",
+    "aliases": [
+      "call",
+      "telephone",
+      "contact",
+      "mobile"
+    ],
+    "intent": "Use for phone numbers and calls",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Phone",
+    "source": {
+      "library": "lucide",
+      "name": "phone"
+    }
+  },
+  "location": {
+    "name": "location",
+    "description": "Map pin",
+    "category": "object",
+    "aliases": [
+      "map",
+      "pin",
+      "place",
+      "address",
+      "store"
+    ],
+    "intent": "Use for an address, a place or a location",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Location",
+    "source": {
+      "library": "lucide",
+      "name": "map-pin"
+    }
+  },
+  "globe": {
+    "name": "globe",
+    "description": "Globe",
+    "category": "object",
+    "aliases": [
+      "world",
+      "language",
+      "web",
+      "international",
+      "region"
+    ],
+    "intent": "Use for language, region or the web",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Globe",
+    "source": {
+      "library": "lucide",
+      "name": "globe"
+    }
+  },
+  "image": {
+    "name": "image",
+    "description": "Framed picture of hills and a sun",
+    "category": "content",
+    "aliases": [
+      "photo",
+      "picture",
+      "gallery"
+    ],
+    "intent": "Use for a photo or an image",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Image",
+    "source": {
+      "library": "lucide",
+      "name": "image"
+    }
+  },
+  "camera": {
+    "name": "camera",
+    "description": "Camera",
+    "category": "media",
+    "aliases": [
+      "photo",
+      "scan",
+      "capture",
+      "picture"
+    ],
+    "intent": "Use to take a photo or scan with the camera",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Camera",
+    "source": {
+      "library": "lucide",
+      "name": "camera"
+    }
+  },
+  "help": {
+    "name": "help",
+    "description": "Question mark inside a circle",
+    "category": "feedback",
+    "aliases": [
+      "question",
+      "support",
+      "faq",
+      "about"
+    ],
+    "intent": "Use to open help or explain something",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Help",
+    "source": {
+      "library": "lucide",
+      "name": "circle-question-mark"
+    }
+  },
+  "sun": {
+    "name": "sun",
+    "description": "Sun",
+    "category": "object",
+    "aliases": [
+      "light",
+      "day",
+      "theme",
+      "bright"
+    ],
+    "intent": "Use for the light theme or daytime",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Light theme",
+    "source": {
+      "library": "lucide",
+      "name": "sun"
+    }
+  },
+  "moon": {
+    "name": "moon",
+    "description": "Crescent moon",
+    "category": "object",
+    "aliases": [
+      "dark",
+      "night",
+      "theme"
+    ],
+    "intent": "Use for the dark theme or night time",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Dark theme",
+    "source": {
+      "library": "lucide",
+      "name": "moon"
+    }
+  },
+  "list": {
+    "name": "list",
+    "description": "Bulleted list",
+    "category": "content",
+    "aliases": [
+      "list view",
+      "items",
+      "bullets",
+      "rows"
+    ],
+    "intent": "Use for a list view or a list of items",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "List",
+    "source": {
+      "library": "lucide",
+      "name": "list"
+    }
+  },
+  "grid": {
+    "name": "grid",
+    "description": "Four squares in a grid",
+    "category": "content",
+    "aliases": [
+      "grid view",
+      "tiles",
+      "gallery",
+      "cards"
+    ],
+    "intent": "Use for a grid view or a gallery of items",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Grid",
+    "source": {
+      "library": "lucide",
+      "name": "layout-grid"
+    }
+  },
+  "thumbsUp": {
+    "name": "thumbsUp",
+    "description": "Thumb pointing up",
+    "category": "feedback",
+    "aliases": [
+      "like",
+      "approve",
+      "good",
+      "helpful",
+      "yes"
+    ],
+    "intent": "Use for positive feedback, such as rating an answer as helpful",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Helpful",
+    "source": {
+      "library": "lucide",
+      "name": "thumbs-up"
+    }
+  },
+  "thumbsDown": {
+    "name": "thumbsDown",
+    "description": "Thumb pointing down",
+    "category": "feedback",
+    "aliases": [
+      "dislike",
+      "bad",
+      "unhelpful",
+      "no"
+    ],
+    "intent": "Use for negative feedback, such as rating an answer as unhelpful",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Not helpful",
+    "source": {
+      "library": "lucide",
+      "name": "thumbs-down"
+    }
+  },
+  "folder": {
+    "name": "folder",
+    "description": "Folder",
+    "category": "object",
+    "aliases": [
+      "directory",
+      "collection",
+      "group"
+    ],
+    "intent": "Use for a folder or a collection of items",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Folder",
+    "source": {
+      "library": "lucide",
+      "name": "folder"
+    }
+  },
+  "file": {
+    "name": "file",
+    "description": "Document with a folded corner",
+    "category": "content",
+    "aliases": [
+      "document",
+      "page",
+      "attachment"
+    ],
+    "intent": "Use for a file or a document",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "File",
+    "source": {
+      "library": "lucide",
+      "name": "file"
+    }
+  },
+  "utensils": {
+    "name": "utensils",
+    "description": "Fork and knife",
+    "category": "object",
+    "aliases": [
+      "meal",
+      "dining",
+      "food",
+      "fork",
+      "knife",
+      "restaurant"
+    ],
+    "intent": "Use for meals, dining or a recipe in general",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Meal",
+    "source": {
+      "library": "lucide",
+      "name": "utensils"
+    }
+  },
+  "chefHat": {
+    "name": "chefHat",
+    "description": "Chef's hat",
+    "category": "object",
+    "aliases": [
+      "cooking",
+      "recipe",
+      "chef",
+      "cook",
+      "kitchen"
+    ],
+    "intent": "Use for cooking, recipes or a cook",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Recipe",
+    "source": {
+      "library": "lucide",
+      "name": "chef-hat"
+    }
+  },
+  "cookingPot": {
+    "name": "cookingPot",
+    "description": "Cooking pot with a lid",
+    "category": "object",
+    "aliases": [
+      "pot",
+      "cook",
+      "stew",
+      "leftovers",
+      "batch"
+    ],
+    "intent": "Use for cooking, batch cooking or leftovers",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Cooking",
+    "source": {
+      "library": "lucide",
+      "name": "cooking-pot"
+    }
+  },
+  "soup": {
+    "name": "soup",
+    "description": "Bowl of soup with steam",
+    "category": "object",
+    "aliases": [
+      "bowl",
+      "noodles",
+      "ramen",
+      "broth",
+      "stew"
+    ],
+    "intent": "Use for soups, noodle bowls and broths",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Soup",
+    "source": {
+      "library": "lucide",
+      "name": "soup"
+    }
+  },
+  "salad": {
+    "name": "salad",
+    "description": "Bowl of salad",
+    "category": "object",
+    "aliases": [
+      "greens",
+      "healthy",
+      "vegetables",
+      "side"
+    ],
+    "intent": "Use for salads, sides and fresh dishes",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Salad",
+    "source": {
+      "library": "lucide",
+      "name": "salad"
+    }
+  },
+  "pizza": {
+    "name": "pizza",
+    "description": "Slice of pizza",
+    "category": "object",
+    "aliases": [
+      "italian",
+      "slice",
+      "takeaway"
+    ],
+    "intent": "Use for pizza or Italian dishes",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Pizza",
+    "source": {
+      "library": "lucide",
+      "name": "pizza"
+    }
+  },
+  "sandwich": {
+    "name": "sandwich",
+    "description": "Sandwich",
+    "category": "object",
+    "aliases": [
+      "lunch",
+      "wrap",
+      "bread"
+    ],
+    "intent": "Use for sandwiches, wraps and lunch",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Sandwich",
+    "source": {
+      "library": "lucide",
+      "name": "sandwich"
+    }
+  },
+  "burger": {
+    "name": "burger",
+    "description": "Burger",
+    "category": "object",
+    "aliases": [
+      "hamburger",
+      "bbq",
+      "fast food",
+      "american"
+    ],
+    "intent": "Use for burgers, barbecue and fast food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Burger",
+    "source": {
+      "library": "lucide",
+      "name": "hamburger"
+    }
+  },
+  "croissant": {
+    "name": "croissant",
+    "description": "Croissant",
+    "category": "object",
+    "aliases": [
+      "pastry",
+      "bakery",
+      "breakfast",
+      "french"
+    ],
+    "intent": "Use for pastries, baking and breakfast",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Pastry",
+    "source": {
+      "library": "lucide",
+      "name": "croissant"
+    }
+  },
+  "dessert": {
+    "name": "dessert",
+    "description": "Scoop of ice cream in a bowl",
+    "category": "object",
+    "aliases": [
+      "sweet",
+      "pudding",
+      "treat"
+    ],
+    "intent": "Use for desserts and sweets",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Dessert",
+    "source": {
+      "library": "lucide",
+      "name": "dessert"
+    }
+  },
+  "cake": {
+    "name": "cake",
+    "description": "Slice of cake",
+    "category": "object",
+    "aliases": [
+      "baking",
+      "birthday",
+      "sweet"
+    ],
+    "intent": "Use for cakes, baking and celebrations",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Cake",
+    "source": {
+      "library": "lucide",
+      "name": "cake-slice"
+    }
+  },
+  "coffee": {
+    "name": "coffee",
+    "description": "Cup of coffee",
+    "category": "object",
+    "aliases": [
+      "drink",
+      "cafe",
+      "tea",
+      "hot drink",
+      "breakfast"
+    ],
+    "intent": "Use for coffee, hot drinks or a break",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Coffee",
+    "source": {
+      "library": "lucide",
+      "name": "coffee"
+    }
+  },
+  "wine": {
+    "name": "wine",
+    "description": "Wine glass",
+    "category": "object",
+    "aliases": [
+      "drink",
+      "alcohol",
+      "glass",
+      "pairing"
+    ],
+    "intent": "Use for wine, alcohol or a dinner pairing",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Wine",
+    "source": {
+      "library": "lucide",
+      "name": "wine"
+    }
+  },
+  "beef": {
+    "name": "beef",
+    "description": "Steak",
+    "category": "object",
+    "aliases": [
+      "meat",
+      "steak",
+      "red meat"
+    ],
+    "intent": "Use for beef and red meat",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Beef",
+    "source": {
+      "library": "lucide",
+      "name": "beef"
+    }
+  },
+  "chicken": {
+    "name": "chicken",
+    "description": "Chicken drumstick",
+    "category": "object",
+    "aliases": [
+      "poultry",
+      "meat",
+      "drumstick"
+    ],
+    "intent": "Use for chicken and poultry",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Chicken",
+    "source": {
+      "library": "lucide",
+      "name": "drumstick"
+    }
+  },
+  "pork": {
+    "name": "pork",
+    "description": "Ham",
+    "category": "object",
+    "aliases": [
+      "ham",
+      "meat",
+      "bacon"
+    ],
+    "intent": "Use for pork and ham",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Pork",
+    "source": {
+      "library": "lucide",
+      "name": "ham"
+    }
+  },
+  "fish": {
+    "name": "fish",
+    "description": "Fish",
+    "category": "object",
+    "aliases": [
+      "seafood",
+      "pescatarian"
+    ],
+    "intent": "Use for fish and seafood, or a pescatarian diet",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Fish",
+    "source": {
+      "library": "lucide",
+      "name": "fish"
+    }
+  },
+  "shrimp": {
+    "name": "shrimp",
+    "description": "Shrimp",
+    "category": "object",
+    "aliases": [
+      "prawn",
+      "seafood",
+      "shellfish"
+    ],
+    "intent": "Use for shellfish and seafood",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Shellfish",
+    "source": {
+      "library": "lucide",
+      "name": "shrimp"
+    }
+  },
+  "egg": {
+    "name": "egg",
+    "description": "Egg",
+    "category": "object",
+    "aliases": [
+      "eggs",
+      "breakfast",
+      "protein"
+    ],
+    "intent": "Use for eggs",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Egg",
+    "source": {
+      "library": "lucide",
+      "name": "egg"
+    }
+  },
+  "milk": {
+    "name": "milk",
+    "description": "Milk carton",
+    "category": "object",
+    "aliases": [
+      "dairy",
+      "milk",
+      "lactose"
+    ],
+    "intent": "Use for milk and dairy",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Dairy",
+    "source": {
+      "library": "lucide",
+      "name": "milk"
+    }
+  },
+  "wheat": {
+    "name": "wheat",
+    "description": "Ear of wheat",
+    "category": "object",
+    "aliases": [
+      "grain",
+      "gluten",
+      "bread",
+      "flour"
+    ],
+    "intent": "Use for grains, bread and gluten",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Grains",
+    "source": {
+      "library": "lucide",
+      "name": "wheat"
+    }
+  },
+  "nut": {
+    "name": "nut",
+    "description": "Nut",
+    "category": "object",
+    "aliases": [
+      "nuts",
+      "peanut",
+      "almond"
+    ],
+    "intent": "Use for nuts",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Nuts",
+    "source": {
+      "library": "lucide",
+      "name": "nut"
+    }
+  },
+  "bean": {
+    "name": "bean",
+    "description": "Bean",
+    "category": "object",
+    "aliases": [
+      "legumes",
+      "lentils",
+      "plant protein"
+    ],
+    "intent": "Use for legumes, beans and plant protein",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Legumes",
+    "source": {
+      "library": "lucide",
+      "name": "bean"
+    }
+  },
+  "carrot": {
+    "name": "carrot",
+    "description": "Carrot",
+    "category": "object",
+    "aliases": [
+      "vegetable",
+      "produce",
+      "veg"
+    ],
+    "intent": "Use for vegetables and produce",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Vegetables",
+    "source": {
+      "library": "lucide",
+      "name": "carrot"
+    }
+  },
+  "apple": {
+    "name": "apple",
+    "description": "Apple",
+    "category": "object",
+    "aliases": [
+      "fruit",
+      "produce",
+      "snack"
+    ],
+    "intent": "Use for fruit and produce",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Fruit",
+    "source": {
+      "library": "lucide",
+      "name": "apple"
+    }
+  },
+  "citrus": {
+    "name": "citrus",
+    "description": "Slice of citrus fruit",
+    "category": "object",
+    "aliases": [
+      "lemon",
+      "lime",
+      "orange",
+      "fruit"
+    ],
+    "intent": "Use for citrus fruit and fresh flavours",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Citrus",
+    "source": {
+      "library": "lucide",
+      "name": "citrus"
+    }
+  },
+  "leaf": {
+    "name": "leaf",
+    "description": "Leaf",
+    "category": "object",
+    "aliases": [
+      "vegetarian",
+      "plant-based",
+      "fresh",
+      "herb"
+    ],
+    "intent": "Use for vegetarian or plant-based food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Vegetarian",
+    "source": {
+      "library": "lucide",
+      "name": "leaf"
+    }
+  },
+  "vegan": {
+    "name": "vegan",
+    "description": "Leaf inside a V",
+    "category": "object",
+    "aliases": [
+      "plant-based",
+      "no animal products"
+    ],
+    "intent": "Use for vegan food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Vegan",
+    "source": {
+      "library": "lucide",
+      "name": "vegan"
+    }
+  },
+  "glutenFree": {
+    "name": "glutenFree",
+    "description": "Ear of wheat with a line through it",
+    "category": "object",
+    "aliases": [
+      "gluten free",
+      "coeliac",
+      "no wheat"
+    ],
+    "intent": "Use for gluten-free food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Gluten-free",
+    "source": {
+      "library": "lucide",
+      "name": "wheat-off"
+    }
+  },
+  "nutFree": {
+    "name": "nutFree",
+    "description": "Nut with a line through it",
+    "category": "object",
+    "aliases": [
+      "nut free",
+      "allergy",
+      "no nuts"
+    ],
+    "intent": "Use for nut-free food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Nut-free",
+    "source": {
+      "library": "lucide",
+      "name": "nut-off"
+    }
+  },
+  "dairyFree": {
+    "name": "dairyFree",
+    "description": "Milk carton with a line through it",
+    "category": "object",
+    "aliases": [
+      "dairy free",
+      "lactose free",
+      "no milk"
+    ],
+    "intent": "Use for dairy-free food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Dairy-free",
+    "source": {
+      "library": "lucide",
+      "name": "milk-off"
+    }
+  },
+  "eggFree": {
+    "name": "eggFree",
+    "description": "Egg with a line through it",
+    "category": "object",
+    "aliases": [
+      "egg free",
+      "allergy",
+      "no eggs"
+    ],
+    "intent": "Use for egg-free food",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Egg-free",
+    "source": {
+      "library": "lucide",
+      "name": "egg-off"
+    }
+  },
+  "spicy": {
+    "name": "spicy",
+    "description": "Flame",
+    "category": "object",
+    "aliases": [
+      "hot",
+      "chilli",
+      "heat",
+      "flame"
+    ],
+    "intent": "Use for spicy food or heat level",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Spicy",
+    "source": {
+      "library": "lucide",
+      "name": "flame"
+    }
+  },
+  "shoppingCart": {
+    "name": "shoppingCart",
+    "description": "Shopping trolley",
+    "category": "object",
+    "aliases": [
+      "cart",
+      "trolley",
+      "groceries",
+      "shopping list"
+    ],
+    "intent": "Use for a shopping list, cart or groceries",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Shopping",
+    "source": {
+      "library": "lucide",
+      "name": "shopping-cart"
+    }
+  },
+  "basket": {
+    "name": "basket",
+    "description": "Shopping basket",
+    "category": "object",
+    "aliases": [
+      "groceries",
+      "basket",
+      "pantry"
+    ],
+    "intent": "Use for a basket of items or groceries",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Basket",
+    "source": {
+      "library": "lucide",
+      "name": "shopping-basket"
+    }
+  },
+  "fridge": {
+    "name": "fridge",
+    "description": "Fridge",
+    "category": "object",
+    "aliases": [
+      "refrigerator",
+      "pantry",
+      "stock",
+      "at home"
+    ],
+    "intent": "Use for the fridge, pantry or ingredients already at home",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Fridge",
+    "source": {
+      "library": "lucide",
+      "name": "refrigerator"
+    }
+  },
+  "microwave": {
+    "name": "microwave",
+    "description": "Microwave",
+    "category": "object",
+    "aliases": [
+      "reheat",
+      "quick",
+      "leftovers"
+    ],
+    "intent": "Use for reheating or quick meals",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Microwave",
+    "source": {
+      "library": "lucide",
+      "name": "microwave"
+    }
+  },
+  "weight": {
+    "name": "weight",
+    "description": "Kitchen weight",
+    "category": "object",
+    "aliases": [
+      "scale",
+      "quantity",
+      "portion",
+      "grams"
+    ],
+    "intent": "Use for weights, portions and quantities",
+    "decorativeDefault": false,
+    "ariaLabelDefault": "Weight",
+    "source": {
+      "library": "lucide",
+      "name": "weight"
+    }
+  }
+}
