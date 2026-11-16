@@ -1484,7 +1484,7 @@
   "lock": {
     "name": "lock",
     "description": "Closed padlock",
-    "category": "status",
+    "category": "object",
     "aliases": [
       "private",
       "secure",
@@ -1502,7 +1502,7 @@
   "unlock": {
     "name": "unlock",
     "description": "Open padlock",
-    "category": "status",
+    "category": "object",
     "aliases": [
       "open",
       "unlocked",
@@ -1969,14 +1969,14 @@
   },
   "dessert": {
     "name": "dessert",
-    "description": "Scoop of ice cream in a bowl",
+    "description": "Pudding with icing on top",
     "category": "object",
     "aliases": [
       "sweet",
       "pudding",
       "treat"
     ],
-    "intent": "Use for desserts and sweets",
+    "intent": "Use for desserts, puddings and sweets",
     "decorativeDefault": false,
     "ariaLabelDefault": "Dessert",
     "source": {
@@ -2452,7 +2452,7 @@
   },
   "weight": {
     "name": "weight",
-    "description": "Kitchen weight",
+    "description": "Weight",
     "category": "object",
     "aliases": [
       "scale",
