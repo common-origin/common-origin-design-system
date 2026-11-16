@@ -5,7 +5,7 @@
 // and regenerating IconName.
 
 /* eslint-disable @typescript-eslint/no-require-imports */
-const { addLucideIcon, iconNameUnion, lucideElements, lucideTags, withIconNameUnion } = require('./icons.cjs')
+const { addLucideIcon, iconNameUnion, joinIconSet, lucideElements, lucideTags, splitIconSet, withIconNameUnion } = require('./icons.cjs')
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 const metadata = {
@@ -75,6 +75,25 @@ describe('addLucideIcon', () => {
   it('offers Lucide tags as aliases', () => {
     expect(lucideTags('search')).toContain('magnifier')
     expect(lucideTags('not-an-icon')).toEqual([])
+  })
+})
+
+describe('stored metadata and drawings', () => {
+  const set = {
+    drag: { name: 'drag', category: 'action', source: { library: 'lucide', name: 'grip-vertical' }, paint: 'stroke', elements: [['circle', { cx: '9', cy: '12', r: '1' }]] },
+  }
+
+  it('splits the set so the drawings stand alone, and joins it back unchanged', () => {
+    const { meta, drawings } = splitIconSet(set)
+    expect(drawings).toEqual({ drag: { paint: 'stroke', elements: set.drag.elements } })
+    expect(meta.drag).not.toHaveProperty('elements')
+    expect(joinIconSet(meta, drawings)).toEqual(set)
+  })
+
+  it('refuses metadata without a drawing, or a drawing without metadata', () => {
+    const { meta, drawings } = splitIconSet(set)
+    expect(() => joinIconSet(meta, {})).toThrow('has metadata but no drawing')
+    expect(() => joinIconSet({}, drawings)).toThrow('has a drawing but no metadata')
   })
 })
 

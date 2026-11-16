@@ -1,7 +1,8 @@
 import { createHash } from 'crypto'
 import { readFileSync } from 'fs'
 import { join } from 'path'
-import iconSetJson from '../styles/iconSet.json'
+import iconMetaJson from '../styles/iconMeta.json'
+import iconDrawingsJson from '../styles/iconDrawings.json'
 import { iconSet } from './iconSet'
 import { iconsData, type IconCategory, type IconElementTag, type IconName, type IconPaint } from './icons'
 
@@ -10,8 +11,8 @@ const icons = require('../../scripts/icons.cjs')
 /* eslint-enable @typescript-eslint/no-require-imports */
 
 // iconSet's keys and IconName are the same set, both ways (decision 0058)
-type MissingFromSet = Exclude<IconName, keyof typeof iconSetJson>
-type MissingFromName = Exclude<keyof typeof iconSetJson, IconName>
+type MissingFromSet = Exclude<IconName, keyof typeof iconMetaJson>
+type MissingFromName = Exclude<keyof typeof iconMetaJson, IconName>
 const namesMatch: [MissingFromSet, MissingFromName] extends [never, never] ? true : false = true
 
 const TAGS: IconElementTag[] = icons.TAGS
@@ -25,6 +26,11 @@ describe('iconSet', () => {
 
   it('is keyed by IconName', () => {
     expect(namesMatch).toBe(true)
+  })
+
+  // Stored apart so Icon loads only the drawings (decision 0058); they must name the same icons
+  it('has a drawing for every icon and metadata for every drawing', () => {
+    expect(Object.keys(iconDrawingsJson).sort()).toEqual(Object.keys(iconMetaJson).sort())
   })
 
   it.each(entries)('%s has its metadata', (_key, icon) => {

@@ -2,11 +2,11 @@ import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { axe } from 'jest-axe'
 import { Icon } from './Icon'
-import { iconSet } from '../../../types/iconSet'
+import { iconDrawings } from '../../../types/iconDrawings'
 
-// A small icon set in the iconSet.json format: solid icons as one filled path, plus a line icon
+// A small set of drawings in the iconDrawings.json format: solid icons as one filled path, plus a line icon
 // (Lucide's search) and a line icon with a fill
-jest.mock('@/styles/iconSet.json', () => {
+jest.mock('@/styles/iconDrawings.json', () => {
   // Inside the factory: jest.mock is hoisted above the module's own declarations
   const solid = (name: string, d: string) => ({ name, paint: 'fill', elements: [['path', { d }]] })
   return {
@@ -56,7 +56,7 @@ describe('Icon', () => {
     if (!svg) throw new Error('No icon SVG rendered')
     return svg
   }
-  const pathOf = (name: keyof typeof iconSet) => iconSet[name].elements[0][1].d
+  const pathOf = (name: keyof typeof iconDrawings) => iconDrawings[name].elements[0][1].d
 
   describe('Basic Rendering', () => {
     it('renders without crashing', () => {

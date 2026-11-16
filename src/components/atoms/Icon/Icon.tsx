@@ -1,7 +1,7 @@
 import React, { FC, ReactElement, SVGProps } from 'react'
 import styled from 'styled-components'
 import tokens from '@/lib/cssTokens'
-import { iconSet } from '../../../types/iconSet'
+import { iconDrawings } from '../../../types/iconDrawings'
 import { type IconName, type IconPaint } from '../../../types/icons'
 
 export type { IconName }
@@ -98,7 +98,7 @@ export const Icon: FC<IconProps> = ({
   // Decorative unless it's given a name. A blank name is no name, so the icon stays hidden
   const label = ariaLabel?.trim() || title?.trim() || undefined
 
-  const icon = iconSet[name]
+  const icon = iconDrawings[name]
 
   if (!icon) {
     console.warn(`Icon "${name}" not found in iconSet`)

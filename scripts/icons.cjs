@@ -1,9 +1,10 @@
 /**
  * Icon set helpers shared by `npm run icon:add` and the tests (decision 0058).
  *
- * Lucide is a pinned dev dependency (`lucide-static`). An icon is copied from its node data into
- * `src/styles/iconSet.json`, and `IconName` in `src/types/icons.ts` is generated from the set's keys,
- * so the two can't drift.
+ * Lucide is a pinned dev dependency (`lucide-static`). An icon is copied from its node data into the
+ * set, stored as `src/styles/iconMeta.json` (metadata) and `src/styles/iconDrawings.json` (paint and
+ * shapes) so `Icon` loads only the drawings. `IconName` in `src/types/icons.ts` is generated from
+ * the set's keys, so the two can't drift.
  */
 
 const lucideNodes = require('lucide-static/icon-nodes.json')
@@ -80,6 +81,28 @@ function addLucideIcon(iconSet, icon) {
   }
 }
 
+/** The whole set, from its stored metadata and drawings */
+function joinIconSet(meta, drawings) {
+  const set = {}
+  for (const name of Object.keys(meta)) {
+    if (!drawings[name]) throw new Error(`Icon "${name}" has metadata but no drawing`)
+    set[name] = { ...meta[name], ...drawings[name] }
+  }
+  for (const name of Object.keys(drawings)) if (!meta[name]) throw new Error(`Icon "${name}" has a drawing but no metadata`)
+  return set
+}
+
+/** The set split for storage: metadata, and the paint and shapes Icon draws */
+function splitIconSet(set) {
+  const meta = {}
+  const drawings = {}
+  for (const [name, { paint, elements, ...rest }] of Object.entries(set)) {
+    meta[name] = rest
+    drawings[name] = { paint, elements }
+  }
+  return { meta, drawings }
+}
+
 const UNION = /export type IconName =\r?\n(?: {2}\| '[a-zA-Z0-9]+'\r?\n)+/
 
 /** `IconName` as source: one member per line, in code-point order (the same on every machine) */
@@ -102,7 +125,9 @@ module.exports = {
   checkCategory,
   checkName,
   iconNameUnion,
+  joinIconSet,
   lucideElements,
   lucideTags,
+  splitIconSet,
   withIconNameUnion,
 }
