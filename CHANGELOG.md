@@ -28,6 +28,8 @@ There are no per-country cuisine icons, because Lucide has none. For cuisines, u
 
 **Bundle size:** `Icon` now loads only the icons' drawings, and leaves out their descriptions, aliases and labels. So a bundle that uses only Button stays small at 22.5 KB gzipped with all 140 icons (20.8 KB with 3.3's 64). `iconSet` still has everything and doesn't change.
 
+**For contributors:** the icon set's single data file is now two: `src/styles/iconDrawings.json` (how each icon is drawn) and `src/styles/iconMeta.json` (its description, aliases and labels). `npm run icon:add` writes both, and a test checks they list the same icons. To change one of the system's own drawings (the status icons, carets or AI sparkle), edit `iconDrawings.json`.
+
 - feat: 76 more icons, with drawings stored apart from metadata [`#386`](https://github.com/common-origin/common-origin-design-system/pull/386)
 
 #### [v3.3.0](https://github.com/common-origin/common-origin-design-system/compare/v3.2.0...v3.3.0)
