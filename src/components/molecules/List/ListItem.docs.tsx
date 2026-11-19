@@ -102,7 +102,7 @@ export const listItemDocs: ComponentDocumentation = {
       type: 'React.ReactNode',
       required: false,
       default: 'undefined',
-      description: 'Content revealed when item is expanded. Rendered with indented padding and subtle background.'
+      description: 'Content revealed when item is expanded. Rendered with even padding on a subtle background.'
     },
     {
       name: 'role',
@@ -188,9 +188,7 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.opacity.disabled',
     'semantic.motion.duration.fast',
     'semantic.motion.duration.moderate',
-    'semantic.motion.easing.decelerate',
-    'component.listItem.expandedIndent.comfortable',
-    'component.listItem.expandedIndent.compact'
+    'semantic.motion.easing.decelerate'
   ],
 
   examples: [
@@ -269,7 +267,7 @@ export const listItemDocs: ComponentDocumentation = {
   },
 
   anatomy: {
-    description: 'A row with an optional leading icon, a text area with primary and optional secondary text, an optional trailing badge, and a chevron on expandable items. Expanded content sits below the row, indented, on a subtle background.',
+    description: 'A row with an optional leading icon, a text area with primary and optional secondary text, an optional trailing badge, and a chevron on expandable items. Expanded content sits below the row on a subtle background.',
     diagram: `
 ┌──────────────────────────────────────────────────────┐
 │ ┌────┐  ┌──────────────────────┐  ┌───────┐  ┌───┐  │

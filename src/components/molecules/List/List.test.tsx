@@ -333,6 +333,23 @@ describe('ListItem', () => {
       expect(panel('compact')).toBe(`0px ${inset.md} ${inset.sm}`)
     })
 
+    it('keeps expanded content still on the x axis as it opens and closes', () => {
+      const horizontal = (expanded: boolean) => {
+        const { unmount } = render(
+          <ListItem primary="Item" expandable expanded={expanded}>
+            <span>Details</span>
+          </ListItem>
+        )
+        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const values = [style.paddingLeft, style.paddingRight, style.marginLeft, style.marginRight]
+        unmount()
+        return values
+      }
+      const expanded = horizontal(true)
+      expect(expanded.every(value => value && value !== '0px')).toBe(true)
+      expect(horizontal(false)).toEqual(expanded)
+    })
+
     it('updates aria-expanded attribute correctly', () => {
       const { rerender } = render(
         <ListItem primary="Item" expandable expanded={false} />

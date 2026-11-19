@@ -249,11 +249,30 @@ const StyledExpandedContent = styled.div.withConfig({
   $expanded: boolean
 }>`
   overflow: hidden;
-  /* Padding collapses with the height, and visibility hides the content from
-     keyboard and screen readers once the collapse finishes. */
+  background-color: ${semantic.surface.raised};
+  border-radius: ${rowRadius};
+  /* Horizontal padding and margin are the same in both states, so the content never moves
+     sideways: only the height and the vertical spacing open and close. The side margins are the
+     row's own insets, so the panel lines up with the row in every density (0051). */
+  padding-left: ${({ $spacing }) =>
+    $spacing === 'compact' ? semantic.space[300] : semantic.space[400]};
+  padding-right: ${({ $spacing }) =>
+    $spacing === 'compact' ? semantic.space[300] : semantic.space[400]};
+  margin-left: ${({ $spacing }) =>
+    $spacing === 'compact' ? semantic.space.inset.md : semantic.space.inset.lg};
+  margin-right: ${({ $spacing }) =>
+    $spacing === 'compact' ? semantic.space.inset.md : semantic.space.inset.lg};
+  margin-top: 0;
+  padding-top: ${({ $expanded }) => ($expanded ? semantic.space[200] : '0')};
+  padding-bottom: ${({ $expanded, $spacing }) =>
+    $expanded ? ($spacing === 'compact' ? semantic.space[200] : semantic.space[300]) : '0'};
+  margin-bottom: ${({ $expanded, $spacing }) =>
+    $expanded ? ($spacing === 'compact' ? semantic.space.inset.sm : semantic.space.inset.md) : '0'};
+  /* Visibility hides the content from keyboard and screen readers once the collapse finishes. */
   transition: max-height ${duration.moderate} ${easing.decelerate},
-              padding ${duration.moderate} ${easing.decelerate},
-              margin ${duration.moderate} ${easing.decelerate},
+              padding-top ${duration.moderate} ${easing.decelerate},
+              padding-bottom ${duration.moderate} ${easing.decelerate},
+              margin-bottom ${duration.moderate} ${easing.decelerate},
               opacity ${duration.moderate} ${easing.decelerate},
               visibility ${duration.moderate} ${easing.decelerate};
   max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
@@ -264,26 +283,6 @@ const StyledExpandedContent = styled.div.withConfig({
     transition: opacity ${duration.moderate} ${easing.decelerate},
                 visibility ${duration.moderate} ${easing.decelerate};
   }
-  
-  ${({ $expanded, $spacing }) => $expanded && `
-    padding: ${
-      $spacing === 'compact'
-        ? `${semantic.space[200]} ${semantic.space[300]} ${semantic.space[200]} ${tokens.component.listItem.expandedIndent.compact}`
-        : `${semantic.space[200]} ${semantic.space[400]} ${semantic.space[300]} ${tokens.component.listItem.expandedIndent.comfortable}`
-    };
-    background-color: ${semantic.surface.raised};
-    border-radius: ${rowRadius};
-    /* The row's own insets, so the panel lines up with the row in every density (0051) */
-    margin: 0 ${
-      $spacing === 'compact'
-        ? semantic.space.inset.md
-        : semantic.space.inset.lg
-    } ${
-      $spacing === 'compact'
-        ? semantic.space.inset.sm
-        : semantic.space.inset.md
-    };
-  `}
 `
 
 export const ListItem = ({
