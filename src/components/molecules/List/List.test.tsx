@@ -325,12 +325,13 @@ describe('ListItem', () => {
             <span>Details</span>
           </ListItem>
         )
-        const margin = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement).margin
+        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const margins = [style.marginLeft, style.marginRight, style.marginBottom]
         unmount()
-        return margin
+        return margins
       }
-      expect(panel('comfortable')).toBe(`0px ${inset.lg} ${inset.md}`)
-      expect(panel('compact')).toBe(`0px ${inset.md} ${inset.sm}`)
+      expect(panel('comfortable')).toEqual([inset.lg, inset.lg, inset.md])
+      expect(panel('compact')).toEqual([inset.md, inset.md, inset.sm])
     })
 
     it('keeps expanded content still on the x axis as it opens and closes', () => {
@@ -348,6 +349,23 @@ describe('ListItem', () => {
       const expanded = horizontal(true)
       expect(expanded.every(value => value && value !== '0px')).toBe(true)
       expect(horizontal(false)).toEqual(expanded)
+    })
+
+    it('pads expanded content by the row\'s side inset on both sides, with no extra indent', () => {
+      const { inset } = tokens.semantic.space
+      const padding = (spacing: 'compact' | 'comfortable') => {
+        const { unmount } = render(
+          <ListItem primary="Item" expandable expanded spacing={spacing}>
+            <span>Details</span>
+          </ListItem>
+        )
+        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const values = [style.paddingLeft, style.paddingRight]
+        unmount()
+        return values
+      }
+      expect(padding('comfortable')).toEqual([inset.lg, inset.lg])
+      expect(padding('compact')).toEqual([inset.md, inset.md])
     })
 
     it('updates aria-expanded attribute correctly', () => {

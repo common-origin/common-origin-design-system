@@ -9,6 +9,10 @@ import { ListSpacingContext, type ListSpacing } from './ListContext'
 const { semantic } = tokens
 const { duration, easing } = semantic.motion
 
+/** The row's side inset, which follows density (decision 0051) */
+const rowSideInset = (spacing: ListSpacing) =>
+  spacing === 'compact' ? semantic.space.inset.md : semantic.space.inset.lg
+
 export interface ListItemProps {
   /**
    * Main text/content
@@ -252,17 +256,12 @@ const StyledExpandedContent = styled.div.withConfig({
   background-color: ${semantic.surface.raised};
   border-radius: ${rowRadius};
   /* Horizontal padding and margin are the same in both states, so the content never moves
-     sideways: only the height and the vertical spacing open and close. The side margins are the
-     row's own insets, so the panel lines up with the row in every density (0051). */
-  padding-left: ${({ $spacing }) =>
-    $spacing === 'compact' ? semantic.space[300] : semantic.space[400]};
-  padding-right: ${({ $spacing }) =>
-    $spacing === 'compact' ? semantic.space[300] : semantic.space[400]};
-  margin-left: ${({ $spacing }) =>
-    $spacing === 'compact' ? semantic.space.inset.md : semantic.space.inset.lg};
-  margin-right: ${({ $spacing }) =>
-    $spacing === 'compact' ? semantic.space.inset.md : semantic.space.inset.lg};
-  margin-top: 0;
+     sideways: only the height and the vertical spacing open and close. Both are the row's own
+     side inset, so the panel lines up with the row and follows density (0051). */
+  padding-left: ${({ $spacing }) => rowSideInset($spacing)};
+  padding-right: ${({ $spacing }) => rowSideInset($spacing)};
+  margin-left: ${({ $spacing }) => rowSideInset($spacing)};
+  margin-right: ${({ $spacing }) => rowSideInset($spacing)};
   padding-top: ${({ $expanded }) => ($expanded ? semantic.space[200] : '0')};
   padding-bottom: ${({ $expanded, $spacing }) =>
     $expanded ? ($spacing === 'compact' ? semantic.space[200] : semantic.space[300]) : '0'};

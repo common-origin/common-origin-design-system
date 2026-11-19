@@ -173,6 +173,7 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.space.inset.md',
     'semantic.space.inset.lg',
     'semantic.radius.md',
+    'semantic.surface.raised',
     'semantic.border.width.thick',
     'semantic.border.focusOffset',
     'semantic.border.focus',
