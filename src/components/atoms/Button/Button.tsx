@@ -69,7 +69,7 @@ const baseButtonStyles = `
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: ${tokens.semantic.space[100]};
+  gap: ${tokens.semantic.space[200]};
   height: max-content;
   cursor: pointer;
   border: none;

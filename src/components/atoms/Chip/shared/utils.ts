@@ -4,6 +4,8 @@ import { ChipSurface } from './types'
 
 const { component: { chip }, semantic } = tokens
 
+const edge = semantic.border.width.thin
+
 interface StyledChipProps {
   $surface: ChipSurface
   $disabled?: boolean
@@ -22,6 +24,7 @@ export const getVariantStyles = ({ $surface, $selected, $clickable, $disabled }:
       const { disabled } = chip.variants.subtle
       return `
         background-color: ${disabled.backgroundColor};
+        border: ${edge} solid ${tokens.semantic.color.border.default};
         color: ${disabled.textColor};
       `
     }
@@ -30,8 +33,10 @@ export const getVariantStyles = ({ $surface, $selected, $clickable, $disabled }:
     const interactiveStates = $clickable
     return `
       background-color: ${fill['accent-muted']};
+      /* Same edge width as unselected, so selecting never shifts the layout */
+      border: ${edge} solid transparent;
       color: ${text.accent};
-      
+
       &:hover {
         background-color: ${interactiveStates ? fill['accent-muted-hover'] : fill['accent-muted']};
         color: ${interactiveStates ? text.accent : text.accent};
@@ -57,8 +62,10 @@ export const getVariantStyles = ({ $surface, $selected, $clickable, $disabled }:
     case 'subtle':
       return `
         background-color: ${chip.variants.subtle.backgroundColor};
+        /* An edge shows the unselected chip is a control (P1, P5); shared by FilterChip and InputChip */
+        border: ${edge} solid ${$disabled ? tokens.semantic.color.border.default : tokens.semantic.color.border.input};
         color: ${chip.variants.subtle.textColor};
-        
+
         &:hover {
           background-color: ${$disabled ? chip.variants.subtle.disabled.backgroundColor : ($clickable ? chip.variants.subtle.hover.backgroundColor : chip.variants.subtle.backgroundColor)};
         }
