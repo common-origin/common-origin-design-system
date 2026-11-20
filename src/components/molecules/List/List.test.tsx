@@ -9,9 +9,9 @@ import { Typography } from '../../atoms/Typography'
 
 expect.extend(toHaveNoViolations)
 
-// Expanded content sits in an inner grid item; the panel is the grid around it (#390)
-const expandedPanel = (text: string) =>
-  screen.getByText(text).parentElement?.parentElement as HTMLElement
+// The expanded panel is the element ListItem marks aria-hidden; the content sits in a grid item
+// inside it (#390)
+const expandedPanel = (text: string) => screen.getByText(text).closest('[aria-hidden]') as HTMLElement
 
 describe('List', () => {
   describe('Basic Rendering', () => {
@@ -367,7 +367,6 @@ describe('ListItem', () => {
       const panel = expandedPanel('Details')
       expect(getComputedStyle(panel).display).toBe('grid')
       expect(getComputedStyle(panel).gridTemplateRows).toBe('0fr')
-      expect(getComputedStyle(panel).maxHeight).toBe('')
 
       rerender(
         <ListItem primary="Item" expandable expanded>
@@ -376,8 +375,11 @@ describe('ListItem', () => {
       )
       expect(getComputedStyle(panel).gridTemplateRows).toBe('1fr')
       expect(getComputedStyle(panel).maxHeight).toBe('')
-      // The grid item can shrink to nothing while the row is closed
-      expect(getComputedStyle(screen.getByText('Details').parentElement as HTMLElement).minHeight).toBe('0')
+      // The grid item can shrink to nothing while the row is closed, and leaves clipping to the
+      // padded panel, so focus rings at the content's edge aren't cut off
+      const inner = getComputedStyle(panel.firstElementChild as HTMLElement)
+      expect(inner.minHeight).toBe('0')
+      expect(inner.overflow).toBe('')
     })
 
     it('updates aria-expanded attribute correctly', () => {

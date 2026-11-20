@@ -288,11 +288,10 @@ const StyledExpandedContent = styled.div.withConfig({
   }
 `
 
-/* The grid item: min-height 0 lets the 0fr row close it completely, and overflow clips the
-   content while the row grows or shrinks */
+/* The grid item: min-height 0 lets the 0fr row close it completely. It doesn't clip: the panel
+   around it does, at its padded edge, so focus rings on the content's edge aren't cut off. */
 const StyledExpandedInner = styled.div`
   min-height: 0;
-  overflow: hidden;
 `
 
 export const ListItem = ({
