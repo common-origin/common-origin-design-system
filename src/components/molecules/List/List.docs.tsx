@@ -582,7 +582,7 @@ return (
   },
   
   anatomy: {
-    description: 'List items consist of an optional leading icon (24x24px), text content area with primary and optional secondary text, optional trailing badge, and a decorative chevron for expandable items. Expanded content is indented and highlighted with a subtle background.',
+    description: 'List items consist of an optional leading icon (24x24px), text content area with primary and optional secondary text, optional trailing badge, and a decorative chevron for expandable items. Expanded content is highlighted with a subtle background.',
     diagram: `
 ┌────────────────────────────────────────────────────────────┐
 │ List (role="list")                                         │
@@ -595,7 +595,7 @@ return (
 │ │ └────┘        Text Content          Right Content     │ │
 │ │                                                        │ │
 │ │ ┌────────────────────────────────────────────────┐    │ │
-│ │ │ Expanded Content (indented, subtle bg)         │    │ │
+│ │ │ Expanded Content (subtle bg)                   │    │ │
 │ │ │ - Animated with max-height transition          │    │ │
 │ │ │ - Only visible when expanded={true}            │    │ │
 │ │ └────────────────────────────────────────────────┘    │ │

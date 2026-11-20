@@ -802,8 +802,8 @@
   --co-component-empty-state-max-width: var(--co-semantic-size-10000); /** Widest an EmptyState block grows inside a wide container. */
   --co-component-empty-state-text-max-width: var(--co-semantic-size-9000); /** Widest EmptyState's title and description run, for a readable measure. */
   --co-component-empty-state-actions-max-width: var(--co-semantic-size-7500); /** Widest EmptyState's actions area grows, so buttons don't stretch. */
-  --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Indent of a compact ListItem's expanded content, aligning it with the label. */
-  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Left indent of a comfortable ListItem's expanded content. */
+  --co-component-list-item-expanded-indent-compact: var(--co-semantic-size-1200); /** Deprecated: ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0. */
+  --co-component-list-item-expanded-indent-comfortable: var(--co-semantic-size-1500); /** Deprecated: ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0. */
   --co-component-transaction-list-item-min-height: var(--co-semantic-size-1800); /** Deprecated: Two-line rows share semantic.size.row.lg, which follows density (decision 0051). Removed in 4.0. */
   --co-component-status-pending-text: var(--co-semantic-color-text-muted); /** Text and icon of a pending StatusLabel: neutral, because waiting needs no attention (decision 0045). 6.01:1 on white. */
   --co-component-status-pending-background: var(--co-semantic-color-fill-muted); /** Fill of a pending StatusLabel (decision 0045). */

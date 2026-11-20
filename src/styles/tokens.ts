@@ -1418,9 +1418,17 @@ export type Tokens = {
     };
     listItem: {
       expandedIndent: {
-        /** Indent of a compact ListItem's expanded content, aligning it with the label. */
+        /**
+         * Indent of a compact ListItem's expanded content, aligning it with the label.
+         *
+         * @deprecated ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0.
+         */
         compact: string;
-        /** Left indent of a comfortable ListItem's expanded content. */
+        /**
+         * Left indent of a comfortable ListItem's expanded content.
+         *
+         * @deprecated ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0.
+         */
         comfortable: string;
       };
     };

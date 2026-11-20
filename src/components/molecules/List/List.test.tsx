@@ -325,12 +325,33 @@ describe('ListItem', () => {
             <span>Details</span>
           </ListItem>
         )
-        const margin = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement).margin
+        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const margins = [style.marginLeft, style.marginRight, style.marginBottom]
         unmount()
-        return margin
+        return margins
       }
-      expect(panel('comfortable')).toBe(`0px ${inset.lg} ${inset.md}`)
-      expect(panel('compact')).toBe(`0px ${inset.md} ${inset.sm}`)
+      expect(panel('comfortable')).toEqual([inset.lg, inset.lg, inset.md])
+      expect(panel('compact')).toEqual([inset.md, inset.md, inset.sm])
+    })
+
+    it('pads expanded content evenly by the row\'s side inset, and keeps it still on the x axis', () => {
+      const { inset } = tokens.semantic.space
+      const horizontal = (spacing: 'compact' | 'comfortable', expanded: boolean) => {
+        const { unmount } = render(
+          <ListItem primary="Item" expandable expanded={expanded} spacing={spacing}>
+            <span>Details</span>
+          </ListItem>
+        )
+        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const values = [style.paddingLeft, style.paddingRight, style.marginLeft, style.marginRight]
+        unmount()
+        return values
+      }
+      // Equal sides, no extra indent, and the same open and closed, so nothing slides sideways
+      for (const [spacing, side] of [['comfortable', inset.lg], ['compact', inset.md]] as const) {
+        expect(horizontal(spacing, true)).toEqual([side, side, side, side])
+        expect(horizontal(spacing, false)).toEqual([side, side, side, side])
+      }
     })
 
     it('updates aria-expanded attribute correctly', () => {

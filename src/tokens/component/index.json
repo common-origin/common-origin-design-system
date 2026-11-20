@@ -954,11 +954,13 @@
       "expandedIndent": {
         "compact": {
           "$value": "{semantic.size.1200}",
-          "$description": "Indent of a compact ListItem's expanded content, aligning it with the label."
+          "$description": "Indent of a compact ListItem's expanded content, aligning it with the label.",
+          "$deprecated": "ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0."
         },
         "comfortable": {
           "$value": "{semantic.size.1500}",
-          "$description": "Left indent of a comfortable ListItem's expanded content."
+          "$description": "Left indent of a comfortable ListItem's expanded content.",
+          "$deprecated": "ListItem's expanded content no longer has a left indent: it is padded by the row's own inset, semantic.space.inset.md (compact) or semantic.space.inset.lg (comfortable). Removed in 4.0."
         }
       }
     },
