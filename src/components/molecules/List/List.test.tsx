@@ -9,9 +9,9 @@ import { Typography } from '../../atoms/Typography'
 
 expect.extend(toHaveNoViolations)
 
-// The expanded panel is the element ListItem marks aria-hidden; the content sits in a grid item
+// The expanded panel is the list item's own aria-hidden child; the content sits in a grid item
 // inside it (#390)
-const expandedPanel = (text: string) => screen.getByText(text).closest('[aria-hidden]') as HTMLElement
+const expandedPanel = (text: string) => screen.getByText(text).closest('li > [aria-hidden]') as HTMLElement
 
 describe('List', () => {
   describe('Basic Rendering', () => {
