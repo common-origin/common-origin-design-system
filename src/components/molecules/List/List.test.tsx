@@ -9,6 +9,10 @@ import { Typography } from '../../atoms/Typography'
 
 expect.extend(toHaveNoViolations)
 
+// Expanded content sits in an inner grid item; the panel is the grid around it (#390)
+const expandedPanel = (text: string) =>
+  screen.getByText(text).parentElement?.parentElement as HTMLElement
+
 describe('List', () => {
   describe('Basic Rendering', () => {
     it('renders without crashing', () => {
@@ -290,7 +294,7 @@ describe('ListItem', () => {
           <div data-testid="expanded-content">Hidden content</div>
         </ListItem>
       )
-      // Content exists but expansion is controlled by CSS (maxHeight: 0, opacity: 0)
+      // Content exists but expansion is controlled by CSS (a 0fr grid row, opacity: 0)
       const content = screen.getByTestId('expanded-content')
       expect(content).toBeInTheDocument()
       
@@ -325,7 +329,7 @@ describe('ListItem', () => {
             <span>Details</span>
           </ListItem>
         )
-        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const style = getComputedStyle(expandedPanel('Details'))
         const margins = [style.marginLeft, style.marginRight, style.marginBottom]
         unmount()
         return margins
@@ -342,7 +346,7 @@ describe('ListItem', () => {
             <span>Details</span>
           </ListItem>
         )
-        const style = getComputedStyle(screen.getByText('Details').parentElement as HTMLElement)
+        const style = getComputedStyle(expandedPanel('Details'))
         const values = [style.paddingLeft, style.paddingRight, style.marginLeft, style.marginRight]
         unmount()
         return values
@@ -352,6 +356,28 @@ describe('ListItem', () => {
         expect(horizontal(spacing, true)).toEqual([side, side, side, side])
         expect(horizontal(spacing, false)).toEqual([side, side, side, side])
       }
+    })
+
+    it('opens on a grid row, with no height cap, so content of any height shows in full (#390)', () => {
+      const { rerender } = render(
+        <ListItem primary="Item" expandable expanded={false}>
+          <span>Details</span>
+        </ListItem>
+      )
+      const panel = expandedPanel('Details')
+      expect(getComputedStyle(panel).display).toBe('grid')
+      expect(getComputedStyle(panel).gridTemplateRows).toBe('0fr')
+      expect(getComputedStyle(panel).maxHeight).toBe('')
+
+      rerender(
+        <ListItem primary="Item" expandable expanded>
+          <span>Details</span>
+        </ListItem>
+      )
+      expect(getComputedStyle(panel).gridTemplateRows).toBe('1fr')
+      expect(getComputedStyle(panel).maxHeight).toBe('')
+      // The grid item can shrink to nothing while the row is closed
+      expect(getComputedStyle(screen.getByText('Details').parentElement as HTMLElement).minHeight).toBe('0')
     })
 
     it('updates aria-expanded attribute correctly', () => {

@@ -252,6 +252,11 @@ const StyledExpandedContent = styled.div.withConfig({
   $spacing: 'compact' | 'comfortable'
   $expanded: boolean
 }>`
+  /* The panel opens on a grid row that grows from 0fr to 1fr, so it animates to the content's
+     own height, however tall, with no height cap and no measuring (issue 390). The children sit in
+     StyledExpandedInner, which can shrink to nothing while the row is closed. */
+  display: grid;
+  grid-template-rows: ${({ $expanded }) => ($expanded ? '1fr' : '0fr')};
   overflow: hidden;
   background-color: ${semantic.surface.raised};
   border-radius: ${rowRadius};
@@ -268,13 +273,12 @@ const StyledExpandedContent = styled.div.withConfig({
   margin-bottom: ${({ $expanded, $spacing }) =>
     $expanded ? ($spacing === 'compact' ? semantic.space.inset.sm : semantic.space.inset.md) : '0'};
   /* Visibility hides the content from keyboard and screen readers once the collapse finishes. */
-  transition: max-height ${duration.moderate} ${easing.decelerate},
+  transition: grid-template-rows ${duration.moderate} ${easing.decelerate},
               padding-top ${duration.moderate} ${easing.decelerate},
               padding-bottom ${duration.moderate} ${easing.decelerate},
               margin-bottom ${duration.moderate} ${easing.decelerate},
               opacity ${duration.moderate} ${easing.decelerate},
               visibility ${duration.moderate} ${easing.decelerate};
-  max-height: ${({ $expanded }) => ($expanded ? '1000px' : '0')};
   opacity: ${({ $expanded }) => ($expanded ? '1' : '0')};
   visibility: ${({ $expanded }) => ($expanded ? 'visible' : 'hidden')};
 
@@ -282,6 +286,13 @@ const StyledExpandedContent = styled.div.withConfig({
     transition: opacity ${duration.moderate} ${easing.decelerate},
                 visibility ${duration.moderate} ${easing.decelerate};
   }
+`
+
+/* The grid item: min-height 0 lets the 0fr row close it completely, and overflow clips the
+   content while the row grows or shrinks */
+const StyledExpandedInner = styled.div`
+  min-height: 0;
+  overflow: hidden;
 `
 
 export const ListItem = ({
@@ -405,7 +416,7 @@ export const ListItem = ({
             $expanded={expanded}
             aria-hidden={!expanded}
           >
-            {children}
+            <StyledExpandedInner>{children}</StyledExpandedInner>
           </StyledExpandedContent>
         )}
       </StyledListItem>

@@ -596,7 +596,7 @@ return (
 │ │                                                        │ │
 │ │ ┌────────────────────────────────────────────────┐    │ │
 │ │ │ Expanded Content (subtle bg)                   │    │ │
-│ │ │ - Animated with max-height transition          │    │ │
+│ │ │ - Grows to its content's height, however tall  │    │ │
 │ │ │ - Only visible when expanded={true}            │    │ │
 │ │ └────────────────────────────────────────────────┘    │ │
 │ └────────────────────────────────────────────────────────┘ │
