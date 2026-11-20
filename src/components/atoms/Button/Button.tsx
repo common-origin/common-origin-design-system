@@ -167,6 +167,8 @@ const getSizeStyles = ({ $size }: StyledButtonProps) => {
         font-weight: ${button.sizes.small.fontWeight};
         min-height: ${control.sm};
         padding: 0 ${inset.md};
+        /* The smaller icon sits closer to its label than on medium and large */
+        gap: ${tokens.semantic.space[100]};
       `
     case 'medium':
       return `
