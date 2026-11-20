@@ -262,9 +262,9 @@ const StyledExpandedContent = styled.div.withConfig({
   padding-right: ${({ $spacing }) => rowSideInset($spacing)};
   margin-left: ${({ $spacing }) => rowSideInset($spacing)};
   margin-right: ${({ $spacing }) => rowSideInset($spacing)};
-  padding-top: ${({ $expanded }) => ($expanded ? semantic.space[200] : '0')};
+  padding-top: ${({ $expanded }) => ($expanded ? semantic.space.inset.sm : '0')};
   padding-bottom: ${({ $expanded, $spacing }) =>
-    $expanded ? ($spacing === 'compact' ? semantic.space[200] : semantic.space[300]) : '0'};
+    $expanded ? ($spacing === 'compact' ? semantic.space.inset.sm : semantic.space.inset.md) : '0'};
   margin-bottom: ${({ $expanded, $spacing }) =>
     $expanded ? ($spacing === 'compact' ? semantic.space.inset.sm : semantic.space.inset.md) : '0'};
   /* Visibility hides the content from keyboard and screen readers once the collapse finishes. */

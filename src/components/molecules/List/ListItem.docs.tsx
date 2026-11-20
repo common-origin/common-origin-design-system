@@ -168,7 +168,6 @@ export const listItemDocs: ComponentDocumentation = {
     'semantic.space.100',
     'semantic.space.200',
     'semantic.space.300',
-    'semantic.space.400',
     'semantic.space.inset.sm',
     'semantic.space.inset.md',
     'semantic.space.inset.lg',
