@@ -122,6 +122,10 @@ export const inputChipDocs: ComponentDocumentation = {
     // Subtle variant (InputChip always uses subtle variant)
     'component.chip.variants.subtle.backgroundColor',
     'component.chip.variants.subtle.textColor',
+    // The edge that shows an unselected chip is a control: border.input (3:1), border.default when disabled
+    'semantic.border.width.thin',
+    'semantic.color.border.input',
+    'semantic.color.border.default',
     'component.chip.variants.subtle.disabled.backgroundColor',
     'component.chip.variants.subtle.disabled.textColor',
     // Selected treatment (decision 0016)

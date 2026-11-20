@@ -6,6 +6,10 @@ const { component: { chip }, semantic } = tokens
 
 const edge = semantic.border.width.thin
 
+// The variant `border` shorthand comes after ChipBase's forcedColorsEdge, so restate the forced-colours
+// edge here: it follows the text colour the browser picks (GrayText when disabled)
+const forcedEdge = `${forcedColors} { border-color: currentColor; }`
+
 interface StyledChipProps {
   $surface: ChipSurface
   $disabled?: boolean
@@ -26,6 +30,7 @@ export const getVariantStyles = ({ $surface, $selected, $clickable, $disabled }:
         background-color: ${disabled.backgroundColor};
         border: ${edge} solid ${tokens.semantic.color.border.default};
         color: ${disabled.textColor};
+        ${forcedEdge}
       `
     }
 
@@ -78,6 +83,8 @@ export const getVariantStyles = ({ $surface, $selected, $clickable, $disabled }:
           background-color: ${chip.variants.subtle.disabled.backgroundColor};
           color: ${chip.variants.subtle.disabled.textColor};
         ` : ''}
+
+        ${forcedEdge}
       `
     case 'default':
     default:
