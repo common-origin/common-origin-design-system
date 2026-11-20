@@ -437,6 +437,15 @@ describe('Button Component', () => {
       expect(button.querySelector('svg')).toBeInTheDocument()
     })
 
+    it.each([
+      ['small', tokens.semantic.space[100]],
+      ['medium', tokens.semantic.space[200]],
+      ['large', tokens.semantic.space[200]],
+    ])('puts the %s button icon %s from its label', (size, gap) => {
+      renderButton({ iconName: 'add', children: 'Add Item', size })
+      expect(screen.getByRole('button')).toHaveStyle({ gap })
+    })
+
     it('maps button sizes to appropriate icon sizes', () => {
       const sizeMap = {
         'small': 'xs',

@@ -171,3 +171,57 @@ describe('Selected and disabled chips (#110)', () => {
     expect(selected.color).toBe(unselected.color)
   })
 })
+
+describe('Chip edge (FilterChip and InputChip)', () => {
+  const { border } = tokens.semantic.color
+  const subtle = tokens.component.chip.variants.subtle
+
+  it.each([
+    ['FilterChip', <FilterChip key="f" data-testid="chip" selected={false} onClick={() => {}}>In stock</FilterChip>],
+    ['InputChip', <InputChip key="i" data-testid="chip">Electronics</InputChip>],
+  ])('%s draws a border.input edge when unselected', (_name, element) => {
+    render(element)
+    expect(screen.getByTestId('chip')).toHaveStyle({
+      borderWidth: tokens.semantic.border.width.thin,
+      borderStyle: 'solid',
+      borderColor: border.input,
+    })
+  })
+
+  it('uses border.default when disabled, selected or not', () => {
+    render(
+      <>
+        <InputChip data-testid="plain" disabled>Electronics</InputChip>
+        <InputChip data-testid="selected" selected disabled>Electronics</InputChip>
+      </>
+    )
+    expect(screen.getByTestId('plain')).toHaveStyle({ borderColor: border.default })
+    expect(screen.getByTestId('selected')).toHaveStyle({ borderColor: border.default })
+  })
+
+  it('keeps the same edge width when selected, so selecting never shifts the layout', () => {
+    render(
+      <>
+        <InputChip data-testid="off">Electronics</InputChip>
+        <InputChip data-testid="on" selected>Electronics</InputChip>
+      </>
+    )
+    const off = window.getComputedStyle(screen.getByTestId('off'))
+    const on = window.getComputedStyle(screen.getByTestId('on'))
+    expect(on.borderWidth).toBe(off.borderWidth)
+    expect(on.borderStyle).toBe(off.borderStyle)
+    expect(on.borderColor).not.toBe(off.borderColor)
+  })
+
+  it('restates the forced-colours edge after the border shorthand', () => {
+    render(<InputChip data-testid="chip">Electronics</InputChip>)
+    const css = Array.from(document.querySelectorAll('style')).map((s) => s.textContent).join('')
+    expect(css).toMatch(/forced-colors: active\)\{\.[\w-]+\{border-color:currentColor;\}\}/)
+  })
+
+  // WCAG 1.4.11: the edge is what shows an unselected chip is a control (P2)
+  it('meets 3:1 against the chip fill and the white page', () => {
+    expect(contrastRatio(border.input, subtle.backgroundColor)).toBeGreaterThanOrEqual(3)
+    expect(contrastRatio(border.input, '#ffffff')).toBeGreaterThanOrEqual(3)
+  })
+})
