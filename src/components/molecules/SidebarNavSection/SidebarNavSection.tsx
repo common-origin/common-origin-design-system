@@ -8,14 +8,16 @@ import { interactiveRow, reducedMotion, rowRadius } from '../../../lib/styleUtil
 import { Icon } from '../../atoms/Icon'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
 import { SidebarNavItem } from '../SidebarNavItem'
-import { Fold } from '../SidebarNavItem/sidebarNavMotion'
+import { Fold, ROW_INSET } from '../SidebarNavItem/sidebarNavMotion'
 
 // How long the items take to show or hide: the clip lifts after this even if no transition ran
 // (reduced motion, or a background tab)
 const COLLAPSE_MS = parseInt(tokenValues.semantic.motion.duration.moderate, 10)
 
-const { semantic } = tokens
+const { semantic, component } = tokens
 const { space, color, motion, size, border, typography } = semantic
+// The items' icon-to-label gap, an interim token that follows density (issue 396, decision 0060)
+const { item } = component.sidebarNav
 
 export interface SidebarNavSectionProps {
   /** The section's visible label, which also names its list */
@@ -76,11 +78,13 @@ const labelText = css`
   color: ${color.text.muted};
 `
 
+// The header lines up with the items in every density (0060): it starts at their icon column and
+// takes their right padding
 const StaticLabel = styled.div`
   ${labelText}
   flex: 1;
   min-width: 0;
-  padding: 0 ${space.inset.sm};
+  padding: 0 ${space.inset.md} 0 ${ROW_INSET};
 `
 
 
@@ -90,12 +94,14 @@ const Disclosure = styled.button.withConfig({
   ${labelText}
   display: flex;
   align-items: center;
-  gap: ${space[100]};
+  /* The caret is the items' icon size, so with their inset and gap it sits on their icon column and
+     the label starts where theirs do */
+  gap: ${item.gap};
   flex: 1;
   min-width: 0;
   box-sizing: border-box;
   min-height: ${size.row.sm};
-  padding: 0 ${space.inset.sm};
+  padding: 0 ${space.inset.md} 0 ${ROW_INSET};
   border: none;
   border-radius: ${rowRadius};
   background: none;

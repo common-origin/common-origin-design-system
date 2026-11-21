@@ -5,7 +5,7 @@ import { reducedMotion } from '../../../lib/styleUtils'
 // How SidebarNav's pieces move between expanded and the rail (issue 348), shared by the nav, its rows
 // and its sections so they move as one: nothing unmounts or re-lays out mid-move.
 
-const { semantic, component } = tokens
+const { semantic } = tokens
 const { motion, space, size } = semantic
 
 /**
@@ -23,8 +23,17 @@ export const SCROLLBAR_VAR = '--co-sidebar-nav-scrollbar'
 /** The nav's own side padding: the rail's inner width is the rail less twice this */
 export const NAV_PADDING = space[200]
 
-/** A row's left inset: centres an icon in the rail, and stays the same expanded, so icons never move */
-export const ROW_INSET = `calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${size.icon.sm}) / 2)`
+/**
+ * The rail's width: a row as wide as it's tall (size.control.md, decision 0059), with the nav's padding
+ * on each side, so it follows density: 48, 56 and 64px (decision 0060)
+ */
+export const RAIL_WIDTH = `calc(${size.control.md} + 2 * ${NAV_PADDING})`
+
+/**
+ * A row's left inset: centres an icon in the rail's square row, and stays the same expanded, so icons
+ * never move. Follows density with the row: 8, 12 and 16px
+ */
+export const ROW_INSET = `calc((${size.control.md} - ${size.icon.sm}) / 2)`
 
 /**
  * Fades content that the rail doesn't show (labels, meta text, the badge count, the header and

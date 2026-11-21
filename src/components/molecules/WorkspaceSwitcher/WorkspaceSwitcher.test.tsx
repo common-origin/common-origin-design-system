@@ -5,6 +5,7 @@ import { axe, toHaveNoViolations } from 'jest-axe'
 import { WorkspaceSwitcher, type WorkspaceSwitcherProps } from './WorkspaceSwitcher'
 import { MenuItem } from '../Menu'
 import { SidebarNavContext } from '../SidebarNavItem/SidebarNavContext'
+import tokens from '@/styles/tokens.json'
 
 expect.extend(toHaveNoViolations)
 
@@ -13,10 +14,10 @@ const workspaces = [
   { id: 'lab', name: 'Flavour Lab', description: 'Free plan' },
 ]
 
-function Switcher({ collapsed = false, ...props }: Partial<WorkspaceSwitcherProps> & { collapsed?: boolean }) {
+function Switcher({ collapsed = false, inNav, ...props }: Partial<WorkspaceSwitcherProps> & { collapsed?: boolean; inNav?: boolean }) {
   const [value, setValue] = useState('ops')
   return (
-    <SidebarNavContext.Provider value={{ collapsed, glide: false }}>
+    <SidebarNavContext.Provider value={{ collapsed, glide: false, inNav }}>
       <WorkspaceSwitcher workspaces={workspaces} value={value} onChange={setValue} {...props} />
     </SidebarNavContext.Provider>
   )
@@ -25,6 +26,25 @@ function Switcher({ collapsed = false, ...props }: Partial<WorkspaceSwitcherProp
 const closed = () => waitFor(() => expect(screen.queryByRole('menu')).not.toBeInTheDocument())
 
 describe('WorkspaceSwitcher', () => {
+  it("in a SidebarNav, takes the rows' gap and right padding, which follow density (0060)", () => {
+    render(<Switcher inNav />)
+    expect(screen.getByRole('button', { name: 'Creamery Ops' })).toHaveStyle({
+      gap: tokens.component.sidebarNav.item.gap,
+      paddingRight: tokens.semantic.space.inset.md,
+      font: tokens.component.sidebarNav.switcher.typography,
+    })
+  })
+
+  it('outside a SidebarNav, keeps its own even padding and gap', () => {
+    render(<Switcher />)
+    expect(screen.getByRole('button', { name: 'Creamery Ops' })).toHaveStyle({
+      gap: tokens.semantic.space[200],
+      paddingLeft: tokens.semantic.space.inset.sm,
+      paddingRight: tokens.semantic.space.inset.sm,
+      font: tokens.semantic.typography.label,
+    })
+  })
+
   it('names its trigger with the current workspace, not its Avatar, and opens a menu', async () => {
     const user = userEvent.setup()
     render(<Switcher />)

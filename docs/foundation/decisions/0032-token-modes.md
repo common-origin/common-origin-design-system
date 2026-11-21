@@ -5,7 +5,7 @@
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P6, P8, P9
 - **Amends:** [P9](../principles.md#p9-serve-the-full-range) ("density is handled per component; there is no global density mode") and the matching row in [visual-language.md](../visual-language.md#layout-and-spacing). Changes how [0015](0015-reduced-motion.md)'s reduced motion is delivered, not what it does
-- **Amended by:** [0051](0051-row-heights-and-dense-targets.md): `size.touchTarget` is no longer a row or control height; density may take any target to 24px on every pointer; [0054](0054-dark-mode-theme-mode.md): rule 8, dark mode is now in scope as a `theme` mode
+- **Amended by:** [0051](0051-row-heights-and-dense-targets.md): `size.touchTarget` is no longer a row or control height; density may take any target to 24px on every pointer; [0054](0054-dark-mode-theme-mode.md): rule 8, dark mode is now in scope as a `theme` mode; [0060](0060-sidebarnav-density-interim.md), interim: density changes SidebarNav's text and three of its component tokens
 - **Issue:** [#193](https://github.com/common-origin/common-origin-design-system/issues/193), part of [#187](https://github.com/common-origin/common-origin-design-system/issues/187)
 
 ## Context
@@ -47,6 +47,6 @@ Components can't switch token values at run time yet: they bake resolved values 
 - P9 and the visual-language density rule are updated: density is a mode a product applies to a region, not a per-component setting.
 - Values are proposed with their tokens and signed off then ([0022](0022-no-component-spacing-tokens.md)). The starting proposal for density, on the 4px grid, is control heights of 32 / 40 / 48px for `compact` / `default` / `comfortable`, after #129 settles today's `default` scale (Input is 48px and a medium Button about 40px, so they disagree now). Settled in [0034](0034-control-heights.md): the whole `size.control` scale shifts by one 8px step per context.
 - `tokens.css` gains `[data-co-density="…"]` and `[data-co-motion="reduced"]` blocks (and an `@media (prefers-reduced-motion: reduce)` block), with tests that each block only overrides the groups in the table above.
-- Text styles are single CSS `font` shorthands today, so a mode can't change only their size. Density changes body size only after typography styles are built from part tokens (the composite-token step in [`docs/tokens/pipeline.md`](../../tokens/pipeline.md) §4), so a density context overrides one `fontSize` token rather than duplicating the whole style. Until then, density leaves text alone.
+- Text styles are single CSS `font` shorthands today, so a mode can't change only their size. Density changes body size only after typography styles are built from part tokens (the composite-token step in [`docs/tokens/pipeline.md`](../../tokens/pipeline.md) §4), so a density context overrides one `fontSize` token rather than duplicating the whole style. Until then, density leaves text alone, apart from SidebarNav's interim tokens ([0060](0060-sidebarnav-density-interim.md)).
 - When motion is a mode, the per-component `reducedMotion` branches are removed and `motion.test.ts` checks the token overrides instead.
 - Build work: density in [#191](https://github.com/common-origin/common-origin-design-system/issues/191), motion in [#195](https://github.com/common-origin/common-origin-design-system/issues/195), both after #41.

@@ -782,10 +782,12 @@
   --co-component-code-block-font-family: var(--co-semantic-font-family-monospace); /** Code font. */
   --co-component-code-block-font-size: var(--co-semantic-font-size-xs); /** Code text size. */
   --co-component-code-block-line-height: var(--co-semantic-line-height-tight); /** Code line height. */
-  --co-component-sidebar-nav-width-rail: var(--co-semantic-size-1400); /** Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side. */
+  --co-component-sidebar-nav-width-rail: var(--co-semantic-size-1400); /** Deprecated: SidebarNav now works out its rail from the row height, semantic.size.control.md, plus its padding on each side: 48, 56 and 64px across the densities (decision 0060). Removed in 4.0. */
   --co-component-sidebar-nav-width-narrow: var(--co-semantic-size-5600); /** Width of an expanded SidebarNav with width="narrow": short labels. */
   --co-component-sidebar-nav-width-default: var(--co-semantic-size-6400); /** Width of an expanded SidebarNav with the default width: labels with a trailing count. */
   --co-component-sidebar-nav-width-wide: var(--co-semantic-size-7500); /** Width of an expanded SidebarNav with width="wide": long titles, such as chat history. */
+  --co-component-sidebar-nav-item-gap: var(--co-semantic-space-200); /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, a section header's caret and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
+  --co-component-sidebar-nav-switcher-typography: var(--co-semantic-font-weight-semibold) var(--co-semantic-font-size-md)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): the WorkspaceSwitcher's name in a SidebarNav. Semibold at the item label's size: body size, and the label style in compact, where density overrides it (decision 0060). */
   --co-component-slider-thumb-shadow-default: var(--co-semantic-elevation-raised); /** Slider thumb at rest. */
   --co-component-slider-thumb-shadow-hover: var(--co-semantic-elevation-sticky); /** Slider thumb on hover: one step deeper. */
   --co-component-slider-thumb-shadow-active: var(--co-semantic-elevation-floating); /** Slider thumb while dragging: deepest. */
@@ -863,6 +865,7 @@
   --co-component-alert-message-typography: var(--co-semantic-typography-body); /** Alert message style (body), adjusted by message.lineHeight. */
   --co-component-tab-bar-badge-typography: var(--co-semantic-typography-caption); /** Tab count badge text. */
   --co-component-search-field-section-header-typography: var(--co-semantic-typography-caption); /** Suggestion-list section header text (shown uppercase). */
+  --co-component-sidebar-nav-item-typography: var(--co-semantic-typography-body); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): a SidebarNav item's label. Body text, and small text in compact, where density overrides it (decision 0060). */
   --co-component-slider-thumb-background: var(--co-semantic-surface-raised); /** Fill of the Slider thumb: the raised surface, white. */
   --co-semantic-color-fill-accent-hover: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-hover) * 100%)); /** Blue fill of a hovered accent control: fill.accent with text.on-fill mixed in at opacity.state.hover (decision 0048). */
   --co-semantic-color-fill-accent-pressed: color-mix(in srgb, var(--co-semantic-color-fill-accent), var(--co-semantic-color-text-on-fill) calc(var(--co-semantic-opacity-state-pressed) * 100%)); /** Blue fill of a pressed accent control: fill.accent with text.on-fill mixed in at opacity.state.pressed (decision 0048). */
@@ -889,6 +892,9 @@
   --co-semantic-space-inset-lg: var(--co-base-dimension-4);
   --co-semantic-space-inset-xl: var(--co-base-dimension-5);
   --co-semantic-space-inset-2xl: var(--co-base-dimension-6);
+  --co-component-sidebar-nav-item-gap: var(--co-semantic-space-200);
+  --co-component-sidebar-nav-switcher-typography: var(--co-semantic-font-weight-semibold) var(--co-semantic-font-size-md)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body);
+  --co-component-sidebar-nav-item-typography: var(--co-semantic-typography-body);
 }
 
 [data-co-density="compact"] {
@@ -904,6 +910,9 @@
   --co-semantic-space-inset-lg: var(--co-base-dimension-3); /** Large padding inside a component: button and input sides, card insides. */
   --co-semantic-space-inset-xl: var(--co-base-dimension-4); /** Generous padding inside a component, such as a prominent call to action. */
   --co-semantic-space-inset-2xl: var(--co-base-dimension-5); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-component-sidebar-nav-item-gap: var(--co-semantic-space-200); /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, a section header's caret and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
+  --co-component-sidebar-nav-item-typography: var(--co-semantic-typography-small); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): a SidebarNav item's label. Body text, and small text in compact, where density overrides it (decision 0060). */
+  --co-component-sidebar-nav-switcher-typography: var(--co-semantic-typography-label); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): the WorkspaceSwitcher's name in a SidebarNav. Semibold at the item label's size: body size, and the label style in compact, where density overrides it (decision 0060). */
 }
 
 [data-co-density="comfortable"] {
@@ -919,6 +928,9 @@
   --co-semantic-space-inset-lg: var(--co-base-dimension-5); /** Large padding inside a component: button and input sides, card insides. */
   --co-semantic-space-inset-xl: var(--co-base-dimension-6); /** Generous padding inside a component, such as a prominent call to action. */
   --co-semantic-space-inset-2xl: var(--co-base-dimension-7); /** Largest padding inside a component: large cards, spacious form sections. */
+  --co-component-sidebar-nav-item-gap: var(--co-semantic-space-300); /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, a section header's caret and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
+  --co-component-sidebar-nav-switcher-typography: var(--co-semantic-font-weight-semibold) var(--co-semantic-font-size-md)/var(--co-semantic-line-height-normal) var(--co-semantic-font-family-body); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): the WorkspaceSwitcher's name in a SidebarNav. Semibold at the item label's size: body size, and the label style in compact, where density overrides it (decision 0060). */
+  --co-component-sidebar-nav-item-typography: var(--co-semantic-typography-body); /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): a SidebarNav item's label. Body text, and small text in compact, where density overrides it (decision 0060). */
 }
 
 /* Mode: theme (decision 0032). Light or dark colour for a region, set with data-co-theme on any element (decision 0054). Changes colour and shadow only. Each ramp step keeps its job, so the dark context is generated base values only (scripts/generate-palette.mjs): semantic tokens read the same paths in both themes (decision 0056). A product that doesn't set it stays light: tokens.css never follows prefers-color-scheme by itself (#358). */

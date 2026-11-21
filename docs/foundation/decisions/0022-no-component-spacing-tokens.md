@@ -5,6 +5,7 @@
 - **Decided by:** Ollie (owner)
 - **Principles:** P3, P4, P7
 - **Amends:** [0014](0014-token-tiers.md) rule 3
+- **Amended by:** [0060](0060-sidebarnav-density-interim.md), interim: one exception to rule 1, `component.sidebarNav.item.gap`, until [#402](https://github.com/common-origin/common-origin-design-system/issues/402)
 
 ## Context
 

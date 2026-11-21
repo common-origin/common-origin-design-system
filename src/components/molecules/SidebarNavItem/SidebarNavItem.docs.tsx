@@ -27,11 +27,11 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
   tokens: [
     'semantic.size.control.md',
     'semantic.size.icon.sm',
+    'component.sidebarNav.item.gap',
+    'component.sidebarNav.item.typography',
     'semantic.space.200',
-    'semantic.space.inset.xs',
-    'semantic.space.inset.sm',
+    'semantic.space.inset.md',
     'semantic.radius.md',
-    'semantic.typography.small',
     'semantic.typography.caption',
     'semantic.color.text.default',
     'semantic.color.text.muted',
@@ -105,7 +105,7 @@ export const sidebarNavItemDocs: ComponentDocumentation = {
     parts: [
       { name: 'Row', description: 'A link or button with the shared row states (0030). Inside SidebarNav its hover is the gliding highlight (0053)', tokens: ['semantic.size.control.md', 'semantic.radius.md'] },
       { name: 'Icon', description: 'Optional, decorative, 16px, in the text colour', tokens: ['semantic.size.icon.sm'] },
-      { name: 'Label', description: 'Small text, truncated to one line', tokens: ['semantic.typography.small'] },
+      { name: 'Label', description: 'Truncated to one line: 14px in compact, 16px otherwise (interim, decision 0060)', tokens: ['component.sidebarNav.item.typography'] },
       { name: 'Badge', description: 'An accent Badge count at the end of the row for new or unread items; in the rail, a dot centred on the icon\'s top-right corner, clear of the rows around it' },
       { name: 'Meta', description: 'Quiet text at the end, hidden in the rail', tokens: ['semantic.typography.caption', 'semantic.color.text.muted'] },
     ],

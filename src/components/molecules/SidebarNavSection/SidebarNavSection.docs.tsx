@@ -29,7 +29,10 @@ export const sidebarNavSectionDocs: ComponentDocumentation = {
     'semantic.color.text.muted',
     'semantic.size.row.sm',
     'semantic.space.100',
-    'semantic.space.inset.sm',
+    'semantic.space.inset.md',
+    'semantic.size.control.md',
+    'semantic.size.icon.sm',
+    'component.sidebarNav.item.gap',
     'semantic.radius.md',
     'semantic.border.default',
     'semantic.border.focus',
@@ -99,7 +102,7 @@ export const sidebarNavSectionDocs: ComponentDocumentation = {
   anatomy: {
     description: 'A header (label and action) above a list of items.',
     parts: [
-      { name: 'Label', description: 'Quiet caption text, or a disclosure button with a caret that turns to point right when hidden', tokens: ['semantic.typography.caption', 'semantic.color.text.muted'] },
+      { name: 'Label', description: 'Quiet caption text, or a disclosure button with a caret that turns to point right when hidden. It lines up with the items: the caret on their icons, the label with their labels', tokens: ['semantic.typography.caption', 'semantic.color.text.muted'] },
       { name: 'Action', description: 'One optional control, such as a small naked IconButton' },
       { name: 'List', description: 'The items. Its height animates over duration.moderate (standard easing) when shown or hidden, and changes at once under reduced motion', tokens: ['semantic.motion.duration.moderate', 'semantic.motion.easing.standard'] },
       { name: 'Rule', description: 'In the rail, a decorative rule above the section in place of its label', tokens: ['semantic.border.default'] },

@@ -1,26 +1,67 @@
 {
-  "$description": "Density compact (decisions 0032 and 0051): controls and rows one step shorter (0034) and their inset one step tighter. Only $value is overridden; each token keeps its description and type from the semantic tier.",
+  "$description": "Density compact (decisions 0032 and 0051): controls and rows one step shorter (0034) and their inset one step tighter. Only $value is overridden; each token keeps its description and type from the semantic tier. Interim (issue 396, decision 0060): also overrides three SidebarNav component tokens, its item and switcher text and its icon-to-label gap, until issue 401, issue 402 and issue 403 settle density for text and component tokens system-wide.",
   "semantic": {
     "size": {
       "control": {
-        "sm": { "$value": "{base.dimension.6}" },
-        "md": { "$value": "{base.dimension.8}" },
-        "lg": { "$value": "{base.dimension.10}" }
+        "sm": {
+          "$value": "{base.dimension.6}"
+        },
+        "md": {
+          "$value": "{base.dimension.8}"
+        },
+        "lg": {
+          "$value": "{base.dimension.10}"
+        }
       },
       "row": {
-        "sm": { "$value": "{base.dimension.6}" },
-        "md": { "$value": "{base.dimension.10}" },
-        "lg": { "$value": "{base.dimension.16}" }
+        "sm": {
+          "$value": "{base.dimension.6}"
+        },
+        "md": {
+          "$value": "{base.dimension.10}"
+        },
+        "lg": {
+          "$value": "{base.dimension.16}"
+        }
       }
     },
     "space": {
       "inset": {
-        "xs": { "$value": "{base.dimension.1}" },
-        "sm": { "$value": "{base.dimension.1}" },
-        "md": { "$value": "{base.dimension.2}" },
-        "lg": { "$value": "{base.dimension.3}" },
-        "xl": { "$value": "{base.dimension.4}" },
-        "2xl": { "$value": "{base.dimension.5}" }
+        "xs": {
+          "$value": "{base.dimension.1}"
+        },
+        "sm": {
+          "$value": "{base.dimension.1}"
+        },
+        "md": {
+          "$value": "{base.dimension.2}"
+        },
+        "lg": {
+          "$value": "{base.dimension.3}"
+        },
+        "xl": {
+          "$value": "{base.dimension.4}"
+        },
+        "2xl": {
+          "$value": "{base.dimension.5}"
+        }
+      }
+    }
+  },
+  "component": {
+    "sidebarNav": {
+      "item": {
+        "typography": {
+          "$value": "{semantic.typography.small}"
+        },
+        "gap": {
+          "$value": "{semantic.space.200}"
+        }
+      },
+      "switcher": {
+        "typography": {
+          "$value": "{semantic.typography.label}"
+        }
       }
     }
   }

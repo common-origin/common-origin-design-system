@@ -7,6 +7,7 @@ import { SidebarNavItem } from '../../molecules/SidebarNavItem'
 import { SidebarNavSection } from '../../molecules/SidebarNavSection'
 import { Button } from '../../atoms/Button'
 import tokens from '@/styles/tokens.json'
+import { RAIL_WIDTH } from '../../molecules/SidebarNavItem/sidebarNavMotion'
 
 expect.extend(toHaveNoViolations)
 
@@ -110,7 +111,7 @@ describe('SidebarNav', () => {
       expect(toggle).toHaveAttribute('aria-expanded', 'true')
       await user.click(toggle)
       expect(onCollapsedChange).toHaveBeenCalledWith(true)
-      expect(nav()).toHaveStyle({ width: width.rail })
+      expect(nav()).toHaveStyle({ width: RAIL_WIDTH })
       expect(screen.getByRole('button', { name: 'Expand sidebar' })).toHaveAttribute('aria-expanded', 'false')
     })
 
@@ -174,7 +175,7 @@ describe('SidebarNav', () => {
         return <Example collapsed={collapsed} onCollapsedChange={setCollapsed} />
       }
       render(<Controlled />)
-      expect(nav()).toHaveStyle({ width: width.rail })
+      expect(nav()).toHaveStyle({ width: RAIL_WIDTH })
       await user.click(screen.getByRole('button', { name: 'Expand sidebar' }))
       expect(nav()).toHaveStyle({ width: width.default })
     })

@@ -6,7 +6,7 @@ import { IconButton } from '../../atoms/IconButton'
 import { Tooltip } from '../../atoms/Tooltip'
 import { isKeyboardFocus } from '../../../lib/keyboardFocus'
 import { SidebarNavContext, type SidebarNavContextValue } from '../../molecules/SidebarNavItem/SidebarNavContext'
-import { EXPANDED_WIDTH_VAR, NAV_PADDING, SCROLLBAR_VAR, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
+import { EXPANDED_WIDTH_VAR, NAV_PADDING, RAIL_WIDTH, SCROLLBAR_VAR, fade } from '../../molecules/SidebarNavItem/sidebarNavMotion'
 
 const { semantic, component } = tokens
 const { space, motion, color, size } = semantic
@@ -128,14 +128,15 @@ const CollapseSlot = styled.span.withConfig({
   ${toggleSize}
 `
 
-// Centred in the rail, where the header content starts
+// Centred in the rail, where the header content starts (the toggle and the rail's inner width are
+// both the row height, so today it fills it)
 const ExpandSlot = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
 })<{ $hidden: boolean }>`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE}) / 2);
+  left: calc((${RAIL_WIDTH} - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE}) / 2);
   display: flex;
   align-items: center;
   ${({ $hidden }) => fade($hidden)}
@@ -325,7 +326,7 @@ export const SidebarNav = ({
       <Nav
         ref={navRef}
         aria-label={label}
-        $width={collapsed ? widths.rail : widths[width]}
+        $width={collapsed ? RAIL_WIDTH : widths[width]}
         data-collapsed={collapsed || undefined}
         data-testid={dataTestId}
         style={{ [EXPANDED_WIDTH_VAR]: widths[width] } as React.CSSProperties}

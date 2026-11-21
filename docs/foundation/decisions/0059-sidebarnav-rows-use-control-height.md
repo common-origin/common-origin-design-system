@@ -20,7 +20,7 @@ At the same review the row's icon moved from `semantic.size.icon.md` (20px) to `
 1. **SidebarNavItem's minimum height is `semantic.size.control.md`**: 32px in compact, 40px in default and 48px in comfortable. Its content stays centred with no vertical padding.
 2. **Its icon is `size.icon.sm` (16px)** in every density. The row's left inset is worked out from that size, so the icon stays centred in the rail.
 3. **WorkspaceSwitcher's trigger matches the rows beneath it**: the same height, left inset and right padding. Its 24px Avatar overhangs the 16px icon's place equally on each side, so it centres on the icons and the name starts where the labels do. The collapse and expand toggles beside it are square at the same height, small IconButtons made that size so their icon stays 16px like the rows' icons.
-4. **Every other dense row keeps `size.row.sm`**, Menu items among them. SidebarNavSection's header is unchanged.
+4. **Every other dense row keeps `size.row.sm`**, Menu items among them. SidebarNavSection's header keeps its height; [0060](0060-sidebarnav-density-interim.md) lines it up with the items.
 
 ## Consequences
 

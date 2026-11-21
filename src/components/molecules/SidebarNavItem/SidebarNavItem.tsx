@@ -9,8 +9,10 @@ import type { IconName } from '../../../types/icons'
 import { useSidebarNav } from './SidebarNavContext'
 import { EXPANDED_WIDTH_VAR, Fold, NAV_PADDING, ROW_INSET, SCROLLBAR_VAR, fade } from './sidebarNavMotion'
 
-const { semantic } = tokens
+const { semantic, component } = tokens
 const { space, color, motion, size, border, typography } = semantic
+// Interim tokens that follow density (issue 396, decision 0060): the label's text and the icon's gap
+const { item } = component.sidebarNav
 
 export interface SidebarNavItemProps {
   /** The item's label. In the rail it becomes the accessible name and shows in a Tooltip. */
@@ -56,7 +58,7 @@ const Row = styled.a.withConfig({
 })<{ $current: boolean; $glide: boolean }>`
   display: flex;
   align-items: center;
-  gap: ${space[200]};
+  gap: ${item.gap};
   box-sizing: border-box;
   width: 100%;
   /* The row's height is the medium control height, with the content centred (as controls, 0034):
@@ -64,12 +66,12 @@ const Row = styled.a.withConfig({
   min-height: ${size.control.md};
   /* The left inset is the same expanded and in the rail, so the icon never moves (issue 348); the row
      clips what the rail doesn't show as the nav narrows */
-  padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
+  padding: 0 ${space.inset.md} 0 ${ROW_INSET};
   overflow: hidden;
   border: none;
   border-radius: ${rowRadius};
   background: none;
-  font: ${typography.small};
+  font: ${item.typography};
   color: ${color.text.default};
   text-align: left;
   text-decoration: none;
@@ -114,8 +116,8 @@ const Inner = styled.span.withConfig({
   /* The row's content width when expanded: the nav's width less any scrollbar, its padding, the row's
      insets and, beside an icon, the icon and its gap */
   width: calc(
-    var(${EXPANDED_WIDTH_VAR}, 0px) - var(${SCROLLBAR_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.sm}
-      ${({ $withIcon }) => ($withIcon ? `- ${size.icon.sm} - ${space[200]}` : '')}
+    var(${EXPANDED_WIDTH_VAR}, 0px) - var(${SCROLLBAR_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.md}
+      ${({ $withIcon }) => ($withIcon ? `- ${size.icon.sm} - ${item.gap}` : '')}
   );
 `
 

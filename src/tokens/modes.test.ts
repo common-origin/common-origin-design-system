@@ -33,7 +33,10 @@ const rem = (value: string) => Number(value.replace('rem', '')) * 16
 
 // What each mode may change (0032's table, narrowed for density by #191 to controls, then rows by 0051)
 const ALLOWED: Record<string, RegExp> = {
-  density: /^semantic\.(size\.control|size\.row|space\.inset)\./,
+  // Interim (#396, decision 0060): plus three SidebarNav component tokens, by name, until #403
+  // settles whether density may change component tokens
+  density:
+    /^semantic\.(size\.control|size\.row|space\.inset)\.|^component\.sidebarNav\.(item\.typography|item\.gap|switcher\.typography)$/,
   // Colour and shadow only (decision 0054): base colour values, plus semantic colour exceptions
   theme: /^base\.(color\.|shadow\.|opacity\.scrim$)/,
 }
