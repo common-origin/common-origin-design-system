@@ -34,7 +34,7 @@ export interface SidebarNavItemProps {
   meta?: string
   /**
    * New or unread items (decision 0045): a count, or `'dot'` for "something new". Shown as an
-   * accent Badge count at the end of the row, or as a dot inside the icon's corner in the rail, and
+   * accent Badge count at the end of the row, or as a dot on the icon's top-right corner in the rail, and
    * added to the item's name.
    */
   badge?: number | 'dot'
@@ -59,9 +59,9 @@ const Row = styled.a.withConfig({
   gap: ${space[200]};
   box-sizing: border-box;
   width: 100%;
-  /* The row's height is its token, with the content centred (as controls, 0034): vertical
-     padding would hold a compact row above its 24px (0051) */
-  min-height: ${size.row.sm};
+  /* The row's height is the medium control height, with the content centred (as controls, 0034):
+     32, 40 and 48px across the densities, a step taller than other dense rows (0059) */
+  min-height: ${size.control.md};
   /* The left inset is the same expanded and in the rail, so the icon never moves (issue 348); the row
      clips what the rail doesn't show as the nav narrows */
   padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
@@ -115,7 +115,7 @@ const Inner = styled.span.withConfig({
      insets and, beside an icon, the icon and its gap */
   width: calc(
     var(${EXPANDED_WIDTH_VAR}, 0px) - var(${SCROLLBAR_VAR}, 0px) - 2 * ${NAV_PADDING} - ${ROW_INSET} - ${space.inset.sm}
-      ${({ $withIcon }) => ($withIcon ? `- ${size.icon.md} - ${space[200]}` : '')}
+      ${({ $withIcon }) => ($withIcon ? `- ${size.icon.sm} - ${space[200]}` : '')}
   );
 `
 
@@ -162,7 +162,8 @@ const EndAnchor = styled.span`
   height: 0;
 `
 
-// In the rail there's no room for a count, so a dot sits inside the icon's top-right corner
+// In the rail there's no room for a count, so a dot sits on the icon's top-right corner, centred on
+// it as Badge places itself (0045), so it covers as little of the icon as it can
 const IconBox = styled.span`
   position: relative;
   display: inline-flex;
@@ -173,8 +174,8 @@ const Corner = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
 })<{ $hidden: boolean }>`
   position: absolute;
-  top: 25%;
-  right: 25%;
+  top: 0;
+  right: 0;
   display: inline-flex;
   ${({ $hidden }) => fade($hidden)}
 `
@@ -213,7 +214,7 @@ export const SidebarNavItem = ({
     <>
       {icon && (
         <IconBox>
-          <Icon name={icon} size="md" iconColor="inherit" />
+          <Icon name={icon} size="sm" iconColor="inherit" />
           {hasBadge && (
             <Corner $hidden={!collapsed}>
               <Badge variant="accent" dot aria-label={badgeText}>

@@ -73,11 +73,12 @@ test('a section hides and shows its items, animating their height', async ({ pag
   await expect.poll(async () => (await list.boundingBox())!.height).toBe(open)
 })
 
-test('rows are 24px in a compact region and at least 24px everywhere (0051)', async ({ page }) => {
+test('rows are 32px in compact, 40px in default and 48px in comfortable (0059)', async ({ page }) => {
   const heights = async (name: string) =>
     nav(page, name).locator('[data-sidebar-row]').evaluateAll((rows) => rows.map((row) => row.getBoundingClientRect().height))
-  expect(new Set(await heights('Default'))).toEqual(new Set([32]))
-  expect(new Set(await heights('Compact'))).toEqual(new Set([24]))
+  expect(new Set(await heights('Compact'))).toEqual(new Set([32]))
+  expect(new Set(await heights('Default'))).toEqual(new Set([40]))
+  expect(new Set(await heights('Comfortable'))).toEqual(new Set([48]))
 })
 
 test('a badge of any width stays inside its row, expanded and in the rail, in each density', async ({ page }) => {
@@ -95,6 +96,62 @@ test('a badge of any width stays inside its row, expanded and in the rail, in ea
     await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
     expect(await inside(name)).toBe(true)
   }
+})
+
+test('in the rail every row is the rail\'s width, so its rounded corners show on both sides', async ({ page }) => {
+  for (const name of ['Default', 'Compact', 'Comfortable']) {
+    await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
+    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
+    const tooWide = await nav(page, name).evaluate((el) => {
+      const list = el.querySelector('ul')!.getBoundingClientRect()
+      return [...el.querySelectorAll('[data-sidebar-row]')]
+        .filter((row) => row.getBoundingClientRect().height > 0 && row.getBoundingClientRect().right > list.right + 0.5)
+        .map((row) => row.getAttribute('aria-label'))
+    })
+    expect(tooWide).toEqual([])
+  }
+})
+
+test('the workspace switcher and the toggles are as tall as the rows, in each density (0059)', async ({ page }) => {
+  for (const [name, height] of [['Compact', 32], ['Default', 40], ['Comfortable', 48]] as const) {
+    const switcher = await nav(page, name).getByRole('button', { name: /Creamery Ops/ }).boundingBox()
+    expect(Math.round(switcher!.height)).toBe(height)
+    for (const toggle of ['Collapse sidebar', 'Expand sidebar']) {
+      // The expand toggle is faded out while expanded, but it keeps its size
+      const box = await nav(page, name).getByRole('button', { name: toggle, includeHidden: true }).evaluate((el) => {
+        const rect = el.getBoundingClientRect()
+        return { width: rect.width, height: rect.height, icon: el.querySelector('svg')!.getBoundingClientRect().width }
+      })
+      expect([box.width, box.height, box.icon]).toEqual([height, height, 16])
+    }
+  }
+})
+
+test('the switcher lines up with the rows: its avatar on their icons, its name with their labels', async ({ page }) => {
+  for (const name of ['Compact', 'Default', 'Comfortable']) {
+    const offsets = await nav(page, name).evaluate((el) => {
+      const trigger = el.querySelector('button[aria-haspopup]')!
+      const avatar = trigger.querySelector('[data-size]')!.getBoundingClientRect()
+      const nameText = [...trigger.querySelectorAll('span')].find((s) => s.textContent === 'Creamery Ops' && !s.children.length)!
+      const row = [...el.querySelectorAll('[data-sidebar-row]')].find((r) => r.textContent?.startsWith('Invite'))!
+      const icon = row.querySelector('svg')!.getBoundingClientRect()
+      const label = [...row.querySelectorAll('span')].find((s) => s.textContent === 'Invite users')!
+      return [
+        Math.round(avatar.left + avatar.width / 2 - (icon.left + icon.width / 2)),
+        Math.round(nameText.getBoundingClientRect().left - label.getBoundingClientRect().left),
+      ]
+    })
+    expect(offsets).toEqual([0, 0])
+  }
+})
+
+test('without the collapse toggle, the header content spans the nav like the rows', async ({ page }) => {
+  const gap = await nav(page, 'Not collapsible').evaluate((el) => {
+    const trigger = el.querySelector('button[aria-haspopup]')!.getBoundingClientRect()
+    const list = el.querySelector('ul')!.getBoundingClientRect()
+    return Math.round(list.right - trigger.right)
+  })
+  expect(gap).toBe(0)
 })
 
 test("every row's content ends inside the row when expanded, in each density", async ({ page }) => {

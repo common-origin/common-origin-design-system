@@ -122,7 +122,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
     },
     {
       name: 'Dense',
-      description: 'Density is set on the region around it, never on the nav: rows are 24px in compact',
+      description: 'Density is set on the region around it, never on the nav: rows are 32px in compact',
       code: `<div data-co-density="compact">
   <SidebarNav label="Main">…</SidebarNav>
 </div>`,
@@ -151,7 +151,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
       'The toggle is named for what it will do ("Collapse sidebar", "Expand sidebar"), with aria-expanded',
       'In the rail every item is named by its label and shows it in a Tooltip; items without an icon are hidden',
       'The highlight is decorative (aria-hidden) and follows keyboard focus as well as the pointer; it\'s hidden in forced colours, where rows outline themselves',
-      'Rows are at least 24px tall in every density (decision 0051)',
+      'Rows are 32px tall in compact, 40px in default and 48px in comfortable (decision 0059)',
     ],
     keyboardNavigation: 'Tab moves through the header, items, section toggles and actions, and the footer in order',
     focusManagement: 'Collapsing or expanding keeps focus on the toggle',

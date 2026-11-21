@@ -24,7 +24,7 @@ export const SCROLLBAR_VAR = '--co-sidebar-nav-scrollbar'
 export const NAV_PADDING = space[200]
 
 /** A row's left inset: centres an icon in the rail, and stays the same expanded, so icons never move */
-export const ROW_INSET = `calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${size.icon.md}) / 2)`
+export const ROW_INSET = `calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${size.icon.sm}) / 2)`
 
 /**
  * Fades content that the rail doesn't show (labels, meta text, the badge count, the header and
@@ -57,9 +57,12 @@ export const Fold = styled.div.withConfig({
         ? `opacity ${motion.duration.moderate} ${motion.easing.decelerate}, visibility ${motion.duration.moderate} ${motion.easing.decelerate}`
         : `opacity ${motion.duration.fast} ${motion.easing.accelerate}, visibility ${motion.duration.moderate} ${motion.easing.accelerate}`};
 
-  /* Clipped only while folded: once open, focus rings outside a control aren't cut off */
+  /* Clipped only while folded: once open, focus rings outside a control aren't cut off. A grid item
+     won't shrink below its content unless told to, so without min-width a row would keep its
+     expanded width in the rail and the nav's edge would cut off its right side */
   & > * {
     min-height: 0;
+    min-width: 0;
     overflow: ${({ $open }) => ($open ? 'visible' : 'hidden')};
   }
 

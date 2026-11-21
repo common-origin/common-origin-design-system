@@ -36,7 +36,9 @@ export const workspaceSwitcherDocs: ComponentDocumentation = {
     { name: 'data-testid', type: 'string', required: false, description: 'Test identifier for the trigger' },
   ],
   tokens: [
-    'semantic.size.row.sm',
+    'semantic.size.control.md',
+    'semantic.size.icon.sm',
+    'semantic.size.avatar.xs',
     'semantic.space.200',
     'semantic.space.inset.xs',
     'semantic.space.inset.sm',

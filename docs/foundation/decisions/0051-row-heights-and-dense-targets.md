@@ -5,6 +5,7 @@
 - **Decided by:** Ollie (owner)
 - **Principles:** P2, P5, P9
 - **Amends:** [0032](0032-token-modes.md) (rule 6: `size.touchTarget` is no longer a row or control height) and [P9](../principles.md#p9-serve-the-full-range)
+- **Amended by:** [0059](0059-sidebarnav-rows-use-control-height.md): SidebarNav's items use `semantic.size.control.md`
 - **Issue:** [#248](https://github.com/common-origin/common-origin-design-system/issues/248); rolled out system-wide in [#334](https://github.com/common-origin/common-origin-design-system/issues/334)
 
 ## Context
@@ -20,7 +21,7 @@ Holding rows at 44px on touch screens was an option. But WCAG 2.2 AA asks for 24
 
    | `size.row` step | compact | default | comfortable | For |
    |---|---|---|---|---|
-   | `sm` | 24 | 32 | 40 | dense single-line rows: navigation items, menu items, dense table rows |
+   | `sm` | 24 | 32 | 40 | dense single-line rows: menu items, dense table rows (SidebarNav's items moved to `semantic.size.control.md` in [0059](0059-sidebarnav-rows-use-control-height.md)) |
    | `md` | 40 | 48 | 56 | single-line list rows: ListItem, ActionSheet actions, SearchField suggestions |
    | `lg` | 64 | 72 | 80 | two-line rows: TransactionListItem |
 

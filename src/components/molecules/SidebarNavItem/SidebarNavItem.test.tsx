@@ -102,9 +102,9 @@ describe('SidebarNavItem', () => {
       expect(screen.getByRole('link', { name: label })).toBeInTheDocument()
     })
 
-    it('takes its height from the dense row token (0051)', () => {
+    it('takes its height from the medium control height, which follows density (0059)', () => {
       renderItem()
-      expect(screen.getByRole('link', { name: 'Home' })).toHaveStyle({ minHeight: tokens.semantic.size.row.sm })
+      expect(screen.getByRole('link', { name: 'Home' })).toHaveStyle({ minHeight: tokens.semantic.size.control.md })
     })
   })
 
@@ -137,13 +137,13 @@ describe('SidebarNavItem', () => {
       expect(link).toHaveFocus()
     })
 
-    it('keeps its badge as a dot inside the icon, and says the count in its name', () => {
+    it('keeps its badge as a dot on the icon corner, and says the count in its name', () => {
       renderItem({ label: 'Chats', badge: 2, badgeLabel: '2 unread' }, { collapsed: true })
       const link = screen.getByRole('link', { name: 'Chats, 2 unread' })
       expect(screen.getByText('2')).not.toBeVisible()
-      // The dot's anchor sits inside the icon's box, a quarter in from its top-right corner
+      // The dot's anchor is the icon's top-right corner; Badge centres the dot on it (0045)
       const corner = link.querySelector('[role="status"]')?.parentElement?.parentElement as HTMLElement
-      expect(corner).toHaveStyle({ position: 'absolute', top: '25%', right: '25%' })
+      expect(corner).toHaveStyle({ position: 'absolute', top: '0px', right: '0px' })
     })
 
     it('hides an item without an icon', () => {
