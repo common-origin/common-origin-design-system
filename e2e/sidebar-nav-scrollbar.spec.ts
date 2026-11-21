@@ -34,3 +34,21 @@ test('rows still fit when the body scrolls and its scrollbar takes room', async 
   )
   expect(overflowing).toEqual([])
 })
+
+test('without the collapse toggle, the header still ends where the rows do when a scrollbar takes room', async ({ page }) => {
+  await page.goto('/fixtures/sidebar-nav')
+  const nav = page.getByRole('navigation', { name: 'Not collapsible' })
+  await page.addStyleTag({ content: 'nav ::-webkit-scrollbar { width: 15px } nav ::-webkit-scrollbar-thumb { background: #888 }' })
+  await nav.evaluate((el) => {
+    ;(el.parentElement as HTMLElement).style.height = '200px'
+  })
+  await expect
+    .poll(() => nav.evaluate((el) => getComputedStyle(el).getPropertyValue('--co-sidebar-nav-scrollbar').trim()))
+    .toBe('15px')
+  const gap = await nav.evaluate((el) => {
+    const trigger = el.querySelector('button[aria-haspopup]')!.getBoundingClientRect()
+    const row = el.querySelector('[data-sidebar-row]')!.getBoundingClientRect()
+    return Math.round(row.right - trigger.right)
+  })
+  expect(gap).toBe(0)
+})

@@ -107,12 +107,13 @@ const HeaderContent = styled.div.withConfig({
   overflow: hidden;
   ${({ $hidden }) => fade($hidden)}
 
-  /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move; beside
-     the collapse toggle, less the toggle and its gap */
+  /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move. Beside
+     the collapse toggle it's less the toggle and its gap; without one it ends where the rows do, less
+     any scrollbar on the body */
   & > div {
     width: calc(
       var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING}
-        ${({ $withToggle }) => ($withToggle ? `- ${TOGGLE_SIZE} - ${space[100]}` : '')}
+        ${({ $withToggle }) => ($withToggle ? `- ${TOGGLE_SIZE} - ${space[100]}` : `- var(${SCROLLBAR_VAR}, 0px)`)}
     );
   }
 `
