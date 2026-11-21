@@ -70,8 +70,12 @@ run_step() {
 report() {
   local name
   for name in "$@"; do
-    cat "$logs/$name.sum"
-    [ "$(cat "$logs/$name.rc")" -eq 0 ] || failed_steps="$failed_steps $name"
+    if [ -f "$logs/$name.rc" ]; then
+      cat "$logs/$name.sum"
+    else
+      printf '  FAIL  %-16s        stopped before it finished (full log: %s)\n' "$name" "$logs/$name.log"
+    fi
+    [ "$(cat "$logs/$name.rc" 2>/dev/null)" = 0 ] || failed_steps="$failed_steps $name"
   done
 }
 
@@ -90,7 +94,7 @@ excerpt() {
               BEGIN { while ((getline line < list) > 0) changed[line] = 1 }
               /^\// { file = $0; shown = 0; next }
               /^[[:space:]]+[0-9]+:[0-9]+[[:space:]]/ {
-                if ($0 ~ /[[:space:]]error[[:space:]]/ || (file in changed)) {
+                if ($0 ~ /^[[:space:]]+[0-9]+:[0-9]+[[:space:]]+error[[:space:]]/ || (file in changed)) {
                   if (!shown) { print file; shown = 1 }
                   print
                 }
@@ -137,7 +141,7 @@ lint_with_ratchet() {
 # towards the ratchet in the full run.
 lint_changed() {
   # shellcheck disable=SC2086
-  npx eslint $lintable
+  npx eslint --no-warn-ignored $lintable
   local status=$?
   local warnings
   warnings="$(grep -Eo '[0-9]+ warnings?\)' "$logs/lint.log" | grep -Eo '[0-9]+' | tail -1)"
@@ -165,7 +169,7 @@ if [ "$mode" = full ]; then
   # Independent steps run side by side, then print in order
   run_step typecheck tsc npm run typecheck &
   run_step lint eslint lint_with_ratchet &
-  run_step test jest npx jest --ci &
+  run_step test jest npx jest --ci --maxWorkers=50% &
   run_step verify:docs tail npm run verify:docs &
   wait
   report typecheck lint test verify:docs
