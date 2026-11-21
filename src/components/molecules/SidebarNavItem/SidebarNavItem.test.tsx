@@ -114,6 +114,11 @@ describe('SidebarNavItem', () => {
         paddingRight: tokens.semantic.space.inset.md,
       })
     })
+
+    it('takes its text from the interim token that follows density (0060)', () => {
+      renderItem()
+      expect(screen.getByRole('link', { name: 'Home' })).toHaveStyle({ font: tokens.component.sidebarNav.item.typography })
+    })
   })
 
   describe('in the rail', () => {

@@ -66,7 +66,7 @@ A surface pairs with an `elevation` token. `sunken` and `overlay` surfaces join 
 
 - **`space.{n}`** is the spacing scale, where `n` is the multiple of 4px × 100: `space.100` is 4px, `space.400` 16px and `space.800` 32px. Use it for gaps between elements, groups, blocks and sections. Smaller steps sit inside groups, and larger ones separate sections. Each token's description says which kind of gap it's for.
 - **`space.inset.{xs…2xl}`** is padding inside a component. It's what density changes: compact makes it one step tighter, and comfortable one step roomier ([decision 0032](../foundation/decisions/0032-token-modes.md)).
-- **Components have no spacing tokens of their own** ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)). Their spacing comes from these scales, so a density mode reaches every component.
+- **Components have no spacing tokens of their own** ([decision 0022](../foundation/decisions/0022-no-component-spacing-tokens.md)), apart from one interim exception, `component.sidebarNav.item.gap`, until [#402](https://github.com/common-origin/common-origin-design-system/issues/402) adds a semantic icon-to-label gap ([decision 0060](../foundation/decisions/0060-sidebarnav-density-interim.md)). Their spacing comes from these scales, so a density mode reaches every component.
 
 ## Size
 

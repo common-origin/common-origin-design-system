@@ -128,15 +128,15 @@ const CollapseSlot = styled.span.withConfig({
   ${toggleSize}
 `
 
-// In the rail, where the header content starts: the toggle is as wide as the rail's inner width, so it
-// fills it, centred over the icons
+// Centred in the rail, where the header content starts (the toggle and the rail's inner width are
+// both the row height, so today it fills it)
 const ExpandSlot = styled.span.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
 })<{ $hidden: boolean }>`
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 0;
+  left: calc((${RAIL_WIDTH} - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE}) / 2);
   display: flex;
   align-items: center;
   ${({ $hidden }) => fade($hidden)}

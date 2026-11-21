@@ -31,6 +31,7 @@ describe('WorkspaceSwitcher', () => {
     expect(screen.getByRole('button', { name: 'Creamery Ops' })).toHaveStyle({
       gap: tokens.component.sidebarNav.item.gap,
       paddingRight: tokens.semantic.space.inset.md,
+      font: tokens.component.sidebarNav.switcher.typography,
     })
   })
 
@@ -40,6 +41,7 @@ describe('WorkspaceSwitcher', () => {
       gap: tokens.semantic.space[200],
       paddingLeft: tokens.semantic.space.inset.sm,
       paddingRight: tokens.semantic.space.inset.sm,
+      font: tokens.semantic.typography.label,
     })
   })
 
