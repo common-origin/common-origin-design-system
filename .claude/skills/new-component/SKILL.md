@@ -25,6 +25,6 @@ Patterns: `.github/COMPONENT_PATTERNS.md`, `.github/TESTING_STANDARDS.md`, `.git
 5. **Tests:** role-based queries, every variant and state, keyboard interaction, and a `jest-axe` check with no violations (P2).
 6. **Docs:** a full `ComponentDocumentation` object (see the `component-docs` skill), registered in `src/lib/componentsData.ts`. Give it a `tier` matching its folder and a docs-site group (`category`) for the job it does ([0057](../../../docs/foundation/decisions/0057-docs-groups-by-purpose.md)).
 7. **New tokens:** use the `token-change` skill.
-8. **Validate:** typecheck, lint, test, `build:package`, `verify:package`, `verify:docs`. Check `dist/components/**/Name.d.ts` has no `@/` imports, and look at the component on the docs site (`.claude/launch.json` → `docs`).
+8. **Validate:** `npm run check` (the `check` skill). Check `dist/components/**/Name.d.ts` has no `@/` imports, and look at the component on the docs site (`.claude/launch.json` → `docs`).
 
 A new component is a **minor** release.

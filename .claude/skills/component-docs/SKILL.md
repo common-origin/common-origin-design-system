@@ -17,4 +17,4 @@ Each component's docs page is its `Name.docs.tsx` object, rendered by `pages/com
 
 ## Validate
 
-`npm run typecheck` (`.docs.tsx` type errors are common), `npm run verify:docs`, and open the page on the docs site (`.claude/launch.json` → `docs`, then pick the component on `/components`) to check the examples render.
+`npm run check -- --changed` (it runs typecheck, where `.docs.tsx` type errors are common, and `verify:docs`), and open the page on the docs site (`.claude/launch.json` → `docs`, then pick the component on `/components`) to check the examples render.

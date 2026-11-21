@@ -22,6 +22,6 @@ Read `docs/tokens/pipeline.md` first: it is the source of truth for the build (n
 4. **Accept the intended changes:** `npm run tokens:golden`, then rerun the test. Commit `config/tokens.golden.json` with the source change, so the diff shows reviewers every resolved value that moved.
 5. **Commit the regenerated files.** The build is deterministic (no timestamps), so `src/styles/` changes only where tokens changed.
 6. **Use it:** reference the token from the component, and list it in that component's `.docs.tsx` `tokens` array as an exact path.
-7. **Validate:** typecheck, lint, test, `build:package`, `verify:package`, as in `CLAUDE.md`. `src/tokens/*.test.ts` guard the golden resolved values, the z-index layers, font weights and motion tokens.
+7. **Validate:** `npm run check` (the `check` skill). `src/tokens/*.test.ts` guard the golden resolved values, the z-index layers, font weights and motion tokens.
 
 In the PR, cite P3 or the decision behind the token, and paste the resolved-value diff.
