@@ -46,17 +46,17 @@ export interface WorkspaceSwitcherProps {
 
 const Trigger = styled.button.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{ $collapsed: boolean }>`
+})<{ $collapsed: boolean; $inNav: boolean }>`
   display: flex;
   align-items: center;
   gap: ${space[200]};
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  /* Sized and inset like SidebarNav's rows (0059), so in every density it matches the rows beneath
-     it: their height, their left inset and their gap, with the content centred */
+  /* Sized like SidebarNav's rows (0059), with the content centred. In a SidebarNav it takes their
+     left inset too, so in every density it lines up with the rows beneath it */
   min-height: ${size.control.md};
-  padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
+  padding: 0 ${space.inset.sm} 0 ${({ $inNav }) => ($inNav ? ROW_INSET : space.inset.sm)};
   border: none;
   border-radius: ${radius.md};
   background: none;
@@ -99,10 +99,12 @@ const Decoration = styled.span`
   color: ${color.text.muted};
 `
 
-// The Avatar is wider than a row's icon, so it overhangs the icon's place equally on each side: its
-// centre lines up with the icons below, and the name with their labels
-const AvatarSlot = styled(Decoration)`
-  margin: 0 calc((${size.icon.sm} - ${size.avatar.xs}) / 2);
+// In a SidebarNav the Avatar is wider than a row's icon, so it overhangs the icon's place equally on
+// each side: its centre lines up with the icons below, and the name with their labels
+const AvatarSlot = styled(Decoration).withConfig({
+  shouldForwardProp: (prop) => !prop.startsWith('$'),
+})<{ $inNav: boolean }>`
+  ${({ $inNav }) => $inNav && `margin: 0 calc((${size.icon.sm} - ${size.avatar.xs}) / 2);`}
 `
 
 /**
@@ -117,7 +119,7 @@ export const WorkspaceSwitcher = ({
   children,
   'data-testid': dataTestId,
 }: WorkspaceSwitcherProps) => {
-  const { collapsed } = useSidebarNav()
+  const { collapsed, inNav = false } = useSidebarNav()
   const match = workspaces.find((workspace) => workspace.id === value)
   const fallback = !match && workspaces.length > 0 ? workspaces[0].name : undefined
   // Showing the first keeps the header usable, but the app's value is wrong, so say so, once per value
@@ -131,12 +133,13 @@ export const WorkspaceSwitcher = ({
     <Trigger
       type="button"
       $collapsed={collapsed}
+      $inNav={inNav}
       // In the rail only the Avatar shows, so the name moves to aria-label
       aria-label={collapsed ? current.name : undefined}
       data-testid={dataTestId}
     >
       {/* Avatar names itself as an image; the button's name is the workspace's */}
-      <AvatarSlot aria-hidden="true">
+      <AvatarSlot aria-hidden="true" $inNav={inNav}>
         <Avatar name={current.name} picture={current.picture} size="xs" />
       </AvatarSlot>
       {!collapsed && (

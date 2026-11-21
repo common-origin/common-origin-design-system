@@ -4,7 +4,7 @@ import { SidebarNav, SidebarNavItem, SidebarNavSection, WorkspaceSwitcher } from
 const workspaces = [{ id: 'ops', name: 'Creamery Ops' }]
 
 // Test fixture for e2e/sidebar-nav.spec.ts (#331): a SidebarNav at default density, one in a
-// compact region and one in a comfortable region. Not part of the docs navigation, and not indexed.
+// compact region, one in a comfortable region, and one without the collapse toggle (as in a Sheet). Not part of the docs navigation, and not indexed.
 function Items() {
   return (
     <>
@@ -39,6 +39,11 @@ export default function SidebarNavFixture() {
         </div>
         <div data-co-density="comfortable" style={{ display: 'flex', marginLeft: 40 }}>
           <SidebarNav label="Comfortable" header={<WorkspaceSwitcher workspaces={workspaces} value="ops" onChange={() => {}} />}>
+            <Items />
+          </SidebarNav>
+        </div>
+        <div style={{ display: 'flex', marginLeft: 40 }}>
+          <SidebarNav label="Not collapsible" collapsible={false} header={<WorkspaceSwitcher workspaces={workspaces} value="ops" onChange={() => {}} />}>
             <Items />
           </SidebarNav>
         </div>

@@ -101,15 +101,19 @@ const Header = styled.div`
 
 const HeaderContent = styled.div.withConfig({
   shouldForwardProp: (prop) => !prop.startsWith('$'),
-})<{ $hidden: boolean }>`
+})<{ $hidden: boolean; $withToggle: boolean }>`
   flex: 1;
   min-width: 0;
   overflow: hidden;
   ${({ $hidden }) => fade($hidden)}
 
-  /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move */
+  /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move; beside
+     the collapse toggle, less the toggle and its gap */
   & > div {
-    width: calc(var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE} - ${space[100]});
+    width: calc(
+      var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING}
+        ${({ $withToggle }) => ($withToggle ? `- ${TOGGLE_SIZE} - ${space[100]}` : '')}
+    );
   }
 `
 
@@ -328,7 +332,7 @@ export const SidebarNav = ({
         {(header || collapsible) && (
           <Header>
             {header && (
-              <HeaderContent $hidden={collapsed}>
+              <HeaderContent $hidden={collapsed} $withToggle={collapsible}>
                 <div>
                   <SidebarNavContext.Provider value={headerContext}>{header}</SidebarNavContext.Provider>
                 </div>
