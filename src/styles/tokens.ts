@@ -1648,7 +1648,7 @@ export type Tokens = {
         lg: string;
       };
       row: {
-        /** Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
+        /** Minimum height of dense single-line rows: menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051). */
         sm: string;
         /** Minimum height of single-line list rows: ListItem and the rows built on it, such as ActionSheet actions and SearchField suggestions. Follows density (decision 0051). */
         md: string;

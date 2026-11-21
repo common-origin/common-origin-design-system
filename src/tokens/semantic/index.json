@@ -232,7 +232,7 @@
       "row": {
         "sm": {
           "$value": "{base.dimension.8}",
-          "$description": "Minimum height of dense single-line rows: navigation items, menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051)."
+          "$description": "Minimum height of dense single-line rows: menu items, dense table rows. Follows density down to the minimum pointer target (decision 0051)."
         },
         "md": {
           "$value": "{base.dimension.12}",

@@ -7,6 +7,7 @@ import { Icon } from '../../atoms/Icon'
 import { Tooltip } from '../../atoms/Tooltip'
 import { Menu, MenuDivider, MenuGroup, MenuItemRadio } from '../Menu'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
+import { ROW_INSET } from '../SidebarNavItem/sidebarNavMotion'
 
 const { semantic } = tokens
 const { space, color, motion, radius, size, border, typography } = semantic
@@ -52,8 +53,10 @@ const Trigger = styled.button.withConfig({
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
-  min-height: ${size.row.sm};
-  padding: ${space.inset.xs} ${space.inset.sm};
+  /* Sized and inset like SidebarNav's rows (0059), so in every density it matches the rows beneath
+     it: their height, their left inset and their gap, with the content centred */
+  min-height: ${size.control.md};
+  padding: 0 ${space.inset.sm} 0 ${ROW_INSET};
   border: none;
   border-radius: ${radius.md};
   background: none;
@@ -96,6 +99,12 @@ const Decoration = styled.span`
   color: ${color.text.muted};
 `
 
+// The Avatar is wider than a row's icon, so it overhangs the icon's place equally on each side: its
+// centre lines up with the icons below, and the name with their labels
+const AvatarSlot = styled(Decoration)`
+  margin: 0 calc((${size.icon.sm} - ${size.avatar.xs}) / 2);
+`
+
 /**
  * Shows the current workspace and switches between workspaces (#330), from SidebarNav's header.
  * Built on Menu: a labelled group of the workspaces as radio items, then any actions.
@@ -127,9 +136,9 @@ export const WorkspaceSwitcher = ({
       data-testid={dataTestId}
     >
       {/* Avatar names itself as an image; the button's name is the workspace's */}
-      <Decoration aria-hidden="true">
+      <AvatarSlot aria-hidden="true">
         <Avatar name={current.name} picture={current.picture} size="xs" />
-      </Decoration>
+      </AvatarSlot>
       {!collapsed && (
         <>
           <Name>{current.name}</Name>

@@ -73,11 +73,12 @@ test('a section hides and shows its items, animating their height', async ({ pag
   await expect.poll(async () => (await list.boundingBox())!.height).toBe(open)
 })
 
-test('rows are 24px in a compact region and at least 24px everywhere (0051)', async ({ page }) => {
+test('rows are 32px in compact, 40px in default and 48px in comfortable (0059)', async ({ page }) => {
   const heights = async (name: string) =>
     nav(page, name).locator('[data-sidebar-row]').evaluateAll((rows) => rows.map((row) => row.getBoundingClientRect().height))
-  expect(new Set(await heights('Default'))).toEqual(new Set([32]))
-  expect(new Set(await heights('Compact'))).toEqual(new Set([24]))
+  expect(new Set(await heights('Compact'))).toEqual(new Set([32]))
+  expect(new Set(await heights('Default'))).toEqual(new Set([40]))
+  expect(new Set(await heights('Comfortable'))).toEqual(new Set([48]))
 })
 
 test('a badge of any width stays inside its row, expanded and in the rail, in each density', async ({ page }) => {
@@ -94,6 +95,20 @@ test('a badge of any width stays inside its row, expanded and in the rail, in ea
     await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
     await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
     expect(await inside(name)).toBe(true)
+  }
+})
+
+test('in the rail every row is the rail\'s width, so its rounded corners show on both sides', async ({ page }) => {
+  for (const name of ['Default', 'Compact']) {
+    await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
+    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
+    const tooWide = await nav(page, name).evaluate((el) => {
+      const list = el.querySelector('ul')!.getBoundingClientRect()
+      return [...el.querySelectorAll('[data-sidebar-row]')]
+        .filter((row) => row.getBoundingClientRect().height > 0 && row.getBoundingClientRect().right > list.right + 0.5)
+        .map((row) => row.getAttribute('aria-label'))
+    })
+    expect(tooWide).toEqual([])
   }
 })
 

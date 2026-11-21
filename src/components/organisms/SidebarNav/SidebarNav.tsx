@@ -12,6 +12,18 @@ const { semantic, component } = tokens
 const { space, motion, color, size } = semantic
 const { width: widths } = component.sidebarNav
 
+// The collapse and expand toggles are as tall as the rows and the WorkspaceSwitcher beside them
+// (0059), and square. They're small IconButtons made that size, so their icon stays 16px like the
+// rows' icons; a medium IconButton would draw a 20px one
+const TOGGLE_SIZE = size.control.md
+
+const toggleSize = `
+  & button {
+    min-width: ${TOGGLE_SIZE};
+    min-height: ${TOGGLE_SIZE};
+  }
+`
+
 export type SidebarNavWidth = 'narrow' | 'default' | 'wide'
 
 export interface SidebarNavProps {
@@ -84,7 +96,7 @@ const Header = styled.div`
   display: flex;
   align-items: center;
   gap: ${space[100]};
-  min-height: ${size.control.sm};
+  min-height: ${TOGGLE_SIZE};
 `
 
 const HeaderContent = styled.div.withConfig({
@@ -97,7 +109,7 @@ const HeaderContent = styled.div.withConfig({
 
   /* Keeps its expanded width, so the nav's edge clips it rather than it reflowing mid-move */
   & > div {
-    width: calc(var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING} - ${size.control.sm} - ${space[100]});
+    width: calc(var(${EXPANDED_WIDTH_VAR}) - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE} - ${space[100]});
   }
 `
 
@@ -108,6 +120,7 @@ const CollapseSlot = styled.span.withConfig({
   flex-shrink: 0;
   margin-left: auto;
   ${({ $hidden }) => fade($hidden)}
+  ${toggleSize}
 `
 
 // Centred in the rail, where the header content starts
@@ -117,10 +130,11 @@ const ExpandSlot = styled.span.withConfig({
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${size.control.sm}) / 2);
+  left: calc((${component.sidebarNav.width.rail} - 2 * ${NAV_PADDING} - ${TOGGLE_SIZE}) / 2);
   display: flex;
   align-items: center;
   ${({ $hidden }) => fade($hidden)}
+  ${toggleSize}
 `
 
 const Body = styled.div`

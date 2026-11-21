@@ -62,6 +62,7 @@ A record of significant decisions: what was decided, why, and what follows from 
 | [0056](0056-one-set-of-colour-rules.md) | One set of colour rules for every theme: themes supply inputs (ramp, scrim, shadow strength) and rules derive solid fills, surfaces, inks and translucent fills, so semantic tokens read the same paths in light and dark; amends 0048, 0049 and 0054 | Accepted | 2026-11-08 |
 | [0057](0057-docs-groups-by-purpose.md) | The docs site groups components by purpose in nine groups (Actions, Inputs, Navigation, Feedback, Overlays, Labels, Data display, Content, Layout); a component goes in the group for its job; the tier stays as metadata; source folders don't change; amends 0052 | Accepted | 2026-11-09 |
 | [0058](0058-lucide-icon-source.md) | Lucide is the source of the system's general icons: a pinned dev dependency, curated on demand, used as drawn with the line scaling with the icon; the status icons and filled carets stay our own, redrawn in Lucide's style, and so does the solid AI sparkle (amended 2026-11-15); drawings and metadata are stored apart so `Icon` loads drawings only (amended 2026-11-16); `iconsData` is frozen and deprecated, and a new export carries the new format | Accepted | 2026-11-15 |
+| [0059](0059-sidebarnav-rows-use-control-height.md) | SidebarNav's rows, its toggles and WorkspaceSwitcher's trigger use `semantic.size.control.md` (32/40/48px across the densities), with 16px icons; other dense rows keep `size.row.sm`; amends 0051 | Accepted | 2026-11-21 |
 
 ## Template
 
