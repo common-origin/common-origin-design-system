@@ -14,7 +14,7 @@ gh issue view <N> --json title,body,projectItems -q '.title, (.projectItems[].st
 ```
 
 - **Only take issues in Ready.** Ready means the issue states the problem, the settled decisions and *Done when*. If one is missing, don't guess: ask the owner (step 5).
-- At most 3 items In progress: `gh issue list --search 'is:open' --json number,projectItems -q '.[] | select(any(.projectItems[]; .status.name == "In progress")) | .number'`.
+- At most 3 items In progress: `gh issue list --state open --limit 500 --json number,projectItems -q '.[] | select(any(.projectItems[]; .status.name == "In progress")) | .number'`.
 - **No PR without an issue**, except a release version bump. For a fix found in passing, raise the issue first, with every field set, and go straight to In progress:
   ```bash
   gh issue create --title "…" --body "Problem, decision, Done when"
