@@ -866,6 +866,13 @@
         "narrow": "14rem",
         "default": "16rem",
         "wide": "18.75rem"
+      },
+      "item": {
+        "typography": "400 1rem/1.5rem 'Inter', sans-serif",
+        "gap": "0.5rem"
+      },
+      "switcher": {
+        "typography": "600 1rem/1.5rem 'Inter', sans-serif"
       }
     },
     "slider": {

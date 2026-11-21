@@ -9,8 +9,10 @@ import { Menu, MenuDivider, MenuGroup, MenuItemRadio } from '../Menu'
 import { useSidebarNav } from '../SidebarNavItem/SidebarNavContext'
 import { ROW_INSET } from '../SidebarNavItem/sidebarNavMotion'
 
-const { semantic } = tokens
+const { semantic, component } = tokens
 const { space, color, motion, radius, size, border, typography } = semantic
+// Interim tokens that follow density in a SidebarNav (issue 396, decision 0060)
+const { item, switcher } = component.sidebarNav
 
 export interface Workspace {
   /** Identifies the workspace in `value` and `onChange` */
@@ -49,18 +51,18 @@ const Trigger = styled.button.withConfig({
 })<{ $collapsed: boolean; $inNav: boolean }>`
   display: flex;
   align-items: center;
-  gap: ${space[200]};
+  gap: ${({ $inNav }) => ($inNav ? item.gap : space[200])};
   box-sizing: border-box;
   width: 100%;
   min-width: 0;
   /* Sized like SidebarNav's rows (0059), with the content centred. In a SidebarNav it takes their
-     left inset too, so in every density it lines up with the rows beneath it */
+     insets, gap and text size too (0060), so in every density it lines up with the rows beneath it */
   min-height: ${size.control.md};
-  padding: 0 ${space.inset.sm} 0 ${({ $inNav }) => ($inNav ? ROW_INSET : space.inset.sm)};
+  padding: ${({ $inNav }) => ($inNav ? `0 ${space.inset.md} 0 ${ROW_INSET}` : `0 ${space.inset.sm}`)};
   border: none;
   border-radius: ${radius.md};
   background: none;
-  font: ${typography.label};
+  font: ${({ $inNav }) => ($inNav ? switcher.typography : typography.label)};
   color: ${color.text.default};
   text-align: left;
   cursor: pointer;

@@ -106,6 +106,14 @@ describe('SidebarNavItem', () => {
       renderItem()
       expect(screen.getByRole('link', { name: 'Home' })).toHaveStyle({ minHeight: tokens.semantic.size.control.md })
     })
+
+    it('takes its gap and right padding from the tokens that follow density (0060)', () => {
+      renderItem()
+      expect(screen.getByRole('link', { name: 'Home' })).toHaveStyle({
+        gap: tokens.component.sidebarNav.item.gap,
+        paddingRight: tokens.semantic.space.inset.md,
+      })
+    })
   })
 
   describe('in the rail', () => {

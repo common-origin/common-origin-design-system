@@ -1342,7 +1342,11 @@ export type Tokens = {
     };
     sidebarNav: {
       width: {
-        /** Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side. */
+        /**
+         * Width of a collapsed SidebarNav, the icon rail: the tallest dense row (size.row.sm, in comfortable) with an inset on each side.
+         *
+         * @deprecated SidebarNav now works out its rail from the row height, semantic.size.control.md, plus its padding on each side: 48, 56 and 64px across the densities (decision 0060). Removed in 4.0.
+         */
         rail: string;
         /** Width of an expanded SidebarNav with width="narrow": short labels. */
         narrow: string;
@@ -1350,6 +1354,16 @@ export type Tokens = {
         default: string;
         /** Width of an expanded SidebarNav with width="wide": long titles, such as chat history. */
         wide: string;
+      };
+      item: {
+        /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): a SidebarNav item's label. Body text, and small text in compact, where density overrides it (decision 0060). */
+        typography: string;
+        /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
+        gap: string;
+      };
+      switcher: {
+        /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): the WorkspaceSwitcher's name in a SidebarNav. Semibold at the item label's size: body size, and the label style in compact, where density overrides it (decision 0060). */
+        typography: string;
       };
     };
     slider: {

@@ -1,10 +1,12 @@
 import { expect, test, type Page } from '@playwright/test'
 
 // SidebarNav in a real browser (#331): the gliding highlight (0053), the width and section
-// animations, density (0051) and forced colours. Uses pages/fixtures/sidebar-nav.tsx.
+// animations, density (0051, 0059, 0060) and forced colours. Uses pages/fixtures/sidebar-nav.tsx.
 
 const nav = (page: Page, name = 'Default') => page.getByRole('navigation', { name })
 const highlight = (page: Page, name = 'Default') => nav(page, name).locator('[data-sidebar-highlight]')
+// The rail is a square row plus the nav's padding, so it follows density (0060)
+const RAIL: Record<string, number> = { Compact: 48, Default: 56, Comfortable: 64 }
 
 test.beforeEach(async ({ page }) => {
   await page.goto('/fixtures/sidebar-nav')
@@ -90,10 +92,10 @@ test('a badge of any width stays inside its row, expanded and in the rail, in ea
       const box = row.getBoundingClientRect()
       return badge.left >= box.left && badge.right <= box.right && badge.top >= box.top && badge.bottom <= box.bottom
     })
-  for (const name of ['Default', 'Compact']) {
+  for (const name of ['Default', 'Compact', 'Comfortable']) {
     expect(await inside(name)).toBe(true)
     await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
-    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
+    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(RAIL[name])
     expect(await inside(name)).toBe(true)
   }
 })
@@ -101,7 +103,7 @@ test('a badge of any width stays inside its row, expanded and in the rail, in ea
 test('in the rail every row is the rail\'s width, so its rounded corners show on both sides', async ({ page }) => {
   for (const name of ['Default', 'Compact', 'Comfortable']) {
     await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
-    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(56)
+    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(RAIL[name])
     const tooWide = await nav(page, name).evaluate((el) => {
       const list = el.querySelector('ul')!.getBoundingClientRect()
       return [...el.querySelectorAll('[data-sidebar-row]')]
@@ -152,6 +154,54 @@ test('without the collapse toggle, the header content spans the nav like the row
     return Math.round(list.right - trigger.right)
   })
   expect(gap).toBe(0)
+})
+
+test('text, gap and padding follow density: 14px text in compact, a 12px gap and 16px padding in comfortable (0060)', async ({ page }) => {
+  const expected = {
+    Compact: { font: '14px', weight: '400', switcherFont: '14px', switcherWeight: '600', gap: 8, left: 8, right: 8 },
+    Default: { font: '16px', weight: '400', switcherFont: '16px', switcherWeight: '600', gap: 8, left: 12, right: 12 },
+    Comfortable: { font: '16px', weight: '400', switcherFont: '16px', switcherWeight: '600', gap: 12, left: 16, right: 16 },
+  }
+  for (const [name, want] of Object.entries(expected)) {
+    const got = await nav(page, name).evaluate((el) => {
+      const row = [...el.querySelectorAll('[data-sidebar-row]')].find((r) => r.textContent?.startsWith('Invite'))!
+      const box = row.getBoundingClientRect()
+      const icon = row.querySelector('svg')!.getBoundingClientRect()
+      const label = [...row.querySelectorAll('span')].find((s) => s.textContent === 'Invite users')!
+      const meta = [...row.querySelectorAll('span')].find((s) => s.textContent === '3/10')!
+      const trigger = el.querySelector('button[aria-haspopup]')!
+      return {
+        font: getComputedStyle(label).fontSize,
+        weight: getComputedStyle(label).fontWeight,
+        switcherFont: getComputedStyle(trigger).fontSize,
+        switcherWeight: getComputedStyle(trigger).fontWeight,
+        gap: Math.round(label.getBoundingClientRect().left - icon.right),
+        left: Math.round(icon.left - box.left),
+        right: Math.round(box.right - meta.getBoundingClientRect().right),
+      }
+    })
+    expect({ name, ...got }).toEqual({ name, ...want })
+  }
+})
+
+test('in the rail, each density\'s icons are centred and in the same place as when expanded', async ({ page }) => {
+  for (const name of ['Compact', 'Default', 'Comfortable']) {
+    const iconX = () =>
+      nav(page, name).evaluate((el) => {
+        const icon = el.querySelector('[data-sidebar-row] svg')!.getBoundingClientRect()
+        return Math.round(icon.left - el.getBoundingClientRect().left)
+      })
+    const expanded = await iconX()
+    await nav(page, name).getByRole('button', { name: 'Collapse sidebar' }).click()
+    await expect.poll(async () => Math.round((await nav(page, name).boundingBox())!.width)).toBe(RAIL[name])
+    const sides = await nav(page, name).evaluate((el) => {
+      const nav = el.getBoundingClientRect()
+      const icon = el.querySelector('[data-sidebar-row] svg')!.getBoundingClientRect()
+      return [Math.round(icon.left - nav.left), Math.round(nav.right - icon.right)]
+    })
+    expect(sides[0]).toBe(sides[1])
+    expect(sides[0]).toBe(expanded)
+  }
 })
 
 test("every row's content ends inside the row when expanded, in each density", async ({ page }) => {

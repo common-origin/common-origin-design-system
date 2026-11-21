@@ -75,7 +75,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
     { name: 'children', type: 'ReactNode', required: true, description: 'SidebarNavItems and SidebarNavSections, in order. Consecutive items form one list. The body scrolls when it\'s too tall.' },
     { name: 'header', type: 'ReactNode', required: false, description: 'Content above the body, such as a WorkspaceSwitcher. The collapse toggle sits beside it.' },
     { name: 'footer', type: 'ReactNode', required: false, description: 'Content below the body, such as an upgrade prompt. Hidden in the rail.' },
-    { name: 'width', type: "'narrow' | 'default' | 'wide'", required: false, default: "'default'", description: 'The expanded width: 224, 256 or 300px. Collapsed, it\'s always the 56px rail.' },
+    { name: 'width', type: "'narrow' | 'default' | 'wide'", required: false, default: "'default'", description: 'The expanded width: 224, 256 or 300px. Collapsed, it\'s always the rail: 48, 56 or 64px, following density.' },
     { name: 'collapsed', type: 'boolean', required: false, description: 'Whether it\'s the icon rail (controlled). Use with onCollapsedChange.' },
     { name: 'defaultCollapsed', type: 'boolean', required: false, default: 'false', description: 'Whether it starts as the rail (uncontrolled). Saving the state between visits is the product\'s job.' },
     { name: 'onCollapsedChange', type: '(collapsed: boolean) => void', required: false, description: 'Called when the toggle collapses or expands it' },
@@ -85,7 +85,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
   ],
 
   tokens: [
-    'component.sidebarNav.width.rail',
+    'semantic.size.control.md',
     'component.sidebarNav.width.narrow',
     'component.sidebarNav.width.default',
     'component.sidebarNav.width.wide',
@@ -164,7 +164,7 @@ export const sidebarNavDocs: ComponentDocumentation = {
       { name: 'Body', description: 'Items and sections; scrolls when too tall' },
       { name: 'Highlight', description: 'One shape in the row hover colour that glides to the hovered or focused row over duration.fast, stepping aside for the current page (0053)', tokens: ['semantic.color.fill.muted', 'semantic.motion.duration.fast'] },
       { name: 'Footer', description: 'Optional content below the body, hidden in the rail' },
-      { name: 'Surface', description: 'The page background, with no edge or fill of its own (P1). Collapsing animates the width over duration.moderate, decelerating, while labels fade and icons stay put', tokens: ['component.sidebarNav.width.default', 'component.sidebarNav.width.rail'] },
+      { name: 'Surface', description: 'The page background, with no edge or fill of its own (P1). Collapsing animates the width over duration.moderate, decelerating, while labels fade and icons stay put', tokens: ['component.sidebarNav.width.default', 'semantic.size.control.md'] },
     ],
   },
 }
