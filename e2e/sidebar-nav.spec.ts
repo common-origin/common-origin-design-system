@@ -204,6 +204,26 @@ test('in the rail, each density\'s icons are centred and in the same place as wh
   }
 })
 
+test('section headers line up with the items: the caret on their icons, the label with their labels (0060)', async ({ page }) => {
+  for (const name of ['Compact', 'Default', 'Comfortable']) {
+    const offsets = await nav(page, name).evaluate((el) => {
+      const disclosure = el.querySelector('button[aria-controls]')!
+      const caret = disclosure.querySelector('svg')!.getBoundingClientRect()
+      const text = [...disclosure.childNodes].find((node) => node.nodeType === Node.TEXT_NODE)!
+      const range = document.createRange()
+      range.selectNodeContents(text)
+      const row = [...el.querySelectorAll('[data-sidebar-row]')].find((r) => r.textContent?.startsWith('Invite'))!
+      const icon = row.querySelector('svg')!.getBoundingClientRect()
+      const label = [...row.querySelectorAll('span')].find((s) => s.textContent === 'Invite users')!
+      return [
+        Math.round(caret.left + caret.width / 2 - (icon.left + icon.width / 2)),
+        Math.round(range.getBoundingClientRect().left - label.getBoundingClientRect().left),
+      ]
+    })
+    expect({ name, offsets }).toEqual({ name, offsets: [0, 0] })
+  }
+})
+
 test("every row's content ends inside the row when expanded, in each density", async ({ page }) => {
   for (const name of ['Default', 'Compact']) {
     const overflowing = await nav(page, name).evaluate((el) =>

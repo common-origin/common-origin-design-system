@@ -37,7 +37,8 @@ The owner chose to fix it for SidebarNav now, localised in component tokens and 
    Each token's description starts "Interim (issue 396)" and names the issue that replaces it. `modes.test.ts` allows exactly these three paths, by name.
 2. **The rows' right padding is `semantic.space.inset.md`** (8, 12 and 16px), for items and the switcher in a SidebarNav. No new token.
 3. **The rail is worked out from the row**: `semantic.size.control.md` plus the nav's padding on each side, so each rail row is square. The rows' left inset is half the difference between the row and the 16px icon (8, 12 and 16px), the same expanded and in the rail, so icons never move. Compact's left inset drops from 12px to 8px. `component.sidebarNav.width.rail` (always 56px) no longer describes the rail, so it's deprecated, keeping its value, and removed in 4.0.
-4. **Outside a SidebarNav, WorkspaceSwitcher is unchanged**: `typography.label`, `space.200` and even `space.inset.sm` padding.
+4. **SidebarNavSection's header lines up with the items** in every density: the same left inset and right padding, and the items' gap, so its 16px caret sits on their icon column and its label starts where theirs do. It keeps its height (`size.row.sm`) and caption text. Decided in the review of [#404](https://github.com/common-origin/common-origin-design-system/pull/404).
+5. **Outside a SidebarNav, WorkspaceSwitcher is unchanged**: `typography.label`, `space.200` and even `space.inset.sm` padding.
 
 ## Consequences
 
