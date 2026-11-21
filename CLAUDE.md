@@ -26,6 +26,8 @@ The guidance in `.github/*.md` predates the foundation and is partly inaccurate.
 ## Commands
 
 ```bash
+npm run check            # all the checks below, quiet: one line per step, failures in full
+npm run check -- --changed  # inner loop: typecheck, eslint and related tests for the branch's changes
 npm run typecheck        # tsc --noEmit
 npm run lint             # eslint; --max-warnings ratchet — never raise the number, lower it when you fix warnings
 npm run verify:docs      # docs must not reference missing files, folders or npm scripts
@@ -37,7 +39,7 @@ npm run build            # docs site
 npm run icon:add -- <lucide-name> --as <ourName>  # add an icon from Lucide (decision 0058)
 ```
 
-Run typecheck, lint, tests, `build:package` and `verify:package` before proposing any change as done.
+Run `npm run check` (typecheck, lint, tests, `verify:docs`, `build:package`, `verify:package`) before proposing any change as done, and use it rather than the separate commands to see whether they pass: see the `check` skill.
 
 ## Gotchas
 
@@ -57,7 +59,7 @@ Specialist subagents live in `.claude/agents/`. Each is a thin wrapper around th
 | `documentation-specialist` | `.docs.tsx`, examples, anatomy, registration |
 | `token-architect` | new tokens, the token pipeline, the DTCG / Style Dictionary 5 plan |
 
-Skills in `.claude/skills/`: `new-component`, `token-change`, `component-docs`, and `release`. Release is a skill, not a subagent, because every step needs the owner's confirmation in chat.
+Skills in `.claude/skills/`: `check` (running the checks), `component-change` (fixing or changing an existing component and everything it touches), `ship-issue` (issue to merged PR: board, branch, commits, PR body, the `/code-review` loop), `new-component`, `token-change`, `component-docs`, and `release`. Release is a skill, not a subagent, because every step needs the owner's confirmation in chat.
 
 `.claude/settings.json` pre-approves the routine checks, asks before tags, merges and force pushes, and denies `npm publish` and pushes to `main` (which branch protection also blocks).
 
