@@ -1358,7 +1358,7 @@ export type Tokens = {
       item: {
         /** Interim (issue 396), replaced by a semantic text style that follows density (issue 401): a SidebarNav item's label. Body text, and small text in compact, where density overrides it (decision 0060). */
         typography: string;
-        /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
+        /** Interim (issue 396), replaced by a semantic icon-to-label gap that follows density (issue 402): the gap between a SidebarNav item's icon and label, a section header's caret and label, and the WorkspaceSwitcher's Avatar and name. space.200, and space.300 in comfortable, where density overrides it. The one exception to decision 0022's no component spacing tokens (decision 0060). */
         gap: string;
       };
       switcher: {
